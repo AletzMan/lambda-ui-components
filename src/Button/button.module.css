@@ -10,20 +10,17 @@
     border: 1px solid transparent;
     color: var(--foreground-color);
     font-family: var(--font-family);
-    font-weight: 500;
+    font-weight: 400;
     transition: background-color 0.2s ease-in-out, color 0.3s ease-in-out;
     cursor: pointer;
     pointer-events: all;
     z-index: 0;
     width: max-content;
     box-sizing: border-box;
-    box-shadow: var(--box-shadow);
+    box-shadow: 1px 1px 0px 0px #FFFFFF20 inset, var(--box-shadow);
 
     &:hover:not(:disabled) {
-        &::after {
-            left: 0;
-            width: 150%;
-        }
+        box-shadow: 1px 1px 0px 0px #FFFFFF20 inset, 0 0 1px 1px var(--shadow-color);
     }
 
     &:disabled {
@@ -116,12 +113,6 @@
 .color_primary {
     background-color: var(--primary-color);
     border: 1px solid var(--primary-disabled-color);
-    box-shadow: 1px 1px 0px 0px #FFFFFF20 inset;
-
-    &::after {
-        background-color: inherit;
-        filter: brightness(130%);
-    }
 
     &:hover {
         background-color: var(--primary-hover-color);
@@ -131,9 +122,8 @@
 .color_secondary {
     background-color: var(--secondary-color);
     border: 1px solid var(--secondary-disabled-color);
-    box-shadow: 1px 1px 0px 0px #FFFFFF20 inset;
 
-    &::after {
+    &:hover {
         background-color: var(--secondary-hover-color);
     }
 }
@@ -142,7 +132,7 @@
     background-color: var(--danger-color);
     border: 1px solid var(--danger-disabled-color);
 
-    &::after {
+    &:hover {
         background-color: var(--danger-hover-color);
     }
 }
@@ -150,27 +140,27 @@
 
 .color_success {
     background-color: var(--success-color);
-    box-shadow: 0 0 2px 1px var(--success-disabled-color) inset;
+    border: 1px solid var(--success-disabled-color);
 
-    &::after {
+    &:hover {
         background-color: var(--success-hover-color);
     }
 }
 
 .color_warning {
     background-color: var(--warning-color);
-    box-shadow: 0 0 2px 1px var(--warning-disabled-color) inset;
+    border: 1px solid var(--warning-disabled-color);
 
-    &::after {
+    &:hover {
         background-color: var(--warning-hover-color);
     }
 }
 
 .color_info {
     background-color: var(--info-color);
-    box-shadow: 0 0 2px 1px var(--info-disabled-color) inset;
+    border: 1px solid var(--info-disabled-color);
 
-    &::after {
+    &:hover {
         background-color: var(--info-hover-color);
     }
 }
