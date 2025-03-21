@@ -5,7 +5,7 @@
     --primary-color: #359cb1;
     --primary-hover-color: #2993a9;
     --primary-light-color: #25718020;
-    --primary-disabled-color: #20626f;
+    --primary-disabled-color: #27707f;
     --secondary-color: #7e8997;
     --secondary-hover-color: #6e7b8d;
     --secondary-light-color: #7e899720;
@@ -43,12 +43,12 @@
     --border-radius-pill: 10em;
     --border-radius-full: 50%;
     --box-shadow: 0 0 3px 1px var(--shadow-color);
-    --shadow-inset-color: #f2f1f155;
 }
 
 [data-theme="light"] {
     --background-color: #f3f3f3;
     --foreground-color: #fdfdfd;
+    --foreground-invert-color: #1f1f1f;
     --foreground-label-color: #8fa2b3;
     --foreground-disabled-color: #b7b5b5;
     --surface-a: #f5f5f5;
@@ -57,13 +57,15 @@
     --surface-d: #c2c2c2;
     --surface-e: #b0b0b0;
     --surface-f: #9e9e9e;
-    --border-color: #ccc;
+    --border-color: #cccccc;
     --shadow-color: #44434350;
+    --shadow-inset-color: #f2f1f155;
 }
 
 [data-theme="dark"] {
     --background-color: #171717;
     --foreground-color: #fdfdfd;
+    --foreground-invert-color: #fdfdfd;
     --foreground-label-color: #b1c0cc;
     --foreground-disabled-color: #b7b5b5;
     --surface-a: #1c1e21;
@@ -74,4 +76,22 @@
     --surface-f: #2b2d31;
     --border-color: #5f5f5f;
     --shadow-color: #3c3c3c60;
+    --shadow-inset-color: #ebeaea55;
+}
+
+
+
+/* Asegura que los botones y otros elementos tengan la fuente correcta */
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
