@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode, forwardRef } from "react";
+import { ButtonHTMLAttributes, ReactNode, forwardRef, isValidElement } from "react";
 import styles from "./button.module.css"
 import { cva, VariantProps } from "class-variance-authority";
 import { Loader } from "lucide-react";
@@ -114,7 +114,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <button
                 ref={ref}
-                className={button({
+                className={`${button({
                     variant,
                     size,
                     color,
@@ -123,12 +123,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     loading,
                     icon_position,
                     className,
-                })}
+                })} ${(isValidElement<ReactNode>(props.children) || label) ? "" : styles["l-btn-only-icon"]}`}
                 disabled={disabled || undefined}
                 {...props}
             >
                 {(icon || loading) && <span className={styles["l-btn-icon"]}>{loading ? <Loader className={styles["l-btn-icon-loading"]} /> : icon}</span>}
-                <span className={styles["l-btn-children"]}>{label}</span>
+                {label && <span className={styles["l-btn-children"]}>{label}</span>}
                 {props.children}
             </button>
         )
