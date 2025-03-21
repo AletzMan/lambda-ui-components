@@ -10,10 +10,11 @@ function App() {
         UI Components
         <Button
           size="medium"
-          icon={<CheckCircle />}
           radius={'medium'}
           variant="solid"
-          color="danger"
+          color="secondary"
+          label='Aceptar'
+          icon={<CheckCircle />}
           icon_position="left"
           loading={false} />
       </div>
