@@ -25,14 +25,19 @@ const meta: Meta<typeof Button> = {
             options: ['small', 'medium', 'large'],
             description: "Button size"
         },
-        icon_only: {
-            control: 'boolean',
-            description: "Shows only an icon if true."
-        },
         radius: {
             control: 'select',
             options: ['none', 'small', 'medium', 'large', 'pill', 'circle'],
             description: "Corner shape"
+        },
+        icon_position: {
+            control: 'select',
+            options: ['left', 'right'],
+            description: "Icon position"
+        },
+        loading: {
+            control: 'boolean',
+            description: "Shows a loading spinner"
         },
         disabled: {
             control: 'boolean',
@@ -52,9 +57,10 @@ export const Primary: Story = {
         variant: "solid",
         size: "medium",
         radius: 'small',
+        loading: false,
         disabled: false,
-        icon_only: false,
-        children: "Button"
+        icon_position: "left",
+        label: "Button"
     },
 }
 
@@ -65,9 +71,10 @@ export const Secondary: Story = {
         variant: "solid",
         size: "medium",
         radius: 'small',
+        loading: false,
         disabled: false,
-        icon_only: false,
-        children: "Button",
+        icon_position: "left",
+        label: "Button",
     }
 }
 
@@ -77,9 +84,10 @@ export const Danger: Story = {
         variant: "solid",
         size: "medium",
         radius: 'small',
+        loading: false,
         disabled: false,
-        icon_only: false,
-        children: "Button",
+        icon_position: "left",
+        label: "Button",
     }
 }
 
@@ -89,9 +97,10 @@ export const Success: Story = {
         variant: "solid",
         size: "medium",
         radius: 'small',
+        loading: false,
         disabled: false,
-        icon_only: false,
-        children: "Button",
+        icon_position: "left",
+        label: "Button",
     }
 }
 
@@ -101,9 +110,10 @@ export const Warning: Story = {
         variant: "solid",
         size: "medium",
         radius: 'small',
+        loading: false,
         disabled: false,
-        icon_only: false,
-        children: "Button",
+        icon_position: "left",
+        label: "Button",
     }
 }
 
