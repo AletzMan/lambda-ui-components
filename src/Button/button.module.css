@@ -17,7 +17,6 @@
     width: max-content;
     min-height: 26px;
     min-width: 26px;
-    box-sizing: border-box;
     box-shadow: 1px 1px 0px 0px var(--shadow-inset-color) inset, 0 0 1px 1px var(--shadow-color), -1px 0px 0px 0px var(--shadow-inset-color) inset;
 
     &:hover:not(:disabled):not(.l-btn-loading) {
@@ -61,6 +60,7 @@
     }
 
     &>.l-btn-icon {
+
         &>svg {
             filter: drop-shadow(0px 0px 1px var(--disabled-color));
         }
@@ -70,9 +70,10 @@
 
 
 .l-btn-children {
+    display: flex;
+    align-items: center;
+    justify-items: center;
     text-shadow: 0 1px 1px var(--disabled-color);
-
-
 }
 
 .color_primary {
@@ -218,11 +219,17 @@
         align-items: center;
         width: 16px;
         height: 16px;
+        line-height: 16px;
 
         &>svg {
             width: 16px;
             height: 16px;
+            line-height: 16px;
         }
+    }
+
+    .l-btn-children {
+        line-height: 16px;
     }
 }
 
@@ -230,16 +237,22 @@
     font-size: var(--font-size-sm);
     padding: var(--padding-sm) var(--padding-lg);
 
-
-
     .l-btn-icon {
         display: flex;
         align-items: center;
+        width: 19px;
+        height: 19px;
+        line-height: 19px;
 
         &>svg {
             width: 19px;
             height: 19px;
+            line-height: 19px;
         }
+    }
+
+    .l-btn-children {
+        line-height: 17.195px;
     }
 }
 
@@ -249,13 +262,18 @@
 
     .l-btn-icon {
         display: flex;
-        align-items: center;
+        width: 21px;
+        height: 21px;
+        line-height: 21px;
 
         &>svg {
             width: 21px;
             height: 21px;
+            line-height: 21px;
         }
     }
+
+
 }
 
 .radius_none {
