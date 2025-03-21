@@ -15,8 +15,7 @@ function App() {
           variant="solid"
           color="danger"
           icon_position="left"
-          loading={false}
-          label='Aceptar' />
+          loading={false} />
       </div>
     </>
   )
