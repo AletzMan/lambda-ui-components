@@ -5,7 +5,7 @@ export const globalTypes = {
   theme: {
     name: "Theme",
     description: "Modo de color",
-    defaultValue: "light",
+    defaultValue: "dark",
     toolbar: {
       icon: "mirror",
       items: ["light", "dark"],
