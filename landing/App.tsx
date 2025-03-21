@@ -1,15 +1,22 @@
 
 import { Button } from '../src/main'
-import styles from './styles.module.css'
+import { CheckCircle } from "lucide-react"
 
 function App() {
-
 
   return (
     <>
       <div>
         UI Components
-        <Button className={styles.button}>Login</Button>
+        <Button
+          size="medium"
+          icon={<CheckCircle />}
+          radius={'medium'}
+          variant="solid"
+          color="danger"
+          icon_position="left"
+          loading={false}
+          label='Aceptar' />
       </div>
     </>
   )
