@@ -1,183 +1,150 @@
-import { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent } from "react";
-import styles from "./input.module.css"
+import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent } from "react";
+import styles from "./input.module.css";
 import { cva, VariantProps } from "class-variance-authority";
-import { Eye, EyeOff, X, } from "lucide-react";
+import { Eye, EyeOff, X } from "lucide-react";
+import clsx from 'clsx';
 
-const input = cva(styles.base, {
+const input = cva(styles["lambda-input__wrapper"], {
     variants: {
         size: {
-            small: styles.sm,
-            medium: styles.md,
-            large: styles.lg,
+            small: styles["lambda-input__wrapper--size-small"],
+            medium: styles["lambda-input__wrapper--size-medium"],
+            large: styles["lambda-input__wrapper--size-large"],
         },
         variant: {
-            outline: styles.outline,
-            flat: styles.flat,
-            underline: styles.underline,
+            outline: styles["lambda-input__wrapper--variant-outline"],
+            flat: styles["lambda-input__wrapper--variant-flat"],
+            underline: styles["lambda-input__wrapper--variant-underline"],
         },
         type: {
-            text: styles.text,
-            search: styles.search,
-            password: styles.password,
-            email: styles.email,
+            text: styles["lambda-input__wrapper--type-text"],
+            search: styles["lambda-input__wrapper--type-search"],
+            password: styles["lambda-input__wrapper--type-password"],
+            email: styles["lambda-input__wrapper--type-email"],
         },
         radius: {
-            none: styles.none,
-            small: styles.small,
-            medium: styles.medium,
-            pill: styles.pill,
+            none: styles["lambda-input__wrapper--radius-none"],
+            small: styles["lambda-input__wrapper--radius-small"],
+            medium: styles["lambda-input__wrapper--radius-medium"],
+            pill: styles["lambda-input__wrapper--radius-pill"],
         },
         error: {
-            true: styles.is_error,
-            false: ''
+            true: styles["lambda-input__wrapper--error-true"],
+            false: "",
         },
         disabled: {
-            false: styles.enabled,
-            true: styles.disabled,
+            false: styles["lambda-input__wrapper--disabled-false"],
+            true: styles["lambda-input__wrapper--disabled-true"],
         },
     },
     compoundVariants: [
-        { type: 'password', size: 'small', className: styles.password_sm },
-        { type: 'password', size: 'medium', className: styles.password_md },
-        { type: 'password', size: 'large', className: styles.password_md },
-        { type: 'search', size: 'small', className: styles.search_sm },
-        { type: 'search', size: 'medium', className: styles.search_md },
-        { type: 'search', size: 'large', className: styles.search_md },
+        { type: "password", size: "small", className: styles["lambda-input__wrapper--password-small"] },
+        { type: "password", size: "medium", className: styles["lambda-input__wrapper--password-medium"] },
+        { type: "password", size: "large", className: styles["lambda-input__wrapper--password-large"] },
+        { type: "search", size: "small", className: styles["lambda-input__wrapper--search-small"] },
+        { type: "search", size: "medium", className: styles["lambda-input__wrapper--search-medium"] },
+        { type: "search", size: "large", className: styles["lambda-input__wrapper--search-large"] },
     ],
     defaultVariants: {
         variant: "outline",
-        size: 'medium',
-        radius: 'small',
+        size: "medium",
+        radius: "small",
         error: false,
         disabled: false,
     },
-})
+});
 
-
-
-const labels = cva(styles.label, {
+const labels = cva(styles["lambda-input__label"], {
     variants: {
         size: {
-            small: styles.label_sm,
-            medium: styles.label_md,
-            large: styles.label_lg,
+            small: styles["lambda-input__label--size-small"],
+            medium: styles["lambda-input__label--size-medium"],
+            large: styles["lambda-input__label--size-large"],
         },
         radius: {
-            none: styles.label_none,
-            small: styles.label_small,
-            medium: styles.label_medium,
-            pill: styles.label_pill,
-        }
+            none: styles["lambda-input__label--radius-none"],
+            small: styles["lambda-input__label--radius-small"],
+            medium: styles["lambda-input__label--radius-medium"],
+            pill: styles["lambda-input__label--radius-pill"],
+        },
     },
-    compoundVariants: [
-
-    ],
     defaultVariants: {
-        radius: 'small',
-        size: 'medium'
+        radius: "small",
+        size: "medium",
     },
-})
+});
 
-const textInput = cva(styles.input, {
+const textInput = cva(styles["lambda-input__field"], {
     variants: {
         size: {
-            small: styles.input_sm,
-            medium: styles.input_md,
-            large: styles.input_lg,
+            small: styles["lambda-input__field--size-small"],
+            medium: styles["lambda-input__field--size-medium"],
+            large: styles["lambda-input__field--size-large"],
         },
     },
-})
+});
 
-const errorlabel = cva(styles.error, {
+const errorlabel = cva(styles["lambda-input__error"], {
     variants: {
         size: {
-            small: styles.error_sm,
-            medium: styles.error_md,
-            large: styles.error_lg,
+            small: styles["lambda-input__error--size-small"],
+            medium: styles["lambda-input__error--size-medium"],
+            large: styles["lambda-input__error--size-large"],
         },
     },
-})
+});
 
-export interface InputProps
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">,
-    VariantProps<typeof input> { label?: string, error?: boolean, errorMessage?: string; }
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> { label?: string, error?: boolean, errorMessage?: string; }
+
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    (
-        {
-            className,
-            variant,
-            radius, size, label, error, errorMessage,
-            disabled, type = "text", value: controlledValue,
-            onChange,
-            ...props
-        },
-        ref
-    ) => {
+    ({ className, variant, radius, size, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, ...props }, ref) => {
         const [showPassword, setShowPassword] = useState(false);
-        const [internalValue, setInternalValue] = useState("")
+        const [internalValue, setInternalValue] = useState("");
 
-        const isControlled = controlledValue !== undefined
-        const value = isControlled ? controlledValue : internalValue
+        const isControlled = controlledValue !== undefined;
+        const value = isControlled ? controlledValue : internalValue;
 
-        const isPasswordType = type === "password"
-        const isSearchType = type === 'search'
-        const inputType = isPasswordType && showPassword ? "text" : type
+        const isPasswordType = type === "password";
+        const isSearchType = type === "search";
+        const inputType = isPasswordType && showPassword ? "text" : type;
 
         const togglePasswordVisibility = (e: MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault()
+            e.preventDefault();
             if (isPasswordType) {
-                setShowPassword((prev) => !prev)
+                setShowPassword((prev) => !prev);
             }
-        }
+        };
 
         const clearInput = () => {
             if (isSearchType) {
-                if (!isControlled) setInternalValue("")
-                if (onChange) onChange({ target: { value: "" } } as ChangeEvent<HTMLInputElement>)
+                if (!isControlled) setInternalValue("");
+                if (onChange) onChange({ target: { value: "" } } as ChangeEvent<HTMLInputElement>);
             }
         };
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
             if (!isControlled) {
-                setInternalValue(e.target.value)
+                setInternalValue(e.target.value);
             }
             if (onChange) {
-                onChange(e)
+                onChange(e);
             }
-        }
+        };
 
         return (
-            <div className={`${styles.container} ${disabled && styles.container_disabled}`} >
-                {label && (
-                    <label className={labels({ radius, size })}>
-                        {`${label as string}`}
-                    </label>
-                )}
+            <div className={clsx(styles["lambda-input"], { [styles["lambda-input--disabled-true"]]: disabled })}>
+                {label && <label className={labels({ radius, size })}>{`${label as string}`}</label>}
                 <div className={input({ variant, disabled, radius, size, error, type, className })}>
-                    <div className={styles.inputWrapper}>
-                        <input
-                            ref={ref}
-                            value={value}
-                            onChange={handleChange}
-                            type={inputType as HTMLInputTypeAttribute}
-                            className={textInput({ size })}
-                            disabled={disabled || undefined}
-                            {...props}
-                        />
+                    <div className={styles["lambda-input__input-wrapper"]}>
+                        <input ref={ref} value={value} onChange={handleChange} type={inputType as HTMLInputTypeAttribute} className={textInput({ size })} disabled={disabled || undefined} {...props} />
                         {isPasswordType && (
-                            <button
-                                onClick={togglePasswordVisibility}
-                                className={`${styles.togglePassword} ${variant === 'flat' && styles.togglePassword_flat}`}
-                            >
-                                {showPassword ? <EyeOff className={styles.icon} /> : <Eye className={styles.icon} />}
+                            <button onClick={togglePasswordVisibility} className={clsx(styles["lambda-input__toggle-password"], { [styles["lambda-input__toggle-password--flat"]]: variant === "flat" })}>
+                                {showPassword ? <EyeOff className={styles["lambda-input__icon"]} /> : <Eye className={styles["lambda-input__icon"]} />}
                             </button>
                         )}
                         {isSearchType && value && (
-                            <span
-                                onClick={clearInput}
-                                className={styles.clearSearch}
-                            >
-                                <X className={styles.clearSearch_icon} />
+                            <span onClick={clearInput} className={styles["lambda-input__clear-search"]}>
+                                <X className={styles["lambda-input__clear-search-icon"]} />
                             </span>
                         )}
                     </div>
@@ -186,4 +153,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             </div>
         );
     }
-)
+);
