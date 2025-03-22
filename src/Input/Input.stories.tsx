@@ -27,13 +27,18 @@ const meta: Meta<typeof Input> = {
         },
         radius: {
             control: 'select',
-            options: ['none', 'small', 'medium', 'pill'],
+            options: ['none', 'small', 'medium', 'large', 'pill'],
             description: "Corner shape"
         },
         label: {
             control: 'text',
             type: "string",
             description: "Text to display as the label for the component"
+        },
+        floatingLabel: {
+            control: "boolean",
+            type: "boolean",
+            description: "If true, the label will act as a placeholder when the input is empty and move above the input when it has focus or a value.            * The native input placeholder will be disabled."
         },
         error: {
             control: 'boolean',
@@ -58,6 +63,7 @@ export const Text: Story = {
         radius: "small",
         size: 'medium',
         label: 'Label',
+        floatingLabel: false,
         error: false,
         type: 'text',
         errorMessage: "This is a sample error message for demonstration",
@@ -72,6 +78,7 @@ export const Password: Story = {
         radius: "small",
         size: 'medium',
         label: 'Passwword',
+        floatingLabel: false,
         error: false,
         type: 'password',
         errorMessage: "This is a sample error message for demonstration",
@@ -86,6 +93,7 @@ export const Search: Story = {
         radius: "small",
         size: 'medium',
         label: 'Search',
+        floatingLabel: false,
         error: false,
         type: 'search',
         placeholder: "Search here...",
@@ -100,6 +108,7 @@ export const Email: Story = {
         radius: "small",
         size: 'medium',
         label: 'Email',
+        floatingLabel: false,
         error: false,
         type: 'email',
         errorMessage: "This is a sample error message for demonstration",

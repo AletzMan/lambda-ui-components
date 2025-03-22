@@ -1,4 +1,4 @@
-import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent } from "react";
+import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent } from "react";
 import styles from "./input.module.css";
 import { cva, VariantProps } from "class-variance-authority";
 import { Eye, EyeOff, X } from "lucide-react";
@@ -26,6 +26,7 @@ const input = cva(styles["lambda-input__wrapper"], {
             none: styles["lambda-input__wrapper--radius-none"],
             small: styles["lambda-input__wrapper--radius-small"],
             medium: styles["lambda-input__wrapper--radius-medium"],
+            large: styles["lambda-input__wrapper--radius-large"],
             pill: styles["lambda-input__wrapper--radius-pill"],
         },
         error: {
@@ -37,18 +38,11 @@ const input = cva(styles["lambda-input__wrapper"], {
             true: styles["lambda-input__wrapper--disabled-true"],
         },
     },
-    compoundVariants: [
-        { type: "password", size: "small", className: styles["lambda-input__wrapper--password-small"] },
-        { type: "password", size: "medium", className: styles["lambda-input__wrapper--password-medium"] },
-        { type: "password", size: "large", className: styles["lambda-input__wrapper--password-large"] },
-        { type: "search", size: "small", className: styles["lambda-input__wrapper--search-small"] },
-        { type: "search", size: "medium", className: styles["lambda-input__wrapper--search-medium"] },
-        { type: "search", size: "large", className: styles["lambda-input__wrapper--search-large"] },
-    ],
     defaultVariants: {
         variant: "outline",
         size: "medium",
         radius: "small",
+        type: "text",
         error: false,
         disabled: false,
     },
@@ -65,8 +59,10 @@ const labels = cva(styles["lambda-input__label"], {
             none: styles["lambda-input__label--radius-none"],
             small: styles["lambda-input__label--radius-small"],
             medium: styles["lambda-input__label--radius-medium"],
+            large: styles["lambda-input__wrapper--radius-large"],
             pill: styles["lambda-input__label--radius-pill"],
         },
+
     },
     defaultVariants: {
         radius: "small",
@@ -82,6 +78,9 @@ const textInput = cva(styles["lambda-input__field"], {
             large: styles["lambda-input__field--size-large"],
         },
     },
+    defaultVariants: {
+        size: "medium"
+    }
 });
 
 const errorlabel = cva(styles["lambda-input__error"], {
@@ -92,14 +91,43 @@ const errorlabel = cva(styles["lambda-input__error"], {
             large: styles["lambda-input__error--size-large"],
         },
     },
+    defaultVariants: {
+        size: "medium"
+    }
 });
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> { label?: string, error?: boolean, errorMessage?: string; }
+const buttonPassword = cva(styles["lambda-input__toggle-password"], {
+    variants: {
+        size: {
+            small: styles["lambda-input__toggle-password--small"],
+            medium: styles["lambda-input__toggle-password--medium"],
+            large: styles["lambda-input__toggle-password--large"],
+        },
+        variant: {
+            outline: styles["lambda-input__toggle-password--outline"],
+            flat: styles["lambda-input__toggle-password--flat"],
+            underline: styles["lambda-input__toggle-password--underline"],
+        },
+    },
+    defaultVariants: {
+        size: "medium",
+        variant: "outline"
+    }
+});
+
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> {
+    label?: string,
+    error?: boolean,
+    errorMessage?: string;
+    floatingLabel?: boolean; // Agregamos la propiedad floatingLabel
+}
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, variant, radius, size, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, ...props }, ref) => {
+    ({ className, variant, radius, size, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, floatingLabel, placeholder, ...props }, ref) => {
         const [showPassword, setShowPassword] = useState(false);
         const [internalValue, setInternalValue] = useState("");
+        const [isLabelFloating, setIsLabelFloating] = useState(false);
+        const [isFocused, setIsFocused] = useState(false);
 
         const isControlled = controlledValue !== undefined;
         const value = isControlled ? controlledValue : internalValue;
@@ -123,22 +151,63 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         };
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+            const newValue = e.target.value;
             if (!isControlled) {
-                setInternalValue(e.target.value);
+                setInternalValue(newValue);
             }
             if (onChange) {
                 onChange(e);
             }
+            if (floatingLabel) {
+                setIsLabelFloating(!!newValue || isFocused);
+            }
         };
+
+        const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+            e.preventDefault();
+            setIsFocused(true);
+            if (floatingLabel) {
+                setIsLabelFloating(true);
+            }
+        };
+
+        const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+            e.preventDefault();
+            setIsFocused(false);
+            if (floatingLabel && !value) {
+                setIsLabelFloating(false);
+            }
+        };
+
+        const inputPlaceholder = floatingLabel ? "" : placeholder; // Desactiva el placeholder nativo si floatingLabel está activo
 
         return (
             <div className={clsx(styles["lambda-input"], { [styles["lambda-input--disabled-true"]]: disabled })}>
-                {label && <label className={labels({ radius, size })}>{`${label as string}`}</label>}
+                {label && (
+                    <label className={clsx(labels({ radius, size }), {
+                        [styles["lambda-input__label--floating"]]: floatingLabel && isLabelFloating,
+                        [styles["lambda-input__label--default"]]: floatingLabel && !isLabelFloating,
+                        [styles["lambda-input__label--placeholder"]]: floatingLabel && !isLabelFloating, // Agregamos la clase para el placeholder
+                    })}>
+                        {`${label as string}`}
+                    </label>
+                )}
                 <div className={input({ variant, disabled, radius, size, error, type, className })}>
-                    <div className={styles["lambda-input__input-wrapper"]}>
-                        <input ref={ref} value={value} onChange={handleChange} type={inputType as HTMLInputTypeAttribute} className={textInput({ size })} disabled={disabled || undefined} {...props} />
+                    <div className={clsx(styles["lambda-input__input-wrapper"], { [styles["lambda-input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
+                        <input
+                            ref={ref}
+                            value={value}
+                            onChange={handleChange}
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
+                            type={inputType as HTMLInputTypeAttribute}
+                            className={textInput({ size })}
+                            disabled={disabled || undefined}
+                            placeholder={inputPlaceholder} // Usamos el placeholder condicional
+                            {...props}
+                        />
                         {isPasswordType && (
-                            <button onClick={togglePasswordVisibility} className={clsx(styles["lambda-input__toggle-password"], { [styles["lambda-input__toggle-password--flat"]]: variant === "flat" })}>
+                            <button onClick={togglePasswordVisibility} className={buttonPassword({ size, variant })}>
                                 {showPassword ? <EyeOff className={styles["lambda-input__icon"]} /> : <Eye className={styles["lambda-input__icon"]} />}
                             </button>
                         )}
