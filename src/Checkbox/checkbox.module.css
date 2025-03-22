@@ -10,61 +10,67 @@
 
     &:hover>.lambda-checkbox-bg:not(.lambda-checkbox-bg--checked-true):is(.lambda-checkbox-bg--color-primary) {
         &:is(.lambda-checkbox-bg--variant-bordered) {
-            background-color: var(--primary-light-color);
+            background-color: var(--primary-outline-color);
+            border-color: var(--primary-disabled-color);
         }
 
         &:is(.lambda-checkbox-bg--variant-flat) {
-            background-color: var(--primary-light-color);
+            background-color: var(--primary-outline-color);
         }
     }
 
     &:hover>.lambda-checkbox-bg:not(.lambda-checkbox-bg--checked-true):is(.lambda-checkbox-bg--color-secondary) {
         &:is(.lambda-checkbox-bg--variant-bordered) {
-            background-color: var(--secondary-light-color);
+            background-color: var(--secondary-outline-color);
+            border-color: var(--secondary-disabled-color);
         }
 
         &:is(.lambda-checkbox-bg--variant-flat) {
-            background-color: var(--secondary-light-color);
+            background-color: var(--secondary-outline-color);
         }
     }
 
     &:hover>.lambda-checkbox-bg:not(.lambda-checkbox-bg--checked-true):is(.lambda-checkbox-bg--color-danger) {
         &:is(.lambda-checkbox-bg--variant-bordered) {
-            background-color: var(--danger-light-color);
+            background-color: var(--danger-outline-color);
+            border-color: var(--danger-disabled-color);
         }
 
         &:is(.lambda-checkbox-bg--variant-flat) {
-            background-color: var(--danger-light-color);
+            background-color: var(--danger-outline-color);
         }
     }
 
     &:hover>.lambda-checkbox-bg:not(.lambda-checkbox-bg--checked-true):is(.lambda-checkbox-bg--color-success) {
         &:is(.lambda-checkbox-bg--variant-bordered) {
-            background-color: var(--success-light-color);
+            background-color: var(--success-outline-color);
+            border-color: var(--success-disabled-color);
         }
 
         &:is(.lambda-checkbox-bg--variant-flat) {
-            background-color: var(--success-light-color);
+            background-color: var(--success-outline-color);
         }
     }
 
     &:hover>.lambda-checkbox-bg:not(.lambda-checkbox-bg--checked-true):is(.lambda-checkbox-bg--color-warning) {
         &:is(.lambda-checkbox-bg--variant-bordered) {
-            background-color: var(--warning-light-color);
+            background-color: var(--warning-outline-color);
+            border-color: var(--warning-disabled-color);
         }
 
         &:is(.lambda-checkbox-bg--variant-flat) {
-            background-color: var(--warning-light-color);
+            background-color: var(--warning-outline-color);
         }
     }
 
     &:hover>.lambda-checkbox-bg:not(.lambda-checkbox-bg--checked-true):is(.lambda-checkbox-bg--color-info) {
         &:is(.lambda-checkbox-bg--variant-bordered) {
-            background-color: var(--info-light-color);
+            background-color: var(--info-outline-color);
+            border-color: var(--info-disabled-color);
         }
 
         &:is(.lambda-checkbox-bg--variant-flat) {
-            background-color: var(--info-light-color);
+            background-color: var(--info-outline-color);
         }
     }
 }
@@ -106,8 +112,9 @@
 
 .lambda-checkbox-bg--variant-bordered {
     background-color: var(--background-color);
+    border-color: var(--surface-d);
 
-    &.lambda-checkbox-bg--color-primary {
+    /*&.lambda-checkbox-bg--color-primary {
         border-color: var(--primary-disabled-color);
     }
 
@@ -129,7 +136,7 @@
 
     &.lambda-checkbox-bg--color-info {
         border-color: var(--info-disabled-color);
-    }
+    }*/
 }
 
 .lambda-checkbox-bg--variant-flat {
@@ -139,7 +146,14 @@
 
 .lambda-checkbox-bg--checked-true {
     box-sizing: border-box;
-    box-shadow: 1px 1px 0px 0px var(--shadow-inset-color) inset, 0 0 1px 1px var(--shadow-color), -1px 0px 0px 0px var(--shadow-inset-color) inset;
+
+    &.lambda-checkbox-bg--variant-bordered {
+        box-shadow: 1px 1px 0px 0px var(--shadow-inset-color) inset, 0 0 1px 1px var(--shadow-color), -1px 0px 0px 0px var(--shadow-inset-color) inset;
+    }
+
+    &.lambda-checkbox-bg--variant-flat {
+        box-shadow: 1px 1px 0px 0px var(--shadow-inset-color) inset, -1px 0px 0px 0px var(--shadow-inset-color) inset;
+    }
 
     &.lambda-checkbox-bg--color-primary {
         background-color: var(--primary-color);
@@ -152,6 +166,7 @@
 
     &.lambda-checkbox-bg--color-secondary {
         background-color: var(--secondary-color);
+        border-color: var(--secondary-light-color);
 
         &:hover {
             background-color: var(--secondary-hover-color);
@@ -160,6 +175,7 @@
 
     &.lambda-checkbox-bg--color-danger {
         background-color: var(--danger-color);
+        border-color: var(--danger-light-color);
 
         &:hover {
             background-color: var(--danger-hover-color);
@@ -168,6 +184,7 @@
 
     &.lambda-checkbox-bg--color-success {
         background-color: var(--success-color);
+        border-color: var(--success-light-color);
 
         &:hover {
             background-color: var(--success-hover-color);
@@ -176,6 +193,7 @@
 
     &.lambda-checkbox-bg--color-warning {
         background-color: var(--warning-color);
+        border-color: var(--warning-light-color);
 
         &:hover {
             background-color: var(--warning-hover-color);
@@ -184,6 +202,7 @@
 
     &.lambda-checkbox-bg--color-info {
         background-color: var(--info-color);
+        border-color: var(--info-light-color);
 
         &:hover {
             background-color: var(--info-hover-color);
@@ -192,7 +211,7 @@
 }
 
 .lambda-checkbox-bg--size-small {
-    padding: calc(var(--padding-xs) / 2);
+    padding: calc(var(--padding-xs) / 4);
 }
 
 .lambda-checkbox-bg--size-medium {
@@ -200,7 +219,7 @@
 }
 
 .lambda-checkbox-bg--size-large {
-    padding: calc(var(--padding-md) / 2);
+    padding: calc(var(--padding-sm) / 2);
 }
 
 .lambda-checkbox-icon {
@@ -226,19 +245,18 @@
 }
 
 .lambda-checkbox-icon--size-small {
-    width: 16px;
-    height: 16px;
+    width: var(--font-size-xs);
+    height: var(--font-size-xs);
 }
 
 .lambda-checkbox-icon--size-medium {
-    width: 19px;
-    height: 19px;
-    line-height: 19px;
+    width: var(--font-size-sm);
+    height: var(--font-size-sm);
 }
 
 .lambda-checkbox-icon--size-large {
-    width: 21px;
-    height: 21px;
+    width: var(--font-size-md);
+    height: var(--font-size-md);
 }
 
 @keyframes animateIcon {
@@ -251,7 +269,7 @@
     }
 
     100% {
-        transform: scale(1.1);
+        transform: scale(1);
     }
 }
 
@@ -277,15 +295,15 @@
 }
 
 .lambda-checkbox-label--size-small {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
 }
 
 .lambda-checkbox-label--size-medium {
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
 }
 
 .lambda-checkbox-label--size-large {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
 }
 
 .lambda-checkbox-label--disabled-true {
