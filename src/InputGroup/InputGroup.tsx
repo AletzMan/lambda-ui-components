@@ -1,46 +1,86 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /* eslint-disable react-refresh/only-export-components */
 import { ReactNode, forwardRef, createContext, useMemo, PropsWithChildren, FC, useContext, RefAttributes } from "react";
-import { InputProps, input } from "../Input/Input";
+import { InputProps } from "../Input/Input";
 import styles from "./inputGroup.module.css";
 import clsx from 'clsx';
-import { VariantProps } from "class-variance-authority";
+import { VariantProps, cva } from "class-variance-authority";
+
+
+export const inputGroup = cva(styles["lambda-input-group"], {
+    variants: {
+        size: {
+            small: styles["lambda-input-group--size-small"],
+            medium: styles["lambda-input-group--size-medium"],
+            large: styles["lambda-input-group--size-large"],
+        },
+        variant: {
+            outline: styles["lambda-input-group--variant-outline"],
+            flat: styles["lambda-input-group--variant-flat"],
+            underline: styles["lambda-input-group--variant-underline"],
+        },
+        radius: {
+            none: styles["lambda-input-group--radius-none"],
+            small: styles["lambda-input-group--radius-small"],
+            medium: styles["lambda-input-group--radius-medium"],
+            large: styles["lambda-input-group--radius-large"],
+            pill: styles["lambda-input-group--radius-pill"],
+        },
+        error: {
+            true: styles["lambda-input-group--error-true"],
+            false: "",
+        },
+        disabled: {
+            false: styles["lambda-input-group--disabled-false"],
+            true: styles["lambda-input-group--disabled-true"],
+        },
+    },
+    defaultVariants: {
+        variant: "outline",
+        size: "medium",
+        radius: "small",
+        error: false,
+        disabled: false,
+    },
+});
 
 type InputGroupContextType = {
     variant?: "outline" | "flat" | "underline" | null;
     radius?: "none" | "small" | "medium" | "large" | "pill" | null;
     size?: "small" | "medium" | "large" | null;
     error?: boolean | null;
+    isGroup?: boolean
     disabled?: boolean | null;
 };
 
 const InputGroupContext = createContext<InputGroupContextType | null>(null);
 
-interface InputGroupProps extends Omit<InputProps, "error" | "disabled">, VariantProps<typeof input>, RefAttributes<HTMLDivElement> {
-    startAddon?: ReactNode;
-    endAddon?: ReactNode;
+interface InputGroupProps extends Omit<InputProps, "error" | "disabled">, VariantProps<typeof inputGroup>, RefAttributes<HTMLDivElement> {
+    prefixElement?: ReactNode;
+    suffixElement?: ReactNode;
 }
 
 export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTMLDivElement, InputGroupProps>( // Añadimos forwardRef aquí
-    ({ startAddon, endAddon, children, variant, radius, size, error, disabled, ...props }, ref) => { // Recibimos props y ref como argumentos separados
+    ({ prefixElement, suffixElement, children, variant, radius, size, error, disabled, }, ref) => { // Recibimos props y ref como argumentos separados
 
         const contextValue = useMemo(
             () => ({
-                variant: variant ?? null,
-                radius: radius ?? null,
-                size: size ?? null,
-                error: error ?? null,
-                disabled: disabled ?? null,
+                variant: variant ?? "outline",
+                radius: radius ?? "medium",
+                size: size ?? "medium",
+                error: error ?? false,
+                disabled: disabled ?? false,
+                isGroup: true
             }),
             [variant, radius, size, error, disabled]
         );
 
         return (
             <InputGroupContext.Provider value={contextValue}>
-                <div ref={ref} className={clsx(styles["lambda-input-group"], input({ variant, radius, size, error, disabled }))}>
-                    {startAddon && <div className={styles["lambda-input-group__start"]}>{startAddon}</div>}
+                <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, error, disabled }))}>
+                    {prefixElement && <div className={styles["lambda-input-group__start"]}>{prefixElement}</div>}
                     {children}
-                    {endAddon && <div className={styles["lambda-input-group__end"]}>{endAddon}</div>}
+                    {suffixElement && <div className={styles["lambda-input-group__end"]}>{suffixElement}</div>}
                 </div>
             </InputGroupContext.Provider>
         );
