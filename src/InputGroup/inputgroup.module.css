@@ -1,0 +1,24 @@
+.lambda-input-group {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.lambda-input-group__start,
+.lambda-input-group__end {
+    display: flex;
+    align-items: center;
+}
+
+.lambda-input-group__start {
+    left: 8px;
+}
+
+.lambda-input-group__end {
+    right: 8px;
+}
+
+.lambda-input-group__input {
+    flex-grow: 1;
+    /* Permite que el input se expanda */
+}
