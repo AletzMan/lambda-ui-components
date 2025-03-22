@@ -3,18 +3,19 @@
      display: flex;
      align-items: center;
      justify-content: flex-start;
-     gap: 8px;
+     gap: var(--gap-md);
      border: 1px solid transparent;
      color: var(--foreground-color);
      font-family: var(--font-family);
      font-weight: 400;
+     letter-spacing: 0.75px;
      transition: background-color 0.2s ease-in-out, color 0.3s ease-in-out, shadow 0.3s ease-in-out;
      cursor: pointer;
      pointer-events: all;
      z-index: 0;
      width: max-content;
-     min-height: 26px;
-     min-width: 26px;
+     min-height: 24px;
+     min-width: 24px;
      box-shadow: 1px 1px 0px 0px var(--shadow-inset-color) inset, 0 0 1px 1px var(--shadow-color), -1px 0px 0px 0px var(--shadow-inset-color) inset;
 
      &:active:not(.lambda-btn--disabled-true):not(.lambda-btn--loading-true) {
@@ -24,10 +25,12 @@
      &.lambda-btn--only-icon {
          &.lambda-btn--size-small {
              padding: var(--padding-xs);
+             min-height: 24px;
          }
 
          &.lambda-btn--size-medium {
              padding: var(--padding-sm);
+             height: 32px;
          }
 
          &.lambda-btn--size-large {
@@ -58,7 +61,7 @@
      }
  }
 
- .lambda-btn-children {
+ .lambda-btn-label {
      display: flex;
      align-items: center;
      justify-items: center;
@@ -168,7 +171,7 @@
          box-shadow: 0px 1px 3px 1px #2b2b2b30 inset;
      }
 
-     .lambda-btn-children {
+     .lambda-btn-label {
          font-weight: 600;
      }
  }
@@ -186,7 +189,7 @@
          box-shadow: 0px 1px 3px 1px #2b2b2b30 inset;
      }
 
-     .lambda-btn-children {
+     .lambda-btn-label {
          font-weight: 600;
      }
  }
@@ -201,7 +204,7 @@
          border: none;
      }
 
-     .lambda-btn-children {
+     .lambda-btn-label {
          font-weight: 600;
      }
  }
@@ -209,6 +212,7 @@
  .lambda-btn--size-small {
      font-size: var(--font-size-xs);
      padding: var(--padding-xs) var(--padding-md);
+     height: 24px;
 
      .lambda-btn-icon {
          display: flex;
@@ -225,7 +229,7 @@
          }
      }
 
-     .lambda-btn-children {
+     .lambda-btn-label {
          line-height: 16px;
          box-shadow: none;
      }
@@ -234,6 +238,7 @@
  .lambda-btn--size-medium {
      font-size: var(--font-size-sm);
      padding: var(--padding-sm) var(--padding-lg);
+     height: 32px;
 
      .lambda-btn-icon {
          display: flex;
@@ -250,7 +255,7 @@
          }
      }
 
-     .lambda-btn-children {
+     .lambda-btn-label {
          line-height: 17.195px;
          filter: none;
      }
@@ -259,6 +264,7 @@
  .lambda-btn--size-large {
      font-size: var(--font-size-md);
      padding: var(--padding-md) var(--padding-lg);
+     height: 40px;
 
      .lambda-btn-icon {
          display: flex;
@@ -274,7 +280,7 @@
          }
      }
 
-     .lambda-btn-children {
+     .lambda-btn-label {
          filter: none;
      }
  }

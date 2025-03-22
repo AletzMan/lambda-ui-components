@@ -129,7 +129,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         {loading ? <Loader className={styles["lambda-btn-icon--loading"]} /> : icon}
                     </span>
                 )}
-                {label && <span className={styles["lambda-btn-children"]}>{label}</span>}
+                {label && <span className={styles["lambda-btn-label"]}>{label}</span>}
                 {props.children}
             </button>
         );

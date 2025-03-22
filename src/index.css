@@ -38,6 +38,10 @@
     --padding-sm: 6px;
     --padding-md: 8px;
     --padding-lg: 16px;
+    --gap-xs: 2px;
+    --gap-sm: 4px;
+    --gap-md: 8px;
+    --gap-lg: 16px;
     --font-size-xs: 12px;
     --font-size-sm: 14px;
     --font-size-md: 16px;
