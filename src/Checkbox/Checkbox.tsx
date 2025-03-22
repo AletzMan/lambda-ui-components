@@ -1,35 +1,34 @@
 import { forwardRef, useState, InputHTMLAttributes, ChangeEvent } from "react";
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./checkbox.module.css"
+import styles from "./checkbox.module.css";
 import { CheckIcon } from "lucide-react";
+import clsx from 'clsx';
 
-
-const checkboxprop = cva(styles.checkbox, {
+const checkboxprop = cva(styles["lambda-checkbox"], {
     variants: {
         color: {
-            primary: styles.checkbox_primary,
-            secondary: styles.checkbox_secondary,
-            danger: styles.checkbox_danger,
-            success: styles.checkbox_success,
-            warning: styles.checkbox_warning,
-            info: styles.checkbox_info,
+            primary: styles["lambda-checkbox--color-primary"],
+            secondary: styles["lambda-checkbox--color-secondary"],
+            danger: styles["lambda-checkbox--color-danger"],
+            success: styles["lambda-checkbox--color-success"],
+            warning: styles["lambda-checkbox--color-warning"],
+            info: styles["lambda-checkbox--color-info"],
         },
         size: {
-            small: styles.checkbox_small,
-            medium: styles.checkbox_medium,
-            large: styles.checkbox_large,
+            small: styles["lambda-checkbox--size-small"],
+            medium: styles["lambda-checkbox--size-medium"],
+            large: styles["lambda-checkbox--size-large"],
         },
         variant: {
-            bordered: styles.checkbox_brd,
-            flat: styles.checkbox_flat,
+            bordered: styles["lambda-checkbox--variant-bordered"],
+            flat: styles["lambda-checkbox--variant-flat"],
         },
-
         disabled: {
-            true: styles.checkbox_disabled,
+            true: styles["lambda-checkbox--disabled-true"],
             false: "",
         },
         checked: {
-            true: styles.checkbox_checked,
+            true: styles["lambda-checkbox--checked-true"],
             false: "",
         },
     },
@@ -40,39 +39,39 @@ const checkboxprop = cva(styles.checkbox, {
         disabled: false,
         checked: false,
     },
-})
+});
 
-const bg = cva(styles.bg, {
+const bg = cva(styles["lambda-checkbox-bg"], {
     variants: {
         color: {
-            primary: styles.bg_primary,
-            secondary: styles.bg_secondary,
-            danger: styles.bg_danger,
-            success: styles.bg_success,
-            warning: styles.bg_warning,
-            info: styles.bg_info,
+            primary: styles["lambda-checkbox-bg--color-primary"],
+            secondary: styles["lambda-checkbox-bg--color-secondary"],
+            danger: styles["lambda-checkbox-bg--color-danger"],
+            success: styles["lambda-checkbox-bg--color-success"],
+            warning: styles["lambda-checkbox-bg--color-warning"],
+            info: styles["lambda-checkbox-bg--color-info"],
         },
         size: {
-            small: styles.bg_small,
-            medium: styles.bg_medium,
-            large: styles.bg_large,
+            small: styles["lambda-checkbox-bg--size-small"],
+            medium: styles["lambda-checkbox-bg--size-medium"],
+            large: styles["lambda-checkbox-bg--size-large"],
         },
         variant: {
-            bordered: styles.bg_brd,
-            flat: styles.bg_flat,
+            bordered: styles["lambda-checkbox-bg--variant-bordered"],
+            flat: styles["lambda-checkbox-bg--variant-flat"],
         },
         radius: {
-            none: styles.bg_rd_none,
-            small: styles.bg_rd_small,
-            medium: styles.bg_rd_medium,
-            pill: styles.bg_rd_pill,
+            none: styles["lambda-checkbox-bg--radius-none"],
+            small: styles["lambda-checkbox-bg--radius-small"],
+            medium: styles["lambda-checkbox-bg--radius-medium"],
+            pill: styles["lambda-checkbox-bg--radius-pill"],
         },
         disabled: {
-            true: styles.bg_disabled,
+            true: styles["lambda-checkbox-bg--disabled-true"],
             false: "",
         },
         checked: {
-            true: styles.bg_checked,
+            true: styles["lambda-checkbox-bg--checked-true"],
             false: "",
         },
     },
@@ -84,56 +83,54 @@ const bg = cva(styles.bg, {
         disabled: false,
         checked: false,
     },
-})
+});
 
-const pos_lb = cva(styles.lb, {
+const pos_lb = cva(styles["lambda-checkbox-label-wrapper"], {
     variants: {
-        position_label: {
-            left: styles.lb_left,
-            right: styles.lb_right,
-            top: styles.lb_top,
-            bottom: styles.lb_bottom,
+        positionLabel: {
+            left: styles["lambda-checkbox-label-wrapper--position-left"],
+            right: styles["lambda-checkbox-label-wrapper--position-right"],
+            top: styles["lambda-checkbox-label-wrapper--position-top"],
+            bottom: styles["lambda-checkbox-label-wrapper--position-bottom"],
         },
         disabled: {
-            true: styles.lb_disabled,
+            true: styles["lambda-checkbox-label-wrapper--disabled-true"],
             false: "",
         },
     },
     defaultVariants: {
-        position_label: "right",
-        disabled: false
+        positionLabel: "right",
+        disabled: false,
     },
-})
+});
 
-const textLabel = cva(styles.label, {
+const textLabel = cva(styles["lambda-checkbox-label"], {
     variants: {
         size: {
-            small: styles.label_small,
-            medium: styles.label_medium,
-            large: styles.label_large,
+            small: styles["lambda-checkbox-label--size-small"],
+            medium: styles["lambda-checkbox-label--size-medium"],
+            large: styles["lambda-checkbox-label--size-large"],
         },
         disabled: {
-            true: styles.label_disabled,
+            true: styles["lambda-checkbox-label--disabled-true"],
             false: "",
         },
     },
     defaultVariants: {
         size: "medium",
-        disabled: false
+        disabled: false,
     },
-})
+});
 
 export interface Checkboxprops
     extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | 'checked' | "color" | "type">,
     VariantProps<typeof checkboxprop> {
-    label?: string
-    position_label?: "right" | "left" | "top" | "bottom"
-    radius?: "none" | 'small' | 'medium' | 'pill' | null | undefined
-    checked?: boolean
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    label?: string;
+    positionLabel?: "right" | "left" | "top" | "bottom";
+    radius?: "none" | 'small' | 'medium' | 'pill' | null | undefined;
+    checked?: boolean;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-
-
 
 export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
     (
@@ -144,7 +141,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
             label = "Label",
             disabled,
             radius,
-            position_label = "right",
+            positionLabel = "right",
             color,
             checked,
             onChange,
@@ -152,18 +149,18 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
         },
         ref
     ) => {
-        const [internalChecked, setInternalChecked] = useState(checked)
+        const [internalChecked, setInternalChecked] = useState(checked);
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-            const newChecked = e.target.checked
-            setInternalChecked(newChecked)
+            const newChecked = e.target.checked;
+            setInternalChecked(newChecked);
             if (onChange) {
-                onChange(e)
+                onChange(e);
             }
-        }
+        };
 
         return (
-            <label className={pos_lb({ position_label, disabled })}>
+            <label className={pos_lb({ positionLabel, disabled })}>
                 <div className={bg({ variant, size, radius, color, checked: internalChecked, disabled })}>
                     <input
                         ref={ref}
@@ -171,18 +168,28 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
                         disabled={disabled || undefined}
                         checked={internalChecked}
                         onChange={handleChange}
-                        className={`${checkboxprop({
-                            size,
-                            variant,
-                            disabled,
-                            checked: internalChecked,
-                        })} ${className}`}
+                        className={clsx(
+                            checkboxprop({
+                                size,
+                                variant,
+                                disabled,
+                                checked: internalChecked,
+                            }),
+                            className
+                        )}
                         {...props}
                     />
-                    {<CheckIcon className={`${styles.icon} ${internalChecked ? styles.icon_active : styles.icon_inactive} ${size === 'large' && styles.icon_large}  ${size === 'medium' && styles.icon_medium} ${size === 'small' && styles.icon_small} ${disabled && styles.icon_disabled}`} />}
+                    {<CheckIcon className={clsx(
+                        styles["lambda-checkbox-icon"],
+                        internalChecked ? styles["lambda-checkbox-icon--active"] : styles["lambda-checkbox-icon--inactive"],
+                        size === 'large' && styles["lambda-checkbox-icon--size-large"],
+                        size === 'medium' && styles["lambda-checkbox-icon--size-medium"],
+                        size === 'small' && styles["lambda-checkbox-icon--size-small"],
+                        disabled && styles["lambda-checkbox-icon--disabled-true"]
+                    )} />}
                 </div>
                 {label && <span className={textLabel({ size, disabled })}>{label}</span>}
             </label>
         );
     }
-)
+);
