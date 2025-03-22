@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-refresh/only-export-components */
 import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent } from "react";
 import styles from "./input.module.css";
 import { cva, VariantProps } from "class-variance-authority";
 import { Eye, EyeOff, X } from "lucide-react";
 import clsx from 'clsx';
+import { useInputGroup } from "../InputGroup/InputGroup";
 
-const input = cva(styles["lambda-input__wrapper"], {
+export const input = cva(styles["lambda-input__wrapper"], {
     variants: {
         size: {
             small: styles["lambda-input__wrapper--size-small"],
@@ -123,7 +126,18 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, variant, radius, size, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, floatingLabel, placeholder, ...props }, ref) => {
+    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, floatingLabel, placeholder, ...props }, ref) => {
+        let contextVariant, contextRadius, contextSize;
+        try {
+            const context = useInputGroup();
+            contextVariant = context.variant;
+            contextRadius = context.radius;
+            contextSize = context.size;
+        } catch (e) {
+            contextVariant = propVariant;
+            contextRadius = propRadius;
+            contextSize = propSize;
+        }
         const [showPassword, setShowPassword] = useState(false);
         const [internalValue, setInternalValue] = useState("");
         const [isLabelFloating, setIsLabelFloating] = useState(false);
@@ -179,22 +193,21 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             }
         };
 
-        const inputPlaceholder = floatingLabel ? "" : placeholder; // Desactiva el placeholder nativo si floatingLabel está activo
+        const inputPlaceholder = floatingLabel ? "" : placeholder;
 
         return (
             <div className={clsx(styles["lambda-input"], { [styles["lambda-input--disabled-true"]]: disabled })}>
                 {label && (
-                    <label className={clsx(labels({ radius, size }), {
+                    <label className={clsx(labels({ radius: contextRadius, size: contextSize }), {
                         [styles["lambda-input__label--floating"]]: floatingLabel && isLabelFloating,
                         [styles["lambda-input__label--default"]]: floatingLabel && !isLabelFloating,
-                        [styles["lambda-input__label--placeholder"]]: floatingLabel && !isLabelFloating, // Agregamos la clase para el placeholder
+                        [styles["lambda-input__label--placeholder"]]: floatingLabel && !isLabelFloating,
                     })}>
                         {`${label as string}`}
                     </label>
                 )}
-                <div className={input({ variant, disabled, radius, size, error, type, className })}>
+                <div className={clsx(input({ variant: contextVariant, disabled, radius: contextRadius, size: contextSize, error, type, className }), { [styles["lambda-input__wrapper--group"]]: contextVariant })}>
                     <div className={clsx(styles["lambda-input__input-wrapper"], { [styles["lambda-input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
-
                         <input
                             ref={ref}
                             value={value}
@@ -202,13 +215,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             type={inputType as HTMLInputTypeAttribute}
-                            className={clsx(textInput({ size }), { [styles["lambda-input__field--showPassword"]]: !showPassword })}
+                            className={clsx(textInput({ size: contextSize }), { [styles["lambda-input__field--showPassword"]]: !showPassword })}
                             disabled={disabled || undefined}
-                            placeholder={inputPlaceholder} // Usamos el placeholder condicional
+                            placeholder={inputPlaceholder}
                             {...props}
                         />
                         {isPasswordType && (
-                            <button onClick={togglePasswordVisibility} className={buttonPassword({ size, variant })}>
+                            <button onClick={togglePasswordVisibility} className={buttonPassword({ size: contextSize, variant: contextVariant })}>
                                 {showPassword ? <Eye className={styles["lambda-input__icon"]} /> : <EyeOff className={styles["lambda-input__icon"]} />}
                             </button>
                         )}
@@ -219,7 +232,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         )}
                     </div>
                 </div>
-                {error && errorMessage && <span className={errorlabel({ size })}>{errorMessage}</span>}
+                {error && errorMessage && <span className={errorlabel({ size: contextSize })}>{errorMessage}</span>}
             </div>
         );
     }

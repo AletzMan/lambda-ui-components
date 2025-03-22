@@ -275,6 +275,13 @@
      }
  }
 
+ .lambda-input__wrapper--group {
+     background-color: transparent;
+     border: none;
+     outline: none;
+     box-shadow: none;
+ }
+
  .lambda-input__wrapper--size-small {
      padding: var(--padding-none) var(--padding-sm);
      font-size: var(--font-size-xs);
