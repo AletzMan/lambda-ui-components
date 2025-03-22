@@ -20,7 +20,7 @@ const withThemeProvider = (Story, context) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
-    document.body.style.backgroundColor = theme === "dark" ? "#171717" : "#f8f7f7";
+    document.body.style.backgroundColor = theme === "dark" ? "#171717" : "#dfeef2";
     const element = document.getElementById("storybook-docs")?.children[0] as HTMLElement;
     if (element) {
       element.style.backgroundColor = "transparent";
