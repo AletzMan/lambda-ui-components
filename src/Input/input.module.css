@@ -7,6 +7,7 @@
      display: none;
  }
 
+
  .lambda-input__wrapper {
      position: relative;
      display: flex;
@@ -63,7 +64,7 @@
      padding: 2px 8px;
      border-radius: var(--border-radius-sm);
      width: max-content;
-     max-width: 100%;
+     width: 100%;
      opacity: 0;
      animation: animateError 0.4s ease both;
      z-index: 3;
@@ -133,6 +134,11 @@
          color: var(--foreground-disabled-color);
          cursor: not-allowed;
      }
+
+     &.lambda-input__field--showPassword {
+         font-size: 1.2em;
+         letter-spacing: 0;
+     }
  }
 
  .lambda-input__input-wrapper {
@@ -160,6 +166,8 @@
      transition: all 0.3s ease-in-out;
      color: var(--primary-outline-color);
      background-color: transparent;
+     justify-self: center;
+     align-self: center;
 
      &:hover {
          color: var(--primary-color);
@@ -178,32 +186,32 @@
      }
 
      &.lambda-input__toggle-password--small {
-         width: 18px;
-         height: 18px;
+         width: 16px;
+         height: 16px;
 
          .lambda-input__icon {
-             width: 18px;
-             height: 18px;
+             width: 16px;
+             height: 16px;
          }
      }
 
      &.lambda-input__toggle-password--medium {
+         width: 17px;
+         height: 17px;
+
+         .lambda-input__icon {
+             width: 17px;
+             height: 17px;
+         }
+     }
+
+     &.lambda-input__toggle-password--large {
          width: 20px;
          height: 20px;
 
          .lambda-input__icon {
              width: 20px;
              height: 20px;
-         }
-     }
-
-     &.lambda-input__toggle-password--large {
-         width: 24px;
-         height: 24px;
-
-         .lambda-input__icon {
-             width: 24px;
-             height: 24px;
          }
      }
  }
@@ -334,8 +342,6 @@
 
  }
 
- /* ... (resto del CSS) */
-
  .lambda-input__label {
      font-family: var(--font-family);
      color: var(--primary-hover-color);
@@ -392,4 +398,8 @@
      }
  }
 
- /* ... (resto del CSS) */
+ .lambda-input__field--showPassword {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Courier, monospace;
+     letter-spacing: 0.1em;
+     color: var(--primary-disabled-color);
+ }

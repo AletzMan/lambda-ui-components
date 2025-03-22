@@ -194,6 +194,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 )}
                 <div className={input({ variant, disabled, radius, size, error, type, className })}>
                     <div className={clsx(styles["lambda-input__input-wrapper"], { [styles["lambda-input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
+
                         <input
                             ref={ref}
                             value={value}
@@ -201,14 +202,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             type={inputType as HTMLInputTypeAttribute}
-                            className={textInput({ size })}
+                            className={clsx(textInput({ size }), { [styles["lambda-input__field--showPassword"]]: !showPassword })}
                             disabled={disabled || undefined}
                             placeholder={inputPlaceholder} // Usamos el placeholder condicional
                             {...props}
                         />
                         {isPasswordType && (
                             <button onClick={togglePasswordVisibility} className={buttonPassword({ size, variant })}>
-                                {showPassword ? <EyeOff className={styles["lambda-input__icon"]} /> : <Eye className={styles["lambda-input__icon"]} />}
+                                {showPassword ? <Eye className={styles["lambda-input__icon"]} /> : <EyeOff className={styles["lambda-input__icon"]} />}
                             </button>
                         )}
                         {isSearchType && value && (
