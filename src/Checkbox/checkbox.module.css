@@ -273,6 +273,7 @@
 
 .lambda-checkbox-label {
     color: var(--foreground-invert-color);
+    font-family: inherit;
 }
 
 .lambda-checkbox-label--size-small {

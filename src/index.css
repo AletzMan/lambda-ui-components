@@ -1,5 +1,5 @@
 :root {
-    --font-family: 'Jost', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family: 'Jost Variable', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     /* Variables generales */
     --primary-color: #359cb1;
@@ -18,7 +18,7 @@
     --danger-outline-color: #e0444470;
     --danger-disabled-color: #701b1b;
     --success-color: #46c24a;
-    --success-hover-Fcolor: #3cae3f;
+    --success-hover-color: #3cae3f;
     --success-light-color: #46c24a20;
     --success-outline-color: #46c24a70;
     --success-disabled-color: #1e621f;
@@ -57,8 +57,9 @@
     --foreground-invert-color: #1f1f1f;
     --foreground-label-color: #8fa2b3;
     --foreground-disabled-color: #b7b5b5;
+    --placeholder-color: #848383;
     --surface-a: #F9F9F9;
-    --surface-b: #ededed;
+    --surface-b: #eeeeee;
     --surface-c: #d6d6d6;
     --surface-d: #c2c2c2;
     --surface-e: #b0b0b0;
@@ -74,13 +75,14 @@
     --foreground-invert-color: #fdfdfd;
     --foreground-label-color: #b1c0cc;
     --foreground-disabled-color: #b7b5b5;
+    --placeholder-color: #4a4b4b;
     --surface-a: #1c1e21;
     --surface-b: #141618;
     --surface-c: #A8B2BF15;
     --surface-d: #51586060;
     --surface-e: #232529;
     --surface-f: #2b2d31;
-    --border-color: #504a4a;
+    --border-color: #27272a;
     --shadow-color: #3c3c3c60;
     --shadow-inset-color: #dedede55;
 }

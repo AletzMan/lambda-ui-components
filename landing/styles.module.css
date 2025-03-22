@@ -4,3 +4,31 @@
   padding: 2rem;
   text-align: center;
 }
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container_buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 0.5em;
+  padding: 1em;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  gap: 0.25em;
+}
+
+.button {
+  width: 100%;
+}
