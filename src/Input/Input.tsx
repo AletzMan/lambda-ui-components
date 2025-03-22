@@ -36,6 +36,12 @@ export const input = cva(styles["lambda-input__wrapper"], {
             true: styles["lambda-input__wrapper--error-true"],
             false: "",
         },
+        hasElements: {
+            none: styles["lambda-input__wrapper--elements-none"],
+            first: styles["lambda-input__wrapper--elements-first"],
+            last: styles["lambda-input__wrapper--elements-last"],
+            both: styles["lambda-input__wrapper--elements-both"]
+        },
         disabled: {
             false: styles["lambda-input__wrapper--disabled-false"],
             true: styles["lambda-input__wrapper--disabled-true"],
@@ -62,8 +68,14 @@ const labels = cva(styles["lambda-input__label"], {
             none: styles["lambda-input__label--radius-none"],
             small: styles["lambda-input__label--radius-small"],
             medium: styles["lambda-input__label--radius-medium"],
-            large: styles["lambda-input__wrapper--radius-large"],
+            large: styles["lambda-input__label--radius-large"],
             pill: styles["lambda-input__label--radius-pill"],
+        },
+        hasElements: {
+            none: styles["lambda-input__label--elements-none"],
+            first: styles["lambda-input__label--elements-first"],
+            last: styles["lambda-input__label--elements-last"],
+            both: styles["lambda-input__label--elements-both"]
         },
 
     },
@@ -127,18 +139,20 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, floatingLabel, placeholder, ...props }, ref) => {
-        let contextVariant, contextRadius, contextSize, isGroup;
+        let contextVariant, contextRadius, contextSize, isGroup, hasElements: "none" | "first" | "last" | "both";
         try {
             const context = useInputGroup();
             contextVariant = context.variant;
             contextRadius = context.radius;
             contextSize = context.size;
-            isGroup = context.isGroup
+            hasElements = context.hasElements
+            isGroup = true
         } catch (e) {
             contextVariant = propVariant;
             contextRadius = propRadius;
             contextSize = propSize;
             isGroup = false
+            hasElements = "none"
         }
         const [showPassword, setShowPassword] = useState(false);
         const [internalValue, setInternalValue] = useState("");
@@ -200,7 +214,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         return (
             <div className={clsx(styles["lambda-input"], { [styles["lambda-input--disabled-true"]]: disabled })}>
                 {label && (
-                    <label className={clsx(labels({ radius: contextRadius, size: contextSize }), {
+                    <label className={clsx(labels({ radius: contextRadius, size: contextSize, hasElements }), {
                         [styles["lambda-input__label--floating"]]: floatingLabel && isLabelFloating,
                         [styles["lambda-input__label--default"]]: floatingLabel && !isLabelFloating,
                         [styles["lambda-input__label--placeholder"]]: floatingLabel && !isLabelFloating,
@@ -208,7 +222,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         {`${label as string}`}
                     </label>
                 )}
-                <div className={clsx(input({ variant: contextVariant, disabled, radius: contextRadius, size: contextSize, error, type, className }), { [styles["lambda-input__wrapper--group"]]: isGroup })}>
+                <div className={clsx(input({ variant: contextVariant, disabled, radius: contextRadius, size: contextSize, error, type, hasElements, className }), { [styles["lambda-input__wrapper--group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input__input-wrapper"], { [styles["lambda-input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}
