@@ -30,7 +30,7 @@ const meta: Meta<typeof Button> = {
             options: ['none', 'small', 'medium', 'large', 'pill', 'circle'],
             description: "Corner shape"
         },
-        icon_position: {
+        iconPosition: {
             control: 'select',
             options: ['left', 'right'],
             description: "Icon position"
@@ -59,7 +59,7 @@ export const Primary: Story = {
         radius: 'small',
         loading: false,
         disabled: false,
-        icon_position: "left",
+        iconPosition: "left",
         label: "Button"
     },
 }
@@ -73,7 +73,7 @@ export const Secondary: Story = {
         radius: 'small',
         loading: false,
         disabled: false,
-        icon_position: "left",
+        iconPosition: "left",
         label: "Button",
     }
 }
@@ -86,7 +86,7 @@ export const Danger: Story = {
         radius: 'small',
         loading: false,
         disabled: false,
-        icon_position: "left",
+        iconPosition: "left",
         label: "Button",
     }
 }
@@ -99,7 +99,7 @@ export const Success: Story = {
         radius: 'small',
         loading: false,
         disabled: false,
-        icon_position: "left",
+        iconPosition: "left",
         label: "Button",
     }
 }
@@ -112,7 +112,7 @@ export const Warning: Story = {
         radius: 'small',
         loading: false,
         disabled: false,
-        icon_position: "left",
+        iconPosition: "left",
         label: "Button",
     }
 }
