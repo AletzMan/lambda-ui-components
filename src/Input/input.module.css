@@ -186,32 +186,32 @@
      }
 
      &.lambda-input__toggle-password--small {
-         width: 16px;
-         height: 16px;
+         width: var(--icon-size-sm);
+         height: var(--icon-size-sm);
 
          .lambda-input__icon {
-             width: 16px;
-             height: 16px;
+             width: var(--icon-size-sm);
+             height: var(--icon-size-sm);
          }
      }
 
      &.lambda-input__toggle-password--medium {
-         width: 17px;
-         height: 17px;
+         width: var(--icon-size-md);
+         height: var(--icon-size-md);
 
          .lambda-input__icon {
-             width: 17px;
-             height: 17px;
+             width: var(--icon-size-md);
+             height: var(--icon-size-md);
          }
      }
 
      &.lambda-input__toggle-password--large {
-         width: 20px;
-         height: 20px;
+         width: var(--icon-size-lg);
+         height: var(--icon-size-lg);
 
          .lambda-input__icon {
-             width: 20px;
-             height: 20px;
+             width: var(--icon-size-lg);
+             height: var(--icon-size-lg);
          }
      }
  }
@@ -275,12 +275,6 @@
      }
  }
 
- .lambda-input__wrapper--group {
-     background-color: transparent;
-     border: none;
-     outline: none;
-     box-shadow: none;
- }
 
  .lambda-input__wrapper--size-small {
      padding: var(--padding-none) var(--padding-sm);
@@ -409,4 +403,33 @@
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Courier, monospace;
      letter-spacing: 0.1em;
      color: var(--primary-disabled-color);
+ }
+
+ .lambda-input__wrapper--group {
+     background-color: var(--surface-a);
+     border: none;
+     border: 1px solid var(--surface-d);
+     border-radius: var(--border-radius-none);
+     outline: none;
+     box-shadow: none;
+     margin-bottom: 2px;
+
+
+     &.lambda-input__wrapper--variant-underline,
+     &.lambda-input__wrapper--variant-flat,
+     &.lambda-input__wrapper--variant-underline {
+         border-radius: var(--border-radius-none);
+
+         &:hover:not(.lambda-input__wrapper--error-true) {
+             border-color: var(--primary-hover-color);
+         }
+
+         &:focus-within:not(.lambda-input__wrapper--error-true) {
+             background-color: var(--primary-light-color);
+             border-color: var(--primary-hover-color);
+         }
+     }
+
+
+
  }

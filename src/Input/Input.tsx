@@ -127,16 +127,18 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, floatingLabel, placeholder, ...props }, ref) => {
-        let contextVariant, contextRadius, contextSize;
+        let contextVariant, contextRadius, contextSize, isGroup;
         try {
             const context = useInputGroup();
             contextVariant = context.variant;
             contextRadius = context.radius;
             contextSize = context.size;
+            isGroup = context.isGroup
         } catch (e) {
             contextVariant = propVariant;
             contextRadius = propRadius;
             contextSize = propSize;
+            isGroup = false
         }
         const [showPassword, setShowPassword] = useState(false);
         const [internalValue, setInternalValue] = useState("");
@@ -206,7 +208,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         {`${label as string}`}
                     </label>
                 )}
-                <div className={clsx(input({ variant: contextVariant, disabled, radius: contextRadius, size: contextSize, error, type, className }), { [styles["lambda-input__wrapper--group"]]: contextVariant })}>
+                <div className={clsx(input({ variant: contextVariant, disabled, radius: contextRadius, size: contextSize, error, type, className }), { [styles["lambda-input__wrapper--group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input__input-wrapper"], { [styles["lambda-input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}
@@ -215,7 +217,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             type={inputType as HTMLInputTypeAttribute}
-                            className={clsx(textInput({ size: contextSize }), { [styles["lambda-input__field--showPassword"]]: !showPassword })}
+                            className={clsx(textInput({ size: contextSize }), { [styles["lambda-input__field--showPassword"]]: isPasswordType && !showPassword })}
                             disabled={disabled || undefined}
                             placeholder={inputPlaceholder}
                             {...props}
