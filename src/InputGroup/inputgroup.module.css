@@ -1,60 +1,34 @@
- .lambda-input-group--variant-outline {
+ .lambda-input-group--variant-outline,
+ .lambda-input-group--variant-flat,
+ .lambda-input-group--variant-underline {
      background-color: var(--surface-a);
      border: 1px solid var(--surface-d);
 
      &:hover:not(.lambda-input-group--error-true) {
-         border-color: var(--primary-color);
+         outline: 3px solid var(--primary-outline-color);
      }
 
      &:focus-within:not(.lambda-input-group--error-true) {
          outline: 3px solid var(--primary-outline-color);
-         border-color: var(--primary-color);
      }
  }
 
- .lambda-input-group--variant-flat {
-     background-color: var(--surface-a);
-
-     &:hover:not(.lambda-input-group--error-true) {
-         border: 1px solid var(--primary-color);
-     }
-
-
-     &:focus-within:not(.lambda-input-group--error-true) {
-         background-color: var(--primary-light-color);
-         box-shadow: var(--box-shadow);
-     }
- }
-
- .lambda-input-group--variant-underline {
-     background-color: var(--surface-b);
-     border-bottom: 1px solid var(--surface-d);
-
-     &:hover:not(.lambda-input-group--error-true) {
-         border-bottom-color: var(--primary-hover-color);
-     }
-
-     &:focus-within:not(.lambda-input-group--error-true) {
-         background-color: var(--primary-light-color);
-         box-shadow: var(--box-shadow);
-     }
- }
 
 
  .lambda-input-group--size-small {
-     padding: var(--padding-none) var(--padding-sm);
+     padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-xs);
      height: var(--height-input-sm);
  }
 
  .lambda-input-group--size-medium {
-     padding: var(--padding-xs) var(--padding-md);
+     padding: var(--padding-xs) var(--padding-none);
      font-size: var(--font-size-sm);
      height: var(--height-input-md);
  }
 
  .lambda-input-group--size-large {
-     padding: var(--padding-sm) var(--padding-lg);
+     padding: var(--padding-sm) var(--padding-none);
      font-size: var(--font-size-md);
      height: var(--height-input-lg);
  }
@@ -88,10 +62,19 @@
 
      &.lambda-input-group--size-small {
          padding: var(--padding-xs) var(--padding-md);
+
+         &.lambda-input-group--elements-first {
+             padding: var(--padding-xs) var(--padding-none);
+         }
      }
 
      &.lambda-input-group--size-medium {
          padding: var(--padding-xs) var(--padding-lg);
+
+         &.lambda-input-group--elements-first,
+         &.lambda-input-group--elements-last {
+             padding: var(--padding-xs) var(--padding-none);
+         }
      }
 
 
@@ -126,11 +109,11 @@
      }
 
      .lambda-input-group__start {
-         padding: 0 var(--padding-lg) 0 var(--padding-md);
+         /*padding: 0 var(--padding-lg) 0 var(--padding-lg);*/
      }
 
      .lambda-input-group__end {
-         padding: 0 var(--padding-md) 0 var(--padding-lg);
+         /*padding: 0 var(--padding-lg) 0 var(--padding-lg);*/
      }
 
      &.lambda-input-group--size-small {
@@ -141,11 +124,13 @@
              &>svg {
                  width: var(--icon-size-sm);
                  height: var(--icon-size-sm);
+                 margin: 0 var(--padding-lg);
              }
 
              &>span {
                  font-size: var(--font-size-xs);
                  font-family: inherit;
+                 margin: 0 var(--padding-lg);
              }
          }
      }
@@ -158,11 +143,13 @@
              &>svg {
                  width: var(--icon-size-sm);
                  height: var(--icon-size-sm);
+                 margin: 0 var(--padding-lg);
              }
 
              &>span {
                  font-size: var(--font-size-sm);
                  font-family: inherit;
+                 margin: 0 var(--padding-lg);
              }
          }
      }
@@ -175,11 +162,13 @@
              &>svg {
                  width: var(--icon-size-lg);
                  height: var(--icon-size-lg);
+                 margin: 0 var(--padding-lg);
              }
 
              &>span {
                  font-size: var(--font-size-lg);
                  font-family: inherit;
+                 margin: 0 var(--padding-lg);
              }
          }
      }

@@ -26,6 +26,12 @@ export const inputGroup = cva(styles["lambda-input-group"], {
             large: styles["lambda-input-group--radius-large"],
             pill: styles["lambda-input-group--radius-pill"],
         },
+        hasElements: {
+            none: styles["lambda-input-group--elements-none"],
+            first: styles["lambda-input-group--elements-first"],
+            last: styles["lambda-input-group--elements-last"],
+            both: styles["lambda-input-group--elements-both"]
+        },
         error: {
             true: styles["lambda-input-group--error-true"],
             false: "",
@@ -38,7 +44,7 @@ export const inputGroup = cva(styles["lambda-input-group"], {
     defaultVariants: {
         variant: "outline",
         size: "medium",
-        radius: "small",
+        radius: "medium",
         error: false,
         disabled: false,
     },
@@ -49,7 +55,7 @@ type InputGroupContextType = {
     radius?: "none" | "small" | "medium" | "large" | "pill" | null;
     size?: "small" | "medium" | "large" | null;
     error?: boolean | null;
-    isGroup?: boolean
+    hasElements: "none" | "first" | "last" | "both"
     disabled?: boolean | null;
 };
 
@@ -62,6 +68,8 @@ interface InputGroupProps extends Omit<InputProps, "error" | "disabled">, Varian
 
 export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTMLDivElement, InputGroupProps>( // Añadimos forwardRef aquí
     ({ prefixElement, suffixElement, children, variant, radius, size, error, disabled, }, ref) => { // Recibimos props y ref como argumentos separados
+        const hasElements: "none" | "first" | "last" | "both" = prefixElement && suffixElement ? "both" : prefixElement ? "first" : suffixElement ? "last" : "none";
+
 
         const contextValue = useMemo(
             () => ({
@@ -69,15 +77,15 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
                 radius: radius ?? "medium",
                 size: size ?? "medium",
                 error: error ?? false,
+                hasElements: hasElements,
                 disabled: disabled ?? false,
-                isGroup: true
             }),
-            [variant, radius, size, error, disabled]
+            [variant, radius, size, error, disabled, hasElements]
         );
 
         return (
             <InputGroupContext.Provider value={contextValue}>
-                <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, error, disabled }))}>
+                <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, error, disabled, hasElements }))}>
                     {prefixElement && <div className={styles["lambda-input-group__start"]}>{prefixElement}</div>}
                     {children}
                     {suffixElement && <div className={styles["lambda-input-group__end"]}>{suffixElement}</div>}
