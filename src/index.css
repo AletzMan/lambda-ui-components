@@ -1,37 +1,37 @@
 :root {
-    --font-family: 'Jost Variable', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family: 'Metropolis', sans-serif;
 
     /* Variables generales */
-    --primary-color: #216efc;
-    --primary-hover-color: #1b61e2;
-    --primary-light-color: #216efc20;
-    --primary-outline-color: #216efc50;
-    --primary-disabled-color: #0d2f6f;
-    --secondary-color: #7e8997;
-    --secondary-hover-color: #6e7b8d;
+    --primary-color: #2471ff;
+    --primary-hover-color: #1a5dda;
+    --primary-light-color: #2471ff20;
+    --primary-outline-color: #2471ff50;
+    --primary-disabled-color: #174395;
+    --secondary-color: #8b98a9;
+    --secondary-hover-color: #818d9e;
     --secondary-light-color: #7e899720;
     --secondary-outline-color: #7e899750;
-    --secondary-disabled-color: #474e57;
+    --secondary-disabled-color: #4e565f;
     --danger-color: #e04444;
-    --danger-hover-color: #d03d3d;
+    --danger-hover-color: #c93b3b;
     --danger-light-color: #e0444420;
     --danger-outline-color: #e0444450;
-    --danger-disabled-color: #701b1b;
+    --danger-disabled-color: #a22727;
     --success-color: #46c24a;
-    --success-hover-color: #3cae3f;
+    --success-hover-color: #33a537;
     --success-light-color: #46c24a20;
     --success-outline-color: #46c24a50;
-    --success-disabled-color: #1e621f;
+    --success-disabled-color: #278229;
     --warning-color: #e47f31;
     --warning-hover-color: #d2742d;
     --warning-light-color: #e47f3120;
     --warning-outline-color: #e47f3150;
-    --warning-disabled-color: #824314;
-    --info-color: #4da7f1;
-    --info-hover-color: #339ef6;
+    --warning-disabled-color: #a9581a;
+    --info-color: #53b0fc;
+    --info-hover-color: #3396e8;
     --info-light-color: #4da7f120;
     --info-outline-color: #4da7f150;
-    --info-disabled-color: rgb(36, 84, 122);
+    --info-disabled-color: #3475ab;
     --disabled-color: #6b6b6b;
 
     --padding-none: 0px;
@@ -43,10 +43,10 @@
     --gap-sm: 4px;
     --gap-md: 8px;
     --gap-lg: 16px;
-    --font-size-xs: 12px;
-    --font-size-sm: 14px;
-    --font-size-md: 16px;
-    --font-size-lg: 18px;
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-md: 15px;
+    --font-size-lg: 17px;
     --border-radius-none: 0px;
     --border-radius-sm: 3px;
     --border-radius-md: 6px;
@@ -81,7 +81,7 @@
     --surface-f: #989898;
     --border-color: #a6a6a6;
     --shadow-color: #44434350;
-    --shadow-inset-color: #a9a8a855;
+    --shadow-inset-color: #cbcccd55;
 }
 
 [data-theme="dark"] {
@@ -99,7 +99,7 @@
     --surface-f: #46484d;
     --border-color: #27272a;
     --shadow-color: #3c3c3c60;
-    --shadow-inset-color: #a9a8a855;
+    --shadow-inset-color: #e8e8e855;
 }
 
 
