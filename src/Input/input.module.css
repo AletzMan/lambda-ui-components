@@ -73,18 +73,19 @@
      }
 
      &.lambda-input__error--size-small {
-         top: calc(var(--height-input-sm) - 6px);
+         top: calc(var(--height-input-xs) - 9px);
          font-size: var(--font-size-xs);
      }
 
      &.lambda-input__error--size-medium {
-         top: calc(var(--height-input-md) - 4px);
+         top: calc(var(--height-input-xs) - 1px);
+         ;
          font-size: var(--font-size-xs);
      }
 
      &.lambda-input__error--size-large {
-         top: calc(var(--height-input-lg) - 2px);
-         font-size: var(--font-size-sm);
+         top: calc(var(--height-input-sm) - 5px);
+         font-size: var(--font-size-xs);
      }
  }
 
