@@ -40,6 +40,16 @@ const meta: Meta<typeof Input> = {
             type: "boolean",
             description: "If true, the label will act as a placeholder when the input is empty and move above the input when it has focus or a value.            * The native input placeholder will be disabled."
         },
+        helperText: {
+            control: "text",
+            type: "string",
+            description: "Displays helper text beneath the input."
+        },
+        isRequired: {
+            control: "boolean",
+            type: "boolean",
+            description: "Indica si el campo de entrada es obligatorio.Si es `true`, se mostrará un indicador visual y/o se aplicará validación."
+        },
         error: {
             control: 'boolean',
             type: 'boolean',
@@ -65,7 +75,9 @@ export const Text: Story = {
         label: "Password",
         floatingLabel: true,
         error: false,
+        isRequired: false,
         type: "password",
+        helperText: "",
         errorMessage: "This is a sample error message for demonstration",
         placeholder: "Text input example",
         disabled: false,
@@ -80,7 +92,9 @@ export const Password: Story = {
         label: 'Passwword',
         floatingLabel: false,
         error: false,
+        isRequired: false,
         type: 'password',
+        helperText: "",
         errorMessage: "This is a sample error message for demonstration",
         placeholder: "Enter your password",
         disabled: false,
@@ -95,7 +109,9 @@ export const Search: Story = {
         label: 'Search',
         floatingLabel: false,
         error: false,
+        isRequired: false,
         type: 'search',
+        helperText: "",
         placeholder: "Search here...",
         disabled: false,
     },
@@ -110,7 +126,9 @@ export const Email: Story = {
         label: 'Email',
         floatingLabel: false,
         error: false,
+        isRequired: false,
         type: 'email',
+        helperText: "",
         errorMessage: "This is a sample error message for demonstration",
         placeholder: "Enter your email address",
         disabled: false,
