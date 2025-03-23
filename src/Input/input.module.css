@@ -37,8 +37,13 @@
      flex-direction: column;
      gap: var(--gap-sm);
      font-family: var(--font-family);
-     margin: 0 0 16px 0;
+     margin: 0 0 0px 0;
      width: 100%;
+     margin: 1em 0;
+
+     &.lambda-input--group {
+         margin: 0;
+     }
  }
 
 
@@ -346,6 +351,8 @@
  }
 
  .lambda-input__label {
+     position: absolute;
+     top: -1.3em;
      font-family: var(--font-family);
      color: var(--primary-hover-color);
      padding: 0 0 0 4px;
@@ -428,19 +435,6 @@
      border-radius: var(--border-radius-none);
      outline: none;
      box-shadow: none;
-     margin-bottom: 2px;
-
-     &.lambda-input__wrapper--size-small {
-         margin-bottom: 1px;
-     }
-
-     &.lambda-input__wrapper--size-medium {
-         margin-bottom: 2px;
-     }
-
-     &.lambda-input__wrapper--size-large {
-         margin-bottom: 4px;
-     }
 
      &.lambda-input__wrapper--variant-underline,
      &.lambda-input__wrapper--variant-flat,

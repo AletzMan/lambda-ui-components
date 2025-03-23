@@ -214,7 +214,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputPlaceholder = floatingLabel ? "" : placeholder;
 
         return (
-            <div className={clsx(styles["lambda-input"], { [styles["lambda-input--disabled-true"]]: contextDisabled })}>
+            <div className={clsx(styles["lambda-input"], { [styles["lambda-input--disabled-true"]]: contextDisabled, [styles["lambda-input--group"]]: isGroup })}>
                 {label && (
                     <label className={clsx(labels({ radius: contextRadius, size: contextSize, hasElements }), {
                         [styles["lambda-input__label--floating"]]: floatingLabel && isLabelFloating,
