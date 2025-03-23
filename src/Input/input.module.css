@@ -133,11 +133,13 @@
          }
      }
 
-
-
      &.lambda-input__field--showPassword {
          font-size: 1.2em;
          letter-spacing: 0;
+     }
+
+     &:disabled {
+         color: var(--surface-d);
      }
  }
 
@@ -223,12 +225,12 @@
      justify-self: end;
      height: 24px;
      width: 24px;
+     color: var(--danger-color);
  }
 
  .lambda-input__clear-search-icon {
      width: 16px;
      height: 16px;
-     color: var(--danger-color);
  }
 
 
@@ -535,7 +537,7 @@
      .lambda-input__wrapper:not(.lambda-input__wrapper--group) {
 
          &:hover {
-             outline: 3px solid var(--primary-outline-color);
+             outline: 3px solid var(--surface-c);
          }
 
      }
@@ -543,7 +545,8 @@
      .lambda-input__input-wrapper {
          pointer-events: none;
 
-         .lambda-input__toggle-password {
+         .lambda-input__toggle-password,
+         .lambda-input__clear-search {
              color: var(--surface-c);
          }
      }

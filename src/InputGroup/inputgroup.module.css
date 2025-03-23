@@ -273,4 +273,13 @@
 
  .lambda-input-group--disabled-true {
      cursor: not-allowed;
+
+     .lambda-input-group__start,
+     .lambda-input-group__end {
+         color: var(--surface-c);
+     }
+
+     &:hover:not(.lambda-input-group--error-true) {
+         outline: 3px solid var(--surface-c);
+     }
  }
