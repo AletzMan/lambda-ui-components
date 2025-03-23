@@ -92,9 +92,14 @@ const textInput = cva(styles["lambda-input__field"], {
             medium: styles["lambda-input__field--size-medium"],
             large: styles["lambda-input__field--size-large"],
         },
+        disabled: {
+            false: styles["lambda-input__field--disabled-false"],
+            true: styles["lambda-input__field--disabled-true"],
+        },
     },
     defaultVariants: {
-        size: "medium"
+        size: "medium",
+        disabled: false
     }
 });
 
@@ -233,7 +238,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             type={inputType as HTMLInputTypeAttribute}
-                            className={clsx(textInput({ size: contextSize }), { [styles["lambda-input__field--showPassword"]]: isPasswordType && !showPassword })}
+                            className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), { [styles["lambda-input__field--showPassword"]]: isPasswordType && !showPassword })}
                             disabled={contextDisabled || undefined}
                             placeholder={inputPlaceholder}
                             {...props}

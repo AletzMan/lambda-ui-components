@@ -139,13 +139,19 @@
          }
      }
 
-     &.lambda-input__field--showPassword {
-         font-size: 1.2em;
-         letter-spacing: 0;
-     }
-
      &:disabled {
          color: var(--surface-d);
+     }
+
+     &.lambda-input__field--showPassword {
+         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Tahoma, Geneva, Verdana, sans-serif, Courier, monospace;
+         font-weight: 800;
+         letter-spacing: 3px;
+         color: var(--primary-color);
+
+         &.lambda-input__field--disabled-true {
+             color: var(--primary-outline-color);
+         }
      }
  }
 
@@ -353,7 +359,7 @@
 
  .lambda-input__label {
      position: absolute;
-     top: -1.3em;
+     top: -1.4em;
      font-family: var(--font-family);
      color: var(--primary-hover-color);
      padding: 0 0 0 4px;
@@ -367,7 +373,7 @@
      }
 
      &.lambda-input__label--size-medium {
-         font-size: var(--font-size-xs);
+         font-size: var(--font-size-sm);
          line-height: var(--font-size-sm);
      }
 
@@ -402,12 +408,12 @@
 
      &.lambda-input__label--size-small {
          font-size: var(--font-size-sm);
-         transform: translateY(22px) translateX(5px) scale(1);
+         transform: translateY(25px) translateX(5px) scale(1);
      }
 
      &.lambda-input__label--size-medium {
          font-size: var(--font-size-sm);
-         transform: translateY(26px) translateX(6px) scale(1);
+         transform: translateY(28.2px) translateX(6px) scale(1);
 
          &.lambda-input__label--elements-first {
              &.lambda-input__label--radius-pill {
@@ -418,16 +424,11 @@
 
      &.lambda-input__label--size-large {
          font-size: var(--font-size-md);
-         transform: translateY(32px) translateX(10px) scale(1);
+         transform: translateY(34px) translateX(10px) scale(1);
      }
  }
 
- .lambda-input__field--showPassword {
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Courier, monospace;
-     letter-spacing: 0.1px;
-     max-width: 8.1em;
-     color: var(--primary-color);
- }
+
 
  .lambda-input__wrapper--group {
      background-color: var(--surface-a);
