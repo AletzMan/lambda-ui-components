@@ -134,7 +134,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 {...props}
             >
                 {(icon || loading) && (
-                    <span className={styles["lambda-btn-icon"]}>
+                    <span className={clsx(styles["lambda-btn-icon"], { [styles["lambda-btn-icon--only"]]: !label })}>
                         {loading ? <Loader className={styles["lambda-btn-icon--loading"]} /> : icon}
                     </span>
                 )}
