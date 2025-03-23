@@ -32,3 +32,10 @@
 .button {
   width: 100%;
 }
+
+.control_buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  padding: 0.25em 1em;
+}

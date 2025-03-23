@@ -1,5 +1,4 @@
-// Supports weights 100-900
-import '@fontsource-variable/jost';
+import '@fontsource/metropolis';
 import "./index.css"
 
 export { Button } from "./Button/Button"
