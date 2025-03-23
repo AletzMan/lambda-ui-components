@@ -16,7 +16,7 @@
      width: max-content;
      min-height: 24px;
      min-width: 24px;
-     box-shadow: 1px 1px 0px 0px var(--shadow-inset-color) inset, 0 0 1px 1px var(--shadow-color), -1px 0px 0px 0px var(--shadow-inset-color) inset;
+     box-shadow: 1px 1px 0px 0px var(--shadow-inset-color) inset, 0 0 1px 1px var(--shadow-color), -1px -1px 0px 0px var(--shadow-inset-color) inset;
 
      &:active:not(.lambda-btn--disabled-true):not(.lambda-btn--loading-true) {
          box-shadow: 0px 1px 3px 1px #2b2b2b30 inset;
@@ -55,6 +55,11 @@
      }
 
      &>.lambda-btn-icon {
+         &.lambda-btn-icon--only {
+             justify-content: center;
+             width: 100%;
+         }
+
          &>svg {
              filter: drop-shadow(0px 0px 1px var(--disabled-color));
          }
@@ -216,10 +221,13 @@
 
      .lambda-btn-icon {
          display: flex;
-         align-items: center;
-         width: 16px;
          height: 16px;
          line-height: 16px;
+
+         &:not(.lambda-btn-icon--only) {
+             align-items: center;
+             width: 16px;
+         }
 
          &>svg {
              width: 16px;
@@ -242,10 +250,13 @@
 
      .lambda-btn-icon {
          display: flex;
-         align-items: center;
-         width: 19px;
          height: 19px;
          line-height: 19px;
+
+         &:not(.lambda-btn-icon--only) {
+             align-items: center;
+             width: 19px;
+         }
 
          &>svg {
              width: 19px;
@@ -268,9 +279,13 @@
 
      .lambda-btn-icon {
          display: flex;
-         width: 21px;
          height: 21px;
          line-height: 21px;
+
+         &:not(.lambda-btn-icon--only) {
+             align-items: center;
+             width: 21px;
+         }
 
          &>svg {
              width: 21px;
@@ -288,6 +303,8 @@
  .lambda-btn--radius-none {
      border-radius: var(--border-radius-none);
  }
+
+
 
  .lambda-btn--radius-small {
      border-radius: var(--border-radius-sm);
