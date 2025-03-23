@@ -95,6 +95,7 @@ const button = cva(styles[`lambda-btn`], {
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled" | "color">, VariantProps<typeof button> {
     icon?: ReactNode | undefined | null;
     label?: string;
+    loadingText?: string
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -108,6 +109,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             icon,
             label,
             iconPosition = "left",
+            loadingText,
             loading,
             disabled,
             ...props
@@ -145,7 +147,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         {loading ? <Loader className={styles["lambda-btn-icon--loading"]} /> : icon}
                     </span>
                 )}
-                {label && <span className={styles["lambda-btn-label"]}>{label}</span>}
+                {label && <span className={styles["lambda-btn-label"]}>{(loading && loadingText) ? loadingText : label}</span>}
                 {props.children}
             </button>
         );
