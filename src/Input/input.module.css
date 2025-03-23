@@ -116,18 +116,31 @@
 
      &::placeholder {
          color: var(--placeholder-color);
+         font-family: var(--font-family);
      }
 
      &.lambda-input__field--size-small {
          font-size: var(--font-size-xs);
+
+         &::placeholder {
+             font-size: var(--font-size-xs);
+         }
      }
 
      &.lambda-input__field--size-medium {
          font-size: var(--font-size-sm);
+
+         &::placeholder {
+             font-size: var(--font-size-sm);
+         }
      }
 
      &.lambda-input__field--size-large {
          font-size: var(--font-size-md);
+
+         &::placeholder {
+             font-size: var(--font-size-md);
+         }
      }
 
      &:disabled {
@@ -414,8 +427,9 @@
 
  .lambda-input__field--showPassword {
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Courier, monospace;
-     letter-spacing: 0.1em;
-     color: var(--primary-disabled-color);
+     letter-spacing: 0.1px;
+     max-width: 8.1em;
+     color: var(--primary-color);
  }
 
  .lambda-input__wrapper--group {
