@@ -7,7 +7,6 @@
      display: none;
  }
 
-
  .lambda-input__wrapper {
      position: relative;
      display: flex;
@@ -27,7 +26,6 @@
 
      &.lambda-input__wrapper--type-password {
          padding-right: 0;
-
      }
  }
 
@@ -45,7 +43,6 @@
          margin: 0;
      }
  }
-
 
  .lambda-input__error {
      position: absolute;
@@ -146,12 +143,15 @@
      &.lambda-input__field--showPassword {
          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Tahoma, Geneva, Verdana, sans-serif, Courier, monospace;
          font-weight: 800;
-         letter-spacing: 3px;
          color: var(--primary-color);
 
          &.lambda-input__field--disabled-true {
              color: var(--primary-outline-color);
          }
+     }
+
+     &:is(.lambda-input__field--showPassword) {
+         letter-spacing: 3px;
      }
  }
 
@@ -244,7 +244,6 @@
      width: 16px;
      height: 16px;
  }
-
 
  .lambda-input__wrapper--variant-outline {
      background-color: var(--surface-a);
@@ -343,7 +342,6 @@
          padding: var(--padding-xs) var(--padding-lg);
      }
 
-
      &.lambda-input__wrapper--variant-underline {
          border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
      }
@@ -353,8 +351,6 @@
      border-color: var(--danger-color);
      border-style: dashed;
      background-color: var(--danger-light-color);
-
-
  }
 
  .lambda-input__label {
@@ -363,7 +359,7 @@
      font-family: var(--font-family);
      color: var(--primary-hover-color);
      padding: 0 0 0 4px;
-     font-weight: 500;
+     font-weight: 400;
      transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out;
      z-index: 2;
 
@@ -385,13 +381,19 @@
      &.lambda-input__label--radius-pill {
          padding: 0 0 0 var(--padding-lg);
      }
+
+     &.lambda-input__label--isRequired {
+         &::after {
+             content: " *";
+             color: var(--danger-color);
+         }
+     }
  }
-
-
 
  .lambda-input__label--floating {
      transform: translateY(-3%) translateX(-0%) scale(1);
      pointer-events: none;
+
 
      &.lambda-input__label--elements-first {
 
@@ -427,8 +429,6 @@
          transform: translateY(34px) translateX(10px) scale(1);
      }
  }
-
-
 
  .lambda-input__wrapper--group {
      background-color: var(--surface-a);
@@ -555,6 +555,30 @@
          }
      }
 
+ }
 
+ /* ------------------- OPTIONAL LABEL ---------------------*/
+ .lambda-input {
+
+     .lambda-input__optional {
+         display: none;
+         position: absolute;
+         bottom: -1.5em;
+         left: 0;
+         font-size: var(--font-size-xs);
+         font-weight: 500;
+         color: var(--surface-f);
+         font-style: italic;
+
+         &.lambda-input__optional--disabled-true {
+             color: var(--surface-c);
+         }
+     }
+
+     &:focus-within {
+         .lambda-input__optional {
+             display: block;
+         }
+     }
 
  }

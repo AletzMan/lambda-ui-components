@@ -135,15 +135,30 @@ const buttonPassword = cva(styles["lambda-input__toggle-password"], {
     }
 });
 
+const optionalText = cva(styles["lambda-input__optional"], {
+    variants: {
+        disabled: {
+            false: styles["lambda-input__optional--disabled-false"],
+            true: styles["lambda-input__optional--disabled-true"],
+        },
+    },
+    defaultVariants: {
+        disabled: false
+    }
+});
+
+
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> {
     label?: string,
     error?: boolean,
     errorMessage?: string;
     floatingLabel?: boolean;
+    helperText?: string
+    isRequired?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled: propsDisabled, type = "text", value: controlledValue, onChange, floatingLabel, placeholder, ...props }, ref) => {
+    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled: propsDisabled, type = "text", value: controlledValue, onChange, isRequired, floatingLabel, placeholder, helperText, ...props }, ref) => {
         let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, hasElements: "none" | "first" | "last" | "both";
         try {
             const context = useInputGroup();
@@ -225,10 +240,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         [styles["lambda-input__label--floating"]]: floatingLabel && isLabelFloating,
                         [styles["lambda-input__label--default"]]: floatingLabel && !isLabelFloating,
                         [styles["lambda-input__label--placeholder"]]: floatingLabel && !isLabelFloating,
+                        [styles["lambda-input__label--isRequired"]]: isRequired,
                     })}>
                         {`${label as string}`}
                     </label>
                 )}
+                {helperText && <label className={clsx(optionalText({ disabled: contextDisabled }))}>{helperText}</label>}
                 <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, error, type, hasElements, className }), { [styles["lambda-input__wrapper--group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input__input-wrapper"], { [styles["lambda-input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
@@ -238,7 +255,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             type={inputType as HTMLInputTypeAttribute}
-                            className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), { [styles["lambda-input__field--showPassword"]]: isPasswordType && !showPassword })}
+                            className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), { [styles["lambda-input__field--showPassword"]]: isPasswordType && !showPassword && value.toString().length > 0 })}
                             disabled={contextDisabled || undefined}
                             placeholder={inputPlaceholder}
                             {...props}
