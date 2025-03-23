@@ -1,8 +1,8 @@
 
-import { Button, Checkbox } from '../src/main'
-import { AlertCircle, CheckCircle, HelpCircle, Menu, Send, Trash } from "lucide-react"
+import { Button, Checkbox, Input, InputGroup } from '../src/main'
+import { AlertCircle, CheckCircle, Coins, HelpCircle, Menu, Search, SearchIcon, Send, Settings, Settings2, Trash, User } from "lucide-react"
 import styles from "./styles.module.css"
-import { JSX } from 'react'
+import { JSX, useState } from 'react'
 
 interface IButton {
   color: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | null | undefined
@@ -20,6 +20,7 @@ const buttonsPrimary: IButton[] = [
 ]
 
 function App() {
+  const [disabled, setDisabled] = useState(false)
 
   return (
     <section>
@@ -29,8 +30,8 @@ function App() {
           {buttonsPrimary.map((button) => (
             <Button key={button.color}
               className={styles.button}
-              size="small"
-              radius={'medium'}
+              size="medium"
+              radius={'small'}
               variant="solid"
               color={button.color}
               label={button.label}
@@ -43,8 +44,8 @@ function App() {
           {buttonsPrimary.map((button) => (
             <Button key={button.color}
               className={styles.button}
-              size="small"
-              radius={'medium'}
+              size="medium"
+              radius={'small'}
               variant="outline"
               color={button.color}
               label={button.label}
@@ -57,8 +58,8 @@ function App() {
           {buttonsPrimary.map((button) => (
             <Button key={button.color}
               className={styles.button}
-              size="small"
-              radius={'medium'}
+              size="medium"
+              radius={'small'}
               variant="dashed"
               color={button.color}
               label={button.label}
@@ -71,9 +72,23 @@ function App() {
           {buttonsPrimary.map((button) => (
             <Button key={button.color}
               className={styles.button}
-              size="small"
-              radius={'medium'}
+              size="medium"
+              radius={'small'}
               variant="ghost"
+              color={button.color}
+              label={button.label}
+              iconPosition="left"
+              icon={button.icon}
+              loading={false} />
+          ))}
+        </div>
+        <div className={styles.buttons}>
+          {buttonsPrimary.map((button) => (
+            <Button key={button.color}
+              className={styles.button}
+              size="medium"
+              radius={'small'}
+              variant="text"
               color={button.color}
               label={button.label}
               iconPosition="left"
@@ -84,20 +99,56 @@ function App() {
       </div>
       <div className={styles.container_buttons}>
         <div className={styles.buttons}>
-          <Checkbox size="small" label='Primary' />
-          <Checkbox size="small" color="secondary" label='Secondary' />
-          <Checkbox size="small" color="success" label='Success' />
-          <Checkbox size="small" color="danger" label='Danger' />
-          <Checkbox size="small" color="warning" label='Warning' />
-          <Checkbox size="small" color="info" label='Info' />
+          <Checkbox size="medium" label='Primary' onChange={(e) => setDisabled(e.currentTarget.checked)} />
+          <Checkbox size="medium" color="secondary" label='Secondary' />
+          <Checkbox size="medium" color="success" label='Success' />
+          <Checkbox size="medium" color="danger" label='Danger' />
+          <Checkbox size="medium" color="warning" label='Warning' />
+          <Checkbox size="medium" color="info" label='Info' />
         </div>
         <div className={styles.buttons}>
-          <Checkbox size="small" variant="flat" label='Primary' />
-          <Checkbox size="small" variant="flat" color="secondary" label='Secondary' />
-          <Checkbox size="small" variant="flat" color="success" label='Success' />
-          <Checkbox size="small" variant="flat" color="danger" label='Danger' />
-          <Checkbox size="small" variant="flat" color="warning" label='Warning' />
-          <Checkbox size="small" variant="flat" color="info" label='Info' />
+          <Checkbox size="medium" variant="flat" label='Primary' />
+          <Checkbox size="medium" variant="flat" color="secondary" label='Secondary' />
+          <Checkbox size="medium" variant="flat" color="success" label='Success' />
+          <Checkbox size="medium" variant="flat" color="danger" label='Danger' />
+          <Checkbox size="medium" variant="flat" color="warning" label='Warning' />
+          <Checkbox size="medium" variant="flat" color="info" label='Info' />
+        </div>
+      </div>
+      <div className={styles.container_buttons}>
+        <div className={styles.buttons}>
+          <Input type="text" label='Nombre' floatingLabel={false} error errorMessage='Ingrese Nombre de 3 letras' disabled size="medium" />
+          <Input type="email" label='E-mail' disabled placeholder='Correo electronico' />
+          <Input type="password" label='Password' disabled={disabled} placeholder='Contraseña' />
+          <Input type="search" label='Busqueda' disabled={disabled} />
+        </div>
+        <div className={styles.buttons}>
+          <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant="underline" size="medium" disabled={disabled}>
+            <Input type="text" label='Ingrese' floatingLabel />
+          </InputGroup>
+          <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} variant="underline" size="medium" disabled>
+            <Input type="text" label='URL de imagen' floatingLabel />
+          </InputGroup>
+          <InputGroup prefixElement={<User />} variant="underline" size="medium" radius="medium">
+            <Input type="text" label='Ingrese' floatingLabel />
+          </InputGroup>
+          <InputGroup suffixElement={<Settings />} variant="underline" size={'medium'} radius="medium">
+            <Input type="text" label='Configuracion' floatingLabel />
+          </InputGroup>
+        </div>
+        <div className={styles.buttons}>
+          <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant="underline" size="medium" radius="large">
+            <Input type="search" />
+          </InputGroup>
+          <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} size="medium" radius="pill">
+            <Input type="text" label='Configuracion' floatingLabel />
+          </InputGroup>
+          <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="secondary" style={{ backgroundColor: "#0aa9c1", width: "4em" }} />} size="medium" radius="medium">
+            <Input type="text" label='Configuracion' floatingLabel />
+          </InputGroup>
+          <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} size="medium" radius="medium">
+            <Input type="text" label='Configuracion' floatingLabel />
+          </InputGroup>
         </div>
       </div>
     </section>
