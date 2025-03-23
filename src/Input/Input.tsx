@@ -134,7 +134,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
     label?: string,
     error?: boolean,
     errorMessage?: string;
-    floatingLabel?: boolean; // Agregamos la propiedad floatingLabel
+    floatingLabel?: boolean;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(

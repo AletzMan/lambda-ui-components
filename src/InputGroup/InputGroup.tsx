@@ -66,8 +66,8 @@ interface InputGroupProps extends Omit<InputProps, "error" | "disabled">, Varian
     suffixElement?: ReactNode;
 }
 
-export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTMLDivElement, InputGroupProps>( // Añadimos forwardRef aquí
-    ({ prefixElement, suffixElement, children, variant, radius, size, error, disabled, }, ref) => { // Recibimos props y ref como argumentos separados
+export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTMLDivElement, InputGroupProps>(
+    ({ prefixElement, suffixElement, children, variant, radius, size, error, disabled, }, ref) => {
         const hasElements: "none" | "first" | "last" | "both" = prefixElement && suffixElement ? "both" : prefixElement ? "first" : suffixElement ? "last" : "none";
 
 
