@@ -25,17 +25,6 @@
      outline: none;
      font-family: var(--font-family);
 
-     &.lambda-input__wrapper--disabled-true {
-         background-image: linear-gradient(to right, var(--disabled-color), var(--disabled-color));
-         color: var(--foreground-disabled-color);
-         cursor: not-allowed;
-
-         &:hover {
-             background-image: linear-gradient(to right, var(--disabled-color), var(--disabled-color));
-             color: var(--foreground-disabled-color);
-         }
-     }
-
      &.lambda-input__wrapper--type-password {
          padding-right: 0;
 
@@ -50,10 +39,6 @@
      font-family: var(--font-family);
      margin: 0 0 16px 0;
      width: 100%;
- }
-
- .lambda-input--disabled-true {
-     cursor: not-allowed;
  }
 
 
@@ -117,6 +102,11 @@
      &::placeholder {
          color: var(--placeholder-color);
          font-family: var(--font-family);
+         font-weight: 300;
+     }
+
+     &:disabled::placeholder {
+         color: var(--surface-c);
      }
 
      &.lambda-input__field--size-small {
@@ -143,10 +133,7 @@
          }
      }
 
-     &:disabled {
-         color: var(--foreground-disabled-color);
-         cursor: not-allowed;
-     }
+
 
      &.lambda-input__field--showPassword {
          font-size: 1.2em;
@@ -536,4 +523,39 @@
      &.lambda-input__wrapper--radius-pill {
          border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none) var(--border-radius-pill);
      }
+ }
+
+ .lambda-input--disabled-true {
+     cursor: not-allowed;
+
+     .lambda-input__label--default {
+         color: var(--surface-c);
+     }
+
+     .lambda-input__wrapper:not(.lambda-input__wrapper--group) {
+
+         &:hover {
+             outline: 3px solid var(--primary-outline-color);
+         }
+
+     }
+
+     .lambda-input__input-wrapper {
+         pointer-events: none;
+
+         .lambda-input__toggle-password {
+             color: var(--surface-c);
+         }
+     }
+
+     .lambda-input__wrapper--disabled-true {
+         background-color: var(--surface-b);
+
+         &:hover:not(.lambda-input__wrapper--error-true) {
+             border-color: var(--surface-d);
+         }
+     }
+
+
+
  }

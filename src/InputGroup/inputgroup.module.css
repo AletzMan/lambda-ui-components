@@ -270,3 +270,7 @@
          /* Permite que el input se expanda */
      }
  }
+
+ .lambda-input-group--disabled-true {
+     cursor: not-allowed;
+ }
