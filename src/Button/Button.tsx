@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ButtonHTMLAttributes, ReactNode, forwardRef, isValidElement } from "react";
 import styles from "./button.module.css";
 import { cva, VariantProps } from "class-variance-authority";
 import { Loader } from "lucide-react";
 import clsx from 'clsx';
+import { useInputGroup } from "../InputGroup/InputGroup";
 
 const button = cva(styles[`lambda-btn`], {
     variants: {
@@ -105,13 +107,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         },
         ref
     ) => {
+        let contextSize
+        try {
+            const context = useInputGroup();
+            contextSize = context.size;
+        } catch (e) {
+            contextSize = size;
+        }
         return (
             <button
                 ref={ref}
                 className={clsx(
                     button({
                         variant,
-                        size,
+                        size: contextSize,
                         color,
                         disabled,
                         radius,
