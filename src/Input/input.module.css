@@ -561,7 +561,6 @@
  .lambda-input {
 
      .lambda-input__optional {
-         display: none;
          position: absolute;
          bottom: -1.5em;
          left: 0;
@@ -569,6 +568,9 @@
          font-weight: 500;
          color: var(--surface-f);
          font-style: italic;
+         opacity: 0;
+         transform: translateY(-2em);
+         transition: all 0.3s ease-in-out;
 
          &.lambda-input__optional--disabled-true {
              color: var(--surface-c);
@@ -577,7 +579,8 @@
 
      &:focus-within {
          .lambda-input__optional {
-             display: block;
+             opacity: 1;
+             transform: translateY(0);
          }
      }
 
