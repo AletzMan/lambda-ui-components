@@ -79,6 +79,11 @@
     --icon-size-md: 18px;
     --icon-size-lg: 20px;
 
+    --height-button-xs: 24px;
+    --height-button-sm: 30px;
+    --height-button-md: 36px;
+    --height-button-lg: 42px;
+
     --height-input-xs: 12px;
     --height-input-sm: 24px;
     --height-input-md: 32px;
