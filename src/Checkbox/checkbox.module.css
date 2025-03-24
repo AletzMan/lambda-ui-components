@@ -290,7 +290,7 @@
 }
 
 .lambda-checkbox-label {
-    color: var(--foreground-invert-color);
+    color: var(--foreground-color);
     font-family: inherit;
 }
 
