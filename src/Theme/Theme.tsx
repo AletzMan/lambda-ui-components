@@ -14,12 +14,13 @@ interface ThemeContextProps {
 
 interface ThemeProviderProps {
     children: ReactNode;
+    defaultTheme: "light" | "dark"
 }
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-    const [theme, setTheme] = useState<"light" | "dark">("light");
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, defaultTheme }) => {
+    const [theme, setTheme] = useState<"light" | "dark">(defaultTheme);
 
     const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));

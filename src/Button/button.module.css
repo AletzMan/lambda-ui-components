@@ -4,7 +4,6 @@
      align-items: center;
      justify-content: flex-start;
      gap: var(--gap-md);
-     border: 1px solid transparent;
      color: var(--foreground-color);
      font-family: var(--font-family);
      font-weight: 400;
@@ -16,7 +15,6 @@
      min-height: 24px;
      min-width: 24px;
      transition: background-color 0.25s ease-in-out, color 0.3s ease-in-out, shadow 0.3s ease-in-out;
-     background-size: 200% 100%;
 
 
 
@@ -141,7 +139,7 @@
      &.lambda-btn--color-primary {
          background: var(--primary-color);
 
-         &:hover {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--primary-hover-color);
          }
 
@@ -153,7 +151,7 @@
      &.lambda-btn--color-secondary {
          background: var(--secondary-color);
 
-         &:hover {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--secondary-hover-color);
          }
 
@@ -165,7 +163,7 @@
      &.lambda-btn--color-success {
          background: var(--success-color);
 
-         &:hover {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--success-hover-color);
          }
 
@@ -177,7 +175,7 @@
      &.lambda-btn--color-danger {
          background: var(--danger-color);
 
-         &:hover {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--danger-hover-color);
          }
 
@@ -189,7 +187,7 @@
      &.lambda-btn--color-warning {
          background: var(--warning-color);
 
-         &:hover {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--warning-hover-color);
          }
 
@@ -201,7 +199,7 @@
      &.lambda-btn--color-info {
          background: var(--info-color);
 
-         &:hover {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--info-hover-color);
          }
 
@@ -216,36 +214,34 @@
  }
 
  .lambda-btn--variant-outline {
-     background: transparent;
      border: 1px solid;
-
+     background-color: transparent;
 
      &.lambda-btn--color-primary {
          border-color: var(--primary-hover-color);
          color: var(--primary-hover-color);
 
-         &:hover:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              color: var(--primary-hover-color);
-             background: var(--primary-light-color);
+             background-color: var(--primary-light-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
-             background: red;
+         &:active {
+             background-color: var(--primary-outline-color);
          }
-
      }
 
      &.lambda-btn--color-secondary {
          border-color: var(--secondary-hover-color);
          color: var(--secondary-hover-color);
 
-         &:hover:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              color: var(--secondary-hover-color);
              background-color: var(--secondary-light-color);
          }
 
          &:active:not(.lambda-btn--disabled-true) {
-             background: red;
+             background-color: var(--secondary-outline-color);
          }
      }
 
@@ -253,20 +249,27 @@
          border-color: var(--success-hover-color);
          color: var(--success-hover-color);
 
-         &:hover:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              color: var(--success-hover-color);
              background-color: var(--success-light-color);
          }
-     }
 
+         &:active:not(.lambda-btn--disabled-true) {
+             background-color: var(--success-outline-color);
+         }
+     }
 
      &.lambda-btn--color-danger {
          border-color: var(--danger-hover-color);
          color: var(--danger-hover-color);
 
-         &:hover:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              color: var(--danger-hover-color);
              background-color: var(--danger-light-color);
+         }
+
+         &:active:not(.lambda-btn--disabled-true) {
+             background-color: var(--danger-outline-color);
          }
      }
 
@@ -274,9 +277,13 @@
          border-color: var(--warning-hover-color);
          color: var(--warning-hover-color);
 
-         &:hover:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              color: var(--warning-hover-color);
              background-color: var(--warning-light-color);
+         }
+
+         &:active:not(.lambda-btn--disabled-true) {
+             background-color: var(--warning-outline-color);
          }
      }
 
@@ -284,14 +291,18 @@
          border-color: var(--info-hover-color);
          color: var(--info-hover-color);
 
-         &:hover:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
+         &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              color: var(--info-hover-color);
              background-color: var(--info-light-color);
+         }
+
+         &:active:not(.lambda-btn--disabled-true) {
+             background-color: var(--info-outline-color);
          }
      }
 
      .lambda-btn-label {
-         font-weight: 600;
+         font-weight: 500;
      }
  }
 
@@ -299,9 +310,7 @@
      background-color: transparent;
      border: 1px dashed;
 
-     &:active {
-         transform: scale(0.98);
-     }
+
 
      &.lambda-btn--color-primary {
          color: var(--primary-hover-color);
@@ -310,6 +319,10 @@
          &:hover:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background-color: var(--primary-light-color);
              color: var(--primary-hover-color);
+         }
+
+         &:active {
+             background-color: var(--primary-outline-color);
          }
      }
 
@@ -368,20 +381,14 @@
          }
      }
 
-
-
      .lambda-btn-label {
-         font-weight: 600;
+         font-weight: 500;
      }
  }
 
  .lambda-btn--variant-ghost {
      background-color: transparent;
      border: 1px solid transparent;
-
-     &:active {
-         transform: scale(0.98);
-     }
 
      &.lambda-btn--color-primary {
          background-color: var(--primary-light-color);
@@ -392,6 +399,10 @@
              background-color: var(--primary-outline-color);
              color: var(--primary-hover-color);
              border: 1px solid var(--primary-light-color);
+         }
+
+         &:active {
+             background-color: var(--primary-light-color);
          }
      }
 
@@ -455,7 +466,7 @@
      }
 
      .lambda-btn-label {
-         font-weight: 600;
+         font-weight: 500;
      }
  }
 
@@ -463,9 +474,6 @@
      background-color: transparent;
      border: 1px solid transparent;
 
-     &:active {
-         transform: scale(0.98);
-     }
 
      &.lambda-btn--color-primary {
          color: var(--primary-hover-color);
@@ -475,6 +483,10 @@
              background-color: var(--primary-light-color);
              color: var(--primary-hover-color);
              border: 1px solid var(--primary-light-color);
+         }
+
+         &:active {
+             background-color: var(--primary-outline-color);
          }
      }
 
@@ -537,7 +549,7 @@
 
 
      .lambda-btn-label {
-         font-weight: 600;
+         font-weight: 500;
      }
  }
 
@@ -566,14 +578,12 @@
 
      .lambda-btn-label {
          line-height: 16px;
-         box-shadow: none;
      }
  }
 
  .lambda-btn--size-medium {
      font-size: var(--font-size-sm);
-     padding: var(--padding-sm) var(--padding-lg);
-     height: 32px;
+     padding: var(--padding-md) var(--padding-lg);
 
      .lambda-btn-icon {
          display: flex;

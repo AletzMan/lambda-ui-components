@@ -21,10 +21,16 @@ const buttonsPrimary: IButton[] = [
 
 function App() {
   const [disabled, setDisabled] = useState(false)
+  const [disabledButtons, setDisabledButtons] = useState(false)
+  const [loadingButtons, setLoadingButtons] = useState(false)
 
   return (
     <section>
       UI Components
+      <div className={styles.control_buttons}>
+        <Checkbox label='Disabled' checked={disabledButtons} size="medium" color="secondary" onChange={(e) => setDisabledButtons(e.currentTarget.checked)} />
+        <Checkbox label='Loading' checked={loadingButtons} size="medium" color="info" onChange={(e) => setLoadingButtons(e.currentTarget.checked)} />
+      </div>
       <div className={styles.container_buttons}>
         <div className={styles.buttons}>
           {buttonsPrimary.map((button) => (
@@ -32,12 +38,30 @@ function App() {
               className={styles.button}
               size="medium"
               radius={'small'}
+              variant="classic"
+              color={button.color}
+              label={button.label}
+              disabled={disabledButtons}
+              loading={loadingButtons}
+              loadingText="Loading"
+              iconPosition="left"
+              icon={button.icon} />
+          ))}
+        </div>
+        <div className={styles.buttons}>
+          {buttonsPrimary.map((button) => (
+            <Button key={button.color}
+              className={styles.button}
+              size="medium"
+              radius={'small'}
               variant="solid"
+              disabled={disabledButtons}
+              loading={loadingButtons}
+              loadingText="Loading"
               color={button.color}
               label={button.label}
               iconPosition="left"
-              icon={button.icon}
-              loading={false} />
+              icon={button.icon} />
           ))}
         </div>
         <div className={styles.buttons}>
@@ -48,10 +72,12 @@ function App() {
               radius={'small'}
               variant="outline"
               color={button.color}
+              disabled={disabledButtons}
+              loading={loadingButtons}
+              loadingText="Loading"
               label={button.label}
               iconPosition="left"
-              icon={button.icon}
-              loading={false} />
+              icon={button.icon} />
           ))}
         </div>
         <div className={styles.buttons}>
@@ -62,10 +88,12 @@ function App() {
               radius={'small'}
               variant="dashed"
               color={button.color}
+              disabled={disabledButtons}
+              loading={loadingButtons}
+              loadingText="Loading"
               label={button.label}
               iconPosition="left"
-              icon={button.icon}
-              loading={false} />
+              icon={button.icon} />
           ))}
         </div>
         <div className={styles.buttons}>
@@ -75,11 +103,13 @@ function App() {
               size="medium"
               radius={'small'}
               variant="ghost"
+              disabled={disabledButtons}
+              loading={loadingButtons}
+              loadingText="Loading"
               color={button.color}
               label={button.label}
               iconPosition="left"
-              icon={button.icon}
-              loading={false} />
+              icon={button.icon} />
           ))}
         </div>
         <div className={styles.buttons}>
@@ -90,10 +120,12 @@ function App() {
               radius={'small'}
               variant="text"
               color={button.color}
+              disabled={disabledButtons}
+              loading={loadingButtons}
+              loadingText="Loading"
               label={button.label}
               iconPosition="left"
-              icon={button.icon}
-              loading={false} />
+              icon={button.icon} />
           ))}
         </div>
       </div>
@@ -117,7 +149,7 @@ function App() {
       </div>
       <div className={styles.container_buttons}>
         <div className={styles.buttons}>
-          <Input type="text" label='Nombre' floatingLabel={false} error errorMessage='Ingrese Nombre de 3 letras' disabled size="medium" />
+          <Input type="text" label='Nombre' floatingLabel={false} error errorMessage='Ingrese Nombre de 3 letras' disabled size="medium" isRequired />
           <Input type="email" label='E-mail' disabled placeholder='Correo electronico' />
           <Input type="password" label='Password' disabled={disabled} placeholder='Contraseña' />
           <Input type="search" label='Busqueda' disabled={disabled} />
@@ -133,7 +165,7 @@ function App() {
             <Input type="text" label='Ingrese' floatingLabel />
           </InputGroup>
           <InputGroup suffixElement={<Settings />} variant="underline" size={'medium'} radius="medium">
-            <Input type="text" label='Configuracion' floatingLabel />
+            <Input type="text" label='Configuracion' floatingLabel helperText='Requerido *' />
           </InputGroup>
         </div>
         <div className={styles.buttons}>
