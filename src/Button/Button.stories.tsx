@@ -22,7 +22,7 @@ const meta: Meta<typeof Button> = {
         },
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Button size"
         },
         radius: {

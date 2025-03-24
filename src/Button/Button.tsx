@@ -25,6 +25,7 @@ const button = cva(styles[`lambda-btn`], {
             text: styles[`lambda-btn--variant-text`],
         },
         size: {
+            tiny: styles[`lambda-btn--size-tiny`],
             small: styles[`lambda-btn--size-small`],
             medium: styles[`lambda-btn--size-medium`],
             large: styles[`lambda-btn--size-large`],
