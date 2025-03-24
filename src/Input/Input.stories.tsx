@@ -17,7 +17,7 @@ const meta: Meta<typeof Input> = {
         },
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Input size"
         },
         type: {

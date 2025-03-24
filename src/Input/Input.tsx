@@ -10,6 +10,7 @@ import { useInputGroup } from "../InputGroup/InputGroup";
 export const input = cva(styles["lambda-input__wrapper"], {
     variants: {
         size: {
+            tiny: styles["lambda-input__wrapper--size-tiny"],
             small: styles["lambda-input__wrapper--size-small"],
             medium: styles["lambda-input__wrapper--size-medium"],
             large: styles["lambda-input__wrapper--size-large"],
@@ -60,6 +61,7 @@ export const input = cva(styles["lambda-input__wrapper"], {
 const labels = cva(styles["lambda-input__label"], {
     variants: {
         size: {
+            tiny: styles["lambda-input__label--size-tiny"],
             small: styles["lambda-input__label--size-small"],
             medium: styles["lambda-input__label--size-medium"],
             large: styles["lambda-input__label--size-large"],
@@ -88,6 +90,7 @@ const labels = cva(styles["lambda-input__label"], {
 const textInput = cva(styles["lambda-input__field"], {
     variants: {
         size: {
+            tiny: styles["lambda-input__field--size-tiny"],
             small: styles["lambda-input__field--size-small"],
             medium: styles["lambda-input__field--size-medium"],
             large: styles["lambda-input__field--size-large"],
@@ -106,6 +109,7 @@ const textInput = cva(styles["lambda-input__field"], {
 const errorlabel = cva(styles["lambda-input__error"], {
     variants: {
         size: {
+            tiny: styles["lambda-input__error--size-tiny"],
             small: styles["lambda-input__error--size-small"],
             medium: styles["lambda-input__error--size-medium"],
             large: styles["lambda-input__error--size-large"],
@@ -119,6 +123,7 @@ const errorlabel = cva(styles["lambda-input__error"], {
 const buttonPassword = cva(styles["lambda-input__toggle-password"], {
     variants: {
         size: {
+            tiny: styles["lambda-input__toggle-password--tiny"],
             small: styles["lambda-input__toggle-password--small"],
             medium: styles["lambda-input__toggle-password--medium"],
             large: styles["lambda-input__toggle-password--large"],
