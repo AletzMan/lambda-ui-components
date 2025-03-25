@@ -84,6 +84,10 @@
 .lambda-checkbox-label-wrapper--disabled-true {
     filter: contrast(70%) brightness(70%);
     cursor: not-allowed;
+
+    .lambda-checkbox-bg {
+        background-color: var(--secondary-light-color);
+    }
 }
 
 .lambda-checkbox-label-wrapper--position-left {
