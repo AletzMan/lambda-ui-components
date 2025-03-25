@@ -254,18 +254,15 @@
      background: var(--surface-c);
 
 
-
      .lambda-input-group__start,
      .lambda-input-group__end {
          display: flex;
          align-items: center;
-         color: var(--surface-e);
+         color: var(--surface-f);
 
          &>button {
              margin-right: -1px;
-             border-top: 1px solid var(--surface-d);
-             border-bottom: 1px solid var(--surface-d);
-             border-right: 1px solid var(--surface-d);
+             border: 1px solid var(--surface-d);
          }
      }
 
@@ -355,7 +352,7 @@
 
      .lambda-input-group__start,
      .lambda-input-group__end {
-         color: var(--surface-f);
+         color: var(--surface-d);
      }
 
      &:hover:not(.lambda-input-group--error-true) {
