@@ -15,6 +15,7 @@ const checkboxprop = cva(styles["lambda-checkbox"], {
             info: styles["lambda-checkbox--color-info"],
         },
         size: {
+            tiny: styles["lambda-checkbox--size-tiny"],
             small: styles["lambda-checkbox--size-small"],
             medium: styles["lambda-checkbox--size-medium"],
             large: styles["lambda-checkbox--size-large"],
@@ -52,6 +53,7 @@ const bg = cva(styles["lambda-checkbox-bg"], {
             info: styles["lambda-checkbox-bg--color-info"],
         },
         size: {
+            tiny: styles["lambda-checkbox-bg--size-tiny"],
             small: styles["lambda-checkbox-bg--size-small"],
             medium: styles["lambda-checkbox-bg--size-medium"],
             large: styles["lambda-checkbox-bg--size-large"],
@@ -64,7 +66,7 @@ const bg = cva(styles["lambda-checkbox-bg"], {
             none: styles["lambda-checkbox-bg--radius-none"],
             small: styles["lambda-checkbox-bg--radius-small"],
             medium: styles["lambda-checkbox-bg--radius-medium"],
-            pill: styles["lambda-checkbox-bg--radius-pill"],
+            circle: styles["lambda-checkbox-bg--radius-circle"],
         },
         disabled: {
             true: styles["lambda-checkbox-bg--disabled-true"],
@@ -107,6 +109,7 @@ const pos_lb = cva(styles["lambda-checkbox-label-wrapper"], {
 const textLabel = cva(styles["lambda-checkbox-label"], {
     variants: {
         size: {
+            tiny: styles["lambda-checkbox-label--size-small"],
             small: styles["lambda-checkbox-label--size-small"],
             medium: styles["lambda-checkbox-label--size-medium"],
             large: styles["lambda-checkbox-label--size-large"],
@@ -127,7 +130,7 @@ export interface Checkboxprops
     VariantProps<typeof checkboxprop> {
     label?: string;
     positionLabel?: "right" | "left" | "top" | "bottom";
-    radius?: "none" | 'small' | 'medium' | 'pill' | null | undefined;
+    radius?: "none" | 'small' | 'medium' | 'circle' | null | undefined;
     checked?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -185,6 +188,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
                         size === 'large' && styles["lambda-checkbox-icon--size-large"],
                         size === 'medium' && styles["lambda-checkbox-icon--size-medium"],
                         size === 'small' && styles["lambda-checkbox-icon--size-small"],
+                        size === 'tiny' && styles["lambda-checkbox-icon--size-tiny"],
                         disabled && styles["lambda-checkbox-icon--disabled-true"]
                     )} />}
                 </div>
