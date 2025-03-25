@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useEffect } from "react";
-import { ThemeProvider } from "../src/Theme/Theme";
+import { ThemeProvider } from "../src/ThemeProvider/ThemeProvider";
 import { withThemeByClassName } from "@storybook/addon-themes"
 import type { Preview } from "@storybook/react"
 import '../src/index.css';
