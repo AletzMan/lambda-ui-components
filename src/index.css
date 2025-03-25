@@ -25,6 +25,8 @@
     --border-radius-pill: 10em;
     --border-radius-full: 50%;
 
+    --icon-size-3xs: 11px;
+    --icon-size-2xs: 13px;
     --icon-size-xs: 15px;
     --icon-size-sm: 16px;
     --icon-size-md: 18px;
@@ -59,7 +61,7 @@
     --surface-a: #f5fbfc;
     --surface-b: #edf5f7;
     --surface-c: #e3e9e9;
-    --surface-d: #949ca1;
+    --surface-d: #9da2a5;
     --surface-e: #c5c5c5;
     --surface-f: #989898;
     --border-color: #a6a6a6;
@@ -143,7 +145,7 @@
     --primary-light-color: #3b82f620;
     --primary-outline-color: #3b82f650;
     --primary-disabled-color: #93c5fd;
-    --primary-text-color: hwb(217 51% 0%);
+    --primary-text-color: #82b2ff;
     --primary-dark-bg-color: #1251c4;
 
     --secondary-color: #f6f4f4;
