@@ -15,16 +15,18 @@ const ThemeDecorator = (Story, context) => {
     document.body.setAttribute("data-theme", theme || "dark");
     console.log("THEME: ", theme)
     console.log("CONTEXT: ", context)
-    document.body.style.backgroundColor = theme === "dark" ? "var(--surface-b)" : "#F3F3F3";
+    document.body.style.backgroundColor = "var(--surface-a)";
     const element = document.getElementById("storybook-docs")?.children[0] as HTMLElement;
     const container = document.querySelector(".docs-story") as HTMLElement;
     if (element) {
       element.style.backgroundColor = "transparent"
     }
     if (container) {
-      container.style.backgroundColor = theme === "dark" ? "var(--surface-a)" : "#F3F3F3";
+      container.style.backgroundColor = "var(--surface-b)";
     }
-  }, [theme, Story]);
+
+
+  }, [theme, Story, context]);
 
   return (
     <ThemeProvider defaultTheme={theme}>

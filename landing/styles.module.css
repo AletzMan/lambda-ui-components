@@ -25,6 +25,11 @@ body {
   gap: 0.5em;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .title {
   padding: 0.5em 1em;
   color: var(--info-color);
@@ -47,6 +52,7 @@ body {
 .control_buttons {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin: 0 auto;
   gap: 2em;
   padding: 0.5em 1em;
@@ -73,6 +79,8 @@ body {
   padding: var(--padding-md) var(--padding-md);
   border-radius: var(--border-radius-sm);
   min-width: 8em;
+  max-height: 32px;
+  border: 1px solid var(--surface-d);
 }
 
 .buttons {

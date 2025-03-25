@@ -3,6 +3,7 @@ import { Button, Checkbox, Input, InputGroup } from '../src/main'
 import { AlertCircle, CheckCircle, Coins, HelpCircle, Menu, Search, SearchIcon, Send, Settings, Settings2, Trash, User } from "lucide-react"
 import styles from "./styles.module.css"
 import { JSX, useState } from 'react'
+import { ButtonThemeController } from '../src/ThemeProvider/ThemeProvider'
 
 interface IButton {
   color: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | null | undefined
@@ -29,11 +30,16 @@ function App() {
   const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("medium")
   const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledInput, setDisabledInput] = useState(false)
+  const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("medium")
   const [validInput, setValidInput] = useState(true)
+  const [errorMessage, setErrorMessage] = useState("This field has an error.")
 
   return (
     <section className={styles.section}>
-      <h1 className={styles.title}>Lambda UI Components</h1>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Lambda UI Components</h1>
+        <ButtonThemeController />
+      </header>
       <section className={styles.subsection}>
         <h2 className={styles.subtitle}>Buttons</h2>
         <div className={styles.control_buttons}>
@@ -200,40 +206,48 @@ function App() {
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </select>
+          <select className={styles.control_size} value={radiusInput} onChange={(e) => setRadiusInput(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="pill">Pill</option>
+          </select>
+          <Input value={errorMessage} onChange={(e) => setErrorMessage(e.currentTarget.value)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={styles.buttons}>
-            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' disabled={disabledInput} size={sizeInput} isRequired error={!validInput} />
-            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' size={sizeInput} error={!validInput} />
-            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' size={sizeInput} error={!validInput} />
-            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} error={!validInput} />
+            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' radius={radiusInput} disabled={disabledInput} size={sizeInput} isRequired error={!validInput} />
+            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
+            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
+            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} radius={radiusInput} error={!validInput} errorMessage={errorMessage} />
           </div>
           <div className={styles.buttons}>
-            <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant="underline" size={sizeInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Ingrese' floatingLabel />
+            <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant="underline" radius={radiusInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Ingrese' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} variant="underline" size={sizeInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='URL de imagen' floatingLabel />
+            <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} radius={radiusInput} variant="underline" size={sizeInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='URL de imagen' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup prefixElement={<User />} variant="underline" size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Ingrese' floatingLabel />
+            <InputGroup prefixElement={<User />} variant="underline" size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Ingrese' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup suffixElement={<Settings />} variant="underline" size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel helperText='Requerido *' />
+            <InputGroup suffixElement={<Settings />} variant="underline" size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel helperText='Requerido *' errorMessage={errorMessage} />
             </InputGroup>
           </div>
           <div className={styles.buttons}>
-            <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant="underline" size={sizeInput} radius="large" disabled={disabledInput} error={!validInput}>
-              <Input type="search" />
+            <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant="underline" size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+              <Input type="search" errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} size={sizeInput} radius="pill" disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel />
+            <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="secondary" style={{ backgroundColor: "#0aa9c1", width: "4em" }} />} size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel />
+            <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="info" style={{ width: "4em", backgroundColor: "#ffe11e", color: "#000000" }} />} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel />
+            <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} radius={radiusInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
           </div>
         </div>
