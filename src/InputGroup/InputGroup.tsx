@@ -71,7 +71,6 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
     ({ prefixElement, suffixElement, children, variant, radius, size, error, disabled, }, ref) => {
         const hasElements: "none" | "first" | "last" | "both" = prefixElement && suffixElement ? "both" : prefixElement ? "first" : suffixElement ? "last" : "none"
 
-
         const contextValue = useMemo(
             () => ({
                 variant: variant ?? "outline",
@@ -103,6 +102,5 @@ export const useInputGroup = () => {
     }
     return context
 }
-
 
 export default InputGroup // Exportamos el componente con forwardRef
