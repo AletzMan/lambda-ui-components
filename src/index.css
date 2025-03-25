@@ -59,8 +59,8 @@
     --surface-a: #f5fbfc;
     --surface-b: #edf5f7;
     --surface-c: #e3e9e9;
-    --surface-d: #b5c0c8;
-    --surface-e: #b0b0b0;
+    --surface-d: #949ca1;
+    --surface-e: #c5c5c5;
     --surface-f: #989898;
     --border-color: #a6a6a6;
     --shadow-color: #44434350;
@@ -128,12 +128,12 @@
     --placeholder-color: #626262;
     --placeholder-color: #626262;
 
-    --surface-a: #13171c;
+    --surface-a: #161a20;
     --surface-b: #1d232a;
-    --surface-c: #b7c1ce15;
-    --surface-d: #757c8560;
-    --surface-e: #a4b3bf;
-    --surface-f: #5c6065;
+    --surface-c: #384048;
+    --surface-d: #b0b1b260;
+    --surface-e: #525252;
+    --surface-f: #bdbdbd;
     --border-color: #27272a;
     --shadow-color: #3c3c3c60;
     --shadow-inset-color: #f1f1f155;
