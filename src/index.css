@@ -1,59 +1,8 @@
 :root {
     --font-family: 'Metropolis', sans-serif;
-
-    /* Variables generales */
-    --primary-color: #3884ff;
-    /* Azul ligeramente menos saturado */
-    --primary-hover-color: #2867ef;
-    --primary-light-color: #3b82f620;
-    --primary-outline-color: #3b82f650;
-    --primary-disabled-color: #93c5fd;
-    --primary-dark-bg-color: #1251c4;
-
-    --secondary-color: #9ca3af;
-    /* Gris ligeramente más suave */
-    --secondary-hover-color: #8a9096;
-    --secondary-light-color: #9ca3af20;
-    --secondary-outline-color: #9ca3af50;
-    --secondary-disabled-color: #d1d5db;
-    --secondary-dark-bg-color: #59616a;
-
-    --danger-color: #ef4444;
-    --danger-hover-color: #e22a2a;
-    --danger-light-color: #ef444420;
-    --danger-outline-color: #ef444450;
-    --danger-disabled-color: #fca5a5;
-    --danger-dark-bg-color: #bf3333;
-
-    --success-color: #22c55e;
-    --success-hover-color: #18ac4f;
-    --success-light-color: #22c55e20;
-    --success-outline-color: #22c55e50;
-    --success-disabled-color: #86efac;
-    --success-dark-bg-color: #278b2a;
-
-    --warning-color: #ffa60d;
-    --warning-hover-color: #f38f1d;
-    --warning-light-color: #f7bb5520;
-    --warning-outline-color: #f6be5750;
-    --warning-disabled-color: #fef08a;
-    --warning-dark-bg-color: #b45309;
-
-    --info-color: #38bdf8;
-    --info-hover-color: #13a8ed;
-    --info-light-color: #38bdf820;
-    --info-outline-color: #38bdf850;
-    --info-disabled-color: #a5f3fc;
-    --info-dark-bg-color: #288ada;
-
-
-
-
-
-
-
-
     --disabled-color: #6b6b6b;
+    --black-color: #222222;
+    --white-color: #f7f7f7;
 
     --padding-none: 0px;
     --padding-xs: 4px;
@@ -64,10 +13,11 @@
     --gap-sm: 4px;
     --gap-md: 8px;
     --gap-lg: 16px;
-    --font-size-xs: 11px;
-    --font-size-sm: 13px;
-    --font-size-md: 15px;
-    --font-size-lg: 17px;
+    --font-size-xs: 10px;
+    --font-size-sm: 12px;
+    --font-size-md: 14px;
+    --font-size-lg: 16px;
+
     --border-radius-none: 0px;
     --border-radius-sm: 3px;
     --border-radius-md: 6px;
@@ -78,6 +28,11 @@
     --icon-size-sm: 16px;
     --icon-size-md: 18px;
     --icon-size-lg: 20px;
+
+    --height-checkbox-xs: 16px;
+    --height-checkbox-sm: 20px;
+    --height-checkbox-md: 24px;
+    --height-checkbox-lg: 30px;
 
     --height-button-xs: 24px;
     --height-button-sm: 30px;
@@ -94,11 +49,12 @@
 
 [data-theme="light"] {
     --background-color: #f3f3f3;
-    --foreground-color: #f8f6f6;
-    --foreground-invert-color: #454545;
+    --foreground-color: #222222;
+    --foreground-invert-color: #f7f7f7;
     --foreground-label-color: #8fa2b3;
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #999999;
+
     --surface-a: #f5fbfc;
     --surface-b: #edf5f7;
     --surface-c: #e3e9e9;
@@ -108,15 +64,69 @@
     --border-color: #a6a6a6;
     --shadow-color: #44434350;
     --shadow-inset-color: #dee1e455;
+
+    --primary-color: #3884ff;
+    --primary-hover-color: #2867ef;
+    --primary-light-color: #3b82f620;
+    --primary-outline-color: #3b82f650;
+    --primary-disabled-color: #93c5fd;
+    --primary-text-color: #1251c4;
+    --primary-dark-bg-color: #1251c4;
+
+
+    --secondary-color: #292929;
+    --secondary-hover-color: #3f3f3f;
+    --secondary-light-color: #42424220;
+    --secondary-outline-color: #33333450;
+    --secondary-disabled-color: #383838;
+    --secondary-text-color: #272727;
+    --secondary-dark-bg-color: #000000;
+
+    --danger-color: #ef4444;
+    --danger-hover-color: #e22a2a;
+    --danger-light-color: #ef444420;
+    --danger-outline-color: #ef444450;
+    --danger-disabled-color: #fca5a5;
+    --danger-text-color: #bf3333;
+    --danger-dark-bg-color: #bf3333;
+
+
+    --success-color: #22c55e;
+    --success-hover-color: #18ac4f;
+    --success-light-color: #22c55e20;
+    --success-outline-color: #22c55e50;
+    --success-disabled-color: #86efac;
+    --success-text-color: #278b2a;
+    --success-dark-bg-color: #278b2a;
+
+
+
+    --warning-color: #ffa60d;
+    --warning-hover-color: #f38f1d;
+    --warning-light-color: #f7bb5520;
+    --warning-outline-color: #f6be5750;
+    --warning-disabled-color: #fef08a;
+    --warning-text-color: #b45309;
+    --warning-dark-bg-color: #b45309;
+
+    --info-color: #38bdf8;
+    --info-hover-color: #13a8ed;
+    --info-light-color: #38bdf820;
+    --info-outline-color: #38bdf850;
+    --info-disabled-color: #a5f3fc;
+    --info-dark-bg-color: #288ada;
+    --info-text-color: #288ada;
 }
 
 [data-theme="dark"] {
     --background-color: #171717;
-    --foreground-color: #fdfdfd;
-    --foreground-invert-color: #cbcbcb;
+    --foreground-color: #f7f7f7;
+    --foreground-invert-color: #222222;
     --foreground-label-color: #b1c0cc;
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #626262;
+    --placeholder-color: #626262;
+
     --surface-a: #13171c;
     --surface-b: #1d232a;
     --surface-c: #b7c1ce15;
@@ -126,6 +136,54 @@
     --border-color: #27272a;
     --shadow-color: #3c3c3c60;
     --shadow-inset-color: #f1f1f155;
+
+    --primary-color: #3884ff;
+    --primary-hover-color: #2867ef;
+    --primary-light-color: #3b82f620;
+    --primary-outline-color: #3b82f650;
+    --primary-disabled-color: #93c5fd;
+    --primary-text-color: hwb(217 51% 0%);
+    --primary-dark-bg-color: #1251c4;
+
+    --secondary-color: #f6f4f4;
+    --secondary-hover-color: #e1e1e1;
+    --secondary-light-color: #abaeb220;
+    --secondary-outline-color: #b0b2b450;
+    --secondary-disabled-color: #d8d8da;
+    --secondary-text-color: #dadde0;
+    --secondary-dark-bg-color: #a8a8a8;
+
+    --success-color: #22c55e;
+    --success-hover-color: #18ac4f;
+    --success-light-color: #22c55e20;
+    --success-outline-color: #22c55e50;
+    --success-disabled-color: #86efac;
+    --success-text-color: #6dd670;
+    --success-dark-bg-color: #278b2a;
+
+    --danger-color: #ef4444;
+    --danger-hover-color: #e22a2a;
+    --danger-light-color: #ef444420;
+    --danger-outline-color: #ef444450;
+    --danger-disabled-color: #fca5a5;
+    --danger-text-color: #ed7070;
+    --danger-dark-bg-color: #bf3333;
+
+    --warning-color: #ffa60d;
+    --warning-hover-color: #f38f1d;
+    --warning-light-color: #f7bb5520;
+    --warning-outline-color: #f6be5750;
+    --warning-disabled-color: #fef08a;
+    --warning-text-color: #e2a271;
+    --warning-dark-bg-color: #b45309;
+
+    --info-color: #38bdf8;
+    --info-hover-color: #13a8ed;
+    --info-light-color: #38bdf820;
+    --info-outline-color: #38bdf850;
+    --info-disabled-color: #a5f3fc;
+    --info-text-color: #66baff;
+    --info-dark-bg-color: #288ada;
 }
 
 
