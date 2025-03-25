@@ -234,26 +234,32 @@
 .lambda-checkbox-bg--size-tiny {
     height: var(--height-checkbox-xs);
     width: var(--height-checkbox-xs);
+    min-height: var(--height-checkbox-xs);
+    min-width: var(--height-checkbox-xs);
 }
 
 .lambda-checkbox-bg--size-small {
     height: var(--height-checkbox-sm);
     width: var(--height-checkbox-sm);
+    min-height: var(--height-checkbox-sm);
+    min-width: var(--height-checkbox-sm);
 }
 
 .lambda-checkbox-bg--size-medium {
     height: var(--height-checkbox-md);
     width: var(--height-checkbox-md);
+    min-height: var(--height-checkbox-md);
+    min-width: var(--height-checkbox-md);
 }
 
 .lambda-checkbox-bg--size-large {
     height: var(--height-checkbox-lg);
     width: var(--height-checkbox-lg);
+    min-height: var(--height-checkbox-lg);
+    min-width: var(--height-checkbox-lg);
 }
 
 .lambda-checkbox-icon {
-    width: var(--height-sm);
-    height: var(--height-sm);
     stroke-width: 4px;
     pointer-events: none;
     box-sizing: border-box;
@@ -281,13 +287,13 @@
 }
 
 .lambda-checkbox-icon--size-medium {
-    width: var(--font-size-md);
-    height: var(--font-size-md);
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
 }
 
 .lambda-checkbox-icon--size-large {
-    width: var(--font-size-lg);
-    height: var(--font-size-lg);
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
 }
 
 @keyframes animateIcon {
@@ -323,6 +329,7 @@
 .lambda-checkbox-label {
     color: var(--foreground-color);
     font-family: inherit;
+    width: max-content;
 }
 
 .lambda-checkbox-label--size-tiny {
