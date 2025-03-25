@@ -22,12 +22,12 @@ const meta: Meta<typeof Checkbox> = {
         },
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Input size"
         },
         radius: {
             control: 'select',
-            options: ['none', 'small', 'medium', 'pill'],
+            options: ['none', 'small', 'medium', 'circle'],
             description: "Corner shape",
             type: "string"
         },
@@ -36,7 +36,7 @@ const meta: Meta<typeof Checkbox> = {
             type: "string",
             description: "Text to display as the label for the component",
         },
-        position_label: {
+        positionLabel: {
             control: 'select',
             options: ['right', 'left', 'top', 'bottom'],
             description: "Select position label right or left",
@@ -60,7 +60,7 @@ export const Primary: Story = {
         color: "primary",
         size: 'medium',
         label: 'Label',
-        position_label: 'right',
+        positionLabel: 'right',
         radius: "medium",
         checked: false,
         disabled: false,
@@ -72,7 +72,7 @@ export const Secondary: Story = {
         color: "secondary",
         size: 'medium',
         label: 'Label',
-        position_label: 'right',
+        positionLabel: 'right',
         radius: "medium",
         checked: false,
         disabled: false,
@@ -84,7 +84,7 @@ export const Danger: Story = {
         color: "danger",
         size: 'medium',
         label: 'Label',
-        position_label: 'right',
+        positionLabel: 'right',
         radius: "medium",
         checked: false,
         disabled: false,
@@ -96,7 +96,7 @@ export const Success: Story = {
         color: "success",
         size: 'medium',
         label: 'Label',
-        position_label: 'right',
+        positionLabel: 'right',
         radius: "medium",
         checked: false,
         disabled: false,
@@ -108,7 +108,7 @@ export const Warning: Story = {
         color: "warning",
         size: 'medium',
         label: 'Label',
-        position_label: 'right',
+        positionLabel: 'right',
         radius: "medium",
         checked: false,
         disabled: false,
