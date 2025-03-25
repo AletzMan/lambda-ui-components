@@ -18,12 +18,12 @@ const meta: Meta<typeof InputNumber> = {
         },
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Input size"
         },
         radius: {
             control: 'select',
-            options: ['none', 'small', 'medium', 'pill'],
+            options: ['none', 'small', 'medium', 'large', 'pill'],
             description: "Corner shape"
         },
         label: {
@@ -36,7 +36,7 @@ const meta: Meta<typeof InputNumber> = {
             type: "string",
             options: ["default", "currency-USD", "currency-EUR", "currency-GBP", "percentage", "decimal"]
         },
-        error: {
+        invalid: {
             control: 'boolean',
             type: 'boolean',
             description: "Applies error styles when true"
@@ -63,7 +63,7 @@ export const Number: Story = {
         max: 100,
         typeNumber: "default",
         label: 'Label',
-        error: false,
+        invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         placeholder: "0",
         disabled: false,
