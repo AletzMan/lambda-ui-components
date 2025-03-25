@@ -1,15 +1,16 @@
 
 /* eslint-disable react-refresh/only-export-components */
-import { ReactNode, forwardRef, createContext, useMemo, PropsWithChildren, FC, useContext, RefAttributes } from "react";
-import { InputProps } from "../Input/Input";
-import styles from "./inputGroup.module.css";
-import clsx from 'clsx';
-import { VariantProps, cva } from "class-variance-authority";
+import { ReactNode, forwardRef, createContext, useMemo, PropsWithChildren, FC, useContext, RefAttributes } from "react"
+import { InputProps } from "../Input/Input"
+import styles from "./inputGroup.module.css"
+import clsx from 'clsx'
+import { VariantProps, cva } from "class-variance-authority"
 
 
 export const inputGroup = cva(styles["lambda-input-group"], {
     variants: {
         size: {
+            tiny: styles["lambda-input-group--size-tiny"],
             small: styles["lambda-input-group--size-small"],
             medium: styles["lambda-input-group--size-medium"],
             large: styles["lambda-input-group--size-large"],
@@ -48,27 +49,27 @@ export const inputGroup = cva(styles["lambda-input-group"], {
         error: false,
         disabled: false,
     },
-});
+})
 
 type InputGroupContextType = {
-    variant?: "outline" | "flat" | "underline" | null;
-    radius?: "none" | "small" | "medium" | "large" | "pill" | null;
-    size?: "small" | "medium" | "large" | null;
-    error?: boolean | null;
+    variant?: "outline" | "flat" | "underline" | null
+    radius?: "none" | "small" | "medium" | "large" | "pill" | null
+    size?: "tiny" | "small" | "medium" | "large" | null
+    error?: boolean | null
     hasElements: "none" | "first" | "last" | "both"
-    disabled?: boolean | null;
-};
+    disabled?: boolean | null
+}
 
-const InputGroupContext = createContext<InputGroupContextType | null>(null);
+const InputGroupContext = createContext<InputGroupContextType | null>(null)
 
 interface InputGroupProps extends Omit<InputProps, "error" | "disabled">, VariantProps<typeof inputGroup>, RefAttributes<HTMLDivElement> {
-    prefixElement?: ReactNode;
-    suffixElement?: ReactNode;
+    prefixElement?: ReactNode
+    suffixElement?: ReactNode
 }
 
 export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTMLDivElement, InputGroupProps>(
     ({ prefixElement, suffixElement, children, variant, radius, size, error, disabled, }, ref) => {
-        const hasElements: "none" | "first" | "last" | "both" = prefixElement && suffixElement ? "both" : prefixElement ? "first" : suffixElement ? "last" : "none";
+        const hasElements: "none" | "first" | "last" | "both" = prefixElement && suffixElement ? "both" : prefixElement ? "first" : suffixElement ? "last" : "none"
 
 
         const contextValue = useMemo(
@@ -81,7 +82,7 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
                 disabled: disabled ?? false,
             }),
             [variant, radius, size, error, disabled, hasElements]
-        );
+        )
 
         return (
             <InputGroupContext.Provider value={contextValue}>
@@ -91,17 +92,17 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
                     {suffixElement && <div className={styles["lambda-input-group__end"]}>{suffixElement}</div>}
                 </div>
             </InputGroupContext.Provider>
-        );
+        )
     }
-);
+)
 
 export const useInputGroup = () => {
-    const context = useContext(InputGroupContext);
+    const context = useContext(InputGroupContext)
     if (!context) {
-        throw new Error("useInputGroup must be used within an InputGroup");
+        throw new Error("useInputGroup must be used within an InputGroup")
     }
-    return context;
-};
+    return context
+}
 
 
-export default InputGroup; // Exportamos el componente con forwardRef
+export default InputGroup // Exportamos el componente con forwardRef

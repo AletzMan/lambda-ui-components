@@ -25,6 +25,7 @@
     --border-radius-pill: 10em;
     --border-radius-full: 50%;
 
+    --icon-size-xs: 15px;
     --icon-size-sm: 16px;
     --icon-size-md: 18px;
     --icon-size-lg: 20px;
@@ -39,10 +40,10 @@
     --height-button-md: 36px;
     --height-button-lg: 42px;
 
-    --height-input-xs: 12px;
-    --height-input-sm: 24px;
-    --height-input-md: 32px;
-    --height-input-lg: 40px;
+    --height-input-xs: 24px;
+    --height-input-sm: 30px;
+    --height-input-md: 36px;
+    --height-input-lg: 42px;
 
     --box-shadow: 0 0 3px 1px var(--shadow-color);
 }

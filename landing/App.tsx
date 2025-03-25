@@ -20,169 +20,224 @@ const buttonsPrimary: IButton[] = [
 ]
 
 function App() {
-  const [disabled, setDisabled] = useState(false)
-  const [disabledButtons, setDisabledButtons] = useState(false)
   const [loadingButtons, setLoadingButtons] = useState(false)
+  const [disabledButtons, setDisabledButtons] = useState(false)
+  const [radiusButtons, setRadiusButtons] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("medium")
+  const [sizeButtons, setSizeButtons] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
+  const [sizeCheckbox, setSizeCheckbox] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
+  const [disabledCheckbox, setDisabledCheckbox] = useState(false)
+  const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("medium")
+  const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
+  const [disabledInput, setDisabledInput] = useState(false)
+  const [validInput, setValidInput] = useState(true)
 
   return (
-    <section>
-      UI Components
-      <div className={styles.control_buttons}>
-        <Checkbox label='Disabled' checked={disabledButtons} size="medium" color="secondary" onChange={(e) => setDisabledButtons(e.currentTarget.checked)} />
-        <Checkbox label='Loading' checked={loadingButtons} size="medium" color="info" onChange={(e) => setLoadingButtons(e.currentTarget.checked)} />
-      </div>
-      <div className={styles.container_buttons}>
-        <div className={styles.buttons}>
-          {buttonsPrimary.map((button) => (
-            <Button key={button.color}
-              className={styles.button}
-              size="medium"
-              radius={'small'}
-              variant="classic"
-              color={button.color}
-              label={button.label}
-              disabled={disabledButtons}
-              loading={loadingButtons}
-              loadingText="Loading"
-              iconPosition="left"
-              icon={button.icon} />
-          ))}
+    <section className={styles.section}>
+      <h1 className={styles.title}>Lambda UI Components</h1>
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Buttons</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledButtons} size="medium" color="secondary" onChange={(e) => setDisabledButtons(e.currentTarget.checked)} />
+          <Checkbox label='Loading' checked={loadingButtons} size="medium" color="info" onChange={(e) => setLoadingButtons(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeButtons} onChange={(e) => setSizeButtons(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={radiusButtons} onChange={(e) => setRadiusButtons(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | "circle" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="pill">Pill</option>
+            <option value="circle">Cirlce</option>
+          </select>
         </div>
-        <div className={styles.buttons}>
-          {buttonsPrimary.map((button) => (
-            <Button key={button.color}
-              className={styles.button}
-              size="medium"
-              radius={'small'}
-              variant="solid"
-              disabled={disabledButtons}
-              loading={loadingButtons}
-              loadingText="Loading"
-              color={button.color}
-              label={button.label}
-              iconPosition="left"
-              icon={button.icon} />
-          ))}
+        <div className={styles.container_buttons}>
+          <div className={styles.buttons}>
+            {buttonsPrimary.map((button) => (
+              <Button key={button.color}
+                className={styles.button}
+                size={sizeButtons}
+                radius={radiusButtons}
+                variant="classic"
+                color={button.color}
+                label={button.label}
+                disabled={disabledButtons}
+                loading={loadingButtons}
+                loadingText="Loading"
+                iconPosition="left"
+                icon={button.icon} />
+            ))}
+          </div>
+          <div className={styles.buttons}>
+            {buttonsPrimary.map((button) => (
+              <Button key={button.color}
+                className={styles.button}
+                size={sizeButtons}
+                radius={radiusButtons}
+                variant="solid"
+                disabled={disabledButtons}
+                loading={loadingButtons}
+                loadingText="Loading"
+                color={button.color}
+                label={button.label}
+                iconPosition="left"
+                icon={button.icon} />
+            ))}
+          </div>
+          <div className={styles.buttons}>
+            {buttonsPrimary.map((button) => (
+              <Button key={button.color}
+                className={styles.button}
+                size={sizeButtons}
+                radius={radiusButtons}
+                variant="outline"
+                color={button.color}
+                disabled={disabledButtons}
+                loading={loadingButtons}
+                loadingText="Loading"
+                label={button.label}
+                iconPosition="left"
+                icon={button.icon} />
+            ))}
+          </div>
+          <div className={styles.buttons}>
+            {buttonsPrimary.map((button) => (
+              <Button key={button.color}
+                className={styles.button}
+                size={sizeButtons}
+                radius={radiusButtons}
+                variant="dashed"
+                color={button.color}
+                disabled={disabledButtons}
+                loading={loadingButtons}
+                loadingText="Loading"
+                label={button.label}
+                iconPosition="left"
+                icon={button.icon} />
+            ))}
+          </div>
+          <div className={styles.buttons}>
+            {buttonsPrimary.map((button) => (
+              <Button key={button.color}
+                className={styles.button}
+                size={sizeButtons}
+                radius={radiusButtons}
+                variant="ghost"
+                disabled={disabledButtons}
+                loading={loadingButtons}
+                loadingText="Loading"
+                color={button.color}
+                label={button.label}
+                iconPosition="left"
+                icon={button.icon} />
+            ))}
+          </div>
+          <div className={styles.buttons}>
+            {buttonsPrimary.map((button) => (
+              <Button key={button.color}
+                className={styles.button}
+                size={sizeButtons}
+                radius={'small'}
+                variant="text"
+                color={button.color}
+                disabled={disabledButtons}
+                loading={loadingButtons}
+                loadingText="Loading"
+                label={button.label}
+                iconPosition="left"
+                icon={button.icon} />
+            ))}
+          </div>
         </div>
-        <div className={styles.buttons}>
-          {buttonsPrimary.map((button) => (
-            <Button key={button.color}
-              className={styles.button}
-              size="medium"
-              radius={'small'}
-              variant="outline"
-              color={button.color}
-              disabled={disabledButtons}
-              loading={loadingButtons}
-              loadingText="Loading"
-              label={button.label}
-              iconPosition="left"
-              icon={button.icon} />
-          ))}
+      </section>
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Checkbox</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledCheckbox} size="medium" color="secondary" onChange={(e) => setDisabledCheckbox(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeCheckbox} onChange={(e) => setSizeCheckbox(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={radiusCheckbox} onChange={(e) => setRadiusCheckbox(e.currentTarget.value as "medium" | "small" | "none" | "circle" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="circle">Circle</option>
+          </select>
         </div>
-        <div className={styles.buttons}>
-          {buttonsPrimary.map((button) => (
-            <Button key={button.color}
-              className={styles.button}
-              size="medium"
-              radius={'small'}
-              variant="dashed"
-              color={button.color}
-              disabled={disabledButtons}
-              loading={loadingButtons}
-              loadingText="Loading"
-              label={button.label}
-              iconPosition="left"
-              icon={button.icon} />
-          ))}
+        <div className={styles.container_buttons}>
+          <div className={styles.buttons}>
+            <Checkbox size={sizeCheckbox} label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
+          </div>
+          <div className={styles.buttons}>
+            <Checkbox size={sizeCheckbox} variant="flat" label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} variant="flat" color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} variant="flat" color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} variant="flat" color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} variant="flat" color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            <Checkbox size={sizeCheckbox} variant="flat" color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
+          </div>
         </div>
-        <div className={styles.buttons}>
-          {buttonsPrimary.map((button) => (
-            <Button key={button.color}
-              className={styles.button}
-              size="medium"
-              radius={'small'}
-              variant="ghost"
-              disabled={disabledButtons}
-              loading={loadingButtons}
-              loadingText="Loading"
-              color={button.color}
-              label={button.label}
-              iconPosition="left"
-              icon={button.icon} />
-          ))}
+      </section>
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Input</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledInput} size="medium" color="secondary" onChange={(e) => setDisabledInput(e.currentTarget.checked)} />
+          <Checkbox label='Is Valid' checked={validInput} size="medium" color="info" onChange={(e) => setValidInput(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeInput} onChange={(e) => setSizeInput(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
         </div>
-        <div className={styles.buttons}>
-          {buttonsPrimary.map((button) => (
-            <Button key={button.color}
-              className={styles.button}
-              size="medium"
-              radius={'small'}
-              variant="text"
-              color={button.color}
-              disabled={disabledButtons}
-              loading={loadingButtons}
-              loadingText="Loading"
-              label={button.label}
-              iconPosition="left"
-              icon={button.icon} />
-          ))}
+        <div className={styles.container_buttons}>
+          <div className={styles.buttons}>
+            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' disabled={disabledInput} size={sizeInput} isRequired error={!validInput} />
+            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' size={sizeInput} error={!validInput} />
+            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' size={sizeInput} error={!validInput} />
+            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} error={!validInput} />
+          </div>
+          <div className={styles.buttons}>
+            <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant="underline" size={sizeInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Ingrese' floatingLabel />
+            </InputGroup>
+            <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} variant="underline" size={sizeInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='URL de imagen' floatingLabel />
+            </InputGroup>
+            <InputGroup prefixElement={<User />} variant="underline" size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Ingrese' floatingLabel />
+            </InputGroup>
+            <InputGroup suffixElement={<Settings />} variant="underline" size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel helperText='Requerido *' />
+            </InputGroup>
+          </div>
+          <div className={styles.buttons}>
+            <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant="underline" size={sizeInput} radius="large" disabled={disabledInput} error={!validInput}>
+              <Input type="search" />
+            </InputGroup>
+            <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} size={sizeInput} radius="pill" disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel />
+            </InputGroup>
+            <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="secondary" style={{ backgroundColor: "#0aa9c1", width: "4em" }} />} size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel />
+            </InputGroup>
+            <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} size={sizeInput} radius="medium" disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' floatingLabel />
+            </InputGroup>
+          </div>
         </div>
-      </div>
-      <div className={styles.container_buttons}>
-        <div className={styles.buttons}>
-          <Checkbox size="medium" label='Primary' onChange={(e) => setDisabled(e.currentTarget.checked)} />
-          <Checkbox size="medium" color="secondary" label='Secondary' />
-          <Checkbox size="medium" color="success" label='Success' />
-          <Checkbox size="medium" color="danger" label='Danger' />
-          <Checkbox size="medium" color="warning" label='Warning' />
-          <Checkbox size="medium" color="info" label='Info' />
-        </div>
-        <div className={styles.buttons}>
-          <Checkbox size="medium" variant="flat" label='Primary' />
-          <Checkbox size="medium" variant="flat" color="secondary" label='Secondary' />
-          <Checkbox size="medium" variant="flat" color="success" label='Success' />
-          <Checkbox size="medium" variant="flat" color="danger" label='Danger' />
-          <Checkbox size="medium" variant="flat" color="warning" label='Warning' />
-          <Checkbox size="medium" variant="flat" color="info" label='Info' />
-        </div>
-      </div>
-      <div className={styles.container_buttons}>
-        <div className={styles.buttons}>
-          <Input type="text" label='Nombre' floatingLabel={false} error errorMessage='Ingrese Nombre de 3 letras' disabled size="medium" isRequired />
-          <Input type="email" label='E-mail' disabled placeholder='Correo electronico' />
-          <Input type="password" label='Password' disabled={disabled} placeholder='Contraseña' />
-          <Input type="search" label='Busqueda' disabled={disabled} />
-        </div>
-        <div className={styles.buttons}>
-          <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant="underline" size="medium" disabled={disabled}>
-            <Input type="text" label='Ingrese' floatingLabel />
-          </InputGroup>
-          <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} variant="underline" size="medium" disabled>
-            <Input type="text" label='URL de imagen' floatingLabel />
-          </InputGroup>
-          <InputGroup prefixElement={<User />} variant="underline" size="medium" radius="medium">
-            <Input type="text" label='Ingrese' floatingLabel />
-          </InputGroup>
-          <InputGroup suffixElement={<Settings />} variant="underline" size={'medium'} radius="medium">
-            <Input type="text" label='Configuracion' floatingLabel helperText='Requerido *' />
-          </InputGroup>
-        </div>
-        <div className={styles.buttons}>
-          <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant="underline" size="medium" radius="large">
-            <Input type="search" />
-          </InputGroup>
-          <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} size="medium" radius="pill">
-            <Input type="text" label='Configuracion' floatingLabel />
-          </InputGroup>
-          <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="secondary" style={{ backgroundColor: "#0aa9c1", width: "4em" }} />} size="medium" radius="medium">
-            <Input type="text" label='Configuracion' floatingLabel />
-          </InputGroup>
-          <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} size="medium" radius="medium">
-            <Input type="text" label='Configuracion' floatingLabel />
-          </InputGroup>
-        </div>
-      </div>
+      </section>
     </section>
   )
 }

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ButtonHTMLAttributes, ReactNode, forwardRef, isValidElement } from "react";
-import styles from "./button.module.css";
-import { cva, VariantProps } from "class-variance-authority";
-import { Loader } from "lucide-react";
-import clsx from 'clsx';
-import { useInputGroup } from "../InputGroup/InputGroup";
+import { ButtonHTMLAttributes, ReactNode, forwardRef, isValidElement } from "react"
+import styles from "./button.module.css"
+import { cva, VariantProps } from "class-variance-authority"
+import { Loader } from "lucide-react"
+import clsx from 'clsx'
+import { useInputGroup } from "../InputGroup/InputGroup"
 
 const button = cva(styles[`lambda-btn`], {
     variants: {
@@ -60,11 +60,11 @@ const button = cva(styles[`lambda-btn`], {
         iconPosition: "left",
         loading: false,
     },
-});
+})
 
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled" | "color">, VariantProps<typeof button> {
-    icon?: ReactNode | undefined | null;
-    label?: string;
+    icon?: ReactNode | undefined | null
+    label?: string
     loadingText?: string
 }
 
@@ -86,12 +86,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         },
         ref
     ) => {
-        let contextSize
+        let contextSize, contextDisabled
         try {
-            const context = useInputGroup();
-            contextSize = context.size;
+            const context = useInputGroup()
+            contextSize = context.size
+            contextDisabled = context.disabled
         } catch (e) {
-            contextSize = size;
+            contextSize = size
+            contextDisabled = disabled
         }
         return (
             <button
@@ -101,7 +103,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         variant,
                         size: contextSize,
                         color,
-                        disabled,
+                        disabled: contextDisabled,
                         radius,
                         loading,
                         iconPosition,
@@ -109,7 +111,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     }),
                     { [styles["lambda-btn--only-icon"]]: !(isValidElement<ReactNode>(props.children) || label) }
                 )}
-                disabled={disabled || undefined}
+                disabled={contextDisabled || undefined}
                 {...props}
             >
                 {(icon || loading) && (
@@ -120,6 +122,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 {label && <span className={styles["lambda-btn-label"]}>{(loading && loadingText) ? loadingText : label}</span>}
                 {props.children}
             </button>
-        );
+        )
     }
-);
+)

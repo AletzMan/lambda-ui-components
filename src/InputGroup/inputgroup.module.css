@@ -15,6 +15,12 @@
 
 
 
+ .lambda-input-group--size-tiny {
+     padding: var(--padding-none) var(--padding-none);
+     font-size: var(--font-size-xs);
+     height: var(--height-input-xs);
+ }
+
  .lambda-input-group--size-small {
      padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-xs);
@@ -22,13 +28,13 @@
  }
 
  .lambda-input-group--size-medium {
-     padding: var(--padding-xs) var(--padding-none);
+     padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-sm);
      height: var(--height-input-md);
  }
 
  .lambda-input-group--size-large {
-     padding: var(--padding-sm) var(--padding-none);
+     padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-md);
      height: var(--height-input-lg);
  }
@@ -264,7 +270,24 @@
          color: var(--surface-e);
      }
 
+     &.lambda-input-group--size-tiny {
 
+         .lambda-input-group__start,
+         .lambda-input-group__end {
+
+             &>svg {
+                 width: var(--icon-size-xs);
+                 height: var(--icon-size-xs);
+                 margin: 0 var(--padding-lg);
+             }
+
+             &>span {
+                 font-size: var(--font-size-xs);
+                 font-family: inherit;
+                 margin: 0 var(--padding-lg);
+             }
+         }
+     }
 
      &.lambda-input-group--size-small {
 

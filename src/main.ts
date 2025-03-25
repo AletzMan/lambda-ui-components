@@ -1,4 +1,4 @@
-import '@fontsource/metropolis';
+import '@fontsource/metropolis'
 import "./index.css"
 
 export { Button } from "./Button/Button"

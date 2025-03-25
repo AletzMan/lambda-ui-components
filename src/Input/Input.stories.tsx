@@ -63,7 +63,7 @@ const meta: Meta<typeof Input> = {
 
 }
 
-export default meta;
+export default meta
 
 type Story = StoryObj<typeof Input>
 

@@ -1,8 +1,8 @@
-import { forwardRef, useState, InputHTMLAttributes, ChangeEvent } from "react";
-import { cva, VariantProps } from "class-variance-authority";
-import styles from "./checkbox.module.css";
-import { CheckIcon } from "lucide-react";
-import clsx from 'clsx';
+import { forwardRef, useState, InputHTMLAttributes, ChangeEvent } from "react"
+import { cva, VariantProps } from "class-variance-authority"
+import styles from "./checkbox.module.css"
+import { CheckIcon } from "lucide-react"
+import clsx from 'clsx'
 
 const checkboxprop = cva(styles["lambda-checkbox"], {
     variants: {
@@ -40,7 +40,7 @@ const checkboxprop = cva(styles["lambda-checkbox"], {
         disabled: false,
         checked: false,
     },
-});
+})
 
 const bg = cva(styles["lambda-checkbox-bg"], {
     variants: {
@@ -85,7 +85,7 @@ const bg = cva(styles["lambda-checkbox-bg"], {
         disabled: false,
         checked: false,
     },
-});
+})
 
 const pos_lb = cva(styles["lambda-checkbox-label-wrapper"], {
     variants: {
@@ -104,7 +104,7 @@ const pos_lb = cva(styles["lambda-checkbox-label-wrapper"], {
         positionLabel: "right",
         disabled: false,
     },
-});
+})
 
 const textLabel = cva(styles["lambda-checkbox-label"], {
     variants: {
@@ -123,16 +123,16 @@ const textLabel = cva(styles["lambda-checkbox-label"], {
         size: "medium",
         disabled: false,
     },
-});
+})
 
 export interface Checkboxprops
     extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | 'checked' | "color" | "type">,
     VariantProps<typeof checkboxprop> {
-    label?: string;
-    positionLabel?: "right" | "left" | "top" | "bottom";
-    radius?: "none" | 'small' | 'medium' | 'circle' | null | undefined;
-    checked?: boolean;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    label?: string
+    positionLabel?: "right" | "left" | "top" | "bottom"
+    radius?: "none" | 'small' | 'medium' | 'circle' | null | undefined
+    checked?: boolean
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
@@ -152,15 +152,15 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
         },
         ref
     ) => {
-        const [internalChecked, setInternalChecked] = useState(checked);
+        const [internalChecked, setInternalChecked] = useState(checked)
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-            const newChecked = e.target.checked;
-            setInternalChecked(newChecked);
+            const newChecked = e.target.checked
+            setInternalChecked(newChecked)
             if (onChange) {
-                onChange(e);
+                onChange(e)
             }
-        };
+        }
 
         return (
             <label className={pos_lb({ positionLabel, disabled })}>
@@ -194,6 +194,6 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkboxprops>(
                 </div>
                 {label && <span className={textLabel({ size, disabled })}>{label}</span>}
             </label>
-        );
+        )
     }
-);
+)

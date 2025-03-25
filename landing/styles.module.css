@@ -15,6 +15,44 @@
 
 body {
   background-color: var(--surface-b);
+  font-family: var(--font-family);
+}
+
+.section {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.title {
+  padding: 0.5em 1em;
+  color: var(--info-color);
+}
+
+.subsection {
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--surface-d);
+}
+
+.subtitle {
+  padding: 0.5em 1em;
+  color: var(--foreground-color);
+}
+
+.control_buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  gap: 2em;
+  padding: 0.5em 1em;
+  width: 100%;
+  background-color: var(--surface-c);
+  border-radius: var(--border-radius-sm);
 }
 
 .container_buttons {
@@ -24,6 +62,17 @@ body {
   flex-direction: row;
   gap: 0.5em;
   padding: 1em;
+  border-radius: var(--border-radius-sm);
+  border: 1px dashed var(--surface-d);
+}
+
+.control_size {
+  background-color: var(--surface-a);
+  font-family: var(--font-family);
+  color: var(--foreground-color);
+  padding: var(--padding-md) var(--padding-md);
+  border-radius: var(--border-radius-sm);
+  min-width: 8em;
 }
 
 .buttons {
@@ -35,11 +84,4 @@ body {
 
 .button {
   width: 100%;
-}
-
-.control_buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
-  padding: 0.25em 1em;
 }

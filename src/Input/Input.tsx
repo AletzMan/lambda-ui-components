@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
-import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent } from "react";
-import styles from "./input.module.css";
-import { cva, VariantProps } from "class-variance-authority";
-import { Eye, EyeOff, X } from "lucide-react";
-import clsx from 'clsx';
-import { useInputGroup } from "../InputGroup/InputGroup";
+import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent } from "react"
+import styles from "./input.module.css"
+import { cva, VariantProps } from "class-variance-authority"
+import { Eye, EyeOff, X } from "lucide-react"
+import clsx from 'clsx'
+import { useInputGroup } from "../InputGroup/InputGroup"
 
 export const input = cva(styles["lambda-input__wrapper"], {
     variants: {
@@ -56,7 +56,7 @@ export const input = cva(styles["lambda-input__wrapper"], {
         error: false,
         disabled: false,
     },
-});
+})
 
 const labels = cva(styles["lambda-input__label"], {
     variants: {
@@ -85,7 +85,7 @@ const labels = cva(styles["lambda-input__label"], {
         radius: "small",
         size: "medium",
     },
-});
+})
 
 const textInput = cva(styles["lambda-input__field"], {
     variants: {
@@ -104,7 +104,7 @@ const textInput = cva(styles["lambda-input__field"], {
         size: "medium",
         disabled: false
     }
-});
+})
 
 const errorlabel = cva(styles["lambda-input__error"], {
     variants: {
@@ -118,7 +118,7 @@ const errorlabel = cva(styles["lambda-input__error"], {
     defaultVariants: {
         size: "medium"
     }
-});
+})
 
 const buttonPassword = cva(styles["lambda-input__toggle-password"], {
     variants: {
@@ -138,7 +138,7 @@ const buttonPassword = cva(styles["lambda-input__toggle-password"], {
         size: "medium",
         variant: "outline"
     }
-});
+})
 
 const optionalText = cva(styles["lambda-input__optional"], {
     variants: {
@@ -150,93 +150,95 @@ const optionalText = cva(styles["lambda-input__optional"], {
     defaultVariants: {
         disabled: false
     }
-});
+})
 
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> {
     label?: string,
     error?: boolean,
-    errorMessage?: string;
-    floatingLabel?: boolean;
+    errorMessage?: string
+    floatingLabel?: boolean
     helperText?: string
     isRequired?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled: propsDisabled, type = "text", value: controlledValue, onChange, isRequired, floatingLabel, placeholder, helperText, ...props }, ref) => {
-        let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, hasElements: "none" | "first" | "last" | "both";
+        let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextError, hasElements: "none" | "first" | "last" | "both"
         try {
-            const context = useInputGroup();
-            contextVariant = context.variant;
-            contextRadius = context.radius;
-            contextSize = context.size;
+            const context = useInputGroup()
+            contextVariant = context.variant
+            contextRadius = context.radius
+            contextSize = context.size
             contextDisabled = context.disabled
+            contextError = context.error
             hasElements = context.hasElements
             isGroup = true
         } catch (e) {
-            contextVariant = propVariant;
-            contextRadius = propRadius;
-            contextSize = propSize;
+            contextVariant = propVariant
+            contextRadius = propRadius
+            contextSize = propSize
             contextDisabled = propsDisabled
+            contextError = error
             isGroup = false
             hasElements = "none"
         }
-        const [showPassword, setShowPassword] = useState(false);
-        const [internalValue, setInternalValue] = useState("");
-        const [isLabelFloating, setIsLabelFloating] = useState(false);
-        const [isFocused, setIsFocused] = useState(false);
+        const [showPassword, setShowPassword] = useState(false)
+        const [internalValue, setInternalValue] = useState("")
+        const [isLabelFloating, setIsLabelFloating] = useState(false)
+        const [isFocused, setIsFocused] = useState(false)
 
-        const isControlled = controlledValue !== undefined;
-        const value = isControlled ? controlledValue : internalValue;
+        const isControlled = controlledValue !== undefined
+        const value = isControlled ? controlledValue : internalValue
 
-        const isPasswordType = type === "password";
-        const isSearchType = type === "search";
-        const inputType = isPasswordType && showPassword ? "text" : type;
+        const isPasswordType = type === "password"
+        const isSearchType = type === "search"
+        const inputType = isPasswordType && showPassword ? "text" : type
 
         const togglePasswordVisibility = (e: MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault();
+            e.preventDefault()
             if (isPasswordType) {
-                setShowPassword((prev) => !prev);
+                setShowPassword((prev) => !prev)
             }
-        };
+        }
 
         const clearInput = () => {
             if (isSearchType) {
-                if (!isControlled) setInternalValue("");
-                if (onChange) onChange({ target: { value: "" } } as ChangeEvent<HTMLInputElement>);
+                if (!isControlled) setInternalValue("")
+                if (onChange) onChange({ target: { value: "" } } as ChangeEvent<HTMLInputElement>)
             }
-        };
+        }
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-            const newValue = e.target.value;
+            const newValue = e.target.value
             if (!isControlled) {
-                setInternalValue(newValue);
+                setInternalValue(newValue)
             }
             if (onChange) {
-                onChange(e);
+                onChange(e)
             }
             if (floatingLabel) {
-                setIsLabelFloating(!!newValue || isFocused);
+                setIsLabelFloating(!!newValue || isFocused)
             }
-        };
+        }
 
         const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
-            e.preventDefault();
-            setIsFocused(true);
+            e.preventDefault()
+            setIsFocused(true)
             if (floatingLabel) {
-                setIsLabelFloating(true);
+                setIsLabelFloating(true)
             }
-        };
+        }
 
         const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-            e.preventDefault();
-            setIsFocused(false);
+            e.preventDefault()
+            setIsFocused(false)
             if (floatingLabel && !value) {
-                setIsLabelFloating(false);
+                setIsLabelFloating(false)
             }
-        };
+        }
 
-        const inputPlaceholder = floatingLabel ? "" : placeholder;
+        const inputPlaceholder = floatingLabel ? "" : placeholder
 
         return (
             <div className={clsx(styles["lambda-input"], { [styles["lambda-input--disabled-true"]]: contextDisabled, [styles["lambda-input--group"]]: isGroup })}>
@@ -251,7 +253,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     </label>
                 )}
                 {helperText && <label className={clsx(optionalText({ disabled: contextDisabled }))}>{helperText}</label>}
-                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, error, type, hasElements, className }), { [styles["lambda-input__wrapper--group"]]: isGroup })}>
+                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, error: contextError, type, hasElements, className }), { [styles["lambda-input__wrapper--group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input__input-wrapper"], { [styles["lambda-input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}
@@ -277,8 +279,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         )}
                     </div>
                 </div>
-                {error && errorMessage && <span className={errorlabel({ size: contextSize })}>{errorMessage}</span>}
+                {contextError && errorMessage && <span className={errorlabel({ size: contextSize })}>{errorMessage}</span>}
             </div>
-        );
+        )
     }
-);
+)
