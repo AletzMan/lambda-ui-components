@@ -14,6 +14,8 @@
      width: max-content;
      min-height: 24px;
      min-width: 24px;
+     color: var(--white-color);
+     text-shadow: 0 0 1px #00000045;
      transition: background-color 0.15s ease-in-out, color 0.3s ease-in-out, shadow 0.3s ease-in-out;
 
      &.lambda-btn--only-icon {
@@ -46,6 +48,12 @@
              width: 100%;
          }
      }
+
+     &.lambda-btn--loading-true,
+     &.lambda-btn--disabled-true {
+         cursor: not-allowed;
+         filter: contrast(70%) brightness(70%);
+     }
  }
 
  .lambda-btn-label {
@@ -55,7 +63,6 @@
      font-family: inherit;
      padding-top: 2px;
  }
-
 
  .lambda-btn--variant-classic {
      box-shadow: 1px 1px 1px 1px var(--shadow-inset-color) inset, -1px -1px 1px 1px var(--shadow-inset-color) inset;
@@ -72,7 +79,7 @@
          background: linear-gradient(180deg, var(--secondary-color), var(--secondary-dark-bg-color));
          background-position: 0% 0%;
          background-size: 100% 200%;
-         color: var(--forrground-invert-color);
+         color: var(--foreground-invert-color);
          border: 1px solid var(--secondary-dark-bg-color);
      }
 
@@ -96,6 +103,7 @@
          background-position: 0% 0%;
          background-size: 100% 200%;
          border: 1px solid var(--warning-dark-bg-color);
+         color: var(--black-color);
      }
 
      &.lambda-btn--color-info {
@@ -105,13 +113,15 @@
          border: 1px solid var(--info-dark-bg-color);
      }
 
-     &:hover {
+     &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
          background-position: 0% 50%;
      }
 
-     &:active:not(.lambda-btn--disabled-true) {
+     &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
          box-shadow: 1px 0px 1px 1px var(--shadow-inset-color) inset, -1px -1px 1px 1px var(--shadow-inset-color) inset, 0 1px 3px 2px var(--shadow-color) inset;
      }
+
+
  }
 
  .lambda-btn--variant-solid {
@@ -126,7 +136,7 @@
              background: var(--primary-hover-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--primary-color);
          }
      }
@@ -139,7 +149,7 @@
              background: var(--secondary-hover-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--secondary-color);
          }
      }
@@ -151,7 +161,7 @@
              background: var(--success-hover-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--success-color);
          }
      }
@@ -163,19 +173,20 @@
              background: var(--danger-hover-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--danger-color);
          }
      }
 
      &.lambda-btn--color-warning {
          background: var(--warning-color);
+         color: var(--black-color);
 
          &:hover:not(:active):not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--warning-hover-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--warning-color);
          }
      }
@@ -187,7 +198,7 @@
              background: var(--info-hover-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background: var(--info-color);
          }
      }
@@ -205,7 +216,7 @@
              background-color: var(--primary-light-color);
          }
 
-         &:active {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background-color: var(--primary-outline-color);
          }
      }
@@ -218,7 +229,7 @@
              background-color: var(--secondary-light-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background-color: var(--secondary-outline-color);
          }
      }
@@ -231,7 +242,7 @@
              background-color: var(--success-light-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background-color: var(--success-outline-color);
          }
      }
@@ -244,7 +255,7 @@
              background-color: var(--danger-light-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background-color: var(--danger-outline-color);
          }
      }
@@ -257,7 +268,7 @@
              background-color: var(--warning-light-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background-color: var(--warning-outline-color);
          }
      }
@@ -270,7 +281,7 @@
              background-color: var(--info-light-color);
          }
 
-         &:active:not(.lambda-btn--disabled-true) {
+         &:active:not(.lambda-btn--loading-true):not(.lambda-btn--disabled-true) {
              background-color: var(--info-outline-color);
          }
      }
@@ -621,7 +632,7 @@
  }
 
  .lambda-btn--size-large {
-     font-size: var(--font-size-md);
+     font-size: var(--font-size-lg);
      padding: var(--padding-none) var(--padding-lg);
      height: var(--height-button-lg);
 
