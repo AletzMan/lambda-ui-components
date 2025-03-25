@@ -115,7 +115,7 @@
      }
 
      &:disabled::placeholder {
-         color: var(--surface-d);
+         color: var(--surface-e);
      }
 
      &.lambda-input__field--size-tiny {
@@ -389,7 +389,7 @@
      position: absolute;
      top: -1.4em;
      font-family: var(--font-family);
-     color: var(--primary-hover-color);
+     color: var(--primary-text-color);
      padding: 0 0 0 4px;
      font-weight: 500;
      transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out;
@@ -570,7 +570,7 @@
      cursor: not-allowed;
 
      .lambda-input__label--default {
-         color: var(--surface-c);
+         color: var(--surface-e);
      }
 
      .lambda-input__wrapper:not(.lambda-input__wrapper--group) {
