@@ -163,7 +163,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled: propsDisabled, type = "text", value: controlledValue, onChange, isRequired, floatingLabel, placeholder, helperText, ...props }, ref) => {
+    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, isRequired, floatingLabel, placeholder, helperText, ...props }, ref) => {
         let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextError, hasElements: "none" | "first" | "last" | "both"
         try {
             const context = useInputGroup()
@@ -178,7 +178,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             contextVariant = propVariant
             contextRadius = propRadius
             contextSize = propSize
-            contextDisabled = propsDisabled
+            contextDisabled = disabled
             contextError = error
             isGroup = false
             hasElements = "none"
