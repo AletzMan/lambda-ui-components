@@ -53,6 +53,7 @@
      &.lambda-btn--disabled-true {
          cursor: not-allowed;
          filter: contrast(70%) brightness(70%);
+         opacity: 0.85;
      }
  }
 
