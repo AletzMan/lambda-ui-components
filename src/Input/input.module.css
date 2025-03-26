@@ -380,11 +380,11 @@
      border-radius: var(--border-radius-pill);
 
      &.lambda_input__wrapper--size-small {
-         padding: var(--padding-xs) var(--padding-md);
+         padding: var(--padding-none) var(--padding-md);
      }
 
      &.lambda_input__wrapper--size-medium {
-         padding: var(--padding-xs) var(--padding-lg);
+         padding: var(--padding-none) var(--padding-lg);
      }
 
      &.lambda_input__wrapper--variant-underline {
@@ -436,12 +436,7 @@
      pointer-events: none;
 
 
-     &.lambda_input__label--elements-first {
 
-         &.lambda_input__label--radius-pill {
-             transform: translateY(-3%) translateX(-8%) scale(1);
-         }
-     }
  }
 
  .lambda_input__label--default {
@@ -449,9 +444,11 @@
      color: var(--placeholder-color);
      pointer-events: none;
 
+
+
      &.lambda_input__label--size-tiny {
          font-size: var(--font-size-xs);
-         transform: translateY(21px) translateX(5px) scale(1);
+         transform: translateY(22px) translateX(5px) scale(1);
      }
 
      &.lambda_input__label--size-small {
@@ -465,7 +462,7 @@
 
          &.lambda_input__label--elements-first {
              &.lambda_input__label--radius-pill {
-                 transform: translateY(26px) translateX(0px) scale(1);
+                 transform: translateY(30px) translateX(0px) scale(1);
              }
          }
      }
@@ -519,6 +516,10 @@
          border-color: var(--primary-hover-color);
      }
 
+     &.lambda_input__wrapper--radius-none {
+         border-radius: var(--border-radius-none) var(--border-radius-none) var(--border-radius-none) var(--border-radius-none);
+     }
+
      &.lambda_input__wrapper--radius-small {
          border-radius: var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none);
      }
@@ -550,8 +551,8 @@
          border-color: var(--primary-hover-color);
      }
 
-     &.lambda_input__wrapper--radius-large {
-         border-radius: var(--border-radius-lg) var(--border-radius-none) var(--border-radius-none) var(--border-radius-lg);
+     &.lambda_input__wrapper--radius-none {
+         border-radius: var(--border-radius-none) var(--border-radius-none) var(--border-radius-none) var(--border-radius-none);
      }
 
      &.lambda_input__wrapper--radius-small {
