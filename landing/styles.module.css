@@ -93,7 +93,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
-  gap: 0.25em;
+  gap: 1.75em;
+  padding: 1em 0.5em;
 }
 
 .button {
