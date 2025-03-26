@@ -184,7 +184,7 @@
      font-family: var(--font-family);
 
      &:disabled {
-         color: var(--foreground-color);
+         color: var(--surface-d);
          cursor: not-allowed;
      }
 
@@ -368,6 +368,7 @@
 
      &:disabled {
          cursor: not-allowed;
+         background-color: var(--surface-e);
      }
 
      .lambda_number--icon {
@@ -491,5 +492,8 @@
 
  .lambda_number--wrapper-disabled {
      cursor: not-allowed;
-     filter: contrast(90%) brightness(80%);
+
+     .lambda_number {
+         background-color: var(--surface-c);
+     }
  }
