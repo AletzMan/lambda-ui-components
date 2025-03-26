@@ -212,7 +212,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
         const formatValue = (value: string | number): string => {
             if (value === "" || isNaN(Number(value))) return ""
 
-            const numericValue = Number(value);
+            const numericValue = Number(value)
             switch (typeNumber) {
                 case "currency-USD":
                 case "currency-EUR":
@@ -225,7 +225,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                 default:
                     return numericValue.toString()
             }
-        };
+        }
 
         const parseValue = (input: string): string => {
             return input.replace(/[^\d.-]/g, "")
@@ -247,7 +247,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
         const handleBlur = () => {
             setIsEditing(false) // Detiene la edición
             if (!isControlled) {
-                setInternalValue(formatValue(internalValue));
+                setInternalValue(formatValue(internalValue))
             }
         }
 
@@ -339,6 +339,6 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                 </div>
                 {invalid && errorMessage && <span className={errorlabel({ size })}>{errorMessage}</span>}
             </div>
-        );
+        )
     }
-);
+)

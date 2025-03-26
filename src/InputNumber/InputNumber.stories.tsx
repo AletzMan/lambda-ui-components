@@ -54,7 +54,7 @@ const meta: Meta<typeof InputNumber> = {
 
 }
 
-export default meta;
+export default meta
 
 type Story = StoryObj<typeof InputNumber>
 
