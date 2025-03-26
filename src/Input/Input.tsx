@@ -45,7 +45,7 @@ export const input = cva(styles["lambda_input__wrapper"], {
         },
         disabled: {
             false: styles["lambda_input__wrapper--disabled-false"],
-            true: styles["lambda_input__wrapper--disabled-true"],
+            true: styles["lambda_input__wrapper--disabled"],
         },
     },
     defaultVariants: {
@@ -230,7 +230,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputPlaceholder = floatingLabel ? "" : placeholder
 
         return (
-            <div className={clsx(styles["lambda_input"], { [styles["lambda_input--disabled-true"]]: contextDisabled, [styles["lambda_input--group"]]: isGroup })}>
+            <div className={clsx(styles["lambda_input"], { [styles["lambda_input--disabled"]]: contextDisabled, [styles["lambda_input--group"]]: isGroup })}>
                 {label && (
                     <label className={clsx(labels({ radius: contextRadius, size: contextSize, hasElements }), {
                         [styles["lambda_input__label--floating"]]: floatingLabel && isLabelFloating,
