@@ -140,7 +140,7 @@
          font-size: var(--font-size-md);
 
          &::placeholder {
-             font-size: var(--font-size-md);
+             font-size: var(--font-size-sm);
          }
      }
 
@@ -400,7 +400,7 @@
      }
 
      &.lambda-input__label--size-small {
-         font-size: var(--font-size-xs);
+         font-size: var(--font-size-sm);
      }
 
      &.lambda-input__label--size-medium {
@@ -447,8 +447,8 @@
      }
 
      &.lambda-input__label--size-small {
-         font-size: var(--font-size-xs);
-         transform: translateY(25px) translateX(5px) scale(1);
+         font-size: var(--font-size-sm);
+         transform: translateY(27px) translateX(5px) scale(1);
      }
 
      &.lambda-input__label--size-medium {
