@@ -13,17 +13,18 @@
     --gap-sm: 4px;
     --gap-md: 8px;
     --gap-lg: 16px;
-    --font-size-xs: 10px;
+
+    --font-size-xs: 11px;
     --font-size-sm: 12px;
     --font-size-md: 14px;
     --font-size-lg: 16px;
 
     --border-radius-none: 0px;
-    --border-radius-sm: 3px;
-    --border-radius-md: 6px;
-    --border-radius-lg: 8px;
-    --border-radius-pill: 10em;
-    --border-radius-full: 50%;
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-pill: 20em;
+    --border-radius-full: 9999px;
 
     --icon-size-3xs: 11px;
     --icon-size-2xs: 13px;
@@ -58,9 +59,9 @@
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #999999;
 
-    --surface-a: #f5fbfc;
-    --surface-b: #edf5f7;
-    --surface-c: #e3e9e9;
+    --surface-b: #f7f3fb;
+    --surface-a: #fcfaff;
+    --surface-c: #eaeaea;
     --surface-d: #9da2a5;
     --surface-e: #c5c5c5;
     --surface-f: #989898;
@@ -130,10 +131,10 @@
     --placeholder-color: #626262;
     --placeholder-color: #626262;
 
+    --surface-b: #111113;
     --surface-a: #161a20;
-    --surface-b: #1d232a;
-    --surface-c: #384048;
-    --surface-d: #b0b1b260;
+    --surface-c: #303236;
+    --surface-d: #636363;
     --surface-e: #525252;
     --surface-f: #bdbdbd;
     --border-color: #27272a;
