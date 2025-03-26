@@ -259,7 +259,6 @@
      align-items: center;
      position: relative;
      outline: none;
-     /*margin: 1em 0;*/
      font-family: var(--font-family);
      background: var(--surface-c);
 
