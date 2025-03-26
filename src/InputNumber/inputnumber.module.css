@@ -79,18 +79,15 @@
      position: relative;
      display: flex;
      flex-direction: column;
-     gap: 4px;
+     gap: 5px;
      font-family: var(--font-family);
      width: max-content;
-     margin: 1em 0;
      box-sizing: border-box;
  }
 
 
 
  .lambda_number--label {
-     position: absolute;
-     top: -1.4em;
      font-family: var(--font-family);
      color: var(--primary-text-color);
      padding: 0 0 0 4px;
