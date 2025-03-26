@@ -31,6 +31,11 @@ const meta: Meta<typeof InputNumber> = {
             type: "string",
             description: "Text to display as the label for the component"
         },
+        helperText: {
+            control: "text",
+            type: "string",
+            description: "Displays helper text beneath the input."
+        },
         typeNumber: {
             control: "select",
             type: "string",
@@ -63,6 +68,7 @@ export const Number: Story = {
         max: 100,
         typeNumber: "default",
         label: 'Label',
+        helperText: "Must be between 8 and 10 characters long.",
         invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         placeholder: "0",

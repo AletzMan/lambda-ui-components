@@ -176,6 +176,7 @@ export interface InputProps
     label?: string
     invalid?: boolean
     errorMessage?: string
+    helperText?: string
     onChange?: (value: number) => void
     typeNumber?: "default" | "currency-USD" | "currency-EUR" | "currency-GBP" | "percentage" | "decimal"
 }
@@ -191,6 +192,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
             invalid,
             errorMessage,
             disabled,
+            helperText,
             min = Number.MIN_SAFE_INTEGER,
             max = Number.MAX_SAFE_INTEGER,
             step = 1,
@@ -294,6 +296,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
             <div className={clsx(styles['lambda_number--wrapper'], { [styles['lambda_number--wrapper-disabled']]: disabled })}>
                 {label && <label className={labels({ radius, size })}>{label}</label>}
                 <div className={inputNumber({ variant, disabled, radius, typeNumber, size, invalid, className })}>
+                    {helperText && <label className={clsx(styles['lambda_number--helper'], { [styles["lambda_number--helper-disabled"]]: disabled })}>{helperText}</label>}
                     <div className={styles['lambda_number--container']}>
                         <div className={typeCurrency({ typeNumber, size, variant })}>{getIcon()}</div>
                         <input

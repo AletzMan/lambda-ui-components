@@ -20,7 +20,6 @@
      color: var(--foreground-color);
      font-weight: 500;
      pointer-events: all;
-     overflow: hidden;
      z-index: 0;
      box-sizing: border-box;
      outline: none;
@@ -48,6 +47,31 @@
          outline: 3px solid var(--secondary-outline-color);
      }
 
+     .lambda_number--helper {
+         position: absolute;
+         bottom: -1.5em;
+         left: 0;
+         font-size: var(--font-size-xs);
+         font-weight: 500;
+         font-style: italic;
+         opacity: 0;
+         transform: translateY(-1em);
+         transition: all 0.3s ease-in-out;
+         z-index: -10;
+         color: var(--surface-f);
+
+         &.lambda_number--helper-disabled {
+             color: var(--surface-c);
+         }
+     }
+
+     &:focus-within {
+         .lambda_number--helper {
+             opacity: 1;
+             transform: translateY(0);
+         }
+     }
+
 
  }
 
@@ -58,16 +82,19 @@
      gap: 4px;
      font-family: var(--font-family);
      width: max-content;
-     margin: 0 0 24px 0;
+     margin: 1em 0;
      box-sizing: border-box;
  }
 
 
+
  .lambda_number--label {
+     position: absolute;
+     top: -1.4em;
      font-family: var(--font-family);
      color: var(--primary-text-color);
      padding: 0 0 0 4px;
-     font-weight: 600;
+     font-weight: 500;
  }
 
  .lambda_number--label-tiny {
@@ -79,7 +106,7 @@
  }
 
  .lambda_number--label-medium {
-     font-size: var(--font-size-md);
+     font-size: var(--font-size-sm);
  }
 
  .lambda_number--label-large {
@@ -242,7 +269,7 @@
      &.lambda_number--invalid {
          border-color: var(--danger-color);
          border-style: dashed;
-         /*background-color: var(--dangerLight-color);*/
+         background-color: var(--danger-light-color);
      }
 
 
@@ -263,7 +290,6 @@
 
      &.lambda_number--invalid {
          background-color: var(--danger-light-color);
-         /*background-color: var(--dangerLight-color);*/
      }
 
  }
