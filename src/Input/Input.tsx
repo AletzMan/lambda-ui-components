@@ -7,6 +7,25 @@ import { Eye, EyeOff, X } from "lucide-react"
 import clsx from 'clsx'
 import { useInputGroup } from "../InputGroup/InputGroup"
 
+export const lambdaInput = cva(styles["lambda_input"], {
+    variants: {
+        radius: {
+            none: styles["lambda_input--radius-none"],
+            small: styles["lambda_input--radius-small"],
+            medium: styles["lambda_input--radius-medium"],
+            large: styles["lambda_input--radius-large"],
+            pill: styles["lambda_input--radius-pill"],
+        },
+        disabled: {
+            false: styles["lambda_input--enabled"],
+            true: styles["lambda_input--disabled"],
+        },
+    },
+    defaultVariants: {
+        radius: "small",
+        disabled: false,
+    },
+})
 export const input = cva(styles["lambda_input__wrapper"], {
     variants: {
         size: {
@@ -230,7 +249,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputPlaceholder = floatingLabel ? "" : placeholder
 
         return (
-            <div className={clsx(styles["lambda_input"], { [styles["lambda_input--disabled"]]: contextDisabled, [styles["lambda_input--group"]]: isGroup })}>
+            <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled }), { [styles["lambda_input--group"]]: isGroup })}>
                 {label && (
                     <label className={clsx(labels({ radius: contextRadius, size: contextSize, hasElements }), {
                         [styles["lambda_input__label--floating"]]: floatingLabel && isLabelFloating,
