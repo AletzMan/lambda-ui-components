@@ -31,6 +31,7 @@ function App() {
   const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledInput, setDisabledInput] = useState(false)
   const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("medium")
+  const [variantInput, setVariantInput] = useState<"outline" | "flat" | "underline" | undefined>("outline")
   const [validInput, setValidInput] = useState(true)
   const [errorMessage, setErrorMessage] = useState("This field has an error.")
   const [sizeInputNumber, setSizeInputNumber] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
@@ -211,6 +212,11 @@ function App() {
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </select>
+          <select className={styles.control_size} value={variantInput} onChange={(e) => setVariantInput(e.currentTarget.value as "outline" | "flat" | "underline" | undefined)}>
+            <option value="outline">Outline</option>
+            <option value="flat">Flat</option>
+            <option value="underline">Underline</option>
+          </select>
           <select className={styles.control_size} value={radiusInput} onChange={(e) => setRadiusInput(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined)}>
             <option value="none">None</option>
             <option value="small">Small</option>
@@ -222,36 +228,36 @@ function App() {
         </div>
         <div className={styles.container_buttons}>
           <div className={styles.buttons}>
-            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' radius={radiusInput} disabled={disabledInput} size={sizeInput} isRequired error={!validInput} />
-            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
-            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
-            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} radius={radiusInput} error={!validInput} errorMessage={errorMessage} />
+            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' variant={variantInput} radius={radiusInput} disabled={disabledInput} size={sizeInput} isRequired error={!validInput} />
+            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' variant={variantInput} radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
+            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' variant={variantInput} radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
+            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} variant={variantInput} radius={radiusInput} error={!validInput} errorMessage={errorMessage} />
           </div>
           <div className={styles.buttons}>
-            <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant="underline" radius={radiusInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Ingrese' floatingLabel errorMessage={errorMessage} />
+            <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant={variantInput} radius={radiusInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Ingrese' errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} radius={radiusInput} variant="underline" size={sizeInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='URL de imagen' floatingLabel errorMessage={errorMessage} />
+            <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} radius={radiusInput} variant={variantInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='URL de imagen' errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup prefixElement={<User />} variant="underline" size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Ingrese' floatingLabel errorMessage={errorMessage} />
+            <InputGroup prefixElement={<User />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Ingrese' errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup suffixElement={<Settings />} variant="underline" size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel helperText='Requerido *' errorMessage={errorMessage} />
+            <InputGroup suffixElement={<Settings />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+              <Input type="text" label='Configuracion' helperText='Requerido *' errorMessage={errorMessage} />
             </InputGroup>
           </div>
           <div className={styles.buttons}>
-            <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant="underline" size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+            <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
               <Input type="search" errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+            <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
               <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="info" style={{ width: "4em", backgroundColor: "#ffe11e", color: "#000000" }} />} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
+            <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="info" style={{ width: "4em", backgroundColor: "#ffe11e", color: "#000000" }} />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
               <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
-            <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} radius={radiusInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
+            <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} radius={radiusInput} size={sizeInput} disabled={disabledInput} variant={variantInput} error={!validInput}>
               <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
             </InputGroup>
           </div>
@@ -278,20 +284,20 @@ function App() {
           </div>
           <div className={styles.container_buttons}>
             <div className={styles.buttons}>
-              <InputNumber variant="outline" typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} />
-              <InputNumber variant="outline" typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="outline" label='Default' typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="outline" label='Currency USD' typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="outline" label='Currency EUR' typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="outline" label='Currency GBP' typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} />
+              <InputNumber variant="outline" label='Porcentage' typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="outline" label='Decimal' typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
             </div>
             <div className={styles.buttons}>
-              <InputNumber variant="flat" typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="flat" label='Default' typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="flat" label='Currency USD' typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="flat" label='Currency EUR' typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="flat" label='Currency GBP' typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="flat" label='Porcentage' typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+              <InputNumber variant="flat" label='Decimal' typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
             </div>
           </div>
         </section>

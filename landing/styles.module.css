@@ -86,6 +86,7 @@ body {
   min-width: 8em;
   max-height: 32px;
   border: 1px solid var(--surface-d);
+  accent-color: red;
 }
 
 .buttons {
