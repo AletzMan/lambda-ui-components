@@ -1,6 +1,7 @@
 import { forwardRef, useState } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./switch.module.css";
+import clsx from "clsx";
 
 const switchprop = cva(styles["lambda-switch"], {
     variants: {
@@ -32,9 +33,9 @@ const switchprop = cva(styles["lambda-switch"], {
         },
     },
     defaultVariants: {
-        size: "medium",
-        variant: "flat",
         color: "primary",
+        size: "medium",
+        variant: "solid",
         disabled: false,
         checked: false,
     },
@@ -70,9 +71,9 @@ const background = cva(styles["lambda-switch-background"], {
         },
     },
     defaultVariants: {
+        color: "primary",
         size: "medium",
         variant: "solid",
-        color: "primary",
         disabled: false,
         checked: false,
     },
@@ -97,6 +98,30 @@ const pos_label = cva(styles["lambda-switch-wrapper"], {
     },
     defaultVariants: {
         position_label: "right",
+        disabled: false,
+        checked: false
+    },
+});
+
+const handle = cva(styles["lambda-switch-handle"], {
+    variants: {
+        size: {
+            small: styles["lambda-switch-handle-small"],
+            medium: styles["lambda-switch-handle-medium"],
+            large: styles["lambda-switch-handle-large"],
+        },
+        disabled: {
+            true: styles["lambda-switch-handle-disabled"],
+            false: "",
+        },
+        checked: {
+            true: styles["lambda-switch-handle-checked"],
+            false: "",
+        },
+    },
+    defaultVariants: {
+        size: "medium",
+        disabled: false,
         checked: false
     },
 });
@@ -116,7 +141,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             className,
             size,
             variant,
-            label = "Label",
+            label,
             disabled,
             position_label = "right",
             color,
@@ -153,9 +178,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                         })} ${className}`}
                         {...props}
                     />
-                    {<span className={`${styles["lambda-switch-handle"]} ${size === "large" && styles["lambda-switch-handle-large"]} ${size === "medium" && styles["lambda-switch-handle-medium"]} ${size === "small" && styles["lambda-switch-handle-small"]} ${disabled && styles["lambda-switch-handle-disabled"]} ${internalChecked && styles["lambda-switch-handle-checked"]} ${variant === "flat" && styles["lambda-switch-handle-flat"]}`} />}
+                    {<span className={handle({ checked: internalChecked, disabled, size })} />}
                 </div>
-                {label && <span className={`${styles["lambda-switch-text"]} ${disabled && styles["lambda-switch-text-disabled"]}`}>{label}</span>}
+                {label && <span className={clsx(styles["lambda-switch-text"], { [styles["lambda-switch-text-disabled"]]: disabled })}>{label}</span>}
             </label>
         );
     }
