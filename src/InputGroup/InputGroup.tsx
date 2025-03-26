@@ -87,7 +87,9 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
             <InputGroupContext.Provider value={contextValue}>
                 <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, error, disabled, hasElements }))}>
                     {prefixElement && <div className={styles["lambda-input-group__start"]}>{prefixElement}</div>}
-                    {children}
+                    <div className={styles["lambda-input-group--wrapper"]}>
+                        {children}
+                    </div>
                     {suffixElement && <div className={styles["lambda-input-group__end"]}>{suffixElement}</div>}
                 </div>
             </InputGroupContext.Provider>

@@ -14,25 +14,21 @@
  }
 
  .lambda-input-group--size-tiny {
-     padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-xs);
      height: var(--height-input-xs);
  }
 
  .lambda-input-group--size-small {
-     padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-xs);
      height: var(--height-input-sm);
  }
 
  .lambda-input-group--size-medium {
-     padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-sm);
      height: var(--height-input-md);
  }
 
  .lambda-input-group--size-large {
-     padding: var(--padding-none) var(--padding-none);
      font-size: var(--font-size-md);
      height: var(--height-input-lg);
  }
@@ -77,6 +73,10 @@
      border-radius: var(--border-radius-sm);
 
      &.lambda-input-group--elements-last {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none) var(--border-radius-sm);
+         }
+
          .lambda-input-group__end {
              &>button {
                  border-radius: var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none);
@@ -85,6 +85,10 @@
      }
 
      &.lambda-input-group--elements-first {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none);
+         }
+
          .lambda-input-group__start {
              &>button {
                  border-radius: var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none) var(--border-radius-sm);
@@ -115,6 +119,10 @@
      }
 
      &.lambda-input-group--elements-last {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-md) var(--border-radius-none) var(--border-radius-none) var(--border-radius-md);
+         }
+
          .lambda-input-group__end {
              &>button {
                  border-radius: var(--border-radius-none) var(--border-radius-md) var(--border-radius-md) var(--border-radius-none);
@@ -123,6 +131,10 @@
      }
 
      &.lambda-input-group--elements-first {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-none) var(--border-radius-md) var(--border-radius-md) var(--border-radius-none);
+         }
+
          .lambda-input-group__start {
              &>button {
                  border-radius: var(--border-radius-md) var(--border-radius-none) var(--border-radius-none) var(--border-radius-md);
@@ -153,6 +165,9 @@
      }
 
      &.lambda-input-group--elements-last {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-lg) var(--border-radius-none) var(--border-radius-none) var(--border-radius-lg);
+         }
 
          .lambda-input-group__end {
              &>button {
@@ -162,6 +177,9 @@
      }
 
      &.lambda-input-group--elements-first {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-none) var(--border-radius-lg)var(--border-radius-lg) var(--border-radius-none);
+         }
 
          .lambda-input-group__start {
              &>button {
@@ -188,28 +206,15 @@
  .lambda-input-group--radius-pill {
      border-radius: var(--border-radius-pill);
 
-     &.lambda-input-group--size-small {
-
-         &.lambda-input-group--elements-first,
-         &.lambda-input-group--elements-both {
-             padding: var(--padding-xs) var(--padding-none);
-         }
-     }
-
-     &.lambda-input-group--size-medium {
-
-         &.lambda-input-group--elements-first,
-         &.lambda-input-group--elements-last,
-         &.lambda-input-group--elements-both {
-             padding: var(--padding-xs) var(--padding-none);
-         }
-     }
-
      &.lambda-input-group--variant-underline {
          border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
      }
 
      &.lambda-input-group--elements-last {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none) var(--border-radius-pill);
+         }
+
          .lambda-input-group__end {
              &>button {
                  border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill) var(--border-radius-none);
@@ -218,6 +223,10 @@
      }
 
      &.lambda-input-group--elements-first {
+         .lambda-input-group--wrapper {
+             border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill) var(--border-radius-none);
+         }
+
          .lambda-input-group__start {
              &>button {
                  border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none) var(--border-radius-pill);
@@ -245,19 +254,22 @@
  }
 
  .lambda-input-group {
-     display: inline-flex;
+     display: flex;
+     flex-direction: row;
      align-items: center;
      position: relative;
      outline: none;
+     margin: 1em 0;
      font-family: var(--font-family);
-     margin: var(--padding-lg) 0;
      background: var(--surface-c);
+
 
 
      .lambda-input-group__start,
      .lambda-input-group__end {
          display: flex;
          align-items: center;
+         height: 100%;
          color: var(--surface-f);
 
          &>button {
@@ -344,6 +356,15 @@
      .lambda-input-group__input {
          flex-grow: 1;
      }
+ }
+
+ .lambda-input-group--wrapper {
+     width: 100%;
+     height: 100%;
+     border: none;
+     box-sizing: border-box;
+     margin: -3px 0 0 0;
+     background-color: var(--surface-a);
  }
 
  .lambda-input-group--disabled-true {
