@@ -37,6 +37,7 @@
      font-family: var(--font-family);
      width: 100%;
      margin: 1em 0;
+     background-color: var(--surface-a);
 
      &.lambda_input--group {
          margin: 0;
