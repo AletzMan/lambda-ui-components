@@ -13,7 +13,6 @@
      flex-direction: row;
      align-items: center;
      justify-content: center;
-     gap: 8px;
      border: 1px solid transparent;
      font-weight: 500;
      transition: box-shadow 0.01s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -33,7 +32,6 @@
      position: relative;
      display: flex;
      flex-direction: column;
-     gap: var(--gap-sm);
      font-family: var(--font-family);
      width: 100%;
      margin: 1em 0;
@@ -41,6 +39,26 @@
 
      &.lambda_input--group {
          margin: 0;
+     }
+
+     &.lambda_input--radius-none {
+         border-radius: var(--border-radius-none);
+     }
+
+     &.lambda_input--radius-small {
+         border-radius: var(--border-radius-small);
+     }
+
+     &.lambda_input--radius-medium {
+         border-radius: var(--border-radius-medium);
+     }
+
+     &.lambda_input--radius-large {
+         border-radius: var(--border-radius-large);
+     }
+
+     &.lambda_input--radius-pill {
+         border-radius: var(--border-radius-pill);
      }
  }
 
@@ -115,9 +133,7 @@
          font-weight: 300;
      }
 
-     &:disabled::placeholder {
-         color: var(--surface-e);
-     }
+
 
      &.lambda_input__field--size-tiny {
          font-size: var(--font-size-sm);
@@ -153,18 +169,13 @@
          }
      }
 
-     &:disabled {
-         color: var(--surface-d);
-     }
 
      &.lambda_input__field--showPassword {
          font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Geneva, Tahoma, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Tahoma, Geneva, Verdana, sans-serif, Courier, monospace;
          font-weight: 800;
          color: var(--primary-color);
 
-         &.lambda_input__field--disabled-true {
-             color: var(--primary-outline-color);
-         }
+
      }
 
      &:is(.lambda_input__field--showPassword) {
@@ -575,18 +586,14 @@
 
  .lambda_input--disabled {
      cursor: not-allowed;
-     filter: contrast(90%) brightness(80%);
 
-     .lambda_input__label--default {
-         color: var(--surface-e);
-     }
+
 
      .lambda_input__wrapper:not(.lambda_input__wrapper--group) {
 
          &:hover {
              outline: 3px solid var(--surface-c);
          }
-
      }
 
      .lambda_input__input-wrapper {
@@ -594,18 +601,25 @@
 
          .lambda_input__toggle-password,
          .lambda_input__clear-search {
-             color: var(--surface-c);
+             color: var(--surface-d);
+         }
+
+         .lambda_input__field {
+             color: var(--surface-d);
+
+             &::placeholder {
+                 color: var(--surface-e);
+             }
          }
      }
 
      .lambda_input__wrapper--disabled {
-         background-color: var(--surface-a);
+         background-color: var(--surface-c);
 
          &:hover:not(.lambda_input__wrapper--error-true) {
              border-color: var(--surface-d);
          }
      }
-
  }
 
  /* ------------------- OPTIONAL LABEL ---------------------*/
