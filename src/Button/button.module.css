@@ -144,10 +144,16 @@
 
      &:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn--disabled-true) {
          filter: brightness(105%) contrast(105%);
+
+         &.lambda-btn-secondary {
+             filter: none;
+             background: var(--secondary-hover-color);
+         }
+
      }
 
      &:active:not(.lambda-btn-loading):not(.lambda-btn--disabled-true) {
-         filter: brightness(95%) contrast(95%);
+         filter: brightness(98%) contrast(95%);
      }
  }
 
