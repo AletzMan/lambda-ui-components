@@ -73,16 +73,16 @@
     --primary-hover-color: #2867ef;
     --primary-light-color: #3b82f620;
     --primary-outline-color: #3b82f650;
-    --primary-disabled-color: #93c5fd;
+    --primary-disabled-color: #396090;
     --primary-text-color: #1251c4;
-    --primary-dark-bg-color: #1251c4;
+    --primary-dark-bg-color: #0b45b2;
 
 
     --secondary-color: #292929;
     --secondary-hover-color: #3f3f3f;
     --secondary-light-color: #42424220;
     --secondary-outline-color: #80808050;
-    --secondary-disabled-color: #383838;
+    --secondary-disabled-color: #888888;
     --secondary-text-color: #272727;
     --secondary-dark-bg-color: #000000;
 
@@ -90,26 +90,23 @@
     --danger-hover-color: #e22a2a;
     --danger-light-color: #ef444420;
     --danger-outline-color: #ef444450;
-    --danger-disabled-color: #fca5a5;
+    --danger-disabled-color: #823636;
     --danger-text-color: #bf3333;
-    --danger-dark-bg-color: #bf3333;
-
+    --danger-dark-bg-color: #821515;
 
     --success-color: #22c55e;
     --success-hover-color: #18ac4f;
     --success-light-color: #22c55e20;
     --success-outline-color: #22c55e50;
-    --success-disabled-color: #86efac;
+    --success-disabled-color: #4c7059;
     --success-text-color: #278b2a;
     --success-dark-bg-color: #278b2a;
-
-
 
     --warning-color: #ffa60d;
     --warning-hover-color: #f38f1d;
     --warning-light-color: #f7bb5520;
     --warning-outline-color: #f6be5750;
-    --warning-disabled-color: #fef08a;
+    --warning-disabled-color: #987231;
     --warning-text-color: #b45309;
     --warning-dark-bg-color: #b45309;
 
@@ -117,7 +114,7 @@
     --info-hover-color: #13a8ed;
     --info-light-color: #38bdf820;
     --info-outline-color: #38bdf850;
-    --info-disabled-color: #a5f3fc;
+    --info-disabled-color: #29757e;
     --info-dark-bg-color: #288ada;
     --info-text-color: #288ada;
 }
@@ -131,13 +128,13 @@
     --placeholder-color: #626262;
     --placeholder-color: #626262;
 
-    --surface-b: #111113;
-    --surface-a: #161a20;
-    --surface-c: #303236;
-    --surface-d: #636363;
+    --surface-b: #191b1c;
+    --surface-a: #1d1d20;
+    --surface-c: #151517;
+    --surface-d: #303032;
     --surface-e: #525252;
     --surface-f: #bdbdbd;
-    --border-color: #27272a;
+    --surface-g: #09090b;
     --shadow-color: #3c3c3c60;
     --shadow-inset-color: #f1f1f155;
 
@@ -145,15 +142,15 @@
     --primary-hover-color: #2867ef;
     --primary-light-color: #3b82f620;
     --primary-outline-color: #3b82f650;
-    --primary-disabled-color: #93c5fd;
+    --primary-disabled-color: #3e648f;
     --primary-text-color: #82b2ff;
-    --primary-dark-bg-color: #1251c4;
+    --primary-dark-bg-color: #0940a6;
 
     --secondary-color: #f6f4f4;
     --secondary-hover-color: #e1e1e1;
     --secondary-light-color: #abaeb220;
     --secondary-outline-color: #b0b2b450;
-    --secondary-disabled-color: #d8d8da;
+    --secondary-disabled-color: #868688;
     --secondary-text-color: #dadde0;
     --secondary-dark-bg-color: #a8a8a8;
 
@@ -161,7 +158,7 @@
     --success-hover-color: #18ac4f;
     --success-light-color: #22c55e20;
     --success-outline-color: #22c55e50;
-    --success-disabled-color: #86efac;
+    --success-disabled-color: #2c6d44;
     --success-text-color: #6dd670;
     --success-dark-bg-color: #278b2a;
 
@@ -169,23 +166,23 @@
     --danger-hover-color: #e22a2a;
     --danger-light-color: #ef444420;
     --danger-outline-color: #ef444450;
-    --danger-disabled-color: #fca5a5;
+    --danger-disabled-color: #833939;
     --danger-text-color: #ed7070;
-    --danger-dark-bg-color: #bf3333;
+    --danger-dark-bg-color: #851212;
 
     --warning-color: #ffa60d;
     --warning-hover-color: #f38f1d;
     --warning-light-color: #f7bb5520;
     --warning-outline-color: #f6be5750;
-    --warning-disabled-color: #fef08a;
+    --warning-disabled-color: #8c6c36;
     --warning-text-color: #e2a271;
-    --warning-dark-bg-color: #b45309;
+    --warning-dark-bg-color: #823800;
 
     --info-color: #38bdf8;
     --info-hover-color: #13a8ed;
     --info-light-color: #38bdf820;
     --info-outline-color: #38bdf850;
-    --info-disabled-color: #a5f3fc;
+    --info-disabled-color: #2e7981;
     --info-text-color: #66baff;
     --info-dark-bg-color: #288ada;
 }

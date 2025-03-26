@@ -47,6 +47,14 @@ body {
   gap: 0.5em;
   border-radius: var(--border-radius-sm);
   border: 1px solid var(--surface-d);
+  width: 100%;
+}
+
+.section_container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  width: 100%;
 }
 
 .subtitle {

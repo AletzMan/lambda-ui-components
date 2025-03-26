@@ -1,5 +1,5 @@
 
-import { Button, Checkbox, Input, InputGroup, InputNumber } from '../src/main'
+import { Button, Checkbox, Input, InputGroup, InputNumber, Switch } from '../src/main'
 import { AlertCircle, CheckCircle, Coins, HelpCircle, Menu, Search, SearchIcon, Send, Settings, Settings2, Trash, User } from "lucide-react"
 import styles from "./styles.module.css"
 import { JSX, useState } from 'react'
@@ -165,42 +165,88 @@ function App() {
           </div>
         </div>
       </section>
-      <section className={styles.subsection}>
-        <h2 className={styles.subtitle}>Checkbox</h2>
-        <div className={styles.control_buttons}>
-          <Checkbox label='Disabled' checked={disabledCheckbox} size="medium" color="secondary" onChange={(e) => setDisabledCheckbox(e.currentTarget.checked)} />
-          <select className={styles.control_size} value={sizeCheckbox} onChange={(e) => setSizeCheckbox(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
-            <option value="tiny">Tiny</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
-          <select className={styles.control_size} value={radiusCheckbox} onChange={(e) => setRadiusCheckbox(e.currentTarget.value as "medium" | "small" | "none" | "circle" | undefined)}>
-            <option value="none">None</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="circle">Circle</option>
-          </select>
-        </div>
-        <div className={styles.container_buttons}>
-          <div className={styles.buttons}>
-            <Checkbox size={sizeCheckbox} label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
+      <div className={styles.section_container}>
+        <section className={styles.subsection}>
+          <h2 className={styles.subtitle}>Checkbox</h2>
+          <div className={styles.control_buttons}>
+            <Checkbox label='Disabled' checked={disabledCheckbox} size="medium" color="secondary" onChange={(e) => setDisabledCheckbox(e.currentTarget.checked)} />
+            <select className={styles.control_size} value={sizeCheckbox} onChange={(e) => setSizeCheckbox(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+              <option value="tiny">Tiny</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select className={styles.control_size} value={radiusCheckbox} onChange={(e) => setRadiusCheckbox(e.currentTarget.value as "medium" | "small" | "none" | "circle" | undefined)}>
+              <option value="none">None</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="circle">Circle</option>
+            </select>
           </div>
-          <div className={styles.buttons}>
-            <Checkbox size={sizeCheckbox} variant="flat" label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} variant="flat" color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} variant="flat" color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} variant="flat" color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} variant="flat" color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            <Checkbox size={sizeCheckbox} variant="flat" color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
+          <div className={styles.container_buttons}>
+            <div className={styles.buttons}>
+              <Checkbox size={sizeCheckbox} label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            </div>
+            <div className={styles.buttons}>
+              <Checkbox size={sizeCheckbox} variant="flat" label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="flat" color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="flat" color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="flat" color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="flat" color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="flat" color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className={styles.subsection}>
+          <h2 className={styles.subtitle}>Switch</h2>
+          <div className={styles.control_buttons}>
+            <Checkbox label='Disabled' checked={disabledCheckbox} size="medium" color="secondary" onChange={(e) => setDisabledCheckbox(e.currentTarget.checked)} />
+            <select className={styles.control_size} value={sizeCheckbox} onChange={(e) => setSizeCheckbox(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+              <option value="tiny">Tiny</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select className={styles.control_size} value={radiusCheckbox} onChange={(e) => setRadiusCheckbox(e.currentTarget.value as "medium" | "small" | "none" | "circle" | undefined)}>
+              <option value="none">None</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="circle">Circle</option>
+            </select>
+          </div>
+          <div className={styles.container_buttons}>
+            <div className={styles.buttons}>
+              <Switch variant="solid" color="primary" />
+              <Switch variant="solid" color="secondary" />
+              <Switch variant="solid" color="success" />
+              <Switch variant="solid" color="danger" />
+              <Switch variant="solid" color="warning" />
+              <Switch variant="solid" color="info" />
+            </div>
+            <div className={styles.buttons}>
+              <Switch variant="flat" color="primary" />
+              <Switch variant="flat" color="secondary" />
+              <Switch variant="flat" color="success" />
+              <Switch variant="flat" color="danger" />
+              <Switch variant="flat" color="warning" />
+              <Switch variant="flat" color="info" />
+            </div>
+            <div className={styles.buttons}>
+              <Switch variant="outline" color="primary" />
+              <Switch variant="outline" color="secondary" />
+              <Switch variant="outline" color="success" />
+              <Switch variant="outline" color="danger" />
+              <Switch variant="outline" color="warning" />
+              <Switch variant="outline" color="info" />
+            </div>
+          </div>
+        </section>
+      </div>
       <section className={styles.subsection}>
         <h2 className={styles.subtitle}>Input</h2>
         <div className={styles.control_buttons}>
