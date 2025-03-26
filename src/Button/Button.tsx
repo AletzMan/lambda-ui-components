@@ -9,45 +9,45 @@ import { useInputGroup } from "../InputGroup/InputGroup"
 const button = cva(styles[`lambda-btn`], {
     variants: {
         color: {
-            primary: styles[`lambda-btn--color-primary`],
-            secondary: styles[`lambda-btn--color-secondary`],
-            danger: styles[`lambda-btn--color-danger`],
-            success: styles[`lambda-btn--color-success`],
-            warning: styles[`lambda-btn--color-warning`],
-            info: styles[`lambda-btn--color-info`],
+            primary: styles[`lambda-btn-primary`],
+            secondary: styles[`lambda-btn-secondary`],
+            danger: styles[`lambda-btn-danger`],
+            success: styles[`lambda-btn-success`],
+            warning: styles[`lambda-btn-warning`],
+            info: styles[`lambda-btn-info`],
         },
         variant: {
-            classic: styles[`lambda-btn--variant-classic`],
-            solid: styles[`lambda-btn--variant-solid`],
-            outline: styles[`lambda-btn--variant-outline`],
-            dashed: styles[`lambda-btn--variant-dashed`],
-            ghost: styles[`lambda-btn--variant-ghost`],
-            text: styles[`lambda-btn--variant-text`],
+            classic: styles[`lambda-btn-classic`],
+            solid: styles[`lambda-btn-solid`],
+            outline: styles[`lambda-btn-outline`],
+            dashed: styles[`lambda-btn-dashed`],
+            ghost: styles[`lambda-btn-ghost`],
+            text: styles[`lambda-btn-text`],
         },
         size: {
-            tiny: styles[`lambda-btn--size-tiny`],
-            small: styles[`lambda-btn--size-small`],
-            medium: styles[`lambda-btn--size-medium`],
-            large: styles[`lambda-btn--size-large`],
+            tiny: styles[`lambda-btn-tiny`],
+            small: styles[`lambda-btn-small`],
+            medium: styles[`lambda-btn-medium`],
+            large: styles[`lambda-btn-large`],
         },
         radius: {
-            none: styles[`lambda-btn--radius-none`],
-            small: styles[`lambda-btn--radius-small`],
-            medium: styles[`lambda-btn--radius-medium`],
-            large: styles[`lambda-btn--radius-large`],
-            pill: styles[`lambda-btn--radius-pill`],
-            circle: styles[`lambda-btn--radius-circle`],
+            none: styles[`lambda-btn-radius-none`],
+            small: styles[`lambda-btn-radius-small`],
+            medium: styles[`lambda-btn-radius-medium`],
+            large: styles[`lambda-btn-radius-large`],
+            pill: styles[`lambda-btn-radius-pill`],
+            circle: styles[`lambda-btn-radius-circle`],
         },
         iconPosition: {
-            left: styles[`lambda-btn--icon-left`],
-            right: styles[`lambda-btn--icon-right`],
+            left: styles[`lambda-btn-icon-left`],
+            right: styles[`lambda-btn-icon-right`],
         },
         loading: {
-            true: styles[`lambda-btn--loading-true`],
+            true: styles[`lambda-btn-loading`],
             false: styles[`lambda-btn--loading-false`],
         },
         disabled: {
-            false: styles[`lambda-btn--disabled-false`],
+            false: styles[`lambda-btn-disabled`],
             true: styles[`lambda-btn--disabled-true`],
         },
     },
@@ -109,13 +109,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         iconPosition,
                         className,
                     }),
-                    { [styles["lambda-btn--only-icon"]]: !(isValidElement<ReactNode>(props.children) || label) }
+                    { [styles["lambda-btn-only-icon"]]: !(isValidElement<ReactNode>(props.children) || label) }
                 )}
                 disabled={contextDisabled || undefined}
                 {...props}
             >
                 {(icon || loading) && (
-                    <span className={clsx(styles["lambda-btn-icon"], { [styles["lambda-btn-icon--only"]]: !label })}>
+                    <span className={clsx(styles["lambda-btn-icon"], { [styles["lambda-btn-icon-only"]]: !label })}>
                         {loading ? <Loader className={styles["lambda-btn-icon--loading"]} /> : icon}
                     </span>
                 )}
