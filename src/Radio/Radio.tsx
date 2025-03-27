@@ -7,27 +7,27 @@ import styles from "./radio.module.css";
 const radioprop = cva(styles.radio, {
     variants: {
         color: {
-            primary: styles.radio_primary,
-            secondary: styles.radio_secondary,
-            danger: styles.radio_danger,
-            success: styles.radio_success,
-            warning: styles.radio_warning,
+            primary: styles["radio-primary"],
+            secondary: styles["radio-secondary"],
+            danger: styles["radio-danger"],
+            success: styles["radio-success"],
+            warning: styles["radio-warning"],
         },
         size: {
-            small: styles.radio_small,
-            medium: styles.radio_medium,
-            large: styles.radio_large,
+            small: styles["radio-small"],
+            medium: styles["radio-medium"],
+            large: styles["radio-large"],
         },
         variant: {
-            bordered: styles.radio_brd,
-            flat: styles.radio_flat,
+            bordered: styles["radio-brd"],
+            flat: styles["radio-flat"],
         },
         type: {
-            default: styles.radio_default,
-            button: styles.radio_button
+            default: styles["radio-default"],
+            button: styles["radio-button"]
         },
         disabled: {
-            true: styles.radio_disabled,
+            true: styles["radio-disabled"],
             false: "",
         },
     }, compoundVariants: [
@@ -41,32 +41,30 @@ const radioprop = cva(styles.radio, {
     },
 })
 
-
-
-const bg_view = cva(styles.bg_view, {
+const bgView = cva(styles["bg-view"], {
     variants: {
         color: {
-            primary: styles.bg_view_primary,
-            secondary: styles.bg_view_secondary,
-            danger: styles.bg_view_danger,
-            success: styles.bg_view_success,
-            warning: styles.bg_view_warning,
+            primary: styles["bg-view-primary"],
+            secondary: styles["bg-view-secondary"],
+            danger: styles["bg-view-danger"],
+            success: styles["bg-view-success"],
+            warning: styles["bg-view-warning"],
         },
         size: {
-            small: styles.bg_view_small,
-            medium: styles.bg_view_medium,
-            large: styles.bg_view_large,
+            small: styles["bg-view-small"],
+            medium: styles["bg-view-medium"],
+            large: styles["bg-view-large"],
         },
         variant: {
-            bordered: styles.bg_view_brd,
-            flat: styles.bg_view_flat,
+            bordered: styles["bg-view-brd"],
+            flat: styles["bg-view-flat"],
         },
         type: {
-            default: styles.bg_view_default,
-            button: styles.bg_view_button
+            default: styles["bg-view-default"],
+            button: styles["bg-view-button"]
         },
         disabled: {
-            true: styles.bg_view_disabled,
+            true: styles["bg-view-disabled"],
             false: "",
         },
     },
@@ -78,41 +76,41 @@ const bg_view = cva(styles.bg_view, {
     },
 })
 
-const pos_lb = cva(styles.lb, {
+const wrapper = cva(styles["radio-wrapper"], {
     variants: {
-        position_label: {
-            left: styles.lb_left,
-            right: styles.lb_right,
-            top: styles.lb_top,
-            bottom: styles.lb_bottom,
+        positionLabel: {
+            left: styles["radio-wrapper-left"],
+            right: styles["radio-wrapper-right"],
+            top: styles["radio-wrapper-top"],
+            bottom: styles["radio-wrapper-bottom"],
         },
         color: {
-            primary: styles.lb_primary,
-            secondary: styles.lb_secondary,
-            danger: styles.lb_danger,
-            success: styles.lb_success,
-            warning: styles.lb_warning,
+            primary: styles["radio-wrapper-primary"],
+            secondary: styles["radio-wrapper-secondary"],
+            danger: styles["radio-wrapper-danger"],
+            success: styles["radio-wrapper-success"],
+            warning: styles["radio-wrapper-warning"],
         },
         size: {
-            small: styles.lb_small,
-            medium: styles.lb_medium,
-            large: styles.lb_large,
+            small: styles["radio-wrapper-small"],
+            medium: styles["radio-wrapper-medium"],
+            large: styles["radio-wrapper-large"],
         },
         variant: {
-            bordered: styles.lb_brd,
-            flat: styles.lb_flat,
+            bordered: styles["radio-wrapper-brd"],
+            flat: styles["radio-wrapper-flat"],
         },
         type: {
-            default: styles.lb_default,
-            button: styles.lb_button
+            default: styles["radio-wrapper-default"],
+            button: styles["radio-wrapper-button"]
         },
         disabled: {
-            true: styles.lb_disabled,
+            true: styles["radio-wrapper-disabled"],
             false: "",
         },
     },
     defaultVariants: {
-        position_label: "right",
+        positionLabel: "right",
         color: "primary",
         size: "medium",
         type: "default",
@@ -120,30 +118,30 @@ const pos_lb = cva(styles.lb, {
     },
 })
 
-const icon = cva(styles.icon, {
+const iconCva = cva(styles.icon, {
     variants: {
         color: {
-            primary: styles.icon_primary,
-            secondary: styles.icon_secondary,
-            danger: styles.icon_danger,
-            success: styles.icon_success,
-            warning: styles.icon_warning,
+            primary: styles["icon-primary"],
+            secondary: styles["icon-secondary"],
+            danger: styles["icon-danger"],
+            success: styles["icon-success"],
+            warning: styles["icon-warning"],
         },
         size: {
-            small: styles.icon_small,
-            medium: styles.icon_medium,
-            large: styles.icon_large,
+            small: styles["icon-small"],
+            medium: styles["icon-medium"],
+            large: styles["icon-large"],
         },
         type: {
-            default: styles.icon_default,
-            button: styles.icon_button
+            default: styles["icon-default"],
+            button: styles["icon-button"]
         },
         disabled: {
-            true: styles.icon_disabled,
+            true: styles["icon-disabled"],
             false: "",
         },
         checked: {
-            true: styles.icon_checked,
+            true: styles["icon-checked"],
             false: "",
         },
     },
@@ -154,21 +152,22 @@ const icon = cva(styles.icon, {
         type: "default"
     },
 })
+
 const labelName = cva(styles.label, {
     variants: {
         color: {
-            primary: styles.label_primary,
-            secondary: styles.label_secondary,
-            danger: styles.label_danger,
-            success: styles.label_success,
-            warning: styles.label_warning,
+            primary: styles["label-primary"],
+            secondary: styles["label-secondary"],
+            danger: styles["label-danger"],
+            success: styles["label-success"],
+            warning: styles["label-warning"],
         },
         type: {
-            default: styles.label_default,
-            button: styles.label_button
+            default: styles["label-default"],
+            button: styles["label-button"]
         },
         disabled: {
-            true: styles.label_disabled,
+            true: styles["label-disabled"],
             false: "",
         },
     },
@@ -177,7 +176,6 @@ const labelName = cva(styles.label, {
     },
 })
 
-
 export interface Radioprops
     extends Omit<
         InputHTMLAttributes<HTMLInputElement>,
@@ -185,7 +183,7 @@ export interface Radioprops
     >,
     VariantProps<typeof radioprop> {
     label?: string
-    position_label?: "right" | "left" | "top" | "bottom"
+    positionLabel?: "right" | "left" | "top" | "bottom"
     type?: "default" | "button"
 }
 
@@ -198,7 +196,7 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
             label = "Label",
             disabled,
             type,
-            position_label = "right",
+            positionLabel = "right",
             color,
             ...props
         },
@@ -216,7 +214,6 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
             name,
         } = useRadioGroup()
 
-
         const isChecked = selectedValue === props.value
         const isDisabled = disabled || groupDisabled
 
@@ -225,8 +222,7 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
         }
 
         return (
-            <label className={pos_lb({ position_label, color, disabled, size, type: type || groupType, variant })}>
-
+            <label className={wrapper({ positionLabel, color, disabled, size, type: type || groupType, variant })}>
                 <input
                     ref={ref}
                     type="radio"
@@ -244,8 +240,8 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
                     {...props}
                 />
 
-                <div className={bg_view({ variant: variant || groupVariant, size: size || groupSize, color: color || groupColor, disabled: isDisabled, type: type || groupType })}>
-                    <span className={icon({ size: size || groupSize, color: color || groupColor, disabled: isDisabled, checked: isChecked, type: type || groupType })} />
+                <div className={bgView({ variant: variant || groupVariant, size: size || groupSize, color: color || groupColor, disabled: isDisabled, type: type || groupType })}>
+                    <span className={iconCva({ size: size || groupSize, color: color || groupColor, disabled: isDisabled, checked: isChecked, type: type || groupType })} />
                 </div>
 
                 {label && (
@@ -257,4 +253,3 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
         )
     }
 )
-
