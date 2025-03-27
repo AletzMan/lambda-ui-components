@@ -4,7 +4,7 @@ import { useRadioGroup } from "../RadioGroup/RadioGroup"; // Importamos el conte
 import styles from "./radio.module.css";
 
 // Definimos las variantes para el estilo de los radio buttons
-const radioprop = cva(styles.radio, {
+const radioprop = cva(styles["radio"], {
     variants: {
         color: {
             primary: styles["radio-primary"],
