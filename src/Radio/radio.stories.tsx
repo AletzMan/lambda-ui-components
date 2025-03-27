@@ -12,7 +12,7 @@ const meta: Meta<typeof Radio> = {
     argTypes: {
         variant: {
             control: "select",
-            options: ['bordered', 'flat'],
+            options: ['bordered', 'flat', 'outline'],
             description: "Visual style of the input",
             type: 'string',
         },

@@ -38,6 +38,7 @@ const radioprop = cva(styles["radio"], {
         variant: "bordered",
         color: "primary",
         disabled: false,
+        type: "default",
     },
 })
 
@@ -59,10 +60,15 @@ const view = cva(styles["radio-view"], {
         variant: {
             bordered: styles["radio-view-bordered"],
             flat: styles["radio-view-flat"],
+            outline: styles["radio-view-outline"],
         },
         type: {
             default: styles["radio-view-default"],
             button: styles["radio-view-button"]
+        },
+        checked: {
+            true: styles["radio-view-checked"],
+            false: "",
         },
         disabled: {
             true: styles["radio-view-disabled"],
@@ -73,6 +79,8 @@ const view = cva(styles["radio-view"], {
         size: "medium",
         variant: "bordered",
         color: "primary",
+        checked: false,
+        type: "default",
         disabled: false,
     },
 })
@@ -100,6 +108,7 @@ const wrapper = cva(styles["radio-wrapper"], {
         variant: {
             bordered: styles["radio-wrapper-bordered"],
             flat: styles["radio-wrapper-flat"],
+            outline: styles["radio-wrapper-outline"],
         },
         type: {
             default: styles["radio-wrapper-default"],
@@ -115,7 +124,8 @@ const wrapper = cva(styles["radio-wrapper"], {
         color: "primary",
         size: "medium",
         type: "default",
-        variant: "bordered"
+        variant: "bordered",
+        disabled: false
     },
 })
 
@@ -127,6 +137,7 @@ const iconView = cva(styles["radio-icon"], {
             danger: styles["radio-icon-danger"],
             success: styles["radio-icon-success"],
             warning: styles["radio-icon-warning"],
+            info: styles["radio-icon-info"],
         },
         size: {
             small: styles["radio-icon-small"],
@@ -150,22 +161,21 @@ const iconView = cva(styles["radio-icon"], {
         color: "primary",
         disabled: false,
         size: "medium",
-        type: "default"
+        type: "default",
+        checked: false,
     },
 })
 
 const labelName = cva(styles["radio-label"], {
     variants: {
-        color: {
-            primary: styles["radio-label-primary"],
-            secondary: styles["radio-label-secondary"],
-            danger: styles["radio-label-danger"],
-            success: styles["radio-label-success"],
-            warning: styles["radio-label-warning"],
-        },
         type: {
             default: styles["radio-label-default"],
             button: styles["radio-label-button"]
+        },
+        size: {
+            small: styles["radio-label-small"],
+            medium: styles["radio-label-medium"],
+            large: styles["radio-label-large"],
         },
         disabled: {
             true: styles["radio-label-disabled"],
@@ -173,7 +183,9 @@ const labelName = cva(styles["radio-label"], {
         },
     },
     defaultVariants: {
-        color: "primary",
+        disabled: false,
+        type: "default",
+        size: "medium"
     },
 })
 
@@ -223,7 +235,7 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
         }
 
         return (
-            <label className={wrapper({ positionLabel, color, disabled, size, type: type || groupType, variant })}>
+            <label className={wrapper({ positionLabel, color, disabled, size: size || groupSize, type: type || groupType, variant })}>
                 <input
                     ref={ref}
                     type="radio"
@@ -241,12 +253,12 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
                     {...props}
                 />
 
-                <div className={view({ variant: variant || groupVariant, size: size || groupSize, color: color || groupColor, disabled: isDisabled, type: type || groupType })}>
+                <div className={view({ variant: variant || groupVariant, size: size || groupSize, color: color || groupColor, disabled: isDisabled, type: type || groupType, checked: isChecked })}>
                     <span className={iconView({ size: size || groupSize, color: color || groupColor, disabled: isDisabled, checked: isChecked, type: type || groupType })} />
                 </div>
 
                 {label && (
-                    <span className={labelName({ disabled, color, type: type || groupType })}>
+                    <span className={labelName({ size: size || groupSize, disabled, type: type || groupType })}>
                         {label}
                     </span>
                 )}

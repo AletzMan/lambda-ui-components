@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: flex-start;
 
-    &:is(.tp_button) {
+    &.tp_button {
 
-        &:is(.rd_none) {
+        &.rd_none {
             border-radius: none;
 
             &>div {
@@ -13,8 +13,8 @@
             }
         }
 
-        &:is(.rd_small) {
-            &:is(.base_horizontal) {
+        &.rd_small {
+            &.base_horizontal {
                 &>label:first-child {
                     border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
 
@@ -32,7 +32,7 @@
                 }
             }
 
-            &:is(.base_vertical) {
+            & .base_vertical {
                 &>label:first-child {
                     border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
 
@@ -51,8 +51,8 @@
             }
         }
 
-        &:is(.rd_medium) {
-            &:is(.base_horizontal) {
+        &.rd_medium {
+            &.base_horizontal {
                 &>label:first-child {
 
                     border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
@@ -71,7 +71,7 @@
                 }
             }
 
-            &:is(.base_vertical) {
+            &.base_vertical {
                 &>label:first-child {
 
                     border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
@@ -91,8 +91,8 @@
             }
         }
 
-        &:is(.rd_pill) {
-            &:is(.base_horizontal) {
+        &.rd_pill {
+            &.base_horizontal {
                 &>label:first-child {
                     border-radius: var(--border-radius-pill) 0 0 var(--border-radius-pill);
 
@@ -111,7 +111,7 @@
                 }
             }
 
-            &:is(.base_vertical) {
+            &.base_vertical {
                 &>label:first-child {
                     border-radius: var(--border-radius-pill)var(--border-radius-pill) 0 0;
 
@@ -131,17 +131,17 @@
             }
         }
 
-        &:is(.base_horizontal) {
+        &.base_horizontal {
 
-            &>label:not(:first-child):not(:last-child) {
+            & .label:not(:first-child):not(:last-child) {
                 border-left: 1px solid transparent;
                 border-right: 1px solid transparent;
             }
         }
 
-        &:is(.base_vertical) {
+        &.base_vertical {
 
-            &>label:not(:first-child):not(:last-child) {
+            & .label:not(:first-child):not(:last-child) {
                 border-top: 1px solid transparent;
                 border-bottom: 1px solid transparent;
             }
@@ -172,6 +172,8 @@
 .base_horizontal {
     flex-direction: row;
 }
+
+
 
 .base_small {
     gap: 0.5em;
