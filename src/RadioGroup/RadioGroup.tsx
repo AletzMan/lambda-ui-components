@@ -11,26 +11,26 @@ import {
 import styles from "./radiogroup.module.css"
 import { cva } from "class-variance-authority";
 
-const classRadioGroups = cva(styles.base, {
+const classRadioGroups = cva(styles["radio-group"], {
     variants: {
         orientation: {
-            vertical: styles.base_vertical,
-            horizontal: styles.base_horizontal
+            vertical: styles["radio-group-vertical"],
+            horizontal: styles["radio-group-horizontal"]
         },
         size: {
-            small: styles.base_small,
-            medium: styles.base_medium,
-            large: styles.base_large,
+            small: styles["radio-group-small"],
+            medium: styles["radio-group-medium"],
+            large: styles["radio-group-large"],
         },
         type: {
-            default: styles.tp_default,
-            button: styles.tp_button
+            default: styles["radio-group-default"],
+            button: styles["radio-group-button"]
         },
         radius: {
-            none: styles.rd_none,
-            small: styles.rd_small,
-            medium: styles.rd_medium,
-            pill: styles.rd_pill,
+            none: styles["radio-group-radius-none"],
+            small: styles["radio-group-radius-small"],
+            medium: styles["radio-group-radius-medium"],
+            pill: styles["radio-group-radius-pill"],
         },
     },
     compoundVariants: [
@@ -50,10 +50,10 @@ type RadioGroupContextType = {
     selectedValue: string | undefined
     onChange: (value: string) => void
     size: "small" | "medium" | "large"
-    color: "primary" | "secondary" | "danger" | "success" | "warning"
+    color: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
     type: "default" | "button"
     radius: 'none' | 'small' | 'medium' | 'pill'
-    variant: "bordered" | "flat"
+    variant: "bordered" | "flat" | "outline"
     disabled: boolean
 };
 
@@ -61,14 +61,14 @@ const RadioGroupContext = createContext<RadioGroupContextType | null>(null)
 
 interface RadioGroupProps {
     name?: string
-    value?: string
+    selectedOption?: string
     onChange?: (value: string) => void
     defaultValue?: string
     size?: "small" | "medium" | "large"
-    color?: "primary" | "secondary" | "danger" | "success" | "warning"
+    color?: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
     type?: "default" | "button"
     radius?: 'none' | 'small' | 'medium' | 'pill'
-    variant?: "bordered" | "flat"
+    variant?: "bordered" | "flat" | "outline"
 
     orientation?: "vertical" | "horizontal"
     disabled?: boolean
@@ -76,7 +76,7 @@ interface RadioGroupProps {
 
 export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
     name = `radio-group-${Math.random().toString(36).substr(2, 9)}`,
-    value,
+    selectedOption,
     onChange,
     defaultValue,
     size = "medium",
@@ -105,7 +105,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
     const contextValue = useMemo(
         () => ({
             name,
-            selectedValue: value ?? selectedValue,
+            selectedValue: selectedOption ?? selectedValue,
             onChange: handleChange,
             size,
             color,
@@ -114,7 +114,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
             variant,
             disabled,
         }),
-        [name, value, selectedValue, handleChange, size, color, type, variant, radius, disabled]
+        [name, selectedOption, selectedValue, handleChange, size, color, type, variant, radius, disabled]
     )
 
 
