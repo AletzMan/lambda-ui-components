@@ -1,4 +1,3 @@
-
 /* eslint-disable react-refresh/only-export-components */
 import { ReactNode, forwardRef, createContext, useMemo, PropsWithChildren, FC, useContext, RefAttributes } from "react"
 import { InputProps } from "../Input/Input"
@@ -6,40 +5,39 @@ import styles from "./inputGroup.module.css"
 import clsx from 'clsx'
 import { VariantProps, cva } from "class-variance-authority"
 
-
 export const inputGroup = cva(styles["lambda-input-group"], {
     variants: {
         size: {
-            tiny: styles["lambda-input-group--size-tiny"],
-            small: styles["lambda-input-group--size-small"],
-            medium: styles["lambda-input-group--size-medium"],
-            large: styles["lambda-input-group--size-large"],
+            tiny: styles["lambda-input-group-tiny"],
+            small: styles["lambda-input-group-small"],
+            medium: styles["lambda-input-group-medium"],
+            large: styles["lambda-input-group-large"],
         },
         variant: {
-            outline: styles["lambda-input-group--variant-outline"],
-            flat: styles["lambda-input-group--variant-flat"],
-            underline: styles["lambda-input-group--variant-underline"],
+            outline: styles["lambda-input-group-outline"],
+            flat: styles["lambda-input-group-flat"],
+            underline: styles["lambda-input-group-underline"],
         },
         radius: {
-            none: styles["lambda-input-group--radius-none"],
-            small: styles["lambda-input-group--radius-small"],
-            medium: styles["lambda-input-group--radius-medium"],
-            large: styles["lambda-input-group--radius-large"],
-            pill: styles["lambda-input-group--radius-pill"],
+            none: styles["lambda-input-group-radius-none"],
+            small: styles["lambda-input-group-radius-small"],
+            medium: styles["lambda-input-group-radius-medium"],
+            large: styles["lambda-input-group-radius-large"],
+            pill: styles["lambda-input-group-radius-pill"],
         },
         hasElements: {
-            none: styles["lambda-input-group--elements-none"],
-            first: styles["lambda-input-group--elements-first"],
-            last: styles["lambda-input-group--elements-last"],
-            both: styles["lambda-input-group--elements-both"]
+            none: styles["lambda-input-group-elements-none"],
+            first: styles["lambda-input-group-elements-first"],
+            last: styles["lambda-input-group-elements-last"],
+            both: styles["lambda-input-group-elements-both"]
         },
         error: {
-            true: styles["lambda-input-group--error-true"],
+            true: styles["lambda-input-group-error"],
             false: "",
         },
         disabled: {
-            false: styles["lambda-input-group--disabled-false"],
-            true: styles["lambda-input-group--disabled-true"],
+            false: styles["lambda-input-group-enabled"],
+            true: styles["lambda-input-group-disabled"],
         },
     },
     defaultVariants: {
@@ -86,11 +84,11 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
         return (
             <InputGroupContext.Provider value={contextValue}>
                 <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, error, disabled, hasElements }))}>
-                    {prefixElement && <div className={styles["lambda-input-group__start"]}>{prefixElement}</div>}
-                    <div className={styles["lambda-input-group--wrapper"]}>
+                    {prefixElement && <div className={styles["lambda-input-group-start"]}>{prefixElement}</div>}
+                    <div className={styles["lambda-input-group-wrapper"]}>
                         {children}
                     </div>
-                    {suffixElement && <div className={styles["lambda-input-group__end"]}>{suffixElement}</div>}
+                    {suffixElement && <div className={styles["lambda-input-group-end"]}>{suffixElement}</div>}
                 </div>
             </InputGroupContext.Provider>
         )
