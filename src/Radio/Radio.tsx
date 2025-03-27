@@ -12,6 +12,7 @@ const radioprop = cva(styles["radio"], {
             danger: styles["radio-danger"],
             success: styles["radio-success"],
             warning: styles["radio-warning"],
+            info: styles["radio-info"],
         },
         size: {
             small: styles["radio-small"],
@@ -21,6 +22,7 @@ const radioprop = cva(styles["radio"], {
         variant: {
             bordered: styles["radio-bordered"],
             flat: styles["radio-flat"],
+            outline: styles["radio-outline"],
         },
         type: {
             default: styles["radio-default"],
@@ -99,6 +101,7 @@ const wrapper = cva(styles["radio-wrapper"], {
             danger: styles["radio-wrapper-danger"],
             success: styles["radio-wrapper-success"],
             warning: styles["radio-wrapper-warning"],
+            info: styles["radio-wrapper-info"],
         },
         size: {
             small: styles["radio-wrapper-small"],
@@ -215,6 +218,7 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
         },
         ref
     ) => {
+
 
         const {
             selectedValue,
