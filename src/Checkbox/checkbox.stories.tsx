@@ -11,7 +11,7 @@ const meta: Meta<typeof Checkbox> = {
     argTypes: {
         variant: {
             control: "select",
-            options: ['bordered', 'flat'],
+            options: ['bordered', 'flat', 'outline'],
             description: "Visual style of the input",
             type: 'string',
         },
