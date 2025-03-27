@@ -146,8 +146,8 @@
         }
 
         &.radio-view-button {
-            min-width: var(--height-checkbox-sm);
-            min-height: var(--height-checkbox-sm);
+            min-width: var(--height-button-sm);
+            min-height: var(--height-button-sm);
         }
     }
 
@@ -158,8 +158,8 @@
         }
 
         &.radio-view-button {
-            min-width: var(--height-checkbox-md);
-            min-height: var(--height-checkbox-md);
+            min-width: var(--height-button-md);
+            min-height: var(--height-button-md);
         }
     }
 
@@ -170,8 +170,8 @@
         }
 
         &.radio-view-button {
-            min-width: var(--height-checkbox-lg);
-            min-height: var(--height-checkbox-lg);
+            min-width: var(--height-button-lg);
+            min-height: var(--height-button-lg);
         }
     }
 
@@ -182,32 +182,56 @@
 
         &.radio-view-primary {
             background-color: var(--primary-light-color);
-            border-color: var(--primary-dark-bg-color);
+            border-color: var(--primary-color);
+
+            &:is(.radio-view-button) {
+                border-color: var(--primary-text-color);
+            }
         }
 
         &.radio-view-secondary {
             background-color: var(--secondary-light-color);
-            border-color: var(--secondary-dark-bg-color);
+            border-color: var(--secondary-color);
+
+            &:is(.radio-view-button) {
+                border-color: var(--secondary-text-color);
+            }
         }
 
         &.radio-view-danger {
             background-color: var(--danger-light-color);
-            border-color: var(--danger-dark-bg-color);
+            border-color: var(--danger-color);
+
+            &:is(.radio-view-button) {
+                border-color: var(--danger-text-color);
+            }
         }
 
         &.radio-view-success {
             background-color: var(--success-light-color);
-            border-color: var(--success-dark-bg-color);
+            border-color: var(--success-color);
+
+            &:is(.radio-view-button) {
+                border-color: var(--success-text-color);
+            }
         }
 
         &.radio-view-warning {
             background-color: var(--warning-light-color);
-            border-color: var(--warning-dark-bg-color);
+            border-color: var(--warning-color);
+
+            &:is(.radio-view-button) {
+                border-color: var(--warning-text-color);
+            }
         }
 
         &.radio-view-info {
             background-color: var(--info-light-color);
-            border-color: var(--info-dark-bg-color);
+            border-color: var(--info-color);
+
+            &:is(.radio-view-button) {
+                border-color: var(--info-text-color);
+            }
         }
     }
 
