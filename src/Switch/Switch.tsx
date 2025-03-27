@@ -14,6 +14,7 @@ const switchprop = cva(styles["lambda-switch"], {
             info: styles["lambda-switch-info"],
         },
         size: {
+            tiny: styles["lambda-switch-tiny"],
             small: styles["lambda-switch-small"],
             medium: styles["lambda-switch-medium"],
             large: styles["lambda-switch-large"],
@@ -22,6 +23,11 @@ const switchprop = cva(styles["lambda-switch"], {
             solid: styles["lambda-switch-solid"],
             flat: styles["lambda-switch-flat"],
             outline: styles["lambda-switch-outline"],
+        },
+        shape: {
+            square: styles["lambda-switch-square"],
+            soft: styles["lambda-switch-soft"],
+            rounded: styles["lambda-switch-rounded"],
         },
         disabled: {
             true: styles["lambda-switch-disabled"],
@@ -36,6 +42,7 @@ const switchprop = cva(styles["lambda-switch"], {
         color: "primary",
         size: "medium",
         variant: "solid",
+        shape: "rounded",
         disabled: false,
         checked: false,
     },
@@ -52,6 +59,7 @@ const background = cva(styles["lambda-switch-background"], {
             info: styles["lambda-switch-background-info"],
         },
         size: {
+            tiny: styles["lambda-switch-background-tiny"],
             small: styles["lambda-switch-background-small"],
             medium: styles["lambda-switch-background-medium"],
             large: styles["lambda-switch-background-large"],
@@ -60,6 +68,11 @@ const background = cva(styles["lambda-switch-background"], {
             solid: styles["lambda-switch-background-solid"],
             flat: styles["lambda-switch-background-flat"],
             outline: styles["lambda-switch-background-outline"],
+        },
+        shape: {
+            square: styles["lambda-switch-background-square"],
+            soft: styles["lambda-switch-background-soft"],
+            rounded: styles["lambda-switch-background-rounded"],
         },
         disabled: {
             true: styles["lambda-switch-background-disabled"],
@@ -74,6 +87,7 @@ const background = cva(styles["lambda-switch-background"], {
         color: "primary",
         size: "medium",
         variant: "solid",
+        shape: "rounded",
         disabled: false,
         checked: false,
     },
@@ -106,9 +120,15 @@ const pos_label = cva(styles["lambda-switch-wrapper"], {
 const handle = cva(styles["lambda-switch-handle"], {
     variants: {
         size: {
+            tiny: styles["lambda-switch-handle-tiny"],
             small: styles["lambda-switch-handle-small"],
             medium: styles["lambda-switch-handle-medium"],
             large: styles["lambda-switch-handle-large"],
+        },
+        shape: {
+            square: styles["lambda-switch-handle-square"],
+            soft: styles["lambda-switch-handle-soft"],
+            rounded: styles["lambda-switch-handle-rounded"],
         },
         disabled: {
             true: styles["lambda-switch-handle-disabled"],
@@ -121,6 +141,7 @@ const handle = cva(styles["lambda-switch-handle"], {
     },
     defaultVariants: {
         size: "medium",
+        shape: "rounded",
         disabled: false,
         checked: false
     },
@@ -145,6 +166,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             disabled,
             position_label = "right",
             color,
+            shape,
             checked,
             onChange,
             ...props
@@ -163,7 +185,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 
         return (
             <label className={pos_label({ position_label, checked: internalChecked, disabled })}>
-                <div className={background({ variant, size, color, checked: internalChecked, disabled })}>
+                <div className={background({ variant, size, color, checked: internalChecked, disabled, shape })}>
                     <input
                         ref={ref}
                         type={"checkbox"}
@@ -178,7 +200,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                         })} ${className}`}
                         {...props}
                     />
-                    {<span className={handle({ checked: internalChecked, disabled, size })} />}
+                    {<span className={handle({ checked: internalChecked, disabled, size, shape })} />}
                 </div>
                 {label && <span className={clsx(styles["lambda-switch-text"], { [styles["lambda-switch-text-disabled"]]: disabled })}>{label}</span>}
             </label>

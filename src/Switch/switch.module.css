@@ -9,7 +9,7 @@
     color: var(--foreground-color);
     font-family: var(--font-family);
 
-    &:hover {
+    &:hover:not(.lambda-switch-wrapper-disabled) {
         .lambda-switch-background-flat {
             &.lambda-switch-background-primary {
                 box-shadow: 0 0 1px 3px var(--primary-outline-color);
@@ -123,13 +123,24 @@
 
 .lambda-switch-background {
     position: relative;
-    border-radius: var(--border-radius-pill);
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
     background-color: var(--surface-b);
     transition: all 0.2s ease-out;
+}
+
+.lambda-switch-background-square {
+    border-radius: var(--border-radius-xs);
+}
+
+.lambda-switch-background-soft {
+    border-radius: var(--border-radius-md);
+}
+
+.lambda-switch-background-rounded {
+    border-radius: var(--border-radius-pill);
 }
 
 .lambda-switch-background-solid {
@@ -504,6 +515,11 @@
 }
 
 
+.lambda-switch-background-tiny {
+    width: calc(var(--height-checkbox-xs) * 2);
+    height: var(--height-checkbox-xs);
+}
+
 .lambda-switch-background-small {
     width: calc(var(--height-checkbox-sm) * 2);
     height: var(--height-checkbox-sm);
@@ -526,13 +542,30 @@
     transition: all 0.25s ease-in-out;
     width: var(--height-checkbox-sm);
     height: var(--height-checkbox-sm);
-    border-radius: var(--border-radius-pill);
     background-color: var(--white-color);
     box-shadow: 0 0 1px 2px #00000020;
 }
 
+.lambda-switch-handle-square {
+    border-radius: var(--border-radius-xs);
+}
+
+.lambda-switch-handle-soft {
+    border-radius: var(--border-radius-sm);
+}
+
+.lambda-switch-handle-rounded {
+    border-radius: var(--border-radius-pill);
+}
+
 .lambda-switch-handle-disabled {
     cursor: not-allowed;
+}
+
+.lambda-switch-handle-tiny {
+    left: 4px;
+    width: calc(var(--height-checkbox-xs) - 6px);
+    height: calc(var(--height-checkbox-xs) - 6px);
 }
 
 .lambda-switch-handle-small {
@@ -551,6 +584,10 @@
     left: 5px;
     width: calc(var(--height-checkbox-lg) - 10px);
     height: calc(var(--height-checkbox-lg) - 10px);
+}
+
+.lambda-switch-handle-checked.lambda-switch-handle-tiny {
+    left: calc(100% - var(--height-checkbox-xs) + 4px);
 }
 
 .lambda-switch-handle-checked.lambda-switch-handle-small {

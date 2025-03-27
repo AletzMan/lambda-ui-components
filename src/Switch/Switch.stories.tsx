@@ -24,7 +24,7 @@ const meta: Meta<typeof Switch> = {
         },
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Input size"
         },
         label: {
