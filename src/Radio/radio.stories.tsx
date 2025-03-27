@@ -18,7 +18,7 @@ const meta: Meta<typeof Radio> = {
         },
         color: {
             control: "select",
-            options: ['primary', 'secondary', 'danger', 'success', 'warning'],
+            options: ['primary', 'secondary', 'danger', 'success', 'warning', 'info'],
             description: "Background color"
         },
         size: {
@@ -35,7 +35,7 @@ const meta: Meta<typeof Radio> = {
             type: "string",
             description: "Text to display as the label for the component",
         },
-        position_label: {
+        positionLabel: {
             control: 'select',
             options: ['right', 'left', 'top', 'bottom'],
             description: "Select position label right or left",
@@ -72,7 +72,7 @@ export const Default = {
         color: "primary",
         type: "default",
         variant: "bordered",
-        position_label: "right",
+        positionLabel: "right",
         disabled: false
     }
 };
