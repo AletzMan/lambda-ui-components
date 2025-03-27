@@ -44,11 +44,11 @@ const button = cva(styles[`lambda-btn`], {
         },
         loading: {
             true: styles[`lambda-btn-loading`],
-            false: styles[`lambda-btn--loading-false`],
+            false: styles[`lambda-btn-normal`],
         },
         disabled: {
-            false: styles[`lambda-btn-disabled`],
-            true: styles[`lambda-btn--disabled-true`],
+            false: styles[`lambda-btn-enabled`],
+            true: styles[`lambda-btn-disabled`],
         },
     },
     defaultVariants: {
@@ -116,7 +116,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             >
                 {(icon || loading) && (
                     <span className={clsx(styles["lambda-btn-icon"], { [styles["lambda-btn-icon-only"]]: !label })}>
-                        {loading ? <Loader className={styles["lambda-btn-icon--loading"]} /> : icon}
+                        {loading ? <Loader className={styles["lambda-btn-icon-loading"]} /> : icon}
                     </span>
                 )}
                 {label && <span className={styles["lambda-btn-label"]}>{(loading && loadingText) ? loadingText : label}</span>}
