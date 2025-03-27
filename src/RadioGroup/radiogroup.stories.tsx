@@ -18,7 +18,7 @@ const meta: Meta<typeof RadioGroup> = {
         },
         color: {
             control: "select",
-            options: ['primary', 'secondary', 'danger', 'success', 'warning'],
+            options: ['primary', 'secondary', 'danger', 'success', 'warning', 'info'],
             description: "Background color"
         },
         orientation: {
