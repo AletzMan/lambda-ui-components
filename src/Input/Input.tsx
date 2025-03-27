@@ -7,18 +7,18 @@ import { Eye, EyeOff, X } from "lucide-react"
 import clsx from 'clsx'
 import { useInputGroup } from "../InputGroup/InputGroup"
 
-export const lambdaInput = cva(styles["lambda_input"], {
+export const lambdaInput = cva(styles["lambda-input"], {
     variants: {
         radius: {
-            none: styles["lambda_input--radius-none"],
-            small: styles["lambda_input--radius-small"],
-            medium: styles["lambda_input--radius-medium"],
-            large: styles["lambda_input--radius-large"],
-            pill: styles["lambda_input--radius-pill"],
+            none: styles["lambda-input-radius-none"],
+            small: styles["lambda-input-radius-small"],
+            medium: styles["lambda-input-radius-medium"],
+            large: styles["lambda-input-radius-large"],
+            pill: styles["lambda-input-radius-pill"],
         },
         disabled: {
-            false: styles["lambda_input--enabled"],
-            true: styles["lambda_input--disabled"],
+            false: styles["lambda-input-enabled"],
+            true: styles["lambda-input-disabled"],
         },
     },
     defaultVariants: {
@@ -26,45 +26,45 @@ export const lambdaInput = cva(styles["lambda_input"], {
         disabled: false,
     },
 })
-export const input = cva(styles["lambda_input__wrapper"], {
+export const input = cva(styles["lambda-input-wrapper"], {
     variants: {
         size: {
-            tiny: styles["lambda_input__wrapper--size-tiny"],
-            small: styles["lambda_input__wrapper--size-small"],
-            medium: styles["lambda_input__wrapper--size-medium"],
-            large: styles["lambda_input__wrapper--size-large"],
+            tiny: styles["lambda-input-wrapper-tiny"],
+            small: styles["lambda-input-wrapper-small"],
+            medium: styles["lambda-input-wrapper-medium"],
+            large: styles["lambda-input-wrapper-large"],
         },
         variant: {
-            outline: styles["lambda_input__wrapper--variant-outline"],
-            flat: styles["lambda_input__wrapper--variant-flat"],
-            underline: styles["lambda_input__wrapper--variant-underline"],
+            outline: styles["lambda-input-wrapper-outline"],
+            flat: styles["lambda-input-wrapper-flat"],
+            underline: styles["lambda-input-wrapper-underline"],
         },
         type: {
-            text: styles["lambda_input__wrapper--type-text"],
-            search: styles["lambda_input__wrapper--type-search"],
-            password: styles["lambda_input__wrapper--type-password"],
-            email: styles["lambda_input__wrapper--type-email"],
+            text: styles["lambda-input-wrapper-text"],
+            search: styles["lambda-input-wrapper-search"],
+            password: styles["lambda-input-wrapper-password"],
+            email: styles["lambda-input-wrapper-email"],
         },
         radius: {
-            none: styles["lambda_input__wrapper--radius-none"],
-            small: styles["lambda_input__wrapper--radius-small"],
-            medium: styles["lambda_input__wrapper--radius-medium"],
-            large: styles["lambda_input__wrapper--radius-large"],
-            pill: styles["lambda_input__wrapper--radius-pill"],
+            none: styles["lambda-input-wrapper-radius-none"],
+            small: styles["lambda-input-wrapper-radius-small"],
+            medium: styles["lambda-input-wrapper-radius-medium"],
+            large: styles["lambda-input-wrapper-radius-large"],
+            pill: styles["lambda-input-wrapper-radius-pill"],
         },
         error: {
-            true: styles["lambda_input__wrapper--error-true"],
+            true: styles["lambda-input-wrapper-error"],
             false: "",
         },
         hasElements: {
-            none: styles["lambda_input__wrapper--elements-none"],
-            first: styles["lambda_input__wrapper--elements-first"],
-            last: styles["lambda_input__wrapper--elements-last"],
-            both: styles["lambda_input__wrapper--elements-both"]
+            none: styles["lambda-input-wrapper-elements-none"],
+            first: styles["lambda-input-wrapper-elements-first"],
+            last: styles["lambda-input-wrapper-elements-last"],
+            both: styles["lambda-input-wrapper-elements-both"]
         },
         disabled: {
-            false: styles["lambda_input__wrapper--disabled-false"],
-            true: styles["lambda_input__wrapper--disabled"],
+            false: styles["lambda-input-wrapper-enabled"],
+            true: styles["lambda-input-wrapper-disabled"],
         },
     },
     defaultVariants: {
@@ -72,31 +72,32 @@ export const input = cva(styles["lambda_input__wrapper"], {
         size: "medium",
         radius: "small",
         type: "text",
+        hasElements: "none",
         error: false,
         disabled: false,
     },
 })
 
-const labels = cva(styles["lambda_input__label"], {
+const labels = cva(styles["lambda-input-label"], {
     variants: {
         size: {
-            tiny: styles["lambda_input__label--size-tiny"],
-            small: styles["lambda_input__label--size-small"],
-            medium: styles["lambda_input__label--size-medium"],
-            large: styles["lambda_input__label--size-large"],
+            tiny: styles["lambda-input-label-tiny"],
+            small: styles["lambda-input-label-small"],
+            medium: styles["lambda-input-label-medium"],
+            large: styles["lambda-input-label-large"],
         },
         radius: {
-            none: styles["lambda_input__label--radius-none"],
-            small: styles["lambda_input__label--radius-small"],
-            medium: styles["lambda_input__label--radius-medium"],
-            large: styles["lambda_input__label--radius-large"],
-            pill: styles["lambda_input__label--radius-pill"],
+            none: styles["lambda-input-label-radius-none"],
+            small: styles["lambda-input-label-radius-small"],
+            medium: styles["lambda-input-label-radius-medium"],
+            large: styles["lambda-input-label-radius-large"],
+            pill: styles["lambda-input-label-radius-pill"],
         },
         hasElements: {
-            none: styles["lambda_input__label--elements-none"],
-            first: styles["lambda_input__label--elements-first"],
-            last: styles["lambda_input__label--elements-last"],
-            both: styles["lambda_input__label--elements-both"]
+            none: styles["lambda-input-label-elements-none"],
+            first: styles["lambda-input-label-elements-first"],
+            last: styles["lambda-input-label-elements-last"],
+            both: styles["lambda-input-label-elements-both"]
         },
 
     },
@@ -106,17 +107,17 @@ const labels = cva(styles["lambda_input__label"], {
     },
 })
 
-const textInput = cva(styles["lambda_input__field"], {
+const textInput = cva(styles["lambda-input-field"], {
     variants: {
         size: {
-            tiny: styles["lambda_input__field--size-tiny"],
-            small: styles["lambda_input__field--size-small"],
-            medium: styles["lambda_input__field--size-medium"],
-            large: styles["lambda_input__field--size-large"],
+            tiny: styles["lambda-input-field-tiny"],
+            small: styles["lambda-input-field-small"],
+            medium: styles["lambda-input-field-medium"],
+            large: styles["lambda-input-field-large"],
         },
         disabled: {
-            false: styles["lambda_input__field--disabled-false"],
-            true: styles["lambda_input__field--disabled-true"],
+            false: styles["lambda-input-field-disabled"],
+            true: styles["lambda-input-field-enabled"],
         },
     },
     defaultVariants: {
@@ -125,13 +126,13 @@ const textInput = cva(styles["lambda_input__field"], {
     }
 })
 
-const errorlabel = cva(styles["lambda_input__error"], {
+const errorlabel = cva(styles["lambda-input-error"], {
     variants: {
         size: {
-            tiny: styles["lambda_input__error--size-tiny"],
-            small: styles["lambda_input__error--size-small"],
-            medium: styles["lambda_input__error--size-medium"],
-            large: styles["lambda_input__error--size-large"],
+            tiny: styles["lambda-input-error-tiny"],
+            small: styles["lambda-input-error-small"],
+            medium: styles["lambda-input-error-medium"],
+            large: styles["lambda-input-error-large"],
         },
     },
     defaultVariants: {
@@ -139,18 +140,18 @@ const errorlabel = cva(styles["lambda_input__error"], {
     }
 })
 
-const buttonPassword = cva(styles["lambda_input__toggle-password"], {
+const buttonPassword = cva(styles["lambda-input-toggle-password"], {
     variants: {
         size: {
-            tiny: styles["lambda_input__toggle-password--tiny"],
-            small: styles["lambda_input__toggle-password--small"],
-            medium: styles["lambda_input__toggle-password--medium"],
-            large: styles["lambda_input__toggle-password--large"],
+            tiny: styles["lambda-input-toggle-password-tiny"],
+            small: styles["lambda-input-toggle-password-small"],
+            medium: styles["lambda-input-toggle-password-medium"],
+            large: styles["lambda-input-toggle-password-large"],
         },
         variant: {
-            outline: styles["lambda_input__toggle-password--outline"],
-            flat: styles["lambda_input__toggle-password--flat"],
-            underline: styles["lambda_input__toggle-password--underline"],
+            outline: styles["lambda-input-toggle-password-outline"],
+            flat: styles["lambda-input-toggle-password-flat"],
+            underline: styles["lambda-input-toggle-password-underline"],
         },
     },
     defaultVariants: {
@@ -249,20 +250,20 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputPlaceholder = floatingLabel ? "" : placeholder
 
         return (
-            <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled }), { [styles["lambda_input--group"]]: isGroup })}>
+            <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled }), { [styles["lambda-input-group"]]: isGroup })}>
                 {label && (
                     <label className={clsx(labels({ radius: contextRadius, size: contextSize, hasElements }), {
-                        [styles["lambda_input__label--floating"]]: floatingLabel && isLabelFloating,
-                        [styles["lambda_input__label--default"]]: floatingLabel && !isLabelFloating,
-                        [styles["lambda_input__label--placeholder"]]: floatingLabel && !isLabelFloating,
-                        [styles["lambda_input__label--isRequired"]]: isRequired,
+                        [styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,
+                        [styles["lambda-input-label-default"]]: floatingLabel && !isLabelFloating,
+                        [styles["lambda-input-label-placeholder"]]: floatingLabel && !isLabelFloating,
+                        [styles["lambda-input-label-isRequired"]]: isRequired,
                     })}>
                         {`${label as string}`}
                     </label>
                 )}
-                {helperText && <label className={clsx(styles["lambda_input--helper"], { [styles["lambda_input--helper-disabled"]]: disabled })}>{helperText}</label>}
-                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, error: contextError, type, hasElements, className }), { [styles["lambda_input__wrapper--group"]]: isGroup })}>
-                    <div className={clsx(styles["lambda_input__input-wrapper"], { [styles["lambda_input__input-wrapper--password"]]: isPasswordType || isSearchType })}>
+                {helperText && <label className={clsx(styles["lambda-input-helper"], { [styles["lambda-input-helper-disabled"]]: disabled })}>{helperText}</label>}
+                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, error: contextError, type, hasElements, className }), { [styles["lambda-input-wrapper--group"]]: isGroup })}>
+                    <div className={clsx(styles["lambda-input-input-wrapper"], { [styles["lambda-input-input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}
                             value={value}
@@ -270,19 +271,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             type={inputType as HTMLInputTypeAttribute}
-                            className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), { [styles["lambda_input__field--showPassword"]]: isPasswordType && !showPassword && value.toString().length > 0 })}
+                            className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), { [styles["lambda-input-field-showPassword"]]: isPasswordType && !showPassword && value.toString().length > 0 })}
                             disabled={contextDisabled || undefined}
                             placeholder={inputPlaceholder}
                             {...props}
                         />
                         {isPasswordType && (
                             <button onClick={togglePasswordVisibility} className={buttonPassword({ size: contextSize, variant: contextVariant })}>
-                                {showPassword ? <Eye className={styles["lambda_input__icon"]} /> : <EyeOff className={styles["lambda_input__icon"]} />}
+                                {showPassword ? <Eye className={styles["lambda-input-icon"]} /> : <EyeOff className={styles["lambda-input-icon"]} />}
                             </button>
                         )}
                         {isSearchType && value && (
-                            <span onClick={clearInput} className={styles["lambda_input__clear-search"]}>
-                                <X className={styles["lambda_input__clear-search-icon"]} />
+                            <span onClick={clearInput} className={styles["lambda-input-clear-search"]}>
+                                <X className={styles["lambda-input-clear-search-icon"]} />
                             </span>
                         )}
                     </div>
