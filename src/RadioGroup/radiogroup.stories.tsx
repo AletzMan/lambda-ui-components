@@ -59,9 +59,10 @@ export const Default: Story = {
         name: '',
         children: (
             <>
-                <Radio value="option1" label="Option 1" />
-                <Radio value="option2" label="Option 2" />
-                <Radio value="option3" label="Option 3" />
+                <Radio value="option1" label="Menu Inicio 1" />
+                <Radio value="option2" label="Menu Inicio 2" />
+                <Radio value="option3" label="Menu Inicio 3" />
+                <Radio value="option4" label="Menu 4" />
             </>
         )
     },
