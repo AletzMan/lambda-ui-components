@@ -14,7 +14,7 @@
      align-items: center;
      justify-content: center;
      border: 1px solid transparent;
-     font-weight: 500;
+     font-weight: var(--font-weight-reg);
      transition: box-shadow 0.01s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out, background-color 0.3s ease-in-out;
      pointer-events: all;
      overflow: hidden;
@@ -70,7 +70,7 @@
      border-radius: var(--border-radius-sm);
      width: max-content;
      width: 100%;
-     font-weight: 100;
+     font-weight: var(--font-weight-xs);
      letter-spacing: 1px;
      opacity: 0;
      animation: animateError 0.4s ease both;
@@ -129,7 +129,7 @@
      &::placeholder {
          color: var(--placeholder-color);
          font-family: var(--font-family);
-         font-weight: 300;
+         font-weight: var(--font-weight-sm);
      }
 
 
@@ -410,7 +410,7 @@
      font-family: var(--font-family);
      color: var(--primary-text-color);
      padding: 0 0 0 4px;
-     font-weight: 500;
+     font-weight: var(--font-weight-reg);
      transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out;
      z-index: 2;
 
@@ -451,7 +451,7 @@
  }
 
  .lambda-input-label-default {
-     font-weight: 300;
+     font-weight: var(--font-weight-sm);
      color: var(--placeholder-color);
      pointer-events: none;
 
@@ -624,7 +624,7 @@
          bottom: -1.5em;
          left: 0;
          font-size: var(--font-size-xs);
-         font-weight: 500;
+         font-weight: var(--font-weight-reg);
          color: var(--surface-f);
          font-style: italic;
          opacity: 0;
