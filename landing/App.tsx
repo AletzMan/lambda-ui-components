@@ -1,24 +1,12 @@
 
-import { Button, Checkbox, Input, InputGroup, InputNumber, Switch } from '../src/main'
-import { AlertCircle, CheckCircle, Coins, HelpCircle, Menu, Search, SearchIcon, Send, Settings, Settings2, Trash, User } from "lucide-react"
+import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Switch } from '../src/main'
+import { Coins, Search, SearchIcon, Settings, Settings2, User } from "lucide-react"
 import styles from "./styles.module.css"
-import { JSX, useState } from 'react'
+import { useState } from 'react'
 import { ButtonThemeController } from '../src/ThemeProvider/ThemeProvider'
+import { buttonsPrimary } from './constants'
 
-interface IButton {
-  color: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | null | undefined
-  label: string | undefined
-  icon: JSX.Element | undefined
-}
 
-const buttonsPrimary: IButton[] = [
-  { color: 'primary', label: 'Primary', icon: <Send /> },
-  { color: 'secondary', label: 'Secondary', icon: <Menu /> },
-  { color: 'success', label: 'Success', icon: <CheckCircle /> },
-  { color: 'danger', label: 'Danger', icon: <Trash /> },
-  { color: 'warning', label: 'Warning', icon: <AlertCircle /> },
-  { color: 'info', label: 'Info', icon: <HelpCircle /> }
-]
 
 function App() {
   const [loadingButtons, setLoadingButtons] = useState(false)
@@ -28,6 +16,9 @@ function App() {
   const [sizeCheckbox, setSizeCheckbox] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledCheckbox, setDisabledCheckbox] = useState(false)
   const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("medium")
+  const [sizeSwitch, setSizeSwitch] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
+  const [disabledSwitch, setDisabledSwitch] = useState(false)
+  const [shapeSwitch, setShapeSwitch] = useState<"square" | "soft" | "rounded" | undefined>("rounded")
   const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledInput, setDisabledInput] = useState(false)
   const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("medium")
@@ -39,6 +30,7 @@ function App() {
   const [radiusInputNumber, setRadiusInputNumber] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("medium")
   const [validInputNumber, setValidInputNumber] = useState(true)
   const [errorMessageNumber, setErrorMessageNumber] = useState("This field has an error.")
+  const [valueRadioBordered, setValueRadioBordered] = useState("")
 
   return (
     <section className={styles.section}>
@@ -200,49 +192,105 @@ function App() {
               <Checkbox size={sizeCheckbox} variant="flat" color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
               <Checkbox size={sizeCheckbox} variant="flat" color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
             </div>
+            <div className={styles.buttons}>
+              <Checkbox size={sizeCheckbox} variant="outline" label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="outline" color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="outline" color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="outline" color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="outline" color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
+              <Checkbox size={sizeCheckbox} variant="outline" color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
+            </div>
           </div>
         </section>
         <section className={styles.subsection}>
           <h2 className={styles.subtitle}>Switch</h2>
           <div className={styles.control_buttons}>
-            <Checkbox label='Disabled' checked={disabledCheckbox} size="medium" color="secondary" onChange={(e) => setDisabledCheckbox(e.currentTarget.checked)} />
-            <select className={styles.control_size} value={sizeCheckbox} onChange={(e) => setSizeCheckbox(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <Checkbox label='Disabled' checked={disabledSwitch} size="medium" color="secondary" onChange={(e) => setDisabledSwitch(e.currentTarget.checked)} />
+            <select className={styles.control_size} value={sizeSwitch} onChange={(e) => setSizeSwitch(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
               <option value="tiny">Tiny</option>
               <option value="small">Small</option>
               <option value="medium">Medium</option>
               <option value="large">Large</option>
             </select>
-            <select className={styles.control_size} value={radiusCheckbox} onChange={(e) => setRadiusCheckbox(e.currentTarget.value as "medium" | "small" | "none" | "circle" | undefined)}>
-              <option value="none">None</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="circle">Circle</option>
+            <select className={styles.control_size} value={shapeSwitch} onChange={(e) => setShapeSwitch(e.currentTarget.value as "square" | "soft" | "rounded" | undefined)}>
+              <option value="square">Square</option>
+              <option value="soft">Soft</option>
+              <option value="rounded">Rounded</option>
             </select>
           </div>
           <div className={styles.container_buttons}>
             <div className={styles.buttons}>
-              <Switch variant="solid" color="primary" />
-              <Switch variant="solid" color="secondary" />
-              <Switch variant="solid" color="success" />
-              <Switch variant="solid" color="danger" />
-              <Switch variant="solid" color="warning" />
-              <Switch variant="solid" color="info" />
+              <Switch variant="solid" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="solid" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="solid" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="solid" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="solid" color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="solid" color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
             </div>
             <div className={styles.buttons}>
-              <Switch variant="flat" color="primary" />
-              <Switch variant="flat" color="secondary" />
-              <Switch variant="flat" color="success" />
-              <Switch variant="flat" color="danger" />
-              <Switch variant="flat" color="warning" />
-              <Switch variant="flat" color="info" />
+              <Switch variant="flat" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="flat" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="flat" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="flat" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="flat" color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="flat" color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
             </div>
             <div className={styles.buttons}>
-              <Switch variant="outline" color="primary" />
-              <Switch variant="outline" color="secondary" />
-              <Switch variant="outline" color="success" />
-              <Switch variant="outline" color="danger" />
-              <Switch variant="outline" color="warning" />
-              <Switch variant="outline" color="info" />
+              <Switch variant="outline" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="outline" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="outline" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="outline" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="outline" color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="outline" color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+            </div>
+          </div>
+        </section>
+        <section className={styles.subsection}>
+          <h2 className={styles.subtitle}>Radio</h2>
+          <div className={styles.control_buttons}>
+            <Checkbox label='Disabled' checked={disabledSwitch} size="medium" color="secondary" onChange={(e) => setDisabledSwitch(e.currentTarget.checked)} />
+            <select className={styles.control_size} value={sizeSwitch} onChange={(e) => setSizeSwitch(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+              <option value="tiny">Tiny</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select className={styles.control_size} value={shapeSwitch} onChange={(e) => setShapeSwitch(e.currentTarget.value as "square" | "soft" | "rounded" | undefined)}>
+              <option value="square">Square</option>
+              <option value="soft">Soft</option>
+              <option value="rounded">Rounded</option>
+            </select>
+          </div>
+          <div className={styles.container_buttons}>
+            <div className={styles.buttons}>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} variant='bordered' onChange={(e) => setValueRadioBordered(e)}>
+                <Radio color='primary' type='radio' value="first" label="First" />
+                <Radio color='secondary' type='radio' value="third" label="Third" />
+                <Radio color='danger' type='radio' value="second" label="Second" />
+                <Radio color='success' type='radio' value="fourth" label="Fourth" />
+                <Radio color='warning' type='radio' value="fifth" label="Fifth" />
+                <Radio color='info' type='radio' value="sixth" label="Sixth" />
+              </RadioGroup>
+            </div>
+            <div className={styles.buttons}>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} variant='flat' onChange={(e) => setValueRadioBordered(e)}>
+                <Radio color='primary' type='radio' value="first" label="First" />
+                <Radio color='secondary' type='radio' value="third" label="Third" />
+                <Radio color='danger' type='radio' value="second" label="Second" />
+                <Radio color='success' type='radio' value="fourth" label="Fourth" />
+                <Radio color='warning' type='radio' value="fifth" label="Fifth" />
+                <Radio color='info' type='radio' value="sixth" label="Sixth" />
+              </RadioGroup>
+            </div>
+            <div className={styles.buttons}>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} variant='outline' onChange={(e) => setValueRadioBordered(e)} radius='medium' name='outline' orientation='vertical'>
+                <Radio color='primary' value="first" label="First" />
+                <Radio color='secondary' value="third" label="Third" />
+                <Radio color='danger' value="second" label="Second" />
+                <Radio color='success' value="fourth" label="Fourth" />
+                <Radio color='warning' value="fifth" label="Fifth" />
+                <Radio color='info' value="sixth" label="Sixth" />
+              </RadioGroup>
             </div>
           </div>
         </section>

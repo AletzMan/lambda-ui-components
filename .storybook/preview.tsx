@@ -1,10 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
+import '@fontsource-variable/plus-jakarta-sans';
 import React, { useEffect } from "react";
 import { ThemeProvider } from "../src/ThemeProvider/ThemeProvider";
 import { withThemeByClassName } from "@storybook/addon-themes"
 import type { Preview } from "@storybook/react"
 import '../src/index.css';
-import '@fontsource/metropolis';
 
 
 const ThemeDecorator = (Story, context) => {

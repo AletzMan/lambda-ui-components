@@ -91,7 +91,7 @@ body {
   color: var(--foreground-color);
   padding: var(--padding-md) var(--padding-md);
   border-radius: var(--border-radius-sm);
-  min-width: 8em;
+  min-width: 6em;
   max-height: 32px;
   border: 1px solid var(--surface-d);
   accent-color: red;

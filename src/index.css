@@ -1,5 +1,5 @@
 :root {
-    --font-family: 'Metropolis', sans-serif;
+    --font-family: 'Plus Jakarta Sans Variable', sans-serif;
     --disabled-color: #6b6b6b;
     --black-color: #222222;
     --white-color: #f7f7f7;
@@ -16,10 +16,16 @@
     --gap-md: 8px;
     --gap-lg: 16px;
 
-    --font-size-xs: 11px;
-    --font-size-sm: 12px;
-    --font-size-md: 14px;
-    --font-size-lg: 16px;
+    --font-weight-xs: 200;
+    --font-weight-sm: 300;
+    --font-weight-reg: 500;
+    --font-weight-md: 600;
+    --font-weight-bold: 800;
+
+    --font-size-xs: 10px;
+    --font-size-sm: 11px;
+    --font-size-md: 13px;
+    --font-size-lg: 15px;
 
     --border-radius-none: 0px;
     --border-radius-xs: 2px;
@@ -62,10 +68,10 @@
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #999999;
 
-    --surface-b: #f7f3fb;
-    --surface-a: #fcfaff;
-    --surface-c: #eaeaea;
-    --surface-d: #9da2a5;
+    --surface-a: #f5f4f4;
+    --surface-b: #fdfdfd;
+    --surface-c: #eeeded;
+    --surface-d: #b9bdbf;
     --surface-e: #c5c5c5;
     --surface-f: #989898;
     --border-color: #a6a6a6;

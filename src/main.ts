@@ -1,4 +1,4 @@
-import '@fontsource/metropolis'
+import '@fontsource-variable/plus-jakarta-sans';
 import "./index.css"
 
 export { Button } from "./Button/Button"
