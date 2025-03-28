@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@fontsource/metropolis':
+  '@fontsource-variable/plus-jakarta-sans':
     specifier: ^5.2.5
     version: 5.2.5
   '@types/node':
@@ -655,8 +655,8 @@ packages:
       levn: 0.4.1
     dev: true
 
-  /@fontsource/metropolis@5.2.5:
-    resolution: {integrity: sha512-zAz6XS1ZXVXZadcqsOnToiePAKEiEywxOwILEaE4sRl+pVOFQI/30xMiKvjQae1NRK3TbeKxJAmt+yFkPguXJw==}
+  /@fontsource-variable/plus-jakarta-sans@5.2.5:
+    resolution: {integrity: sha512-nkAWzq+QWBSK+52HIlNCyoh5YXrZ/AwV1OqzxZz6VnPmsIpU68B1bf1YT8heRAJKY1kXNtWIJ9jJMYVaStgf+w==}
     dev: false
 
   /@humanfs/core@0.19.1:
