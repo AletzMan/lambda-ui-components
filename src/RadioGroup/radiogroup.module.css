@@ -1,6 +1,6 @@
 .radio-group {
 
-    &.radio-group-default {
+    &.radio-group-radio {
         display: flex;
         flex-direction: column;
         align-items: flex-start;

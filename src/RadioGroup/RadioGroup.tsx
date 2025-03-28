@@ -23,8 +23,13 @@ const classRadioGroups = cva(styles["radio-group"], {
             large: styles["radio-group-large"],
         },
         type: {
-            default: styles["radio-group-default"],
+            radio: styles["radio-group-radio"],
             button: styles["radio-group-button"]
+        },
+        variant: {
+            bordered: styles["radio-group-bordered"],
+            flat: styles["radio-group-flat"],
+            outline: styles["radio-group-outline"],
         },
         radius: {
             none: styles["radio-group-radius-none"],
@@ -40,7 +45,8 @@ const classRadioGroups = cva(styles["radio-group"], {
         orientation: 'vertical',
         radius: "medium",
         size: "medium",
-        type: "default"
+        type: "radio",
+        variant: "bordered"
     },
 })
 
@@ -51,7 +57,7 @@ type RadioGroupContextType = {
     onChange: (value: string) => void
     size: "small" | "medium" | "large"
     color: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
-    type: "default" | "button"
+    type: "radio" | "button"
     radius: 'none' | 'small' | 'medium' | 'pill'
     variant: "bordered" | "flat" | "outline"
     disabled: boolean
@@ -66,22 +72,21 @@ interface RadioGroupProps {
     defaultValue?: string
     size?: "small" | "medium" | "large"
     color?: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
-    type?: "default" | "button"
+    type?: "radio" | "button"
     radius?: 'none' | 'small' | 'medium' | 'pill'
     variant?: "bordered" | "flat" | "outline"
-
     orientation?: "vertical" | "horizontal"
     disabled?: boolean
 }
 
 export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
-    name = `radio-group-${Math.random().toString(36).substr(2, 9)}`,
+    name = `radio-group-${Math.random().toString(36).slice(2, 9)}`,
     selectedOption,
     onChange,
     defaultValue,
     size = "medium",
     color = "primary",
-    type = "default",
+    type = "radio",
     variant = "bordered",  // Default variant
     disabled = false,
     radius = "medium",
