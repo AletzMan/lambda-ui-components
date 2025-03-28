@@ -25,7 +25,7 @@ const radioprop = cva(styles["radio"], {
             outline: styles["radio-outline"],
         },
         type: {
-            default: styles["radio-default"],
+            radio: styles["radio-radio"],
             button: styles["radio-button"]
         },
         disabled: {
@@ -40,7 +40,7 @@ const radioprop = cva(styles["radio"], {
         variant: "bordered",
         color: "primary",
         disabled: false,
-        type: "default",
+        type: "radio",
     },
 })
 
@@ -65,7 +65,7 @@ const view = cva(styles["radio-view"], {
             outline: styles["radio-view-outline"],
         },
         type: {
-            default: styles["radio-view-default"],
+            radio: styles["radio-view-radio"],
             button: styles["radio-view-button"]
         },
         checked: {
@@ -82,7 +82,7 @@ const view = cva(styles["radio-view"], {
         variant: "bordered",
         color: "primary",
         checked: false,
-        type: "default",
+        type: "radio",
         disabled: false,
     },
 })
@@ -114,7 +114,7 @@ const wrapper = cva(styles["radio-wrapper"], {
             outline: styles["radio-wrapper-outline"],
         },
         type: {
-            default: styles["radio-wrapper-default"],
+            radio: styles["radio-wrapper-radio"],
             button: styles["radio-wrapper-button"]
         },
         disabled: {
@@ -126,7 +126,7 @@ const wrapper = cva(styles["radio-wrapper"], {
         positionLabel: "right",
         color: "primary",
         size: "medium",
-        type: "default",
+        type: "radio",
         variant: "bordered",
         disabled: false
     },
@@ -148,7 +148,7 @@ const iconView = cva(styles["radio-icon"], {
             large: styles["radio-icon-large"],
         },
         type: {
-            default: styles["radio-icon-default"],
+            radio: styles["radio-icon-radio"],
             button: styles["radio-icon-button"]
         },
         disabled: {
@@ -164,7 +164,7 @@ const iconView = cva(styles["radio-icon"], {
         color: "primary",
         disabled: false,
         size: "medium",
-        type: "default",
+        type: "radio",
         checked: false,
     },
 })
@@ -172,7 +172,7 @@ const iconView = cva(styles["radio-icon"], {
 const labelName = cva(styles["radio-label"], {
     variants: {
         type: {
-            default: styles["radio-label-default"],
+            radio: styles["radio-label-radio"],
             button: styles["radio-label-button"]
         },
         size: {
@@ -187,7 +187,7 @@ const labelName = cva(styles["radio-label"], {
     },
     defaultVariants: {
         disabled: false,
-        type: "default",
+        type: "radio",
         size: "medium"
     },
 })
@@ -200,7 +200,7 @@ export interface Radioprops
     VariantProps<typeof radioprop> {
     label?: string
     positionLabel?: "right" | "left" | "top" | "bottom"
-    type?: "default" | "button"
+    type?: "radio" | "button"
 }
 
 export const Radio = forwardRef<HTMLInputElement, Radioprops>(
