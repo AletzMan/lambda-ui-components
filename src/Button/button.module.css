@@ -6,7 +6,7 @@
      gap: var(--gap-md);
      color: var(--foreground-color);
      font-family: var(--font-family);
-     font-weight: 400;
+     font-weight: var(--font-weight-reg);
      letter-spacing: 0.75px;
      cursor: pointer;
      pointer-events: all;
@@ -728,7 +728,7 @@
 
      .lambda-btn-label {
          line-height: 16px;
-         font-weight: 100;
+         font-weight: var(--font-weight-xs);
      }
  }
 
