@@ -17,7 +17,7 @@
      justify-content: space-around;
      border: 1px solid transparent;
      color: var(--foreground-color);
-     font-weight: 500;
+     font-weight: var(--font-weight-reg);
      pointer-events: all;
      z-index: 0;
      overflow: hidden;
@@ -50,7 +50,7 @@
          bottom: -1.5em;
          left: 0;
          font-size: var(--font-size-xs);
-         font-weight: 500;
+         font-weight: var(--font-weight-reg);
          font-style: italic;
          opacity: 0;
          transform: translateY(-1em);
@@ -89,7 +89,7 @@
      font-family: var(--font-family);
      color: var(--primary-text-color);
      padding: 0 0 0 4px;
-     font-weight: 500;
+     font-weight: var(--font-weight-reg);
  }
 
  .lambda-number-label-tiny {
