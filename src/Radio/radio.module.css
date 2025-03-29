@@ -48,11 +48,6 @@
 
         &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-danger) {
             background-color: var(--danger-outline-color);
-
-            &.radio-view-flat {
-                background-color: var(--danger-light-color);
-            }
-
         }
 
         &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-success) {
@@ -73,7 +68,6 @@
                     color: var(--white-color);
                     text-shadow: 0 0 0px #000000cc;
                 }
-
 
                 &:is(.radio-view-primary) {
                     background-color: var(--primary-color);
@@ -98,7 +92,6 @@
 
                 &:is(.radio-view-warning) {
                     background-color: var(--warning-color);
-
 
                     &~.radio-label {
                         color: var(--foreground-invert-color);
@@ -249,12 +242,13 @@
 
     &.radio-view-bordered {
         background-color: var(--surface-a);
-        border: 1px solid var(--surface-d);
+        border: 1px solid var(--surface-e);
     }
 
     &.radio-view-flat {
-        border: 1px solid transparent;
+        border: none;
         background-color: var(--surface-a);
+        border: 1px solid transparent;
 
         &.radio-view-primary {
             background-color: var(--primary-outline-color);
@@ -264,12 +258,12 @@
             background-color: var(--secondary-outline-color);
         }
 
-        &.radio-view-danger {
-            background-color: var(--danger-outline-color);
-        }
-
         &.radio-view-success {
             background-color: var(--success-outline-color);
+        }
+
+        &.radio-view-danger {
+            background-color: var(--danger-outline-color);
         }
 
         &.radio-view-warning {
@@ -359,7 +353,6 @@
     min-width: calc(var(--height-checkbox-md) * 3);
 }
 
-
 .radio-icon {
     display: none;
     stroke-width: 3px;
@@ -429,11 +422,3 @@
         transform: scale(0.5);
     }
 }
-
-/*.radio-button {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 0;
-    opacity: 0;
-}*/
