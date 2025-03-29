@@ -28,7 +28,7 @@ const meta: Meta<typeof Radio> = {
         },
         type: {
             control: "radio",
-            options: ['default', 'button']
+            options: ['radio', 'button']
         },
         label: {
             control: 'text',
@@ -70,7 +70,7 @@ export const Default = {
         label: "Option 1",
         size: "medium",
         color: "primary",
-        type: "default",
+        type: "radio",
         variant: "bordered",
         positionLabel: "right",
         disabled: false
