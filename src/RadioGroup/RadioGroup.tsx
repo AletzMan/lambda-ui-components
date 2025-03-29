@@ -7,6 +7,8 @@ import {
     useMemo,
     PropsWithChildren,
     FC,
+    useEffect,
+    useRef,
 } from "react"
 import styles from "./radiogroup.module.css"
 import { cva } from "class-variance-authority";
@@ -77,6 +79,7 @@ interface RadioGroupProps {
     radius?: 'none' | 'small' | 'medium' | 'pill'
     variant?: "bordered" | "flat" | "outline"
     orientation?: "vertical" | "horizontal"
+    gap?: string,
     disabled?: boolean
 }
 
@@ -92,11 +95,11 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
     disabled = false,
     radius = "medium",
     orientation = "vertical",
+    gap = "8px",
     children,
 }) => {
-    const [selectedValue, setSelectedValue] = useState<string | undefined>(
-        defaultValue
-    )
+    const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue)
+    const refGroup = useRef<HTMLDivElement | null>(null)
 
     const handleChange = useCallback(
         (newValue: string) => {
@@ -107,6 +110,13 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
         },
         [onChange]
     )
+
+    useEffect(() => {
+        const conainer = refGroup.current
+        if (conainer) {
+            conainer.style.setProperty("--gap-radio-size", gap);
+        }
+    }, [gap]);
 
     const contextValue = useMemo(
         () => ({
@@ -128,7 +138,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 
     return (
         <RadioGroupContext.Provider value={contextValue}>
-            <div role="radiogroup" className={classRadioGroups({ orientation, size, type, radius, variant })}>{children}</div>
+            <div role="radiogroup" ref={refGroup} className={classRadioGroups({ orientation, size, type, radius, variant })}>{children}</div>
         </RadioGroupContext.Provider>
     )
 }
