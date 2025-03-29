@@ -127,7 +127,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 
     return (
         <RadioGroupContext.Provider value={contextValue}>
-            <div role="radiogroup" className={classRadioGroups({ orientation, size, type, radius })}>{children}</div>
+            <div role="radiogroup" className={classRadioGroups({ orientation, size, type, radius, variant })}>{children}</div>
         </RadioGroupContext.Provider>
     )
 }
