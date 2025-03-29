@@ -27,7 +27,7 @@ const meta: Meta<typeof RadioGroup> = {
         },
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Input size"
         },
         radius: {
