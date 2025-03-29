@@ -18,6 +18,7 @@ const classRadioGroups = cva(styles["radio-group"], {
             horizontal: styles["radio-group-horizontal"]
         },
         size: {
+            tiny: styles["radio-group-tiny"],
             small: styles["radio-group-small"],
             medium: styles["radio-group-medium"],
             large: styles["radio-group-large"],
@@ -55,7 +56,7 @@ type RadioGroupContextType = {
     name: string
     selectedValue: string | undefined
     onChange: (value: string) => void
-    size: "small" | "medium" | "large"
+    size: "tiny" | "small" | "medium" | "large"
     color: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
     type: "radio" | "button"
     radius: 'none' | 'small' | 'medium' | 'pill'
@@ -70,7 +71,7 @@ interface RadioGroupProps {
     selectedOption?: string
     onChange?: (value: string) => void
     defaultValue?: string
-    size?: "small" | "medium" | "large"
+    size?: "tiny" | "small" | "medium" | "large"
     color?: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
     type?: "radio" | "button"
     radius?: 'none' | 'small' | 'medium' | 'pill'
