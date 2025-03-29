@@ -269,7 +269,7 @@
 
     &.radio-view-bordered {
         background-color: var(--surface-a);
-        border: 1px solid var(--surface-e);
+        border: 1px solid var(--surface-d);
     }
 
     &.radio-view-flat {
