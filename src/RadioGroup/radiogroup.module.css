@@ -231,6 +231,10 @@
 
 
 
+.radio-group-tiny {
+    gap: 0.25em;
+}
+
 .radio-group-small {
     gap: 0.5em;
 }
