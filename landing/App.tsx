@@ -30,6 +30,8 @@ function App() {
   const [radiusInputNumber, setRadiusInputNumber] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("medium")
   const [validInputNumber, setValidInputNumber] = useState(true)
   const [errorMessageNumber, setErrorMessageNumber] = useState("This field has an error.")
+  const [sizeRadio, setSizeRadio] = useState<"medium" | "small" | "large" | undefined>("medium")
+  const [disabledRadio, setDisabledRadio] = useState(false)
   const [valueRadioBordered, setValueRadioBordered] = useState("")
 
   return (
@@ -248,22 +250,17 @@ function App() {
         <section className={styles.subsection}>
           <h2 className={styles.subtitle}>Radio</h2>
           <div className={styles.control_buttons}>
-            <Checkbox label='Disabled' checked={disabledSwitch} size="medium" color="secondary" onChange={(e) => setDisabledSwitch(e.currentTarget.checked)} />
-            <select className={styles.control_size} value={sizeSwitch} onChange={(e) => setSizeSwitch(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <Checkbox label='Disabled' checked={disabledRadio} size="medium" color="secondary" onChange={(e) => setDisabledRadio(e.currentTarget.checked)} />
+            <select className={styles.control_size} value={sizeRadio} onChange={(e) => setSizeRadio(e.currentTarget.value as "medium" | "small" | "large" | undefined)}>
               <option value="tiny">Tiny</option>
               <option value="small">Small</option>
               <option value="medium">Medium</option>
               <option value="large">Large</option>
             </select>
-            <select className={styles.control_size} value={shapeSwitch} onChange={(e) => setShapeSwitch(e.currentTarget.value as "square" | "soft" | "rounded" | undefined)}>
-              <option value="square">Square</option>
-              <option value="soft">Soft</option>
-              <option value="rounded">Rounded</option>
-            </select>
           </div>
           <div className={styles.container_buttons}>
             <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} variant='bordered' onChange={(e) => setValueRadioBordered(e)}>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} gap='0.35em' size={sizeRadio} variant='bordered' onChange={(e) => setValueRadioBordered(e)}>
                 <Radio color='primary' type='radio' value="first" label="First" />
                 <Radio color='secondary' type='radio' value="third" label="Third" />
                 <Radio color='danger' type='radio' value="second" label="Second" />
@@ -273,7 +270,7 @@ function App() {
               </RadioGroup>
             </div>
             <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} variant='flat' onChange={(e) => setValueRadioBordered(e)}>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} gap='0.35em' size={sizeRadio} variant='flat' onChange={(e) => setValueRadioBordered(e)}>
                 <Radio color='primary' type='radio' value="first" label="First" />
                 <Radio color='secondary' type='radio' value="third" label="Third" />
                 <Radio color='danger' type='radio' value="second" label="Second" />
@@ -283,7 +280,7 @@ function App() {
               </RadioGroup>
             </div>
             <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} variant='outline' onChange={(e) => setValueRadioBordered(e)} radius='medium' name='outline' orientation='vertical'>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} gap='0.35em' size={sizeRadio} variant='outline' onChange={(e) => setValueRadioBordered(e)} radius='medium' name='outline' orientation='vertical'>
                 <Radio color='primary' value="first" label="First" />
                 <Radio color='secondary' value="third" label="Third" />
                 <Radio color='danger' value="second" label="Second" />
