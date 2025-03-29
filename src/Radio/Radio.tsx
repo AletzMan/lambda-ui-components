@@ -15,6 +15,7 @@ const radioprop = cva(styles["radio"], {
             info: styles["radio-info"],
         },
         size: {
+            tiny: styles["radio-tiny"],
             small: styles["radio-small"],
             medium: styles["radio-medium"],
             large: styles["radio-large"],
@@ -55,6 +56,7 @@ const view = cva(styles["radio-view"], {
             info: styles["radio-view-info"],
         },
         size: {
+            tiny: styles["radio-view-tiny"],
             small: styles["radio-view-small"],
             medium: styles["radio-view-medium"],
             large: styles["radio-view-large"],
@@ -104,6 +106,7 @@ const wrapper = cva(styles["radio-wrapper"], {
             info: styles["radio-wrapper-info"],
         },
         size: {
+            tiny: styles["radio-wrapper-tiny"],
             small: styles["radio-wrapper-small"],
             medium: styles["radio-wrapper-medium"],
             large: styles["radio-wrapper-large"],
@@ -143,6 +146,7 @@ const iconView = cva(styles["radio-icon"], {
             info: styles["radio-icon-info"],
         },
         size: {
+            tiny: styles["radio-icon-tiny"],
             small: styles["radio-icon-small"],
             medium: styles["radio-icon-medium"],
             large: styles["radio-icon-large"],
@@ -176,6 +180,7 @@ const labelName = cva(styles["radio-label"], {
             button: styles["radio-label-button"]
         },
         size: {
+            tiny: styles["radio-label-tiny"],
             small: styles["radio-label-small"],
             medium: styles["radio-label-medium"],
             large: styles["radio-label-large"],

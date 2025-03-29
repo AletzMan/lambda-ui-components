@@ -116,6 +116,20 @@
     text-align: center;
     background-color: transparent;
 
+    &.radio-wrapper-tiny {
+
+        &.radio-wrapper-radio {
+            width: var(--height-checkbox-xs);
+            height: var(--height-checkbox-xs);
+        }
+
+        &.radio-wrapper-button {
+            min-width: var(--height-button-xs);
+            min-height: var(--height-button-xs);
+            width: 100%;
+        }
+    }
+
     &.radio-wrapper-small {
 
         &.radio-wrapper-radio {
@@ -202,6 +216,19 @@
     box-sizing: border-box;
     transition: all 0.3s ease-out;
     border-radius: var(--border-radius-pill);
+
+    &.radio-view-tiny {
+
+        &.radio-view-radio {
+            width: var(--height-checkbox-xs);
+            height: var(--height-checkbox-xs);
+        }
+
+        &.radio-view-button {
+            min-width: var(--height-button-xs);
+            min-height: var(--height-button-xs);
+        }
+    }
 
     &.radio-view-small {
 
@@ -314,6 +341,14 @@
     font-weight: var(--font-weight-reg);
     color: var(--foreground-color);
 
+    &.radio-label-tiny {
+        font-size: var(--font-size-sm);
+
+        &.radio-label-button {
+            padding: 0 var(--padding-sm);
+        }
+    }
+
     &.radio-label-small {
         font-size: var(--font-size-sm);
 
@@ -388,19 +423,24 @@
         }
     }
 
+    &.radio-icon-tiny {
+        width: calc(var(--height-checkbox-xs) - 10px);
+        height: calc(var(--height-checkbox-xs) - 10px);
+    }
+
     &.radio-icon-small {
-        width: calc(var(--height-checkbox-sm) - 10px);
-        height: calc(var(--height-checkbox-sm) - 10px);
+        width: calc(var(--height-checkbox-sm) - 12px);
+        height: calc(var(--height-checkbox-sm) - 12px);
     }
 
     &.radio-icon-medium {
-        width: calc(var(--height-checkbox-md) - 12px);
-        height: calc(var(--height-checkbox-md) - 12px);
+        width: calc(var(--height-checkbox-md) - 14px);
+        height: calc(var(--height-checkbox-md) - 14px);
     }
 
     &.radio-icon-large {
-        width: calc(var(--height-checkbox-lg) - 14px);
-        height: calc(var(--height-checkbox-lg) - 14px);
+        width: calc(var(--height-checkbox-lg) - 16px);
+        height: calc(var(--height-checkbox-lg) - 16px);
     }
 
 }
