@@ -11,27 +11,29 @@
 
     &:hover:not(.lambda-switch-wrapper-disabled) {
         .lambda-switch-background-flat {
+            box-shadow: 0 0 1px 3px var(--secondary-outline-color);
+
             &.lambda-switch-background-primary {
                 box-shadow: 0 0 1px 3px var(--primary-outline-color);
             }
 
-            &.lambda-switch-background-secondary {
+            &.lambda-switch-background-secondary:is(.lambda-switch-background-checked) {
                 box-shadow: 0 0 1px 3px var(--secondary-outline-color);
             }
 
-            &.lambda-switch-background-success {
+            &.lambda-switch-background-success:is(.lambda-switch-background-checked) {
                 box-shadow: 0 0 1px 3px var(--success-outline-color);
             }
 
-            &.lambda-switch-background-danger {
+            &.lambda-switch-background-danger:is(.lambda-switch-background-checked) {
                 box-shadow: 0 0 1px 3px var(--danger-outline-color);
             }
 
-            &.lambda-switch-background-warning {
+            &.lambda-switch-background-warning:is(.lambda-switch-background-checked) {
                 box-shadow: 0 0 1px 3px var(--warning-outline-color);
             }
 
-            &.lambda-switch-background-info {
+            &.lambda-switch-background-info:is(.lambda-switch-background-checked) {
                 box-shadow: 0 0 1px 3px var(--info-outline-color);
             }
         }
@@ -145,7 +147,7 @@
 
 .lambda-switch-background-solid {
     border: 1px solid var(--surface-d);
-    background-color: var(--surface-d);
+    background-color: var(--surface-a);
 
     &.lambda-switch-background-primary {
         &.lambda-switch-background-checked {
@@ -258,12 +260,10 @@
 }
 
 .lambda-switch-background-flat {
-    border: 1px solid;
+    border: 1px solid transparent;
+    background-color: var(--surface-d);
 
     &.lambda-switch-background-primary {
-        border-color: var(--primary-light-color);
-        background-color: var(--primary-light-color);
-
         &.lambda-switch-background-checked {
             background-color: var(--primary-color);
 
@@ -280,9 +280,6 @@
     }
 
     &.lambda-switch-background-secondary {
-        border-color: var(--secondary-light-color);
-        background-color: var(--secondary-light-color);
-
         &.lambda-switch-background-checked {
             background-color: var(--secondary-color);
 
@@ -302,9 +299,6 @@
     }
 
     &.lambda-switch-background-success {
-        border-color: var(--success-light-color);
-        background-color: var(--success-light-color);
-
         &.lambda-switch-background-checked {
             background-color: var(--success-color);
 
@@ -320,9 +314,6 @@
     }
 
     &.lambda-switch-background-danger {
-        border-color: var(--danger-light-color);
-        background-color: var(--danger-light-color);
-
         &.lambda-switch-background-checked {
             background-color: var(--danger-color);
 
@@ -338,8 +329,6 @@
     }
 
     &.lambda-switch-background-warning {
-        border-color: var(--warning-light-color);
-        background-color: var(--warning-light-color);
 
         &.lambda-switch-background-checked {
             background-color: var(--warning-color);
@@ -356,8 +345,6 @@
     }
 
     &.lambda-switch-background-info {
-        border-color: var(--info-light-color);
-        background-color: var(--info-light-color);
 
         &.lambda-switch-background-checked {
             background-color: var(--info-color);
