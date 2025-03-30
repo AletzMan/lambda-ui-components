@@ -375,7 +375,7 @@
     }
 
     &.radio-label-large {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-lg);
 
         &.radio-label-button {
             padding: 0 var(--padding-xl);
