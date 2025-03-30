@@ -1,7 +1,6 @@
 import { forwardRef, useState } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./switch.module.css";
-import clsx from "clsx";
 
 const switchprop = cva(styles["lambda-switch"], {
     variants: {
@@ -147,6 +146,25 @@ const handle = cva(styles["lambda-switch-handle"], {
     },
 });
 
+const text = cva(styles["lambda-switch-text"], {
+    variants: {
+        size: {
+            tiny: styles["lambda-switch-text-tiny"],
+            small: styles["lambda-switch-text-small"],
+            medium: styles["lambda-switch-text-medium"],
+            large: styles["lambda-switch-text-large"],
+        },
+        disabled: {
+            true: styles["lambda-switch-text-disabled"],
+            false: "",
+        },
+    },
+    defaultVariants: {
+        size: "medium",
+        disabled: false,
+    },
+});
+
 export interface SwitchProps
     extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | "checked" | "color">,
     VariantProps<typeof switchprop> {
@@ -202,7 +220,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                     />
                     {<span className={handle({ checked: internalChecked, disabled, size, shape })} />}
                 </div>
-                {label && <span className={clsx(styles["lambda-switch-text"], { [styles["lambda-switch-text-disabled"]]: disabled })}>{label}</span>}
+                {label && <span className={text({ size, disabled })}>{label}</span>}
             </label>
         );
     }

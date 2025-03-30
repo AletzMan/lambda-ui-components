@@ -90,10 +90,27 @@
 
 .lambda-switch-text {
     color: var(--foreground-color);
+    font-weight: var(--font-weight-reg);
+
+    &.lambda-switch-text-tiny {
+        font-size: var(--font-size-sm);
+    }
+
+    &.lambda-switch-text-small {
+        font-size: var(--font-size-sm);
+    }
+
+    &.lambda-switch-text-medium {
+        font-size: var(--font-size-md);
+    }
+
+    &.lambda-switch-text-large {
+        font-size: var(--font-size-lg);
+    }
 }
 
 .lambda-switch-text-disabled {
-    color: var(--surface-d);
+    color: var(--surface-e);
     cursor: not-allowed;
 }
 
