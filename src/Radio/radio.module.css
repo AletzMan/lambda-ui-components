@@ -11,27 +11,27 @@
 
     &.radio-wrapper-radio {
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-primary) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-primary):not(.radio-view-disabled) {
             box-shadow: 0 0 1px 3px var(--primary-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-secondary) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-secondary):not(.radio-view-disabled) {
             box-shadow: 0 0 1px 3px var(--secondary-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-danger) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-danger):not(.radio-view-disabled) {
             box-shadow: 0 0 1px 3px var(--danger-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-success) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-success):not(.radio-view-disabled) {
             box-shadow: 0 0 1px 3px var(--success-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-warning) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-warning):not(.radio-view-disabled) {
             box-shadow: 0 0 1px 3px var(--warning-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-info) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-info):not(.radio-view-disabled) {
             box-shadow: 0 0 1px 3px var(--info-outline-color);
         }
     }
@@ -176,6 +176,7 @@
 .radio-wrapper-disabled {
     color: var(--surface-f);
     cursor: not-allowed;
+    filter: brightness(115%) contrast(60%);
 }
 
 .radio-wrapper-left {
@@ -277,6 +278,7 @@
         background-color: var(--surface-a);
         border: 1px solid transparent;
 
+
         &.radio-view-primary {
             background-color: var(--primary-outline-color);
         }
@@ -300,6 +302,9 @@
         &.radio-view-info {
             background-color: var(--info-outline-color);
         }
+
+
+
     }
 
     &.radio-view-outline {
@@ -340,6 +345,10 @@
 .radio-label {
     font-weight: var(--font-weight-reg);
     color: var(--foreground-color);
+
+    &.radio-label-disabled {
+        color: var(--surface-e);
+    }
 
     &.radio-label-tiny {
         font-size: var(--font-size-sm);

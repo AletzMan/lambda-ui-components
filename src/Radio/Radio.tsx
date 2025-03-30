@@ -244,7 +244,7 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
         }
 
         return (
-            <label className={wrapper({ positionLabel, color, disabled, size: size || groupSize, type: type || groupType, variant })}>
+            <label className={wrapper({ positionLabel, color, disabled: isDisabled, size: size || groupSize, type: type || groupType, variant })}>
                 <input
                     ref={ref}
                     type="radio"
@@ -267,7 +267,7 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
                 </div>
 
                 {label && (
-                    <span className={labelName({ size: size || groupSize, disabled, type: type || groupType })}>
+                    <span className={labelName({ size: size || groupSize, disabled: isDisabled, type: type || groupType })}>
                         {label}
                     </span>
                 )}
