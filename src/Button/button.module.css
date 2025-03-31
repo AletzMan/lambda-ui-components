@@ -45,7 +45,6 @@
      justify-content: center;
      align-items: center;
      font-family: inherit;
-     padding: 0 0 2px 0;
  }
 
  .lambda-btn-classic {
@@ -753,7 +752,7 @@
      }
 
      .lambda-btn-label {
-         font-weight: var(--font-weight-xs);
+         font-weight: var(--font-weight-sm);
      }
  }
 
@@ -779,7 +778,7 @@
      }
 
      .lambda-btn-label {
-         font-weight: var(--font-weight-xs);
+         font-weight: var(--font-weight-sm);
      }
  }
 
@@ -807,7 +806,7 @@
      }
 
      .lambda-btn-label {
-         font-weight: var(--font-weight-md);
+         font-weight: var(--font-weight-reg);
      }
  }
 
@@ -835,7 +834,7 @@
      }
 
      .lambda-btn-label {
-         font-weight: var(--font-weight-lg);
+         font-weight: var(--font-weight-md);
      }
  }
 
