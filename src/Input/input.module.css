@@ -22,6 +22,7 @@
      box-sizing: border-box;
      outline: none;
      font-family: var(--font-family);
+     box-shadow: var(--box-shadow);
 
      &.lambda-input-wrapper-password {
          padding-right: 0;
