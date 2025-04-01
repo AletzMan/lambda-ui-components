@@ -217,6 +217,7 @@
     box-sizing: border-box;
     transition: all 0.3s ease-out;
     border-radius: var(--border-radius-pill);
+    box-shadow: var(--box-shadow);
 
     &.radio-view-tiny {
 
