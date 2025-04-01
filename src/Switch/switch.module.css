@@ -148,6 +148,7 @@
     box-sizing: border-box;
     background-color: var(--surface-b);
     transition: all 0.2s ease-out;
+    box-shadow: var(--box-shadow);
 }
 
 .lambda-switch-background-square {
