@@ -2,31 +2,34 @@ import { useState, forwardRef, SelectHTMLAttributes, useRef, useEffect } from "r
 import { cva, VariantProps } from "class-variance-authority"
 import styles from "./select.module.css"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
+import clsx from "clsx"
 
-const select = cva(styles.sl, {
+const select = cva(styles["select-container"], {
     variants: {
         size: {
-            small: styles.sl_sm,
-            medium: styles.sl_md,
-            large: styles.sl_lg,
+            tiny: styles["select-container-tiny"],
+            small: styles["select-container-small"],
+            medium: styles["select-container-medium"],
+            large: styles["select-container-large"],
         },
         variant: {
-            outline: styles.sl_outline,
-            flat: styles.sl_flat,
-            underline: styles.sl_underline,
+            outline: styles["select-container-outline"],
+            flat: styles["select-container-flat"],
+            underline: styles["select-container-underline"],
         },
         radius: {
-            none: styles.sl_none,
-            small: styles.sl_small,
-            medium: styles.sl_medium,
-            pill: styles.sl_pill,
+            none: styles["select-container-radius-none"],
+            small: styles["select-container-radius-small"],
+            medium: styles["select-container-radius-medium"],
+            large: styles["select-container-radius-large"],
+            pill: styles["select-container-radius-pill"],
         },
         disabled: {
-            true: styles.sl_disabled,
-            false: styles.sl_enabled,
+            true: styles["select-container-disabled"],
+            false: styles["select-container-enabled"],
         },
         error: {
-            true: styles.sl_error,
+            true: styles["select-container-error"],
             false: "",
         },
     },
@@ -38,30 +41,32 @@ const select = cva(styles.sl, {
         error: false,
     },
 })
-const buttonSelect = cva(styles.btn, {
+const buttonSelect = cva(styles["select-btn"], {
     variants: {
         size: {
-            small: styles.btn_sm,
-            medium: styles.btn_md,
-            large: styles.btn_lg,
+            tiny: styles["select-btn-tiny"],
+            small: styles["select-btn-small"],
+            medium: styles["select-btn-medium"],
+            large: styles["select-btn-large"],
         },
         variant: {
-            outline: styles.btn_outline,
-            flat: styles.btn_flat,
-            underline: styles.btn_underline,
+            outline: styles["select-btn-outline"],
+            flat: styles["select-btn-flat"],
+            underline: styles["select-btn-underline"],
         },
         radius: {
-            none: styles.btn_rd_none,
-            small: styles.btn_rd_sm,
-            medium: styles.btn_rd_md,
-            pill: styles.btn_rd_pill,
+            none: styles["select-btn-radius-none"],
+            small: styles["select-btn-radius-small"],
+            medium: styles["select-btn-radius-medium"],
+            large: styles["select-btn-radius-large"],
+            pill: styles["select-btn-radius-pill"],
         },
         disabled: {
-            true: styles.btn_disabled,
-            false: styles.btn_enabled,
+            true: styles["select-btn-disabled"],
+            false: styles["select-btn-enabled"],
         },
         error: {
-            true: styles.btn_error,
+            true: styles["select-btn-error"],
             false: "",
         },
     },
@@ -74,12 +79,12 @@ const buttonSelect = cva(styles.btn, {
     },
 })
 
-const containerIcon = cva(styles.icon_cntr, {
+const selectIcon = cva(styles["select-icon"], {
     variants: {
         variant: {
-            outline: styles.icon_cntr_outline,
-            flat: styles.icon_cntr_flat,
-            underline: styles.icon_cntr_underline,
+            outline: styles["select-icon-outline"],
+            flat: styles["select-icon-flat"],
+            underline: styles["select-icon-underline"],
         },
     },
     defaultVariants: {
@@ -87,51 +92,55 @@ const containerIcon = cva(styles.icon_cntr, {
     },
 })
 
-const dropdown = cva(styles.ddwn, {
+const dropdown = cva(styles["select-dropdown"], {
     variants: {
         size: {
-            small: styles.ddwn_sm,
-            medium: styles.ddwn_md,
-            large: styles.ddwn_lg,
+            tiny: styles["select-dropdown-tiny"],
+            small: styles["select-dropdown-small"],
+            medium: styles["select-dropdown-medium"],
+            large: styles["select-dropdown-large"],
         },
         direction: {
-            up: styles.ddwn_up,
-            down: styles.ddwn_down,
+            up: styles["select-dropdown-up"],
+            down: styles["select-dropdown-down"],
         },
         variant: {
-            outline: styles.ddwn_outline,
-            flat: styles.ddwn_flat,
-            underline: styles.ddwn_underline,
+            outline: styles["select-dropdown-outline"],
+            flat: styles["select-dropdown-flat"],
+            underline: styles["select-dropdown-underline"],
         },
         radius: {
-            none: styles.ddwn_rd_none,
-            small: styles.ddwn_rd_sm,
-            medium: styles.ddwn_rd_md,
-            pill: styles.ddwn_rd_pill,
+            none: styles["select-dropdown-radius-none"],
+            small: styles["select-dropdown-radius-small"],
+            medium: styles["select-dropdown-radius-medium"],
+            large: styles["select-dropdown-radius-large"],
+            pill: styles["select-dropdown-radius-pill"],
         },
         isOpen: {
-            true: styles.ddwn_opn,
-            false: styles.ddwn_cls,
+            true: styles["select-dropdown-opn"],
+            false: styles["select-dropdown-cls"],
         }
     },
 })
 
-const labelSelect = cva(styles.lbl, {
+const labelSelect = cva(styles["select-label"], {
     variants: {
         size: {
-            small: styles.lbl_sz_sm,
-            medium: styles.lbl_sz_md,
-            large: styles.lbl_sz_lg,
+            tiny: styles["select-label-tiny"],
+            small: styles["select-label-small"],
+            medium: styles["select-label-medium,"],
+            large: styles["select-label-large"],
         },
         direction: {
-            up: styles.lbl_dr_up,
-            down: styles.lbl_dr_down,
+            up: styles["select-label-up"],
+            down: styles["select-label-down"],
         },
         radius: {
-            none: styles.lbl_rd_none,
-            small: styles.lbl_rd_sm,
-            medium: styles.lbl_rd_md,
-            pill: styles.lbl_rd_pill,
+            none: styles["select-label-radius-none"],
+            small: styles["select-label-radius-small"],
+            medium: styles["select-label-radius-medium"],
+            large: styles["select-label-radius-large"],
+            pill: styles["select-label-radius-pill"],
         }
     },
     defaultVariants: {
@@ -141,12 +150,13 @@ const labelSelect = cva(styles.lbl, {
     }
 })
 
-const errorLabel = cva(styles.err, {
+const errorLabel = cva(styles["select-error"], {
     variants: {
         size: {
-            small: styles.err_sm,
-            medium: styles.err_md,
-            large: styles.err_lg,
+            tiny: styles["select-error_tiny"],
+            small: styles["select-error_small"],
+            medium: styles["select-error_medium"],
+            large: styles["select-error_large"],
         },
     },
 })
@@ -190,6 +200,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                 setIsOpen(false)
             }
         }
+
         useEffect(() => {
             document.addEventListener("click", (e) => handleClickOutside(e))
             return () => {
@@ -238,25 +249,25 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
         }
 
         return (
-            <div className={`${styles.container} ${disabled && styles.container_disabled}`} ref={ref} >
+            <div className={clsx([styles["select-wrapper"]], { [styles["select-wrapper-disabled"]]: disabled })} ref={ref} >
                 {label && <label className={labelSelect({ direction, radius, size })}>{label}</label>}
                 <div className={select({ size, variant, radius, disabled, error })} ref={selectRef} role="select">
                     <button className={buttonSelect({ size, variant, radius, error, disabled })} onClick={toggleDropdown} style={{ width: `${placeholder?.length * 13}px` }}>
                         {selectedValue
                             ? options.find((opt) => opt.value === selectedValue)?.label
-                            : <span className={styles.placeholder}>{placeholder}</span>}
-                        {isOpen ? <div className={containerIcon({ variant })}><ChevronUp className={styles.icon} /></div> : <div className={containerIcon({ variant })}><ChevronDown className={styles.icon} /></div>}
+                            : <span className={styles["select-placeholder"]}>{placeholder}</span>}
+                        {isOpen ? <div className={selectIcon({ variant })}><ChevronUp className={styles["select-icon-svg"]} /></div> : <div className={selectIcon({ variant })}><ChevronDown className={styles["select-icon-svg"]} /></div>}
                     </button>
                     {isOpen && (
                         <ul className={dropdown({ size, direction, radius, variant, isOpen })} ref={listRef} >
                             {options?.map((option) => (
                                 <li
                                     key={option.value}
-                                    className={`${styles.option} ${selectedValue === option.value && styles.option_select}`}
+                                    className={`${styles["select-option"]} ${selectedValue === option.value && styles["select-option-selected"]}`}
                                     onClick={() => handleOptionClick(option.value)}
                                 >
                                     {option.label}
-                                    {selectedValue === option.value && <Check className={styles.icon} />}
+                                    {selectedValue === option.value && <Check className={styles["select-icon-svg"]} />}
                                 </li>
                             ))}
                         </ul>
