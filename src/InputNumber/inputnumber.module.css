@@ -26,7 +26,7 @@
      width: 100%;
      font-family: var(--font-family);
      transition: border 0.2s ease-in-out, color 0.3s ease-in-out;
-
+     box-shadow: var(--box-shadow);
 
      &.lambda-number-default,
      &.lambda-number-decimal {
