@@ -17,7 +17,7 @@
      color: var(--white-color);
      text-shadow: 0 0 1px #00000045;
      transition: background-color 0.15s ease-in-out, color 0.3s ease-in-out, shadow 0.3s ease-in-out;
-
+     box-shadow: var(--box-shadow);
 
      &.lambda-btn-icon-left {
          flex-direction: row;
@@ -615,7 +615,7 @@
  .lambda-btn-text {
      background-color: transparent;
      border: 1px solid transparent;
-
+     box-shadow: none;
 
      &.lambda-btn-primary {
          color: var(--primary-text-color);
