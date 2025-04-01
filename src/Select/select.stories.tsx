@@ -74,6 +74,18 @@ export const Primary: Story = {
                 label: "C#",
                 value: "csharp"
             },
+            {
+                label: "React",
+                value: "react"
+            },
+            {
+                label: "Node.js",
+                value: "nodejs"
+            },
+            {
+                label: "C#",
+                value: "csharp"
+            },
         ],
         error: false,
         errorMessage: "This is a sample error message for demonstration",

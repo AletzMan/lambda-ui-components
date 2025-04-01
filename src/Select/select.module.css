@@ -2,6 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    gap: 2px;
     font-family: var(--font-family);
 
     &.select-wrapper-disabled {
@@ -15,9 +16,24 @@
     font-weight: bold;
     font-family: var(--font-family);
     color: var(--primary-disabled-color);
-    font-size: var(--font-size-md);
 
-    &.select-label-radius_none {
+    &.select-label-tiny {
+        font-size: var(--font-size-sm);
+    }
+
+    &.select-label-small {
+        font-size: var(--font-size-sm);
+    }
+
+    &.select-label-medium {
+        font-size: var(--font-size-sm);
+    }
+
+    &.select-label-large {
+        font-size: var(--font-size-md);
+    }
+
+    &.select-label-radius-none {
         padding: 0 0 0 var(--padding-none);
     }
 
@@ -51,24 +67,24 @@
 .select-btn {
     display: grid;
     place-items: center start;
-    background-color: #f0f0f0;
-    font-family: var(--font-family);
-    background-color: var(--surface-a);
-    color: var(--foreground-color);
     box-sizing: border-box;
     overflow: hidden;
     cursor: pointer;
     gap: 1em;
+    font-family: var(--font-family);
+    color: var(--foreground-color);
+    background-color: var(--surface-a);
+    box-shadow: var(--box-shadow);
 
-    &.select-btn-outline {
+    &.select-btn-outline:not(.select-btn-disabled) {
         border: 1px solid var(--surface-d);
     }
 
-    &.select-btn-flat {
+    &.select-btn-flat:not(.select-btn-disabled) {
         border: 1px solid transparent;
     }
 
-    &.select-btn-underline {
+    &.select-btn-underline:not(.select-btn-disabled) {
         border: 1px solid transparent;
         border-bottom: 1px solid var(--surface-d);
     }
@@ -154,15 +170,17 @@
 
     &.select-btn-disabled {
         cursor: not-allowed;
-        color: var(--foregroundDisabled-color);
+        color: var(--surface-e);
+        background-color: var(--surface-a);
+        border: 1px solid var(--surface-c);
     }
 
+    &.select-btn-invalid {
+        border: 1px dashed var(--danger-color);
+        background-color: var(--danger-light-color);
+    }
 }
 
-.select-btn:disabled {
-    background-color: #e0e0e0;
-    cursor: not-allowed;
-}
 
 .select-icon-svg {
     width: var(--height-input-xs);
@@ -195,14 +213,16 @@
     bottom: auto;
     left: 0;
     width: 100%;
+    max-height: 18em;
     padding: 0;
     margin: 0;
-    background-color: var(--surface-a);
-
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    animation: growDown 0.2s ease-in-out forwards;
     transform-origin: top center;
     overflow: hidden;
+    overflow-y: auto;
+    background-color: var(--surface-a);
+    box-shadow: var(--box-shadow);
+    animation: growDown 0.2s ease-in-out forwards;
+    z-index: 2;
 
     &.select-dropdown-tiny {
         top: calc(90% + var(--padding-xs));
@@ -319,15 +339,14 @@
 }
 
 .select-option:hover:not(.select-option-selected) {
-    background-color: var(--primary-color);
+    background-color: var(--primary-outline-color);
     color: white;
 }
 
-.select-error {
+.select-invalid {
     position: absolute;
-    font-size: var(--font-size-md);
     background-color: var(--danger-color);
-    color: var(--foreground-color);
+    color: var(--white-color);
     padding: 2px 8px;
     border-radius: var(--border-radius-sm);
     width: max-content;
@@ -349,20 +368,24 @@
     }
 }
 
-.select-error-tiny {
-    top: calc(var(--height-input-sm) + 8px);
+.select-invalid-tiny {
+    top: calc(var(--height-input-xs) - 4px);
+    font-size: var(--font-size-sm);
 }
 
-.select-error-small {
-    top: calc(var(--height-input-sm) + 8px);
+.select-invalid-small {
+    top: calc(var(--height-input-sm) - 4px);
+    font-size: var(--font-size-sm);
 }
 
-.select-error-medium {
-    top: calc(var(--height-input-md) + 8px);
+.select-invalid-medium {
+    top: calc(var(--height-input-md) - 4px);
+    font-size: var(--font-size-sm);
 }
 
-.select-error-large {
-    top: calc(var(--height-input-lg) + 4px);
+.select-invalid-large {
+    top: calc(var(--height-input-lg) - 4px);
+    font-size: var(--font-size-md);
 }
 
 @keyframes animateError {

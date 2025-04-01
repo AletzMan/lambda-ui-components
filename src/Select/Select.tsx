@@ -29,7 +29,7 @@ const select = cva(styles["select-container"], {
             false: styles["select-container-enabled"],
         },
         error: {
-            true: styles["select-container-error"],
+            true: styles["select-container-invalid"],
             false: "",
         },
     },
@@ -66,7 +66,7 @@ const buttonSelect = cva(styles["select-btn"], {
             false: styles["select-btn-enabled"],
         },
         error: {
-            true: styles["select-btn-error"],
+            true: styles["select-btn-invalid"],
             false: "",
         },
     },
@@ -128,7 +128,7 @@ const labelSelect = cva(styles["select-label"], {
         size: {
             tiny: styles["select-label-tiny"],
             small: styles["select-label-small"],
-            medium: styles["select-label-medium,"],
+            medium: styles["select-label-medium"],
             large: styles["select-label-large"],
         },
         direction: {
@@ -150,13 +150,13 @@ const labelSelect = cva(styles["select-label"], {
     }
 })
 
-const errorLabel = cva(styles["select-error"], {
+const errorLabel = cva(styles["select-invalid"], {
     variants: {
         size: {
-            tiny: styles["select-error_tiny"],
-            small: styles["select-error_small"],
-            medium: styles["select-error_medium"],
-            large: styles["select-error_large"],
+            tiny: styles["select-invalid-tiny"],
+            small: styles["select-invalid-small"],
+            medium: styles["select-invalid-medium"],
+            large: styles["select-invalid-large"],
         },
     },
 })
@@ -259,7 +259,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                         {isOpen ? <div className={selectIcon({ variant })}><ChevronUp className={styles["select-icon-svg"]} /></div> : <div className={selectIcon({ variant })}><ChevronDown className={styles["select-icon-svg"]} /></div>}
                     </button>
                     {isOpen && (
-                        <ul className={dropdown({ size, direction, radius, variant, isOpen })} ref={listRef} >
+                        <ul className={dropdown({ size, direction, radius, variant, isOpen, className: "scrollBar" })} ref={listRef} >
                             {options?.map((option) => (
                                 <li
                                     key={option.value}
