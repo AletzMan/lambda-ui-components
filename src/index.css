@@ -57,7 +57,7 @@
     --height-input-md: 36px;
     --height-input-lg: 42px;
 
-    --box-shadow: 0 0 3px 1px var(--shadow-color);
+    --box-shadow: 0 0 2px 1px var(--shadow-color);
 }
 
 [data-theme="light"] {
@@ -75,7 +75,7 @@
     --surface-e: #c5c5c5;
     --surface-f: #989898;
     --border-color: #a6a6a6;
-    --shadow-color: #44434350;
+    --shadow-color: #44434330;
     --shadow-inset-color: #dee1e455;
 
     --primary-color: #3884ff;
@@ -211,4 +211,9 @@ textarea {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.scrollBar {
+    scrollbar-color: var(--primary-outline-color) var(--surface-c);
+    scrollbar-width: thin;
 }
