@@ -17,12 +17,12 @@ const meta: Meta<typeof Select> = {
         },
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Input size"
         },
         radius: {
             control: 'select',
-            options: ['none', 'small', 'medium', 'pill'],
+            options: ['none', 'small', 'medium', 'large', 'pill'],
             description: "Corner shape"
         },
         label: {
@@ -70,18 +70,10 @@ export const Primary: Story = {
                 label: "Node.js",
                 value: "nodejs"
             },
-            /*{
-               label: "C#",
-               value: "csharp"
-           },
-           {
-               label: "Angular",
-               value: "angular"
-           },
-           {
-               label: "SQL",
-               value: "sql"
-           }*/
+            {
+                label: "C#",
+                value: "csharp"
+            },
         ],
         error: false,
         errorMessage: "This is a sample error message for demonstration",
