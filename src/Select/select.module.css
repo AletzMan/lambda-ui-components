@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 2px;
     font-family: var(--font-family);
 
     &.select-wrapper-disabled {
@@ -12,10 +11,12 @@
 }
 
 .select-label {
+    position: absolute;
+    top: -1.4em;
     display: block;
-    font-weight: bold;
+    font-weight: var(--font-weight-reg);
     font-family: var(--font-family);
-    color: var(--primary-disabled-color);
+    color: var(--primary-hover-color);
 
     &.select-label-tiny {
         font-size: var(--font-size-sm);
@@ -78,15 +79,29 @@
 
     &.select-btn-outline:not(.select-btn-disabled) {
         border: 1px solid var(--surface-d);
+
+        &:is(.select-btn-invalid) {
+            border: 1px dashed var(--danger-color);
+            background-color: var(--danger-light-color);
+        }
     }
 
     &.select-btn-flat:not(.select-btn-disabled) {
         border: none;
+
+        &:is(.select-btn-invalid) {
+            background-color: var(--danger-light-color);
+        }
     }
 
     &.select-btn-underline:not(.select-btn-disabled) {
         border: none;
         border-bottom: 2px solid var(--surface-d);
+
+        &:is(.select-btn-invalid) {
+            border-bottom: 2px dashed var(--danger-color);
+            background-color: var(--danger-light-color);
+        }
     }
 
     &.select-btn-tiny {
@@ -162,14 +177,17 @@
 
         &.select-btn-outline {
             border: 1px solid var(--primary-hover-color);
+
+
         }
 
         &.select-btn-underline {
             border-bottom-color: var(--primary-color);
+
         }
     }
 
-    &:hover:not(.select-btn-disabled) {
+    &:hover:not(.select-btn-disabled):not(.select-btn-invalid) {
         & .select-icon {
             background-color: var(--primary-light-color);
         }
@@ -182,10 +200,6 @@
         border: 1px solid var(--surface-c);
     }
 
-    &.select-btn-invalid {
-        border: 1px dashed var(--danger-color);
-        background-color: var(--danger-light-color);
-    }
 }
 
 
@@ -332,10 +346,11 @@
     display: grid;
     grid-template-columns: 1fr 24px;
     place-items: center start;
-    gap: 1em;
+    gap: 0.5em;
     padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-md);
     color: var(--foreground-color);
-    height: var(--height-input-sm);
+    padding: var(--padding-xs) var(--padding-md);
+    min-height: var(--height-input-sm);
     list-style: none;
     cursor: pointer;
 
@@ -347,19 +362,71 @@
 
 .select-option:hover:not(.select-option-selected) {
     background-color: var(--primary-outline-color);
-    color: white;
+    color: var(--foreground-color);
+}
+
+.select-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-md);
+    height: 100%;
+
+
+    &.select-view-tiny {
+        &>.select-view-avatar {
+            width: var(--icon-size-xs);
+            height: var(--icon-size-xs);
+        }
+    }
+
+    &.select-view-small {
+        &>.select-view-avatar {
+            width: var(--icon-size-md);
+            height: var(--icon-size-md);
+        }
+    }
+
+    &.select-view-medium {
+        &>.select-view-avatar {
+            width: var(--icon-size-xl);
+            height: var(--icon-size-xl);
+        }
+    }
+
+    &.select-view-large {
+        &>.select-view-avatar {
+            width: var(--icon-size-2xl);
+            height: var(--icon-size-2xl);
+        }
+    }
+}
+
+.select-view-avatar {
+    border-radius: var(--border-radius-xs);
+}
+
+.select-option-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+
+.select-view-description {
+    font-size: var(--font-size-sm);
+    color: var(--surface-g);
 }
 
 .select-invalid {
     position: absolute;
-    background-color: var(--danger-color);
-    color: var(--white-color);
     padding: 2px 8px;
-    border-radius: var(--border-radius-sm);
     width: max-content;
     max-width: 100%;
     opacity: 0;
     animation: animateError 0.4s ease both;
+    color: var(--white-color);
+    background-color: var(--danger-color);
+    border-radius: var(--border-radius-sm);
 
     &::after {
         position: absolute;
@@ -376,22 +443,22 @@
 }
 
 .select-invalid-tiny {
-    top: calc(var(--height-input-xs) - 4px);
+    top: calc(var(--height-input-xs) - 21px);
     font-size: var(--font-size-sm);
 }
 
 .select-invalid-small {
-    top: calc(var(--height-input-sm) - 4px);
+    top: calc(var(--height-input-sm) - 21px);
     font-size: var(--font-size-sm);
 }
 
 .select-invalid-medium {
-    top: calc(var(--height-input-md) - 4px);
+    top: calc(var(--height-input-md) - 21px);
     font-size: var(--font-size-sm);
 }
 
 .select-invalid-large {
-    top: calc(var(--height-input-lg) - 4px);
+    top: calc(var(--height-input-lg) - 21px);
     font-size: var(--font-size-md);
 }
 
