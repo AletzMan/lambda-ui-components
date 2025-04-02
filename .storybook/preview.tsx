@@ -13,8 +13,6 @@ const ThemeDecorator = (Story, context) => {
 
   useEffect(() => {
     document.body.setAttribute("data-theme", theme || "dark");
-    console.log("THEME: ", theme)
-    console.log("CONTEXT: ", context)
     document.body.style.backgroundColor = "var(--surface-b)";
     const element = document.getElementById("storybook-docs")?.children[0] as HTMLElement;
     const container = document.querySelector(".docs-story") as HTMLElement;

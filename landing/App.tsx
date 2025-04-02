@@ -1,5 +1,5 @@
 
-import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Switch } from '../src/main'
+import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch } from '../src/main'
 import { Coins, Search, SearchIcon, Settings, Settings2, User } from "lucide-react"
 import styles from "./styles.module.css"
 import { useState } from 'react'
@@ -11,28 +11,33 @@ import { buttonsPrimary } from './constants'
 function App() {
   const [loadingButtons, setLoadingButtons] = useState(false)
   const [disabledButtons, setDisabledButtons] = useState(false)
-  const [radiusButtons, setRadiusButtons] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("medium")
+  const [radiusButtons, setRadiusButtons] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("small")
   const [sizeButtons, setSizeButtons] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [sizeCheckbox, setSizeCheckbox] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledCheckbox, setDisabledCheckbox] = useState(false)
-  const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("medium")
+  const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("small")
   const [sizeSwitch, setSizeSwitch] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledSwitch, setDisabledSwitch] = useState(false)
   const [shapeSwitch, setShapeSwitch] = useState<"square" | "soft" | "rounded" | undefined>("rounded")
   const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledInput, setDisabledInput] = useState(false)
-  const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("medium")
+  const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
   const [variantInput, setVariantInput] = useState<"outline" | "flat" | "underline" | undefined>("outline")
   const [validInput, setValidInput] = useState(true)
   const [errorMessage, setErrorMessage] = useState("This field has an error.")
   const [sizeInputNumber, setSizeInputNumber] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledInputNumber, setDisabledInputNumber] = useState(false)
-  const [radiusInputNumber, setRadiusInputNumber] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("medium")
+  const [radiusInputNumber, setRadiusInputNumber] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
   const [validInputNumber, setValidInputNumber] = useState(true)
   const [errorMessageNumber, setErrorMessageNumber] = useState("This field has an error.")
   const [sizeRadio, setSizeRadio] = useState<"medium" | "small" | "large" | undefined>("medium")
   const [disabledRadio, setDisabledRadio] = useState(false)
   const [valueRadioBordered, setValueRadioBordered] = useState("")
+  const [sizeSelect, setSizeSelect] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
+  const [disabledSelect, setDisabledSelect] = useState(false)
+  const [radiusSelect, setRadiusSelect] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
+  const [validSelect, setValidSelect] = useState(true)
+  const [errorMessageSelect, setErrorMessageSelect] = useState("This field has an error.")
 
   return (
     <section className={styles.section}>
@@ -222,10 +227,10 @@ function App() {
           </div>
           <div className={styles.container_buttons}>
             <div className={styles.buttons}>
-              <Switch variant="solid" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="solid" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="solid" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="solid" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
+              <Switch variant="solid" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Primary' />
+              <Switch variant="solid" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Secondary' />
+              <Switch variant="solid" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Success' />
+              <Switch variant="solid" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Danger' />
               <Switch variant="solid" color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
               <Switch variant="solid" color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
             </div>
@@ -260,7 +265,7 @@ function App() {
           </div>
           <div className={styles.container_buttons}>
             <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} gap='0.35em' size={sizeRadio} variant='bordered' onChange={(e) => setValueRadioBordered(e)}>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} disabled={disabledRadio} gap='0.35em' size={sizeRadio} variant='bordered' onChange={(e) => setValueRadioBordered(e)}>
                 <Radio color='primary' type='radio' value="first" label="First" />
                 <Radio color='secondary' type='radio' value="third" label="Third" />
                 <Radio color='danger' type='radio' value="second" label="Second" />
@@ -270,7 +275,7 @@ function App() {
               </RadioGroup>
             </div>
             <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} gap='0.35em' size={sizeRadio} variant='flat' onChange={(e) => setValueRadioBordered(e)}>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} disabled={disabledRadio} gap='0.35em' size={sizeRadio} variant='flat' onChange={(e) => setValueRadioBordered(e)}>
                 <Radio color='primary' type='radio' value="first" label="First" />
                 <Radio color='secondary' type='radio' value="third" label="Third" />
                 <Radio color='danger' type='radio' value="second" label="Second" />
@@ -280,7 +285,7 @@ function App() {
               </RadioGroup>
             </div>
             <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} gap='0.35em' size={sizeRadio} variant='outline' onChange={(e) => setValueRadioBordered(e)} radius='medium' name='outline' orientation='vertical'>
+              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} disabled={disabledRadio} gap='0.35em' size={sizeRadio} variant='outline' onChange={(e) => setValueRadioBordered(e)} radius='medium' name='outline' orientation='vertical'>
                 <Radio color='primary' value="first" label="First" />
                 <Radio color='secondary' value="third" label="Third" />
                 <Radio color='danger' value="second" label="Second" />
@@ -389,6 +394,38 @@ function App() {
               <InputNumber variant="flat" label='Currency GBP' typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
               <InputNumber variant="flat" label='Porcentage' typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
               <InputNumber variant="flat" label='Decimal' typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+            </div>
+          </div>
+        </section>
+        <section className={styles.subsection}>
+          <h2 className={styles.subtitle}>Select</h2>
+          <div className={styles.control_buttons}>
+            <Checkbox label='Disabled' checked={disabledSelect} size="medium" color="secondary" onChange={(e) => setDisabledSelect(e.currentTarget.checked)} />
+            <Checkbox label='Is Valid' checked={validSelect} size="medium" color="info" onChange={(e) => setValidSelect(e.currentTarget.checked)} />
+            <select className={styles.control_size} value={sizeSelect} onChange={(e) => setSizeSelect(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+              <option value="tiny">Tiny</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select className={styles.control_size} value={radiusSelect} onChange={(e) => setRadiusSelect(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined)}>
+              <option value="none">None</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+              <option value="pill">Pill</option>
+            </select>
+            <Input value={errorMessageSelect} onChange={(e) => setErrorMessageSelect(e.currentTarget.value)} />
+          </div>
+          <div className={styles.container_buttons}>
+            <div className={styles.buttons}>
+              <Select label='Outline' variant="outline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} error={!validSelect} errorMessage={errorMessageSelect} />
+            </div>
+            <div className={styles.buttons}>
+              <Select variant="flat" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} error={!validSelect} errorMessage={errorMessageSelect} />
+            </div>
+            <div className={styles.buttons}>
+              <Select variant="underline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} error={!validSelect} errorMessage={errorMessageSelect} />
             </div>
           </div>
         </section>
