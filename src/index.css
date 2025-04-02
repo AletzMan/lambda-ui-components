@@ -37,10 +37,12 @@
 
     --icon-size-3xs: 11px;
     --icon-size-2xs: 13px;
-    --icon-size-xs: 15px;
+    --icon-size-xs: 14px;
     --icon-size-sm: 16px;
     --icon-size-md: 18px;
     --icon-size-lg: 20px;
+    --icon-size-xl: 22px;
+    --icon-size-2xl: 24px;
 
     --height-checkbox-xs: 16px;
     --height-checkbox-sm: 20px;
@@ -73,7 +75,8 @@
     --surface-c: #eeeded;
     --surface-d: #b9bdbf;
     --surface-e: #c5c5c5;
-    --surface-f: #989898;
+    --surface-f: #8e8e8e;
+    --surface-g: #787878;
     --border-color: #a6a6a6;
     --shadow-color: #35343425;
     --shadow-inset-color: #dee1e455;
@@ -142,8 +145,8 @@
     --surface-c: #151517;
     --surface-d: #343436;
     --surface-e: #525252;
-    --surface-f: #bdbdbd;
-    --surface-g: #09090b;
+    --surface-f: #a9a9a9;
+    --surface-g: #828282;
     --shadow-color: #1c1c1c90;
     --shadow-inset-color: #f1f1f155;
 
