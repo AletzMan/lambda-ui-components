@@ -121,6 +121,13 @@ const dropdown = cva(styles["select-dropdown"], {
             false: styles["select-dropdown-cls"],
         }
     },
+    defaultVariants: {
+        direction: "down",
+        isOpen: false,
+        radius: "small",
+        size: "medium",
+        variant: "outline"
+    }
 })
 
 const labelSelect = cva(styles["select-label"], {
@@ -145,7 +152,7 @@ const labelSelect = cva(styles["select-label"], {
     },
     defaultVariants: {
         direction: "down",
-        radius: "medium",
+        radius: "small",
         size: "medium"
     }
 })
@@ -159,13 +166,37 @@ const errorLabel = cva(styles["select-invalid"], {
             large: styles["select-invalid-large"],
         },
     },
+    defaultVariants: {
+        size: "medium"
+    }
 })
+
+const selectedView = cva(styles["select-view"], {
+    variants: {
+        size: {
+            tiny: styles["select-view-tiny"],
+            small: styles["select-view-small"],
+            medium: styles["select-view-medium"],
+            large: styles["select-view-large"],
+        },
+    },
+    defaultVariants: {
+        size: "medium"
+    }
+})
+
+export interface IListCollection {
+    label: string
+    value: string
+    avatar?: string
+    description?: string
+}
 
 export interface SelectProps
     extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size" | "disabled">,
     VariantProps<typeof select> {
     label?: string
-    options: { value: string; label: string }[]
+    options: IListCollection[]
     error?: boolean
     placeholder?: string
     errorMessage?: string
@@ -254,7 +285,10 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                 <div className={select({ size, variant, radius, disabled, error })} ref={selectRef} role="select">
                     <button className={buttonSelect({ size, variant, radius, error, disabled })} onClick={toggleDropdown} style={{ width: `${placeholder?.length * 13}px` }}>
                         {selectedValue
-                            ? options.find((opt) => opt.value === selectedValue)?.label
+                            ? <div className={selectedView({ size })}>
+                                {options.find((opt) => opt.value === selectedValue)?.avatar && <img className={styles["select-view-avatar"]} src={options.find((opt) => opt.value === selectedValue)?.avatar} />}
+                                {options.find((opt) => opt.value === selectedValue)?.label}
+                            </div>
                             : <span className={styles["select-placeholder"]}>{placeholder}</span>}
                         {isOpen ? <div className={selectIcon({ variant })}><ChevronUp className={styles["select-icon-svg"]} /></div> : <div className={selectIcon({ variant })}><ChevronDown className={styles["select-icon-svg"]} /></div>}
                     </button>
@@ -266,7 +300,13 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                                     className={`${styles["select-option"]} ${selectedValue === option.value && styles["select-option-selected"]}`}
                                     onClick={() => handleOptionClick(option.value)}
                                 >
-                                    {option.label}
+                                    <div className={styles["select-option-wrapper"]}>
+                                        <div className={selectedView({ size })}>
+                                            {option.avatar && <img className={styles["select-view-avatar"]} src={option?.avatar} />}
+                                            {option.label}
+                                        </div>
+                                        {option?.description && <p className={styles["select-view-description"]}>{option?.description}</p>}
+                                    </div>
                                     {selectedValue === option.value && <Check className={styles["select-icon-svg"]} />}
                                 </li>
                             ))}
