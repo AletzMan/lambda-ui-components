@@ -1,8 +1,8 @@
 :root {
     --font-family: 'Plus Jakarta Sans Variable', sans-serif;
     --disabled-color: #6b6b6b;
-    --black-color: #222222;
-    --white-color: #f7f7f7;
+    --black-color: #171717;
+    --white-color: #ffffff;
 
     --padding-none: 0px;
     --padding-xs: 4px;
@@ -64,8 +64,8 @@
 
 [data-theme="light"] {
     --background-color: #f3f3f3;
-    --foreground-color: #222222;
-    --foreground-invert-color: #f7f7f7;
+    --foreground-color: #171717;
+    --foreground-invert-color: #ffffff;
     --foreground-label-color: #8fa2b3;
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #999999;
@@ -133,7 +133,7 @@
 
 [data-theme="dark"] {
     --background-color: #171717;
-    --foreground-color: #f7f7f7;
+    --foreground-color: #ffffff;
     --foreground-invert-color: #222222;
     --foreground-label-color: #b1c0cc;
     --foreground-disabled-color: #b7b5b5;
