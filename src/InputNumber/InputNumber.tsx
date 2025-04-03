@@ -65,6 +65,9 @@ const labels = cva(styles['lambda-number-label'], {
             large: styles['lambda-number-label-radius-large'],
             pill: styles['lambda-number-label-radius-pill'],
         },
+        isRequired: {
+            true: styles["lambda-number-label-required"]
+        }
     },
     defaultVariants: {
         radius: "medium",
@@ -175,6 +178,7 @@ export interface InputProps
     VariantProps<typeof inputNumber> {
     label?: string
     invalid?: boolean
+    isRequired?: boolean
     errorMessage?: string
     helperText?: string
     onChange?: (value: number) => void
@@ -192,6 +196,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
             invalid,
             errorMessage,
             disabled,
+            isRequired,
             helperText,
             min = Number.MIN_SAFE_INTEGER,
             max = Number.MAX_SAFE_INTEGER,
@@ -294,9 +299,8 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
 
         return (
             <div className={clsx(styles['lambda-number-wrapper'], { [styles['lambda-number-wrapper-disabled']]: disabled })}>
-                {label && <label className={labels({ radius, size })}>{label}</label>}
+                {label && <label className={labels({ radius, size, isRequired })}>{label}</label>}
                 <div className={inputNumber({ variant, disabled, radius, typeNumber, size, invalid, className })}>
-                    {helperText && <label className={clsx(styles['lambda-number-helper'], { [styles["lambda-number-helper-disabled"]]: disabled })}>{helperText}</label>}
                     <div className={styles['lambda-number-container']}>
                         <div className={typeCurrency({ typeNumber, size, variant })}>{getIcon()}</div>
                         <input
@@ -336,6 +340,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                             </button>
                         </div>
                     </div>
+                    {helperText && <label className={clsx(styles['lambda-number-helper'], { [styles["lambda-number-helper-disabled"]]: disabled })}>{helperText}</label>}
                 </div>
                 {invalid && errorMessage && <span className={errorlabel({ size })}>{errorMessage}</span>}
             </div>
