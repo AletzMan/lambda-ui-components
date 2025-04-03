@@ -258,6 +258,7 @@
      border: 1px solid;
      background-color: transparent;
 
+
      &.lambda-btn-primary {
          border-color: var(--primary-hover-color);
          color: var(--primary-text-color);
@@ -752,7 +753,7 @@
      }
 
      .lambda-btn-label {
-         font-weight: var(--font-weight-sm);
+         font-weight: var(--font-weight-md);
      }
  }
 
@@ -778,7 +779,7 @@
      }
 
      .lambda-btn-label {
-         font-weight: var(--font-weight-sm);
+         font-weight: var(--font-weight-md);
      }
  }
 
