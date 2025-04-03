@@ -9,6 +9,12 @@ import { useInputGroup } from "../InputGroup/InputGroup"
 
 export const lambdaInput = cva(styles["lambda-input"], {
     variants: {
+        size: {
+            tiny: styles["lambda-input-tiny"],
+            small: styles["lambda-input-small"],
+            medium: styles["lambda-input-medium"],
+            large: styles["lambda-input-large"],
+        },
         radius: {
             none: styles["lambda-input-radius-none"],
             small: styles["lambda-input-radius-small"],
@@ -250,7 +256,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputPlaceholder = floatingLabel ? "" : placeholder
 
         return (
-            <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled }), { [styles["lambda-input-group"]]: isGroup })}>
+            <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled, size: contextSize }), { [styles["lambda-input-group"]]: isGroup })}>
                 {label && (
                     <label className={clsx(labels({ radius: contextRadius, size: contextSize, hasElements }), {
                         [styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,

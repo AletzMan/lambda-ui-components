@@ -620,9 +620,32 @@
  /* ------------------- OPTIONAL LABEL ---------------------*/
  .lambda-input {
 
+     &.lambda-input-tiny {
+         .lambda-input-helper {
+             top: calc(var(--height-input-xs) + 1px);
+         }
+     }
+
+     &.lambda-input-small {
+         .lambda-input-helper {
+             top: calc(var(--height-input-sm) + 1px);
+         }
+     }
+
+     &.lambda-input-medium {
+         .lambda-input-helper {
+             top: calc(var(--height-input-md) + 1px);
+         }
+     }
+
+     &.lambda-input-large {
+         .lambda-input-helper {
+             top: calc(var(--height-input-lg) + 1px);
+         }
+     }
+
      .lambda-input-helper {
          position: absolute;
-         bottom: -1.5em;
          left: 0;
          font-size: var(--font-size-xs);
          font-weight: var(--font-weight-reg);
