@@ -422,12 +422,12 @@
 
 
      &:hover:not(:disabled) {
-         background-color: var(--primary-hover-color);
+         background-color: var(--primary-outline-color);
          color: var(--white-color);
      }
 
      &:active:not(:disabled) {
-         background-color: var(--primary-color);
+         background-color: var(--primary-disabled-color);
      }
 
      &:disabled {
