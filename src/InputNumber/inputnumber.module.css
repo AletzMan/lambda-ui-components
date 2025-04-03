@@ -43,25 +43,25 @@
 
      &.lambda-number-tiny {
          .lambda-number-helper {
-             top: var(--height-input-xs);
+             top: calc(var(--height-input-xs) + 1px);
          }
      }
 
      &.lambda-number-small {
          .lambda-number-helper {
-             top: var(--height-input-sm);
+             top: calc(var(--height-input-sm) + 1px);
          }
      }
 
      &.lambda-number-medium {
          .lambda-number-helper {
-             top: var(--height-input-md);
+             top: calc(var(--height-input-md) + 1px);
          }
      }
 
      &.lambda-number-large {
          .lambda-number-helper {
-             top: var(--height-input-lg);
+             top: calc(var(--height-input-lg) + 1px);
          }
      }
 
