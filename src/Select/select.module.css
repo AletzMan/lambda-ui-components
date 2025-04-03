@@ -16,7 +16,14 @@
     display: block;
     font-weight: var(--font-weight-reg);
     font-family: var(--font-family);
-    color: var(--primary-hover-color);
+    color: var(--primary-text-color);
+
+    &.select-label-required {
+        &::after {
+            content: " *";
+            color: var(--danger-color);
+        }
+    }
 
     &.select-label-tiny {
         font-size: var(--font-size-sm);

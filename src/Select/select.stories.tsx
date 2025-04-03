@@ -30,7 +30,7 @@ const meta: Meta<typeof Select> = {
             type: "string",
             description: "Text to display as the label for the component"
         },
-        error: {
+        invalid: {
             control: 'boolean',
             type: 'boolean',
             description: "Applies error styles when true"
@@ -38,6 +38,10 @@ const meta: Meta<typeof Select> = {
         disabled: {
             control: 'boolean',
             description: "Disables the input and makes it inactive"
+        },
+        isRequired: {
+            control: "boolean",
+            description: ""
         }
     }
 
@@ -75,7 +79,8 @@ export const Normal: Story = {
                 value: "csharp",
             }
         ],
-        error: false,
+        isRequired: false,
+        invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
     },
@@ -114,7 +119,8 @@ export const Description: Story = {
                 description: "A modern, object-oriented programming language developed by Microsoft."
             }
         ],
-        error: false,
+        isRequired: false,
+        invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
     },
@@ -154,7 +160,8 @@ export const Icon: Story = {
                 avatar: "https://cdn.worldvectorlogo.com/logos/c--4.svg",
             }
         ],
-        error: false,
+        isRequired: false,
+        invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
     },

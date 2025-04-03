@@ -28,7 +28,7 @@ const select = cva(styles["select-container"], {
             true: styles["select-container-disabled"],
             false: styles["select-container-enabled"],
         },
-        error: {
+        invalid: {
             true: styles["select-container-invalid"],
             false: "",
         },
@@ -38,7 +38,7 @@ const select = cva(styles["select-container"], {
         size: "medium",
         radius: "small",
         disabled: false,
-        error: false,
+        invalid: false,
     },
 })
 const buttonSelect = cva(styles["select-btn"], {
@@ -65,7 +65,7 @@ const buttonSelect = cva(styles["select-btn"], {
             true: styles["select-btn-disabled"],
             false: styles["select-btn-enabled"],
         },
-        error: {
+        invalid: {
             true: styles["select-btn-invalid"],
             false: "",
         },
@@ -75,7 +75,7 @@ const buttonSelect = cva(styles["select-btn"], {
         size: "medium",
         radius: "small",
         disabled: false,
-        error: false,
+        invalid: false,
     },
 })
 
@@ -148,6 +148,9 @@ const labelSelect = cva(styles["select-label"], {
             medium: styles["select-label-radius-medium"],
             large: styles["select-label-radius-large"],
             pill: styles["select-label-radius-pill"],
+        },
+        isRequired: {
+            true: styles["select-label-required"]
         }
     },
     defaultVariants: {
@@ -197,13 +200,14 @@ export interface SelectProps
     VariantProps<typeof select> {
     label?: string
     options: IListCollection[]
-    error?: boolean
+    invalid?: boolean
+    isRequired?: boolean
     placeholder?: string
     errorMessage?: string
 }
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(
-    ({ label, options, size, variant, radius, disabled, error, errorMessage, placeholder = "Select an option", ...props }, ref) => {
+    ({ label, options, size, variant, radius, disabled, invalid, isRequired, errorMessage, placeholder = "Select an option", ...props }, ref) => {
         const [isOpen, setIsOpen] = useState(false)
         const [selectedValue, setSelectedValue] = useState<string | null>(null)
         const [direction, setDirection] = useState<"up" | "down">("down")
@@ -281,9 +285,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
         return (
             <div className={clsx([styles["select-wrapper"]], { [styles["select-wrapper-disabled"]]: disabled })} ref={ref} >
-                {label && <label className={labelSelect({ direction, radius, size })}>{label}</label>}
-                <div className={select({ size, variant, radius, disabled, error })} ref={selectRef} role="select">
-                    <button className={buttonSelect({ size, variant, radius, error, disabled })} onClick={toggleDropdown} style={{ width: `${placeholder?.length * 13}px` }}>
+                {label && <label className={labelSelect({ direction, radius, size, isRequired })}>{label}</label>}
+                <div className={select({ size, variant, radius, disabled, invalid })} ref={selectRef} role="select">
+                    <button className={buttonSelect({ size, variant, radius, invalid, disabled })} onClick={toggleDropdown} style={{ width: `${placeholder?.length * 13}px` }}>
                         {selectedValue
                             ? <div className={selectedView({ size })}>
                                 {options.find((opt) => opt.value === selectedValue)?.avatar && <img className={styles["select-view-avatar"]} src={options.find((opt) => opt.value === selectedValue)?.avatar} />}
@@ -313,7 +317,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                         </ul>
                     )}
                 </div>
-                {error && errorMessage && <span className={errorLabel({ size })}>{errorMessage}</span>}
+                {invalid && errorMessage && <span className={errorLabel({ size })}>{errorMessage}</span>}
             </div>
         )
     }
