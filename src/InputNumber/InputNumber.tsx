@@ -106,6 +106,13 @@ const handler = cva(styles['lambda-number-handler'], {
             medium: styles['lambda-number-handler-medium'],
             large: styles['lambda-number-handler-large'],
         },
+        radius: {
+            none: styles['lambda-number-handler-radius-none'],
+            small: styles['lambda-number-handler-radius-small'],
+            medium: styles['lambda-number-handler-radius-medium'],
+            large: styles['lambda-number-handler-radius-large'],
+            pill: styles['lambda-number-handler-radius-pill'],
+        },
         variant: {
             outline: styles['lambda-number-handler-outline'],
             flat: styles['lambda-number-handler-flat'],
@@ -138,6 +145,13 @@ const typeCurrency = cva(styles['lambda-number-currency'], {
             small: styles['lambda-number-currency-small'],
             medium: styles['lambda-number-currency-medium'],
             large: styles['lambda-number-currency-large'],
+        },
+        radius: {
+            none: styles['lambda-number-currency-radius-none'],
+            small: styles['lambda-number-currency-radius-small'],
+            medium: styles['lambda-number-currency-radius-medium'],
+            large: styles['lambda-number-currency-radius-large'],
+            pill: styles['lambda-number-currency-radius-pill'],
         },
         variant: {
             outline: styles['lambda-number-currency-outline'],
@@ -172,6 +186,7 @@ const button = cva(styles['lambda-number-btn'], {
         size: "medium"
     },
 })
+
 
 export interface InputProps
     extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange">,
@@ -302,7 +317,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                 {label && <label className={labels({ radius, size, isRequired })}>{label}</label>}
                 <div className={inputNumber({ variant, disabled, radius, typeNumber, size, invalid, className })}>
                     <div className={styles['lambda-number-container']}>
-                        <div className={typeCurrency({ typeNumber, size, variant })}>{getIcon()}</div>
+                        <div className={typeCurrency({ typeNumber, size, variant, radius })}>{getIcon()}</div>
                         <input
                             ref={ref}
                             value={displayedValue}
@@ -319,7 +334,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                             max={max}
                             {...props}
                         />
-                        <div className={handler({ size, variant })}>
+                        <div className={handler({ size, variant, radius })}>
                             <button
                                 type="button"
                                 className={clsx(button({ size }), styles['lambda-number-btn-increment'])}
