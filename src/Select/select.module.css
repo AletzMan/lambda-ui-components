@@ -196,7 +196,7 @@
 
     &:hover:not(.select-btn-disabled):not(.select-btn-invalid) {
         & .select-icon {
-            background-color: var(--primary-light-color);
+            background-color: var(--primary-outline-color);
         }
     }
 
