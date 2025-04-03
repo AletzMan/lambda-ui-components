@@ -4,7 +4,7 @@ import { cva, VariantProps } from "class-variance-authority"
 import styles from "./notification.module.css"
 import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react"
 
-const notificationProp = cva(styles.notif, {
+const notificationProp = cva(styles["notif"], {
     variants: {
         notificationType: {
             default: styles.notif_def,

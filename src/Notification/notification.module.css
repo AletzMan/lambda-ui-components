@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: 2.5em 1fr 2.5em;
     place-items: center left;
-    padding: var(--paddingSingle-nm) var(--paddingSingle-sm);
+    padding: var(--padding-xs) var(--padding-sm);
     border-radius: var(--border-radius-sm);
     font-family: var(--font-family);
     color: var(--foreground-color);
@@ -28,8 +28,9 @@
 
 .mess {
     padding: 0;
-    margin: var(--paddingSingle-md) 0;
+    margin: var(--padding-md) 0;
     text-align: left;
+    font-size: var(--font-size-md);
     color: var(--foreground-color);
 }
 
@@ -37,7 +38,7 @@
     background-color: var(--secondary-color);
 
     &.notif_bordered {
-        background-color: var(--secondaryDisabled-color);
+        background-color: var(--secondary-disabled-color);
         border: 2px solid var(--secondary-color);
         color: var(--secondary-color);
 
@@ -50,13 +51,13 @@
     background-color: var(--success-color);
 
     &.notif_bordered {
-        background-color: var(--successDisabled-color);
+        background-color: var(--success-disabled-color);
         border-left: 5px solid var(--success-color);
-        color: var(--successLight-color);
+        color: var(--success-light-color);
         backdrop-filter: blur(3px);
 
         .mess {
-            color: var(--successLight-color);
+            color: var(--success-light-color);
         }
 
         .closeButton {
@@ -72,7 +73,7 @@
     background-color: var(--danger-color);
 
     &.notif_bordered {
-        background-color: var(--dangerDisabled-color);
+        background-color: var(--danger-disabled-color);
         border: 2px solid var(--danger-color);
         color: var(--danger-color);
     }
@@ -83,7 +84,7 @@
     background-color: var(--info-color);
 
     &.notif_bordered {
-        background-color: var(--infoDisabled-color);
+        background-color: var(--info-disabled-color);
         border: 2px solid var(--info-color);
         color: var(--info-color);
     }
@@ -94,7 +95,7 @@
     background-color: var(--warning-color);
 
     &.notif_bordered {
-        background-color: var(--warningDisabled-color);
+        background-color: var(--warning-disabled-color);
         border: 2px solid var(--warning-color);
         color: var(--warning-color);
     }
@@ -110,7 +111,7 @@
 }
 
 .notif_err {
-    background-color: var(--dangerHover-color);
+    background-color: var(--danger-hover-color);
 }
 
 /* Posiciones de las notificaciones según placement */
@@ -383,7 +384,7 @@
         background-color: #FFFFFF60;
 
         &:is(.bar_bordered) {
-            background-color: var(--successDisabled-color);
+            background-color: var(--success-disabled-color);
         }
     }
 
