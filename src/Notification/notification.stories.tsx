@@ -23,7 +23,7 @@ const meta: Meta<typeof Notification> = {
         },
         variant: {
             control: "select",
-            options: ['themed', 'flat', 'solid', 'darked'],
+            options: ['themed', 'flat', 'solid', 'darkened', "lightened"],
             description: "Style of the notification",
             type: 'string',
         },

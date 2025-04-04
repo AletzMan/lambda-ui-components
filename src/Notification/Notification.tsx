@@ -16,7 +16,8 @@ const notificationProp = cva(styles["notification"], {
         variant: {
             themed: styles["notification-themed"],
             solid: styles["notification-solid"],
-            darked: styles["notification-darked"],
+            darkened: styles["notification-darkened"],
+            lightened: styles["notification-lightened"],
             flat: styles["notification-flat"],
         },
         placement: {
@@ -46,7 +47,8 @@ const barClass = cva(styles["notification-time"], {
         variant: {
             themed: styles["notification-time-themed"],
             solid: styles["notification-time-solid"],
-            darked: styles["notification-time-darked"],
+            darkened: styles["notification-time-darkened"],
+            lightened: styles["notification-time-lightened"],
             flat: styles["notification-time-flat"],
         },
     },
@@ -65,7 +67,7 @@ export interface NotificationProps
     placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"
     notificationType?: "default" | "success" | "warning" | "info" | "danger"
     icon?: React.ReactNode
-    variant?: "themed" | "flat" | "solid" | "darked"
+    variant?: "themed" | "flat" | "solid" | "darkened" | "lightened"
     duration?: number
     onClose?: () => void
 }
