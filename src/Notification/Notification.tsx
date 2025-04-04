@@ -16,6 +16,7 @@ const notificationProp = cva(styles["notification"], {
         variant: {
             themed: styles["notification-themed"],
             solid: styles["notification-solid"],
+            darked: styles["notification-darked"],
             flat: styles["notification-flat"],
         },
         placement: {
@@ -45,6 +46,7 @@ const barClass = cva(styles["notification-time"], {
         variant: {
             themed: styles["notification-time-themed"],
             solid: styles["notification-time-solid"],
+            darked: styles["notification-time-darked"],
             flat: styles["notification-time-flat"],
         },
     },
