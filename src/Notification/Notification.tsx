@@ -62,6 +62,7 @@ export interface NotificationProps
     message: string
     placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"
     notificationType?: "default" | "success" | "warning" | "info" | "danger"
+    icon?: React.ReactNode
     variant?: "themed" | "flat" | "solid"
     duration?: number
     onClose?: () => void
@@ -74,6 +75,7 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
             message,
             title,
             placement,
+            icon,
             duration = 5000,
             variant,
             onClose,
@@ -130,13 +132,20 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
                 ref={ref}
                 role="alert"
             >
-                {notificationType === "success" && <CircleCheck className={styles.icon}>✔</CircleCheck>}
-                {notificationType === "warning" && <CircleAlert className={styles.icon}>!</CircleAlert>}
-                {notificationType === "info" && <Info className={styles.icon}>i</Info>}
-                {notificationType === "danger" && <CircleX className={styles.icon}>✖</CircleX>}
-                {notificationType === "default" && <Bell className={styles.icon}>i</Bell>}
+                <div className={styles["notification-icon"]}>
+                    {notificationType === "success" && <CircleCheck />}
+                    {notificationType === "warning" && <CircleAlert />}
+                    {notificationType === "info" && <Info />}
+                    {notificationType === "danger" && <CircleX />}
+                    {!["success", "warning", "info", "danger",
+                        undefined
+                    ].includes(notificationType) &&
+                        (icon ?? <Bell />)}
+                </div>
+
+
                 <div className={styles["notification-content"]}>
-                    {<h1 className={styles["notification-title"]}>{title || notificationType}</h1>}
+                    {title && <h1 className={styles["notification-title"]}>{title}</h1>}
                     <p className={styles["notification-message"]}>{message}</p>
                 </div>
                 <button

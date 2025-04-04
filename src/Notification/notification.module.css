@@ -15,7 +15,7 @@
     grid-template-columns: 2.5em 1fr 2.5em;
     place-items: center left;
     padding: var(--padding-sm) var(--padding-sm);
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-md);
     font-family: var(--font-family);
     color: var(--foreground-color);
     opacity: 0;
@@ -23,15 +23,23 @@
     transition: all 0.3s ease-in-out;
     overflow: hidden;
     width: 100%;
+    min-height: 3em;
     min-width: max-content;
 
+}
+
+.notification-icon {
+    svg {
+        width: 1.5em;
+        height: 1.5em;
+    }
 }
 
 .notification-time {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 4px;
+    height: 3px;
     transition: width 1s linear;
 }
 
@@ -53,7 +61,7 @@
     text-align: left;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-reg);
-    color: var(--foreground-color);
+    width: 240px;
 }
 
 
@@ -65,7 +73,7 @@
     box-shadow: var(--box-shadow);
 
     .notification-message {
-        color: var(--foreground-color);
+        color: var(--surface-f);
     }
 
     .notification-close-button {
@@ -112,10 +120,6 @@
         color: var(--white-color);
         backdrop-filter: blur(3px);
 
-        .notification-message {
-            color: var(--white-color);
-        }
-
         .notification-close-button {
             .notification-close-button-icon {
                 color: var(--white-color);
@@ -133,10 +137,6 @@
         border-left: 5px solid var(--success-color);
         color: var(--success-color);
         backdrop-filter: blur(3px);
-
-        .notification-message {
-            color: var(--success-text-color);
-        }
 
         .notification-close-button {
             .notification-close-button-icon {
