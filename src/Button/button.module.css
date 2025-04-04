@@ -56,7 +56,7 @@
 
      &.lambda-btn-primary {
          background: var(--primary-color);
-         border: 1px solid var(--primary-dark-bg-color);
+         border: 1px solid var(--primary-darkened-color);
 
          &.lambda-btn-loading,
          &.lambda-btn-disabled {
@@ -72,7 +72,7 @@
      &.lambda-btn-secondary {
          background: var(--secondary-color);
          color: var(--foreground-invert-color);
-         border: 1px solid var(--secondary-dark-bg-color);
+         border: 1px solid var(--secondary-darkened-color);
 
          &.lambda-btn-loading,
          &.lambda-btn-disabled {
@@ -87,7 +87,7 @@
 
      &.lambda-btn-success {
          background: var(--success-color);
-         border: 1px solid var(--success-dark-bg-color);
+         border: 1px solid var(--success-darkened-color);
 
          &.lambda-btn-loading,
          &.lambda-btn-disabled {
@@ -102,7 +102,7 @@
 
      &.lambda-btn-danger {
          background: var(--danger-color);
-         border: 1px solid var(--danger-dark-bg-color);
+         border: 1px solid var(--danger-darkened-color);
 
          &.lambda-btn-loading,
          &.lambda-btn-disabled {
@@ -117,7 +117,7 @@
 
      &.lambda-btn-warning {
          background: var(--warning-color);
-         border: 1px solid var(--warning-dark-bg-color);
+         border: 1px solid var(--warning-darkened-color);
          color: var(--black-color);
 
          &.lambda-btn-loading,
@@ -133,7 +133,7 @@
 
      &.lambda-btn-info {
          background: var(--info-color);
-         border: 1px solid var(--info-dark-bg-color);
+         border: 1px solid var(--info-darkened-color);
 
          &.lambda-btn-loading,
          &.lambda-btn-disabled {
