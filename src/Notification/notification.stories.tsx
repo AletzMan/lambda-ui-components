@@ -23,7 +23,7 @@ const meta: Meta<typeof Notification> = {
         },
         variant: {
             control: "select",
-            options: ['flat', 'bordered'],
+            options: ['flat', 'solid'],
             description: "Style of the notification",
             type: 'string',
         },
@@ -87,7 +87,7 @@ const NotificationWithButton = () => {
     const handleClickError = () => {
         showNotification({
             message: "Oops! Something went wrong. Please try again",
-            notificationType: "error",
+            notificationType: "danger",
             placement: "top-right",
             variant: "flat",
             duration: 7000,
@@ -156,7 +156,7 @@ export const Success: StoryObj<typeof Notification> = {
 
 export const Error: StoryObj<typeof Notification> = {
     args: {
-        notificationType: "error",
+        notificationType: "danger",
         message: "Oops! Something went wrong. Please try again",
         placement: "top-center",
         variant: "flat",
@@ -187,6 +187,6 @@ export const Warning: StoryObj<typeof Notification> = {
 export const WithButton: StoryObj<typeof Notification> = {
     render: () => <NotificationWithButton />,
     args: {
-        notificationType: "error",
+        notificationType: "danger",
     }
 }
