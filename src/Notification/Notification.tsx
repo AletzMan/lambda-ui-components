@@ -129,7 +129,7 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
 
         return (
             <div
-                className={`${notificationProp({ notificationType, placement, variant })} ${!closing ? styles.active : ""}`}
+                className={`${notificationProp({ notificationType, placement, variant })} ${closing ? styles["notification-exit"] : styles["notification-active"]}`}
                 {...props}
                 ref={ref}
                 role="alert"
