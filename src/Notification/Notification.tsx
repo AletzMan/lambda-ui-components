@@ -4,51 +4,53 @@ import { cva, VariantProps } from "class-variance-authority"
 import styles from "./notification.module.css"
 import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react"
 
-const notificationProp = cva(styles["notif"], {
+const notificationProp = cva(styles["notification"], {
     variants: {
         notificationType: {
-            default: styles.notif_def,
-            success: styles.notif_suc,
-            warning: styles.notif_war,
-            info: styles.notif_inf,
-            error: styles.notif_err,
+            default: styles["notification-default"],
+            success: styles["notification-success"],
+            warning: styles["notification-warning"],
+            info: styles["notification-info"],
+            danger: styles["notification-danger"],
         },
         variant: {
-            flat: styles.notif_flat,
-            bordered: styles.notif_bordered,
+            themed: styles["notification-themed"],
+            solid: styles["notification-solid"],
+            flat: styles["notification-flat"],
         },
         placement: {
-            "top-left": styles.notif_top_left,
-            "top-center": styles.notif_top_center,
-            "top-right": styles.notif_top_right,
-            "bottom-left": styles.notif_bottom_left,
-            "bottom-center": styles.notif_bottom_center,
-            "bottom-right": styles.notif_bottom_right,
+            "top-left": styles["notification-top-left"],
+            "top-center": styles["notification-top-center"],
+            "top-right": styles["notification-top-right"],
+            "bottom-left": styles["notification-bottom-left"],
+            "bottom-center": styles["notification-bottom-center"],
+            "bottom-right": styles["notification-bottom-right"],
         }
     },
     defaultVariants: {
         notificationType: "default",
         placement: "top-center",
-        variant: "flat",
+        variant: "themed",
     },
 })
-const barClass = cva(styles.bar, {
+const barClass = cva(styles["notification-time"], {
     variants: {
         notificationType: {
-            default: styles.bar_def,
-            success: styles.bar_suc,
-            warning: styles.bar_war,
-            info: styles.bar_inf,
-            error: styles.bar_err,
+            default: styles["notification-time-default"],
+            success: styles["notification-time-success"],
+            warning: styles["notification-time-warning"],
+            info: styles["notification-time-info"],
+            danger: styles["notification-time-danger"],
         },
         variant: {
-            flat: styles.bar_flat,
-            bordered: styles.bar_bordered,
+            themed: styles["notification-time-themed"],
+            solid: styles["notification-time-solid"],
+            flat: styles["notification-time-flat"],
         },
     },
     defaultVariants: {
         notificationType: "default",
-        variant: "flat",
+        variant: "themed",
     },
 })
 
@@ -56,10 +58,11 @@ const barClass = cva(styles.bar, {
 export interface NotificationProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, "size">,
     VariantProps<typeof notificationProp> {
+    title?: string
     message: string
     placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"
-    notificationType?: "default" | "success" | "warning" | "info" | "error"
-    variant?: "flat" | "bordered"
+    notificationType?: "default" | "success" | "warning" | "info" | "danger"
+    variant?: "themed" | "flat" | "solid"
     duration?: number
     onClose?: () => void
 }
@@ -69,6 +72,7 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
         {
             notificationType,
             message,
+            title,
             placement,
             duration = 5000,
             variant,
@@ -129,17 +133,20 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
                 {notificationType === "success" && <CircleCheck className={styles.icon}>✔</CircleCheck>}
                 {notificationType === "warning" && <CircleAlert className={styles.icon}>!</CircleAlert>}
                 {notificationType === "info" && <Info className={styles.icon}>i</Info>}
-                {notificationType === "error" && <CircleX className={styles.icon}>✖</CircleX>}
+                {notificationType === "danger" && <CircleX className={styles.icon}>✖</CircleX>}
                 {notificationType === "default" && <Bell className={styles.icon}>i</Bell>}
-                <p className={styles.mess}>{message}</p>
+                <div className={styles["notification-content"]}>
+                    {<h1 className={styles["notification-title"]}>{title || notificationType}</h1>}
+                    <p className={styles["notification-message"]}>{message}</p>
+                </div>
                 <button
-                    className={styles.closeButton}
+                    className={styles["notification-close-button"]}
                     onClick={() => {
                         setClosing(true);
                         if (onClose) onClose();
                     }}
                 >
-                    <X className={styles.closeButton_icon} />
+                    <X className={styles["notification-close-button-icon"]} />
                 </button>
                 <div
                     className={barClass({ variant, notificationType })}
