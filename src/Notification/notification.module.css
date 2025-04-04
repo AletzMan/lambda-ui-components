@@ -5,8 +5,9 @@
     flex-flow: column;
     gap: 5px;
     padding: var(--padding-md) 0 0 0;
-    transition: all 0.2s ease-in-out;
     z-index: 1000;
+    background-color: #FF669980;
+    transition: height 0.3s ease-in-out
 }
 
 .notification {
@@ -16,7 +17,6 @@
     place-items: center left;
     opacity: 0;
     transform: translateY(-100px);
-    transition: all 0.3s ease-in-out;
     overflow: hidden;
     width: 100%;
     min-height: 3em;
@@ -25,6 +25,8 @@
     border-radius: var(--border-radius-md);
     font-family: var(--font-family);
     color: var(--foreground-color);
+    transition: all 0.3s ease-in-out;
+    will-change: transform;
 
 }
 
@@ -190,18 +192,30 @@
 
     .notification-close-button {
         .notification-close-button-icon {
-            color: var(--surface-c);
+            color: var(--white-color);
         }
     }
+
 
     &:is(.notification-default) {
         background-color: var(--secondary-dark-bg-color);
         border: 1px solid var(--secondary-color);
-        color: var(--foreground-invert-color);
+        color: var(--foreground-color);
+
+        .notification-icon {
+            color: var(--secondary-color);
+        }
 
         .notification-message {
-            color: var(--foreground-invert-color);
+            color: var(--foreground-color);
         }
+
+        .notification-close-button {
+            .notification-close-button-icon {
+                color: var(--foreground-color);
+            }
+        }
+
 
         .notification-time {
             background-color: var(--secondary-disabled-color);
@@ -213,6 +227,10 @@
         background-color: var(--success-dark-bg-color);
         border: 1px solid var(--success-color);
 
+        .notification-icon {
+            color: var(--success-color);
+        }
+
         .notification-time {
             background-color: var(--success-outline-color);
             filter: brightness(450%);
@@ -222,6 +240,10 @@
     &:is(.notification-danger) {
         background-color: var(--danger-dark-bg-color);
         border: 1px solid var(--danger-color);
+
+        .notification-icon {
+            color: var(--danger-color);
+        }
 
         .notification-time {
             background-color: var(--danger-outline-color);
@@ -233,6 +255,10 @@
         background-color: var(--warning-dark-bg-color);
         border: 1px solid var(--warning-color);
 
+        .notification-icon {
+            color: var(--warning-color);
+        }
+
         .notification-time {
             background-color: var(--warning-outline-color);
             filter: brightness(500%);
@@ -242,6 +268,10 @@
     &:is(.notification-info) {
         background-color: var(--info-dark-bg-color);
         border: 1px solid var(--info-color);
+
+        .notification-icon {
+            color: var(--info-color);
+        }
 
         .notification-time {
             background-color: var(--info-outline-color);
@@ -645,4 +675,26 @@ body[data-theme="light"] {
     width: 1.5em;
     height: 1.5em;
     align-self: end;
+}
+
+.notification-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.notification-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+.notification-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
