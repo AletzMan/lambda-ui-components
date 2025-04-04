@@ -5,15 +5,15 @@ import styles from "./notification.module.css"
 import { cva } from "class-variance-authority"
 import { validPlacements } from "./const"
 
-const notificationGroup = cva(styles.notifgroup, {
+const notificationGroup = cva(styles["notification-group"], {
     variants: {
         placement: {
-            "top-left": styles.notifgroup_top_left,
-            "top-center": styles.notifgroup_top_center,
-            "top-right": styles.notifgroup_top_right,
-            "bottom-left": styles.notifgroup_bottom_left,
-            "bottom-center": styles.notifgroup_bottom_center,
-            "bottom-right": styles.notifgroup_bottom_right,
+            "top-left": styles["notification-group-top-left"],
+            "top-center": styles["notification-group-top-center"],
+            "top-right": styles["notification-group-top-right"],
+            "bottom-left": styles["notification-group-bottom-left"],
+            "bottom-center": styles["notification-group-bottom-center"],
+            "bottom-right": styles["notification-group-bottom-right"],
         },
     },
     defaultVariants: {
