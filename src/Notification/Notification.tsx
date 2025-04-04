@@ -65,7 +65,7 @@ export interface NotificationProps
     placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"
     notificationType?: "default" | "success" | "warning" | "info" | "danger"
     icon?: React.ReactNode
-    variant?: "themed" | "flat" | "solid"
+    variant?: "themed" | "flat" | "solid" | "darked"
     duration?: number
     onClose?: () => void
 }
