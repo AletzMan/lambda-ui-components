@@ -10,15 +10,15 @@ type NotificationContextType = {
 
 const NotificationContext = createContext<NotificationContextType | undefined>(undefined)
 
-export const NotificationProvider = ({ children, maxNotifications = 4, placement, duration }: { children?: ReactNode, maxNotifications?: number, placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right", duration?: number }) => {
+export const NotificationProvider = ({ children, maxNotifications = 4, placement: defaultPlacement, duration: defaultDuration }: { children?: ReactNode, maxNotifications?: number, placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right", duration?: number }) => {
     const [notifications, setNotifications] = useState<NotificationProps[]>([])
 
     const showNotification = (props: Omit<NotificationProps, "id">) => {
         const id = uuidv4();
         const newNotification: NotificationProps = {
             ...props,
-            placement,
-            duration,
+            placement: props.placement ?? defaultPlacement, // Prioriza props.placement
+            duration: props.duration ?? defaultDuration, // Prioriza props.duration
             id,
             onClose: () => {
                 // Marcamos la notificación como "cerrando" antes de eliminarla
@@ -43,10 +43,10 @@ export const NotificationProvider = ({ children, maxNotifications = 4, placement
             return updatedNotifications
         })
 
-        if (props.duration && props.duration > 0) {
+        if (newNotification.duration && newNotification.duration > 0) {
             setTimeout(() => {
                 newNotification.onClose?.()
-            }, props.duration)
+            }, newNotification.duration)
         }
     };
 
