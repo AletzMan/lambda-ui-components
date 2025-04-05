@@ -376,7 +376,7 @@
             color: var(--black-color);
 
             &:hover {
-                background-color: var(--secondary-text-color);
+                background-color: var(--secondary-light-color);
             }
 
         }
@@ -399,7 +399,7 @@
             color: var(--success-darkened-color);
 
             &:hover {
-                background-color: var(--success-text-color);
+                background-color: var(--success-color);
             }
         }
 
@@ -420,7 +420,7 @@
             color: var(--danger-darkened-color);
 
             &:hover {
-                background-color: var(--danger-text-color);
+                background-color: var(--danger-color);
             }
         }
 
@@ -441,7 +441,7 @@
             color: var(--warning-darkened-color);
 
             &:hover {
-                background-color: var(--warning-text-color);
+                background-color: var(--warning-color);
             }
         }
 
@@ -462,7 +462,7 @@
             color: var(--info-darkened-color);
 
             &:hover {
-                background-color: var(--info-text-color);
+                background-color: var(--info-color);
             }
         }
 
