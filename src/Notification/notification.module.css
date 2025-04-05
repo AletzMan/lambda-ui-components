@@ -43,11 +43,439 @@
     padding: var(--padding-sm) var(--padding-none);
 }
 
-.notification-footer-secondary {}
-
 .notification-footer-button {
-    padding: var(--padding-xs) var(--padding-sm);
+    width: 5.5em;
+    padding: var(--padding-sm) var(--padding-sm);
     font-size: var(--font-size-sm);
+    border: none;
+    border-radius: var(--border-radius-xs);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: var(--font-weight-md);
+
+}
+
+
+.notification-footer-themed,
+.notification-footer-flat {
+    &.notification-footer-secondary {
+        .notification-footer-button-confirm {
+            background-color: var(--secondary-color);
+            color: var(--foreground-invert-color);
+
+            &:hover {
+                background-color: var(--secondary-hover-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: var(--secondary-light-color);
+            color: var(--secondary-disbled-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-success {
+        .notification-footer-button-confirm {
+            background-color: var(--success-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--success-hover-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: var(--success-light-color);
+            color: var(--success-text-color);
+
+            &:hover {
+                background-color: var(--success-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-danger {
+        .notification-footer-button-confirm {
+            background-color: var(--danger-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--danger-hover-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: var(--danger-light-color);
+            color: var(--danger-text-color);
+
+            &:hover {
+                background-color: var(--danger-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-warning {
+        .notification-footer-button-confirm {
+            background-color: var(--warning-color);
+            color: var(--black-color);
+
+            &:hover {
+                background-color: var(--warning-hover-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: var(--warning-light-color);
+            color: var(--warning-text-color);
+
+            &:hover {
+                background-color: var(--warning-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-info {
+        .notification-footer-button-confirm {
+            background-color: var(--info-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--info-hover-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: var(--info-light-color);
+            color: var(--info-text-color);
+
+            &:hover {
+                background-color: var(--info-outline-color);
+            }
+        }
+    }
+}
+
+.notification-footer-solid {
+    &.notification-footer-secondary {
+        .notification-footer-button-confirm {
+            background-color: var(--foreground-invert-color);
+            color: var(--foreground-color);
+
+        }
+
+        .notification-footer-button-cancel {
+            background-color: var(--secondary-outline-color);
+            color: var(--foreground-invert-color);
+
+        }
+    }
+
+    &.notification-footer-success {
+        .notification-footer-button-confirm {
+            background-color: var(--white-color);
+            color: var(--success-hover-color);
+
+            &:hover {
+                background-color: var(--success-lightened-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--success-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-danger {
+        .notification-footer-button-confirm {
+            background-color: var(--white-color);
+            color: var(--danger-hover-color);
+
+            &:hover {
+                background-color: var(--danger-lightened-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--danger-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-warning {
+        .notification-footer-button-confirm {
+            background-color: var(--white-color);
+            color: var(--warning-hover-color);
+
+            &:hover {
+                background-color: var(--warning-lightened-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--warning-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-info {
+        .notification-footer-button-confirm {
+            background-color: var(--white-color);
+            color: var(--info-hover-color);
+
+            &:hover {
+                background-color: var(--info-lightened-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--info-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+}
+
+.notification-footer-darkened {
+    &.notification-footer-secondary {
+        .notification-footer-button-confirm {
+            background-color: var(--secondary-lightened-color);
+            color: var(--black-color);
+
+            &:hover {
+                background-color: var(--secondary-disabled-color);
+            }
+
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--secondary-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+
+        }
+    }
+
+    &.notification-footer-success {
+        .notification-footer-button-confirm {
+            background-color: var(--success-lightened-color);
+            color: var(--success-darkened-color);
+
+            &:hover {
+                background-color: var(--white-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--success-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-danger {
+        .notification-footer-button-confirm {
+            background-color: var(--danger-lightened-color);
+            color: var(--danger-darkened-color);
+
+            &:hover {
+                background-color: var(--white-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--danger-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-warning {
+        .notification-footer-button-confirm {
+            background-color: var(--warning-lightened-color);
+            color: var(--warning-darkened-color);
+
+            &:hover {
+                background-color: var(--white-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--warning-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-info {
+        .notification-footer-button-confirm {
+            background-color: var(--info-lightened-color);
+            color: var(--info-darkened-color);
+
+            &:hover {
+                background-color: var(--white-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--info-lightened-color);
+            color: var(--white-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+        }
+    }
+}
+
+
+.notification-footer-lightened {
+    &.notification-footer-secondary {
+        .notification-footer-button-confirm {
+            background-color: var(--secondary-outline-color);
+            color: var(--black-color);
+
+            &:hover {
+                background-color: var(--secondary-text-color);
+            }
+
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--secondary-outline-color);
+            color: var(--black-color);
+
+            &:hover {
+                background-color: var(--secondary-outline-color);
+            }
+
+        }
+    }
+
+    &.notification-footer-success {
+        .notification-footer-button-confirm {
+            background-color: var(--success-outline-color);
+            color: var(--success-darkened-color);
+
+            &:hover {
+                background-color: var(--success-text-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--success-outline-color);
+            color: var(--success-darkened-color);
+
+            &:hover {
+                background-color: var(--success-light-color);
+            }
+        }
+    }
+
+    &.notification-footer-danger {
+        .notification-footer-button-confirm {
+            background-color: var(--danger-outline-color);
+            color: var(--danger-darkened-color);
+
+            &:hover {
+                background-color: var(--danger-text-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--danger-outline-color);
+            color: var(--danger-darkened-color);
+
+            &:hover {
+                background-color: var(--danger-light-color);
+            }
+        }
+    }
+
+    &.notification-footer-warning {
+        .notification-footer-button-confirm {
+            background-color: var(--warning-outline-color);
+            color: var(--warning-darkened-color);
+
+            &:hover {
+                background-color: var(--warning-text-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--warning-outline-color);
+            color: var(--warning-darkened-color);
+
+            &:hover {
+                background-color: var(--warning-outline-color);
+            }
+        }
+    }
+
+    &.notification-footer-info {
+        .notification-footer-button-confirm {
+            background-color: var(--info-outline-color);
+            color: var(--info-darkened-color);
+
+            &:hover {
+                background-color: var(--info-text-color);
+            }
+        }
+
+        .notification-footer-button-cancel {
+            background-color: transparent;
+            border: 1px solid var(--info-outline-color);
+            color: var(--info-darkened-color);
+
+            &:hover {
+                background-color: var(--info-light-color);
+            }
+        }
+    }
 }
 
 .notification-icon {
@@ -99,6 +527,19 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-reg);
     width: 240px;
+}
+
+.notification-close-button {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: var(--border-radius-xs);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: transparent;
+        backdrop-filter: invert(0.15);
+    }
 }
 
 
