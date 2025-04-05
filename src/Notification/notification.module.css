@@ -43,6 +43,8 @@
     padding: var(--padding-sm) var(--padding-none);
 }
 
+.notification-footer-secondary {}
+
 .notification-footer-button {
     padding: var(--padding-xs) var(--padding-sm);
     font-size: var(--font-size-sm);

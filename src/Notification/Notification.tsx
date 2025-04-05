@@ -3,11 +3,12 @@ import { forwardRef, useEffect, useState } from "react"
 import { cva, VariantProps } from "class-variance-authority"
 import styles from "./notification.module.css"
 import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react"
+import clsx from "clsx"
 
 const notificationProp = cva(styles["notification"], {
     variants: {
         notificationType: {
-            default: styles["notification-default"],
+            secondary: styles["notification-secondary"],
             success: styles["notification-success"],
             warning: styles["notification-warning"],
             info: styles["notification-info"],
@@ -30,15 +31,16 @@ const notificationProp = cva(styles["notification"], {
         }
     },
     defaultVariants: {
-        notificationType: "default",
+        notificationType: "secondary",
         placement: "top-center",
         variant: "themed",
     },
 })
+
 const barClass = cva(styles["notification-time"], {
     variants: {
         notificationType: {
-            default: styles["notification-time-default"],
+            secondary: styles["notification-time-secondary"],
             success: styles["notification-time-success"],
             warning: styles["notification-time-warning"],
             info: styles["notification-time-info"],
@@ -53,7 +55,30 @@ const barClass = cva(styles["notification-time"], {
         },
     },
     defaultVariants: {
-        notificationType: "default",
+        notificationType: "secondary",
+        variant: "themed",
+    },
+})
+
+const footer = cva(styles["notification-footer"], {
+    variants: {
+        notificationType: {
+            secondary: styles["notification-footer-secondary"],
+            success: styles["notification-footer-success"],
+            warning: styles["notification-footer-warning"],
+            info: styles["notification-footer-info"],
+            danger: styles["notification-footer-danger"],
+        },
+        variant: {
+            themed: styles["notification-footer-themed"],
+            solid: styles["notification-footer-solid"],
+            darkened: styles["notification-footer-darkened"],
+            lightened: styles["notification-footer-lightened"],
+            flat: styles["notification-footer-flat"],
+        },
+    },
+    defaultVariants: {
+        notificationType: "secondary",
         variant: "themed",
     },
 })
@@ -65,9 +90,10 @@ export interface NotificationProps
     title?: string
     message: string
     placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"
-    notificationType?: "default" | "success" | "warning" | "info" | "danger"
+    notificationType?: "secondary" | "success" | "warning" | "info" | "danger"
     icon?: React.ReactNode
     variant?: "themed" | "flat" | "solid" | "darkened" | "lightened"
+    closable?: boolean
     duration?: number
     onClose?: () => void
 }
@@ -82,6 +108,7 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
             icon,
             duration = 5000,
             variant,
+            closable = true,
             onClose,
             ...props
         },
@@ -136,31 +163,37 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
                 ref={ref}
                 role="alert"
             >
-                <div className={styles["notification-icon"]}>
-                    {notificationType === "success" && <CircleCheck />}
-                    {notificationType === "warning" && <CircleAlert />}
-                    {notificationType === "info" && <Info />}
-                    {notificationType === "danger" && <CircleX />}
-                    {!["success", "warning", "info", "danger",
-                        undefined
-                    ].includes(notificationType) &&
-                        (icon ?? <Bell />)}
-                </div>
+                <div className={styles["notification-header"]}>
+                    <div className={styles["notification-icon"]}>
+                        {notificationType === "success" && <CircleCheck />}
+                        {notificationType === "warning" && <CircleAlert />}
+                        {notificationType === "info" && <Info />}
+                        {notificationType === "danger" && <CircleX />}
+                        {!["success", "warning", "info", "danger",
+                            undefined
+                        ].includes(notificationType) &&
+                            (icon ?? <Bell />)}
+                    </div>
 
 
-                <div className={styles["notification-content"]}>
-                    {title && <h1 className={styles["notification-title"]}>{title}</h1>}
-                    <p className={styles["notification-message"]}>{message}</p>
+                    <div className={styles["notification-content"]}>
+                        {title && <h1 className={styles["notification-title"]}>{title}</h1>}
+                        <p className={styles["notification-message"]}>{message}</p>
+                    </div>
+                    {closable && <button
+                        className={styles["notification-close-button"]}
+                        onClick={() => {
+                            setClosing(true);
+                            if (onClose) onClose();
+                        }}
+                    >
+                        <X className={styles["notification-close-button-icon"]} />
+                    </button>}
                 </div>
-                <button
-                    className={styles["notification-close-button"]}
-                    onClick={() => {
-                        setClosing(true);
-                        if (onClose) onClose();
-                    }}
-                >
-                    <X className={styles["notification-close-button-icon"]} />
-                </button>
+                <footer className={footer({ notificationType, variant })}>
+                    <button className={clsx(styles["notification-footer-button"], styles["notification-footer-button-confirm"])}>Confirm</button>
+                    <button className={clsx(styles["notification-footer-button"], styles["notification-footer-button-cancel"])}>Cancel</button>
+                </footer>
                 <div
                     className={barClass({ variant, notificationType })}
                     style={{ width: `${(timeLeft / duration) * 100}%` }}
