@@ -1,5 +1,6 @@
 .notification-group {
     position: fixed;
+    top: 0;
     max-width: 450px;
     display: flex;
     flex-flow: column;
@@ -12,9 +13,8 @@
 
 .notification {
     position: relative;
-    display: grid;
-    grid-template-columns: 2.5em 1fr 2.5em;
-    place-items: center left;
+    display: flex;
+    flex-direction: column;
     opacity: 0;
     transform: translateY(0);
     overflow: hidden;
@@ -29,10 +29,44 @@
 
 }
 
+.notification-header {
+    display: grid;
+    grid-template-columns: 2.5em 1fr 2.5em;
+    place-items: center left;
+}
+
+.notification-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1em;
+    padding: var(--padding-sm) var(--padding-none);
+}
+
+.notification-footer-button {
+    padding: var(--padding-xs) var(--padding-sm);
+    font-size: var(--font-size-sm);
+}
+
 .notification-icon {
-    svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 1.5em;
+    height: 1.5em;
+
+    :not(svg) {
+        background-color: #80808090;
+    }
+
+    * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 1.5em;
         height: 1.5em;
+        border-radius: var(--border-radius-sm);
     }
 }
 
@@ -88,7 +122,7 @@
         filter: brightness(115%);
     }
 
-    &:is(.notification-default) {
+    &:is(.notification-secondary) {
         border-left: 4px solid var(--secondary-color);
         color: var(--secondary-hover-color);
     }
@@ -129,7 +163,7 @@
         }
     }
 
-    &:is(.notification-default) {
+    &:is(.notification-secondary) {
         background-color: var(--secondary-color);
         color: var(--foreground-invert-color);
 
@@ -192,7 +226,7 @@
     }
 
 
-    &:is(.notification-default) {
+    &:is(.notification-secondary) {
         background-color: var(--secondary-darkened-color);
 
         .notification-message {
@@ -309,7 +343,7 @@
     }
 
 
-    &:is(.notification-default) {
+    &:is(.notification-secondary) {
         background-color: var(--secondary-lightened-color);
 
         .notification-title {
@@ -436,7 +470,7 @@ body[data-theme="light"] {
     backdrop-filter: blur(12px);
     box-shadow: var(--box-shadow);
 
-    &:is(.notification-default) {
+    &:is(.notification-secondary) {
         background-color: var(--secondary-light-color);
         border-left: 5px solid var(--secondary-color);
         color: var(--secondary-text-color);
