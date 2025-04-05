@@ -96,6 +96,10 @@ export interface NotificationProps
     closable?: boolean
     duration?: number
     onClose?: () => void
+    onConfirm?: () => void
+    onCancel?: () => void
+    cancelText?: string
+    confirmText?: string
 }
 
 export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
@@ -110,6 +114,10 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
             variant,
             closable = true,
             onClose,
+            onConfirm,
+            onCancel,
+            cancelText,
+            confirmText,
             ...props
         },
         ref
@@ -134,8 +142,7 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
         // Cerrar automáticamente después de la duración especificada
         useEffect(() => {
             const timer = setTimeout(() => {
-                setClosing(true) // Comienza la animación de cierre
-                if (onClose) onClose()
+                setClosing(true) // Comienza la animación de cierre 
             }, duration)
 
             return () => clearTimeout(timer)
@@ -153,8 +160,18 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
             }
         }, [closing, onClose])
 
+        const handleOnCancel = () => {
+            setClosing(true)
+            if (onCancel) onCancel() // Notificamos que canceló
+        }
+        const handleOnConfirm = () => {
+            setClosing(true)
+            if (onConfirm) onConfirm() // Notificamos que confirmó
+        }
+
         // No renderizamos si la notificación no es visible
         if (!isVisible) return null
+
 
         return (
             <div
@@ -190,10 +207,10 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
                         <X className={styles["notification-close-button-icon"]} />
                     </button>}
                 </div>
-                <footer className={footer({ notificationType, variant })}>
-                    <button className={clsx(styles["notification-footer-button"], styles["notification-footer-button-confirm"])}>Confirm</button>
-                    <button className={clsx(styles["notification-footer-button"], styles["notification-footer-button-cancel"])}>Cancel</button>
-                </footer>
+                {(onCancel || onConfirm) && <footer className={footer({ notificationType, variant })}>
+                    {onConfirm && <button className={clsx(styles["notification-footer-button"], styles["notification-footer-button-confirm"])} onClick={handleOnConfirm}>{confirmText || "Confirm"}</button>}
+                    {onCancel && <button className={clsx(styles["notification-footer-button"], styles["notification-footer-button-cancel"])} onClick={handleOnCancel}>{cancelText || "Cancel"}</button>}
+                </footer>}
                 <div
                     className={barClass({ variant, notificationType })}
                     style={{ width: `${(timeLeft / duration) * 100}%` }}
