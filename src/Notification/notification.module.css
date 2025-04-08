@@ -1,12 +1,12 @@
 .notification-group {
     position: fixed;
-    top: 0;
     max-width: 450px;
     display: flex;
+    justify-content: flex-end;
     flex-flow: column;
     gap: 5px;
     padding: var(--padding-md) 0 0 0;
-    height: auto;
+    height: max-content;
     z-index: 1000;
 }
 
