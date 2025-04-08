@@ -113,10 +113,10 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 
     useEffect(() => {
         const conainer = refGroup.current
-        if (conainer) {
+        if (conainer && type === "radio") {
             conainer.style.setProperty("--gap-radio-size", gap);
         }
-    }, [gap]);
+    }, [gap, type]);
 
     const contextValue = useMemo(
         () => ({
