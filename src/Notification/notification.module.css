@@ -1,8 +1,7 @@
 .notification-group {
     position: fixed;
-    max-width: 450px;
+    max-width: 300px;
     display: flex;
-    justify-content: flex-end;
     flex-flow: column;
     gap: 5px;
     padding: var(--padding-md) 0 0 0;
@@ -19,8 +18,8 @@
     transform: translateY(0);
     overflow: hidden;
     width: 100%;
+    max-width: 300px;
     min-height: 3em;
-    min-width: max-content;
     padding: var(--padding-sm) var(--padding-sm);
     border-radius: var(--border-radius-md);
     font-family: var(--font-family);
