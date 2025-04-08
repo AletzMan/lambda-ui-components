@@ -212,7 +212,7 @@
 
      &.lambda-btn-warning {
          background: var(--warning-color);
-         color: var(--black-color);
+         color: var(--warning-darkened-color);
 
          &.lambda-btn-loading,
          &.lambda-btn-disabled {
