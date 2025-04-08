@@ -1,10 +1,11 @@
 
 import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch } from '../src/main'
-import { Coins, Search, SearchIcon, Settings, Settings2, User } from "lucide-react"
+import { Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react"
 import styles from "./styles.module.css"
 import { useState } from 'react'
 import { ButtonThemeController } from '../src/ThemeProvider/ThemeProvider'
 import { buttonsPrimary } from './constants'
+import { useNotification } from '../src/Notification/NotificationProvider'
 
 
 
@@ -38,6 +39,10 @@ function App() {
   const [radiusSelect, setRadiusSelect] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
   const [validSelect, setValidSelect] = useState(true)
   const [errorMessageSelect, setErrorMessageSelect] = useState("This field has an error.")
+  const [notificationType, setNotificationType] = useState<"themed" | "solid" | "darkened" | "lightened" | "flat" | undefined>("themed")
+  const [notificationPosition, setNotificationPosition] = useState<"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined>("top-center")
+  const [closableNotification, setClosableNotification] = useState(false)
+  const { showNotification } = useNotification()
 
   return (
     <section className={styles.section}>
@@ -419,13 +424,54 @@ function App() {
           </div>
           <div className={styles.container_buttons}>
             <div className={styles.buttons}>
-              <Select label='Outline' variant="outline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} error={!validSelect} errorMessage={errorMessageSelect} />
+              <Select label='Outline' variant="outline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
             </div>
             <div className={styles.buttons}>
-              <Select variant="flat" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} error={!validSelect} errorMessage={errorMessageSelect} />
+              <Select variant="flat" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
             </div>
             <div className={styles.buttons}>
-              <Select variant="underline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} error={!validSelect} errorMessage={errorMessageSelect} />
+              <Select variant="underline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
+            </div>
+          </div>
+        </section>
+        <section className={styles.subsection}>
+          <h2 className={styles.subtitle}>Notification</h2>
+          <div className={styles.control_buttons}>
+            <select className={styles.control_size} value={notificationType} onChange={(e) => setNotificationType(e.currentTarget.value as "themed" | "solid" | "flat" | "lightened" | "darkened" | undefined)}>
+              <option value="themed">Themed</option>
+              <option value="solid">Solid</option>
+              <option value="flat">Flat</option>
+              <option value="darkened">Darkened</option>
+              <option value="lightened">Lightened</option>
+            </select>
+            <select className={styles.control_size} value={notificationPosition} onChange={(e) => setNotificationPosition(e.currentTarget.value as "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined)}>
+              <option value="top-left">Top - Left</option>
+              <option value="top-center">Top - Center</option>
+              <option value="top-right">Top - Right</option>
+              <option value="bottom-left">Bottom - Left</option>
+              <option value="bottom-center">Bottom - Center</option>
+              <option value="bottom-right">Bottom - Right</option>
+            </select>
+            <Checkbox label='Closable' checked={closableNotification} onChange={(e) => setClosableNotification(e.currentTarget.checked)} />
+          </div>
+          <div className={styles.container_buttons}>
+            <div className={styles.buttons}>
+              <Button variant="classic" color="secondary" size="medium" radius="small" label='Icon' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: < RssIcon /> })} />
+            </div>
+            <div className={styles.buttons}>
+              <Button variant="classic" color="secondary" size="medium" radius="small" label='Image' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png' /> })} />
+            </div>
+            <div className={styles.buttons}>
+              <Button variant="classic" color="success" size="medium" radius="small" label='Success' style={{ width: "8em" }} onClick={() => showNotification({ title: "Success", message: "Notification Success Color", closable: closableNotification, variant: notificationType, notificationType: "success", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
+            </div>
+            <div className={styles.buttons}>
+              <Button variant="classic" color="danger" size="medium" radius="small" label='Danger' style={{ width: "8em" }} onClick={() => showNotification({ title: "Danger", message: "Notification Danger Color", closable: closableNotification, variant: notificationType, notificationType: "danger", placement: notificationPosition, onClose: () => console.log("Cerrado Warning"), onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
+            </div>
+            <div className={styles.buttons}>
+              <Button variant="classic" color="warning" size="medium" radius="small" label='Warning' style={{ width: "8em" }} onClick={() => showNotification({ title: "Warning", message: "Notification Warning Color Para no modificar la sentencia de los demas puede que varie la movilidad", closable: closableNotification, variant: notificationType, onConfirm: () => console.log("Se confirmo"), notificationType: "warning", placement: notificationPosition })} />
+            </div>
+            <div className={styles.buttons}>
+              <Button variant="classic" color="info" size="medium" radius="small" label='Info' style={{ width: "8em" }} onClick={() => showNotification({ title: "Info", cancelText: "Cancelar", confirmText: "Aceptar", message: "Notification Info Color", closable: closableNotification, variant: notificationType, notificationType: "info", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
             </div>
           </div>
         </section>
