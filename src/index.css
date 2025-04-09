@@ -78,7 +78,7 @@
     --surface-f: #7b7a7a;
     --surface-g: #787878;
     --border-color: #a6a6a6;
-    --shadow-color: #26262625;
+    --shadow-color: #26262630;
     --shadow-inset-color: #dee1e455;
 
     --primary-color: #3884ff;
@@ -93,7 +93,7 @@
 
     --secondary-color: #292929;
     --secondary-hover-color: #3f3f3f;
-    --secondary-light-color: #42424220;
+    --secondary-light-color: #5d5c5c20;
     --secondary-outline-color: #80808050;
     --secondary-disabled-color: #888888;
     --secondary-text-color: #272727;
@@ -167,7 +167,7 @@
 
     --secondary-color: #f6f4f4;
     --secondary-hover-color: #e1e1e1;
-    --secondary-light-color: #abaeb220;
+    --secondary-light-color: #9b9b9b20;
     --secondary-outline-color: #b0b2b450;
     --secondary-disabled-color: #868688;
     --secondary-text-color: #dadde0;
