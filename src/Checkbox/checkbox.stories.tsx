@@ -11,7 +11,7 @@ const meta: Meta<typeof Checkbox> = {
     argTypes: {
         variant: {
             control: "select",
-            options: ['bordered', 'flat', 'outline'],
+            options: ['solid', 'flat', 'outline'],
             description: "Visual style of the input",
             type: 'string',
         },
@@ -56,7 +56,7 @@ type Story = StoryObj<typeof Checkbox>
 
 export const Primary: Story = {
     args: {
-        variant: "bordered",
+        variant: "solid",
         color: "primary",
         size: 'medium',
         label: 'Label',
@@ -68,7 +68,7 @@ export const Primary: Story = {
 }
 export const Secondary: Story = {
     args: {
-        variant: "bordered",
+        variant: "solid",
         color: "secondary",
         size: 'medium',
         label: 'Label',
@@ -80,7 +80,7 @@ export const Secondary: Story = {
 }
 export const Danger: Story = {
     args: {
-        variant: "bordered",
+        variant: "solid",
         color: "danger",
         size: 'medium',
         label: 'Label',
@@ -92,7 +92,7 @@ export const Danger: Story = {
 }
 export const Success: Story = {
     args: {
-        variant: "bordered",
+        variant: "solid",
         color: "success",
         size: 'medium',
         label: 'Label',
@@ -104,7 +104,7 @@ export const Success: Story = {
 }
 export const Warning: Story = {
     args: {
-        variant: "bordered",
+        variant: "solid",
         color: "warning",
         size: 'medium',
         label: 'Label',

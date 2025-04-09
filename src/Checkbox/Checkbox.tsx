@@ -22,7 +22,7 @@ const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
             large: styles["lambda-checkbox-wrapper-large"],
         },
         variant: {
-            bordered: styles["lambda-checkbox-wrapper-bordered"],
+            solid: styles["lambda-checkbox-wrapper-solid"],
             flat: styles["lambda-checkbox-wrapper-flat"],
             outline: styles["lambda-checkbox-wrapper-outline"],
         },
@@ -43,7 +43,7 @@ const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
     },
     defaultVariants: {
         size: "medium",
-        variant: "bordered",
+        variant: "solid",
         radius: 'small',
         color: "primary",
         disabled: false,
