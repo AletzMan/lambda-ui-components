@@ -202,6 +202,89 @@
                     }
                 }
 
+                &:is(.radio-group-primary) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--primary-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--primary-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-secondary) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--secondary-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--secondary-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-success) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--success-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--success-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-danger) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--danger-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--danger-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-warning) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--warning-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--warning-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-info) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--info-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--info-light-color);
+                        }
+                    }
+                }
 
             }
         }

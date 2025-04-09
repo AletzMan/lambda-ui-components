@@ -25,6 +25,14 @@ const classRadioGroups = cva(styles["radio-group"], {
             medium: styles["radio-group-medium"],
             large: styles["radio-group-large"],
         },
+        color: {
+            primary: styles["radio-group-primary"],
+            secondary: styles["radio-group-secondary"],
+            danger: styles["radio-group-danger"],
+            success: styles["radio-group-success"],
+            warning: styles["radio-group-warning"],
+            info: styles["radio-group-info"],
+        },
         type: {
             radio: styles["radio-group-radio"],
             button: styles["radio-group-button"]
@@ -138,7 +146,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 
     return (
         <RadioGroupContext.Provider value={contextValue}>
-            <div role="radiogroup" ref={refGroup} className={classRadioGroups({ orientation, size, type, radius, variant })}>{children}</div>
+            <div role="radiogroup" ref={refGroup} className={classRadioGroups({ orientation, size, type, radius, variant, color })}>{children}</div>
         </RadioGroupContext.Provider>
     )
 }
