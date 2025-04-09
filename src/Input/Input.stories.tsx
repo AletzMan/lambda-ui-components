@@ -50,7 +50,7 @@ const meta: Meta<typeof Input> = {
             type: "boolean",
             description: "Indica si el campo de entrada es obligatorio.Si es `true`, se mostrará un indicador visual y/o se aplicará validación."
         },
-        error: {
+        invalid: {
             control: 'boolean',
             type: 'boolean',
             description: "Applies error styles when true"
@@ -74,7 +74,7 @@ export const Text: Story = {
         size: 'medium',
         label: "Password",
         floatingLabel: true,
-        error: false,
+        invalid: false,
         isRequired: false,
         type: "password",
         helperText: "",
@@ -91,7 +91,7 @@ export const Password: Story = {
         size: 'medium',
         label: 'Passwword',
         floatingLabel: false,
-        error: false,
+        invalid: false,
         isRequired: false,
         type: 'password',
         helperText: "",
@@ -108,7 +108,7 @@ export const Search: Story = {
         size: 'medium',
         label: 'Search',
         floatingLabel: false,
-        error: false,
+        invalid: false,
         isRequired: false,
         type: 'search',
         helperText: "",
@@ -125,7 +125,7 @@ export const Email: Story = {
         size: 'medium',
         label: 'Email',
         floatingLabel: false,
-        error: false,
+        invalid: false,
         isRequired: false,
         type: 'email',
         helperText: "",

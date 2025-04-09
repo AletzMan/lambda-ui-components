@@ -58,8 +58,8 @@ export const input = cva(styles["lambda-input-wrapper"], {
             large: styles["lambda-input-wrapper-radius-large"],
             pill: styles["lambda-input-wrapper-radius-pill"],
         },
-        error: {
-            true: styles["lambda-input-wrapper-error"],
+        invalid: {
+            true: styles["lambda-input-wrapper-invalid"],
             false: "",
         },
         hasElements: {
@@ -79,7 +79,7 @@ export const input = cva(styles["lambda-input-wrapper"], {
         radius: "small",
         type: "text",
         hasElements: "none",
-        error: false,
+        invalid: false,
         disabled: false,
     },
 })
@@ -132,13 +132,13 @@ const textInput = cva(styles["lambda-input-field"], {
     }
 })
 
-const errorlabel = cva(styles["lambda-input-error"], {
+const errorlabel = cva(styles["lambda-input-invalid"], {
     variants: {
         size: {
-            tiny: styles["lambda-input-error-tiny"],
-            small: styles["lambda-input-error-small"],
-            medium: styles["lambda-input-error-medium"],
-            large: styles["lambda-input-error-large"],
+            tiny: styles["lambda-input-invalid-tiny"],
+            small: styles["lambda-input-invalid-small"],
+            medium: styles["lambda-input-invalid-medium"],
+            large: styles["lambda-input-invalid-large"],
         },
     },
     defaultVariants: {
@@ -170,7 +170,7 @@ const buttonPassword = cva(styles["lambda-input-toggle-password"], {
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> {
     label?: string,
-    error?: boolean,
+    invalid?: boolean,
     errorMessage?: string
     floatingLabel?: boolean
     helperText?: string
@@ -178,7 +178,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, error, errorMessage, disabled, type = "text", value: controlledValue, onChange, isRequired, floatingLabel, placeholder, helperText, ...props }, ref) => {
+    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, invalid, errorMessage, disabled, type = "text", value: controlledValue, onChange, isRequired, floatingLabel, placeholder, helperText, ...props }, ref) => {
         let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextError, hasElements: "none" | "first" | "last" | "both"
         try {
             const context = useInputGroup()
@@ -186,7 +186,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             contextRadius = context.radius
             contextSize = context.size
             contextDisabled = context.disabled
-            contextError = context.error
+            contextError = context.invalid
             hasElements = context.hasElements
             isGroup = true
         } catch (e) {
@@ -194,7 +194,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             contextRadius = propRadius
             contextSize = propSize
             contextDisabled = disabled
-            contextError = error
+            contextError = invalid
             isGroup = false
             hasElements = "none"
         }
@@ -268,7 +268,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     </label>
                 )}
                 {helperText && <label className={clsx(styles["lambda-input-helper"], { [styles["lambda-input-helper-disabled"]]: disabled })}>{helperText}</label>}
-                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, error: contextError, type, hasElements, className }), { [styles["lambda-input-wrapper--group"]]: isGroup })}>
+                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, invalid: contextError, type, hasElements, className }), { [styles["lambda-input-wrapper--group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input-input-wrapper"], { [styles["lambda-input-input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}

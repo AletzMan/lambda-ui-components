@@ -63,15 +63,15 @@
  }
 
 
- .lambda-input-error {
+ .lambda-input-invalid {
      position: absolute;
      background-color: var(--danger-color);
-     color: var(--foreground-color);
+     color: var(--white-color);
      padding: 2px 8px;
      border-radius: var(--border-radius-sm);
      width: max-content;
      width: 100%;
-     font-weight: var(--font-weight-xs);
+     font-weight: var(--font-weight-sm);
      letter-spacing: 1px;
      opacity: 0;
      animation: animateError 0.4s ease both;
@@ -90,22 +90,22 @@
          border-bottom: 6px solid var(--danger-color);
      }
 
-     &.lambda-input-error-tiny {
+     &.lambda-input-invalid-tiny {
          top: calc(var(--height-input-xs) - 20px);
          font-size: var(--font-size-xs);
      }
 
-     &.lambda-input-error-small {
+     &.lambda-input-invalid-small {
          top: calc(var(--height-input-xs) - 14px);
          font-size: var(--font-size-xs);
      }
 
-     &.lambda-input-error-medium {
+     &.lambda-input-invalid-medium {
          top: calc(var(--height-input-xs) - 8px);
          font-size: var(--font-size-xs);
      }
 
-     &.lambda-input-error-large {
+     &.lambda-input-invalid-large {
          top: calc(var(--height-input-sm) - 8px);
          font-size: var(--font-size-xs);
      }
@@ -287,17 +287,17 @@
      background-color: var(--surface-a);
      border: 1px solid var(--surface-d);
 
-     &:hover:not(.lambda-input-wrapper-error) {
+     &:hover:not(.lambda-input-wrapper-invalid) {
          border-color: var(--primary-color);
      }
 
-     &:focus-within:not(.lambda-input-wrapper-error) {
+     &:focus-within:not(.lambda-input-wrapper-invalid) {
          outline: 3px solid var(--primary-outline-color);
          background-color: var(--primary-light-color);
          border-color: var(--primary-color);
      }
 
-     &.lambda-input-wrapper-error {
+     &.lambda-input-wrapper-invalid {
          border-color: var(--danger-color);
          border-style: dashed;
          background-color: var(--danger-light-color);
@@ -308,17 +308,17 @@
  .lambda-input-wrapper-flat {
      background-color: var(--surface-a);
 
-     &:hover:not(.lambda-input-wrapper-error) {
+     &:hover:not(.lambda-input-wrapper-invalid) {
          border: 1px solid var(--primary-color);
      }
 
 
-     &:focus-within:not(.lambda-input-wrapper-error) {
+     &:focus-within:not(.lambda-input-wrapper-invalid) {
          background-color: var(--primary-light-color);
          box-shadow: var(--box-shadow);
      }
 
-     &.lambda-input-wrapper-error {
+     &.lambda-input-wrapper-invalid {
          background-color: var(--danger-light-color);
      }
  }
@@ -327,16 +327,16 @@
      background-color: var(--surface-b);
      border-bottom: 1px solid var(--surface-d);
 
-     &:hover:not(.lambda-input-wrapper-error) {
+     &:hover:not(.lambda-input-wrapper-invalid) {
          border-bottom-color: var(--primary-hover-color);
      }
 
-     &:focus-within:not(.lambda-input-wrapper-error) {
+     &:focus-within:not(.lambda-input-wrapper-invalid) {
          background-color: var(--primary-light-color);
          box-shadow: var(--box-shadow);
      }
 
-     &.lambda-input-wrapper-error {
+     &.lambda-input-wrapper-invalid {
          border-bottom: 1px var(--danger-color);
          border-style: dashed;
          background-color: var(--danger-light-color);
@@ -498,17 +498,17 @@
      &.lambda-input-wrapper-underline {
          border-radius: var(--border-radius-none);
 
-         &:hover:not(.lambda-input-wrapper-error) {
+         &:hover:not(.lambda-input-wrapper-invalid) {
              border-color: var(--primary-hover-color);
          }
 
-         &:focus-within:not(.lambda-input-wrapper-error) {
+         &:focus-within:not(.lambda-input-wrapper-invalid) {
              background-color: var(--primary-light-color);
              border-color: var(--primary-hover-color);
          }
      }
 
-     &.lambda-input-wrapper-error {
+     &.lambda-input-wrapper-invalid {
          border: 1px dashed var(--danger-color);
          background-color: var(--danger-light-color);
      }
@@ -518,12 +518,12 @@
      border-right-color: var(--surface-d);
      margin-right: -1px;
 
-     &:hover:not(.lambda-input-wrapper-error) {
+     &:hover:not(.lambda-input-wrapper-invalid) {
          border-color: var(--primary-hover-color);
          border-right: 1px solid;
      }
 
-     &:focus-within:not(.lambda-input-wrapper-error) {
+     &:focus-within:not(.lambda-input-wrapper-invalid) {
          border-right: 1px solid;
          border-color: var(--primary-hover-color);
      }
@@ -553,12 +553,12 @@
      border-left-color: var(--surface-d);
      margin-left: -1px;
 
-     &:hover:not(.lambda-input-wrapper-error) {
+     &:hover:not(.lambda-input-wrapper-invalid) {
          border-color: var(--primary-hover-color);
          border-left: 1px solid;
      }
 
-     &:focus-within:not(.lambda-input-wrapper-error) {
+     &:focus-within:not(.lambda-input-wrapper-invalid) {
          border-left: 1px solid;
          border-color: var(--primary-hover-color);
      }
@@ -611,7 +611,7 @@
      .lambda-input-wrapper-disabled {
          background-color: var(--surface-c);
 
-         &:hover:not(.lambda-input-wrapper-error) {
+         &:hover:not(.lambda-input-wrapper-invalid) {
              border-color: var(--surface-d);
          }
      }
