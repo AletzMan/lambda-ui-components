@@ -16,6 +16,7 @@
     }
 
     &.radio-group-button {
+        box-shadow: var(--box-shadow);
 
         & label {
             div {
@@ -23,7 +24,6 @@
             }
         }
 
-        box-shadow: var(--box-shadow);
 
         &.radio-group-radius-none {
             border-radius: none;
@@ -219,7 +219,7 @@
                 &:is(.radio-group-secondary) {
                     & label:first-child {
                         div {
-                            border-right: 1px solid var(--secondary-light-color);
+                            border-top: 1px solid var(--secondary-light-color);
                         }
                     }
 
