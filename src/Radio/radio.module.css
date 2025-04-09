@@ -269,7 +269,7 @@
         }
     }
 
-    &.radio-view-bordered {
+    &.radio-view-solid {
         background-color: var(--surface-a);
         border: 1px solid var(--surface-d);
     }

@@ -21,7 +21,7 @@ const radioprop = cva(styles["radio"], {
             large: styles["radio-large"],
         },
         variant: {
-            bordered: styles["radio-bordered"],
+            solid: styles["radio-solid"],
             flat: styles["radio-flat"],
             outline: styles["radio-outline"],
         },
@@ -38,7 +38,7 @@ const radioprop = cva(styles["radio"], {
     ],
     defaultVariants: {
         size: "medium",
-        variant: "bordered",
+        variant: "solid",
         color: "primary",
         disabled: false,
         type: "radio",
@@ -62,7 +62,7 @@ const view = cva(styles["radio-view"], {
             large: styles["radio-view-large"],
         },
         variant: {
-            bordered: styles["radio-view-bordered"],
+            solid: styles["radio-view-solid"],
             flat: styles["radio-view-flat"],
             outline: styles["radio-view-outline"],
         },
@@ -81,7 +81,7 @@ const view = cva(styles["radio-view"], {
     },
     defaultVariants: {
         size: "medium",
-        variant: "bordered",
+        variant: "solid",
         color: "primary",
         checked: false,
         type: "radio",
@@ -112,7 +112,7 @@ const wrapper = cva(styles["radio-wrapper"], {
             large: styles["radio-wrapper-large"],
         },
         variant: {
-            bordered: styles["radio-wrapper-bordered"],
+            solid: styles["radio-wrapper-solid"],
             flat: styles["radio-wrapper-flat"],
             outline: styles["radio-wrapper-outline"],
         },
@@ -130,7 +130,7 @@ const wrapper = cva(styles["radio-wrapper"], {
         color: "primary",
         size: "medium",
         type: "radio",
-        variant: "bordered",
+        variant: "solid",
         disabled: false
     },
 })
