@@ -60,20 +60,24 @@
      &.lambda-input-radius-pill {
          border-radius: var(--border-radius-pill);
      }
+
+     &.lambda-input-invalid {
+         margin: 0 0 1.4em 0;
+     }
  }
 
 
- .lambda-input-invalid {
+ .lambda-input-label-invalid {
      position: absolute;
-     background-color: var(--danger-color);
-     color: var(--white-color);
-     padding: 2px 8px;
-     border-radius: var(--border-radius-sm);
+     padding: var(--padding-sm);
      width: max-content;
      width: 100%;
-     font-weight: var(--font-weight-sm);
      letter-spacing: 1px;
      opacity: 0;
+     border-radius: var(--border-radius-sm);
+     font-weight: var(--font-weight-md);
+     color: var(--danger-text-color);
+     background-color: var(--danger-lightened-color);
      animation: animateError 0.4s ease both;
      z-index: 3;
 
@@ -87,27 +91,27 @@
          margin: 0 auto;
          border-left: 6px solid transparent;
          border-right: 6px solid transparent;
-         border-bottom: 6px solid var(--danger-color);
+         border-bottom: 6px solid var(--danger-lightened-color);
      }
 
-     &.lambda-input-invalid-tiny {
-         top: calc(var(--height-input-xs) - 20px);
+     &.lambda-input-label-invalid-tiny {
+         top: calc(var(--height-input-xs) - 18px);
          font-size: var(--font-size-xs);
      }
 
-     &.lambda-input-invalid-small {
-         top: calc(var(--height-input-xs) - 14px);
-         font-size: var(--font-size-xs);
+     &.lambda-input-label-invalid-small {
+         top: calc(var(--height-input-xs) - 12px);
+         font-size: var(--font-size-sm);
      }
 
-     &.lambda-input-invalid-medium {
-         top: calc(var(--height-input-xs) - 8px);
-         font-size: var(--font-size-xs);
+     &.lambda-input-label-invalid-medium {
+         top: calc(var(--height-input-xs) - 6px);
+         font-size: var(--font-size-sm);
      }
 
-     &.lambda-input-invalid-large {
-         top: calc(var(--height-input-sm) - 8px);
-         font-size: var(--font-size-xs);
+     &.lambda-input-label-invalid-large {
+         top: calc(var(--height-input-sm) - 6px);
+         font-size: var(--font-size-sm);
      }
  }
 
@@ -299,8 +303,8 @@
 
      &.lambda-input-wrapper-invalid {
          border-color: var(--danger-color);
-         border-style: dashed;
          background-color: var(--danger-light-color);
+         border-style: dashed;
      }
 
  }
@@ -508,10 +512,6 @@
          }
      }
 
-     &.lambda-input-wrapper-invalid {
-         border: 1px dashed var(--danger-color);
-         background-color: var(--danger-light-color);
-     }
  }
 
  .lambda-input-wrapper-elements-first {
