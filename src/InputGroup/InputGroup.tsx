@@ -32,7 +32,7 @@ export const inputGroup = cva(styles["lambda-input-group"], {
             both: styles["lambda-input-group-elements-both"]
         },
         invalid: {
-            true: styles["lambda-input-group-error"],
+            true: styles["lambda-input-group-invalid"],
             false: "",
         },
         disabled: {
