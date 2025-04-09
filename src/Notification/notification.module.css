@@ -1,6 +1,6 @@
 .notification-group {
     position: fixed;
-    max-width: 300px;
+    max-width: 450px;
     display: flex;
     flex-flow: column;
     gap: 5px;
@@ -8,6 +8,7 @@
     height: max-content;
     z-index: 1000;
 }
+
 
 
 .notification {
@@ -18,7 +19,7 @@
     transform: translateY(0);
     overflow: hidden;
     width: 100%;
-    max-width: 300px;
+    max-width: 450px;
     min-height: 3em;
     padding: var(--padding-sm) var(--padding-sm);
     border-radius: var(--border-radius-md);
@@ -26,6 +27,14 @@
     color: var(--foreground-color);
     transition: all 0.3s ease-in-out;
 
+}
+
+@media (width < 500px) {
+
+    .notification-group,
+    .notification {
+        max-width: 300px;
+    }
 }
 
 .notification-header {
@@ -525,7 +534,7 @@
     text-align: left;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-reg);
-    width: 240px;
+    width: 250px;
 }
 
 .notification-close-button {
