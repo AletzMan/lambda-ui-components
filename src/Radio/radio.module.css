@@ -130,6 +130,51 @@
 
                 }
             }
+
+            &:not(.radio-view-checked) {
+
+                &:is(.radio-view-primary) {
+
+                    &~.radio-label {
+                        color: var(--primary-text-color);
+                    }
+                }
+
+                &:is(.radio-view-secondary) {
+
+                    &~.radio-label {
+                        color: var(--secondary-text-color);
+                    }
+                }
+
+                &:is(.radio-view-success) {
+
+                    &~.radio-label {
+                        color: var(--success-text-color);
+                    }
+                }
+
+                &:is(.radio-view-danger) {
+
+                    &~.radio-label {
+                        color: var(--danger-text-color);
+                    }
+                }
+
+                &:is(.radio-view-warning) {
+
+                    &~.radio-label {
+                        color: var(--warning-text-color);
+                    }
+                }
+
+                &:is(.radio-view-info) {
+
+                    &~.radio-label {
+                        color: var(--info-text-color);
+                    }
+                }
+            }
         }
     }
 }
@@ -327,8 +372,6 @@
             background-color: var(--info-outline-color);
         }
 
-
-
     }
 
     &.radio-view-outline {
@@ -368,7 +411,6 @@
 
 .radio-label {
     font-weight: var(--font-weight-reg);
-    color: var(--foreground-color);
 
     &.radio-label-disabled {
         color: var(--surface-e);
