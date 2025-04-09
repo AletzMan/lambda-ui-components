@@ -94,6 +94,8 @@
 
                 &:is(.radio-view-primary) {
                     background-color: var(--primary-color);
+                    border-top-color: var(--primary-color);
+                    border-bottom-color: var(--primary-color);
 
                 }
 
