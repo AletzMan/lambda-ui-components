@@ -61,27 +61,27 @@
             background-color: var(--info-light-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-primary) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-primary):not(.radio-view-disabled) {
             background-color: var(--primary-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-secondary) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-secondary):not(.radio-view-disabled) {
             background-color: var(--secondary-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-danger) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-danger):not(.radio-view-disabled) {
             background-color: var(--danger-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-success) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-success):not(.radio-view-disabled) {
             background-color: var(--success-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-warning) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-warning):not(.radio-view-disabled) {
             background-color: var(--warning-outline-color);
         }
 
-        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-info) {
+        &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-info):not(.radio-view-disabled) {
             background-color: var(--info-outline-color);
         }
 
@@ -101,6 +101,8 @@
 
                 &:is(.radio-view-secondary) {
                     background-color: var(--secondary-color);
+                    border-top-color: var(--secondary-color);
+                    border-bottom-color: var(--secondary-color);
 
                     &~.radio-label {
                         color: var(--foreground-invert-color);
@@ -109,25 +111,33 @@
 
                 &:is(.radio-view-success) {
                     background-color: var(--success-color);
+                    border-top-color: var(--success-color);
+                    border-bottom-color: var(--success-color);
                 }
 
                 &:is(.radio-view-danger) {
                     background-color: var(--danger-color);
+                    border-top-color: var(--danger-color);
+                    border-bottom-color: var(--danger-color);
                 }
 
                 &:is(.radio-view-warning) {
                     background-color: var(--warning-color);
+                    border-top-color: var(--warning-color);
+                    border-bottom-color: var(--warning-color);
 
                     &~.radio-label {
-                        color: var(--foreground-invert-color);
+                        color: var(--black-color);
                     }
                 }
 
                 &:is(.radio-view-info) {
                     background-color: var(--info-color);
+                    border-top-color: var(--info-color);
+                    border-bottom-color: var(--info-color);
 
                     &~.radio-label {
-                        color: var(--foreground-invert-color);
+                        color: var(--black-color);
                     }
 
                 }
