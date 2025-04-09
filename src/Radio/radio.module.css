@@ -37,6 +37,29 @@
     }
 
     &.radio-wrapper-button {
+        &>.radio-view:not(.radio-view-checked):is(.radio-view-primary) {
+            background-color: var(--primary-light-color);
+        }
+
+        &>.radio-view:not(.radio-view-checked):is(.radio-view-secondary) {
+            background-color: var(--secondary-light-color);
+        }
+
+        &>.radio-view:not(.radio-view-checked):is(.radio-view-success) {
+            background-color: var(--success-light-color);
+        }
+
+        &>.radio-view:not(.radio-view-checked):is(.radio-view-danger) {
+            background-color: var(--danger-light-color);
+        }
+
+        &>.radio-view:not(.radio-view-checked):is(.radio-view-warning) {
+            background-color: var(--warning-light-color);
+        }
+
+        &>.radio-view:not(.radio-view-checked):is(.radio-view-info) {
+            background-color: var(--info-light-color);
+        }
 
         &:hover>.radio-view:not(.radio-view-checked):is(.radio-view-primary) {
             background-color: var(--primary-outline-color);
