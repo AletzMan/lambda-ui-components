@@ -30,7 +30,7 @@ const classRadioGroups = cva(styles["radio-group"], {
             button: styles["radio-group-button"]
         },
         variant: {
-            bordered: styles["radio-group-bordered"],
+            solid: styles["radio-group-solid"],
             flat: styles["radio-group-flat"],
             outline: styles["radio-group-outline"],
         },
@@ -49,7 +49,7 @@ const classRadioGroups = cva(styles["radio-group"], {
         radius: "medium",
         size: "medium",
         type: "radio",
-        variant: "bordered"
+        variant: "solid"
     },
 })
 
@@ -62,7 +62,7 @@ type RadioGroupContextType = {
     color: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
     type: "radio" | "button"
     radius: 'none' | 'small' | 'medium' | 'pill'
-    variant: "bordered" | "flat" | "outline"
+    variant: "solid" | "flat" | "outline"
     disabled: boolean
 };
 
@@ -77,7 +77,7 @@ interface RadioGroupProps {
     color?: "primary" | "secondary" | "danger" | "success" | "warning" | "info"
     type?: "radio" | "button"
     radius?: 'none' | 'small' | 'medium' | 'pill'
-    variant?: "bordered" | "flat" | "outline"
+    variant?: "solid" | "flat" | "outline"
     orientation?: "vertical" | "horizontal"
     gap?: string,
     disabled?: boolean
@@ -91,7 +91,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
     size = "medium",
     color = "primary",
     type = "radio",
-    variant = "bordered",  // Default variant
+    variant = "solid",  // Default variant
     disabled = false,
     radius = "medium",
     orientation = "vertical",

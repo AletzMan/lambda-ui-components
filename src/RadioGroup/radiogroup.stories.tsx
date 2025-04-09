@@ -12,7 +12,7 @@ const meta: Meta<typeof RadioGroup> = {
     argTypes: {
         variant: {
             control: "radio",
-            options: ['bordered', 'flat', 'outline'],
+            options: ['solid', 'flat', 'outline'],
             description: "Visual style of the input",
             type: 'string',
         },
@@ -50,7 +50,7 @@ type Story = StoryObj<typeof RadioGroup>
 export const Default: Story = {
     args: {
         color: "secondary",
-        variant: "bordered",
+        variant: "solid",
         size: "medium",
         radius: "medium",
         orientation: "vertical",

@@ -159,7 +159,7 @@
             min-width: max-content;
 
             &:is(.radio-group-outline),
-            &:is(.radio-group-bordered) {
+            &:is(.radio-group-solid) {
 
 
                 & label:not(:first-child):not(:last-child) {
