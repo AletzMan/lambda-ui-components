@@ -65,7 +65,6 @@
          }
      }
 
-
      .lambda-number-helper {
          position: absolute;
          left: 0;
@@ -125,9 +124,9 @@
      box-sizing: border-box;
  }
 
-
-
  .lambda-number-label {
+     position: absolute;
+     top: -1.4em;
      font-family: var(--font-family);
      color: var(--primary-text-color);
      padding: 0 0 0 4px;
@@ -161,7 +160,7 @@
      padding: 0 0 0 16px;
  }
 
- .lambda-number-error {
+ .lambda-number-label-invalid {
      position: absolute;
      width: max-content;
      max-width: 100%;
@@ -169,7 +168,7 @@
      padding: 2px 8px;
      font-size: var(--font-size-md);
      border-radius: var(--border-radius-sm);
-     color: var(--foreground-color);
+     color: var(--white-color);
      background-color: var(--danger-color);
      animation: animateError 0.4s ease both;
 
@@ -187,25 +186,25 @@
      }
  }
 
- .lambda-number-error-tiny {
+ .lambda-number-label-invalid-tiny {
      top: calc(var(--height-input-sm) - 26px);
      font-size: var(--font-size-xs);
      letter-spacing: 0.5px;
  }
 
- .lambda-number-error-small {
+ .lambda-number-label-invalid-small {
      top: calc(var(--height-input-sm) - 20px);
      font-size: var(--font-size-xs);
      letter-spacing: 0.7px;
  }
 
- .lambda-number-error-medium {
+ .lambda-number-label-invalid-medium {
      top: calc(var(--height-input-md) - 20px);
      font-size: var(--font-size-sm);
      letter-spacing: 0.5px;
  }
 
- .lambda-number-error-large {
+ .lambda-number-label-invalid-large {
      top: calc(var(--height-input-lg) - 20px);
      font-size: var(--font-size-sm);
      letter-spacing: 0.5px;

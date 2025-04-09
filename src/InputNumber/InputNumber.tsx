@@ -124,13 +124,13 @@ const handler = cva(styles['lambda-number-handler'], {
     },
 })
 
-const errorlabel = cva(styles['lambda-number-error'], {
+const errorlabel = cva(styles['lambda-number-label-invalid'], {
     variants: {
         size: {
-            tiny: styles['lambda-number-error-tiny'],
-            small: styles['lambda-number-error-small'],
-            medium: styles['lambda-number-error-medium'],
-            large: styles['lambda-number-error-large'],
+            tiny: styles['lambda-number-label-invalid-tiny'],
+            small: styles['lambda-number-label-invalid-small'],
+            medium: styles['lambda-number-label-invalid-medium'],
+            large: styles['lambda-number-label-invalid-large'],
         },
     },
     defaultVariants: {
