@@ -193,7 +193,7 @@
     }
 }
 
-.lambda-input-group-error {
+.lambda-input-group-invalid {
     background-color: var(--danger-light-color);
 }
 
