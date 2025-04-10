@@ -3,6 +3,7 @@ import { cva, VariantProps } from "class-variance-authority"
 import styles from "./select.module.css"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
 import clsx from "clsx"
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 
 const select = cva(styles["select-container"], {
     variants: {
@@ -160,20 +161,6 @@ const labelSelect = cva(styles["select-label"], {
     }
 })
 
-const errorLabel = cva(styles["select-invalid"], {
-    variants: {
-        size: {
-            tiny: styles["select-invalid-tiny"],
-            small: styles["select-invalid-small"],
-            medium: styles["select-invalid-medium"],
-            large: styles["select-invalid-large"],
-        },
-    },
-    defaultVariants: {
-        size: "medium"
-    }
-})
-
 const selectedView = cva(styles["select-view"], {
     variants: {
         size: {
@@ -317,7 +304,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                         </ul>
                     )}
                 </div>
-                {invalid && errorMessage && <span className={errorLabel({ size })}>{errorMessage}</span>}
+                {invalid && errorMessage && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
             </div>
         )
     }
