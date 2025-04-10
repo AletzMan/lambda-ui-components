@@ -4,6 +4,7 @@ import { InputProps } from "../Input/Input"
 import styles from "./inputGroup.module.css"
 import clsx from 'clsx'
 import { VariantProps, cva } from "class-variance-authority"
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 
 export const inputGroup = cva(styles["lambda-input-group"], {
     variants: {
@@ -49,6 +50,7 @@ export const inputGroup = cva(styles["lambda-input-group"], {
     },
 })
 
+
 type InputGroupContextType = {
     variant?: "outline" | "flat" | "underline" | null
     radius?: "none" | "small" | "medium" | "large" | "pill" | null
@@ -63,10 +65,11 @@ const InputGroupContext = createContext<InputGroupContextType | null>(null)
 interface InputGroupProps extends Omit<InputProps, "invalid" | "disabled">, VariantProps<typeof inputGroup>, RefAttributes<HTMLDivElement> {
     prefixElement?: ReactNode
     suffixElement?: ReactNode
+    errorMessage?: string
 }
 
 export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTMLDivElement, InputGroupProps>(
-    ({ prefixElement, suffixElement, children, variant, radius, size, invalid, disabled, }, ref) => {
+    ({ prefixElement, suffixElement, children, variant, radius, size, invalid, disabled, errorMessage }, ref) => {
         const hasElements: "none" | "first" | "last" | "both" = prefixElement && suffixElement ? "both" : prefixElement ? "first" : suffixElement ? "last" : "none"
 
         const contextValue = useMemo(
@@ -83,12 +86,15 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
 
         return (
             <InputGroupContext.Provider value={contextValue}>
-                <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, invalid, disabled, hasElements }))}>
-                    {prefixElement && <div className={styles["lambda-input-group-start"]}>{prefixElement}</div>}
-                    <div className={styles["lambda-input-group-wrapper"]}>
-                        {children}
+                <div className={styles["lambda-input-group-container"]}>
+                    <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, invalid, disabled, hasElements }))}>
+                        {prefixElement && <div className={styles["lambda-input-group-start"]}>{prefixElement}</div>}
+                        <div className={styles["lambda-input-group-wrapper"]}>
+                            {children}
+                        </div>
+                        {suffixElement && <div className={styles["lambda-input-group-end"]}>{suffixElement}</div>}
                     </div>
-                    {suffixElement && <div className={styles["lambda-input-group-end"]}>{suffixElement}</div>}
+                    {errorMessage && invalid && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
                 </div>
             </InputGroupContext.Provider>
         )

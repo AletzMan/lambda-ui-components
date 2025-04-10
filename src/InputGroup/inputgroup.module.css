@@ -195,7 +195,6 @@
 
 .lambda-input-group-invalid {
     background-color: var(--danger-light-color);
-    margin: 0 0 1.5em 0;
 }
 
 .lambda-input-group {
@@ -315,4 +314,12 @@
         color: var(--surface-d);
     }
 
+}
+
+.lambda-input-group-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
