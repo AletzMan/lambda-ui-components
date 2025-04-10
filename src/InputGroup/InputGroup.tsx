@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { ReactNode, forwardRef, createContext, useMemo, PropsWithChildren, FC, useContext, RefAttributes } from "react"
+import { ReactNode, forwardRef, createContext, useMemo, PropsWithChildren, FC, useContext, RefAttributes, useRef } from "react"
 import { InputProps } from "../Input/Input"
 import styles from "./inputGroup.module.css"
 import clsx from 'clsx'
@@ -71,6 +71,7 @@ interface InputGroupProps extends Omit<InputProps, "invalid" | "disabled">, Vari
 export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTMLDivElement, InputGroupProps>(
     ({ prefixElement, suffixElement, children, variant, radius, size, invalid, disabled, errorMessage }, ref) => {
         const hasElements: "none" | "first" | "last" | "both" = prefixElement && suffixElement ? "both" : prefixElement ? "first" : suffixElement ? "last" : "none"
+        const refPrefix = useRef<HTMLDivElement>(null)
 
         const contextValue = useMemo(
             () => ({
@@ -88,13 +89,13 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<HTM
             <InputGroupContext.Provider value={contextValue}>
                 <div className={styles["lambda-input-group-container"]}>
                     <div ref={ref} className={clsx(inputGroup({ variant: undefined, radius, size, invalid, disabled, hasElements }))}>
-                        {prefixElement && <div className={styles["lambda-input-group-start"]}>{prefixElement}</div>}
+                        {prefixElement && <div className={styles["lambda-input-group-start"]} ref={refPrefix}>{prefixElement}</div>}
                         <div className={styles["lambda-input-group-wrapper"]}>
                             {children}
                         </div>
                         {suffixElement && <div className={styles["lambda-input-group-end"]}>{suffixElement}</div>}
                     </div>
-                    {errorMessage && invalid && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
+                    {errorMessage && invalid && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} marginArrow={refPrefix?.current?.getBoundingClientRect().width} />}
                 </div>
             </InputGroupContext.Provider>
         )
