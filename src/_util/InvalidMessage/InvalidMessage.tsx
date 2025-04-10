@@ -4,9 +4,10 @@ import { TriangleAlert } from "lucide-react";
 
 
 interface InvalidMessageProps {
-    size?: "medium" | "small" | "large" | "tiny" | null | undefined;
-    invalid?: boolean;
-    errorMessage?: string;
+    size?: "medium" | "small" | "large" | "tiny" | null | undefined
+    invalid?: boolean
+    errorMessage?: string
+    marginArrow?: number
 }
 
 const invalidMessage = cva(styles["lambda-message-invalid"], {
@@ -29,8 +30,10 @@ const invalidMessage = cva(styles["lambda-message-invalid"], {
 })
 
 
-export function InvalidMessage({ size, invalid, errorMessage }: InvalidMessageProps) {
+export function InvalidMessage({ size, invalid, errorMessage, marginArrow }: InvalidMessageProps) {
+
+    console.log(marginArrow)
     return (
-        <div className={invalidMessage({ invalid, size })}><TriangleAlert className={styles["lambda-message-invalid-icon"]} />{errorMessage}</div>
+        <div className={invalidMessage({ invalid, size })} style={{ "--after-left": marginArrow ? `${marginArrow + 6}px` : "6px" } as React.CSSProperties}><TriangleAlert className={styles["lambda-message-invalid-icon"]} />{errorMessage}</div>
     );
 };
