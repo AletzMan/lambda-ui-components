@@ -3,9 +3,10 @@
 import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent } from "react"
 import styles from "./input.module.css"
 import { cva, VariantProps } from "class-variance-authority"
-import { CircleX, Eye, EyeOff, TriangleAlert, X } from "lucide-react"
+import { CircleX, Eye, EyeOff, X } from "lucide-react"
 import clsx from 'clsx'
 import { useInputGroup } from "../InputGroup/InputGroup"
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 
 export const lambdaInput = cva(styles["lambda-input"], {
     variants: {
@@ -136,19 +137,6 @@ const textInput = cva(styles["lambda-input-field"], {
     }
 })
 
-const errorlabel = cva(styles["lambda-input-label-invalid"], {
-    variants: {
-        size: {
-            tiny: styles["lambda-input-label-invalid-tiny"],
-            small: styles["lambda-input-label-invalid-small"],
-            medium: styles["lambda-input-label-invalid-medium"],
-            large: styles["lambda-input-label-invalid-large"],
-        },
-    },
-    defaultVariants: {
-        size: "medium"
-    }
-})
 
 const buttonPassword = cva(styles["lambda-input-toggle-password"], {
     variants: {
@@ -169,7 +157,6 @@ const buttonPassword = cva(styles["lambda-input-toggle-password"], {
         variant: "outline"
     }
 })
-
 
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> {
@@ -272,7 +259,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     </label>
                 )}
                 {helperText && <label className={clsx(styles["lambda-input-helper"], { [styles["lambda-input-helper-disabled"]]: disabled })}>{helperText}</label>}
-                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, invalid: contextInvalid, type, hasElements }), { [styles["lambda-input-wrapper--group"]]: isGroup })}>
+                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, invalid: contextInvalid, type, hasElements }), { [styles["lambda-input-wrapper-group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input-input-wrapper"], { [styles["lambda-input-input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}
@@ -299,7 +286,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         {contextInvalid && <CircleX className={clsx(styles["lambda-input-invalid-icon"], { [styles["lambda-input-invalid-icon-password"]]: isPasswordType || isSearchType })} />}
                     </div>
                 </div>
-                {contextInvalid && errorMessage && <span className={errorlabel({ size: contextSize })}><TriangleAlert className={styles["lambda-input-label-icon"]} />{errorMessage}</span>}
+                {contextInvalid && errorMessage && !isGroup && <InvalidMessage errorMessage={errorMessage} invalid={contextInvalid} size={contextSize} />}
             </div>
         )
     }
