@@ -3,6 +3,7 @@ import styles from "./inputnumber.module.css"
 import { cva, VariantProps } from "class-variance-authority"
 import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon, CircleX } from "lucide-react"
 import clsx from "clsx"
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 
 const inputNumber = cva(styles["lambda-number"], {
     variants: {
@@ -135,19 +136,7 @@ const handler = cva(styles['lambda-number-handler'], {
     },
 })
 
-const errorlabel = cva(styles['lambda-number-label-invalid'], {
-    variants: {
-        size: {
-            tiny: styles['lambda-number-label-invalid-tiny'],
-            small: styles['lambda-number-label-invalid-small'],
-            medium: styles['lambda-number-label-invalid-medium'],
-            large: styles['lambda-number-label-invalid-large'],
-        },
-    },
-    defaultVariants: {
-        size: "medium"
-    },
-})
+
 
 const typeCurrency = cva(styles['lambda-number-currency'], {
     variants: {
@@ -369,7 +358,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                     </div>
                     {helperText && <label className={clsx(styles['lambda-number-helper'], { [styles["lambda-number-helper-disabled"]]: disabled })}>{helperText}</label>}
                 </div>
-                {invalid && errorMessage && <span className={errorlabel({ size })}>{errorMessage}</span>}
+                {invalid && errorMessage && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
             </div>
         )
     }
