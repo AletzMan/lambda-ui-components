@@ -1,7 +1,7 @@
 import { forwardRef, useState } from "react"
 import styles from "./inputnumber.module.css"
 import { cva, VariantProps } from "class-variance-authority"
-import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon } from "lucide-react"
+import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon, CircleX } from "lucide-react"
 import clsx from "clsx"
 
 const inputNumber = cva(styles["lambda-number"], {
@@ -46,6 +46,17 @@ const inputNumber = cva(styles["lambda-number"], {
         radius: "medium",
         typeNumber: 'default',
         invalid: false,
+        disabled: false,
+    },
+})
+const wrapper = cva(styles["lambda-number-wrapper"], {
+    variants: {
+        disabled: {
+            false: styles['lambda-number-wrapper-enabled'],
+            true: styles['lambda-number-wrapper-disabled'],
+        },
+    },
+    defaultVariants: {
         disabled: false,
     },
 })
@@ -313,9 +324,9 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
         const displayedValue = isEditing ? internalValue : formatValue(value)
 
         return (
-            <div className={clsx(styles['lambda-number-wrapper'], { [styles['lambda-number-wrapper-disabled']]: disabled })}>
+            <div className={clsx(wrapper({ disabled, className }))}>
                 {label && <label className={labels({ radius, size, isRequired })}>{label}</label>}
-                <div className={inputNumber({ variant, disabled, radius, typeNumber, size, invalid, className })}>
+                <div className={inputNumber({ variant, disabled, radius, typeNumber, size, invalid })}>
                     <div className={styles['lambda-number-container']}>
                         <div className={typeCurrency({ typeNumber, size, variant, radius })}>{getIcon()}</div>
                         <input
@@ -334,6 +345,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                             max={max}
                             {...props}
                         />
+                        {invalid && <CircleX className={clsx(styles["lambda-number-invalid-icon"])} />}
                         <div className={handler({ size, variant, radius })}>
                             <button
                                 type="button"
