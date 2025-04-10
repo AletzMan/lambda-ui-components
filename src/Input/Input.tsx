@@ -3,7 +3,7 @@
 import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent } from "react"
 import styles from "./input.module.css"
 import { cva, VariantProps } from "class-variance-authority"
-import { Eye, EyeOff, X } from "lucide-react"
+import { CircleAlert, CircleX, Eye, EyeOff, TriangleAlert, X } from "lucide-react"
 import clsx from 'clsx'
 import { useInputGroup } from "../InputGroup/InputGroup"
 
@@ -296,9 +296,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                                 <X className={styles["lambda-input-clear-search-icon"]} />
                             </span>
                         )}
+                        {contextInvalid && <CircleX className={clsx(styles["lambda-input-invalid-icon"], { [styles["lambda-input-invalid-icon-password"]]: isPasswordType || isSearchType })} />}
                     </div>
                 </div>
-                {contextInvalid && errorMessage && <span className={errorlabel({ size: contextSize })}>{errorMessage}</span>}
+                {contextInvalid && errorMessage && <span className={errorlabel({ size: contextSize })}><TriangleAlert className={styles["lambda-input-label-icon"]} />{errorMessage}</span>}
             </div>
         )
     }
