@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React, { ButtonHTMLAttributes, forwardRef } from "react"
 import styles from "./card.module.css"
 import { cva, VariantProps } from "class-variance-authority"
@@ -35,9 +35,28 @@ const card = cva(styles[`lambda-card`], {
     },
 })
 
+export interface ICardHeader {
+    title: string
+    description?: string
+    icon?: React.ReactNode
+}
+
+export interface ICardActions {
+    icon?: React.ReactNode
+    text?: string
+    onClick?: () => void
+}
+
+export interface ICardImage {
+    src: string
+    alt?: string
+    heightPorcent?: number
+}
+
 export interface CardProps extends Omit<ButtonHTMLAttributes<HTMLDivElement>, "disabled" | "color">, VariantProps<typeof card> {
-    header?: React.ReactNode
-    footer?: React.ReactNode
+    image?: ICardImage
+    header?: ICardHeader
+    actions?: ICardActions[]
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
@@ -48,7 +67,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             size = "medium",
             radius = "small",
             header,
-            footer,
+            image,
+            actions,
             ...props
         },
         ref
@@ -56,12 +76,39 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         return (
             <div
                 ref={ref}
-                className={card({ variant, size, radius })}
+                className={card({ variant, size, radius, className })}
                 {...props}
             >
-                {header && <header className={styles[`lambda-card-header`]}>{header}</header>}
+                {image &&
+                    <div className={styles[`lambda-card-header-image-container`]} style={{ height: image.heightPorcent ? `${image.heightPorcent}%` : 'auto' }}>
+                        <img className={styles[`lambda-card-header-image`]} src={image.src} alt={image.src || header?.title} />
+                    </div>
+                }
+                {header &&
+                    <header className={styles[`lambda-card-header`]}>
+                        <div className={styles[`lambda-card-header-content`]}>
+                            {header.icon && <span className={styles[`lambda-card-header-icon`]}>{header.icon}</span>}
+                            <div className={styles[`lambda-card-header-text`]}>
+                                <h1 className={styles[`lambda-card-header-title`]}>{header.title}</h1>
+                                <p className={styles[`lambda-card-header-description`]}>{header.description}</p>
+                            </div>
+                        </div>
+                    </header>}
                 {props.children && <div className={styles[`lambda-card-body`]}>{props.children}</div>}
-                {footer && <footer className={styles[`lambda-card-footer`]}>{footer}</footer>}
+                {actions && actions.length > 0 &&
+                    <footer className={styles[`lambda-card-footer`]}>
+                        {actions.map((action, index) => (
+                            <button
+                                key={index}
+                                className={styles[`lambda-card-action`]}
+                                onClick={action.onClick}
+                            >
+                                {action.icon && <span className={styles[`lambda-card-action-icon`]}>{action.icon}</span>}
+                                {action.text && <span className={styles[`lambda-card-action-text`]}>{action.text}</span>}
+                            </button>
+                        ))}
+                    </footer>
+                }
             </div>
         )
     }
