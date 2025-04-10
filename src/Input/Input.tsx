@@ -3,7 +3,7 @@
 import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent } from "react"
 import styles from "./input.module.css"
 import { cva, VariantProps } from "class-variance-authority"
-import { CircleAlert, CircleX, Eye, EyeOff, TriangleAlert, X } from "lucide-react"
+import { CircleX, Eye, EyeOff, TriangleAlert, X } from "lucide-react"
 import clsx from 'clsx'
 import { useInputGroup } from "../InputGroup/InputGroup"
 
@@ -260,7 +260,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputPlaceholder = floatingLabel ? "" : placeholder
 
         return (
-            <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled, size: contextSize, invalid: contextInvalid }), { [styles["lambda-input-group"]]: isGroup })}>
+            <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled, size: contextSize, invalid: contextInvalid, className }), { [styles["lambda-input-group"]]: isGroup, [styles["lambda-input-group-helper"]]: isGroup && helperText })}>
                 {label && (
                     <label className={clsx(labels({ radius: contextRadius, size: contextSize, hasElements }), {
                         [styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,
@@ -272,7 +272,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                     </label>
                 )}
                 {helperText && <label className={clsx(styles["lambda-input-helper"], { [styles["lambda-input-helper-disabled"]]: disabled })}>{helperText}</label>}
-                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, invalid: contextInvalid, type, hasElements, className }), { [styles["lambda-input-wrapper--group"]]: isGroup })}>
+                <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, invalid: contextInvalid, type, hasElements }), { [styles["lambda-input-wrapper--group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input-input-wrapper"], { [styles["lambda-input-input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}
