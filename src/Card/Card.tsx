@@ -1,5 +1,5 @@
 
-import React, { ButtonHTMLAttributes, forwardRef } from "react"
+import React, { HTMLAttributes, forwardRef } from "react"
 import styles from "./card.module.css"
 import { cva, VariantProps } from "class-variance-authority"
 
@@ -46,7 +46,7 @@ export interface ICardImage {
     heightPorcent?: number
 }
 
-export interface CardProps extends Omit<ButtonHTMLAttributes<HTMLDivElement>, "disabled" | "color"> {
+export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, "disabled" | "color"> {
     image?: ICardImage
     header?: ICardHeader
     actions?: ICardActions[]
