@@ -11,19 +11,19 @@ const meta: Meta<typeof Card> = {
     argTypes: {
         variant: {
             control: "select",
-            options: ['classic', 'solid', 'outline', 'dashed', 'ghost', 'text'],
-            description: "Visual style of the button",
+            options: ['borderless ', 'solid'],
+            description: "Optional variant of the card",
             type: 'string',
         },
         size: {
             control: "select",
-            options: ['tiny', 'small', 'medium', 'large'],
-            description: "Card size"
+            options: ['small', 'medium', 'large'],
+            description: "Size of the card",
         },
         radius: {
             control: 'select',
-            options: ['none', 'small', 'medium', 'large', 'pill', 'circle'],
-            description: "Corner shape"
+            options: ['none', 'small', 'medium', 'large'],
+            description: "Radius of the card",
         }
     }
 
@@ -33,9 +33,9 @@ export default meta
 
 type Story = StoryObj<typeof Card>
 
-export const Primary: Story = {
+export const Outline: Story = {
     args: {
-        variant: "solid",
+        variant: "outline",
         size: "medium",
         radius: 'small',
     },
