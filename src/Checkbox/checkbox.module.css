@@ -368,7 +368,8 @@
 }
 
 .lambda-checkbox-label {
-    color: var(--foreground-color);
+    color: var(--label-color);
+    font-weight: var(--font-weight-md);
     font-family: inherit;
     width: max-content;
 }
