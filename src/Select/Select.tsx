@@ -150,7 +150,7 @@ const labelSelect = cva(styles["select-label"], {
             large: styles["select-label-radius-large"],
             pill: styles["select-label-radius-pill"],
         },
-        isRequired: {
+        required: {
             true: styles["select-label-required"]
         }
     },
@@ -188,13 +188,13 @@ export interface SelectProps
     label?: string
     options: IListCollection[]
     invalid?: boolean
-    isRequired?: boolean
+    required?: boolean
     placeholder?: string
     errorMessage?: string
 }
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(
-    ({ label, options, size, variant, radius, disabled, invalid, isRequired, errorMessage, placeholder = "Select an option", ...props }, ref) => {
+    ({ label, options, size, variant, radius, disabled, invalid, required, errorMessage, placeholder = "Select an option", ...props }, ref) => {
         const [isOpen, setIsOpen] = useState(false)
         const [selectedValue, setSelectedValue] = useState<string | null>(null)
         const [direction, setDirection] = useState<"up" | "down">("down")
@@ -272,7 +272,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
         return (
             <div className={clsx([styles["select-wrapper"]], { [styles["select-wrapper-disabled"]]: disabled })} ref={ref} >
-                {label && <label className={labelSelect({ direction, radius, size, isRequired })}>{label}</label>}
+                {label && <label className={labelSelect({ direction, radius, size, required })}>{label}</label>}
                 <div className={select({ size, variant, radius, disabled, invalid })} ref={selectRef} role="select">
                     <button className={buttonSelect({ size, variant, radius, invalid, disabled })} onClick={toggleDropdown} style={{ width: `${placeholder?.length * 13}px` }}>
                         {selectedValue

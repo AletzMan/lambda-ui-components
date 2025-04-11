@@ -39,7 +39,7 @@ const meta: Meta<typeof Select> = {
             control: 'boolean',
             description: "Disables the input and makes it inactive"
         },
-        isRequired: {
+        required: {
             control: "boolean",
             description: ""
         }
@@ -79,7 +79,7 @@ export const Normal: Story = {
                 value: "csharp",
             }
         ],
-        isRequired: false,
+        required: false,
         invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
@@ -119,7 +119,7 @@ export const Description: Story = {
                 description: "A modern, object-oriented programming language developed by Microsoft."
             }
         ],
-        isRequired: false,
+        required: false,
         invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
@@ -160,7 +160,7 @@ export const Icon: Story = {
                 avatar: "https://cdn.worldvectorlogo.com/logos/c--4.svg",
             }
         ],
-        isRequired: false,
+        required: false,
         invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
