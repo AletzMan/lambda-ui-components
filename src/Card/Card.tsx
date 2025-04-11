@@ -76,7 +76,6 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         },
         ref
     ) => {
-        console.log(image ? `${(10 / 100) * (image.heightPorcent || 0)}em` : "")
         return (
             <div
                 ref={ref}
