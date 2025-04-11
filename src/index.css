@@ -71,6 +71,7 @@
     --foreground-label-color: #8fa2b3;
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #999999;
+    --label-color: #242424;
 
     --surface-a: #f8f7f7;
     --surface-b: #fdfdfd;
@@ -145,7 +146,7 @@
     --foreground-label-color: #b1c0cc;
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #626262;
-    --placeholder-color: #626262;
+    --label-color: #b1c0cc;
 
     --surface-b: #191b1c;
     --surface-a: #1d1d20;
@@ -228,6 +229,7 @@ textarea {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    letter-spacing: 0.2px;
 }
 
 
