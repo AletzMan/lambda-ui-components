@@ -26,6 +26,7 @@
     --font-size-sm: 11px;
     --font-size-md: 13px;
     --font-size-lg: 15px;
+    --font-size-xl: 17px;
 
     --border-radius-none: 0px;
     --border-radius-xs: 2px;
@@ -43,6 +44,7 @@
     --icon-size-lg: 20px;
     --icon-size-xl: 22px;
     --icon-size-2xl: 24px;
+    --icon-size-3xl: 28px;
 
     --height-checkbox-xs: 16px;
     --height-checkbox-sm: 20px;
@@ -79,7 +81,6 @@
     --surface-g: #787878;
     --border-color: #d9d9d9;
     --shadow-color: #26262635;
-    --shadow-inset-color: #dee1e455;
 
     --primary-color: #3884ff;
     --primary-hover-color: #2867ef;
@@ -154,7 +155,7 @@
     --surface-f: #a9a9a9;
     --surface-g: #828282;
     --border-color: #2c2c2c;
-    --shadow-color: #12121290;
+    --shadow-color: #121212AA;
     --shadow-inset-color: #f1f1f155;
 
     --primary-color: #3884ff;
