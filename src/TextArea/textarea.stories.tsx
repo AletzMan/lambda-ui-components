@@ -11,7 +11,7 @@ const meta: Meta<typeof TextArea> = {
     argTypes: {
         variant: {
             control: "select",
-            options: ['borderless ', 'solid'],
+            options: ['borderless ', 'outline'],
             description: "Optional variant of the card",
             type: 'string',
         },
@@ -19,6 +19,14 @@ const meta: Meta<typeof TextArea> = {
             control: "select",
             options: ['tiny', 'small', 'medium', 'large'],
             description: "Size of the card",
+        },
+        invalid: {
+            control: "boolean",
+            description: "Invalid state of the card",
+        },
+        disabled: {
+            control: "boolean",
+            description: "Disabled state of the card",
         },
         radius: {
             control: 'select',

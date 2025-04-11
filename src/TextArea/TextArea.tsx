@@ -5,33 +5,31 @@ import { cva, VariantProps } from "class-variance-authority"
 import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 import clsx from "clsx"
 
-const card = cva(styles[`lambda-textarea`], {
+const textarea = cva(styles[`lambda-textarea`], {
     variants: {
-        variant: {
-            outline: styles["lambda-textarea-wrapper-outline"],
-            flat: styles["lambda-textarea-wrapper-flat"],
-            underline: styles["lambda-textarea-wrapper-underline"],
+        size: {
+            tiny: styles["lambda-textarea-tiny"],
+            small: styles["lambda-textarea-small"],
+            medium: styles["lambda-textarea-medium"],
+            large: styles["lambda-textarea-large"],
         },
         radius: {
-            none: styles["lambda-textarea-wrapper-radius-none"],
-            small: styles["lambda-textarea-wrapper-radius-small"],
-            medium: styles["lambda-textarea-wrapper-radius-medium"],
-            large: styles["lambda-textarea-wrapper-radius-large"],
-            pill: styles["lambda-textarea-wrapper-radius-pill"],
+            none: styles["lambda-textarea-radius-none"],
+            small: styles["lambda-textarea-radius-small"],
+            medium: styles["lambda-textarea-radius-medium"],
+            large: styles["lambda-textarea-radius-large"],
         },
-        size: {
-            tiny: styles["lambda-textarea-wrapper-tiny"],
-            small: styles["lambda-textarea-wrapper-small"],
-            medium: styles["lambda-textarea-wrapper-medium"],
-            large: styles["lambda-textarea-wrapper-large"],
+        variant: {
+            outline: styles["lambda-textarea-outline"],
+            borderless: styles["lambda-textarea-borderless"],
         },
         invalid: {
-            true: styles["lambda-textarea-wrapper-invalid"],
+            true: styles["lambda-textarea-invalid"],
             false: "",
         },
         disabled: {
-            false: styles["lambda-textarea-wrapper-enabled"],
-            true: styles["lambda-textarea-wrapper-disabled"],
+            false: styles["lambda-textarea-enabled"],
+            true: styles["lambda-textarea-disabled"],
         },
     },
     defaultVariants: {
@@ -40,21 +38,48 @@ const card = cva(styles[`lambda-textarea`], {
     },
 })
 
+const labelString = cva(styles[`lambda-textarea-label`], {
+    variants: {
+        radius: {
+            none: styles["lambda-textarea-label-radius-none"],
+            small: styles["lambda-textarea-label-radius-small"],
+            medium: styles["lambda-textarea-label-radius-medium"],
+            large: styles["lambda-textarea-label-radius-large"],
+        },
+        size: {
+            tiny: styles["lambda-textarea-label-tiny"],
+            small: styles["lambda-textarea-label-small"],
+            medium: styles["lambda-textarea-label-medium"],
+            large: styles["lambda-textarea-label-large"],
+        },
+        disabled: {
+            false: styles["lambda-textarea-label-enabled"],
+            true: styles["lambda-textarea-label-disabled"],
+        }
 
-export interface CardProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "disabled"> {
-    variant?: VariantProps<typeof card>["variant"]
-    radius?: VariantProps<typeof card>["radius"]
-    size?: VariantProps<typeof card>["size"]
-    invalid?: VariantProps<typeof card>["invalid"]
-    disabled?: VariantProps<typeof card>["disabled"]
+    },
+    defaultVariants: {
+        disabled: false,
+        radius: 'medium',
+        size: 'medium',
+    },
+})
+
+
+export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "disabled"> {
+    variant?: VariantProps<typeof textarea>["variant"]
+    radius?: VariantProps<typeof textarea>["radius"]
+    size?: VariantProps<typeof textarea>["size"]
+    invalid?: VariantProps<typeof textarea>["invalid"]
+    disabled?: VariantProps<typeof textarea>["disabled"]
     label?: string
     errorMessage?: string
     helperText?: string
-    isRequired?: boolean
+    required?: boolean
 
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, CardProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     (
         {
             className,
@@ -66,21 +91,21 @@ export const TextArea = forwardRef<HTMLTextAreaElement, CardProps>(
             label,
             errorMessage,
             helperText,
-            isRequired = false,
+            required = false,
             ...props
         },
         ref
     ) => {
         return (
             <div
-                className={card({ variant, radius, className, size, invalid, disabled })}
+                className={clsx(styles['lambda-textarea-wrapper'])}
             >
-                {label && <label className={clsx(styles["lambda-textarea-label"], { [styles["lambda-textarea-label-required"]]: isRequired })}>
+                {label && <label className={clsx(labelString({ disabled, radius, size }), { [styles["lambda-textarea-label-required"]]: required })}>
                     {label}
                 </label>}
-                <TextArea
+                <textarea
+                    className={textarea({ variant, radius, className, size, invalid, disabled })}
                     ref={ref}
-                    className={styles["lambda-textarea"]}
                     {...props}
                 />
                 {helperText && <span className={styles["lambda-textarea-helper"]}>
