@@ -251,7 +251,7 @@
     background-color: var(--surface-a);
     box-shadow: var(--box-shadow);
     animation: growDown 0.2s ease-in-out forwards;
-    z-index: 2;
+    z-index: 99;
 
     &.select-dropdown-tiny {
         top: calc(90% + var(--padding-xs));
