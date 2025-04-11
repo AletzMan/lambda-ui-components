@@ -69,7 +69,7 @@ export const Number: Story = {
         typeNumber: "default",
         label: 'Label',
         helperText: "Must be between 8 and 10 characters long.",
-        isRequired: false,
+        required: false,
         invalid: false,
         errorMessage: "This is a sample error message for demonstration",
         placeholder: "0",

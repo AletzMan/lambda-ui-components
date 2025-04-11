@@ -77,7 +77,7 @@ const labels = cva(styles['lambda-number-label'], {
             large: styles['lambda-number-label-radius-large'],
             pill: styles['lambda-number-label-radius-pill'],
         },
-        isRequired: {
+        required: {
             true: styles["lambda-number-label-required"]
         }
     },
@@ -193,7 +193,7 @@ export interface InputProps
     VariantProps<typeof inputNumber> {
     label?: string
     invalid?: boolean
-    isRequired?: boolean
+    required?: boolean
     errorMessage?: string
     helperText?: string
     onChange?: (value: number) => void
@@ -211,7 +211,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
             invalid,
             errorMessage,
             disabled,
-            isRequired,
+            required,
             helperText,
             min = Number.MIN_SAFE_INTEGER,
             max = Number.MAX_SAFE_INTEGER,
@@ -314,7 +314,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
 
         return (
             <div className={clsx(wrapper({ disabled, className }))}>
-                {label && <label className={labels({ radius, size, isRequired })}>{label}</label>}
+                {label && <label className={labels({ radius, size, required })}>{label}</label>}
                 <div className={inputNumber({ variant, disabled, radius, typeNumber, size, invalid })}>
                     <div className={styles['lambda-number-container']}>
                         <div className={typeCurrency({ typeNumber, size, variant, radius })}>{getIcon()}</div>
