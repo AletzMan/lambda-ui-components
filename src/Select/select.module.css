@@ -14,9 +14,9 @@
     position: absolute;
     top: -1.4em;
     display: block;
-    font-weight: var(--font-weight-reg);
+    font-weight: var(--font-weight-md);
     font-family: var(--font-family);
-    color: var(--primary-text-color);
+    color: var(--label-color);
 
     &.select-label-required {
         &::after {
