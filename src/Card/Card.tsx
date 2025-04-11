@@ -92,8 +92,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
                         <div className={styles[`lambda-card-header-content`]}>
                             {header.icon && <span className={styles[`lambda-card-header-icon`]}>{header.icon}</span>}
                             <div className={styles[`lambda-card-header-text`]}>
-                                <h1 className={styles[`lambda-card-header-title`]}>{header.title}</h1>
-                                <p className={styles[`lambda-card-header-description`]}>{header.description}</p>
+                                {header.title && <h1 className={styles[`lambda-card-header-title`]}>{header.title}</h1>}
+                                {header.description && <p className={styles[`lambda-card-header-description`]}>{header.description}</p>}
                             </div>
                         </div>
                     </header>}
