@@ -230,7 +230,8 @@ textarea {
     box-sizing: border-box;
 }
 
+
 .scrollBar {
-    scrollbar-color: var(--primary-outline-color) var(--surface-c);
+    scrollbar-color: var(--primary-color) var(--secondary-light-color);
     scrollbar-width: thin;
 }

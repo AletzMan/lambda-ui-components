@@ -1,11 +1,12 @@
 
-import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch } from '../src/main'
-import { Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react"
+import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main'
+import { Bookmark, CircleEllipsis, CodeXml, Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react"
 import styles from "./styles.module.css"
 import { useState } from 'react'
 import { ButtonThemeController } from '../src/ThemeProvider/ThemeProvider'
 import { buttonsPrimary } from './constants'
 import { useNotification } from '../src/Notification/NotificationProvider'
+import { Card } from '../src/Card/Card'
 
 
 
@@ -17,9 +18,11 @@ function App() {
   const [sizeCheckbox, setSizeCheckbox] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledCheckbox, setDisabledCheckbox] = useState(false)
   const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("small")
+  const [variantCheckbox, setVariantCheckbox] = useState<"outline" | "flat" | "solid" | undefined>("solid")
   const [sizeSwitch, setSizeSwitch] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledSwitch, setDisabledSwitch] = useState(false)
   const [shapeSwitch, setShapeSwitch] = useState<"square" | "soft" | "rounded" | undefined>("rounded")
+  const [variantSwitch, setVariantSwitch] = useState<"outline" | "flat" | "solid" | undefined>("solid")
   const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
   const [disabledInput, setDisabledInput] = useState(false)
   const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
@@ -32,6 +35,10 @@ function App() {
   const [validInputNumber, setValidInputNumber] = useState(true)
   const [errorMessageNumber, setErrorMessageNumber] = useState("This field has an error.")
   const [sizeRadio, setSizeRadio] = useState<"medium" | "small" | "large" | undefined>("medium")
+  const [typeRadio, setTypeRadio] = useState<"radio" | "button" | undefined>("button")
+  const [orientationRadio, setOrientationRadio] = useState<"horizontal" | "vertical" | undefined>("horizontal")
+  const [variantRadio, setVariantRadio] = useState<"outline" | "flat" | "solid" | undefined>("solid")
+  const [colorRadio, setColorRadio] = useState<"primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined>("primary")
   const [disabledRadio, setDisabledRadio] = useState(false)
   const [valueRadioBordered, setValueRadioBordered] = useState("")
   const [sizeSelect, setSizeSelect] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
@@ -42,16 +49,26 @@ function App() {
   const [notificationType, setNotificationType] = useState<"themed" | "solid" | "darkened" | "lightened" | "flat" | undefined>("themed")
   const [notificationPosition, setNotificationPosition] = useState<"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined>("top-center")
   const [closableNotification, setClosableNotification] = useState(false)
+  const [radiusCard, setRadiusCard] = useState<"medium" | "small" | "large" | "none" | undefined>("small")
+  const [sizeCard, setSizeCard] = useState<"medium" | "small" | "large" | undefined>("small")
+  const [variantCard, setVariantCard] = useState<"outline" | "borderless" | undefined>("outline")
+  const [radiusTextArea, setRadiusTextArea] = useState<"medium" | "small" | "large" | "none" | undefined>("small")
+  const [sizeTextArea, setSizeTextArea] = useState<"medium" | "small" | "large" | "tiny" | undefined>("small")
+  const [variantTextArea, setVariantTextArea] = useState<"outline" | "borderless" | undefined>("outline")
+  const [disabledTextArea, setDisabledTextArea] = useState(false)
+  const [invalidTextArea, setInvalidTextArea] = useState(false)
+  const [errorMessageTextArea, setErrorMessageTextArea] = useState("This field has an error.")
   const { showNotification } = useNotification()
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} `}>
       <header className={styles.header}>
         <h1 className={styles.title}>Lambda UI Components</h1>
         <ButtonThemeController />
       </header>
+      {/* BUTTON */}
       <section className={styles.subsection}>
-        <h2 className={styles.subtitle}>Buttons</h2>
+        <h2 className={styles.subtitle}>Button</h2>
         <div className={styles.control_buttons}>
           <Checkbox label='Disabled' checked={disabledButtons} size="medium" color="secondary" onChange={(e) => setDisabledButtons(e.currentTarget.checked)} />
           <Checkbox label='Loading' checked={loadingButtons} size="medium" color="info" onChange={(e) => setLoadingButtons(e.currentTarget.checked)} />
@@ -71,237 +88,138 @@ function App() {
           </select>
         </div>
         <div className={styles.container_buttons}>
-          <div className={styles.buttons}>
-            {buttonsPrimary.map((button) => (
-              <Button key={button.color}
-                className={styles.button}
-                size={sizeButtons}
-                radius={radiusButtons}
-                variant="classic"
-                color={button.color}
-                label={button.label}
-                disabled={disabledButtons}
-                loading={loadingButtons}
-                loadingText="Loading"
-                iconPosition="left"
-                icon={button.icon} />
-            ))}
-          </div>
-          <div className={styles.buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
             {buttonsPrimary.map((button) => (
               <Button key={button.color}
                 className={styles.button}
                 size={sizeButtons}
                 radius={radiusButtons}
                 variant="solid"
+                color={button.color}
+                label={button.label}
                 disabled={disabledButtons}
                 loading={loadingButtons}
                 loadingText="Loading"
-                color={button.color}
-                label={button.label}
-                iconPosition="left"
-                icon={button.icon} />
-            ))}
-          </div>
-          <div className={styles.buttons}>
-            {buttonsPrimary.map((button) => (
-              <Button key={button.color}
-                className={styles.button}
-                size={sizeButtons}
-                radius={radiusButtons}
-                variant="outline"
-                color={button.color}
-                disabled={disabledButtons}
-                loading={loadingButtons}
-                loadingText="Loading"
-                label={button.label}
-                iconPosition="left"
-                icon={button.icon} />
-            ))}
-          </div>
-          <div className={styles.buttons}>
-            {buttonsPrimary.map((button) => (
-              <Button key={button.color}
-                className={styles.button}
-                size={sizeButtons}
-                radius={radiusButtons}
-                variant="dashed"
-                color={button.color}
-                disabled={disabledButtons}
-                loading={loadingButtons}
-                loadingText="Loading"
-                label={button.label}
-                iconPosition="left"
-                icon={button.icon} />
-            ))}
-          </div>
-          <div className={styles.buttons}>
-            {buttonsPrimary.map((button) => (
-              <Button key={button.color}
-                className={styles.button}
-                size={sizeButtons}
-                radius={radiusButtons}
-                variant="ghost"
-                disabled={disabledButtons}
-                loading={loadingButtons}
-                loadingText="Loading"
-                color={button.color}
-                label={button.label}
-                iconPosition="left"
-                icon={button.icon} />
-            ))}
-          </div>
-          <div className={styles.buttons}>
-            {buttonsPrimary.map((button) => (
-              <Button key={button.color}
-                className={styles.button}
-                size={sizeButtons}
-                radius={'small'}
-                variant="text"
-                color={button.color}
-                disabled={disabledButtons}
-                loading={loadingButtons}
-                loadingText="Loading"
-                label={button.label}
                 iconPosition="left"
                 icon={button.icon} />
             ))}
           </div>
         </div>
       </section>
-      <div className={styles.section_container}>
-        <section className={styles.subsection}>
-          <h2 className={styles.subtitle}>Checkbox</h2>
-          <div className={styles.control_buttons}>
-            <Checkbox label='Disabled' checked={disabledCheckbox} size="medium" color="secondary" onChange={(e) => setDisabledCheckbox(e.currentTarget.checked)} />
-            <select className={styles.control_size} value={sizeCheckbox} onChange={(e) => setSizeCheckbox(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
-              <option value="tiny">Tiny</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-            <select className={styles.control_size} value={radiusCheckbox} onChange={(e) => setRadiusCheckbox(e.currentTarget.value as "medium" | "small" | "none" | "circle" | undefined)}>
-              <option value="none">None</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="circle">Circle</option>
-            </select>
+      {/* CHECKBOX */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Checkbox</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledCheckbox} size="medium" color="secondary" onChange={(e) => setDisabledCheckbox(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeCheckbox} onChange={(e) => setSizeCheckbox(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={radiusCheckbox} onChange={(e) => setRadiusCheckbox(e.currentTarget.value as "medium" | "small" | "none" | "circle" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="circle">Circle</option>
+          </select>
+          <select className={styles.control_size} value={variantCheckbox} onChange={(e) => setVariantCheckbox(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)}>
+            <option value="outline">Outline</option>
+            <option value="flat">Flat</option>
+            <option value="solid">Solid</option>
+          </select>
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Checkbox size={sizeCheckbox} label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} variant={variantCheckbox} />
+            <Checkbox size={sizeCheckbox} color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} variant={variantCheckbox} />
+            <Checkbox size={sizeCheckbox} color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} variant={variantCheckbox} />
+            <Checkbox size={sizeCheckbox} color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} variant={variantCheckbox} />
+            <Checkbox size={sizeCheckbox} color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} variant={variantCheckbox} />
+            <Checkbox size={sizeCheckbox} color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} variant={variantCheckbox} />
           </div>
-          <div className={styles.container_buttons}>
-            <div className={styles.buttons}>
-              <Checkbox size={sizeCheckbox} label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            </div>
-            <div className={styles.buttons}>
-              <Checkbox size={sizeCheckbox} variant="flat" label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="flat" color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="flat" color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="flat" color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="flat" color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="flat" color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            </div>
-            <div className={styles.buttons}>
-              <Checkbox size={sizeCheckbox} variant="outline" label='Primary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="outline" color="secondary" label='Secondary' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="outline" color="success" label='Success' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="outline" color="danger" label='Danger' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="outline" color="warning" label='Warning' disabled={disabledCheckbox} radius={radiusCheckbox} />
-              <Checkbox size={sizeCheckbox} variant="outline" color="info" label='Info' disabled={disabledCheckbox} radius={radiusCheckbox} />
-            </div>
+        </div>
+      </section>
+      {/* SWITCH */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Switch</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledSwitch} size="medium" color="secondary" onChange={(e) => setDisabledSwitch(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeSwitch} onChange={(e) => setSizeSwitch(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={shapeSwitch} onChange={(e) => setShapeSwitch(e.currentTarget.value as "square" | "soft" | "rounded" | undefined)}>
+            <option value="square">Square</option>
+            <option value="soft">Soft</option>
+            <option value="rounded">Rounded</option>
+          </select>
+          <select className={styles.control_size} value={variantSwitch} onChange={(e) => setVariantSwitch(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)}>
+            <option value="outline">Outline</option>
+            <option value="flat">Flat</option>
+            <option value="solid">Solid</option>
+          </select>
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Switch variant={variantSwitch} color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Primary' />
+            <Switch variant={variantSwitch} color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Secondary' />
+            <Switch variant={variantSwitch} color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Success' />
+            <Switch variant={variantSwitch} color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Danger' />
+            <Switch variant={variantSwitch} color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Warning' />
+            <Switch variant={variantSwitch} color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Info' />
           </div>
-        </section>
-        <section className={styles.subsection}>
-          <h2 className={styles.subtitle}>Switch</h2>
-          <div className={styles.control_buttons}>
-            <Checkbox label='Disabled' checked={disabledSwitch} size="medium" color="secondary" onChange={(e) => setDisabledSwitch(e.currentTarget.checked)} />
-            <select className={styles.control_size} value={sizeSwitch} onChange={(e) => setSizeSwitch(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
-              <option value="tiny">Tiny</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-            <select className={styles.control_size} value={shapeSwitch} onChange={(e) => setShapeSwitch(e.currentTarget.value as "square" | "soft" | "rounded" | undefined)}>
-              <option value="square">Square</option>
-              <option value="soft">Soft</option>
-              <option value="rounded">Rounded</option>
-            </select>
+        </div>
+      </section>
+      {/* RADIO */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Radio</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledRadio} size="medium" color="secondary" onChange={(e) => setDisabledRadio(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeRadio} onChange={(e) => setSizeRadio(e.currentTarget.value as "medium" | "small" | "large" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={typeRadio} onChange={(e) => setTypeRadio(e.currentTarget.value as "radio" | "button" | undefined)}>
+            <option value="radio">Radio</option>
+            <option value="button">Button</option>
+          </select>
+          <select className={styles.control_size} value={orientationRadio} onChange={(e) => setOrientationRadio(e.currentTarget.value as "horizontal" | "vertical" | undefined)}>
+            <option value="vertical">Vertical</option>
+            <option value="horizontal">Horizontal</option>
+          </select>
+          <select className={styles.control_size} value={variantRadio} onChange={(e) => setVariantRadio(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)}>
+            <option value="outline">Outline</option>
+            <option value="flat">Flat</option>
+            <option value="solid">Solid</option>
+          </select>
+          <select className={styles.control_size} value={colorRadio} onChange={(e) => setColorRadio(e.currentTarget.value as "primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined)}>
+            <option value="primary">Primary</option>
+            <option value="secondary">Secondary</option>
+            <option value="danger">Danger</option>
+            <option value="success">Success</option>
+            <option value="warning">Warning</option>
+            <option value="info">Info</option>
+          </select>
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <RadioGroup defaultValue='second' type={typeRadio} selectedOption={valueRadioBordered} disabled={disabledRadio} radius='small' color={colorRadio} gap='0.5em' size={sizeRadio} variant={variantRadio} onChange={(e) => setValueRadioBordered(e)} orientation={orientationRadio} >
+              <Radio value="first" label="First" />
+              <Radio value="third" label="Third" />
+              <Radio value="second" label="Second" />
+              <Radio value="fourth" label="Fourth" />
+              <Radio value="fifth" label="Fifth" />
+              <Radio value="sixth" label="Sixth" />
+            </RadioGroup>
           </div>
-          <div className={styles.container_buttons}>
-            <div className={styles.buttons}>
-              <Switch variant="solid" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Primary' />
-              <Switch variant="solid" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Secondary' />
-              <Switch variant="solid" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Success' />
-              <Switch variant="solid" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} label='Danger' />
-              <Switch variant="solid" color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="solid" color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-            </div>
-            <div className={styles.buttons}>
-              <Switch variant="flat" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="flat" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="flat" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="flat" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="flat" color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="flat" color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-            </div>
-            <div className={styles.buttons}>
-              <Switch variant="outline" color="primary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="outline" color="secondary" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="outline" color="success" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="outline" color="danger" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="outline" color="warning" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-              <Switch variant="outline" color="info" size={sizeSwitch} disabled={disabledSwitch} shape={shapeSwitch} />
-            </div>
-          </div>
-        </section>
-        <section className={styles.subsection}>
-          <h2 className={styles.subtitle}>Radio</h2>
-          <div className={styles.control_buttons}>
-            <Checkbox label='Disabled' checked={disabledRadio} size="medium" color="secondary" onChange={(e) => setDisabledRadio(e.currentTarget.checked)} />
-            <select className={styles.control_size} value={sizeRadio} onChange={(e) => setSizeRadio(e.currentTarget.value as "medium" | "small" | "large" | undefined)}>
-              <option value="tiny">Tiny</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-          </div>
-          <div className={styles.container_buttons}>
-            <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} disabled={disabledRadio} gap='0.35em' size={sizeRadio} variant='bordered' onChange={(e) => setValueRadioBordered(e)}>
-                <Radio color='primary' type='radio' value="first" label="First" />
-                <Radio color='secondary' type='radio' value="third" label="Third" />
-                <Radio color='danger' type='radio' value="second" label="Second" />
-                <Radio color='success' type='radio' value="fourth" label="Fourth" />
-                <Radio color='warning' type='radio' value="fifth" label="Fifth" />
-                <Radio color='info' type='radio' value="sixth" label="Sixth" />
-              </RadioGroup>
-            </div>
-            <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} disabled={disabledRadio} gap='0.35em' size={sizeRadio} variant='flat' onChange={(e) => setValueRadioBordered(e)}>
-                <Radio color='primary' type='radio' value="first" label="First" />
-                <Radio color='secondary' type='radio' value="third" label="Third" />
-                <Radio color='danger' type='radio' value="second" label="Second" />
-                <Radio color='success' type='radio' value="fourth" label="Fourth" />
-                <Radio color='warning' type='radio' value="fifth" label="Fifth" />
-                <Radio color='info' type='radio' value="sixth" label="Sixth" />
-              </RadioGroup>
-            </div>
-            <div className={styles.buttons}>
-              <RadioGroup defaultValue='second' selectedOption={valueRadioBordered} disabled={disabledRadio} gap='0.35em' size={sizeRadio} variant='outline' onChange={(e) => setValueRadioBordered(e)} radius='medium' name='outline' orientation='vertical'>
-                <Radio color='primary' value="first" label="First" />
-                <Radio color='secondary' value="third" label="Third" />
-                <Radio color='danger' value="second" label="Second" />
-                <Radio color='success' value="fourth" label="Fourth" />
-                <Radio color='warning' value="fifth" label="Fifth" />
-                <Radio color='info' value="sixth" label="Sixth" />
-              </RadioGroup>
-            </div>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      {/* INPUT */}
       <section className={styles.subsection}>
         <h2 className={styles.subtitle}>Input</h2>
         <div className={styles.control_buttons}>
@@ -329,155 +247,261 @@ function App() {
         </div>
         <div className={styles.container_buttons}>
           <div className={styles.buttons}>
-            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' variant={variantInput} radius={radiusInput} disabled={disabledInput} size={sizeInput} isRequired error={!validInput} />
-            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' variant={variantInput} radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
-            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' variant={variantInput} radius={radiusInput} size={sizeInput} error={!validInput} errorMessage={errorMessage} />
-            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} variant={variantInput} radius={radiusInput} error={!validInput} errorMessage={errorMessage} />
+            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' variant={variantInput} radius={radiusInput} disabled={disabledInput} size={sizeInput} required invalid={!validInput} helperText='Requerido *' />
+            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' variant={variantInput} radius={radiusInput} size={sizeInput} invalid={!validInput} errorMessage={errorMessage} />
+            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' variant={variantInput} radius={radiusInput} size={sizeInput} invalid={!validInput} errorMessage={errorMessage} />
+            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} variant={variantInput} radius={radiusInput} invalid={!validInput} errorMessage={errorMessage} />
           </div>
           <div className={styles.buttons}>
-            <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant={variantInput} radius={radiusInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Ingrese' errorMessage={errorMessage} />
+            <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant={variantInput} radius={radiusInput} size={sizeInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="text" label='Ingrese' />
             </InputGroup>
-            <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} radius={radiusInput} variant={variantInput} size={sizeInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='URL de imagen' errorMessage={errorMessage} />
+            <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} radius={radiusInput} variant={variantInput} size={sizeInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="text" label='URL de imagen' />
             </InputGroup>
-            <InputGroup prefixElement={<User />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Ingrese' errorMessage={errorMessage} />
+            <InputGroup prefixElement={<User />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="text" label='Ingrese' />
             </InputGroup>
-            <InputGroup suffixElement={<Settings />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' helperText='Requerido *' errorMessage={errorMessage} />
+            <InputGroup suffixElement={<Settings />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="text" label='Configuracion' helperText='Requerido *' />
             </InputGroup>
           </div>
           <div className={styles.buttons}>
-            <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
-              <Input type="search" errorMessage={errorMessage} />
+            <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="search" />
             </InputGroup>
-            <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
+            <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="text" label='Configuracion' floatingLabel />
             </InputGroup>
-            <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="info" style={{ width: "4em", backgroundColor: "#ffe11e", color: "#000000" }} />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
+            <InputGroup suffixElement={<Button icon={<Search />} variant="solid" color="info" style={{ width: "4em", backgroundColor: "#ffe11e", color: "#000000" }} />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="text" label='Configuracion' floatingLabel />
             </InputGroup>
-            <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} radius={radiusInput} size={sizeInput} disabled={disabledInput} variant={variantInput} error={!validInput}>
-              <Input type="text" label='Configuracion' floatingLabel errorMessage={errorMessage} />
+            <InputGroup prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />} radius={radiusInput} size={sizeInput} disabled={disabledInput} variant={variantInput} invalid={!validInput} errorMessage={errorMessage}>
+              <Input type="text" label='Configuracion' floatingLabel />
             </InputGroup>
           </div>
         </div>
-        <section className={styles.subsection}>
-          <h2 className={styles.subtitle}>Input Number</h2>
-          <div className={styles.control_buttons}>
-            <Checkbox label='Disabled' checked={disabledInputNumber} size="medium" color="secondary" onChange={(e) => setDisabledInputNumber(e.currentTarget.checked)} />
-            <Checkbox label='Is Valid' checked={validInputNumber} size="medium" color="info" onChange={(e) => setValidInputNumber(e.currentTarget.checked)} />
-            <select className={styles.control_size} value={sizeInputNumber} onChange={(e) => setSizeInputNumber(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
-              <option value="tiny">Tiny</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-            <select className={styles.control_size} value={radiusInputNumber} onChange={(e) => setRadiusInputNumber(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined)}>
-              <option value="none">None</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-              <option value="pill">Pill</option>
-            </select>
-            <Input value={errorMessageNumber} onChange={(e) => setErrorMessageNumber(e.currentTarget.value)} />
+      </section>
+      {/* INPUT NUMBER */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Input Number</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledInputNumber} size="medium" color="secondary" onChange={(e) => setDisabledInputNumber(e.currentTarget.checked)} />
+          <Checkbox label='Is Valid' checked={validInputNumber} size="medium" color="info" onChange={(e) => setValidInputNumber(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeInputNumber} onChange={(e) => setSizeInputNumber(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={radiusInputNumber} onChange={(e) => setRadiusInputNumber(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="pill">Pill</option>
+          </select>
+          <Input value={errorMessageNumber} onChange={(e) => setErrorMessageNumber(e.currentTarget.value)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={styles.buttons}>
+            <InputNumber variant="outline" label='Default' typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+            <InputNumber variant="outline" label='Currency USD' typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+            <InputNumber variant="outline" label='Currency EUR' typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+            <InputNumber variant="outline" label='Currency GBP' typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessage} />
+            <InputNumber variant="outline" label='Porcentage' typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+            <InputNumber variant="outline" label='Decimal' typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
           </div>
-          <div className={styles.container_buttons}>
-            <div className={styles.buttons}>
-              <InputNumber variant="outline" label='Default' typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" label='Currency USD' typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" label='Currency EUR' typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" label='Currency GBP' typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} />
-              <InputNumber variant="outline" label='Porcentage' typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="outline" label='Decimal' typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-            </div>
-            <div className={styles.buttons}>
-              <InputNumber variant="flat" label='Default' typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" label='Currency USD' typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" label='Currency EUR' typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" label='Currency GBP' typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" label='Porcentage' typeNumber='percentage' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-              <InputNumber variant="flat" label='Decimal' typeNumber='decimal' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
-            </div>
+        </div>
+      </section>
+      {/* SELECT */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Select</h2>
+        <div className={styles.control_buttons}>
+          <Checkbox label='Disabled' checked={disabledSelect} size="medium" color="secondary" onChange={(e) => setDisabledSelect(e.currentTarget.checked)} />
+          <Checkbox label='Is Valid' checked={validSelect} size="medium" color="info" onChange={(e) => setValidSelect(e.currentTarget.checked)} />
+          <select className={styles.control_size} value={sizeSelect} onChange={(e) => setSizeSelect(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={radiusSelect} onChange={(e) => setRadiusSelect(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="pill">Pill</option>
+          </select>
+          <Input value={errorMessageSelect} onChange={(e) => setErrorMessageSelect(e.currentTarget.value)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Select label='Outline' variant="outline" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
+            <Select variant="flat" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
+            <Select variant="underline" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
           </div>
-        </section>
-        <section className={styles.subsection}>
-          <h2 className={styles.subtitle}>Select</h2>
-          <div className={styles.control_buttons}>
-            <Checkbox label='Disabled' checked={disabledSelect} size="medium" color="secondary" onChange={(e) => setDisabledSelect(e.currentTarget.checked)} />
-            <Checkbox label='Is Valid' checked={validSelect} size="medium" color="info" onChange={(e) => setValidSelect(e.currentTarget.checked)} />
-            <select className={styles.control_size} value={sizeSelect} onChange={(e) => setSizeSelect(e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined)}>
-              <option value="tiny">Tiny</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-            <select className={styles.control_size} value={radiusSelect} onChange={(e) => setRadiusSelect(e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined)}>
-              <option value="none">None</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-              <option value="pill">Pill</option>
-            </select>
-            <Input value={errorMessageSelect} onChange={(e) => setErrorMessageSelect(e.currentTarget.value)} />
+        </div>
+      </section>
+      {/* NOTIFICATION */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Notification</h2>
+        <div className={styles.control_buttons}>
+          <select className={styles.control_size} value={notificationType} onChange={(e) => setNotificationType(e.currentTarget.value as "themed" | "solid" | "flat" | "lightened" | "darkened" | undefined)}>
+            <option value="themed">Themed</option>
+            <option value="solid">Solid</option>
+            <option value="flat">Flat</option>
+            <option value="darkened">Darkened</option>
+            <option value="lightened">Lightened</option>
+          </select>
+          <select className={styles.control_size} value={notificationPosition} onChange={(e) => setNotificationPosition(e.currentTarget.value as "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined)}>
+            <option value="top-left">Top - Left</option>
+            <option value="top-center">Top - Center</option>
+            <option value="top-right">Top - Right</option>
+            <option value="bottom-left">Bottom - Left</option>
+            <option value="bottom-center">Bottom - Center</option>
+            <option value="bottom-right">Bottom - Right</option>
+          </select>
+          <Checkbox label='Closable' checked={closableNotification} onChange={(e) => setClosableNotification(e.currentTarget.checked)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Button variant="solid" color="secondary" size="medium" radius="small" label='Icon' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: < RssIcon /> })} />
+            <Button variant="solid" color="secondary" size="medium" radius="small" label='Image' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png' /> })} />
+            <Button variant="solid" color="success" size="medium" radius="small" label='Success' style={{ width: "8em" }} onClick={() => showNotification({ title: "Success", message: "Notification Success Color", closable: closableNotification, variant: notificationType, notificationType: "success", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
+            <Button variant="solid" color="danger" size="medium" radius="small" label='Danger' style={{ width: "8em" }} onClick={() => showNotification({ title: "Danger", message: "Notification Danger Color", closable: closableNotification, variant: notificationType, notificationType: "danger", placement: notificationPosition, onClose: () => console.log("Cerrado Warning"), onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
+            <Button variant="solid" color="warning" size="medium" radius="small" label='Warning' style={{ width: "8em" }} onClick={() => showNotification({ title: "Warning", message: "Notification Warning Color Para no modificar la sentencia de los demas puede que varie la movilidad", closable: closableNotification, variant: notificationType, onConfirm: () => console.log("Se confirmo"), notificationType: "warning", placement: notificationPosition })} />
+            <Button variant="solid" color="info" size="medium" radius="small" label='Info' style={{ width: "8em" }} onClick={() => showNotification({ title: "Info", cancelText: "Cancelar", confirmText: "Aceptar", message: "Notification Info Color", closable: closableNotification, variant: notificationType, notificationType: "info", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
           </div>
-          <div className={styles.container_buttons}>
-            <div className={styles.buttons}>
-              <Select label='Outline' variant="outline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
-            </div>
-            <div className={styles.buttons}>
-              <Select variant="flat" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
-            </div>
-            <div className={styles.buttons}>
-              <Select variant="underline" options={[{ label: "TypeScript", value: "typescript" }]} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
-            </div>
+        </div>
+      </section>
+      {/* CARD */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Card</h2>
+        <div className={styles.control_buttons}>
+          <select className={styles.control_size} value={variantCard} onChange={(e) => setVariantCard(e.currentTarget.value as "borderless" | "outline" | undefined)}>
+            <option value="borderless">Borderless</option>
+            <option value="outline">Outline</option>
+          </select>
+          <select className={styles.control_size} value={radiusCard} onChange={(e) => setRadiusCard(e.currentTarget.value as "none" | "small" | "medium" | "large" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={sizeCard} onChange={(e) => setSizeCard(e.currentTarget.value as "small" | "medium" | "large" | undefined)}>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Card
+              variant={variantCard}
+              radius={radiusCard}
+              size={sizeCard}
+              image={{
+                src: "https://images.pexels.com/photos/574073/pexels-photo-574073.jpeg?auto=compress&cs=tinysrgb&w=750&h=350&dpr=1",
+                alt: "JavaScript",
+                heightPorcent: 100,
+              }}
+
+              header={{
+                title: "React Hooks",
+                description: "Updated Guide 2024",
+                icon: <CodeXml />,
+              }}
+              actions={[{
+                text: "See more",
+                icon: <CircleEllipsis />,
+                onClick: () => console.log("See more"),
+              },
+              {
+                text: "Save",
+                icon: <Bookmark />,
+                onClick: () => console.log("Save"),
+              }, {
+                text: "Follow",
+                icon: <RssIcon />,
+                onClick: () => console.log("Follow"),
+              }]}
+            >
+              <div>
+                React Hooks revolutionized the way we write components. useState and useEffect are fundamental, but there are more hooks like useContext, useReducer, and useCallback that can significantly improve your code.
+              </div>
+            </Card>
           </div>
-        </section>
-        <section className={styles.subsection}>
-          <h2 className={styles.subtitle}>Notification</h2>
-          <div className={styles.control_buttons}>
-            <select className={styles.control_size} value={notificationType} onChange={(e) => setNotificationType(e.currentTarget.value as "themed" | "solid" | "flat" | "lightened" | "darkened" | undefined)}>
-              <option value="themed">Themed</option>
-              <option value="solid">Solid</option>
-              <option value="flat">Flat</option>
-              <option value="darkened">Darkened</option>
-              <option value="lightened">Lightened</option>
-            </select>
-            <select className={styles.control_size} value={notificationPosition} onChange={(e) => setNotificationPosition(e.currentTarget.value as "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined)}>
-              <option value="top-left">Top - Left</option>
-              <option value="top-center">Top - Center</option>
-              <option value="top-right">Top - Right</option>
-              <option value="bottom-left">Bottom - Left</option>
-              <option value="bottom-center">Bottom - Center</option>
-              <option value="bottom-right">Bottom - Right</option>
-            </select>
-            <Checkbox label='Closable' checked={closableNotification} onChange={(e) => setClosableNotification(e.currentTarget.checked)} />
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Card
+              variant={variantCard}
+              radius={radiusCard}
+              size={sizeCard}
+
+              header={{
+                title: "React Hooks",
+              }}
+            >
+              <div>
+                React Hooks revolutionized the way we write components. useState and useEffect are fundamental, but there are more hooks like useContext, useReducer, and useCallback that can significantly improve your code.
+              </div>
+            </Card>
           </div>
-          <div className={styles.container_buttons}>
-            <div className={styles.buttons}>
-              <Button variant="classic" color="secondary" size="medium" radius="small" label='Icon' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: < RssIcon /> })} />
-            </div>
-            <div className={styles.buttons}>
-              <Button variant="classic" color="secondary" size="medium" radius="small" label='Image' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png' /> })} />
-            </div>
-            <div className={styles.buttons}>
-              <Button variant="classic" color="success" size="medium" radius="small" label='Success' style={{ width: "8em" }} onClick={() => showNotification({ title: "Success", message: "Notification Success Color", closable: closableNotification, variant: notificationType, notificationType: "success", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
-            </div>
-            <div className={styles.buttons}>
-              <Button variant="classic" color="danger" size="medium" radius="small" label='Danger' style={{ width: "8em" }} onClick={() => showNotification({ title: "Danger", message: "Notification Danger Color", closable: closableNotification, variant: notificationType, notificationType: "danger", placement: notificationPosition, onClose: () => console.log("Cerrado Warning"), onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
-            </div>
-            <div className={styles.buttons}>
-              <Button variant="classic" color="warning" size="medium" radius="small" label='Warning' style={{ width: "8em" }} onClick={() => showNotification({ title: "Warning", message: "Notification Warning Color Para no modificar la sentencia de los demas puede que varie la movilidad", closable: closableNotification, variant: notificationType, onConfirm: () => console.log("Se confirmo"), notificationType: "warning", placement: notificationPosition })} />
-            </div>
-            <div className={styles.buttons}>
-              <Button variant="classic" color="info" size="medium" radius="small" label='Info' style={{ width: "8em" }} onClick={() => showNotification({ title: "Info", cancelText: "Cancelar", confirmText: "Aceptar", message: "Notification Info Color", closable: closableNotification, variant: notificationType, notificationType: "info", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
-            </div>
+        </div>
+      </section>
+      {/* TEXT AREA */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Text Area</h2>
+        <div className={styles.control_buttons}>
+          <select className={styles.control_size} value={variantTextArea} onChange={(e) => setVariantTextArea(e.currentTarget.value as "borderless" | "outline" | undefined)}>
+            <option value="borderless">Borderless</option>
+            <option value="outline">Outline</option>
+          </select>
+          <select className={styles.control_size} value={radiusTextArea} onChange={(e) => setRadiusTextArea(e.currentTarget.value as "none" | "small" | "medium" | "large" | undefined)}>
+            <option value="none">None</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <select className={styles.control_size} value={sizeTextArea} onChange={(e) => setSizeTextArea(e.currentTarget.value as "small" | "medium" | "large" | "tiny" | undefined)}>
+            <option value="tiny">Tiny</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+          <Checkbox label='Disabled' checked={disabledTextArea} size="medium" color="secondary" onChange={(e) => setDisabledTextArea(e.currentTarget.checked)} />
+          <Checkbox label='Invalid' checked={invalidTextArea} size="medium" color="info" onChange={(e) => setInvalidTextArea(e.currentTarget.checked)} />
+          <Input value={errorMessageTextArea} onChange={(e) => setErrorMessageTextArea(e.currentTarget.value)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <TextArea
+              radius={radiusTextArea}
+              size={sizeTextArea}
+              variant={variantTextArea}
+              disabled={disabledTextArea}
+              invalid={invalidTextArea}
+              errorMessage={errorMessageTextArea}
+              label="Text Area"
+              placeholder="Escribe algo..."
+              helperText="Write something..."
+              required
+              rows={5}
+              cols={30} />
           </div>
-        </section>
+        </div>
       </section>
     </section>
   )
 }
 
 export default App
+
+
+const namesSelect = [
+  { label: "TypeScript", value: "typescript" },
+  { label: "React", value: "react" },
+  { label: "JavaScript", value: "javascript" },
+  { label: "Angular", value: "angular" },
+  { label: "Vue", value: "vue" },
+]
