@@ -61,7 +61,7 @@ const NotificationWithButton = () => {
     const handleClick = () => {
         showNotification({
             message: "You have a new notification. Check it out for more details",
-            notificationType: "default",
+            notificationType: "secondary",
             placement: "top-right",
             variant: "flat",
             duration: 7000,
@@ -136,7 +136,7 @@ const NotificationWithButton = () => {
 
 export const Default: StoryObj<typeof Notification> = {
     args: {
-        notificationType: "default",
+        notificationType: "secondary",
         message: "You have a new notification.",
         placement: "top-center",
         variant: "flat",
