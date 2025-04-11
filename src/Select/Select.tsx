@@ -1,4 +1,4 @@
-import { useState, forwardRef, SelectHTMLAttributes, useRef, useEffect } from "react"
+import { useState, forwardRef, SelectHTMLAttributes, useRef, useEffect, useCallback } from "react"
 import { cva, VariantProps } from "class-variance-authority"
 import styles from "./select.module.css"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
@@ -202,6 +202,14 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
         const selectRef = useRef<HTMLDivElement>(null)
         const listRef = useRef<HTMLUListElement>(null)
 
+        const lenghtOptions = useCallback(() => {
+            if (options.length > 0) {
+                const maxLength = Math.max(...options.map((option) => option.label.length))
+                return maxLength
+            }
+            return placeholder.length
+        }, [options, placeholder])
+
 
         const checkDirection = () => {
             setTimeout(() => {
@@ -275,7 +283,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
             <div className={clsx([styles["select-wrapper"]], { [styles["select-wrapper-disabled"]]: disabled })} ref={ref} >
                 {label && <label className={labelSelect({ direction, radius, size, required })}>{label}</label>}
                 <div className={select({ size, variant, radius, disabled, invalid })} ref={selectRef} role="select">
-                    <button className={buttonSelect({ size, variant, radius, invalid, disabled })} onClick={toggleDropdown} style={{ width: `${placeholder?.length * 13}px` }}>
+                    <button className={buttonSelect({ size, variant, radius, invalid, disabled })} onClick={toggleDropdown} style={{ width: `${lenghtOptions() * 18}px` }}>
                         {selectedValue
                             ? <div className={selectedView({ size })}>
                                 {options.find((opt) => opt.value === selectedValue)?.avatar && <img className={styles["select-view-avatar"]} src={options.find((opt) => opt.value === selectedValue)?.avatar} />}
