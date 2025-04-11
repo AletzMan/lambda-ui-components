@@ -136,9 +136,9 @@
      position: absolute;
      top: -1.4em;
      font-family: var(--font-family);
-     color: var(--primary-text-color);
+     color: var(--label-color);
+     font-weight: var(--font-weight-md);
      padding: 0 0 0 4px;
-     font-weight: var(--font-weight-reg);
 
      &.lambda-number-label-required {
          &::after {
