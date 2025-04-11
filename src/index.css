@@ -71,7 +71,7 @@
     --foreground-label-color: #8fa2b3;
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #999999;
-    --label-color: #242424;
+    --label-color: #3f3f3f;
 
     --surface-a: #f8f7f7;
     --surface-b: #fdfdfd;
@@ -146,7 +146,7 @@
     --foreground-label-color: #b1c0cc;
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #626262;
-    --label-color: #b1c0cc;
+    --label-color: #a6a9ab;
 
     --surface-b: #191b1c;
     --surface-a: #1d1d20;
