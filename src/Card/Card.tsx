@@ -6,15 +6,10 @@ import { cva, VariantProps } from "class-variance-authority"
 const card = cva(styles[`lambda-card`], {
     variants: {
         variant: {
-            classic: styles[`lambda-card-classic`],
-            solid: styles[`lambda-card-solid`],
             outline: styles[`lambda-card-outline`],
-            dashed: styles[`lambda-card-dashed`],
-            ghost: styles[`lambda-card-ghost`],
-            text: styles[`lambda-card-text`],
+            borderless: styles[`lambda-card-borderless`],
         },
         size: {
-            tiny: styles[`lambda-card-tiny`],
             small: styles[`lambda-card-small`],
             medium: styles[`lambda-card-medium`],
             large: styles[`lambda-card-large`],
@@ -24,12 +19,10 @@ const card = cva(styles[`lambda-card`], {
             small: styles[`lambda-card-radius-small`],
             medium: styles[`lambda-card-radius-medium`],
             large: styles[`lambda-card-radius-large`],
-            pill: styles[`lambda-card-radius-pill`],
-            circle: styles[`lambda-card-radius-circle`],
         }
     },
     defaultVariants: {
-        variant: "solid",
+        variant: "outline",
         size: "medium",
         radius: 'medium',
     },
@@ -53,17 +46,26 @@ export interface ICardImage {
     heightPorcent?: number
 }
 
-export interface CardProps extends Omit<ButtonHTMLAttributes<HTMLDivElement>, "disabled" | "color">, VariantProps<typeof card> {
+export interface CardProps extends Omit<ButtonHTMLAttributes<HTMLDivElement>, "disabled" | "color"> {
     image?: ICardImage
     header?: ICardHeader
     actions?: ICardActions[]
+    variant?: VariantProps<typeof card>["variant"]
+    size?: "medium" | "small" | "large"
+    radius?: VariantProps<typeof card>["radius"]
+}
+
+const SizeHeight: Record<"medium" | "small" | "large", number> = {
+    small: 10,
+    medium: 15,
+    large: 18,
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
     (
         {
             className,
-            variant = "solid",
+            variant = "outline",
             size = "medium",
             radius = "small",
             header,
@@ -73,6 +75,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         },
         ref
     ) => {
+        console.log(image ? `${(10 / 100) * (image.heightPorcent || 0)}em` : "")
         return (
             <div
                 ref={ref}
@@ -80,7 +83,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
                 {...props}
             >
                 {image &&
-                    <div className={styles[`lambda-card-header-image-container`]} style={{ height: image.heightPorcent ? `${image.heightPorcent}%` : 'auto' }}>
+                    <div className={styles[`lambda-card-header-image-container`]} style={{ height: image.heightPorcent ? `${(SizeHeight[size || "medium"] / 100) * image.heightPorcent}em` : 'auto' }}>
                         <img className={styles[`lambda-card-header-image`]} src={image.src} alt={image.src || header?.title} />
                     </div>
                 }
