@@ -1,7 +1,6 @@
 .lambda-textarea-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
 
 
 }
@@ -10,6 +9,7 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-reg);
     color: var(--primary-color);
+    margin: 0 0 var(--gap-xs) 0;
 
     &.lambda-textarea-label-required {
         &::after {
@@ -100,6 +100,16 @@
             outline: 3px solid var(--primary-outline-color);
             border-color: var(--primary-color);
         }
+
+        &.lambda-textarea-invalid {
+            border: 1px dashed var(--danger-color);
+            background-color: var(--danger-light-color);
+
+            &:focus-within {
+                outline: 3px solid var(--danger-outline-color);
+                border-color: var(--danger-color);
+            }
+        }
     }
 
     &.lambda-textarea-borderless {
@@ -107,6 +117,14 @@
 
         &:focus-within {
             outline: 3px solid var(--primary-outline-color);
+        }
+
+        &.lambda-textarea-invalid {
+            background-color: var(--danger-light-color);
+
+            &:focus-within {
+                outline: 3px solid var(--danger-outline-color);
+            }
         }
     }
 }
