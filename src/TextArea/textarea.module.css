@@ -1,8 +1,7 @@
 .lambda-textarea-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
-
-
 }
 
 .lambda-textarea-label {
@@ -127,4 +126,18 @@
             }
         }
     }
+}
+
+.lambda-textarea-invalid-icon {
+    position: absolute;
+    color: var(--danger-color);
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    right: var(--padding-xs);
+    top: var(--padding-xs);
+
+    &.lambda-textarea-invalid-icon-whitlabel {
+        top: calc(var(--padding-xs) + var(--icon-size-sm));
+    }
+
 }

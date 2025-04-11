@@ -4,6 +4,7 @@ import styles from "./textarea.module.css"
 import { cva, VariantProps } from "class-variance-authority"
 import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 import clsx from "clsx"
+import { CircleX } from "lucide-react"
 
 const textarea = cva(styles[`lambda-textarea`], {
     variants: {
@@ -108,6 +109,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                     ref={ref}
                     {...props}
                 />
+                {invalid && <CircleX className={clsx(styles["lambda-textarea-invalid-icon"], { [styles["lambda-textarea-invalid-icon-whitlabel"]]: label })} />}
                 {helperText && <span className={styles["lambda-textarea-helper"]}>
                     {helperText}
                 </span>}
