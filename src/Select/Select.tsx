@@ -191,12 +191,13 @@ export interface SelectProps
     required?: boolean
     placeholder?: string
     errorMessage?: string
+    value?: string
 }
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(
-    ({ label, options, size, variant, radius, disabled, invalid, required, errorMessage, placeholder = "Select an option", ...props }, ref) => {
+    ({ label, options, size, variant, radius, disabled, invalid, required, errorMessage, value, placeholder = "Select an option", ...props }, ref) => {
         const [isOpen, setIsOpen] = useState(false)
-        const [selectedValue, setSelectedValue] = useState<string | null>(null)
+        const [selectedValue, setSelectedValue] = useState<string | null | undefined>(value)
         const [direction, setDirection] = useState<"up" | "down">("down")
         const selectRef = useRef<HTMLDivElement>(null)
         const listRef = useRef<HTMLUListElement>(null)
