@@ -52,13 +52,13 @@
     justify-content: flex-start;
     width: 100%;
     gap: var(--gap-md);
-    padding: var(--padding-md) var(--padding-lg);
     z-index: 1;
 }
 
 .lambda-card-header-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: var(--gap-xs);
 }
 
@@ -126,12 +126,16 @@
     border: none;
     color: var(--surface-g);
     background-color: var(--surface-a);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
         color: var(--primary-color);
-        background-color: var(--surface-c);
+        background-color: var(--primary-light-color);
         cursor: pointer;
+    }
+
+    &:active {
+        background-color: var(--surface-a);
     }
 
     &:not(:last-child) {
@@ -179,7 +183,8 @@
     }
 
     .lambda-card-header-content {
-        height: 3em;
+        padding: var(--padding-sm) var(--padding-lg);
+        max-height: 3em;
     }
 
     .lambda-card-body {
@@ -225,7 +230,8 @@
     }
 
     .lambda-card-header-content {
-        height: 4em;
+        padding: var(--padding-md) var(--padding-lg);
+        max-height: 4em;
     }
 
     .lambda-card-body {
@@ -271,7 +277,8 @@
     }
 
     .lambda-card-header-content {
-        height: 4em;
+        padding: var(--padding-lg) var(--padding-lg);
+        max-height: 4.5em;
     }
 
     .lambda-card-body {
