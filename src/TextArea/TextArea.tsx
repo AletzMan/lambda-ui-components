@@ -1,10 +1,11 @@
 
-import { TextareaHTMLAttributes, forwardRef } from "react"
+import { TextareaHTMLAttributes, forwardRef, FocusEvent, useState } from "react"
 import styles from "./textarea.module.css"
 import { cva, VariantProps } from "class-variance-authority"
 import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 import clsx from "clsx"
 import { CircleX } from "lucide-react"
+import { HelperText } from "../_util/HelperText/HelperText"
 
 const textarea = cva(styles[`lambda-textarea`], {
     variants: {
@@ -91,12 +92,30 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             disabled = false,
             label,
             errorMessage,
+            onFocus,
+            onBlur,
             helperText,
             required = false,
             ...props
         },
         ref
     ) => {
+        const [focused, setFocused] = useState(false)
+
+        const handleOnFocus = (e: FocusEvent<HTMLTextAreaElement>) => {
+            setFocused(true)
+            if (onFocus) {
+                onFocus(e)
+            }
+        }
+
+        const handleOnBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
+            setFocused(false)
+            if (onBlur) {
+                onBlur(e)
+            }
+        }
+
         return (
             <div
                 className={clsx(styles['lambda-textarea-wrapper'])}
@@ -107,12 +126,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 <textarea
                     className={textarea({ variant, radius, className, size, invalid, disabled })}
                     ref={ref}
+                    onFocus={handleOnFocus}
+                    onBlur={handleOnBlur}
                     {...props}
                 />
                 {invalid && <CircleX className={clsx(styles["lambda-textarea-invalid-icon"], { [styles["lambda-textarea-invalid-icon-whitlabel"]]: label })} />}
-                {helperText && <span className={styles["lambda-textarea-helper"]}>
-                    {helperText}
-                </span>}
+                {helperText && !invalid && <HelperText text={helperText} size={size} disabled={disabled} focused={focused} />}
                 {invalid && errorMessage && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
             </div>
         )
