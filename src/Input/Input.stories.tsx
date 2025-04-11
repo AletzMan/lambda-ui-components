@@ -45,7 +45,7 @@ const meta: Meta<typeof Input> = {
             type: "string",
             description: "Displays helper text beneath the input."
         },
-        isRequired: {
+        required: {
             control: "boolean",
             type: "boolean",
             description: "Indica si el campo de entrada es obligatorio.Si es `true`, se mostrará un indicador visual y/o se aplicará validación."
@@ -75,7 +75,7 @@ export const Text: Story = {
         label: "Password",
         floatingLabel: true,
         invalid: false,
-        isRequired: false,
+        required: false,
         type: "password",
         helperText: "",
         errorMessage: "This is a sample error message for demonstration",
@@ -92,7 +92,7 @@ export const Password: Story = {
         label: 'Passwword',
         floatingLabel: false,
         invalid: false,
-        isRequired: false,
+        required: false,
         type: 'password',
         helperText: "",
         errorMessage: "This is a sample error message for demonstration",
@@ -109,7 +109,7 @@ export const Search: Story = {
         label: 'Search',
         floatingLabel: false,
         invalid: false,
-        isRequired: false,
+        required: false,
         type: 'search',
         helperText: "",
         placeholder: "Search here...",
@@ -126,7 +126,7 @@ export const Email: Story = {
         label: 'Email',
         floatingLabel: false,
         invalid: false,
-        isRequired: false,
+        required: false,
         type: 'email',
         helperText: "",
         errorMessage: "This is a sample error message for demonstration",

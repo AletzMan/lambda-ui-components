@@ -165,11 +165,11 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
     errorMessage?: string
     floatingLabel?: boolean
     helperText?: string
-    isRequired?: boolean
+    required?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, invalid, errorMessage, disabled, type = "text", value: controlledValue, onChange, isRequired, floatingLabel, placeholder, helperText, ...props }, ref) => {
+    ({ className, variant: propVariant, radius: propRadius, size: propSize, label, invalid, errorMessage, disabled, type = "text", value: controlledValue, onChange, required, floatingLabel, placeholder, helperText, ...props }, ref) => {
         let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextInvalid, hasElements: "none" | "first" | "last" | "both"
         try {
             const context = useInputGroup()
@@ -253,7 +253,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         [styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,
                         [styles["lambda-input-label-default"]]: floatingLabel && !isLabelFloating,
                         [styles["lambda-input-label-placeholder"]]: floatingLabel && !isLabelFloating,
-                        [styles["lambda-input-label-isRequired"]]: isRequired,
+                        [styles["lambda-input-label-required"]]: required,
                     })}>
                         {`${label as string}`}
                     </label>
