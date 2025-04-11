@@ -7,6 +7,7 @@ import { CircleX, Eye, EyeOff, X } from "lucide-react"
 import clsx from 'clsx'
 import { useInputGroup } from "../InputGroup/InputGroup"
 import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
+import { HelperText } from "../_util/HelperText/HelperText"
 
 export const lambdaInput = cva(styles["lambda-input"], {
     variants: {
@@ -258,7 +259,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                         {`${label as string}`}
                     </label>
                 )}
-                {helperText && <label className={clsx(styles["lambda-input-helper"], { [styles["lambda-input-helper-disabled"]]: disabled })}>{helperText}</label>}
+                {helperText && <HelperText text={helperText} size={contextSize} disabled={contextDisabled} focused={isFocused} />}
                 <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, invalid: contextInvalid, type, hasElements }), { [styles["lambda-input-wrapper-group"]]: isGroup })}>
                     <div className={clsx(styles["lambda-input-input-wrapper"], { [styles["lambda-input-input-wrapper--password"]]: isPasswordType || isSearchType })}>
                         <input
