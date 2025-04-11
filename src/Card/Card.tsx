@@ -2,6 +2,7 @@
 import React, { HTMLAttributes, forwardRef } from "react"
 import styles from "./card.module.css"
 import { cva, VariantProps } from "class-variance-authority"
+import clsx from "clsx"
 
 const card = cva(styles[`lambda-card`], {
     variants: {
@@ -97,7 +98,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
                             </div>
                         </div>
                     </header>}
-                {props.children && <div className={styles[`lambda-card-body`]}>{props.children}</div>}
+                {props.children && <div className={clsx(styles[`lambda-card-body`], "scrollBar")}>{props.children}</div>}
                 {actions && actions.length > 0 &&
                     <footer className={styles[`lambda-card-footer`]}>
                         {actions.map((action, index) => (

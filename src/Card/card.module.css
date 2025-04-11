@@ -103,8 +103,9 @@
     text-wrap: pretty;
     color: inherit;
     height: 100%;
+    max-height: max-content;
     overflow-y: auto;
-    max-width: 40ch;
+    max-width: 38ch;
 }
 
 .lambda-card-footer {
@@ -189,7 +190,6 @@
 
     .lambda-card-body {
         font-size: var(--font-size-sm);
-        max-height: 10em;
     }
 
     .lambda-card-action-text {
@@ -236,7 +236,6 @@
 
     .lambda-card-body {
         font-size: var(--font-size-md);
-        max-height: 12em;
     }
 
     .lambda-card-action-text {
@@ -283,7 +282,6 @@
 
     .lambda-card-body {
         font-size: var(--font-size-md);
-        max-height: 12em;
     }
 
     .lambda-card-action-icon {
