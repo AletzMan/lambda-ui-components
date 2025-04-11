@@ -118,13 +118,13 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
         return (
             <div
-                className={clsx(styles['lambda-textarea-wrapper'])}
+                className={clsx(styles['lambda-textarea-wrapper'], { [styles['lambda-textarea-wrapper-disabled']]: disabled })}
             >
                 {label && <label className={clsx(labelString({ disabled, radius, size }), { [styles["lambda-textarea-label-required"]]: required })}>
                     {label}
                 </label>}
                 <textarea
-                    className={textarea({ variant, radius, className, size, invalid, disabled })}
+                    className={clsx("scrollBar", textarea({ variant, radius, className, size, invalid, disabled }))}
                     ref={ref}
                     onFocus={handleOnFocus}
                     onBlur={handleOnBlur}

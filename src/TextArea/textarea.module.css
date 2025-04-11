@@ -141,3 +141,28 @@
     }
 
 }
+
+.lambda-textarea-wrapper-disabled {
+    cursor: not-allowed;
+}
+
+.lambda-textarea-disabled {
+    background-color: var(--surface-c);
+    color: var(--foreground-disabled-color);
+    cursor: not-allowed;
+    pointer-events: none;
+
+    &::placeholder {
+        color: var(--surface-e);
+    }
+
+    &.lambda-textarea-outline {
+        border: 1px solid var(--surface-d);
+        color: var(--foreground-disabled-color);
+    }
+
+    &.lambda-textarea-borderless {
+        border: none;
+        color: var(--foreground-disabled-color);
+    }
+}
