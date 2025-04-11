@@ -18,11 +18,12 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-reg);
-    color: var(--surface-f);
-    font-style: italic;
     opacity: 0;
+    font-family: var(--font-family);
+    font-style: italic;
+    font-weight: var(--font-weight-reg);
+    font-size: var(--font-size-xs);
+    color: var(--surface-f);
     transform: translateY(0);
     transition: all 0.3s ease-in-out;
     z-index: -1;
