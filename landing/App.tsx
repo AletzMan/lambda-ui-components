@@ -453,25 +453,27 @@ function App() {
       <section className={styles.subsection}>
         <h2 className={styles.subtitle}>Text Area</h2>
         <div className={styles.control_buttons}>
-          <select className={styles.control_size} value={variantTextArea} onChange={(e) => setVariantTextArea(e.currentTarget.value as "borderless" | "outline" | undefined)}>
-            <option value="borderless">Borderless</option>
-            <option value="outline">Outline</option>
-          </select>
-          <select className={styles.control_size} value={radiusTextArea} onChange={(e) => setRadiusTextArea(e.currentTarget.value as "none" | "small" | "medium" | "large" | undefined)}>
-            <option value="none">None</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
-          <select className={styles.control_size} value={sizeTextArea} onChange={(e) => setSizeTextArea(e.currentTarget.value as "small" | "medium" | "large" | "tiny" | undefined)}>
-            <option value="tiny">Tiny</option>
-            <option value="small">Small</option>
-            <option value="medium">Medium</option>
-            <option value="large">Large</option>
-          </select>
-          <Checkbox label='Disabled' checked={disabledTextArea} size="medium" color="secondary" onChange={(e) => setDisabledTextArea(e.currentTarget.checked)} />
-          <Checkbox label='Invalid' checked={invalidTextArea} size="medium" color="info" onChange={(e) => setInvalidTextArea(e.currentTarget.checked)} />
-          <Input value={errorMessageTextArea} onChange={(e) => setErrorMessageTextArea(e.currentTarget.value)} />
+          <Select
+            label='Variant'
+            value={variantTextArea}
+            size="small"
+            onChange={(e) => setVariantTextArea(e.target.value as "borderless" | "outline" | undefined)}
+            options={[{ label: "Borderless", value: "borderless" }, { label: "Outline", value: "outline" }]} />
+          <Select
+            label='Radius'
+            value={radiusTextArea}
+            size="small"
+            onChange={(e) => setRadiusTextArea(e.target.value as "none" | "small" | "medium" | "large" | undefined)}
+            options={[{ label: "None", value: "none" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Select
+            label='Size'
+            value={sizeTextArea}
+            size="small"
+            onChange={(e) => setSizeTextArea(e.target.value as "small" | "medium" | "large" | "tiny" | undefined)}
+            options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Checkbox label='Disabled' checked={disabledTextArea} size="small" color="secondary" onChange={(e) => setDisabledTextArea(e.currentTarget.checked)} />
+          <Checkbox label='Invalid' checked={invalidTextArea} size="small" color="info" onChange={(e) => setInvalidTextArea(e.currentTarget.checked)} />
+          <Input label='Message Error' size="small" value={errorMessageTextArea} onChange={(e) => setErrorMessageTextArea(e.currentTarget.value)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={`${styles.buttons} ${styles.buttons_large}`}>
