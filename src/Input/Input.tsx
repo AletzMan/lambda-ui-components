@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
-import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, FocusEvent, useId } from "react"
+import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, useId } from "react"
 import styles from "./input.module.css"
 import { cva, VariantProps } from "class-variance-authority"
 import { CircleX, Eye, EyeOff, X } from "lucide-react"
@@ -160,13 +160,14 @@ const buttonPassword = cva(styles["lambda-input-toggle-password"], {
 })
 
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type">, VariantProps<typeof input> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange">, VariantProps<typeof input> {
     label?: string,
     invalid?: boolean,
     errorMessage?: string
     floatingLabel?: boolean
     helperText?: string
     required?: boolean
+    onChange?: (value: string) => void
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -217,7 +218,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const clearInput = () => {
             if (isSearchType) {
                 if (!isControlled) setInternalValue("")
-                if (onChange) onChange({ target: { value: "" } } as ChangeEvent<HTMLInputElement>)
+                if (onChange) onChange("")
             }
         }
 
@@ -227,23 +228,21 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 setInternalValue(newValue)
             }
             if (onChange) {
-                onChange(e)
+                onChange(e.currentTarget.value)
             }
             if (floatingLabel) {
                 setIsLabelFloating(!!newValue || isFocused)
             }
         }
 
-        const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
-            e.preventDefault()
+        const handleFocus = () => {
             setIsFocused(true)
             if (floatingLabel) {
                 setIsLabelFloating(true)
             }
         }
 
-        const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-            e.preventDefault()
+        const handleBlur = () => {
             setIsFocused(false)
             if (floatingLabel && !value) {
                 setIsLabelFloating(false)
