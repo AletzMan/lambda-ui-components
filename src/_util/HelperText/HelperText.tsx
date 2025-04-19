@@ -27,11 +27,12 @@ interface HelperTextProps {
     size?: "tiny" | "small" | "medium" | "large" | null
     disabled?: boolean | null
     focused?: boolean | null
+    id?: string | undefined
 }
 
-export function HelperText({ text, size = "medium", disabled = false, focused }: HelperTextProps) {
+export function HelperText({ text, size = "medium", disabled = false, focused, id }: HelperTextProps) {
     return (
-        <label className={clsx(helper({ disabled, size }), { [styles["lambda-helper-focused"]]: focused })}>
+        <label className={clsx(helper({ disabled, size }), { [styles["lambda-helper-focused"]]: focused })} id={id}>
             {text}
         </label>
     )
