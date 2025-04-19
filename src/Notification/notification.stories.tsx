@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Notification } from "./Notification"
+import { Notification, NotificationProps } from "./Notification"
 import { NotificationProvider, useNotification } from "./NotificationProvider"
 import { Button } from "../main";
 
@@ -12,12 +12,12 @@ const meta: Meta<typeof Notification> = {
     component: Notification,
     argTypes: {
         notificationType: {
-            control: "select",
-            options: ['default', 'success', 'info', 'warning', 'error'],
-            description: "Visual style of the input",
-            type: 'string',
+            table: {
+                disable: true,
+            },
         },
         message: {
+            control: "text",
             description: "Message to display",
             type: 'string',
         },
@@ -28,19 +28,48 @@ const meta: Meta<typeof Notification> = {
             type: 'string',
         },
         placement: {
-            control: {
-                type: 'inline-radio',
-                options: ['top left', 'top center', 'top right', 'center left', 'center right', 'bottom left', 'bottom center', 'bottom right'],
-            },
+            control: "select",
+            options: ["top-left", "top-center", "top-right", "bottom-left", "bottom-center", "bottom-right"],
             description: "Position of the notification",
+        },
+        closable: {
+            control: "boolean",
+            description: "If true, the notification will have a close button",
+            type: 'boolean',
         },
         duration: {
             description: "Duration in milliseconds before the notification closes",
             type: 'number',
         },
         onClose: {
-            description: "Function to call when the notification is closed",
-            type: 'function',
+            table: {
+                disable: true,
+            }
+        },
+        onCancel: {
+            table: {
+                disable: true,
+            }
+        },
+        onConfirm: {
+            table: {
+                disable: true,
+            }
+        },
+        cancelText: {
+            table: {
+                disable: true,
+            },
+        },
+        confirmText: {
+            table: {
+                disable: true,
+            },
+        },
+        icon: {
+            table: {
+                disable: true,
+            },
         },
     },
     decorators: [
@@ -55,71 +84,41 @@ const meta: Meta<typeof Notification> = {
 
 export default meta;
 
-const NotificationWithButton = () => {
+const NotificationWithButton = (args: Partial<NotificationProps & React.RefAttributes<HTMLInputElement>> | undefined) => {
     const { showNotification } = useNotification()
 
     const handleClick = () => {
         showNotification({
-            message: "You have a new notification. Check it out for more details",
-            notificationType: "secondary",
-            placement: "top-right",
-            variant: "flat",
-            duration: 7000,
-            onClose: () => {
-                console.log("Notification closed!")
-            },
+            ...args,
+            notificationType: "secondary"
         })
     }
 
     const handleClickSuccess = () => {
         showNotification({
-            message: "Success! Everything completed smoothly",
-            notificationType: "success",
-            placement: "top-right",
-            variant: "flat",
-            duration: 7000,
-            onClose: () => {
-                console.log("Notification closed!")
-            },
+            ...args,
+            notificationType: "success"
         })
     }
 
     const handleClickError = () => {
         showNotification({
-            message: "Oops! Something went wrong. Please try again",
-            notificationType: "danger",
-            placement: "top-right",
-            variant: "flat",
-            duration: 7000,
-            onClose: () => {
-                console.log("Notification closed!")
-            },
+            ...args,
+            notificationType: "danger"
         })
     }
 
     const handleClickInfo = () => {
         showNotification({
-            message: "Here's some additional context about this action.",
-            notificationType: "info",
-            placement: "top-right",
-            variant: "flat",
-            duration: 7000,
-            onClose: () => {
-                console.log("Notification closed!")
-            },
+            ...args,
+            notificationType: "info"
         })
     }
 
     const handleClickWarning = () => {
         showNotification({
-            message: "Something didn't go as expected. Check the details.",
-            notificationType: "warning",
-            placement: "top-right",
-            variant: "flat",
-            duration: 7000,
-            onClose: () => {
-                console.log("Notification closed!")
-            },
+            ...args,
+            notificationType: "warning"
         })
     }
 
@@ -185,8 +184,13 @@ export const Warning: StoryObj<typeof Notification> = {
 }
 
 export const WithButton: StoryObj<typeof Notification> = {
-    render: () => <NotificationWithButton />,
+    render: (args) => <NotificationWithButton {...args} />,
     args: {
-        notificationType: "danger",
+        title: "Notification Title",
+        message: "You have a new notification.",
+        placement: "top-center",
+        variant: "darkened",
+        duration: 7000,
+        closable: false
     }
 }
