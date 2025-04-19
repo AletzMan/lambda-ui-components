@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-refresh/only-export-components */
 import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, useId } from "react"
 import styles from "./input.module.css"
 import { cva, VariantProps } from "class-variance-authority"
@@ -183,7 +181,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             contextInvalid = context.invalid
             hasElements = context.hasElements
             isGroup = true
-        } catch (e) {
+        } catch (_e) {
+            _e;
             contextVariant = propVariant
             contextRadius = propRadius
             contextSize = propSize
