@@ -88,7 +88,7 @@ export interface NotificationProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, "size">,
     VariantProps<typeof notificationProp> {
     title?: string
-    message: string
+    message?: string
     placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"
     notificationType?: "secondary" | "success" | "warning" | "info" | "danger"
     icon?: React.ReactNode
