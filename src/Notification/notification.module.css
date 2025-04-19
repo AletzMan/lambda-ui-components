@@ -20,7 +20,7 @@
     overflow: hidden;
     width: 100%;
     max-width: 450px;
-    min-height: 3em;
+    min-height: 4em;
     padding: var(--padding-sm) var(--padding-sm);
     border-radius: var(--border-radius-md);
     font-family: var(--font-family);
