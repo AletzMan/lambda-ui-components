@@ -8,6 +8,7 @@ interface InvalidMessageProps {
     invalid?: boolean
     errorMessage?: string
     marginArrow?: number
+    id?: string
 }
 
 const invalidMessage = cva(styles["lambda-message-invalid"], {
@@ -30,10 +31,12 @@ const invalidMessage = cva(styles["lambda-message-invalid"], {
 })
 
 
-export function InvalidMessage({ size, invalid, errorMessage, marginArrow }: InvalidMessageProps) {
+export function InvalidMessage({ size, invalid, errorMessage, marginArrow, id }: InvalidMessageProps) {
 
     console.log(marginArrow)
     return (
-        <div className={invalidMessage({ invalid, size })} style={{ "--after-left": marginArrow ? `${marginArrow + 6}px` : "6px" } as React.CSSProperties}><TriangleAlert className={styles["lambda-message-invalid-icon"]} />{errorMessage}</div>
+        <div className={invalidMessage({ invalid, size })} style={{ "--after-left": marginArrow ? `${marginArrow + 6}px` : "6px" } as React.CSSProperties}><TriangleAlert className={styles["lambda-message-invalid-icon"]} />
+            <label id={id}>{errorMessage}</label>
+        </div>
     );
 };
