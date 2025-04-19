@@ -49,6 +49,8 @@ function App() {
   const [notificationType, setNotificationType] = useState<"themed" | "solid" | "darkened" | "lightened" | "flat" | undefined>("themed")
   const [notificationPosition, setNotificationPosition] = useState<"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined>("top-center")
   const [closableNotification, setClosableNotification] = useState(false)
+  const [hasButtonsConfirmNotification, setHasButtonsConfirmNotification] = useState(false)
+  const [hasButtonsCancelNotification, setHasButtonsCancelNotification] = useState(false)
   const [radiusCard, setRadiusCard] = useState<"medium" | "small" | "large" | "none" | undefined>("small")
   const [sizeCard, setSizeCard] = useState<"medium" | "small" | "large" | undefined>("small")
   const [variantCard, setVariantCard] = useState<"outline" | "borderless" | undefined>("outline")
@@ -363,15 +365,130 @@ function App() {
             <option value="bottom-right">Bottom - Right</option>
           </select>
           <Checkbox label='Closable' checked={closableNotification} onChange={(e) => setClosableNotification(e.currentTarget.checked)} />
+          <Checkbox label='Has Button Confirm?' checked={hasButtonsConfirmNotification} onChange={(e) => setHasButtonsConfirmNotification(e.currentTarget.checked)} />
+          <Checkbox label='Has Button Cancel?' checked={hasButtonsCancelNotification} onChange={(e) => setHasButtonsCancelNotification(e.currentTarget.checked)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={`${styles.buttons} ${styles.buttons_large}`}>
-            <Button variant="solid" color="secondary" size="medium" radius="small" label='Icon' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: < RssIcon /> })} />
-            <Button variant="solid" color="secondary" size="medium" radius="small" label='Image' style={{ width: "8em" }} onClick={() => showNotification({ title: "Default", message: "Notification Default Color", closable: closableNotification, variant: notificationType, notificationType: "secondary", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo"), icon: <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png' /> })} />
-            <Button variant="solid" color="success" size="medium" radius="small" label='Success' style={{ width: "8em" }} onClick={() => showNotification({ title: "Success", message: "Notification Success Color", closable: closableNotification, variant: notificationType, notificationType: "success", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
-            <Button variant="solid" color="danger" size="medium" radius="small" label='Danger' style={{ width: "8em" }} onClick={() => showNotification({ title: "Danger", message: "Notification Danger Color", closable: closableNotification, variant: notificationType, notificationType: "danger", placement: notificationPosition, onClose: () => console.log("Cerrado Warning"), onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
-            <Button variant="solid" color="warning" size="medium" radius="small" label='Warning' style={{ width: "8em" }} onClick={() => showNotification({ title: "Warning", message: "Notification Warning Color Para no modificar la sentencia de los demas puede que varie la movilidad", closable: closableNotification, variant: notificationType, onConfirm: () => console.log("Se confirmo"), notificationType: "warning", placement: notificationPosition })} />
-            <Button variant="solid" color="info" size="medium" radius="small" label='Info' style={{ width: "8em" }} onClick={() => showNotification({ title: "Info", cancelText: "Cancelar", confirmText: "Aceptar", message: "Notification Info Color", closable: closableNotification, variant: notificationType, notificationType: "info", placement: notificationPosition, onCancel: () => console.log("Se cancelo"), onConfirm: () => console.log("Se confirmo") })} />
+            <Button
+              variant="solid"
+              color="secondary"
+              size="medium"
+              radius="small"
+              label='Icon'
+              style={{ width: "8em" }}
+              onClick={() =>
+                showNotification(
+                  {
+                    title: "Default",
+                    message: "Notification Default Color",
+                    closable: closableNotification,
+                    variant: notificationType,
+                    notificationType: "secondary",
+                    placement: notificationPosition,
+                    onCancel: hasButtonsCancelNotification ? () => console.log("Se cancelo") : undefined,
+                    onConfirm: hasButtonsConfirmNotification ? () => console.log("Se confirmo") : undefined,
+                    icon: < RssIcon />
+                  })} />
+            <Button
+              variant="solid"
+              color="secondary"
+              size="medium"
+              radius="small"
+              label='Image'
+              style={{ width: "8em" }}
+              onClick={() =>
+                showNotification(
+                  {
+                    title: "Default",
+                    message: "Notification Default Color",
+                    closable: closableNotification,
+                    variant: notificationType,
+                    notificationType: "secondary",
+                    placement: notificationPosition,
+                    onCancel: hasButtonsCancelNotification ? () => console.log("Se cancelo") : undefined,
+                    onConfirm: hasButtonsConfirmNotification ? () => console.log("Se confirmo") : undefined,
+                    icon: <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png' />
+                  })} />
+            <Button
+              variant="solid"
+              color="success"
+              size="medium"
+              radius="small"
+              label='Success'
+              style={{ width: "8em" }}
+              onClick={() =>
+                showNotification(
+                  {
+                    title: "Success",
+                    message: "Notification Success Color",
+                    closable: closableNotification,
+                    variant: notificationType,
+                    notificationType: "success",
+                    placement: notificationPosition,
+                    onCancel: hasButtonsCancelNotification ? () => console.log("Se cancelo") : undefined,
+                    onConfirm: hasButtonsConfirmNotification ? () => console.log("Se confirmo") : undefined,
+                  })} />
+            <Button
+              variant="solid"
+              color="danger"
+              size="medium"
+              radius="small"
+              label='Danger
+            ' style={{ width: "8em" }}
+              onClick={() =>
+                showNotification(
+                  {
+                    title: "Danger",
+                    message: "Notification Danger Color",
+                    closable: closableNotification,
+                    variant: notificationType,
+                    notificationType: "danger",
+                    placement: notificationPosition,
+                    onClose: () => console.log("Cerrado Warning"),
+                    onCancel: hasButtonsCancelNotification ? () => console.log("Se cancelo") : undefined,
+                    onConfirm: hasButtonsConfirmNotification ? () => console.log("Se confirmo") : undefined,
+                  })} />
+            <Button
+              variant="solid"
+              color="warning"
+              size="medium"
+              radius="small"
+              label='Warnin
+            g' style={{ width: "8em" }}
+              onClick={() =>
+                showNotification(
+                  {
+                    title: "Warning",
+                    message: "Notification Warning Color Para no modificar la sentencia de los demas puede que varie la movilidad",
+                    closable: closableNotification,
+                    variant: notificationType,
+                    onCancel: hasButtonsCancelNotification ? () => console.log("Se cancelo") : undefined,
+                    onConfirm: hasButtonsConfirmNotification ? () => console.log("Se confirmo") : undefined,
+                    notificationType: "warning",
+                    placement: notificationPosition
+                  })} />
+            <Button
+              variant="solid"
+              color="info"
+              size="medium"
+              radius="small"
+              label='Info'
+              style={{ width: "8em" }}
+              onClick={() =>
+                showNotification(
+                  {
+                    title: "Info",
+                    cancelText: "Cancelar",
+                    confirmText: "Aceptar",
+                    message: "Notification Info Color",
+                    closable: closableNotification,
+                    variant: notificationType,
+                    notificationType: "info",
+                    placement: notificationPosition,
+                    onCancel: hasButtonsCancelNotification ? () => console.log("Se cancelo") : undefined,
+                    onConfirm: hasButtonsConfirmNotification ? () => console.log("Se confirmo") : undefined,
+                  })} />
           </div>
         </div>
       </section>
