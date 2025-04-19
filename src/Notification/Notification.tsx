@@ -83,6 +83,14 @@ const footer = cva(styles["notification-footer"], {
     },
 })
 
+const NOTIFICATION_ICONS = {
+    success: <CircleCheck />,
+    warning: <CircleAlert />,
+    info: <Info />,
+    danger: <CircleX />,
+    secondary: <Bell /> // O el ícono por defecto que prefieras
+};
+
 
 export interface NotificationProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, "size">,
@@ -124,20 +132,6 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
     ) => {
         const [isVisible, setIsVisible] = useState(true)
         const [closing, setClosing] = useState(false)
-        const [timeLeft, setTimeLeft] = useState(duration)
-
-        useEffect(() => {
-            setTimeLeft(prev => prev - 1000)
-        }, [])
-
-        useEffect(() => {
-            if (timeLeft > 0) {
-                const timer = setInterval(() => {
-                    setTimeLeft(prev => prev - 1000)
-                }, 1000);
-                return () => clearInterval(timer)
-            }
-        }, [timeLeft])
 
         // Cerrar automáticamente después de la duración especificada
         useEffect(() => {
@@ -175,35 +169,28 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
 
         return (
             <div
-                className={`${notificationProp({ notificationType, placement, variant })} ${closing ? styles["notification-exit"] : styles["notification-active"]}`}
+                className={clsx(
+                    notificationProp({ notificationType, placement, variant }),
+                    closing ? styles["notification-exit"] : styles["notification-active"]
+                )}
                 {...props}
                 ref={ref}
                 role="alert"
             >
                 <div className={styles["notification-header"]}>
                     <div className={styles["notification-icon"]}>
-                        {notificationType === "success" && <CircleCheck />}
-                        {notificationType === "warning" && <CircleAlert />}
-                        {notificationType === "info" && <Info />}
-                        {notificationType === "danger" && <CircleX />}
-                        {!["success", "warning", "info", "danger",
-                            undefined
-                        ].includes(notificationType) &&
-                            (icon ?? <Bell />)}
+                        {icon ?? NOTIFICATION_ICONS[notificationType ?? "secondary"] ?? <Bell />}
                     </div>
 
-
                     <div className={styles["notification-content"]}>
-                        {title && <h1 className={styles["notification-title"]}>{title}</h1>}
+                        {title &&
+                            <h1 className={styles["notification-title"]}>{title}</h1>
+                        }
                         <p className={styles["notification-message"]}>{message}</p>
                     </div>
                     {closable && <button
                         className={styles["notification-close-button"]}
-                        onClick={() => {
-                            setClosing(true);
-                            if (onClose) onClose();
-                        }}
-                    >
+                        onClick={() => setClosing(true)}>
                         <X className={styles["notification-close-button-icon"]} />
                     </button>}
                 </div>
@@ -213,7 +200,7 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
                 </footer>}
                 <div
                     className={barClass({ variant, notificationType })}
-                    style={{ width: `${(timeLeft / duration) * 100}%` }}
+                    style={{ animationDuration: `${duration}ms` }}
                 />
             </div>
         );
