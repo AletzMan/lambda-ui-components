@@ -245,7 +245,7 @@ function App() {
             <option value="large">Large</option>
             <option value="pill">Pill</option>
           </select>
-          <Input value={errorMessage} onChange={(e) => setErrorMessage(e.currentTarget.value)} />
+          <Input value={errorMessage} onChange={(value) => setErrorMessage(value)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={styles.buttons}>
@@ -303,7 +303,7 @@ function App() {
             <option value="large">Large</option>
             <option value="pill">Pill</option>
           </select>
-          <Input value={errorMessageNumber} onChange={(e) => setErrorMessageNumber(e.currentTarget.value)} />
+          <Input value={errorMessageNumber} onChange={(value) => setErrorMessageNumber(value)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={styles.buttons}>
@@ -335,7 +335,7 @@ function App() {
             <option value="large">Large</option>
             <option value="pill">Pill</option>
           </select>
-          <Input value={errorMessageSelect} onChange={(e) => setErrorMessageSelect(e.currentTarget.value)} />
+          <Input value={errorMessageSelect} onChange={(value) => setErrorMessageSelect(value)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={`${styles.buttons} ${styles.buttons_large}`}>
@@ -590,7 +590,7 @@ function App() {
             options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
           <Checkbox label='Disabled' checked={disabledTextArea} size="small" color="secondary" onChange={(e) => setDisabledTextArea(e.currentTarget.checked)} />
           <Checkbox label='Invalid' checked={invalidTextArea} size="small" color="info" onChange={(e) => setInvalidTextArea(e.currentTarget.checked)} />
-          <Input label='Message Error' size="small" value={errorMessageTextArea} onChange={(e) => setErrorMessageTextArea(e.currentTarget.value)} />
+          <Input label='Message Error' size="small" value={errorMessageTextArea} onChange={(value) => setErrorMessageTextArea(value)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={`${styles.buttons} ${styles.buttons_large}`}>
