@@ -20,7 +20,7 @@ const ThemeDecorator = (Story, context) => {
       element.style.backgroundColor = "transparent"
     }
     if (container) {
-      container.style.backgroundColor = "var(--surface-a)";
+      container.style.backgroundColor = "var(--surface-b)";
     }
 
 
