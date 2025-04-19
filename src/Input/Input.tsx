@@ -160,7 +160,7 @@ const buttonPassword = cva(styles["lambda-input-toggle-password"], {
 })
 
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange">, VariantProps<typeof input> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value">, VariantProps<typeof input> {
     label?: string,
     invalid?: boolean,
     errorMessage?: string
@@ -168,6 +168,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
     helperText?: string
     required?: boolean
     onChange?: (value: string) => void
+    value?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -277,7 +278,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                             aria-invalid={contextInvalid || undefined}
                             aria-describedby={describedByIds || undefined}
                             type={inputType as HTMLInputTypeAttribute}
-                            className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), { [styles["lambda-input-field-showPassword"]]: isPasswordType && !showPassword && value.toString().length > 0 })}
+                            className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), { [styles["lambda-input-field-showPassword"]]: isPasswordType && !showPassword && value.length > 0 })}
                             disabled={contextDisabled || undefined}
                             placeholder={inputPlaceholder}
                             {...props}
