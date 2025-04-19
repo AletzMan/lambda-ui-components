@@ -376,7 +376,6 @@
     }
 }
 
-
 .notification-footer-lightened {
     &.notification-footer-secondary {
         .notification-footer-button-confirm {
@@ -513,7 +512,19 @@
     bottom: 0;
     left: 0;
     height: 3px;
-    transition: width 1s linear;
+    animation-name: shrink;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shrink {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 .notification-content {
