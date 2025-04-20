@@ -249,28 +249,28 @@ function App() {
         </div>
         <div className={styles.container_buttons}>
           <div className={styles.buttons}>
-            <Input type="text" label='Nombre' floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' variant={variantInput} radius={radiusInput} disabled={disabledInput} size={sizeInput} required invalid={!validInput} helperText='Requerido *' />
-            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='Correo electronico' variant={variantInput} radius={radiusInput} size={sizeInput} invalid={!validInput} errorMessage={errorMessage} />
-            <Input type="password" label='Password' disabled={disabledInput} placeholder='Contraseña' variant={variantInput} radius={radiusInput} size={sizeInput} invalid={!validInput} errorMessage={errorMessage} />
-            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} variant={variantInput} radius={radiusInput} invalid={!validInput} errorMessage={errorMessage} />
+            <Input type="text" label='Nombre' placeholder="Jhon Doe" floatingLabel={false} errorMessage='Ingrese Nombre de 3 letras' variant={variantInput} radius={radiusInput} disabled={disabledInput} size={sizeInput} required invalid={!validInput} helperText='Requerido *' />
+            <Input type="email" label='E-mail' disabled={disabledInput} placeholder='example@email.com' variant={variantInput} radius={radiusInput} size={sizeInput} invalid={!validInput} errorMessage={errorMessage} />
+            <Input type="password" label='Password' disabled={disabledInput} placeholder='Password' variant={variantInput} radius={radiusInput} size={sizeInput} invalid={!validInput} errorMessage={errorMessage} />
+            <Input type="search" label='Busqueda' disabled={disabledInput} size={sizeInput} placeholder='Search by name, age etc...' variant={variantInput} radius={radiusInput} invalid={!validInput} errorMessage={errorMessage} />
           </div>
           <div className={styles.buttons}>
             <InputGroup prefixElement={<Coins />} suffixElement={<User />} variant={variantInput} radius={radiusInput} size={sizeInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
-              <Input type="text" label='Ingrese' />
+              <Input type="text" label='Ingrese' placeholder='Name settings' />
             </InputGroup>
             <InputGroup prefixElement={<span>https://</span>} suffixElement={<span>.com</span>} radius={radiusInput} variant={variantInput} size={sizeInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
-              <Input type="text" label='URL de imagen' />
+              <Input type="text" label='URL de imagen' placeholder='www.example.com' />
             </InputGroup>
             <InputGroup prefixElement={<User />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
-              <Input type="text" label='Ingrese' />
+              <Input type="text" label='Ingrese' placeholder='Username' />
             </InputGroup>
             <InputGroup suffixElement={<Settings />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
-              <Input type="text" label='Configuracion' helperText='Requerido *' />
+              <Input type="text" label='Configuracion' placeholder='Settings' helperText='Requerido *' />
             </InputGroup>
           </div>
           <div className={styles.buttons}>
             <InputGroup prefixElement={<SearchIcon />} suffixElement={<Button label='Search' variant="solid" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
-              <Input type="search" />
+              <Input type="search" placeholder='Search by product...' />
             </InputGroup>
             <InputGroup suffixElement={<Button label='Buscar' variant="ghost" color="primary" />} variant={variantInput} size={sizeInput} radius={radiusInput} disabled={disabledInput} invalid={!validInput} errorMessage={errorMessage}>
               <Input type="text" label='Configuracion' floatingLabel />
