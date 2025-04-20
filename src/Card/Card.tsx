@@ -1,33 +1,9 @@
 
 import React, { HTMLAttributes, forwardRef } from "react"
 import styles from "./card.module.css"
-import { cva, VariantProps } from "class-variance-authority"
+import { VariantProps } from "class-variance-authority"
 import clsx from "clsx"
-
-const card = cva(styles[`lambda-card`], {
-    variants: {
-        variant: {
-            outline: styles[`lambda-card-outline`],
-            borderless: styles[`lambda-card-borderless`],
-        },
-        size: {
-            small: styles[`lambda-card-small`],
-            medium: styles[`lambda-card-medium`],
-            large: styles[`lambda-card-large`],
-        },
-        radius: {
-            none: styles[`lambda-card-radius-none`],
-            small: styles[`lambda-card-radius-small`],
-            medium: styles[`lambda-card-radius-medium`],
-            large: styles[`lambda-card-radius-large`],
-        }
-    },
-    defaultVariants: {
-        variant: "outline",
-        size: "medium",
-        radius: 'medium',
-    },
-})
+import { card } from "./card.variants"
 
 export interface ICardHeader {
     title: string
