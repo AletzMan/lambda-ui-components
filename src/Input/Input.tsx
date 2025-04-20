@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { useInputGroup } from "../InputGroup/InputGroup"
 import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
 import { HelperText } from "../_util/HelperText/HelperText"
-import { buttonPassword, input, labels, lambdaInput, textInput } from "./variants"
+import { buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants"
 
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value">, VariantProps<typeof input> {
@@ -33,7 +33,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             hasElements = context.hasElements
             isGroup = true
         } catch (_e) {
-            _e;
             contextVariant = propVariant
             contextRadius = propRadius
             contextSize = propSize
