@@ -1,5 +1,5 @@
-import { VariantProps, cva } from "class-variance-authority"
-import styles from "./checkbox.module.css"
+import { VariantProps, cva } from "class-variance-authority";
+import styles from "./checkbox.module.css";
 
 export const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
     variants: {
@@ -45,7 +45,7 @@ export const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
         disabled: false,
         checked: false,
     },
-})
+});
 
 export const container = cva(styles["lambda-checkbox-container"], {
     variants: {
@@ -64,7 +64,7 @@ export const container = cva(styles["lambda-checkbox-container"], {
         positionLabel: "right",
         disabled: false,
     },
-})
+});
 
 export const textLabel = cva(styles["lambda-checkbox-label"], {
     variants: {
@@ -83,7 +83,7 @@ export const textLabel = cva(styles["lambda-checkbox-label"], {
         size: "medium",
         disabled: false,
     },
-})
+});
 
 export const icon = cva(styles["lambda-checkbox-icon"], {
     variants: {
@@ -107,7 +107,7 @@ export const icon = cva(styles["lambda-checkbox-icon"], {
         disabled: false,
         checked: false
     },
-})
+});
 
 export type CheckboxVariants = VariantProps<typeof checkboxprop>;
 export type ContainerVariants = VariantProps<typeof container>;

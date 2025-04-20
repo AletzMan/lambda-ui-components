@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { Input } from "./Input"
+import type { Meta, StoryObj } from "@storybook/react";
+import { Input } from "./Input";
 
 const meta: Meta<typeof Input> = {
     title: "Components/Input",
@@ -61,9 +61,9 @@ const meta: Meta<typeof Input> = {
         }
     }
 
-}
+};
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof Input>
 
@@ -82,7 +82,7 @@ export const Text: Story = {
         placeholder: "Text input example",
         disabled: false,
     },
-}
+};
 
 export const Password: Story = {
     args: {
@@ -99,7 +99,7 @@ export const Password: Story = {
         placeholder: "Enter your password",
         disabled: false,
     },
-}
+};
 
 export const Search: Story = {
     args: {
@@ -115,7 +115,7 @@ export const Search: Story = {
         placeholder: "Search here...",
         disabled: false,
     },
-}
+};
 
 
 export const Email: Story = {
@@ -133,5 +133,5 @@ export const Email: Story = {
         placeholder: "Enter your email address",
         disabled: false,
     },
-}
+};
 

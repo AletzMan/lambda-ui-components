@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { Select } from "./Select"
+import type { Meta, StoryObj } from "@storybook/react";
+import { Select } from "./Select";
 
 const meta: Meta<typeof Select> = {
     title: "Components/Select",
@@ -45,7 +45,7 @@ const meta: Meta<typeof Select> = {
         }
     }
 
-}
+};
 
 export default meta;
 
@@ -84,7 +84,7 @@ export const Normal: Story = {
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
     },
-}
+};
 
 export const Description: Story = {
     args: {
@@ -124,7 +124,7 @@ export const Description: Story = {
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
     },
-}
+};
 
 
 export const Icon: Story = {
@@ -165,5 +165,5 @@ export const Icon: Story = {
         errorMessage: "This is a sample error message for demonstration",
         disabled: false,
     },
-}
+};
 

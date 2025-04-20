@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { action } from '@storybook/addon-actions'
-import { Switch } from "./Switch"
+import type { Meta, StoryObj } from "@storybook/react";
+import { action } from '@storybook/addon-actions';
+import { Switch } from "./Switch";
 
 const meta: Meta<typeof Switch> = {
     title: "Components/Switch",
@@ -44,9 +44,9 @@ const meta: Meta<typeof Switch> = {
         }
     }
 
-}
+};
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof Switch>
 
@@ -60,7 +60,7 @@ export const Bordered: Story = {
         disabled: false,
         onChange: action('onChange')
     },
-}
+};
 
 export const Flat: Story = {
     args: {
@@ -72,7 +72,7 @@ export const Flat: Story = {
         disabled: false,
         onChange: action('onChange')
     },
-}
+};
 
 export const Outline: Story = {
     args: {
@@ -84,4 +84,4 @@ export const Outline: Story = {
         disabled: false,
         onChange: action('onChange')
     },
-}
+};

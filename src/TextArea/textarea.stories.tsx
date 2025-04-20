@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { TextArea } from "./TextArea"
+import type { Meta, StoryObj } from "@storybook/react";
+import { TextArea } from "./TextArea";
 
 const meta: Meta<typeof TextArea> = {
     title: "Components/TextArea",
@@ -35,9 +35,9 @@ const meta: Meta<typeof TextArea> = {
         }
     }
 
-}
+};
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof TextArea>
 
@@ -47,6 +47,6 @@ export const Outline: Story = {
         size: "medium",
         radius: 'small',
     },
-}
+};
 
 

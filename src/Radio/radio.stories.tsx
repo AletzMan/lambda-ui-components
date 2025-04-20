@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { Radio, Radioprops } from "./Radio"
+import type { Meta, StoryObj } from "@storybook/react";
+import { Radio, Radioprops } from "./Radio";
 import { RadioGroup } from "../RadioGroup/RadioGroup";
 
 const meta: Meta<typeof Radio> = {
@@ -47,7 +47,7 @@ const meta: Meta<typeof Radio> = {
         }
     }
 
-}
+};
 
 export default meta;
 

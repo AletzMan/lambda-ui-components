@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { Notification, NotificationProps } from "./Notification"
-import { NotificationProvider, useNotification } from "./NotificationProvider"
+import type { Meta, StoryObj } from "@storybook/react";
+import { Notification, NotificationProps } from "./Notification";
+import { NotificationProvider, useNotification } from "./NotificationProvider";
 import { Button } from "../main";
 
 const meta: Meta<typeof Notification> = {
@@ -80,47 +80,47 @@ const meta: Meta<typeof Notification> = {
         ),
     ]
 
-}
+};
 
 export default meta;
 
 const NotificationWithButton = (args: Partial<NotificationProps & React.RefAttributes<HTMLInputElement>> | undefined) => {
-    const { showNotification } = useNotification()
+    const { showNotification } = useNotification();
 
     const handleClick = () => {
         showNotification({
             ...args,
             notificationType: "secondary"
-        })
-    }
+        });
+    };
 
     const handleClickSuccess = () => {
         showNotification({
             ...args,
             notificationType: "success"
-        })
-    }
+        });
+    };
 
     const handleClickError = () => {
         showNotification({
             ...args,
             notificationType: "danger"
-        })
-    }
+        });
+    };
 
     const handleClickInfo = () => {
         showNotification({
             ...args,
             notificationType: "info"
-        })
-    }
+        });
+    };
 
     const handleClickWarning = () => {
         showNotification({
             ...args,
             notificationType: "warning"
-        })
-    }
+        });
+    };
 
     return (
         <div style={{ display: "flex", flexDirection: "row", gap: "0.25em" }}>
@@ -130,8 +130,8 @@ const NotificationWithButton = (args: Partial<NotificationProps & React.RefAttri
             <Button onClick={handleClickInfo} color="primary">Info</Button>
             <Button onClick={handleClickWarning} color="warning">Warning</Button>
         </div>
-    )
-}
+    );
+};
 
 export const Default: StoryObj<typeof Notification> = {
     args: {
@@ -141,7 +141,7 @@ export const Default: StoryObj<typeof Notification> = {
         variant: "flat",
         duration: 7000,
     },
-}
+};
 
 export const Success: StoryObj<typeof Notification> = {
     args: {
@@ -151,7 +151,7 @@ export const Success: StoryObj<typeof Notification> = {
         variant: "flat",
         duration: 7000,
     },
-}
+};
 
 export const Error: StoryObj<typeof Notification> = {
     args: {
@@ -161,7 +161,7 @@ export const Error: StoryObj<typeof Notification> = {
         variant: "flat",
         duration: 7000,
     },
-}
+};
 
 export const Info: StoryObj<typeof Notification> = {
     args: {
@@ -171,7 +171,7 @@ export const Info: StoryObj<typeof Notification> = {
         variant: "flat",
         duration: 7000,
     },
-}
+};
 
 export const Warning: StoryObj<typeof Notification> = {
     args: {
@@ -181,7 +181,7 @@ export const Warning: StoryObj<typeof Notification> = {
         variant: "flat",
         duration: 7000,
     },
-}
+};
 
 export const WithButton: StoryObj<typeof Notification> = {
     render: (args) => <NotificationWithButton {...args} />,
@@ -193,4 +193,4 @@ export const WithButton: StoryObj<typeof Notification> = {
         duration: 7000,
         closable: false
     }
-}
+};

@@ -1,17 +1,26 @@
-import { ButtonHTMLAttributes, ReactNode, forwardRef, isValidElement } from "react"
-import styles from "./button.module.css"
-import { VariantProps } from "class-variance-authority"
-import { Loader } from "lucide-react"
-import clsx from 'clsx'
-import { useInputGroup } from "../InputGroup/InputGroup"
-import { button } from "./button.variants"
+import { ButtonHTMLAttributes, ReactNode, forwardRef, isValidElement } from "react";
+import styles from "./button.module.css";
+import { Loader } from "lucide-react";
+import clsx from 'clsx';
+import { useInputGroup } from "../InputGroup/InputGroup";
+import { ButtonVariants, button } from "./button.variants";
 
 
 
-export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled" | "color">, VariantProps<typeof button> {
-    icon?: ReactNode | undefined | null
-    label?: string
-    loadingText?: string
+export interface ButtonProps
+    extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> // Mantén esto para props nativas
+{
+    // Props de variantes de CVA
+    variant?: ButtonVariants["variant"];
+    color?: ButtonVariants["color"];
+    size?: ButtonVariants["size"];
+    radius?: ButtonVariants["radius"];
+    iconPosition?: ButtonVariants["iconPosition"];
+    loading?: ButtonVariants["loading"];
+    icon?: ReactNode | undefined | null;
+    label?: string;
+    loadingText?: string;
+    'aria-label'?: string; // <-- Agregar para accesibilidad de botón solo icono
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -27,23 +36,27 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             iconPosition = "left",
             loadingText,
             loading,
-            disabled,
             ...props
         },
         ref
     ) => {
-        let contextSize, contextDisabled
+        let contextSize, contextDisabled;
         try {
-            const context = useInputGroup()
-            contextSize = context.size
-            contextDisabled = context.disabled
+            const context = useInputGroup();
+            contextSize = context.size;
+            contextDisabled = context.disabled;
         } catch (_e) {
-            contextSize = size
-            contextDisabled = disabled
+            contextSize = size;
+            contextDisabled = props.disabled;
         }
+
+        const content = props.children || (label && <span className={styles["lambda-btn-label"]}>{(loading && loadingText) ? loadingText : label}</span>);
+
         return (
             <button
                 ref={ref}
+                aria-label={props['aria-label']}
+                aria-busy={loading ? true : undefined}
                 className={clsx(
                     button({
                         variant,
@@ -65,9 +78,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         {loading ? <Loader className={styles["lambda-btn-icon-loading"]} /> : icon}
                     </span>
                 )}
-                {label && <span className={styles["lambda-btn-label"]}>{(loading && loadingText) ? loadingText : label}</span>}
-                {props.children}
+                {content}
             </button>
-        )
+        );
     }
-)
+);

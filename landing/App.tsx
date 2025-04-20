@@ -1,66 +1,66 @@
 
-import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main'
-import { Bookmark, CircleEllipsis, CodeXml, Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react"
-import styles from "./styles.module.css"
-import { useState } from 'react'
-import { ButtonThemeController } from '../src/ThemeProvider/ThemeProvider'
-import { buttonsPrimary } from './constants'
-import { useNotification } from '../src/Notification/NotificationProvider'
-import { Card } from '../src/Card/Card'
+import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main';
+import { Bookmark, CircleEllipsis, CodeXml, Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react";
+import styles from "./styles.module.css";
+import { useState } from 'react';
+import { ButtonThemeController } from '../src/ThemeProvider/ThemeProvider';
+import { buttonsPrimary } from './constants';
+import { useNotification } from '../src/Notification/NotificationProvider';
+import { Card } from '../src/Card/Card';
 
 
 
 function App() {
-  const [loadingButtons, setLoadingButtons] = useState(false)
-  const [disabledButtons, setDisabledButtons] = useState(false)
-  const [radiusButtons, setRadiusButtons] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("small")
-  const [sizeButtons, setSizeButtons] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
-  const [sizeCheckbox, setSizeCheckbox] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
-  const [disabledCheckbox, setDisabledCheckbox] = useState(false)
-  const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("small")
-  const [variantCheckbox, setVariantCheckbox] = useState<"outline" | "flat" | "solid" | undefined>("solid")
-  const [sizeSwitch, setSizeSwitch] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
-  const [disabledSwitch, setDisabledSwitch] = useState(false)
-  const [shapeSwitch, setShapeSwitch] = useState<"square" | "soft" | "rounded" | undefined>("rounded")
-  const [variantSwitch, setVariantSwitch] = useState<"outline" | "flat" | "solid" | undefined>("solid")
-  const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
-  const [disabledInput, setDisabledInput] = useState(false)
-  const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
-  const [variantInput, setVariantInput] = useState<"outline" | "flat" | "underline" | undefined>("outline")
-  const [validInput, setValidInput] = useState(true)
-  const [errorMessage, setErrorMessage] = useState("This field has an error.")
-  const [sizeInputNumber, setSizeInputNumber] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
-  const [disabledInputNumber, setDisabledInputNumber] = useState(false)
-  const [radiusInputNumber, setRadiusInputNumber] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
-  const [validInputNumber, setValidInputNumber] = useState(true)
-  const [errorMessageNumber, setErrorMessageNumber] = useState("This field has an error.")
-  const [sizeRadio, setSizeRadio] = useState<"medium" | "small" | "large" | undefined>("medium")
-  const [typeRadio, setTypeRadio] = useState<"radio" | "button" | undefined>("button")
-  const [orientationRadio, setOrientationRadio] = useState<"horizontal" | "vertical" | undefined>("horizontal")
-  const [variantRadio, setVariantRadio] = useState<"outline" | "flat" | "solid" | undefined>("solid")
-  const [colorRadio, setColorRadio] = useState<"primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined>("primary")
-  const [disabledRadio, setDisabledRadio] = useState(false)
-  const [valueRadioBordered, setValueRadioBordered] = useState("")
-  const [sizeSelect, setSizeSelect] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium")
-  const [disabledSelect, setDisabledSelect] = useState(false)
-  const [radiusSelect, setRadiusSelect] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small")
-  const [validSelect, setValidSelect] = useState(true)
-  const [errorMessageSelect, setErrorMessageSelect] = useState("This field has an error.")
-  const [notificationType, setNotificationType] = useState<"themed" | "solid" | "darkened" | "lightened" | "flat" | undefined>("themed")
-  const [notificationPosition, setNotificationPosition] = useState<"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined>("top-center")
-  const [closableNotification, setClosableNotification] = useState(false)
-  const [hasButtonsConfirmNotification, setHasButtonsConfirmNotification] = useState(false)
-  const [hasButtonsCancelNotification, setHasButtonsCancelNotification] = useState(false)
-  const [radiusCard, setRadiusCard] = useState<"medium" | "small" | "large" | "none" | undefined>("small")
-  const [sizeCard, setSizeCard] = useState<"medium" | "small" | "large" | undefined>("small")
-  const [variantCard, setVariantCard] = useState<"outline" | "borderless" | undefined>("outline")
-  const [radiusTextArea, setRadiusTextArea] = useState<"medium" | "small" | "large" | "none" | undefined>("small")
-  const [sizeTextArea, setSizeTextArea] = useState<"medium" | "small" | "large" | "tiny" | undefined>("small")
-  const [variantTextArea, setVariantTextArea] = useState<"outline" | "borderless" | undefined>("outline")
-  const [disabledTextArea, setDisabledTextArea] = useState(false)
-  const [invalidTextArea, setInvalidTextArea] = useState(false)
-  const [errorMessageTextArea, setErrorMessageTextArea] = useState("This field has an error.")
-  const { showNotification } = useNotification()
+  const [loadingButtons, setLoadingButtons] = useState(false);
+  const [disabledButtons, setDisabledButtons] = useState(false);
+  const [radiusButtons, setRadiusButtons] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("small");
+  const [sizeButtons, setSizeButtons] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [sizeCheckbox, setSizeCheckbox] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [disabledCheckbox, setDisabledCheckbox] = useState(false);
+  const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("small");
+  const [variantCheckbox, setVariantCheckbox] = useState<"outline" | "flat" | "solid" | undefined>("solid");
+  const [sizeSwitch, setSizeSwitch] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [disabledSwitch, setDisabledSwitch] = useState(false);
+  const [shapeSwitch, setShapeSwitch] = useState<"square" | "soft" | "rounded" | undefined>("rounded");
+  const [variantSwitch, setVariantSwitch] = useState<"outline" | "flat" | "solid" | undefined>("solid");
+  const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [disabledInput, setDisabledInput] = useState(false);
+  const [radiusInput, setRadiusInput] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small");
+  const [variantInput, setVariantInput] = useState<"outline" | "flat" | "underline" | undefined>("outline");
+  const [validInput, setValidInput] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("This field has an error.");
+  const [sizeInputNumber, setSizeInputNumber] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [disabledInputNumber, setDisabledInputNumber] = useState(false);
+  const [radiusInputNumber, setRadiusInputNumber] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small");
+  const [validInputNumber, setValidInputNumber] = useState(true);
+  const [errorMessageNumber, setErrorMessageNumber] = useState("This field has an error.");
+  const [sizeRadio, setSizeRadio] = useState<"medium" | "small" | "large" | undefined>("medium");
+  const [typeRadio, setTypeRadio] = useState<"radio" | "button" | undefined>("button");
+  const [orientationRadio, setOrientationRadio] = useState<"horizontal" | "vertical" | undefined>("horizontal");
+  const [variantRadio, setVariantRadio] = useState<"outline" | "flat" | "solid" | undefined>("solid");
+  const [colorRadio, setColorRadio] = useState<"primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined>("primary");
+  const [disabledRadio, setDisabledRadio] = useState(false);
+  const [valueRadioBordered, setValueRadioBordered] = useState("");
+  const [sizeSelect, setSizeSelect] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [disabledSelect, setDisabledSelect] = useState(false);
+  const [radiusSelect, setRadiusSelect] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small");
+  const [validSelect, setValidSelect] = useState(true);
+  const [errorMessageSelect, setErrorMessageSelect] = useState("This field has an error.");
+  const [notificationType, setNotificationType] = useState<"themed" | "solid" | "darkened" | "lightened" | "flat" | undefined>("themed");
+  const [notificationPosition, setNotificationPosition] = useState<"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined>("top-center");
+  const [closableNotification, setClosableNotification] = useState(false);
+  const [hasButtonsConfirmNotification, setHasButtonsConfirmNotification] = useState(false);
+  const [hasButtonsCancelNotification, setHasButtonsCancelNotification] = useState(false);
+  const [radiusCard, setRadiusCard] = useState<"medium" | "small" | "large" | "none" | undefined>("small");
+  const [sizeCard, setSizeCard] = useState<"medium" | "small" | "large" | undefined>("small");
+  const [variantCard, setVariantCard] = useState<"outline" | "borderless" | undefined>("outline");
+  const [radiusTextArea, setRadiusTextArea] = useState<"medium" | "small" | "large" | "none" | undefined>("small");
+  const [sizeTextArea, setSizeTextArea] = useState<"medium" | "small" | "large" | "tiny" | undefined>("small");
+  const [variantTextArea, setVariantTextArea] = useState<"outline" | "borderless" | undefined>("outline");
+  const [disabledTextArea, setDisabledTextArea] = useState(false);
+  const [invalidTextArea, setInvalidTextArea] = useState(false);
+  const [errorMessageTextArea, setErrorMessageTextArea] = useState("This field has an error.");
+  const { showNotification } = useNotification();
 
   return (
     <section className={`${styles.section} `}>
@@ -611,10 +611,10 @@ function App() {
         </div>
       </section>
     </section>
-  )
+  );
 }
 
-export default App
+export default App;
 
 
 const namesSelect = [
@@ -623,4 +623,4 @@ const namesSelect = [
   { label: "JavaScript", value: "javascript" },
   { label: "Angular", value: "angular" },
   { label: "Vue", value: "vue" },
-]
+];

@@ -1,5 +1,5 @@
-import { cva, } from "class-variance-authority"
-import styles from "./button.module.css"
+import { VariantProps, cva, } from "class-variance-authority";
+import styles from "./button.module.css";
 
 export const button = cva(styles[`lambda-btn`], {
     variants: {
@@ -55,4 +55,7 @@ export const button = cva(styles[`lambda-btn`], {
         iconPosition: "left",
         loading: false,
     },
-})
+});
+
+
+export type ButtonVariants = VariantProps<typeof button>;

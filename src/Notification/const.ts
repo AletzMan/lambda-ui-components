@@ -5,4 +5,4 @@ export const validPlacements = [
     "bottom-left",
     "bottom-center",
     "bottom-right",
-] as const
+] as const;

@@ -1,6 +1,6 @@
-import { cva } from "class-variance-authority"
-import styles from "./styles.module.css"
-import clsx from "clsx"
+import { cva } from "class-variance-authority";
+import styles from "./styles.module.css";
+import clsx from "clsx";
 
 const helper = cva(styles["lambda-helper"], {
     variants: {
@@ -19,7 +19,7 @@ const helper = cva(styles["lambda-helper"], {
         size: "medium",
         disabled: false
     }
-})
+});
 
 
 interface HelperTextProps {
@@ -35,5 +35,5 @@ export function HelperText({ text, size = "medium", disabled = false, focused, i
         <label className={clsx(helper({ disabled, size }), { [styles["lambda-helper-focused"]]: focused })} id={id}>
             {text}
         </label>
-    )
+    );
 }

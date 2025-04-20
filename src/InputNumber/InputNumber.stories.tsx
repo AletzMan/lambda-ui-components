@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { action } from '@storybook/addon-actions'
-import { InputNumber } from "./InputNumber"
+import type { Meta, StoryObj } from "@storybook/react";
+import { action } from '@storybook/addon-actions';
+import { InputNumber } from "./InputNumber";
 
 const meta: Meta<typeof InputNumber> = {
     title: "Components/InputNumber",
@@ -52,9 +52,9 @@ const meta: Meta<typeof InputNumber> = {
         }, onChange: { action: 'onChange' }
     }
 
-}
+};
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof InputNumber>
 
@@ -76,4 +76,4 @@ export const Number: Story = {
         disabled: false,
         onChange: action('onChange'),
     },
-}
+};

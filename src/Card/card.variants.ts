@@ -1,5 +1,5 @@
-import styles from "./card.module.css"
-import { cva } from "class-variance-authority"
+import styles from "./card.module.css";
+import { cva } from "class-variance-authority";
 
 export const card = cva(styles[`lambda-card`], {
     variants: {
@@ -24,4 +24,4 @@ export const card = cva(styles[`lambda-card`], {
         size: "medium",
         radius: 'medium',
     },
-})
+});

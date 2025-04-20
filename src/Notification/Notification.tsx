@@ -1,9 +1,9 @@
 
-import { forwardRef, useEffect, useState } from "react"
-import { cva, VariantProps } from "class-variance-authority"
-import styles from "./notification.module.css"
-import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react"
-import clsx from "clsx"
+import { forwardRef, useEffect, useState } from "react";
+import { cva, VariantProps } from "class-variance-authority";
+import styles from "./notification.module.css";
+import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react";
+import clsx from "clsx";
 
 const notificationProp = cva(styles["notification"], {
     variants: {
@@ -35,7 +35,7 @@ const notificationProp = cva(styles["notification"], {
         placement: "top-center",
         variant: "themed",
     },
-})
+});
 
 const barClass = cva(styles["notification-time"], {
     variants: {
@@ -58,7 +58,7 @@ const barClass = cva(styles["notification-time"], {
         notificationType: "secondary",
         variant: "themed",
     },
-})
+});
 
 const footer = cva(styles["notification-footer"], {
     variants: {
@@ -81,7 +81,7 @@ const footer = cva(styles["notification-footer"], {
         notificationType: "secondary",
         variant: "themed",
     },
-})
+});
 
 const NOTIFICATION_ICONS = {
     success: <CircleCheck />,
@@ -130,41 +130,41 @@ export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
         },
         ref
     ) => {
-        const [isVisible, setIsVisible] = useState(true)
-        const [closing, setClosing] = useState(false)
+        const [isVisible, setIsVisible] = useState(true);
+        const [closing, setClosing] = useState(false);
 
         // Cerrar automáticamente después de la duración especificada
         useEffect(() => {
             const timer = setTimeout(() => {
-                setClosing(true) // Comienza la animación de cierre 
-            }, duration)
+                setClosing(true); // Comienza la animación de cierre 
+            }, duration);
 
-            return () => clearTimeout(timer)
-        }, [duration, onClose])
+            return () => clearTimeout(timer);
+        }, [duration, onClose]);
 
         // Después de la animación de cierre, la notificación desaparece
         useEffect(() => {
             if (closing) {
                 const timer = setTimeout(() => {
-                    setIsVisible(false)
-                    if (onClose) onClose() // Notificamos que cerró
-                }, 600) // Duración de la animación de salida
+                    setIsVisible(false);
+                    if (onClose) onClose(); // Notificamos que cerró
+                }, 600); // Duración de la animación de salida
 
-                return () => clearTimeout(timer)
+                return () => clearTimeout(timer);
             }
-        }, [closing, onClose])
+        }, [closing, onClose]);
 
         const handleOnCancel = () => {
-            setClosing(true)
-            if (onCancel) onCancel() // Notificamos que canceló
-        }
+            setClosing(true);
+            if (onCancel) onCancel(); // Notificamos que canceló
+        };
         const handleOnConfirm = () => {
-            setClosing(true)
-            if (onConfirm) onConfirm() // Notificamos que confirmó
-        }
+            setClosing(true);
+            if (onConfirm) onConfirm(); // Notificamos que confirmó
+        };
 
         // No renderizamos si la notificación no es visible
-        if (!isVisible) return null
+        if (!isVisible) return null;
 
 
         return (

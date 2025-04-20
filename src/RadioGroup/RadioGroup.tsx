@@ -9,8 +9,8 @@ import {
     FC,
     useEffect,
     useRef,
-} from "react"
-import styles from "./radiogroup.module.css"
+} from "react";
+import styles from "./radiogroup.module.css";
 import { cva } from "class-variance-authority";
 
 const classRadioGroups = cva(styles["radio-group"], {
@@ -59,7 +59,7 @@ const classRadioGroups = cva(styles["radio-group"], {
         type: "radio",
         variant: "solid"
     },
-})
+});
 
 
 type RadioGroupContextType = {
@@ -74,7 +74,7 @@ type RadioGroupContextType = {
     disabled: boolean
 };
 
-const RadioGroupContext = createContext<RadioGroupContextType | null>(null)
+const RadioGroupContext = createContext<RadioGroupContextType | null>(null);
 
 interface RadioGroupProps {
     name?: string
@@ -106,21 +106,21 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
     gap = "8px",
     children,
 }) => {
-    const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue)
-    const refGroup = useRef<HTMLDivElement | null>(null)
+    const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
+    const refGroup = useRef<HTMLDivElement | null>(null);
 
     const handleChange = useCallback(
         (newValue: string) => {
             if (onChange) {
-                onChange(newValue)
+                onChange(newValue);
             }
-            setSelectedValue(newValue)
+            setSelectedValue(newValue);
         },
         [onChange]
-    )
+    );
 
     useEffect(() => {
-        const conainer = refGroup.current
+        const conainer = refGroup.current;
         if (conainer && type === "radio") {
             conainer.style.setProperty("--gap-radio-size", gap);
         }
@@ -139,7 +139,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
             disabled,
         }),
         [name, selectedOption, selectedValue, handleChange, size, color, type, variant, radius, disabled]
-    )
+    );
 
 
 
@@ -148,13 +148,13 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
         <RadioGroupContext.Provider value={contextValue}>
             <div role="radiogroup" ref={refGroup} className={classRadioGroups({ orientation, size, type, radius, variant, color })}>{children}</div>
         </RadioGroupContext.Provider>
-    )
-}
+    );
+};
 
 export const useRadioGroup = () => {
-    const context = useContext(RadioGroupContext)
+    const context = useContext(RadioGroupContext);
     if (!context) {
-        throw new Error("useRadioGroup must be used within a RadioGroup")
+        throw new Error("useRadioGroup must be used within a RadioGroup");
     }
-    return context
-}
+    return context;
+};

@@ -1,5 +1,5 @@
-import { AlertCircle, CheckCircle, HelpCircle, Menu, Send, Trash } from "lucide-react"
-import { JSX } from "react"
+import { AlertCircle, CheckCircle, HelpCircle, Menu, Send, Trash } from "lucide-react";
+import { JSX } from "react";
 
 interface IButton {
     color: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | null | undefined
@@ -15,4 +15,4 @@ export const buttonsPrimary: IButton[] = [
     { color: 'danger', label: 'Danger', icon: <Trash /> },
     { color: 'warning', label: 'Warning', icon: <AlertCircle /> },
     { color: 'info', label: 'Info', icon: <HelpCircle /> }
-]
+];

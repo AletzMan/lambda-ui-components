@@ -1,6 +1,6 @@
 
-import styles from "./inputGroup.module.css"
-import { cva } from "class-variance-authority"
+import styles from "./inputGroup.module.css";
+import { cva } from "class-variance-authority";
 
 export const inputGroup = cva(styles["lambda-input-group"], {
     variants: {
@@ -44,4 +44,4 @@ export const inputGroup = cva(styles["lambda-input-group"], {
         invalid: false,
         disabled: false,
     },
-})
+});

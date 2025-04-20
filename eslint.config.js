@@ -31,6 +31,7 @@ export default tseslint.config(
           caughtErrorsIgnorePattern: "^_",
         },
       ],
+      'semi': ['error', 'always'],
     },
   },
 )

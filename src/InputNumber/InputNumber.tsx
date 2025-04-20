@@ -1,9 +1,9 @@
-import { forwardRef, useState } from "react"
-import styles from "./inputnumber.module.css"
-import { cva, VariantProps } from "class-variance-authority"
-import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon, CircleX } from "lucide-react"
-import clsx from "clsx"
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
+import { forwardRef, useState } from "react";
+import styles from "./inputnumber.module.css";
+import { cva, VariantProps } from "class-variance-authority";
+import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon, CircleX } from "lucide-react";
+import clsx from "clsx";
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
 
 const inputNumber = cva(styles["lambda-number"], {
     variants: {
@@ -49,7 +49,7 @@ const inputNumber = cva(styles["lambda-number"], {
         invalid: false,
         disabled: false,
     },
-})
+});
 const wrapper = cva(styles["lambda-number-wrapper"], {
     variants: {
         disabled: {
@@ -60,7 +60,7 @@ const wrapper = cva(styles["lambda-number-wrapper"], {
     defaultVariants: {
         disabled: false,
     },
-})
+});
 
 const labels = cva(styles['lambda-number-label'], {
     variants: {
@@ -85,7 +85,7 @@ const labels = cva(styles['lambda-number-label'], {
         radius: "medium",
         size: "medium"
     },
-})
+});
 
 const number = cva(styles['lambda-number-field'], {
     variants: {
@@ -108,7 +108,7 @@ const number = cva(styles['lambda-number-field'], {
         size: "medium",
         typeNumber: 'default'
     },
-})
+});
 
 const handler = cva(styles['lambda-number-handler'], {
     variants: {
@@ -134,7 +134,7 @@ const handler = cva(styles['lambda-number-handler'], {
         variant: "outline",
         size: "medium",
     },
-})
+});
 
 
 
@@ -171,7 +171,7 @@ const typeCurrency = cva(styles['lambda-number-currency'], {
         variant: "outline",
         typeNumber: "default"
     },
-})
+});
 
 const button = cva(styles['lambda-number-btn'], {
     variants: {
@@ -185,7 +185,7 @@ const button = cva(styles['lambda-number-btn'], {
     defaultVariants: {
         size: "medium"
     },
-})
+});
 
 
 export interface InputProps
@@ -223,94 +223,94 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
         },
         ref
     ) => {
-        const [internalValue, setInternalValue] = useState<string>("0")
-        const [isEditing, setIsEditing] = useState(false)
+        const [internalValue, setInternalValue] = useState<string>("0");
+        const [isEditing, setIsEditing] = useState(false);
 
-        const isControlled = controlledValue !== undefined
-        const value = isControlled ? Number(controlledValue) : Number(internalValue)
+        const isControlled = controlledValue !== undefined;
+        const value = isControlled ? Number(controlledValue) : Number(internalValue);
 
         const formatValue = (value: string | number): string => {
-            if (value === "" || isNaN(Number(value))) return ""
+            if (value === "" || isNaN(Number(value))) return "";
 
-            const numericValue = Number(value)
+            const numericValue = Number(value);
             switch (typeNumber) {
                 case "currency-USD":
                 case "currency-EUR":
                 case "currency-GBP":
-                    return numericValue.toFixed(2)
+                    return numericValue.toFixed(2);
                 case "percentage":
-                    return `${numericValue}`
+                    return `${numericValue}`;
                 case "decimal":
-                    return numericValue.toFixed(2)
+                    return numericValue.toFixed(2);
                 default:
-                    return numericValue.toString()
+                    return numericValue.toString();
             }
-        }
+        };
 
         const parseValue = (input: string): string => {
-            return input.replace(/[^\d.-]/g, "")
-        }
+            return input.replace(/[^\d.-]/g, "");
+        };
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            e.persist()
-            const inputValue = parseValue(e.target.value)
+            e.persist();
+            const inputValue = parseValue(e.target.value);
 
             // Permite solo valores válidos en el input
             if (/^$|^-?\d*\.?\d*$/.test(inputValue)) {
                 if (!isControlled) {
-                    setInternalValue(inputValue)
+                    setInternalValue(inputValue);
                 }
-                onChange?.(Number(inputValue))
+                onChange?.(Number(inputValue));
             }
-        }
+        };
 
         const handleBlur = () => {
-            setIsEditing(false) // Detiene la edición
+            setIsEditing(false); // Detiene la edición
             if (!isControlled) {
-                setInternalValue(formatValue(internalValue))
+                setInternalValue(formatValue(internalValue));
             }
-        }
+        };
 
         const handleFocus = () => {
-            setIsEditing(true) // Permite edición manual
-        }
+            setIsEditing(true); // Permite edición manual
+        };
 
         const increment = () => {
-            const numericValue = Number(parseValue(value.toString()) || 0)
-            const newValue = Math.min(Number(max), numericValue + Number(step))
+            const numericValue = Number(parseValue(value.toString()) || 0);
+            const newValue = Math.min(Number(max), numericValue + Number(step));
             if (!isControlled) {
-                setInternalValue(newValue.toString())
+                setInternalValue(newValue.toString());
             }
 
-            onChange?.(newValue)
-        }
+            onChange?.(newValue);
+        };
 
         const decrement = () => {
-            const numericValue = Number(parseValue(value.toString()) || 0)
-            const newValue = Math.max(Number(min), numericValue - Number(step))
+            const numericValue = Number(parseValue(value.toString()) || 0);
+            const newValue = Math.max(Number(min), numericValue - Number(step));
             if (!isControlled) {
-                setInternalValue(newValue.toString())
+                setInternalValue(newValue.toString());
             }
 
-            onChange?.(newValue)
-        }
+            onChange?.(newValue);
+        };
 
         const getIcon = () => {
             switch (typeNumber) {
                 case "currency-USD":
-                    return <DollarSignIcon className={styles['lambda-number-currency-icon']} />
+                    return <DollarSignIcon className={styles['lambda-number-currency-icon']} />;
                 case "currency-EUR":
-                    return <EuroIcon className={styles['lambda-number-currency-icon']} />
+                    return <EuroIcon className={styles['lambda-number-currency-icon']} />;
                 case "currency-GBP":
-                    return <PoundSterlingIcon className={styles['lambda-number-currency-icon']} />
+                    return <PoundSterlingIcon className={styles['lambda-number-currency-icon']} />;
                 case "percentage":
-                    return <PercentIcon className={styles['lambda-number-currency-icon']} />
+                    return <PercentIcon className={styles['lambda-number-currency-icon']} />;
                 default:
-                    return null
+                    return null;
             }
-        }
+        };
 
-        const displayedValue = isEditing ? internalValue : formatValue(value)
+        const displayedValue = isEditing ? internalValue : formatValue(value);
 
         return (
             <div className={clsx(wrapper({ disabled, className }))}>
@@ -360,6 +360,6 @@ export const InputNumber = forwardRef<HTMLInputElement, InputProps>(
                 </div>
                 {invalid && errorMessage && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
             </div>
-        )
+        );
     }
-)
+);

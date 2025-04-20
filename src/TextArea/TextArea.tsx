@@ -1,11 +1,11 @@
 
-import { TextareaHTMLAttributes, forwardRef, FocusEvent, useState } from "react"
-import styles from "./textarea.module.css"
-import { cva, VariantProps } from "class-variance-authority"
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
-import clsx from "clsx"
-import { CircleX } from "lucide-react"
-import { HelperText } from "../_util/HelperText/HelperText"
+import { TextareaHTMLAttributes, forwardRef, FocusEvent, useState } from "react";
+import styles from "./textarea.module.css";
+import { cva, VariantProps } from "class-variance-authority";
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
+import clsx from "clsx";
+import { CircleX } from "lucide-react";
+import { HelperText } from "../_util/HelperText/HelperText";
 
 const textarea = cva(styles[`lambda-textarea`], {
     variants: {
@@ -38,7 +38,7 @@ const textarea = cva(styles[`lambda-textarea`], {
         variant: "outline",
         radius: 'medium',
     },
-})
+});
 
 const labelString = cva(styles[`lambda-textarea-label`], {
     variants: {
@@ -65,7 +65,7 @@ const labelString = cva(styles[`lambda-textarea-label`], {
         radius: 'medium',
         size: 'medium',
     },
-})
+});
 
 
 export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "disabled"> {
@@ -100,21 +100,21 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         },
         ref
     ) => {
-        const [focused, setFocused] = useState(false)
+        const [focused, setFocused] = useState(false);
 
         const handleOnFocus = (e: FocusEvent<HTMLTextAreaElement>) => {
-            setFocused(true)
+            setFocused(true);
             if (onFocus) {
-                onFocus(e)
+                onFocus(e);
             }
-        }
+        };
 
         const handleOnBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
-            setFocused(false)
+            setFocused(false);
             if (onBlur) {
-                onBlur(e)
+                onBlur(e);
             }
-        }
+        };
 
         return (
             <div
@@ -134,6 +134,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 {helperText && !invalid && <HelperText text={helperText} size={size} disabled={disabled} focused={focused} />}
                 {invalid && errorMessage && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
             </div>
-        )
+        );
     }
-)
+);

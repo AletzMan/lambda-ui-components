@@ -1,105 +1,114 @@
-import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, useId } from "react"
-import styles from "./input.module.css"
-import { VariantProps } from "class-variance-authority"
-import { CircleX, Eye, EyeOff, X } from "lucide-react"
-import clsx from 'clsx'
-import { useInputGroup } from "../InputGroup/InputGroup"
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
-import { HelperText } from "../_util/HelperText/HelperText"
-import { buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants"
+import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, useId } from "react";
+import styles from "./input.module.css";
+import { CircleX, Eye, EyeOff, X } from "lucide-react";
+import clsx from 'clsx';
+import { useInputGroup } from "../InputGroup/InputGroup";
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
+import { HelperText } from "../_util/HelperText/HelperText";
+import { InputVariants, buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants";
 
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value">, VariantProps<typeof input> {
-    label?: string,
-    invalid?: boolean,
-    errorMessage?: string
-    floatingLabel?: boolean
-    helperText?: string
-    required?: boolean
-    onChange?: (value: string) => void
-    value?: string
+export interface InputProps
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value" | "placeholder"> {
+    // Props de variantes consolidadas o de los cva principales
+    size?: InputVariants["size"];
+    radius?: InputVariants["radius"];
+    variant?: InputVariants["variant"];
+    invalid?: InputVariants["invalid"];
+    disabled?: InputVariants["disabled"];
+    type?: InputVariants["type"];
+    hasElements?: InputVariants["hasElements"];
+
+    // Props específicas del componente
+    label?: string;
+    errorMessage?: string;
+    floatingLabel?: boolean;
+    helperText?: string;
+    required?: boolean;
+    onChange?: (value: string) => void;
+    value?: string;
+    placeholder?: string;
 }
-
 export const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ className, variant: propVariant, radius: propRadius, size: propSize, label, invalid, errorMessage, disabled, type = "text", value: controlledValue, onChange, required, floatingLabel, placeholder, helperText, ...props }, ref) => {
-        let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextInvalid, hasElements: "none" | "first" | "last" | "both"
+        let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextInvalid, hasElements: "none" | "first" | "last" | "both";
         try {
-            const context = useInputGroup()
-            contextVariant = context.variant
-            contextRadius = context.radius
-            contextSize = context.size
-            contextDisabled = context.disabled
-            contextInvalid = context.invalid
-            hasElements = context.hasElements
-            isGroup = true
+            const context = useInputGroup();
+            contextVariant = context.variant;
+            contextRadius = context.radius;
+            contextSize = context.size;
+            contextDisabled = context.disabled;
+            contextInvalid = context.invalid;
+            hasElements = context.hasElements;
+            isGroup = true;
         } catch (_e) {
-            contextVariant = propVariant
-            contextRadius = propRadius
-            contextSize = propSize
-            contextDisabled = disabled
-            contextInvalid = invalid
-            isGroup = false
-            hasElements = "none"
+            contextVariant = propVariant;
+            contextRadius = propRadius;
+            contextSize = propSize;
+            contextDisabled = disabled;
+            contextInvalid = invalid;
+            isGroup = false;
+            hasElements = "none";
         }
-        const [showPassword, setShowPassword] = useState(false)
-        const [internalValue, setInternalValue] = useState("")
-        const [isLabelFloating, setIsLabelFloating] = useState(false)
-        const [isFocused, setIsFocused] = useState(false)
+        const [showPassword, setShowPassword] = useState(false);
+        const [internalValue, setInternalValue] = useState("");
+        const [isLabelFloating, setIsLabelFloating] = useState(false);
+        const [isFocused, setIsFocused] = useState(false);
         const inputId = useId();
 
         const errorId = errorMessage ? `${inputId}-error` : undefined;
         const helperId = helperText ? `${inputId}-helper` : undefined;
         const describedByIds = [errorId, helperId].filter(Boolean).join(" ");
 
-        const isControlled = controlledValue !== undefined
-        const value = isControlled ? controlledValue : internalValue
+        const isControlled = controlledValue !== undefined;
+        const value = isControlled ? controlledValue : internalValue;
 
-        const isPasswordType = type === "password"
-        const isSearchType = type === "search"
-        const inputType = isPasswordType && showPassword ? "text" : type
+        const isPasswordType = type === "password";
+        const isSearchType = type === "search";
+        const inputType = isPasswordType && showPassword ? "text" : type;
 
         const togglePasswordVisibility = (e: MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault()
+            e.preventDefault();
             if (isPasswordType) {
-                setShowPassword((prev) => !prev)
+                setShowPassword((prev) => !prev);
             }
-        }
+        };
 
         const clearInput = () => {
             if (isSearchType) {
-                if (!isControlled) setInternalValue("")
-                if (onChange) onChange("")
+                if (!isControlled) setInternalValue("");
+                if (onChange) onChange("");
             }
-        }
+        };
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-            const newValue = e.target.value
+            const newValue = e.target.value;
             if (!isControlled) {
-                setInternalValue(newValue)
+                setInternalValue(newValue);
             }
             if (onChange) {
-                onChange(e.currentTarget.value)
+                onChange(e.currentTarget.value);
             }
             if (floatingLabel) {
-                setIsLabelFloating(!!newValue || isFocused)
+                setIsLabelFloating(!!newValue || isFocused);
             }
-        }
+        };
 
         const handleFocus = () => {
-            setIsFocused(true)
+            setIsFocused(true);
             if (floatingLabel) {
-                setIsLabelFloating(true)
+                setIsLabelFloating(true);
             }
-        }
+        };
 
         const handleBlur = () => {
-            setIsFocused(false)
+            setIsFocused(false);
             if (floatingLabel && !value) {
-                setIsLabelFloating(false)
+                setIsLabelFloating(false);
             }
-        }
+        };
 
-        const inputPlaceholder = floatingLabel ? "" : placeholder
+        const inputPlaceholder = floatingLabel ? "" : placeholder;
 
         return (
             <div className={clsx(lambdaInput({ radius: contextRadius, disabled: contextDisabled, size: contextSize, invalid: contextInvalid, className }), { [styles["lambda-input-group"]]: isGroup, [styles["lambda-input-group-helper"]]: isGroup && helperText })}>
@@ -152,6 +161,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 </div>
                 {contextInvalid && errorMessage && !isGroup && <InvalidMessage id={errorId} errorMessage={errorMessage} invalid={contextInvalid} size={contextSize} />}
             </div>
-        )
+        );
     }
-)
+);

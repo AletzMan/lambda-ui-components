@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { Button } from "./Button"
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
     title: "Components/Button",
@@ -45,9 +45,9 @@ const meta: Meta<typeof Button> = {
         }
     }
 
-}
+};
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof Button>
 
@@ -63,7 +63,7 @@ export const Primary: Story = {
         iconPosition: "left",
         label: "Button"
     },
-}
+};
 
 
 export const Secondary: Story = {
@@ -78,7 +78,7 @@ export const Secondary: Story = {
         iconPosition: "left",
         label: "Button",
     }
-}
+};
 
 export const Danger: Story = {
     args: {
@@ -92,7 +92,7 @@ export const Danger: Story = {
         iconPosition: "left",
         label: "Button",
     }
-}
+};
 
 export const Success: Story = {
     args: {
@@ -106,7 +106,7 @@ export const Success: Story = {
         iconPosition: "left",
         label: "Button",
     }
-}
+};
 
 export const Warning: Story = {
     args: {
@@ -120,5 +120,5 @@ export const Warning: Story = {
         iconPosition: "left",
         label: "Button",
     }
-}
+};
 

@@ -1,9 +1,9 @@
 
-import React, { HTMLAttributes, forwardRef } from "react"
-import styles from "./card.module.css"
-import { VariantProps } from "class-variance-authority"
-import clsx from "clsx"
-import { card } from "./card.variants"
+import React, { HTMLAttributes, forwardRef } from "react";
+import styles from "./card.module.css";
+import { VariantProps } from "class-variance-authority";
+import clsx from "clsx";
+import { card } from "./card.variants";
 
 export interface ICardHeader {
     title: string
@@ -36,7 +36,7 @@ const SizeHeight: Record<"medium" | "small" | "large", number> = {
     small: 10,
     medium: 15,
     large: 18,
-}
+};
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
     (
@@ -89,6 +89,6 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
                     </footer>
                 }
             </div>
-        )
+        );
     }
-)
+);

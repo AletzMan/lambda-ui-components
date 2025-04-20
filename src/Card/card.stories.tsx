@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { Card } from "./Card"
+import type { Meta, StoryObj } from "@storybook/react";
+import { Card } from "./Card";
 
 const meta: Meta<typeof Card> = {
     title: "Components/Card",
@@ -27,9 +27,9 @@ const meta: Meta<typeof Card> = {
         }
     }
 
-}
+};
 
-export default meta
+export default meta;
 
 type Story = StoryObj<typeof Card>
 
@@ -39,6 +39,6 @@ export const Outline: Story = {
         size: "medium",
         radius: 'small',
     },
-}
+};
 
 

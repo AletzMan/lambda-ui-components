@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import styles from "./styles.module.css"
+import styles from "./styles.module.css";
 import { TriangleAlert } from "lucide-react";
 
 
@@ -28,12 +28,12 @@ const invalidMessage = cva(styles["lambda-message-invalid"], {
         size: "medium",
         invalid: false,
     },
-})
+});
 
 
 export function InvalidMessage({ size, invalid, errorMessage, marginArrow, id }: InvalidMessageProps) {
 
-    console.log(marginArrow)
+    console.log(marginArrow);
     return (
         <div className={invalidMessage({ invalid, size })} style={{ "--after-left": marginArrow ? `${marginArrow + 6}px` : "6px" } as React.CSSProperties}><TriangleAlert className={styles["lambda-message-invalid-icon"]} />
             <label id={id}>{errorMessage}</label>

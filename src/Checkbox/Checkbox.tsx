@@ -1,7 +1,7 @@
-import { forwardRef, useState, InputHTMLAttributes, ChangeEvent } from "react"
-import styles from "./checkbox.module.css"
-import { CheckIcon } from "lucide-react"
-import { CheckboxVariants, ContainerVariants, checkboxprop, container, icon, textLabel } from "./checkbox.variants"
+import { forwardRef, useState, InputHTMLAttributes, ChangeEvent } from "react";
+import styles from "./checkbox.module.css";
+import { CheckIcon } from "lucide-react";
+import { CheckboxVariants, ContainerVariants, checkboxprop, container, icon, textLabel } from "./checkbox.variants";
 
 export interface CheckBoxProps
     extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | 'checked' | "color" | "type" | "onChange"> {
@@ -33,15 +33,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
         },
         ref
     ) => {
-        const [internalChecked, setInternalChecked] = useState(checked)
+        const [internalChecked, setInternalChecked] = useState(checked);
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-            const newChecked = e.currentTarget.checked
-            setInternalChecked(newChecked)
+            const newChecked = e.currentTarget.checked;
+            setInternalChecked(newChecked);
             if (onChange) {
-                onChange(e)
+                onChange(e);
             }
-        }
+        };
 
         return (
             <label className={container({ positionLabel, disabled })}>
@@ -59,6 +59,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
                 </div>
                 {label && <span className={textLabel({ size, disabled })}>{label}</span>}
             </label>
-        )
+        );
     }
-)
+);

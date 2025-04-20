@@ -2,8 +2,8 @@
 import '@fontsource-variable/plus-jakarta-sans';
 import React, { useEffect } from "react";
 import { ThemeProvider } from "../src/ThemeProvider/ThemeProvider";
-import { withThemeByClassName } from "@storybook/addon-themes"
-import type { Preview } from "@storybook/react"
+import { withThemeByClassName } from "@storybook/addon-themes";
+import type { Preview } from "@storybook/react";
 import '../src/index.css';
 
 
@@ -17,7 +17,7 @@ const ThemeDecorator = (Story, context) => {
     const element = document.getElementById("storybook-docs")?.children[0] as HTMLElement;
     const container = document.querySelector(".docs-story") as HTMLElement;
     if (element) {
-      element.style.backgroundColor = "transparent"
+      element.style.backgroundColor = "transparent";
     }
     if (container) {
       container.style.backgroundColor = "var(--surface-b)";

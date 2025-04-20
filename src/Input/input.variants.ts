@@ -1,5 +1,5 @@
-import styles from "./input.module.css"
-import { cva, } from "class-variance-authority"
+import styles from "./input.module.css";
+import { VariantProps, cva, } from "class-variance-authority";
 
 export const lambdaInput = cva(styles["lambda-input"], {
     variants: {
@@ -29,7 +29,7 @@ export const lambdaInput = cva(styles["lambda-input"], {
         radius: "small",
         disabled: false,
     },
-})
+});
 export const input = cva(styles["lambda-input-wrapper"], {
     variants: {
         size: {
@@ -80,7 +80,7 @@ export const input = cva(styles["lambda-input-wrapper"], {
         invalid: false,
         disabled: false,
     },
-})
+});
 
 export const labels = cva(styles["lambda-input-label"], {
     variants: {
@@ -109,7 +109,7 @@ export const labels = cva(styles["lambda-input-label"], {
         radius: "small",
         size: "medium",
     },
-})
+});
 
 export const textInput = cva(styles["lambda-input-field"], {
     variants: {
@@ -128,7 +128,7 @@ export const textInput = cva(styles["lambda-input-field"], {
         size: "medium",
         disabled: false
     }
-})
+});
 
 
 export const buttonPassword = cva(styles["lambda-input-toggle-password"], {
@@ -149,4 +149,6 @@ export const buttonPassword = cva(styles["lambda-input-toggle-password"], {
         size: "medium",
         variant: "outline"
     }
-})
+});
+
+export type InputVariants = VariantProps<typeof input> 

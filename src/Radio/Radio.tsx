@@ -43,7 +43,7 @@ const radioprop = cva(styles["radio"], {
         disabled: false,
         type: "radio",
     },
-})
+});
 
 const view = cva(styles["radio-view"], {
     variants: {
@@ -87,7 +87,7 @@ const view = cva(styles["radio-view"], {
         type: "radio",
         disabled: false,
     },
-})
+});
 
 const wrapper = cva(styles["radio-wrapper"], {
     variants: {
@@ -133,7 +133,7 @@ const wrapper = cva(styles["radio-wrapper"], {
         variant: "solid",
         disabled: false
     },
-})
+});
 
 const iconView = cva(styles["radio-icon"], {
     variants: {
@@ -171,7 +171,7 @@ const iconView = cva(styles["radio-icon"], {
         type: "radio",
         checked: false,
     },
-})
+});
 
 const labelName = cva(styles["radio-label"], {
     variants: {
@@ -195,7 +195,7 @@ const labelName = cva(styles["radio-label"], {
         type: "radio",
         size: "medium"
     },
-})
+});
 
 export interface Radioprops
     extends Omit<
@@ -234,14 +234,14 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
             type: groupType,
             disabled: groupDisabled,
             name,
-        } = useRadioGroup()
+        } = useRadioGroup();
 
-        const isChecked = selectedValue === props.value
-        const isDisabled = disabled || groupDisabled
+        const isChecked = selectedValue === props.value;
+        const isDisabled = disabled || groupDisabled;
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            onChange(e.target.value)
-        }
+            onChange(e.target.value);
+        };
 
         return (
             <label className={wrapper({ positionLabel, color, disabled: isDisabled, size: size || groupSize, type: type || groupType, variant })}>
@@ -272,6 +272,6 @@ export const Radio = forwardRef<HTMLInputElement, Radioprops>(
                     </span>
                 )}
             </label>
-        )
+        );
     }
-)
+);

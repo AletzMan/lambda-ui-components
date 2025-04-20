@@ -1,9 +1,9 @@
-import { useState, forwardRef, SelectHTMLAttributes, useRef, useEffect, useCallback } from "react"
-import { cva, VariantProps } from "class-variance-authority"
-import styles from "./select.module.css"
-import { Check, ChevronDown, ChevronUp } from "lucide-react"
-import clsx from "clsx"
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage"
+import { useState, forwardRef, SelectHTMLAttributes, useRef, useEffect, useCallback } from "react";
+import { cva, VariantProps } from "class-variance-authority";
+import styles from "./select.module.css";
+import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import clsx from "clsx";
+import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
 
 const select = cva(styles["select-container"], {
     variants: {
@@ -41,7 +41,7 @@ const select = cva(styles["select-container"], {
         disabled: false,
         invalid: false,
     },
-})
+});
 const buttonSelect = cva(styles["select-btn"], {
     variants: {
         size: {
@@ -78,7 +78,7 @@ const buttonSelect = cva(styles["select-btn"], {
         disabled: false,
         invalid: false,
     },
-})
+});
 
 const selectIcon = cva(styles["select-icon"], {
     variants: {
@@ -91,7 +91,7 @@ const selectIcon = cva(styles["select-icon"], {
     defaultVariants: {
         variant: "outline",
     },
-})
+});
 
 const dropdown = cva(styles["select-dropdown"], {
     variants: {
@@ -129,7 +129,7 @@ const dropdown = cva(styles["select-dropdown"], {
         size: "medium",
         variant: "outline"
     }
-})
+});
 
 const labelSelect = cva(styles["select-label"], {
     variants: {
@@ -159,7 +159,7 @@ const labelSelect = cva(styles["select-label"], {
         radius: "small",
         size: "medium"
     }
-})
+});
 
 const selectedView = cva(styles["select-view"], {
     variants: {
@@ -173,7 +173,7 @@ const selectedView = cva(styles["select-view"], {
     defaultVariants: {
         size: "medium"
     }
-})
+});
 
 export interface IListCollection {
     label: string
@@ -196,49 +196,49 @@ export interface SelectProps
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(
     ({ label, options, size, variant, radius, disabled, invalid, required, errorMessage, value, placeholder = "Select an option", ...props }, ref) => {
-        const [isOpen, setIsOpen] = useState(false)
-        const [selectedValue, setSelectedValue] = useState<string | null | undefined>(value)
-        const [direction, setDirection] = useState<"up" | "down">("down")
-        const selectRef = useRef<HTMLDivElement>(null)
-        const listRef = useRef<HTMLUListElement>(null)
+        const [isOpen, setIsOpen] = useState(false);
+        const [selectedValue, setSelectedValue] = useState<string | null | undefined>(value);
+        const [direction, setDirection] = useState<"up" | "down">("down");
+        const selectRef = useRef<HTMLDivElement>(null);
+        const listRef = useRef<HTMLUListElement>(null);
 
         const lenghtOptions = useCallback(() => {
             if (options.length > 0) {
-                const maxLength = Math.max(...options.map((option) => option.label.length))
-                return maxLength
+                const maxLength = Math.max(...options.map((option) => option.label.length));
+                return maxLength;
             }
-            return placeholder.length
-        }, [options, placeholder])
+            return placeholder.length;
+        }, [options, placeholder]);
 
 
         const checkDirection = () => {
             setTimeout(() => {
                 if (selectRef.current && listRef.current) {
-                    const { bottom } = selectRef.current.getBoundingClientRect()
-                    const viewportHeight = window.innerHeight
-                    const { height: listHeight } = listRef.current.getBoundingClientRect()
+                    const { bottom } = selectRef.current.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    const { height: listHeight } = listRef.current.getBoundingClientRect();
                     if (viewportHeight - bottom < listHeight) {
-                        setDirection("up")
+                        setDirection("up");
                     } else {
-                        setDirection("down")
+                        setDirection("down");
                     }
                 }
-            }, 210)
-        }
+            }, 210);
+        };
 
         const handleClickOutside = (event: MouseEvent) => {
             if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
-                setIsOpen(false)
+                setIsOpen(false);
             }
-        }
+        };
 
         useEffect(() => {
-            document.addEventListener("click", (e) => handleClickOutside(e))
+            document.addEventListener("click", (e) => handleClickOutside(e));
             return () => {
 
                 document.removeEventListener("click", handleClickOutside);
-            }
-        }, [])
+            };
+        }, []);
 
 
         useEffect(() => {
@@ -248,36 +248,36 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
             const handleScroll = () => {
                 if (isOpen) checkDirection();
-            }
+            };
 
             const handleResize = () => {
-                if (isOpen) checkDirection()
-            }
+                if (isOpen) checkDirection();
+            };
 
-            window.addEventListener("scroll", handleScroll)
-            window.addEventListener("resize", handleResize)
+            window.addEventListener("scroll", handleScroll);
+            window.addEventListener("resize", handleResize);
 
             return () => {
 
                 window.removeEventListener("scroll", handleScroll);
                 window.removeEventListener("resize", handleResize);
-            }
+            };
         }, [isOpen]);
 
         const toggleDropdown = (e: React.MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault()
+            e.preventDefault();
             if (!disabled) {
-                setIsOpen((prev) => !prev)
+                setIsOpen((prev) => !prev);
             }
-        }
+        };
 
         const handleOptionClick = (value: string) => {
-            setSelectedValue(value)
-            setIsOpen(false)
+            setSelectedValue(value);
+            setIsOpen(false);
             if (props.onChange) {
-                props.onChange({ target: { value } } as React.ChangeEvent<HTMLSelectElement>)
+                props.onChange({ target: { value } } as React.ChangeEvent<HTMLSelectElement>);
             }
-        }
+        };
 
         return (
             <div className={clsx([styles["select-wrapper"]], { [styles["select-wrapper-disabled"]]: disabled })} ref={ref} >
@@ -315,6 +315,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                 </div>
                 {invalid && errorMessage && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
             </div>
-        )
+        );
     }
-)
+);

@@ -1,9 +1,9 @@
-"use client"
-import React from "react"
-import { Notification, NotificationProps } from "./Notification"
-import styles from "./notification.module.css"
-import { cva } from "class-variance-authority"
-import { validPlacements } from "./const"
+"use client";
+import React from "react";
+import { Notification, NotificationProps } from "./Notification";
+import styles from "./notification.module.css";
+import { cva } from "class-variance-authority";
+import { validPlacements } from "./const";
 
 const notificationGroup = cva(styles["notification-group"], {
     variants: {
@@ -19,7 +19,7 @@ const notificationGroup = cva(styles["notification-group"], {
     defaultVariants: {
         placement: "top-center",
     },
-})
+});
 
 
 interface NotificationContainerProps {
@@ -31,12 +31,12 @@ export const NotificationContainer: React.FC<NotificationContainerProps> = ({ no
     const groupedNotifications = notifications.reduce((acc, notification) => {
         const key = validPlacements.includes(notification.placement as typeof validPlacements[number])
             ? notification.placement!
-            : "top-center"
+            : "top-center";
 
-        acc[key] = acc[key] || []
-        acc[key].push(notification)
+        acc[key] = acc[key] || [];
+        acc[key].push(notification);
         return acc;
-    }, {} as Record<typeof validPlacements[number], NotificationProps[]>)
+    }, {} as Record<typeof validPlacements[number], NotificationProps[]>);
 
     return (
         <>
