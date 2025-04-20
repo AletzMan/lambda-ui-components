@@ -1,17 +1,17 @@
-import { forwardRef, useState, useId } from "react";
+import { forwardRef, useId } from "react";
 import styles from "./inputnumber.module.css";
 import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon, CircleX } from "lucide-react";
 import clsx from "clsx";
 import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
 import { InputNumberVariants, button, handler, inputNumber, labels, number, typeCurrency, wrapper } from "./inputnumber.variants";
 import { HelperText } from "../_util/HelperText/HelperText";
+import { useNumberInput } from "./useNumberInput";
 
 
 
 
 export interface InputNumberProps // Cambiado a InputNumberProps para evitar conflicto con Input
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value" | "min" | "max" | "step"> // Omitir también value, min, max, step si los re-tipas
-{
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value" | "min" | "max" | "step"> {
     // Props de variantes (usando tipos exportados)
     variant?: InputNumberVariants["variant"];
     size?: InputNumberVariants["size"];
@@ -54,79 +54,23 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
         },
         ref
     ) => {
-        const [internalValue, setInternalValue] = useState<string>("0");
-        const [isEditing, setIsEditing] = useState(false);
-
-        const isControlled = controlledValue !== undefined;
-        const value = isControlled ? Number(controlledValue) : Number(internalValue);
-
-        const formatValue = (value: string | number): string => {
-            if (value === "" || isNaN(Number(value))) return "";
-
-            const numericValue = Number(value);
-            switch (typeNumber) {
-                case "currency-USD":
-                case "currency-EUR":
-                case "currency-GBP":
-                    return numericValue.toFixed(2);
-                case "percentage":
-                    return `${numericValue}`;
-                case "decimal":
-                    return numericValue.toFixed(2);
-                default:
-                    return numericValue.toString();
-            }
-        };
-
-        const parseValue = (input: string): string => {
-            return input.replace(/[^\d.-]/g, "");
-        };
-
-        const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            e.persist();
-            const inputValue = parseValue(e.target.value);
-
-            // Permite solo valores válidos en el input
-            if (/^$|^-?\d*\.?\d*$/.test(inputValue)) {
-                if (!isControlled) {
-                    setInternalValue(inputValue);
-                }
-                onChange?.(Number(inputValue));
-            }
-        };
-
-        const handleBlur = () => {
-            setIsEditing(false); // Detiene la edición
-            if (!isControlled) {
-                setInternalValue(formatValue(internalValue));
-            }
-        };
-
-        const handleFocus = () => {
-            setIsEditing(true); // Permite edición manual
-        };
-
-        const increment = () => {
-            const numericValue = Number(parseValue(value.toString()) || 0);
-            const newValue = Math.min(Number(max), numericValue + Number(step));
-            if (!isControlled) {
-                setInternalValue(newValue.toString());
-            }
-
-            onChange?.(newValue);
-        };
-
-        const decrement = () => {
-            const numericValue = Number(parseValue(value.toString()) || 0);
-            const newValue = Math.max(Number(min), numericValue - Number(step));
-            if (!isControlled) {
-                setInternalValue(newValue.toString());
-            }
-
-            onChange?.(newValue);
-        };
-
-
+        const {
+            displayedValue,
+            value,
+            isEditing,
+            handleChange,
+            handleBlur,
+            handleFocus,
+            increment,
+            decrement,
+        } = useNumberInput({
+            controlledValue,
+            onChange,
+            min: min ?? Number.MIN_SAFE_INTEGER,
+            max: max ?? Number.MAX_SAFE_INTEGER,
+            step: step ?? 1,
+            typeNumber: typeNumber ?? "default",
+        });
         const getIcon = () => {
             switch (typeNumber) {
                 case "currency-USD":
@@ -142,8 +86,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
             }
         };
 
-        const displayedValue = isEditing ? internalValue : formatValue(value);
-        const inputId = useId(); // Usar useId para un id único
+        const inputId = useId();
         const errorId = errorMessage && invalid ? `${inputId}-error` : undefined;
         const helperId = helperText ? `${inputId}-helper` : undefined;
         const describedByIds = [errorId, helperId].filter(Boolean).join(" ");
