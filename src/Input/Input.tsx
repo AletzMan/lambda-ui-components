@@ -116,7 +116,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 )}
                 {helperText && <HelperText id={helperId} text={helperText} size={contextSize} disabled={contextDisabled} focused={isFocused} />}
                 <div className={clsx(input({ variant: contextVariant, disabled: contextDisabled, radius: contextRadius, size: contextSize, invalid: contextInvalid, type, hasElements }), { [styles["lambda-input-wrapper-group"]]: isGroup })}>
-                    <div className={clsx(styles["lambda-input-input-wrapper"], { [styles["lambda-input-input-wrapper--password"]]: isPasswordType || isSearchType })}>
+                    <div className={clsx(styles["lambda-input-input-wrapper"], { [styles["lambda-input-input-wrapper-password"]]: isPasswordType || isSearchType })}>
                         <input
                             ref={ref}
                             value={value}
