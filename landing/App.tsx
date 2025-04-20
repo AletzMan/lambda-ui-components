@@ -307,7 +307,7 @@ function App() {
         </div>
         <div className={styles.container_buttons}>
           <div className={styles.buttons}>
-            <InputNumber variant="outline" label='Default' typeNumber='default' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
+            <InputNumber variant="outline" label='Default' typeNumber='default' helperText='Helper text' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
             <InputNumber variant="outline" label='Currency USD' typeNumber='currency-USD' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
             <InputNumber variant="outline" label='Currency EUR' typeNumber='currency-EUR' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessageNumber} />
             <InputNumber variant="outline" label='Currency GBP' typeNumber='currency-GBP' radius={radiusInputNumber} size={sizeInputNumber} disabled={disabledInputNumber} invalid={!validInputNumber} errorMessage={errorMessage} />
