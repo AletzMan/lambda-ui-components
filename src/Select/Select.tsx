@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import styles from "./select.module.css";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import clsx from "clsx";
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
+import { InvalidMessage } from "../_internal/components/InvalidMessage/InvalidMessage";
 
 const select = cva(styles["select-container"], {
     variants: {

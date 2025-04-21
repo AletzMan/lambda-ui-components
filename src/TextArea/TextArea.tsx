@@ -2,10 +2,10 @@
 import { TextareaHTMLAttributes, forwardRef, FocusEvent, useState } from "react";
 import styles from "./textarea.module.css";
 import { cva, VariantProps } from "class-variance-authority";
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
+import { InvalidMessage } from "../_internal/components/InvalidMessage/InvalidMessage";
 import clsx from "clsx";
 import { CircleX } from "lucide-react";
-import { HelperText } from "../_util/HelperText/HelperText";
+import { HelperText } from "../_internal/components/HelperText/HelperText";
 
 const textarea = cva(styles[`lambda-textarea`], {
     variants: {

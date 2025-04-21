@@ -3,8 +3,8 @@ import styles from "./input.module.css";
 import { CircleX, Eye, EyeOff, X } from "lucide-react";
 import clsx from 'clsx';
 import { useInputGroup } from "../InputGroup/InputGroup";
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
-import { HelperText } from "../_util/HelperText/HelperText";
+import { InvalidMessage } from "../_internal/components/InvalidMessage/InvalidMessage";
+import { HelperText } from "../_internal/components/HelperText/HelperText";
 import { InputVariants, buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants";
 
 

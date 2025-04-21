@@ -4,7 +4,7 @@ import { InputProps } from "../Input/Input";
 import styles from "./inputGroup.module.css";
 import clsx from 'clsx';
 import { VariantProps } from "class-variance-authority";
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
+import { InvalidMessage } from "../_internal/components/InvalidMessage/InvalidMessage";
 import { inputGroup } from "./inputgroup.variants";
 
 
