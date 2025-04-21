@@ -1,7 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { createContext, useContext, useState, useLayoutEffect, ReactNode } from "react";
-import { Button } from "../main";
-import { MoonIcon, SunIcon } from "lucide-react";
+import { createContext, useContext, useState, useLayoutEffect, ReactNode, useCallback } from "react";
 
 // Tipado del contexto
 interface ThemeContextProps {
@@ -17,7 +15,7 @@ interface ThemeProviderProps {
 // Crear el contexto
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, defaultTheme = "light" }) => {
+export const ThemeProvider = ({ children, defaultTheme = "light" }: ThemeProviderProps) => {
     // Estado inicial con localStorage (antes del primer render)
     const [theme, setTheme] = useState<"light" | "dark">(() => {
         return (localStorage.getItem("theme") as "light" | "dark") || defaultTheme;
@@ -29,14 +27,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, defaultT
     }, [theme]);
 
     // Función para alternar entre temas
-    const toggleTheme = () => {
-        setTheme((prevTheme) => {
+    const toggleTheme = useCallback(() => {
+        setTheme(prevTheme => {
             const newTheme = prevTheme === "light" ? "dark" : "light";
             localStorage.setItem("theme", newTheme);
-            document.documentElement.setAttribute("data-theme", newTheme); // Aplicar de inmediato
             return newTheme;
         });
-    };
+    }, []);
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -54,15 +51,4 @@ export const useTheme = (): ThemeContextProps => {
     return context;
 };
 
-// Componente del botón de cambio de tema
-export const ButtonThemeController = () => {
-    const { toggleTheme, theme } = useTheme();
-    return (
-        <Button
-            color="secondary"
-            variant="ghost"
-            icon={theme === "dark" ? <MoonIcon /> : <SunIcon />}
-            onClick={toggleTheme}
-        />
-    );
-};
+
