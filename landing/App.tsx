@@ -574,19 +574,19 @@ function App() {
             label='Variant'
             value={variantTextArea}
             size="small"
-            onChange={(e) => setVariantTextArea(e.target.value as "borderless" | "outline" | undefined)}
+            onChange={(value) => setVariantTextArea(value as "borderless" | "outline" | undefined)}
             options={[{ label: "Borderless", value: "borderless" }, { label: "Outline", value: "outline" }]} />
           <Select
             label='Radius'
             value={radiusTextArea}
             size="small"
-            onChange={(e) => setRadiusTextArea(e.target.value as "none" | "small" | "medium" | "large" | undefined)}
+            onChange={(value) => setRadiusTextArea(value as "none" | "small" | "medium" | "large" | undefined)}
             options={[{ label: "None", value: "none" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
           <Select
             label='Size'
             value={sizeTextArea}
             size="small"
-            onChange={(e) => setSizeTextArea(e.target.value as "small" | "medium" | "large" | "tiny" | undefined)}
+            onChange={(value) => setSizeTextArea(value as "small" | "medium" | "large" | "tiny" | undefined)}
             options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
           <Checkbox label='Disabled' checked={disabledTextArea} size="small" color="secondary" onChange={(e) => setDisabledTextArea(e.currentTarget.checked)} />
           <Checkbox label='Invalid' checked={invalidTextArea} size="small" color="info" onChange={(e) => setInvalidTextArea(e.currentTarget.checked)} />

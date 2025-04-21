@@ -30,7 +30,7 @@ export function useDropdownPlacement(
                 if (top > listHeight) { // Si hay espacio arriba, abre hacia arriba
                     setDirection("up");
                 } else { // Si no hay espacio arriba tampoco, quizás abre hacia abajo por defecto o decide otra lógica
-                    setDirection("down"); // Podrías querer otra lógica aquí, ej. la que tenga más espacio
+                    setDirection("down");
                 }
             } else {
                 // Hay suficiente espacio abajo, abre hacia abajo
@@ -42,9 +42,7 @@ export function useDropdownPlacement(
     // Re-verificar la dirección cuando el desplegable se abre, o la ventana/scroll cambia
     useEffect(() => {
         if (isOpen) {
-            // Usar setTimeout es a veces necesario si el DOM del dropdown no está
-            // completamente renderizado/posicionado al momento de que isOpen es true.
-            const handler = setTimeout(checkDirection, 0); // Un delay de 0 o pequeño
+            const handler = setTimeout(checkDirection, 0);
 
             const handleScrollOrResize = () => checkDirection();
 
@@ -57,10 +55,8 @@ export function useDropdownPlacement(
                 window.removeEventListener("resize", handleScrollOrResize);
             };
         }
-        // No necesitamos cleanup de los listeners si isOpen es false, ya que el efecto no se ejecuta
-        // y los listeners solo se añaden cuando isOpen es true.
 
-    }, [isOpen, triggerRef, dropdownRef]); // Dependencias: isOpen y las refs (si cambiaran, lo cual es raro)
+    }, [isOpen, triggerRef, dropdownRef]);
 
     return direction;
 }

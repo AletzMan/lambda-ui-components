@@ -12,8 +12,8 @@
 }
 
 .select-option-active {
-    background-color: var(--danger-light-color);
-    color: var(--danger-color);
+    background-color: var(--primary-outline-color);
+    color: var(--primary-color);
 }
 
 

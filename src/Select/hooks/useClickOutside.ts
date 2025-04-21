@@ -8,9 +8,8 @@ import { useEffect, RefObject } from 'react';
 export function useClickOutside(ref: RefObject<HTMLDivElement | null>, callback: (event: MouseEvent) => void) {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            // No hacer nada si el click fue dentro del elemento referenciado
             if (ref.current && !ref.current.contains(event.target as Node)) {
-                callback(event); // Llamar al callback si el click fue fuera
+                callback(event);
             }
         };
 
