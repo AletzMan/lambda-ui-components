@@ -1,175 +1,16 @@
 import { forwardRef, useState } from "react";
-import { cva, VariantProps } from "class-variance-authority";
-import styles from "./switch.module.css";
+import { SwitchLabelVariants, SwitchVariants, background, handle, pos_label, switchprop, text } from "./switch.variants";
+import clsx from "clsx";
 
-const switchprop = cva(styles["lambda-switch"], {
-    variants: {
-        color: {
-            primary: styles["lambda-switch-primary"],
-            secondary: styles["lambda-switch-secondary"],
-            danger: styles["lambda-switch-danger"],
-            success: styles["lambda-switch-success"],
-            warning: styles["lambda-switch-warning"],
-            info: styles["lambda-switch-info"],
-        },
-        size: {
-            tiny: styles["lambda-switch-tiny"],
-            small: styles["lambda-switch-small"],
-            medium: styles["lambda-switch-medium"],
-            large: styles["lambda-switch-large"],
-        },
-        variant: {
-            solid: styles["lambda-switch-solid"],
-            flat: styles["lambda-switch-flat"],
-            outline: styles["lambda-switch-outline"],
-        },
-        shape: {
-            square: styles["lambda-switch-square"],
-            soft: styles["lambda-switch-soft"],
-            rounded: styles["lambda-switch-rounded"],
-        },
-        disabled: {
-            true: styles["lambda-switch-disabled"],
-            false: "",
-        },
-        checked: {
-            true: styles["lambda-switch-checked"],
-            false: "",
-        },
-    },
-    defaultVariants: {
-        color: "primary",
-        size: "medium",
-        variant: "solid",
-        shape: "rounded",
-        disabled: false,
-        checked: false,
-    },
-});
 
-const background = cva(styles["lambda-switch-background"], {
-    variants: {
-        color: {
-            primary: styles["lambda-switch-background-primary"],
-            secondary: styles["lambda-switch-background-secondary"],
-            danger: styles["lambda-switch-background-danger"],
-            success: styles["lambda-switch-background-success"],
-            warning: styles["lambda-switch-background-warning"],
-            info: styles["lambda-switch-background-info"],
-        },
-        size: {
-            tiny: styles["lambda-switch-background-tiny"],
-            small: styles["lambda-switch-background-small"],
-            medium: styles["lambda-switch-background-medium"],
-            large: styles["lambda-switch-background-large"],
-        },
-        variant: {
-            solid: styles["lambda-switch-background-solid"],
-            flat: styles["lambda-switch-background-flat"],
-            outline: styles["lambda-switch-background-outline"],
-        },
-        shape: {
-            square: styles["lambda-switch-background-square"],
-            soft: styles["lambda-switch-background-soft"],
-            rounded: styles["lambda-switch-background-rounded"],
-        },
-        disabled: {
-            true: styles["lambda-switch-background-disabled"],
-            false: "",
-        },
-        checked: {
-            true: styles["lambda-switch-background-checked"],
-            false: "",
-        },
-    },
-    defaultVariants: {
-        color: "primary",
-        size: "medium",
-        variant: "solid",
-        shape: "rounded",
-        disabled: false,
-        checked: false,
-    },
-});
-
-const pos_label = cva(styles["lambda-switch-wrapper"], {
-    variants: {
-        position_label: {
-            left: styles["lambda-switch-wrapper-position-left"],
-            right: styles["lambda-switch-wrapper-position-right"],
-            top: styles["lambda-switch-wrapper-position-top"],
-            bottom: styles["lambda-switch-wrapper-position-bottom"],
-        },
-        disabled: {
-            true: styles["lambda-switch-wrapper-disabled"],
-            false: "",
-        },
-        checked: {
-            true: styles["lambda-switch-wrapper-checked"],
-            false: "",
-        },
-    },
-    defaultVariants: {
-        position_label: "right",
-        disabled: false,
-        checked: false
-    },
-});
-
-const handle = cva(styles["lambda-switch-handle"], {
-    variants: {
-        size: {
-            tiny: styles["lambda-switch-handle-tiny"],
-            small: styles["lambda-switch-handle-small"],
-            medium: styles["lambda-switch-handle-medium"],
-            large: styles["lambda-switch-handle-large"],
-        },
-        shape: {
-            square: styles["lambda-switch-handle-square"],
-            soft: styles["lambda-switch-handle-soft"],
-            rounded: styles["lambda-switch-handle-rounded"],
-        },
-        disabled: {
-            true: styles["lambda-switch-handle-disabled"],
-            false: "",
-        },
-        checked: {
-            true: styles["lambda-switch-handle-checked"],
-            false: "",
-        },
-    },
-    defaultVariants: {
-        size: "medium",
-        shape: "rounded",
-        disabled: false,
-        checked: false
-    },
-});
-
-const text = cva(styles["lambda-switch-text"], {
-    variants: {
-        size: {
-            tiny: styles["lambda-switch-text-tiny"],
-            small: styles["lambda-switch-text-small"],
-            medium: styles["lambda-switch-text-medium"],
-            large: styles["lambda-switch-text-large"],
-        },
-        disabled: {
-            true: styles["lambda-switch-text-disabled"],
-            false: "",
-        },
-    },
-    defaultVariants: {
-        size: "medium",
-        disabled: false,
-    },
-});
-
-export interface SwitchProps
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | "checked" | "color">,
-    VariantProps<typeof switchprop> {
+export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | "checked" | "color"> {
+    size?: SwitchVariants["size"];
+    variant?: SwitchVariants["variant"];
+    color?: SwitchVariants["color"];
+    shape?: SwitchVariants["shape"];
+    position_label?: SwitchLabelVariants["position_label"];
+    disabled?: boolean;
     label?: string;
-    position_label?: "right" | "left" | "top" | "bottom";
     checked?: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -210,12 +51,15 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                         disabled={disabled || undefined}
                         checked={internalChecked}
                         onChange={handleChange}
-                        className={`${switchprop({
-                            size,
-                            variant,
-                            disabled,
-                            checked: internalChecked,
-                        })} ${className}`}
+                        className={clsx(
+                            switchprop({
+                                size,
+                                variant,
+                                disabled,
+                                checked: internalChecked,
+                            }),
+                            className
+                        )}
                         {...props}
                     />
                     {<span className={handle({ checked: internalChecked, disabled, size, shape })} />}
