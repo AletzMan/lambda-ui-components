@@ -20,18 +20,6 @@ export const NotificationProvider = ({ children, maxNotifications = 4, placement
             placement: props.placement ?? defaultPlacement, // Prioriza props.placement
             duration: props.duration ?? defaultDuration, // Prioriza props.duration
             id,
-            onClose: () => {
-                // Marcamos la notificación como "cerrando" antes de eliminarla
-                setNotifications((prev) =>
-                    prev.map((n) => (n.id === id ? { ...n, closing: true } : n))
-                );
-
-                // Esperamos a que la animación de salida termine antes de eliminar
-                setTimeout(() => {
-                    setNotifications((prev) => prev.filter((n) => n.id !== id));
-                    props.onClose?.();
-                }, 510);
-            },
         };
 
         setNotifications((prev) => {

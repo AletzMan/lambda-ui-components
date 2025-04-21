@@ -79,4 +79,22 @@ export const footer = cva(styles["notification-footer"], {
     },
 });
 
+
+export const notificationGroup = cva(styles["notification-group"], {
+    variants: {
+        placement: {
+            "top-left": styles["notification-group-top-left"],
+            "top-center": styles["notification-group-top-center"],
+            "top-right": styles["notification-group-top-right"],
+            "bottom-left": styles["notification-group-bottom-left"],
+            "bottom-center": styles["notification-group-bottom-center"],
+            "bottom-right": styles["notification-group-bottom-right"],
+        },
+    },
+    defaultVariants: {
+        placement: "top-center",
+    },
+});
+
+
 export type NotificationVariants = VariantProps<typeof notificationProp>;

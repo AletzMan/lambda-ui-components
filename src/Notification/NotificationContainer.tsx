@@ -1,25 +1,15 @@
 "use client";
-import React from "react";
 import { Notification, NotificationProps } from "./Notification";
-import styles from "./notification.module.css";
-import { cva } from "class-variance-authority";
-import { validPlacements } from "./const";
+import { notificationGroup } from "./notification.variant";
 
-const notificationGroup = cva(styles["notification-group"], {
-    variants: {
-        placement: {
-            "top-left": styles["notification-group-top-left"],
-            "top-center": styles["notification-group-top-center"],
-            "top-right": styles["notification-group-top-right"],
-            "bottom-left": styles["notification-group-bottom-left"],
-            "bottom-center": styles["notification-group-bottom-center"],
-            "bottom-right": styles["notification-group-bottom-right"],
-        },
-    },
-    defaultVariants: {
-        placement: "top-center",
-    },
-});
+const validPlacements = [
+    "top-left",
+    "top-center",
+    "top-right",
+    "bottom-left",
+    "bottom-center",
+    "bottom-right",
+] as const;
 
 
 interface NotificationContainerProps {
@@ -27,7 +17,7 @@ interface NotificationContainerProps {
     maxNotifications?: number
 }
 
-export const NotificationContainer: React.FC<NotificationContainerProps> = ({ notifications, maxNotifications }) => {
+export const NotificationContainer = ({ notifications, maxNotifications }: NotificationContainerProps) => {
     const groupedNotifications = notifications.reduce((acc, notification) => {
         const key = validPlacements.includes(notification.placement as typeof validPlacements[number])
             ? notification.placement!
