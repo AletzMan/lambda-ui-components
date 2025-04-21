@@ -1,84 +1,26 @@
 
-import { TextareaHTMLAttributes, forwardRef, FocusEvent, useState } from "react";
-import styles from "./textarea.module.css";
-import { cva, VariantProps } from "class-variance-authority";
+import { TextareaHTMLAttributes, forwardRef, FocusEvent, useState, useId } from "react";
+import styles from "./textArea.module.css";
 import { InvalidMessage } from "../_internal/components/InvalidMessage/InvalidMessage";
 import clsx from "clsx";
 import { CircleX } from "lucide-react";
 import { HelperText } from "../_internal/components/HelperText/HelperText";
-
-const textarea = cva(styles[`lambda-textarea`], {
-    variants: {
-        size: {
-            tiny: styles["lambda-textarea-tiny"],
-            small: styles["lambda-textarea-small"],
-            medium: styles["lambda-textarea-medium"],
-            large: styles["lambda-textarea-large"],
-        },
-        radius: {
-            none: styles["lambda-textarea-radius-none"],
-            small: styles["lambda-textarea-radius-small"],
-            medium: styles["lambda-textarea-radius-medium"],
-            large: styles["lambda-textarea-radius-large"],
-        },
-        variant: {
-            outline: styles["lambda-textarea-outline"],
-            borderless: styles["lambda-textarea-borderless"],
-        },
-        invalid: {
-            true: styles["lambda-textarea-invalid"],
-            false: "",
-        },
-        disabled: {
-            false: styles["lambda-textarea-enabled"],
-            true: styles["lambda-textarea-disabled"],
-        },
-    },
-    defaultVariants: {
-        variant: "outline",
-        radius: 'medium',
-    },
-});
-
-const labelString = cva(styles[`lambda-textarea-label`], {
-    variants: {
-        radius: {
-            none: styles["lambda-textarea-label-radius-none"],
-            small: styles["lambda-textarea-label-radius-small"],
-            medium: styles["lambda-textarea-label-radius-medium"],
-            large: styles["lambda-textarea-label-radius-large"],
-        },
-        size: {
-            tiny: styles["lambda-textarea-label-tiny"],
-            small: styles["lambda-textarea-label-small"],
-            medium: styles["lambda-textarea-label-medium"],
-            large: styles["lambda-textarea-label-large"],
-        },
-        disabled: {
-            false: styles["lambda-textarea-label-enabled"],
-            true: styles["lambda-textarea-label-disabled"],
-        }
-
-    },
-    defaultVariants: {
-        disabled: false,
-        radius: 'medium',
-        size: 'medium',
-    },
-});
+import { TextAreaVariants, labelString, textarea } from "./textarea.variants";
 
 
-export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "disabled"> {
-    variant?: VariantProps<typeof textarea>["variant"]
-    radius?: VariantProps<typeof textarea>["radius"]
-    size?: VariantProps<typeof textarea>["size"]
-    invalid?: VariantProps<typeof textarea>["invalid"]
-    disabled?: VariantProps<typeof textarea>["disabled"]
+
+export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "disabled" | "aria-invalid" | "aria-describedby" | "aria-labelledby" | "onFocus" | "onBlur"> {
+    variant?: TextAreaVariants["variant"]
+    radius?: TextAreaVariants["radius"]
+    size?: TextAreaVariants["size"]
+    invalid?: boolean;
+    disabled?: boolean;
+    required?: boolean
     label?: string
     errorMessage?: string
     helperText?: string
-    required?: boolean
-
+    onFocus?: (e: FocusEvent<HTMLTextAreaElement>) => void;
+    onBlur?: (e: FocusEvent<HTMLTextAreaElement>) => void;
 }
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -102,6 +44,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     ) => {
         const [focused, setFocused] = useState(false);
 
+        const textareaId = useId();
+        const errorId = errorMessage && invalid ? `${textareaId}-error` : undefined;
+        const helperId = helperText && !invalid ? `${textareaId}-helper` : undefined;
+
+        const describedByIds = [errorId, helperId].filter(Boolean).join(" ");
+
         const handleOnFocus = (e: FocusEvent<HTMLTextAreaElement>) => {
             setFocused(true);
             if (onFocus) {
@@ -120,19 +68,25 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             <div
                 className={clsx(styles['lambda-textarea-wrapper'], { [styles['lambda-textarea-wrapper-disabled']]: disabled })}
             >
-                {label && <label className={clsx(labelString({ disabled, radius, size }), { [styles["lambda-textarea-label-required"]]: required })}>
+                {label && <label
+                    className={clsx(labelString({ disabled, radius, size }), { [styles["lambda-textarea-label-required"]]: required })}
+                    htmlFor={textareaId}>
                     {label}
                 </label>}
                 <textarea
                     className={clsx("scrollBar", textarea({ variant, radius, className, size, invalid, disabled }))}
                     ref={ref}
+                    id={textareaId}
                     onFocus={handleOnFocus}
                     onBlur={handleOnBlur}
+                    aria-invalid={invalid || undefined}
+                    aria-describedby={describedByIds || undefined}
+                    disabled={disabled || undefined}
                     {...props}
                 />
                 {invalid && <CircleX className={clsx(styles["lambda-textarea-invalid-icon"], { [styles["lambda-textarea-invalid-icon-whitlabel"]]: label })} />}
-                {helperText && !invalid && <HelperText text={helperText} size={size} disabled={disabled} focused={focused} />}
-                {invalid && errorMessage && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
+                {helperText && !invalid && <HelperText id={helperId} text={helperText} size={size} disabled={disabled} focused={focused} />}
+                {invalid && errorMessage && <InvalidMessage id={errorId} errorMessage={errorMessage} invalid={invalid} size={size} />}
             </div>
         );
     }
