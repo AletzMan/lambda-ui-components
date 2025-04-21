@@ -2,10 +2,10 @@ import { forwardRef, useId } from "react";
 import styles from "./inputnumber.module.css";
 import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon, CircleX } from "lucide-react";
 import clsx from "clsx";
-import { InvalidMessage } from "../_util/InvalidMessage/InvalidMessage";
+import { InvalidMessage } from "../_internal/components/InvalidMessage/InvalidMessage";
 import { InputNumberVariants, button, handler, inputNumber, labels, number, typeCurrency, wrapper } from "./inputnumber.variants";
-import { HelperText } from "../_util/HelperText/HelperText";
-import { useNumberInput } from "./useNumberInput";
+import { HelperText } from "../_internal/components/HelperText/HelperText";
+import { useNumberInput } from "../_internal/hooks/useNumberInput";
 
 
 
