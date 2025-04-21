@@ -11,6 +11,31 @@
 
 }
 
+.select-option-active {
+    background-color: var(--danger-light-color);
+    color: var(--danger-color);
+}
+
+
+.select-icon-svg {
+    transition: transform 0.2s ease;
+}
+
+.select-icon-svg.rotated {
+    transform: rotate(180deg);
+}
+
+.select-direction-up .dropdown {
+    bottom: 100%;
+    top: auto;
+}
+
+.select-direction-down .dropdown {
+    top: 100%;
+    bottom: auto;
+}
+
+
 .select-label {
     position: absolute;
     top: -1.4em;
