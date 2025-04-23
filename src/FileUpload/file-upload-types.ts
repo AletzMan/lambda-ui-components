@@ -25,6 +25,7 @@ export interface FileUploadProps
     placeholder?: string;
     errorMessage?: string;
     helperText?: string;
+    maxSize?: number;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onDragOver?: (event: React.DragEvent<HTMLElement>) => void;
     onDragLeave?: (event: React.DragEvent<HTMLElement>) => void;
