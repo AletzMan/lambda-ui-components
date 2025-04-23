@@ -12,3 +12,4 @@ export { RadioGroup } from "./RadioGroup/RadioGroup";
 export { Select } from "./Select/Select";
 export { Notification } from "./Notification/Notification";
 export { TextArea } from "./TextArea/TextArea";
+export { FileUpload } from "./FileUpload/FileUpload";
