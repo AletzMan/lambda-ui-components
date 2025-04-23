@@ -1,4 +1,5 @@
-import React, { useState, forwardRef, useRef, useCallback, useId } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, forwardRef, useRef, useCallback, useId, RefObject } from "react";
 import clsx from "clsx";
 import { UploadCloudIcon, XCircleIcon, ImageIcon } from "lucide-react";
 import {
@@ -8,6 +9,7 @@ import {
     fileList,
     buttonFileUpload,
     buttonFilePreview,
+    fileUploadLayout,
 } from "./file-upload.variants";
 import { useImagePreviews } from "./hooks/useImagePreviews";
 import { FileItem } from "./FileItem";
@@ -15,6 +17,7 @@ import styles from "./file-upload.module.css";
 import { FileUploadProps, SelectedFileData } from "./file-upload-types";
 import { InvalidMessage } from "../_internal/components/InvalidMessage/InvalidMessage";
 import { HelperText } from "../_internal/components/HelperText/HelperText";
+import { formatBytes } from "../_util/helpers";
 
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
@@ -22,7 +25,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
         {
             className,
             type = "dropzone",
-            buttonText = "Seleccionar archivo",
+            buttonText = "Select File",
             label,
             size = "medium",
             radius = "small",
@@ -31,8 +34,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
             required = false,
             errorMessage,
             helperText,
-            placeholder = "Arrastra y suelta archivos aquí o haz clic para seleccionarlos",
+            placeholder = "Drag and drop files here or click to select them",
             multiple = false,
+            maxSize,
             accept,
             onChange,
             onFocus,
@@ -77,7 +81,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
             if (typeof ref === 'function') {
                 ref(node);
             } else if (ref) {
-                (ref as React.MutableRefObject<HTMLInputElement | null>).current = node;
+                (ref as RefObject<HTMLInputElement | null>).current = node;
             }
         }, [ref]);
 
@@ -87,17 +91,20 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 
         // --- Lógica de validación de tipo de archivo contra la prop 'accept' ---
-        // Helper para verificar si un archivo coincide con la cadena accept
+        // Helper para verificar si un archivo coincide con la cadena accept y validar el tamaño del archivo
         const isValidFileType = useCallback((file: File, acceptString: string): boolean => {
             if (!acceptString) return true;
 
             const acceptedTypes = acceptString.split(',').map(type => type.trim().toLowerCase());
             const fileType = file.type.toLowerCase();
             const fileName = file.name.toLowerCase();
+            const fileSize = file.size;
             // Obtener la extensión con punto. Si no hay punto, la extensión es vacía.
             const lastDotIndex = fileName.lastIndexOf('.');
             const fileExtension = lastDotIndex > -1 ? fileName.slice(lastDotIndex) : '';
-
+            if (maxSize && fileSize > maxSize) {
+                return false; // Si el tamaño excede el máximo, no es válido
+            };
 
             return acceptedTypes.some(acceptedType => {
                 if (acceptedType.startsWith('.')) {
@@ -249,6 +256,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                         <span className={styles["lambda-file-upload-drop-zone-placeholder"]}>
                             {placeholder}
                         </span>
+                        <span className={styles["lambda-file-upload-drop-zone-max-size"]}>
+                            {maxSize ? `Max size: ${formatBytes(maxSize)}` : ''}
+                        </span>
                     </>
                 );
             } else if (isSingleImage) {
@@ -269,7 +279,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                 // Dropzone con múltiples archivos o archivo individual no imagen: contador
                 interactiveContentJSX = (
                     <span className={styles["lambda-file-upload-drop-zone-file-count"]}>
-                        {selectedFilesData.length} archivo{selectedFilesData.length > 1 ? 's' : ''} seleccionado{selectedFilesData.length > 1 ? 's' : ''}
+                        {selectedFilesData.length} file{selectedFilesData.length > 1 ? 's' : ''} selected
                     </span>
                 );
             }
@@ -279,7 +289,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
             interactiveContentJSX = (
                 <button
                     ref={buttonRef}
-                    className={buttonFileUpload({ size, radius, disabled, invalid })}
+                    className={clsx(buttonFileUpload({ size, radius, disabled, invalid }), { [styles["lambda-file-upload-button-file-upload-hasFiles"]]: hasFiles })}
                     onClick={handleInteractiveAreaClick}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
@@ -377,7 +387,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                 ) : (
                     /* --- Tipo Button --- */
                     // Contenedor principal para el botón y el contenido al lado/abajo
-                    <div className={clsx(styles["lambda-file-upload-button-layout-container"])}>
+                    <div className={clsx(fileUploadLayout({ radius, disabled, invalid }))}>
 
                         {/* Contenedor para el botón y el contenido al lado (nombre/preview de archivo único o contador) */}
                         {/* Este contenedor es flex-row para alinear horizontalmente el botón y el display */}
@@ -399,6 +409,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                                             <span className={styles["lambda-file-upload-file-name-display"]}>
                                                 {singleFileData?.file.name}
                                             </span>
+
                                             {/* Botón X para remover (solo si es archivo único) */}
                                             <button type="button" onClick={() => singleFileData && handleRemoveFile(singleFileData.id)} className={styles["lambda-file-upload-file-name-remove-button"]} aria-label={`Remover archivo ${singleFileData?.file.name}`}>
                                                 <XCircleIcon className={styles["lambda-file-upload-file-name-remove-icon"]} />
@@ -415,7 +426,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                                         </>
                                     ) : multiple && hasFiles ? (
                                         <span className={styles["lambda-file-upload-file-name-display"]}>
-                                            {selectedFilesData.length} archivo{selectedFilesData.length > 1 ? 's' : ''}
+                                            {selectedFilesData.length} file{selectedFilesData.length > 1 ? 's' : ''} selected
                                         </span>
                                     ) : null /* No mostrar nada si no hay archivos */
                                     }
@@ -438,7 +449,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                                 ))}
                             </ul>
                         )}
-
                     </div>
                 )}
 
@@ -448,7 +458,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                 {invalid && errorMessage && (
                     <InvalidMessage id={errorId} errorMessage={errorMessage} invalid={invalid} size={size} />
                 )}
-
+                {type === 'button' && viewFileSize && !multiple &&
+                    <div className={styles["lambda-file-upload-file-item-size"]}>
+                        {maxSize !== undefined && maxSize > 0 && <span className={styles["lambda-file-upload-file-item-size-max"]}>Max: {formatBytes(maxSize)}</span>}
+                        {singleFileData?.file.size && singleFileData?.file.size > 0 && <span className={styles["lambda-file-upload-file-item-size-current"]}>{formatBytes(singleFileData?.file.size)}</span>}
+                    </div>
+                }
             </div>
         );
     }
