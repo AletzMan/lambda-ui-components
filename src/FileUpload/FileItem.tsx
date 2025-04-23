@@ -4,6 +4,7 @@ import { FileItemVariants, fileItem } from './file-upload.variants';
 import styles from './file-upload.module.css';
 import { XCircleIcon, FileIcon, FileImage } from 'lucide-react';
 import { SelectedFileData } from './file-upload-types';
+import { formatBytes } from '../_util/helpers';
 
 interface FileItemProps extends FileItemVariants {
     fileData: SelectedFileData;
@@ -70,11 +71,3 @@ export const FileItem = ({
 };
 
 
-function formatBytes(bytes: number, decimals = 2): string {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const dm = decimals < 0 ? 0 : decimals;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-}
