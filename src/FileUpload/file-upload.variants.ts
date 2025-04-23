@@ -2,6 +2,25 @@ import { cva, VariantProps } from "class-variance-authority";
 import styles from "./file-upload.module.css";
 
 
+export const fileUploadLayout = cva(styles["lambda-file-upload-button-layout-container"], {
+    variants: {
+        radius: {
+            none: styles["lambda-file-upload-button-layout-container-none"],
+            small: styles["lambda-file-upload-button-layout-container-small"],
+            medium: styles["lambda-file-upload-button-layout-container-medium"],
+            large: styles["lambda-file-upload-button-layout-container-large"],
+            pill: styles["lambda-file-upload-button-layout-container-pill"],
+        },
+        disabled: { true: styles["lambda-file-upload-button-layout-container-disabled"], false: "" },
+        invalid: { true: styles["lambda-file-upload-button-layout-container-invalid"], false: "" },
+    },
+    defaultVariants: {
+        radius: "small",
+        disabled: false,
+        invalid: false,
+    }
+});
+
 export const fileUploadWrapper = cva(styles["lambda-file-upload-wrapper"], {
     variants: {
         type: {
