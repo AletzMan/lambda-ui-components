@@ -1,12 +1,12 @@
 
-import { Button, Checkbox, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main';
+import { Button, Checkbox, FileUpload, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main';
 import { Bookmark, CircleEllipsis, CodeXml, Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react";
 import styles from "./styles.module.css";
 import { useState } from 'react';
-import { ButtonThemeController } from '../src/ThemeProvider/ThemeProvider';
 import { buttonsPrimary } from './constants';
 import { useNotification } from '../src/Notification/NotificationProvider';
 import { Card } from '../src/Card/Card';
+import { ButtonThemeController } from '../src/ThemeProvider/ButtonThemeController';
 
 
 
@@ -60,6 +60,14 @@ function App() {
   const [disabledTextArea, setDisabledTextArea] = useState(false);
   const [invalidTextArea, setInvalidTextArea] = useState(false);
   const [errorMessageTextArea, setErrorMessageTextArea] = useState("This field has an error.");
+  const [radiusFileUpload, setRadiusFileUpload] = useState<"medium" | "small" | "large" | "none" | undefined>("small");
+  const [sizeFileUpload, setSizeFileUpload] = useState<"medium" | "small" | "large" | undefined>("medium");
+  const [typeFileUpload, setTypeFileUpload] = useState<"button" | "dropzone" | undefined>("dropzone");
+  const [disabledFileUpload, setDisabledFileUpload] = useState(false);
+  const [invalidFileUpload, setInvalidFileUpload] = useState(false);
+  const [multiFileUpload, setMultiFileUpload] = useState(false);
+  const [viewFileSize, setViewFileSize] = useState(true);
+  const [errorMessageFileUpload, setErrorMessageFileUpload] = useState("This field has an error.");
   const { showNotification } = useNotification();
 
   return (
@@ -607,6 +615,55 @@ function App() {
               required
               rows={5}
               cols={30} />
+          </div>
+        </div>
+      </section>
+      {/* FILE UPLOAD */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>File Upload</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            label='Type'
+            value={typeFileUpload}
+            size="small"
+            onChange={(value) => setTypeFileUpload(value as "button" | "dropzone" | undefined)}
+            options={[{ label: "Button", value: "button" }, { label: "Dropzone", value: "dropzone" }]} />
+          <Select
+            label='Radius'
+            value={radiusFileUpload}
+            size="small"
+            onChange={(value) => setRadiusFileUpload(value as "none" | "small" | "medium" | "large" | undefined)}
+            options={[{ label: "None", value: "none" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Select
+            label='Size'
+            value={sizeFileUpload}
+            size="small"
+            onChange={(value) => setSizeFileUpload(value as "small" | "medium" | "large" | undefined)}
+            options={[{ label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Checkbox label='Multiple Files?' checked={multiFileUpload} size="small" color="info" onChange={(e) => setMultiFileUpload(e.currentTarget.checked)} />
+          <Checkbox label='Disabled' checked={disabledFileUpload} size="small" color="secondary" onChange={(e) => setDisabledFileUpload(e.currentTarget.checked)} />
+          <Checkbox label='Invalid' checked={invalidFileUpload} size="small" color="info" onChange={(e) => setInvalidFileUpload(e.currentTarget.checked)} />
+          <Checkbox label='View File Size?' checked={viewFileSize} size="small" color="info" onChange={(e) => setViewFileSize(e.currentTarget.checked)} />
+          <Input label='Message Error' size="small" value={errorMessageFileUpload} onChange={(value) => setErrorMessageFileUpload(value)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <FileUpload
+              radius={radiusFileUpload}
+              type={typeFileUpload}
+              disabled={disabledFileUpload}
+              invalid={invalidFileUpload}
+              errorMessage={errorMessageFileUpload}
+              label="File Upload"
+              helperText="Upload your file"
+              placeholder='Drag and drop your files here'
+              required
+              maxSize={60000}
+              viewFileSize={viewFileSize}
+              onFilesRejected={(files) => console.log("Files Rejected", files)}
+              size={sizeFileUpload}
+              accept=".docx, .doc, .pdf, .jpg, .png, .webp"
+              multiple={multiFileUpload} />
           </div>
         </div>
       </section>
