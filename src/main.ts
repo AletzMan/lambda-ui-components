@@ -1,15 +1,15 @@
 import '@fontsource-variable/plus-jakarta-sans';
 import "./index.css";
 
-export { Button } from "./Button/Button";
-export { Checkbox } from "./Checkbox/Checkbox";
-export { Input } from "./Input/Input";
-export { InputGroup } from "./InputGroup/InputGroup";
-export { InputNumber } from "./InputNumber/InputNumber";
-export { Switch } from "./Switch/Switch";
-export { Radio } from "./Radio/Radio";
-export { RadioGroup } from "./RadioGroup/RadioGroup";
-export { Select } from "./Select/Select";
-export { Notification } from "./Notification/Notification";
-export { TextArea } from "./TextArea/TextArea";
-export { FileUpload } from "./FileUpload/FileUpload";
+export { Button } from "./components/Button/Button";
+export { Checkbox } from "./components/Checkbox/Checkbox";
+export { Input } from "./components/Input/Input";
+export { InputGroup } from "./components/InputGroup/InputGroup";
+export { InputNumber } from "./components/InputNumber/InputNumber";
+export { Switch } from "./components/Switch/Switch";
+export { Radio } from "./components/Radio/Radio";
+export { RadioGroup } from "./components/RadioGroup/RadioGroup";
+export { Select } from "./components/Select/Select";
+export { Notification } from "./components/Notification/Notification";
+export { TextArea } from "./components/TextArea/TextArea";
+export { FileUpload } from "./components/FileUpload/FileUpload";
