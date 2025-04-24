@@ -181,7 +181,7 @@
 
 .lambda-file-upload-drop-zone-max-size {
     font-size: var(--font-size-sm);
-    color: var(--primary-text-color);
+    color: var(--warning-text-color);
     font-style: italic;
 }
 
@@ -582,11 +582,16 @@
     justify-content: space-between;
     gap: var(--gap-lg);
     font-style: italic;
-    font-weight: var(--font-weight-sm);
+    font-weight: var(--font-weight-reg);
     padding: var(--padding-none) var(--padding-sm);
     font-size: var(--font-size-xs);
-    color: var(--foreground-color);
+    color: var(--surface-f);
     width: 100%;
+
+    .lambda-file-upload-file-item-size-max {
+        color: var(--warning-text-color);
+
+    }
 }
 
 
