@@ -54,7 +54,6 @@ export const FileItem = ({
             {/* Información del archivo */}
             <div className={styles["lambda-file-upload-file-item-info"]}>
                 <span className={styles["lambda-file-upload-file-item-name"]}>{fileData.file.name}</span>
-                {/* Opcional: Mostrar tamaño del archivo */}
                 {viewFileSize && <span className={styles["lambda-file-upload-file-item-size"]}>{formatBytes(fileData.file.size)}</span>}
             </div>
 
