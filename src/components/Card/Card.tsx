@@ -1,0 +1,94 @@
+
+import React, { HTMLAttributes, forwardRef } from "react";
+import styles from "./card.module.css";
+import { VariantProps } from "class-variance-authority";
+import clsx from "clsx";
+import { card } from "./card.variants";
+
+export interface ICardHeader {
+    title: string
+    description?: string
+    icon?: React.ReactNode
+}
+
+export interface ICardActions {
+    icon?: React.ReactNode
+    text?: string
+    onClick?: () => void
+}
+
+export interface ICardImage {
+    src: string
+    alt?: string
+    heightPorcent?: number
+}
+
+export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, "disabled" | "color"> {
+    image?: ICardImage
+    header?: ICardHeader
+    actions?: ICardActions[]
+    variant?: VariantProps<typeof card>["variant"]
+    size?: "medium" | "small" | "large"
+    radius?: VariantProps<typeof card>["radius"]
+}
+
+const SizeHeight: Record<"medium" | "small" | "large", number> = {
+    small: 10,
+    medium: 15,
+    large: 18,
+};
+
+export const Card = forwardRef<HTMLDivElement, CardProps>(
+    (
+        {
+            className,
+            variant = "outline",
+            size = "medium",
+            radius = "small",
+            header,
+            image,
+            actions,
+            ...props
+        },
+        ref
+    ) => {
+        return (
+            <div
+                ref={ref}
+                className={card({ variant, size, radius, className })}
+                {...props}
+            >
+                {image &&
+                    <div className={styles[`lambda-card-header-image-container`]} style={{ height: image.heightPorcent ? `${(SizeHeight[size || "medium"] / 100) * image.heightPorcent}em` : 'auto' }}>
+                        <img className={styles[`lambda-card-header-image`]} src={image.src} alt={image.src || header?.title} />
+                    </div>
+                }
+                {header &&
+                    <header className={styles[`lambda-card-header`]}>
+                        <div className={styles[`lambda-card-header-content`]}>
+                            {header.icon && <span className={styles[`lambda-card-header-icon`]}>{header.icon}</span>}
+                            <div className={styles[`lambda-card-header-text`]}>
+                                {header.title && <h1 className={styles[`lambda-card-header-title`]}>{header.title}</h1>}
+                                {header.description && <p className={styles[`lambda-card-header-description`]}>{header.description}</p>}
+                            </div>
+                        </div>
+                    </header>}
+                {props.children && <div className={clsx(styles[`lambda-card-body`], "scrollBar")}>{props.children}</div>}
+                {actions && actions.length > 0 &&
+                    <footer className={styles[`lambda-card-footer`]}>
+                        {actions.map((action, index) => (
+                            <button
+                                key={index}
+                                className={styles[`lambda-card-action`]}
+                                onClick={action.onClick}
+                            >
+                                {action.icon && <span className={styles[`lambda-card-action-icon`]}>{action.icon}</span>}
+                                {action.text && <span className={styles[`lambda-card-action-text`]}>{action.text}</span>}
+                            </button>
+                        ))}
+                    </footer>
+                }
+            </div>
+        );
+    }
+);
