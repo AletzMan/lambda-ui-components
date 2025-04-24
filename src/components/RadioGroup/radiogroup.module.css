@@ -1,0 +1,345 @@
+.radio-group {
+    gap: var(--gap-radio-size);
+
+    &.radio-group-radio {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &.radio-group-vertical {
+            flex-direction: column;
+        }
+
+        &.radio-group-horizontal {
+            flex-direction: row;
+        }
+    }
+
+    &.radio-group-button {
+        box-shadow: var(--box-shadow);
+
+        & label {
+            div {
+                box-shadow: none;
+            }
+        }
+
+
+        &.radio-group-radius-none {
+            border-radius: none;
+
+            &>div {
+                border-radius: none;
+            }
+        }
+
+        &.radio-group-radius-small {
+            &.radio-group-horizontal {
+                &>label:first-child {
+                    border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+
+                    &>div {
+                        border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+                    }
+                }
+
+                &>label:last-child {
+                    border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+
+                    &>div {
+                        border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+                    }
+                }
+            }
+
+            &.radio-group-vertical {
+                &>label:first-child {
+                    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+
+                    &>div {
+                        border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+                    }
+                }
+
+                &>label:last-child {
+                    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+
+                    &>div {
+                        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+                    }
+                }
+            }
+        }
+
+        &.radio-group-radius-medium {
+            &.radio-group-horizontal {
+                &>label:first-child {
+
+                    border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+
+                    &>div {
+                        border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+                    }
+                }
+
+                &>label:last-child {
+                    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+
+                    &>div {
+                        border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+                    }
+                }
+            }
+
+            &.radio-group-vertical {
+                &>label:first-child {
+
+                    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+
+                    &>div {
+                        border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+                    }
+                }
+
+                &>label:last-child {
+                    border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+
+                    &>div {
+                        border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+                    }
+                }
+            }
+        }
+
+        &.radio-group-radius-pill {
+            &.radio-group-horizontal {
+                &>label:first-child {
+                    border-radius: var(--border-radius-pill) 0 0 var(--border-radius-pill);
+
+                    &>div {
+                        border-radius: var(--border-radius-pill) 0 0 var(--border-radius-pill);
+                    }
+
+                }
+
+                &>label:last-child {
+                    border-radius: 0 var(--border-radius-pill) var(--border-radius-pill) 0;
+
+                    &>div {
+                        border-radius: 0 var(--border-radius-pill) var(--border-radius-pill) 0;
+                    }
+                }
+            }
+
+            &.radio-group-vertical {
+                &>label:first-child {
+                    border-radius: var(--border-radius-pill)var(--border-radius-pill) 0 0;
+
+                    &>div {
+                        border-radius: var(--border-radius-pill) var(--border-radius-pill) 0 0;
+                    }
+
+                }
+
+                &>label:last-child {
+                    border-radius: 0 0 var(--border-radius-pill) var(--border-radius-pill);
+
+                    &>div {
+                        border-radius: 0 0 var(--border-radius-pill) var(--border-radius-pill);
+                    }
+                }
+            }
+        }
+
+        &.radio-group-horizontal {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            width: 100%;
+            min-width: max-content;
+
+            &:is(.radio-group-outline),
+            &:is(.radio-group-solid) {
+
+
+                & label:not(:first-child):not(:last-child) {
+                    div {
+                        border-right: 1px solid transparent;
+                    }
+                }
+
+                & label:nth-child(2) {
+                    div {
+                        border-left: 1px solid transparent;
+                    }
+                }
+            }
+
+            &:is(.radio-group-flat) {
+                & label {
+                    & div {
+                        border-top: 1px solid transparent;
+                        border-bottom: 1px solid transparent;
+                    }
+                }
+
+                & label:first-child {
+                    div {
+                        border-left: 1px solid transparent;
+                        border-right: 1px solid transparent;
+                    }
+                }
+
+                & label:last-child {
+                    div {
+                        border-right: 1px solid transparent;
+                    }
+                }
+
+                & label:not(:first-child):not(:last-child) {
+                    div {
+                        border-right: 1px solid transparent;
+                    }
+                }
+
+                &:is(.radio-group-primary) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--primary-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--primary-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-secondary) {
+                    & label:first-child {
+                        div {
+                            border-top: 1px solid var(--secondary-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--secondary-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-success) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--success-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--success-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-danger) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--danger-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--danger-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-warning) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--warning-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--warning-light-color);
+                        }
+                    }
+                }
+
+                &:is(.radio-group-info) {
+                    & label:first-child {
+                        div {
+                            border-right: 1px solid var(--info-light-color);
+                        }
+                    }
+
+                    & label:not(:first-child):not(:last-child) {
+                        div {
+                            border-right: 1px solid var(--info-light-color);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        &.radio-group-vertical {
+            display: grid;
+            grid-template-rows: 1fr;
+
+            & label:not(:first-child):not(:last-child) {
+                div {
+                    border-bottom: 1px solid transparent;
+                }
+            }
+
+            & label:nth-child(2) {
+                div {
+                    border-top: 1px solid transparent;
+                }
+            }
+        }
+    }
+}
+
+.radio-group-radius-none {
+    border-radius: none;
+}
+
+.radio-group-radius-small {
+    border-radius: var(--border-radius-sm);
+}
+
+.radio-group-radius-medium {
+    border-radius: var(--border-radius-md);
+}
+
+.radio-group-radius-pill {
+    border-radius: var(--border-radius-pill);
+}
+
+
+/*
+.radio-group-tiny {
+    gap: 0.25em;
+}
+
+.radio-group-small {
+    gap: 0.5em;
+}
+*/
+.radio-group-medium {}
+
+.radio-group-large {
+    gap: 1em;
+}
+
+.radio-group-button {
+    gap: 0;
+}
