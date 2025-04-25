@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./pagination.module.css";
 
-// Wrapper principal (<nav>)
+
 export const paginationWrapper = cva(styles["lambda-pagination-wrapper"], {
     variants: {
         disabled: {
@@ -14,7 +14,6 @@ export const paginationWrapper = cva(styles["lambda-pagination-wrapper"], {
     },
 });
 
-// Contenedor de la lista de botones (<ul> si se usa, o un div flex)
 export const paginationListContainer = cva(styles["lambda-pagination-list-container"], {
     variants: {
         size: {
@@ -30,7 +29,6 @@ export const paginationListContainer = cva(styles["lambda-pagination-list-contai
 });
 
 
-// Botones de paginación (<li> con <button> dentro, o directamente <button> si no hay <ul>)
 export const paginationButton = cva(styles["lambda-pagination-button"], {
     variants: {
         size: {
@@ -55,24 +53,20 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
             true: styles["lambda-pagination-button-active"],
             false: "",
         },
-        // Estado deshabilitado
         disabled: {
             true: styles["lambda-pagination-button-disabled"],
             false: "",
         },
-        // Estilo específico para los botones de navegación (<<, <, >, >>) vs números
         isNavigation: {
             true: styles["lambda-pagination-button-navigation"],
             false: "",
         },
-        // Estilo específico para los botones "..."
         isEllipsis: {
             true: styles["lambda-pagination-button-ellipsis"],
             false: "",
         }
     },
     compoundVariants: [
-        // Combinar variante, tamaño y estado activo para estilos específicos
         { variant: "outline", isActive: true, className: styles["lambda-pagination-button-outline-active"] },
         { variant: "flat", isActive: true, className: styles["lambda-pagination-button-flat-active"] },
         { variant: "solid", isActive: true, className: styles["lambda-pagination-button-solid-active"] },
@@ -82,7 +76,7 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
     defaultVariants: {
         size: "medium",
         variant: "outline",
-        radius: "pill",
+        radius: "small",
         isActive: false,
         disabled: false,
         isNavigation: false,
@@ -91,7 +85,6 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
 });
 
 
-// Exportar los tipos de las variantes
 export type PaginationWrapperVariants = VariantProps<typeof paginationWrapper>;
 export type PaginationListContainerVariants = VariantProps<typeof paginationListContainer>;
 export type PaginationButtonVariants = VariantProps<typeof paginationButton>;
