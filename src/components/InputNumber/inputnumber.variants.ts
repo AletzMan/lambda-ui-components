@@ -40,7 +40,7 @@ export const inputNumber = cva(styles["lambda-number"], {
     defaultVariants: {
         variant: "outline",
         size: "medium",
-        radius: "medium",
+        radius: "small",
         typeNumber: 'default',
         invalid: false,
         disabled: false,
@@ -78,7 +78,7 @@ export const labels = cva(styles['lambda-number-label'], {
         }
     },
     defaultVariants: {
-        radius: "medium",
+        radius: "small",
         size: "medium"
     },
 });
@@ -129,6 +129,7 @@ export const handler = cva(styles['lambda-number-handler'], {
     defaultVariants: {
         variant: "outline",
         size: "medium",
+        radius: "small",
     },
 });
 
@@ -165,7 +166,8 @@ export const typeCurrency = cva(styles['lambda-number-currency'], {
     defaultVariants: {
         size: "medium",
         variant: "outline",
-        typeNumber: "default"
+        typeNumber: "default",
+        radius: "small",
     },
 });
 
