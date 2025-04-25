@@ -186,7 +186,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                             radius={radius}
                             disabled={areNavButtonsDisabled || isFirstPage}
                             isNavigation
-                            aria-label="Ir a la primera página"
+                            aria-label="Go to first page"
                             onClick={handleFirstPage}
                         >
                             {/* Icono ChevronsLeft */}
@@ -202,7 +202,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                             radius={radius}
                             disabled={areNavButtonsDisabled || isFirstPage}
                             isNavigation
-                            aria-label="Ir a la página anterior"
+                            aria-label="Go to previous page"
                             onClick={handlePrevPage}
                         >
                             {/* Icono ChevronLeft */}
@@ -236,7 +236,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                             radius={radius}
                             disabled={areNavButtonsDisabled || isLastPage}
                             isNavigation
-                            aria-label="Ir a la página siguiente"
+                            aria-label="Go to next page"
                             onClick={handleNextPage}
                         >
                             {/* Icono ChevronRight */}
@@ -252,7 +252,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                             radius={radius}
                             disabled={areNavButtonsDisabled || isLastPage}
                             isNavigation
-                            aria-label="Ir a la última página"
+                            aria-label="Go to last page"
                             onClick={handleLastPage}
                         >
                             {/* Icono ChevronsRight */}
