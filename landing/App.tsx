@@ -1,12 +1,12 @@
 
-import { Button, Checkbox, FileUpload, Input, InputGroup, InputNumber, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main';
+import { Button, Checkbox, FileUpload, Input, InputGroup, InputNumber, Pagination, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main';
 import { Bookmark, CircleEllipsis, CodeXml, Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react";
 import styles from "./styles.module.css";
 import { useState } from 'react';
 import { buttonsPrimary } from './constants';
-import { useNotification } from '../src/Notification/NotificationProvider';
-import { Card } from '../src/Card/Card';
-import { ButtonThemeController } from '../src/ThemeProvider/ButtonThemeController';
+import { useNotification } from '../src/components/Notification/NotificationProvider';
+import { Card } from '../src/components/Card/Card';
+import { ButtonThemeController } from '../src/components/ThemeProvider/ButtonThemeController';
 
 
 
@@ -68,6 +68,15 @@ function App() {
   const [multiFileUpload, setMultiFileUpload] = useState(false);
   const [viewFileSize, setViewFileSize] = useState(true);
   const [errorMessageFileUpload, setErrorMessageFileUpload] = useState("This field has an error.");
+  const [totalPages, setTotalPages] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [disabledPagination, setDisabledPagination] = useState(false);
+  const [showFirstLastButtons, setShowFirstLastButtons] = useState(true);
+  const [showPrevNextButtons, setShowPrevNextButtons] = useState(true);
+  const [maxVisiblePages, setMaxVisiblePages] = useState<number | undefined>(5);
+  const [sizePagination, setSizePagination] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [variantPagination, setVariantPagination] = useState<"outline" | "flat" | "solid" | undefined>("solid");
+  const [radiusPagination, setRadiusPagination] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small");
   const { showNotification } = useNotification();
 
   return (
@@ -664,6 +673,52 @@ function App() {
               size={sizeFileUpload}
               accept=".docx, .doc, .pdf, .jpg, .png, .webp"
               multiple={multiFileUpload} />
+          </div>
+        </div>
+      </section>
+      {/* PAGINATION */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Pagination</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            label='Variant'
+            value={variantPagination}
+            size="small"
+            onChange={(value) => setVariantPagination(value as "outline" | "flat" | "solid" | undefined)}
+            options={[{ label: "Solid", value: "solid" }, { label: "Outline", value: "outline" }, { label: "Flat", value: "flat" }]} />
+          <Select
+            label='Radius'
+            value={radiusPagination}
+            size="small"
+            onChange={(value) => setRadiusPagination(value as "none" | "small" | "medium" | "large" | "pill" | undefined)}
+            options={[{ label: "None", value: "none" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }, { label: "Pill", value: "pill" }]} />
+          <Select
+            label='Size'
+            value={sizePagination}
+            size="small"
+            onChange={(value) => setSizePagination(value as "small" | "medium" | "large" | "tiny" | undefined)}
+            options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
+            <InputNumber value={maxVisiblePages} onChange={(value) => setMaxVisiblePages(value)} size="small" />
+            <InputNumber value={totalPages} onChange={(value) => setTotalPages(value || 0)} size="small" />
+          </div>
+          <Checkbox label='Disabled' checked={disabledPagination} size="small" color="secondary" onChange={(e) => setDisabledPagination(e.currentTarget.checked)} />
+          <Checkbox label='Show PrevNextButtons' checked={showPrevNextButtons} size="small" color="info" onChange={(e) => setShowPrevNextButtons(e.currentTarget.checked)} />
+          <Checkbox label='Show FirstLastButtons' checked={showFirstLastButtons} size="small" color="info" onChange={(e) => setShowFirstLastButtons(e.currentTarget.checked)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={(page) => setCurrentPage(page)}
+              size={sizePagination}
+              radius={radiusPagination}
+              variant={variantPagination}
+              maxVisiblePages={maxVisiblePages}
+              showFirstLastButtons={showFirstLastButtons}
+              showPrevNextButtons={showPrevNextButtons}
+              disabled={disabledPagination} />
           </div>
         </div>
       </section>
