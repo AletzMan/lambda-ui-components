@@ -13,3 +13,4 @@ export { Select } from "./components/Select/Select";
 export { Notification } from "./components/Notification/Notification";
 export { TextArea } from "./components/TextArea/TextArea";
 export { FileUpload } from "./components/FileUpload/FileUpload";
+export { Pagination } from "./components/Pagination/Pagination";
