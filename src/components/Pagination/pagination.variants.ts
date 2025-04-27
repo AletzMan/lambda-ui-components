@@ -60,10 +60,6 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
         isNavigation: {
             true: styles["lambda-pagination-button-navigation"],
             false: "",
-        },
-        isEllipsis: {
-            true: styles["lambda-pagination-button-ellipsis"],
-            false: "",
         }
     },
     compoundVariants: [
@@ -71,7 +67,6 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
         { variant: "flat", isActive: true, className: styles["lambda-pagination-button-flat-active"] },
         { variant: "solid", isActive: true, className: styles["lambda-pagination-button-solid-active"] },
         { isNavigation: true, disabled: true, className: styles["lambda-pagination-button-navigation-disabled"] },
-        { isEllipsis: true, disabled: true, className: styles["lambda-pagination-button-ellipsis-disabled"] },
     ],
     defaultVariants: {
         size: "medium",
@@ -80,7 +75,6 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
         isActive: false,
         disabled: false,
         isNavigation: false,
-        isEllipsis: false,
     },
 });
 

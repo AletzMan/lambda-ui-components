@@ -23,6 +23,7 @@ const PaginationButton = ({
     variant,
     radius,
     isNavigation,
+    pageNumber,
     onClick,
     ...rest
 }: PaginationButtonProps) => {
@@ -47,7 +48,6 @@ const PaginationButton = ({
                     isActive,
                     disabled: disabled || isEllipsisButton,
                     isNavigation,
-                    isEllipsis: isEllipsisButton,
                 })
             )}
             onClick={handleClick}
@@ -220,7 +220,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
                             size={size}
                             variant={variant}
                             radius={radius}
-                            isEllipsis={typeof page !== 'number'}
                             aria-label={typeof page === 'number' ? `Página ${page}` : undefined}
                             onClick={typeof page === 'number' ? () => handleGoToPage(page) : undefined}
                         >
