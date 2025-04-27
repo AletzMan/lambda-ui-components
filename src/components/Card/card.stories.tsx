@@ -41,4 +41,12 @@ export const Outline: Story = {
     },
 };
 
+export const Borderless: Story = {
+    args: {
+        variant: "borderless",
+        size: "medium",
+        radius: 'small',
+    },
+};
+
 
