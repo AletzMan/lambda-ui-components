@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import { Pagination } from "./Pagination";
+import { useState } from "react";
 
 const meta: Meta<typeof Pagination> = {
     title: "Components/Pagination",
@@ -51,45 +52,50 @@ const meta: Meta<typeof Pagination> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Pagination>
-
-export const Solid: Story = {
-    args: {
-        variant: "solid",
-        size: 'medium',
-        radius: "small",
-        disabled: false,
-        totalPages: 10,
-        currentPage: 1,
-        maxVisiblePages: 5,
-        onPageChange: (page: number) => {
-            console.log("Page changed to:", page);
-        }
-    },
+export const Solid = () => {
+    const [activePage, setActivePage] = useState(1);
+    return (
+        <Pagination
+            variant="solid"
+            size='small'
+            radius="small"
+            disabled={false}
+            totalPages={10}
+            currentPage={activePage}
+            maxVisiblePages={3}
+            onPageChange={(page) => setActivePage(page)}
+        />
+    );
 };
 
-export const Outline: Story = {
-    args: {
-        variant: "outline",
-        size: 'medium',
-        radius: "small",
-        disabled: false,
-        totalPages: 10,
-        currentPage: 1,
-        maxVisiblePages: 5,
-
-    },
+export const Ouline = () => {
+    const [activePage, setActivePage] = useState(1);
+    return (
+        <Pagination
+            variant="outline"
+            size='small'
+            radius="small"
+            disabled={false}
+            totalPages={10}
+            currentPage={activePage}
+            maxVisiblePages={3}
+            onPageChange={(page) => setActivePage(page)}
+        />
+    );
 };
 
-export const Flat: Story = {
-    args: {
-        variant: "flat",
-        size: 'medium',
-        radius: "small",
-        disabled: false,
-        totalPages: 10,
-        currentPage: 1,
-        maxVisiblePages: 5,
-
-    },
+export const Flat = () => {
+    const [activePage, setActivePage] = useState(1);
+    return (
+        <Pagination
+            variant="flat"
+            size='small'
+            radius="small"
+            disabled={false}
+            totalPages={10}
+            currentPage={activePage}
+            maxVisiblePages={3}
+            onPageChange={(page) => setActivePage(page)}
+        />
+    );
 };
