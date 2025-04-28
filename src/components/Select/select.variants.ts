@@ -194,5 +194,18 @@ export const selectedView = cva(styles["select-view"], {
         disabled: false,
     }
 });
+export const textContent = cva(styles["select-option-text-content"], {
+    variants: {
+        size: {
+            tiny: styles["select-option-text-content-tiny"],
+            small: styles["select-option-text-content-small"],
+            medium: styles["select-option-text-content-medium"],
+            large: styles["select-option-text-content-large"],
+        },
+    },
+    defaultVariants: {
+        size: "medium",
+    }
+});
 
 export type SelectVariants = VariantProps<typeof select>;
