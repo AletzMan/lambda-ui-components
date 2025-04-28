@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// src/components/Select/hooks/useDropdownPlacement.ts
 
 import { useState, useEffect, RefObject } from 'react';
 
@@ -18,45 +17,53 @@ export function useDropdownPlacement(
     const [direction, setDirection] = useState<"up" | "down">("down");
 
     const checkDirection = () => {
+
         if (triggerRef.current && dropdownRef.current) {
             const { bottom } = triggerRef.current.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
             const { height: listHeight } = dropdownRef.current.getBoundingClientRect();
 
-            // Si el espacio debajo es menor que la altura de la lista
             if (viewportHeight - bottom < listHeight) {
-                // Y hay suficiente espacio arriba (esto es una mejora opcional)
                 const { top } = triggerRef.current.getBoundingClientRect();
-                if (top > listHeight) { // Si hay espacio arriba, abre hacia arriba
+                if (top > listHeight) {
                     setDirection("up");
-                } else { // Si no hay espacio arriba tampoco, quizás abre hacia abajo por defecto o decide otra lógica
+                } else {
                     setDirection("down");
                 }
             } else {
-                // Hay suficiente espacio abajo, abre hacia abajo
                 setDirection("down");
             }
         }
     };
 
-    // Re-verificar la dirección cuando el desplegable se abre, o la ventana/scroll cambia
     useEffect(() => {
+        const handleScrollOrResize = () => {
+            checkDirection();
+        };
+
+        const handleTransitionEnd = (event: TransitionEvent) => {
+            if (event.propertyName === 'transform') {
+                checkDirection();
+            }
+        };
+
         if (isOpen) {
-            const handler = setTimeout(checkDirection, 0);
-
-            const handleScrollOrResize = () => checkDirection();
-
+            if (dropdownRef.current) {
+                dropdownRef.current.addEventListener('transitionend', handleTransitionEnd);
+            }
             window.addEventListener("scroll", handleScrollOrResize);
             window.addEventListener("resize", handleScrollOrResize);
 
-            return () => {
-                clearTimeout(handler);
-                window.removeEventListener("scroll", handleScrollOrResize);
-                window.removeEventListener("resize", handleScrollOrResize);
-            };
         }
+        return () => {
+            if (dropdownRef.current) {
+                dropdownRef.current.removeEventListener('transitionend', handleTransitionEnd);
+            }
+            window.removeEventListener("scroll", handleScrollOrResize);
+            window.removeEventListener("resize", handleScrollOrResize);
+        };
 
     }, [isOpen, triggerRef, dropdownRef]);
 
-    return direction;
+    return { direction, checkDirection };
 }
