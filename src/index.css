@@ -46,6 +46,11 @@
     --icon-size-2xl: 24px;
     --icon-size-3xl: 28px;
 
+    --handle-xs: 14px;
+    --handle-sm: 18px;
+    --handle-md: 22px;
+    --handle-lg: 26px;
+
     --height-checkbox-xs: 16px;
     --height-checkbox-sm: 20px;
     --height-checkbox-md: 24px;
