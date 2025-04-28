@@ -1,5 +1,5 @@
 
-import { Button, Checkbox, FileUpload, Input, InputGroup, InputNumber, Pagination, Radio, RadioGroup, Select, Switch, TextArea } from '../src/main';
+import { Button, Checkbox, FileUpload, Input, InputGroup, InputNumber, Pagination, Radio, RadioGroup, Range, Select, Switch, TextArea, Tooltip } from '../src/main';
 import { Bookmark, CircleEllipsis, CodeXml, Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react";
 import styles from "./styles.module.css";
 import { useState } from 'react';
@@ -7,6 +7,7 @@ import { buttonsPrimary } from './constants';
 import { useNotification } from '../src/components/Notification/NotificationProvider';
 import { Card } from '../src/components/Card/Card';
 import { ButtonThemeController } from '../src/components/ThemeProvider/ButtonThemeController';
+import { RangeValue } from '../src/components/Range/range.types';
 
 
 
@@ -78,6 +79,13 @@ function App() {
   const [variantPagination, setVariantPagination] = useState<"outline" | "flat" | "solid" | undefined>("solid");
   const [radiusPagination, setRadiusPagination] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small");
   const { showNotification } = useNotification();
+  const [valueRange, setValueRange] = useState<RangeValue>([20, 60]);
+  const [sizeRange, setSizeRange] = useState<"medium" | "small" | "large" | undefined>("medium");
+  const [disabledRange, setDisabledRange] = useState(false);
+  const [minRange, setMinRange] = useState(0);
+  const [maxRange, setMaxRange] = useState(100);
+  const [colorToolTip, setColorToolTip] = useState<"primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined>("primary");
+  const [sizeToolTip, setSizeToolTip] = useState<"medium" | "small" | "large" | undefined>("medium");
 
   return (
     <section className={`${styles.section} `}>
@@ -590,18 +598,21 @@ function App() {
           <Select
             label='Variant'
             value={variantTextArea}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setVariantTextArea(value as "borderless" | "outline" | undefined)}
             options={[{ label: "Borderless", value: "borderless" }, { label: "Outline", value: "outline" }]} />
           <Select
             label='Radius'
             value={radiusTextArea}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setRadiusTextArea(value as "none" | "small" | "medium" | "large" | undefined)}
             options={[{ label: "None", value: "none" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
           <Select
             label='Size'
             value={sizeTextArea}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setSizeTextArea(value as "small" | "medium" | "large" | "tiny" | undefined)}
             options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
@@ -634,18 +645,21 @@ function App() {
           <Select
             label='Type'
             value={typeFileUpload}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setTypeFileUpload(value as "button" | "dropzone" | undefined)}
             options={[{ label: "Button", value: "button" }, { label: "Dropzone", value: "dropzone" }]} />
           <Select
             label='Radius'
             value={radiusFileUpload}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setRadiusFileUpload(value as "none" | "small" | "medium" | "large" | undefined)}
             options={[{ label: "None", value: "none" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
           <Select
             label='Size'
             value={sizeFileUpload}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setSizeFileUpload(value as "small" | "medium" | "large" | undefined)}
             options={[{ label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
@@ -683,18 +697,21 @@ function App() {
           <Select
             label='Variant'
             value={variantPagination}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setVariantPagination(value as "outline" | "flat" | "solid" | undefined)}
             options={[{ label: "Solid", value: "solid" }, { label: "Outline", value: "outline" }, { label: "Flat", value: "flat" }]} />
           <Select
             label='Radius'
             value={radiusPagination}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setRadiusPagination(value as "none" | "small" | "medium" | "large" | "pill" | undefined)}
             options={[{ label: "None", value: "none" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }, { label: "Pill", value: "pill" }]} />
           <Select
             label='Size'
             value={sizePagination}
+            className={styles.select_size}
             size="small"
             onChange={(value) => setSizePagination(value as "small" | "medium" | "large" | "tiny" | undefined)}
             options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
@@ -719,6 +736,78 @@ function App() {
               showFirstLastButtons={showFirstLastButtons}
               showPrevNextButtons={showPrevNextButtons}
               disabled={disabledPagination} />
+          </div>
+        </div>
+      </section>
+      {/* RANGE */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Range</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            className={styles.select_size}
+            label='Size'
+            value={sizeRange}
+            size="small"
+            onChange={(value) => setSizeRange(value as "small" | "medium" | "large" | undefined)}
+            options={[{ label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
+            <InputNumber value={minRange} onChange={(value) => setMinRange(value || 0)} size="small" />
+            <InputNumber value={maxRange} onChange={(value) => setMaxRange(value || 0)} size="small" />
+          </div>
+          <Checkbox label='Disabled' checked={disabledRange} size="small" color="secondary" onChange={(e) => setDisabledRange(e.currentTarget.checked)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Range
+              size={sizeRange}
+              disabled={disabledRange}
+              value={valueRange}
+              ariaLabel={"5"}
+              min={minRange}
+              max={maxRange}
+              onInput={(e) => setValueRange(e)}
+              onChange={(e) => setValueRange(e)} />
+          </div>
+        </div>
+      </section>
+      {/* TOOTTIP */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>ToolTip</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            className={styles.select_size}
+            label='Color'
+            value={colorToolTip}
+            size="small"
+            onChange={(value) => setColorToolTip(value as "primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined)}
+            options={[
+              { label: "Dafaulr", value: "default" },
+              { label: "Primary", value: "primary" },
+              { label: "Secondary", value: "secondary" },
+              { label: "Success", value: "success" },
+              { label: "Danger", value: "danger" },
+              { label: "Warning", value: "warning" },
+              { label: "Info", value: "info" },
+            ]} />
+          <Select
+            label='Size'
+            className={styles.select_size}
+            value={sizeToolTip}
+            size="small"
+            onChange={(value) => setSizeToolTip(value as "small" | "medium" | "large" | undefined)}
+            options={[{ label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
+            <InputNumber value={minRange} onChange={(value) => setMinRange(value || 0)} size="small" />
+            <InputNumber value={maxRange} onChange={(value) => setMaxRange(value || 0)} size="small" />
+          </div>
+          <Checkbox label='Disabled' checked={disabledRange} size="small" color="secondary" onChange={(e) => setDisabledRange(e.currentTarget.checked)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Tooltip
+              content="ToolTip">
+              <span>HOLA</span>
+            </Tooltip>
           </div>
         </div>
       </section>
