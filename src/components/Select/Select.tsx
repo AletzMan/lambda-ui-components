@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, forwardRef, useRef, useEffect, useCallback } from "react";
 import styles from "./select.module.css";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -35,11 +36,21 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             defaultValue,
             placeholder = "Select an option",
             onChange,
+            className,
         },
         ref
     ) => {
         const [isOpen, setIsOpen] = useState(false);
         const [selectedValue, setSelectedValue] = useState<string | null | undefined>(defaultValue ?? value);
+        // --- Refs ---
+        const containerRef = useRef<HTMLDivElement>(null);
+        const buttonRef = useRef<HTMLButtonElement>(null);
+        const listRef = useRef<HTMLUListElement>(null);
+        // Hook para cerrar al hacer click fuera
+        useClickOutside(containerRef, () => setIsOpen(false)); // Cerrar si click fuera del container
+
+        // Hook para determinar la dirección de apertura del dropdown
+        const { direction, checkDirection } = useDropdownPlacement(buttonRef, listRef as React.RefObject<HTMLElement>, isOpen);
 
         useEffect(() => {
             if (value !== undefined && value !== selectedValue) {
@@ -47,10 +58,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             }
         }, [value, selectedValue]);
 
-        // --- Refs ---
-        const containerRef = useRef<HTMLDivElement>(null);
-        const buttonRef = useRef<HTMLButtonElement>(null);
-        const listRef = useRef<HTMLUListElement>(null);
 
 
         const performOptionSelection = useCallback((val: string | undefined) => {
@@ -62,6 +69,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         // --- Handlers --- 
         const handleButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
             e.preventDefault();
+            checkDirection();
             if (!disabled) {
                 setIsOpen((prev) => !prev);
             }
@@ -76,11 +84,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 
 
 
-        // Hook para cerrar al hacer click fuera
-        useClickOutside(containerRef, () => setIsOpen(false)); // Cerrar si click fuera del container
-
-        // Hook para determinar la dirección de apertura del dropdown
-        const direction = useDropdownPlacement(buttonRef, listRef as React.RefObject<HTMLElement>, isOpen);
 
         // Hook para la accesibilidad (ARIA, teclado, opción activa)
         const {
@@ -104,7 +107,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 
         return (
             <div
-                className={clsx([styles["select-wrapper"]], { [styles["select-wrapper-disabled"]]: disabled })}
+                className={clsx([styles["select-wrapper"]], { [styles["select-wrapper-disabled"]]: disabled }, className)}
                 ref={containerRef}
             >
                 {label && (
@@ -139,9 +142,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
                             {isOpen ? <ChevronUp className={styles["select-icon-svg"]} /> : <ChevronDown className={styles["select-icon-svg"]} />}
                         </div>
                     </button>
-                    {isOpen && (
+                    {(
                         <ul
-                            className={clsx(dropdown({ size, direction, radius, variant }), styles["scrollBar"])}
+                            className={clsx(dropdown({ size, direction, radius, variant }), "scrollBar", { [styles["select-dropdown-open"]]: isOpen })}
                             ref={listRef}
                             {...getListboxProps()}
                         >
