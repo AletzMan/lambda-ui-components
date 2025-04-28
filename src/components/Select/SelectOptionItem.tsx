@@ -4,7 +4,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { Check } from 'lucide-react';
 import { IListCollection, SelectProps } from './select.types';
-import { selectedView } from './select.variants';
+import { selectedView, textContent } from './select.variants';
 
 import styles from './select.module.css';
 
@@ -52,9 +52,9 @@ export const SelectOptionItem: React.FC<SelectOptionItemProps> = ({
             )}
             onClick={handleClick}
         >
-            <div className={clsx(styles["select-option-wrapper"], selectedView({ size }))}>
+            <div className={clsx(selectedView({ size }))}>
                 {option.avatar && <img className={styles["select-view-avatar"]} src={option?.avatar} alt="" />}
-                <div className={styles["select-option-text-content"]}>
+                <div className={clsx(textContent({ size }))}>
                     <div>{option.label}</div>
                     {option.description && <p className={styles["select-view-description"]}>{option.description}</p>}
                 </div>
