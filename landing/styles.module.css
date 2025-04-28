@@ -108,6 +108,10 @@ body {
   accent-color: red;
 }
 
+.select_size {
+  width: 8em;
+}
+
 .buttons {
   display: flex;
   flex-flow: row wrap;
