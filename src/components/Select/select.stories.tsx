@@ -127,43 +127,46 @@ export const Description: Story = {
 };
 
 
-export const Icon: Story = {
-    args: {
-        variant: "outline",
-        radius: "small",
-        size: 'medium',
-        label: 'Label',
-        options: [
-            {
-                label: "JavaScript",
-                value: "javascript",
-                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png",
-            },
-            {
-                label: "TypeScript",
-                value: "typescript",
-                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/250px-Typescript_logo_2020.svg.png",
-            },
-            {
-                label: "React",
-                value: "react",
-                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png",
-            },
-            {
-                label: "Node.js",
-                value: "nodejs",
-                avatar: "https://nodejs.org/static/logos/jsIconGreen.svg",
-            },
-            {
-                label: "C#",
-                value: "csharp",
-                avatar: "https://cdn.worldvectorlogo.com/logos/c--4.svg",
-            }
-        ],
-        required: false,
-        invalid: false,
-        errorMessage: "This is a sample error message for demonstration",
-        disabled: false,
-    },
+export const Icon = () => {
+    return (
+        <Select
+            style={{ minWidth: "8em" }}
+            variant="outline"
+            radius="small"
+            size='medium'
+            label='Label'
+            options={[
+                {
+                    label: "JavaScript",
+                    value: "javascript",
+                    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png",
+                },
+                {
+                    label: "TypeScript",
+                    value: "typescript",
+                    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/250px-Typescript_logo_2020.svg.png",
+                },
+                {
+                    label: "React",
+                    value: "react",
+                    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/330px-React-icon.svg.png",
+                },
+                {
+                    label: "Node.js",
+                    value: "nodejs",
+                    avatar: "https://nodejs.org/static/logos/jsIconGreen.svg",
+                },
+                {
+                    label: "C#",
+                    value: "csharp",
+                    avatar: "https://cdn.worldvectorlogo.com/logos/c--4.svg",
+                }
+            ]}
+            required={false}
+            invalid={false}
+            errorMessage="This is a sample error message for demonstration"
+            disabled={false}
+        />
+    );
 };
 
