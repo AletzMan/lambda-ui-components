@@ -1,0 +1,175 @@
+.lambda-tooltip-target-wrapper {
+    /* display: inline-block;  Considerar si el target es inline/block */
+    /* position: relative; /* Puede ser necesario si la flecha se hiciera aquí, pero no con portals */
+    box-sizing: border-box;
+}
+
+/* Contenedor del tooltip (el pop-up box que va al Portal) */
+.lambda-tooltip-container {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    padding: var(--padding-xs) var(--padding-sm);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    max-width: 200px;
+    text-align: center;
+    box-sizing: border-box;
+    filter: drop-shadow(0 0 2px 1px red);
+    word-wrap: break-word;
+    /* Animación opcional (requiere estilos adicionales en la clase visible) */
+    /* transform-origin: center bottom; */
+    /* transform: scale(0.9); */
+}
+
+/* Estado Visible */
+.lambda-tooltip-container.visible {
+    opacity: 1;
+    visibility: visible;
+    /* transform: scale(1); */
+}
+
+
+/* Variantes de Tamaño del Contenedor */
+.lambda-tooltip-container-small {
+    padding: var(--padding-1, 4px) var(--padding-2, 8px);
+    font-size: var(--font-size-xs);
+    max-width: 150px;
+}
+
+.lambda-tooltip-container-medium {
+    padding: var(--padding-2, 8px) var(--padding-3, 12px);
+    font-size: var(--font-size-sm);
+    max-width: 200px;
+}
+
+.lambda-tooltip-container-large {
+    padding: var(--padding-3, 12px) var(--padding-4, 16px);
+    font-size: var(--font-size-md);
+    max-width: 250px;
+}
+
+.lambda-tooltip-container-default {
+    background-color: var(--foreground-color);
+    color: var(--white-color);
+    /*border: 1px solid var(--surface-d);*/
+}
+
+.lambda-tooltip-container-primary {
+    background-color: var(--primary-color);
+    color: var(--color-text-contrast);
+    border: none;
+}
+
+/* Posición para ayudar en estilos específicos (principalmente transform-origin si hay animación) */
+/* Estas clases se aplican al contenedor principal .lambda-tooltip-container */
+.lambda-tooltip-container-top-left {
+    transform-origin: bottom left;
+}
+
+.lambda-tooltip-container-top-center {
+    transform-origin: bottom center;
+}
+
+.lambda-tooltip-container-top-right {
+    transform-origin: bottom right;
+}
+
+.lambda-tooltip-container-bottom-left {
+    transform-origin: top left;
+}
+
+.lambda-tooltip-container-bottom-center {
+    transform-origin: top center;
+}
+
+.lambda-tooltip-container-bottom-right {
+    transform-origin: top right;
+}
+
+
+/* Flecha del Tooltip (Pseudo-elemento ::before en el contenedor del tooltip) */
+.lambda-tooltip-container::before {
+    content: "";
+    position: absolute;
+    border-width: var(--arrow-size-md, 6px);
+    border-style: solid;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Variantes de Tamaño de la Flecha (afecta border-width) */
+.lambda-tooltip-arrow-small::before {
+    border-width: var(--arrow-size-sm, 4px);
+}
+
+.lambda-tooltip-arrow-medium::before {
+    border-width: var(--arrow-size-md, 6px);
+}
+
+.lambda-tooltip-arrow-large::before {
+    border-width: var(--arrow-size-lg, 8px);
+}
+
+
+/* Flecha abajo, apuntando hacia arriba (para tooltips posicionados ABOVE el target) */
+.lambda-tooltip-arrow-bottom-left::before {
+    bottom: calc(-2 * var(--arrow-size-md, 6px));
+    left: var(--padding-3, 12px);
+    border-color: var(--surface-a) transparent transparent transparent;
+}
+
+.lambda-tooltip-arrow-bottom-center::before {
+    bottom: calc(-2 * var(--arrow-size-md, 6px));
+    left: 50%;
+    transform: translateX(-50%);
+    border-color: var(--surface-a) transparent transparent transparent;
+}
+
+.lambda-tooltip-arrow-bottom-right::before {
+    bottom: calc(-2 * var(--arrow-size-md, 6px));
+    right: var(--padding-3, 12px);
+    border-color: var(--surface-a) transparent transparent transparent;
+}
+
+/* Flecha arriba, apuntando hacia abajo (para tooltips posicionados BELOW el target) */
+.lambda-tooltip-arrow-top-left::before {
+    top: calc(-2 * var(--arrow-size-md, 6px));
+    left: var(--padding-3, 12px);
+    border-color: transparent transparent var(--surface-a) transparent;
+}
+
+.lambda-tooltip-arrow-top-center::before {
+    top: calc(-2 * var(--arrow-size-md, 6px));
+    left: 50%;
+    transform: translateX(-50%);
+    border-color: transparent transparent var(--surface-a) transparent;
+}
+
+.lambda-tooltip-arrow-top-right::before {
+    top: calc(-2 * var(--arrow-size-md, 6px));
+    right: var(--padding-3, 12px);
+    border-color: transparent transparent var(--surface-a) transparent;
+}
+
+/* Ajustar colores de la flecha según la variante del contenedor */
+.lambda-tooltip-container-primary::before {
+    border-color: var(--primary-color) transparent transparent transparent;
+}
+
+/* Base primary */
+.lambda-tooltip-arrow-top-left.lambda-tooltip-container-primary::before,
+.lambda-tooltip-arrow-top-center.lambda-tooltip-container-primary::before,
+.lambda-tooltip-arrow-top-right.lambda-tooltip-container-primary::before {
+    border-color: transparent transparent var(--primary-color) transparent;
+}
+
+/* Ajustar offset de la flecha según el tamaño si es necesario */
+/* .lambda-tooltip-arrow-small.lambda-tooltip-arrow-bottom-left::before { left: var(--padding-2, 8px); } */
+/* .lambda-tooltip-arrow-large.lambda-tooltip-arrow-bottom-left::before { left: var(--padding-4, 16px); } */
+/* ... y así para todas las combinaciones size/position ... */
