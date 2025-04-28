@@ -62,7 +62,13 @@
 
 .lambda-tooltip-container-primary {
     background-color: var(--primary-color);
-    color: var(--color-text-contrast);
+    color: var(--white-color);
+    border: none;
+}
+
+.lambda-tooltip-container-secondary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
     border: none;
 }
 
