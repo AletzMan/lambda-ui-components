@@ -389,16 +389,16 @@
     grid-template-columns: 1fr 24px;
     place-items: center start;
     gap: 0.5em;
-    padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-md);
+    padding: var(--padding-none) var(--padding-md);
     color: var(--foreground-color);
-    padding: var(--padding-xs) var(--padding-md);
-    min-height: var(--height-input-sm);
     list-style: none;
     cursor: pointer;
 
     &.select-option-selected {
         background-color: var(--primary-light-color);
         color: var(--primary-text-color);
+        font-weight: var(--font-weight-md);
+        cursor: default;
     }
 }
 
@@ -416,6 +416,11 @@
 
 
     &.select-view-tiny {
+        font-size: var(--font-size-xs);
+        padding: var(--padding-none) var(--padding-md);
+        min-height: var(--height-input-xs);
+
+
         &>.select-view-avatar {
             width: var(--icon-size-xs);
             height: var(--icon-size-xs);
@@ -423,6 +428,10 @@
     }
 
     &.select-view-small {
+        font-size: var(--font-size-sm);
+        padding: var(--padding-none) var(--padding-md);
+        min-height: var(--height-input-sm);
+
         &>.select-view-avatar {
             width: var(--icon-size-md);
             height: var(--icon-size-md);
@@ -430,6 +439,10 @@
     }
 
     &.select-view-medium {
+        font-size: var(--font-size-md);
+        padding: var(--padding-none) var(--padding-md);
+        min-height: var(--height-input-md);
+
         &>.select-view-avatar {
             width: var(--icon-size-xl);
             height: var(--icon-size-xl);
@@ -437,6 +450,10 @@
     }
 
     &.select-view-large {
+        font-size: var(--font-size-lg);
+        padding: var(--padding-none) var(--padding-lg);
+        min-height: var(--height-input-lg);
+
         &>.select-view-avatar {
             width: var(--icon-size-2xl);
             height: var(--icon-size-2xl);
@@ -448,13 +465,18 @@
     border-radius: var(--border-radius-xs);
 }
 
-.select-option-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
-}
 
 .select-view-description {
     font-size: var(--font-size-sm);
     color: var(--surface-g);
+}
+
+.select-option-text-content {
+    display: flex;
+    flex-direction: column;
+    padding: var(--border-radius-xs) var(--padding-none);
+
+    .select-view-description {
+        padding: var(--padding-xs) var(--padding-xs);
+    }
 }
