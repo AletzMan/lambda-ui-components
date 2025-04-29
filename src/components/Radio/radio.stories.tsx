@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Radio, Radioprops } from "./Radio";
+import { Radio } from "./Radio";
 import { RadioGroup } from "../RadioGroup/RadioGroup";
 
 const meta: Meta<typeof Radio> = {
@@ -53,7 +53,7 @@ export default meta;
 
 
 
-const Template: StoryObj<Radioprops> = {
+const Template: StoryObj = {
     render: (args) => (
         <RadioGroup name="example" defaultValue="option1" onChange={console.log}  >
             <Radio {...args} value="option1" label="Option 1" />
