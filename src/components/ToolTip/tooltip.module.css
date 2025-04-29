@@ -9,7 +9,6 @@
     position: absolute;
     z-index: 1000;
     pointer-events: none;
-    visibility: hidden;
     font-family: var(--font-family);
     font-weight: var(--font-weight-md);
     line-height: 1.5;
@@ -19,7 +18,7 @@
     word-wrap: break-word;
     opacity: 0;
     border-radius: var(--border-radius-sm);
-    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    transition: all 5s ease;
     /* Animación opcional (requiere estilos adicionales en la clase visible) */
     transform-origin: center bottom;
     transform: scale(0.9);
@@ -28,7 +27,6 @@
 /* Estado Visible */
 .lambda-tooltip-container.visible {
     opacity: 1;
-    visibility: visible;
     transform: scale(1);
 }
 
