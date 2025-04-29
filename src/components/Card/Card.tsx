@@ -1,36 +1,11 @@
 
-import React, { HTMLAttributes, forwardRef } from "react";
+import { forwardRef } from "react";
 import styles from "./card.module.css";
-import { VariantProps } from "class-variance-authority";
-import clsx from "clsx";
 import { card } from "./card.variants";
+import { CardProps } from "./card-types";
+import clsx from "clsx";
 
-export interface ICardHeader {
-    title: string
-    description?: string
-    icon?: React.ReactNode
-}
 
-export interface ICardActions {
-    icon?: React.ReactNode
-    text?: string
-    onClick?: () => void
-}
-
-export interface ICardImage {
-    src: string
-    alt?: string
-    heightPorcent?: number
-}
-
-export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, "disabled" | "color"> {
-    image?: ICardImage
-    header?: ICardHeader
-    actions?: ICardActions[]
-    variant?: VariantProps<typeof card>["variant"]
-    size?: "medium" | "small" | "large"
-    radius?: VariantProps<typeof card>["radius"]
-}
 
 const SizeHeight: Record<"medium" | "small" | "large", number> = {
     small: 10,
