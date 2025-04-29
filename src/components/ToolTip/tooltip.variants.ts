@@ -4,6 +4,7 @@ import styles from "./tooltip.module.css";
 export const tooltipContainer = cva(styles["lambda-tooltip-container"], {
     variants: {
         size: {
+            tiny: styles["lambda-tooltip-container-tiny"],
             small: styles["lambda-tooltip-container-small"],
             medium: styles["lambda-tooltip-container-medium"],
             large: styles["lambda-tooltip-container-large"],
@@ -47,6 +48,7 @@ export const tooltipArrow = cva(styles["lambda-tooltip-arrow"], {
             'top-right': styles["lambda-tooltip-arrow-top-right"],
         },
         size: {
+            tiny: styles["lambda-tooltip-arrow-tiny"],
             small: styles["lambda-tooltip-arrow-small"],
             medium: styles["lambda-tooltip-arrow-medium"],
             large: styles["lambda-tooltip-arrow-large"],

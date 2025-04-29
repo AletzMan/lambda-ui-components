@@ -34,6 +34,12 @@
 
 
 /* Variantes de Tamaño del Contenedor */
+.lambda-tooltip-container-tiny {
+    padding: var(--padding-xs) var(--padding-sm);
+    font-size: var(--font-size-xs);
+    max-width: 150px;
+}
+
 .lambda-tooltip-container-small {
     padding: var(--padding-xs) var(--padding-sm);
     font-size: var(--font-size-sm);
@@ -42,13 +48,13 @@
 
 .lambda-tooltip-container-medium {
     padding: var(--padding-sm) var(--padding-md);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     max-width: 200px;
 }
 
 .lambda-tooltip-container-large {
     padding: var(--padding-sm) var(--padding-md);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
     max-width: 250px;
 }
 
@@ -191,6 +197,10 @@
 
 
 /* Variantes de Tamaño de la Flecha (afecta border-width) */
+.lambda-tooltip-arrow-tiny::before {
+    border-width: 5px;
+}
+
 .lambda-tooltip-arrow-small::before {
     border-width: 5px;
 }
