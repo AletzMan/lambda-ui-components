@@ -53,6 +53,7 @@
     height: var(--size-track-md, 6px);
     border-radius: var(--border-radius-xs);
     background-color: var(--surface-c);
+    border: 1px solid var(--surface-d);
     z-index: 1;
 }
 
@@ -79,6 +80,7 @@
     transform: translateY(50%);
     height: var(--size-track-md, 6px);
     background-color: var(--primary-color);
+    border: 1px solid var(--primary-text-color);
     border-radius: var(--radius-pill, 9999px);
     z-index: 2;
 }
@@ -110,8 +112,8 @@
     height: var(--size-handle-md, 20px);
     cursor: grab;
     border-radius: var(--radius-pill, 9999px);
-    border: 2px solid var(--primary-color);
-    background-color: var(--surface-c);
+    border: 1px solid var(--surface-d);
+    background-color: var(--white-color);
     transition: transform 0.1s ease, box-shadow 0.2s ease;
     outline: none;
     z-index: 3;
@@ -129,19 +131,19 @@
 .lambda-range-handle-small {
     width: var(--handle-xs);
     height: var(--handle-xs);
-    border-width: 2px;
+    border-width: 1px;
 }
 
 .lambda-range-handle-medium {
     width: var(--handle-sm);
     height: var(--handle-sm);
-    border-width: 2px;
+    border-width: 1px;
 }
 
 .lambda-range-handle-large {
     width: var(--handle-md);
     height: var(--handle-md);
-    border-width: 3px;
+    border-width: 2px;
 }
 
 
@@ -182,18 +184,41 @@
 }
 
 .lambda-range-handle-value {
-    display: block;
+    display: none;
     position: absolute;
-    bottom: 50%;
     left: 50%;
-    transform: translate(0, -60%);
+    transform: translateX(-50%) translateY(-130%);
+    transform-origin: bottom center;
     text-align: center;
-    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-md);
-    color: var(--foreground-color);
-    background-color: var(--surface-c);
+    color: var(--foreground-invert-color);
+    background-color: var(--secondary-color);
     padding: var(--padding-xs) var(--padding-sm);
     border-radius: var(--border-radius-sm);
     white-space: nowrap;
+    min-width: 2em;
     z-index: 4;
+
+    &.lambda-range-handle-value-small {
+        font-size: var(--font-size-xs);
+    }
+
+    &.lambda-range-handle-value-medium {
+        font-size: var(--font-size-sm);
+    }
+
+    &.lambda-range-handle-value-large {
+        font-size: var(--font-size-md);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--secondary-color) transparent transparent transparent;
+    }
 }

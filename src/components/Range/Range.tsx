@@ -7,6 +7,7 @@ import {
     rangeTrack,
     rangeFill,
     rangeHandle,
+    rangeValue,
 } from "./range.variants";
 
 import styles from "./range.module.css";
@@ -428,7 +429,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
                         aria-disabled={disabled}
                         tabIndex={disabled ? -1 : 0}
                     >
-                        <div className={styles["lambda-range-handle-value"]}>
+                        <div className={rangeValue({ size })}>
                             {isDoubleHandled ? startValue : endValue}
                         </div>
                     </div>
@@ -454,7 +455,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
                             tabIndex={disabled ? -1 : 0}
                         >
                             {/* Opcional: añadir tooltip con valor actual aquí */}
-                            <div className={styles["lambda-range-handle-value"]}>
+                            <div className={rangeValue({ size })}>
                                 {endValue}
                             </div>
                         </div>
