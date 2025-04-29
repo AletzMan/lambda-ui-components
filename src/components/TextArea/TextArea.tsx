@@ -1,27 +1,14 @@
 
-import { TextareaHTMLAttributes, forwardRef, FocusEvent, useState, useId } from "react";
+import { forwardRef, FocusEvent, useState, useId } from "react";
 import styles from "./textArea.module.css";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import clsx from "clsx";
 import { CircleX } from "lucide-react";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
-import { TextAreaVariants, labelString, textarea } from "./textarea.variants";
+import { labelString, textarea } from "./textarea.variants";
+import { TextAreaProps } from "./textarea.types";
 
 
-
-export interface TextAreaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "disabled" | "aria-invalid" | "aria-describedby" | "aria-labelledby" | "onFocus" | "onBlur"> {
-    variant?: TextAreaVariants["variant"]
-    radius?: TextAreaVariants["radius"]
-    size?: TextAreaVariants["size"]
-    invalid?: boolean;
-    disabled?: boolean;
-    required?: boolean
-    label?: string
-    errorMessage?: string
-    helperText?: string
-    onFocus?: (e: FocusEvent<HTMLTextAreaElement>) => void;
-    onBlur?: (e: FocusEvent<HTMLTextAreaElement>) => void;
-}
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     (
