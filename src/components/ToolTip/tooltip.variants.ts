@@ -9,7 +9,6 @@ export const tooltipContainer = cva(styles["lambda-tooltip-container"], {
             large: styles["lambda-tooltip-container-large"],
         },
         color: {
-            default: styles["lambda-tooltip-container-default"],
             primary: styles["lambda-tooltip-container-primary"],
             secondary: styles["lambda-tooltip-container-secondary"],
             success: styles["lambda-tooltip-container-success"],
@@ -28,7 +27,7 @@ export const tooltipContainer = cva(styles["lambda-tooltip-container"], {
     },
     defaultVariants: {
         size: "medium",
-        color: "default",
+        color: "secondary",
         position: 'top-center',
     },
 });
@@ -53,7 +52,6 @@ export const tooltipArrow = cva(styles["lambda-tooltip-arrow"], {
             large: styles["lambda-tooltip-arrow-large"],
         },
         color: {
-            default: styles["lambda-tooltip-arrow-default"],
             primary: styles["lambda-tooltip-arrow-primary"],
             secondary: styles["lambda-tooltip-arrow-secondary"],
             success: styles["lambda-tooltip-arrow-success"],
@@ -65,7 +63,7 @@ export const tooltipArrow = cva(styles["lambda-tooltip-arrow"], {
     defaultVariants: {
         arrowPosition: 'bottom-center',
         size: 'medium',
-        color: 'default',
+        color: 'secondary',
     },
 });
 

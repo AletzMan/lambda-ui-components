@@ -9,55 +9,47 @@
     position: absolute;
     z-index: 1000;
     pointer-events: none;
-    opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-    padding: var(--padding-xs) var(--padding-sm);
-    border-radius: var(--border-radius-sm);
     font-family: var(--font-family);
-    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-md);
     line-height: 1.5;
     max-width: 200px;
     text-align: center;
     box-sizing: border-box;
-    filter: drop-shadow(0 0 2px 1px red);
     word-wrap: break-word;
+    opacity: 0;
+    border-radius: var(--border-radius-sm);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
     /* Animación opcional (requiere estilos adicionales en la clase visible) */
-    /* transform-origin: center bottom; */
-    /* transform: scale(0.9); */
+    transform-origin: center bottom;
+    transform: scale(0.9);
 }
 
 /* Estado Visible */
 .lambda-tooltip-container.visible {
     opacity: 1;
     visibility: visible;
-    /* transform: scale(1); */
+    transform: scale(1);
 }
 
 
 /* Variantes de Tamaño del Contenedor */
 .lambda-tooltip-container-small {
-    padding: var(--padding-1, 4px) var(--padding-2, 8px);
-    font-size: var(--font-size-xs);
+    padding: var(--padding-xs) var(--padding-sm);
+    font-size: var(--font-size-sm);
     max-width: 150px;
 }
 
 .lambda-tooltip-container-medium {
-    padding: var(--padding-2, 8px) var(--padding-3, 12px);
+    padding: var(--padding-sm) var(--padding-md);
     font-size: var(--font-size-sm);
     max-width: 200px;
 }
 
 .lambda-tooltip-container-large {
-    padding: var(--padding-3, 12px) var(--padding-4, 16px);
+    padding: var(--padding-sm) var(--padding-md);
     font-size: var(--font-size-md);
     max-width: 250px;
-}
-
-.lambda-tooltip-container-default {
-    background-color: var(--foreground-color);
-    color: var(--white-color);
-    /*border: 1px solid var(--surface-d);*/
 }
 
 .lambda-tooltip-container-primary {
@@ -68,6 +60,30 @@
 
 .lambda-tooltip-container-secondary {
     background-color: var(--secondary-color);
+    color: var(--foreground-invert-color);
+    border: none;
+}
+
+.lambda-tooltip-container-success {
+    background-color: var(--success-color);
+    color: var(--white-color);
+    border: none;
+}
+
+.lambda-tooltip-container-danger {
+    background-color: var(--danger-color);
+    color: var(--white-color);
+    border: none;
+}
+
+.lambda-tooltip-container-warning {
+    background-color: var(--warning-color);
+    color: var(--white-color);
+    border: none;
+}
+
+.lambda-tooltip-container-info {
+    background-color: var(--info-color);
     color: var(--white-color);
     border: none;
 }
@@ -76,6 +92,8 @@
 /* Estas clases se aplican al contenedor principal .lambda-tooltip-container */
 .lambda-tooltip-container-top-left {
     transform-origin: bottom left;
+
+
 }
 
 .lambda-tooltip-container-top-center {
@@ -92,10 +110,72 @@
 
 .lambda-tooltip-container-bottom-center {
     transform-origin: top center;
+
+
 }
 
 .lambda-tooltip-container-bottom-right {
     transform-origin: top right;
+}
+
+.lambda-tooltip-container-top-center,
+.lambda-tooltip-container-top-left,
+.lambda-tooltip-container-top-right {
+    &.lambda-tooltip-container-primary::before {
+        border-top-color: var(--primary-color);
+    }
+
+    &.lambda-tooltip-container-secondary::before {
+        border-top-color: var(--secondary-color);
+    }
+
+    &.lambda-tooltip-container-success::before {
+        border-top-color: var(--success-color);
+    }
+
+    &.lambda-tooltip-container-danger::before {
+        border-top-color: var(--danger-color);
+    }
+
+    &.lambda-tooltip-container-warning::before {
+        border-top-color: var(--warning-color);
+    }
+
+    &.lambda-tooltip-container-info::before {
+        border-top-color: var(--info-color);
+    }
+}
+
+.lambda-tooltip-container-bottom-center,
+.lambda-tooltip-container-bottom-left,
+.lambda-tooltip-container-bottom-right {
+    &.lambda-tooltip-container-default::before {
+        border-bottom-color: var(--foreground-color);
+    }
+
+    &.lambda-tooltip-container-primary::before {
+        border-bottom-color: var(--primary-color);
+    }
+
+    &.lambda-tooltip-container-secondary::before {
+        border-bottom-color: var(--secondary-color);
+    }
+
+    &.lambda-tooltip-container-success::before {
+        border-bottom-color: var(--success-color);
+    }
+
+    &.lambda-tooltip-container-danger::before {
+        border-bottom-color: var(--danger-color);
+    }
+
+    &.lambda-tooltip-container-warning::before {
+        border-bottom-color: var(--warning-color);
+    }
+
+    &.lambda-tooltip-container-info::before {
+        border-bottom-color: var(--info-color);
+    }
 }
 
 
@@ -103,77 +183,82 @@
 .lambda-tooltip-container::before {
     content: "";
     position: absolute;
-    border-width: var(--arrow-size-md, 6px);
+    border-width: var(--icon-size-md);
     border-style: solid;
     pointer-events: none;
     z-index: -1;
 }
 
+
 /* Variantes de Tamaño de la Flecha (afecta border-width) */
 .lambda-tooltip-arrow-small::before {
-    border-width: var(--arrow-size-sm, 4px);
+    border-width: 5px;
 }
 
 .lambda-tooltip-arrow-medium::before {
-    border-width: var(--arrow-size-md, 6px);
+    border-width: 5px;
 }
 
 .lambda-tooltip-arrow-large::before {
-    border-width: var(--arrow-size-lg, 8px);
+    border-width: 5px;
 }
 
 
 /* Flecha abajo, apuntando hacia arriba (para tooltips posicionados ABOVE el target) */
 .lambda-tooltip-arrow-bottom-left::before {
-    bottom: calc(-2 * var(--arrow-size-md, 6px));
-    left: var(--padding-3, 12px);
-    border-color: var(--surface-a) transparent transparent transparent;
+    bottom: calc(-0.7 * var(--icon-size-xs));
+    left: var(--padding-sm);
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
 }
 
 .lambda-tooltip-arrow-bottom-center::before {
-    bottom: calc(-2 * var(--arrow-size-md, 6px));
+    bottom: calc(-0.7 * var(--icon-size-xs));
     left: 50%;
     transform: translateX(-50%);
-    border-color: var(--surface-a) transparent transparent transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    /*border-color: var(--black-color) transparent transparent transparent;*/
 }
 
 .lambda-tooltip-arrow-bottom-right::before {
-    bottom: calc(-2 * var(--arrow-size-md, 6px));
+    bottom: calc(-0.7 * var(--icon-size-xs));
     right: var(--padding-3, 12px);
-    border-color: var(--surface-a) transparent transparent transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
 }
 
 /* Flecha arriba, apuntando hacia abajo (para tooltips posicionados BELOW el target) */
 .lambda-tooltip-arrow-top-left::before {
-    top: calc(-2 * var(--arrow-size-md, 6px));
+    top: calc(-0.7 * var(--icon-size-xs));
     left: var(--padding-3, 12px);
-    border-color: transparent transparent var(--surface-a) transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
 }
 
 .lambda-tooltip-arrow-top-center::before {
-    top: calc(-2 * var(--arrow-size-md, 6px));
+    top: calc(-0.7 * var(--icon-size-xs));
     left: 50%;
     transform: translateX(-50%);
-    border-color: transparent transparent var(--surface-a) transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
 }
 
 .lambda-tooltip-arrow-top-right::before {
-    top: calc(-2 * var(--arrow-size-md, 6px));
+    top: calc(-0.7 * var(--icon-size-xs));
     right: var(--padding-3, 12px);
-    border-color: transparent transparent var(--surface-a) transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
 }
 
-/* Ajustar colores de la flecha según la variante del contenedor */
-.lambda-tooltip-container-primary::before {
-    border-color: var(--primary-color) transparent transparent transparent;
-}
 
-/* Base primary */
-.lambda-tooltip-arrow-top-left.lambda-tooltip-container-primary::before,
-.lambda-tooltip-arrow-top-center.lambda-tooltip-container-primary::before,
-.lambda-tooltip-arrow-top-right.lambda-tooltip-container-primary::before {
-    border-color: transparent transparent var(--primary-color) transparent;
-}
+
 
 /* Ajustar offset de la flecha según el tamaño si es necesario */
 /* .lambda-tooltip-arrow-small.lambda-tooltip-arrow-bottom-left::before { left: var(--padding-2, 8px); } */

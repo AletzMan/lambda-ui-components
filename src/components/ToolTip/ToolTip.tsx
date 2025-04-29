@@ -1,5 +1,3 @@
-// src/components/Tooltip/Tooltip.tsx
-
 import React, {
     forwardRef,
     useCallback,
@@ -14,8 +12,6 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import clsx from "clsx";
-
-// Importar tipos y variantes
 import {
     tooltipContainer,
     tooltipArrow,
@@ -36,14 +32,13 @@ const mapTooltipPositionToArrowPosition = (tooltipPos: TooltipPosition): Tooltip
         case 'bottom-center': return 'top-center';
         case 'bottom-right': return 'top-right';
         // Si añades más posiciones en el futuro, mapearlas aquí
-        default: return 'bottom-center'; // Fallback seguro
+        default: return 'bottom-center';
     }
 };
 
 // Helper para obtener el primer elemento hijo DOM válido
 const getTargetElement = (wrapper: HTMLDivElement | null): HTMLElement | null => {
     if (!wrapper) return null;
-    // El primer hijo del wrapper div debería ser el elemento target real
     return wrapper.firstElementChild as HTMLElement | null;
 };
 
@@ -57,7 +52,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
             delayShow = 0,
             delayHide = 0,
             offset = 8,
-            color = "default",
+            color = "secondary",
             size = "medium",
             disabled = false,
             ariaLabel,
@@ -67,16 +62,14 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         },
         _ref
     ) => {
-        // Validar que children es un elemento React válido
-
         // Estado para controlar la visibilidad del tooltip
         const [isVisible, setIsVisible] = useState(false);
         // Estado para almacenar la posición calculada del tooltip (top, left en píxeles)
         const [tooltipPositionStyle, setTooltipPositionStyle] = useState<{ top?: number; left?: number; } | undefined>(undefined);
 
         // Refs para el div que envuelve el target y el elemento del tooltip en el Portal
-        const targetWrapperRef = useRef<HTMLDivElement>(null); // Ref para el div que envuelve al children
-        const tooltipRef = useRef<HTMLDivElement>(null); // Ref para el elemento del tooltip en el Portal
+        const targetWrapperRef = useRef<HTMLDivElement>(null);
+        const tooltipRef = useRef<HTMLDivElement>(null);
         // Timers para los retrasos de mostrar/ocultar
         const showTimerRef = useRef<number | null>(null);
         const hideTimerRef = useRef<number | null>(null);
@@ -89,7 +82,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         // --- Handlers para mostrar/ocultar (con retrasos) ---
 
         const showTooltip = useCallback(() => {
-            if (disabled) return; // No mostrar si está deshabilitado
+            if (disabled) return;
 
             // Limpiar timer de ocultar si existe
             if (hideTimerRef.current !== null) {
@@ -162,7 +155,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
             if (event.key === 'Escape') {
                 if (isVisible) {
-                    event.preventDefault(); // Prevenir comportamiento por defecto del navegador si existe
+                    event.preventDefault();
                     hideTooltip();
                     // Opcional: devolver el foco al elemento que activó el tooltip
                     getTargetElement(targetWrapperRef.current)?.focus();
@@ -219,8 +212,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
                 // Establecer la posición calculada en el estado
                 setTooltipPositionStyle({
-                    top: top + window.scrollY, // Sumar scroll Y para posición absoluta respecto al documento
-                    left: left + window.scrollX, // Sumar scroll X para posición absoluta respecto al documento
+                    top: top + window.scrollY,
+                    left: left + window.scrollX,
                 });
             } else {
                 // Resetear la posición cuando el tooltip no es visible
@@ -336,7 +329,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
                     const newHandler = propsToAdd[propName]; // Nuestro handler
                     // Acceder a la prop existente usando el nombre de prop seguro
-                    const existingHandler = existingProps[propName as keyof HTMLAttributes<HTMLElement>]; // Existing handler on children
+                    const existingHandler = existingProps[propName as keyof HTMLAttributes<HTMLElement>];
 
 
                     // Verificar si ambos son funciones antes de intentar fusionar
@@ -349,7 +342,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
                             existingHandler(...args); // Llamar al handler existente
                         }) as HTMLAttributes<HTMLElement>; // Casting de vuelta al tipo esperado por React
 
-                    } else if (newHandler !== undefined) { // Si solo nuestro handler existe (función o no)
+                    } else if (newHandler !== undefined) {
                         // Si nuestro handler no es función o si no existe un handler existente,
                         // nuestra prop sobrescribe la existente.
                         mergedProps[propName] = newHandler;
@@ -386,46 +379,38 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
         const tooltipPortal = renderPortal ? createPortal(
             <div
-                ref={tooltipRef} // Ref para el elemento del tooltip
-                id={tooltipId} // Aplicar ID para aria-describedby
-                role="tooltip" // Rol ARIA
+                ref={tooltipRef}
+                id={tooltipId}
+                role="tooltip"
                 // Aplicar estilos de posición calculados
                 style={{
-                    ...tooltipPositionStyle, // top, left, position: 'absolute'
-                    // Asegurarse de que el elemento está oculto inicialmente si hay delayShow
-                    opacity: isVisible ? 1 : 0,
-                    visibility: isVisible ? 'visible' : 'hidden',
-                    // Añadir transiciones si no están en CSS Module
-                    transition: 'opacity 0.2s ease, visibility 0.2s ease',
+                    ...tooltipPositionStyle,
                 }}
                 // Aplicar variantes CVA para el contenedor (size, variant, position para estilos específicos)
                 className={clsx(
-                    styles["lambda-tooltip-container"], // Clase base CSS
-                    tooltipContainer({ size, color, position }), // Aplicar variantes
-                    { [styles.visible]: isVisible }, // Clase para el estado visible (transición CSS)
-                    // CVA de flecha se aplica al contenedor para afectar su pseudo-elemento
+                    tooltipContainer({ size, color, position }),
+                    { [styles.visible]: isVisible },
                     tooltipArrow({ arrowPosition: mapTooltipPositionToArrowPosition(position), size, color })
                 )}
                 // Si el contenido es solo un ícono, usar ariaLabel en el contenedor
                 aria-label={ariaLabel} // Si se proporciona una etiqueta ARIA adicional
             >
-                {content} {/* Renderizar el contenido del tooltip */}
+                {content}
                 {/* La flecha se renderiza como pseudo-elemento ::before en .lambda-tooltip-container */}
             </div>,
-            document.body // Renderizar en el body
-        ) : null; // No renderizar el portal si no es necesario
+            document.body
+        ) : null;
 
         // --- Renderizar el Wrapper del Target y el Portal ---
         return (
             // Este div envuelve el elemento children y recibe el ref del forwardRef si se usa
             <div
                 ref={targetWrapperRef} // Ref para obtener el bounding box del target
-                className={clsx(styles["lambda-tooltip-target-wrapper"], className)} // Clase base y className externo
-                // No añadir aquí handlers de eventos que ya están en el children clonado
-                {...rest} // Esparce otras props HTMLAttributes al wrapper
+                className={clsx(styles["lambda-tooltip-target-wrapper"], className)}
+                {...rest}
             >
-                {targetElementWithProps} {/* Renderiza el children clonado con props añadidas */}
-                {tooltipPortal} {/* Renderiza el Portal con el contenido del tooltip */}
+                {targetElementWithProps}
+                {tooltipPortal}
             </div>
         );
     }
