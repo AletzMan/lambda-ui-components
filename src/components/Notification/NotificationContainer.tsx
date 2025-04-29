@@ -1,6 +1,7 @@
 "use client";
-import { Notification, NotificationProps } from "./Notification";
+import { Notification } from "./Notification";
 import { notificationGroup } from "./notification.variant";
+import { NotificationProps } from "./notifications.types";
 
 const validPlacements = [
     "top-left",
@@ -14,6 +15,10 @@ const validPlacements = [
 
 interface NotificationContainerProps {
     notifications: NotificationProps[]
+    /**
+     * Número máximo de notificaciones a mostrar en cada grupo.
+     * @default 5
+     */
     maxNotifications?: number
 }
 

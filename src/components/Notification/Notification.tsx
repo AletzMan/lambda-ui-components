@@ -3,7 +3,8 @@ import { forwardRef, useEffect, useState } from "react";
 import styles from "./notification.module.css";
 import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react";
 import clsx from "clsx";
-import { NotificationVariants, barClass, footer, notificationProp } from "./notification.variant";
+import { barClass, footer, notificationProp } from "./notification.variant";
+import { NotificationProps } from "./notifications.types";
 
 const NOTIFICATION_ICONS = {
     success: <CircleCheck />,
@@ -14,23 +15,6 @@ const NOTIFICATION_ICONS = {
 };
 
 
-export interface NotificationProps
-    extends Omit<React.HTMLAttributes<HTMLDivElement>, "size"> {
-    notificationType?: NotificationVariants["notificationType"];
-    placement?: NotificationVariants["placement"];
-    variant?: NotificationVariants["variant"];
-    title?: string;
-    message?: string;
-    icon?: React.ReactNode;
-    closable?: boolean;
-    duration?: number;
-    onClose?: () => void;
-    onConfirm?: () => void;
-    onCancel?: () => void;
-    cancelText?: string;
-    confirmText?: string;
-    'aria-label'?: string;
-}
 
 export const Notification = forwardRef<HTMLInputElement, NotificationProps>(
     (

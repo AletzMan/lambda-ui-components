@@ -1,8 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, ReactNode } from "react";
-import { NotificationProps } from "./Notification";
 import { NotificationContainer } from "./NotificationContainer";
 import { v4 as uuidv4 } from "uuid";
+import { NotificationProps } from "./notifications.types";
 
 type NotificationContextType = {
     showNotification: (props: Omit<NotificationProps, "id">) => void
