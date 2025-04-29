@@ -13,7 +13,7 @@ export const select = cva(styles["select-container"], {
         variant: {
             outline: styles["select-container-outline"],
             flat: styles["select-container-flat"],
-            underline: styles["select-container-underline"],
+            borderless: styles["select-container-borderless"],
         },
         radius: {
             none: styles["select-container-radius-none"],
@@ -50,7 +50,7 @@ export const buttonSelect = cva(styles["select-btn"], {
         variant: {
             outline: styles["select-btn-outline"],
             flat: styles["select-btn-flat"],
-            underline: styles["select-btn-underline"],
+            borderless: styles["select-btn-borderless"],
         },
         radius: {
             none: styles["select-btn-radius-none"],
@@ -82,7 +82,7 @@ export const selectIcon = cva(styles["select-icon"], {
         variant: {
             outline: styles["select-icon-outline"],
             flat: styles["select-icon-flat"],
-            underline: styles["select-icon-underline"],
+            borderless: styles["select-icon-borderless"],
         },
         size: {
             tiny: styles["select-icon-tiny"],
@@ -122,7 +122,7 @@ export const dropdown = cva(styles["select-dropdown"], {
         variant: {
             outline: styles["select-dropdown-outline"],
             flat: styles["select-dropdown-flat"],
-            underline: styles["select-dropdown-underline"],
+            borderless: styles["select-dropdown-borderless"],
         },
         radius: {
             none: styles["select-dropdown-radius-none"],
