@@ -184,6 +184,11 @@ export const selectedView = cva(styles["select-view"], {
             medium: styles["select-view-medium"],
             large: styles["select-view-large"],
         },
+        variant: {
+            outline: styles["select-view-outline"],
+            flat: styles["select-view-flat"],
+            borderless: styles["select-view-borderless"],
+        },
         disabled: {
             true: styles["select-view-disabled"],
             false: styles["select-view-enabled"],

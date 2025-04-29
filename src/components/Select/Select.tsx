@@ -130,9 +130,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
                     >
                         {selectedOption
                             ? (
-                                <div className={selectedView({ size, disabled: disabled })}>
+                                <div className={selectedView({ size, disabled: disabled, variant })}>
                                     {selectedOption.avatar && <img className={styles["select-view-avatar"]} src={selectedOption.avatar} alt="" />}
-                                    <span>{selectedOption.label}</span>
+                                    <span className={styles["select-selected"]}>{selectedOption.label}</span>
                                 </div>
                             ) : (
                                 <span className={styles["select-placeholder"]}>{placeholder}</span>

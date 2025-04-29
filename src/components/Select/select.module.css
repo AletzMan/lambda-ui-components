@@ -430,6 +430,14 @@
         padding: var(--padding-none) var(--padding-none);
         min-height: var(--height-input-xs);
 
+        &.select-view-outline {
+            .select-selected {
+                display: flex;
+                align-items: center;
+                padding: 0 0 3px 0;
+            }
+        }
+
 
         &>.select-view-avatar {
             width: var(--icon-size-xs);
@@ -442,6 +450,22 @@
         padding: var(--padding-none) var(--padding-xs);
         min-height: var(--height-input-sm);
 
+        &.select-view-outline {
+            .select-selected {
+                display: flex;
+                align-items: center;
+                padding: 0 0 4px 0;
+            }
+        }
+
+        &.select-view-borderless {
+            .select-selected {
+                display: flex;
+                align-items: center;
+                padding: 0 0 3px 0;
+            }
+        }
+
         &>.select-view-avatar {
             width: var(--icon-size-md);
             height: var(--icon-size-md);
@@ -453,6 +477,14 @@
         padding: var(--padding-none) var(--padding-sm);
         min-height: var(--height-input-md);
 
+        &.select-view-outline {
+            .select-selected {
+                display: flex;
+                align-items: center;
+                padding: 0 0 4px 0;
+            }
+        }
+
         &>.select-view-avatar {
             width: var(--icon-size-xl);
             height: var(--icon-size-xl);
@@ -463,6 +495,22 @@
         font-size: var(--font-size-lg);
         padding: var(--padding-none) var(--padding-sm);
         min-height: var(--height-input-lg);
+
+        &.select-view-outline {
+            .select-selected {
+                display: flex;
+                align-items: center;
+                padding: 0 0 5px 0;
+            }
+        }
+
+        &.select-view-borderless {
+            .select-selected {
+                display: flex;
+                align-items: center;
+                padding: 0 0 4px 0;
+            }
+        }
 
         &>.select-view-avatar {
             width: var(--icon-size-2xl);
