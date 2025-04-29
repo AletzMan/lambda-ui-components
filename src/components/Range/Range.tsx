@@ -9,8 +9,6 @@ import {
     rangeHandle,
     rangeValue,
 } from "./range.variants";
-
-import styles from "./range.module.css";
 import { RangeProps, RangeValue } from "./range.types";
 
 
@@ -337,7 +335,6 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
             <div
                 ref={ref}
                 className={clsx(
-                    styles["lambda-range-container"],
                     rangeContainer({ disabled }),
                     className
                 )}
@@ -351,7 +348,6 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
                 <div
                     ref={trackRef}
                     className={clsx(
-                        styles["lambda-range-track"],
                         rangeTrack({ size, disabled })
                     )}
                     // onPointerDown en el track para manejar clicks/taps fuera de los handles (comportamiento "salto")
@@ -400,7 +396,6 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
                     {/* Relleno de la selección */}
                     <div
                         className={clsx(
-                            styles["lambda-range-fill"],
                             rangeFill({ size, disabled })
                         )}
                         style={fillStyle}
@@ -410,7 +405,6 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
                     {/* Handle izquierdo (o único) */}
                     <div
                         className={clsx(
-                            styles["lambda-range-handle"],
                             rangeHandle({ size, disabled, isDragging: isDragging && draggingHandleIndex === 0 })
                         )}
                         // *** CORRECCIÓN CLAVE AQUÍ: Posiciona el handle único usando endPosPercentage ***
@@ -438,7 +432,6 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
                     {isDoubleHandled && (
                         <div
                             className={clsx(
-                                styles["lambda-range-handle"],
                                 rangeHandle({ size, disabled, isDragging: isDragging && draggingHandleIndex === 1 })
                             )}
                             style={{ left: `${endPosPercentage}%` }}

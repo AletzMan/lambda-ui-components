@@ -15,7 +15,6 @@
 .lambda-range-container-disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    pointer-events: none;
 }
 
 
@@ -70,7 +69,7 @@
 }
 
 .lambda-range-track-disabled {
-    background-color: var(--primary-disabled-color);
+    background-color: var(--surface-d);
 }
 
 
@@ -118,7 +117,7 @@
     outline: none;
     z-index: 3;
 
-    &:hover {
+    &:hover:not(.lambda-range-handle-disabled) {
         .lambda-range-handle-value {
             display: block;
         }
