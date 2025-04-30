@@ -12,6 +12,7 @@ import {
     useId,
 } from "react";
 import { RadioGroupVariants, RadioGroups } from "./radiogrouo.variants";
+import { RadioGroupProps } from "./radiogroup.types";
 
 
 export type RadioGroupContextType = {
@@ -28,20 +29,7 @@ export type RadioGroupContextType = {
 
 const RadioGroupContext = createContext<RadioGroupContextType | null>(null);
 
-export interface RadioGroupProps {
-    orientation?: RadioGroupVariants["orientation"];
-    size?: RadioGroupVariants["size"];
-    color?: RadioGroupVariants["color"];
-    type?: RadioGroupVariants["type"];
-    radius?: RadioGroupVariants["radius"];
-    variant?: RadioGroupVariants["variant"];
-    disabled?: boolean;
-    name?: string;
-    selectedOption?: string;
-    onChange?: (value: string) => void;
-    defaultValue?: string;
-    gap?: string;
-}
+
 export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
     name = `radio-group-${Math.random().toString(36).slice(2, 9)}`,
     selectedOption,
