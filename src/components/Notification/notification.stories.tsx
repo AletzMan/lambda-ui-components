@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Notification, NotificationProps } from "./Notification";
+import { Notification } from "./Notification";
 import { NotificationProvider, useNotification } from "./NotificationProvider";
 import { Button } from "../../main";
+import { NotificationProps } from "./notifications.types";
 
 const meta: Meta<typeof Notification> = {
     title: "Components/Notification",
