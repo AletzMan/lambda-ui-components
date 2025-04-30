@@ -3,33 +3,15 @@ import styles from "./inputnumber.module.css";
 import { ChevronDown, ChevronUp, EuroIcon, DollarSignIcon, PercentIcon, PoundSterlingIcon, CircleX } from "lucide-react";
 import clsx from "clsx";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
-import { InputNumberVariants, button, handler, inputNumber, labels, number, typeCurrency, wrapper } from "./inputnumber.variants";
+import { button, handler, inputNumber, labels, number, typeCurrency, wrapper } from "./inputnumber.variants";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { useNumberInput } from "../../_internal/hooks/useNumberInput";
+import { InputNumberProps } from "./inputnumber.types";
 
 
 
 
-export interface InputNumberProps // Cambiado a InputNumberProps para evitar conflicto con Input
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value" | "min" | "max" | "step"> {
-    // Props de variantes (usando tipos exportados)
-    variant?: InputNumberVariants["variant"];
-    size?: InputNumberVariants["size"];
-    radius?: InputNumberVariants["radius"];
-    invalid?: InputNumberVariants["invalid"];
-    disabled?: InputNumberVariants["disabled"];
-    typeNumber?: InputNumberVariants["typeNumber"];
-    min?: number;
-    max?: number;
-    step?: number;
-    // Otras props específicas del componente
-    label?: string;
-    errorMessage?: string;
-    helperText?: string;
-    required?: boolean;
-    onChange?: (value: number | undefined) => void;
-    value?: number;
-}
+
 
 export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
     (
