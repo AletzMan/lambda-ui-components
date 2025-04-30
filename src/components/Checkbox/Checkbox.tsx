@@ -1,20 +1,8 @@
-import { forwardRef, useState, InputHTMLAttributes, ChangeEvent } from "react";
+import { forwardRef, useState, ChangeEvent } from "react";
 import styles from "./checkbox.module.css";
 import { CheckIcon } from "lucide-react";
-import { CheckboxVariants, ContainerVariants, checkboxprop, container, icon, textLabel } from "./checkbox.variants";
-
-export interface CheckBoxProps
-    extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | 'checked' | "color" | "type" | "onChange"> {
-    size?: CheckboxVariants["size"];
-    variant?: CheckboxVariants["variant"];
-    radius?: CheckboxVariants["radius"];
-    color?: CheckboxVariants["color"];
-    positionLabel?: ContainerVariants["positionLabel"];
-    label?: string;
-    checked?: boolean;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    disabled?: boolean;
-}
+import { checkboxprop, container, icon, textLabel } from "./checkbox.variants";
+import { CheckBoxProps } from "./checkbox.types";
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
     (
