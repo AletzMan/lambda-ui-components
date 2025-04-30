@@ -1,34 +1,16 @@
-import React, { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, useId } from "react";
+import { ChangeEvent, forwardRef, HTMLInputTypeAttribute, useState, MouseEvent, useId } from "react";
 import styles from "./input.module.css";
 import { CircleX, Eye, EyeOff, X } from "lucide-react";
 import clsx from 'clsx';
 import { useInputGroup } from "../InputGroup/InputGroup";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
-import { InputVariants, buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants";
+import { buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants";
+import { InputProps } from "./input.types";
 
 
-export interface InputProps
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value" | "placeholder"> {
-    // Props de variantes consolidadas o de los cva principales
-    size?: InputVariants["size"];
-    radius?: InputVariants["radius"];
-    variant?: InputVariants["variant"];
-    invalid?: InputVariants["invalid"];
-    disabled?: InputVariants["disabled"];
-    type?: InputVariants["type"];
-    hasElements?: InputVariants["hasElements"];
 
-    // Props específicas del componente
-    label?: string;
-    errorMessage?: string;
-    floatingLabel?: boolean;
-    helperText?: string;
-    required?: boolean;
-    onChange?: (value: string) => void;
-    value?: string;
-    placeholder?: string;
-}
+
 export const Input = forwardRef<HTMLInputElement, InputProps>(
     ({ className, variant: propVariant, radius: propRadius, size: propSize, label, invalid, errorMessage, disabled, type = "text", value: controlledValue, onChange, required, floatingLabel, placeholder, helperText, ...props }, ref) => {
         let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextInvalid, hasElements: "none" | "first" | "last" | "both";
