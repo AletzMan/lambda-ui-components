@@ -1,21 +1,11 @@
-import { forwardRef, InputHTMLAttributes } from "react";
+import { forwardRef } from "react";
 import { useRadioGroup } from "../RadioGroup/RadioGroup";
-import { iconView, labelName, radioprop, RadioVariants, view, wrapper } from "./radio.variants";
+import { iconView, labelName, radioprop, view, wrapper } from "./radio.variants";
 import clsx from "clsx";
+import { RadioProps } from "./radio.types";
 
 
 
-export interface RadioProps
-    extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | "checked" | "color" | "type" | "value"> {
-    size?: RadioVariants["size"];
-    variant?: RadioVariants["variant"];
-    color?: RadioVariants["color"];
-    type?: RadioVariants["type"];
-    positionLabel?: RadioVariants["positionLabel"];
-    disabled?: RadioVariants["disabled"];
-    label?: string;
-    value: string | number | ReadonlyArray<string>;
-}
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     (
