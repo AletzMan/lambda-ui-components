@@ -1,19 +1,7 @@
 import { forwardRef, useState } from "react";
-import { SwitchLabelVariants, SwitchVariants, background, handle, pos_label, switchprop, text } from "./switch.variants";
+import { background, handle, pos_label, switchprop, text } from "./switch.variants";
 import clsx from "clsx";
-
-
-export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | "checked" | "color"> {
-    size?: SwitchVariants["size"];
-    variant?: SwitchVariants["variant"];
-    color?: SwitchVariants["color"];
-    shape?: SwitchVariants["shape"];
-    position_label?: SwitchLabelVariants["position_label"];
-    disabled?: boolean;
-    label?: string;
-    checked?: boolean;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { SwitchProps } from "./switch.types";
 
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     (
