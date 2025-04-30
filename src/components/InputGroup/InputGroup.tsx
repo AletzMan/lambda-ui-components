@@ -1,27 +1,35 @@
 /* eslint-disable react-refresh/only-export-components */
 import { ReactNode, forwardRef, createContext, useMemo, PropsWithChildren, FC, useContext, RefAttributes, useRef } from "react";
-import { InputProps } from "../Input/Input";
 import styles from "./inputGroup.module.css";
 import clsx from 'clsx';
 import { VariantProps } from "class-variance-authority";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { inputGroup } from "./inputgroup.variants";
+import { InputProps } from "../Input/input.types";
 
 
 
 type InputGroupContextType = {
+    /** Variante del componente */
     variant?: "outline" | "flat" | "underline" | null
+    /** Radio del componente */
     radius?: "none" | "small" | "medium" | "large" | "pill" | null
+    /** Tamaño del componente */
     size?: "tiny" | "small" | "medium" | "large" | null
+    /** Indica si el componente es inválido */
     invalid?: boolean | null
+    /** Indica si el componente está deshabilitado */
     hasElements: "none" | "first" | "last" | "both"
+    /** Indica si el componente está deshabilitado */
     disabled?: boolean | null
 }
 
 const InputGroupContext = createContext<InputGroupContextType | null>(null);
 
 interface InputGroupProps extends Omit<InputProps, "invalid" | "disabled">, VariantProps<typeof inputGroup>, RefAttributes<HTMLDivElement> {
+    /** Elemento que se muestra al inicio del grupo de inputs */
     prefixElement?: ReactNode
+    /** Elemento que se muestra al final del grupo de inputs */
     suffixElement?: ReactNode
     errorMessage?: string
 }
