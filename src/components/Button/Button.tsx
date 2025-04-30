@@ -1,27 +1,11 @@
-import { ButtonHTMLAttributes, ReactNode, forwardRef, isValidElement } from "react";
+import { ReactNode, forwardRef, isValidElement } from "react";
 import styles from "./button.module.css";
 import { Loader } from "lucide-react";
 import clsx from 'clsx';
 import { useInputGroup } from "../InputGroup/InputGroup";
-import { ButtonVariants, button } from "./button.variants";
+import { button } from "./button.variants";
+import { ButtonProps } from "./button.types";
 
-
-
-export interface ButtonProps
-    extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color"> // Mantén esto para props nativas
-{
-    // Props de variantes de CVA
-    variant?: ButtonVariants["variant"];
-    color?: ButtonVariants["color"];
-    size?: ButtonVariants["size"];
-    radius?: ButtonVariants["radius"];
-    iconPosition?: ButtonVariants["iconPosition"];
-    loading?: ButtonVariants["loading"];
-    icon?: ReactNode | undefined | null;
-    label?: string;
-    loadingText?: string;
-    'aria-label'?: string; // <-- Agregar para accesibilidad de botón solo icono
-}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     (
