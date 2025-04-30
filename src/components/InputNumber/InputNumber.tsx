@@ -5,12 +5,8 @@ import clsx from "clsx";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { button, handler, inputNumber, labels, number, typeCurrency, wrapper } from "./inputnumber.variants";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
-import { useNumberInput } from "../../_internal/hooks/useNumberInput";
+import { useNumberInput } from "./hooks/useNumberInput";
 import { InputNumberProps } from "./inputnumber.types";
-
-
-
-
 
 
 export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
@@ -38,13 +34,15 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
     ) => {
         const {
             displayedValue,
-            value,
+            numericValue,
             isEditing,
             handleChange,
             handleBlur,
             handleFocus,
-            increment,
-            decrement,
+            startIncrementing,
+            stopIncrementing,
+            startDecrementing,
+            stopDecrementing,
         } = useNumberInput({
             controlledValue,
             onChange,
@@ -53,6 +51,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
             step: step ?? 1,
             typeNumber: typeNumber ?? "default",
         });
+
         const getIcon = () => {
             switch (typeNumber) {
                 case "currency-USD":
@@ -104,9 +103,10 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
                             <button
                                 type="button"
                                 className={clsx(button({ size }), styles['lambda-number-btn-increment'])}
-                                onClick={increment}
+                                onMouseDown={startIncrementing}
+                                onMouseUp={stopIncrementing}
                                 aria-label="Increase value"
-                                disabled={disabled || (max !== undefined && Number(value) >= Number(max))}
+                                disabled={disabled || (max !== undefined && Number(numericValue) >= Number(max))}
                             >
                                 <ChevronUp className={styles['lambda-number-icon']} />
                             </button>
@@ -115,8 +115,9 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
                                 type="button"
                                 className={clsx(button({ size }), styles['lambda-number-btn-decrement'])}
                                 aria-label="Decrease value"
-                                onClick={decrement}
-                                disabled={disabled || (min !== undefined && Number(value) <= Number(min))}
+                                onMouseDown={startDecrementing}
+                                onMouseUp={stopDecrementing}
+                                disabled={disabled || (min !== undefined && Number(numericValue) <= Number(min))}
                             >
                                 <ChevronDown className={styles['lambda-number-icon']} />
                             </button>
