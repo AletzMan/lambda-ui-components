@@ -22,11 +22,10 @@
     max-width: 450px;
     min-height: 4em;
     padding: var(--padding-sm) var(--padding-sm);
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-sm);
     font-family: var(--font-family);
     color: var(--foreground-color);
     transition: all 0.3s ease-in-out;
-
 }
 
 @media (width < 500px) {
