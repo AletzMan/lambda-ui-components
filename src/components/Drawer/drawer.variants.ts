@@ -25,11 +25,18 @@ export const drawerPanelVariants = cva(styles['lambda-drawer-panel'], {
             exited: styles['lambda-drawer-panel-exited'],
         },
         placement: {
-            left: styles['lambda-drawer-panel--left'],
-            right: styles['lambda-drawer-panel--right'],
-            top: styles['lambda-drawer-panel--top'],
-            bottom: styles['lambda-drawer-panel--bottom'],
+            left: styles['lambda-drawer-panel-left'],
+            right: styles['lambda-drawer-panel-right'],
+            top: styles['lambda-drawer-panel-top'],
+            bottom: styles['lambda-drawer-panel-bottom'],
         },
+        width: {
+            xsmall: styles["lambda-drawer-panel-xsmall"],
+            small: styles["lambda-drawer-panel-small"],
+            medium: styles["lambda-drawer-panel-medium"],
+            half: styles["lambda-drawer-panel-half"],
+            full: styles["lambda-drawer-panel-full"],
+        }
     }, defaultVariants: {
         state: 'exited',
     },
