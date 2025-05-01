@@ -24,7 +24,6 @@ const getPortalContainer = () => {
         portalContainer = document.createElement('div');
         portalContainer.classList.add(styles['lambda-dialog-portal-container']);
         document.body.appendChild(portalContainer);
-        console.log('Dialog: Portal container created and appended to body.');
     }
     return portalContainer;
 };
@@ -61,7 +60,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 
         // --- Efecto principal para gestionar la transición de estados de animación --- 
         useEffect(() => {
-            console.log('Dialog: useEffect [isOpen] triggered. isOpen:', isOpen);
             if (isOpen) {
                 // Si la prop isOpen cambia a true: 
                 setAnimationState('entering');
@@ -119,7 +117,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 
         // Handler para cerrar el diálogo cuando se presiona la tecla Escape.
         const handleKeyDown = useCallback((event: KeyboardEvent) => {
-            console.log('Dialog: Keydown pressed', event.key);
             if (closeOnEscape && event.key === 'Escape') {
                 event.stopPropagation();
                 onClose();
@@ -163,7 +160,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         // --- Renderizado ---
         // Si el estado de animación es 'exited', no renderizamos nada en el Portal. 
         if (!shouldRender) {
-            console.log('Dialog: Not rendering Portal content (animationState is exited).');
             return null;
         }
 
