@@ -1,6 +1,6 @@
 
 import { Button, Checkbox, FileUpload, Input, InputGroup, InputNumber, Pagination, Radio, RadioGroup, Range, Select, Switch, TextArea, Tooltip } from '../src/main';
-import { Bookmark, CircleEllipsis, CodeXml, Coins, RssIcon, Search, SearchIcon, Settings, Settings2, User } from "lucide-react";
+import { Bookmark, CircleEllipsis, CodeXml, Coins, HelpCircleIcon, HomeIcon, InfoIcon, LogOutIcon, RssIcon, Search, SearchIcon, Settings, Settings2, SettingsIcon, User, UserIcon } from "lucide-react";
 import styles from "./styles.module.css";
 import { useState } from 'react';
 import { buttonsPrimary } from './constants';
@@ -8,7 +8,11 @@ import { useNotification } from '../src/components/Notification/NotificationProv
 import { Card } from '../src/components/Card/Card';
 import { ButtonThemeController } from '../src/components/ThemeProvider/ButtonThemeController';
 import { RangeValue } from '../src/components/Range/range.types';
-
+import { TooltipPosition } from '../src/components/ToolTip/tooltip.types';
+import { Dialog } from '../src/components/Dialog/Dialog';
+import { Drawer } from '../src/components/Drawer/Drawer';
+import { DrawerPlacement, DrawerWidth } from '../src/components/Drawer/drawer.types';
+import { Link } from '../src/components/Link/Link';
 
 
 function App() {
@@ -16,6 +20,11 @@ function App() {
   const [disabledButtons, setDisabledButtons] = useState(false);
   const [radiusButtons, setRadiusButtons] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("small");
   const [sizeButtons, setSizeButtons] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [sizeLink, setSizeLink] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
+  const [disabledLink, setDisabledLink] = useState(false);
+  const [radiusLink, setRadiusLink] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("small");
+  const [variantLink, setVariantLink] = useState<"outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined>("ghost");
+  const [typeLink, setTypeLink] = useState<"default" | "button" | undefined>("default");
   const [sizeCheckbox, setSizeCheckbox] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
   const [disabledCheckbox, setDisabledCheckbox] = useState(false);
   const [radiusCheckbox, setRadiusCheckbox] = useState<"medium" | "small" | "none" | "circle" | undefined>("small");
@@ -80,15 +89,23 @@ function App() {
   const [radiusPagination, setRadiusPagination] = useState<"medium" | "small" | "large" | "none" | "pill" | undefined>("small");
   const { showNotification } = useNotification();
   const [valueRange, setValueRange] = useState<RangeValue>([20, 60]);
+  const [stepRange, setStepRange] = useState(1);
   const [sizeRange, setSizeRange] = useState<"medium" | "small" | "large" | undefined>("medium");
   const [disabledRange, setDisabledRange] = useState(false);
   const [minRange, setMinRange] = useState(0);
   const [maxRange, setMaxRange] = useState(100);
-  const [colorToolTip, setColorToolTip] = useState<"primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined>("primary");
-  const [sizeToolTip, setSizeToolTip] = useState<"medium" | "small" | "large" | undefined>("medium");
+  const [colorToolTip, setColorToolTip] = useState<"primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined>("secondary");
+  const [sizeToolTip, setSizeToolTip] = useState<"medium" | "small" | "large" | "tiny" | undefined>("small");
+  const [positionToolTip, setPositionToolTip] = useState<"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined>("top-center");
+  const [delayShowToolTip, setDelayShowToolTip] = useState(100);
+  const [delayHideToolTip, setDelayHideToolTip] = useState(100);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [drawerPosition, setDrawerPosition] = useState<DrawerPlacement>("left");
+  const [widthDrawer, setWidthDrawer] = useState<DrawerWidth>("small");
 
   return (
-    <section className={`${styles.section} `}>
+    <section className={`${styles.section} scrollBar`}>
       <header className={styles.header}>
         <h1 className={styles.title}>Lambda UI Components</h1>
         <ButtonThemeController />
@@ -128,6 +145,68 @@ function App() {
                 loading={loadingButtons}
                 loadingText="Loading"
                 iconPosition="left"
+                icon={button.icon} />
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* LINK */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Link</h2>
+        <div className={styles.control_buttons}>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <Select options={[
+              { label: 'Tiny', value: 'tiny' },
+              { label: 'Small', value: 'small' },
+              { label: 'Medium', value: 'medium' },
+              { label: 'Large', value: 'large' },
+            ]}
+              value={sizeLink}
+              onChange={(e) => setSizeLink(e as "medium" | "small" | "large" | "tiny" | undefined)} size="small" />
+            <Select options={[
+              { label: 'Default', value: 'default' },
+              { label: 'Button', value: 'button' },
+            ]}
+              value={typeLink}
+              onChange={(e) => setTypeLink(e as "default" | "button" | undefined)} size="small" />
+            <Select options={[
+              { label: 'Clasicc', value: 'classic' },
+              { label: 'Solid', value: 'solid' },
+              { label: 'Outline', value: 'outline' },
+              { label: 'Dashed', value: 'dashed' },
+              { label: 'Ghost', value: 'ghost' },
+              { label: 'Text', value: 'text' },
+            ]}
+              value={variantLink}
+              onChange={(e) => setVariantLink(e as "outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined)} size="small" />
+            <Select options={[
+              { label: 'None', value: 'none' },
+              { label: 'Small', value: 'small' },
+              { label: 'Medium', value: 'medium' },
+              { label: 'Large', value: 'large' },
+              { label: 'Pill', value: 'pill' },
+              { label: 'Circle', value: 'circle' },
+            ]}
+              value={radiusLink}
+              onChange={(e) => setRadiusLink(e as "none" | "small" | "medium" | "large" | "pill" | "circle" | undefined)} size="small" />
+          </div>
+
+          <Checkbox label='Disabled' checked={disabledLink} size="medium" color="secondary" onChange={(e) => setDisabledLink(e.currentTarget.checked)} />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            {buttonsPrimary.map((button) => (
+              <Link key={button.color}
+                className={styles.button}
+                size={sizeLink}
+                type={typeLink}
+                radius={radiusLink}
+                variant={variantLink}
+                color={button.color}
+                label={button.label}
+                disabled={disabledLink}
+                loading={loadingButtons}
+                href='https://www.google.com'
                 icon={button.icon} />
             ))}
           </div>
@@ -365,8 +444,8 @@ function App() {
         <div className={styles.container_buttons}>
           <div className={`${styles.buttons} ${styles.buttons_large}`}>
             <Select label='Outline' variant="outline" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
-            <Select variant="flat" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
-            <Select variant="underline" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
+            <Select label='Flat' variant="flat" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
+            <Select label='Borderless' variant="borderless" options={namesSelect} size={sizeSelect} radius={radiusSelect} disabled={disabledSelect} invalid={!validSelect} errorMessage={errorMessageSelect} />
           </div>
         </div>
       </section>
@@ -750,9 +829,10 @@ function App() {
             size="small"
             onChange={(value) => setSizeRange(value as "small" | "medium" | "large" | undefined)}
             options={[{ label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
-          <div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
-            <InputNumber value={minRange} onChange={(value) => setMinRange(value || 0)} size="small" />
-            <InputNumber value={maxRange} onChange={(value) => setMaxRange(value || 0)} size="small" />
+          <div style={{ display: "flex", gap: "1em", maxWidth: "16em" }}>
+            <InputNumber label='Min' value={minRange} onChange={(value) => setMinRange(value || 0)} size="small" />
+            <InputNumber label='Max' value={maxRange} onChange={(value) => setMaxRange(value || 0)} size="small" />
+            <InputNumber label='Step' value={stepRange} onChange={(value) => setStepRange(value || 0)} size="small" />
           </div>
           <Checkbox label='Disabled' checked={disabledRange} size="small" color="secondary" onChange={(e) => setDisabledRange(e.currentTarget.checked)} />
         </div>
@@ -765,6 +845,8 @@ function App() {
               ariaLabel={"5"}
               min={minRange}
               max={maxRange}
+              step={stepRange}
+              label='Range'
               onInput={(e) => setValueRange(e)}
               onChange={(e) => setValueRange(e)} />
           </div>
@@ -781,7 +863,6 @@ function App() {
             size="small"
             onChange={(value) => setColorToolTip(value as "primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined)}
             options={[
-              { label: "Dafaulr", value: "default" },
               { label: "Primary", value: "primary" },
               { label: "Secondary", value: "secondary" },
               { label: "Success", value: "success" },
@@ -794,20 +875,228 @@ function App() {
             className={styles.select_size}
             value={sizeToolTip}
             size="small"
-            onChange={(value) => setSizeToolTip(value as "small" | "medium" | "large" | undefined)}
-            options={[{ label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+            onChange={(value) => setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)}
+            options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Select
+            label='Position'
+            className={styles.select_size}
+            value={positionToolTip}
+            size="small"
+            onChange={(value) => setPositionToolTip(value as TooltipPosition | undefined)}
+            options={[
+              { label: "Top Left", value: "top-left" },
+              { label: "Top Right", value: "top-right" },
+              { label: "Top Center", value: "top-center" },
+              { label: "Bottom Center", value: "bottom-center" },
+              { label: "Bottom Left", value: "bottom-left" },
+              { label: "Bottom Right", value: "bottom-right" },
+            ]}
+          />
           <div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
-            <InputNumber value={minRange} onChange={(value) => setMinRange(value || 0)} size="small" />
-            <InputNumber value={maxRange} onChange={(value) => setMaxRange(value || 0)} size="small" />
+            <InputNumber label='Delay Show' value={delayShowToolTip} onChange={(value) => setDelayShowToolTip(value || 0)} size="small" />
+            <InputNumber label='Delay Hide' value={delayHideToolTip} onChange={(value) => setDelayHideToolTip(value || 0)} size="small" />
           </div>
-          <Checkbox label='Disabled' checked={disabledRange} size="small" color="secondary" onChange={(e) => setDisabledRange(e.currentTarget.checked)} />
         </div>
         <div className={styles.container_buttons}>
           <div className={`${styles.buttons} ${styles.buttons_large}`}>
             <Tooltip
-              content="ToolTip">
-              <span>HOLA</span>
+              content="ToolTip"
+              size={sizeToolTip}
+              color={colorToolTip}
+              delayShow={delayShowToolTip}
+              delayHide={delayHideToolTip}
+              position={positionToolTip}>
+              <Button label='ToolTip' />
             </Tooltip>
+            <Tooltip
+              content="Danger"
+              size={sizeToolTip}
+              delayShow={delayShowToolTip}
+              delayHide={delayHideToolTip}
+              color="danger"
+              position={positionToolTip}>
+              <Button label='Danger' color="danger" />
+            </Tooltip>
+          </div>
+        </div>
+      </section>
+      {/* DIALOG */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Dialog</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            className={styles.select_size}
+            label='Color'
+            value={colorToolTip}
+            size="small"
+            onChange={(value) => setColorToolTip(value as "primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined)}
+            options={[
+              { label: "Primary", value: "primary" },
+              { label: "Secondary", value: "secondary" },
+              { label: "Success", value: "success" },
+              { label: "Danger", value: "danger" },
+              { label: "Warning", value: "warning" },
+              { label: "Info", value: "info" },
+            ]} />
+          <Select
+            label='Size'
+            className={styles.select_size}
+            value={sizeToolTip}
+            size="small"
+            onChange={(value) => setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)}
+            options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Select
+            label='Position'
+            className={styles.select_size}
+            value={positionToolTip}
+            size="small"
+            onChange={(value) => setPositionToolTip(value as TooltipPosition | undefined)}
+            options={[
+              { label: "Top Left", value: "top-left" },
+              { label: "Top Right", value: "top-right" },
+              { label: "Top Center", value: "top-center" },
+              { label: "Bottom Center", value: "bottom-center" },
+              { label: "Bottom Left", value: "bottom-left" },
+              { label: "Bottom Right", value: "bottom-right" },
+            ]}
+          />
+          <div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
+            <InputNumber label='Delay Show' value={delayShowToolTip} onChange={(value) => setDelayShowToolTip(value || 0)} size="small" />
+            <InputNumber label='Delay Hide' value={delayHideToolTip} onChange={(value) => setDelayHideToolTip(value || 0)} size="small" />
+          </div>
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Button label='View Dialog' onClick={() => setOpenDialog(true)} />
+            <Dialog
+              isOpen={openDialog}
+              onClose={() => setOpenDialog(false)}
+              title="Confirmar Acción"
+              closeOnOverlayClick={true}
+              closeOnEscape={true}
+              showCloseButton={true}
+              footer={
+                <>
+                  <Button color="secondary" onClick={() => {
+                    setOpenDialog(false);
+                    showNotification({
+                      title: "Aceptado",
+                      message: "Se acepto la accion",
+                      closable: true,
+                      variant: "solid",
+                      notificationType: "success",
+                      placement: "top-right",
+                      duration: 2500,
+                    });
+                  }}>Accept</Button>
+                  <Button color="secondary" variant="outline" onClick={() => {
+                    setOpenDialog(false);
+                    showNotification({
+                      title: "Cancelado",
+                      message: "Se cancelo la accion",
+                      closable: true,
+                      variant: "solid",
+                      notificationType: "danger",
+                      placement: "top-right",
+                      duration: 2500,
+
+                    });
+                  }} style={{ marginLeft: '8px' }}>Cancel</Button>
+                </>
+              }
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: "2em", padding: "1em" }}>
+                <p>¿Estás seguro de que deseas realizar esta acción?</p>
+                <Input
+                  type="text"
+                  label="Campo de ejemplo"
+                  placeholder="Escribe algo..."
+                  helperText="Este es un campo de ejemplo"
+                  errorMessage="Este es un mensaje de error"
+                  size="small"
+                  radius="small"
+                  invalid={false}
+                  disabled={false}
+                />
+              </div>
+            </Dialog>
+          </div>
+        </div>
+      </section>
+      {/* DRAWER */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Drawer</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            className={styles.select_size}
+            label='Width'
+            value={widthDrawer}
+            size="small"
+            onChange={(value) => setWidthDrawer(value as DrawerWidth)}
+            options={[
+              { label: "Xsmall", value: "xsmall" },
+              { label: "Small", value: "small" },
+              { label: "Medium", value: "medium" },
+              { label: "Half", value: "middle" },
+              { label: "Full", value: "full" },
+            ]} />
+          <Select
+            label='Size'
+            className={styles.select_size}
+            value={sizeToolTip}
+            size="small"
+            onChange={(value) => setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)}
+            options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Select
+            label='Position'
+            className={styles.select_size}
+            value={drawerPosition}
+            size="small"
+            onChange={(value) => setDrawerPosition(value as DrawerPlacement)}
+            options={[
+              { label: "Top", value: "top" },
+              { label: "Right", value: "right" },
+              { label: "Bottom", value: "bottom" },
+              { label: "Left", value: "left" },
+            ]}
+          />
+          <div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
+            <InputNumber label='Delay Show' value={delayShowToolTip} onChange={(value) => setDelayShowToolTip(value || 0)} size="small" />
+            <InputNumber label='Delay Hide' value={delayHideToolTip} onChange={(value) => setDelayHideToolTip(value || 0)} size="small" />
+          </div>
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Button label='Open Drawer' onClick={() => setOpenDrawer(true)} />
+            < Drawer
+              isOpen={openDrawer}
+              onClose={() => setOpenDrawer(false)}
+              title="Confirmar Acción"
+              closeOnOverlayClick={true}
+              closeOnEscape={true}
+              showCloseButton={true}
+              placement={drawerPosition}
+              width={widthDrawer}
+              footer={
+                <>
+                  <Button color="secondary" onClick={() => {
+                    setOpenDrawer(false);
+                  }}>Accept</Button>
+                  <Button color="secondary" variant="outline" onClick={() => {
+                    setOpenDrawer(false);
+                  }} style={{ marginLeft: '8px' }}>Cancel</Button>
+                </>
+              }
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5em", padding: "1em" }} >
+                <Link label='Home' icon={<HomeIcon />} variant="text" color="secondary" href='#' type='button' size="large" active={true} justify="start" />
+                <Link label='Settings' icon={<SettingsIcon />} variant="text" color="secondary" href='#' type='button' size="large" />
+                <Link label='Profile' icon={<UserIcon />} variant="text" color="secondary" href='#' type='button' size="large" />
+                <Link label='Help' icon={<HelpCircleIcon />} variant="text" color="secondary" href='#' type='button' size="large" />
+                <Link label='About' icon={<InfoIcon />} variant="text" color="secondary" href='#' type='button' size="large" />
+                <Link label='Logout' icon={<LogOutIcon />} variant="text" color="secondary" href='#' type='button' size="large" />
+              </div>
+            </Drawer>
           </div>
         </div>
       </section>
