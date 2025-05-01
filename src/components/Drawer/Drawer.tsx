@@ -62,6 +62,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
             closeOnOverlayClick = true,
             closeOnEscape = true,
             showCloseButton = true,
+            width = "small",
             initialFocusRef,
             overlayClassName,
             panelClassName,
@@ -78,21 +79,18 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         const drawerPanelRef = useRef<HTMLDivElement>(null);
         const titleId = 'drawer-title-' + useId();
 
-        // --- Efecto principal para gestionar la transición de estados de animación ---
-        // Se activa cuando la prop 'isOpen' cambia.
+        // --- Efecto principal para gestionar la transición de estados de animación --- 
         useEffect(() => {
             if (isOpen) {
                 // Si se abre, pasar al estado 'entering' inmediatamente
                 setAnimationState('entering');
 
-                // La transición a 'entered' se maneja en el useLayoutEffect con un timeout.
-                // Esto permite que el navegador registre el estado inicial (entering).
+                // La transición a 'entered' se maneja en el useLayoutEffect con un timeout. 
             } else {
                 // Si se cierra, pasar al estado 'exiting' inmediatamente
                 setAnimationState('exiting');
 
-                // Después de la duración de la animación de salida, pasar al estado 'exited'
-                // para remover el componente del DOM.
+                // Después de la duración de la animación de salida, pasar al estado 'exited' 
                 const timer = setTimeout(() => {
                     setAnimationState('exited');
                 }, 300);
@@ -100,11 +98,10 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 
                 return () => clearTimeout(timer);
             }
-        }, [isOpen]); // Depende de isOpen y la duración de salida
+        }, [isOpen]);
 
 
-        // --- useLayoutEffect para manejar la transición de 'entering' a 'entered' con timeout --- 
-        // con los estilos iniciales de 'entering'.
+        // --- useLayoutEffect para manejar la transición de 'entering' a 'entered' con timeout ---  
         useLayoutEffect(() => {
             let timer: number | undefined;
             if (animationState === 'entering') {
@@ -228,7 +225,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
                     ref={drawerPanelRef}
                     className={clsx(
                         styles['lambda-drawer-panel'],
-                        drawerPanelVariants({ state: animationState, placement: placement }),
+                        drawerPanelVariants({ state: animationState, placement, width }),
                         panelClassName
                     )}
                     role="dialog"
