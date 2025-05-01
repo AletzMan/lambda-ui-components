@@ -22,7 +22,7 @@
     --font-weight-md: 600;
     --font-weight-bold: 800;
 
-    --font-size-xs: 10px;
+    --font-size-xs: 11px;
     --font-size-sm: 12px;
     --font-size-md: 13px;
     --font-size-lg: 15px;
@@ -77,6 +77,7 @@
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #999999;
     --label-color: #3f3f3f;
+    --visited-link-color: #75208a;
 
     --surface-a: #f8f7f7;
     --surface-b: #fdfdfd;
@@ -152,6 +153,7 @@
     --foreground-disabled-color: #b7b5b5;
     --placeholder-color: #626262;
     --label-color: #a6a9ab;
+    --visited-link-color: #8c29a4;
 
     --surface-b: #191b1c;
     --surface-a: #1d1d20;
