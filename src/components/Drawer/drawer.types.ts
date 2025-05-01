@@ -1,6 +1,8 @@
 import React, { HTMLAttributes, RefObject } from 'react';
+
 export type DrawerState = 'entering' | 'entered' | 'exiting' | 'exited';
 export type DrawerPlacement = 'left' | 'right' | 'top' | 'bottom';
+export type DrawerWidth = "xsmall" | "small" | "medium" | "half" | "full"
 
 
 
@@ -44,14 +46,19 @@ export interface DrawerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'child
      * Define desde qué borde de la pantalla se abre el drawer.
      * Requerido.
      */
-    placement: DrawerPlacement; // Requerido
+    placement: DrawerPlacement;
 
     /**
-     * Opcional: Define el tamaño del drawer (ancho para 'left'/'right', alto para 'top'/'bottom').
-     * Puede ser un valor CSS válido (ej: '300px', '50%', '10rem').
+     * Define el ancho del drawer.
+     * Solo aplica para placement en: 'right' y 'left'
+     */
+    width?: DrawerWidth;
+
+    /**
+     * Opcional: Define el tamaño del drawer (ancho para 'left'/'right', alto para 'top'/'bottom'). 
      * @default '300px' para left/right, '25vh' para top/bottom (ejemplos definidos en CSS)
      */
-    size?: string; // Usar string para valores CSS
+    size?: string;
 
     /**
      * Si es `true`, hacer clic en el área oscura (overlay) fuera del panel del drawer
