@@ -1,0 +1,268 @@
+ /* Variables CSS (ejemplos, usa tus propias variables de diseño) */
+ :root {
+     --shadow-elevation-4: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+     --drawer-default-width: 300px;
+     --drawer-default-height: 25vh;
+     --drawer-transition-duration: 0.3s;
+     --drawer-transition-timing-function: ease;
+ }
+
+
+ /* Contenedor principal del Portal. Se crea y gestiona en JavaScript. */
+ /* Envuelve tanto el overlay como el panel del drawer. */
+ .lambda-drawer-portal-container {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: 9999;
+     display: flex;
+     pointer-events: none;
+ }
+
+ /* Ajustes de posicionamiento flexbox en el portal-container basados en el atributo data-placement */
+ .lambda-drawer-portal-container[data-placement='left'] {
+     justify-content: flex-start;
+     align-items: stretch;
+     flex-direction: row;
+ }
+
+ .lambda-drawer-portal-container[data-placement='right'] {
+     justify-content: flex-end;
+     align-items: stretch;
+     flex-direction: row;
+ }
+
+ .lambda-drawer-portal-container[data-placement='top'] {
+     justify-content: stretch;
+     align-items: flex-start;
+     flex-direction: column;
+ }
+
+ .lambda-drawer-portal-container[data-placement='bottom'] {
+     justify-content: stretch;
+     align-items: flex-end;
+     flex-direction: column;
+ }
+
+
+ /* Overlay (el fondo oscuro semi-transparente) */
+ .lambda-drawer-overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.5);
+     transition-property: opacity, visibility;
+     transition-duration: var(--drawer-transition-duration);
+     transition-timing-function: var(--drawer-transition-timing-function);
+     opacity: 0;
+     visibility: hidden;
+     pointer-events: none;
+     transition-delay: 0s, var(--drawer-transition-duration);
+ }
+
+ /* EXITED: Estado final al salir (oculto). Coincide con estilos base. */
+ .lambda-drawer-overlay-exited {
+     opacity: 0;
+     visibility: hidden;
+     pointer-events: none;
+     transition-delay: 0s, var(--drawer-transition-duration);
+ }
+
+ /* ENTERING: Estado inicial al entrar (visible, opacidad 0). Transitiona DESDE aquí. */
+ .lambda-drawer-overlay-entering {
+     opacity: 0;
+     visibility: visible;
+     pointer-events: auto;
+     transition-delay: 0s, 0s;
+ }
+
+ /* ENTERED: Estado final al entrar / Inicio al salir (visible, opacidad 1). Transitiona HACIA aquí y DESDE aquí. */
+ .lambda-drawer-overlay-entered {
+     opacity: 1;
+     visibility: visible;
+     pointer-events: auto;
+     transition-delay: 0s, 0s;
+ }
+
+ /* EXITING: Estado inicial al salir (visible, opacidad 1). Debería coincidir con ENTERED. Transitiona DESDE aquí. */
+ .lambda-drawer-overlay-exiting {
+     opacity: 1;
+     visibility: visible;
+     pointer-events: auto;
+     transition-delay: 0s, var(--drawer-transition-duration);
+ }
+
+
+ /* Panel del Drawer (la caja que desliza) */
+ .lambda-drawer-panel {
+     position: absolute;
+     height: 100%;
+
+     background-color: var(--surface-a);
+     box-shadow: 0 0 2px 1px var(--shadow-color);
+     display: flex;
+     flex-direction: column;
+     overflow: hidden;
+     border-left: 1px solid var(--border-color);
+     transition-property: transform, opacity, pointer-events;
+     transition-duration: var(--drawer-transition-duration);
+     transition-timing-function: var(--drawer-transition-timing-function);
+     opacity: 0;
+     pointer-events: none;
+ }
+
+
+ /* --- Variantes de Placement del Panel (aplicados por CVA) --- */
+ /* Estas variantes definen la posición INICIAL del panel (fuera de pantalla) y las esquinas redondeadas */
+
+ .lambda-drawer-panel--left {
+     width: 300px;
+     transform: translateX(-100%);
+     border-top-right-radius: var(--border-radius-sm);
+     border-bottom-right-radius: var(--border-radius-sm);
+     border-top-left-radius: 0;
+     border-bottom-left-radius: 0;
+ }
+
+ .lambda-drawer-panel--right {
+     width: 300px;
+     transform: translateX(100%);
+     right: 0;
+     width: var(--drawer-default-width);
+     border-top-right-radius: 0;
+     border-bottom-right-radius: 0;
+ }
+
+ .lambda-drawer-panel--top {
+     width: 100svw;
+     max-height: max-content;
+     transform: translateY(-100%);
+     border-bottom-left-radius: var(--border-radius-md);
+     border-bottom-right-radius: var(--border-radius-md);
+     border-top-left-radius: 0;
+     border-top-right-radius: 0;
+ }
+
+ .lambda-drawer-panel--bottom {
+     left: 0;
+     bottom: 0;
+     width: 100svw;
+     max-height: max-content;
+     transform: translateY(100%);
+     border-top-left-radius: var(--border-radius-md);
+     border-top-right-radius: var(--border-radius-md);
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
+ }
+
+
+ /* EXITED: Estado final al salir (oculto y fuera de pantalla). Debería coincidir con la posición INICIAL definida por placement. */
+ .lambda-drawer-panel-exited {
+     opacity: 0;
+     pointer-events: none;
+     transform: translate(0, 0);
+     transition-delay: 0s, 0s, var(--drawer-transition-duration);
+ }
+
+ /* ENTERING: Estado inicial al entrar (opacity 0, transform inicial). Transitiona DESDE aquí hacia ENTERED. */
+ .lambda-drawer-panel-entering {
+     opacity: 0;
+     pointer-events: auto;
+     transition-delay: 0s, 0s, 0s;
+ }
+
+ /* ENTERED: Estado final al entrar / Inicio al salir (opacity 1, transform final (0,0)). Transitiona HACIA aquí desde ENTERING, y DESDE aquí hacia EXITING. */
+ .lambda-drawer-panel-entered {
+     opacity: 1;
+     transform: translate(0, 0);
+     pointer-events: auto;
+     transition-delay: 0s, 0s, 0s;
+ }
+
+ /* EXITING: Estado inicial al salir. Debería coincidir con ENTERED. Transitiona DESDE aquí hacia EXITED. */
+ .lambda-drawer-panel-exiting {
+     opacity: 1;
+     pointer-events: auto;
+     transition-delay: 0s, 0s, var(--drawer-transition-duration);
+ }
+
+
+ /* --- Estilos para las secciones internas del panel (igual que Dialog) --- */
+
+ .lambda-drawer-header {
+     display: grid;
+     grid-template-columns: 1fr 2em;
+     padding: var(--padding-lg) var(--padding-md);
+     border-bottom: 1px solid var(--border-color);
+     flex-shrink: 0;
+ }
+
+ .lambda-drawer-header-title {
+     margin: 0;
+     font-size: 1.2em;
+     font-weight: bold;
+     color: var(--foreground-color);
+     flex-grow: 1;
+     min-width: 0;
+     word-wrap: break-word;
+     pointer-events: none;
+
+     padding-right: var(--padding-4);
+ }
+
+ .lambda-drawer-body {
+     flex-grow: 1;
+     overflow-y: auto;
+     overflow-x: hidden;
+     padding: var(--padding-4);
+ }
+
+ .lambda-drawer-footer {
+     display: flex;
+     justify-content: flex-end;
+     gap: var(--gap-md);
+     padding: var(--padding-md);
+     border-top: 1px solid var(--border-color);
+     flex-shrink: 0;
+ }
+
+ /* Botón de cerrar (generalmente en el header) */
+ .lambda-drawer-close-button {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     grid-column: 2 / 3;
+     border: none;
+     background: none;
+     cursor: pointer;
+     padding: 0;
+     margin: 0;
+     width: var(--height-input-xs);
+     height: var(--height-input-xs);
+     font-size: var(--font-size-xl);
+     color: var(--surface-e);
+     transition: all 0.2s ease;
+     border-radius: var(--border-radius-xs);
+     flex-shrink: 0;
+ }
+
+ /* Estilo de hover y foco para el botón de cerrar */
+ .lambda-drawer-close-button:hover {
+     color: var(--danger-hover-color);
+     background-color: var(--danger-light-color);
+ }
+
+ .lambda-drawer-close-button:focus-visible {
+     outline: 2px solid var(--danger-outline-color);
+     outline-offset: 2px;
+     border-radius: var(--border-radius-xs);
+ }
+
+ /* Estilo básico para el icono SVG dentro del botón de cerrar */
+ .lambda-drawer-close-button svg {
+     display: block;
+ }
