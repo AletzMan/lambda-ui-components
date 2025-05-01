@@ -8,10 +8,10 @@
      font-family: var(--font-family);
      font-weight: var(--font-weight-reg);
      letter-spacing: 0.75px;
+     text-decoration: none;
      cursor: pointer;
      pointer-events: all;
      z-index: 0;
-     width: max-content;
      min-height: 24px;
      min-width: 24px;
      color: var(--white-color);
