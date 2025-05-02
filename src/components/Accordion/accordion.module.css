@@ -115,21 +115,41 @@
 .lambda-accordion-header-tiny {
     padding: var(--padding-xs) var(--padding-lg);
     font-size: var(--font-size-sm);
+
+    .lambda-accordion-header-icon {
+        width: var(--icon-size-xs);
+        height: var(--icon-size-xs);
+    }
 }
 
 .lambda-accordion-header-small {
     padding: var(--padding-md) var(--padding-lg);
     font-size: var(--font-size-md);
+
+    .lambda-accordion-header-icon {
+        width: var(--icon-size-sm);
+        height: var(--icon-size-sm);
+    }
 }
 
 .lambda-accordion-header-medium {
     padding: var(--padding-lg);
     font-size: var(--font-size-lg);
+
+    .lambda-accordion-header-icon {
+        width: var(--icon-size-md);
+        height: var(--icon-size-md);
+    }
 }
 
 .lambda-accordion-header-large {
     padding: var(--padding-xl) var(--padding-lg);
     font-size: var(--font-size-xl);
+
+    .lambda-accordion-header-icon {
+        width: var(--icon-size-lg);
+        height: var(--icon-size-lg);
+    }
 }
 
 /* Estilos de hover/focus para el header */
@@ -170,10 +190,7 @@
 }
 
 /* Estilo básico para el icono SVG */
-.lambda-accordion-header-icon {
-    width: 1em;
-    height: 1em;
-}
+
 
 /* Rotación del icono cuando el header está abierto */
 .lambda-accordion-header-open .lambda-accordion-header-icon-container {
