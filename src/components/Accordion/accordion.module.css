@@ -10,11 +10,15 @@
     border: 1px solid var(--surface-e);
 
     .lambda-accordion-header {
-        border-bottom: 1px solid var(--surface-e);
+        border-top: 1px solid var(--surface-e);
     }
 
     .lambda-accordion-item:first-child {
         border-radius: var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none);
+
+        .lambda-accordion-header {
+            border-top: 1px solid transparent;
+        }
     }
 
     .lambda-accordion-item:last-child {
@@ -23,10 +27,6 @@
         .lambda-accordion-header {
             border-bottom: 1px solid transparent;
         }
-    }
-
-    .lambda-accordion-item-open {
-        border-bottom: 1px solid var(--surface-e);
     }
 
 }
