@@ -78,6 +78,7 @@
     box-sizing: border-box;
     border: 1px solid transparent;
     box-shadow: var(--box-shadow);
+    transition: background-color 0.3s ease;
 }
 
 .lambda-checkbox-wrapper-solid {
@@ -303,15 +304,19 @@
     pointer-events: none;
     box-sizing: border-box;
     color: var(--white-color);
+    transform: scale(0.5);
+    transition: all 0.3s ease;
 }
 
 .lambda-checkbox-icon-checked {
     opacity: 1;
-    animation: animateIcon 0.3s ease both;
+    transform: scale(1);
+    /*animation: animateIcon 0.3s ease both;*/
 }
 
 .lambda-checkbox-icon-unchecked {
     opacity: 0;
+    transform: scale(0.5);
 }
 
 
