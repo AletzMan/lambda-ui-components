@@ -166,7 +166,7 @@
     display: flex;
     align-items: center;
     margin-left: var(--gap-md);
-    transition: transform var(--accordion-transition-duration) ease;
+    transition: transform var(--accordion-transition-duration) ease-;
 }
 
 /* Estilo básico para el icono SVG */
