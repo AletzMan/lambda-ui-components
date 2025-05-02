@@ -55,6 +55,22 @@ export default meta;
 
 type Story = StoryObj<typeof Link>
 
+
+export const Default: Story = {
+    args: {
+        type: "default",
+        color: "secondary",
+        variant: "solid",
+        size: "medium",
+        radius: 'small',
+        loading: false,
+        disabled: false,
+        iconPosition: "left",
+        label: "Link",
+    }
+};
+
+
 export const Primary: Story = {
     args: {
         type: "default",
@@ -69,20 +85,6 @@ export const Primary: Story = {
     },
 };
 
-
-export const Secondary: Story = {
-    args: {
-        type: "default",
-        color: "secondary",
-        variant: "solid",
-        size: "medium",
-        radius: 'small',
-        loading: false,
-        disabled: false,
-        iconPosition: "left",
-        label: "Link",
-    }
-};
 
 export const Danger: Story = {
     args: {
