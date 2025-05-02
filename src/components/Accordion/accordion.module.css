@@ -1,0 +1,229 @@
+.lambda-accordion {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Variantes del contenedor principal */
+.lambda-accordion-default {
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--surface-e);
+
+    .lambda-accordion-header {
+        border-bottom: 1px solid var(--surface-e);
+    }
+
+    .lambda-accordion-item:first-child {
+        border-radius: var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none);
+    }
+
+    .lambda-accordion-item:last-child {
+        border-radius: var(--border-radius-none) var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm);
+
+        .lambda-accordion-header {
+            border-bottom: 1px solid transparent;
+        }
+    }
+
+    .lambda-accordion-item-open {
+        border-bottom: 1px solid var(--surface-e);
+    }
+
+}
+
+.lambda-accordion-flush {
+    border-radius: 0;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-sm);
+
+    .lambda-accordion-item {
+        border: none;
+
+        .lambda-accordion-header {
+            border-bottom: 1px solid var(--surface-d);
+        }
+    }
+
+    .lambda-accordion-item:last-child {
+
+        .lambda-accordion-header {
+            border-bottom: 1px solid transparent;
+        }
+    }
+
+    .lambda-accordion-item-open:last-child {
+
+        .lambda-accordion-header {
+            border-bottom: 1px solid var(--surface-d);
+        }
+    }
+
+}
+
+.lambda-accordion-split {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    box-shadow: none;
+    border-radius: var(--border-radius-none);
+
+    .lambda-accordion-item {
+        border: 1px solid var(--surface-d);
+        border-radius: var(--border-radius-sm);
+        box-shadow: var(--box-shadow);
+
+        .lambda-accordion-header-open {
+            border-bottom: 1px solid var(--surface-d);
+        }
+    }
+}
+
+
+/* Contenedor de cada AccordionItem */
+.lambda-accordion-item {
+    overflow: hidden;
+}
+
+
+/* Variantes del AccordionItem */
+.lambda-accordion-item-open {
+    background-color: var(--surface-b);
+}
+
+.lambda-accordion-item-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+.lambda-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-weight: var(--font-weight-reg);
+    color: var(--surface-h);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+
+.lambda-accordion-header-tiny {
+    padding: var(--padding-xs) var(--padding-lg);
+    font-size: var(--font-size-sm);
+}
+
+.lambda-accordion-header-small {
+    padding: var(--padding-md) var(--padding-lg);
+    font-size: var(--font-size-md);
+}
+
+.lambda-accordion-header-medium {
+    padding: var(--padding-lg);
+    font-size: var(--font-size-lg);
+}
+
+.lambda-accordion-header-large {
+    padding: var(--padding-xl) var(--padding-lg);
+    font-size: var(--font-size-xl);
+}
+
+/* Estilos de hover/focus para el header */
+.lambda-accordion-header:hover:not(:disabled),
+.lambda-accordion-header:focus-visible:not(:disabled) {
+    color: var(--foreground-color);
+    background-color: var(--surface-c);
+    outline: none;
+}
+
+.lambda-accordion-header:focus-visible:not(:disabled) {
+    box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+/* Variantes del AccordionHeader */
+.lambda-accordion-header-open {
+    background-color: var(--surface-c);
+    font-weight: var(--font-weight-md);
+    color: var(--foreground-color);
+}
+
+.lambda-accordion-header-closed {
+    background-color: var(--surface-b);
+}
+
+.lambda-accordion-header-disabled {
+    color: var(--surface-e);
+    cursor: not-allowed;
+}
+
+
+/* Contenedor del icono dentro del header (si existe) */
+.lambda-accordion-header-icon-container {
+    display: flex;
+    align-items: center;
+    margin-left: var(--gap-md);
+    transition: transform var(--accordion-transition-duration) ease;
+}
+
+/* Estilo básico para el icono SVG */
+.lambda-accordion-header-icon {
+    width: 1em;
+    height: 1em;
+}
+
+/* Rotación del icono cuando el header está abierto */
+.lambda-accordion-header-open .lambda-accordion-header-icon-container {
+    transform: rotate(180deg);
+    /* Rotar 180 grados */
+}
+
+
+/* AccordionContent (el panel expandible) */
+.lambda-accordion-content {
+    overflow: hidden;
+    height: 0;
+    color: var(--foreground-color);
+    padding: var(--padding-none) var(--padding-lg);
+    transition-property: height;
+    transition-duration: var(--accordion-transition-duration);
+    transition-timing-function: var(--accordion-transition-timing-function);
+}
+
+.lambda-accordion-content-inner {
+    min-height: 0;
+}
+
+/* Variantes del AccordionContent */
+.lambda-accordion-content-open {
+    background-color: var(--surface-a);
+}
+
+.lambda-accordion-content-closed {
+    background-color: var(--surface-b);
+}
+
+/* Estilo para el contenido real dentro del panel (si necesitas estilos específicos) */
+.lambda-accordion-content-inner {
+    /* Puedes aplicar padding aquí si quieres que la transición afecte solo al max-height */
+    padding: var(--padding-md);
+}
+
+.lambda-accordion-content-tiny {
+    font-size: var(--font-size-xs);
+}
+
+.lambda-accordion-content-small {
+    font-size: var(--font-size-sm);
+}
+
+.lambda-accordion-content-medium {
+    font-size: var(--font-size-md);
+}
+
+.lambda-accordion-content-large {
+    font-size: var(--font-size-lg);
+}
