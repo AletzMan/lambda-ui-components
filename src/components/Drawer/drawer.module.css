@@ -94,6 +94,8 @@
  .lambda-drawer-panel {
      position: absolute;
      height: 100%;
+     font-family: var(--font-family);
+     color: var(--foreground-color);
      background-color: var(--surface-a);
      box-shadow: 0 0 2px 1px var(--shadow-color);
      display: flex;
