@@ -1,0 +1,104 @@
+import { cva } from 'class-variance-authority';
+import styles from './Accordion.module.css';
+
+
+export const accordionVariants = cva(styles['lambda-accordion'], {
+    variants: {
+        variant: {
+            default: styles['lambda-accordion-default'],
+            flush: styles['lambda-accordion-flush'],
+            split: styles['lambda-accordion-split'],
+        },
+    },
+    defaultVariants: {
+        variant: 'default',
+    },
+});
+
+
+export const accordionItemVariants = cva(styles['lambda-accordion-item'], {
+    variants: {
+        variant: {
+            default: styles['lambda-accordion-item-default'],
+            flush: styles['lambda-accordion-item-flush'],
+            split: styles['lambda-accordion-item-split'],
+        },
+        state: {
+            open: styles['lambda-accordion-item-open'],
+            closed: styles['lambda-accordion-item-closed'],
+        },
+        disabled: {
+            true: styles['lambda-accordion-item-disabled'],
+            false: ''
+        },
+    },
+    compoundVariants: [
+        {
+            state: 'open',
+        }
+    ],
+    defaultVariants: {
+        state: 'closed',
+        disabled: false,
+    },
+});
+
+
+export const accordionHeaderVariants = cva(styles['lambda-accordion-header'], {
+    variants: {
+        variant: {
+            default: styles['lambda-accordion-header-default'],
+            flush: styles['lambda-accordion-header-flush'],
+            split: styles['lambda-accordion-header-split'],
+        },
+        state: {
+            open: styles['lambda-accordion-header-open'],
+            closed: styles['lambda-accordion-header-closed'],
+        },
+        disabled: {
+            true: styles['lambda-accordion-header-disabled'],
+            false: ''
+        },
+        size: {
+            tiny: styles['lambda-accordion-header-tiny'],
+            small: styles['lambda-accordion-header-small'],
+            medium: styles['lambda-accordion-header-medium'],
+            large: styles['lambda-accordion-header-large'],
+        }
+    },
+    compoundVariants: [
+        {
+            state: 'open',
+        }
+    ],
+    defaultVariants: {
+        state: 'closed',
+        disabled: false,
+        size: "medium",
+    },
+});
+
+
+export const accordionContentVariants = cva(styles['lambda-accordion-content'], {
+    variants: {
+        state: {
+            open: styles['lambda-accordion-content-open'],
+            closed: styles['lambda-accordion-content-closed'],
+        },
+        size: {
+            tiny: styles['lambda-accordion-content-tiny'],
+            small: styles['lambda-accordion-content-small'],
+            medium: styles['lambda-accordion-content-medium'],
+            large: styles['lambda-accordion-content-large'],
+        }
+    },
+    compoundVariants: [
+        {
+            state: 'open',
+        }
+    ],
+    defaultVariants: {
+        state: 'closed',
+    },
+});
+
