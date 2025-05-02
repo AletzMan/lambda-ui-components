@@ -12,7 +12,7 @@ const meta: Meta<typeof Tooltip> = {
     argTypes: {
         size: {
             control: "select",
-            options: ['small', 'medium', 'large'],
+            options: ['tiny', 'small', 'medium', 'large'],
             description: "Size of the card",
         },
         content: {
@@ -39,7 +39,7 @@ const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 
     return (
         <Tooltip {...args} >
-            <div style={{ width: "100px", height: "100px", backgroundColor: "lightblue" }}>
+            <div style={{ width: "100px", height: "100px", backgroundColor: "lightblue", fontFamily: "var(--font-family)", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", fontSize: "0.8em", fontWeight: "bold", borderRadius: "var(--border-radius-sm)" }}>
                 Hover over me
             </div>
         </Tooltip>
