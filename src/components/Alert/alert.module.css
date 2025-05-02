@@ -1,6 +1,6 @@
  .lambda-alert {
      display: flex;
-     align-items: flex-start;
+     align-items: center;
      font-family: var(--font-family);
      border-radius: var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none);
      border: 1px solid transparent;
