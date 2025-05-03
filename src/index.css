@@ -15,12 +15,14 @@
     --gap-sm: 4px;
     --gap-md: 8px;
     --gap-lg: 16px;
+    --gap-xl: 24px;
 
     --font-weight-xs: 200;
     --font-weight-sm: 300;
     --font-weight-reg: 500;
     --font-weight-md: 600;
     --font-weight-bold: 800;
+
 
     --font-size-xs: 11px;
     --font-size-sm: 12px;
@@ -36,6 +38,7 @@
     --border-radius-pill: 20em;
     --border-radius-full: 9999px;
 
+    --icon-size-4xs: 9px;
     --icon-size-3xs: 11px;
     --icon-size-2xs: 13px;
     --icon-size-xs: 14px;
