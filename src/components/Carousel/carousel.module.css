@@ -1,0 +1,134 @@
+/* Contenedor principal del carrusel */
+.lambda-carousel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    padding: var(--padding-lg) var(--padding-lg) var(--padding-xl) var(--padding-lg);
+    border-radius: var(--border-radius-sm);
+}
+
+.lambda-carousel-drawer {
+    margin: var(--padding-none) var(--padding-xl);
+    overflow: hidden;
+}
+
+.lambda-carousel-container {
+    display: flex;
+    width: 100%;
+    user-select: none;
+
+    &.lambda-carousel-container-dragging {
+        transition: none;
+        cursor: grabbing;
+    }
+
+    &.lambda-carousel-container-returning {
+        transition: transform 300ms ease-out;
+    }
+
+    &.lambda-carousel-container-transitioning {
+        transition: transform 500ms ease-in-out;
+    }
+
+}
+
+/* Contenedor individual de cada item del carrusel */
+.lambda-carousel-item {
+    user-select: none;
+    flex-shrink: 0;
+    touch-action: pan-y;
+}
+
+.lambda-carousel-item-inner {
+    height: 100%;
+    padding: var(--padding-none) var(--padding-md);
+}
+
+
+
+
+/* Variantes para los botones de navegación (Estilos sin cambios) */
+.lambda-carousel-button {
+    position: absolute;
+    top: 50%;
+    height: 3.5em;
+    transform: translateY(-50%);
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+
+/* Variantes de posición de los botones */
+.lambda-carousel-button-prev {
+    left: var(--gap-lg);
+}
+
+.lambda-carousel-button-next {
+    right: var(--gap-lg);
+}
+
+/* Variantes de estado deshabilitado de los botones */
+/* Solo relevante en modo no-looping */
+.lambda-carousel-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Contenedor para los indicadores de paginación (puntos) (Estilos sin cambios) */
+.lambda-carousel-pagination {
+    position: absolute;
+    bottom: var(--padding-md);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+/* Variantes para los indicadores de paginación (puntos) (Estilos sin cambios) */
+.lambda-carousel-dot {
+    height: var(--icon-size-3xs);
+    width: var(--icon-size-3xs);
+    border-radius: var(--border-radius-full);
+    background-color: var(--surface-d);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Estilos de hover/focus para los puntos */
+.lambda-carousel-dot:hover:not(:disabled),
+.lambda-carousel-dot:focus-visible:not(:disabled) {
+    background-color: var(--primary-hover-color);
+    outline: none;
+}
+
+/* Estilo de foco visible para accesibilidad */
+.lambda-carousel-dot:focus-visible:not(:disabled) {
+    box-shadow: var(--box-shadow);
+}
+
+/* Variantes de estado activo de los puntos (Estilos sin cambios) */
+.lambda-carousel-dot-active {
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-color);
+    outline: 3px solid var(--primary-outline-color);
+}
+
+/* Estilo para el icono dentro de los botones (Estilos sin cambios) */
+.lambda-carousel-button svg {
+    width: var(--carousel-button-icon-size);
+    height: var(--carousel-button-icon-size);
+    display: block;
+}
+
+
+/* Contenedor del track/slides (el elemento que se desplaza) */
+.lambda-carousel-track {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    transform: translateX(0);
+    background-color: red;
+}
