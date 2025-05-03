@@ -27,7 +27,7 @@
     }
 
     &.lambda-carousel-container-transitioning {
-        transition: transform 500ms ease-in-out;
+        transition: transform 700ms ease-in-out;
     }
 
 }

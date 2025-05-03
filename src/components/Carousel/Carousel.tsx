@@ -118,23 +118,23 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                         setTimeout(() => {
                             setIsTransitioning(false);
                             setActiveIndex(totalItems + newIndex); // Saltar a las diapositivas reales correspondientes
-                        }, 500);
+                        }, 700);
                     } else if (newIndex >= totalItems + visibleItems) {
                         // Si estamos en las diapositivas clonadas al final
                         setTimeout(() => {
                             setIsTransitioning(false);
                             setActiveIndex(newIndex - totalItems); // Saltar a las diapositivas reales correspondientes
-                        }, 500);
+                        }, 700);
                     } else {
                         setTimeout(() => {
                             setIsTransitioning(false);
-                        }, 500);
+                        }, 700);
                     }
                 } else {
                     // Modo sin loop - simplemente terminar la transición
                     setTimeout(() => {
                         setIsTransitioning(false);
-                    }, 500);
+                    }, 700);
                 }
             },
             [totalItems, loop, visibleItems],
