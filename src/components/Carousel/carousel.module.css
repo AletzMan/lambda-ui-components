@@ -3,40 +3,83 @@
     position: relative;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    padding: var(--padding-lg) var(--padding-lg) var(--padding-xl) var(--padding-lg);
     border-radius: var(--border-radius-sm);
+
+    &.lambda-carousel-dots {
+        padding: var(--padding-lg) var(--padding-lg) var(--padding-xl) var(--padding-lg);
+
+        &.lambda-carousel-vertical {
+            padding: var(--padding-xl) var(--padding-none);
+
+        }
+    }
+
+
+    &.lambda-carousel-thumbnail {
+        padding: var(--padding-xl) var(--padding-2xl) var(--padding-2xl) var(--padding-none);
+    }
 }
+
+.lambda-carousel-vertical {
+    height: 400px;
+}
+
 
 .lambda-carousel-drawer {
     margin: var(--padding-none) var(--padding-xl);
     overflow: hidden;
+
+    &.lambda-carousel-drawer-vertical {
+        display: flex;
+        height: 100%;
+    }
 }
 
 .lambda-carousel-container {
     display: flex;
     width: 100%;
     user-select: none;
-
-    &.lambda-carousel-container-dragging {
-        transition: none;
-        cursor: grabbing;
-    }
-
-    &.lambda-carousel-container-returning {
-        transition: transform 300ms ease-out;
-    }
-
-    &.lambda-carousel-container-transitioning {
-        transition: transform 700ms ease-in-out;
-    }
-
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
+
+.lambda-carousel-container-dragging {
+    transition: none;
+    cursor: grabbing;
+}
+
+.lambda-carousel-container-returning {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lambda-carousel-container-transitioning {
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.lambda-carousel-container-skipTransition {
+    transition: none !important;
+}
+
+.lambda-carousel-container-stable {
+    transition: transform 0ms;
+}
+
+.lambda-carousel-container-vertical {
+    flex-direction: column;
+    height: 100%;
+}
+
 
 /* Contenedor individual de cada item del carrusel */
 .lambda-carousel-item {
     user-select: none;
     flex-shrink: 0;
     touch-action: pan-y;
+    will-change: transform;
 }
 
 .lambda-carousel-item-inner {
@@ -50,25 +93,48 @@
 /* Variantes para los botones de navegación (Estilos sin cambios) */
 .lambda-carousel-button {
     position: absolute;
-    top: 50%;
     height: 3.5em;
-    transform: translateY(-50%);
+    width: 2em;
     z-index: 10;
     backdrop-filter: blur(5px);
 }
 
-
 /* Variantes de posición de los botones */
 .lambda-carousel-button-prev {
     left: var(--gap-lg);
+
+    &.lambda-carousel-button-horizontal {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.lambda-carousel-button-vertical {
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        top: calc(-1 * var(--gap-sm));
+    }
 }
 
 .lambda-carousel-button-next {
     right: var(--gap-lg);
+
+    &.lambda-carousel-button-horizontal {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &.lambda-carousel-button-vertical {
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        bottom: calc(-1 * var(--gap-sm));
+    }
 }
 
+
+
+
+
 /* Variantes de estado deshabilitado de los botones */
-/* Solo relevante en modo no-looping */
 .lambda-carousel-button-disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -85,16 +151,24 @@
     gap: 8px;
 }
 
+
+.lambda-carousel-pagination-vertical {
+    bottom: auto;
+    left: auto;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+}
+
+
 /* Variantes para los indicadores de paginación (puntos) (Estilos sin cambios) */
 .lambda-carousel-dot {
-    height: var(--icon-size-3xs);
-    width: var(--icon-size-3xs);
-    border-radius: var(--border-radius-full);
-    background-color: var(--surface-d);
     border: none;
     padding: 0;
+    background-color: var(--surface-d);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
 }
 
 /* Estilos de hover/focus para los puntos */
@@ -104,10 +178,29 @@
     outline: none;
 }
 
-/* Estilo de foco visible para accesibilidad */
+
 .lambda-carousel-dot:focus-visible:not(:disabled) {
     box-shadow: var(--box-shadow);
 }
+
+.lambda-carousel-dot-circle {
+    width: var(--icon-size-2xs);
+    height: var(--icon-size-2xs);
+    border-radius: var(--border-radius-full);
+}
+
+.lambda-carousel-dot-line {
+    border-radius: var(--border-radius-xs);
+    width: var(--icon-size-xs);
+    height: 4px;
+}
+
+.lambda-carousel-dot-square {
+    width: var(--icon-size-2xs);
+    height: var(--icon-size-2xs);
+    border-radius: var(--border-radius-xs);
+}
+
 
 /* Variantes de estado activo de los puntos (Estilos sin cambios) */
 .lambda-carousel-dot-active {
@@ -123,12 +216,65 @@
     display: block;
 }
 
-
-/* Contenedor del track/slides (el elemento que se desplaza) */
-.lambda-carousel-track {
+.lambda-carousel-thumbnails {
+    position: absolute;
+    bottom: var(--padding-md);
+    left: 0;
+    right: 0;
     display: flex;
-    flex-wrap: nowrap;
+    justify-content: center;
+    gap: var(--gap-md);
+    padding: var(--padding-xs) var(--padding-md);
+    overflow-x: auto;
+    scrollbar-width: none;
+    background-color: var(--secondary-light-color);
+    -ms-overflow-style: none;
+}
+
+.lambda-carousel-thumbnails-vertical {
+    bottom: 0;
+    top: 0;
+    right: 16px;
+    left: auto;
+    flex-direction: column;
+    width: 70px;
+    overflow-y: auto;
     overflow-x: hidden;
-    transform: translateX(0);
-    background-color: red;
+    padding: 16px 0;
+}
+
+.lambda-carousel-thumbnails-item {
+    width: 60px;
+    height: 40px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+    opacity: 0.5;
+    flex-shrink: 0;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &.lambda-carousel-thumbnails-item-active {
+        border-color: white;
+        opacity: 1;
+    }
+}
+
+.lambda-carousel-thumbnails-vertical {
+    .lambda-carousel-thumbnails-item {
+        width: 50px;
+        height: 35px;
+    }
+}
+
+.lambda-carousel-content {
+    transform: scale(0.2);
+    transform-origin: top left;
+    width: 500%;
+    height: 500%;
+    pointer-events: none;
 }
