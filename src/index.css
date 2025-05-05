@@ -10,7 +10,9 @@
     --padding-md: 8px;
     --padding-lg: 16px;
     --padding-xl: 32px;
+    --padding-2xl: 64px;
 
+    --gap-none: 2px;
     --gap-xs: 2px;
     --gap-sm: 4px;
     --gap-md: 8px;
