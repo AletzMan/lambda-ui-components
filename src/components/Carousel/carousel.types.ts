@@ -2,6 +2,11 @@
 
 import React, { HTMLAttributes } from 'react';
 
+export type CarouselPaginationType = 'dots' | 'thumbnail';
+export type CarouselDotType = 'circle' | 'line' | 'square';
+export type CarouselOrientation = 'horizontal' | 'vertical';
+export type CarouselSliderMode = 'auto' | 'single';
+
 // Tipo para un punto de ruptura responsivo
 export interface Breakpoint {
     /**
@@ -38,10 +43,42 @@ export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
      * @default 300
      */
     transitionDuration?: number; // Sugerencia: usar solo CSS transition-duration
+    /**
+     * Opcional: Define la orientación del carrusel (horizontal o vertical).
+     * @default 'horizontal'
+     */
+    orientation?: CarouselOrientation;
 
-    itemsToScroll?: number;
+    /**
+    * Determina cómo avanza el carrusel al navegar (botones) o durante la reproducción automática.
+    * - 'auto': Avanza por el número de ítems visibles en el breakpoint actual.
+    * - 'single': Avanza de un ítem en uno, independientemente de cuántos sean visibles.
+    * @default 'auto'
+    */
+    modoSlider?: CarouselSliderMode;
 
+    /**
+     * Habilita o deshabilita la reproducción automática del carrusel.
+     * Cuando está habilitado, el carrusel avanza automáticamente a la siguiente diapositiva 
+     * @default false
+     */
     autoPlay?: boolean;
+
+    /**
+  * Especifica el tipo visual o la forma de los puntos de paginación. 
+  * * Solo relevante si `paginationType` es 'dots'.
+  * @default 'circle'  
+  */
+    dotType?: CarouselDotType;
+
+    /**
+ * Especifica el tipo de indicadores de paginación a usar.
+ * - 'dots': Utiliza los indicadores de puntos estándar (requiere `showPagination` true).
+ * - 'thumbnail': Utiliza thumbnail extraídas de los ítems hijos como indicadores   
+ * @default 'dots'
+ */
+    paginationType?: CarouselPaginationType;
+
     /**
      * Si es `true`, muestra los botones de navegación "Anterior" y "Siguiente".
      * @default true
