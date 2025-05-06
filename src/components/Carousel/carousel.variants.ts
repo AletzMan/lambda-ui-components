@@ -1,9 +1,7 @@
-// src/components/Carousel/Carousel.variants.ts
-
 import { cva } from 'class-variance-authority';
-import styles from './carousel.module.css'; // Asegúrate de la ruta correcta
+import styles from './carousel.module.css';
 
-// Variantes para los botones de navegación (Anterior/Siguiente)
+
 export const carouselVariants = cva(styles['lambda-carousel'], {
     variants: {
         paginationType: {
@@ -13,16 +11,22 @@ export const carouselVariants = cva(styles['lambda-carousel'], {
         orientation: {
             horizontal: styles["lambda-carousel-horizontal"],
             vertical: styles["lambda-carousel-vertical"],
+        },
+        showPagination: {
+            true: styles["lambda-carousel-pagination-true"],
+            false: styles["lambda-carousel-pagination-false"],
+        },
+        showNavigationButtons: {
+            true: styles["lambda-carousel-navigation-true"],
+            false: styles["lambda-carousel-navigation-false"],
         }
-        // Puedes añadir variantes para tamaño, color, etc.
-        // size: { small: ..., medium: ..., large: ... }
     },
     defaultVariants: {
         orientation: "horizontal",
         paginationType: "dots",
     },
 });
-// Variantes para los botones de navegación (Anterior/Siguiente)
+
 export const carouselContainerVariants = cva(styles['lambda-carousel-container'], {
     variants: {
         isDragging: {
@@ -43,19 +47,16 @@ export const carouselContainerVariants = cva(styles['lambda-carousel-container']
         },
         stable: {
             true: styles['lambda-carousel-container-stable'],
-        },
-        // Puedes añadir variantes para tamaño, color, etc.
-        // size: { small: ..., medium: ..., large: ... }
+        },   // size: { small: ..., medium: ..., large: ... }
     },
     defaultVariants: {
         orientation: "horizontal",
     },
 });
 
-// Variantes para los botones de navegación (Anterior/Siguiente)
+
 export const carouselButtonVariants = cva(styles['lambda-carousel-button'], {
     variants: {
-        // Posición del botón
         position: {
             prev: styles['lambda-carousel-button-prev'],
             next: styles['lambda-carousel-button-next'],
@@ -68,8 +69,6 @@ export const carouselButtonVariants = cva(styles['lambda-carousel-button'], {
             true: styles['lambda-carousel-button-disabled'],
             false: ''
         },
-        // Puedes añadir variantes para tamaño, color, etc.
-        // size: { small: ..., medium: ..., large: ... }
     },
     defaultVariants: {
         orientation: "horizontal",
@@ -77,7 +76,7 @@ export const carouselButtonVariants = cva(styles['lambda-carousel-button'], {
     },
 });
 
-// Variantes para los indicadores de paginación (puntos)
+
 export const carouselPaginationVariants = cva(styles['lambda-carousel-pagination'], {
     variants: {
         orientation: {
@@ -89,10 +88,10 @@ export const carouselPaginationVariants = cva(styles['lambda-carousel-pagination
         orientation: "horizontal",
     },
 });
-// Variantes para los indicadores de paginación (puntos)
+
+
 export const carouselDotVariants = cva(styles['lambda-carousel-dot'], {
     variants: {
-        // Estado activo (el punto que representa la vista actual)
         active: {
             true: styles['lambda-carousel-dot-active'],
             false: ''
