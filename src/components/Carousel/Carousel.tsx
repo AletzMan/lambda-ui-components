@@ -53,8 +53,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         const [isReturning, setIsReturning] = useState(false);
         const [visibleItems, setVisibleItems] = useState(1);
         const [effectiveSlidesToScroll, setEffectiveSlidesToScroll] = useState<number>(1);
-        // Estado y refs para el desplazamiento de miniaturas 
         const [isThumbnailDragging, setIsThumbnailDragging] = useState(false);
+        const [centerThumbnail, setCenterThumbnail] = useState<'center' | 'start'>('center');
 
         const [visualIndex, setVisualIndex] = useState(0);
         const [skipTransition, setSkipTransition] = useState(false);
@@ -71,8 +71,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
 
         const realItems = useMemo(() => Children.toArray(children).filter(isValidElement), [children]);
-
-
         const totalItems = realItems.length;
 
         // Efecto para manejar los breakpoints responsivos
@@ -83,6 +81,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 const width = window.innerWidth;
                 const breakpoint = sortedBreakpoints.find((bp) => width >= bp.breakpoint) || sortedBreakpoints[sortedBreakpoints.length - 1];
                 // Si estamos en modo miniatura, siempre mostrar solo 1 elemento
+                getWidthContainerThumbnails();
                 if (orientation === 'vertical' || paginationType === "thumbnail") {
                     setVisibleItems(1);
                 } else {
@@ -94,6 +93,22 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             window.addEventListener("resize", handleResize);
             return () => window.removeEventListener("resize", handleResize);
         }, [breakpoints, modoSlider, paginationType]);
+
+        const getWidthContainerThumbnails = () => {
+            if (thumbnailsContainerRef.current && containerRef.current) {
+                const widthContainer = thumbnailsContainerRef!.current!.getBoundingClientRect().width;
+                const itemsThumbnail = Array.from(thumbnailsContainerRef!.current.children);
+                const sumaWidths = itemsThumbnail.reduce((acumulador, item) => {
+                    return acumulador + item.getBoundingClientRect().width;
+                }, 0);
+                const totalWidthThumbnails = sumaWidths + (itemsThumbnail.length * 8);
+                if (widthContainer < totalWidthThumbnails) {
+                    setCenterThumbnail('start');
+                } else {
+                    setCenterThumbnail('center');
+                }
+            }
+        };
 
 
         // Actualizar effectiveSlidesToScroll cuando cambia modoSlider
@@ -109,10 +124,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             }
         }, [modoSlider, paginationType, visibleItems]);
 
-        // Notificar cambios en el estado de autoplay
-        /*  useEffect(() => {
-              onAutoPlayChange?.(isPlaying);
-          }, [isPlaying, onAutoPlayChange]);*/
 
         // Limpiar timeouts al desmontar
         useEffect(() => {
@@ -150,13 +161,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
         const allSlides = getClonedSlides();
 
-        // Actualizar visualIndex cuando cambia activeIndex
-        /*  useEffect(() => {
-              // Actualizar visualIndex inmediatamente al montar el componente
-              if (loop) {
-                  setVisualIndex(0); // Siempre empezar mostrando el primer elemento real
-              }
-          }, []);*/
 
         // Inicializar activeIndex después de que se establezcan visibleItems y effectiveSlidesToScroll
         useEffect(() => {
@@ -218,7 +222,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             if (!showPagination || !thumbnailsContainerRef.current) return;
 
             const thumbnailsContainer = thumbnailsContainerRef.current;
-            const activeThumbnail = thumbnailsContainer.querySelector(`.${styles.activeThumbnail}`) as HTMLElement;
+            const activeThumbnail = thumbnailsContainer.querySelector(`.${styles['lambda-carousel-thumbnails-item-active']}`) as HTMLElement;
 
             if (!activeThumbnail) return;
 
@@ -276,10 +280,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 thumbnailsContainerRef.current.scrollLeft = 0;
             }
         }, [showPagination, orientation]);
-
-
-        // Crear el array de diapositivas según el modo (loop o no loop)
-        //const allSlides = loop ? [...realItems.slice(totalItems - 1, totalItems), ...realItems, ...realItems.slice(0, 1)] : realItems;
 
         // Manejar el cambio de diapositiva con lógica de loop mejorada
         const handleSlideChange = useCallback((newIndex: number) => {
@@ -744,7 +744,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             if (paginationType === "thumbnail") {
                 // Paginación con miniaturas
                 return (
-                    <div className={carouselThumbnailsVariants({ orientation })}
+                    <div className={carouselThumbnailsVariants({ orientation, position: centerThumbnail })}
                         ref={thumbnailsContainerRef}
                         onTouchStart={handleThumbnailTouchStart}
                         onTouchMove={handleThumbnailTouchMove}
@@ -830,7 +830,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 {...restProps}
             >
                 {/* Contenedor del carousel */}
-                <div className={clsx(carouselDrawerVariants({ orientation }))} >
+                <div className={clsx(carouselDrawerVariants({ orientation, paginationType }))} >
                     <div
                         className={carouselContainerVariants({ isDragging, isReturning, isTransitioning: isTransitioning && !skipTransition, orientation, skipTransition, stable: !isDragging && !isReturning && !isTransitioning && !skipTransition })}
                         style={{ transform: getTransformStyle() }}
@@ -856,7 +856,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 {showNavigationButtons && <Button
                     variant="text"
                     color="secondary"
-                    className={clsx(carouselButtonVariants({ position: 'prev', orientation }))}
+                    className={clsx(carouselButtonVariants({ position: 'prev', orientation, paginationType }))}
                     size="tiny"
                     onClick={prevSlide}
                     disabled={isTransitioning || isReturning || isPrevDisabled}
@@ -867,7 +867,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 {showNavigationButtons && <Button
                     variant="text"
                     color="secondary"
-                    className={clsx(carouselButtonVariants({ position: 'next', orientation }))}
+                    className={clsx(carouselButtonVariants({ position: 'next', orientation, paginationType }))}
                     size="tiny"
                     onClick={nextSlide}
                     disabled={isTransitioning || isReturning || isNextDisabled}
