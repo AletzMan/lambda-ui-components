@@ -87,6 +87,7 @@
     --placeholder-color: #999999;
     --label-color: #3f3f3f;
     --visited-link-color: #75208a;
+    --transparent-color: #87878710;
 
     --surface-a: #f0eeee;
     --surface-b: #eeecec;
@@ -163,6 +164,7 @@
     --placeholder-color: #626262;
     --label-color: #a6a9ab;
     --visited-link-color: #8c29a4;
+    --transparent-color: #ffffff08;
 
     /*
     --surface-b: #191b1c;
