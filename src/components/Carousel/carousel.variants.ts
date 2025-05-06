@@ -4,13 +4,13 @@ import styles from './carousel.module.css';
 
 export const carouselVariants = cva(styles['lambda-carousel'], {
     variants: {
-        paginationType: {
-            thumbnail: styles["lambda-carousel-thumbnail"],
-            dots: styles["lambda-carousel-dots"]
-        },
         orientation: {
             horizontal: styles["lambda-carousel-horizontal"],
             vertical: styles["lambda-carousel-vertical"],
+        },
+        paginationType: {
+            thumbnail: styles["lambda-carousel-thumbnail"],
+            dots: styles["lambda-carousel-dots"]
         },
         showPagination: {
             true: styles["lambda-carousel-pagination-true"],
@@ -65,6 +65,10 @@ export const carouselButtonVariants = cva(styles['lambda-carousel-button'], {
             horizontal: styles["lambda-carousel-button-horizontal"],
             vertical: styles["lambda-carousel-button-vertical"],
         },
+        paginationType: {
+            thumbnail: styles["lambda-carousel-button-thumbnail"],
+            dots: styles["lambda-carousel-button-dots"]
+        },
         disabled: {
             true: styles['lambda-carousel-button-disabled'],
             false: ''
@@ -73,6 +77,7 @@ export const carouselButtonVariants = cva(styles['lambda-carousel-button'], {
     defaultVariants: {
         orientation: "horizontal",
         disabled: false,
+        paginationType: "dots"
     },
 });
 
@@ -120,9 +125,14 @@ export const carouselThumbnailsVariants = cva(styles['lambda-carousel-thumbnails
             horizontal: styles["lambda-carousel-thumbnails-horizontal"],
             vertical: styles["lambda-carousel-thumbnails-vertical"],
         },
+        position: {
+            center: styles["lambda-carousel-thumbnails-center"],
+            start: styles["lambda-carousel-thumbnails-start"],
+        }
     },
     defaultVariants: {
         orientation: "horizontal",
+        position: "center"
     },
 });
 
@@ -132,8 +142,13 @@ export const carouselDrawerVariants = cva(styles['lambda-carousel-drawer'], {
             horizontal: styles["lambda-carousel-drawer-horizontal"],
             vertical: styles["lambda-carousel-drawer-vertical"],
         },
+        paginationType: {
+            thumbnail: styles["lambda-carousel-drawer-thumbnail"],
+            dots: styles["lambda-carousel-drawer-dots"]
+        },
     },
     defaultVariants: {
         orientation: "horizontal",
+        paginationType: "dots"
     },
 });
