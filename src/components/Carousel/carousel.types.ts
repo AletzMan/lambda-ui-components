@@ -1,5 +1,3 @@
-// src/components/Carousel/Carousel.types.ts
-
 import React, { HTMLAttributes } from 'react';
 
 export type CarouselPaginationType = 'dots' | 'thumbnail';
