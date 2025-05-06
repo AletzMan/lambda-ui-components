@@ -28,8 +28,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         {
             children,
             breakpoints = DEFAULT_BREAKPOINTS,
-            //showNavigationButtons = true,
-            //showPagination = true,
+            showNavigationButtons = true,
+            showPagination = true,
             role = 'region',
             'aria-label': ariaLabel,
             autoPlay,
@@ -53,7 +53,9 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         const [isReturning, setIsReturning] = useState(false);
         const [visibleItems, setVisibleItems] = useState(1);
         const [effectiveSlidesToScroll, setEffectiveSlidesToScroll] = useState<number>(1);
-        // Nuevo estado para mantener el índice visual para los dots/miniaturas
+        // Estado y refs para el desplazamiento de miniaturas 
+        const [isThumbnailDragging, setIsThumbnailDragging] = useState(false);
+
         const [visualIndex, setVisualIndex] = useState(0);
         const [skipTransition, setSkipTransition] = useState(false);
         const touchStartPos = useRef<{ x: number; y: number } | null>(null);
@@ -61,6 +63,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         const slideRef = useRef<HTMLDivElement>(null);
         const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
         const skipTransitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+        const thumbnailsContainerRef = useRef<HTMLDivElement>(null);
+        const thumbnailTouchStartPos = useRef<{ x: number; y: number } | null>(null);
 
         // Constante para el tiempo de transición normal (en ms)
         const TRANSITION_TIME = 500;
@@ -78,7 +82,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             const handleResize = () => {
                 const width = window.innerWidth;
                 const breakpoint = sortedBreakpoints.find((bp) => width >= bp.breakpoint) || sortedBreakpoints[sortedBreakpoints.length - 1];
-
                 // Si estamos en modo miniatura, siempre mostrar solo 1 elemento
                 if (orientation === 'vertical' || paginationType === "thumbnail") {
                     setVisibleItems(1);
@@ -142,8 +145,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             for (let i = 0; i < slidesToClone; i++) {
                 suffixSlides.push(realItems[i]);
             }
-
-
             return [...prefixSlides, ...realItems, ...suffixSlides,];
         }, [realItems, loop, visibleItems, effectiveSlidesToScroll, totalItems]);
 
@@ -210,6 +211,71 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             }
         }, [activeIndex, loop, totalItems, visibleItems, effectiveSlidesToScroll]);
 
+
+
+        // Efecto para centrar automáticamente la miniatura activa cuando cambia
+        useEffect(() => {
+            if (!showPagination || !thumbnailsContainerRef.current) return;
+
+            const thumbnailsContainer = thumbnailsContainerRef.current;
+            const activeThumbnail = thumbnailsContainer.querySelector(`.${styles.activeThumbnail}`) as HTMLElement;
+
+            if (!activeThumbnail) return;
+
+            // Obtener las dimensiones del contenedor y la miniatura
+            const containerRect = thumbnailsContainer.getBoundingClientRect();
+            const thumbnailRect = activeThumbnail.getBoundingClientRect();
+
+            // Calcular si la miniatura está visible en el contenedor
+            let isVisible = false;
+            let scrollPosition = 0;
+
+            if (orientation === 'vertical') {
+                // Modo vertical
+                isVisible = thumbnailRect.top >= containerRect.top - 10 && thumbnailRect.bottom <= containerRect.bottom + 10;
+
+                if (!isVisible) {
+                    // Calcular la posición de scroll para centrar la miniatura
+                    scrollPosition = activeThumbnail.offsetTop - containerRect.height / 2 + thumbnailRect.height / 2;
+
+                    // Asegurarse de que la posición no sea negativa
+                    scrollPosition = Math.max(0, scrollPosition);
+
+                    thumbnailsContainer.scrollTo({
+                        top: scrollPosition,
+                        behavior: isThumbnailDragging ? "auto" : "smooth",
+                    });
+                }
+            } else {
+                // Modo horizontal
+                isVisible = thumbnailRect.left >= containerRect.left - 10 && thumbnailRect.right <= containerRect.right + 10;
+
+                if (!isVisible) {
+                    // Calcular la posición de scroll para centrar la miniatura
+                    scrollPosition = activeThumbnail.offsetLeft - containerRect.width / 2 + thumbnailRect.width / 2;
+
+                    // Asegurarse de que la posición no sea negativa
+                    scrollPosition = Math.max(0, scrollPosition);
+
+                    thumbnailsContainer.scrollTo({
+                        left: scrollPosition,
+                        behavior: isThumbnailDragging ? "auto" : "smooth",
+                    });
+                }
+            }
+        }, [visualIndex, showPagination, orientation, isThumbnailDragging]);
+
+        // Asegurar que las miniaturas estén visibles desde el inicio
+        useEffect(() => {
+            if (!showPagination || !thumbnailsContainerRef.current) return;
+
+            // Resetear el scroll al inicio para asegurar que las primeras miniaturas sean visibles
+            if (orientation === 'vertical') {
+                thumbnailsContainerRef.current.scrollTop = 0;
+            } else {
+                thumbnailsContainerRef.current.scrollLeft = 0;
+            }
+        }, [showPagination, orientation]);
 
 
         // Crear el array de diapositivas según el modo (loop o no loop)
@@ -568,6 +634,91 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             document.addEventListener("mouseup", handleMouseUp);
         };
 
+        // Funcionalidad de arrastre para miniaturas
+        const handleThumbnailTouchStart = (e: React.TouchEvent) => {
+            // Evitar que se propague al carousel principal
+            e.stopPropagation();
+
+
+            setIsThumbnailDragging(true);
+            thumbnailTouchStartPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        };
+
+        const handleThumbnailTouchMove = (e: React.TouchEvent) => {
+            // Evitar que se propague al carousel principal
+            e.stopPropagation();
+
+            if (!thumbnailTouchStartPos.current) return;
+
+            const currentPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            // Usar coordenada X o Y según la orientación
+            const diff = orientation === 'vertical'
+                ? currentPos.y - thumbnailTouchStartPos.current.y
+                : currentPos.x - thumbnailTouchStartPos.current.x;
+
+            // Permitir el desplazamiento natural del contenedor de miniaturas
+            if (thumbnailsContainerRef.current) {
+                if (orientation === 'vertical') {
+                    thumbnailsContainerRef.current.scrollTop -= diff;
+                } else {
+                    thumbnailsContainerRef.current.scrollLeft -= diff;
+                }
+            }
+
+            // Actualizar la posición de inicio para el próximo movimiento
+            thumbnailTouchStartPos.current = { x: currentPos.x, y: currentPos.y };
+        };
+
+        const handleThumbnailTouchEnd = (e: React.TouchEvent) => {
+            // Evitar que se propague al carousel principal
+            e.stopPropagation();
+
+            setIsThumbnailDragging(false);
+            thumbnailTouchStartPos.current = null;
+        };
+
+        const handleThumbnailMouseDown = (e: React.MouseEvent) => {
+            // Evitar que se propague al carousel principal
+            e.stopPropagation();
+
+
+            setIsThumbnailDragging(true);
+            thumbnailTouchStartPos.current = { x: e.clientX, y: e.clientY };
+
+            const handleThumbnailMouseMove = (e: MouseEvent) => {
+                if (!thumbnailTouchStartPos.current) return;
+
+                const currentPos = { x: e.clientX, y: e.clientY };
+                // Usar coordenada X o Y según la orientación
+                const diff = orientation === 'vertical'
+                    ? currentPos.y - thumbnailTouchStartPos.current.y
+                    : currentPos.x - thumbnailTouchStartPos.current.x;
+
+                // Permitir el desplazamiento natural del contenedor de miniaturas
+                if (thumbnailsContainerRef.current) {
+                    if (orientation === 'vertical') {
+                        thumbnailsContainerRef.current.scrollTop -= diff;
+                    } else {
+                        thumbnailsContainerRef.current.scrollLeft -= diff;
+                    }
+                }
+
+                // Actualizar la posición de inicio para el próximo movimiento
+                thumbnailTouchStartPos.current = { x: currentPos.x, y: currentPos.y };
+            };
+
+            const handleThumbnailMouseUp = () => {
+                setIsThumbnailDragging(false);
+                thumbnailTouchStartPos.current = null;
+                document.removeEventListener("mousemove", handleThumbnailMouseMove);
+                document.removeEventListener("mouseup", handleThumbnailMouseUp);
+            };
+
+            document.addEventListener("mousemove", handleThumbnailMouseMove);
+            document.addEventListener("mouseup", handleThumbnailMouseUp);
+        };
+
+
         // Calcular transformación con desplazamiento de arrastre
         const getTransformStyle = () => {
             const itemSize = 100 / visibleItems;
@@ -593,7 +744,12 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             if (paginationType === "thumbnail") {
                 // Paginación con miniaturas
                 return (
-                    <div className={carouselThumbnailsVariants({ orientation })}>
+                    <div className={carouselThumbnailsVariants({ orientation })}
+                        ref={thumbnailsContainerRef}
+                        onTouchStart={handleThumbnailTouchStart}
+                        onTouchMove={handleThumbnailTouchMove}
+                        onTouchEnd={handleThumbnailTouchEnd}
+                        onMouseDown={handleThumbnailMouseDown} >
                         {Array.from({ length: totalItems }).map((_, index) => {
                             // Determinar si esta miniatura está activa usando visualIndex 
                             const isActive = visualIndex === index;
@@ -631,7 +787,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
 
                 return (
-                    <div className={carouselPaginationVariants({ orientation })}>
+                    <div className={carouselPaginationVariants({ orientation })} >
                         {Array.from({ length: dotsCount }).map((_, dotIndex) => {
                             // Calcular si este grupo de diapositivas está activo
                             let isActive;
@@ -664,7 +820,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
         return (
             <div
-                className={clsx(carouselVariants({ paginationType, orientation }), className)}
+                className={clsx(carouselVariants({ paginationType, orientation, showPagination, showNavigationButtons }), className)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 style={style}
@@ -674,7 +830,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 {...restProps}
             >
                 {/* Contenedor del carousel */}
-                <div className={clsx(carouselDrawerVariants({ orientation }))}>
+                <div className={clsx(carouselDrawerVariants({ orientation }))} >
                     <div
                         className={carouselContainerVariants({ isDragging, isReturning, isTransitioning: isTransitioning && !skipTransition, orientation, skipTransition, stable: !isDragging && !isReturning && !isTransitioning && !skipTransition })}
                         style={{ transform: getTransformStyle() }}
@@ -697,7 +853,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 </div>
 
                 {/* Botones de navegación */}
-                <Button
+                {showNavigationButtons && <Button
                     variant="text"
                     color="secondary"
                     className={clsx(carouselButtonVariants({ position: 'prev', orientation }))}
@@ -706,9 +862,9 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                     disabled={isTransitioning || isReturning || isPrevDisabled}
                     aria-label="Anterior"
                     icon={<ChevronLeft />}
-                />
+                />}
 
-                <Button
+                {showNavigationButtons && <Button
                     variant="text"
                     color="secondary"
                     className={clsx(carouselButtonVariants({ position: 'next', orientation }))}
@@ -717,8 +873,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                     disabled={isTransitioning || isReturning || isNextDisabled}
                     aria-label="Siguiente"
                     icon={<ChevronRight />}
-                />
-                {renderPagination()}
+                />}
+                {showPagination && renderPagination()}
             </div >
         );
     });
