@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 
 export type CarouselPaginationType = 'dots' | 'thumbnail';
-export type CarouselDotType = 'circle' | 'line' | 'square';
+export type CarouselDotType = 'circle' | 'line' | 'square' | 'number';
 export type CarouselOrientation = 'horizontal' | 'vertical';
 export type CarouselSliderMode = 'auto' | 'single';
 
