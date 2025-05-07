@@ -65,14 +65,13 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             handleTouchEnd,
             handleTouchMove,
             handleTouchStart
-        } = useSliderControl({ autoPlay, breakpoints, children, loop, orientation, paginationType, slideMode, transitionDuration, containerRef, slideRef });
+        } = useSliderControl({ autoPlay, breakpoints, children, loop, orientation, paginationType, slideMode, transitionDuration, containerRef, slideRef, thumbnailsContainerRef });
         const {
             handleThumbnailMouseDown,
             handleThumbnailTouchEnd,
             handleThumbnailTouchMove,
             handleThumbnailTouchStart,
         } = useThumbnalControl({ orientation, showPagination, visualIndex, thumbnailTouchStartPos, thumbnailsContainerRef });
-
 
         // Determinar si los botones de navegación deben estar deshabilitados
         const isPrevDisabled = !loop && activeIndex <= 0;
@@ -86,7 +85,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             if (paginationType === "thumbnail") {
                 // Paginación con miniaturas
                 return (
-                    <div className={carouselThumbnailsVariants({ orientation, position: positionThumbnail })}
+                    <div className={carouselThumbnailsVariants({ orientation, position: positionThumbnail, showNavigationButtons })}
                         ref={thumbnailsContainerRef}
                         onTouchStart={handleThumbnailTouchStart}
                         onTouchMove={handleThumbnailTouchMove}
@@ -148,9 +147,10 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                             return (
                                 <button
                                     key={dotIndex}
-                                    className={clsx(carouselDotVariants({ active: isActive, type: dotType }))}
+                                    className={clsx(carouselDotVariants({ active: isActive, type: dotType, orientation }))}
                                     onClick={() => goToSlide(getSlideIndexForDot(dotIndex))}
                                     disabled={isTransitioning || isReturning}
+                                    attr-index={dotIndex + 1}
                                     aria-label={`Ir a la diapositiva ${getSlideIndexForDot(dotIndex) + 1}`}
                                 />
                             );
