@@ -22,7 +22,7 @@
             padding: var(--padding-md) var(--padding-xl) var(--padding-xl) var(--padding-xl);
 
             &.lambda-carousel-navigation-false {
-                padding: var(--padding-md) var(--padding-none) var(--padding-xl) var(--padding-none);
+                padding: var(--padding-md) var(--padding-xs) var(--padding-xl) var(--padding-xs);
             }
 
             &.lambda-carousel-pagination-false {
@@ -124,12 +124,21 @@
     flex-shrink: 0;
     touch-action: pan-y;
     will-change: transform;
+
+
 }
 
 .lambda-carousel-item-inner {
+    pointer-events: none;
+    user-select: none;
     height: 100%;
     max-height: 350px;
     padding: var(--padding-none) var(--padding-xs);
+
+    & img {
+        user-select: none;
+        pointer-events: none;
+    }
 }
 
 
