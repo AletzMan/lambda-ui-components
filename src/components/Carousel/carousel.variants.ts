@@ -109,6 +109,7 @@ export const carouselDotVariants = cva(styles['lambda-carousel-dot'], {
             circle: styles['lambda-carousel-dot-circle'],
             line: styles['lambda-carousel-dot-line'],
             square: styles['lambda-carousel-dot-square'],
+            number: styles['lambda-carousel-dot-number'],
         }
     },
     defaultVariants: {
@@ -128,6 +129,10 @@ export const carouselThumbnailsVariants = cva(styles['lambda-carousel-thumbnails
         position: {
             center: styles["lambda-carousel-thumbnails-center"],
             start: styles["lambda-carousel-thumbnails-start"],
+        },
+        showNavigationButtons: {
+            true: styles["lambda-carousel-thumbnails-navigation-true"],
+            false: styles["lambda-carousel-thumbnails-navigation-false"],
         }
     },
     defaultVariants: {
