@@ -4,67 +4,78 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
 
-    &.lambda-carousel-dots {
-        &.lambda-carousel-horizontal {
-            padding: var(--padding-md) var(--padding-lg) var(--padding-xl) var(--padding-lg);
-        }
+    &.lambda-carousel-horizontal {
 
-        &.lambda-carousel-vertical {
-            padding: var(--padding-xl) var(--padding-none);
-
-        }
-    }
-
-
-    &.lambda-carousel-thumbnail {
-        &.lambda-carousel-horizontal {
+        &.lambda-carousel-thumbnail {
             padding: var(--padding-md) var(--padding-xl) var(--padding-2xl) var(--padding-xl);
-        }
 
-        &.lambda-carousel-vertical {
-            padding: var(--padding-xl) var(--padding-xl) var(--padding-xl) var(--padding-md);
-        }
-    }
+            &.lambda-carousel-navigation-false {
+                padding: var(--padding-md) var(--padding-xs) var(--padding-2xl) var(--padding-xs);
+            }
 
-    &.lambda-carousel-pagination-false {
-
-        &:is(.lambda-carousel-vertical) {
-            .lambda-carousel-drawer {
-                margin: var(--padding-none);
+            &.lambda-carousel-pagination-false {
+                padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-xl);
             }
         }
 
-        &:is(.lambda-carousel-horizontal) {
-            padding: var(--padding-sm) var(--padding-none);
-        }
-    }
+        &.lambda-carousel-dots {
+            padding: var(--padding-md) var(--padding-xl) var(--padding-xl) var(--padding-xl);
 
-    &.lambda-carousel-navigation-false {
-        &:is(.lambda-carousel-hotizontal) {
-            .lambda-carousel-drawer {
-                margin: var(--padding-none);
+            &.lambda-carousel-navigation-false {
+                padding: var(--padding-md) var(--padding-none) var(--padding-xl) var(--padding-none);
+            }
+
+            &.lambda-carousel-pagination-false {
+                padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-xl);
             }
         }
 
-        &:is(.lambda-carousel-vertical) {
-            padding: var(--padding-md) var(--padding-none);
+        &.lambda-carousel-navigation-false.lambda-carousel-pagination-false {
+            padding: var(--padding-xs);
         }
     }
-}
 
-.lambda-carousel-vertical {
-    height: 365px;
+
+    &.lambda-carousel-vertical {
+        height: 365px;
+
+        &.lambda-carousel-thumbnail {
+            padding: var(--padding-xl) var(--padding-2xl) var(--padding-xl) var(--padding-md);
+
+            &.lambda-carousel-navigation-false {
+                padding: var(--padding-xs) var(--padding-2xl) var(--padding-xs) var(--padding-md);
+            }
+
+            &.lambda-carousel-pagination-false {
+                padding: var(--padding-xl) var(--padding-xs) var(--padding-xl) var(--padding-xs);
+            }
+        }
+
+        &.lambda-carousel-dots {
+            padding: var(--padding-xl) calc(var(--padding-xl) + var(--padding-xs)) var(--padding-xl) var(--padding-xs);
+
+            &.lambda-carousel-navigation-false {
+                padding: var(--padding-xs) calc(var(--padding-xl) + var(--padding-xs)) var(--padding-xs) var(--padding-xs);
+            }
+
+            &.lambda-carousel-pagination-false {
+                padding: var(--padding-xl) var(--padding-xs);
+            }
+        }
+
+        &.lambda-carousel-navigation-false.lambda-carousel-pagination-false {
+            padding: var(--padding-xs) var(--padding-xs);
+        }
+    }
 }
 
 
 .lambda-carousel-drawer {
-    margin: var(--padding-none) var(--padding-xl);
+    display: flex;
     overflow: hidden;
 
     &.lambda-carousel-drawer-vertical {
-        display: flex;
         height: 100%;
-        margin: var(--padding-none) var(--padding-xl) var(--padding-none) var(--padding-md);
     }
 }
 
@@ -117,7 +128,8 @@
 
 .lambda-carousel-item-inner {
     height: 100%;
-    padding: var(--padding-none) var(--padding-md);
+    max-height: 350px;
+    padding: var(--padding-none) var(--padding-xs);
 }
 
 
@@ -136,12 +148,19 @@
     left: var(--gap-md);
 
     &.lambda-carousel-button-horizontal {
-        top: 50%;
         transform: translateY(-50%);
+
+        &:is(.lambda-carousel-button-dots) {
+            top: calc(50%);
+        }
+
+        &:is(.lambda-carousel-button-thumbnail) {
+            top: calc(50% - 24px);
+        }
     }
 
     &.lambda-carousel-button-vertical {
-        left: 50%;
+        left: calc(50% - 23px);
         transform: translateX(-50%) rotate(90deg);
         top: calc(-1 * var(--gap-sm));
     }
@@ -151,12 +170,19 @@
     right: var(--gap-md);
 
     &.lambda-carousel-button-horizontal {
-        top: 50%;
         transform: translateY(-50%);
+
+        &:is(.lambda-carousel-button-dots) {
+            top: calc(50%);
+        }
+
+        &:is(.lambda-carousel-button-thumbnail) {
+            top: calc(50% - 24px);
+        }
     }
 
     &.lambda-carousel-button-vertical {
-        left: 50%;
+        left: calc(50% - 23px);
         transform: translateX(-50%) rotate(90deg);
         bottom: calc(-1 * var(--gap-sm));
     }
@@ -259,27 +285,32 @@
         left: 0;
         right: 0;
         margin: 0 auto;
-        margin-left: 72px;
-        margin-right: 72px;
+        width: calc(100% - 80px);
         overflow-x: auto;
-        justify-content: flex-start;
         padding: var(--padding-xs) var(--padding-md);
-
     }
 
     &.lambda-carousel-thumbnails-vertical {
-        bottom: 0;
-        margin: auto 0;
+        top: 0;
         right: var(--padding-none);
         flex-direction: column;
-        justify-content: flex-start;
         align-items: center;
         width: 70px;
-        height: 100%;
+        height: calc(100% - 64px);
         overflow-y: auto;
         overflow-x: hidden;
-        padding: 16px 0;
+        padding: var(--padding-md) var(--padding-none);
+        margin-top: var(--padding-xl);
     }
+
+    &.lambda-carousel-thumbnails-start {
+        justify-content: flex-start;
+    }
+
+    &.lambda-carousel-thumbnails-center {
+        justify-content: center;
+    }
+
 }
 
 
@@ -292,7 +323,7 @@
     cursor: pointer;
     border: 2px solid transparent;
     transition: all 0.3s ease-in-out;
-    opacity: 0.5;
+    opacity: 0.35;
     flex-shrink: 0;
 
     &:hover {
@@ -300,7 +331,7 @@
     }
 
     &.lambda-carousel-thumbnails-item-active {
-        border-color: var(--dager-color);
+        border-color: var(--primary-color);
         opacity: 1;
     }
 }
@@ -317,5 +348,10 @@
     transform-origin: top left;
     width: 500%;
     height: 500%;
-    pointer-events: none;
+
+    &>img {
+        object-fit: cover;
+        pointer-events: none;
+        height: 100%;
+    }
 }
