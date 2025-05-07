@@ -13,11 +13,12 @@ interface SliderControl {
     children: ReactNode
     slideRef: RefObject<HTMLDivElement | null>
     containerRef: RefObject<HTMLDivElement | null>
+    thumbnailsContainerRef: RefObject<HTMLDivElement | null>
 }
 
 const TRANSITION_TIME = 500;
 
-export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, paginationType, slideMode, transitionDuration, children, containerRef, slideRef }: SliderControl) => {
+export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, paginationType, slideMode, transitionDuration, children, containerRef, slideRef, thumbnailsContainerRef }: SliderControl) => {
     const [isDragging, setIsDragging] = useState(false);
     const [isReturning, setIsReturning] = useState(false);
     const [dragOffset, setDragOffset] = useState(0);
@@ -30,7 +31,6 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
     const [skipTransition, setSkipTransition] = useState(false);
     const touchStartPos = useRef<{ x: number; y: number } | null>(null);
     const [positionThumbnail, setPositionThumbnail] = useState<'center' | 'start'>('center');
-    const thumbnailsContainerRef = useRef<HTMLDivElement>(null);
     const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const skipTransitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -317,6 +317,57 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
         return () => clearInterval(interval);
     }, [isPlaying, nextSlide, isDragging, isTransitioning, isReturning, loop, activeIndex, totalItems, visibleItems, transitionDuration]);
 
+    useEffect(() => {
+        // Dónde adjuntar el listener:
+        // 1. window: Para control global (funciona sin que el carrusel tenga foco, puede ser molesto)
+        // 2. containerRef.current: Para control cuando el carrusel o un elemento dentro tiene foco (mejor para accesibilidad y evitar conflictos)
+        const containerElement = containerRef.current;
+
+        if (!containerElement) return; // Asegurarse de que la referencia al DOM existe
+
+        const handleKeyPress = (event: KeyboardEvent) => {
+            // Opcional: Verificar si el evento proviene de un input, textarea o select para no interferir
+            if (event.target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) {
+                return;
+            }
+
+            console.log(event.target ?? event.key);
+
+            switch (event.key) {
+                case 'ArrowLeft':
+                    // Opcional: event.preventDefault(); si quieres evitar el scroll nativo de la página con las flechas
+                    prevSlide(); // Llama a la función del hook
+                    break;
+                case 'ArrowRight':
+                    // Opcional: event.preventDefault();
+                    nextSlide(); // Llama a la función del hook
+                    break;
+                // Puedes añadir 'ArrowUp' y 'ArrowDown' si el carrusel es vertical
+                case 'ArrowUp':
+                    if (orientation === 'vertical') {
+                        // Opcional: event.preventDefault();
+                        prevSlide();
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (orientation === 'vertical') {
+                        // Opcional: event.preventDefault();
+                        nextSlide();
+                    }
+                    break;
+                default:
+                    return; // No hacer nada si no es una flecha relevante
+            }
+        };
+
+        // Adjuntar el event listener al contenedor principal del carrusel
+        containerElement.addEventListener('keydown', handleKeyPress); // keydown para reacción inmediata
+
+        // Función de limpieza: Remover el event listener al desmontar o si cambian dependencias
+        return () => {
+            containerElement.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [containerRef.current, prevSlide, nextSlide, orientation]);
     // Crear el array de diapositivas para el modo loop
     const getClonedSlides = useCallback(() => {
         if (!loop) return realItems;
