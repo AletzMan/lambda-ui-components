@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: var(--surface-b);
+  background-color: var(--background-color);
   font-family: var(--font-family);
   overflow: hidden;
 }
@@ -81,7 +81,7 @@ body {
   gap: 2em;
   padding: 1.5em 1em;
   width: 100%;
-  background-color: var(--surface-c);
+  background-color: var(--secondary-light-color);
   border-radius: var(--border-radius-sm);
 }
 

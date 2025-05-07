@@ -13,12 +13,32 @@ import { Dialog } from '../src/components/Dialog/Dialog';
 import { Drawer } from '../src/components/Drawer/Drawer';
 import { DrawerPlacement, DrawerWidth } from '../src/components/Drawer/drawer.types';
 import { Link } from '../src/components/Link/Link';
+import { Alert } from '../src/components/Alert/Alert';
+import { AlertSize, AlertVariant } from '../src/components/Alert/alert.types';
+import { AccordionItem } from '../src/components/Accordion/AccordionItem';
+import { AccordionContent } from '../src/components/Accordion/AccordionContent';
+import { AccordionHeader } from '../src/components/Accordion/AccordionHeader';
+import { Accordion } from '../src/components/Accordion/Accordion';
+import { AccordionSize, AccordionValue, AccordionVariant } from '../src/components/Accordion/accordion.types';
+import { Carousel } from '../src/components/Carousel/Carousel';
+import { CarouselDotType, CarouselSliderMode, CarouselOrientation, CarouselPaginationType } from '../src/components/Carousel/carousel.types';
 
 
 function App() {
+  const [variantAccordion, setVariantAccordion] = useState<AccordionVariant>("default");
+  const [sizeAccordion, setSizeAccordion] = useState<AccordionSize>("medium");
   const [loadingButtons, setLoadingButtons] = useState(false);
   const [disabledButtons, setDisabledButtons] = useState(false);
   const [radiusButtons, setRadiusButtons] = useState<"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined>("small");
+  const [carouselPaginationType, setCarouselPaginationType] = useState<CarouselPaginationType>("dots");
+  const [carouselDotType, setCarouselDotType] = useState<CarouselDotType>("circle");
+  const [carouselOrientation, setCarouselOrientation] = useState<CarouselOrientation>("horizontal");
+  const [carouselScroll, setCarouselScroll] = useState<CarouselSliderMode>("single");
+  const [carouselShowButtons, setCarouselShowButtons] = useState(true);
+  const [carouselShowNavigation, setCarouselShowNavigation] = useState(true);
+  const [carouselAutoPlay, setCarouselAutoPlay] = useState(true);
+  const [carouselLoop, setCarouselLoop] = useState(true);
+  const [carouselDuration, setCarouselDuration] = useState(3000);
   const [sizeButtons, setSizeButtons] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
   const [sizeLink, setSizeLink] = useState<"medium" | "small" | "large" | "tiny" | undefined>("medium");
   const [disabledLink, setDisabledLink] = useState(false);
@@ -61,6 +81,8 @@ function App() {
   const [closableNotification, setClosableNotification] = useState(false);
   const [hasButtonsConfirmNotification, setHasButtonsConfirmNotification] = useState(false);
   const [hasButtonsCancelNotification, setHasButtonsCancelNotification] = useState(false);
+  const [sizeAlert, setSizeAlert] = useState<AlertSize>("small");
+  const [variantAlert, setVariantAlert] = useState<AlertVariant>("flat");
   const [radiusCard, setRadiusCard] = useState<"medium" | "small" | "large" | "none" | undefined>("small");
   const [sizeCard, setSizeCard] = useState<"medium" | "small" | "large" | undefined>("small");
   const [variantCard, setVariantCard] = useState<"outline" | "borderless" | undefined>("outline");
@@ -103,6 +125,7 @@ function App() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [drawerPosition, setDrawerPosition] = useState<DrawerPlacement>("left");
   const [widthDrawer, setWidthDrawer] = useState<DrawerWidth>("small");
+  const [openItem, setOpenItem] = useState<AccordionValue>('');
 
   return (
     <section className={`${styles.section} scrollBar`}>
@@ -110,6 +133,166 @@ function App() {
         <h1 className={styles.title}>Lambda UI Components</h1>
         <ButtonThemeController />
       </header>
+      {/* ACCORDION */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Accordion</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            className={styles.select_size}
+            label='Variant'
+            value={variantAccordion}
+            size="small"
+            onChange={(value) => setVariantAccordion(value as AccordionVariant)}
+            options={[
+              { label: "Default", value: "default" },
+              { label: "Flush", value: "flush" },
+              { label: "Split", value: "split" },
+            ]} />
+          <Select
+            label='Size'
+            className={styles.select_size}
+            value={sizeAccordion}
+            size="small"
+            onChange={(value) => setSizeAccordion(value as AccordionSize)}
+            options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Select
+            label='Position'
+            className={styles.select_size}
+            value={drawerPosition}
+            size="small"
+            onChange={(value) => setDrawerPosition(value as DrawerPlacement)}
+            options={[
+              { label: "Top", value: "top" },
+              { label: "Right", value: "right" },
+              { label: "Bottom", value: "bottom" },
+              { label: "Left", value: "left" },
+            ]}
+          />
+        </div>
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Accordion
+              value={openItem}
+              onValueChange={(value) => setOpenItem(value)}
+              variant={variantAccordion}
+              size={sizeAccordion}
+              style={{ marginBottom: '30px' }}
+            >
+              <AccordionItem value="item-1">
+                <AccordionHeader>Sección 1: Introducción</AccordionHeader>
+                <AccordionContent>
+                  <p>Aquí va el contenido de la sección 1.</p>
+                  <p>Puede ser texto, imágenes, otros componentes.</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2">
+                <AccordionHeader>Sección 2: Componentes</AccordionHeader>
+                <AccordionContent>
+                  <ul>
+                    <li>Componente Alert</li>
+                    <li>Componente Button</li>
+                    <li>Componente Link</li>
+                    <li>Componente Accordion</li>
+                  </ul>
+                  <div style={{ height: '50px' }}>Contenido extra para probar transición</div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3"  > {/* Item deshabilitado */}
+                <AccordionHeader>Sección 3: Deshabilitada</AccordionHeader>
+                <AccordionContent>
+                  Este contenido no se puede expandir porque el item está deshabilitado.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4">
+                <AccordionHeader>Sección 4: Con Contenido Largo</AccordionHeader>
+                <AccordionContent>
+                  <p>Este es el inicio de un contenido que es un poco más largo para probar el scroll si el contenedor principal del Accordion lo permite.</p>
+                  <div style={{ height: '400px', background: '#e9e9e9' }}></div>
+                  <p>Fin del contenido largo.</p>
+                </AccordionContent>
+              </AccordionItem>
+
+            </Accordion>
+          </div>
+        </div>
+      </section>
+      {/* CAROUSEL */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Carousel</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            className={styles.select_size}
+            label='Pagination Type'
+            value={carouselPaginationType}
+            size="small"
+            onChange={(value) => setCarouselPaginationType(value as CarouselPaginationType)}
+            options={[
+              { label: "Dots", value: "dots" },
+              { label: "Thumbnail", value: "thumbnail" },
+            ]} />
+          <Select
+            className={styles.select_size}
+            label='Dot Type'
+            value={carouselDotType}
+            size="small"
+            onChange={(value) => setCarouselDotType(value as CarouselDotType)}
+            options={[
+              { label: "Circle", value: "circle" },
+              { label: "Line", value: "line" },
+              { label: "Square", value: "square" },
+              { label: "Number", value: "number" },
+            ]} />
+          <Select
+            className={styles.select_size}
+            label='Orientation'
+            value={carouselOrientation}
+            size="small"
+            onChange={(value) => setCarouselOrientation(value as CarouselOrientation)}
+            options={[
+              { label: "Horizontal", value: "horizontal" },
+              { label: "Vertical", value: "vertical" },
+            ]} />
+          <Select
+            className={styles.select_size}
+            label='Slider Mode'
+            value={carouselScroll}
+            size="small"
+            onChange={(value) => setCarouselScroll(value as CarouselSliderMode)}
+            options={[
+              { label: "Auto", value: "auto" },
+              { label: "Single", value: "single" },
+            ]} />
+          <Checkbox positionLabel="top" label='Show buttons?' checked={carouselShowButtons} size="medium" color="secondary" onChange={(e) => setCarouselShowButtons(e.currentTarget.checked)} />
+          <Checkbox positionLabel="top" label='Show pagination?' checked={carouselShowNavigation} size="medium" color="secondary" onChange={(e) => setCarouselShowNavigation(e.currentTarget.checked)} />
+          <Checkbox positionLabel="top" label='Is Loop?' checked={carouselLoop} size="medium" color="secondary" onChange={(e) => setCarouselLoop(e.currentTarget.checked)} />
+          <Checkbox positionLabel="top" label='AutoPlay?' checked={carouselAutoPlay} size="medium" color="secondary" onChange={(e) => setCarouselAutoPlay(e.currentTarget.checked)} />
+          <InputNumber label='Transition Duration' value={carouselDuration} onChange={(value) => setCarouselDuration(value as number)} step={100} />
+        </div>
+        <div className={styles.container_buttons}>
+          <Carousel
+            breakpoints={responsiveBreakpoints} // Pasar la configuración responsiva
+            showNavigationButtons={carouselShowButtons} // Mostrar botones (por defecto es true)
+            showPagination={carouselShowNavigation} // Mostrar puntos (por defecto es true)
+            aria-label="Carrusel de ejemplo de colores"
+            transitionDuration={carouselDuration}
+            orientation={carouselOrientation}
+            autoPlay={carouselAutoPlay}
+            loop={carouselLoop}
+            paginationType={carouselPaginationType}
+            dotType={carouselDotType}
+            slideMode={carouselScroll}
+
+          >
+            {/* Pasar los items como hijos directos. Pueden ser cualquier elemento o componente. */}
+            {items.map(item => (
+              <CarouselCard key={item.id} number={item.id} color={item.color} src={item.src} />
+            ))}
+          </Carousel>
+        </div>
+      </section>
       {/* BUTTON */}
       <section className={styles.subsection}>
         <h2 className={styles.subtitle}>Button</h2>
@@ -154,7 +337,7 @@ function App() {
       <section className={styles.subsection}>
         <h2 className={styles.subtitle}>Link</h2>
         <div className={styles.control_buttons}>
-          <div style={{ display: "flex", gap: "1rem" }}>
+          <div style={{ display: "flex", gap: "1rem", flexFlow: "wrap" }}>
             <Select options={[
               { label: 'Tiny', value: 'tiny' },
               { label: 'Small', value: 'small' },
@@ -593,6 +776,37 @@ function App() {
                     onCancel: hasButtonsCancelNotification ? () => console.log("Se cancelo") : undefined,
                     onConfirm: hasButtonsConfirmNotification ? () => console.log("Se confirmo") : undefined,
                   })} />
+          </div>
+        </div>
+      </section>
+      {/* ALERT */}
+      <section className={styles.subsection}>
+        <h2 className={styles.subtitle}>Alert</h2>
+        <div className={styles.control_buttons}>
+          <Select
+            label='Size'
+            className={styles.select_size}
+            value={sizeAlert}
+            size="small"
+            onChange={(value) => setSizeAlert(value as AlertSize)}
+            options={[{ label: "Tiny", value: "tiny" }, { label: "Small", value: "small" }, { label: "Medium", value: "medium" }, { label: "Large", value: "large" }]} />
+          <Select
+            label='Size'
+            className={styles.select_size}
+            value={variantAlert}
+            size="small"
+            onChange={(value) => setVariantAlert(value as AlertVariant)}
+            options={[{ label: "Flat", value: "flat" }, { label: "Outline", value: "outline" }, { label: "Solid", value: "solid" }]} />
+        </div>
+
+        <div className={styles.container_buttons}>
+          <div className={`${styles.buttons} ${styles.buttons_large}`}>
+            <Alert variant={variantAlert} color='default' title='Default' message='This is a standard notification message for your information' customIcon={<RssIcon />} onClose={() => console.log("")} size={sizeAlert} />
+            <Alert variant={variantAlert} color='primary' title='Priamry' message='Please review the details below and take the necessary action' onClose={() => console.log("")} size={sizeAlert} />
+            <Alert variant={variantAlert} color='danger' title='Success' message='Your changes have been saved successfully' onClose={() => console.log("")} size={sizeAlert} />
+            <Alert variant={variantAlert} color='success' title='Danger' message='Unable to complete the request. Please try again or contact support' onClose={() => console.log("")} size={sizeAlert} />
+            <Alert variant={variantAlert} color='warning' title='Warning' message='Please be aware that continuing might lead to unexpected results' onClose={() => console.log("")} size={sizeAlert} />
+            <Alert variant={variantAlert} color='info' title='Info' message='Here is some helpful information regarding the current process' onClose={() => console.log("")} size={sizeAlert} />
           </div>
         </div>
       </section>
@@ -1113,4 +1327,55 @@ const namesSelect = [
   { label: "JavaScript", value: "javascript" },
   { label: "Angular", value: "angular" },
   { label: "Vue", value: "vue" },
+];
+
+
+const CarouselCard = ({ color, src }: { number: number, color: string, src: string }) => (
+  <img
+    src={src}
+    style={{
+      backgroundColor: color,
+      color: 'white',
+      textAlign: 'center',
+      fontSize: '2em',
+      height: "100%",
+      width: "100%",
+      display: 'flex',
+      objectFit: "cover",
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: '2px',
+      boxSizing: 'border-box',
+    }} />
+);
+
+const items = [
+  { id: 1, color: '#88888825', src: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Red
+  { id: 2, color: '#88888825', src: "https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Pink
+  { id: 3, color: '#88888825', src: "https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Purple
+  { id: 4, color: '#88888825', src: "https://images.pexels.com/photos/1374295/pexels-photo-1374295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Deep Purple
+  { id: 5, color: '#88888825', src: "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Indigo
+  { id: 6, color: '#88888825', src: "https://images.pexels.com/photos/158063/bellingrath-gardens-alabama-landscape-scenic-158063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Blue
+  { id: 7, color: '#88888825', src: "https://images.pexels.com/photos/620337/pexels-photo-620337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Light Blue
+  { id: 8, color: '#88888825', src: "https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Cyan
+  { id: 9, color: '#88888825', src: "https://images.pexels.com/photos/681467/pexels-photo-681467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Teal
+  { id: 10, color: '#88888825', src: "https://images.pexels.com/photos/131723/pexels-photo-131723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Green
+  { id: 1, color: '#88888825', src: "https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Red
+  { id: 2, color: '#88888825', src: "https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Pink
+  { id: 3, color: '#88888825', src: "https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Purple
+  { id: 4, color: '#88888825', src: "https://images.pexels.com/photos/1374295/pexels-photo-1374295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Deep Purple
+  { id: 5, color: '#88888825', src: "https://images.pexels.com/photos/1107717/pexels-photo-1107717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Indigo
+  { id: 6, color: '#88888825', src: "https://images.pexels.com/photos/158063/bellingrath-gardens-alabama-landscape-scenic-158063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Blue
+  { id: 7, color: '#88888825', src: "https://images.pexels.com/photos/620337/pexels-photo-620337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Light Blue
+  { id: 8, color: '#88888825', src: "https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Cyan
+  { id: 9, color: '#88888825', src: "https://images.pexels.com/photos/681467/pexels-photo-681467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Teal
+  { id: 10, color: '#88888825', src: "https://images.pexels.com/photos/131723/pexels-photo-131723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }, // Green
+];
+
+// Configuración de breakpoints para el carrusel
+const responsiveBreakpoints = [
+  { breakpoint: 0, items: 1 },    // 1 item en pantallas < 768px
+  { breakpoint: 768, items: 2 },   // 2 items en pantallas >= 768px
+  { breakpoint: 1200, items: 3 },  // 3 items en pantallas >= 1200px
+  { breakpoint: 1600, items: 4 },  // 4 items en pantallas >= 1600px
 ];
