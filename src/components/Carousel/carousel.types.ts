@@ -53,7 +53,7 @@ export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
     * - 'single': Avanza de un ítem en uno, independientemente de cuántos sean visibles.
     * @default 'auto'
     */
-    modoSlider?: CarouselSliderMode;
+    slideMode?: CarouselSliderMode;
 
     /**
      * Habilita o deshabilita la reproducción automática del carrusel.
