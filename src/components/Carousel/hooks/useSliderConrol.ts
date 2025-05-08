@@ -322,16 +322,17 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
         // 1. window: Para control global (funciona sin que el carrusel tenga foco, puede ser molesto)
         // 2. containerRef.current: Para control cuando el carrusel o un elemento dentro tiene foco (mejor para accesibilidad y evitar conflictos)
         const containerElement = containerRef.current;
+        console.log(containerElement);
 
         if (!containerElement) return; // Asegurarse de que la referencia al DOM existe
 
         const handleKeyPress = (event: KeyboardEvent) => {
             // Opcional: Verificar si el evento proviene de un input, textarea o select para no interferir
+            console.log(event.key);
             if (event.target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) {
                 return;
             }
 
-            console.log(event.target ?? event.key);
 
             switch (event.key) {
                 case 'ArrowLeft':
@@ -341,19 +342,6 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
                 case 'ArrowRight':
                     // Opcional: event.preventDefault();
                     nextSlide(); // Llama a la función del hook
-                    break;
-                // Puedes añadir 'ArrowUp' y 'ArrowDown' si el carrusel es vertical
-                case 'ArrowUp':
-                    if (orientation === 'vertical') {
-                        // Opcional: event.preventDefault();
-                        prevSlide();
-                    }
-                    break;
-                case 'ArrowDown':
-                    if (orientation === 'vertical') {
-                        // Opcional: event.preventDefault();
-                        nextSlide();
-                    }
                     break;
                 default:
                     return; // No hacer nada si no es una flecha relevante
