@@ -47,7 +47,7 @@ export const carouselContainerVariants = cva(styles['lambda-carousel-container']
         },
         stable: {
             true: styles['lambda-carousel-container-stable'],
-        },   // size: { small: ..., medium: ..., large: ... }
+        },
     },
     defaultVariants: {
         orientation: "horizontal",

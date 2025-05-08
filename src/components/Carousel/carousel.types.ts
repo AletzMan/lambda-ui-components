@@ -5,7 +5,7 @@ export type CarouselDotType = 'circle' | 'line' | 'square' | 'number';
 export type CarouselOrientation = 'horizontal' | 'vertical';
 export type CarouselSliderMode = 'auto' | 'single';
 
-// Tipo para un punto de ruptura responsivo
+
 export interface Breakpoint {
     /**
      * Ancho mínimo de la ventana en píxeles para aplicar esta configuración.
@@ -88,7 +88,7 @@ export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
    * Requiere duplicar items visualmente al inicio y al final.
    * @default false
    */
-    loop?: boolean; // *** NUEVA PROP PARA MODO INFINITO ***
+    loop?: boolean;
 
     /**
      * Si es `true`, muestra los indicadores de paginación (puntos).
@@ -100,17 +100,12 @@ export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
      * Opcional: Rol ARIA para el contenedor principal del carrusel.
      * @default "region"
      */
-    role?: string; // Rol ARIA para el contenedor (ej: "region")
+    role?: string;
 
     /**
      * Opcional: Etiqueta ARIA para el contenedor principal del carrusel, necesaria si role="region".
      */
     'aria-label'?: string;
-
-
-    // Opcional: Controlar el índice actual desde el padre (modo controlado)
-    // value?: number; // Índice del primer item visible
-    // onValueChange?: (index: number) => void; // Callback al cambiar el índice
 }
 
 // Props para el componente interno CarouselItem (no se exporta, se usa en el mapeo de children)
@@ -122,10 +117,7 @@ export interface CarouselItemProps extends HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
     // Props internas pasadas por el componente padre Carousel (ancho calculado, etc.)
     // Estas no son props que el usuario del componente Carousel deba pasar.
-    __internal_width?: string; // Ancho calculado por el padre (usar inline style)
-    __internal_index?: number; // Índice de este item (para ARIA o depuración)
+    __internal_width?: string;
+    __internal_index?: number;
 }
 
-// Opcional: Definir tipos para props de botones/indicadores si no se usan las variantes CVA directamente
-// export interface CarouselButtonProps extends HTMLAttributes<HTMLButtonElement> { ... }
-// export interface CarouselDotProps extends HTMLAttributes<HTMLButtonElement> { ... }

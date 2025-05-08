@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Children, ReactNode, RefObject, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Breakpoint, CarouselOrientation, CarouselPaginationType, CarouselSliderMode } from "../carousel.types";
@@ -120,8 +121,7 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
                 slideRef.current.style.transform = `translateX(-${slidesToClone * (100 / visibleItems)}%)`;
 
 
-                // Forzar un reflow
-                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                // Forzar un reflow 
                 slideRef.current.offsetHeight;
 
                 // Restaurar la transición
@@ -318,16 +318,12 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
     }, [isPlaying, nextSlide, isDragging, isTransitioning, isReturning, loop, activeIndex, totalItems, visibleItems, transitionDuration]);
 
     useEffect(() => {
-        // Dónde adjuntar el listener:
-        // 1. window: Para control global (funciona sin que el carrusel tenga foco, puede ser molesto)
-        // 2. containerRef.current: Para control cuando el carrusel o un elemento dentro tiene foco (mejor para accesibilidad y evitar conflictos)
         const containerElement = containerRef.current;
         console.log(containerElement);
 
-        if (!containerElement) return; // Asegurarse de que la referencia al DOM existe
+        if (!containerElement) return;
 
         const handleKeyPress = (event: KeyboardEvent) => {
-            // Opcional: Verificar si el evento proviene de un input, textarea o select para no interferir
             console.log(event.key);
             if (event.target instanceof HTMLElement && ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) {
                 return;
@@ -336,20 +332,18 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
 
             switch (event.key) {
                 case 'ArrowLeft':
-                    // Opcional: event.preventDefault(); si quieres evitar el scroll nativo de la página con las flechas
-                    prevSlide(); // Llama a la función del hook
+                    prevSlide();
                     break;
                 case 'ArrowRight':
-                    // Opcional: event.preventDefault();
-                    nextSlide(); // Llama a la función del hook
+                    nextSlide();
                     break;
                 default:
-                    return; // No hacer nada si no es una flecha relevante
+                    return;
             }
         };
 
         // Adjuntar el event listener al contenedor principal del carrusel
-        containerElement.addEventListener('keydown', handleKeyPress); // keydown para reacción inmediata
+        containerElement.addEventListener('keydown', handleKeyPress);
 
         // Función de limpieza: Remover el event listener al desmontar o si cambian dependencias
         return () => {
@@ -458,7 +452,7 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
                     setTimeout(() => setIsReturning(false), 300);
                 } else {
                     // Avanzar con transición limpia
-                    setDragOffset(0); // Resetear el offset antes de la transición
+                    setDragOffset(0);
                     nextSlide();
                 }
             } else {
@@ -469,7 +463,7 @@ export const useSliderControl = ({ orientation, loop, autoPlay, breakpoints, pag
                     setTimeout(() => setIsReturning(false), 300);
                 } else {
                     // Retroceder con transición limpia
-                    setDragOffset(0); // Resetear el offset antes de la transición
+                    setDragOffset(0);
                     prevSlide();
                 }
             }
