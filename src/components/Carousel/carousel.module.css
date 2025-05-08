@@ -7,6 +7,9 @@
     height: max-content;
     width: max-content;
 
+    &:focus-within {
+        outline: 2px solid var(--primary-outline-color);
+    }
 
     &.lambda-carousel-horizontal {
         flex-direction: column;
@@ -100,16 +103,13 @@
 .lambda-carousel-container {
     display: flex;
     width: 100%;
-    user-select: none;
     will-change: transform;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 
-    &:focus-within {
-        outline: 2px solid var(--primary-outline-color);
-    }
+
 
 }
 
@@ -141,7 +141,6 @@
 
 
 .lambda-carousel-item {
-    user-select: none;
     flex-shrink: 0;
     touch-action: pan-y;
     will-change: transform;
