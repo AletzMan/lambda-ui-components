@@ -169,6 +169,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                 role={role}
                 aria-label={ariaLabel}
                 ref={containerRef ?? ref}
+                tabIndex={0}
                 {...restProps}
             >
                 {/* Contenedor del carousel */}
