@@ -24,6 +24,8 @@ export const carouselVariants = cva(styles['lambda-carousel'], {
     defaultVariants: {
         orientation: "horizontal",
         paginationType: "dots",
+        showNavigationButtons: true,
+        showPagination: true
     },
 });
 
@@ -77,7 +79,7 @@ export const carouselButtonVariants = cva(styles['lambda-carousel-button'], {
     defaultVariants: {
         orientation: "horizontal",
         disabled: false,
-        paginationType: "dots"
+        paginationType: "dots",
     },
 });
 
@@ -137,7 +139,8 @@ export const carouselThumbnailsVariants = cva(styles['lambda-carousel-thumbnails
     },
     defaultVariants: {
         orientation: "horizontal",
-        position: "center"
+        position: "center",
+        showNavigationButtons: true
     },
 });
 
