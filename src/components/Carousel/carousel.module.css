@@ -4,8 +4,10 @@
     overflow: hidden;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
-    height: max-content;
-    width: max-content;
+    font-family: var(--font-family);
+    height: 100%;
+    width: 100%;
+
 
     &:focus-within {
         outline: 2px solid var(--primary-outline-color);
@@ -13,6 +15,7 @@
 
     &.lambda-carousel-horizontal {
         flex-direction: column;
+        max-height: 400px;
 
         &.lambda-carousel-thumbnail {
             padding: var(--padding-md) var(--padding-xl) var(--padding-2xl) var(--padding-xl);
