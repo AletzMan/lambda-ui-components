@@ -1,6 +1,7 @@
 .lambda-accordion {
     width: 100%;
     overflow: hidden;
+    font-family: var(--font-family);
 }
 
 /* Variantes del contenedor principal */
@@ -101,13 +102,13 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: transparent;
     border: none;
     text-align: left;
     cursor: pointer;
     font-weight: var(--font-weight-reg);
     color: var(--surface-h);
     transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: transparent;
 }
 
 
@@ -153,10 +154,10 @@
 }
 
 /* Estilos de hover/focus para el header */
-.lambda-accordion-header:hover:not(:disabled),
+.lambda-accordion-header:hover:not(:disabled):not(.lambda-accordion-header-open),
 .lambda-accordion-header:focus-visible:not(:disabled) {
     color: var(--foreground-color);
-    background-color: var(--surface-c);
+    background-color: var(--surface-b);
     outline: none;
 }
 
@@ -172,7 +173,7 @@
 }
 
 .lambda-accordion-header-closed {
-    background-color: var(--surface-b);
+    background-color: var(--surface-a);
 }
 
 .lambda-accordion-header-disabled {
@@ -216,7 +217,7 @@
 
 /* Variantes del AccordionContent */
 .lambda-accordion-content-open {
-    background-color: var(--surface-a);
+    background-color: var(--surface-b);
 }
 
 .lambda-accordion-content-closed {

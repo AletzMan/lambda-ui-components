@@ -40,6 +40,7 @@ export const accordionItemVariants = cva(styles['lambda-accordion-item'], {
     defaultVariants: {
         state: 'closed',
         disabled: false,
+        variant: 'default'
     },
 });
 
@@ -75,6 +76,7 @@ export const accordionHeaderVariants = cva(styles['lambda-accordion-header'], {
         state: 'closed',
         disabled: false,
         size: "medium",
+        variant: 'default'
     },
 });
 
@@ -99,6 +101,7 @@ export const accordionContentVariants = cva(styles['lambda-accordion-content'], 
     ],
     defaultVariants: {
         state: 'closed',
+        size: 'medium'
     },
 });
 

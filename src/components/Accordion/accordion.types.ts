@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 
 export type AccordionValue = string | number | null | undefined;
 export type AccordionVariant = "default" | "flush" | "split";
-export type AccordionSize = "small" | "medium" | "large";
+export type AccordionSize = "tiny" | "small" | "medium" | "large";
 
 
 // --- Props para el componente Accordion (Padre) ---
@@ -46,6 +46,8 @@ export interface AccordionProps extends Omit<HTMLAttributes<HTMLDivElement>, "de
 
     /**
      * Opcional: Tamaño visual del Accordion.
+     * @type `AccordionSize`
+     * @default `medium`
      */
     size?: AccordionSize;
 
