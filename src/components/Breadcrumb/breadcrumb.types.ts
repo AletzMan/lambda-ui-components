@@ -10,7 +10,7 @@ export interface BreadcrumbProps {
 	/**
 	 * Variant of the breadcrumb
 	 */
-	variant?: "outline" | "flat" | "solid" | undefined;
+	variant?: "outline" | "flat" | "none" | undefined;
 
 	/**
 	 * Separator of the breadcrumb
@@ -20,6 +20,10 @@ export interface BreadcrumbProps {
 	 * Color of the breadcrumb
 	 */
 	color?: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | undefined;
+	/**
+	 * Maximun number of items to show
+	 */
+	maxItems?: number;
 }
 
 export interface BreadcrumbItem {

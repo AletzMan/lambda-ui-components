@@ -17,7 +17,7 @@ const meta: Meta<typeof Breadcrumb> = {
 		},
 		variant: {
 			control: "select",
-			options: ["outline", "flat", "solid"],
+			options: ["outline", "flat", "none"],
 			description: "Variant of the breadcrumb",
 			type: "string",
 		},
@@ -37,7 +37,7 @@ type Story = StoryObj<typeof Breadcrumb>;
 export const Default: Story = {
 	args: {
 		size: "medium",
-		variant: "solid",
+		variant: "none",
 		separator: "chevron",
 	},
 };

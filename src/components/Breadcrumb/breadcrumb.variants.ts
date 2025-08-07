@@ -12,12 +12,12 @@ export const breadcrumb = cva(styles["breadcrumb"], {
 		variant: {
 			outline: styles["breadcrumb-outline"],
 			flat: styles["breadcrumb-flat"],
-			solid: styles["breadcrumb-solid"],
+			none: styles["breadcrumb-none"],
 		},
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "solid",
+		variant: "none",
 	},
 });
 
@@ -32,7 +32,7 @@ export const breadcrumbItem = cva(styles["breadcrumb-item"], {
 		variant: {
 			outline: styles["breadcrumb-item-outline"],
 			flat: styles["breadcrumb-item-flat"],
-			solid: styles["breadcrumb-item-solid"],
+			none: styles["breadcrumb-item-none"],
 		},
 		color: {
 			primary: styles["breadcrumb-item-primary"],
@@ -45,7 +45,7 @@ export const breadcrumbItem = cva(styles["breadcrumb-item"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "solid",
+		variant: "none",
 		color: "primary",
 	},
 });
@@ -61,12 +61,12 @@ export const breadcrumbSeparator = cva(styles["breadcrumb-separator"], {
 		variant: {
 			outline: styles["breadcrumb-separator-outline"],
 			flat: styles["breadcrumb-separator-flat"],
-			solid: styles["breadcrumb-separator-solid"],
+			none: styles["breadcrumb-separator-none"],
 		},
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "solid",
+		variant: "none",
 	},
 });
 
@@ -81,11 +81,25 @@ export const breadcrumbContainer = cva(styles["breadcrumb-container"], {
 		variant: {
 			outline: styles["breadcrumb-container-outline"],
 			flat: styles["breadcrumb-container-flat"],
-			solid: styles["breadcrumb-container-solid"],
+			none: styles["breadcrumb-container-none"],
 		},
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "solid",
+		variant: "none",
+	},
+});
+
+export const breadcrumbEllipsis = cva(styles["breadcrumb-ellipsis"], {
+	variants: {
+		size: {
+			tiny: styles["breadcrumb-ellipsis-tiny"],
+			small: styles["breadcrumb-ellipsis-small"],
+			medium: styles["breadcrumb-ellipsis-medium"],
+			large: styles["breadcrumb-ellipsis-large"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
 	},
 });
