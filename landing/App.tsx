@@ -18,12 +18,14 @@ import {
 	BookIcon,
 	Bookmark,
 	CircleEllipsis,
+	Code,
 	CodeXml,
 	Coins,
 	DatabaseIcon,
 	HelpCircleIcon,
 	HomeIcon,
 	InfoIcon,
+	LayoutDashboard,
 	LogOutIcon,
 	RssIcon,
 	Search,
@@ -260,11 +262,12 @@ function App() {
 		"medium" | "small" | "large" | "tiny" | undefined
 	>("small");
 	const [variantBreadcrumb, setVariantBreadcrumb] = useState<
-		"outline" | "flat" | "solid" | undefined
-	>("solid");
+		"outline" | "flat" | "none" | undefined
+	>("none");
 	const [separatorBreadcrumb, setSeparatorBreadcrumb] = useState<
 		"chevron" | "slash" | "dot" | "arrow" | undefined
 	>("chevron");
+	const [maxItemsBreadcrumb, setMaxItemsBreadcrumb] = useState(0);
 
 	return (
 		<section className={`${styles.section} scrollBar`}>
@@ -2580,12 +2583,12 @@ function App() {
 						value={variantBreadcrumb}
 						size="small"
 						onChange={(value) =>
-							setVariantBreadcrumb(value as "outline" | "flat" | "solid" | undefined)
+							setVariantBreadcrumb(value as "outline" | "flat" | "none" | undefined)
 						}
 						options={[
 							{ label: "Outline", value: "outline" },
 							{ label: "Flat", value: "flat" },
-							{ label: "Solid", value: "solid" },
+							{ label: "None", value: "none" },
 						]}
 					/>
 					<Select
@@ -2603,18 +2606,29 @@ function App() {
 							{ label: "Arrow", value: "arrow" },
 						]}
 					/>
+					<div style={{ width: "4em" }}>
+						<InputNumber
+							onChange={(value) => setMaxItemsBreadcrumb(value as number)}
+							value={maxItemsBreadcrumb}
+							size={"small"}
+							min={0}
+						/>
+					</div>
 				</div>
 				<div className={styles.container_buttons}>
 					<Breadcrumb
 						items={[
 							{ label: "Home", href: "/", icon: <HomeIcon /> },
 							{ label: "Library", href: "/library", icon: <BookIcon /> },
-							{ label: "Data", href: "", icon: <DatabaseIcon /> },
+							{ label: "Data", href: "/data", icon: <DatabaseIcon /> },
+							{ label: "Section", href: "/section", icon: <LayoutDashboard /> },
+							{ label: "Programming", href: "", icon: <Code /> },
 						]}
 						size={sizeBreadcrumb}
 						variant={variantBreadcrumb}
 						separator={separatorBreadcrumb}
 						color={colorBreadcrumb}
+						maxItems={maxItemsBreadcrumb}
 					/>
 				</div>
 			</section>
