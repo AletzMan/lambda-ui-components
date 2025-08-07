@@ -15,10 +15,12 @@ import {
 	Tooltip,
 } from "../src/main";
 import {
+	BookIcon,
 	Bookmark,
 	CircleEllipsis,
 	CodeXml,
 	Coins,
+	DatabaseIcon,
 	HelpCircleIcon,
 	HomeIcon,
 	InfoIcon,
@@ -2605,9 +2607,9 @@ function App() {
 				<div className={styles.container_buttons}>
 					<Breadcrumb
 						items={[
-							{ label: "Home", href: "/" },
-							{ label: "Library", href: "/library" },
-							{ label: "Data", href: "/data" },
+							{ label: "Home", href: "/", icon: <HomeIcon /> },
+							{ label: "Library", href: "/library", icon: <BookIcon /> },
+							{ label: "Data", href: "", icon: <DatabaseIcon /> },
 						]}
 						size={sizeBreadcrumb}
 						variant={variantBreadcrumb}
