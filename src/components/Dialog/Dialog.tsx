@@ -75,7 +75,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
                 // o si isOpen cambia a true de nuevo antes de que termine la animación de salida.
                 return () => {
                     clearTimeout(timer);
-                    console.log('Dialog: Cleanup timer');
                 };
             }
         }, [isOpen]);
