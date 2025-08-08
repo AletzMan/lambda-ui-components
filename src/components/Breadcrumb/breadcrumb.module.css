@@ -1,6 +1,7 @@
 .breadcrumb {
 	display: flex;
 	gap: 8px;
+	font-family: var(--font-family);
 }
 
 .breadcrumb-item {
@@ -55,8 +56,19 @@
 .breadcrumb-separator {
 	display: flex;
 	align-items: center;
-	margin-left: 4px;
 	color: var(--foreground-label-color);
+
+	&:has(svg) {
+		svg {
+			margin-left: var(--gap-xs);
+			margin-right: var(--gap-xs);
+		}
+	}
+
+	&:not(:has(svg)) {
+		margin-left: var(--gap-sm);
+		margin-right: var(--gap-sm);
+	}
 
 	&.breadcrumb-separator-tiny {
 		font-size: var(--font-size-sm);
