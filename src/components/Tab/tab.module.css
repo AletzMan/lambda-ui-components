@@ -42,6 +42,7 @@
 	&:is(.tab-container-box) {
 		padding: var(--padding-xs);
 		gap: var(--gap-md);
+		border: 1px solid var(--surface-c);
 		background-color: var(--surface-a);
 	}
 
@@ -49,7 +50,7 @@
 		padding: var(--padding-none) var(--padding-md);
 		background-color: transparent;
 		border: 1px solid transparent;
-		gap: var(--gap-md);
+		gap: var(--gap-xs);
 		border-bottom: 1px solid var(--surface-d);
 		border-bottom-left-radius: var(--border-radius-none) !important;
 		border-bottom-right-radius: var(--border-radius-none) !important;
@@ -92,7 +93,7 @@
 	font-weight: 600;
 	min-width: max-content;
 	cursor: pointer;
-	transition: background-color 0.5s ease;
+	transition: background-color, opacity 0.5s ease;
 	z-index: 2;
 
 	&:is(.tab-label-underline) {
@@ -101,6 +102,10 @@
 		&:not(.tab-label-selected) {
 			background-color: transparent;
 			color: var(--foreground-secondary-color);
+
+			&:hover {
+				color: var(--foreground-color);
+			}
 		}
 	}
 
@@ -110,6 +115,10 @@
 		&:not(.tab-label-selected) {
 			background-color: transparent;
 			color: var(--foreground-secondary-color);
+
+			&:hover {
+				background-color: var(--surface-c);
+			}
 		}
 	}
 
@@ -117,6 +126,10 @@
 		&:not(.tab-label-selected) {
 			background-color: transparent;
 			color: var(--foreground-secondary-color);
+
+			&:hover {
+				background-color: var(--surface-b);
+			}
 		}
 	}
 
@@ -126,8 +139,18 @@
 		border-bottom: none;
 
 		&:not(.tab-label-selected) {
-			background-color: transparent;
+			background-color: var(--surface-b);
 			color: var(--foreground-secondary-color);
+			border: 1px solid var(--surface-d);
+			border-bottom: none;
+			border-bottom-left-radius: var(--border-radius-none) !important;
+			border-bottom-right-radius: var(--border-radius-none) !important;
+			z-index: 1;
+			opacity: 0.5;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 
@@ -166,7 +189,7 @@
 
 .tab-label-small {
 	font-size: var(--font-size-sm);
-	padding: var(--padding-none) var(--padding-xl);
+	padding: var(--padding-none) var(--padding-lg);
 	height: var(--height-button-sm);
 }
 
@@ -178,7 +201,7 @@
 
 .tab-label-large {
 	font-size: var(--font-size-lg);
-	padding: var(--padding-none) var(--padding-xl);
+	padding: var(--padding-none) var(--padding-lg);
 	height: var(--height-button-lg);
 }
 
@@ -209,7 +232,7 @@
 .tab-current {
 	position: absolute;
 	transition: left 0.5s ease;
-	z-index: 1;
+	z-index: 2;
 
 	&:is(.tab-current-underline) {
 		background-color: transparent;
