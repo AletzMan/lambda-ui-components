@@ -67,6 +67,8 @@ import {
 	CarouselPaginationType,
 } from "../src/components/Carousel/carousel.types";
 import { Breadcrumb } from "../src/components/Breadcrumb/Breadcrumb";
+import { TabSize, TabVariant, TabColor, TabRadius } from "../src/components/Tab/tab.types";
+import { Tab } from "../src/components/Tab/Tab";
 
 function App() {
 	const [variantAccordion, setVariantAccordion] = useState<AccordionVariant>("default");
@@ -268,6 +270,10 @@ function App() {
 		"chevron" | "slash" | "dot" | "arrow" | undefined
 	>("chevron");
 	const [maxItemsBreadcrumb, setMaxItemsBreadcrumb] = useState(0);
+	const [variantTab, setVariantTab] = useState<TabVariant>("underline");
+	const [sizeTab, setSizeTab] = useState<TabSize>("medium");
+	const [colorTab, setColorTab] = useState<TabColor>("secondary");
+	const [radiusTab, setRadiusTab] = useState<TabRadius>("small");
 
 	return (
 		<section className={`${styles.section} scrollBar`}>
@@ -2629,6 +2635,83 @@ function App() {
 						separator={separatorBreadcrumb}
 						color={colorBreadcrumb}
 						maxItems={maxItemsBreadcrumb}
+					/>
+				</div>
+			</section>
+			{/* TAB */}
+			<section className={styles.subsection}>
+				<h2 className={styles.subtitle}>Tab</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Variant"
+						className={styles.select_size}
+						value={variantTab}
+						size="small"
+						onChange={(value) => setVariantTab(value as TabVariant)}
+						options={[
+							{ label: "Underline", value: "underline" },
+							{ label: "Flat", value: "flat" },
+							{ label: "Box", value: "box" },
+							{ label: "Border", value: "border" },
+						]}
+					/>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeTab}
+						size="small"
+						onChange={(value) => setSizeTab(value as TabSize)}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Color"
+						className={styles.select_size}
+						value={colorTab}
+						size="small"
+						onChange={(value) => setColorTab(value as TabColor)}
+						options={[
+							{ label: "Primary", value: "primary" },
+							{ label: "Secondary", value: "secondary" },
+							{ label: "Success", value: "success" },
+							{ label: "Danger", value: "danger" },
+							{ label: "Warning", value: "warning" },
+							{ label: "Info", value: "info" },
+						]}
+					/>
+					<Select
+						label="Radius"
+						className={styles.select_size}
+						value={radiusTab}
+						size="small"
+						onChange={(value) => setRadiusTab(value as TabRadius)}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+							{ label: "Full", value: "full" },
+						]}
+					/>
+				</div>
+				<div className={styles.container_buttons}>
+					<Tab
+						variant={variantTab}
+						size={sizeTab}
+						color={colorTab}
+						radius={radiusTab}
+						items={[
+							{ id: "1", label: "Home", icon: <HomeIcon /> },
+							{ id: "2", label: "Library", icon: <BookIcon /> },
+							{ id: "3", label: "Data", icon: <DatabaseIcon /> },
+							{ id: "4", label: "Section", icon: <LayoutDashboard /> },
+							{ id: "5", label: "Programming", icon: <Code /> },
+						]}
 					/>
 				</div>
 			</section>
