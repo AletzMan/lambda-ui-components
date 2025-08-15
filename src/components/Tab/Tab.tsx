@@ -51,7 +51,7 @@ export const Tab = forwardRef<HTMLDivElement, TabProps>(
 			const rect = el.getBoundingClientRect();
 
 			// Compensa scroll horizontal si existiera
-			const left = rect.left - containerRect.left + container.scrollLeft;
+			const left = rect.left - containerRect.left + container.scrollLeft - 1;
 			const width = rect.width;
 
 			setIndicator({ left, width });
