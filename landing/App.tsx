@@ -27,6 +27,7 @@ import {
 	InfoIcon,
 	LayoutDashboard,
 	LogOutIcon,
+	MenuIcon,
 	RssIcon,
 	Search,
 	SearchIcon,
@@ -71,6 +72,7 @@ import { TabSize, TabVariant, TabColor, TabRadius } from "../src/components/Tab/
 import { Tab } from "../src/components/Tab/Tab";
 
 function App() {
+	const [openDrawerComponents, setOpenDrawerComponents] = useState(false);
 	const [variantAccordion, setVariantAccordion] = useState<AccordionVariant>("default");
 	const [sizeAccordion, setSizeAccordion] = useState<AccordionSize>("medium");
 	const [loadingButtons, setLoadingButtons] = useState(false);
@@ -274,15 +276,78 @@ function App() {
 	const [sizeTab, setSizeTab] = useState<TabSize>("medium");
 	const [colorTab, setColorTab] = useState<TabColor>("secondary");
 	const [radiusTab, setRadiusTab] = useState<TabRadius>("small");
+	const COMPONENTS = [
+		"Accordion",
+		"Alert",
+		"Breadcrumb",
+		"Button",
+		"Card",
+		"Carousel",
+		"Checkbox",
+		"Dialog",
+		"Drawer",
+		"File Upload",
+		"Input",
+		"Input Number",
+		"Link",
+		"Pagination",
+		"Range",
+		"Radio",
+		"Select",
+		"Switch",
+		"Tab",
+		"Text Area",
+		"ToolTip",
+	];
 
 	return (
 		<section className={`${styles.section} scrollBar`}>
 			<header className={styles.header}>
-				<h1 className={styles.title}>Lambda UI Components</h1>
+				<div className={styles.header_controls}>
+					<div className={styles.header_menu}>
+						<Button
+							variant="outline"
+							size="small"
+							color="info"
+							icon={<MenuIcon />}
+							onClick={() => setOpenDrawerComponents(true)}
+						/>
+						<Drawer
+							isOpen={openDrawerComponents}
+							onClose={() => setOpenDrawerComponents(false)}
+							title="Components"
+							closeOnOverlayClick={true}
+							closeOnEscape={true}
+							showCloseButton={true}
+							placement="left"
+							width="xsmall"
+						>
+							<div
+								style={{ display: "flex", flexDirection: "column", gap: "0.15em", padding: "1em" }}
+							>
+								{COMPONENTS.map((component) => (
+									<Link
+										key={component}
+										href={`#${component.toLowerCase()}`}
+										variant={
+											document.location.hash === `#${component.toLowerCase()}` ? "ghost" : "text"
+										}
+										type="button"
+										color="info"
+										label={component}
+										size="small"
+										onClick={() => setOpenDrawerComponents(false)}
+									/>
+								))}
+							</div>
+						</Drawer>
+					</div>
+					<h1 className={styles.title}>Lambda UI Components</h1>
+				</div>
 				<ButtonThemeController />
 			</header>
 			{/* ACCORDION */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="accordion">
 				<h2 className={styles.subtitle}>Accordion</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -379,7 +444,7 @@ function App() {
 				</div>
 			</section>
 			{/* CAROUSEL */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="carousel">
 				<h2 className={styles.subtitle}>Carousel</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -489,7 +554,7 @@ function App() {
 				</div>
 			</section>
 			{/* BUTTON */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="button">
 				<h2 className={styles.subtitle}>Button</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -566,7 +631,7 @@ function App() {
 				</div>
 			</section>
 			{/* LINK */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="link">
 				<h2 className={styles.subtitle}>Link</h2>
 				<div className={styles.control_buttons}>
 					<div style={{ display: "flex", gap: "1rem", flexFlow: "wrap" }}>
@@ -656,7 +721,7 @@ function App() {
 				</div>
 			</section>
 			{/* CHECKBOX */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="checkbox">
 				<h2 className={styles.subtitle}>Checkbox</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -759,7 +824,7 @@ function App() {
 				</div>
 			</section>
 			{/* SWITCH */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="switch">
 				<h2 className={styles.subtitle}>Switch</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -860,7 +925,7 @@ function App() {
 				</div>
 			</section>
 			{/* RADIO */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="radio">
 				<h2 className={styles.subtitle}>Radio</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -961,7 +1026,7 @@ function App() {
 				</div>
 			</section>
 			{/* INPUT */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="input">
 				<h2 className={styles.subtitle}>Input</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -1180,7 +1245,7 @@ function App() {
 				</div>
 			</section>
 			{/* INPUT NUMBER */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="input number">
 				<h2 className={styles.subtitle}>Input Number</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -1295,7 +1360,7 @@ function App() {
 				</div>
 			</section>
 			{/* SELECT */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="select">
 				<h2 className={styles.subtitle}>Select</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -1379,7 +1444,7 @@ function App() {
 				</div>
 			</section>
 			{/* NOTIFICATION */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="notification">
 				<h2 className={styles.subtitle}>Notification</h2>
 				<div className={styles.control_buttons}>
 					<select
@@ -1602,7 +1667,7 @@ function App() {
 				</div>
 			</section>
 			{/* ALERT */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="alert">
 				<h2 className={styles.subtitle}>Alert</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -1687,7 +1752,7 @@ function App() {
 				</div>
 			</section>
 			{/* CARD */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="card">
 				<h2 className={styles.subtitle}>Card</h2>
 				<div className={styles.control_buttons}>
 					<select
@@ -1786,7 +1851,7 @@ function App() {
 				</div>
 			</section>
 			{/* TEXT AREA */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="text area">
 				<h2 className={styles.subtitle}>Text Area</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -1871,7 +1936,7 @@ function App() {
 				</div>
 			</section>
 			{/* FILE UPLOAD */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="file upload">
 				<h2 className={styles.subtitle}>File Upload</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -1972,7 +2037,7 @@ function App() {
 				</div>
 			</section>
 			{/* PAGINATION */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="pagination">
 				<h2 className={styles.subtitle}>Pagination</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -2074,7 +2139,7 @@ function App() {
 				</div>
 			</section>
 			{/* RANGE */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="range">
 				<h2 className={styles.subtitle}>Range</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -2135,7 +2200,7 @@ function App() {
 				</div>
 			</section>
 			{/* TOOTTIP */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="tooltip">
 				<h2 className={styles.subtitle}>ToolTip</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -2235,7 +2300,7 @@ function App() {
 				</div>
 			</section>
 			{/* DIALOG */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="dialog">
 				<h2 className={styles.subtitle}>Dialog</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -2379,7 +2444,7 @@ function App() {
 				</div>
 			</section>
 			{/* DRAWER */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="drawer">
 				<h2 className={styles.subtitle}>Drawer</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -2539,7 +2604,7 @@ function App() {
 				</div>
 			</section>
 			{/** BREADCRUMB */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="breadcrumb">
 				<h2 className={styles.subtitle}>Breadcrumb</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -2639,7 +2704,7 @@ function App() {
 				</div>
 			</section>
 			{/* TAB */}
-			<section className={styles.subsection}>
+			<section className={styles.subsection} id="tab">
 				<h2 className={styles.subtitle}>Tab</h2>
 				<div className={styles.control_buttons}>
 					<Select
