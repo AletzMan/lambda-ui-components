@@ -13,6 +13,7 @@
 	--padding-2xl: 64px;
 
 	--gap-none: 0px;
+	--gap-xxs: 1px;
 	--gap-xs: 2px;
 	--gap-sm: 4px;
 	--gap-md: 8px;
@@ -80,7 +81,7 @@
 [data-theme="light"] {
 	--background-color: #f3f3f3;
 	--foreground-color: #171717;
-	--foreground-secondary-color: #494949;
+	--foreground-secondary-color: #808080;
 	--foreground-invert-color: #ffffff;
 	--foreground-label-color: #8fa2b3;
 	--foreground-disabled-color: #b7b5b5;
@@ -158,7 +159,7 @@
 [data-theme="dark"] {
 	--background-color: #090909;
 	--foreground-color: #ffffff;
-	--foreground-secondary-color: #9c9c9c;
+	--foreground-secondary-color: #6e6e6e;
 	--foreground-invert-color: #222222;
 	--foreground-label-color: #b1c0cc;
 	--foreground-disabled-color: #b7b5b5;
