@@ -41,7 +41,7 @@ export default meta;
 
 type Story = StoryObj<typeof Tab>;
 
-export const Default: Story = {
+export const Underline: Story = {
 	args: {
 		items: [
 			{ id: "1", label: "Products", content: "Products content" },
@@ -49,6 +49,54 @@ export const Default: Story = {
 			{ id: "3", label: "Customers", content: "Customers content" },
 		],
 		variant: "underline",
+		size: "medium",
+		color: "secondary",
+		radius: "small",
+		disabled: false,
+		onChange: () => {},
+	},
+};
+
+export const Flat: Story = {
+	args: {
+		items: [
+			{ id: "1", label: "Products", content: "Products content" },
+			{ id: "2", label: "Orders", content: "Orders content" },
+			{ id: "3", label: "Customers", content: "Customers content" },
+		],
+		variant: "flat",
+		size: "medium",
+		color: "secondary",
+		radius: "small",
+		disabled: false,
+		onChange: () => {},
+	},
+};
+
+export const Box: Story = {
+	args: {
+		items: [
+			{ id: "1", label: "Products", content: "Products content" },
+			{ id: "2", label: "Orders", content: "Orders content" },
+			{ id: "3", label: "Customers", content: "Customers content" },
+		],
+		variant: "box",
+		size: "medium",
+		color: "secondary",
+		radius: "small",
+		disabled: false,
+		onChange: () => {},
+	},
+};
+
+export const Border: Story = {
+	args: {
+		items: [
+			{ id: "1", label: "Products", content: "Products content" },
+			{ id: "2", label: "Orders", content: "Orders content" },
+			{ id: "3", label: "Customers", content: "Customers content" },
+		],
+		variant: "border",
 		size: "medium",
 		color: "secondary",
 		radius: "small",
