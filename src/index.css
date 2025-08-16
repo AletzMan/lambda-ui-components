@@ -5,6 +5,8 @@
 	--white-color: #ffffff;
 
 	--padding-none: 0px;
+	--padding-xxxs: 1px;
+	--padding-xxs: 2px;
 	--padding-xs: 4px;
 	--padding-sm: 6px;
 	--padding-md: 8px;
@@ -26,11 +28,11 @@
 	--font-weight-md: 600;
 	--font-weight-bold: 800;
 
-	--font-size-xs: 11px;
+	--font-size-xs: 10px;
 	--font-size-sm: 12px;
-	--font-size-md: 13px;
-	--font-size-lg: 15px;
-	--font-size-xl: 17px;
+	--font-size-md: 14px;
+	--font-size-lg: 16px;
+	--font-size-xl: 18px;
 
 	--border-radius-none: 0px;
 	--border-radius-xs: 2px;
@@ -137,7 +139,7 @@
 	--success-darkened-color: #052706;
 	--success-lightened-color: #cffed0;
 
-	--warning-color: #ffa60d;
+	--warning-color: #fdae1b;
 	--warning-hover-color: #f38f1d;
 	--warning-light-color: #f7bb5520;
 	--warning-outline-color: #f6be5750;

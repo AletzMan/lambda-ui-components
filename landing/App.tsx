@@ -27,6 +27,7 @@ import {
 	InfoIcon,
 	LayoutDashboard,
 	LogOutIcon,
+	LucideBell,
 	MenuIcon,
 	RssIcon,
 	Search,
@@ -70,6 +71,7 @@ import {
 import { Breadcrumb } from "../src/components/Breadcrumb/Breadcrumb";
 import { TabSize, TabVariant, TabColor, TabRadius } from "../src/components/Tab/tab.types";
 import { Tab } from "../src/components/Tab/Tab";
+import { Badge } from "../src/components/Badge/Badge";
 
 function App() {
 	const [openDrawerComponents, setOpenDrawerComponents] = useState(false);
@@ -276,9 +278,31 @@ function App() {
 	const [sizeTab, setSizeTab] = useState<TabSize>("medium");
 	const [colorTab, setColorTab] = useState<TabColor>("secondary");
 	const [radiusTab, setRadiusTab] = useState<TabRadius>("small");
+	const [sizeBadge, setSizeBadge] = useState<"small" | "medium" | "large" | "tiny" | undefined>(
+		"small"
+	);
+	const [variantBadge, setVariantBadge] = useState<
+		"flat" | "outline" | "solid" | "dashed" | "subtle" | undefined
+	>("flat");
+	const [radiusBadge, setRadiusBadge] = useState<
+		"none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
+	>("small");
+	const [countBadge, setCountBadge] = useState<number | undefined>(undefined);
+	const [isCloseButton, setIsCloseButton] = useState(false);
+	const [withIconBadge, setWithIconBadge] = useState(false);
+	const [withTextBadge, setWithTextBadge] = useState(false);
+	const [arrayBadge, setArrayBadge] = useState<string[]>([
+		"primary",
+		"secondary",
+		"danger",
+		"success",
+		"warning",
+		"info",
+	]);
 	const COMPONENTS = [
 		"Accordion",
 		"Alert",
+		"Badge",
 		"Breadcrumb",
 		"Button",
 		"Card",
@@ -443,6 +467,482 @@ function App() {
 					</div>
 				</div>
 			</section>
+			{/* ALERT */}
+			<section className={styles.subsection} id="alert">
+				<h2 className={styles.subtitle}>Alert</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeAlert}
+						size="small"
+						onChange={(value) => setSizeAlert(value as AlertSize)}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={variantAlert}
+						size="small"
+						onChange={(value) => setVariantAlert(value as AlertVariant)}
+						options={[
+							{ label: "Flat", value: "flat" },
+							{ label: "Outline", value: "outline" },
+							{ label: "Solid", value: "solid" },
+						]}
+					/>
+				</div>
+
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<Alert
+							variant={variantAlert}
+							color="default"
+							title="Default"
+							message="This is a standard notification message for your information"
+							customIcon={<RssIcon />}
+							onClose={() => console.log("")}
+							size={sizeAlert}
+						/>
+						<Alert
+							variant={variantAlert}
+							color="primary"
+							title="Priamry"
+							message="Please review the details below and take the necessary action"
+							onClose={() => console.log("")}
+							size={sizeAlert}
+						/>
+						<Alert
+							variant={variantAlert}
+							color="danger"
+							title="Success"
+							message="Your changes have been saved successfully"
+							onClose={() => console.log("")}
+							size={sizeAlert}
+						/>
+						<Alert
+							variant={variantAlert}
+							color="success"
+							title="Danger"
+							message="Unable to complete the request. Please try again or contact support"
+							onClose={() => console.log("")}
+							size={sizeAlert}
+						/>
+						<Alert
+							variant={variantAlert}
+							color="warning"
+							title="Warning"
+							message="Please be aware that continuing might lead to unexpected results"
+							onClose={() => console.log("")}
+							size={sizeAlert}
+						/>
+						<Alert
+							variant={variantAlert}
+							color="info"
+							title="Info"
+							message="Here is some helpful information regarding the current process"
+							onClose={() => console.log("")}
+							size={sizeAlert}
+						/>
+					</div>
+				</div>
+			</section>
+			{/* BADGE */}
+			<section className={styles.subsection} id="badge">
+				<h2 className={styles.subtitle}>Badge</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeBadge}
+						size="small"
+						onChange={(value) =>
+							setSizeBadge(value as "tiny" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Variant"
+						className={styles.select_size}
+						value={variantBadge}
+						size="small"
+						onChange={(value) =>
+							setVariantBadge(value as "outline" | "flat" | "solid" | "dashed" | undefined)
+						}
+						options={[
+							{ label: "Outline", value: "outline" },
+							{ label: "Flat", value: "flat" },
+							{ label: "Solid", value: "solid" },
+							{ label: "Dashed", value: "dashed" },
+							{ label: "Subtle", value: "subtle" },
+						]}
+					/>
+					<Select
+						label="Radius"
+						className={styles.select_size}
+						value={radiusBadge}
+						size="small"
+						onChange={(value) =>
+							setRadiusBadge(
+								value as "none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
+							)
+						}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+							{ label: "Full", value: "full" },
+						]}
+					/>
+					<InputNumber
+						label="Count"
+						className={styles.select_size}
+						value={countBadge}
+						size="small"
+						onChange={(value) => setCountBadge(value)}
+					/>
+					<Checkbox
+						label="Close Button"
+						checked={isCloseButton}
+						size="medium"
+						color="secondary"
+						onChange={() => setIsCloseButton((state) => !state)}
+					/>
+					<Checkbox
+						label="With Icon"
+						checked={withIconBadge}
+						size="medium"
+						color="secondary"
+						onChange={() => setWithIconBadge((state) => !state)}
+					/>
+					<Checkbox
+						label="With Text"
+						checked={withTextBadge}
+						size="medium"
+						color="secondary"
+						onChange={() => setWithTextBadge((state) => !state)}
+					/>
+				</div>
+				<div className={styles.container_buttons} style={{ gap: "1.5rem" }}>
+					{arrayBadge.map((badge) => (
+						<Badge
+							key={badge}
+							text=""
+							size={sizeBadge}
+							variant={variantBadge}
+							color={
+								badge as
+									| "primary"
+									| "secondary"
+									| "danger"
+									| "success"
+									| "warning"
+									| "info"
+									| undefined
+							}
+							radius={radiusBadge}
+							count={countBadge}
+							onClose={
+								isCloseButton
+									? () => setArrayBadge(arrayBadge.filter((item) => item !== badge))
+									: undefined
+							}
+						>
+							{withIconBadge ? <LucideBell /> : ""}
+							{withTextBadge ? badge.toUpperCase() : ""}
+						</Badge>
+					))}
+				</div>
+			</section>
+
+			{/** BREADCRUMB */}
+			<section className={styles.subsection} id="breadcrumb">
+				<h2 className={styles.subtitle}>Breadcrumb</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						className={styles.select_size}
+						label="Color"
+						value={colorBreadcrumb}
+						size="small"
+						onChange={(value) =>
+							setColorBreadcrumb(
+								value as
+									| "primary"
+									| "secondary"
+									| "success"
+									| "danger"
+									| "warning"
+									| "info"
+									| undefined
+							)
+						}
+						options={[
+							{ label: "Primary", value: "primary" },
+							{ label: "Secondary", value: "secondary" },
+							{ label: "Success", value: "success" },
+							{ label: "Danger", value: "danger" },
+							{ label: "Warning", value: "warning" },
+							{ label: "Info", value: "info" },
+						]}
+					/>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeBreadcrumb}
+						size="small"
+						onChange={(value) =>
+							setSizeBreadcrumb(value as "tiny" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Variant"
+						className={styles.select_size}
+						value={variantBreadcrumb}
+						size="small"
+						onChange={(value) =>
+							setVariantBreadcrumb(value as "outline" | "flat" | "none" | undefined)
+						}
+						options={[
+							{ label: "Outline", value: "outline" },
+							{ label: "Flat", value: "flat" },
+							{ label: "None", value: "none" },
+						]}
+					/>
+					<Select
+						label="Separator"
+						className={styles.select_size}
+						value={separatorBreadcrumb}
+						size="small"
+						onChange={(value) =>
+							setSeparatorBreadcrumb(value as "chevron" | "slash" | "dot" | "arrow" | undefined)
+						}
+						options={[
+							{ label: "Chevron", value: "chevron" },
+							{ label: "Slash", value: "slash" },
+							{ label: "Dot", value: "dot" },
+							{ label: "Arrow", value: "arrow" },
+						]}
+					/>
+					<div style={{ width: "4em" }}>
+						<InputNumber
+							onChange={(value) => setMaxItemsBreadcrumb(value as number)}
+							value={maxItemsBreadcrumb}
+							size={"small"}
+							min={0}
+						/>
+					</div>
+				</div>
+				<div className={styles.container_buttons}>
+					<Breadcrumb
+						items={[
+							{ label: "Home", href: "/", icon: <HomeIcon /> },
+							{ label: "Library", href: "/library", icon: <BookIcon /> },
+							{ label: "Data", href: "/data", icon: <DatabaseIcon /> },
+							{ label: "Section", href: "/section", icon: <LayoutDashboard /> },
+							{ label: "Programming", href: "", icon: <Code /> },
+						]}
+						size={sizeBreadcrumb}
+						variant={variantBreadcrumb}
+						separator={separatorBreadcrumb}
+						color={colorBreadcrumb}
+						maxItems={maxItemsBreadcrumb}
+					/>
+				</div>
+			</section>
+			{/* BUTTON */}
+			<section className={styles.subsection} id="button">
+				<h2 className={styles.subtitle}>Button</h2>
+				<div className={styles.control_buttons}>
+					<Checkbox
+						label="Disabled"
+						checked={disabledButtons}
+						size="medium"
+						color="secondary"
+						onChange={(e) => setDisabledButtons(e.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="Loading"
+						checked={loadingButtons}
+						size="medium"
+						color="info"
+						onChange={(e) => setLoadingButtons(e.currentTarget.checked)}
+					/>
+					<select
+						className={styles.control_size}
+						value={sizeButtons}
+						onChange={(e) =>
+							setSizeButtons(
+								e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined
+							)
+						}
+					>
+						<option value="tiny">Tiny</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={radiusButtons}
+						onChange={(e) =>
+							setRadiusButtons(
+								e.currentTarget.value as
+									| "medium"
+									| "small"
+									| "large"
+									| "none"
+									| "pill"
+									| "circle"
+									| undefined
+							)
+						}
+					>
+						<option value="none">None</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+						<option value="pill">Pill</option>
+						<option value="circle">Cirlce</option>
+					</select>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						{buttonsPrimary.map((button) => (
+							<Button
+								key={button.color}
+								className={styles.button}
+								size={sizeButtons}
+								radius={radiusButtons}
+								variant="solid"
+								color={button.color}
+								label={button.label}
+								disabled={disabledButtons}
+								loading={loadingButtons}
+								loadingText="Loading"
+								iconPosition="left"
+								icon={button.icon}
+							/>
+						))}
+					</div>
+				</div>
+			</section>
+			{/* CARD */}
+			<section className={styles.subsection} id="card">
+				<h2 className={styles.subtitle}>Card</h2>
+				<div className={styles.control_buttons}>
+					<select
+						className={styles.control_size}
+						value={variantCard}
+						onChange={(e) =>
+							setVariantCard(e.currentTarget.value as "borderless" | "outline" | undefined)
+						}
+					>
+						<option value="borderless">Borderless</option>
+						<option value="outline">Outline</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={radiusCard}
+						onChange={(e) =>
+							setRadiusCard(
+								e.currentTarget.value as "none" | "small" | "medium" | "large" | undefined
+							)
+						}
+					>
+						<option value="none">None</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={sizeCard}
+						onChange={(e) =>
+							setSizeCard(e.currentTarget.value as "small" | "medium" | "large" | undefined)
+						}
+					>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+					</select>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<Card
+							variant={variantCard}
+							radius={radiusCard}
+							size={sizeCard}
+							image={{
+								src: "https://images.pexels.com/photos/574073/pexels-photo-574073.jpeg?auto=compress&cs=tinysrgb&w=750&h=350&dpr=1",
+								alt: "JavaScript",
+								heightPorcent: 100,
+							}}
+							header={{
+								title: "React Hooks",
+								description: "Updated Guide 2024",
+								icon: <CodeXml />,
+							}}
+							actions={[
+								{
+									text: "See more",
+									icon: <CircleEllipsis />,
+									onClick: () => console.log("See more"),
+								},
+								{
+									text: "Save",
+									icon: <Bookmark />,
+									onClick: () => console.log("Save"),
+								},
+								{
+									text: "Follow",
+									icon: <RssIcon />,
+									onClick: () => console.log("Follow"),
+								},
+							]}
+						>
+							<div>
+								React Hooks revolutionized the way we write components. useState and useEffect are
+								fundamental, but there are more hooks like useContext, useReducer, and useCallback
+								that can significantly improve your code.
+							</div>
+						</Card>
+					</div>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<Card
+							variant={variantCard}
+							radius={radiusCard}
+							size={sizeCard}
+							header={{
+								title: "React Hooks",
+							}}
+						>
+							<div>
+								React Hooks revolutionized the way we write components. useState and useEffect are
+								fundamental, but there are more hooks like useContext, useReducer, and useCallback
+								that can significantly improve your code.
+							</div>
+						</Card>
+					</div>
+				</div>
+			</section>
 			{/* CAROUSEL */}
 			<section className={styles.subsection} id="carousel">
 				<h2 className={styles.subtitle}>Carousel</h2>
@@ -553,173 +1053,6 @@ function App() {
 					</Carousel>
 				</div>
 			</section>
-			{/* BUTTON */}
-			<section className={styles.subsection} id="button">
-				<h2 className={styles.subtitle}>Button</h2>
-				<div className={styles.control_buttons}>
-					<Checkbox
-						label="Disabled"
-						checked={disabledButtons}
-						size="medium"
-						color="secondary"
-						onChange={(e) => setDisabledButtons(e.currentTarget.checked)}
-					/>
-					<Checkbox
-						label="Loading"
-						checked={loadingButtons}
-						size="medium"
-						color="info"
-						onChange={(e) => setLoadingButtons(e.currentTarget.checked)}
-					/>
-					<select
-						className={styles.control_size}
-						value={sizeButtons}
-						onChange={(e) =>
-							setSizeButtons(
-								e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined
-							)
-						}
-					>
-						<option value="tiny">Tiny</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={radiusButtons}
-						onChange={(e) =>
-							setRadiusButtons(
-								e.currentTarget.value as
-									| "medium"
-									| "small"
-									| "large"
-									| "none"
-									| "pill"
-									| "circle"
-									| undefined
-							)
-						}
-					>
-						<option value="none">None</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-						<option value="pill">Pill</option>
-						<option value="circle">Cirlce</option>
-					</select>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						{buttonsPrimary.map((button) => (
-							<Button
-								key={button.color}
-								className={styles.button}
-								size={sizeButtons}
-								radius={radiusButtons}
-								variant="solid"
-								color={button.color}
-								label={button.label}
-								disabled={disabledButtons}
-								loading={loadingButtons}
-								loadingText="Loading"
-								iconPosition="left"
-								icon={button.icon}
-							/>
-						))}
-					</div>
-				</div>
-			</section>
-			{/* LINK */}
-			<section className={styles.subsection} id="link">
-				<h2 className={styles.subtitle}>Link</h2>
-				<div className={styles.control_buttons}>
-					<div style={{ display: "flex", gap: "1rem", flexFlow: "wrap" }}>
-						<Select
-							options={[
-								{ label: "Tiny", value: "tiny" },
-								{ label: "Small", value: "small" },
-								{ label: "Medium", value: "medium" },
-								{ label: "Large", value: "large" },
-							]}
-							value={sizeLink}
-							onChange={(e) => setSizeLink(e as "medium" | "small" | "large" | "tiny" | undefined)}
-							size="small"
-						/>
-						<Select
-							options={[
-								{ label: "Default", value: "default" },
-								{ label: "Button", value: "button" },
-							]}
-							value={typeLink}
-							onChange={(e) => setTypeLink(e as "default" | "button" | undefined)}
-							size="small"
-						/>
-						<Select
-							options={[
-								{ label: "Clasicc", value: "classic" },
-								{ label: "Solid", value: "solid" },
-								{ label: "Outline", value: "outline" },
-								{ label: "Dashed", value: "dashed" },
-								{ label: "Ghost", value: "ghost" },
-								{ label: "Text", value: "text" },
-							]}
-							value={variantLink}
-							onChange={(e) =>
-								setVariantLink(
-									e as "outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
-								)
-							}
-							size="small"
-						/>
-						<Select
-							options={[
-								{ label: "None", value: "none" },
-								{ label: "Small", value: "small" },
-								{ label: "Medium", value: "medium" },
-								{ label: "Large", value: "large" },
-								{ label: "Pill", value: "pill" },
-								{ label: "Circle", value: "circle" },
-							]}
-							value={radiusLink}
-							onChange={(e) =>
-								setRadiusLink(
-									e as "none" | "small" | "medium" | "large" | "pill" | "circle" | undefined
-								)
-							}
-							size="small"
-						/>
-					</div>
-
-					<Checkbox
-						label="Disabled"
-						checked={disabledLink}
-						size="medium"
-						color="secondary"
-						onChange={(e) => setDisabledLink(e.currentTarget.checked)}
-					/>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						{buttonsPrimary.map((button) => (
-							<Link
-								key={button.color}
-								className={styles.button}
-								size={sizeLink}
-								type={typeLink}
-								radius={radiusLink}
-								variant={variantLink}
-								color={button.color}
-								label={button.label}
-								disabled={disabledLink}
-								loading={loadingButtons}
-								href="https://www.google.com"
-								icon={button.icon}
-							/>
-						))}
-					</div>
-				</div>
-			</section>
 			{/* CHECKBOX */}
 			<section className={styles.subsection} id="checkbox">
 				<h2 className={styles.subtitle}>Checkbox</h2>
@@ -823,165 +1156,18 @@ function App() {
 					</div>
 				</div>
 			</section>
-			{/* SWITCH */}
-			<section className={styles.subsection} id="switch">
-				<h2 className={styles.subtitle}>Switch</h2>
+			{/* DIALOG */}
+			<section className={styles.subsection} id="dialog">
+				<h2 className={styles.subtitle}>Dialog</h2>
 				<div className={styles.control_buttons}>
-					<Checkbox
-						label="Disabled"
-						checked={disabledSwitch}
-						size="medium"
-						color="secondary"
-						onChange={(e) => setDisabledSwitch(e.currentTarget.checked)}
-					/>
-					<select
-						className={styles.control_size}
-						value={sizeSwitch}
-						onChange={(e) =>
-							setSizeSwitch(
-								e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined
-							)
-						}
-					>
-						<option value="tiny">Tiny</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={shapeSwitch}
-						onChange={(e) =>
-							setShapeSwitch(e.currentTarget.value as "square" | "soft" | "rounded" | undefined)
-						}
-					>
-						<option value="square">Square</option>
-						<option value="soft">Soft</option>
-						<option value="rounded">Rounded</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={variantSwitch}
-						onChange={(e) =>
-							setVariantSwitch(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)
-						}
-					>
-						<option value="outline">Outline</option>
-						<option value="flat">Flat</option>
-						<option value="solid">Solid</option>
-					</select>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<Switch
-							variant={variantSwitch}
-							color="primary"
-							size={sizeSwitch}
-							disabled={disabledSwitch}
-							shape={shapeSwitch}
-							label="Primary"
-						/>
-						<Switch
-							variant={variantSwitch}
-							color="secondary"
-							size={sizeSwitch}
-							disabled={disabledSwitch}
-							shape={shapeSwitch}
-							label="Secondary"
-						/>
-						<Switch
-							variant={variantSwitch}
-							color="success"
-							size={sizeSwitch}
-							disabled={disabledSwitch}
-							shape={shapeSwitch}
-							label="Success"
-						/>
-						<Switch
-							variant={variantSwitch}
-							color="danger"
-							size={sizeSwitch}
-							disabled={disabledSwitch}
-							shape={shapeSwitch}
-							label="Danger"
-						/>
-						<Switch
-							variant={variantSwitch}
-							color="warning"
-							size={sizeSwitch}
-							disabled={disabledSwitch}
-							shape={shapeSwitch}
-							label="Warning"
-						/>
-						<Switch
-							variant={variantSwitch}
-							color="info"
-							size={sizeSwitch}
-							disabled={disabledSwitch}
-							shape={shapeSwitch}
-							label="Info"
-						/>
-					</div>
-				</div>
-			</section>
-			{/* RADIO */}
-			<section className={styles.subsection} id="radio">
-				<h2 className={styles.subtitle}>Radio</h2>
-				<div className={styles.control_buttons}>
-					<Checkbox
-						label="Disabled"
-						checked={disabledRadio}
-						size="medium"
-						color="secondary"
-						onChange={(e) => setDisabledRadio(e.currentTarget.checked)}
-					/>
-					<select
-						className={styles.control_size}
-						value={sizeRadio}
-						onChange={(e) =>
-							setSizeRadio(e.currentTarget.value as "medium" | "small" | "large" | undefined)
-						}
-					>
-						<option value="tiny">Tiny</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={typeRadio}
-						onChange={(e) => setTypeRadio(e.currentTarget.value as "radio" | "button" | undefined)}
-					>
-						<option value="radio">Radio</option>
-						<option value="button">Button</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={orientationRadio}
-						onChange={(e) =>
-							setOrientationRadio(e.currentTarget.value as "horizontal" | "vertical" | undefined)
-						}
-					>
-						<option value="vertical">Vertical</option>
-						<option value="horizontal">Horizontal</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={variantRadio}
-						onChange={(e) =>
-							setVariantRadio(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)
-						}
-					>
-						<option value="outline">Outline</option>
-						<option value="flat">Flat</option>
-						<option value="solid">Solid</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={colorRadio}
-						onChange={(e) =>
-							setColorRadio(
-								e.currentTarget.value as
+					<Select
+						className={styles.select_size}
+						label="Color"
+						value={colorToolTip}
+						size="small"
+						onChange={(value) =>
+							setColorToolTip(
+								value as
 									| "primary"
 									| "secondary"
 									| "danger"
@@ -991,37 +1177,387 @@ function App() {
 									| undefined
 							)
 						}
-					>
-						<option value="primary">Primary</option>
-						<option value="secondary">Secondary</option>
-						<option value="danger">Danger</option>
-						<option value="success">Success</option>
-						<option value="warning">Warning</option>
-						<option value="info">Info</option>
-					</select>
+						options={[
+							{ label: "Primary", value: "primary" },
+							{ label: "Secondary", value: "secondary" },
+							{ label: "Success", value: "success" },
+							{ label: "Danger", value: "danger" },
+							{ label: "Warning", value: "warning" },
+							{ label: "Info", value: "info" },
+						]}
+					/>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeToolTip}
+						size="small"
+						onChange={(value) =>
+							setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Position"
+						className={styles.select_size}
+						value={positionToolTip}
+						size="small"
+						onChange={(value) => setPositionToolTip(value as TooltipPosition | undefined)}
+						options={[
+							{ label: "Top Left", value: "top-left" },
+							{ label: "Top Right", value: "top-right" },
+							{ label: "Top Center", value: "top-center" },
+							{ label: "Bottom Center", value: "bottom-center" },
+							{ label: "Bottom Left", value: "bottom-left" },
+							{ label: "Bottom Right", value: "bottom-right" },
+						]}
+					/>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
+						<InputNumber
+							label="Delay Show"
+							value={delayShowToolTip}
+							onChange={(value) => setDelayShowToolTip(value || 0)}
+							size="small"
+						/>
+						<InputNumber
+							label="Delay Hide"
+							value={delayHideToolTip}
+							onChange={(value) => setDelayHideToolTip(value || 0)}
+							size="small"
+						/>
+					</div>
 				</div>
 				<div className={styles.container_buttons}>
 					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<RadioGroup
-							defaultValue="second"
-							type={typeRadio}
-							selectedOption={valueRadioBordered}
-							disabled={disabledRadio}
-							radius="small"
-							color={colorRadio}
-							gap="0.5em"
-							size={sizeRadio}
-							variant={variantRadio}
-							onChange={(e) => setValueRadioBordered(e)}
-							orientation={orientationRadio}
+						<Button label="View Dialog" onClick={() => setOpenDialog(true)} />
+						<Dialog
+							isOpen={openDialog}
+							onClose={() => setOpenDialog(false)}
+							title="Confirmar Acción"
+							closeOnOverlayClick={true}
+							closeOnEscape={true}
+							showCloseButton={true}
+							footer={
+								<>
+									<Button
+										color="secondary"
+										onClick={() => {
+											setOpenDialog(false);
+											showNotification({
+												title: "Aceptado",
+												message: "Se acepto la accion",
+												closable: true,
+												variant: "solid",
+												notificationType: "success",
+												placement: "top-right",
+												duration: 2500,
+											});
+										}}
+									>
+										Accept
+									</Button>
+									<Button
+										color="secondary"
+										variant="outline"
+										onClick={() => {
+											setOpenDialog(false);
+											showNotification({
+												title: "Cancelado",
+												message: "Se cancelo la accion",
+												closable: true,
+												variant: "solid",
+												notificationType: "danger",
+												placement: "top-right",
+												duration: 2500,
+											});
+										}}
+										style={{ marginLeft: "8px" }}
+									>
+										Cancel
+									</Button>
+								</>
+							}
 						>
-							<Radio value="first" label="First" />
-							<Radio value="third" label="Third" />
-							<Radio value="second" label="Second" />
-							<Radio value="fourth" label="Fourth" />
-							<Radio value="fifth" label="Fifth" />
-							<Radio value="sixth" label="Sixth" />
-						</RadioGroup>
+							<div style={{ display: "flex", flexDirection: "column", gap: "2em", padding: "1em" }}>
+								<p>¿Estás seguro de que deseas realizar esta acción?</p>
+								<Input
+									type="text"
+									label="Campo de ejemplo"
+									placeholder="Escribe algo..."
+									helperText="Este es un campo de ejemplo"
+									errorMessage="Este es un mensaje de error"
+									size="small"
+									radius="small"
+									invalid={false}
+									disabled={false}
+								/>
+							</div>
+						</Dialog>
+					</div>
+				</div>
+			</section>
+			{/* DRAWER */}
+			<section className={styles.subsection} id="drawer">
+				<h2 className={styles.subtitle}>Drawer</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						className={styles.select_size}
+						label="Width"
+						value={widthDrawer}
+						size="small"
+						onChange={(value) => setWidthDrawer(value as DrawerWidth)}
+						options={[
+							{ label: "Xsmall", value: "xsmall" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Half", value: "middle" },
+							{ label: "Full", value: "full" },
+						]}
+					/>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeToolTip}
+						size="small"
+						onChange={(value) =>
+							setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Position"
+						className={styles.select_size}
+						value={drawerPosition}
+						size="small"
+						onChange={(value) => setDrawerPosition(value as DrawerPlacement)}
+						options={[
+							{ label: "Top", value: "top" },
+							{ label: "Right", value: "right" },
+							{ label: "Bottom", value: "bottom" },
+							{ label: "Left", value: "left" },
+						]}
+					/>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
+						<InputNumber
+							label="Delay Show"
+							value={delayShowToolTip}
+							onChange={(value) => setDelayShowToolTip(value || 0)}
+							size="small"
+						/>
+						<InputNumber
+							label="Delay Hide"
+							value={delayHideToolTip}
+							onChange={(value) => setDelayHideToolTip(value || 0)}
+							size="small"
+						/>
+					</div>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<Button label="Open Drawer" onClick={() => setOpenDrawer(true)} />
+						<Drawer
+							isOpen={openDrawer}
+							onClose={() => setOpenDrawer(false)}
+							title="Confirmar Acción"
+							closeOnOverlayClick={true}
+							closeOnEscape={true}
+							showCloseButton={true}
+							placement={drawerPosition}
+							width={widthDrawer}
+							footer={
+								<>
+									<Button
+										color="secondary"
+										onClick={() => {
+											setOpenDrawer(false);
+										}}
+									>
+										Accept
+									</Button>
+									<Button
+										color="secondary"
+										variant="outline"
+										onClick={() => {
+											setOpenDrawer(false);
+										}}
+										style={{ marginLeft: "8px" }}
+									>
+										Cancel
+									</Button>
+								</>
+							}
+						>
+							<div
+								style={{ display: "flex", flexDirection: "column", gap: "0.5em", padding: "1em" }}
+							>
+								<Link
+									label="Home"
+									icon={<HomeIcon />}
+									variant="text"
+									color="secondary"
+									href="#"
+									type="button"
+									size="large"
+									active={true}
+									justify="start"
+								/>
+								<Link
+									label="Settings"
+									icon={<SettingsIcon />}
+									variant="text"
+									color="secondary"
+									href="#"
+									type="button"
+									size="large"
+								/>
+								<Link
+									label="Profile"
+									icon={<UserIcon />}
+									variant="text"
+									color="secondary"
+									href="#"
+									type="button"
+									size="large"
+								/>
+								<Link
+									label="Help"
+									icon={<HelpCircleIcon />}
+									variant="text"
+									color="secondary"
+									href="#"
+									type="button"
+									size="large"
+								/>
+								<Link
+									label="About"
+									icon={<InfoIcon />}
+									variant="text"
+									color="secondary"
+									href="#"
+									type="button"
+									size="large"
+								/>
+								<Link
+									label="Logout"
+									icon={<LogOutIcon />}
+									variant="text"
+									color="secondary"
+									href="#"
+									type="button"
+									size="large"
+								/>
+							</div>
+						</Drawer>
+					</div>
+				</div>
+			</section>
+			{/* FILE UPLOAD */}
+			<section className={styles.subsection} id="file upload">
+				<h2 className={styles.subtitle}>File Upload</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Type"
+						value={typeFileUpload}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) => setTypeFileUpload(value as "button" | "dropzone" | undefined)}
+						options={[
+							{ label: "Button", value: "button" },
+							{ label: "Dropzone", value: "dropzone" },
+						]}
+					/>
+					<Select
+						label="Radius"
+						value={radiusFileUpload}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
+							setRadiusFileUpload(value as "none" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Size"
+						value={sizeFileUpload}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
+							setSizeFileUpload(value as "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Checkbox
+						label="Multiple Files?"
+						checked={multiFileUpload}
+						size="small"
+						color="info"
+						onChange={(e) => setMultiFileUpload(e.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="Disabled"
+						checked={disabledFileUpload}
+						size="small"
+						color="secondary"
+						onChange={(e) => setDisabledFileUpload(e.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="Invalid"
+						checked={invalidFileUpload}
+						size="small"
+						color="info"
+						onChange={(e) => setInvalidFileUpload(e.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="View File Size?"
+						checked={viewFileSize}
+						size="small"
+						color="info"
+						onChange={(e) => setViewFileSize(e.currentTarget.checked)}
+					/>
+					<Input
+						label="Message Error"
+						size="small"
+						value={errorMessageFileUpload}
+						onChange={(value) => setErrorMessageFileUpload(value)}
+					/>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<FileUpload
+							radius={radiusFileUpload}
+							type={typeFileUpload}
+							disabled={disabledFileUpload}
+							invalid={invalidFileUpload}
+							errorMessage={errorMessageFileUpload}
+							label="File Upload"
+							helperText="Upload your file"
+							placeholder="Drag and drop your files here"
+							required
+							maxSize={60000}
+							viewFileSize={viewFileSize}
+							onFilesRejected={(files) => console.log("Files Rejected", files)}
+							size={sizeFileUpload}
+							accept=".docx, .doc, .pdf, .jpg, .png, .webp"
+							multiple={multiFileUpload}
+						/>
 					</div>
 				</div>
 			</section>
@@ -1359,87 +1895,93 @@ function App() {
 					</div>
 				</div>
 			</section>
-			{/* SELECT */}
-			<section className={styles.subsection} id="select">
-				<h2 className={styles.subtitle}>Select</h2>
+			{/* LINK */}
+			<section className={styles.subsection} id="link">
+				<h2 className={styles.subtitle}>Link</h2>
 				<div className={styles.control_buttons}>
+					<div style={{ display: "flex", gap: "1rem", flexFlow: "nowrap" }}>
+						<Select
+							options={[
+								{ label: "Tiny", value: "tiny" },
+								{ label: "Small", value: "small" },
+								{ label: "Medium", value: "medium" },
+								{ label: "Large", value: "large" },
+							]}
+							value={sizeLink}
+							onChange={(e) => setSizeLink(e as "medium" | "small" | "large" | "tiny" | undefined)}
+							size="small"
+						/>
+						<Select
+							options={[
+								{ label: "Default", value: "default" },
+								{ label: "Button", value: "button" },
+							]}
+							value={typeLink}
+							onChange={(e) => setTypeLink(e as "default" | "button" | undefined)}
+							size="small"
+						/>
+						<Select
+							options={[
+								{ label: "Clasicc", value: "classic" },
+								{ label: "Solid", value: "solid" },
+								{ label: "Outline", value: "outline" },
+								{ label: "Dashed", value: "dashed" },
+								{ label: "Ghost", value: "ghost" },
+								{ label: "Text", value: "text" },
+							]}
+							value={variantLink}
+							onChange={(e) =>
+								setVariantLink(
+									e as "outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
+								)
+							}
+							size="small"
+						/>
+						<Select
+							options={[
+								{ label: "None", value: "none" },
+								{ label: "Small", value: "small" },
+								{ label: "Medium", value: "medium" },
+								{ label: "Large", value: "large" },
+								{ label: "Pill", value: "pill" },
+								{ label: "Circle", value: "circle" },
+							]}
+							value={radiusLink}
+							onChange={(e) =>
+								setRadiusLink(
+									e as "none" | "small" | "medium" | "large" | "pill" | "circle" | undefined
+								)
+							}
+							size="small"
+						/>
+					</div>
+
 					<Checkbox
 						label="Disabled"
-						checked={disabledSelect}
+						checked={disabledLink}
 						size="medium"
 						color="secondary"
-						onChange={(e) => setDisabledSelect(e.currentTarget.checked)}
+						onChange={(e) => setDisabledLink(e.currentTarget.checked)}
 					/>
-					<Checkbox
-						label="Is Valid"
-						checked={validSelect}
-						size="medium"
-						color="info"
-						onChange={(e) => setValidSelect(e.currentTarget.checked)}
-					/>
-					<select
-						className={styles.control_size}
-						value={sizeSelect}
-						onChange={(e) =>
-							setSizeSelect(
-								e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined
-							)
-						}
-					>
-						<option value="tiny">Tiny</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={radiusSelect}
-						onChange={(e) =>
-							setRadiusSelect(
-								e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined
-							)
-						}
-					>
-						<option value="none">None</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-						<option value="pill">Pill</option>
-					</select>
-					<Input value={errorMessageSelect} onChange={(value) => setErrorMessageSelect(value)} />
 				</div>
 				<div className={styles.container_buttons}>
 					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<Select
-							label="Outline"
-							variant="outline"
-							options={namesSelect}
-							size={sizeSelect}
-							radius={radiusSelect}
-							disabled={disabledSelect}
-							invalid={!validSelect}
-							errorMessage={errorMessageSelect}
-						/>
-						<Select
-							label="Flat"
-							variant="flat"
-							options={namesSelect}
-							size={sizeSelect}
-							radius={radiusSelect}
-							disabled={disabledSelect}
-							invalid={!validSelect}
-							errorMessage={errorMessageSelect}
-						/>
-						<Select
-							label="Borderless"
-							variant="borderless"
-							options={namesSelect}
-							size={sizeSelect}
-							radius={radiusSelect}
-							disabled={disabledSelect}
-							invalid={!validSelect}
-							errorMessage={errorMessageSelect}
-						/>
+						{buttonsPrimary.map((button) => (
+							<Link
+								key={button.color}
+								className={styles.button}
+								size={sizeLink}
+								type={typeLink}
+								radius={radiusLink}
+								variant={variantLink}
+								color={button.color}
+								label={button.label}
+								disabled={disabledLink}
+								loading={loadingButtons}
+								href="https://www.google.com"
+								icon={button.icon}
+							/>
+						))}
 					</div>
 				</div>
 			</section>
@@ -1666,376 +2208,6 @@ function App() {
 					</div>
 				</div>
 			</section>
-			{/* ALERT */}
-			<section className={styles.subsection} id="alert">
-				<h2 className={styles.subtitle}>Alert</h2>
-				<div className={styles.control_buttons}>
-					<Select
-						label="Size"
-						className={styles.select_size}
-						value={sizeAlert}
-						size="small"
-						onChange={(value) => setSizeAlert(value as AlertSize)}
-						options={[
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Select
-						label="Size"
-						className={styles.select_size}
-						value={variantAlert}
-						size="small"
-						onChange={(value) => setVariantAlert(value as AlertVariant)}
-						options={[
-							{ label: "Flat", value: "flat" },
-							{ label: "Outline", value: "outline" },
-							{ label: "Solid", value: "solid" },
-						]}
-					/>
-				</div>
-
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<Alert
-							variant={variantAlert}
-							color="default"
-							title="Default"
-							message="This is a standard notification message for your information"
-							customIcon={<RssIcon />}
-							onClose={() => console.log("")}
-							size={sizeAlert}
-						/>
-						<Alert
-							variant={variantAlert}
-							color="primary"
-							title="Priamry"
-							message="Please review the details below and take the necessary action"
-							onClose={() => console.log("")}
-							size={sizeAlert}
-						/>
-						<Alert
-							variant={variantAlert}
-							color="danger"
-							title="Success"
-							message="Your changes have been saved successfully"
-							onClose={() => console.log("")}
-							size={sizeAlert}
-						/>
-						<Alert
-							variant={variantAlert}
-							color="success"
-							title="Danger"
-							message="Unable to complete the request. Please try again or contact support"
-							onClose={() => console.log("")}
-							size={sizeAlert}
-						/>
-						<Alert
-							variant={variantAlert}
-							color="warning"
-							title="Warning"
-							message="Please be aware that continuing might lead to unexpected results"
-							onClose={() => console.log("")}
-							size={sizeAlert}
-						/>
-						<Alert
-							variant={variantAlert}
-							color="info"
-							title="Info"
-							message="Here is some helpful information regarding the current process"
-							onClose={() => console.log("")}
-							size={sizeAlert}
-						/>
-					</div>
-				</div>
-			</section>
-			{/* CARD */}
-			<section className={styles.subsection} id="card">
-				<h2 className={styles.subtitle}>Card</h2>
-				<div className={styles.control_buttons}>
-					<select
-						className={styles.control_size}
-						value={variantCard}
-						onChange={(e) =>
-							setVariantCard(e.currentTarget.value as "borderless" | "outline" | undefined)
-						}
-					>
-						<option value="borderless">Borderless</option>
-						<option value="outline">Outline</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={radiusCard}
-						onChange={(e) =>
-							setRadiusCard(
-								e.currentTarget.value as "none" | "small" | "medium" | "large" | undefined
-							)
-						}
-					>
-						<option value="none">None</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-					<select
-						className={styles.control_size}
-						value={sizeCard}
-						onChange={(e) =>
-							setSizeCard(e.currentTarget.value as "small" | "medium" | "large" | undefined)
-						}
-					>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<Card
-							variant={variantCard}
-							radius={radiusCard}
-							size={sizeCard}
-							image={{
-								src: "https://images.pexels.com/photos/574073/pexels-photo-574073.jpeg?auto=compress&cs=tinysrgb&w=750&h=350&dpr=1",
-								alt: "JavaScript",
-								heightPorcent: 100,
-							}}
-							header={{
-								title: "React Hooks",
-								description: "Updated Guide 2024",
-								icon: <CodeXml />,
-							}}
-							actions={[
-								{
-									text: "See more",
-									icon: <CircleEllipsis />,
-									onClick: () => console.log("See more"),
-								},
-								{
-									text: "Save",
-									icon: <Bookmark />,
-									onClick: () => console.log("Save"),
-								},
-								{
-									text: "Follow",
-									icon: <RssIcon />,
-									onClick: () => console.log("Follow"),
-								},
-							]}
-						>
-							<div>
-								React Hooks revolutionized the way we write components. useState and useEffect are
-								fundamental, but there are more hooks like useContext, useReducer, and useCallback
-								that can significantly improve your code.
-							</div>
-						</Card>
-					</div>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<Card
-							variant={variantCard}
-							radius={radiusCard}
-							size={sizeCard}
-							header={{
-								title: "React Hooks",
-							}}
-						>
-							<div>
-								React Hooks revolutionized the way we write components. useState and useEffect are
-								fundamental, but there are more hooks like useContext, useReducer, and useCallback
-								that can significantly improve your code.
-							</div>
-						</Card>
-					</div>
-				</div>
-			</section>
-			{/* TEXT AREA */}
-			<section className={styles.subsection} id="text area">
-				<h2 className={styles.subtitle}>Text Area</h2>
-				<div className={styles.control_buttons}>
-					<Select
-						label="Variant"
-						value={variantTextArea}
-						className={styles.select_size}
-						size="small"
-						onChange={(value) => setVariantTextArea(value as "borderless" | "outline" | undefined)}
-						options={[
-							{ label: "Borderless", value: "borderless" },
-							{ label: "Outline", value: "outline" },
-						]}
-					/>
-					<Select
-						label="Radius"
-						value={radiusTextArea}
-						className={styles.select_size}
-						size="small"
-						onChange={(value) =>
-							setRadiusTextArea(value as "none" | "small" | "medium" | "large" | undefined)
-						}
-						options={[
-							{ label: "None", value: "none" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Select
-						label="Size"
-						value={sizeTextArea}
-						className={styles.select_size}
-						size="small"
-						onChange={(value) =>
-							setSizeTextArea(value as "small" | "medium" | "large" | "tiny" | undefined)
-						}
-						options={[
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Checkbox
-						label="Disabled"
-						checked={disabledTextArea}
-						size="small"
-						color="secondary"
-						onChange={(e) => setDisabledTextArea(e.currentTarget.checked)}
-					/>
-					<Checkbox
-						label="Invalid"
-						checked={invalidTextArea}
-						size="small"
-						color="info"
-						onChange={(e) => setInvalidTextArea(e.currentTarget.checked)}
-					/>
-					<Input
-						label="Message Error"
-						size="small"
-						value={errorMessageTextArea}
-						onChange={(value) => setErrorMessageTextArea(value)}
-					/>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<TextArea
-							radius={radiusTextArea}
-							size={sizeTextArea}
-							variant={variantTextArea}
-							disabled={disabledTextArea}
-							invalid={invalidTextArea}
-							errorMessage={errorMessageTextArea}
-							label="Text Area"
-							placeholder="Escribe algo..."
-							helperText="Write something..."
-							required
-							rows={5}
-							cols={30}
-						/>
-					</div>
-				</div>
-			</section>
-			{/* FILE UPLOAD */}
-			<section className={styles.subsection} id="file upload">
-				<h2 className={styles.subtitle}>File Upload</h2>
-				<div className={styles.control_buttons}>
-					<Select
-						label="Type"
-						value={typeFileUpload}
-						className={styles.select_size}
-						size="small"
-						onChange={(value) => setTypeFileUpload(value as "button" | "dropzone" | undefined)}
-						options={[
-							{ label: "Button", value: "button" },
-							{ label: "Dropzone", value: "dropzone" },
-						]}
-					/>
-					<Select
-						label="Radius"
-						value={radiusFileUpload}
-						className={styles.select_size}
-						size="small"
-						onChange={(value) =>
-							setRadiusFileUpload(value as "none" | "small" | "medium" | "large" | undefined)
-						}
-						options={[
-							{ label: "None", value: "none" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Select
-						label="Size"
-						value={sizeFileUpload}
-						className={styles.select_size}
-						size="small"
-						onChange={(value) =>
-							setSizeFileUpload(value as "small" | "medium" | "large" | undefined)
-						}
-						options={[
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Checkbox
-						label="Multiple Files?"
-						checked={multiFileUpload}
-						size="small"
-						color="info"
-						onChange={(e) => setMultiFileUpload(e.currentTarget.checked)}
-					/>
-					<Checkbox
-						label="Disabled"
-						checked={disabledFileUpload}
-						size="small"
-						color="secondary"
-						onChange={(e) => setDisabledFileUpload(e.currentTarget.checked)}
-					/>
-					<Checkbox
-						label="Invalid"
-						checked={invalidFileUpload}
-						size="small"
-						color="info"
-						onChange={(e) => setInvalidFileUpload(e.currentTarget.checked)}
-					/>
-					<Checkbox
-						label="View File Size?"
-						checked={viewFileSize}
-						size="small"
-						color="info"
-						onChange={(e) => setViewFileSize(e.currentTarget.checked)}
-					/>
-					<Input
-						label="Message Error"
-						size="small"
-						value={errorMessageFileUpload}
-						onChange={(value) => setErrorMessageFileUpload(value)}
-					/>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<FileUpload
-							radius={radiusFileUpload}
-							type={typeFileUpload}
-							disabled={disabledFileUpload}
-							invalid={invalidFileUpload}
-							errorMessage={errorMessageFileUpload}
-							label="File Upload"
-							helperText="Upload your file"
-							placeholder="Drag and drop your files here"
-							required
-							maxSize={60000}
-							viewFileSize={viewFileSize}
-							onFilesRejected={(files) => console.log("Files Rejected", files)}
-							size={sizeFileUpload}
-							accept=".docx, .doc, .pdf, .jpg, .png, .webp"
-							multiple={multiFileUpload}
-						/>
-					</div>
-				</div>
-			</section>
 			{/* PAGINATION */}
 			<section className={styles.subsection} id="pagination">
 				<h2 className={styles.subtitle}>Pagination</h2>
@@ -2138,6 +2310,107 @@ function App() {
 					</div>
 				</div>
 			</section>
+			{/* RADIO */}
+			<section className={styles.subsection} id="radio">
+				<h2 className={styles.subtitle}>Radio</h2>
+				<div className={styles.control_buttons}>
+					<Checkbox
+						label="Disabled"
+						checked={disabledRadio}
+						size="medium"
+						color="secondary"
+						onChange={(e) => setDisabledRadio(e.currentTarget.checked)}
+					/>
+					<select
+						className={styles.control_size}
+						value={sizeRadio}
+						onChange={(e) =>
+							setSizeRadio(e.currentTarget.value as "medium" | "small" | "large" | undefined)
+						}
+					>
+						<option value="tiny">Tiny</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={typeRadio}
+						onChange={(e) => setTypeRadio(e.currentTarget.value as "radio" | "button" | undefined)}
+					>
+						<option value="radio">Radio</option>
+						<option value="button">Button</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={orientationRadio}
+						onChange={(e) =>
+							setOrientationRadio(e.currentTarget.value as "horizontal" | "vertical" | undefined)
+						}
+					>
+						<option value="vertical">Vertical</option>
+						<option value="horizontal">Horizontal</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={variantRadio}
+						onChange={(e) =>
+							setVariantRadio(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)
+						}
+					>
+						<option value="outline">Outline</option>
+						<option value="flat">Flat</option>
+						<option value="solid">Solid</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={colorRadio}
+						onChange={(e) =>
+							setColorRadio(
+								e.currentTarget.value as
+									| "primary"
+									| "secondary"
+									| "danger"
+									| "success"
+									| "warning"
+									| "info"
+									| undefined
+							)
+						}
+					>
+						<option value="primary">Primary</option>
+						<option value="secondary">Secondary</option>
+						<option value="danger">Danger</option>
+						<option value="success">Success</option>
+						<option value="warning">Warning</option>
+						<option value="info">Info</option>
+					</select>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<RadioGroup
+							defaultValue="second"
+							type={typeRadio}
+							selectedOption={valueRadioBordered}
+							disabled={disabledRadio}
+							radius="small"
+							color={colorRadio}
+							gap="0.5em"
+							size={sizeRadio}
+							variant={variantRadio}
+							onChange={(e) => setValueRadioBordered(e)}
+							orientation={orientationRadio}
+						>
+							<Radio value="first" label="First" />
+							<Radio value="third" label="Third" />
+							<Radio value="second" label="Second" />
+							<Radio value="fourth" label="Fourth" />
+							<Radio value="fifth" label="Fifth" />
+							<Radio value="sixth" label="Sixth" />
+						</RadioGroup>
+					</div>
+				</div>
+			</section>
 			{/* RANGE */}
 			<section className={styles.subsection} id="range">
 				<h2 className={styles.subtitle}>Range</h2>
@@ -2195,6 +2468,353 @@ function App() {
 							label="Range"
 							onInput={(e) => setValueRange(e)}
 							onChange={(e) => setValueRange(e)}
+						/>
+					</div>
+				</div>
+			</section>
+			{/* SELECT */}
+			<section className={styles.subsection} id="select">
+				<h2 className={styles.subtitle}>Select</h2>
+				<div className={styles.control_buttons}>
+					<Checkbox
+						label="Disabled"
+						checked={disabledSelect}
+						size="medium"
+						color="secondary"
+						onChange={(e) => setDisabledSelect(e.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="Is Valid"
+						checked={validSelect}
+						size="medium"
+						color="info"
+						onChange={(e) => setValidSelect(e.currentTarget.checked)}
+					/>
+					<select
+						className={styles.control_size}
+						value={sizeSelect}
+						onChange={(e) =>
+							setSizeSelect(
+								e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined
+							)
+						}
+					>
+						<option value="tiny">Tiny</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={radiusSelect}
+						onChange={(e) =>
+							setRadiusSelect(
+								e.currentTarget.value as "medium" | "small" | "large" | "none" | "pill" | undefined
+							)
+						}
+					>
+						<option value="none">None</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+						<option value="pill">Pill</option>
+					</select>
+					<Input value={errorMessageSelect} onChange={(value) => setErrorMessageSelect(value)} />
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<Select
+							label="Outline"
+							variant="outline"
+							options={namesSelect}
+							size={sizeSelect}
+							radius={radiusSelect}
+							disabled={disabledSelect}
+							invalid={!validSelect}
+							errorMessage={errorMessageSelect}
+						/>
+						<Select
+							label="Flat"
+							variant="flat"
+							options={namesSelect}
+							size={sizeSelect}
+							radius={radiusSelect}
+							disabled={disabledSelect}
+							invalid={!validSelect}
+							errorMessage={errorMessageSelect}
+						/>
+						<Select
+							label="Borderless"
+							variant="borderless"
+							options={namesSelect}
+							size={sizeSelect}
+							radius={radiusSelect}
+							disabled={disabledSelect}
+							invalid={!validSelect}
+							errorMessage={errorMessageSelect}
+						/>
+					</div>
+				</div>
+			</section>
+			{/* SWITCH */}
+			<section className={styles.subsection} id="switch">
+				<h2 className={styles.subtitle}>Switch</h2>
+				<div className={styles.control_buttons}>
+					<Checkbox
+						label="Disabled"
+						checked={disabledSwitch}
+						size="medium"
+						color="secondary"
+						onChange={(e) => setDisabledSwitch(e.currentTarget.checked)}
+					/>
+					<select
+						className={styles.control_size}
+						value={sizeSwitch}
+						onChange={(e) =>
+							setSizeSwitch(
+								e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined
+							)
+						}
+					>
+						<option value="tiny">Tiny</option>
+						<option value="small">Small</option>
+						<option value="medium">Medium</option>
+						<option value="large">Large</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={shapeSwitch}
+						onChange={(e) =>
+							setShapeSwitch(e.currentTarget.value as "square" | "soft" | "rounded" | undefined)
+						}
+					>
+						<option value="square">Square</option>
+						<option value="soft">Soft</option>
+						<option value="rounded">Rounded</option>
+					</select>
+					<select
+						className={styles.control_size}
+						value={variantSwitch}
+						onChange={(e) =>
+							setVariantSwitch(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)
+						}
+					>
+						<option value="outline">Outline</option>
+						<option value="flat">Flat</option>
+						<option value="solid">Solid</option>
+					</select>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<Switch
+							variant={variantSwitch}
+							color="primary"
+							size={sizeSwitch}
+							disabled={disabledSwitch}
+							shape={shapeSwitch}
+							label="Primary"
+						/>
+						<Switch
+							variant={variantSwitch}
+							color="secondary"
+							size={sizeSwitch}
+							disabled={disabledSwitch}
+							shape={shapeSwitch}
+							label="Secondary"
+						/>
+						<Switch
+							variant={variantSwitch}
+							color="success"
+							size={sizeSwitch}
+							disabled={disabledSwitch}
+							shape={shapeSwitch}
+							label="Success"
+						/>
+						<Switch
+							variant={variantSwitch}
+							color="danger"
+							size={sizeSwitch}
+							disabled={disabledSwitch}
+							shape={shapeSwitch}
+							label="Danger"
+						/>
+						<Switch
+							variant={variantSwitch}
+							color="warning"
+							size={sizeSwitch}
+							disabled={disabledSwitch}
+							shape={shapeSwitch}
+							label="Warning"
+						/>
+						<Switch
+							variant={variantSwitch}
+							color="info"
+							size={sizeSwitch}
+							disabled={disabledSwitch}
+							shape={shapeSwitch}
+							label="Info"
+						/>
+					</div>
+				</div>
+			</section>
+			{/* TAB */}
+			<section className={styles.subsection} id="tab">
+				<h2 className={styles.subtitle}>Tab</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Variant"
+						className={styles.select_size}
+						value={variantTab}
+						size="small"
+						onChange={(value) => setVariantTab(value as TabVariant)}
+						options={[
+							{ label: "Underline", value: "underline" },
+							{ label: "Flat", value: "flat" },
+							{ label: "Box", value: "box" },
+							{ label: "Border", value: "border" },
+						]}
+					/>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeTab}
+						size="small"
+						onChange={(value) => setSizeTab(value as TabSize)}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Color"
+						className={styles.select_size}
+						value={colorTab}
+						size="small"
+						onChange={(value) => setColorTab(value as TabColor)}
+						options={[
+							{ label: "Primary", value: "primary" },
+							{ label: "Secondary", value: "secondary" },
+							{ label: "Success", value: "success" },
+							{ label: "Danger", value: "danger" },
+							{ label: "Warning", value: "warning" },
+							{ label: "Info", value: "info" },
+						]}
+					/>
+					<Select
+						label="Radius"
+						className={styles.select_size}
+						value={radiusTab}
+						size="small"
+						onChange={(value) => setRadiusTab(value as TabRadius)}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+							{ label: "Full", value: "full" },
+						]}
+					/>
+				</div>
+				<div className={styles.container_buttons}>
+					<Tab
+						variant={variantTab}
+						size={sizeTab}
+						color={colorTab}
+						radius={radiusTab}
+						items={[
+							{ id: "1", label: "Home", icon: <HomeIcon /> },
+							{ id: "2", label: "Library", icon: <BookIcon /> },
+							{ id: "3", label: "Data", icon: <DatabaseIcon /> },
+							{ id: "4", label: "Section", icon: <LayoutDashboard /> },
+							{ id: "5", label: "Programming", icon: <Code /> },
+						]}
+					/>
+				</div>
+			</section>
+			{/* TEXT AREA */}
+			<section className={styles.subsection} id="text area">
+				<h2 className={styles.subtitle}>Text Area</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Variant"
+						value={variantTextArea}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) => setVariantTextArea(value as "borderless" | "outline" | undefined)}
+						options={[
+							{ label: "Borderless", value: "borderless" },
+							{ label: "Outline", value: "outline" },
+						]}
+					/>
+					<Select
+						label="Radius"
+						value={radiusTextArea}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
+							setRadiusTextArea(value as "none" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Size"
+						value={sizeTextArea}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
+							setSizeTextArea(value as "small" | "medium" | "large" | "tiny" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Checkbox
+						label="Disabled"
+						checked={disabledTextArea}
+						size="small"
+						color="secondary"
+						onChange={(e) => setDisabledTextArea(e.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="Invalid"
+						checked={invalidTextArea}
+						size="small"
+						color="info"
+						onChange={(e) => setInvalidTextArea(e.currentTarget.checked)}
+					/>
+					<Input
+						label="Message Error"
+						size="small"
+						value={errorMessageTextArea}
+						onChange={(value) => setErrorMessageTextArea(value)}
+					/>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<TextArea
+							radius={radiusTextArea}
+							size={sizeTextArea}
+							variant={variantTextArea}
+							disabled={disabledTextArea}
+							invalid={invalidTextArea}
+							errorMessage={errorMessageTextArea}
+							label="Text Area"
+							placeholder="Escribe algo..."
+							helperText="Write something..."
+							required
+							rows={5}
+							cols={30}
 						/>
 					</div>
 				</div>
@@ -2297,487 +2917,6 @@ function App() {
 							<Button label="Danger" color="danger" />
 						</Tooltip>
 					</div>
-				</div>
-			</section>
-			{/* DIALOG */}
-			<section className={styles.subsection} id="dialog">
-				<h2 className={styles.subtitle}>Dialog</h2>
-				<div className={styles.control_buttons}>
-					<Select
-						className={styles.select_size}
-						label="Color"
-						value={colorToolTip}
-						size="small"
-						onChange={(value) =>
-							setColorToolTip(
-								value as
-									| "primary"
-									| "secondary"
-									| "danger"
-									| "success"
-									| "warning"
-									| "info"
-									| undefined
-							)
-						}
-						options={[
-							{ label: "Primary", value: "primary" },
-							{ label: "Secondary", value: "secondary" },
-							{ label: "Success", value: "success" },
-							{ label: "Danger", value: "danger" },
-							{ label: "Warning", value: "warning" },
-							{ label: "Info", value: "info" },
-						]}
-					/>
-					<Select
-						label="Size"
-						className={styles.select_size}
-						value={sizeToolTip}
-						size="small"
-						onChange={(value) =>
-							setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)
-						}
-						options={[
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Select
-						label="Position"
-						className={styles.select_size}
-						value={positionToolTip}
-						size="small"
-						onChange={(value) => setPositionToolTip(value as TooltipPosition | undefined)}
-						options={[
-							{ label: "Top Left", value: "top-left" },
-							{ label: "Top Right", value: "top-right" },
-							{ label: "Top Center", value: "top-center" },
-							{ label: "Bottom Center", value: "bottom-center" },
-							{ label: "Bottom Left", value: "bottom-left" },
-							{ label: "Bottom Right", value: "bottom-right" },
-						]}
-					/>
-					<div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
-						<InputNumber
-							label="Delay Show"
-							value={delayShowToolTip}
-							onChange={(value) => setDelayShowToolTip(value || 0)}
-							size="small"
-						/>
-						<InputNumber
-							label="Delay Hide"
-							value={delayHideToolTip}
-							onChange={(value) => setDelayHideToolTip(value || 0)}
-							size="small"
-						/>
-					</div>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<Button label="View Dialog" onClick={() => setOpenDialog(true)} />
-						<Dialog
-							isOpen={openDialog}
-							onClose={() => setOpenDialog(false)}
-							title="Confirmar Acción"
-							closeOnOverlayClick={true}
-							closeOnEscape={true}
-							showCloseButton={true}
-							footer={
-								<>
-									<Button
-										color="secondary"
-										onClick={() => {
-											setOpenDialog(false);
-											showNotification({
-												title: "Aceptado",
-												message: "Se acepto la accion",
-												closable: true,
-												variant: "solid",
-												notificationType: "success",
-												placement: "top-right",
-												duration: 2500,
-											});
-										}}
-									>
-										Accept
-									</Button>
-									<Button
-										color="secondary"
-										variant="outline"
-										onClick={() => {
-											setOpenDialog(false);
-											showNotification({
-												title: "Cancelado",
-												message: "Se cancelo la accion",
-												closable: true,
-												variant: "solid",
-												notificationType: "danger",
-												placement: "top-right",
-												duration: 2500,
-											});
-										}}
-										style={{ marginLeft: "8px" }}
-									>
-										Cancel
-									</Button>
-								</>
-							}
-						>
-							<div style={{ display: "flex", flexDirection: "column", gap: "2em", padding: "1em" }}>
-								<p>¿Estás seguro de que deseas realizar esta acción?</p>
-								<Input
-									type="text"
-									label="Campo de ejemplo"
-									placeholder="Escribe algo..."
-									helperText="Este es un campo de ejemplo"
-									errorMessage="Este es un mensaje de error"
-									size="small"
-									radius="small"
-									invalid={false}
-									disabled={false}
-								/>
-							</div>
-						</Dialog>
-					</div>
-				</div>
-			</section>
-			{/* DRAWER */}
-			<section className={styles.subsection} id="drawer">
-				<h2 className={styles.subtitle}>Drawer</h2>
-				<div className={styles.control_buttons}>
-					<Select
-						className={styles.select_size}
-						label="Width"
-						value={widthDrawer}
-						size="small"
-						onChange={(value) => setWidthDrawer(value as DrawerWidth)}
-						options={[
-							{ label: "Xsmall", value: "xsmall" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Half", value: "middle" },
-							{ label: "Full", value: "full" },
-						]}
-					/>
-					<Select
-						label="Size"
-						className={styles.select_size}
-						value={sizeToolTip}
-						size="small"
-						onChange={(value) =>
-							setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)
-						}
-						options={[
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Select
-						label="Position"
-						className={styles.select_size}
-						value={drawerPosition}
-						size="small"
-						onChange={(value) => setDrawerPosition(value as DrawerPlacement)}
-						options={[
-							{ label: "Top", value: "top" },
-							{ label: "Right", value: "right" },
-							{ label: "Bottom", value: "bottom" },
-							{ label: "Left", value: "left" },
-						]}
-					/>
-					<div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
-						<InputNumber
-							label="Delay Show"
-							value={delayShowToolTip}
-							onChange={(value) => setDelayShowToolTip(value || 0)}
-							size="small"
-						/>
-						<InputNumber
-							label="Delay Hide"
-							value={delayHideToolTip}
-							onChange={(value) => setDelayHideToolTip(value || 0)}
-							size="small"
-						/>
-					</div>
-				</div>
-				<div className={styles.container_buttons}>
-					<div className={`${styles.buttons} ${styles.buttons_large}`}>
-						<Button label="Open Drawer" onClick={() => setOpenDrawer(true)} />
-						<Drawer
-							isOpen={openDrawer}
-							onClose={() => setOpenDrawer(false)}
-							title="Confirmar Acción"
-							closeOnOverlayClick={true}
-							closeOnEscape={true}
-							showCloseButton={true}
-							placement={drawerPosition}
-							width={widthDrawer}
-							footer={
-								<>
-									<Button
-										color="secondary"
-										onClick={() => {
-											setOpenDrawer(false);
-										}}
-									>
-										Accept
-									</Button>
-									<Button
-										color="secondary"
-										variant="outline"
-										onClick={() => {
-											setOpenDrawer(false);
-										}}
-										style={{ marginLeft: "8px" }}
-									>
-										Cancel
-									</Button>
-								</>
-							}
-						>
-							<div
-								style={{ display: "flex", flexDirection: "column", gap: "0.5em", padding: "1em" }}
-							>
-								<Link
-									label="Home"
-									icon={<HomeIcon />}
-									variant="text"
-									color="secondary"
-									href="#"
-									type="button"
-									size="large"
-									active={true}
-									justify="start"
-								/>
-								<Link
-									label="Settings"
-									icon={<SettingsIcon />}
-									variant="text"
-									color="secondary"
-									href="#"
-									type="button"
-									size="large"
-								/>
-								<Link
-									label="Profile"
-									icon={<UserIcon />}
-									variant="text"
-									color="secondary"
-									href="#"
-									type="button"
-									size="large"
-								/>
-								<Link
-									label="Help"
-									icon={<HelpCircleIcon />}
-									variant="text"
-									color="secondary"
-									href="#"
-									type="button"
-									size="large"
-								/>
-								<Link
-									label="About"
-									icon={<InfoIcon />}
-									variant="text"
-									color="secondary"
-									href="#"
-									type="button"
-									size="large"
-								/>
-								<Link
-									label="Logout"
-									icon={<LogOutIcon />}
-									variant="text"
-									color="secondary"
-									href="#"
-									type="button"
-									size="large"
-								/>
-							</div>
-						</Drawer>
-					</div>
-				</div>
-			</section>
-			{/** BREADCRUMB */}
-			<section className={styles.subsection} id="breadcrumb">
-				<h2 className={styles.subtitle}>Breadcrumb</h2>
-				<div className={styles.control_buttons}>
-					<Select
-						className={styles.select_size}
-						label="Color"
-						value={colorBreadcrumb}
-						size="small"
-						onChange={(value) =>
-							setColorBreadcrumb(
-								value as
-									| "primary"
-									| "secondary"
-									| "success"
-									| "danger"
-									| "warning"
-									| "info"
-									| undefined
-							)
-						}
-						options={[
-							{ label: "Primary", value: "primary" },
-							{ label: "Secondary", value: "secondary" },
-							{ label: "Success", value: "success" },
-							{ label: "Danger", value: "danger" },
-							{ label: "Warning", value: "warning" },
-							{ label: "Info", value: "info" },
-						]}
-					/>
-					<Select
-						label="Size"
-						className={styles.select_size}
-						value={sizeBreadcrumb}
-						size="small"
-						onChange={(value) =>
-							setSizeBreadcrumb(value as "tiny" | "small" | "medium" | "large" | undefined)
-						}
-						options={[
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Select
-						label="Variant"
-						className={styles.select_size}
-						value={variantBreadcrumb}
-						size="small"
-						onChange={(value) =>
-							setVariantBreadcrumb(value as "outline" | "flat" | "none" | undefined)
-						}
-						options={[
-							{ label: "Outline", value: "outline" },
-							{ label: "Flat", value: "flat" },
-							{ label: "None", value: "none" },
-						]}
-					/>
-					<Select
-						label="Separator"
-						className={styles.select_size}
-						value={separatorBreadcrumb}
-						size="small"
-						onChange={(value) =>
-							setSeparatorBreadcrumb(value as "chevron" | "slash" | "dot" | "arrow" | undefined)
-						}
-						options={[
-							{ label: "Chevron", value: "chevron" },
-							{ label: "Slash", value: "slash" },
-							{ label: "Dot", value: "dot" },
-							{ label: "Arrow", value: "arrow" },
-						]}
-					/>
-					<div style={{ width: "4em" }}>
-						<InputNumber
-							onChange={(value) => setMaxItemsBreadcrumb(value as number)}
-							value={maxItemsBreadcrumb}
-							size={"small"}
-							min={0}
-						/>
-					</div>
-				</div>
-				<div className={styles.container_buttons}>
-					<Breadcrumb
-						items={[
-							{ label: "Home", href: "/", icon: <HomeIcon /> },
-							{ label: "Library", href: "/library", icon: <BookIcon /> },
-							{ label: "Data", href: "/data", icon: <DatabaseIcon /> },
-							{ label: "Section", href: "/section", icon: <LayoutDashboard /> },
-							{ label: "Programming", href: "", icon: <Code /> },
-						]}
-						size={sizeBreadcrumb}
-						variant={variantBreadcrumb}
-						separator={separatorBreadcrumb}
-						color={colorBreadcrumb}
-						maxItems={maxItemsBreadcrumb}
-					/>
-				</div>
-			</section>
-			{/* TAB */}
-			<section className={styles.subsection} id="tab">
-				<h2 className={styles.subtitle}>Tab</h2>
-				<div className={styles.control_buttons}>
-					<Select
-						label="Variant"
-						className={styles.select_size}
-						value={variantTab}
-						size="small"
-						onChange={(value) => setVariantTab(value as TabVariant)}
-						options={[
-							{ label: "Underline", value: "underline" },
-							{ label: "Flat", value: "flat" },
-							{ label: "Box", value: "box" },
-							{ label: "Border", value: "border" },
-						]}
-					/>
-					<Select
-						label="Size"
-						className={styles.select_size}
-						value={sizeTab}
-						size="small"
-						onChange={(value) => setSizeTab(value as TabSize)}
-						options={[
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
-					/>
-					<Select
-						label="Color"
-						className={styles.select_size}
-						value={colorTab}
-						size="small"
-						onChange={(value) => setColorTab(value as TabColor)}
-						options={[
-							{ label: "Primary", value: "primary" },
-							{ label: "Secondary", value: "secondary" },
-							{ label: "Success", value: "success" },
-							{ label: "Danger", value: "danger" },
-							{ label: "Warning", value: "warning" },
-							{ label: "Info", value: "info" },
-						]}
-					/>
-					<Select
-						label="Radius"
-						className={styles.select_size}
-						value={radiusTab}
-						size="small"
-						onChange={(value) => setRadiusTab(value as TabRadius)}
-						options={[
-							{ label: "None", value: "none" },
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-							{ label: "Full", value: "full" },
-						]}
-					/>
-				</div>
-				<div className={styles.container_buttons}>
-					<Tab
-						variant={variantTab}
-						size={sizeTab}
-						color={colorTab}
-						radius={radiusTab}
-						items={[
-							{ id: "1", label: "Home", icon: <HomeIcon /> },
-							{ id: "2", label: "Library", icon: <BookIcon /> },
-							{ id: "3", label: "Data", icon: <DatabaseIcon /> },
-							{ id: "4", label: "Section", icon: <LayoutDashboard /> },
-							{ id: "5", label: "Programming", icon: <Code /> },
-						]}
-					/>
 				</div>
 			</section>
 		</section>
