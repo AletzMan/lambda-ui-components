@@ -39,7 +39,7 @@ export const badgeStyles = cva(styles["lambda-badge"], {
 	},
 	defaultVariants: {
 		color: "primary",
-		size: "medium",
+		size: "small",
 		variant: "solid",
 		radius: "small",
 		hasCount: false,
@@ -56,7 +56,7 @@ export const countStyles = cva(styles["lambda-badge-count"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 	},
 });
 
@@ -70,7 +70,7 @@ export const closeButtonStyles = cva(styles["lambda-badge-close-button"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 	},
 });
 
