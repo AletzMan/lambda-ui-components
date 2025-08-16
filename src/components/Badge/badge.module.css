@@ -5,7 +5,8 @@
 	justify-content: center;
 	gap: 0.5rem;
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-reg);
+	text-shadow: 0px 0px 0px #00000080;
 }
 
 .lambda-badge-solid {
@@ -185,7 +186,23 @@
 
 .lambda-badge-tiny {
 	font-size: var(--font-size-xs);
-	padding: var(--padding-none) var(--padding-sm);
+	padding: var(--padding-none) var(--padding-md);
+	min-width: var(--height-button-xxs);
+	min-height: var(--height-button-xxs);
+
+	&:is(.lambda-badge-has-count) {
+		padding: var(--padding-md);
+	}
+
+	& > svg {
+		width: var(--icon-size-2xs);
+		height: var(--icon-size-2xs);
+	}
+}
+
+.lambda-badge-small {
+	font-size: var(--font-size-sm);
+	padding: var(--padding-none) var(--padding-md);
 	min-width: var(--height-button-xs);
 	min-height: var(--height-button-xs);
 
@@ -194,48 +211,40 @@
 	}
 
 	& > svg {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
-	}
-}
-
-.lambda-badge-small {
-	font-size: var(--font-size-sm);
-	padding: var(--padding-none) var(--padding-sm);
-	min-width: var(--height-button-sm);
-	min-height: var(--height-button-sm);
-
-	&:is(.lambda-badge-has-count) {
-		padding: var(--padding-md);
-	}
-
-	& > svg {
-		width: var(--icon-size-md);
-		height: var(--icon-size-md);
+		width: var(--icon-size-xs);
+		height: var(--icon-size-xs);
 	}
 }
 
 .lambda-badge-medium {
 	font-size: var(--font-size-md);
-	padding: var(--padding-none) var(--padding-md);
-	min-width: var(--height-button-md);
-	min-height: var(--height-button-md);
+	padding: var(--padding-none) var(--padding-lg);
+	min-width: var(--height-button-sm);
+	min-height: var(--height-button-sm);
+
+	&:is(.lambda-badge-has-count) {
+		padding: var(--padding-md) var(--padding-lg);
+	}
 
 	& > svg {
-		width: var(--icon-size-lg);
-		height: var(--icon-size-lg);
+		width: var(--icon-size-sm);
+		height: var(--icon-size-sm);
 	}
 }
 
 .lambda-badge-large {
 	font-size: var(--font-size-lg);
-	padding: var(--padding-none) var(--padding-md);
-	min-width: var(--height-button-lg);
-	min-height: var(--height-button-lg);
+	padding: var(--padding-none) var(--padding-lg);
+	min-width: var(--height-button-md);
+	min-height: var(--height-button-md);
+
+	&:is(.lambda-badge-has-count) {
+		padding: var(--padding-md) var(--padding-lg);
+	}
 
 	& > svg {
-		width: var(--icon-size-2xl);
-		height: var(--icon-size-2xl);
+		width: var(--icon-size-md);
+		height: var(--icon-size-md);
 	}
 }
 
