@@ -30,6 +30,11 @@ const meta: Meta<typeof Badge> = {
 			options: ["none", "tiny", "small", "medium", "large", "full"],
 			description: "Input radius",
 		},
+		count: {
+			control: "number",
+			type: "number",
+			description: "Add a count to the badge",
+		},
 	},
 };
 
@@ -39,9 +44,10 @@ export const Outline: StoryObj = {
 	args: {
 		variant: "outline",
 		color: "primary",
-		size: "medium",
-		text: "Label",
+		size: "small",
+		text: "Badge",
 		radius: "small",
+		count: -1,
 	},
 };
 
@@ -49,9 +55,10 @@ export const Solid: StoryObj = {
 	args: {
 		variant: "solid",
 		color: "primary",
-		size: "medium",
-		text: "Label",
+		size: "small",
+		text: "Badge",
 		radius: "small",
+		count: -1,
 	},
 };
 
@@ -59,9 +66,10 @@ export const Flat: StoryObj = {
 	args: {
 		variant: "flat",
 		color: "primary",
-		size: "medium",
-		text: "Label",
+		size: "small",
+		text: "Badge",
 		radius: "small",
+		count: -1,
 	},
 };
 
@@ -69,8 +77,20 @@ export const Dashed: StoryObj = {
 	args: {
 		variant: "dashed",
 		color: "primary",
-		size: "medium",
-		text: "Label",
+		size: "small",
+		text: "Badge",
 		radius: "small",
+		count: -1,
+	},
+};
+
+export const Subtle: StoryObj = {
+	args: {
+		variant: "subtle",
+		color: "primary",
+		size: "small",
+		text: "Badge",
+		radius: "small",
+		count: -1,
 	},
 };
