@@ -82,6 +82,9 @@ function App() {
 	const [radiusButtons, setRadiusButtons] = useState<
 		"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined
 	>("small");
+	const [variantButtons, setVariantButtons] = useState<
+		"outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
+	>("solid");
 	const [carouselPaginationType, setCarouselPaginationType] =
 		useState<CarouselPaginationType>("dots");
 	const [carouselDotType, setCarouselDotType] = useState<CarouselDotType>("circle");
@@ -661,12 +664,11 @@ function App() {
 							}
 						>
 							{withIconBadge ? <LucideBell /> : ""}
-							{withTextBadge ? badge.toUpperCase() : ""}
+							{withTextBadge ? <span style={{ textTransform: "capitalize" }}>{badge}</span> : ""}
 						</Badge>
 					))}
 				</div>
 			</section>
-
 			{/** BREADCRUMB */}
 			<section className={styles.subsection} id="breadcrumb">
 				<h2 className={styles.subtitle}>Breadcrumb</h2>
@@ -785,43 +787,57 @@ function App() {
 						color="info"
 						onChange={(e) => setLoadingButtons(e.currentTarget.checked)}
 					/>
-					<select
-						className={styles.control_size}
+					<Select
+						label="Size"
+						className={styles.select_size}
 						value={sizeButtons}
-						onChange={(e) =>
-							setSizeButtons(
-								e.currentTarget.value as "medium" | "small" | "large" | "tiny" | undefined
-							)
-						}
-					>
-						<option value="tiny">Tiny</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-					<select
-						className={styles.control_size}
+						size="small"
+						onChange={(e) => setSizeButtons(e as "medium" | "small" | "large" | "tiny" | undefined)}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Radius"
+						className={styles.select_size}
 						value={radiusButtons}
+						size="small"
 						onChange={(e) =>
 							setRadiusButtons(
-								e.currentTarget.value as
-									| "medium"
-									| "small"
-									| "large"
-									| "none"
-									| "pill"
-									| "circle"
-									| undefined
+								e as "medium" | "small" | "large" | "none" | "pill" | "circle" | undefined
 							)
 						}
-					>
-						<option value="none">None</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-						<option value="pill">Pill</option>
-						<option value="circle">Cirlce</option>
-					</select>
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+							{ label: "Pill", value: "pill" },
+							{ label: "Circle", value: "circle" },
+						]}
+					/>
+					<Select
+						label="Variant"
+						className={styles.select_size}
+						value={variantButtons}
+						size="small"
+						onChange={(e) =>
+							setVariantButtons(
+								e as "outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
+							)
+						}
+						options={[
+							{ label: "Outline", value: "outline" },
+							{ label: "Classic", value: "classic" },
+							{ label: "Solid", value: "solid" },
+							{ label: "Text", value: "text" },
+							{ label: "Ghost", value: "ghost" },
+							{ label: "Dashed", value: "dashed" },
+						]}
+					/>
 				</div>
 				<div className={styles.container_buttons}>
 					<div className={`${styles.buttons} ${styles.buttons_large}`}>
@@ -831,7 +847,7 @@ function App() {
 								className={styles.button}
 								size={sizeButtons}
 								radius={radiusButtons}
-								variant="solid"
+								variant={variantButtons}
 								color={button.color}
 								label={button.label}
 								disabled={disabledButtons}

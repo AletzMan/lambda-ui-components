@@ -24,8 +24,8 @@
 
 	--font-weight-xs: 200;
 	--font-weight-sm: 300;
-	--font-weight-reg: 500;
-	--font-weight-md: 600;
+	--font-weight-reg: 400;
+	--font-weight-md: 500;
 	--font-weight-bold: 800;
 
 	--font-size-xs: 10px;
@@ -63,6 +63,7 @@
 	--height-checkbox-md: 24px;
 	--height-checkbox-lg: 30px;
 
+	--height-button-xxs: 18px;
 	--height-button-xs: 24px;
 	--height-button-sm: 30px;
 	--height-button-md: 36px;
@@ -126,7 +127,7 @@
 	--danger-light-color: #ef444420;
 	--danger-outline-color: #ef444450;
 	--danger-disabled-color: #823636;
-	--danger-text-color: #bf3333;
+	--danger-text-color: #862222;
 	--danger-darkened-color: #2c0202;
 	--danger-lightened-color: #fdc8c8;
 
@@ -135,7 +136,7 @@
 	--success-light-color: #22c55e20;
 	--success-outline-color: #22c55e50;
 	--success-disabled-color: #4c7059;
-	--success-text-color: #278b2a;
+	--success-text-color: #1f7021;
 	--success-darkened-color: #052706;
 	--success-lightened-color: #cffed0;
 
@@ -144,7 +145,7 @@
 	--warning-light-color: #f7bb5520;
 	--warning-outline-color: #f6be5750;
 	--warning-disabled-color: #987231;
-	--warning-text-color: #b45309;
+	--warning-text-color: #96480d;
 	--warning-darkened-color: #281303;
 	--warning-lightened-color: #fbe2ce;
 
@@ -200,7 +201,7 @@
 	--primary-light-color: #5f9ea020;
 	--primary-outline-color: #5f9ea050;
 	--primary-disabled-color: #4a7577;
-	--primary-text-color: #a5e7e9;
+	--primary-text-color: #b0f2f5;
 	--primary-darkened-color: #3d6264;
 	--primary-lightened-color: #8ba9ab;
 
@@ -218,16 +219,16 @@
 	--success-light-color: #22c55e20;
 	--success-outline-color: #22c55e50;
 	--success-disabled-color: #2c6d44;
-	--success-text-color: #2ddd6d;
+	--success-text-color: #45ee83;
 	--success-darkened-color: #052706;
 	--success-lightened-color: #cffed0;
 
-	--danger-color: #ef4444;
+	--danger-color: #f84747;
 	--danger-hover-color: #e22a2a;
 	--danger-light-color: #ef444420;
 	--danger-outline-color: #ef444450;
 	--danger-disabled-color: #833939;
-	--danger-text-color: #f82626;
+	--danger-text-color: #ff7d7d;
 	--danger-darkened-color: #2c0202;
 	--danger-lightened-color: #fdc8c8;
 
@@ -236,7 +237,7 @@
 	--warning-light-color: #f7bb5520;
 	--warning-outline-color: #f6be5750;
 	--warning-disabled-color: #8c6c36;
-	--warning-text-color: #f6a821;
+	--warning-text-color: #ffc45f;
 	--warning-darkened-color: #281303;
 	--warning-lightened-color: #fbe2ce;
 
@@ -245,7 +246,7 @@
 	--info-light-color: #38bdf820;
 	--info-outline-color: #38bdf850;
 	--info-disabled-color: #2e7981;
-	--info-text-color: #3fc3fb;
+	--info-text-color: #67d1ff;
 	--info-darkened-color: #021626;
 	--info-lightened-color: #bdddf7;
 }
