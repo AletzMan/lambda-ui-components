@@ -1,17 +1,11 @@
-import {
-	forwardRef,
-	useEffect,
-	useState,
-	useRef,
-	PointerEvent as PointerEventReact,
-	ChangeEvent,
-} from "react";
+import { forwardRef, useEffect, useState, useRef, PointerEvent as PointerEventReact } from "react";
 import { ColorPickerProps } from "./colorpicker.types";
 import { colorpickerVariants } from "./colorpicker.variants";
 import clsx from "clsx";
 import styles from "./colorpicker.module.css";
 import { InputNumber } from "../InputNumber/InputNumber";
 import { Button } from "../Button/Button";
+import { Input } from "../Input/Input";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
@@ -37,6 +31,13 @@ const hsvToHsl = (h: number, s: number, v: number) => {
 		s: Math.round(newS * 100),
 		l: Math.round(newL * 100),
 	};
+};
+
+// Helper para convertir HSV a XY del picker
+const hsvToXy = (s: number, v: number, pickerRect: DOMRect) => {
+	const x = (s / 100) * pickerRect.width;
+	const y = ((100 - v) / 100) * pickerRect.height;
+	return { x, y };
 };
 
 // Helper para convertir HSL a HEX
@@ -151,10 +152,14 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 	({ className, size, variant, disabled, value, onChange, ...props }, ref) => {
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
-		const [format, setFormat] = useState<"hex" | "hsl" | "rgb">("hsl");
+		const [format, setFormat] = useState<"hex" | "hsl" | "rgb">("hex");
 		const [inputValue, setInputValue] = useState(internalValue);
 		const [rgbValues, setRgbValues] = useState({ r: 0, g: 0, b: 0 });
 		const [copied, setCopied] = useState(false);
+		const [pickerX, setPickerX] = useState(0);
+		const [pickerY, setPickerY] = useState(0);
+		const [sliderPosition, setSliderPosition] = useState(0);
+		const [alphaPosition, setAlphaPosition] = useState(0);
 
 		const sliderRef = useRef<HTMLDivElement>(null);
 		const pickerRef = useRef<HTMLDivElement>(null);
@@ -170,31 +175,52 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 
 		const lastPointerPosition = useRef({ x: 0, y: 0 });
 
+		// Sincroniza el estado interno con el valor de la prop "value"
 		useEffect(() => {
 			if (value) {
 				setInternalValue(value);
 			}
 		}, [value]);
 
+		// Este efecto ahora solo sincroniza la interfaz visual (botones y colores) con el estado interno
 		useEffect(() => {
 			const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 			const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
 			const s = hueMatch ? parseInt(hueMatch[2]) : 0;
 			const l = hueMatch ? parseInt(hueMatch[3]) : 0;
-			let displayValue = "";
 
 			const { r, g, b } = hslToRgb(hue, s, l);
 			setRgbValues({ r, g, b });
 
+			if (pickerRef.current) {
+				const pickerRect = pickerRef.current.getBoundingClientRect();
+				const hsv = hslToHsv(hue, s, l);
+				const { x, y } = hsvToXy(hsv.s, hsv.v, pickerRect);
+				setPickerX(x);
+				setPickerY(y);
+			}
+
+			if (sliderRef.current) {
+				const sliderWidth = sliderRef.current.clientWidth;
+				const newSliderPos = (hue / 360) * sliderWidth;
+				setSliderPosition(newSliderPos);
+			}
+
+			if (alphaRef.current) {
+				const alphaWidth = alphaRef.current.clientWidth;
+				const newAlphaPos = (alpha / 100) * alphaWidth;
+				setAlphaPosition(newAlphaPos);
+			}
+			// Inicializar el input según el formato por defecto
 			if (format === "hex") {
 				const hexColor = hslToHex(hue, s, l);
-				displayValue = alpha === 100 ? hexColor : `${hexColor}${alphaToHex(alpha)}`;
+				const newDisplayValue = alpha === 100 ? hexColor : `${hexColor}${alphaToHex(alpha)}`;
+				setInputValue(newDisplayValue);
 			} else if (format === "rgb") {
-				displayValue = `rgb(${r}, ${g}, ${b})`;
+				setInputValue(`rgb(${r}, ${g}, ${b})`);
 			} else {
-				displayValue = internalValue;
+				setInputValue(internalValue);
 			}
-			setInputValue(displayValue);
 		}, [internalValue, format, alpha]);
 
 		useEffect(() => {
@@ -274,8 +300,16 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 					)}%)`;
 				} else if (isDraggingPicker && pickerRef.current && pickerButtonRef.current) {
 					const rect = pickerRef.current.getBoundingClientRect();
-					const newSaturation = (lastPointerPosition.current.x / rect.width) * 100;
-					const newBrillo = 100 - (lastPointerPosition.current.y / rect.height) * 100;
+					const buttonRect = pickerButtonRef.current.getBoundingClientRect();
+					const x = lastPointerPosition.current.x;
+					const y = lastPointerPosition.current.y;
+
+					pickerButtonRef.current.style.transform = `translate(${x - buttonRect.width / 2}px, ${
+						y - buttonRect.height / 2
+					}px)`;
+
+					const newSaturation = (x / rect.width) * 100;
+					const newBrillo = 100 - (y / rect.height) * 100;
 					const newHsl = hsvToHsl(currentHue, newSaturation, newBrillo);
 					finalColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
 						newHsl.l
@@ -322,7 +356,6 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 			const x = event.clientX - rect.left;
 			const y = event.clientY - rect.top;
 
-			// Actualiza la última posición del puntero en el evento de inicio del clic
 			lastPointerPosition.current.x = x;
 			lastPointerPosition.current.y = y;
 
@@ -343,32 +376,45 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 
 		const handleChangeFormat = () => {
 			setFormat((prevFormat) => {
-				if (prevFormat === "hsl") return "rgb";
-				if (prevFormat === "rgb") return "hex";
+				const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
+				const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
+				const s = hueMatch ? parseInt(hueMatch[2]) : 0;
+				const l = hueMatch ? parseInt(hueMatch[3]) : 0;
+
+				if (prevFormat === "hsl") {
+					const { r, g, b } = hslToRgb(hue, s, l);
+					setInputValue(`rgb(${r}, ${g}, ${b})`);
+					return "rgb";
+				}
+				if (prevFormat === "rgb") {
+					const hexColor = hslToHex(hue, s, l);
+					const newDisplayValue = alpha === 100 ? hexColor : `${hexColor}${alphaToHex(alpha)}`;
+					setInputValue(newDisplayValue);
+					return "hex";
+				}
+
+				// Si el formato es "hex" o cualquier otro, volvemos a "hsl"
+				setInputValue(internalValue);
 				return "hsl";
 			});
 		};
 
-		const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-			const newInputValue = e.target.value;
-			setInputValue(newInputValue);
+		const handleInputChange = (value: string) => {
+			setInputValue(value);
 			let newColorInHsl = null;
-			if (
-				/^#?([0-9A-Fa-f]{3}){1,2}$/.test(newInputValue) ||
-				/^#?([0-9A-Fa-f]{4}){1,2}$/.test(newInputValue)
-			) {
+			if (/^#?([0-9A-Fa-f]{3}){1,2}$/.test(value) || /^#?([0-9A-Fa-f]{4}){1,2}$/.test(value)) {
 				const {
 					h,
 					s,
 					l,
 					alpha: newAlpha,
-				} = hexToHslAndAlpha(newInputValue.startsWith("#") ? newInputValue : `#${newInputValue}`);
+				} = hexToHslAndAlpha(value.startsWith("#") ? value : `#${value}`);
 				newColorInHsl = `hsl(${h}, ${s}%, ${l}%)`;
 				setAlpha(newAlpha);
-			} else if (/^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/i.test(newInputValue)) {
-				newColorInHsl = newInputValue;
-			} else if (/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i.test(newInputValue)) {
-				const rgbMatch = newInputValue.match(/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i);
+			} else if (/^hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)$/i.test(value)) {
+				newColorInHsl = value;
+			} else if (/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i.test(value)) {
+				const rgbMatch = value.match(/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i);
 				if (rgbMatch) {
 					const r = parseInt(rgbMatch[1]);
 					const g = parseInt(rgbMatch[2]);
@@ -385,34 +431,31 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 
 		const handleSingleInputChange = (value: number | undefined, part: string) => {
 			if (value === undefined || value === null) return;
+			const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
+			if (!hueMatch) return;
+			let [_, h, s, l] = hueMatch.map(Number);
+			let newColor: string;
 
 			if (format === "hsl") {
-				const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
-				if (!hueMatch) return;
-
-				let [_, h, s, l] = hueMatch.map(Number);
 				if (part === "h") h = Math.min(360, Math.max(0, value));
 				if (part === "s") s = Math.min(100, Math.max(0, value));
 				if (part === "l") l = Math.min(100, Math.max(0, value));
-
-				const newColor = `hsl(${h}, ${s}%, ${l}%)`;
-				setInternalValue(newColor);
-				onChange?.(newColor);
-			} else if (format === "rgb") {
+				newColor = `hsl(${h}, ${s}%, ${l}%)`;
+			} else {
+				// format === "rgb"
 				let { r, g, b } = rgbValues;
-
 				if (part === "r") r = Math.min(255, Math.max(0, value));
 				if (part === "g") g = Math.min(255, Math.max(0, value));
 				if (part === "b") b = Math.min(255, Math.max(0, value));
-
 				const newHsl = rgbToHsl(r, g, b);
-				const newColor = `hsl(${newHsl.h}, ${newHsl.s}%, ${newHsl.l}%)`;
-
+				newColor = `hsl(${newHsl.h}, ${newHsl.s}%, ${newHsl.l}%)`;
 				setRgbValues({ r, g, b });
-				setInternalValue(newColor);
-				onChange?.(newColor);
 			}
+
+			setInternalValue(newColor);
+			onChange?.(newColor);
 		};
+
 		const handleCopyClick = async () => {
 			const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 			const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
@@ -446,6 +489,10 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 		const s = hueMatch ? parseInt(hueMatch[2]) : 0;
 		const l = hueMatch ? parseInt(hueMatch[3]) : 0;
 
+		const pickerButtonRect = pickerButtonRef.current?.getBoundingClientRect();
+		const finalPickerX = pickerX - (pickerButtonRect?.width || 0) / 2;
+		const finalPickerY = pickerY - (pickerButtonRect?.height || 0) / 2;
+
 		return (
 			<div
 				className={clsx(colorpickerVariants({ size, variant, disabled }), className)}
@@ -470,105 +517,130 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 							type="button"
 							className={styles["lambda-colorpicker-picker-button"]}
 							ref={pickerButtonRef}
-						/>
-					</div>
-					<div className={styles["lambda-colorpicker-controls-colors"]}>
-						<div
-							className={styles["lambda-colorpicker-controls-slider"]}
-							ref={sliderRef}
-							onPointerDown={handleSliderDown}
-						>
-							<button
-								type="button"
-								className={styles["lambda-colorpicker-controls-slider-button"]}
-								ref={sliderButtonRef}
-							/>
-						</div>
-						<div
-							className={styles["lambda-colorpicker-controls-view"]}
-							ref={viewRef}
-							style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
-						/>
-					</div>
-					<div className={styles["lambda-colorpicker-controls-alpha"]}>
-						<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
-						<div
-							className={styles["lambda-colorpicker-controls-slider-alpha"]}
-							ref={alphaRef}
-							onPointerDown={handleAlphaDown}
 							style={{
-								backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0) 20%, ${internalValue} 100%)`,
+								transform: `translate(${finalPickerX}px, ${finalPickerY}px)`,
 							}}
-						>
-							<button
-								type="button"
-								className={styles["lambda-colorpicker-controls-slider-button-alpha"]}
-								ref={alphaButtonRef}
-							/>
-						</div>
-						<input
-							type="number"
-							value={alpha}
-							min="0"
-							max="100"
-							onChange={(e) => {
-								setAlpha(Math.min(100, Math.max(0, parseInt(e.target.value) || 0)));
-							}}
-							className={styles["lambda-colorpicker-controls-alpha-input"]}
 						/>
 					</div>
-					<div className={styles["lambda-colorpicker-controls-inputs"]}>
-						{format === "hex" ? (
-							<input
-								type="text"
-								value={inputValue}
-								onChange={handleInputChange}
-								className={styles["lambda-colorpicker-input-single"]}
-							/>
-						) : (
-							<div className={styles["lambda-colorpicker-input-group"]}>
-								<InputNumber
-									value={format === "hsl" ? hue : rgbValues.r}
-									size="tiny"
-									min={0}
-									max={format === "hsl" ? 360 : 255}
-									onChange={(value) => handleSingleInputChange(value, format === "hsl" ? "h" : "r")}
-									className={styles["lambda-colorpicker-input-multiple"]}
+					<div className={styles["lambda-colorpicker-controls"]}>
+						<div className={styles["lambda-colorpicker-controls-colors"]}>
+							<div
+								className={styles["lambda-colorpicker-controls-slider"]}
+								ref={sliderRef}
+								onPointerDown={handleSliderDown}
+							>
+								<button
+									type="button"
+									className={styles["lambda-colorpicker-controls-slider-button"]}
+									ref={sliderButtonRef}
+									style={{ transform: `translateX(${sliderPosition}px)` }}
 								/>
-								<InputNumber
-									value={format === "hsl" ? s : rgbValues.g}
-									onChange={(value) => handleSingleInputChange(value, format === "hsl" ? "s" : "g")}
-									min={0}
-									max={format === "hsl" ? 100 : 255}
-									size="tiny"
-									className={styles["lambda-colorpicker-input-multiple"]}
-								/>
-								<InputNumber
-									value={format === "hsl" ? l : rgbValues.b}
-									onChange={(value) => handleSingleInputChange(value, format === "hsl" ? "l" : "b")}
-									min={0}
-									max={format === "hsl" ? 100 : 255}
-									size="tiny"
-									className={styles["lambda-colorpicker-input-multiple"]}
-								/>
-								<Button
-									variant="ghost"
-									size="tiny"
-									onClick={handleChangeFormat}
-									className={styles["lambda-colorpicker-input-format"]}
-								>
-									{format.toUpperCase()}
-								</Button>
 							</div>
-						)}
-
-						<button
-							type="button"
-							onClick={handleCopyClick}
-							className={styles["lambda-colorpicker-input-copy"]}
-						>
-							{copied ? "Copiado!" : "Copiar"}
-						</button>
+							<div
+								className={styles["lambda-colorpicker-controls-view"]}
+								ref={viewRef}
+								style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
+							/>
+							<button
+								type="button"
+								onClick={handleCopyClick}
+								className={styles["lambda-colorpicker-input-copy"]}
+							>
+								{copied ? "Copiado!" : "Copiar"}
+							</button>
+						</div>
+						<div className={styles["lambda-colorpicker-controls-alpha"]}>
+							<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
+							<div
+								className={styles["lambda-colorpicker-controls-slider-alpha"]}
+								ref={alphaRef}
+								onPointerDown={handleAlphaDown}
+								style={{
+									backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0) 10%, ${internalValue} 100%)`,
+								}}
+							>
+								<button
+									type="button"
+									className={styles["lambda-colorpicker-controls-slider-button-alpha"]}
+									ref={alphaButtonRef}
+									style={{ transform: `translateX(${alphaPosition}px)` }}
+								/>
+							</div>
+							<input
+								type="number"
+								value={alpha}
+								min="0"
+								max="100"
+								onChange={(e) => {
+									setAlpha(Math.min(100, Math.max(0, parseInt(e.target.value) || 0)));
+								}}
+								className={styles["lambda-colorpicker-controls-alpha-input"]}
+							/>
+						</div>
+						<div className={styles["lambda-colorpicker-controls-inputs"]}>
+							{format === "hex" ? (
+								<div className={styles["lambda-colorpicker-input-group"]}>
+									<Input
+										type="text"
+										value={inputValue}
+										id="lambda-colorpicker-input-hex"
+										name="lambda-colorpicker-input-hex"
+										size="tiny"
+										onChange={handleInputChange}
+										className={styles["lambda-colorpicker-input-single"]}
+									/>
+									<Button
+										variant="ghost"
+										color="secondary"
+										size="tiny"
+										label={format.toUpperCase()}
+										onClick={handleChangeFormat}
+										className={styles["lambda-colorpicker-input-format"]}
+									/>
+								</div>
+							) : (
+								<div className={styles["lambda-colorpicker-input-group"]}>
+									<InputNumber
+										value={format === "hsl" ? hue : rgbValues.r}
+										size="tiny"
+										min={0}
+										max={format === "hsl" ? 360 : 255}
+										onChange={(value) =>
+											handleSingleInputChange(value, format === "hsl" ? "h" : "r")
+										}
+										className={styles["lambda-colorpicker-input-multiple"]}
+									/>
+									<InputNumber
+										value={format === "hsl" ? s : rgbValues.g}
+										onChange={(value) =>
+											handleSingleInputChange(value, format === "hsl" ? "s" : "g")
+										}
+										min={0}
+										max={format === "hsl" ? 100 : 255}
+										size="tiny"
+										className={styles["lambda-colorpicker-input-multiple"]}
+									/>
+									<InputNumber
+										value={format === "hsl" ? l : rgbValues.b}
+										onChange={(value) =>
+											handleSingleInputChange(value, format === "hsl" ? "l" : "b")
+										}
+										min={0}
+										max={format === "hsl" ? 100 : 255}
+										size="tiny"
+										className={styles["lambda-colorpicker-input-multiple"]}
+									/>
+									<Button
+										variant="ghost"
+										color="secondary"
+										size="tiny"
+										label={format.toUpperCase()}
+										onClick={handleChangeFormat}
+										className={styles["lambda-colorpicker-input-format"]}
+									/>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
