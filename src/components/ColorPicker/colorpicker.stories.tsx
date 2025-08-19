@@ -24,6 +24,10 @@ const meta: Meta<typeof ColorPicker> = {
 			control: "boolean",
 			description: "Disables the input and makes it inactive",
 		},
+		showText: {
+			control: "boolean",
+			description: "Disables the input and makes it inactive",
+		},
 	},
 };
 
@@ -36,5 +40,6 @@ export const Solid: Story = {
 		variant: "solid",
 		size: "medium",
 		disabled: false,
+		showText: false,
 	},
 };
