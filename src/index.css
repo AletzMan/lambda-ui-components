@@ -42,6 +42,12 @@
 	--border-radius-pill: 20em;
 	--border-radius-full: 9999px;
 
+	--border-width-none: 0px;
+	--border-width-xs: 1px;
+	--border-width-sm: 2px;
+	--border-width-md: 4px;
+	--border-width-lg: 8px;
+
 	--icon-size-4xs: 9px;
 	--icon-size-3xs: 11px;
 	--icon-size-2xs: 13px;
@@ -64,6 +70,7 @@
 	--height-checkbox-sm: 20px;
 	--height-checkbox-md: 24px;
 	--height-checkbox-lg: 30px;
+	--height-checkbox-xl: 36px;
 
 	--height-button-2xs: 18px;
 	--height-button-xs: 24px;
