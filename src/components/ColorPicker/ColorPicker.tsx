@@ -15,6 +15,8 @@ import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { CheckIcon, CopyIcon, Pipette } from "lucide-react";
 import useEyeDropper from "use-eye-dropper";
+// Importa el componente Range
+import { Range } from "../Range/Range";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
@@ -159,7 +161,7 @@ const alphaToHex = (a: number): string => {
 
 export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 	({ className, size, variant, disabled, value, onChange, ...props }, ref) => {
-		const { open, close, isSupported } = useEyeDropper();
+		const { open, isSupported } = useEyeDropper();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
 		const [format, setFormat] = useState<"hex" | "hsl" | "rgb">("hex");
@@ -168,21 +170,12 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 		const [copied, setCopied] = useState(false);
 		const [pickerX, setPickerX] = useState(0);
 		const [pickerY, setPickerY] = useState(0);
-		const [sliderPosition, setSliderPosition] = useState(0);
-		const [alphaPosition, setAlphaPosition] = useState(0);
 
-		const sliderRef = useRef<HTMLDivElement>(null);
 		const pickerRef = useRef<HTMLDivElement>(null);
-		const alphaRef = useRef<HTMLDivElement>(null);
 		const pickerButtonRef = useRef<HTMLButtonElement>(null);
-		const sliderButtonRef = useRef<HTMLButtonElement>(null);
-		const alphaButtonRef = useRef<HTMLButtonElement>(null);
 		const viewRef = useRef<HTMLDivElement>(null);
 
-		const [isDraggingSlider, setIsDraggingSlider] = useState(false);
 		const [isDraggingPicker, setIsDraggingPicker] = useState(false);
-		const [isDraggingAlpha, setIsDraggingAlpha] = useState(false);
-
 		const lastPointerPosition = useRef({ x: 0, y: 0 });
 
 		// Sincroniza el estado interno con el valor de la prop "value"
@@ -192,7 +185,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 			}
 		}, [value]);
 
-		// Este efecto ahora solo sincroniza la interfaz visual (botones y colores) con el estado interno
+		// Sincroniza la interfaz visual con el estado interno
 		useEffect(() => {
 			const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 			const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
@@ -210,17 +203,6 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 				setPickerY(y);
 			}
 
-			if (sliderRef.current) {
-				const sliderWidth = sliderRef.current.clientWidth;
-				const newSliderPos = (hue / 360) * sliderWidth;
-				setSliderPosition(newSliderPos);
-			}
-
-			if (alphaRef.current) {
-				const alphaWidth = alphaRef.current.clientWidth;
-				const newAlphaPos = (alpha / 100) * alphaWidth;
-				setAlphaPosition(newAlphaPos);
-			}
 			// Inicializar el input según el formato por defecto
 			if (format === "hex") {
 				const hexColor = hslToHex(hue, s, l);
@@ -233,28 +215,12 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 			}
 		}, [internalValue, format, alpha]);
 
+		// Lógica de arrastre del picker, el resto es manejado por el componente Range
 		useEffect(() => {
 			const handlePointerMove = (event: PointerEvent) => {
 				let newColor: string | undefined;
 
-				if (isDraggingSlider && sliderRef.current && sliderButtonRef.current) {
-					const rect = sliderRef.current.getBoundingClientRect();
-					const newPos = Math.max(0, Math.min(rect.width, event.clientX - rect.left));
-					sliderButtonRef.current.style.transform = `translateX(${newPos}px)`;
-					lastPointerPosition.current.x = newPos;
-
-					const newHue = (newPos / rect.width) * 360;
-					const match = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
-					const currentHsv = hslToHsv(
-						match ? parseInt(match[1]) : 0,
-						match ? parseInt(match[2]) : 0,
-						match ? parseInt(match[3]) : 0
-					);
-					const newHsl = hsvToHsl(newHue, currentHsv.s, currentHsv.v);
-					newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
-						newHsl.l
-					)}%)`;
-				} else if (isDraggingPicker && pickerRef.current && pickerButtonRef.current) {
+				if (isDraggingPicker && pickerRef.current && pickerButtonRef.current) {
 					const rect = pickerRef.current.getBoundingClientRect();
 					const buttonRect = pickerButtonRef.current.getBoundingClientRect();
 					let x = Math.max(0, Math.min(rect.width, event.clientX - rect.left));
@@ -273,16 +239,6 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 					newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
 						newHsl.l
 					)}%)`;
-				} else if (isDraggingAlpha && alphaRef.current && alphaButtonRef.current) {
-					const rect = alphaRef.current.getBoundingClientRect();
-					const newAlphaPos = Math.max(0, Math.min(rect.width, event.clientX - rect.left));
-					alphaButtonRef.current.style.transform = `translateX(${newAlphaPos}px)`;
-					lastPointerPosition.current.x = newAlphaPos;
-
-					const newAlpha = Math.round((newAlphaPos / rect.width) * 100);
-					if (viewRef.current) {
-						viewRef.current.style.opacity = `${newAlpha / 100}`;
-					}
 				}
 
 				if (newColor && viewRef.current) {
@@ -294,21 +250,8 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 				const match = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 				const currentHue = match ? parseInt(match[1]) : 0;
 				let finalColor: string | undefined;
-				let finalAlpha: number | undefined;
 
-				if (isDraggingSlider && sliderRef.current && sliderButtonRef.current) {
-					const rect = sliderRef.current.getBoundingClientRect();
-					const newHue = (lastPointerPosition.current.x / rect.width) * 360;
-					const currentHsv = hslToHsv(
-						currentHue,
-						match ? parseInt(match[2]) : 0,
-						match ? parseInt(match[3]) : 0
-					);
-					const newHsl = hsvToHsl(newHue, currentHsv.s, currentHsv.v);
-					finalColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
-						newHsl.l
-					)}%)`;
-				} else if (isDraggingPicker && pickerRef.current && pickerButtonRef.current) {
+				if (isDraggingPicker && pickerRef.current && pickerButtonRef.current) {
 					const rect = pickerRef.current.getBoundingClientRect();
 					const buttonRect = pickerButtonRef.current.getBoundingClientRect();
 					const x = lastPointerPosition.current.x;
@@ -324,22 +267,14 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 					finalColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
 						newHsl.l
 					)}%)`;
-				} else if (isDraggingAlpha && alphaRef.current && alphaButtonRef.current) {
-					const rect = alphaRef.current.getBoundingClientRect();
-					finalAlpha = Math.round((lastPointerPosition.current.x / rect.width) * 100);
 				}
 
 				if (finalColor) {
 					setInternalValue(finalColor);
 					onChange?.(finalColor);
 				}
-				if (finalAlpha !== undefined) {
-					setAlpha(finalAlpha);
-				}
 
-				setIsDraggingSlider(false);
 				setIsDraggingPicker(false);
-				setIsDraggingAlpha(false);
 			};
 
 			document.addEventListener("pointermove", handlePointerMove);
@@ -348,16 +283,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 				document.removeEventListener("pointermove", handlePointerMove);
 				document.removeEventListener("pointerup", handlePointerUp);
 			};
-		}, [isDraggingSlider, isDraggingPicker, isDraggingAlpha, internalValue, onChange, alpha]);
-
-		const handleSliderDown = (event: PointerEventReact) => {
-			if (disabled || !sliderRef.current || !sliderButtonRef.current) return;
-			const rect = sliderRef.current.getBoundingClientRect();
-			const newPos = event.clientX - rect.left;
-			sliderButtonRef.current.style.transform = `translateX(${newPos}px)`;
-			lastPointerPosition.current.x = newPos;
-			setIsDraggingSlider(true);
-		};
+		}, [isDraggingPicker, internalValue, onChange]);
 
 		const handlePickerDown = (event: PointerEventReact) => {
 			if (disabled || !pickerRef.current || !pickerButtonRef.current) return;
@@ -373,15 +299,6 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 				y - buttonRect.height / 2
 			}px)`;
 			setIsDraggingPicker(true);
-		};
-
-		const handleAlphaDown = (event: PointerEventReact) => {
-			if (disabled || !alphaRef.current || !alphaButtonRef.current) return;
-			const rect = alphaRef.current.getBoundingClientRect();
-			const newAlphaPos = event.clientX - rect.left;
-			alphaButtonRef.current.style.transform = `translateX(${newAlphaPos}px)`;
-			lastPointerPosition.current.x = newAlphaPos;
-			setIsDraggingAlpha(true);
 		};
 
 		const handleChangeFormat = () => {
@@ -521,8 +438,6 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 		const finalPickerX = pickerX - (pickerButtonRect?.width || 0) / 2;
 		const finalPickerY = pickerY - (pickerButtonRect?.height || 0) / 2;
 
-		console.log(alpha);
-
 		return (
 			<div
 				className={clsx(colorpickerVariants({ size, variant, disabled }), className)}
@@ -572,18 +487,27 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 					</div>
 					<div className={styles["lambda-colorpicker-controls"]}>
 						<div className={styles["lambda-colorpicker-controls-colors"]}>
-							<div
+							{/* Reemplazado con el componente Range */}
+							<Range
+								size="small"
+								value={hue}
+								min={0}
+								max={360}
+								label="Hue"
+								ariaLabel="Hue Slider"
+								viewValue={false}
+								viewBar={false}
+								onInput={(e) => {
+									const hsv = hslToHsv(hue, s, l);
+									const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
+									const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
+										newHsl.s
+									)}%, ${Math.round(newHsl.l)}%)`;
+									setInternalValue(newColor);
+									onChange?.(newColor);
+								}}
 								className={styles["lambda-colorpicker-controls-slider"]}
-								ref={sliderRef}
-								onPointerDown={handleSliderDown}
-							>
-								<button
-									type="button"
-									className={styles["lambda-colorpicker-controls-slider-button"]}
-									ref={sliderButtonRef}
-									style={{ transform: `translateX(${sliderPosition}px)` }}
-								/>
-							</div>
+							/>
 							{isSupported() && (
 								<Button
 									variant="ghost"
@@ -597,21 +521,22 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 						</div>
 						<div className={styles["lambda-colorpicker-controls-alpha"]}>
 							<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
-							<div
-								className={styles["lambda-colorpicker-controls-slider-alpha"]}
-								ref={alphaRef}
-								onPointerDown={handleAlphaDown}
-								style={{
-									backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0) 10%, ${internalValue} 100%)`,
+							{/* Reemplazado con el componente Range */}
+							<Range
+								size="small"
+								value={alpha}
+								min={0}
+								max={100}
+								label="Alpha"
+								ariaLabel="Alpha Slider"
+								viewValue={false}
+								viewBar={false}
+								onInput={(e) => {
+									setAlpha(e as number);
+									onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
 								}}
-							>
-								<button
-									type="button"
-									className={styles["lambda-colorpicker-controls-slider-button-alpha"]}
-									ref={alphaButtonRef}
-									style={{ transform: `translateX(${alphaPosition}px)` }}
-								/>
-							</div>
+								className={styles["lambda-colorpicker-controls-slider-alpha"]}
+							/>
 							<InputNumber
 								value={alpha}
 								min={0}
