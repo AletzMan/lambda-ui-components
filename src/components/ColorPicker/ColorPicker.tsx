@@ -7,7 +7,7 @@ import {
 	useCallback,
 } from "react";
 import { ColorPickerProps } from "./colorpicker.types";
-import { colorpickerVariants } from "./colorpicker.variants";
+import { colorpickerTextVariants, colorpickerVariants } from "./colorpicker.variants";
 import clsx from "clsx";
 import styles from "./colorpicker.module.css";
 import { InputNumber } from "../InputNumber/InputNumber";
@@ -160,7 +160,7 @@ const alphaToHex = (a: number): string => {
 };
 
 export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
-	({ className, size, variant, disabled, value, onChange, ...props }, ref) => {
+	({ className, size, variant, disabled, value, onChange, showText, ...props }, ref) => {
 		const { open, isSupported } = useEyeDropper();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
@@ -291,14 +291,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 		useEffect(() => {
 			function handleClickOutside(event: MouseEvent) {
-				// Utiliza la referencia del componente pasado a través de forwardRef
-				console.log(colorPickerRef);
 				const componentRef = (colorPickerRef as React.RefObject<HTMLDivElement>).current;
 
 				// Si el componente existe y el clic no fue dentro de él
 				if (componentRef && !componentRef.contains(event.target as Node)) {
-					console.log(componentRef);
-					console.log(event.target);
 					setViewPicker(false);
 				}
 			}
@@ -328,32 +324,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				y - buttonRect.height / 2
 			}px)`;
 			setIsDraggingPicker(true);
-		};
-
-		const handleSliderDown = (event: PointerEventReact) => {
-			if (disabled) return;
-			const sliderRect = (event.currentTarget as HTMLDivElement).getBoundingClientRect();
-			const x = Math.max(0, Math.min(sliderRect.width, event.clientX - sliderRect.left));
-			const newHue = Math.round((x / sliderRect.width) * 360);
-
-			const hsv = hslToHsv(hue, s, l);
-			const newHsl = hsvToHsl(newHue, hsv.s, hsv.v);
-			const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
-				newHsl.l
-			)}%)`;
-
-			setInternalValue(newColor);
-			onChange?.(newColor);
-		};
-
-		const handleAlphaDown = (event: PointerEventReact) => {
-			if (disabled) return;
-			const sliderRect = (event.currentTarget as HTMLDivElement).getBoundingClientRect();
-			const x = Math.max(0, Math.min(sliderRect.width, event.clientX - sliderRect.left));
-			const newAlpha = Math.round((x / sliderRect.width) * 100);
-
-			setAlpha(newAlpha);
-			onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${newAlpha / 100})`);
 		};
 
 		const handleChangeFormat = () => {
@@ -439,21 +409,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		};
 
 		const handleCopyClick = async () => {
-			const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
-			const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
-			const s = hueMatch ? parseInt(hueMatch[2]) : 0;
-			const l = hueMatch ? parseInt(hueMatch[3]) : 0;
-			let valueToCopy = "";
-
-			if (format === "hex") {
-				const hexColor = hslToHex(hue, s, l);
-				valueToCopy = alpha === 100 ? hexColor : `${hexColor}${alphaToHex(alpha)}`;
-			} else if (format === "rgb") {
-				const { r, g, b } = hslToRgb(hue, s, l);
-				valueToCopy = `rgba(${r}, ${g}, ${b}, ${alpha / 100})`;
-			} else {
-				valueToCopy = `hsla(${hue}, ${s}%, ${l}%, ${alpha / 100})`;
-			}
+			let valueToCopy = getFormatValue();
 
 			if (navigator.clipboard) {
 				try {
@@ -463,6 +419,25 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				} catch (err) {
 					console.error("Error al copiar el color:", err);
 				}
+			}
+		};
+
+		const getFormatValue = () => {
+			const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
+			const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
+			const s = hueMatch ? parseInt(hueMatch[2]) : 0;
+			const l = hueMatch ? parseInt(hueMatch[3]) : 0;
+			if (format === "hex") {
+				const hexColor = hslToHex(hue, s, l);
+				return alpha === 100 ? hexColor : `${hexColor}${alphaToHex(alpha)}`;
+			} else if (format === "rgb") {
+				const { r, g, b } = hslToRgb(hue, s, l);
+				if (alpha === 100) {
+					return `rgb(${r}, ${g}, ${b})`;
+				}
+				return `rgba(${r}, ${g}, ${b}, ${alpha / 100})`;
+			} else {
+				return internalValue;
 			}
 		};
 
@@ -476,8 +451,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					onChange?.(`hsl(${h}, ${s}%, ${l}%)`);
 				} catch (e) {
 					console.log(e);
-					// Ensures component is still mounted
-					// before calling setState
 					//if (!e.canceled) setError(e)
 				}
 			};
@@ -495,7 +468,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 		return (
 			<div
-				className={clsx(colorpickerVariants({ size, variant, disabled }), className)}
+				className={clsx(colorpickerVariants({ size, variant, disabled, showText }), className)}
 				ref={ref}
 				{...props}
 				role="colorpicker"
@@ -555,20 +528,28 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					</div>
 					<div className={styles["lambda-colorpicker-controls"]}>
 						<div className={styles["lambda-colorpicker-controls-colors"]}>
-							<div
-								className={styles["lambda-colorpicker-controls-slider"]}
-								onPointerDown={handleSliderDown}
-							></div>
+							<div className={styles["lambda-colorpicker-controls-slider"]}></div>
+
 							<Range
 								size="small"
 								value={hue}
 								min={0}
 								max={360}
+								step={1}
 								label="Hue"
 								ariaLabel="Hue Slider"
 								viewValue={false}
 								viewBar={false}
 								onInput={(e) => {
+									const hsv = hslToHsv(hue, s, l);
+									const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
+									const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
+										newHsl.s
+									)}%, ${Math.round(newHsl.l)}%)`;
+									setInternalValue(newColor);
+									onChange?.(newColor);
+								}}
+								onChange={(e) => {
 									const hsv = hslToHsv(hue, s, l);
 									const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
 									const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
@@ -594,7 +575,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 							<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
 							<div
 								className={styles["lambda-colorpicker-controls-slider-alpha"]}
-								onPointerDown={handleAlphaDown}
 								style={{
 									background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
 								}}
@@ -609,6 +589,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 								viewValue={false}
 								viewBar={false}
 								onInput={(e) => {
+									setAlpha(e as number);
+									onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
+								}}
+								onChange={(e) => {
 									setAlpha(e as number);
 									onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
 								}}
@@ -690,6 +674,9 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 						</div>
 					</div>
 				</div>
+				{showText && (
+					<span className={clsx(colorpickerTextVariants({ size }))}>{getFormatValue()}</span>
+				)}
 			</div>
 		);
 	}
