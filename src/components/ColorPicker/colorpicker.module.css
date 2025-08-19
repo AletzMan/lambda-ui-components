@@ -1,18 +1,83 @@
 .lambda-colorpicker {
+	position: relative;
 	width: 2em;
 	height: 2em;
-	background-color: red;
+	padding: var(--padding-xs);
+	border-radius: var(--border-radius-sm);
+	border: 1px solid var(--surface-d);
+	background-color: var(--surface-a);
+	transition: border-color 0.2s ease;
+
+	&:hover {
+		border-color: var(--primary-color);
+	}
+}
+
+.lambda-colorpicker-pattern {
+	position: absolute;
+	top: var(--padding-xs);
+	left: var(--padding-xs);
+	width: calc(100% - var(--padding-xs) * 2);
+	height: calc(100% - var(--padding-xs) * 2);
+	border-radius: var(--border-radius-xs);
+	background-color: var(--surface-a);
+	opacity: 0.1;
+	background-image: repeating-linear-gradient(
+			45deg,
+			#242424 25%,
+			transparent 25%,
+			transparent 75%,
+			#242424 75%,
+			#242424
+		),
+		repeating-linear-gradient(45deg, #242424 25%, #e5e5f7 25%, #e5e5f7 75%, #242424 75%, #242424);
+	background-position: 0 0, 5px 5px;
+	background-size: 10px 10px;
+}
+
+.lambda-colorpicker-button {
+	position: absolute;
+	top: var(--padding-xs);
+	left: var(--padding-xs);
+	width: calc(100% - var(--padding-xs) * 2);
+	height: calc(100% - var(--padding-xs) * 2);
+	border-radius: var(--border-radius-xs);
+	border: none;
+	cursor: pointer;
+}
+
+.lambda-colorpicker-border {
+	position: absolute;
+	top: var(--padding-xs);
+	left: var(--padding-xs);
+	width: calc(100% - var(--padding-xs) * 2);
+	height: calc(100% - var(--padding-xs) * 2);
+	border-radius: var(--border-radius-xs);
+	border: 1px solid var(--surface-d);
 }
 
 .lambda-colorpicker-box {
+	position: absolute;
+	top: -1px;
+	left: -1px;
 	display: flex;
 	flex-direction: column;
-	width: 18em;
-	height: 21em;
+	width: 0;
+	height: 0;
+	opacity: 0;
 	border-radius: var(--border-radius-sm);
 	background-color: var(--surface-b);
 	border: 1px solid var(--surface-d);
 	overflow: hidden;
+	transition: all 0.2s ease;
+	pointer-events: none;
+}
+
+.lambda-colorpicker-box-view {
+	height: 21em;
+	width: 18em;
+	opacity: 1;
+	pointer-events: auto;
 }
 
 .lambda-colorpicker-preview {
@@ -208,7 +273,7 @@
 }
 
 .lambda-colorpicker-controls-inputs {
-	padding: var(--padding-xs) var(--padding-md);
+	padding: var(--padding-none) var(--padding-md);
 }
 
 .lambda-colorpicker-input-format {
