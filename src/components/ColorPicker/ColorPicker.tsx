@@ -1,4 +1,11 @@
-import { forwardRef, useEffect, useState, useRef, PointerEvent as PointerEventReact } from "react";
+import {
+	forwardRef,
+	useEffect,
+	useState,
+	useRef,
+	PointerEvent as PointerEventReact,
+	useCallback,
+} from "react";
 import { ColorPickerProps } from "./colorpicker.types";
 import { colorpickerVariants } from "./colorpicker.variants";
 import clsx from "clsx";
@@ -6,6 +13,8 @@ import styles from "./colorpicker.module.css";
 import { InputNumber } from "../InputNumber/InputNumber";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
+import { CheckIcon, CopyIcon, Pipette } from "lucide-react";
+import useEyeDropper from "use-eye-dropper";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
@@ -150,6 +159,7 @@ const alphaToHex = (a: number): string => {
 
 export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 	({ className, size, variant, disabled, value, onChange, ...props }, ref) => {
+		const { open, close, isSupported } = useEyeDropper();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
 		const [format, setFormat] = useState<"hex" | "hsl" | "rgb">("hex");
@@ -484,6 +494,24 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 			}
 		};
 
+		const pickColor = useCallback(() => {
+			// Using async/await (can be used as a promise as-well)
+			const openPicker = async () => {
+				try {
+					const color = await open();
+					const { h, s, l } = hexToHslAndAlpha(color.sRGBHex);
+					setInternalValue(`hsl(${h}, ${s}%, ${l}%)`);
+					onChange?.(`hsl(${h}, ${s}%, ${l}%)`);
+				} catch (e) {
+					console.log(e);
+					// Ensures component is still mounted
+					// before calling setState
+					//if (!e.canceled) setError(e)
+				}
+			};
+			openPicker();
+		}, [open, onChange]);
+
 		const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 		const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
 		const s = hueMatch ? parseInt(hueMatch[2]) : 0;
@@ -493,6 +521,8 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 		const finalPickerX = pickerX - (pickerButtonRect?.width || 0) / 2;
 		const finalPickerY = pickerY - (pickerButtonRect?.height || 0) / 2;
 
+		console.log(alpha);
+
 		return (
 			<div
 				className={clsx(colorpickerVariants({ size, variant, disabled }), className)}
@@ -501,6 +531,24 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 				role="colorpicker"
 			>
 				<div className={styles["lambda-colorpicker-box"]}>
+					<div className={styles["lambda-colorpicker-preview"]}>
+						<div className={styles["lambda-colorpicker-preview-background"]}></div>
+						<div
+							className={styles["lambda-colorpicker-preview-color"]}
+							ref={viewRef}
+							style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
+						/>
+
+						<Button
+							className={styles["lambda-colorpicker-preview-copy"]}
+							type="button"
+							variant="ghost"
+							color="secondary"
+							size="tiny"
+							onClick={handleCopyClick}
+							icon={copied ? <CheckIcon /> : <CopyIcon />}
+						/>
+					</div>
 					<div
 						className={styles["lambda-colorpicker-picker"]}
 						onPointerDown={handlePickerDown}
@@ -536,18 +584,16 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 									style={{ transform: `translateX(${sliderPosition}px)` }}
 								/>
 							</div>
-							<div
-								className={styles["lambda-colorpicker-controls-view"]}
-								ref={viewRef}
-								style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
-							/>
-							<button
-								type="button"
-								onClick={handleCopyClick}
-								className={styles["lambda-colorpicker-input-copy"]}
-							>
-								{copied ? "Copiado!" : "Copiar"}
-							</button>
+							{isSupported() && (
+								<Button
+									variant="ghost"
+									color="secondary"
+									size="tiny"
+									icon={<Pipette />}
+									onClick={pickColor}
+									className={styles["lambda-colorpicker-dropper"]}
+								/>
+							)}
 						</div>
 						<div className={styles["lambda-colorpicker-controls-alpha"]}>
 							<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
@@ -566,15 +612,14 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 									style={{ transform: `translateX(${alphaPosition}px)` }}
 								/>
 							</div>
-							<input
-								type="number"
+							<InputNumber
 								value={alpha}
-								min="0"
-								max="100"
-								onChange={(e) => {
-									setAlpha(Math.min(100, Math.max(0, parseInt(e.target.value) || 0)));
+								min={0}
+								max={100}
+								onChange={(value) => {
+									setAlpha(Math.min(100, Math.max(0, value || 0)));
 								}}
-								className={styles["lambda-colorpicker-controls-alpha-input"]}
+								size="tiny"
 							/>
 						</div>
 						<div className={styles["lambda-colorpicker-controls-inputs"]}>
