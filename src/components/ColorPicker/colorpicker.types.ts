@@ -27,4 +27,8 @@ export interface ColorPickerProps
 	 * Define el estilo del color picker.
 	 */
 	variant?: "solid" | "flat" | "outline";
+	/**
+	 * Define si se muestra el texto del color picker.
+	 */
+	showText?: boolean;
 }
