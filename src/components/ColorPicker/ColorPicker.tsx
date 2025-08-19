@@ -159,7 +159,7 @@ const alphaToHex = (a: number): string => {
 	return alphaValue.toString(16).padStart(2, "0").toUpperCase();
 };
 
-export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
+export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 	({ className, size, variant, disabled, value, onChange, ...props }, ref) => {
 		const { open, isSupported } = useEyeDropper();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
@@ -170,10 +170,14 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 		const [copied, setCopied] = useState(false);
 		const [pickerX, setPickerX] = useState(0);
 		const [pickerY, setPickerY] = useState(0);
+		const [viewPicker, setViewPicker] = useState(false);
 
 		const pickerRef = useRef<HTMLDivElement>(null);
 		const pickerButtonRef = useRef<HTMLButtonElement>(null);
 		const viewRef = useRef<HTMLDivElement>(null);
+		const colorPickerRef = useRef<HTMLDivElement>(null);
+		const buttonSliderRef = useRef<HTMLButtonElement>(null);
+		const buttonAlphaRef = useRef<HTMLButtonElement>(null);
 
 		const [isDraggingPicker, setIsDraggingPicker] = useState(false);
 		const lastPointerPosition = useRef({ x: 0, y: 0 });
@@ -285,6 +289,31 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 			};
 		}, [isDraggingPicker, internalValue, onChange]);
 
+		useEffect(() => {
+			function handleClickOutside(event: MouseEvent) {
+				// Utiliza la referencia del componente pasado a través de forwardRef
+				console.log(colorPickerRef);
+				const componentRef = (colorPickerRef as React.RefObject<HTMLDivElement>).current;
+
+				// Si el componente existe y el clic no fue dentro de él
+				if (componentRef && !componentRef.contains(event.target as Node)) {
+					console.log(componentRef);
+					console.log(event.target);
+					setViewPicker(false);
+				}
+			}
+
+			// Añade el event listener solo cuando el picker está visible
+			if (viewPicker) {
+				document.addEventListener("mousedown", handleClickOutside);
+			}
+
+			// Función de limpieza para eliminar el listener
+			return () => {
+				document.removeEventListener("mousedown", handleClickOutside);
+			};
+		}, [viewPicker, colorPickerRef]); // Dependencias: viewPicker y ref
+
 		const handlePickerDown = (event: PointerEventReact) => {
 			if (disabled || !pickerRef.current || !pickerButtonRef.current) return;
 			const rect = pickerRef.current.getBoundingClientRect();
@@ -299,6 +328,32 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 				y - buttonRect.height / 2
 			}px)`;
 			setIsDraggingPicker(true);
+		};
+
+		const handleSliderDown = (event: PointerEventReact) => {
+			if (disabled) return;
+			const sliderRect = (event.currentTarget as HTMLDivElement).getBoundingClientRect();
+			const x = Math.max(0, Math.min(sliderRect.width, event.clientX - sliderRect.left));
+			const newHue = Math.round((x / sliderRect.width) * 360);
+
+			const hsv = hslToHsv(hue, s, l);
+			const newHsl = hsvToHsl(newHue, hsv.s, hsv.v);
+			const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
+				newHsl.l
+			)}%)`;
+
+			setInternalValue(newColor);
+			onChange?.(newColor);
+		};
+
+		const handleAlphaDown = (event: PointerEventReact) => {
+			if (disabled) return;
+			const sliderRect = (event.currentTarget as HTMLDivElement).getBoundingClientRect();
+			const x = Math.max(0, Math.min(sliderRect.width, event.clientX - sliderRect.left));
+			const newAlpha = Math.round((x / sliderRect.width) * 100);
+
+			setAlpha(newAlpha);
+			onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${newAlpha / 100})`);
 		};
 
 		const handleChangeFormat = () => {
@@ -445,7 +500,20 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 				{...props}
 				role="colorpicker"
 			>
-				<div className={styles["lambda-colorpicker-box"]}>
+				<div className={styles["lambda-colorpicker-pattern"]}></div>
+				<div className={styles["lambda-colorpicker-border"]}></div>
+				<button
+					type="button"
+					className={clsx(styles["lambda-colorpicker-button"])}
+					onClick={() => setViewPicker((prev) => !prev)}
+					style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
+				></button>
+				<div
+					className={clsx(styles["lambda-colorpicker-box"], {
+						[styles["lambda-colorpicker-box-view"]]: viewPicker,
+					})}
+					ref={colorPickerRef}
+				>
 					<div className={styles["lambda-colorpicker-preview"]}>
 						<div className={styles["lambda-colorpicker-preview-background"]}></div>
 						<div
@@ -487,7 +555,10 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 					</div>
 					<div className={styles["lambda-colorpicker-controls"]}>
 						<div className={styles["lambda-colorpicker-controls-colors"]}>
-							<div className={styles["lambda-colorpicker-controls-slider"]}></div>
+							<div
+								className={styles["lambda-colorpicker-controls-slider"]}
+								onPointerDown={handleSliderDown}
+							></div>
 							<Range
 								size="small"
 								value={hue}
@@ -514,6 +585,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 									size="tiny"
 									icon={<Pipette />}
 									onClick={pickColor}
+									ref={buttonSliderRef}
 									className={styles["lambda-colorpicker-dropper"]}
 								/>
 							)}
@@ -522,6 +594,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 							<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
 							<div
 								className={styles["lambda-colorpicker-controls-slider-alpha"]}
+								onPointerDown={handleAlphaDown}
 								style={{
 									background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
 								}}
@@ -609,6 +682,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 										size="tiny"
 										label={format.toUpperCase()}
 										onClick={handleChangeFormat}
+										ref={buttonAlphaRef}
 										className={styles["lambda-colorpicker-input-format"]}
 									/>
 								</div>
