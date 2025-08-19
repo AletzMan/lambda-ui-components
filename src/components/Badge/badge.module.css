@@ -187,8 +187,8 @@
 .lambda-badge-tiny {
 	font-size: var(--font-size-xs);
 	padding: var(--padding-none) var(--padding-md);
-	min-width: var(--height-button-xxs);
-	min-height: var(--height-button-xxs);
+	min-width: var(--height-button-2xs);
+	min-height: var(--height-button-2xs);
 
 	&:is(.lambda-badge-has-count) {
 		padding: var(--padding-md);
@@ -284,7 +284,7 @@
 	color: var(--white-color);
 	border-radius: var(--border-radius-sm);
 	font-weight: var(--font-weight-md);
-	padding: var(--padding-xxxs) var(--padding-sm);
+	padding: var(--padding-3xs) var(--padding-sm);
 	outline: 1px solid var(--foreground-invert-color);
 
 	&.lambda-badge-count-tiny {
