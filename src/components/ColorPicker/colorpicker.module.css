@@ -11,7 +11,7 @@
 	height: 21em;
 	border-radius: var(--border-radius-sm);
 	background-color: var(--surface-b);
-	border: 1px solid var(--surface-e);
+	border: 1px solid var(--surface-d);
 	overflow: hidden;
 }
 
@@ -119,19 +119,21 @@
 }
 
 .lambda-colorpicker-controls-colors {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: var(--padding-lg);
-	padding: var(--padding-xs) var(--padding-md);
+	padding: var(--padding-none) var(--padding-md);
 	width: 100%;
 
 	.lambda-colorpicker-controls-slider {
-		position: relative;
-		width: 100%;
+		position: absolute;
+		left: var(--padding-xs);
+		width: 14.25em;
 		height: var(--handle-2xs);
-		border-radius: 0;
-		border: 1px solid var(--surface-f);
+		border-radius: 2em;
+		border: 1px solid var(--surface-d);
 		background-image: linear-gradient(to right, red, yellow, lime, cyan, blue, fuchsia, red);
 	}
 
@@ -155,21 +157,22 @@
 	grid-template-columns: 1fr 4.5em;
 	place-items: center center;
 	gap: var(--padding-lg);
-	padding: var(--padding-xs) var(--padding-md);
+	padding: var(--padding-none) var(--padding-md);
 	width: 100%;
 
 	.lambda-colorpicker-controls-slider-alpha {
-		position: relative;
-		width: 100%;
+		position: absolute;
+		left: var(--padding-xs);
+		width: 11.35em;
 		height: var(--handle-2xs);
 		border-radius: 2em;
-		border: 1px solid var(--surface-f);
+		border: 1px solid var(--surface-d);
 	}
 
 	.lambda-colorpicker-controls-slider-pattern {
 		position: absolute;
-		left: var(--padding-lg);
-		width: 146px;
+		left: var(--padding-xs);
+		width: 11.35em;
 		height: var(--handle-2xs);
 		border-radius: 2em;
 		background-color: #e5e5f7;
