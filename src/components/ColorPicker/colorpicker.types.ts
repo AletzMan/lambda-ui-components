@@ -1,6 +1,6 @@
 export interface ColorPickerProps
 	extends Omit<
-		React.InputHTMLAttributes<HTMLInputElement>,
+		React.HTMLAttributes<HTMLDivElement>,
 		"size" | "disabled" | "checked" | "color" | "onChange"
 	> {
 	/**
