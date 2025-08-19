@@ -72,6 +72,7 @@ import { Breadcrumb } from "../src/components/Breadcrumb/Breadcrumb";
 import { TabSize, TabVariant, TabColor, TabRadius } from "../src/components/Tab/tab.types";
 import { Tab } from "../src/components/Tab/Tab";
 import { Badge } from "../src/components/Badge/Badge";
+import { ColorPicker } from "../src/components/ColorPicker/ColorPicker";
 
 function App() {
 	const [openDrawerComponents, setOpenDrawerComponents] = useState(false);
@@ -236,7 +237,7 @@ function App() {
 		"medium" | "small" | "large" | "none" | "pill" | undefined
 	>("small");
 	const { showNotification } = useNotification();
-	const [valueRange, setValueRange] = useState<RangeValue>([20, 60]);
+	const [valueRange, setValueRange] = useState<RangeValue>(30);
 	const [stepRange, setStepRange] = useState(1);
 	const [sizeRange, setSizeRange] = useState<"medium" | "small" | "large" | undefined>("medium");
 	const [disabledRange, setDisabledRange] = useState(false);
@@ -302,6 +303,17 @@ function App() {
 		"warning",
 		"info",
 	]);
+	const [sizeColorPicker, setSizeColorPicker] = useState<
+		"tiny" | "small" | "medium" | "large" | undefined
+	>("medium");
+	const [formatColorPicker, setFormatColorPicker] = useState<
+		"hex" | "rgb" | "rgba" | "hsl" | "hsla" | undefined
+	>("hex");
+	const [showTextColorPicker, setShowTextColorPicker] = useState(false);
+	const [disabledColorPicker, setDisabledColorPicker] = useState(false);
+	const [radiusColorPicker, setRadiusColorPicker] = useState<
+		"none" | "small" | "medium" | "circle" | undefined
+	>("small");
 	const COMPONENTS = [
 		"Accordion",
 		"Alert",
@@ -311,6 +323,7 @@ function App() {
 		"Card",
 		"Carousel",
 		"Checkbox",
+		"Color Picker",
 		"Dialog",
 		"Drawer",
 		"File Upload",
@@ -1170,6 +1183,79 @@ function App() {
 							variant={variantCheckbox}
 						/>
 					</div>
+				</div>
+			</section>
+			{/* COLOR PICKER */}
+			<section className={styles.subsection} id="color picker">
+				<h2 className={styles.subtitle}>Color Picker</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						className={styles.select_size}
+						label="Size"
+						value={sizeColorPicker}
+						size="small"
+						onChange={(value) =>
+							setSizeColorPicker(value as "tiny" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						className={styles.select_size}
+						label="Radius"
+						value={radiusColorPicker}
+						size="small"
+						onChange={(value) =>
+							setRadiusColorPicker(value as "none" | "small" | "medium" | "circle" | undefined)
+						}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Circle", value: "circle" },
+						]}
+					/>
+					<Select
+						className={styles.select_size}
+						label="Format"
+						value={formatColorPicker}
+						size="small"
+						onChange={(value) =>
+							setFormatColorPicker(value as "hex" | "rgb" | "rgba" | "hsl" | "hsla" | undefined)
+						}
+						options={[
+							{ label: "Hex", value: "hex" },
+							{ label: "RGB", value: "rgb" },
+							{ label: "RGBA", value: "rgba" },
+							{ label: "HSL", value: "hsl" },
+							{ label: "HSLA", value: "hsla" },
+						]}
+					/>
+					<Checkbox
+						label="Show Text"
+						size="medium"
+						checked={showTextColorPicker}
+						onChange={(value) => setShowTextColorPicker(value.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="Disabled"
+						size="medium"
+						checked={disabledColorPicker}
+						onChange={(value) => setDisabledColorPicker(value.currentTarget.checked)}
+					/>
+				</div>
+				<div className={styles.container_buttons}>
+					<ColorPicker
+						size={sizeColorPicker}
+						showText={showTextColorPicker}
+						disabled={disabledColorPicker}
+						radius={radiusColorPicker}
+						format={formatColorPicker}
+					/>
 				</div>
 			</section>
 			{/* DIALOG */}
@@ -2481,6 +2567,8 @@ function App() {
 							min={minRange}
 							max={maxRange}
 							step={stepRange}
+							viewValue={true}
+							viewBar={true}
 							label="Range"
 							onInput={(e) => setValueRange(e)}
 							onChange={(e) => setValueRange(e)}
