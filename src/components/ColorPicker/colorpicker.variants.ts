@@ -18,10 +18,29 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 			true: styles["lambda-colorpicker-disabled"],
 			false: "",
 		},
+		showText: {
+			true: styles["lambda-colorpicker-show-text"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		variant: "solid",
 		disabled: false,
+		showText: false,
+	},
+});
+
+export const colorpickerTextVariants = cva(styles["lambda-colorpicker-text"], {
+	variants: {
+		size: {
+			tiny: styles["lambda-colorpicker-text-tiny"],
+			small: styles["lambda-colorpicker-text-small"],
+			medium: styles["lambda-colorpicker-text-medium"],
+			large: styles["lambda-colorpicker-text-large"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
 	},
 });
