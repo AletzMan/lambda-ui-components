@@ -42,14 +42,14 @@
 	&:is(.tab-container-box) {
 		padding: var(--padding-xs);
 		gap: var(--gap-md);
-		border: 1px solid var(--surface-c);
+		border: var(--border-width-xs) solid var(--surface-c);
 		background-color: var(--surface-a);
 	}
 
 	&:is(.tab-container-border) {
 		padding: var(--padding-none) var(--padding-md);
 		background-color: transparent;
-		border: 1px solid transparent;
+		border: var(--border-width-xs) solid transparent;
 		gap: var(--gap-xs);
 		border-bottom: 1px solid var(--surface-d);
 		border-bottom-left-radius: var(--border-radius-none) !important;
@@ -135,13 +135,13 @@
 
 	&:is(.tab-label-border) {
 		background-color: transparent;
-		border: 1px solid transparent;
+		border: var(--border-width-xs) solid transparent;
 		border-bottom: none;
 
 		&:not(.tab-label-selected) {
 			background-color: var(--surface-b);
 			color: var(--foreground-secondary-color);
-			border: 1px solid var(--surface-d);
+			border: var(--border-width-xs) solid var(--surface-d);
 			border-bottom: none;
 			border-bottom-left-radius: var(--border-radius-none) !important;
 			border-bottom-right-radius: var(--border-radius-none) !important;
@@ -310,7 +310,7 @@
 
 	&:is(.tab-current-border) {
 		background-color: var(--surface-a);
-		border: 1px solid var(--surface-d);
+		border: var(--border-width-xs) solid var(--surface-d);
 		border-bottom: 0;
 		border-bottom-left-radius: var(--border-radius-none) !important;
 		border-bottom-right-radius: var(--border-radius-none) !important;
@@ -368,7 +368,7 @@
 	&:is(.tab-content-border) {
 		padding: var(--padding-lg);
 		background-color: var(--surface-a);
-		border: 1px solid var(--surface-d);
+		border: var(--border-width-xs) solid var(--surface-d);
 		border-top: 1px solid transparent;
 		border-top-left-radius: var(--border-radius-none) !important;
 		border-top-right-radius: var(--border-radius-none) !important;

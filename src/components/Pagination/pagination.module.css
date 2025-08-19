@@ -1,258 +1,247 @@
- .lambda-pagination-wrapper {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     font-family: var(--font-family);
-     font-weight: var(--font-weight-reg);
-     box-sizing: border-box;
-     padding: var(--padding-xs) var(--padding-none);
- }
+.lambda-pagination-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: var(--font-family);
+	font-weight: var(--font-weight-reg);
+	box-sizing: border-box;
+	padding: var(--padding-xs) var(--padding-none);
+}
 
+.lambda-pagination-wrapper-disabled {
+	opacity: 0.6;
+	pointer-events: none;
+	cursor: not-allowed;
+}
 
- .lambda-pagination-wrapper-disabled {
-     opacity: 0.6;
-     pointer-events: none;
-     cursor: not-allowed;
- }
+.lambda-pagination-list-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	gap: var(--gap-sm);
+}
 
+.lambda-pagination-list-container-tiny {
+	gap: var(--gap-xs);
+}
 
+.lambda-pagination-list-container-small {
+	gap: var(--gap-sm);
+}
 
- .lambda-pagination-list-container {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     list-style: none;
-     padding: 0;
-     margin: 0;
-     gap: var(--gap-sm);
- }
+.lambda-pagination-list-container-medium {
+	gap: var(--gap-sm);
+}
 
+.lambda-pagination-list-container-large {
+	gap: var(--gap-sm);
+}
 
- .lambda-pagination-list-container-tiny {
-     gap: var(--gap-xs);
- }
+.lambda-pagination-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--height-button-xs);
+	height: var(--height-button-xs);
+	padding: 0 var(--padding-xs);
+	font-family: var(--font-family);
+	font-weight: var(--font-weight-md);
+	outline: none;
+	text-decoration: none;
+	border: var(--border-width-xs) solid transparent;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
 
- .lambda-pagination-list-container-small {
-     gap: var(--gap-sm);
- }
+.lambda-pagination-button-tiny {
+	min-width: var(--height-button-xs);
+	height: var(--height-button-xs);
+	font-size: var(--font-size-xs);
+}
 
- .lambda-pagination-list-container-medium {
-     gap: var(--gap-sm);
- }
+.lambda-pagination-button-small {
+	min-width: var(--height-button-sm);
+	height: var(--height-button-sm);
+	font-size: var(--font-size-sm);
+}
 
- .lambda-pagination-list-container-large {
-     gap: var(--gap-sm);
- }
+.lambda-pagination-button-medium {
+	min-width: var(--height-button-md);
+	height: var(--height-button-md);
+	font-size: var(--font-size-md);
+}
 
+.lambda-pagination-button-large {
+	min-width: var(--height-button-lg);
+	height: var(--height-button-lg);
+	font-size: var(--font-size-lg);
+}
 
- .lambda-pagination-button {
-     display: inline-flex;
-     align-items: center;
-     justify-content: center;
-     min-width: var(--height-button-xs);
-     height: var(--height-button-xs);
-     padding: 0 var(--padding-xs);
-     font-family: var(--font-family);
-     font-weight: var(--font-weight-md);
-     outline: none;
-     text-decoration: none;
-     border: 1px solid transparent;
-     cursor: pointer;
-     transition: all 0.2s ease;
- }
+.lambda-pagination-button-outline {
+	border-color: var(--surface-d);
+	background-color: var(--surface-c);
+	color: var(--surface-g);
 
+	&:is(.lambda-pagination-button-disabled) {
+		cursor: not-allowed;
+		opacity: 0.5;
+		background-color: var(--surface-c);
+		border-color: var(--surface-d);
+		color: var(--surface-g);
+	}
+}
 
- .lambda-pagination-button-tiny {
-     min-width: var(--height-button-xs);
-     height: var(--height-button-xs);
-     font-size: var(--font-size-xs);
- }
+.lambda-pagination-button-flat {
+	border: none;
+	background-color: var(--primary-light-color);
+	color: var(--primary-text-color);
 
- .lambda-pagination-button-small {
-     min-width: var(--height-button-sm);
-     height: var(--height-button-sm);
-     font-size: var(--font-size-sm);
- }
+	&:is(.lambda-pagination-button-disabled) {
+		cursor: not-allowed;
+		opacity: 0.5;
+		background-color: var(--primary-light-color);
+		border-color: var(--surface-d);
+		color: var(--primary-disabled-color);
+	}
+}
 
- .lambda-pagination-button-medium {
-     min-width: var(--height-button-md);
-     height: var(--height-button-md);
-     font-size: var(--font-size-md);
- }
+.lambda-pagination-button-solid {
+	border-color: var(--surface-c);
+	background-color: var(--surface-c);
+	color: var(--surface-g);
 
- .lambda-pagination-button-large {
-     min-width: var(--height-button-lg);
-     height: var(--height-button-lg);
-     font-size: var(--font-size-lg);
- }
+	&:is(.lambda-pagination-button-disabled) {
+		cursor: not-allowed;
+		opacity: 0.5;
+		background-color: var(--surface-c);
+		border-color: var(--surface-c);
+		color: var(--surface-g);
+	}
+}
 
- .lambda-pagination-button-outline {
-     border-color: var(--surface-d);
-     background-color: var(--surface-c);
-     color: var(--surface-g);
+.lambda-pagination-button-radius-none {
+	border-radius: 0;
+}
 
-     &:is(.lambda-pagination-button-disabled) {
-         cursor: not-allowed;
-         opacity: 0.5;
-         background-color: var(--surface-c);
-         border-color: var(--surface-d);
-         color: var(--surface-g);
-     }
- }
+.lambda-pagination-button-radius-small {
+	border-radius: var(--border-radius-sm);
+}
 
- .lambda-pagination-button-flat {
-     border: none;
-     background-color: var(--primary-light-color);
-     color: var(--primary-text-color);
+.lambda-pagination-button-radius-medium {
+	border-radius: var(--border-radius-md);
+}
 
-     &:is(.lambda-pagination-button-disabled) {
-         cursor: not-allowed;
-         opacity: 0.5;
-         background-color: var(--primary-light-color);
-         border-color: var(--surface-d);
-         color: var(--primary-disabled-color);
-     }
- }
+.lambda-pagination-button-radius-large {
+	border-radius: var(--border-radius-lg);
+}
 
- .lambda-pagination-button-solid {
-     border-color: var(--surface-c);
-     background-color: var(--surface-c);
-     color: var(--surface-g);
+.lambda-pagination-button-radius-pill {
+	border-radius: var(--border-radius-pill);
+}
 
-     &:is(.lambda-pagination-button-disabled) {
-         cursor: not-allowed;
-         opacity: 0.5;
-         background-color: var(--surface-c);
-         border-color: var(--surface-c);
-         color: var(--surface-g);
-     }
- }
+.lambda-pagination-button:hover:not(.lambda-pagination-button-disabled):not(
+		.lambda-pagination-button-active
+	):not(.lambda-pagination-button-ellipsis) {
+	&.lambda-pagination-button-solid {
+		border-color: var(--primary-color);
+		background-color: var(--primary-color);
+		color: var(--white-color);
+	}
 
- .lambda-pagination-button-radius-none {
-     border-radius: 0;
- }
+	&.lambda-pagination-button-outline {
+		border-color: var(--primary-color);
+		background-color: var(--primary-light-color);
+		color: var(--primary-text-color);
+	}
 
- .lambda-pagination-button-radius-small {
-     border-radius: var(--border-radius-sm);
- }
+	&.lambda-pagination-button-flat {
+		background-color: var(--primary-outline-color);
+		color: var(--primary-text-color);
+	}
+}
 
- .lambda-pagination-button-radius-medium {
-     border-radius: var(--border-radius-md);
- }
+.lambda-pagination-button:focus-visible:not(.lambda-pagination-button-disabled):not(
+		.lambda-pagination-button-ellipsis
+	) {
+	outline: 2px solid var(--primary-outline-color);
+	outline-offset: 1px;
+}
 
- .lambda-pagination-button-radius-large {
-     border-radius: var(--border-radius-lg);
- }
+.lambda-pagination-button-active {
+	cursor: default;
+	pointer-events: none;
+	font-weight: var(--font-weight-bold);
 
- .lambda-pagination-button-radius-pill {
-     border-radius: var(--border-radius-pill);
- }
+	&:hover,
+	&:focus-visible {
+		border-color: var(--primary-color);
+		background-color: var(--primary-color);
+		outline: none;
+	}
+}
 
+.lambda-pagination-button-outline-active {
+	border-color: var(--primary-hover-color);
+	background-color: var(--primary-outline-color);
+	color: var(--primary-text-color);
+}
 
- .lambda-pagination-button:hover:not(.lambda-pagination-button-disabled):not(.lambda-pagination-button-active):not(.lambda-pagination-button-ellipsis) {
+.lambda-pagination-button-flat-active {
+	border: none;
+	background-color: var(--primary-color);
+	color: var(--white-color);
+}
 
-     &.lambda-pagination-button-solid {
-         border-color: var(--primary-color);
-         background-color: var(--primary-color);
-         color: var(--white-color);
-     }
+.lambda-pagination-button-solid-active {
+	border-color: var(--primary-color);
+	background-color: var(--primary-color);
+	color: var(--white-color);
+}
 
-     &.lambda-pagination-button-outline {
-         border-color: var(--primary-color);
-         background-color: var(--primary-light-color);
-         color: var(--primary-text-color);
-     }
+.lambda-pagination-button-ellipsis {
+	cursor: default;
+	pointer-events: none;
+	background-color: transparent;
+	color: var(--surface-c);
 
-     &.lambda-pagination-button-flat {
-         background-color: var(--primary-outline-color);
-         color: var(--primary-text-color);
-     }
- }
+	&:hover,
+	&:focus-visible {
+		background-color: transparent;
+		border: none;
+		color: var(--color-text-secondary);
+		outline: none;
+		box-shadow: none;
+	}
+}
 
- .lambda-pagination-button:focus-visible:not(.lambda-pagination-button-disabled):not(.lambda-pagination-button-ellipsis) {
-     outline: 2px solid var(--primary-outline-color);
-     outline-offset: 1px;
- }
+.lambda-pagination-button-ellipsis-disabled {
+	opacity: 0.5;
+}
 
+.lambda-pagination-button-icon {
+	width: var(--icon-size-sm);
+	height: var(--icon-size-sm);
+}
 
- .lambda-pagination-button-active {
-     cursor: default;
-     pointer-events: none;
-     font-weight: var(--font-weight-bold);
+.lambda-pagination-button-tiny .lambda-pagination-button-icon {
+	width: var(--icon-size-xs);
+	height: var(--icon-size-xs);
+}
 
-     &:hover,
-     &:focus-visible {
-         border-color: var(--primary-color);
-         background-color: var(--primary-color);
-         outline: none;
-     }
- }
+.lambda-pagination-button-small .lambda-pagination-button-icon {
+	width: var(--icon-size-xs);
+	height: var(--icon-size-xs);
+}
 
+.lambda-pagination-button-medium .lambda-pagination-button-icon {
+	width: var(--icon-size-sm);
+	height: var(--icon-size-sm);
+}
 
- .lambda-pagination-button-outline-active {
-     border-color: var(--primary-hover-color);
-     background-color: var(--primary-outline-color);
-     color: var(--primary-text-color);
- }
-
- .lambda-pagination-button-flat-active {
-     border: none;
-     background-color: var(--primary-color);
-     color: var(--white-color);
- }
-
- .lambda-pagination-button-solid-active {
-     border-color: var(--primary-color);
-     background-color: var(--primary-color);
-     color: var(--white-color);
- }
-
-
-
-
- .lambda-pagination-button-ellipsis {
-     cursor: default;
-     pointer-events: none;
-     background-color: transparent;
-     color: var(--surface-c);
-
-     &:hover,
-     &:focus-visible {
-         background-color: transparent;
-         border: none;
-         color: var(--color-text-secondary);
-         outline: none;
-         box-shadow: none;
-     }
- }
-
-
- .lambda-pagination-button-ellipsis-disabled {
-     opacity: 0.5;
- }
-
-
- .lambda-pagination-button-icon {
-     width: var(--icon-size-sm);
-     height: var(--icon-size-sm);
- }
-
- .lambda-pagination-button-tiny .lambda-pagination-button-icon {
-     width: var(--icon-size-xs);
-     height: var(--icon-size-xs);
- }
-
- .lambda-pagination-button-small .lambda-pagination-button-icon {
-     width: var(--icon-size-xs);
-     height: var(--icon-size-xs);
- }
-
- .lambda-pagination-button-medium .lambda-pagination-button-icon {
-     width: var(--icon-size-sm);
-     height: var(--icon-size-sm);
- }
-
- .lambda-pagination-button-large .lambda-pagination-button-icon {
-     width: var(--icon-size-md);
-     height: var(--icon-size-md);
- }
+.lambda-pagination-button-large .lambda-pagination-button-icon {
+	width: var(--icon-size-md);
+	height: var(--icon-size-md);
+}

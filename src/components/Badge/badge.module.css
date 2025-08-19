@@ -42,7 +42,7 @@
 }
 
 .lambda-badge-outline {
-	border: 1px solid;
+	border: var(--border-width-xs) solid;
 
 	&.lambda-badge-primary {
 		color: var(--primary-color);
@@ -111,41 +111,41 @@
 
 .lambda-badge-dashed {
 	color: var(--primary-color);
-	border: 1px dashed var(--primary-color);
+	border: var(--border-width-xs) dashed var(--primary-color);
 
 	&.lambda-badge-primary {
 		color: var(--primary-text-color);
-		border: 1px dashed var(--primary-color);
+		border: var(--border-width-xs) dashed var(--primary-color);
 	}
 
 	&.lambda-badge-secondary {
 		color: var(--secondary-text-color);
-		border: 1px dashed var(--secondary-color);
+		border: var(--border-width-xs) dashed var(--secondary-color);
 	}
 
 	&.lambda-badge-danger {
 		color: var(--danger-text-color);
-		border: 1px dashed var(--danger-color);
+		border: var(--border-width-xs) dashed var(--danger-color);
 	}
 
 	&.lambda-badge-success {
 		color: var(--success-text-color);
-		border: 1px dashed var(--success-color);
+		border: var(--border-width-xs) dashed var(--success-color);
 	}
 
 	&.lambda-badge-warning {
 		color: var(--warning-text-color);
-		border: 1px dashed var(--warning-color);
+		border: var(--border-width-xs) dashed var(--warning-color);
 	}
 
 	&.lambda-badge-info {
 		color: var(--info-text-color);
-		border: 1px dashed var(--info-color);
+		border: var(--border-width-xs) dashed var(--info-color);
 	}
 }
 
 .lambda-badge-subtle {
-	border: 1px solid;
+	border: var(--border-width-xs) solid;
 
 	&.lambda-badge-primary {
 		color: var(--primary-text-color);
