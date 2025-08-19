@@ -5,8 +5,8 @@
 	--white-color: #ffffff;
 
 	--padding-none: 0px;
-	--padding-xxxs: 1px;
-	--padding-xxs: 2px;
+	--padding-3xs: 1px;
+	--padding-2xs: 2px;
 	--padding-xs: 4px;
 	--padding-sm: 6px;
 	--padding-md: 8px;
@@ -15,7 +15,7 @@
 	--padding-2xl: 64px;
 
 	--gap-none: 0px;
-	--gap-xxs: 1px;
+	--gap-2xs: 1px;
 	--gap-xs: 2px;
 	--gap-sm: 4px;
 	--gap-md: 8px;
@@ -53,6 +53,7 @@
 	--icon-size-2xl: 24px;
 	--icon-size-3xl: 28px;
 
+	--handle-3xs: 6px;
 	--handle-2xs: 10px;
 	--handle-xs: 14px;
 	--handle-sm: 18px;
@@ -64,7 +65,7 @@
 	--height-checkbox-md: 24px;
 	--height-checkbox-lg: 30px;
 
-	--height-button-xxs: 18px;
+	--height-button-2xs: 18px;
 	--height-button-xs: 24px;
 	--height-button-sm: 30px;
 	--height-button-md: 36px;
