@@ -487,7 +487,7 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 					</div>
 					<div className={styles["lambda-colorpicker-controls"]}>
 						<div className={styles["lambda-colorpicker-controls-colors"]}>
-							{/* Reemplazado con el componente Range */}
+							<div className={styles["lambda-colorpicker-controls-slider"]}></div>
 							<Range
 								size="small"
 								value={hue}
@@ -506,7 +506,6 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 									setInternalValue(newColor);
 									onChange?.(newColor);
 								}}
-								className={styles["lambda-colorpicker-controls-slider"]}
 							/>
 							{isSupported() && (
 								<Button
@@ -521,7 +520,12 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 						</div>
 						<div className={styles["lambda-colorpicker-controls-alpha"]}>
 							<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
-							{/* Reemplazado con el componente Range */}
+							<div
+								className={styles["lambda-colorpicker-controls-slider-alpha"]}
+								style={{
+									background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
+								}}
+							></div>
 							<Range
 								size="small"
 								value={alpha}
@@ -535,7 +539,6 @@ export const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(
 									setAlpha(e as number);
 									onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
 								}}
-								className={styles["lambda-colorpicker-controls-slider-alpha"]}
 							/>
 							<InputNumber
 								value={alpha}
