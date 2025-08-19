@@ -68,7 +68,7 @@ body {
 	flex-direction: column;
 	gap: 0.5em;
 	border-radius: var(--border-radius-sm);
-	border: 1px solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--surface-d);
 	width: 100%;
 }
 
@@ -105,7 +105,7 @@ body {
 	gap: 0.5em;
 	padding: 1em;
 	border-radius: var(--border-radius-sm);
-	border: 1px dashed var(--surface-d);
+	border: var(--border-width-xs) dashed var(--surface-d);
 }
 
 .control_size {
@@ -117,7 +117,7 @@ body {
 	border-radius: var(--border-radius-sm);
 	min-width: 6em;
 	max-height: 32px;
-	border: 1px solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--surface-d);
 	accent-color: red;
 }
 
