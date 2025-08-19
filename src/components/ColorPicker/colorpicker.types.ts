@@ -28,6 +28,10 @@ export interface ColorPickerProps
 	 */
 	variant?: "solid" | "flat" | "outline";
 	/**
+	 * Define el radio del color picker.
+	 */
+	radius?: "none" | "small" | "medium" | "circle";
+	/**
 	 * Define si se muestra el texto del color picker.
 	 */
 	showText?: boolean;

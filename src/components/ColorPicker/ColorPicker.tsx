@@ -7,7 +7,11 @@ import {
 	useCallback,
 } from "react";
 import { ColorPickerProps } from "./colorpicker.types";
-import { colorpickerTextVariants, colorpickerVariants } from "./colorpicker.variants";
+import {
+	colorpickerGroupVariants,
+	colorpickerTextVariants,
+	colorpickerVariants,
+} from "./colorpicker.variants";
 import clsx from "clsx";
 import styles from "./colorpicker.module.css";
 import { InputNumber } from "../InputNumber/InputNumber";
@@ -160,11 +164,27 @@ const alphaToHex = (a: number): string => {
 };
 
 export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
-	({ className, size, variant, disabled, value, onChange, showText, ...props }, ref) => {
+	(
+		{
+			className,
+			size,
+			variant,
+			radius,
+			disabled,
+			value,
+			onChange,
+			format: formatProp,
+			showText,
+			...props
+		},
+		ref
+	) => {
 		const { open, isSupported } = useEyeDropper();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
-		const [format, setFormat] = useState<"hex" | "hsl" | "rgb">("hex");
+		const [format, setFormat] = useState<"hex" | "hsl" | "rgb" | "rgba" | "hsla">(
+			formatProp || "hex"
+		);
 		const [inputValue, setInputValue] = useState(internalValue);
 		const [rgbValues, setRgbValues] = useState({ r: 0, g: 0, b: 0 });
 		const [copied, setCopied] = useState(false);
@@ -188,6 +208,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				setInternalValue(value);
 			}
 		}, [value]);
+
+		useEffect(() => {
+			setFormat(formatProp || "hex");
+		}, [formatProp]);
 
 		// Sincroniza la interfaz visual con el estado interno
 		useEffect(() => {
@@ -214,6 +238,12 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				setInputValue(newDisplayValue);
 			} else if (format === "rgb") {
 				setInputValue(`rgb(${r}, ${g}, ${b})`);
+			} else if (format === "rgba") {
+				setInputValue(`rgba(${r}, ${g}, ${b}, ${alpha / 100})`);
+			} else if (format === "hsl") {
+				setInputValue(`hsl(${hue}, ${s}%, ${l}%)`);
+			} else if (format === "hsla") {
+				setInputValue(`hsla(${hue}, ${s}%, ${l}%, ${alpha / 100})`);
 			} else {
 				setInputValue(internalValue);
 			}
@@ -436,6 +466,13 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					return `rgb(${r}, ${g}, ${b})`;
 				}
 				return `rgba(${r}, ${g}, ${b}, ${alpha / 100})`;
+			} else if (format === "rgba") {
+				const { r, g, b } = hslToRgb(hue, s, l);
+				return `rgba(${r}, ${g}, ${b}, ${alpha / 100})`;
+			} else if (format === "hsl") {
+				return `hsl(${hue}, ${s}%, ${l}%)`;
+			} else if (format === "hsla") {
+				return `hsla(${hue}, ${s}%, ${l}%, ${alpha / 100})`;
 			} else {
 				return internalValue;
 			}
@@ -468,19 +505,24 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 		return (
 			<div
-				className={clsx(colorpickerVariants({ size, variant, disabled, showText }), className)}
+				className={clsx(
+					colorpickerVariants({ size, variant, radius, disabled, showText }),
+					className
+				)}
 				ref={ref}
 				{...props}
 				role="colorpicker"
 			>
-				<div className={styles["lambda-colorpicker-pattern"]}></div>
-				<div className={styles["lambda-colorpicker-border"]}></div>
-				<button
-					type="button"
-					className={clsx(styles["lambda-colorpicker-button"])}
-					onClick={() => setViewPicker((prev) => !prev)}
-					style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
-				></button>
+				<div className={clsx(colorpickerGroupVariants({ size, radius }))}>
+					<div className={styles["lambda-colorpicker-border"]}></div>
+					<div className={styles["lambda-colorpicker-pattern"]}></div>
+					<button
+						type="button"
+						className={clsx(styles["lambda-colorpicker-button"])}
+						onClick={() => setViewPicker((prev) => !prev)}
+						style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
+					></button>
+				</div>
 				<div
 					className={clsx(styles["lambda-colorpicker-box"], {
 						[styles["lambda-colorpicker-box-view"]]: viewPicker,

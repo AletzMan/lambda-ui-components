@@ -1,8 +1,7 @@
 .lambda-colorpicker {
 	position: relative;
-	padding: var(--padding-xs);
 	border-radius: var(--border-radius-sm);
-	border: 1px solid var(--surface-d);
+	border: var(--border-width-sm) solid var(--surface-e);
 	background-color: var(--surface-a);
 	transition: border-color 0.2s ease;
 	font-family: var(--font-family);
@@ -13,117 +12,210 @@
 	}
 
 	&:is(.lambda-colorpicker-show-text) {
-		display: grid;
-		grid-template-columns: 2em 1fr;
+		display: flex;
+		flex-direction: row;
+		gap: var(--padding-xs);
 	}
 
 	&:is(.lambda-colorpicker-tiny) {
+		padding: var(--padding-3xs);
 		min-width: var(--height-checkbox-sm);
 		min-height: var(--height-checkbox-sm);
 
 		&:is(.lambda-colorpicker-show-text) {
-			font-size: var(--font-size-xs);
+			.lambda-colorpicker-text {
+				font-size: var(--font-size-xs);
+			}
 		}
 
 		.lambda-colorpicker-button {
-			left: var(--padding-3xs);
-			top: var(--padding-3xs);
 			width: var(--height-checkbox-xs);
 			height: var(--height-checkbox-xs);
 		}
 
 		.lambda-colorpicker-border {
-			left: var(--padding-3xs);
-			top: var(--padding-3xs);
 			width: var(--height-checkbox-xs);
 			height: var(--height-checkbox-xs);
 		}
 
 		.lambda-colorpicker-pattern {
-			left: var(--padding-3xs);
-			top: var(--padding-3xs);
 			width: var(--height-checkbox-xs);
 			height: var(--height-checkbox-xs);
 		}
 	}
 
 	&:is(.lambda-colorpicker-small) {
-		min-width: 1.4em;
-		min-height: 1.4em;
+		padding: var(--padding-3xs);
+		min-width: var(--height-checkbox-md);
+		min-height: var(--height-checkbox-md);
 
 		&:is(.lambda-colorpicker-show-text) {
-			font-size: var(--font-size-sm);
+			.lambda-colorpicker-text {
+				font-size: var(--font-size-sm);
+			}
 		}
 
 		.lambda-colorpicker-button {
-			width: 1.4em;
-			height: 1.4em;
+			width: var(--height-checkbox-sm);
+			height: var(--height-checkbox-sm);
 		}
 
 		.lambda-colorpicker-border {
-			width: 1.4em;
-			height: 1.4em;
+			width: var(--height-checkbox-sm);
+			height: var(--height-checkbox-sm);
 		}
 
 		.lambda-colorpicker-pattern {
-			width: 1.4em;
-			height: 1.4em;
+			width: var(--height-checkbox-sm);
+			height: var(--height-checkbox-sm);
 		}
 	}
 
 	&:is(.lambda-colorpicker-medium) {
-		min-width: 2em;
-		min-height: 2em;
+		padding: var(--padding-2xs);
+		min-width: var(--height-checkbox-lg);
+		min-height: var(--height-checkbox-lg);
 
 		&:is(.lambda-colorpicker-show-text) {
-			font-size: var(--font-size-md);
+			.lambda-colorpicker-text {
+				font-size: var(--font-size-md);
+			}
 		}
 
 		.lambda-colorpicker-button {
-			width: 2em;
-			height: 2em;
+			width: var(--height-checkbox-md);
+			height: var(--height-checkbox-md);
 		}
 
 		.lambda-colorpicker-border {
-			width: 2em;
-			height: 2em;
+			width: var(--height-checkbox-md);
+			height: var(--height-checkbox-md);
 		}
 
 		.lambda-colorpicker-pattern {
-			width: 2em;
-			height: 2em;
+			width: var(--height-checkbox-md);
+			height: var(--height-checkbox-md);
 		}
 	}
 
 	&:is(.lambda-colorpicker-large) {
-		min-width: 2.4em;
-		min-height: 2.4em;
+		padding: var(--padding-2xs);
+		min-width: var(--height-checkbox-xl);
+		min-height: var(--height-checkbox-xl);
 
 		&:is(.lambda-colorpicker-show-text) {
-			font-size: var(--font-size-lg);
+			.lambda-colorpicker-text {
+				font-size: var(--font-size-lg);
+			}
 		}
 
 		.lambda-colorpicker-button {
-			width: 2.4em;
-			height: 2.4em;
+			width: var(--height-checkbox-lg);
+			height: var(--height-checkbox-lg);
 		}
 
 		.lambda-colorpicker-border {
-			width: 2.4em;
-			height: 2.4em;
+			width: var(--height-checkbox-lg);
+			height: var(--height-checkbox-lg);
 		}
 
 		.lambda-colorpicker-pattern {
-			width: 2.4em;
-			height: 2.4em;
+			width: var(--height-checkbox-lg);
+			height: var(--height-checkbox-lg);
+		}
+	}
+
+	&:is(.lambda-colorpicker-radius-none) {
+		border-radius: var(--border-radius-none);
+	}
+
+	&:is(.lambda-colorpicker-radius-small) {
+		border-radius: var(--border-radius-md);
+	}
+
+	&:is(.lambda-colorpicker-radius-medium) {
+		border-radius: var(--border-radius-lg);
+	}
+	&:is(.lambda-colorpicker-radius-circle) {
+		border-radius: var(--border-radius-full);
+	}
+
+	&:is(.lambda-colorpicker-disabled) {
+		opacity: 0.5;
+		cursor: not-allowed;
+
+		.lambda-colorpicker-button {
+			pointer-events: none;
+		}
+	}
+}
+
+.lambda-colorpicker-group {
+	display: flex;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+
+	&:is(.lambda-colorpicker-group-tiny) {
+		min-width: var(--height-checkbox-xs);
+		min-height: var(--height-checkbox-xs);
+	}
+
+	&:is(.lambda-colorpicker-group-small) {
+		min-width: var(--height-checkbox-sm);
+		min-height: var(--height-checkbox-sm);
+	}
+
+	&:is(.lambda-colorpicker-group-medium) {
+		min-width: var(--height-checkbox-md);
+		min-height: var(--height-checkbox-md);
+	}
+
+	&:is(.lambda-colorpicker-group-large) {
+		min-width: var(--height-checkbox-lg);
+		min-height: var(--height-checkbox-lg);
+	}
+
+	&:is(.lambda-colorpicker-group-radius-none) {
+		.lambda-colorpicker-button,
+		.lambda-colorpicker-border,
+		.lambda-colorpicker-pattern {
+			border-radius: var(--border-radius-none);
+		}
+	}
+
+	&:is(.lambda-colorpicker-group-radius-small) {
+		.lambda-colorpicker-button,
+		.lambda-colorpicker-border,
+		.lambda-colorpicker-pattern {
+			border-radius: var(--border-radius-sm);
+		}
+	}
+
+	&:is(.lambda-colorpicker-group-radius-medium) {
+		.lambda-colorpicker-button,
+		.lambda-colorpicker-border,
+		.lambda-colorpicker-pattern {
+			border-radius: var(--border-radius-md);
+		}
+	}
+
+	&:is(.lambda-colorpicker-group-radius-circle) {
+		.lambda-colorpicker-button,
+		.lambda-colorpicker-border,
+		.lambda-colorpicker-pattern {
+			border-radius: var(--border-radius-full);
 		}
 	}
 }
 
 .lambda-colorpicker-pattern {
 	position: absolute;
+	top: 0;
+	left: 0;
 	border-radius: var(--border-radius-xs);
-	border: 1px solid transparent;
+	border: var(--border-width-xs) solid transparent;
 	background-color: var(--surface-a);
 	box-sizing: border-box;
 	opacity: 0.1;
@@ -142,16 +234,19 @@
 
 .lambda-colorpicker-button {
 	position: absolute;
+	top: 0;
+	left: 0;
 	border-radius: var(--border-radius-xs);
-	border: 1px solid transparent;
+	border: var(--border-width-xs) solid transparent;
 	box-sizing: border-box;
 	cursor: pointer;
 }
 
 .lambda-colorpicker-border {
 	position: absolute;
+	top: 0;
+	left: 0;
 	border-radius: var(--border-radius-xs);
-	border: 1px solid var(--surface-d);
 	z-index: 1;
 	box-sizing: border-box;
 	pointer-events: none;
@@ -161,12 +256,15 @@
 	grid-column: 2;
 	z-index: 2;
 	color: var(--foreground-color);
+	padding: var(--padding-none) var(--padding-xs) var(--padding-none) var(--padding-none);
+	text-transform: uppercase;
+	place-content: center center;
 }
 
 .lambda-colorpicker-box {
 	position: absolute;
-	top: -1px;
-	left: -1px;
+	top: -2px;
+	left: -2px;
 	display: flex;
 	flex-direction: column;
 	width: 0;
@@ -174,7 +272,7 @@
 	opacity: 0;
 	border-radius: var(--border-radius-sm);
 	background-color: var(--surface-b);
-	border: 1px solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--surface-d);
 	overflow: hidden;
 	transition: all 0.2s ease;
 	box-sizing: border-box;
@@ -206,7 +304,7 @@
 		width: 14em;
 		height: calc(100% - var(--padding-md));
 		background-color: #e5e5f7;
-		border: 1px solid transparent;
+		border: var(--border-width-xs) solid transparent;
 		opacity: 0.1;
 		background-image: repeating-linear-gradient(
 				45deg,
@@ -228,7 +326,7 @@
 		width: 14em;
 		height: calc(100% - var(--padding-md));
 		border-radius: var(--border-radius-xs);
-		border: 1px solid transparent;
+		border: var(--border-width-xs) solid transparent;
 		z-index: 2;
 	}
 
@@ -242,7 +340,7 @@
 	width: calc(100% - var(--padding-xs) * 2);
 	height: 55%;
 	margin: var(--padding-none) var(--padding-xs) var(--padding-xs) var(--padding-xs);
-	border: 1px solid var(--surface-a);
+	border: var(--border-width-xs) solid var(--surface-a);
 	overflow: hidden;
 	cursor: crosshair;
 
@@ -307,7 +405,7 @@
 		width: 14.25em;
 		height: var(--handle-3xs);
 		border-radius: 2em;
-		border: 1px solid var(--surface-d);
+		border: var(--border-width-xs) solid var(--surface-d);
 		background-image: linear-gradient(to right, red, yellow, lime, cyan, blue, fuchsia, red);
 	}
 
@@ -339,7 +437,7 @@
 		width: 11.35em;
 		height: var(--handle-3xs);
 		border-radius: 2em;
-		border: 1px solid var(--surface-d);
+		border: var(--border-width-xs) solid var(--surface-d);
 	}
 
 	.lambda-colorpicker-controls-slider-pattern {

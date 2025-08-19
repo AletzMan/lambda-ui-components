@@ -20,6 +20,12 @@ const meta: Meta<typeof ColorPicker> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
+		radius: {
+			control: "select",
+			options: ["none", "small", "medium", "circle"],
+			description: "Corner shape",
+			type: "string",
+		},
 		disabled: {
 			control: "boolean",
 			description: "Disables the input and makes it inactive",
@@ -39,6 +45,7 @@ export const Solid: Story = {
 	args: {
 		variant: "solid",
 		size: "medium",
+		radius: "small",
 		disabled: false,
 		showText: false,
 	},
