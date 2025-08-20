@@ -74,6 +74,7 @@ import { TabSize, TabVariant, TabColor, TabRadius } from "../src/components/Tab/
 import { Tab } from "../src/components/Tab/Tab";
 import { Badge } from "../src/components/Badge/Badge";
 import { ColorPicker } from "../src/components/ColorPicker/ColorPicker";
+import { Tag } from "../src/components/Badge copy/Tag";
 
 function App() {
 	const [openDrawerComponents, setOpenDrawerComponents] = useState(false);
@@ -315,6 +316,26 @@ function App() {
 	const [radiusColorPicker, setRadiusColorPicker] = useState<
 		"none" | "small" | "medium" | "circle" | undefined
 	>("small");
+	const [sizeTag, setSizeTag] = useState<"small" | "medium" | "large" | "tiny" | undefined>(
+		"small"
+	);
+	const [variantTag, setVariantTag] = useState<
+		"flat" | "outline" | "solid" | "dashed" | "subtle" | undefined
+	>("flat");
+	const [radiusTag, setRadiusTag] = useState<
+		"none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
+	>("small");
+	const [isCloseButtonTag, setIsCloseButtonTag] = useState(false);
+	const [withIconTag, setWithIconTag] = useState(false);
+	const [withTextTag, setWithTextTag] = useState(false);
+	const [arrayTag, setArrayTag] = useState<string[]>([
+		"primary",
+		"secondary",
+		"danger",
+		"success",
+		"warning",
+		"info",
+	]);
 
 	return (
 		<section className={`${styles.section} scrollBar`}>
@@ -2822,6 +2843,112 @@ function App() {
 					/>
 				</div>
 			</section>
+			{/* TAG */}
+			<section className={styles.subsection} id="tag">
+				<h2 className={styles.subtitle}>Tag</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeTag}
+						size="small"
+						onChange={(value) =>
+							setSizeTag(value as "tiny" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Variant"
+						className={styles.select_size}
+						value={variantTag}
+						size="small"
+						onChange={(value) =>
+							setVariantTag(value as "outline" | "flat" | "solid" | "dashed" | undefined)
+						}
+						options={[
+							{ label: "Outline", value: "outline" },
+							{ label: "Flat", value: "flat" },
+							{ label: "Solid", value: "solid" },
+							{ label: "Dashed", value: "dashed" },
+							{ label: "Subtle", value: "subtle" },
+						]}
+					/>
+					<Select
+						label="Radius"
+						className={styles.select_size}
+						value={radiusTag}
+						size="small"
+						onChange={(value) =>
+							setRadiusTag(
+								value as "none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
+							)
+						}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+							{ label: "Full", value: "full" },
+						]}
+					/>
+					<Checkbox
+						label="Close Button"
+						checked={isCloseButton}
+						size="medium"
+						color="secondary"
+						onChange={() => setIsCloseButton((state) => !state)}
+					/>
+					<Checkbox
+						label="With Icon"
+						checked={withIconTag}
+						size="medium"
+						color="secondary"
+						onChange={() => setWithIconTag((state) => !state)}
+					/>
+					<Checkbox
+						label="With Text"
+						checked={withTextTag}
+						size="medium"
+						color="secondary"
+						onChange={() => setWithTextTag((state) => !state)}
+					/>
+				</div>
+				<div className={styles.container_buttons} style={{ gap: "1.5rem" }}>
+					{arrayBadge.map((badge) => (
+						<Tag
+							key={badge}
+							text=""
+							size={sizeTag}
+							variant={variantTag}
+							color={
+								badge as
+									| "primary"
+									| "secondary"
+									| "danger"
+									| "success"
+									| "warning"
+									| "info"
+									| undefined
+							}
+							radius={radiusTag}
+							onClose={
+								isCloseButton
+									? () => setArrayBadge(arrayBadge.filter((item) => item !== badge))
+									: undefined
+							}
+						>
+							{withIconTag ? <LucideBell /> : ""}
+							{withTextTag ? <span style={{ textTransform: "capitalize" }}>{badge}</span> : ""}
+						</Tag>
+					))}
+				</div>
+			</section>
 			{/* TEXT AREA */}
 			<section className={styles.subsection} id="text area">
 				<h2 className={styles.subtitle}>Text Area</h2>
@@ -3174,6 +3301,7 @@ const COMPONENTS = [
 	"Select",
 	"Switch",
 	"Tab",
+	"Tag",
 	"Text Area",
 	"ToolTip",
 ];
