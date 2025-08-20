@@ -45,33 +45,33 @@
 	border: var(--border-width-xs) solid;
 
 	&.lambda-badge-primary {
-		color: var(--primary-color);
-		border-color: var(--primary-color);
+		color: var(--primary-text-color);
+		border-color: var(--primary-disabled-color);
 	}
 
 	&.lambda-badge-secondary {
-		color: var(--secondary-color);
-		border-color: var(--secondary-color);
+		color: var(--secondary-text-color);
+		border-color: var(--secondary-disabled-color);
 	}
 
 	&.lambda-badge-success {
-		color: var(--success-color);
-		border-color: var(--success-color);
+		color: var(--success-text-color);
+		border-color: var(--success-disabled-color);
 	}
 
 	&.lambda-badge-danger {
-		color: var(--danger-color);
-		border-color: var(--danger-color);
+		color: var(--danger-text-color);
+		border-color: var(--danger-disabled-color);
 	}
 
 	&.lambda-badge-warning {
-		color: var(--warning-color);
-		border-color: var(--warning-color);
+		color: var(--warning-text-color);
+		border-color: var(--warning-disabled-color);
 	}
 
 	&.lambda-badge-info {
-		color: var(--info-color);
-		border-color: var(--info-color);
+		color: var(--info-text-color);
+		border-color: var(--info-disabled-color);
 	}
 }
 
