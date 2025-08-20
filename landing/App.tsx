@@ -29,6 +29,7 @@ import {
 	LayoutDashboard,
 	LogOutIcon,
 	LucideBell,
+	Mail,
 	MenuIcon,
 	RssIcon,
 	Search,
@@ -287,13 +288,14 @@ function App() {
 	const [sizeBadge, setSizeBadge] = useState<"small" | "medium" | "large" | "tiny" | undefined>(
 		"small"
 	);
-	const [variantBadge, setVariantBadge] = useState<
-		"flat" | "outline" | "solid" | "dashed" | "subtle" | undefined
-	>("flat");
+	const [variantBadgeButton, setVariantBadgeButton] = useState<
+		"ghost" | "outline" | "solid" | "dashed" | "classic" | "text" | undefined
+	>("ghost");
 	const [radiusBadge, setRadiusBadge] = useState<
 		"none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
 	>("small");
 	const [countBadge, setCountBadge] = useState<number | undefined>(undefined);
+	const [maxCountBadge, setMaxCountBadge] = useState<number | undefined>(undefined);
 	const [isCloseButton, setIsCloseButton] = useState(false);
 	const [withIconBadge, setWithIconBadge] = useState(false);
 	const [withTextBadge, setWithTextBadge] = useState(false);
@@ -325,17 +327,8 @@ function App() {
 	const [radiusTag, setRadiusTag] = useState<
 		"none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
 	>("small");
-	const [isCloseButtonTag, setIsCloseButtonTag] = useState(false);
 	const [withIconTag, setWithIconTag] = useState(false);
 	const [withTextTag, setWithTextTag] = useState(false);
-	const [arrayTag, setArrayTag] = useState<string[]>([
-		"primary",
-		"secondary",
-		"danger",
-		"success",
-		"warning",
-		"info",
-	]);
 
 	return (
 		<section className={`${styles.section} scrollBar`}>
@@ -595,17 +588,20 @@ function App() {
 					<Select
 						label="Variant"
 						className={styles.select_size}
-						value={variantBadge}
+						value={variantBadgeButton}
 						size="small"
 						onChange={(value) =>
-							setVariantBadge(value as "outline" | "flat" | "solid" | "dashed" | undefined)
+							setVariantBadgeButton(
+								value as "outline" | "ghost" | "solid" | "dashed" | "classic" | "text" | undefined
+							)
 						}
 						options={[
 							{ label: "Outline", value: "outline" },
-							{ label: "Flat", value: "flat" },
+							{ label: "Ghost", value: "ghost" },
 							{ label: "Solid", value: "solid" },
 							{ label: "Dashed", value: "dashed" },
-							{ label: "Subtle", value: "subtle" },
+							{ label: "Classic", value: "classic" },
+							{ label: "Text", value: "text" },
 						]}
 					/>
 					<Select
@@ -634,12 +630,12 @@ function App() {
 						size="small"
 						onChange={(value) => setCountBadge(value)}
 					/>
-					<Checkbox
-						label="Close Button"
-						checked={isCloseButton}
-						size="medium"
-						color="secondary"
-						onChange={() => setIsCloseButton((state) => !state)}
+					<InputNumber
+						label="Max Count"
+						className={styles.select_size}
+						value={maxCountBadge}
+						size="small"
+						onChange={(value) => setMaxCountBadge(value)}
 					/>
 					<Checkbox
 						label="With Icon"
@@ -657,34 +653,27 @@ function App() {
 					/>
 				</div>
 				<div className={styles.container_buttons} style={{ gap: "1.5rem" }}>
-					{arrayBadge.map((badge) => (
-						<Badge
-							key={badge}
-							text=""
-							size={sizeBadge}
-							variant={variantBadge}
-							color={
-								badge as
-									| "primary"
-									| "secondary"
-									| "danger"
-									| "success"
-									| "warning"
-									| "info"
-									| undefined
-							}
-							radius={radiusBadge}
-							count={countBadge}
-							onClose={
-								isCloseButton
-									? () => setArrayBadge(arrayBadge.filter((item) => item !== badge))
-									: undefined
-							}
-						>
-							{withIconBadge ? <LucideBell /> : ""}
-							{withTextBadge ? <span style={{ textTransform: "capitalize" }}>{badge}</span> : ""}
-						</Badge>
-					))}
+					<div
+						style={{
+							position: "relative",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+							gap: "1rem",
+							padding: "0.5em 0.25em",
+							margin: "0.5em 0 0 0",
+						}}
+					>
+						<Button variant={variantBadgeButton} color="primary" size={sizeBadge} icon={<Mail />}>
+							<Badge
+								text={withTextBadge ? "Email" : undefined}
+								size={sizeBadge}
+								radius={radiusBadge}
+								count={countBadge}
+								maxCount={maxCountBadge}
+							/>
+						</Button>
+					</div>
 				</div>
 			</section>
 			{/** BREADCRUMB */}

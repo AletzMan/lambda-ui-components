@@ -59,6 +59,16 @@
 	--icon-size-2xl: 24px;
 	--icon-size-3xl: 28px;
 
+	--badge-size-3xs: 6px;
+	--badge-size-2xs: 8px;
+	--badge-size-xs: 10px;
+	--badge-size-sm: 12px;
+	--badge-size-md: 16px;
+	--badge-size-lg: 20px;
+	--badge-size-xl: 24px;
+	--badge-size-2xl: 28px;
+	--badge-size-3xl: 32px;
+
 	--handle-3xs: 6px;
 	--handle-2xs: 10px;
 	--handle-xs: 14px;
@@ -84,7 +94,6 @@
 	--height-input-lg: 42px;
 
 	--box-shadow: 0 0 2px 1px var(--shadow-color);
-	--badge-color: #b3261e;
 
 	--accordion-transition-duration: 300ms;
 	--accordion-transition-timing-function: ease-in-out;
@@ -102,6 +111,8 @@
 	--label-color: #3f3f3f;
 	--visited-link-color: #75208a;
 	--transparent-color: #87878710;
+	--badge-background-color: #b3261e;
+	--badge-text-color: #ffffff;
 
 	--surface-a: #fefafa;
 	--surface-b: #f1f1f1;
@@ -180,6 +191,8 @@
 	--label-color: #a6a9ab;
 	--visited-link-color: #8c29a4;
 	--transparent-color: #ffffff08;
+	--badge-background-color: #f01e12;
+	--badge-text-color: #f3f0f0;
 
 	/*
     --surface-b: #191b1c;
