@@ -74,7 +74,7 @@ import { TabSize, TabVariant, TabColor, TabRadius } from "../src/components/Tab/
 import { Tab } from "../src/components/Tab/Tab";
 import { Badge } from "../src/components/Badge/Badge";
 import { ColorPicker } from "../src/components/ColorPicker/ColorPicker";
-import { Tag } from "../src/components/Badge copy/Tag";
+import { Tag } from "../src/components/Tag/Tag";
 
 function App() {
 	const [openDrawerComponents, setOpenDrawerComponents] = useState(false);
