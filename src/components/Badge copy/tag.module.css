@@ -26,31 +26,79 @@
 	&.lambda-tag-primary {
 		color: var(--white-color);
 		background-color: var(--primary-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--primary-disabled-color);
+
+			&:hover {
+				color: var(--primary-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-secondary {
 		color: var(--foreground-invert-color);
 		background-color: var(--secondary-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--secondary-disabled-color);
+
+			&:hover {
+				color: var(--foreground-invert-color);
+			}
+		}
 	}
 
 	&.lambda-tag-danger {
 		color: var(--white-color);
 		background-color: var(--danger-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--danger-lightened-color);
+
+			&:hover {
+				color: var(--danger-disabled-color);
+			}
+		}
 	}
 
 	&.lambda-tag-success {
 		color: var(--white-color);
 		background-color: var(--success-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--success-lightened-color);
+
+			&:hover {
+				color: var(--success-disabled-color);
+			}
+		}
 	}
 
 	&.lambda-tag-warning {
 		color: var(--foreground-invert-color);
 		background-color: var(--warning-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--warning-lightened-color);
+
+			&:hover {
+				color: var(--warning-disabled-color);
+			}
+		}
 	}
 
 	&.lambda-tag-info {
 		color: var(--white-color);
 		background-color: var(--info-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--info-lightened-color);
+
+			&:hover {
+				color: var(--info-disabled-color);
+			}
+		}
 	}
 }
 
@@ -60,31 +108,79 @@
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
 		border-color: var(--primary-disabled-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--primary-hover-color);
+
+			&:hover {
+				color: var(--primary-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
 		border-color: var(--secondary-disabled-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--secondary-hover-color);
+
+			&:hover {
+				color: var(--secondary-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-success {
 		color: var(--success-text-color);
 		border-color: var(--success-disabled-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--success-hover-color);
+
+			&:hover {
+				color: var(--success-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
 		border-color: var(--danger-disabled-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--danger-hover-color);
+
+			&:hover {
+				color: var(--danger-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
 		border-color: var(--warning-disabled-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--warning-hover-color);
+
+			&:hover {
+				color: var(--warning-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-info {
 		color: var(--info-text-color);
 		border-color: var(--info-disabled-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--info-hover-color);
+
+			&:hover {
+				color: var(--info-text-color);
+			}
+		}
 	}
 }
 
@@ -94,31 +190,79 @@
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
 		background-color: var(--primary-light-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--primary-hover-color);
+
+			&:hover {
+				color: var(--primary-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
 		background-color: var(--secondary-light-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--secondary-hover-color);
+
+			&:hover {
+				color: var(--secondary-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
 		background-color: var(--danger-light-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--danger-hover-color);
+
+			&:hover {
+				color: var(--danger-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-success {
 		color: var(--success-text-color);
 		background-color: var(--success-light-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--success-hover-color);
+
+			&:hover {
+				color: var(--success-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
 		background-color: var(--warning-light-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--warning-hover-color);
+
+			&:hover {
+				color: var(--warning-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-info {
 		color: var(--info-text-color);
 		background-color: var(--info-light-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--info-hover-color);
+
+			&:hover {
+				color: var(--info-text-color);
+			}
+		}
 	}
 }
 
@@ -129,31 +273,79 @@
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
 		border: var(--border-width-xs) dashed var(--primary-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--primary-hover-color);
+
+			&:hover {
+				color: var(--primary-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
 		border: var(--border-width-xs) dashed var(--secondary-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--secondary-hover-color);
+
+			&:hover {
+				color: var(--secondary-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
 		border: var(--border-width-xs) dashed var(--danger-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--danger-hover-color);
+
+			&:hover {
+				color: var(--danger-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-success {
 		color: var(--success-text-color);
 		border: var(--border-width-xs) dashed var(--success-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--success-hover-color);
+
+			&:hover {
+				color: var(--success-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
 		border: var(--border-width-xs) dashed var(--warning-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--warning-hover-color);
+
+			&:hover {
+				color: var(--warning-text-color);
+			}
+		}
 	}
 
 	&.lambda-tag-info {
 		color: var(--info-text-color);
 		border: var(--border-width-xs) dashed var(--info-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--info-hover-color);
+
+			&:hover {
+				color: var(--info-text-color);
+			}
+		}
 	}
 }
 
