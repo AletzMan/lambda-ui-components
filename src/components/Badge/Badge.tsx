@@ -1,32 +1,38 @@
 import { forwardRef } from "react";
 import { BadgeProps } from "./badge.types";
-import { badgeStyles, countStyles, closeButtonStyles } from "./badge.variants";
-import { X } from "lucide-react";
+import { badgeStyles } from "./badge.variants";
+import clsx from "clsx";
+import { PlusIcon } from "lucide-react";
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
-	({ className, color, size, variant, radius, children, text, count, onClose, ...props }, ref) => {
+	({ className, color, size, radius, children, text, count, maxCount, ...props }, ref) => {
 		return (
 			<div
-				ref={ref}
-				className={badgeStyles({
-					color,
-					size,
-					variant,
-					radius,
-					hasCount: count !== undefined && count >= 0,
-				})}
+				className={clsx(
+					badgeStyles({
+						size,
+						hasCount: count !== undefined && count >= 0,
+						hasText: text !== undefined,
+					}),
+					className
+				)}
 				{...props}
+				ref={ref}
 			>
-				{children}
-				{text}
-				{count !== undefined && count >= 0 && (
-					<span className={countStyles({ size })}>{count}</span>
-				)}
-				{onClose && (
-					<button className={closeButtonStyles({ size })} onClick={onClose}>
-						<X />
-					</button>
-				)}
+				<span>
+					{count !== undefined && count >= 0 ? (
+						maxCount !== undefined && count > maxCount ? (
+							<span>
+								{maxCount}
+								<PlusIcon />
+							</span>
+						) : (
+							count
+						)
+					) : (
+						text
+					)}
+				</span>
 			</div>
 		);
 	}
