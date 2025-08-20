@@ -19,7 +19,7 @@ export const Tag = forwardRef<HTMLDivElement, TagProps>(
 			>
 				{icon}
 				{children}
-				<span className={styles["lambda-tag-text"]}>{text}</span>
+				{text && <span className={styles["lambda-tag-text"]}>{text}</span>}
 				{onClose && (
 					<button className={closeButtonStyles({ size })} onClick={onClose}>
 						<X />
