@@ -21,6 +21,7 @@ import {
 	Code,
 	CodeXml,
 	Coins,
+	Component,
 	DatabaseIcon,
 	HelpCircleIcon,
 	HomeIcon,
@@ -314,31 +315,6 @@ function App() {
 	const [radiusColorPicker, setRadiusColorPicker] = useState<
 		"none" | "small" | "medium" | "circle" | undefined
 	>("small");
-	const COMPONENTS = [
-		"Accordion",
-		"Alert",
-		"Badge",
-		"Breadcrumb",
-		"Button",
-		"Card",
-		"Carousel",
-		"Checkbox",
-		"Color Picker",
-		"Dialog",
-		"Drawer",
-		"File Upload",
-		"Input",
-		"Input Number",
-		"Link",
-		"Pagination",
-		"Range",
-		"Radio",
-		"Select",
-		"Switch",
-		"Tab",
-		"Text Area",
-		"ToolTip",
-	];
 
 	return (
 		<section className={`${styles.section} scrollBar`}>
@@ -355,7 +331,12 @@ function App() {
 						<Drawer
 							isOpen={openDrawerComponents}
 							onClose={() => setOpenDrawerComponents(false)}
-							title="Components"
+							title={
+								<div style={{ display: "flex", alignItems: "center", gap: "0.5em" }}>
+									<Component />
+									<h1 style={{ fontSize: "1em" }}>Components</h1>
+								</div>
+							}
 							closeOnOverlayClick={true}
 							closeOnEscape={true}
 							showCloseButton={true}
@@ -370,11 +351,14 @@ function App() {
 										key={component}
 										href={`#${component.toLowerCase()}`}
 										variant={
-											document.location.hash === `#${component.toLowerCase()}` ? "ghost" : "text"
+											document.location.hash.replace("%20", " ") === `#${component.toLowerCase()}`
+												? "solid"
+												: "text"
 										}
 										type="button"
 										color="info"
 										label={component}
+										radius="small"
 										size="small"
 										onClick={() => setOpenDrawerComponents(false)}
 									/>
@@ -683,7 +667,7 @@ function App() {
 				</div>
 			</section>
 			{/** BREADCRUMB */}
-			<section className={styles.subsection} id="breadcrumb">
+			<section className={`${styles.subsection} section`} id="breadcrumb">
 				<h2 className={styles.subtitle}>Breadcrumb</h2>
 				<div className={styles.control_buttons}>
 					<Select
@@ -783,7 +767,7 @@ function App() {
 				</div>
 			</section>
 			{/* BUTTON */}
-			<section className={styles.subsection} id="button">
+			<section className={`${styles.subsection} section`} id="button">
 				<h2 className={styles.subtitle}>Button</h2>
 				<div className={styles.control_buttons}>
 					<Checkbox
@@ -874,7 +858,7 @@ function App() {
 				</div>
 			</section>
 			{/* CARD */}
-			<section className={styles.subsection} id="card">
+			<section className={`${styles.subsection} section`} id="card">
 				<h2 className={styles.subtitle}>Card</h2>
 				<div className={styles.control_buttons}>
 					<select
@@ -3166,4 +3150,30 @@ const responsiveBreakpoints = [
 	{ breakpoint: 768, items: 2 }, // 2 items en pantallas >= 768px
 	{ breakpoint: 1200, items: 3 }, // 3 items en pantallas >= 1200px
 	{ breakpoint: 1600, items: 4 }, // 4 items en pantallas >= 1600px
+];
+
+const COMPONENTS = [
+	"Accordion",
+	"Alert",
+	"Badge",
+	"Breadcrumb",
+	"Button",
+	"Card",
+	"Carousel",
+	"Checkbox",
+	"Color Picker",
+	"Dialog",
+	"Drawer",
+	"File Upload",
+	"Input",
+	"Input Number",
+	"Link",
+	"Pagination",
+	"Range",
+	"Radio",
+	"Select",
+	"Switch",
+	"Tab",
+	"Text Area",
+	"ToolTip",
 ];
