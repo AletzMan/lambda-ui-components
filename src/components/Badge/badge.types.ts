@@ -1,10 +1,6 @@
 export interface BadgeProps
 	extends Omit<React.HTMLAttributes<HTMLDivElement>, "size" | "disabled" | "checked" | "color"> {
 	/**
-	 * Define el estilo visual del badge, como la apariencia del carril y el pulgar.
-	 */
-	variant?: "outline" | "solid" | "flat" | "dashed" | "subtle" | undefined;
-	/**
 	 * Controla el tamaño visual del badge.
 	 */
 	size?: "tiny" | "small" | "medium" | "large" | undefined;
@@ -25,7 +21,7 @@ export interface BadgeProps
 	 */
 	count?: number;
 	/**
-	 * Define la funcionalidad de cierre del badge, si no se define no se muestra (no se muestra el icono de cierre).
+	 * Define el número máximo que se muestra en el badge, si count supera este número se muestra el valor de maxCount.
 	 */
-	onClose?: () => void;
+	maxCount?: number;
 }
