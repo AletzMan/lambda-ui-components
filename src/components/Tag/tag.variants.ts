@@ -36,7 +36,7 @@ export const tagStyles = cva(styles["lambda-tag"], {
 	defaultVariants: {
 		color: "primary",
 		size: "small",
-		variant: "solid",
+		variant: "subtle",
 		radius: "small",
 	},
 });
