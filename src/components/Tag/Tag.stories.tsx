@@ -15,6 +15,12 @@ const meta: Meta<typeof Tag> = {
 			options: ["solid", "outline", "flat", "dashed", "subtle"],
 			description: "Visual style of the input",
 			type: "string",
+			defaultValue: "subtle",
+			table: {
+				defaultValue: {
+					summary: "subtle",
+				},
+			},
 		},
 		color: {
 			control: "select",
