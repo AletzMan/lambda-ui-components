@@ -5,8 +5,7 @@
 	justify-content: center;
 	gap: var(--padding-md);
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-reg);
-	text-shadow: 0px 0px 0px #00000080;
+	font-weight: var(--font-weight-md);
 
 	& > svg {
 		display: flex;
