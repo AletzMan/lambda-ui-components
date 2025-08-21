@@ -21,7 +21,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 			>
 				<span>
 					{count !== undefined && count >= 0 ? (
-						maxCount !== undefined && count > maxCount ? (
+						maxCount !== undefined && count > maxCount && maxCount > 0 ? (
 							<span>
 								{maxCount}
 								<PlusIcon />
