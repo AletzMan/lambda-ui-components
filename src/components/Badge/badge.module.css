@@ -11,7 +11,7 @@
 	border-radius: var(--border-radius-full);
 	font-family: var(--font-family);
 	padding: var(--padding-3xs) var(--padding-sm);
-	outline: 1px solid var(--foreground-invert-color);
+	outline: 2px solid var(--foreground-invert-color);
 
 	&.lambda-badge-tiny {
 		padding: var(--padding-2xs) var(--padding-xs);
