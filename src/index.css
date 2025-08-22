@@ -182,7 +182,7 @@
 }
 
 [data-theme="dark"] {
-	--background-color: #1d1d1d;
+	--background-color: #161616;
 	--foreground-color: #ffffff;
 	--foreground-secondary-color: #888888;
 	--foreground-invert-color: #222222;
@@ -209,9 +209,13 @@
     --shadow-inset-color: #f1f1f155;
     */
 
-	--surface-a: #1a1d24;
+	/*--surface-a: #1a1d24;
 	--surface-b: #15181e;
-	--surface-c: #23262d;
+	--surface-c: #23262d;*/
+
+	--surface-b: #202127;
+	--surface-a: #1b1b1f;
+	--surface-c: #33373f;
 	--surface-d: #353940;
 	--surface-e: #4d5057;
 	--surface-f: #6b6e73;

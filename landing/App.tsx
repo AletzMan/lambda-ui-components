@@ -76,6 +76,7 @@ import { Tab } from "../src/components/Tab/Tab";
 import { Badge } from "../src/components/Badge/Badge";
 import { ColorPicker } from "../src/components/ColorPicker/ColorPicker";
 import { Tag } from "../src/components/Tag/Tag";
+import { Table } from "../src/components/Table/Table";
 
 function App() {
 	const [openDrawerComponents, setOpenDrawerComponents] = useState(false);
@@ -329,6 +330,14 @@ function App() {
 	>("small");
 	const [withIconTag, setWithIconTag] = useState(false);
 	const [withTextTag, setWithTextTag] = useState(false);
+	const [sizeTable, setSizeTable] = useState<"tiny" | "small" | "medium" | "large" | undefined>(
+		"medium"
+	);
+	const [variantTable, setVariantTable] = useState<
+		"flat" | "underlined" | "bordered" | "striped" | undefined
+	>("striped");
+	const [maxRowsTable, setMaxRowsTable] = useState<number>(10);
+	const [paginationTable, setPaginationTable] = useState<boolean>(false);
 
 	return (
 		<section className={`${styles.section} scrollBar`}>
@@ -2832,6 +2841,95 @@ function App() {
 					/>
 				</div>
 			</section>
+			{/* TABLE */}
+			<section className={styles.subsection} id="table">
+				<h2 className={styles.subtitle}>Table</h2>
+				<div className={styles.control_buttons}>
+					<Select
+						label="Size"
+						className={styles.select_size}
+						value={sizeTable}
+						size="small"
+						onChange={(value) =>
+							setSizeTable(value as "tiny" | "small" | "medium" | "large" | undefined)
+						}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Variant"
+						className={styles.select_size}
+						value={variantTable}
+						size="small"
+						onChange={(value) =>
+							setVariantTable(value as "flat" | "underlined" | "bordered" | "striped" | undefined)
+						}
+						options={[
+							{ label: "Flat", value: "flat" },
+							{ label: "Underlined", value: "underlined" },
+							{ label: "Bordered", value: "bordered" },
+							{ label: "Striped", value: "striped" },
+						]}
+					/>
+					<InputNumber
+						label="Max Rows"
+						className={styles.select_size}
+						value={maxRowsTable}
+						size="small"
+						onChange={(value) => setMaxRowsTable(value as number)}
+					/>
+					<Checkbox
+						label="Pagination"
+						checked={paginationTable}
+						size="medium"
+						color="secondary"
+						onChange={(value) => setPaginationTable(value.currentTarget.checked)}
+					/>
+				</div>
+				<div className={styles.container_buttons}>
+					<Table
+						data={USERS_DATA}
+						renderRow={(item) => (
+							<Table.Row key={item.id}>
+								<Table.Cell>{item.id}</Table.Cell>
+								<Table.Cell>{item.name}</Table.Cell>
+								<Table.Cell>{item.email}</Table.Cell>
+								<Table.Cell>{item.age}</Table.Cell>
+								<Table.Cell>{item.active}</Table.Cell>
+								<Table.Cell>{item.joined}</Table.Cell>
+							</Table.Row>
+						)}
+						size={sizeTable}
+						variant={variantTable}
+						maxRows={maxRowsTable}
+						pagination={paginationTable}
+					>
+						<Table.Header>
+							<Table.Row>
+								<Table.ColumnHeader sortKey="id" type="number">
+									ID
+								</Table.ColumnHeader>
+								<Table.ColumnHeader sortKey="name" type="string">
+									Nombre
+								</Table.ColumnHeader>
+								<Table.ColumnHeader sortKey="age" type="number">
+									Edad
+								</Table.ColumnHeader>
+								<Table.ColumnHeader sortKey="active" type="boolean">
+									Activo
+								</Table.ColumnHeader>
+								<Table.ColumnHeader sortKey="joined" type="date">
+									Fecha
+								</Table.ColumnHeader>
+							</Table.Row>
+						</Table.Header>
+					</Table>
+				</div>
+			</section>
 			{/* TAG */}
 			<section className={styles.subsection} id="tag">
 				<h2 className={styles.subtitle}>Tag</h2>
@@ -3290,7 +3388,111 @@ const COMPONENTS = [
 	"Select",
 	"Switch",
 	"Tab",
+	"Table",
 	"Tag",
 	"Text Area",
 	"ToolTip",
+];
+
+interface User {
+	id: number;
+	name: string;
+	email: string;
+	age: number;
+	active: boolean;
+	joined: string;
+	city: string;
+}
+
+const USERS_DATA: User[] = [
+	{
+		id: 1,
+		name: "John Doe",
+		email: "john.doe@example.com",
+		age: 30,
+		active: true,
+		joined: "2023-01-01",
+		city: "New York",
+	},
+	{
+		id: 2,
+		name: "Jane Doe",
+		email: "jane.doe@example.com",
+		age: 25,
+		active: false,
+		joined: "2020-02-01",
+		city: "Los Angeles",
+	},
+	{
+		id: 3,
+		name: "John Smith",
+		email: "john.smith@example.com",
+		age: 35,
+		active: true,
+		joined: "2022-03-01",
+		city: "Chicago",
+	},
+	{
+		id: 4,
+		name: "Sara Doe",
+		email: "sara.doe@example.com",
+		age: 10,
+		active: false,
+		joined: "2021-04-01",
+		city: "San Francisco",
+	},
+	{
+		id: 5,
+		name: "Sam Smith",
+		email: "sam.smith@example.com",
+		age: 1,
+		active: true,
+		joined: "2024-05-01",
+		city: "New York",
+	},
+	{
+		id: 6,
+		name: "Sara Smith",
+		email: "sara.smith@example.com",
+		age: 100,
+		active: false,
+		joined: "2019-06-01",
+		city: "San Francisco",
+	},
+	{
+		id: 7,
+		name: "Luis Doe",
+		email: "luis.doe@example.com",
+		age: 23,
+		active: true,
+		joined: "2017-01-01",
+		city: "California",
+	},
+	{
+		id: 8,
+		name: "Luisa Doe",
+		email: "luisa.doe@example.com",
+		age: 25,
+		active: true,
+		joined: "2024-01-01",
+		city: "New Jersey",
+	},
+	{
+		id: 9,
+		name: "Young Doe",
+		email: "young.doe@example.com",
+		age: 28,
+		active: true,
+		joined: "2022-01-01",
+		city: "Washington",
+	},
+	{
+		id: 10,
+		name: "Old Doe",
+		email: "old.doe@example.com",
+		age: 45,
+		active: true,
+		joined: "2015-01-01",
+		city: "New York",
+	},
 ];
