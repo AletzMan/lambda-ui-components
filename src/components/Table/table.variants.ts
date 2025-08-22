@@ -57,6 +57,48 @@ export const headerVariants = cva(styles["lambda-table-header"], {
 	},
 });
 
+export const headerCellVariants = cva(styles["lambda-table-header-cell"], {
+	variants: {
+		size: {
+			tiny: styles["lambda-table-header-cell-tiny"],
+			small: styles["lambda-table-header-cell-small"],
+			medium: styles["lambda-table-header-cell-medium"],
+			large: styles["lambda-table-header-cell-large"],
+		},
+		variant: {
+			flat: styles["lambda-table-header-cell-flat"],
+			underlined: styles["lambda-table-header-cell-underlined"],
+			striped: styles["lambda-table-header-cell-striped"],
+			bordered: styles["lambda-table-header-cell-bordered"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
+		variant: "flat",
+	},
+});
+
+export const bodyVariants = cva(styles["lambda-table-body"], {
+	variants: {
+		size: {
+			tiny: styles["lambda-table-body-tiny"],
+			small: styles["lambda-table-body-small"],
+			medium: styles["lambda-table-body-medium"],
+			large: styles["lambda-table-body-large"],
+		},
+		variant: {
+			flat: styles["lambda-table-body-flat"],
+			underlined: styles["lambda-table-body-underlined"],
+			striped: styles["lambda-table-body-striped"],
+			bordered: styles["lambda-table-body-bordered"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
+		variant: "flat",
+	},
+});
+
 export const rowVariants = cva(styles["lambda-table-row"], {
 	variants: {
 		size: {
@@ -91,6 +133,11 @@ export const cellVariants = cva(styles["lambda-table-cell"], {
 			underlined: styles["lambda-table-cell-underlined"],
 			striped: styles["lambda-table-cell-striped"],
 			bordered: styles["lambda-table-cell-bordered"],
+		},
+		align: {
+			left: styles["lambda-table-cell-align-left"],
+			center: styles["lambda-table-cell-align-center"],
+			right: styles["lambda-table-cell-align-right"],
 		},
 	},
 	defaultVariants: {
