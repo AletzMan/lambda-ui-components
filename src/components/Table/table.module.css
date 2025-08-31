@@ -1,9 +1,8 @@
 .lambda-table-container {
 	display: block;
-	width: 100%;
 	border-radius: var(--border-radius-sm);
+	width: 100%;
 	box-sizing: border-box;
-	overflow-x: auto;
 
 	&:is(.lambda-table-container-flat) {
 		border: var(--border-width-xs) solid transparent;
@@ -18,19 +17,24 @@
 	}
 
 	&:is(.lambda-table-container-striped) {
-		border: 1px solid var(--border-color);
+		border: var(--border-width-xs) solid var(--border-color);
 	}
+}
+
+.lambda-table-container-table {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 .lambda-table {
 	table-layout: fixed;
-	display: table;
 	width: 100%;
-	min-width: max-content;
 	box-sizing: border-box;
 	border: none;
 	font-family: var(--font-family);
-	background-color: var(--surface-b);
 }
 
 .lambda-table-striped {
@@ -50,29 +54,30 @@
 
 .lambda-table-bordered {
 	border-collapse: collapse;
-	background-color: var(--surface-c);
 }
 
 .lambda-table-header {
-	background-color: var(--secondary-light-color);
+	background-color: var(--surface-a);
 }
 
 .lambda-table-header-cell {
+	vertical-align: middle;
 	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-color);
 	text-align: center;
-	background-color: var(--secondary-light-color);
+	background-color: var(--surface-c);
+	width: 100%;
 
 	&:is(.lambda-table-header-cell-bordered) {
 		border: var(--border-width-xs) solid var(--border-color);
-		border-top: 1px solid transparent;
+		border-top: 1px solid var(--surface-c);
 
 		&:first-child {
-			border-left: 1px solid transparent;
+			border-left: 1px solid var(--surface-c);
 		}
 
 		&:last-child {
-			border-right: 1px solid transparent;
+			border-right: 1px solid var(--surface-c);
 		}
 	}
 
@@ -125,13 +130,17 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	flex-grow: 1;
 	gap: var(--gap-lg);
+
+	width: 100%;
 
 	.lambda-header-button {
 		border: none;
 		background: none;
 		cursor: pointer;
 		transition: color 0.2s ease;
+		background-color: transparent;
 		color: var(--primary-color);
 
 		&:hover {
@@ -149,6 +158,7 @@
 .lambda-table-cell {
 	padding: 0.5rem;
 	color: var(--foreground-secondary-color);
+	width: 100%;
 	max-lines: 1;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -238,7 +248,13 @@
 
 .lambda-table-pagination {
 	display: flex;
-	justify-content: right;
-	padding: var(--padding-lg) var(--padding-md);
+	justify-content: space-between;
 	border-top: 1px solid var(--border-color);
+	padding: var(--padding-lg) var(--padding-md);
+	z-index: 10;
+}
+
+.lambda-table-pagination-select {
+	width: 6em;
+	z-index: 10;
 }

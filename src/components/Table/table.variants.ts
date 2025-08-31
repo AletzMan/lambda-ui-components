@@ -15,6 +15,20 @@ export const containerVariants = cva(styles["lambda-table-container"], {
 	},
 });
 
+export const containerTableVariants = cva(styles["lambda-table-container-table"], {
+	variants: {
+		variant: {
+			flat: styles["lambda-table-container-table-flat"],
+			underlined: styles["lambda-table-container-table-underlined"],
+			striped: styles["lambda-table-container-table-striped"],
+			bordered: styles["lambda-table-container-table-bordered"],
+		},
+	},
+	defaultVariants: {
+		variant: "flat",
+	},
+});
+
 export const tableVariants = cva(styles["lambda-table"], {
 	variants: {
 		size: {

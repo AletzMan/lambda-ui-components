@@ -138,48 +138,53 @@ const USERS_DATA: User[] = [
 
 const TableComponent = (args: Partial<TableProps>) => {
 	return (
-		<Table
-			size={args.size || "medium"}
-			variant={args.variant || "flat"}
-			maxRows={3}
-			pagination={true}
-			data={USERS_DATA}
-			renderRow={(item) => (
-				<Table.Row key={item.id}>
-					<Table.Cell align="center">{item.id}</Table.Cell>
-					<Table.Cell align="center">{item.name}</Table.Cell>
-					<Table.Cell align="center">{item.age}</Table.Cell>
-					<Table.Cell align="center">
-						{item.active ? (
-							<Circle color="green" size={10} fill="green" />
-						) : (
-							<Circle color="red" size={10} fill="red" />
-						)}
-					</Table.Cell>
-					<Table.Cell align="center">{item.joined}</Table.Cell>
-				</Table.Row>
-			)}
-		>
-			<Table.Header>
-				<Table.Row>
-					<Table.ColumnHeader sortKey="id" type="number">
-						ID
-					</Table.ColumnHeader>
-					<Table.ColumnHeader sortKey="name" type="string">
-						Nombre
-					</Table.ColumnHeader>
-					<Table.ColumnHeader sortKey="age" type="number">
-						Edad
-					</Table.ColumnHeader>
-					<Table.ColumnHeader sortKey="active" type="boolean">
-						Activo
-					</Table.ColumnHeader>
-					<Table.ColumnHeader sortKey="joined" type="date">
-						Fecha
-					</Table.ColumnHeader>
-				</Table.Row>
-			</Table.Header>
-		</Table>
+		<div style={{ width: "90svw", overflowX: "hidden" }}>
+			<Table
+				size={args.size || "medium"}
+				variant={args.variant || "flat"}
+				pagination={{
+					maxRows: 5,
+					page: 1,
+					totalPages: Math.ceil(USERS_DATA.length / 3),
+				}}
+				data={USERS_DATA}
+				renderRow={(item) => (
+					<Table.Row key={item.id}>
+						<Table.Cell align="center">{item.id}</Table.Cell>
+						<Table.Cell align="center">{item.name}</Table.Cell>
+						<Table.Cell align="center">{item.age}</Table.Cell>
+						<Table.Cell align="center">
+							{item.active ? (
+								<Circle color="green" size={10} fill="green" />
+							) : (
+								<Circle color="red" size={10} fill="red" />
+							)}
+						</Table.Cell>
+						<Table.Cell align="center">{item.joined}</Table.Cell>
+					</Table.Row>
+				)}
+			>
+				<Table.Header>
+					<Table.Row>
+						<Table.ColumnHeader sortKey="id" type="number" width="70px">
+							ID
+						</Table.ColumnHeader>
+						<Table.ColumnHeader sortKey="name" type="string" width="150px">
+							Nombre
+						</Table.ColumnHeader>
+						<Table.ColumnHeader sortKey="age" type="number" width="100px">
+							Edad
+						</Table.ColumnHeader>
+						<Table.ColumnHeader sortKey="active" type="boolean" width="100px">
+							Activo
+						</Table.ColumnHeader>
+						<Table.ColumnHeader sortKey="joined" type="date" width="150px">
+							Fecha
+						</Table.ColumnHeader>
+					</Table.Row>
+				</Table.Header>
+			</Table>
+		</div>
 	);
 };
 

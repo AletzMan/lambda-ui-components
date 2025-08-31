@@ -14,11 +14,14 @@ import {
 	rowVariants,
 	cellVariants,
 	headerCellVariants,
+	containerTableVariants,
 } from "./table.variants";
 import { ArrowDownWideNarrow, ArrowUpWideNarrow } from "lucide-react";
 
 import styles from "./table.module.css";
 import { Pagination } from "../Pagination/Pagination";
+import clsx from "clsx";
+import { Select } from "../Select/Select";
 
 // Definición de tipos
 interface SortConfig {
@@ -32,8 +35,11 @@ interface TableProperties {
 	variant?: "flat" | "underlined" | "bordered" | "striped";
 	sortConfig: SortConfig;
 	handleSort: (key: string, type: string) => void;
-	maxRows?: number;
-	pagination?: boolean;
+	pagination?: {
+		maxRows?: number;
+		page?: number;
+		totalPages?: number;
+	};
 }
 
 const TableContext = createContext<TableProperties | undefined>(undefined);
@@ -53,15 +59,17 @@ const TableRoot = <T,>({
 	children,
 	data,
 	renderRow,
-	maxRows = 10,
-	pagination = false,
+	pagination = { maxRows: 10, page: 1, totalPages: 1 },
 	...props
 }: {
 	children: ReactNode;
 	data: T[];
 	renderRow: (item: T) => ReactNode;
-	maxRows?: number;
-	pagination?: boolean;
+	pagination?: {
+		maxRows?: number;
+		page?: number;
+		totalPages?: number;
+	};
 } & HTMLAttributes<HTMLTableElement> & {
 		size?: "tiny" | "small" | "medium" | "large";
 		variant?: "flat" | "underlined" | "bordered" | "striped";
@@ -102,7 +110,9 @@ const TableRoot = <T,>({
 	}, []);
 
 	const [currentPage, setCurrentPage] = useState(1);
-	const totalPages = Math.ceil(sortedData.length / maxRows);
+	const totalPages = Math.ceil(
+		sortedData.length / (pagination?.maxRows && pagination.maxRows > 0 ? pagination.maxRows : 10)
+	);
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -111,15 +121,39 @@ const TableRoot = <T,>({
 	return (
 		<TableContext.Provider value={{ size, variant, sortConfig, handleSort }}>
 			<div className={containerVariants({ variant })}>
-				<table className={tableVariants({ size, variant })} {...props}>
-					{children}
-					<TableBody>
-						{sortedData.map(renderRow).slice((currentPage - 1) * maxRows, currentPage * maxRows)}
-					</TableBody>
-				</table>
+				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
+					<table className={tableVariants({ size, variant })} {...props}>
+						{children}
+						<TableBody>
+							{sortedData
+								.map(renderRow)
+								.slice(
+									(currentPage - 1) *
+										(pagination?.maxRows && pagination.maxRows > 0 ? pagination.maxRows : 1),
+									currentPage *
+										(pagination?.maxRows && pagination.maxRows > 0 ? pagination.maxRows : 10)
+								)}
+						</TableBody>
+					</table>
+				</div>
 				{pagination && (
 					<div className={styles["lambda-table-pagination"]}>
+						<Select
+							className={styles["lambda-table-pagination-select"]}
+							value={pagination.maxRows?.toString()}
+							onChange={(e) => {
+								pagination.maxRows = Number(e);
+							}}
+							options={[
+								{ value: "5", label: "5" },
+								{ value: "10", label: "10" },
+								{ value: "20", label: "20" },
+								{ value: "50", label: "50" },
+								{ value: "100", label: "100" },
+							]}
+						/>
 						<Pagination
+							className={styles["lambda-table-pagination-pagination"]}
 							currentPage={currentPage}
 							totalPages={totalPages}
 							onPageChange={handlePageChange}
@@ -195,11 +229,13 @@ const TableColumnHeader = ({
 	children,
 	sortKey,
 	type = "string",
+	width,
 	...props
 }: HTMLAttributes<HTMLTableCellElement> & {
 	children: ReactNode;
 	sortKey: string;
 	type?: "string" | "number" | "date" | "boolean";
+	width?: string;
 }) => {
 	const { size, variant, sortConfig, handleSort } = useTableContext();
 	const isSorted = sortConfig.key === sortKey;
@@ -209,6 +245,7 @@ const TableColumnHeader = ({
 			className={headerCellVariants({ size, variant })}
 			onClick={() => handleSort(sortKey, type)}
 			{...props}
+			style={{ width }}
 		>
 			<div className={styles["lambda-header-group"]}>
 				{children}
