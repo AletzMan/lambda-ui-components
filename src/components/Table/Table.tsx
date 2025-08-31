@@ -36,7 +36,6 @@ interface TableProperties {
 	sortConfig: SortConfig;
 	handleSort: (key: string, type: string) => void;
 	pagination?: {
-		maxRows?: number;
 		page?: number;
 		totalPages?: number;
 	};
@@ -59,14 +58,13 @@ const TableRoot = <T,>({
 	children,
 	data,
 	renderRow,
-	pagination = { maxRows: 10, page: 1, totalPages: 1 },
+	pagination = { page: 1, totalPages: 1 },
 	...props
 }: {
 	children: ReactNode;
 	data: T[];
 	renderRow: (item: T) => ReactNode;
 	pagination?: {
-		maxRows?: number;
 		page?: number;
 		totalPages?: number;
 	};
@@ -75,6 +73,7 @@ const TableRoot = <T,>({
 		variant?: "flat" | "underlined" | "bordered" | "striped";
 	}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
+	const [maxRows, setMaxRows] = useState(10);
 
 	const sortedData = useMemo(() => {
 		if (!sortConfig.key || !data) {
@@ -110,9 +109,7 @@ const TableRoot = <T,>({
 	}, []);
 
 	const [currentPage, setCurrentPage] = useState(1);
-	const totalPages = Math.ceil(
-		sortedData.length / (pagination?.maxRows && pagination.maxRows > 0 ? pagination.maxRows : 10)
-	);
+	const totalPages = Math.ceil(sortedData.length / (maxRows && maxRows > 0 ? maxRows : 10));
 
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
@@ -121,6 +118,21 @@ const TableRoot = <T,>({
 	return (
 		<TableContext.Provider value={{ size, variant, sortConfig, handleSort }}>
 			<div className={containerVariants({ variant })}>
+				<Select
+					className={styles["lambda-table-pagination-select"]}
+					value={maxRows.toString()}
+					size="tiny"
+					onChange={(e) => {
+						setMaxRows(Number(e));
+						setCurrentPage(1);
+					}}
+					options={[
+						{ value: "5", label: "5 / page" },
+						{ value: "10", label: "10 / page" },
+						{ value: "20", label: "20 / page" },
+						{ value: "50", label: "50 / page" },
+					]}
+				/>
 				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
 					<table className={tableVariants({ size, variant })} {...props}>
 						{children}
@@ -128,36 +140,21 @@ const TableRoot = <T,>({
 							{sortedData
 								.map(renderRow)
 								.slice(
-									(currentPage - 1) *
-										(pagination?.maxRows && pagination.maxRows > 0 ? pagination.maxRows : 1),
-									currentPage *
-										(pagination?.maxRows && pagination.maxRows > 0 ? pagination.maxRows : 10)
+									(currentPage - 1) * (maxRows && maxRows > 0 ? maxRows : 1),
+									currentPage * (maxRows && maxRows > 0 ? maxRows : 10)
 								)}
 						</TableBody>
 					</table>
 				</div>
 				{pagination && (
 					<div className={styles["lambda-table-pagination"]}>
-						<Select
-							className={styles["lambda-table-pagination-select"]}
-							value={pagination.maxRows?.toString()}
-							onChange={(e) => {
-								pagination.maxRows = Number(e);
-							}}
-							options={[
-								{ value: "5", label: "5" },
-								{ value: "10", label: "10" },
-								{ value: "20", label: "20" },
-								{ value: "50", label: "50" },
-								{ value: "100", label: "100" },
-							]}
-						/>
 						<Pagination
 							className={styles["lambda-table-pagination-pagination"]}
 							currentPage={currentPage}
 							totalPages={totalPages}
+							maxVisiblePages={1}
 							onPageChange={handlePageChange}
-							size={size}
+							size="small"
 							variant={
 								variant === "flat"
 									? "flat"

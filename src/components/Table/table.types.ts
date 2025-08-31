@@ -13,7 +13,6 @@ export interface TableProps extends Omit<React.HTMLAttributes<HTMLTableElement>,
 	 * Configura la paginación de la tabla.
 	 */
 	pagination?: {
-		maxRows?: number;
 		page?: number;
 		totalPages?: number;
 	};

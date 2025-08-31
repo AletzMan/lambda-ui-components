@@ -143,7 +143,6 @@ const TableComponent = (args: Partial<TableProps>) => {
 				size={args.size || "medium"}
 				variant={args.variant || "flat"}
 				pagination={{
-					maxRows: 5,
 					page: 1,
 					totalPages: Math.ceil(USERS_DATA.length / 3),
 				}}
