@@ -2899,30 +2899,36 @@ function App() {
 								<Table.Cell>{item.name}</Table.Cell>
 								<Table.Cell>{item.email}</Table.Cell>
 								<Table.Cell>{item.age}</Table.Cell>
-								<Table.Cell>{item.active}</Table.Cell>
+								<Table.Cell>{item.active ? "Sí" : "No"}</Table.Cell>
 								<Table.Cell>{item.joined}</Table.Cell>
 							</Table.Row>
 						)}
 						size={sizeTable}
 						variant={variantTable}
-						maxRows={maxRowsTable}
-						pagination={paginationTable}
+						pagination={{
+							maxRows: maxRowsTable,
+							page: 1,
+							totalPages: Math.ceil(USERS_DATA.length / maxRowsTable),
+						}}
 					>
 						<Table.Header>
 							<Table.Row>
-								<Table.ColumnHeader sortKey="id" type="number">
+								<Table.ColumnHeader sortKey="id" type="number" width="70px">
 									ID
 								</Table.ColumnHeader>
-								<Table.ColumnHeader sortKey="name" type="string">
+								<Table.ColumnHeader sortKey="name" type="string" width="150px">
 									Nombre
 								</Table.ColumnHeader>
-								<Table.ColumnHeader sortKey="age" type="number">
+								<Table.ColumnHeader sortKey="email" type="string" width="220px">
+									Email
+								</Table.ColumnHeader>
+								<Table.ColumnHeader sortKey="age" type="number" width="100px">
 									Edad
 								</Table.ColumnHeader>
-								<Table.ColumnHeader sortKey="active" type="boolean">
+								<Table.ColumnHeader sortKey="active" type="boolean" width="100px">
 									Activo
 								</Table.ColumnHeader>
-								<Table.ColumnHeader sortKey="joined" type="date">
+								<Table.ColumnHeader sortKey="joined" type="date" width="150px">
 									Fecha
 								</Table.ColumnHeader>
 							</Table.Row>
