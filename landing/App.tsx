@@ -23,6 +23,7 @@ import {
 	Coins,
 	Component,
 	DatabaseIcon,
+	EditIcon,
 	HelpCircleIcon,
 	HomeIcon,
 	InfoIcon,
@@ -37,6 +38,7 @@ import {
 	Settings,
 	Settings2,
 	SettingsIcon,
+	TrashIcon,
 	User,
 	UserIcon,
 } from "lucide-react";
@@ -2895,25 +2897,48 @@ function App() {
 						data={USERS_DATA}
 						renderRow={(item) => (
 							<Table.Row key={item.id}>
-								<Table.Cell>{item.id}</Table.Cell>
+								<Table.Cell
+									style={{
+										textAlign: "center",
+										fontWeight: "bold",
+										color: "var(--info-text-color)",
+									}}
+								>
+									{item.id}
+								</Table.Cell>
 								<Table.Cell>{item.name}</Table.Cell>
-								<Table.Cell>{item.email}</Table.Cell>
-								<Table.Cell>{item.age}</Table.Cell>
-								<Table.Cell>{item.active ? "Sí" : "No"}</Table.Cell>
+								<Table.Cell style={{ fontStyle: "italic" }}>{item.email}</Table.Cell>
+								<Table.Cell style={{ textAlign: "center", color: "orangered" }}>
+									{item.age}
+								</Table.Cell>
+								<Table.Cell style={{ textAlign: "center", color: item.active ? "green" : "red" }}>
+									<Tag color={item.active ? "success" : "danger"} size="tiny">
+										{item.active ? "Activo" : "Inactivo"}
+									</Tag>
+								</Table.Cell>
 								<Table.Cell>{item.joined}</Table.Cell>
+								<Table.Cell>
+									<div style={{ display: "flex", gap: "0.5rem" }}>
+										<Tooltip content="Editar" size="tiny" color="info">
+											<Button variant="ghost" color="info" size="tiny" icon={<EditIcon />} />
+										</Tooltip>
+										<Tooltip content="Eliminar" size="tiny" color="danger">
+											<Button variant="ghost" color="danger" size="tiny" icon={<TrashIcon />} />
+										</Tooltip>
+									</div>
+								</Table.Cell>
 							</Table.Row>
 						)}
 						size={sizeTable}
 						variant={variantTable}
 						pagination={{
-							maxRows: maxRowsTable,
 							page: 1,
 							totalPages: Math.ceil(USERS_DATA.length / maxRowsTable),
 						}}
 					>
 						<Table.Header>
 							<Table.Row>
-								<Table.ColumnHeader sortKey="id" type="number" width="70px">
+								<Table.ColumnHeader sortKey="id" type="number" width="90px">
 									ID
 								</Table.ColumnHeader>
 								<Table.ColumnHeader sortKey="name" type="string" width="150px">
@@ -2926,10 +2951,13 @@ function App() {
 									Edad
 								</Table.ColumnHeader>
 								<Table.ColumnHeader sortKey="active" type="boolean" width="100px">
-									Activo
+									Status
 								</Table.ColumnHeader>
 								<Table.ColumnHeader sortKey="joined" type="date" width="150px">
 									Fecha
+								</Table.ColumnHeader>
+								<Table.ColumnHeader sortKey="actions" type="string" width="150px">
+									Acciones
 								</Table.ColumnHeader>
 							</Table.Row>
 						</Table.Header>
@@ -3413,92 +3441,452 @@ interface User {
 const USERS_DATA: User[] = [
 	{
 		id: 1,
-		name: "John Doe",
-		email: "john.doe@example.com",
-		age: 30,
+		name: "Sofía Rodríguez",
+		email: "sofia.rodriguez@example.com",
+		age: 28,
 		active: true,
-		joined: "2023-01-01",
-		city: "New York",
+		joined: "2023-08-15",
+		city: "Madrid",
 	},
 	{
 		id: 2,
-		name: "Jane Doe",
-		email: "jane.doe@example.com",
-		age: 25,
+		name: "Carlos Gómez",
+		email: "carlos.gomez@example.com",
+		age: 35,
 		active: false,
-		joined: "2020-02-01",
-		city: "Los Angeles",
+		joined: "2021-03-20",
+		city: "Barcelona",
 	},
 	{
 		id: 3,
-		name: "John Smith",
-		email: "john.smith@example.com",
-		age: 35,
+		name: "Ana Torres",
+		email: "ana.torres@example.com",
+		age: 42,
 		active: true,
-		joined: "2022-03-01",
-		city: "Chicago",
+		joined: "2020-11-05",
+		city: "Valencia",
 	},
 	{
 		id: 4,
-		name: "Sara Doe",
-		email: "sara.doe@example.com",
-		age: 10,
-		active: false,
-		joined: "2021-04-01",
-		city: "San Francisco",
+		name: "Javier López",
+		email: "javier.lopez@example.com",
+		age: 22,
+		active: true,
+		joined: "2024-01-10",
+		city: "Sevilla",
 	},
 	{
 		id: 5,
-		name: "Sam Smith",
-		email: "sam.smith@example.com",
-		age: 1,
-		active: true,
-		joined: "2024-05-01",
-		city: "New York",
+		name: "María Fernández",
+		email: "maria.fernandez@example.com",
+		age: 50,
+		active: false,
+		joined: "2019-07-01",
+		city: "Bilbao",
 	},
 	{
 		id: 6,
-		name: "Sara Smith",
-		email: "sara.smith@example.com",
-		age: 100,
-		active: false,
-		joined: "2019-06-01",
-		city: "San Francisco",
+		name: "David Pérez",
+		email: "david.perez@example.com",
+		age: 31,
+		active: true,
+		joined: "2022-05-18",
+		city: "Zaragoza",
 	},
 	{
 		id: 7,
-		name: "Luis Doe",
-		email: "luis.doe@example.com",
-		age: 23,
+		name: "Lucía García",
+		email: "lucia.garcia@example.com",
+		age: 19,
 		active: true,
-		joined: "2017-01-01",
-		city: "California",
+		joined: "2024-04-22",
+		city: "Málaga",
 	},
 	{
 		id: 8,
-		name: "Luisa Doe",
-		email: "luisa.doe@example.com",
-		age: 25,
-		active: true,
-		joined: "2024-01-01",
-		city: "New Jersey",
+		name: "Juan Martínez",
+		email: "juan.martinez@example.com",
+		age: 65,
+		active: false,
+		joined: "2018-09-30",
+		city: "Alicante",
 	},
 	{
 		id: 9,
-		name: "Young Doe",
-		email: "young.doe@example.com",
-		age: 28,
+		name: "Laura Sánchez",
+		email: "laura.sanchez@example.com",
+		age: 27,
 		active: true,
-		joined: "2022-01-01",
-		city: "Washington",
+		joined: "2023-02-14",
+		city: "Granada",
 	},
 	{
 		id: 10,
-		name: "Old Doe",
-		email: "old.doe@example.com",
-		age: 45,
+		name: "Pedro Ruiz",
+		email: "pedro.ruiz@example.com",
+		age: 40,
 		active: true,
-		joined: "2015-01-01",
-		city: "New York",
+		joined: "2020-06-08",
+		city: "Palma de Mallorca",
+	},
+	{
+		id: 11,
+		name: "Irene Castro",
+		email: "irene.castro@example.com",
+		age: 29,
+		active: false,
+		joined: "2021-12-03",
+		city: "Tenerife",
+	},
+	{
+		id: 12,
+		name: "Jorge Morales",
+		email: "jorge.morales@example.com",
+		age: 33,
+		active: true,
+		joined: "2022-09-25",
+		city: "Las Palmas",
+	},
+	{
+		id: 13,
+		name: "Sara Vidal",
+		email: "sara.vidal@example.com",
+		age: 26,
+		active: true,
+		joined: "2023-06-11",
+		city: "Córdoba",
+	},
+	{
+		id: 14,
+		name: "Raúl Herrera",
+		email: "raul.herrera@example.com",
+		age: 55,
+		active: false,
+		joined: "2017-04-05",
+		city: "Vigo",
+	},
+	{
+		id: 15,
+		name: "Elena Ramos",
+		email: "elena.ramos@example.com",
+		age: 38,
+		active: true,
+		joined: "2020-01-28",
+		city: "Valladolid",
+	},
+	{
+		id: 16,
+		name: "Pablo Gil",
+		email: "pablo.gil@example.com",
+		age: 24,
+		active: true,
+		joined: "2023-11-09",
+		city: "Gijón",
+	},
+	{
+		id: 17,
+		name: "Silvia Naranjo",
+		email: "silvia.naranjo@example.com",
+		age: 47,
+		active: false,
+		joined: "2016-08-12",
+		city: "A Coruña",
+	},
+	{
+		id: 18,
+		name: "Ricardo Vargas",
+		email: "ricardo.vargas@example.com",
+		age: 30,
+		active: true,
+		joined: "2022-04-15",
+		city: "Murcia",
+	},
+	{
+		id: 19,
+		name: "Natalia Vega",
+		email: "natalia.vega@example.com",
+		age: 23,
+		active: true,
+		joined: "2024-02-29",
+		city: "Oviedo",
+	},
+	{
+		id: 20,
+		name: "Fernando Rojas",
+		email: "fernando.rojas@example.com",
+		age: 60,
+		active: true,
+		joined: "2015-10-10",
+		city: "Salamanca",
+	},
+	{
+		id: 21,
+		name: "Diana Soto",
+		email: "diana.soto@example.com",
+		age: 34,
+		active: false,
+		joined: "2021-06-07",
+		city: "Cádiz",
+	},
+	{
+		id: 22,
+		name: "Diego Marín",
+		email: "diego.marin@example.com",
+		age: 25,
+		active: true,
+		joined: "2023-03-01",
+		city: "León",
+	},
+	{
+		id: 23,
+		name: "Adriana Orozco",
+		email: "adriana.orozco@example.com",
+		age: 41,
+		active: true,
+		joined: "2019-11-20",
+		city: "Pamplona",
+	},
+	{
+		id: 24,
+		name: "Hugo Castillo",
+		email: "hugo.castillo@example.com",
+		age: 29,
+		active: false,
+		joined: "2022-08-08",
+		city: "San Sebastián",
+	},
+	{
+		id: 25,
+		name: "Valeria Mendoza",
+		email: "valeria.mendoza@example.com",
+		age: 36,
+		active: true,
+		joined: "2020-04-19",
+		city: "Logroño",
+	},
+	{
+		id: 26,
+		name: "Alejandro Núñez",
+		email: "alejandro.nunez@example.com",
+		age: 52,
+		active: true,
+		joined: "2018-02-23",
+		city: "Albacete",
+	},
+	{
+		id: 27,
+		name: "Gloria Ortiz",
+		email: "gloria.ortiz@example.com",
+		age: 21,
+		active: true,
+		joined: "2024-01-05",
+		city: "Huelva",
+	},
+	{
+		id: 28,
+		name: "Gabriel Prieto",
+		email: "gabriel.prieto@example.com",
+		age: 45,
+		active: false,
+		joined: "2017-07-16",
+		city: "Jaén",
+	},
+	{
+		id: 29,
+		name: "Paola Morales",
+		email: "paola.morales@example.com",
+		age: 30,
+		active: true,
+		joined: "2023-09-01",
+		city: "Cáceres",
+	},
+	{
+		id: 30,
+		name: "Marco Peña",
+		email: "marco.pena@example.com",
+		age: 26,
+		active: true,
+		joined: "2022-10-10",
+		city: "Badajoz",
+	},
+	{
+		id: 31,
+		name: "Isabel Jiménez",
+		email: "isabel.jimenez@example.com",
+		age: 39,
+		active: false,
+		joined: "2021-08-25",
+		city: "Soria",
+	},
+	{
+		id: 32,
+		name: "Arturo Molina",
+		email: "arturo.molina@example.com",
+		age: 58,
+		active: true,
+		joined: "2016-05-30",
+		city: "Burgos",
+	},
+	{
+		id: 33,
+		name: "Beatriz Guzmán",
+		email: "beatriz.guzman@example.com",
+		age: 20,
+		active: true,
+		joined: "2024-03-17",
+		city: "Cuenca",
+	},
+	{
+		id: 34,
+		name: "Francisco Delgado",
+		email: "francisco.delgado@example.com",
+		age: 68,
+		active: true,
+		joined: "2015-02-11",
+		city: "Toledo",
+	},
+	{
+		id: 35,
+		name: "Clara Aguilar",
+		email: "clara.aguilar@example.com",
+		age: 32,
+		active: false,
+		joined: "2020-09-04",
+		city: "Guadalajara",
+	},
+	{
+		id: 36,
+		name: "Sergio Montero",
+		email: "sergio.montero@example.com",
+		age: 27,
+		active: true,
+		joined: "2023-07-21",
+		city: "Ávila",
+	},
+	{
+		id: 37,
+		name: "Paula Gil",
+		email: "paula.gil@example.com",
+		age: 44,
+		active: true,
+		joined: "2019-10-09",
+		city: "Segovia",
+	},
+	{
+		id: 38,
+		name: "Miguel Ángel",
+		email: "miguel.angel@example.com",
+		age: 51,
+		active: false,
+		joined: "2018-11-13",
+		city: "Zamora",
+	},
+	{
+		id: 39,
+		name: "Andrea Ramos",
+		email: "andrea.ramos@example.com",
+		age: 23,
+		active: true,
+		joined: "2024-05-01",
+		city: "Palencia",
+	},
+	{
+		id: 40,
+		name: "Rubén Sánchez",
+		email: "ruben.sanchez@example.com",
+		age: 37,
+		active: true,
+		joined: "2021-04-29",
+		city: "Soria",
+	},
+	{
+		id: 41,
+		name: "Eva Morales",
+		email: "eva.morales@example.com",
+		age: 29,
+		active: false,
+		joined: "2022-02-14",
+		city: "Ávila",
+	},
+	{
+		id: 42,
+		name: "Daniel Ruiz",
+		email: "daniel.ruiz@example.com",
+		age: 46,
+		active: true,
+		joined: "2016-09-01",
+		city: "Segovia",
+	},
+	{
+		id: 43,
+		name: "Marta Castro",
+		email: "marta.castro@example.com",
+		age: 22,
+		active: true,
+		joined: "2023-01-20",
+		city: "Palencia",
+	},
+	{
+		id: 44,
+		name: "Héctor Jiménez",
+		email: "hector.jimenez@example.com",
+		age: 63,
+		active: false,
+		joined: "2014-12-05",
+		city: "Zamora",
+	},
+	{
+		id: 45,
+		name: "Tania Vega",
+		email: "tania.vega@example.com",
+		age: 31,
+		active: true,
+		joined: "2021-03-10",
+		city: "Soria",
+	},
+	{
+		id: 46,
+		name: "Óscar Medina",
+		email: "oscar.medina@example.com",
+		age: 25,
+		active: true,
+		joined: "2023-05-18",
+		city: "Ávila",
+	},
+	{
+		id: 47,
+		name: "Rosa Elías",
+		email: "rosa.elias@example.com",
+		age: 49,
+		active: false,
+		joined: "2018-06-22",
+		city: "Segovia",
+	},
+	{
+		id: 48,
+		name: "Antonio Torres",
+		email: "antonio.torres@example.com",
+		age: 33,
+		active: true,
+		joined: "2022-07-07",
+		city: "Palencia",
+	},
+	{
+		id: 49,
+		name: "Cristina Soto",
+		email: "cristina.soto@example.com",
+		age: 28,
+		active: true,
+		joined: "2024-01-01",
+		city: "Zamora",
+	},
+	{
+		id: 50,
+		name: "Jorge Ramos",
+		email: "jorge.ramos@example.com",
+		age: 54,
+		active: false,
+		joined: "2017-09-15",
+		city: "Ávila",
 	},
 ];

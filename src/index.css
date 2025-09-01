@@ -104,6 +104,7 @@
 [data-theme="light"] {
 	--background-color: #fff6f6;
 	--foreground-color: #171717;
+	--foreground-title-color: #414141;
 	--foreground-secondary-color: #727272;
 	--foreground-invert-color: #ffffff;
 	--foreground-label-color: #8fa2b3;
@@ -184,6 +185,7 @@
 [data-theme="dark"] {
 	--background-color: #161616;
 	--foreground-color: #ffffff;
+	--foreground-title-color: #c4c4c4;
 	--foreground-secondary-color: #888888;
 	--foreground-invert-color: #222222;
 	--foreground-label-color: #b1c0cc;
