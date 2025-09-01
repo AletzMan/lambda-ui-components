@@ -537,14 +537,14 @@ function App() {
 						<Alert
 							variant={variantAlert}
 							color="primary"
-							title="Priamry"
+							title="Primary"
 							message="Please review the details below and take the necessary action"
 							onClose={() => console.log("")}
 							size={sizeAlert}
 						/>
 						<Alert
 							variant={variantAlert}
-							color="danger"
+							color="success"
 							title="Success"
 							message="Your changes have been saved successfully"
 							onClose={() => console.log("")}
@@ -552,7 +552,7 @@ function App() {
 						/>
 						<Alert
 							variant={variantAlert}
-							color="success"
+							color="danger"
 							title="Danger"
 							message="Unable to complete the request. Please try again or contact support"
 							onClose={() => console.log("")}
@@ -3415,9 +3415,10 @@ const COMPONENTS = [
 	"Input",
 	"Input Number",
 	"Link",
+	"Notification",
 	"Pagination",
-	"Range",
 	"Radio",
+	"Range",
 	"Select",
 	"Switch",
 	"Tab",
