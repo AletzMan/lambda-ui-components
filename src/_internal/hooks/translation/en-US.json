@@ -1,0 +1,6 @@
+{
+	"table": {
+		"rows": "Showing {{from}} to {{to}} of {{total}} entries",
+		"page": "{{count}} / page"
+	}
+}
