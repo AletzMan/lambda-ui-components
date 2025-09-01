@@ -236,8 +236,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	border-radius: var(--border-radius-xs);
-	border: var(--border-width-xs) solid transparent;
+	border: var(--border-width-xs) solid var(--surface-c);
 	box-sizing: border-box;
 	cursor: pointer;
 }
@@ -247,6 +246,7 @@
 	top: 0;
 	left: 0;
 	border-radius: var(--border-radius-xs);
+	border: var(--border-width-xs) solid var(--surface-c);
 	z-index: 1;
 	box-sizing: border-box;
 	pointer-events: none;
@@ -289,7 +289,7 @@
 
 .lambda-colorpicker-preview {
 	display: grid;
-	grid-template-columns: 1fr 3em;
+	grid-template-columns: 1fr 2em;
 	position: relative;
 	place-content: center start;
 	width: 100%;
@@ -301,7 +301,7 @@
 		position: absolute;
 		top: var(--padding-xs);
 		left: var(--padding-xs);
-		width: 14em;
+		width: 15em;
 		height: calc(100% - var(--padding-md));
 		background-color: #e5e5f7;
 		border: var(--border-width-xs) solid transparent;
@@ -323,7 +323,7 @@
 		position: absolute;
 		top: var(--padding-xs);
 		left: var(--padding-xs);
-		width: 14em;
+		width: 15em;
 		height: calc(100% - var(--padding-md));
 		border-radius: var(--border-radius-xs);
 		border: var(--border-width-xs) solid transparent;

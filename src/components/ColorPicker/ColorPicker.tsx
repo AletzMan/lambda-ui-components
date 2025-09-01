@@ -21,6 +21,8 @@ import { CheckIcon, CopyIcon, Pipette } from "lucide-react";
 import useEyeDropper from "use-eye-dropper";
 // Importa el componente Range
 import { Range } from "../Range/Range";
+import { Tooltip } from "../ToolTip/ToolTip";
+import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
@@ -180,6 +182,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		ref
 	) => {
 		const { open, isSupported } = useEyeDropper();
+		const { t } = useConfig();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
 		const [format, setFormat] = useState<"hex" | "hsl" | "rgb" | "rgba" | "hsla">(
@@ -536,16 +539,20 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 							ref={viewRef}
 							style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
 						/>
-
-						<Button
+						<Tooltip
+							content={copied ? t("color-picker.copy-success") : t("color-picker.copy")}
 							className={styles["lambda-colorpicker-preview-copy"]}
-							type="button"
-							variant="ghost"
-							color="secondary"
 							size="tiny"
-							onClick={handleCopyClick}
-							icon={copied ? <CheckIcon /> : <CopyIcon />}
-						/>
+						>
+							<Button
+								type="button"
+								variant="ghost"
+								color="secondary"
+								size="tiny"
+								onClick={handleCopyClick}
+								icon={copied ? <CheckIcon /> : <CopyIcon />}
+							/>
+						</Tooltip>
 					</div>
 					<div
 						className={styles["lambda-colorpicker-picker"]}
@@ -602,15 +609,17 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 								}}
 							/>
 							{isSupported() && (
-								<Button
-									variant="ghost"
-									color="secondary"
-									size="tiny"
-									icon={<Pipette />}
-									onClick={pickColor}
-									ref={buttonSliderRef}
-									className={styles["lambda-colorpicker-dropper"]}
-								/>
+								<Tooltip content={t("color-picker.eye-dropper")} size="tiny">
+									<Button
+										variant="ghost"
+										color="secondary"
+										size="tiny"
+										icon={<Pipette />}
+										onClick={pickColor}
+										ref={buttonSliderRef}
+										className={styles["lambda-colorpicker-dropper"]}
+									/>
+								</Tooltip>
 							)}
 						</div>
 						<div className={styles["lambda-colorpicker-controls-alpha"]}>
@@ -661,14 +670,16 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 										onChange={handleInputChange}
 										className={styles["lambda-colorpicker-input-single"]}
 									/>
-									<Button
-										variant="ghost"
-										color="secondary"
-										size="tiny"
-										label={format.toUpperCase()}
-										onClick={handleChangeFormat}
-										className={styles["lambda-colorpicker-input-format"]}
-									/>
+									<Tooltip content={t("color-picker.format")} size="tiny">
+										<Button
+											variant="ghost"
+											color="secondary"
+											size="tiny"
+											label={format.toUpperCase()}
+											onClick={handleChangeFormat}
+											className={styles["lambda-colorpicker-input-format"]}
+										/>
+									</Tooltip>
 								</div>
 							) : (
 								<div className={styles["lambda-colorpicker-input-group"]}>
@@ -702,15 +713,17 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 										size="tiny"
 										className={styles["lambda-colorpicker-input-multiple"]}
 									/>
-									<Button
-										variant="ghost"
-										color="secondary"
-										size="tiny"
-										label={format.toUpperCase()}
-										onClick={handleChangeFormat}
-										ref={buttonAlphaRef}
-										className={styles["lambda-colorpicker-input-format"]}
-									/>
+									<Tooltip content={t("color-picker.format")} size="tiny">
+										<Button
+											variant="ghost"
+											color="secondary"
+											size="tiny"
+											label={format.toUpperCase()}
+											onClick={handleChangeFormat}
+											ref={buttonAlphaRef}
+											className={styles["lambda-colorpicker-input-format"]}
+										/>
+									</Tooltip>
 								</div>
 							)}
 						</div>
