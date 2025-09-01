@@ -7,5 +7,11 @@
 	"table": {
 		"rows": "Affichage de {{from}} à {{to}} sur {{total}} entrées",
 		"page": "{{count}} / page"
+	},
+	"color-picker": {
+		"copy": "Copier",
+		"copy-success": "Copié!",
+		"eye-dropper": "Pipette",
+		"format": "Changer Format"
 	}
 }
