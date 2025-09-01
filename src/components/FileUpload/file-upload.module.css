@@ -113,7 +113,8 @@
 	}
 
 	.lambda-file-upload-drop-zone-placeholder {
-		font-size: var(--font-size-md);
+		max-width: 20ch;
+		margin: 0 0 var(--gap-sm) 0;
 		font-weight: var(--font-weight-sm);
 		color: var(--surface-f);
 	}
@@ -181,7 +182,7 @@
 }
 
 .lambda-file-upload-drop-zone-max-size {
-	font-size: var(--font-size-sm);
+	font-size: var(--font-size-xs);
 	color: var(--warning-text-color);
 	font-style: italic;
 }
@@ -255,7 +256,7 @@
 
 	.lambda-file-upload-drop-zone-placeholder,
 	.lambda-file-upload-drop-zone-file-count {
-		font-size: var(--font-size-md);
+		font-size: var(--font-size-sm);
 	}
 }
 
@@ -273,7 +274,7 @@
 
 	.lambda-file-upload-drop-zone-placeholder,
 	.lambda-file-upload-drop-zone-file-count {
-		font-size: var(--font-size-lg);
+		font-size: var(--font-size-md);
 	}
 }
 
@@ -405,17 +406,17 @@
 
 .lambda-file-upload-button-file-upload-small {
 	padding: var(--padding-xs) var(--padding-sm);
-	font-size: var(--font-size-sm);
+	font-size: var(--font-size-xs);
 }
 
 .lambda-file-upload-button-file-upload-medium {
 	padding: var(--padding-sm) var(--padding-md);
-	font-size: var(--font-size-md);
+	font-size: var(--font-size-sm);
 }
 
 .lambda-file-upload-button-file-upload-large {
 	padding: var(--padding-md) var(--padding-lg);
-	font-size: var(--font-size-lg);
+	font-size: var(--font-size-md);
 }
 
 .lambda-file-upload-file-display-container {
