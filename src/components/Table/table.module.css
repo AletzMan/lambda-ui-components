@@ -64,7 +64,7 @@
 .lambda-table-header-cell {
 	vertical-align: middle;
 	font-weight: var(--font-weight-semibold);
-	color: var(--foreground-color);
+	color: var(--foreground-title-color);
 	text-align: center;
 	background-color: var(--surface-c);
 	width: 100%;
@@ -249,16 +249,28 @@
 
 .lambda-table-pagination {
 	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
+	flex-direction: row;
+	justify-content: space-between;
 	border-top: 1px solid var(--border-color);
 	padding: var(--padding-lg) var(--padding-md);
 	z-index: 10;
+
+	@media (max-width: 600px) {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+.lambda-table-pagination-text {
+	display: flex;
+	align-items: center;
+	color: var(--foreground-secondary-color);
+	font-size: var(--font-size-sm);
 }
 
 .lambda-table-pagination-select {
 	justify-self: flex-end;
 	margin: var(--padding-sm);
-	width: 6.1em;
+	width: 6.7em;
 	z-index: 10;
 }

@@ -22,6 +22,7 @@ import styles from "./table.module.css";
 import { Pagination } from "../Pagination/Pagination";
 import clsx from "clsx";
 import { Select } from "../Select/Select";
+import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 // Definición de tipos
 interface SortConfig {
@@ -74,6 +75,7 @@ const TableRoot = <T,>({
 	}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
 	const [maxRows, setMaxRows] = useState(10);
+	const { t } = useConfig();
 
 	const sortedData = useMemo(() => {
 		if (!sortConfig.key || !data) {
@@ -127,10 +129,22 @@ const TableRoot = <T,>({
 						setCurrentPage(1);
 					}}
 					options={[
-						{ value: "5", label: "5 / page" },
-						{ value: "10", label: "10 / page" },
-						{ value: "20", label: "20 / page" },
-						{ value: "50", label: "50 / page" },
+						{
+							value: "5",
+							label: t("table.page", { count: 5 }),
+						},
+						{
+							value: "10",
+							label: t("table.page", { count: 10 }),
+						},
+						{
+							value: "20",
+							label: t("table.page", { count: 20 }),
+						},
+						{
+							value: "50",
+							label: t("table.page", { count: 50 }),
+						},
 					]}
 				/>
 				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
@@ -148,6 +162,13 @@ const TableRoot = <T,>({
 				</div>
 				{pagination && (
 					<div className={styles["lambda-table-pagination"]}>
+						<div className={styles["lambda-table-pagination-text"]}>
+							{t("table.rows", {
+								from: (currentPage - 1) * maxRows + 1,
+								to: currentPage * maxRows,
+								total: sortedData.length,
+							})}
+						</div>
 						<Pagination
 							className={styles["lambda-table-pagination-pagination"]}
 							currentPage={currentPage}
