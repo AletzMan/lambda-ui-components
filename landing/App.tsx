@@ -1656,7 +1656,6 @@ function App() {
 							errorMessage={errorMessageFileUpload}
 							label="File Upload"
 							helperText="Upload your file"
-							placeholder="Drag and drop your files here"
 							required
 							maxSize={60000}
 							viewFileSize={viewFileSize}

@@ -1,4 +1,9 @@
 {
+	"file-upload": {
+		"drop-zone-placeholder": "Drop files here or click to upload",
+		"max-size": "Max size: {{maxSize}}",
+		"button-text": "Select File"
+	},
 	"table": {
 		"rows": "Showing {{from}} to {{to}} of {{total}} entries",
 		"page": "{{count}} / page"

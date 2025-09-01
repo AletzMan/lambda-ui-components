@@ -1,4 +1,9 @@
 {
+	"file-upload": {
+		"drop-zone-placeholder": "Faites glisser et déposez un fichier ou cliquez pour télécharger",
+		"max-size": "Taille max: {{maxSize}}",
+		"button-text": "Sélectionner un fichier"
+	},
 	"table": {
 		"rows": "Affichage de {{from}} à {{to}} sur {{total}} entrées",
 		"page": "{{count}} / page"

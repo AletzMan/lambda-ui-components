@@ -1,4 +1,9 @@
 {
+	"file-upload": {
+		"drop-zone-placeholder": "Arrastra y suelta archivos aquí o haz clic para cargar",
+		"max-size": "Tamaño max: {{maxSize}}",
+		"button-text": "Seleccionar archivo"
+	},
 	"table": {
 		"rows": "Mostrando {{from}} al {{to}} de {{total}} entradas",
 		"page": "{{count}} / página"
