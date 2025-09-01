@@ -56,7 +56,7 @@
 
 /* Panel del Diálogo (la caja blanca o de color con el contenido) */
 .lambda-dialog-panel {
-	position: relative;
+	position: absolute;
 	border-radius: var(--border-radius-sm);
 	max-width: 90%;
 	width: 500px;
@@ -70,8 +70,34 @@
 	transition: opacity 0.3s ease, transform 0.3s ease;
 	pointer-events: auto;
 	overflow: hidden;
-}
 
+	&:is(.lambda-dialog-panel-modal) {
+		animation: modal-shake 0.5s ease-in-out infinite;
+	}
+
+	&:is(.lambda-dialog-panel-draggable) {
+		.lambda-dialog-header {
+			cursor: move;
+		}
+	}
+}
+@keyframes modal-shake {
+	0% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-5px);
+	}
+	50% {
+		transform: translateX(5px);
+	}
+	75% {
+		transform: translateX(-5px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
 /* Estado ENTERING: Al inicio de la animación de entrada */
 .lambda-dialog-panel-entering {
 	opacity: 0;
@@ -116,6 +142,7 @@
 	flex-grow: 1;
 	min-width: 0;
 	word-wrap: break-word;
+	pointer-events: none;
 }
 
 /* Cuerpo del diálogo (área de contenido principal) */

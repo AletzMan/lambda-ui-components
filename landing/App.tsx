@@ -267,6 +267,10 @@ function App() {
 	const [delayShowToolTip, setDelayShowToolTip] = useState(100);
 	const [delayHideToolTip, setDelayHideToolTip] = useState(100);
 	const [openDialog, setOpenDialog] = useState(false);
+	const [isModalDialog, setIsModalDialog] = useState(false);
+	const [isDraggableDialog, setIsDraggableDialog] = useState(false);
+	const [closeOnEscapeDialog, setCloseOnEscapeDialog] = useState(true);
+	const [showCloseButtonDialog, setShowCloseButtonDialog] = useState(true);
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [drawerPosition, setDrawerPosition] = useState<DrawerPlacement>("left");
 	const [widthDrawer, setWidthDrawer] = useState<DrawerWidth>("small");
@@ -1267,76 +1271,31 @@ function App() {
 			<section className={styles.subsection} id="dialog">
 				<h2 className={styles.subtitle}>Dialog</h2>
 				<div className={styles.control_buttons}>
-					<Select
-						className={styles.select_size}
-						label="Color"
-						value={colorToolTip}
+					<Checkbox
+						label="Modal"
+						checked={isModalDialog}
+						onChange={(value) => setIsModalDialog(value.currentTarget.checked)}
 						size="small"
-						onChange={(value) =>
-							setColorToolTip(
-								value as
-									| "primary"
-									| "secondary"
-									| "danger"
-									| "success"
-									| "warning"
-									| "info"
-									| undefined
-							)
-						}
-						options={[
-							{ label: "Primary", value: "primary" },
-							{ label: "Secondary", value: "secondary" },
-							{ label: "Success", value: "success" },
-							{ label: "Danger", value: "danger" },
-							{ label: "Warning", value: "warning" },
-							{ label: "Info", value: "info" },
-						]}
 					/>
-					<Select
-						label="Size"
-						className={styles.select_size}
-						value={sizeToolTip}
+					<Checkbox
+						label="Draggable"
+						checked={isDraggableDialog}
+						onChange={(value) => setIsDraggableDialog(value.currentTarget.checked)}
 						size="small"
-						onChange={(value) =>
-							setSizeToolTip(value as "tiny" | "small" | "medium" | "large" | undefined)
-						}
-						options={[
-							{ label: "Tiny", value: "tiny" },
-							{ label: "Small", value: "small" },
-							{ label: "Medium", value: "medium" },
-							{ label: "Large", value: "large" },
-						]}
 					/>
-					<Select
-						label="Position"
-						className={styles.select_size}
-						value={positionToolTip}
+					<Checkbox
+						label="Close on escape"
+						checked={closeOnEscapeDialog}
+						onChange={(value) => setCloseOnEscapeDialog(value.currentTarget.checked)}
 						size="small"
-						onChange={(value) => setPositionToolTip(value as TooltipPosition | undefined)}
-						options={[
-							{ label: "Top Left", value: "top-left" },
-							{ label: "Top Right", value: "top-right" },
-							{ label: "Top Center", value: "top-center" },
-							{ label: "Bottom Center", value: "bottom-center" },
-							{ label: "Bottom Left", value: "bottom-left" },
-							{ label: "Bottom Right", value: "bottom-right" },
-						]}
 					/>
-					<div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}>
-						<InputNumber
-							label="Delay Show"
-							value={delayShowToolTip}
-							onChange={(value) => setDelayShowToolTip(value || 0)}
-							size="small"
-						/>
-						<InputNumber
-							label="Delay Hide"
-							value={delayHideToolTip}
-							onChange={(value) => setDelayHideToolTip(value || 0)}
-							size="small"
-						/>
-					</div>
+					<Checkbox
+						label="Show close button"
+						checked={showCloseButtonDialog}
+						onChange={(value) => setShowCloseButtonDialog(value.currentTarget.checked)}
+						size="small"
+					/>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "10em" }}></div>
 				</div>
 				<div className={styles.container_buttons}>
 					<div className={`${styles.buttons} ${styles.buttons_large}`}>
@@ -1345,9 +1304,10 @@ function App() {
 							isOpen={openDialog}
 							onClose={() => setOpenDialog(false)}
 							title="Confirmar Acción"
-							closeOnOverlayClick={true}
-							closeOnEscape={true}
-							showCloseButton={true}
+							closeOnEscape={closeOnEscapeDialog}
+							showCloseButton={showCloseButtonDialog}
+							isModal={isModalDialog}
+							isDraggable={isDraggableDialog}
 							footer={
 								<>
 									<Button
