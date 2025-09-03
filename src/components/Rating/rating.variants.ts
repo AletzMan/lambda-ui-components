@@ -24,8 +24,13 @@ export const ratingVariants = cva(styles["lambda-rating"], {
 		},
 		type: {
 			icon: styles["lambda-rating-icon"],
-			text: styles["lambda-rating-text"],
+			string: styles["lambda-rating-string"],
 			custom: styles["lambda-rating-custom"],
+		},
+		textPosition: {
+			top: styles["lambda-rating-text-top"],
+			bottom: styles["lambda-rating-text-bottom"],
+			right: styles["lambda-rating-text-right"],
 		},
 	},
 	defaultVariants: {
@@ -62,7 +67,7 @@ export const ratingItem = cva(styles["lambda-rating-item"], {
 		},
 		type: {
 			icon: styles["lambda-rating-item-icon"],
-			text: styles["lambda-rating-item-text"],
+			string: styles["lambda-rating-item-string"],
 			custom: styles["lambda-rating-item-custom"],
 		},
 	},

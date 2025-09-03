@@ -38,4 +38,15 @@ export interface RatingProps
 	 * Define el icono personalizado.
 	 */
 	customIcon?: React.ReactNode[];
+
+	/**
+	 * Define el texto personalizado, para cada nivel de calificación.
+	 */
+	text?: string[];
+
+	/**
+	 * Define la posición del texto personalizado.
+	 * @default "right"
+	 */
+	textPosition?: "top" | "bottom" | "right";
 }

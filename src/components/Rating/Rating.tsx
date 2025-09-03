@@ -3,11 +3,17 @@ import { ratingVariants, ratingItem } from "./rating.variants";
 import clsx from "clsx";
 import { forwardRef, useEffect, useState } from "react";
 import { RatingProps } from "./rating.types";
+import styles from "./rating.module.css";
+import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 export const Rating = forwardRef<HTMLDivElement, RatingProps>(
-	({ className, size, variant, color, value, onChange, customIcon, ...props }, ref) => {
+	(
+		{ className, size, variant, color, value, onChange, customIcon, text, textPosition, ...props },
+		ref
+	) => {
 		const [internalValue, setInternalValue] = useState(value || 0);
-		const [type, setType] = useState<"icon" | "custom" | "text">("icon");
+		const [type, setType] = useState<"icon" | "custom" | "string">("icon");
+		const { t } = useConfig();
 
 		useEffect(() => {
 			const firstTypeIcon = typeof arrayIcons[0];
@@ -23,7 +29,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 
 			if (customIcon) {
 				console.log("customIcon", customIcon);
-				setType(firstTypeIcon === "string" ? "text" : "custom");
+				setType(firstTypeIcon === "string" ? "string" : "custom");
 			} else {
 				setType("icon");
 			}
@@ -63,22 +69,30 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 						variant,
 						color,
 						type,
+						textPosition,
 					}),
 					className
 				)}
 				{...props}
 			>
-				{Array.from({ length: 5 }, (_, index) => (
-					<button
-						key={index}
-						className={ratingItem({ size, variant, color, type, active: index < internalValue })}
-						onClick={() => handleChange(index + 1)}
-						onMouseEnter={() => handleMouseEnter(index + 1)}
-						onMouseLeave={() => handleMouseLeave()}
-					>
-						{type === "text" ? <span>{arrayIcons[index]}</span> : arrayIcons[index]}
-					</button>
-				))}
+				<div className={styles["lambda-rating-container"]}>
+					{Array.from({ length: 5 }, (_, index) => (
+						<button
+							key={index}
+							className={ratingItem({ size, variant, color, type, active: index < internalValue })}
+							onClick={() => handleChange(index + 1)}
+							onMouseEnter={() => handleMouseEnter(index + 1)}
+							onMouseLeave={() => handleMouseLeave()}
+						>
+							{type === "string" ? <span>{arrayIcons[index]}</span> : arrayIcons[index]}
+						</button>
+					))}
+				</div>
+				{text && (
+					<div className={styles["lambda-rating-text"]}>
+						<span>{internalValue > 0 ? text[internalValue - 1] : t("rating.text")}</span>
+					</div>
+				)}
 			</div>
 		);
 	}

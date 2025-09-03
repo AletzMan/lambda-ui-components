@@ -35,6 +35,8 @@
 	--font-size-lg: 16px;
 	--font-size-xl: 18px;
 	--font-size-2xl: 20px;
+	--font-size-3xl: 24px;
+	--font-size-4xl: 28px;
 
 	--border-radius-none: 0px;
 	--border-radius-xs: 2px;
@@ -60,6 +62,7 @@
 	--icon-size-xl: 22px;
 	--icon-size-2xl: 24px;
 	--icon-size-3xl: 28px;
+	--icon-size-4xl: 32px;
 
 	--badge-size-3xs: 6px;
 	--badge-size-2xs: 8px;

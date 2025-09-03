@@ -1,13 +1,73 @@
 .lambda-rating {
 	position: relative;
+}
+
+.lambda-rating-container {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: center;
+}
+.lambda-rating-text {
+	padding: 0 0 0 var(--padding-xs);
+}
 
-	&:is(.lambda-rating-text) {
-		gap: var(--padding-none);
+.lambda-rating-text-right {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+	gap: var(--padding-xs);
+}
+
+.lambda-rating-text-top {
+	display: flex;
+	flex-direction: column-reverse;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.lambda-rating-text-bottom {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.lambda-rating-small {
+	.lambda-rating-text {
+		display: flex;
+		align-items: center;
+		background-color: transparent;
+		color: var(--foreground-secondary-color);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-semibold);
+	}
+}
+
+.lambda-rating-medium {
+	.lambda-rating-text {
+		display: flex;
+		align-items: center;
+		background-color: transparent;
+		color: var(--foreground-secondary-color);
+		font-size: var(--font-size-md);
+		font-weight: var(--font-weight-semibold);
+	}
+}
+
+.lambda-rating-large {
+	.lambda-rating-text {
+		display: flex;
+		align-items: center;
+		background-color: transparent;
+		color: var(--foreground-secondary-color);
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-semibold);
 	}
 }
 
@@ -31,19 +91,24 @@
 	}
 
 	&:is(.lambda-rating-item-medium) {
-		width: var(--icon-size-xl);
-		height: var(--icon-size-xl);
-		font-size: var(--font-size-lg);
-		line-height: var(--font-size-lg);
-		font-weight: var(--font-weight-bold);
-	}
-
-	&:is(.lambda-rating-item-large) {
 		width: var(--icon-size-3xl);
 		height: var(--icon-size-3xl);
 		font-size: var(--font-size-xl);
 		line-height: var(--font-size-xl);
 		font-weight: var(--font-weight-bold);
+	}
+
+	&:is(.lambda-rating-item-large) {
+		width: var(--height-button-lg);
+		height: var(--height-button-lg);
+		font-size: var(--font-size-4xl);
+		line-height: var(--font-size-4xl);
+		font-weight: var(--font-weight-bold);
+
+		& > svg {
+			width: var(--icon-size-4xl);
+			height: var(--icon-size-4xl);
+		}
 	}
 	&:hover {
 		cursor: pointer;
@@ -168,7 +233,7 @@
 	}
 }
 
-.lambda-rating-item-text {
+.lambda-rating-item-string {
 	/*background-color: var(--surface-c);*/
 	filter: grayscale(1);
 

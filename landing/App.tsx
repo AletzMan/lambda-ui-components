@@ -364,6 +364,12 @@ function App() {
 		"icon"
 	);
 	const [customTextRating, setCustomTextRating] = useState<string>("🥴😕😐😊😍");
+	const [calificationTextRating, setCalificationTextRating] = useState<string>(
+		"Muy Malo, Malo, Regular, Bueno, Excelente"
+	);
+	const [textPositionRating, setTextPositionRating] = useState<
+		"right" | "top" | "bottom" | undefined
+	>("right");
 	return (
 		<section className={`${styles.section} scrollBar`}>
 			<header className={styles.header}>
@@ -2657,6 +2663,27 @@ function App() {
 							onChange={(e) => setCustomTextRating(e)}
 						/>
 					</div>
+					<Input
+						type="text"
+						label="Calification Text"
+						value={calificationTextRating}
+						size="small"
+						onChange={(e) => setCalificationTextRating(e)}
+					/>
+					<Select
+						className={styles.select_size}
+						label="Text Position"
+						value={textPositionRating}
+						size="small"
+						onChange={(value) =>
+							setTextPositionRating(value as "right" | "top" | "bottom" | undefined)
+						}
+						options={[
+							{ label: "Right", value: "right" },
+							{ label: "Top", value: "top" },
+							{ label: "Bottom", value: "bottom" },
+						]}
+					/>
 				</div>
 				<div className={styles.container_buttons}>
 					<div className={`${styles.buttons} ${styles.buttons_large}`}>
@@ -2665,7 +2692,9 @@ function App() {
 							variant={variantRating}
 							color={colorRating}
 							value={valueRating}
+							textPosition={textPositionRating}
 							onChange={(e) => setValueRating(e)}
+							text={calificationTextRating.split(",")}
 							customIcon={
 								customIconRating
 									? typeCustomIconRating === "icon"
