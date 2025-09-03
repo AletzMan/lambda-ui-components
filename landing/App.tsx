@@ -362,9 +362,9 @@ function App() {
 		"default" | "primary" | "danger" | "success" | "warning" | "info" | undefined
 	>("default");
 	const [customIconRating, setCustomIconRating] = useState(false);
-	const [typeCustomIconRating, setTypeCustomIconRating] = useState<"string" | "icon" | undefined>(
-		"icon"
-	);
+	const [typeCustomIconRating, setTypeCustomIconRating] = useState<
+		"string" | "icon" | "image" | undefined
+	>("icon");
 	const [customTextRating, setCustomTextRating] = useState<string>("🥴😕😐😊😍");
 	const [calificationTextRating, setCalificationTextRating] = useState<string>(
 		"Muy Malo, Malo, Regular, Bueno, Excelente"
@@ -402,7 +402,7 @@ function App() {
 							<div
 								style={{ display: "flex", flexDirection: "column", gap: "0.15em", padding: "1em" }}
 							>
-								{COMPONENTS.map((component) => (
+								{COMPONENTS.map((component, index) => (
 									<Link
 										key={component}
 										href={`#${component.toLowerCase()}`}
@@ -413,7 +413,7 @@ function App() {
 										}
 										type="button"
 										color="info"
-										label={component}
+										label={`${index + 1}. ${component}`}
 										radius="small"
 										size="small"
 										onClick={() => setOpenDrawerComponents(false)}
@@ -2651,10 +2651,13 @@ function App() {
 							value={typeCustomIconRating}
 							disabled={!customIconRating}
 							size="small"
-							onChange={(value) => setTypeCustomIconRating(value as "string" | "icon" | undefined)}
+							onChange={(value) =>
+								setTypeCustomIconRating(value as "string" | "icon" | "image" | undefined)
+							}
 							options={[
 								{ label: "String", value: "string" },
 								{ label: "Icon", value: "icon" },
+								{ label: "Image", value: "image" },
 							]}
 						/>
 					</div>

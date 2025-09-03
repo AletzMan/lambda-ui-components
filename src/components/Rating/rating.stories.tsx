@@ -54,8 +54,8 @@ const DefaultRating = ({ variant, color, size }: RatingProps) => {
 export const Default: Story = {
 	render: (args) => <DefaultRating {...args} />,
 	args: {
-		variant: "flat",
-		color: "primary",
+		variant: "solid",
+		color: "default",
 		size: "medium",
 		value: 3,
 	},
