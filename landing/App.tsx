@@ -355,7 +355,9 @@ function App() {
 	);
 	const [disabledRating, setDisabledRating] = useState(false);
 	const [valueRating, setValueRating] = useState<number>(3);
-	const [variantRating, setVariantRating] = useState<"outline" | "solid" | undefined>("solid");
+	const [variantRating, setVariantRating] = useState<"outline" | "solid" | "bordered" | undefined>(
+		"solid"
+	);
 	const [colorRating, setColorRating] = useState<
 		"default" | "primary" | "danger" | "success" | "warning" | "info" | undefined
 	>("default");
@@ -2589,10 +2591,13 @@ function App() {
 							label="Variant"
 							value={variantRating}
 							size="small"
-							onChange={(value) => setVariantRating(value as "outline" | "solid" | undefined)}
+							onChange={(value) =>
+								setVariantRating(value as "outline" | "solid" | "bordered" | undefined)
+							}
 							options={[
 								{ label: "Outline", value: "outline" },
 								{ label: "Solid", value: "solid" },
+								{ label: "Bordered", value: "bordered" },
 							]}
 						/>
 					</div>

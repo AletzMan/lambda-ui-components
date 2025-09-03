@@ -114,166 +114,6 @@
 		cursor: pointer;
 	}
 }
-
-.lambda-rating-item-outline {
-	& > svg {
-		stroke: var(--surface-e);
-		fill: var(--surface-c);
-		stroke-width: 1.5;
-	}
-
-	&:is(.lambda-rating-item-active) {
-		&:is(.lambda-rating-item-default) {
-			& > svg {
-				stroke: var(--rating-stroke-color);
-				fill: var(--rating-fill-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-primary) {
-			& > svg {
-				stroke: var(--primary-text-color);
-				fill: var(--primary-outline-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-secondary) {
-			& > svg {
-				stroke: var(--secondary-text-color);
-				fill: var(--secondary-outline-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-danger) {
-			& > svg {
-				stroke: var(--danger-text-color);
-				fill: var(--danger-outline-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-success) {
-			& > svg {
-				stroke: var(--success-text-color);
-				fill: var(--success-outline-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-warning) {
-			& > svg {
-				stroke: var(--warning-text-color);
-				fill: var(--warning-outline-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-info) {
-			& > svg {
-				stroke: var(--info-text-color);
-				fill: var(--info-outline-color);
-			}
-		}
-	}
-}
-
-.lambda-rating-item-solid {
-	& > svg {
-		stroke: var(--surface-c);
-		fill: var(--surface-c);
-		stroke-width: 1.5;
-	}
-
-	&:is(.lambda-rating-item-active) {
-		&:is(.lambda-rating-item-default) {
-			& > svg {
-				stroke: var(--rating-solid-color);
-				fill: var(--rating-solid-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-primary) {
-			& > svg {
-				stroke: var(--primary-color);
-				fill: var(--primary-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-secondary) {
-			& > svg {
-				stroke: var(--secondary-color);
-				fill: var(--secondary-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-danger) {
-			& > svg {
-				stroke: var(--danger-color);
-				fill: var(--danger-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-success) {
-			& > svg {
-				stroke: var(--success-color);
-				fill: var(--success-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-warning) {
-			& > svg {
-				stroke: var(--warning-color);
-				fill: var(--warning-color);
-			}
-		}
-
-		&:is(.lambda-rating-item-info) {
-			& > svg {
-				stroke: var(--info-color);
-				fill: var(--info-color);
-			}
-		}
-	}
-}
-
-.lambda-rating-item-string {
-	/*background-color: var(--surface-c);*/
-	filter: grayscale(1);
-
-	&:is(.lambda-rating-item-active) {
-		filter: grayscale(0);
-		&:is(.lambda-rating-item-default) {
-			/*background-color: var(--rating-fill-color);*/
-			color: var(--rating-stroke-color);
-		}
-		&:is(.lambda-rating-item-primary) {
-			color: var(--primary-text-color);
-			/*background-color: var(--primary-outline-color);*/
-		}
-		&:is(.lambda-rating-item-secondary) {
-			color: var(--secondary-text-color);
-			/*background-color: var(--secondary-outline-color);*/
-		}
-		&:is(.lambda-rating-item-danger) {
-			color: var(--danger-text-color);
-			/*background-color: var(--danger-outline-color);*/
-		}
-		&:is(.lambda-rating-item-success) {
-			color: var(--success-text-color);
-			/*background-color: var(--success-outline-color);*/
-		}
-		&:is(.lambda-rating-item-warning) {
-			color: var(--warning-text-color);
-			/*background-color: var(--warning-outline-color);*/
-		}
-		&:is(.lambda-rating-item-info) {
-			color: var(--info-text-color);
-			/*background-color: var(--info-outline-color);*/
-		}
-	}
-
-	&:hover {
-		transform: scale(1.2);
-	}
-}
-
 .lambda-rating-item-custom {
 	& > img {
 		opacity: 0.2;
@@ -353,5 +193,223 @@
 	&:hover {
 		opacity: 1;
 		transform: scale(1.1);
+	}
+}
+
+.lambda-rating-item-outline {
+	& > svg {
+		stroke: var(--surface-e);
+		fill: transparent;
+		stroke-width: 1.5;
+	}
+
+	&:is(.lambda-rating-item-active) {
+		&:is(.lambda-rating-item-default) {
+			& > svg {
+				stroke: var(--rating-solid-color);
+				fill: transparent;
+			}
+		}
+
+		&:is(.lambda-rating-item-primary) {
+			& > svg {
+				stroke: var(--primary-color);
+				fill: transparent;
+			}
+		}
+
+		&:is(.lambda-rating-item-secondary) {
+			& > svg {
+				stroke: var(--secondary-color);
+				fill: transparent;
+			}
+		}
+
+		&:is(.lambda-rating-item-danger) {
+			& > svg {
+				stroke: var(--danger-color);
+				fill: transparent;
+			}
+		}
+
+		&:is(.lambda-rating-item-success) {
+			& > svg {
+				stroke: var(--success-color);
+				fill: transparent;
+			}
+		}
+
+		&:is(.lambda-rating-item-warning) {
+			& > svg {
+				stroke: var(--warning-color);
+				fill: transparent;
+			}
+		}
+
+		&:is(.lambda-rating-item-info) {
+			& > svg {
+				stroke: var(--info-color);
+				fill: transparent;
+			}
+		}
+	}
+}
+
+.lambda-rating-item-solid {
+	& > svg {
+		stroke: var(--surface-c);
+		fill: var(--surface-c);
+		stroke-width: 1.5;
+	}
+
+	&:is(.lambda-rating-item-active) {
+		&:is(.lambda-rating-item-default) {
+			& > svg {
+				stroke: var(--rating-solid-color);
+				fill: var(--rating-solid-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-primary) {
+			& > svg {
+				stroke: var(--primary-color);
+				fill: var(--primary-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-secondary) {
+			& > svg {
+				stroke: var(--secondary-color);
+				fill: var(--secondary-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-danger) {
+			& > svg {
+				stroke: var(--danger-color);
+				fill: var(--danger-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-success) {
+			& > svg {
+				stroke: var(--success-color);
+				fill: var(--success-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-warning) {
+			& > svg {
+				stroke: var(--warning-color);
+				fill: var(--warning-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-info) {
+			& > svg {
+				stroke: var(--info-color);
+				fill: var(--info-color);
+			}
+		}
+	}
+}
+
+.lambda-rating-item-bordered {
+	& > svg {
+		stroke: var(--surface-e);
+		fill: var(--surface-c);
+		stroke-width: 1.5;
+	}
+
+	&:is(.lambda-rating-item-active) {
+		&:is(.lambda-rating-item-default) {
+			& > svg {
+				stroke: var(--rating-stroke-color);
+				fill: var(--rating-fill-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-primary) {
+			& > svg {
+				stroke: var(--primary-text-color);
+				fill: var(--primary-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-secondary) {
+			& > svg {
+				stroke: var(--secondary-text-color);
+				fill: var(--secondary-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-danger) {
+			& > svg {
+				stroke: var(--danger-text-color);
+				fill: var(--danger-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-success) {
+			& > svg {
+				stroke: var(--success-text-color);
+				fill: var(--success-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-warning) {
+			& > svg {
+				stroke: var(--warning-text-color);
+				fill: var(--warning-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-info) {
+			& > svg {
+				stroke: var(--info-text-color);
+				fill: var(--info-outline-color);
+			}
+		}
+	}
+}
+
+.lambda-rating-item-string {
+	/*background-color: var(--surface-c);*/
+	filter: grayscale(1);
+
+	&:is(.lambda-rating-item-active) {
+		filter: grayscale(0);
+		&:is(.lambda-rating-item-default) {
+			/*background-color: var(--rating-fill-color);*/
+			color: var(--rating-stroke-color);
+		}
+		&:is(.lambda-rating-item-primary) {
+			color: var(--primary-text-color);
+			/*background-color: var(--primary-outline-color);*/
+		}
+		&:is(.lambda-rating-item-secondary) {
+			color: var(--secondary-text-color);
+			/*background-color: var(--secondary-outline-color);*/
+		}
+		&:is(.lambda-rating-item-danger) {
+			color: var(--danger-text-color);
+			/*background-color: var(--danger-outline-color);*/
+		}
+		&:is(.lambda-rating-item-success) {
+			color: var(--success-text-color);
+			/*background-color: var(--success-outline-color);*/
+		}
+		&:is(.lambda-rating-item-warning) {
+			color: var(--warning-text-color);
+			/*background-color: var(--warning-outline-color);*/
+		}
+		&:is(.lambda-rating-item-info) {
+			color: var(--info-text-color);
+			/*background-color: var(--info-outline-color);*/
+		}
+	}
+
+	&:hover {
+		transform: scale(1.2);
 	}
 }

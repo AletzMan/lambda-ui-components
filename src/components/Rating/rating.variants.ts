@@ -7,6 +7,7 @@ export const ratingVariants = cva(styles["lambda-rating"], {
 		variant: {
 			outline: styles["lambda-rating-outline"],
 			solid: styles["lambda-rating-solid"],
+			bordered: styles["lambda-rating-bordered"],
 		},
 		color: {
 			default: styles["lambda-rating-default"],
@@ -60,6 +61,7 @@ export const ratingItem = cva(styles["lambda-rating-item"], {
 		variant: {
 			outline: styles["lambda-rating-item-outline"],
 			solid: styles["lambda-rating-item-solid"],
+			bordered: styles["lambda-rating-item-bordered"],
 		},
 		active: {
 			true: styles["lambda-rating-item-active"],

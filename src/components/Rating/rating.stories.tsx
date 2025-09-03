@@ -14,7 +14,7 @@ const meta: Meta<typeof Rating> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["solid", "flat", "outline"],
+			options: ["solid", "outline", "bordered"],
 			description: "Visual style of the input",
 			type: "string",
 		},
