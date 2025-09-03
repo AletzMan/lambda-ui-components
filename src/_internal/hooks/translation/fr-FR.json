@@ -13,5 +13,8 @@
 		"copy-success": "Copié!",
 		"eye-dropper": "Pipette",
 		"format": "Changer Format"
+	},
+	"rating": {
+		"text": "Sans note"
 	}
 }

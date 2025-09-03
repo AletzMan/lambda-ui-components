@@ -13,5 +13,8 @@
 		"copy-success": "Copied!",
 		"eye-dropper": "Eye Dropper",
 		"format": "Change Format"
+	},
+	"rating": {
+		"text": "Unrated"
 	}
 }
