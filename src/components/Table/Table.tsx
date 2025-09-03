@@ -182,9 +182,9 @@ const TableRoot = <T,>({
 									: variant === "underlined"
 									? "solid"
 									: variant === "bordered"
-									? "outline"
+									? "bordered"
 									: variant === "striped"
-									? "outline"
+									? "bordered"
 									: "flat"
 							}
 						/>
