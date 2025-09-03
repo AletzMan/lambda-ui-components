@@ -243,7 +243,7 @@ function App() {
 		"medium" | "small" | "large" | "tiny" | undefined
 	>("medium");
 	const [variantPagination, setVariantPagination] = useState<
-		"outline" | "flat" | "solid" | undefined
+		"outline" | "flat" | "solid" | "bordered" | undefined
 	>("solid");
 	const [radiusPagination, setRadiusPagination] = useState<
 		"medium" | "small" | "large" | "none" | "pill" | undefined
@@ -2311,12 +2311,13 @@ function App() {
 						className={styles.select_size}
 						size="small"
 						onChange={(value) =>
-							setVariantPagination(value as "outline" | "flat" | "solid" | undefined)
+							setVariantPagination(value as "outline" | "flat" | "solid" | "bordered" | undefined)
 						}
 						options={[
 							{ label: "Solid", value: "solid" },
 							{ label: "Outline", value: "outline" },
 							{ label: "Flat", value: "flat" },
+							{ label: "Bordered", value: "bordered" },
 						]}
 					/>
 					<Select
