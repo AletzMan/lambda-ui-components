@@ -9,12 +9,14 @@ import {
 	Radio,
 	RadioGroup,
 	Range,
+	Rating,
 	Select,
 	Switch,
 	TextArea,
 	Tooltip,
 } from "../src/main";
 import {
+	AngryIcon,
 	BookIcon,
 	Bookmark,
 	CircleEllipsis,
@@ -24,13 +26,16 @@ import {
 	Component,
 	DatabaseIcon,
 	EditIcon,
+	FrownIcon,
 	HelpCircleIcon,
 	HomeIcon,
 	InfoIcon,
+	LaughIcon,
 	LayoutDashboard,
 	LogOutIcon,
 	LucideBell,
 	Mail,
+	MehIcon,
 	MenuIcon,
 	RssIcon,
 	Search,
@@ -38,6 +43,7 @@ import {
 	Settings,
 	Settings2,
 	SettingsIcon,
+	SmileIcon,
 	TrashIcon,
 	User,
 	UserIcon,
@@ -344,7 +350,20 @@ function App() {
 	>("striped");
 	const [maxRowsTable, setMaxRowsTable] = useState<number>(10);
 	const [paginationTable, setPaginationTable] = useState<boolean>(false);
-
+	const [sizeRating, setSizeRating] = useState<"tiny" | "small" | "medium" | "large" | undefined>(
+		"medium"
+	);
+	const [disabledRating, setDisabledRating] = useState(false);
+	const [valueRating, setValueRating] = useState<number>(3);
+	const [variantRating, setVariantRating] = useState<"outline" | "solid" | undefined>("solid");
+	const [colorRating, setColorRating] = useState<
+		"default" | "primary" | "danger" | "success" | "warning" | "info" | undefined
+	>("default");
+	const [customIconRating, setCustomIconRating] = useState(false);
+	const [typeCustomIconRating, setTypeCustomIconRating] = useState<"string" | "icon" | undefined>(
+		"icon"
+	);
+	const [customTextRating, setCustomTextRating] = useState<string>("🥴😕😐😊😍");
 	return (
 		<section className={`${styles.section} scrollBar`}>
 			<header className={styles.header}>
@@ -2540,6 +2559,157 @@ function App() {
 					</div>
 				</div>
 			</section>
+			{/* RATING */}
+			<section className={styles.subsection} id="rating">
+				<h2 className={styles.subtitle}>Rating</h2>
+				<div className={styles.control_buttons}>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "6em" }}>
+						<Select
+							className={styles.select_size}
+							label="Size"
+							value={sizeRating}
+							size="small"
+							onChange={(value) => setSizeRating(value as "small" | "medium" | "large" | undefined)}
+							options={[
+								{ label: "Small", value: "small" },
+								{ label: "Medium", value: "medium" },
+								{ label: "Large", value: "large" },
+							]}
+						/>
+					</div>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "6em" }}>
+						<Select
+							className={styles.select_size}
+							label="Variant"
+							value={variantRating}
+							size="small"
+							onChange={(value) => setVariantRating(value as "outline" | "solid" | undefined)}
+							options={[
+								{ label: "Outline", value: "outline" },
+								{ label: "Solid", value: "solid" },
+							]}
+						/>
+					</div>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "6em" }}>
+						<Select
+							className={styles.select_size}
+							label="Color"
+							value={colorRating}
+							size="small"
+							onChange={(value) =>
+								setColorRating(
+									value as
+										| "default"
+										| "primary"
+										| "danger"
+										| "success"
+										| "warning"
+										| "info"
+										| undefined
+								)
+							}
+							options={[
+								{ label: "Default", value: "default" },
+								{ label: "Primary", value: "primary" },
+								{ label: "Secondary", value: "secondary" },
+								{ label: "Danger", value: "danger" },
+								{ label: "Success", value: "success" },
+								{ label: "Warning", value: "warning" },
+								{ label: "Info", value: "info" },
+							]}
+						/>
+					</div>
+					<Checkbox
+						label="Disabled"
+						checked={disabledRating}
+						size="small"
+						color="secondary"
+						onChange={(e) => setDisabledRating(e.currentTarget.checked)}
+					/>
+					<Checkbox
+						label="Custom Icon"
+						checked={customIconRating}
+						size="small"
+						color="secondary"
+						onChange={(e) => setCustomIconRating(e.currentTarget.checked)}
+					/>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "6em" }}>
+						<Select
+							className={styles.select_size}
+							label="Type"
+							value={typeCustomIconRating}
+							disabled={!customIconRating}
+							size="small"
+							onChange={(value) => setTypeCustomIconRating(value as "string" | "icon" | undefined)}
+							options={[
+								{ label: "String", value: "string" },
+								{ label: "Icon", value: "icon" },
+							]}
+						/>
+					</div>
+					<div style={{ display: "flex", gap: "1em", maxWidth: "8em" }}>
+						<Input
+							type="text"
+							label="Custom Text"
+							value={customTextRating}
+							size="small"
+							disabled={typeCustomIconRating === "icon" || !customIconRating}
+							onChange={(e) => setCustomTextRating(e)}
+						/>
+					</div>
+				</div>
+				<div className={styles.container_buttons}>
+					<div className={`${styles.buttons} ${styles.buttons_large}`}>
+						<Rating
+							size={sizeRating}
+							variant={variantRating}
+							color={colorRating}
+							value={valueRating}
+							onChange={(e) => setValueRating(e)}
+							customIcon={
+								customIconRating
+									? typeCustomIconRating === "icon"
+										? [<AngryIcon />, <FrownIcon />, <MehIcon />, <SmileIcon />, <LaughIcon />]
+										: typeCustomIconRating === "string"
+										? [...customTextRating]
+										: [
+												<img
+													src="https://placehold.jp/40/dd6699/ffffff/75x75.png?text=1"
+													alt=""
+													width="24"
+													height="24"
+												/>,
+												<img
+													src="https://placehold.jp/40/dd6699/ffffff/75x75.png?text=2"
+													alt=""
+													width="24"
+													height="24"
+												/>,
+												<img
+													src="https://placehold.jp/40/dd6699/ffffff/75x75.png?text=3"
+													alt=""
+													width="24"
+													height="24"
+												/>,
+												<img
+													src="https://placehold.jp/40/dd6699/ffffff/75x75.png?text=4"
+													alt=""
+													width="24"
+													height="24"
+												/>,
+												<img
+													src="https://placehold.jp/40/dd6699/ffffff/75x75.png?text=5"
+													alt=""
+													width="24"
+													height="24"
+												/>,
+										  ]
+									: undefined
+							}
+						/>
+					</div>
+				</div>
+			</section>
 			{/* SELECT */}
 			<section className={styles.subsection} id="select">
 				<h2 className={styles.subtitle}>Select</h2>
@@ -3379,6 +3549,7 @@ const COMPONENTS = [
 	"Pagination",
 	"Radio",
 	"Range",
+	"Rating",
 	"Select",
 	"Switch",
 	"Tab",

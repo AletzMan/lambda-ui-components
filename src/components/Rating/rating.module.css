@@ -1,0 +1,292 @@
+.lambda-rating {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+
+	&:is(.lambda-rating-text) {
+		gap: var(--padding-none);
+	}
+}
+
+.lambda-rating-item {
+	display: flex;
+	align-items: center;
+	background-color: transparent;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--surface-e);
+	transition: all 0.2s ease-in-out;
+
+	&:is(.lambda-rating-item-small) {
+		width: var(--icon-size-md);
+		height: var(--icon-size-md);
+		font-size: var(--font-size-sm);
+		line-height: var(--font-size-sm);
+		font-weight: var(--font-weight-bold);
+	}
+
+	&:is(.lambda-rating-item-medium) {
+		width: var(--icon-size-xl);
+		height: var(--icon-size-xl);
+		font-size: var(--font-size-lg);
+		line-height: var(--font-size-lg);
+		font-weight: var(--font-weight-bold);
+	}
+
+	&:is(.lambda-rating-item-large) {
+		width: var(--icon-size-3xl);
+		height: var(--icon-size-3xl);
+		font-size: var(--font-size-xl);
+		line-height: var(--font-size-xl);
+		font-weight: var(--font-weight-bold);
+	}
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.lambda-rating-item-outline {
+	& > svg {
+		stroke: var(--surface-e);
+		fill: var(--surface-c);
+		stroke-width: 1.5;
+	}
+
+	&:is(.lambda-rating-item-active) {
+		&:is(.lambda-rating-item-default) {
+			& > svg {
+				stroke: var(--rating-stroke-color);
+				fill: var(--rating-fill-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-primary) {
+			& > svg {
+				stroke: var(--primary-text-color);
+				fill: var(--primary-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-secondary) {
+			& > svg {
+				stroke: var(--secondary-text-color);
+				fill: var(--secondary-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-danger) {
+			& > svg {
+				stroke: var(--danger-text-color);
+				fill: var(--danger-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-success) {
+			& > svg {
+				stroke: var(--success-text-color);
+				fill: var(--success-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-warning) {
+			& > svg {
+				stroke: var(--warning-text-color);
+				fill: var(--warning-outline-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-info) {
+			& > svg {
+				stroke: var(--info-text-color);
+				fill: var(--info-outline-color);
+			}
+		}
+	}
+}
+
+.lambda-rating-item-solid {
+	& > svg {
+		stroke: var(--surface-c);
+		fill: var(--surface-c);
+		stroke-width: 1.5;
+	}
+
+	&:is(.lambda-rating-item-active) {
+		&:is(.lambda-rating-item-default) {
+			& > svg {
+				stroke: var(--rating-solid-color);
+				fill: var(--rating-solid-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-primary) {
+			& > svg {
+				stroke: var(--primary-color);
+				fill: var(--primary-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-secondary) {
+			& > svg {
+				stroke: var(--secondary-color);
+				fill: var(--secondary-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-danger) {
+			& > svg {
+				stroke: var(--danger-color);
+				fill: var(--danger-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-success) {
+			& > svg {
+				stroke: var(--success-color);
+				fill: var(--success-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-warning) {
+			& > svg {
+				stroke: var(--warning-color);
+				fill: var(--warning-color);
+			}
+		}
+
+		&:is(.lambda-rating-item-info) {
+			& > svg {
+				stroke: var(--info-color);
+				fill: var(--info-color);
+			}
+		}
+	}
+}
+
+.lambda-rating-item-text {
+	/*background-color: var(--surface-c);*/
+	filter: grayscale(1);
+
+	&:is(.lambda-rating-item-active) {
+		filter: grayscale(0);
+		&:is(.lambda-rating-item-default) {
+			/*background-color: var(--rating-fill-color);*/
+			color: var(--rating-stroke-color);
+		}
+		&:is(.lambda-rating-item-primary) {
+			color: var(--primary-text-color);
+			/*background-color: var(--primary-outline-color);*/
+		}
+		&:is(.lambda-rating-item-secondary) {
+			color: var(--secondary-text-color);
+			/*background-color: var(--secondary-outline-color);*/
+		}
+		&:is(.lambda-rating-item-danger) {
+			color: var(--danger-text-color);
+			/*background-color: var(--danger-outline-color);*/
+		}
+		&:is(.lambda-rating-item-success) {
+			color: var(--success-text-color);
+			/*background-color: var(--success-outline-color);*/
+		}
+		&:is(.lambda-rating-item-warning) {
+			color: var(--warning-text-color);
+			/*background-color: var(--warning-outline-color);*/
+		}
+		&:is(.lambda-rating-item-info) {
+			color: var(--info-text-color);
+			/*background-color: var(--info-outline-color);*/
+		}
+	}
+
+	&:hover {
+		transform: scale(1.2);
+	}
+}
+
+.lambda-rating-item-custom {
+	& > img {
+		opacity: 0.2;
+		transition: all 0.2s ease-in-out;
+		background-color: var(--surface-c);
+	}
+
+	&:is(.lambda-rating-item-active) {
+		& > img {
+			opacity: 1;
+		}
+		&:is(.lambda-rating-item-default) {
+			& > svg {
+				fill: var(--rating-fill-color);
+				stroke: var(--rating-stroke-color);
+			}
+		}
+		&:is(.lambda-rating-item-primary) {
+			& > svg {
+				fill: var(--primary-outline-color);
+				stroke: var(--primary-text-color);
+			}
+		}
+		&:is(.lambda-rating-item-secondary) {
+			& > svg {
+				fill: var(--secondary-outline-color);
+				stroke: var(--secondary-text-color);
+			}
+		}
+		&:is(.lambda-rating-item-danger) {
+			& > svg {
+				fill: var(--danger-outline-color);
+				stroke: var(--danger-text-color);
+			}
+		}
+		&:is(.lambda-rating-item-success) {
+			& > svg {
+				fill: var(--success-outline-color);
+				stroke: var(--success-text-color);
+			}
+		}
+		&:is(.lambda-rating-item-warning) {
+			& > svg {
+				fill: var(--warning-outline-color);
+				stroke: var(--warning-text-color);
+			}
+		}
+		&:is(.lambda-rating-item-info) {
+			& > svg {
+				fill: var(--info-outline-color);
+				stroke: var(--info-text-color);
+			}
+		}
+	}
+
+	&:is(.lambda-rating-item-small) {
+		& > img {
+			width: var(--icon-size-md);
+			height: var(--icon-size-md);
+		}
+	}
+
+	&:is(.lambda-rating-item-medium) {
+		& > img {
+			width: var(--icon-size-xl);
+			height: var(--icon-size-xl);
+		}
+	}
+
+	&:is(.lambda-rating-item-large) {
+		& > img {
+			width: var(--icon-size-3xl);
+			height: var(--icon-size-3xl);
+		}
+	}
+
+	&:hover {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+}

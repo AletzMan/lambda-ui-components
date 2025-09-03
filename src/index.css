@@ -34,6 +34,7 @@
 	--font-size-md: 14px;
 	--font-size-lg: 16px;
 	--font-size-xl: 18px;
+	--font-size-2xl: 20px;
 
 	--border-radius-none: 0px;
 	--border-radius-xs: 2px;
@@ -116,6 +117,10 @@
 	--badge-background-color: #b3261e;
 	--badge-text-color: #ffffff;
 
+	--rating-solid-color: #f8c622;
+	--rating-fill-color: #fac51565;
+	--rating-stroke-color: #5f4c0d;
+
 	--surface-a: #fefafa;
 	--surface-b: #f3f3f3;
 	--surface-c: #e7e5e5;
@@ -196,6 +201,10 @@
 	--transparent-color: #ffffff08;
 	--badge-background-color: #f01e12;
 	--badge-text-color: #f3f0f0;
+
+	--rating-solid-color: #ffdd20;
+	--rating-fill-color: #ffdd2035;
+	--rating-stroke-color: #f7c00e;
 
 	/*
     --surface-b: #191b1c;

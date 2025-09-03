@@ -34,4 +34,8 @@ export interface RatingProps
 	 *Función que se ejecuta cuando el valor del control de calificación cambia.
 	 */
 	onChange?: (value: number) => void;
+	/**
+	 * Define el icono personalizado.
+	 */
+	customIcon?: React.ReactNode[];
 }

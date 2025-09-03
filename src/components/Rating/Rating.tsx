@@ -1,23 +1,58 @@
 import { StarIcon } from "lucide-react";
-import { RatingVariants, ratingVariants } from "./rating.variants";
+import { ratingVariants, ratingItem } from "./rating.variants";
 import clsx from "clsx";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { RatingProps } from "./rating.types";
 
 export const Rating = forwardRef<HTMLDivElement, RatingProps>(
-	({ className, size, variant, color, value, onChange, ...props }, ref) => {
-		function ratingItem({ size }: { size: RatingVariants["size"] }): string | undefined {
-			switch (size) {
-				case "tiny":
-					return "lambda-rating-item-tiny";
-				case "small":
-					return "lambda-rating-item-small";
-				case "medium":
-					return "lambda-rating-item-medium";
-				case "large":
-					return "lambda-rating-item-large";
+	({ className, size, variant, color, value, onChange, customIcon, ...props }, ref) => {
+		const [internalValue, setInternalValue] = useState(value || 0);
+		const [type, setType] = useState<"icon" | "custom" | "text">("icon");
+
+		useEffect(() => {
+			const firstTypeIcon = typeof arrayIcons[0];
+			for (const icon of arrayIcons) {
+				// Compara si el tipo del elemento actual es diferente al del primero.
+				if (typeof icon !== firstTypeIcon) {
+					// Si el tipo es diferente, lanza un error.
+					throw new Error(
+						`El elemento ${icon} es de un tipo diferente al esperado ${firstTypeIcon}. Los elementos deben ser del mismo tipo`
+					);
+				}
 			}
-		}
+
+			if (customIcon) {
+				console.log("customIcon", customIcon);
+				setType(firstTypeIcon === "string" ? "text" : "custom");
+			} else {
+				setType("icon");
+			}
+		}, [customIcon, variant]);
+
+		const handleChange = (newValue: number) => {
+			if (value === internalValue) {
+				onChange?.(0);
+				setInternalValue(newValue);
+			} else {
+				onChange?.(newValue);
+				setInternalValue(newValue);
+			}
+		};
+
+		const handleMouseEnter = (newValue: number) => {
+			setInternalValue(newValue);
+		};
+		const handleMouseLeave = () => {
+			setInternalValue(value || 0);
+		};
+
+		const arrayIcons = customIcon || [
+			<StarIcon />,
+			<StarIcon />,
+			<StarIcon />,
+			<StarIcon />,
+			<StarIcon />,
+		];
 
 		return (
 			<div
@@ -27,15 +62,22 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 						size,
 						variant,
 						color,
+						type,
 					}),
 					className
 				)}
 				{...props}
 			>
-				{Array.from({ length: value || 0 }, (_, index) => (
-					<span key={index} className={ratingItem({ size })}>
-						<StarIcon />
-					</span>
+				{Array.from({ length: 5 }, (_, index) => (
+					<button
+						key={index}
+						className={ratingItem({ size, variant, color, type, active: index < internalValue })}
+						onClick={() => handleChange(index + 1)}
+						onMouseEnter={() => handleMouseEnter(index + 1)}
+						onMouseLeave={() => handleMouseLeave()}
+					>
+						{type === "text" ? <span>{arrayIcons[index]}</span> : arrayIcons[index]}
+					</button>
 				))}
 			</div>
 		);
