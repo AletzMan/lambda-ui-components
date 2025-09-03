@@ -57,7 +57,7 @@
 
 	&.lambda-btn-primary {
 		background: var(--primary-color);
-		border: var(--border-width-xs) solid var(--primary-darkened-color);
+		border: var(--border-width-xs) solid var(--primary-hover-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -73,7 +73,7 @@
 	&.lambda-btn-secondary {
 		background: var(--secondary-color);
 		color: var(--foreground-invert-color);
-		border: var(--border-width-xs) solid var(--secondary-darkened-color);
+		border: var(--border-width-xs) solid var(--secondary-hover-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -88,7 +88,7 @@
 
 	&.lambda-btn-success {
 		background: var(--success-color);
-		border: var(--border-width-xs) solid var(--success-darkened-color);
+		border: var(--border-width-xs) solid var(--success-hover-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -103,7 +103,7 @@
 
 	&.lambda-btn-danger {
 		background: var(--danger-color);
-		border: var(--border-width-xs) solid var(--danger-darkened-color);
+		border: var(--border-width-xs) solid var(--danger-hover-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -118,7 +118,7 @@
 
 	&.lambda-btn-warning {
 		background: var(--warning-color);
-		border: var(--border-width-xs) solid var(--warning-darkened-color);
+		border: var(--border-width-xs) solid var(--warning-hover-color);
 		color: var(--black-color);
 
 		&.lambda-btn-loading,
@@ -134,7 +134,7 @@
 
 	&.lambda-btn-info {
 		background: var(--info-color);
-		border: var(--border-width-xs) solid var(--info-darkened-color);
+		border: var(--border-width-xs) solid var(--info-hover-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {

@@ -134,6 +134,7 @@
 	--surface-h: #454d49;
 	--border-color: #cacaca;
 	--shadow-color: #30353130;
+	--shadow-inset-color: #f1f1f155;
 
 	--primary-color: #5f9ea0;
 	--primary-hover-color: #568f91;
@@ -220,7 +221,6 @@
     --surface-h: #c7c6c6;
     --border-color: #2c2c2c;
     --shadow-color: #53535335;
-    --shadow-inset-color: #f1f1f155;
     */
 
 	/*--surface-a: #1a1d24;
@@ -237,6 +237,7 @@
 	--surface-h: #adb2b8;
 	--border-color: #45494f;
 	--shadow-color: #282a2e99;
+	--shadow-inset-color: #f1f1f155;
 
 	--primary-color: #5f9ea0;
 	--primary-hover-color: #568f91;
