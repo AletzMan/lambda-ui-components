@@ -20,7 +20,7 @@ export { Notification } from "./components/Notification/Notification";
 export { Pagination } from "./components/Pagination/Pagination";
 export { Radio } from "./components/Radio/Radio";
 export { Range } from "./components/Range/Range";
-export { RadioGroup } from "./components/RadioGroup/RadioGroup";
+export { RadioGroup } from "./components/Radio/Radio";
 export { Rating } from "./components/Rating/Rating";
 export { Select } from "./components/Select/Select";
 export { Switch } from "./components/Switch/Switch";
