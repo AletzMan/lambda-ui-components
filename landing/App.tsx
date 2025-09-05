@@ -989,7 +989,7 @@ function App() {
 								},
 							]}
 						>
-							<div>
+							<div style={{ padding: "var(--padding-lg)" }}>
 								React Hooks revolutionized the way we write components. useState and useEffect are
 								fundamental, but there are more hooks like useContext, useReducer, and useCallback
 								that can significantly improve your code.
@@ -1005,7 +1005,7 @@ function App() {
 								title: "React Hooks",
 							}}
 						>
-							<div>
+							<div style={{ padding: "var(--padding-lg)" }}>
 								React Hooks revolutionized the way we write components. useState and useEffect are
 								fundamental, but there are more hooks like useContext, useReducer, and useCallback
 								that can significantly improve your code.

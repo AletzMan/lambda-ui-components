@@ -10,6 +10,7 @@ export { Card } from "./components/Card/Card";
 export { Carousel } from "./components/Carousel/Carousel";
 export { Checkbox } from "./components/Checkbox/Checkbox";
 export { Dialog } from "./components/Dialog/Dialog";
+export { Divider } from "./components/Divider/Divider";
 export { Drawer } from "./components/Drawer/Drawer";
 export { FileUpload } from "./components/FileUpload/FileUpload";
 export { Input } from "./components/Input/Input";
