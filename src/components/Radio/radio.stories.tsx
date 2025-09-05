@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { RadioGroup, Radio } from "./Radio";
+import { RadioGroupProps } from "./radio.types";
 const meta: Meta<typeof RadioGroup> = {
 	title: "Components/Radio",
 	tags: ["autodocs"],
@@ -24,9 +25,9 @@ const meta: Meta<typeof RadioGroup> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
-		type: {
+		orientation: {
 			control: "radio",
-			options: ["radio", "button"],
+			options: ["horizontal", "vertical"],
 		},
 		disabled: {
 			control: "boolean",
@@ -37,26 +38,82 @@ const meta: Meta<typeof RadioGroup> = {
 
 export default meta;
 
-const Template: StoryObj = {
-	render: (args) => (
-		<RadioGroup name="example" defaultValue="option1" onChange={console.log}>
-			<Radio {...args} value="option1" label="Option 1" />
-			<Radio {...args} value="option2" label="Option 2" />
-			<Radio {...args} value="option3" label="Option 3" />
+type Story = StoryObj<typeof RadioGroup>;
+
+const RadioTemplate = (args: RadioGroupProps) => {
+	return (
+		<RadioGroup name="example" defaultValue="option1" {...args}>
+			<Radio value="option1" label="Option 1" />
+			<Radio value="option2" label="Option 2" />
+			<Radio value="option3" label="Option 3" />
 		</RadioGroup>
-	),
+	);
 };
 
-export const Default = {
-	...Template,
+const RadioButtonTemplate = (args: RadioGroupProps) => {
+	return (
+		<RadioGroup name="example" defaultValue="option1" {...args}>
+			<Radio.Button value="option1" label="Option 1" />
+			<Radio.Button value="option2" label="Option 2" />
+			<Radio.Button value="option3" label="Option 3" />
+		</RadioGroup>
+	);
+};
+
+const RadioCardTemplate = (args: RadioGroupProps) => {
+	return (
+		<RadioGroup name="example" defaultValue="option1" {...args}>
+			<Radio.Card
+				value="option1"
+				label="Option 1"
+				title="Option 1"
+				subtitle="Subtitle"
+				body={<div>Body</div>}
+			/>
+			<Radio.Card
+				value="option2"
+				label="Option 2"
+				title="Option 2"
+				subtitle="Subtitle"
+				body={<div>Body</div>}
+			/>
+			<Radio.Card
+				value="option3"
+				label="Option 3"
+				title="Option 3"
+				subtitle="Subtitle"
+				body={<div>Body</div>}
+			/>
+		</RadioGroup>
+	);
+};
+
+export const Default: Story = {
+	render: (args) => <RadioTemplate {...args} />,
 	args: {
-		value: "option3",
-		label: "Option 1",
 		size: "medium",
 		color: "primary",
-		type: "radio",
 		variant: "solid",
-		positionLabel: "right",
+		disabled: false,
+	},
+};
+
+export const Button: Story = {
+	render: (args) => <RadioButtonTemplate {...args} />,
+	args: {
+		size: "medium",
+		color: "primary",
+		variant: "solid",
+		disabled: false,
+	},
+};
+
+export const Card: Story = {
+	render: (args) => <RadioCardTemplate {...args} />,
+	args: {
+		size: "medium",
+		color: "primary",
+		variant: "solid",
 		disabled: false,
 	},
 };

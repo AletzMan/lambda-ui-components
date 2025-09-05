@@ -39,7 +39,7 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 	},
 	compoundVariants: [],
 	defaultVariants: {
-		orientation: "vertical",
+		orientation: "horizontal",
 		radius: "small",
 		size: "medium",
 		type: "radio",

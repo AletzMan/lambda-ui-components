@@ -181,7 +181,7 @@ function App() {
 		"small"
 	);
 	const [disabledRadio, setDisabledRadio] = useState(false);
-	const [valueRadioBordered, setValueRadioBordered] = useState("");
+	const [_valueRadioBordered, setValueRadioBordered] = useState("");
 	const [sizeSelect, setSizeSelect] = useState<"medium" | "small" | "large" | "tiny" | undefined>(
 		"medium"
 	);
@@ -2526,18 +2526,14 @@ function App() {
 				<div className={styles.container_buttons}>
 					<div className={`${styles.buttons} ${styles.buttons_large}`}>
 						<RadioGroup
-							defaultValue="second"
-							type={typeRadio}
-							selectedOption={valueRadioBordered}
-							disabled={disabledRadio}
-							color={colorRadio}
-							gap="0.5em"
-							size={sizeRadio}
-							variant={variantRadio}
-							radius={radiusRadio}
 							onChange={(e) => {
 								setValueRadioBordered(e);
 							}}
+							size={sizeRadio}
+							color={colorRadio}
+							variant={variantRadio}
+							disabled={disabledRadio}
+							radius={radiusRadio}
 							orientation={orientationRadio}
 						>
 							{typeRadio === "button" && (
