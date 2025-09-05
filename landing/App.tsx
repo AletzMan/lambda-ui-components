@@ -163,8 +163,10 @@ function App() {
 	>("small");
 	const [validInputNumber, setValidInputNumber] = useState(true);
 	const [errorMessageNumber, setErrorMessageNumber] = useState("This field has an error.");
-	const [sizeRadio, setSizeRadio] = useState<"medium" | "small" | "large" | undefined>("medium");
-	const [typeRadio, setTypeRadio] = useState<"radio" | "button" | undefined>("button");
+	const [sizeRadio, setSizeRadio] = useState<"medium" | "small" | "large" | "tiny" | undefined>(
+		"medium"
+	);
+	const [typeRadio, setTypeRadio] = useState<"radio" | "button" | "card" | undefined>("button");
 	const [orientationRadio, setOrientationRadio] = useState<"horizontal" | "vertical" | undefined>(
 		"horizontal"
 	);
@@ -174,6 +176,9 @@ function App() {
 	const [colorRadio, setColorRadio] = useState<
 		"primary" | "secondary" | "danger" | "success" | "warning" | "info" | undefined
 	>("primary");
+	const [radiusRadio, setRadiusRadio] = useState<"medium" | "small" | "none" | "pill" | undefined>(
+		"small"
+	);
 	const [disabledRadio, setDisabledRadio] = useState(false);
 	const [valueRadioBordered, setValueRadioBordered] = useState("");
 	const [sizeSelect, setSizeSelect] = useState<"medium" | "small" | "large" | "tiny" | undefined>(
@@ -2415,53 +2420,81 @@ function App() {
 						color="secondary"
 						onChange={(e) => setDisabledRadio(e.currentTarget.checked)}
 					/>
-					<select
-						className={styles.control_size}
+					<Select
+						label="Radius"
+						value={radiusRadio}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
+							setRadiusRadio(value as "none" | "small" | "medium" | "pill" | undefined)
+						}
+						options={[
+							{ label: "None", value: "none" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Pill", value: "pill" },
+						]}
+					/>
+					<Select
+						label="Size"
 						value={sizeRadio}
-						onChange={(e) =>
-							setSizeRadio(e.currentTarget.value as "medium" | "small" | "large" | undefined)
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
+							setSizeRadio(value as "tiny" | "small" | "medium" | "large" | undefined)
 						}
-					>
-						<option value="tiny">Tiny</option>
-						<option value="small">Small</option>
-						<option value="medium">Medium</option>
-						<option value="large">Large</option>
-					</select>
-					<select
-						className={styles.control_size}
+						options={[
+							{ label: "Tiny", value: "tiny" },
+							{ label: "Small", value: "small" },
+							{ label: "Medium", value: "medium" },
+							{ label: "Large", value: "large" },
+						]}
+					/>
+					<Select
+						label="Type"
 						value={typeRadio}
-						onChange={(e) => setTypeRadio(e.currentTarget.value as "radio" | "button" | undefined)}
-					>
-						<option value="radio">Radio</option>
-						<option value="button">Button</option>
-					</select>
-					<select
-						className={styles.control_size}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) => setTypeRadio(value as "radio" | "button" | "card" | undefined)}
+						options={[
+							{ label: "Radio", value: "radio" },
+							{ label: "Button", value: "button" },
+							{ label: "Card", value: "card" },
+						]}
+					/>
+					<Select
+						label="Orientation"
 						value={orientationRadio}
-						onChange={(e) =>
-							setOrientationRadio(e.currentTarget.value as "horizontal" | "vertical" | undefined)
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
+							setOrientationRadio(value as "horizontal" | "vertical" | undefined)
 						}
-					>
-						<option value="vertical">Vertical</option>
-						<option value="horizontal">Horizontal</option>
-					</select>
-					<select
-						className={styles.control_size}
+						options={[
+							{ label: "Horizontal", value: "horizontal" },
+							{ label: "Vertical", value: "vertical" },
+						]}
+					/>
+					<Select
+						label="Variant"
 						value={variantRadio}
-						onChange={(e) =>
-							setVariantRadio(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)
-						}
-					>
-						<option value="outline">Outline</option>
-						<option value="flat">Flat</option>
-						<option value="solid">Solid</option>
-					</select>
-					<select
-						className={styles.control_size}
+						className={styles.select_size}
+						size="small"
+						onChange={(value) => setVariantRadio(value as "outline" | "flat" | "solid" | undefined)}
+						options={[
+							{ label: "Outline", value: "outline" },
+							{ label: "Flat", value: "flat" },
+							{ label: "Solid", value: "solid" },
+						]}
+					/>
+					<Select
+						label="Color"
 						value={colorRadio}
-						onChange={(e) =>
+						className={styles.select_size}
+						size="small"
+						onChange={(value) =>
 							setColorRadio(
-								e.currentTarget.value as
+								value as
 									| "primary"
 									| "secondary"
 									| "danger"
@@ -2471,14 +2504,15 @@ function App() {
 									| undefined
 							)
 						}
-					>
-						<option value="primary">Primary</option>
-						<option value="secondary">Secondary</option>
-						<option value="danger">Danger</option>
-						<option value="success">Success</option>
-						<option value="warning">Warning</option>
-						<option value="info">Info</option>
-					</select>
+						options={[
+							{ label: "Primary", value: "primary" },
+							{ label: "Secondary", value: "secondary" },
+							{ label: "Danger", value: "danger" },
+							{ label: "Success", value: "success" },
+							{ label: "Warning", value: "warning" },
+							{ label: "Info", value: "info" },
+						]}
+					/>
 				</div>
 				<div className={styles.container_buttons}>
 					<div className={`${styles.buttons} ${styles.buttons_large}`}>
@@ -2487,20 +2521,70 @@ function App() {
 							type={typeRadio}
 							selectedOption={valueRadioBordered}
 							disabled={disabledRadio}
-							radius="small"
 							color={colorRadio}
 							gap="0.5em"
 							size={sizeRadio}
 							variant={variantRadio}
-							onChange={(e) => setValueRadioBordered(e)}
+							radius={radiusRadio}
+							onChange={(e) => {
+								setValueRadioBordered(e), console.log(e);
+							}}
 							orientation={orientationRadio}
 						>
-							<Radio value="first" label="First" />
-							<Radio value="third" label="Third" />
-							<Radio value="second" label="Second" />
-							<Radio value="fourth" label="Fourth" />
-							<Radio value="fifth" label="Fifth" />
-							<Radio value="sixth" label="Sixth" />
+							{typeRadio === "button" && (
+								<>
+									<Radio.Button value="first" label="First" />
+									<Radio.Button value="third" label="Third" />
+									<Radio.Button value="second" label="Second" />
+									<Radio.Button value="fourth" label="Fourth" />
+									<Radio.Button value="fifth" label="Fifth" />
+									<Radio.Button value="sixth" label="Sixth" />
+								</>
+							)}
+							{typeRadio === "radio" && (
+								<>
+									<Radio value="first" label="First" />
+									<Radio value="third" label="Third" />
+									<Radio value="second" label="Second" />
+									<Radio value="fourth" label="Fourth" />
+									<Radio value="fifth" label="Fifth" />
+									<Radio value="sixth" label="Sixth" />
+								</>
+							)}
+							{typeRadio === "card" && (
+								<>
+									<Radio.Card
+										value="basico"
+										title="Plan Básico"
+										content="Ideal para uso individual."
+									/>
+									<Radio.Card
+										value="estandar"
+										title="Plan Estándar"
+										content="Más funciones para equipos pequeños."
+									/>
+									<Radio.Card
+										value="premium"
+										title="Plan Premium"
+										content="Todas las funciones, soporte 24/7."
+									/>
+									<Radio.Card
+										value="empresarial"
+										title="Plan Empresarial"
+										content="Soluciones a gran escala."
+									/>
+									<Radio.Card
+										value="anual"
+										title="Plan Anual"
+										content="Ahorra un 20% al pagar por adelantado."
+									/>
+									<Radio.Card
+										value="gratuita"
+										title="Prueba Gratuita"
+										content="Acceso completo por 14 días."
+									/>
+								</>
+							)}
 						</RadioGroup>
 					</div>
 				</div>

@@ -73,26 +73,6 @@ export interface RadioProps
 		"size" | "disabled" | "checked" | "color" | "type" | "value"
 	> {
 	/**
-	 * Controla el tamaño visual del control de radio .
-	 */
-	size?: RadioVariants["size"];
-
-	/**
-	 * Define el estilo visual del control de radio, como la apariencia del círculo y el punto.
-	 */
-	variant?: RadioVariants["variant"];
-
-	/**
-	 * Establece el esquema de color para el control de radio.
-	 */
-	color?: RadioVariants["color"];
-
-	/**
-	 * (Esta prop específica depende de la implementación interna). Define un subtipo o variación visual para el control de radio.
-	 */
-	type?: RadioVariants["type"];
-
-	/**
 	 * Controla dónde se coloca la etiqueta de texto (`label`) en relación con el control de radio (por ejemplo, a la izquierda o a la derecha).
 	 */
 	positionLabel?: RadioVariants["positionLabel"];

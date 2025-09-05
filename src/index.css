@@ -81,6 +81,12 @@
 	--handle-md: 22px;
 	--handle-lg: 26px;
 
+	--card-size-xs: 32px;
+	--card-size-sm: 48px;
+	--card-size-md: 64px;
+	--card-size-lg: 80px;
+	--card-size-xl: 96px;
+
 	--height-checkbox-xs: 16px;
 	--height-checkbox-sm: 20px;
 	--height-checkbox-md: 24px;
@@ -125,7 +131,7 @@
 	--rating-stroke-color: #5f4c0d;
 
 	--surface-a: #fefafa;
-	--surface-b: #f3f3f3;
+	--surface-b: #f0f0f0;
 	--surface-c: #e7e5e5;
 	--surface-d: #9e9f9e;
 	--surface-e: #b8bcba;

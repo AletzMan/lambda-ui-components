@@ -134,7 +134,7 @@ body {
 	max-width: 17em;
 
 	&.buttons_large {
-		max-width: 50em;
+		max-width: 100svw;
 	}
 }
 

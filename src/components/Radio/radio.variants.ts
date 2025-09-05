@@ -1,45 +1,46 @@
 import { VariantProps, cva } from "class-variance-authority";
 import styles from "./radio.module.css";
-export const RadioGroups = cva(styles["radio-group"], {
+export const RadioGroups = cva(styles["lambda-radio-group"], {
 	variants: {
 		orientation: {
-			vertical: styles["radio-group-vertical"],
-			horizontal: styles["radio-group-horizontal"],
+			vertical: styles["lambda-radio-group-vertical"],
+			horizontal: styles["lambda-radio-group-horizontal"],
 		},
 		size: {
-			tiny: styles["radio-group-tiny"],
-			small: styles["radio-group-small"],
-			medium: styles["radio-group-medium"],
-			large: styles["radio-group-large"],
+			tiny: styles["lambda-radio-group-tiny"],
+			small: styles["lambda-radio-group-small"],
+			medium: styles["lambda-radio-group-medium"],
+			large: styles["lambda-radio-group-large"],
 		},
 		color: {
-			primary: styles["radio-group-primary"],
-			secondary: styles["radio-group-secondary"],
-			danger: styles["radio-group-danger"],
-			success: styles["radio-group-success"],
-			warning: styles["radio-group-warning"],
-			info: styles["radio-group-info"],
+			primary: styles["lambda-radio-group-primary"],
+			secondary: styles["lambda-radio-group-secondary"],
+			danger: styles["lambda-radio-group-danger"],
+			success: styles["lambda-radio-group-success"],
+			warning: styles["lambda-radio-group-warning"],
+			info: styles["lambda-radio-group-info"],
 		},
 		type: {
-			radio: styles["radio-group-radio"],
-			button: styles["radio-group-button"],
+			radio: styles["lambda-radio-group-radio"],
+			button: styles["lambda-radio-group-button"],
+			card: styles["lambda-radio-group-card"],
 		},
 		variant: {
-			solid: styles["radio-group-solid"],
-			flat: styles["radio-group-flat"],
-			outline: styles["radio-group-outline"],
+			solid: styles["lambda-radio-group-solid"],
+			flat: styles["lambda-radio-group-flat"],
+			outline: styles["lambda-radio-group-outline"],
 		},
 		radius: {
-			none: styles["radio-group-radius-none"],
-			small: styles["radio-group-radius-small"],
-			medium: styles["radio-group-radius-medium"],
-			pill: styles["radio-group-radius-pill"],
+			none: styles["lambda-radio-group-radius-none"],
+			small: styles["lambda-radio-group-radius-small"],
+			medium: styles["lambda-radio-group-radius-medium"],
+			pill: styles["lambda-radio-group-radius-pill"],
 		},
 	},
 	compoundVariants: [],
 	defaultVariants: {
 		orientation: "vertical",
-		radius: "medium",
+		radius: "small",
 		size: "medium",
 		type: "radio",
 		variant: "solid",
@@ -49,33 +50,34 @@ export const RadioGroups = cva(styles["radio-group"], {
 
 export type RadioGroupVariants = VariantProps<typeof RadioGroups>;
 
-export const radioprop = cva(styles["radio"], {
+export const radioprop = cva(styles["lambda-radio"], {
 	variants: {
 		color: {
-			primary: styles["radio-primary"],
-			secondary: styles["radio-secondary"],
-			danger: styles["radio-danger"],
-			success: styles["radio-success"],
-			warning: styles["radio-warning"],
-			info: styles["radio-info"],
+			primary: styles["lambda-radio-primary"],
+			secondary: styles["lambda-radio-secondary"],
+			danger: styles["lambda-radio-danger"],
+			success: styles["lambda-radio-success"],
+			warning: styles["lambda-radio-warning"],
+			info: styles["lambda-radio-info"],
 		},
 		size: {
-			tiny: styles["radio-tiny"],
-			small: styles["radio-small"],
-			medium: styles["radio-medium"],
-			large: styles["radio-large"],
+			tiny: styles["lambda-radio-tiny"],
+			small: styles["lambda-radio-small"],
+			medium: styles["lambda-radio-medium"],
+			large: styles["lambda-radio-large"],
 		},
 		variant: {
-			solid: styles["radio-solid"],
-			flat: styles["radio-flat"],
-			outline: styles["radio-outline"],
+			solid: styles["lambda-radio-solid"],
+			flat: styles["lambda-radio-flat"],
+			outline: styles["lambda-radio-outline"],
 		},
 		type: {
-			radio: styles["radio-radio"],
-			button: styles["radio-button"],
+			radio: styles["lambda-radio-radio"],
+			button: styles["lambda-radio-button"],
+			card: styles["lambda-radio-card"],
 		},
 		disabled: {
-			true: styles["radio-disabled"],
+			true: styles["lambda-radio-disabled"],
 			false: "",
 		},
 	},
@@ -89,37 +91,38 @@ export const radioprop = cva(styles["radio"], {
 	},
 });
 
-export const view = cva(styles["radio-view"], {
+export const view = cva(styles["lambda-radio-view"], {
 	variants: {
 		color: {
-			primary: styles["radio-view-primary"],
-			secondary: styles["radio-view-secondary"],
-			danger: styles["radio-view-danger"],
-			success: styles["radio-view-success"],
-			warning: styles["radio-view-warning"],
-			info: styles["radio-view-info"],
+			primary: styles["lambda-radio-view-primary"],
+			secondary: styles["lambda-radio-view-secondary"],
+			danger: styles["lambda-radio-view-danger"],
+			success: styles["lambda-radio-view-success"],
+			warning: styles["lambda-radio-view-warning"],
+			info: styles["lambda-radio-view-info"],
 		},
 		size: {
-			tiny: styles["radio-view-tiny"],
-			small: styles["radio-view-small"],
-			medium: styles["radio-view-medium"],
-			large: styles["radio-view-large"],
+			tiny: styles["lambda-radio-view-tiny"],
+			small: styles["lambda-radio-view-small"],
+			medium: styles["lambda-radio-view-medium"],
+			large: styles["lambda-radio-view-large"],
 		},
 		variant: {
-			solid: styles["radio-view-solid"],
-			flat: styles["radio-view-flat"],
-			outline: styles["radio-view-outline"],
+			solid: styles["lambda-radio-view-solid"],
+			flat: styles["lambda-radio-view-flat"],
+			outline: styles["lambda-radio-view-outline"],
 		},
 		type: {
-			radio: styles["radio-view-radio"],
-			button: styles["radio-view-button"],
+			radio: styles["lambda-radio-view-radio"],
+			button: styles["lambda-radio-view-button"],
+			card: styles["lambda-radio-view-card"],
 		},
 		checked: {
-			true: styles["radio-view-checked"],
+			true: styles["lambda-radio-view-checked"],
 			false: "",
 		},
 		disabled: {
-			true: styles["radio-view-disabled"],
+			true: styles["lambda-radio-view-disabled"],
 			false: "",
 		},
 	},
@@ -133,78 +136,97 @@ export const view = cva(styles["radio-view"], {
 	},
 });
 
-export const wrapper = cva(styles["radio-wrapper"], {
+export const wrapper = cva(styles["lambda-radio-wrapper"], {
 	variants: {
+		orientation: {
+			horizontal: styles["lambda-radio-wrapper-horizontal"],
+			vertical: styles["lambda-radio-wrapper-vertical"],
+		},
 		positionLabel: {
-			left: styles["radio-wrapper-left"],
-			right: styles["radio-wrapper-right"],
-			top: styles["radio-wrapper-top"],
-			bottom: styles["radio-wrapper-bottom"],
+			left: styles["lambda-radio-wrapper-left"],
+			right: styles["lambda-radio-wrapper-right"],
+			top: styles["lambda-radio-wrapper-top"],
+			bottom: styles["lambda-radio-wrapper-bottom"],
 		},
 		color: {
-			primary: styles["radio-wrapper-primary"],
-			secondary: styles["radio-wrapper-secondary"],
-			danger: styles["radio-wrapper-danger"],
-			success: styles["radio-wrapper-success"],
-			warning: styles["radio-wrapper-warning"],
-			info: styles["radio-wrapper-info"],
+			primary: styles["lambda-radio-wrapper-primary"],
+			secondary: styles["lambda-radio-wrapper-secondary"],
+			danger: styles["lambda-radio-wrapper-danger"],
+			success: styles["lambda-radio-wrapper-success"],
+			warning: styles["lambda-radio-wrapper-warning"],
+			info: styles["lambda-radio-wrapper-info"],
 		},
 		size: {
-			tiny: styles["radio-wrapper-tiny"],
-			small: styles["radio-wrapper-small"],
-			medium: styles["radio-wrapper-medium"],
-			large: styles["radio-wrapper-large"],
+			tiny: styles["lambda-radio-wrapper-tiny"],
+			small: styles["lambda-radio-wrapper-small"],
+			medium: styles["lambda-radio-wrapper-medium"],
+			large: styles["lambda-radio-wrapper-large"],
 		},
 		variant: {
-			solid: styles["radio-wrapper-solid"],
-			flat: styles["radio-wrapper-flat"],
-			outline: styles["radio-wrapper-outline"],
+			solid: styles["lambda-radio-wrapper-solid"],
+			flat: styles["lambda-radio-wrapper-flat"],
+			outline: styles["lambda-radio-wrapper-outline"],
 		},
 		type: {
-			radio: styles["radio-wrapper-radio"],
-			button: styles["radio-wrapper-button"],
+			radio: styles["lambda-radio-wrapper-radio"],
+			button: styles["lambda-radio-wrapper-button"],
+			card: styles["lambda-radio-wrapper-card"],
+		},
+		radius: {
+			none: styles["lambda-radio-wrapper-radius-none"],
+			small: styles["lambda-radio-wrapper-radius-small"],
+			medium: styles["lambda-radio-wrapper-radius-medium"],
+			pill: styles["lambda-radio-wrapper-radius-pill"],
 		},
 		disabled: {
-			true: styles["radio-wrapper-disabled"],
+			true: styles["lambda-radio-wrapper-disabled"],
+			false: "",
+		},
+		checked: {
+			true: styles["lambda-radio-wrapper-checked"],
 			false: "",
 		},
 	},
 	defaultVariants: {
+		orientation: "horizontal",
 		positionLabel: "right",
 		color: "primary",
 		size: "medium",
 		type: "radio",
 		variant: "solid",
+		radius: "small",
 		disabled: false,
+		checked: false,
 	},
 });
 
-export const iconView = cva(styles["radio-icon"], {
+export const iconView = cva(styles["lambda-radio-icon"], {
 	variants: {
 		color: {
-			primary: styles["radio-icon-primary"],
-			secondary: styles["radio-icon-secondary"],
-			danger: styles["radio-icon-danger"],
-			success: styles["radio-icon-success"],
-			warning: styles["radio-icon-warning"],
-			info: styles["radio-icon-info"],
+			primary: styles["lambda-radio-icon-primary"],
+			secondary: styles["lambda-radio-icon-secondary"],
+			danger: styles["lambda-radio-icon-danger"],
+			success: styles["lambda-radio-icon-success"],
+			warning: styles["lambda-radio-icon-warning"],
+			info: styles["lambda-radio-icon-info"],
 		},
 		size: {
-			tiny: styles["radio-icon-tiny"],
-			small: styles["radio-icon-small"],
-			medium: styles["radio-icon-medium"],
-			large: styles["radio-icon-large"],
+			tiny: styles["lambda-radio-icon-tiny"],
+			small: styles["lambda-radio-icon-small"],
+			medium: styles["lambda-radio-icon-medium"],
+			large: styles["lambda-radio-icon-large"],
 		},
 		type: {
-			radio: styles["radio-icon-radio"],
-			button: styles["radio-icon-button"],
+			radio: styles["lambda-radio-icon-radio"],
+			button: styles["lambda-radio-icon-button"],
+			card: styles["lambda-radio-icon-card"],
 		},
 		disabled: {
-			true: styles["radio-icon-disabled"],
+			true: styles["lambda-radio-icon-disabled"],
 			false: "",
 		},
 		checked: {
-			true: styles["radio-icon-checked"],
+			true: styles["lambda-radio-icon-checked"],
 			false: "",
 		},
 	},
@@ -217,20 +239,31 @@ export const iconView = cva(styles["radio-icon"], {
 	},
 });
 
-export const labelName = cva(styles["radio-label"], {
+export const labelName = cva(styles["lambda-radio-label"], {
 	variants: {
 		type: {
-			radio: styles["radio-label-radio"],
-			button: styles["radio-label-button"],
+			radio: styles["lambda-radio-label-radio"],
+			button: styles["lambda-radio-label-button"],
+			card: styles["lambda-radio-label-card"],
+		},
+		radius: {
+			none: styles["lambda-radio-label-radius-none"],
+			small: styles["lambda-radio-label-radius-small"],
+			medium: styles["lambda-radio-label-radius-medium"],
+			pill: styles["lambda-radio-label-radius-pill"],
 		},
 		size: {
-			tiny: styles["radio-label-tiny"],
-			small: styles["radio-label-small"],
-			medium: styles["radio-label-medium"],
-			large: styles["radio-label-large"],
+			tiny: styles["lambda-radio-label-tiny"],
+			small: styles["lambda-radio-label-small"],
+			medium: styles["lambda-radio-label-medium"],
+			large: styles["lambda-radio-label-large"],
+		},
+		orientation: {
+			vertical: styles["lambda-radio-label-vertical"],
+			horizontal: styles["lambda-radio-label-horizontal"],
 		},
 		disabled: {
-			true: styles["radio-label-disabled"],
+			true: styles["lambda-radio-label-disabled"],
 			false: "",
 		},
 	},
@@ -238,6 +271,8 @@ export const labelName = cva(styles["radio-label"], {
 		disabled: false,
 		type: "radio",
 		size: "medium",
+		orientation: "horizontal",
+		radius: "small",
 	},
 });
 

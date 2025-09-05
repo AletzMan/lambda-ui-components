@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Radio, RadioGroup } from "./Radio";
-const meta: Meta<typeof Radio> = {
+import { RadioGroup, Radio } from "./Radio";
+const meta: Meta<typeof RadioGroup> = {
 	title: "Components/Radio",
 	tags: ["autodocs"],
 	parameters: {
 		layout: "centered",
 	},
-	component: Radio,
+	component: RadioGroup,
 	argTypes: {
 		variant: {
 			control: "select",
@@ -27,17 +27,6 @@ const meta: Meta<typeof Radio> = {
 		type: {
 			control: "radio",
 			options: ["radio", "button"],
-		},
-		label: {
-			control: "text",
-			type: "string",
-			description: "Text to display as the label for the component",
-		},
-		positionLabel: {
-			control: "select",
-			options: ["right", "left", "top", "bottom"],
-			description: "Select position label right or left",
-			type: "string",
 		},
 		disabled: {
 			control: "boolean",

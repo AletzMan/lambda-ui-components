@@ -32,6 +32,7 @@ export type RadioGroupContextType = {
 	type: RadioGroupVariants["type"];
 	radius: RadioGroupVariants["radius"];
 	variant: RadioGroupVariants["variant"];
+	orientation: RadioGroupVariants["orientation"];
 	disabled: boolean;
 };
 
@@ -92,6 +93,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			type,
 			radius,
 			variant,
+			orientation,
 			disabled,
 		}),
 		[
@@ -104,6 +106,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			type,
 			variant,
 			radius,
+			orientation,
 			disabled,
 		]
 	);
@@ -121,40 +124,41 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	);
 };
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
+const RadioComponent = forwardRef<
+	HTMLInputElement,
+	RadioProps & {
+		type: "radio" | "button" | "card" | undefined | null;
+		title?: string;
+		content?: string;
+	}
+>(
 	(
 		{
 			className,
-			size,
-			variant,
 			label = "Label",
 			disabled,
-			type,
 			positionLabel = "right",
-			color,
+			type = "radio",
+			title,
+			content,
 			...props
 		},
 		ref
 	) => {
 		const {
 			selectedValue,
+			color,
+			size,
+			variant,
+			orientation,
+			radius,
 			onChange,
-			size: groupSize,
-			color: groupColor,
-			variant: groupVariant,
-			type: groupType,
 			disabled: groupDisabled,
 			name,
 		} = useRadioGroup();
 
 		const isChecked = selectedValue === props.value;
 		const isDisabled = disabled || groupDisabled;
-
-		// Calcular valores efectivos combinando prop local y valor del grupo
-		const effectiveSize = size || groupSize;
-		const effectiveColor = color || groupColor;
-		const effectiveVariant = variant || groupVariant;
-		const effectiveType = type || groupType;
 
 		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 			onChange(e.target.value);
@@ -164,11 +168,14 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 			<label
 				className={wrapper({
 					positionLabel,
-					color: effectiveColor,
+					color,
 					disabled: isDisabled,
-					size: effectiveSize,
-					type: effectiveType,
-					variant: effectiveVariant,
+					size,
+					type,
+					orientation,
+					radius,
+					variant,
+					checked: isChecked,
 				})}
 			>
 				<input
@@ -180,9 +187,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 					disabled={isDisabled}
 					className={clsx(
 						radioprop({
-							size: effectiveSize,
-							variant: effectiveVariant,
-							color: effectiveColor,
+							size,
+							variant,
+							color,
 							disabled: isDisabled,
 						}),
 						className
@@ -192,37 +199,80 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
 				<div
 					className={view({
-						variant: effectiveVariant,
-						size: effectiveSize,
-						color: effectiveColor,
+						variant,
+						size,
+						color,
 						disabled: isDisabled,
-						type: effectiveType,
+						type,
 						checked: isChecked,
 					})}
 				>
 					<span
 						className={iconView({
-							size: effectiveSize,
-							color: effectiveColor,
+							size,
+							color,
 							disabled: isDisabled,
 							checked: isChecked,
-							type: effectiveType,
+							type,
 						})}
 					/>
 				</div>
 
-				{label && (
+				{((label && type === "radio") || type === "button") && (
 					<span
 						className={labelName({
-							size: effectiveSize,
+							size,
 							disabled: isDisabled,
-							type: effectiveType,
+							orientation,
+							radius,
+							type,
 						})}
 					>
 						{label}
 					</span>
 				)}
+				{type === "card" && (
+					<div
+						className={labelName({
+							size,
+							disabled: isDisabled,
+							orientation,
+							radius,
+							type,
+						})}
+					>
+						<h3>{title}</h3>
+						<p>{content}</p>
+					</div>
+				)}
 			</label>
 		);
 	}
 );
+
+const Default = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+	return <RadioComponent {...props} ref={ref} type="radio" />;
+});
+
+const Button = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+	return <RadioComponent {...props} ref={ref} type="button" />;
+});
+
+const Card = forwardRef<HTMLInputElement, RadioProps & { title?: string; content?: string }>(
+	(props, ref) => {
+		return (
+			<RadioComponent
+				{...props}
+				ref={ref}
+				type="card"
+				title={props.title}
+				content={props.content}
+			/>
+		);
+	}
+);
+
+export const Radio = Object.assign(Default, {
+	Button: Button,
+	Card: Card,
+});
