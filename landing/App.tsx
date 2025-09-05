@@ -2527,7 +2527,7 @@ function App() {
 							variant={variantRadio}
 							radius={radiusRadio}
 							onChange={(e) => {
-								setValueRadioBordered(e), console.log(e);
+								setValueRadioBordered(e);
 							}}
 							orientation={orientationRadio}
 						>
@@ -2553,36 +2553,9 @@ function App() {
 							)}
 							{typeRadio === "card" && (
 								<>
-									<Radio.Card
-										value="basico"
-										title="Plan Básico"
-										content="Ideal para uso individual."
-									/>
-									<Radio.Card
-										value="estandar"
-										title="Plan Estándar"
-										content="Más funciones para equipos pequeños."
-									/>
-									<Radio.Card
-										value="premium"
-										title="Plan Premium"
-										content="Todas las funciones, soporte 24/7."
-									/>
-									<Radio.Card
-										value="empresarial"
-										title="Plan Empresarial"
-										content="Soluciones a gran escala."
-									/>
-									<Radio.Card
-										value="anual"
-										title="Plan Anual"
-										content="Ahorra un 20% al pagar por adelantado."
-									/>
-									<Radio.Card
-										value="gratuita"
-										title="Prueba Gratuita"
-										content="Acceso completo por 14 días."
-									/>
+									<Radio.Card value="basico" title="Plan Básico" body={<></>} />
+									<Radio.Card value="estandar" title="Plan Estándar" body={<></>} />
+									<Radio.Card value="premium" title="Plan Premium" body={<></>} />
 								</>
 							)}
 						</RadioGroup>

@@ -276,4 +276,29 @@ export const labelName = cva(styles["lambda-radio-label"], {
 	},
 });
 
+export const contentCard = cva(styles["lambda-radio-content-card"], {
+	variants: {
+		size: {
+			tiny: styles["lambda-radio-content-card-tiny"],
+			small: styles["lambda-radio-content-card-small"],
+			medium: styles["lambda-radio-content-card-medium"],
+			large: styles["lambda-radio-content-card-large"],
+		},
+		variant: {
+			solid: styles["lambda-radio-content-card-solid"],
+			flat: styles["lambda-radio-content-card-flat"],
+			outline: styles["lambda-radio-content-card-outline"],
+		},
+		disabled: {
+			true: styles["lambda-radio-content-card-disabled"],
+			false: "",
+		},
+	},
+	defaultVariants: {
+		size: "medium",
+		variant: "solid",
+		disabled: false,
+	},
+});
+
 export type RadioVariants = VariantProps<typeof wrapper>;

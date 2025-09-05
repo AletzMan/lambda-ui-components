@@ -1,4 +1,4 @@
-import {
+import React, {
 	createContext,
 	FC,
 	forwardRef,
@@ -12,6 +12,7 @@ import {
 	useState,
 } from "react";
 import {
+	contentCard,
 	iconView,
 	labelName,
 	RadioGroups,
@@ -22,6 +23,7 @@ import {
 } from "./radio.variants";
 import clsx from "clsx";
 import { RadioGroupProps, RadioProps } from "./radio.types";
+import styles from "./radio.module.css";
 
 export type RadioGroupContextType = {
 	name: string;
@@ -129,7 +131,8 @@ const RadioComponent = forwardRef<
 	RadioProps & {
 		type: "radio" | "button" | "card" | undefined | null;
 		title?: string;
-		content?: string;
+		subtitle?: string;
+		body?: React.ReactElement;
 	}
 >(
 	(
@@ -140,7 +143,8 @@ const RadioComponent = forwardRef<
 			positionLabel = "right",
 			type = "radio",
 			title,
-			content,
+			subtitle,
+			body,
 			...props
 		},
 		ref
@@ -197,26 +201,28 @@ const RadioComponent = forwardRef<
 					{...props}
 				/>
 
-				<div
-					className={view({
-						variant,
-						size,
-						color,
-						disabled: isDisabled,
-						type,
-						checked: isChecked,
-					})}
-				>
-					<span
-						className={iconView({
+				{(type === "radio" || type === "button") && (
+					<div
+						className={view({
+							variant,
 							size,
 							color,
 							disabled: isDisabled,
-							checked: isChecked,
 							type,
+							checked: isChecked,
 						})}
-					/>
-				</div>
+					>
+						<span
+							className={iconView({
+								size,
+								color,
+								disabled: isDisabled,
+								checked: isChecked,
+								type,
+							})}
+						/>
+					</div>
+				)}
 
 				{((label && type === "radio") || type === "button") && (
 					<span
@@ -233,16 +239,37 @@ const RadioComponent = forwardRef<
 				)}
 				{type === "card" && (
 					<div
-						className={labelName({
+						className={contentCard({
 							size,
 							disabled: isDisabled,
-							orientation,
-							radius,
-							type,
+							variant,
 						})}
 					>
-						<h3>{title}</h3>
-						<p>{content}</p>
+						<header className={styles["lambda-radio-card-header"]}>
+							<h1>{title}</h1>
+							<div
+								className={view({
+									variant,
+									size,
+									color,
+									disabled: isDisabled,
+									type,
+									checked: isChecked,
+								})}
+							>
+								<span
+									className={iconView({
+										size,
+										color,
+										disabled: isDisabled,
+										checked: isChecked,
+										type,
+									})}
+								/>
+							</div>
+						</header>
+						<h2>{subtitle}</h2>
+						<p>{body}</p>
 					</div>
 				)}
 			</label>
@@ -258,19 +285,21 @@ const Button = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 	return <RadioComponent {...props} ref={ref} type="button" />;
 });
 
-const Card = forwardRef<HTMLInputElement, RadioProps & { title?: string; content?: string }>(
-	(props, ref) => {
-		return (
-			<RadioComponent
-				{...props}
-				ref={ref}
-				type="card"
-				title={props.title}
-				content={props.content}
-			/>
-		);
-	}
-);
+const Card = forwardRef<
+	HTMLInputElement,
+	RadioProps & { title?: string; subtitle?: string; body?: React.ReactElement }
+>((props, ref) => {
+	return (
+		<RadioComponent
+			{...props}
+			ref={ref}
+			type="card"
+			title={props.title}
+			subtitle={props.subtitle}
+			body={props.body}
+		/>
+	);
+});
 
 export const Radio = Object.assign(Default, {
 	Button: Button,

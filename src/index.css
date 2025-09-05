@@ -38,6 +38,15 @@
 	--font-size-3xl: 24px;
 	--font-size-4xl: 28px;
 
+	--font-size-title-xs: 16px;
+	--font-size-title-sm: 20px;
+	--font-size-title-md: 24px;
+	--font-size-title-lg: 28px;
+	--font-size-title-xl: 32px;
+	--font-size-title-2xl: 36px;
+	--font-size-title-3xl: 40px;
+	--font-size-title-4xl: 44px;
+
 	--border-radius-none: 0px;
 	--border-radius-xs: 2px;
 	--border-radius-sm: 4px;
@@ -86,6 +95,8 @@
 	--card-size-md: 64px;
 	--card-size-lg: 80px;
 	--card-size-xl: 96px;
+
+	--card-title-max-width: 12ch;
 
 	--height-checkbox-xs: 16px;
 	--height-checkbox-sm: 20px;
