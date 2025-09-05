@@ -289,6 +289,18 @@ export const contentCard = cva(styles["lambda-radio-content-card"], {
 			flat: styles["lambda-radio-content-card-flat"],
 			outline: styles["lambda-radio-content-card-outline"],
 		},
+		color: {
+			primary: styles["lambda-radio-content-card-primary"],
+			secondary: styles["lambda-radio-content-card-secondary"],
+			danger: styles["lambda-radio-content-card-danger"],
+			success: styles["lambda-radio-content-card-success"],
+			warning: styles["lambda-radio-content-card-warning"],
+			info: styles["lambda-radio-content-card-info"],
+		},
+		checked: {
+			true: styles["lambda-radio-content-card-checked"],
+			false: "",
+		},
 		disabled: {
 			true: styles["lambda-radio-content-card-disabled"],
 			false: "",
@@ -297,7 +309,9 @@ export const contentCard = cva(styles["lambda-radio-content-card"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "solid",
+		color: "primary",
 		disabled: false,
+		checked: false,
 	},
 });
 

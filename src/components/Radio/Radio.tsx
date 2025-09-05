@@ -133,6 +133,7 @@ const RadioComponent = forwardRef<
 		title?: string;
 		subtitle?: string;
 		body?: React.ReactElement;
+		showRadio?: boolean;
 	}
 >(
 	(
@@ -145,6 +146,7 @@ const RadioComponent = forwardRef<
 			title,
 			subtitle,
 			body,
+			showRadio,
 			...props
 		},
 		ref
@@ -243,33 +245,37 @@ const RadioComponent = forwardRef<
 							size,
 							disabled: isDisabled,
 							variant,
+							color,
+							checked: isChecked,
 						})}
 					>
 						<header className={styles["lambda-radio-card-header"]}>
 							<h1>{title}</h1>
-							<div
-								className={view({
-									variant,
-									size,
-									color,
-									disabled: isDisabled,
-									type,
-									checked: isChecked,
-								})}
-							>
-								<span
-									className={iconView({
+							{showRadio && (
+								<div
+									className={view({
+										variant,
 										size,
 										color,
 										disabled: isDisabled,
-										checked: isChecked,
 										type,
+										checked: isChecked,
 									})}
-								/>
-							</div>
+								>
+									<span
+										className={iconView({
+											size,
+											color,
+											disabled: isDisabled,
+											checked: isChecked,
+											type,
+										})}
+									/>
+								</div>
+							)}
 						</header>
 						<h2>{subtitle}</h2>
-						<p>{body}</p>
+						{body && <p className={styles["lambda-radio-card-body"]}>{body}</p>}
 					</div>
 				)}
 			</label>
@@ -287,7 +293,7 @@ const Button = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 
 const Card = forwardRef<
 	HTMLInputElement,
-	RadioProps & { title?: string; subtitle?: string; body?: React.ReactElement }
+	RadioProps & { title?: string; subtitle?: string; body?: React.ReactElement; showRadio?: boolean }
 >((props, ref) => {
 	return (
 		<RadioComponent
@@ -296,6 +302,7 @@ const Card = forwardRef<
 			type="card"
 			title={props.title}
 			subtitle={props.subtitle}
+			showRadio={props.showRadio}
 			body={props.body}
 		/>
 	);

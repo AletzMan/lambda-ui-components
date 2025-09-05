@@ -167,6 +167,7 @@ function App() {
 		"medium"
 	);
 	const [typeRadio, setTypeRadio] = useState<"radio" | "button" | "card" | undefined>("button");
+	const [showRadio, setShowRadio] = useState(false);
 	const [orientationRadio, setOrientationRadio] = useState<"horizontal" | "vertical" | undefined>(
 		"horizontal"
 	);
@@ -2462,6 +2463,14 @@ function App() {
 							{ label: "Card", value: "card" },
 						]}
 					/>
+					<Checkbox
+						label="Show Radio"
+						checked={showRadio}
+						size="medium"
+						color="secondary"
+						disabled={typeRadio !== "card"}
+						onChange={(e) => setShowRadio(e.currentTarget.checked)}
+					/>
 					<Select
 						label="Orientation"
 						value={orientationRadio}
@@ -2553,9 +2562,24 @@ function App() {
 							)}
 							{typeRadio === "card" && (
 								<>
-									<Radio.Card value="basico" title="Plan Básico" body={<></>} />
-									<Radio.Card value="estandar" title="Plan Estándar" body={<></>} />
-									<Radio.Card value="premium" title="Plan Premium" body={<></>} />
+									<Radio.Card
+										value="basico"
+										title="Plan Básico"
+										subtitle="Para 10 usuarios"
+										showRadio={showRadio}
+									/>
+									<Radio.Card
+										value="estandar"
+										title="Plan Estándar"
+										subtitle="Para 20 usuarios"
+										showRadio={showRadio}
+									/>
+									<Radio.Card
+										value="premium"
+										title="Plan Premium"
+										subtitle="Para 50 usuarios"
+										showRadio={showRadio}
+									/>
 								</>
 							)}
 						</RadioGroup>
