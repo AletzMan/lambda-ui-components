@@ -4,6 +4,7 @@
 	background-color: var(--surface-b);
 	min-width: 5em;
 	min-height: 5em;
+	height: 100%;
 	box-shadow: var(--box-shadow);
 	font-family: var(--font-family);
 	color: var(--foreground-color);
@@ -92,7 +93,7 @@
 }
 
 .lambda-card-body {
-	padding: var(--padding-lg);
+	padding: var(--padding-none);
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap-md);
