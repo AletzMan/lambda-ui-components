@@ -1,0 +1,20 @@
+.container {
+	padding: 10px;
+	border-radius: 5px;
+	font-family: var(--font-family);
+}
+
+.title {
+	margin-bottom: 10px;
+	color: var(--foreground-title-color);
+}
+
+.subtitle {
+	margin-bottom: 10px;
+	color: var(--foreground-secondary-color);
+	text-transform: capitalize;
+}
+
+.content {
+	padding: 15px 0;
+}
