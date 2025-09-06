@@ -2,6 +2,8 @@
 	padding: 10px;
 	border-radius: 5px;
 	font-family: var(--font-family);
+	width: 100%;
+	height: 100%;
 }
 
 .title {
@@ -9,9 +11,22 @@
 	color: var(--foreground-title-color);
 }
 
+.subtitleContainer {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
 .subtitle {
 	margin-bottom: 10px;
 	color: var(--foreground-secondary-color);
+	text-transform: capitalize;
+}
+
+.color {
+	display: flex;
+	align-items: center;
+	padding-bottom: 5px;
 	text-transform: capitalize;
 }
 
