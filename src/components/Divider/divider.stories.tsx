@@ -2,7 +2,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Divider } from "./Divider";
 import { DividerProps } from "./divider.types";
 import { Card } from "../Card/Card";
-import { Button } from "../Button/Button";
 import { Switch } from "../Switch/Switch";
 import { useState } from "react";
 
