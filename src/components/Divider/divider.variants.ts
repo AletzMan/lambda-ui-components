@@ -20,24 +20,28 @@ export const dividerVariants = cva(styles["lambda-divider"], {
 			warning: styles["lambda-divider-warning"],
 			info: styles["lambda-divider-info"],
 		},
-		size: {
-			xs: styles["lambda-divider-xs"],
-			sm: styles["lambda-divider-sm"],
-			md: styles["lambda-divider-md"],
-			lg: styles["lambda-divider-lg"],
+		contentPosition: {
+			center: styles["lambda-divider-center"],
+			start: styles["lambda-divider-start"],
+			end: styles["lambda-divider-end"],
 		},
-		type: {
-			full: styles["lambda-divider-full"],
-			inset: styles["lambda-divider-inset"],
-			between: styles["lambda-divider-between"],
+		size: {
+			tiny: styles["lambda-divider-tiny"],
+			small: styles["lambda-divider-small"],
+			medium: styles["lambda-divider-medium"],
+			large: styles["lambda-divider-large"],
+		},
+		hasContent: {
+			true: styles["lambda-divider-has-content"],
+			false: styles["lambda-divider-no-content"],
 		},
 	},
 	defaultVariants: {
 		variant: "solid",
 		orientation: "horizontal",
 		color: "primary",
-		type: "full",
-		size: "xs",
+		contentPosition: "center",
+		size: "tiny",
 	},
 });
 
