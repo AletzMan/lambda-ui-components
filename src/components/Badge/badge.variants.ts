@@ -17,6 +17,15 @@ export const badgeStyles = cva(styles["lambda-badge"], {
 			large: styles["lambda-badge-radius-large"],
 			full: styles["lambda-badge-radius-full"],
 		},
+		color: {
+			default: styles["lambda-badge-color-default"],
+			primary: styles["lambda-badge-color-primary"],
+			secondary: styles["lambda-badge-color-secondary"],
+			success: styles["lambda-badge-color-success"],
+			danger: styles["lambda-badge-color-danger"],
+			warning: styles["lambda-badge-color-warning"],
+			info: styles["lambda-badge-color-info"],
+		},
 		hasCount: {
 			true: styles["lambda-badge-has-count"],
 			false: "",

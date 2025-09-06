@@ -7,7 +7,15 @@ export interface BadgeProps
 	/**
 	 * Establece el esquema de color para el badge, típicamente afectando el color cuando está activado.
 	 */
-	color?: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | undefined;
+	color?:
+		| "default"
+		| "primary"
+		| "secondary"
+		| "success"
+		| "danger"
+		| "warning"
+		| "info"
+		| undefined;
 	/**
 	 * Define la forma del badge (por ejemplo, con extremos redondeados o cuadrados).
 	 */

@@ -8,7 +8,6 @@
 	justify-content: center;
 	background-color: var(--badge-background-color);
 	color: var(--badge-text-color);
-	border-radius: var(--border-radius-full);
 	font-family: var(--font-family);
 	padding: var(--padding-3xs) var(--padding-sm);
 	outline: 1px solid var(--foreground-invert-color);
@@ -115,4 +114,57 @@
 		justify-content: center;
 		gap: var(--padding-4xs);
 	}
+}
+
+.lambda-badge-radius-none {
+	border-radius: var(--border-radius-none);
+}
+
+.lambda-badge-radius-tiny {
+	border-radius: var(--border-radius-xs);
+}
+
+.lambda-badge-radius-small {
+	border-radius: var(--border-radius-sm);
+}
+
+.lambda-badge-radius-medium {
+	border-radius: var(--border-radius-md);
+}
+
+.lambda-badge-radius-large {
+	border-radius: var(--border-radius-lg);
+}
+
+.lambda-badge-radius-full {
+	border-radius: var(--border-radius-full);
+}
+
+.lambda-badge-color-default {
+	background-color: var(--badge-background-color);
+}
+
+.lambda-badge-color-primary {
+	background-color: var(--primary-color);
+}
+
+.lambda-badge-color-secondary {
+	background-color: var(--secondary-color);
+	color: var(--foreground-invert-color);
+}
+
+.lambda-badge-color-success {
+	background-color: var(--success-color);
+}
+
+.lambda-badge-color-danger {
+	background-color: var(--danger-color);
+}
+
+.lambda-badge-color-warning {
+	background-color: var(--warning-color);
+}
+
+.lambda-badge-color-info {
+	background-color: var(--info-color);
 }

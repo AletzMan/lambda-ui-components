@@ -11,6 +11,8 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 				className={clsx(
 					badgeStyles({
 						size,
+						radius,
+						color,
 						hasCount: count !== undefined && count >= 0,
 						hasText: text !== undefined,
 					}),
