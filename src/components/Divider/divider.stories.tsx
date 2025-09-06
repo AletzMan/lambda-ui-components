@@ -27,7 +27,7 @@ const meta: Meta<typeof Divider> = {
 		},
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "success", "danger", "warning", "info"],
+			options: ["primary", "secondary", "success", "danger", "warning", "info", "white", "black"],
 			description: "Background color",
 		},
 		contentPosition: {
@@ -68,7 +68,6 @@ const Template = (args: DividerProps) => {
 						width: "250px",
 						alignItems: "center",
 						flexDirection: args.orientation === "vertical" ? "row" : "column",
-						gap: "10px",
 					}}
 				>
 					<p

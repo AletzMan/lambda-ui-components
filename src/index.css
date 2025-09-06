@@ -149,7 +149,9 @@
 	--surface-f: #8c938f;
 	--surface-g: #6e7270;
 	--surface-h: #454d49;
+
 	--border-color: #cacaca;
+	--border-inverse-color: #c5c3c3;
 	--shadow-color: #30353130;
 	--shadow-inset-color: #f1f1f155;
 
@@ -252,7 +254,9 @@
 	--surface-f: #6b6e73;
 	--surface-g: #8b8f94;
 	--surface-h: #adb2b8;
+
 	--border-color: #45494f;
+	--border-inverse-color: #d4d4d4;
 	--shadow-color: #282a2e99;
 	--shadow-inset-color: #f1f1f155;
 
