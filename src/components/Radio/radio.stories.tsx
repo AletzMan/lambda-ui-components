@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { RadioGroup, Radio } from "./Radio";
 import { RadioGroupProps } from "./radio.types";
+import { AlignCenter, AlignLeft, AlignRight } from "lucide-react";
 const meta: Meta<typeof RadioGroup> = {
 	title: "Components/Radio",
 	tags: ["autodocs"],
@@ -53,9 +54,9 @@ const RadioTemplate = (args: RadioGroupProps) => {
 const RadioButtonTemplate = (args: RadioGroupProps) => {
 	return (
 		<RadioGroup name="example" defaultValue="option1" {...args}>
-			<Radio.Button value="option1" label="Option 1" />
-			<Radio.Button value="option2" label="Option 2" />
-			<Radio.Button value="option3" label="Option 3" />
+			<Radio.Button value="option1" icon={<AlignLeft />} />
+			<Radio.Button value="option2" icon={<AlignCenter />} />
+			<Radio.Button value="option3" icon={<AlignRight />} />
 		</RadioGroup>
 	);
 };

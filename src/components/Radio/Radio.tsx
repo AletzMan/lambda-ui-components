@@ -149,12 +149,13 @@ const RadioComponent = forwardRef<
 		subtitle?: string;
 		body?: React.ReactElement;
 		showRadio?: boolean;
+		icon?: ReactNode;
 	}
 >(
 	(
 		{
 			className,
-			label = "Label",
+			label,
 			disabled,
 			positionLabel = "right",
 			type = "radio",
@@ -162,6 +163,7 @@ const RadioComponent = forwardRef<
 			subtitle,
 			body,
 			showRadio,
+			icon,
 			...props
 		},
 		ref
@@ -243,7 +245,7 @@ const RadioComponent = forwardRef<
 					</div>
 				)}
 
-				{((label && groupType === "radio") || groupType === "button") && (
+				{label && groupType === "radio" && (
 					<span
 						className={labelName({
 							size,
@@ -254,6 +256,20 @@ const RadioComponent = forwardRef<
 						})}
 					>
 						{label}
+					</span>
+				)}
+				{groupType === "button" && (
+					<span
+						className={labelName({
+							size,
+							disabled: isDisabled,
+							orientation,
+							radius,
+							type: groupType,
+						})}
+					>
+						{label && label}
+						{icon && icon}
 					</span>
 				)}
 				{groupType === "card" && (
@@ -308,12 +324,12 @@ const Default = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
 	return <RadioComponent {...props} ref={ref} type="radio" />;
 });
 
-const Button = forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
+const Button = forwardRef<HTMLInputElement, RadioProps & { icon?: ReactNode }>((props, ref) => {
 	const { setType } = useRadioGroup();
 	useEffect(() => {
 		setType("button");
 	}, [ref]);
-	return <RadioComponent {...props} ref={ref} type="button" />;
+	return <RadioComponent {...props} ref={ref} type="button" icon={props.icon} />;
 });
 
 const Card = forwardRef<
