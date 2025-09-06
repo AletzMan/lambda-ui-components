@@ -22,8 +22,8 @@ export interface DividerProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
 	 */
 	size?: DividerVariants["size"];
 	/*
-	 * Type of the divider (full, inset, between)
-	 * @default full
+	 * Content position of the divider (center, start, end)
+	 * @default center
 	 */
-	type?: DividerVariants["type"];
+	contentPosition?: DividerVariants["contentPosition"];
 }
