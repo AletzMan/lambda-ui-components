@@ -1,13 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Breadcrumb } from "./Breadcrumb";
-import { BookIcon, DatabaseIcon, HomeIcon } from "lucide-react";
+import { CheckCircle, ClipboardList, Folder, HomeIcon, LayoutGrid } from "lucide-react";
+import { BreadcrumbProps } from "./breadcrumb.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Breadcrumb> = {
 	title: "Components/Breadcrumb",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Breadcrumb,
 	argTypes: {
 		size: {
@@ -18,15 +16,12 @@ const meta: Meta<typeof Breadcrumb> = {
 		},
 		variant: {
 			control: "select",
-			options: ["outline", "flat", "none"],
+			options: ["chevron", "slash", "dot", "arrow", "stepped"],
 			description: "Variant of the breadcrumb",
 			type: "string",
-		},
-		separator: {
-			control: "select",
-			options: ["chevron", "slash", "dot", "arrow"],
-			description: "Separator of the breadcrumb",
-			type: "string",
+			table: {
+				disable: true,
+			},
 		},
 		color: {
 			control: "select",
@@ -39,6 +34,13 @@ const meta: Meta<typeof Breadcrumb> = {
 			description: "Maximum number of items to show",
 			type: "number",
 		},
+		items: {
+			control: "object",
+			description: "Items of the breadcrumb",
+			table: {
+				disable: true,
+			},
+		},
 	},
 };
 
@@ -46,52 +48,198 @@ export default meta;
 
 type Story = StoryObj<typeof Breadcrumb>;
 
-export const Default: Story = {
+const Template = (args: BreadcrumbProps) => {
+	return (
+		<ContainerComponent
+			title="Breadcrumb"
+			subtitle={args.variant?.toString() || ""}
+			color={args.color?.toString() || ""}
+		>
+			<Breadcrumb {...args} />
+		</ContainerComponent>
+	);
+};
+
+export const Chevron: Story = {
+	render: Template,
 	args: {
 		items: [
 			{
 				label: "Home",
-				href: "/",
+				href: "#",
+				icon: <HomeIcon />,
 			},
 			{
-				label: "Library",
-				href: "/library",
+				label: "Projects",
+				href: "#",
+				icon: <LayoutGrid />,
 			},
 			{
-				label: "Data",
-				href: "/data",
+				label: "Website",
+				href: "#",
+				icon: <Folder />,
+			},
+			{
+				label: "Tasks",
+				href: "#",
+				icon: <ClipboardList />,
+			},
+			{
+				label: "Reviews",
+				href: "#",
+				icon: <CheckCircle />,
 			},
 		],
 		size: "medium",
-		variant: "none",
-		separator: "chevron",
+		variant: "chevron",
 		color: "primary",
 		maxItems: 0,
 	},
 };
 
-export const Icon: Story = {
+export const Slash: Story = {
+	render: Template,
 	args: {
 		items: [
 			{
 				label: "Home",
-				href: "/",
+				href: "#",
 				icon: <HomeIcon />,
 			},
 			{
-				label: "Library",
-				href: "/library",
-				icon: <BookIcon />,
+				label: "Projects",
+				href: "#",
+				icon: <LayoutGrid />,
 			},
 			{
-				label: "Data",
-				href: "/data",
-				icon: <DatabaseIcon />,
+				label: "Website",
+				href: "#",
+				icon: <Folder />,
+			},
+			{
+				label: "Tasks",
+				href: "#",
+				icon: <ClipboardList />,
+			},
+			{
+				label: "Reviews",
+				href: "#",
+				icon: <CheckCircle />,
 			},
 		],
 		size: "medium",
-		variant: "none",
-		separator: "chevron",
+		variant: "slash",
+		color: "primary",
+		maxItems: 0,
+	},
+};
+
+export const Dot: Story = {
+	render: Template,
+	args: {
+		items: [
+			{
+				label: "Home",
+				href: "#",
+				icon: <HomeIcon />,
+			},
+			{
+				label: "Projects",
+				href: "#",
+				icon: <LayoutGrid />,
+			},
+			{
+				label: "Website",
+				href: "#",
+				icon: <Folder />,
+			},
+			{
+				label: "Tasks",
+				href: "#",
+				icon: <ClipboardList />,
+			},
+			{
+				label: "Reviews",
+				href: "#",
+				icon: <CheckCircle />,
+			},
+		],
+		size: "medium",
+		variant: "dot",
+		color: "primary",
+		maxItems: 0,
+	},
+};
+
+export const Arrow: Story = {
+	render: Template,
+	args: {
+		items: [
+			{
+				label: "Home",
+				href: "#",
+				icon: <HomeIcon />,
+			},
+			{
+				label: "Projects",
+				href: "#",
+				icon: <LayoutGrid />,
+			},
+			{
+				label: "Website",
+				href: "#",
+				icon: <Folder />,
+			},
+			{
+				label: "Tasks",
+				href: "#",
+				icon: <ClipboardList />,
+			},
+			{
+				label: "Reviews",
+				href: "#",
+				icon: <CheckCircle />,
+			},
+		],
+		size: "medium",
+		variant: "arrow",
+		color: "primary",
+		maxItems: 0,
+	},
+};
+
+export const Stepped: Story = {
+	render: Template,
+	args: {
+		items: [
+			{
+				label: "Home",
+				href: "#",
+				icon: <HomeIcon />,
+			},
+			{
+				label: "Projects",
+				href: "#",
+				icon: <LayoutGrid />,
+			},
+			{
+				label: "Website",
+				href: "#",
+				icon: <Folder />,
+			},
+			{
+				label: "Tasks",
+				href: "#",
+				icon: <ClipboardList />,
+			},
+			{
+				label: "Reviews",
+				href: "#",
+				icon: <CheckCircle />,
+			},
+		],
+		size: "medium",
+		variant: "stepped",
 		color: "primary",
 		maxItems: 0,
 	},

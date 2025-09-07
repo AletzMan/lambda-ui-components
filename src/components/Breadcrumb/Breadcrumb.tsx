@@ -24,7 +24,7 @@ const BreadcrumbItem = ({
 }: {
 	item: ItemBreadcrumb;
 	size: "tiny" | "small" | "medium" | "large" | undefined;
-	variant: "none" | "flat" | "outline" | undefined;
+	variant: "chevron" | "slash" | "dot" | "arrow" | "stepped" | undefined;
 	color: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | undefined;
 }) => {
 	return item.href ? (
@@ -41,9 +41,9 @@ const BreadcrumbItem = ({
 };
 
 export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
-	({ items, size, variant, separator, color, maxItems = 0, ...props }, ref) => {
+	({ items, size, variant, color, maxItems = 0, ...props }, ref) => {
 		const [collapsed, setCollapsed] = useState(maxItems !== 0);
-		const IconSeparator = NOTIFICATION_ICONS[separator as keyof typeof NOTIFICATION_ICONS];
+		const IconSeparator = NOTIFICATION_ICONS[variant as keyof typeof NOTIFICATION_ICONS];
 		const shouldCollapse = items!.length > maxItems + 1;
 		const language = document.documentElement.lang;
 

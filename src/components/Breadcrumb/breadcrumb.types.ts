@@ -8,14 +8,9 @@ export interface BreadcrumbProps {
 	 */
 	size?: "tiny" | "small" | "medium" | "large" | undefined;
 	/**
-	 * Variant of the breadcrumb
+	 * Variant of the breadcrumb separator
 	 */
-	variant?: "outline" | "flat" | "none" | undefined;
-
-	/**
-	 * Separator of the breadcrumb
-	 */
-	separator?: "chevron" | "slash" | "dot" | "arrow" | undefined;
+	variant?: "chevron" | "slash" | "dot" | "arrow" | "stepped" | undefined;
 	/**
 	 * Color of the breadcrumb
 	 */
