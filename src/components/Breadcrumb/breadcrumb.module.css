@@ -262,6 +262,7 @@
 		}
 
 		&.breadcrumb-item-large {
+			padding: var(--padding-none) var(--padding-lg);
 			height: var(--badge-size-3xl);
 		}
 	}
