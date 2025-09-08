@@ -2,16 +2,7 @@ import { Divider } from "../../main";
 import styles from "./Tokens.module.css";
 
 const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
-const colorOpacity = [
-	"light",
-	"outline",
-	"lightened",
-	"solid",
-	"hover",
-	"disabled",
-	"text",
-	"darkened",
-];
+const colorOpacity = ["soft", "subtle", "base", "hover", "disabled", "text", "light", "dark"];
 
 export const Tokens = () => {
 	return (
@@ -27,16 +18,13 @@ export const Tokens = () => {
 							<div className={styles["tokens-color-key"]}>{value}</div>
 							{colorOpacity.map((opacity) => (
 								<div key={opacity} className={styles["tokens-color-variant"]}>
+									<div className={styles["tokens-color-opacity-key"]}>{opacity}</div>
 									<div
 										className={styles["tokens-color-opacity-value"]}
 										style={{
-											backgroundColor:
-												opacity === "solid"
-													? `var(--${value}-color)`
-													: `var(--${value}-${opacity}-color)`,
+											backgroundColor: `var(--${value}-${opacity}-color)`,
 										}}
 									></div>
-									<div className={styles["tokens-color-opacity-key"]}>{opacity}</div>
 								</div>
 							))}
 						</div>
