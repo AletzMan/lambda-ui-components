@@ -11,7 +11,7 @@ const meta: Meta<typeof ColorPicker> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["solid", "flat", "outline"],
+			options: ["solid", "soft", "outline"],
 			description: "Visual style of the input",
 			type: "string",
 		},

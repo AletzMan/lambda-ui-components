@@ -11,7 +11,7 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 		},
 		variant: {
 			solid: styles["lambda-colorpicker-solid"],
-			flat: styles["lambda-colorpicker-flat"],
+			soft: styles["lambda-colorpicker-soft"],
 			outline: styles["lambda-colorpicker-outline"],
 		},
 		radius: {

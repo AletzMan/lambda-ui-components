@@ -80,7 +80,7 @@ const Template = (args: BadgeProps) => {
 			subtitle={getSubtitle(args)}
 			color={args.color?.toString() || ""}
 		>
-			<Button size="medium" icon={<Bell />} variant="ghost">
+			<Button size="medium" icon={<Bell />} variant="soft">
 				<Badge {...args} />
 			</Button>
 		</ContainerComponent>

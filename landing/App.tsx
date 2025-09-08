@@ -96,7 +96,7 @@ function App() {
 		"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined
 	>("small");
 	const [variantButtons, setVariantButtons] = useState<
-		"outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
+		"outline" | "classic" | "solid" | "text" | "soft" | "dashed" | undefined
 	>("solid");
 	const [carouselPaginationType, setCarouselPaginationType] =
 		useState<CarouselPaginationType>("dots");
@@ -119,8 +119,8 @@ function App() {
 		"medium" | "small" | "large" | "none" | "pill" | "circle" | undefined
 	>("small");
 	const [variantLink, setVariantLink] = useState<
-		"outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
-	>("ghost");
+		"outline" | "classic" | "solid" | "text" | "soft" | "dashed" | undefined
+	>("soft");
 	const [typeLink, setTypeLink] = useState<"default" | "button" | undefined>("default");
 	const [sizeCheckbox, setSizeCheckbox] = useState<
 		"medium" | "small" | "large" | "tiny" | undefined
@@ -129,7 +129,7 @@ function App() {
 	const [radiusCheckbox, setRadiusCheckbox] = useState<
 		"medium" | "small" | "none" | "circle" | undefined
 	>("small");
-	const [variantCheckbox, setVariantCheckbox] = useState<"outline" | "flat" | "solid" | undefined>(
+	const [variantCheckbox, setVariantCheckbox] = useState<"outline" | "soft" | "solid" | undefined>(
 		"solid"
 	);
 	const [sizeSwitch, setSizeSwitch] = useState<"medium" | "small" | "large" | "tiny" | undefined>(
@@ -139,7 +139,7 @@ function App() {
 	const [shapeSwitch, setShapeSwitch] = useState<"square" | "soft" | "rounded" | undefined>(
 		"rounded"
 	);
-	const [variantSwitch, setVariantSwitch] = useState<"outline" | "flat" | "solid" | undefined>(
+	const [variantSwitch, setVariantSwitch] = useState<"outline" | "soft" | "solid" | undefined>(
 		"solid"
 	);
 	const [sizeInput, setSizeInput] = useState<"medium" | "small" | "large" | "tiny" | undefined>(
@@ -149,7 +149,7 @@ function App() {
 	const [radiusInput, setRadiusInput] = useState<
 		"medium" | "small" | "large" | "none" | "pill" | undefined
 	>("small");
-	const [variantInput, setVariantInput] = useState<"outline" | "flat" | "underline" | undefined>(
+	const [variantInput, setVariantInput] = useState<"outline" | "soft" | "underline" | undefined>(
 		"outline"
 	);
 	const [validInput, setValidInput] = useState(true);
@@ -171,7 +171,7 @@ function App() {
 	const [orientationRadio, setOrientationRadio] = useState<"horizontal" | "vertical" | undefined>(
 		"horizontal"
 	);
-	const [variantRadio, setVariantRadio] = useState<"outline" | "flat" | "solid" | undefined>(
+	const [variantRadio, setVariantRadio] = useState<"outline" | "soft" | "solid" | undefined>(
 		"solid"
 	);
 	const [colorRadio, setColorRadio] = useState<
@@ -192,7 +192,7 @@ function App() {
 	const [validSelect, setValidSelect] = useState(true);
 	const [errorMessageSelect, setErrorMessageSelect] = useState("This field has an error.");
 	const [notificationType, setNotificationType] = useState<
-		"themed" | "solid" | "darkened" | "lightened" | "flat" | undefined
+		"themed" | "solid" | "darkened" | "lightened" | "soft" | undefined
 	>("themed");
 	const [notificationPosition, setNotificationPosition] = useState<
 		| "top-left"
@@ -207,7 +207,7 @@ function App() {
 	const [hasButtonsConfirmNotification, setHasButtonsConfirmNotification] = useState(false);
 	const [hasButtonsCancelNotification, setHasButtonsCancelNotification] = useState(false);
 	const [sizeAlert, setSizeAlert] = useState<AlertSize>("small");
-	const [variantAlert, setVariantAlert] = useState<AlertVariant>("flat");
+	const [variantAlert, setVariantAlert] = useState<AlertVariant>("soft");
 	const [radiusCard, setRadiusCard] = useState<"medium" | "small" | "large" | "none" | undefined>(
 		"small"
 	);
@@ -249,7 +249,7 @@ function App() {
 		"medium" | "small" | "large" | "tiny" | undefined
 	>("medium");
 	const [variantPagination, setVariantPagination] = useState<
-		"outline" | "flat" | "solid" | "bordered" | undefined
+		"outline" | "soft" | "solid" | "bordered" | undefined
 	>("solid");
 	const [radiusPagination, setRadiusPagination] = useState<
 		"medium" | "small" | "large" | "none" | "pill" | undefined
@@ -294,7 +294,7 @@ function App() {
 		"medium" | "small" | "large" | "tiny" | undefined
 	>("small");
 	const [variantBreadcrumb, setVariantBreadcrumb] = useState<
-		"outline" | "flat" | "none" | undefined
+		"outline" | "soft" | "none" | undefined
 	>("none");
 	const [separatorBreadcrumb, setSeparatorBreadcrumb] = useState<
 		"chevron" | "slash" | "dot" | "arrow" | undefined
@@ -308,8 +308,8 @@ function App() {
 		"small"
 	);
 	const [variantBadgeButton, setVariantBadgeButton] = useState<
-		"ghost" | "outline" | "solid" | "dashed" | "classic" | "text" | undefined
-	>("ghost");
+		"soft" | "outline" | "solid" | "dashed" | "classic" | "text" | undefined
+	>("soft");
 	const [radiusBadge, setRadiusBadge] = useState<
 		"none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
 	>("small");
@@ -341,8 +341,8 @@ function App() {
 		"small"
 	);
 	const [variantTag, setVariantTag] = useState<
-		"flat" | "outline" | "solid" | "dashed" | "subtle" | undefined
-	>("flat");
+		"soft" | "outline" | "solid" | "dashed" | "subtle" | undefined
+	>("soft");
 	const [radiusTag, setRadiusTag] = useState<
 		"none" | "tiny" | "small" | "medium" | "large" | "full" | undefined
 	>("small");
@@ -352,7 +352,7 @@ function App() {
 		"medium"
 	);
 	const [variantTable, setVariantTable] = useState<
-		"flat" | "underlined" | "bordered" | "striped" | undefined
+		"soft" | "underlined" | "bordered" | "striped" | undefined
 	>("striped");
 	const [maxRowsTable, setMaxRowsTable] = useState<number>(10);
 	const [paginationTable, setPaginationTable] = useState<boolean>(false);
@@ -553,7 +553,7 @@ function App() {
 						size="small"
 						onChange={(value) => setVariantAlert(value as AlertVariant)}
 						options={[
-							{ label: "Flat", value: "flat" },
+							{ label: "Soft", value: "soft" },
 							{ label: "Outline", value: "outline" },
 							{ label: "Solid", value: "solid" },
 						]}
@@ -640,12 +640,12 @@ function App() {
 						size="small"
 						onChange={(value) =>
 							setVariantBadgeButton(
-								value as "outline" | "ghost" | "solid" | "dashed" | "classic" | "text" | undefined
+								value as "outline" | "soft" | "solid" | "dashed" | "classic" | "text" | undefined
 							)
 						}
 						options={[
 							{ label: "Outline", value: "outline" },
-							{ label: "Ghost", value: "ghost" },
+							{ label: "Ghost", value: "soft" },
 							{ label: "Solid", value: "solid" },
 							{ label: "Dashed", value: "dashed" },
 							{ label: "Classic", value: "classic" },
@@ -775,11 +775,11 @@ function App() {
 						value={variantBreadcrumb}
 						size="small"
 						onChange={(value) =>
-							setVariantBreadcrumb(value as "outline" | "flat" | "none" | undefined)
+							setVariantBreadcrumb(value as "outline" | "soft" | "none" | undefined)
 						}
 						options={[
 							{ label: "Outline", value: "outline" },
-							{ label: "Flat", value: "flat" },
+							{ label: "Soft", value: "soft" },
 							{ label: "None", value: "none" },
 						]}
 					/>
@@ -881,7 +881,7 @@ function App() {
 						size="small"
 						onChange={(e) =>
 							setVariantButtons(
-								e as "outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
+								e as "outline" | "classic" | "solid" | "text" | "soft" | "dashed" | undefined
 							)
 						}
 						options={[
@@ -889,7 +889,7 @@ function App() {
 							{ label: "Classic", value: "classic" },
 							{ label: "Solid", value: "solid" },
 							{ label: "Text", value: "text" },
-							{ label: "Ghost", value: "ghost" },
+							{ label: "Ghost", value: "soft" },
 							{ label: "Dashed", value: "dashed" },
 						]}
 					/>
@@ -1167,11 +1167,11 @@ function App() {
 						className={styles.control_size}
 						value={variantCheckbox}
 						onChange={(e) =>
-							setVariantCheckbox(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)
+							setVariantCheckbox(e.currentTarget.value as "outline" | "soft" | "solid" | undefined)
 						}
 					>
 						<option value="outline">Outline</option>
-						<option value="flat">Flat</option>
+						<option value="soft">Soft</option>
 						<option value="solid">Solid</option>
 					</select>
 				</div>
@@ -1696,11 +1696,11 @@ function App() {
 						className={styles.control_size}
 						value={variantInput}
 						onChange={(e) =>
-							setVariantInput(e.currentTarget.value as "outline" | "flat" | "underline" | undefined)
+							setVariantInput(e.currentTarget.value as "outline" | "soft" | "underline" | undefined)
 						}
 					>
 						<option value="outline">Outline</option>
-						<option value="flat">Flat</option>
+						<option value="soft">Soft</option>
 						<option value="underline">Underline</option>
 					</select>
 					<select
@@ -1837,7 +1837,7 @@ function App() {
 							<Input type="search" placeholder="Search by product..." />
 						</InputGroup>
 						<InputGroup
-							suffixElement={<Button label="Buscar" variant="ghost" color="primary" />}
+							suffixElement={<Button label="Buscar" variant="soft" color="primary" />}
 							variant={variantInput}
 							size={sizeInput}
 							radius={radiusInput}
@@ -1866,7 +1866,7 @@ function App() {
 							<Input type="text" label="Configuracion" floatingLabel />
 						</InputGroup>
 						<InputGroup
-							prefixElement={<Button variant="ghost" color="secondary" icon={<Settings2 />} />}
+							prefixElement={<Button variant="soft" color="secondary" icon={<Settings2 />} />}
 							radius={radiusInput}
 							size={sizeInput}
 							disabled={disabledInput}
@@ -2025,13 +2025,13 @@ function App() {
 								{ label: "Solid", value: "solid" },
 								{ label: "Outline", value: "outline" },
 								{ label: "Dashed", value: "dashed" },
-								{ label: "Ghost", value: "ghost" },
+								{ label: "Ghost", value: "soft" },
 								{ label: "Text", value: "text" },
 							]}
 							value={variantLink}
 							onChange={(e) =>
 								setVariantLink(
-									e as "outline" | "classic" | "solid" | "text" | "ghost" | "dashed" | undefined
+									e as "outline" | "classic" | "solid" | "text" | "soft" | "dashed" | undefined
 								)
 							}
 							size="small"
@@ -2096,7 +2096,7 @@ function App() {
 								e.currentTarget.value as
 									| "themed"
 									| "solid"
-									| "flat"
+									| "soft"
 									| "lightened"
 									| "darkened"
 									| undefined
@@ -2105,7 +2105,7 @@ function App() {
 					>
 						<option value="themed">Themed</option>
 						<option value="solid">Solid</option>
-						<option value="flat">Flat</option>
+						<option value="soft">Soft</option>
 						<option value="darkened">Darkened</option>
 						<option value="lightened">Lightened</option>
 					</select>
@@ -2317,12 +2317,12 @@ function App() {
 						className={styles.select_size}
 						size="small"
 						onChange={(value) =>
-							setVariantPagination(value as "outline" | "flat" | "solid" | "bordered" | undefined)
+							setVariantPagination(value as "outline" | "soft" | "solid" | "bordered" | undefined)
 						}
 						options={[
 							{ label: "Solid", value: "solid" },
 							{ label: "Outline", value: "outline" },
-							{ label: "Flat", value: "flat" },
+							{ label: "Soft", value: "soft" },
 							{ label: "Bordered", value: "bordered" },
 						]}
 					/>
@@ -2489,10 +2489,10 @@ function App() {
 						value={variantRadio}
 						className={styles.select_size}
 						size="small"
-						onChange={(value) => setVariantRadio(value as "outline" | "flat" | "solid" | undefined)}
+						onChange={(value) => setVariantRadio(value as "outline" | "soft" | "solid" | undefined)}
 						options={[
 							{ label: "Outline", value: "outline" },
-							{ label: "Flat", value: "flat" },
+							{ label: "Soft", value: "soft" },
 							{ label: "Solid", value: "solid" },
 						]}
 					/>
@@ -2887,8 +2887,8 @@ function App() {
 							errorMessage={errorMessageSelect}
 						/>
 						<Select
-							label="Flat"
-							variant="flat"
+							label="Soft"
+							variant="soft"
 							options={namesSelect}
 							size={sizeSelect}
 							radius={radiusSelect}
@@ -2949,11 +2949,11 @@ function App() {
 						className={styles.control_size}
 						value={variantSwitch}
 						onChange={(e) =>
-							setVariantSwitch(e.currentTarget.value as "outline" | "flat" | "solid" | undefined)
+							setVariantSwitch(e.currentTarget.value as "outline" | "soft" | "solid" | undefined)
 						}
 					>
 						<option value="outline">Outline</option>
-						<option value="flat">Flat</option>
+						<option value="soft">Soft</option>
 						<option value="solid">Solid</option>
 					</select>
 				</div>
@@ -3022,7 +3022,7 @@ function App() {
 						onChange={(value) => setVariantTab(value as TabVariant)}
 						options={[
 							{ label: "Underline", value: "underline" },
-							{ label: "Flat", value: "flat" },
+							{ label: "Soft", value: "soft" },
 							{ label: "Box", value: "box" },
 							{ label: "Border", value: "border" },
 						]}
@@ -3112,10 +3112,10 @@ function App() {
 						value={variantTable}
 						size="small"
 						onChange={(value) =>
-							setVariantTable(value as "flat" | "underlined" | "bordered" | "striped" | undefined)
+							setVariantTable(value as "soft" | "underlined" | "bordered" | "striped" | undefined)
 						}
 						options={[
-							{ label: "Flat", value: "flat" },
+							{ label: "Soft", value: "soft" },
 							{ label: "Underlined", value: "underlined" },
 							{ label: "Bordered", value: "bordered" },
 							{ label: "Striped", value: "striped" },
@@ -3164,10 +3164,10 @@ function App() {
 								<Table.Cell>
 									<div style={{ display: "flex", gap: "0.5rem" }}>
 										<Tooltip content="Editar" size="tiny" color="info">
-											<Button variant="ghost" color="info" size="tiny" icon={<EditIcon />} />
+											<Button variant="soft" color="info" size="tiny" icon={<EditIcon />} />
 										</Tooltip>
 										<Tooltip content="Eliminar" size="tiny" color="danger">
-											<Button variant="ghost" color="danger" size="tiny" icon={<TrashIcon />} />
+											<Button variant="soft" color="danger" size="tiny" icon={<TrashIcon />} />
 										</Tooltip>
 									</div>
 								</Table.Cell>
@@ -3233,11 +3233,11 @@ function App() {
 						value={variantTag}
 						size="small"
 						onChange={(value) =>
-							setVariantTag(value as "outline" | "flat" | "solid" | "dashed" | undefined)
+							setVariantTag(value as "outline" | "soft" | "solid" | "dashed" | undefined)
 						}
 						options={[
 							{ label: "Outline", value: "outline" },
-							{ label: "Flat", value: "flat" },
+							{ label: "Soft", value: "soft" },
 							{ label: "Solid", value: "solid" },
 							{ label: "Dashed", value: "dashed" },
 							{ label: "Subtle", value: "subtle" },

@@ -121,7 +121,7 @@
 			& .breadcrumb-item.breadcrumb-item-primary {
 				color: var(--primary-text-color);
 
-				&:is(.breadcrumb-item-flat) {
+				&:is(.breadcrumb-item-soft) {
 					background-color: var(--primary-light-color);
 				}
 
@@ -133,7 +133,7 @@
 			& .breadcrumb-item.breadcrumb-item-secondary {
 				color: var(--secondary-text-color);
 
-				&:is(.breadcrumb-item-flat) {
+				&:is(.breadcrumb-item-soft) {
 					background-color: var(--secondary-light-color);
 				}
 
@@ -145,7 +145,7 @@
 			& .breadcrumb-item.breadcrumb-item-success {
 				color: var(--success-text-color);
 
-				&:is(.breadcrumb-item-flat) {
+				&:is(.breadcrumb-item-soft) {
 					background-color: var(--success-light-color);
 				}
 
@@ -157,7 +157,7 @@
 			& .breadcrumb-item.breadcrumb-item-danger {
 				color: var(--danger-text-color);
 
-				&:is(.breadcrumb-item-flat) {
+				&:is(.breadcrumb-item-soft) {
 					background-color: var(--danger-light-color);
 				}
 
@@ -169,7 +169,7 @@
 			& .breadcrumb-item.breadcrumb-item-warning {
 				color: var(--warning-text-color);
 
-				&:is(.breadcrumb-item-flat) {
+				&:is(.breadcrumb-item-soft) {
 					background-color: var(--warning-light-color);
 				}
 
@@ -181,7 +181,7 @@
 			& .breadcrumb-item.breadcrumb-item-info {
 				color: var(--info-text-color);
 
-				&:is(.breadcrumb-item-flat) {
+				&:is(.breadcrumb-item-soft) {
 					background-color: var(--info-light-color);
 				}
 

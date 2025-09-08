@@ -216,7 +216,7 @@ input[type="number"] {
 	height: 100%;
 	overflow: hidden;
 
-	&.lambda-number-handler-flat {
+	&.lambda-number-handler-soft {
 		border-left: 1px solid transparent;
 	}
 
@@ -286,7 +286,7 @@ input[type="number"] {
 	}
 }
 
-.lambda-number-flat {
+.lambda-number-soft {
 	background-color: var(--surface-a);
 	border: none;
 
@@ -430,7 +430,7 @@ input[type="number"] {
 		border-right: 1px solid var(--surface-d);
 		width: var(--height-md);
 
-		&:is(.lambda-number-currency-flat) {
+		&:is(.lambda-number-currency-soft) {
 			border: none;
 		}
 	}

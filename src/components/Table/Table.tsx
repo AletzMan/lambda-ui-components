@@ -33,7 +33,7 @@ interface SortConfig {
 
 interface TableProperties {
 	size?: "tiny" | "small" | "medium" | "large";
-	variant?: "flat" | "underlined" | "bordered" | "striped";
+	variant?: "soft" | "underlined" | "bordered" | "striped";
 	sortConfig: SortConfig;
 	handleSort: (key: string, type: string) => void;
 	pagination?: {
@@ -55,7 +55,7 @@ const useTableContext = () => {
 // Componente Raíz
 const TableRoot = <T,>({
 	size = "medium",
-	variant = "flat",
+	variant = "soft",
 	children,
 	data,
 	renderRow,
@@ -71,7 +71,7 @@ const TableRoot = <T,>({
 	};
 } & HTMLAttributes<HTMLTableElement> & {
 		size?: "tiny" | "small" | "medium" | "large";
-		variant?: "flat" | "underlined" | "bordered" | "striped";
+		variant?: "soft" | "underlined" | "bordered" | "striped";
 	}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
 	const [maxRows, setMaxRows] = useState(10);
@@ -177,15 +177,15 @@ const TableRoot = <T,>({
 							onPageChange={handlePageChange}
 							size="small"
 							variant={
-								variant === "flat"
-									? "flat"
+								variant === "soft"
+									? "soft"
 									: variant === "underlined"
 									? "solid"
 									: variant === "bordered"
 									? "bordered"
 									: variant === "striped"
 									? "bordered"
-									: "flat"
+									: "soft"
 							}
 						/>
 					</div>

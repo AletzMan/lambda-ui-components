@@ -94,7 +94,7 @@
 	}
 }
 
-.lambda-pagination-button-flat {
+.lambda-pagination-button-soft {
 	border: none;
 	background-color: var(--primary-light-color);
 	color: var(--primary-text-color);
@@ -171,7 +171,7 @@
 		color: var(--primary-text-color);
 	}
 
-	&.lambda-pagination-button-flat {
+	&.lambda-pagination-button-soft {
 		background-color: var(--primary-outline-color);
 		color: var(--primary-text-color);
 	}
@@ -209,7 +209,7 @@
 	color: var(--primary-text-color);
 }
 
-.lambda-pagination-button-flat-active {
+.lambda-pagination-button-soft-active {
 	border: none;
 	background-color: var(--primary-color);
 	color: var(--white-color);

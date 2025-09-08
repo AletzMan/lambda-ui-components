@@ -37,7 +37,7 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
 		},
 		variant: {
 			outline: styles["lambda-pagination-button-outline"],
-			flat: styles["lambda-pagination-button-flat"],
+			soft: styles["lambda-pagination-button-soft"],
 			solid: styles["lambda-pagination-button-solid"],
 			bordered: styles["lambda-pagination-button-bordered"],
 		},
@@ -67,7 +67,7 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
 			isActive: true,
 			className: styles["lambda-pagination-button-outline-active"],
 		},
-		{ variant: "flat", isActive: true, className: styles["lambda-pagination-button-flat-active"] },
+		{ variant: "soft", isActive: true, className: styles["lambda-pagination-button-soft-active"] },
 		{
 			variant: "solid",
 			isActive: true,

@@ -91,7 +91,7 @@
 	border-color: var(--surface-d);
 }
 
-.lambda-checkbox-wrapper-flat {
+.lambda-checkbox-wrapper-soft {
 	&.lambda-checkbox-wrapper-primary {
 		background-color: var(--primary-light-color);
 	}
@@ -164,7 +164,7 @@
 	}
 }
 
-.lambda-checkbox-wrapper-checked:is(.lambda-checkbox-wrapper-flat) {
+.lambda-checkbox-wrapper-checked:is(.lambda-checkbox-wrapper-soft) {
 	box-sizing: border-box;
 
 	&.lambda-checkbox-wrapper-primary {

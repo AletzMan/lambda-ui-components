@@ -546,7 +546,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 						>
 							<Button
 								type="button"
-								variant="ghost"
+								variant="soft"
 								color="secondary"
 								size="tiny"
 								onClick={handleCopyClick}
@@ -611,7 +611,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 							{isSupported() && (
 								<Tooltip content={t("color-picker.eye-dropper")} size="tiny">
 									<Button
-										variant="ghost"
+										variant="soft"
 										color="secondary"
 										size="tiny"
 										icon={<Pipette />}
@@ -672,7 +672,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 									/>
 									<Tooltip content={t("color-picker.format")} size="tiny">
 										<Button
-											variant="ghost"
+											variant="soft"
 											color="secondary"
 											size="tiny"
 											label={format.toUpperCase()}
@@ -715,7 +715,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 									/>
 									<Tooltip content={t("color-picker.format")} size="tiny">
 										<Button
-											variant="ghost"
+											variant="soft"
 											color="secondary"
 											size="tiny"
 											label={format.toUpperCase()}

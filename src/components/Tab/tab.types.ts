@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 
-export type TabVariant = "underline" | "flat" | "box" | "border";
+export type TabVariant = "underline" | "soft" | "box" | "border";
 export type TabSize = "tiny" | "small" | "medium" | "large";
 export type TabColor = "primary" | "secondary" | "success" | "danger" | "warning" | "info";
 export type TabRadius = "none" | "tiny" | "small" | "medium" | "large" | "full";

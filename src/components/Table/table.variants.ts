@@ -4,28 +4,28 @@ import styles from "./table.module.css";
 export const containerVariants = cva(styles["lambda-table-container"], {
 	variants: {
 		variant: {
-			flat: styles["lambda-table-container-flat"],
+			soft: styles["lambda-table-container-soft"],
 			underlined: styles["lambda-table-container-underlined"],
 			striped: styles["lambda-table-container-striped"],
 			bordered: styles["lambda-table-container-bordered"],
 		},
 	},
 	defaultVariants: {
-		variant: "flat",
+		variant: "soft",
 	},
 });
 
 export const containerTableVariants = cva(styles["lambda-table-container-table"], {
 	variants: {
 		variant: {
-			flat: styles["lambda-table-container-table-flat"],
+			soft: styles["lambda-table-container-table-soft"],
 			underlined: styles["lambda-table-container-table-underlined"],
 			striped: styles["lambda-table-container-table-striped"],
 			bordered: styles["lambda-table-container-table-bordered"],
 		},
 	},
 	defaultVariants: {
-		variant: "flat",
+		variant: "soft",
 	},
 });
 
@@ -38,7 +38,7 @@ export const tableVariants = cva(styles["lambda-table"], {
 			large: styles["lambda-table-large"],
 		},
 		variant: {
-			flat: styles["lambda-table-flat"],
+			soft: styles["lambda-table-soft"],
 			underlined: styles["lambda-table-underlined"],
 			striped: styles["lambda-table-striped"],
 			bordered: styles["lambda-table-bordered"],
@@ -46,7 +46,7 @@ export const tableVariants = cva(styles["lambda-table"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "flat",
+		variant: "soft",
 	},
 });
 
@@ -59,7 +59,7 @@ export const headerVariants = cva(styles["lambda-table-header"], {
 			large: styles["lambda-table-header-large"],
 		},
 		variant: {
-			flat: styles["lambda-table-header-flat"],
+			soft: styles["lambda-table-header-soft"],
 			underlined: styles["lambda-table-header-underlined"],
 			striped: styles["lambda-table-header-striped"],
 			bordered: styles["lambda-table-header-bordered"],
@@ -67,7 +67,7 @@ export const headerVariants = cva(styles["lambda-table-header"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "flat",
+		variant: "soft",
 	},
 });
 
@@ -80,7 +80,7 @@ export const headerCellVariants = cva(styles["lambda-table-header-cell"], {
 			large: styles["lambda-table-header-cell-large"],
 		},
 		variant: {
-			flat: styles["lambda-table-header-cell-flat"],
+			soft: styles["lambda-table-header-cell-soft"],
 			underlined: styles["lambda-table-header-cell-underlined"],
 			striped: styles["lambda-table-header-cell-striped"],
 			bordered: styles["lambda-table-header-cell-bordered"],
@@ -88,7 +88,7 @@ export const headerCellVariants = cva(styles["lambda-table-header-cell"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "flat",
+		variant: "soft",
 	},
 });
 
@@ -101,7 +101,7 @@ export const bodyVariants = cva(styles["lambda-table-body"], {
 			large: styles["lambda-table-body-large"],
 		},
 		variant: {
-			flat: styles["lambda-table-body-flat"],
+			soft: styles["lambda-table-body-soft"],
 			underlined: styles["lambda-table-body-underlined"],
 			striped: styles["lambda-table-body-striped"],
 			bordered: styles["lambda-table-body-bordered"],
@@ -109,7 +109,7 @@ export const bodyVariants = cva(styles["lambda-table-body"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "flat",
+		variant: "soft",
 	},
 });
 
@@ -122,7 +122,7 @@ export const rowVariants = cva(styles["lambda-table-row"], {
 			large: styles["lambda-table-row-large"],
 		},
 		variant: {
-			flat: styles["lambda-table-row-flat"],
+			soft: styles["lambda-table-row-soft"],
 			underlined: styles["lambda-table-row-underlined"],
 			striped: styles["lambda-table-row-striped"],
 			bordered: styles["lambda-table-row-bordered"],
@@ -130,7 +130,7 @@ export const rowVariants = cva(styles["lambda-table-row"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "flat",
+		variant: "soft",
 	},
 });
 
@@ -143,7 +143,7 @@ export const cellVariants = cva(styles["lambda-table-cell"], {
 			large: styles["lambda-table-cell-large"],
 		},
 		variant: {
-			flat: styles["lambda-table-cell-flat"],
+			soft: styles["lambda-table-cell-soft"],
 			underlined: styles["lambda-table-cell-underlined"],
 			striped: styles["lambda-table-cell-striped"],
 			bordered: styles["lambda-table-cell-bordered"],
@@ -156,7 +156,7 @@ export const cellVariants = cva(styles["lambda-table-cell"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "flat",
+		variant: "soft",
 	},
 });
 

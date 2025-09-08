@@ -8,7 +8,7 @@
 		gap: var(--padding-md);
 	}
 
-	&:is(.tab-wrapper-flat) {
+	&:is(.tab-wrapper-soft) {
 		gap: var(--padding-md);
 	}
 
@@ -34,7 +34,7 @@
 		border-bottom-right-radius: var(--border-radius-none) !important;
 	}
 
-	&:is(.tab-container-flat) {
+	&:is(.tab-container-soft) {
 		background-color: transparent;
 		gap: var(--gap-md);
 	}
@@ -109,7 +109,7 @@
 		}
 	}
 
-	&:is(.tab-label-flat) {
+	&:is(.tab-label-soft) {
 		background-color: transparent;
 
 		&:not(.tab-label-selected) {
@@ -261,7 +261,7 @@
 		}
 	}
 
-	&:is(.tab-current-flat) {
+	&:is(.tab-current-soft) {
 		/*background-color: var(--surface-c);*/
 		height: calc(100%);
 
@@ -357,7 +357,7 @@
 		padding: var(--padding-md);
 	}
 
-	&:is(.tab-content-flat) {
+	&:is(.tab-content-soft) {
 		padding: var(--padding-md);
 	}
 

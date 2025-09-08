@@ -183,7 +183,7 @@
 	}
 }
 
-.lambda-tag-flat {
+.lambda-tag-soft {
 	color: var(--primary-text-color);
 
 	&.lambda-tag-primary {

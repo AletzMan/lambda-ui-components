@@ -1,5 +1,5 @@
 .lambda-input-group-outline,
-.lambda-input-group-flat,
+.lambda-input-group-soft,
 .lambda-input-group-underline {
 	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid var(--surface-d);

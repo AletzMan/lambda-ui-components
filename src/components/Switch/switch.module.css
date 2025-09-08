@@ -10,7 +10,7 @@
 	font-family: var(--font-family);
 
 	&:hover:not(.lambda-switch-wrapper-disabled) {
-		.lambda-switch-background-flat {
+		.lambda-switch-background-soft {
 			box-shadow: 0 0 1px 3px var(--secondary-light-color);
 
 			&.lambda-switch-background-primary {
@@ -281,7 +281,7 @@
 	}
 }
 
-.lambda-switch-background-flat {
+.lambda-switch-background-soft {
 	border: var(--border-width-xs) solid transparent;
 	background-color: var(--surface-c);
 

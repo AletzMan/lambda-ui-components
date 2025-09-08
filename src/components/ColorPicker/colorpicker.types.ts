@@ -26,7 +26,7 @@ export interface ColorPickerProps
 	/**
 	 * Define el estilo del color picker.
 	 */
-	variant?: "solid" | "flat" | "outline";
+	variant?: "solid" | "soft" | "outline";
 	/**
 	 * Define el radio del color picker.
 	 */

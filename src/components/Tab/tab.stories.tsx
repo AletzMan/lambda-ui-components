@@ -11,7 +11,7 @@ const meta: Meta<typeof Tab> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["underline", "flat", "box", "border"],
+			options: ["underline", "soft", "box", "border"],
 			description: "Visual style of the input",
 			type: "string",
 		},
@@ -57,14 +57,14 @@ export const Underline: Story = {
 	},
 };
 
-export const Flat: Story = {
+export const Soft: Story = {
 	args: {
 		items: [
 			{ id: "1", label: "Products", content: "Products content" },
 			{ id: "2", label: "Orders", content: "Orders content" },
 			{ id: "3", label: "Customers", content: "Customers content" },
 		],
-		variant: "flat",
+		variant: "soft",
 		size: "medium",
 		color: "secondary",
 		radius: "small",

@@ -17,7 +17,7 @@ const meta: Meta<typeof Table> = {
 		},
 		variant: {
 			control: "select",
-			options: ["flat", "underlined", "striped", "bordered"],
+			options: ["soft", "underlined", "striped", "bordered"],
 		},
 	},
 	decorators: [
@@ -141,7 +141,7 @@ const TableComponent = (args: Partial<TableProps>) => {
 		<div style={{ width: "90svw", overflowX: "hidden" }}>
 			<Table
 				size={args.size || "medium"}
-				variant={args.variant || "flat"}
+				variant={args.variant || "soft"}
 				pagination={{
 					page: 1,
 					totalPages: Math.ceil(USERS_DATA.length / 3),
@@ -195,10 +195,10 @@ export const Bordered: Story = {
 	},
 };
 
-export const Flat: Story = {
+export const Soft: Story = {
 	render: (args) => <TableComponent {...args} />,
 	args: {
-		variant: "flat",
+		variant: "soft",
 		size: "medium",
 	},
 };

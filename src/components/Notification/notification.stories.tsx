@@ -24,7 +24,7 @@ const meta: Meta<typeof Notification> = {
 		},
 		variant: {
 			control: "select",
-			options: ["themed", "flat", "solid", "darkened", "lightened"],
+			options: ["themed", "soft", "solid", "darkened", "lightened"],
 			description: "Style of the notification",
 			type: "string",
 		},
@@ -157,7 +157,7 @@ export const Default: StoryObj<typeof Notification> = {
 		notificationType: "secondary",
 		message: "You have a new notification.",
 		placement: "top-center",
-		variant: "flat",
+		variant: "soft",
 		duration: 7000,
 	},
 };
@@ -167,7 +167,7 @@ export const Success: StoryObj<typeof Notification> = {
 		notificationType: "success",
 		message: "Success! Everything completed smoothly",
 		placement: "top-center",
-		variant: "flat",
+		variant: "soft",
 		duration: 7000,
 	},
 };
@@ -177,7 +177,7 @@ export const Error: StoryObj<typeof Notification> = {
 		notificationType: "danger",
 		message: "Oops! Something went wrong. Please try again",
 		placement: "top-center",
-		variant: "flat",
+		variant: "soft",
 		duration: 7000,
 	},
 };
@@ -187,7 +187,7 @@ export const Info: StoryObj<typeof Notification> = {
 		notificationType: "info",
 		message: "Here's some additional context about this action.",
 		placement: "top-center",
-		variant: "flat",
+		variant: "soft",
 		duration: 7000,
 	},
 };
@@ -197,7 +197,7 @@ export const Warning: StoryObj<typeof Notification> = {
 		notificationType: "warning",
 		message: "Something didn't go as expected. Check the details.",
 		placement: "top-center",
-		variant: "flat",
+		variant: "soft",
 		duration: 7000,
 	},
 };

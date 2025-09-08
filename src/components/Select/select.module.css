@@ -119,7 +119,7 @@
 		}
 	}
 
-	&.select-btn-flat:not(.select-btn-disabled) {
+	&.select-btn-soft:not(.select-btn-disabled) {
 		border: none;
 		background-color: var(--secondary-light-color);
 
@@ -344,7 +344,7 @@
 		border: var(--border-width-xs) solid var(--surface-d);
 	}
 
-	&.select-dropdown-flat {
+	&.select-dropdown-soft {
 		border: var(--border-width-xs) solid transparent;
 	}
 

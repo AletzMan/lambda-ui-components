@@ -59,7 +59,7 @@
 }
 
 .notification-footer-themed,
-.notification-footer-flat {
+.notification-footer-soft {
 	&.notification-footer-secondary {
 		.notification-footer-button-confirm {
 			background-color: var(--secondary-color);
@@ -890,7 +890,7 @@
 }
 
 body[data-theme="dark"] {
-	.notification-flat {
+	.notification-soft {
 		.notification-message {
 			text-shadow: 0 0px 1px #00000070;
 			filter: brightness(200%);
@@ -899,7 +899,7 @@ body[data-theme="dark"] {
 }
 
 body[data-theme="light"] {
-	.notification-flat {
+	.notification-soft {
 		.notification-message {
 			text-shadow: 0 0px 1px #00000070;
 			filter: brightness(80%) contrast(150%);
@@ -907,7 +907,7 @@ body[data-theme="light"] {
 	}
 }
 
-.notification-flat {
+.notification-soft {
 	backdrop-filter: blur(12px);
 	box-shadow: var(--box-shadow);
 

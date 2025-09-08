@@ -12,7 +12,7 @@ const meta: Meta<typeof Tag> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["solid", "outline", "flat", "dashed", "subtle"],
+			options: ["solid", "outline", "soft", "dashed", "subtle"],
 			description: "Visual style of the input",
 			type: "string",
 			defaultValue: "subtle",
@@ -74,9 +74,9 @@ export const Solid: StoryObj = {
 	},
 };
 
-export const Flat: StoryObj = {
+export const Soft: StoryObj = {
 	args: {
-		variant: "flat",
+		variant: "soft",
 		color: "primary",
 		icon: <BadgeCheck />,
 		size: "small",

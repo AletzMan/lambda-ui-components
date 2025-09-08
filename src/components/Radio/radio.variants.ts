@@ -27,7 +27,7 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 		},
 		variant: {
 			solid: styles["lambda-radio-group-solid"],
-			flat: styles["lambda-radio-group-flat"],
+			soft: styles["lambda-radio-group-soft"],
 			outline: styles["lambda-radio-group-outline"],
 		},
 		radius: {
@@ -68,7 +68,7 @@ export const radioprop = cva(styles["lambda-radio"], {
 		},
 		variant: {
 			solid: styles["lambda-radio-solid"],
-			flat: styles["lambda-radio-flat"],
+			soft: styles["lambda-radio-soft"],
 			outline: styles["lambda-radio-outline"],
 		},
 		type: {
@@ -109,7 +109,7 @@ export const view = cva(styles["lambda-radio-view"], {
 		},
 		variant: {
 			solid: styles["lambda-radio-view-solid"],
-			flat: styles["lambda-radio-view-flat"],
+			soft: styles["lambda-radio-view-soft"],
 			outline: styles["lambda-radio-view-outline"],
 		},
 		type: {
@@ -164,7 +164,7 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 		},
 		variant: {
 			solid: styles["lambda-radio-wrapper-solid"],
-			flat: styles["lambda-radio-wrapper-flat"],
+			soft: styles["lambda-radio-wrapper-soft"],
 			outline: styles["lambda-radio-wrapper-outline"],
 		},
 		type: {
@@ -286,7 +286,7 @@ export const contentCard = cva(styles["lambda-radio-content-card"], {
 		},
 		variant: {
 			solid: styles["lambda-radio-content-card-solid"],
-			flat: styles["lambda-radio-content-card-flat"],
+			soft: styles["lambda-radio-content-card-soft"],
 			outline: styles["lambda-radio-content-card-outline"],
 		},
 		color: {

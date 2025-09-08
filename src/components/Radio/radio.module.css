@@ -255,7 +255,7 @@
 		}
 	}
 
-	& > .lambda-radio-view-flat {
+	& > .lambda-radio-view-soft {
 		&.lambda-radio-view {
 			&:is(.lambda-radio-view-primary) {
 				& ~ .lambda-radio-label {
@@ -546,7 +546,7 @@
 				}
 			}
 
-			&:is(.lambda-radio-view-flat) {
+			&:is(.lambda-radio-view-soft) {
 				& ~ .lambda-radio-label {
 					&:is(.lambda-radio-label-horizontal) {
 						border-right: none;
@@ -563,7 +563,7 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-primary):not(
 			.lambda-radio-view-disabled
 		) {
-		&:is(.lambda-radio-view-outline, .lambda-radio-view-flat) {
+		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
 			background-color: var(--primary-outline-color);
 		}
 		&:is(.lambda-radio-view-solid) {
@@ -577,7 +577,7 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-secondary):not(
 			.lambda-radio-view-disabled
 		) {
-		&:is(.lambda-radio-view-outline, .lambda-radio-view-flat) {
+		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
 			background-color: var(--secondary-outline-color);
 		}
 		&:is(.lambda-radio-view-solid) {
@@ -591,7 +591,7 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-danger):not(
 			.lambda-radio-view-disabled
 		) {
-		&:is(.lambda-radio-view-outline, .lambda-radio-view-flat) {
+		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
 			background-color: var(--danger-outline-color);
 		}
 		&:is(.lambda-radio-view-solid) {
@@ -605,7 +605,7 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-success):not(
 			.lambda-radio-view-disabled
 		) {
-		&:is(.lambda-radio-view-outline, .lambda-radio-view-flat) {
+		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
 			background-color: var(--success-outline-color);
 		}
 		&:is(.lambda-radio-view-solid) {
@@ -619,7 +619,7 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-warning):not(
 			.lambda-radio-view-disabled
 		) {
-		&:is(.lambda-radio-view-outline, .lambda-radio-view-flat) {
+		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
 			background-color: var(--warning-outline-color);
 		}
 		&:is(.lambda-radio-view-solid) {
@@ -633,7 +633,7 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-info):not(
 			.lambda-radio-view-disabled
 		) {
-		&:is(.lambda-radio-view-outline, .lambda-radio-view-flat) {
+		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
 			background-color: var(--info-outline-color);
 		}
 		&:is(.lambda-radio-view-solid) {
@@ -762,7 +762,7 @@
 				}
 			}
 
-			&:is(.lambda-radio-view-flat) {
+			&:is(.lambda-radio-view-soft) {
 				&:is(.lambda-radio-view-primary) {
 					& ~ .lambda-radio-label {
 						background-color: var(--primary-disabled-color);
@@ -1064,7 +1064,7 @@
 		}
 	}
 
-	&:is(.lambda-radio-wrapper-flat) {
+	&:is(.lambda-radio-wrapper-soft) {
 		border: 1px solid transparent;
 		background-color: var(--surface-a);
 
@@ -1505,7 +1505,7 @@
 		}
 	}
 
-	&.lambda-radio-content-card-flat {
+	&.lambda-radio-content-card-soft {
 		&.lambda-radio-content-card-primary {
 			h1 {
 				color: var(--foreground-secondary-color);
@@ -1773,7 +1773,7 @@
 		}
 	}
 
-	&.lambda-radio-view-flat {
+	&.lambda-radio-view-soft {
 		border-color: transparent;
 		&:is(.lambda-radio-view-primary) {
 			background-color: var(--primary-outline-color);
@@ -1859,7 +1859,7 @@
 		}
 	}
 
-	&.lambda-radio-view-flat {
+	&.lambda-radio-view-soft {
 		border-color: transparent;
 		&:is(.lambda-radio-view-primary) {
 			background-color: var(--primary-outline-color);

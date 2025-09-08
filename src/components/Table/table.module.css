@@ -5,7 +5,7 @@
 	width: 100%;
 	box-sizing: border-box;
 
-	&:is(.lambda-table-container-flat) {
+	&:is(.lambda-table-container-soft) {
 		border: var(--border-width-xs) solid transparent;
 	}
 
@@ -43,7 +43,7 @@
 	background-color: transparent;
 }
 
-.lambda-table-flat {
+.lambda-table-soft {
 	border-collapse: separate;
 	background-color: var(--surface-c);
 }
@@ -185,7 +185,7 @@
 		border-bottom: 1px solid var(--border-color);
 	}
 
-	&:is(.lambda-table-cell-flat) {
+	&:is(.lambda-table-cell-soft) {
 		background-color: transparent;
 	}
 

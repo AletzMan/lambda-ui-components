@@ -12,7 +12,7 @@ const meta: Meta<typeof RadioGroup> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["solid", "flat", "outline"],
+			options: ["solid", "soft", "outline"],
 			description: "Visual style of the input",
 			type: "string",
 		},

@@ -59,7 +59,7 @@ export default meta;
 
 type Story = StoryObj<typeof Alert>;
 
-export const Flat: Story = {
+export const Soft: Story = {
 	render: (args) => (
 		<ContainerComponent
 			title="Alert"
@@ -71,7 +71,7 @@ export const Flat: Story = {
 	),
 	args: {
 		color: "primary",
-		variant: "flat",
+		variant: "soft",
 		size: "medium",
 		title: "Título del Alert",
 		message: "Este es un mensaje de alerta interactivo.",

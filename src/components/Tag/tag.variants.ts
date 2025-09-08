@@ -19,7 +19,7 @@ export const tagStyles = cva(styles["lambda-tag"], {
 		},
 		variant: {
 			solid: styles["lambda-tag-solid"],
-			flat: styles["lambda-tag-flat"],
+			soft: styles["lambda-tag-soft"],
 			outline: styles["lambda-tag-outline"],
 			dashed: styles["lambda-tag-dashed"],
 			subtle: styles["lambda-tag-subtle"],

@@ -3,7 +3,7 @@ export interface TagProps
 	/**
 	 * Define el estilo visual del tag, como la apariencia del carril y el pulgar.
 	 */
-	variant?: "outline" | "solid" | "flat" | "dashed" | "subtle" | undefined;
+	variant?: "outline" | "solid" | "soft" | "dashed" | "subtle" | undefined;
 	/**
 	 * Controla el tamaño visual del tag.
 	 */

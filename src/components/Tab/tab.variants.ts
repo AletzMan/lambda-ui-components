@@ -11,7 +11,7 @@ export const tabWrapper = cva(styles["tab-wrapper"], {
 		},
 		variant: {
 			underline: styles["tab-wrapper-underline"],
-			flat: styles["tab-wrapper-flat"],
+			soft: styles["tab-wrapper-soft"],
 			box: styles["tab-wrapper-box"],
 			border: styles["tab-wrapper-border"],
 		},
@@ -49,7 +49,7 @@ export const tabContainer = cva(styles["tab-container"], {
 		},
 		variant: {
 			underline: styles["tab-container-underline"],
-			flat: styles["tab-container-flat"],
+			soft: styles["tab-container-soft"],
 			box: styles["tab-container-box"],
 			border: styles["tab-container-border"],
 		},
@@ -88,7 +88,7 @@ export const tabItem = cva(styles["tab-item"], {
 		},
 		variant: {
 			underline: styles["tab-item-underline"],
-			flat: styles["tab-item-flat"],
+			soft: styles["tab-item-soft"],
 			box: styles["tab-item-box"],
 			border: styles["tab-item-border"],
 		},
@@ -132,7 +132,7 @@ export const tabInput = cva(styles["tab-input"], {
 		},
 		variant: {
 			underline: styles["tab-input-underline"],
-			flat: styles["tab-input-flat"],
+			soft: styles["tab-input-soft"],
 			box: styles["tab-input-box"],
 			border: styles["tab-input-border"],
 		},
@@ -158,7 +158,7 @@ export const tabLabel = cva(styles["tab-label"], {
 		},
 		variant: {
 			underline: styles["tab-label-underline"],
-			flat: styles["tab-label-flat"],
+			soft: styles["tab-label-soft"],
 			box: styles["tab-label-box"],
 			border: styles["tab-label-border"],
 		},
@@ -201,7 +201,7 @@ export const tabCurrent = cva(styles["tab-current"], {
 	variants: {
 		variant: {
 			underline: styles["tab-current-underline"],
-			flat: styles["tab-current-flat"],
+			soft: styles["tab-current-soft"],
 			box: styles["tab-current-box"],
 			border: styles["tab-current-border"],
 		},
@@ -239,7 +239,7 @@ export const tabContent = cva(styles["tab-content"], {
 		},
 		variant: {
 			underline: styles["tab-content-underline"],
-			flat: styles["tab-content-flat"],
+			soft: styles["tab-content-soft"],
 			box: styles["tab-content-box"],
 			border: styles["tab-content-border"],
 		},
