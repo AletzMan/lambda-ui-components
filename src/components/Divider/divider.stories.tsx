@@ -4,13 +4,10 @@ import { DividerProps } from "./divider.types";
 import { Card } from "../Card/Card";
 import { Switch } from "../Switch/Switch";
 import { useState } from "react";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Divider> = {
 	title: "Components/Divider",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Divider,
 	argTypes: {
 		variant: {
@@ -52,63 +49,87 @@ type Story = StoryObj<typeof Divider>;
 const Template = (args: DividerProps) => {
 	const [hasContent, setHasContent] = useState(false);
 	return (
-		<div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
-			<Switch
-				label="Has Content"
-				checked={hasContent}
-				onChange={(e) => setHasContent(e.target.checked)}
-			/>
-			<Card>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "center",
-						padding: "10px",
-						height: "250px",
-						width: "250px",
-						alignItems: "center",
-						flexDirection: args.orientation === "vertical" ? "row" : "column",
-					}}
-				>
-					<p
+		<ContainerComponent title="Divider" subtitle={args.variant?.toString() || ""}>
+			<div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
+				<Switch
+					label="Has Content"
+					checked={hasContent}
+					onChange={(e) => setHasContent(e.target.checked)}
+				/>
+				<Card>
+					<div
 						style={{
 							display: "flex",
 							justifyContent: "center",
-							alignItems: "center",
-							backgroundColor: "var(--surface-c)",
 							padding: "10px",
-							width: "100%",
-							height: "100%",
-							borderRadius: "var(--border-radius-sm)",
+							height: "250px",
+							width: "250px",
+							alignItems: "center",
+							flexDirection: args.orientation === "vertical" ? "row" : "column",
 						}}
 					>
-						Content
-					</p>
-					<Divider {...args}>{hasContent ? "Label" : ""}</Divider>
-					<p
-						style={{
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
-							backgroundColor: "var(--surface-c)",
-							padding: "10px",
-							width: "100%",
-							height: "100%",
-							borderRadius: "var(--border-radius-sm)",
-						}}
-					>
-						Content
-					</p>
-				</div>
-			</Card>
-		</div>
+						<p
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								backgroundColor: "var(--surface-c)",
+								padding: "10px",
+								width: "100%",
+								height: "100%",
+								borderRadius: "var(--border-radius-sm)",
+							}}
+						>
+							Content
+						</p>
+						<Divider {...args}>{hasContent ? "Label" : ""}</Divider>
+						<p
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								backgroundColor: "var(--surface-c)",
+								padding: "10px",
+								width: "100%",
+								height: "100%",
+								borderRadius: "var(--border-radius-sm)",
+							}}
+						>
+							Content
+						</p>
+					</div>
+				</Card>
+			</div>
+		</ContainerComponent>
 	);
 };
 
-export const Default: Story = {
+export const Solid: Story = {
 	render: Template,
 	args: {
 		variant: "solid",
+		orientation: "horizontal",
+		color: "primary",
+		size: "tiny",
+		contentPosition: "center",
+	},
+};
+
+export const Dashed: Story = {
+	render: Template,
+	args: {
+		variant: "dashed",
+		orientation: "horizontal",
+		color: "primary",
+		size: "tiny",
+		contentPosition: "center",
+	},
+};
+
+export const Dotted: Story = {
+	render: Template,
+	args: {
+		variant: "dotted",
 		orientation: "horizontal",
 		color: "primary",
 		size: "tiny",

@@ -314,10 +314,10 @@
 	border-color: var(--info-subtle-color);
 }
 
-.lambda-divider-default {
-	border-color: var(--border-color);
+.lambda-divider-white {
+	border-color: var(--lambda-color-secondary-200);
 }
 
-.lambda-divider-inverse {
-	border-color: var(--border-inverse-color);
+.lambda-divider-black {
+	border-color: var(--lambda-color-secondary-900);
 }

@@ -19,8 +19,8 @@ export const dividerVariants = cva(styles["lambda-divider"], {
 			success: styles["lambda-divider-success"],
 			warning: styles["lambda-divider-warning"],
 			info: styles["lambda-divider-info"],
-			default: styles["lambda-divider-default"],
-			inverse: styles["lambda-divider-inverse"],
+			white: styles["lambda-divider-white"],
+			black: styles["lambda-divider-black"],
 		},
 		contentPosition: {
 			center: styles["lambda-divider-center"],
