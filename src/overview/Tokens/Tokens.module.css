@@ -1,0 +1,51 @@
+.tokens {
+	font-family: var(--font-family);
+	color: var(--foreground-color);
+}
+
+.tokens-title {
+	color: var(--foreground-title-color);
+}
+
+.tokens-subtitle {
+	color: var(--foreground-secondary-color);
+}
+
+.tokens-subtitle-container {
+	padding: var(--padding-md);
+	border-radius: var(--border-radius-md);
+	border: var(--border-width-xs) solid var(--border-color);
+	background-color: var(--surface-a);
+}
+
+.tokens-colors {
+	display: flex;
+	flex-direction: row;
+	gap: var(--gap-md);
+}
+
+.tokens-color {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-md);
+}
+
+.tokens-color-variant {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--gap-md);
+}
+
+.tokens-color-opacity-value {
+	width: 48px;
+	height: 24px;
+	border-radius: var(--border-radius-xs);
+}
+
+.tokens-color-opacity-key {
+	color: var(--foreground-color);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-reg);
+	text-transform: capitalize;
+}

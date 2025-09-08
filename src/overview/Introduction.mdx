@@ -1,0 +1,209 @@
+export const COMPONENTS = [
+	{
+		component: "Accordion",
+		default: "default",
+	},
+	{
+		component: "Alert",
+		default: "soft",
+	},
+	{
+		component: "Badge",
+		default: "default",
+	},
+	{
+		component: "Breadcrumb",
+		default: "chevron",
+	},
+	{
+		component: "Button",
+		default: "-primary",
+	},
+	{
+		component: "Card",
+		default: "-Card",
+	},
+	{
+		component: "Carousel",
+		default: "-Carousel",
+	},
+	{
+		component: "Checkbox",
+		default: "-Checkbox",
+	},
+	{
+		component: "Color Picker",
+		default: "-Color-Picker",
+	},
+	{
+		component: "Dialog",
+		default: "-Dialog",
+	},
+	{
+		component: "Drawer",
+		default: "-Drawer",
+	},
+	{
+		component: "File Upload",
+		default: "-File-Upload",
+	},
+	{
+		component: "Input",
+		default: "-Input",
+	},
+	{
+		component: "Input Number",
+		default: "-Input-Number",
+	},
+	{
+		component: "Link",
+		default: "-Link",
+	},
+	{
+		component: "Notification",
+		default: "-Notification",
+	},
+	{
+		component: "Pagination",
+		default: "-Pagination",
+	},
+	{
+		component: "Radio",
+		default: "-Radio",
+	},
+	{
+		component: "Range",
+		default: "-Range",
+	},
+	{
+		component: "Rating",
+		default: "-Rating",
+	},
+	{
+		component: "Select",
+		default: "-Select",
+	},
+	{
+		component: "Switch",
+		default: "-Switch",
+	},
+	{
+		component: "Tab",
+		default: "-Tab",
+	},
+	{
+		component: "Table",
+		default: "-Table",
+	},
+	{
+		component: "Tag",
+		default: "-Tag",
+	},
+	{
+		component: "Text Area",
+		default: "-Text-Area",
+	},
+	{
+		component: "ToolTip",
+		default: "-ToolTip",
+	},
+];
+
+# 📚 Lambda UI Components
+
+¡Bienvenido a la documentación de **Lambda UI Components**!
+
+Esta librería ha sido diseñada para ofrecer una colección de **componentes React modernos y accesibles**, que te permitirán construir interfaces de usuario rápidas y consistentes. Cada componente está cuidadosamente elaborado para ser **altamente personalizable** y fácil de integrar en cualquier proyecto de React, sin importar su complejidad.
+
+<div
+	style={{
+		padding: "1rem",
+		backgroundColor: "var(--nextra-background-alpha)",
+		borderLeft: "4px solid var(--nextra-primary-color)",
+		borderRadius: "4px",
+		fontSize: "0.875rem",
+		display: "flex",
+		gap: "0.75rem",
+		alignItems: "flex-start",
+		marginBottom: "1rem",
+		fontFamily: "var(--font-family)",
+	}}
+>
+	<span style={{ fontSize: "1.5rem" }}>🎨</span>
+	<div>
+		<strong style={{ display: "block", marginBottom: "0.5rem" }}>
+			¿Por qué elegir Lambda UI Components?
+		</strong>
+		Hemos priorizado la **flexibilidad y el rendimiento**, asegurando que cada componente no solo sea
+		visualmente atractivo, sino también ligero y optimizado. Olvídate de los dolores de cabeza de CSS
+		y enfócate en lo que realmente importa: **construir tu aplicación**.
+	</div>
+</div>
+
+---
+
+## 🚀 Empezando
+
+Para comenzar, instala la librería en tu proyecto.
+
+```bash
+npm install @lambda-ui-components
+```
+
+```bash
+yarn add @lambda-ui-components
+```
+
+## ✨ Componentes disponibles
+
+Nuestra librería cuenta con una amplia gama de componentes listos para usar, incluyendo:
+
+<ul
+	style={{
+		display: "grid",
+		gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+		gap: "1rem",
+		listStyleType: "none",
+		padding: 0,
+	}}
+>
+	{COMPONENTS.map((component) => (
+		<li key={component.component} style={{ width: "100%" }}>
+			<a
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					width: "100%",
+					padding: "0.5rem",
+					backgroundColor: "#a0dffa",
+					color: "#0861aa",
+					borderRadius: "0.5rem",
+					textDecoration: "none",
+				}}
+				href={`/story/components-${component.component.toLowerCase()}--${component.default.toLowerCase()}`}
+			>
+				{component.component}
+			</a>
+		</li>
+	))}
+</ul>
+
+## 📝 Uso básico
+
+Para usar un componente, simplemente importarlo y usarlo en tu aplicación.
+Cada componente viene con su propia documentación detallada y ejemplos de uso.
+
+```tsx
+import { Button } from "@lambda-ui-components";
+
+function App() {
+	return (
+		<div>
+			<Button>Botón</Button>
+		</div>
+	);
+}
+```
+
+¡Explora la documentación para descubrir todo lo que puedes crear!
