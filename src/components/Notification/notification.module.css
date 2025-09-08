@@ -812,7 +812,7 @@
 		}
 
 		.notification-message {
-			color: var(--success-disabled-color);
+			color: var(--success-dark-color);
 		}
 
 		.notification-icon {
