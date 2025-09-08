@@ -411,62 +411,62 @@
 			}
 
 			&.breadcrumb-item-primary {
-				background-color: var(--primary-outline-color);
+				background-color: var(--primary-light-color);
 				color: var(--primary-text-color);
 
 				&::before {
-					border-bottom-color: var(--primary-outline-color);
-					border-top-color: var(--primary-outline-color);
+					border-bottom-color: var(--primary-light-color);
+					border-top-color: var(--primary-light-color);
 				}
 			}
 
 			&.breadcrumb-item-secondary {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-light-color);
 				color: var(--secondary-text-color);
 
 				&::before {
-					border-bottom-color: var(--secondary-outline-color);
-					border-top-color: var(--secondary-outline-color);
+					border-bottom-color: var(--secondary-light-color);
+					border-top-color: var(--secondary-light-color);
 				}
 			}
 
 			&.breadcrumb-item-success {
-				background-color: var(--success-outline-color);
+				background-color: var(--success-light-color);
 				color: var(--success-text-color);
 
 				&::before {
-					border-bottom-color: var(--success-outline-color);
-					border-top-color: var(--success-outline-color);
+					border-bottom-color: var(--success-light-color);
+					border-top-color: var(--success-light-color);
 				}
 			}
 
 			&.breadcrumb-item-danger {
-				background-color: var(--danger-outline-color);
+				background-color: var(--danger-light-color);
 				color: var(--danger-text-color);
 
 				&::before {
-					border-bottom-color: var(--danger-outline-color);
-					border-top-color: var(--danger-outline-color);
+					border-bottom-color: var(--danger-light-color);
+					border-top-color: var(--danger-light-color);
 				}
 			}
 
 			&.breadcrumb-item-warning {
-				background-color: var(--warning-outline-color);
+				background-color: var(--warning-light-color);
 				color: var(--warning-text-color);
 
 				&::before {
-					border-bottom-color: var(--warning-outline-color);
-					border-top-color: var(--warning-outline-color);
+					border-bottom-color: var(--warning-light-color);
+					border-top-color: var(--warning-light-color);
 				}
 			}
 
 			&.breadcrumb-item-info {
-				background-color: var(--info-outline-color);
+				background-color: var(--info-light-color);
 				color: var(--info-text-color);
 
 				&::before {
-					border-bottom-color: var(--info-outline-color);
-					border-top-color: var(--info-outline-color);
+					border-bottom-color: var(--info-light-color);
+					border-top-color: var(--info-light-color);
 				}
 			}
 		}
