@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Card } from "./Card";
 import { Bookmark, CircleEllipsis, CodeXml, RssIcon } from "lucide-react";
+import { CardProps } from "./card-types";
+import { Checkbox } from "../Checkbox/Checkbox";
+import { useState } from "react";
 
 const meta: Meta<typeof Card> = {
 	title: "Components/Card",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Card,
 	argTypes: {
 		variant: {
@@ -28,14 +27,78 @@ const meta: Meta<typeof Card> = {
 			description: "Radius of the card",
 			type: "string",
 		},
+		image: {
+			table: {
+				disabled: true,
+			},
+		},
+		header: {
+			table: {
+				disabled: true,
+			},
+		},
+		actions: {
+			table: {
+				disabled: true,
+			},
+		},
+		children: {
+			table: {
+				disabled: true,
+			},
+		},
 	},
 };
 
 export default meta;
 
+const Template = (args: CardProps) => {
+	const [image, setImage] = useState(true);
+	const [header, setHeader] = useState(true);
+	const [actions, setActions] = useState(true);
+	const [content, setContent] = useState(true);
+	return (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "center",
+				gap: "var(--gap-lg)",
+				padding: "var(--padding-lg)",
+			}}
+		>
+			<div style={{ display: "flex", gap: "var(--gap-lg)", padding: "var(--padding-lg)" }}>
+				<Checkbox label="Image" checked={image} onChange={(e) => setImage(e.target.checked)} />
+				<Checkbox label="Header" checked={header} onChange={(e) => setHeader(e.target.checked)} />
+				<Checkbox
+					label="Actions"
+					checked={actions}
+					onChange={(e) => setActions(e.target.checked)}
+				/>
+				<Checkbox
+					label="Content"
+					checked={content}
+					onChange={(e) => setContent(e.target.checked)}
+				/>
+			</div>
+			<div style={{ width: "300px" }}>
+				<Card
+					{...args}
+					image={image ? args.image : undefined}
+					header={header ? args.header : undefined}
+					actions={actions ? args.actions : undefined}
+					children={content ? args.children : undefined}
+				/>
+			</div>
+		</div>
+	);
+};
+
 type Story = StoryObj<typeof Card>;
 
 export const Outline: Story = {
+	render: Template,
 	args: {
 		variant: "outline",
 		size: "small",
@@ -78,6 +141,7 @@ export const Outline: Story = {
 };
 
 export const Borderless: Story = {
+	render: Template,
 	args: {
 		variant: "borderless",
 		size: "small",
