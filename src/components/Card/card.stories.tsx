@@ -4,6 +4,7 @@ import { Bookmark, CircleEllipsis, CodeXml, RssIcon } from "lucide-react";
 import { CardProps } from "./card-types";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { useState } from "react";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Card> = {
 	title: "Components/Card",
@@ -58,40 +59,42 @@ const Template = (args: CardProps) => {
 	const [actions, setActions] = useState(true);
 	const [content, setContent] = useState(true);
 	return (
-		<div
-			style={{
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center",
-				justifyContent: "center",
-				gap: "var(--gap-lg)",
-				padding: "var(--padding-lg)",
-			}}
-		>
-			<div style={{ display: "flex", gap: "var(--gap-lg)", padding: "var(--padding-lg)" }}>
-				<Checkbox label="Image" checked={image} onChange={(e) => setImage(e.target.checked)} />
-				<Checkbox label="Header" checked={header} onChange={(e) => setHeader(e.target.checked)} />
-				<Checkbox
-					label="Actions"
-					checked={actions}
-					onChange={(e) => setActions(e.target.checked)}
-				/>
-				<Checkbox
-					label="Content"
-					checked={content}
-					onChange={(e) => setContent(e.target.checked)}
-				/>
+		<ContainerComponent title="Card" subtitle={args.variant?.toString() || ""}>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					justifyContent: "center",
+					gap: "var(--gap-lg)",
+					padding: "var(--padding-lg)",
+				}}
+			>
+				<div style={{ display: "flex", gap: "var(--gap-lg)", padding: "var(--padding-lg)" }}>
+					<Checkbox label="Image" checked={image} onChange={(e) => setImage(e.target.checked)} />
+					<Checkbox label="Header" checked={header} onChange={(e) => setHeader(e.target.checked)} />
+					<Checkbox
+						label="Actions"
+						checked={actions}
+						onChange={(e) => setActions(e.target.checked)}
+					/>
+					<Checkbox
+						label="Content"
+						checked={content}
+						onChange={(e) => setContent(e.target.checked)}
+					/>
+				</div>
+				<div style={{ width: "300px" }}>
+					<Card
+						{...args}
+						image={image ? args.image : undefined}
+						header={header ? args.header : undefined}
+						actions={actions ? args.actions : undefined}
+						children={content ? args.children : undefined}
+					/>
+				</div>
 			</div>
-			<div style={{ width: "300px" }}>
-				<Card
-					{...args}
-					image={image ? args.image : undefined}
-					header={header ? args.header : undefined}
-					actions={actions ? args.actions : undefined}
-					children={content ? args.children : undefined}
-				/>
-			</div>
-		</div>
+		</ContainerComponent>
 	);
 };
 
