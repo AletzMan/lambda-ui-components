@@ -231,7 +231,7 @@
 	--primary-text-color: var(--lambda-color-primary-700);
 	--primary-dark-color: var(--lambda-color-primary-900);
 
-	--secondary-soft-color: var(--lambda-color-secondary-200);
+	--secondary-soft-color: var(--lambda-color-secondary-100);
 	--secondary-subtle-color: var(--lambda-color-secondary-300);
 	--secondary-light-color: var(--lambda-color-secondary-100);
 	--secondary-base-color: var(--lambda-color-secondary-500);
@@ -324,9 +324,9 @@
 	--secondary-soft-color: var(--lambda-color-secondary-800);
 	--secondary-subtle-color: var(--lambda-color-secondary-700);
 	--secondary-light-color: var(--lambda-color-secondary-100);
-	--secondary-base-color: var(--lambda-color-secondary-500);
-	--secondary-hover-color: var(--lambda-color-secondary-400);
-	--secondary-disabled-color: var(--lambda-color-secondary-600);
+	--secondary-base-color: var(--lambda-color-secondary-100);
+	--secondary-hover-color: var(--lambda-color-secondary-200);
+	--secondary-disabled-color: var(--lambda-color-secondary-400);
 	--secondary-text-color: var(--lambda-color-secondary-200);
 	--secondary-dark-color: var(--lambda-color-secondary-900);
 
