@@ -36,7 +36,7 @@ export default function ContainerComponent({
 					</span>
 				)}
 			</div>
-			<Divider color="default" />
+			<Divider color="secondary" />
 			<div className={styles.content}>{children}</div>
 		</div>
 	);

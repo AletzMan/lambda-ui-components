@@ -17,14 +17,14 @@
 	--lambda-color-primary-900: #132020;
 
 	/* Secondary */
-	--lambda-color-secondary-100: #d4d4d4;
-	--lambda-color-secondary-200: #a9a9a9;
-	--lambda-color-secondary-300: #7f7f7f;
-	--lambda-color-secondary-400: #545454;
-	--lambda-color-secondary-500: #292929;
-	--lambda-color-secondary-600: #212121;
-	--lambda-color-secondary-700: #191919;
-	--lambda-color-secondary-800: #101010;
+	--lambda-color-secondary-100: #eeeeee;
+	--lambda-color-secondary-200: #e5e5e5;
+	--lambda-color-secondary-300: #dddddd;
+	--lambda-color-secondary-400: #d4d4d4;
+	--lambda-color-secondary-500: #aaaaaa;
+	--lambda-color-secondary-600: #7f7f7f;
+	--lambda-color-secondary-700: #555555;
+	--lambda-color-secondary-800: #2a2a2a;
 	--lambda-color-secondary-900: #080808;
 
 	/* Success */
@@ -182,8 +182,6 @@
 	--height-input-md: 36px;
 	--height-input-lg: 42px;
 
-	--box-shadow: 0 0 2px 1px var(--shadow-color);
-
 	--accordion-transition-duration: 300ms;
 	--accordion-transition-timing-function: ease-in-out;
 	--accordion-max-height-open: 15em;
@@ -222,6 +220,8 @@
 	--shadow-color: #30353130;
 	--shadow-inset-color: #f1f1f155;
 
+	--box-shadow: 0 0 2px 1px var(--shadow-color);
+
 	--primary-soft-color: var(--lambda-color-primary-200);
 	--primary-subtle-color: var(--lambda-color-primary-300);
 	--primary-light-color: var(--lambda-color-primary-100);
@@ -234,10 +234,10 @@
 	--secondary-soft-color: var(--lambda-color-secondary-100);
 	--secondary-subtle-color: var(--lambda-color-secondary-300);
 	--secondary-light-color: var(--lambda-color-secondary-100);
-	--secondary-base-color: var(--lambda-color-secondary-500);
-	--secondary-hover-color: var(--lambda-color-secondary-400);
-	--secondary-disabled-color: var(--lambda-color-secondary-800);
-	--secondary-text-color: var(--lambda-color-secondary-700);
+	--secondary-base-color: var(--lambda-color-secondary-800);
+	--secondary-hover-color: var(--lambda-color-secondary-700);
+	--secondary-disabled-color: var(--lambda-color-secondary-700);
+	--secondary-text-color: var(--lambda-color-secondary-800);
 	--secondary-dark-color: var(--lambda-color-secondary-900);
 
 	--success-soft-color: var(--lambda-color-success-200);
@@ -306,9 +306,11 @@
 	--surface-h: #adb2b8;
 
 	--border-color: #45494f;
-	--border-inverse-color: #d4d4d4;
-	--shadow-color: #282a2e99;
+	--border-inverse-color: #c0c0c0;
+	--shadow-color: #ebebeb15;
 	--shadow-inset-color: #f1f1f155;
+
+	--box-shadow: 0 0 3px 1px var(--shadow-color);
 
 	/* Primary */
 	--primary-soft-color: var(--lambda-color-primary-800);
