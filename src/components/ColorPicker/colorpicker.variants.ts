@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import styles from "./colorpicker.module.css";
 
 export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
@@ -12,7 +12,6 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 		variant: {
 			solid: styles["lambda-colorpicker-solid"],
 			soft: styles["lambda-colorpicker-soft"],
-			outline: styles["lambda-colorpicker-outline"],
 		},
 		radius: {
 			none: styles["lambda-colorpicker-radius-none"],
@@ -71,3 +70,7 @@ export const colorpickerGroupVariants = cva(styles["lambda-colorpicker-group"], 
 		size: "medium",
 	},
 });
+
+export type ColorPickerVariants = VariantProps<typeof colorpickerVariants>;
+export type ColorPickerTextVariants = VariantProps<typeof colorpickerTextVariants>;
+export type ColorPickerGroupVariants = VariantProps<typeof colorpickerGroupVariants>;

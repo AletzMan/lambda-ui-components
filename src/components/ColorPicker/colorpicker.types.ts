@@ -1,3 +1,5 @@
+import { ColorPickerVariants } from "./colorpicker.variants";
+
 export interface ColorPickerProps
 	extends Omit<
 		React.HTMLAttributes<HTMLDivElement>,
@@ -22,15 +24,15 @@ export interface ColorPickerProps
 	/**
 	 * Define el tamaño del color picker.
 	 */
-	size?: "tiny" | "small" | "medium" | "large";
+	size?: ColorPickerVariants["size"];
 	/**
 	 * Define el estilo del color picker.
 	 */
-	variant?: "solid" | "soft" | "outline";
+	variant?: ColorPickerVariants["variant"];
 	/**
 	 * Define el radio del color picker.
 	 */
-	radius?: "none" | "small" | "medium" | "circle";
+	radius?: ColorPickerVariants["radius"];
 	/**
 	 * Define si se muestra el texto del color picker.
 	 */

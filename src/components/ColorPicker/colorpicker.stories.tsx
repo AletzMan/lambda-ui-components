@@ -1,19 +1,20 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ColorPicker } from "./ColorPicker";
+import { ColorPickerProps } from "./colorpicker.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof ColorPicker> = {
 	title: "Components/ColorPicker",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: ColorPicker,
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["solid", "soft", "outline"],
+			options: ["solid", "soft"],
 			description: "Visual style of the input",
 			type: "string",
+			table: {
+				disable: true,
+			},
 		},
 		size: {
 			control: "select",
@@ -41,9 +42,39 @@ export default meta;
 
 export type Story = StoryObj<typeof ColorPicker>;
 
+const Template = (args: ColorPickerProps) => {
+	return (
+		<ContainerComponent title="ColorPicker" subtitle={args.variant || "solid"}>
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					width: "100%",
+					gap: "1rem",
+				}}
+			>
+				<ColorPicker {...args} />
+			</div>
+		</ContainerComponent>
+	);
+};
+
 export const Solid: Story = {
+	render: Template,
 	args: {
 		variant: "solid",
+		size: "medium",
+		radius: "small",
+		disabled: false,
+		showText: false,
+	},
+};
+
+export const Soft: Story = {
+	render: Template,
+	args: {
+		variant: "soft",
 		size: "medium",
 		radius: "small",
 		disabled: false,
