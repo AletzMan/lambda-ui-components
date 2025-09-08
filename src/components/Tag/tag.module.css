@@ -24,7 +24,7 @@
 .lambda-tag-solid {
 	&.lambda-tag-primary {
 		color: var(--white-color);
-		background-color: var(--primary-color);
+		background-color: var(--primary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--primary-disabled-color);
@@ -37,7 +37,7 @@
 
 	&.lambda-tag-secondary {
 		color: var(--foreground-invert-color);
-		background-color: var(--secondary-color);
+		background-color: var(--secondary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-disabled-color);
@@ -50,10 +50,10 @@
 
 	&.lambda-tag-danger {
 		color: var(--white-color);
-		background-color: var(--danger-color);
+		background-color: var(--danger-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--danger-lightened-color);
+			color: var(--danger-light-color);
 
 			&:hover {
 				color: var(--danger-disabled-color);
@@ -63,10 +63,10 @@
 
 	&.lambda-tag-success {
 		color: var(--white-color);
-		background-color: var(--success-color);
+		background-color: var(--success-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--success-lightened-color);
+			color: var(--success-light-color);
 
 			&:hover {
 				color: var(--success-disabled-color);
@@ -76,10 +76,10 @@
 
 	&.lambda-tag-warning {
 		color: var(--foreground-invert-color);
-		background-color: var(--warning-color);
+		background-color: var(--warning-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--warning-lightened-color);
+			color: var(--warning-light-color);
 
 			&:hover {
 				color: var(--warning-disabled-color);
@@ -89,10 +89,10 @@
 
 	&.lambda-tag-info {
 		color: var(--white-color);
-		background-color: var(--info-color);
+		background-color: var(--info-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--info-lightened-color);
+			color: var(--info-light-color);
 
 			&:hover {
 				color: var(--info-disabled-color);
@@ -188,7 +188,7 @@
 
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
-		background-color: var(--primary-light-color);
+		background-color: var(--primary-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--primary-hover-color);
@@ -201,7 +201,7 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-light-color);
+		background-color: var(--secondary-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -214,7 +214,7 @@
 
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
-		background-color: var(--danger-light-color);
+		background-color: var(--danger-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--danger-hover-color);
@@ -227,7 +227,7 @@
 
 	&.lambda-tag-success {
 		color: var(--success-text-color);
-		background-color: var(--success-light-color);
+		background-color: var(--success-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--success-hover-color);
@@ -240,7 +240,7 @@
 
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
-		background-color: var(--warning-light-color);
+		background-color: var(--warning-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--warning-hover-color);
@@ -253,7 +253,7 @@
 
 	&.lambda-tag-info {
 		color: var(--info-text-color);
-		background-color: var(--info-light-color);
+		background-color: var(--info-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--info-hover-color);
@@ -266,12 +266,12 @@
 }
 
 .lambda-tag-dashed {
-	color: var(--primary-color);
-	border: var(--border-width-xs) dashed var(--primary-color);
+	color: var(--primary-base-color);
+	border: var(--border-width-xs) dashed var(--primary-base-color);
 
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
-		border: var(--border-width-xs) dashed var(--primary-color);
+		border: var(--border-width-xs) dashed var(--primary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--primary-hover-color);
@@ -284,7 +284,7 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		border: var(--border-width-xs) dashed var(--secondary-color);
+		border: var(--border-width-xs) dashed var(--secondary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -297,7 +297,7 @@
 
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
-		border: var(--border-width-xs) dashed var(--danger-color);
+		border: var(--border-width-xs) dashed var(--danger-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--danger-hover-color);
@@ -310,7 +310,7 @@
 
 	&.lambda-tag-success {
 		color: var(--success-text-color);
-		border: var(--border-width-xs) dashed var(--success-color);
+		border: var(--border-width-xs) dashed var(--success-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--success-hover-color);
@@ -323,7 +323,7 @@
 
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
-		border: var(--border-width-xs) dashed var(--warning-color);
+		border: var(--border-width-xs) dashed var(--warning-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--warning-hover-color);
@@ -336,7 +336,7 @@
 
 	&.lambda-tag-info {
 		color: var(--info-text-color);
-		border: var(--border-width-xs) dashed var(--info-color);
+		border: var(--border-width-xs) dashed var(--info-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--info-hover-color);
@@ -353,8 +353,8 @@
 
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
-		border-color: var(--primary-outline-color);
-		background-color: var(--primary-light-color);
+		border-color: var(--primary-subtle-color);
+		background-color: var(--primary-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--primary-hover-color);
@@ -367,8 +367,8 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		border-color: var(--secondary-outline-color);
-		background-color: var(--secondary-light-color);
+		border-color: var(--secondary-subtle-color);
+		background-color: var(--secondary-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -381,8 +381,8 @@
 
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
-		border-color: var(--danger-outline-color);
-		background-color: var(--danger-light-color);
+		border-color: var(--danger-subtle-color);
+		background-color: var(--danger-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--danger-hover-color);
@@ -395,8 +395,8 @@
 
 	&.lambda-tag-success {
 		color: var(--success-text-color);
-		border-color: var(--success-outline-color);
-		background-color: var(--success-light-color);
+		border-color: var(--success-subtle-color);
+		background-color: var(--success-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--success-hover-color);
@@ -409,8 +409,8 @@
 
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
-		border-color: var(--warning-outline-color);
-		background-color: var(--warning-light-color);
+		border-color: var(--warning-subtle-color);
+		background-color: var(--warning-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--warning-hover-color);
@@ -423,8 +423,8 @@
 
 	&.lambda-tag-info {
 		color: var(--info-text-color);
-		border-color: var(--info-outline-color);
-		background-color: var(--info-light-color);
+		border-color: var(--info-subtle-color);
+		background-color: var(--info-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--info-hover-color);
@@ -547,6 +547,6 @@
 	}
 
 	&:hover {
-		color: var(--secondary-color);
+		color: var(--secondary-base-color);
 	}
 }

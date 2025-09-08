@@ -138,37 +138,37 @@
 		}
 		&:is(.lambda-rating-item-primary) {
 			& > svg {
-				fill: var(--primary-outline-color);
+				fill: var(--primary-subtle-color);
 				stroke: var(--primary-text-color);
 			}
 		}
 		&:is(.lambda-rating-item-secondary) {
 			& > svg {
-				fill: var(--secondary-outline-color);
+				fill: var(--secondary-subtle-color);
 				stroke: var(--secondary-text-color);
 			}
 		}
 		&:is(.lambda-rating-item-danger) {
 			& > svg {
-				fill: var(--danger-outline-color);
+				fill: var(--danger-subtle-color);
 				stroke: var(--danger-text-color);
 			}
 		}
 		&:is(.lambda-rating-item-success) {
 			& > svg {
-				fill: var(--success-outline-color);
+				fill: var(--success-subtle-color);
 				stroke: var(--success-text-color);
 			}
 		}
 		&:is(.lambda-rating-item-warning) {
 			& > svg {
-				fill: var(--warning-outline-color);
+				fill: var(--warning-subtle-color);
 				stroke: var(--warning-text-color);
 			}
 		}
 		&:is(.lambda-rating-item-info) {
 			& > svg {
-				fill: var(--info-outline-color);
+				fill: var(--info-subtle-color);
 				stroke: var(--info-text-color);
 			}
 		}
@@ -218,42 +218,42 @@
 
 		&:is(.lambda-rating-item-primary) {
 			& > svg {
-				stroke: var(--primary-color);
+				stroke: var(--primary-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-secondary) {
 			& > svg {
-				stroke: var(--secondary-color);
+				stroke: var(--secondary-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-danger) {
 			& > svg {
-				stroke: var(--danger-color);
+				stroke: var(--danger-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-success) {
 			& > svg {
-				stroke: var(--success-color);
+				stroke: var(--success-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-warning) {
 			& > svg {
-				stroke: var(--warning-color);
+				stroke: var(--warning-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-info) {
 			& > svg {
-				stroke: var(--info-color);
+				stroke: var(--info-base-color);
 				fill: transparent;
 			}
 		}
@@ -277,43 +277,43 @@
 
 		&:is(.lambda-rating-item-primary) {
 			& > svg {
-				stroke: var(--primary-color);
-				fill: var(--primary-color);
+				stroke: var(--primary-base-color);
+				fill: var(--primary-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-secondary) {
 			& > svg {
-				stroke: var(--secondary-color);
-				fill: var(--secondary-color);
+				stroke: var(--secondary-base-color);
+				fill: var(--secondary-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-danger) {
 			& > svg {
-				stroke: var(--danger-color);
-				fill: var(--danger-color);
+				stroke: var(--danger-base-color);
+				fill: var(--danger-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-success) {
 			& > svg {
-				stroke: var(--success-color);
-				fill: var(--success-color);
+				stroke: var(--success-base-color);
+				fill: var(--success-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-warning) {
 			& > svg {
-				stroke: var(--warning-color);
-				fill: var(--warning-color);
+				stroke: var(--warning-base-color);
+				fill: var(--warning-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-info) {
 			& > svg {
-				stroke: var(--info-color);
-				fill: var(--info-color);
+				stroke: var(--info-base-color);
+				fill: var(--info-base-color);
 			}
 		}
 	}
@@ -337,42 +337,42 @@
 		&:is(.lambda-rating-item-primary) {
 			& > svg {
 				stroke: var(--primary-text-color);
-				fill: var(--primary-outline-color);
+				fill: var(--primary-subtle-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-secondary) {
 			& > svg {
 				stroke: var(--secondary-text-color);
-				fill: var(--secondary-outline-color);
+				fill: var(--secondary-subtle-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-danger) {
 			& > svg {
 				stroke: var(--danger-text-color);
-				fill: var(--danger-outline-color);
+				fill: var(--danger-subtle-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-success) {
 			& > svg {
 				stroke: var(--success-text-color);
-				fill: var(--success-outline-color);
+				fill: var(--success-subtle-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-warning) {
 			& > svg {
 				stroke: var(--warning-text-color);
-				fill: var(--warning-outline-color);
+				fill: var(--warning-subtle-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-info) {
 			& > svg {
 				stroke: var(--info-text-color);
-				fill: var(--info-outline-color);
+				fill: var(--info-subtle-color);
 			}
 		}
 	}
@@ -390,27 +390,27 @@
 		}
 		&:is(.lambda-rating-item-primary) {
 			color: var(--primary-text-color);
-			/*background-color: var(--primary-outline-color);*/
+			/*background-color: var(--primary-subtle-color);*/
 		}
 		&:is(.lambda-rating-item-secondary) {
 			color: var(--secondary-text-color);
-			/*background-color: var(--secondary-outline-color);*/
+			/*background-color: var(--secondary-subtle-color);*/
 		}
 		&:is(.lambda-rating-item-danger) {
 			color: var(--danger-text-color);
-			/*background-color: var(--danger-outline-color);*/
+			/*background-color: var(--danger-subtle-color);*/
 		}
 		&:is(.lambda-rating-item-success) {
 			color: var(--success-text-color);
-			/*background-color: var(--success-outline-color);*/
+			/*background-color: var(--success-subtle-color);*/
 		}
 		&:is(.lambda-rating-item-warning) {
 			color: var(--warning-text-color);
-			/*background-color: var(--warning-outline-color);*/
+			/*background-color: var(--warning-subtle-color);*/
 		}
 		&:is(.lambda-rating-item-info) {
 			color: var(--info-text-color);
-			/*background-color: var(--info-outline-color);*/
+			/*background-color: var(--info-subtle-color);*/
 		}
 	}
 

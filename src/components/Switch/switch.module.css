@@ -11,59 +11,59 @@
 
 	&:hover:not(.lambda-switch-wrapper-disabled) {
 		.lambda-switch-background-soft {
-			box-shadow: 0 0 1px 3px var(--secondary-light-color);
+			box-shadow: 0 0 1px 3px var(--secondary-soft-color);
 
 			&.lambda-switch-background-primary {
-				box-shadow: 0 0 1px 3px var(--primary-light-color);
+				box-shadow: 0 0 1px 3px var(--primary-soft-color);
 			}
 
 			&.lambda-switch-background-secondary:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--secondary-light-color);
+				box-shadow: 0 0 1px 3px var(--secondary-soft-color);
 			}
 
 			&.lambda-switch-background-success:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--success-light-color);
+				box-shadow: 0 0 1px 3px var(--success-soft-color);
 			}
 
 			&.lambda-switch-background-danger:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--danger-light-color);
+				box-shadow: 0 0 1px 3px var(--danger-soft-color);
 			}
 
 			&.lambda-switch-background-warning:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--warning-light-color);
+				box-shadow: 0 0 1px 3px var(--warning-soft-color);
 			}
 
 			&.lambda-switch-background-info:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--info-light-color);
+				box-shadow: 0 0 1px 3px var(--info-soft-color);
 			}
 		}
 
 		.lambda-switch-background-outline,
 		.lambda-switch-background-solid {
-			box-shadow: 0 0 1px 3px var(--secondary-light-color);
+			box-shadow: 0 0 1px 3px var(--secondary-soft-color);
 
 			&.lambda-switch-background-primary:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--primary-outline-color);
+				box-shadow: 0 0 1px 3px var(--primary-subtle-color);
 			}
 
 			&.lambda-switch-background-secondary:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--secondary-outline-color);
+				box-shadow: 0 0 1px 3px var(--secondary-subtle-color);
 			}
 
 			&.lambda-switch-background-success:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--success-outline-color);
+				box-shadow: 0 0 1px 3px var(--success-subtle-color);
 			}
 
 			&.lambda-switch-background-danger:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--danger-outline-color);
+				box-shadow: 0 0 1px 3px var(--danger-subtle-color);
 			}
 
 			&.lambda-switch-background-warning:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--warning-outline-color);
+				box-shadow: 0 0 1px 3px var(--warning-subtle-color);
 			}
 
 			&.lambda-switch-background-info:is(.lambda-switch-background-checked) {
-				box-shadow: 0 0 1px 3px var(--info-outline-color);
+				box-shadow: 0 0 1px 3px var(--info-subtle-color);
 			}
 		}
 	}
@@ -173,8 +173,8 @@
 
 	&.lambda-switch-background-primary {
 		&.lambda-switch-background-checked {
-			border-color: var(--primary-light-color);
-			background-color: var(--primary-color);
+			border-color: var(--primary-soft-color);
+			background-color: var(--primary-base-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--primary-disabled-color);
@@ -189,8 +189,8 @@
 
 	&.lambda-switch-background-secondary {
 		&.lambda-switch-background-checked {
-			background-color: var(--secondary-color);
-			border-color: var(--secondary-light-color);
+			background-color: var(--secondary-base-color);
+			border-color: var(--secondary-soft-color);
 
 			.lambda-switch-handle {
 				background-color: var(--foreground-invert-color);
@@ -209,8 +209,8 @@
 
 	&.lambda-switch-background-success {
 		&.lambda-switch-background-checked {
-			border-color: var(--success-light-color);
-			background-color: var(--success-color);
+			border-color: var(--success-soft-color);
+			background-color: var(--success-base-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--success-disabled-color);
@@ -225,8 +225,8 @@
 
 	&.lambda-switch-background-danger {
 		&.lambda-switch-background-checked {
-			border-color: var(--danger-light-color);
-			background-color: var(--danger-color);
+			border-color: var(--danger-soft-color);
+			background-color: var(--danger-base-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--danger-disabled-color);
@@ -241,8 +241,8 @@
 
 	&.lambda-switch-background-warning {
 		&.lambda-switch-background-checked {
-			border-color: var(--warning-light-color);
-			background-color: var(--warning-color);
+			border-color: var(--warning-soft-color);
+			background-color: var(--warning-base-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--warning-disabled-color);
@@ -257,8 +257,8 @@
 
 	&.lambda-switch-background-info {
 		&.lambda-switch-background-checked {
-			border-color: var(--info-light-color);
-			background-color: var(--info-color);
+			border-color: var(--info-soft-color);
+			background-color: var(--info-base-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--info-disabled-color);
@@ -291,7 +291,7 @@
 
 	&.lambda-switch-background-primary {
 		&.lambda-switch-background-checked {
-			background-color: var(--primary-outline-color);
+			background-color: var(--primary-subtle-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--primary-disabled-color);
@@ -306,7 +306,7 @@
 
 	&.lambda-switch-background-secondary {
 		&.lambda-switch-background-checked {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--secondary-disabled-color);
@@ -321,7 +321,7 @@
 
 	&.lambda-switch-background-success {
 		&.lambda-switch-background-checked {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--success-disabled-color);
@@ -336,7 +336,7 @@
 
 	&.lambda-switch-background-danger {
 		&.lambda-switch-background-checked {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--danger-disabled-color);
@@ -351,7 +351,7 @@
 
 	&.lambda-switch-background-warning {
 		&.lambda-switch-background-checked {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--warning-disabled-color);
@@ -366,7 +366,7 @@
 
 	&.lambda-switch-background-info {
 		&.lambda-switch-background-checked {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 
 			&.lambda-switch-background-disabled {
 				border-color: var(--info-disabled-color);
@@ -400,10 +400,10 @@
 
 	&.lambda-switch-background-primary {
 		&.lambda-switch-background-checked {
-			border-color: var(--primary-color);
+			border-color: var(--primary-base-color);
 
 			.lambda-switch-handle {
-				background-color: var(--primary-color);
+				background-color: var(--primary-base-color);
 				box-shadow: none;
 			}
 
@@ -419,10 +419,10 @@
 
 	&.lambda-switch-background-secondary {
 		&.lambda-switch-background-checked {
-			border-color: var(--secondary-color);
+			border-color: var(--secondary-base-color);
 
 			.lambda-switch-handle {
-				background-color: var(--secondary-color);
+				background-color: var(--secondary-base-color);
 				box-shadow: none;
 			}
 
@@ -438,10 +438,10 @@
 
 	&.lambda-switch-background-success {
 		&.lambda-switch-background-checked {
-			border-color: var(--success-color);
+			border-color: var(--success-base-color);
 
 			.lambda-switch-handle {
-				background-color: var(--success-color);
+				background-color: var(--success-base-color);
 				box-shadow: none;
 			}
 
@@ -457,10 +457,10 @@
 
 	&.lambda-switch-background-danger {
 		&.lambda-switch-background-checked {
-			border-color: var(--danger-color);
+			border-color: var(--danger-base-color);
 
 			.lambda-switch-handle {
-				background-color: var(--danger-color);
+				background-color: var(--danger-base-color);
 				box-shadow: none;
 			}
 
@@ -476,10 +476,10 @@
 
 	&.lambda-switch-background-warning {
 		&.lambda-switch-background-checked {
-			border-color: var(--warning-color);
+			border-color: var(--warning-base-color);
 
 			.lambda-switch-handle {
-				background-color: var(--warning-color);
+				background-color: var(--warning-base-color);
 				box-shadow: none;
 			}
 
@@ -495,10 +495,10 @@
 
 	&.lambda-switch-background-info {
 		&.lambda-switch-background-checked {
-			border-color: var(--info-color);
+			border-color: var(--info-base-color);
 
 			.lambda-switch-handle {
-				background-color: var(--info-color);
+				background-color: var(--info-base-color);
 				box-shadow: none;
 			}
 

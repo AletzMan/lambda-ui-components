@@ -66,7 +66,7 @@
 
 .lambda-file-upload-label-required::after {
 	content: " *";
-	color: var(--danger-color);
+	color: var(--danger-base-color);
 	margin-left: 4px;
 }
 
@@ -89,10 +89,10 @@
 	&:focus-within:not(.lambda-file-upload-drop-zone-disabled):not(
 			.lambda-file-upload-drop-zone-invalid
 		) {
-		outline: 3px solid var(--primary-outline-color);
+		outline: 3px solid var(--primary-subtle-color);
 		outline-offset: 2px;
-		border-color: var(--primary-color);
-		background-color: var(--primary-light-color);
+		border-color: var(--primary-base-color);
+		background-color: var(--primary-soft-color);
 	}
 
 	.lambda-file-upload-drop-zone-content {
@@ -170,14 +170,14 @@
 .lambda-file-upload-drop-zone:hover:not(.lambda-file-upload-drop-zone-disabled):not(
 		.lambda-file-upload-drop-zone-invalid
 	) {
-	border-color: var(--primary-color);
+	border-color: var(--primary-base-color);
 
 	.lambda-file-upload-drop-zone-icon {
-		color: var(--primary-color);
+		color: var(--primary-base-color);
 	}
 
 	.lambda-file-upload-drop-zone-placeholder {
-		color: var(--primary-color);
+		color: var(--primary-base-color);
 	}
 }
 
@@ -201,26 +201,26 @@
 }
 
 .lambda-file-upload-drop-zone-invalid {
-	border-color: var(--danger-color);
+	border-color: var(--danger-base-color);
 
 	.lambda-file-upload-drop-zone-icon,
 	.lambda-file-upload-drop-zone-placeholder,
 	.lambda-file-upload-drop-zone-file-count {
-		color: var(--danger-color);
+		color: var(--danger-base-color);
 	}
 }
 
 .lambda-file-upload-drop-zone-dragging {
-	background-color: var(--primary-light-color);
-	border-color: var(--primary-color);
+	background-color: var(--primary-soft-color);
+	border-color: var(--primary-base-color);
 	border-style: dashed;
 
 	.lambda-file-upload-drop-zone-icon {
-		color: var(--primary-color);
+		color: var(--primary-base-color);
 	}
 
 	.lambda-file-upload-drop-zone-placeholder {
-		color: var(--primary-color);
+		color: var(--primary-base-color);
 	}
 }
 
@@ -290,7 +290,7 @@
 	&:focus-within:not(.lambda-file-upload-drop-zone-disabled):not(
 			.lambda-file-upload-drop-zone-invalid
 		) {
-		border-color: var(--primary-color);
+		border-color: var(--primary-base-color);
 	}
 }
 
@@ -325,10 +325,10 @@
 	&:focus-within:not(.lambda-file-upload-button-file-upload-disabled):not(
 			.lambda-file-upload-button-file-upload-invalid
 		) {
-		outline: 3px solid var(--primary-outline-color);
+		outline: 3px solid var(--primary-subtle-color);
 		outline-offset: 1px;
-		border-color: var(--primary-color);
-		background-color: var(--primary-light-color);
+		border-color: var(--primary-base-color);
+		background-color: var(--primary-soft-color);
 	}
 }
 
@@ -345,7 +345,7 @@
 	outline: none;
 	cursor: pointer;
 	transition: all 0.2s ease;
-	background-color: var(--primary-color);
+	background-color: var(--primary-base-color);
 	color: var(--white-color);
 
 	&:hover:not(.lambda-file-upload-button-file-upload-disabled):not(
@@ -357,7 +357,7 @@
 	&:focus-visible:not(.lambda-file-upload-button-file-upload-disabled):not(
 			.lambda-file-upload-button-file-upload-invalid
 		) {
-		outline: 3px solid var(--primary-outline-color);
+		outline: 3px solid var(--primary-subtle-color);
 		outline-offset: 2px;
 	}
 
@@ -370,7 +370,7 @@
 	}
 
 	&.lambda-file-upload-button-file-upload-invalid {
-		border-color: var(--danger-color);
+		border-color: var(--danger-base-color);
 	}
 
 	&.lambda-file-upload-button-file-upload-hasFiles {
@@ -496,7 +496,7 @@
 }
 
 .lambda-file-upload-file-name-remove-button:hover {
-	color: var(--danger-color);
+	color: var(--danger-base-color);
 }
 
 .lambda-file-upload-file-name-remove-icon {
@@ -618,7 +618,7 @@
 }
 
 .lambda-file-upload-file-item-remove-button:hover {
-	color: var(--danger-color);
+	color: var(--danger-base-color);
 }
 
 .lambda-file-upload-file-item-small {
@@ -667,11 +667,11 @@
 }
 
 .lambda-file-upload-file-item-invalid {
-	border-color: var(--danger-color);
+	border-color: var(--danger-base-color);
 
 	.lambda-file-upload-file-item-name,
 	.lambda-file-upload-file-item-size {
-		color: var(--danger-color);
+		color: var(--danger-base-color);
 	}
 }
 

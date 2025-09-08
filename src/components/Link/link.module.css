@@ -1,149 +1,147 @@
- .lambda-link {
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: center;
-     gap: var(--gap-sm);
-     line-height: inherit;
-     border: none;
-     text-align: inherit;
-     cursor: pointer;
-     transition: all 0.2s ease;
-     font-family: var(--font-family);
-     text-decoration: underline;
- }
+.lambda-link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gap-sm);
+	line-height: inherit;
+	border: none;
+	text-align: inherit;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	font-family: var(--font-family);
+	text-decoration: underline;
+}
 
+.lambda-link-primary {
+	color: var(--primary-base-color);
 
- .lambda-link-primary {
-     color: var(--primary-color);
+	&:hover {
+		color: var(--primary-text-color);
+	}
+}
 
-     &:hover {
-         color: var(--primary-text-color);
-     }
- }
+.lambda-link-secondary {
+	color: var(--secondary-base-color);
 
- .lambda-link-secondary {
-     color: var(--secondary-color);
+	&:hover {
+		color: var(--secondary-hover-color);
+	}
+}
 
-     &:hover {
-         color: var(--secondary-hover-color);
-     }
- }
+.lambda-link-success {
+	color: var(--success-base-color);
 
- .lambda-link-success {
-     color: var(--success-color);
+	&:hover {
+		color: var(--success-text-color);
+	}
+}
 
-     &:hover {
-         color: var(--success-text-color);
-     }
- }
+.lambda-link-danger {
+	color: var(--danger-base-color);
 
- .lambda-link-danger {
-     color: var(--danger-color);
+	&:hover {
+		color: var(--danger-text-color);
+	}
+}
 
-     &:hover {
-         color: var(--danger-text-color);
-     }
- }
+.lambda-link-warning {
+	color: var(--warning-base-color);
 
- .lambda-link-warning {
-     color: var(--warning-color);
+	&:hover {
+		color: var(--warning-text-color);
+	}
+}
 
-     &:hover {
-         color: var(--warning-text-color);
-     }
- }
+.lambda-link-info {
+	color: var(--info-base-color);
 
- .lambda-link-info {
-     color: var(--info-color);
+	&:hover {
+		color: var(--info-hover-color);
+	}
+}
 
-     &:hover {
-         color: var(--info-hover-color);
-     }
- }
+.lambda-link-tiny {
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-reg);
 
- .lambda-link-tiny {
-     font-size: var(--font-size-xs);
-     font-weight: var(--font-weight-reg);
+	.lambda-link-icon {
+		width: var(--icon-size-xs);
+		height: var(--icon-size-xs);
+	}
+}
 
-     .lambda-link-icon {
-         width: var(--icon-size-xs);
-         height: var(--icon-size-xs);
-     }
- }
+.lambda-link-small {
+	font-size: var(--font-size-sm);
 
- .lambda-link-small {
-     font-size: var(--font-size-sm);
+	.lambda-link-icon {
+		width: var(--icon-size-sm);
+		height: var(--icon-size-sm);
+	}
+}
 
-     .lambda-link-icon {
-         width: var(--icon-size-sm);
-         height: var(--icon-size-sm);
-     }
- }
+.lambda-link-medium {
+	font-size: var(--font-size-md);
 
- .lambda-link-medium {
-     font-size: var(--font-size-md);
+	.lambda-link-icon {
+		width: var(--icon-size-sm);
+		height: var(--icon-size-sm);
+	}
+}
 
-     .lambda-link-icon {
-         width: var(--icon-size-sm);
-         height: var(--icon-size-sm);
-     }
- }
+.lambda-link-large {
+	font-size: var(--font-size-lg);
 
- .lambda-link-large {
-     font-size: var(--font-size-lg);
+	.lambda-link-icon {
+		width: var(--icon-size-md);
+		height: var(--icon-size-md);
+	}
+}
 
-     .lambda-link-icon {
-         width: var(--icon-size-md);
-         height: var(--icon-size-md);
-     }
- }
+.lambda-link-button {
+	display: flex;
+	flex-direction: row;
+	padding-left: var(--padding-lg);
+	padding-right: var(--padding-lg);
 
+	&.lambda-link-button-active {
+		background-color: var(--primary-subtle-color);
+		color: var(--primary-text-color);
+		pointer-events: none;
+	}
+}
 
- .lambda-link-button {
-     display: flex;
-     flex-direction: row;
-     padding-left: var(--padding-lg);
-     padding-right: var(--padding-lg);
+.lambda-link-button-start {
+	justify-content: flex-start;
+}
 
-     &.lambda-link-button-active {
-         background-color: var(--primary-outline-color);
-         color: var(--primary-text-color);
-         pointer-events: none;
-     }
- }
+.lambda-link-button-center {
+	justify-content: center;
+}
 
- .lambda-link-button-start {
-     justify-content: flex-start;
- }
+.lambda-link-button-end {
+	justify-content: flex-start;
+	flex-direction: row-reverse !important;
+}
 
- .lambda-link-button-center {
-     justify-content: center;
- }
+/* Estilos para el estado deshabilitado (aplica a ambos tipos, aplicado con una clase) */
+.lambda-link-disabled {
+	cursor: not-allowed;
+	text-decoration-color: transparent !important;
+	opacity: 0.6;
+	outline: none !important;
+}
 
- .lambda-link-button-end {
-     justify-content: flex-start;
-     flex-direction: row-reverse !important;
- }
-
- /* Estilos para el estado deshabilitado (aplica a ambos tipos, aplicado con una clase) */
- .lambda-link-disabled {
-     cursor: not-allowed;
-     text-decoration-color: transparent !important;
-     opacity: 0.6;
-     outline: none !important;
- }
-
- /* Estilos para el icono dentro del Link */
- /* El espaciado entre el icono y el texto se manejará con gap en .lambda-link-base
+/* Estilos para el icono dentro del Link */
+/* El espaciado entre el icono y el texto se manejará con gap en .lambda-link-base
    (display: inline-flex) o con margin en Link.tsx/CSS del botón. */
- .lambda-link-icon {
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
+.lambda-link-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
- /* Nota: Los estilos para la apariencia de botón (cuando type="button") se obtendrán al importar el CSS Module del componente Button. */
- /* Las clases como .lambda-button, .lambda-button-variant-solid, .lambda-button-color-primary,
+/* Nota: Los estilos para la apariencia de botón (cuando type="button") se obtendrán al importar el CSS Module del componente Button. */
+/* Las clases como .lambda-button, .lambda-button-variant-solid, .lambda-button-color-primary,
    .lambda-button-size-medium, .lambda-button-radius-medium, .lambda-button-iconPosition-left,
    .lambda-button-loading-true, etc., deben estar definidas en el archivo CSS Module de tu componente Button. */

@@ -1,272 +1,261 @@
 .lambda-tooltip-target-wrapper {
-    /* display: inline-block;  Considerar si el target es inline/block */
-    /* position: relative; /* Puede ser necesario si la flecha se hiciera aquí, pero no con portals */
-    box-sizing: border-box;
+	/* display: inline-block;  Considerar si el target es inline/block */
+	/* position: relative; /* Puede ser necesario si la flecha se hiciera aquí, pero no con portals */
+	box-sizing: border-box;
 }
 
 /* Contenedor del tooltip (el pop-up box que va al Portal) */
 .lambda-tooltip-container {
-    position: absolute;
-    z-index: 1000;
-    pointer-events: none;
-    font-family: var(--font-family);
-    font-weight: var(--font-weight-md);
-    line-height: 1.5;
-    max-width: 200px;
-    text-align: center;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    opacity: 0;
-    border-radius: var(--border-radius-sm);
-    transition: all 5s ease;
-    /* Animación opcional (requiere estilos adicionales en la clase visible) */
-    transform-origin: center bottom;
-    transform: scale(0.9);
+	position: absolute;
+	z-index: 1000;
+	pointer-events: none;
+	font-family: var(--font-family);
+	font-weight: var(--font-weight-md);
+	line-height: 1.5;
+	max-width: 200px;
+	text-align: center;
+	box-sizing: border-box;
+	word-wrap: break-word;
+	opacity: 0;
+	border-radius: var(--border-radius-sm);
+	transition: all 5s ease;
+	/* Animación opcional (requiere estilos adicionales en la clase visible) */
+	transform-origin: center bottom;
+	transform: scale(0.9);
 }
 
 /* Estado Visible */
 .lambda-tooltip-container.visible {
-    opacity: 1;
-    transform: scale(1);
+	opacity: 1;
+	transform: scale(1);
 }
-
 
 /* Variantes de Tamaño del Contenedor */
 .lambda-tooltip-container-tiny {
-    padding: var(--padding-xs) var(--padding-sm);
-    font-size: var(--font-size-xs);
-    max-width: 150px;
+	padding: var(--padding-xs) var(--padding-sm);
+	font-size: var(--font-size-xs);
+	max-width: 150px;
 }
 
 .lambda-tooltip-container-small {
-    padding: var(--padding-xs) var(--padding-sm);
-    font-size: var(--font-size-sm);
-    max-width: 150px;
+	padding: var(--padding-xs) var(--padding-sm);
+	font-size: var(--font-size-sm);
+	max-width: 150px;
 }
 
 .lambda-tooltip-container-medium {
-    padding: var(--padding-sm) var(--padding-md);
-    font-size: var(--font-size-md);
-    max-width: 200px;
+	padding: var(--padding-sm) var(--padding-md);
+	font-size: var(--font-size-md);
+	max-width: 200px;
 }
 
 .lambda-tooltip-container-large {
-    padding: var(--padding-sm) var(--padding-md);
-    font-size: var(--font-size-lg);
-    max-width: 250px;
+	padding: var(--padding-sm) var(--padding-md);
+	font-size: var(--font-size-lg);
+	max-width: 250px;
 }
 
 .lambda-tooltip-container-primary {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    border: none;
+	background-color: var(--primary-base-color);
+	color: var(--white-color);
+	border: none;
 }
 
 .lambda-tooltip-container-secondary {
-    background-color: var(--secondary-color);
-    color: var(--foreground-invert-color);
-    border: none;
+	background-color: var(--secondary-base-color);
+	color: var(--foreground-invert-color);
+	border: none;
 }
 
 .lambda-tooltip-container-success {
-    background-color: var(--success-color);
-    color: var(--white-color);
-    border: none;
+	background-color: var(--success-base-color);
+	color: var(--white-color);
+	border: none;
 }
 
 .lambda-tooltip-container-danger {
-    background-color: var(--danger-color);
-    color: var(--white-color);
-    border: none;
+	background-color: var(--danger-base-color);
+	color: var(--white-color);
+	border: none;
 }
 
 .lambda-tooltip-container-warning {
-    background-color: var(--warning-color);
-    color: var(--white-color);
-    border: none;
+	background-color: var(--warning-base-color);
+	color: var(--white-color);
+	border: none;
 }
 
 .lambda-tooltip-container-info {
-    background-color: var(--info-color);
-    color: var(--white-color);
-    border: none;
+	background-color: var(--info-base-color);
+	color: var(--white-color);
+	border: none;
 }
 
 /* Posición para ayudar en estilos específicos (principalmente transform-origin si hay animación) */
 /* Estas clases se aplican al contenedor principal .lambda-tooltip-container */
 .lambda-tooltip-container-top-left {
-    transform-origin: bottom left;
-
-
+	transform-origin: bottom left;
 }
 
 .lambda-tooltip-container-top-center {
-    transform-origin: bottom center;
+	transform-origin: bottom center;
 }
 
 .lambda-tooltip-container-top-right {
-    transform-origin: bottom right;
+	transform-origin: bottom right;
 }
 
 .lambda-tooltip-container-bottom-left {
-    transform-origin: top left;
+	transform-origin: top left;
 }
 
 .lambda-tooltip-container-bottom-center {
-    transform-origin: top center;
-
-
+	transform-origin: top center;
 }
 
 .lambda-tooltip-container-bottom-right {
-    transform-origin: top right;
+	transform-origin: top right;
 }
 
 .lambda-tooltip-container-top-center,
 .lambda-tooltip-container-top-left,
 .lambda-tooltip-container-top-right {
-    &.lambda-tooltip-container-primary::before {
-        border-top-color: var(--primary-color);
-    }
+	&.lambda-tooltip-container-primary::before {
+		border-top-color: var(--primary-base-color);
+	}
 
-    &.lambda-tooltip-container-secondary::before {
-        border-top-color: var(--secondary-color);
-    }
+	&.lambda-tooltip-container-secondary::before {
+		border-top-color: var(--secondary-base-color);
+	}
 
-    &.lambda-tooltip-container-success::before {
-        border-top-color: var(--success-color);
-    }
+	&.lambda-tooltip-container-success::before {
+		border-top-color: var(--success-base-color);
+	}
 
-    &.lambda-tooltip-container-danger::before {
-        border-top-color: var(--danger-color);
-    }
+	&.lambda-tooltip-container-danger::before {
+		border-top-color: var(--danger-base-color);
+	}
 
-    &.lambda-tooltip-container-warning::before {
-        border-top-color: var(--warning-color);
-    }
+	&.lambda-tooltip-container-warning::before {
+		border-top-color: var(--warning-base-color);
+	}
 
-    &.lambda-tooltip-container-info::before {
-        border-top-color: var(--info-color);
-    }
+	&.lambda-tooltip-container-info::before {
+		border-top-color: var(--info-base-color);
+	}
 }
 
 .lambda-tooltip-container-bottom-center,
 .lambda-tooltip-container-bottom-left,
 .lambda-tooltip-container-bottom-right {
-    &.lambda-tooltip-container-default::before {
-        border-bottom-color: var(--foreground-color);
-    }
+	&.lambda-tooltip-container-default::before {
+		border-bottom-color: var(--foreground-color);
+	}
 
-    &.lambda-tooltip-container-primary::before {
-        border-bottom-color: var(--primary-color);
-    }
+	&.lambda-tooltip-container-primary::before {
+		border-bottom-color: var(--primary-base-color);
+	}
 
-    &.lambda-tooltip-container-secondary::before {
-        border-bottom-color: var(--secondary-color);
-    }
+	&.lambda-tooltip-container-secondary::before {
+		border-bottom-color: var(--secondary-base-color);
+	}
 
-    &.lambda-tooltip-container-success::before {
-        border-bottom-color: var(--success-color);
-    }
+	&.lambda-tooltip-container-success::before {
+		border-bottom-color: var(--success-base-color);
+	}
 
-    &.lambda-tooltip-container-danger::before {
-        border-bottom-color: var(--danger-color);
-    }
+	&.lambda-tooltip-container-danger::before {
+		border-bottom-color: var(--danger-base-color);
+	}
 
-    &.lambda-tooltip-container-warning::before {
-        border-bottom-color: var(--warning-color);
-    }
+	&.lambda-tooltip-container-warning::before {
+		border-bottom-color: var(--warning-base-color);
+	}
 
-    &.lambda-tooltip-container-info::before {
-        border-bottom-color: var(--info-color);
-    }
+	&.lambda-tooltip-container-info::before {
+		border-bottom-color: var(--info-base-color);
+	}
 }
-
 
 /* Flecha del Tooltip (Pseudo-elemento ::before en el contenedor del tooltip) */
 .lambda-tooltip-container::before {
-    content: "";
-    position: absolute;
-    border-width: var(--icon-size-md);
-    border-style: solid;
-    pointer-events: none;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	border-width: var(--icon-size-md);
+	border-style: solid;
+	pointer-events: none;
+	z-index: -1;
 }
-
 
 /* Variantes de Tamaño de la Flecha (afecta border-width) */
 .lambda-tooltip-arrow-tiny::before {
-    border-width: 5px;
+	border-width: 5px;
 }
 
 .lambda-tooltip-arrow-small::before {
-    border-width: 5px;
+	border-width: 5px;
 }
 
 .lambda-tooltip-arrow-medium::before {
-    border-width: 5px;
+	border-width: 5px;
 }
 
 .lambda-tooltip-arrow-large::before {
-    border-width: 5px;
+	border-width: 5px;
 }
-
 
 /* Flecha abajo, apuntando hacia arriba (para tooltips posicionados ABOVE el target) */
 .lambda-tooltip-arrow-bottom-left::before {
-    bottom: calc(-0.7 * var(--icon-size-xs));
-    left: var(--padding-sm);
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-bottom-color: transparent;
+	bottom: calc(-0.7 * var(--icon-size-xs));
+	left: var(--padding-sm);
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
 }
 
 .lambda-tooltip-arrow-bottom-center::before {
-    bottom: calc(-0.7 * var(--icon-size-xs));
-    left: 50%;
-    transform: translateX(-50%);
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    /*border-color: var(--black-color) transparent transparent transparent;*/
+	bottom: calc(-0.7 * var(--icon-size-xs));
+	left: 50%;
+	transform: translateX(-50%);
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	/*border-color: var(--black-color) transparent transparent transparent;*/
 }
 
 .lambda-tooltip-arrow-bottom-right::before {
-    bottom: calc(-0.7 * var(--icon-size-xs));
-    right: var(--padding-3, 12px);
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-bottom-color: transparent;
+	bottom: calc(-0.7 * var(--icon-size-xs));
+	right: var(--padding-3, 12px);
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
 }
 
 /* Flecha arriba, apuntando hacia abajo (para tooltips posicionados BELOW el target) */
 .lambda-tooltip-arrow-top-left::before {
-    top: calc(-0.7 * var(--icon-size-xs));
-    left: var(--padding-3, 12px);
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-top-color: transparent;
+	top: calc(-0.7 * var(--icon-size-xs));
+	left: var(--padding-3, 12px);
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-top-color: transparent;
 }
 
 .lambda-tooltip-arrow-top-center::before {
-    top: calc(-0.7 * var(--icon-size-xs));
-    left: 50%;
-    transform: translateX(-50%);
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-top-color: transparent;
+	top: calc(-0.7 * var(--icon-size-xs));
+	left: 50%;
+	transform: translateX(-50%);
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-top-color: transparent;
 }
 
 .lambda-tooltip-arrow-top-right::before {
-    top: calc(-0.7 * var(--icon-size-xs));
-    right: var(--padding-3, 12px);
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-top-color: transparent;
+	top: calc(-0.7 * var(--icon-size-xs));
+	right: var(--padding-3, 12px);
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-top-color: transparent;
 }
-
-
-
 
 /* Ajustar offset de la flecha según el tamaño si es necesario */
 /* .lambda-tooltip-arrow-small.lambda-tooltip-arrow-bottom-left::before { left: var(--padding-2, 8px); } */

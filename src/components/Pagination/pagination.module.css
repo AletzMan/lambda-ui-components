@@ -96,13 +96,13 @@
 
 .lambda-pagination-button-soft {
 	border: none;
-	background-color: var(--primary-light-color);
+	background-color: var(--primary-soft-color);
 	color: var(--primary-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
 		opacity: 0.5;
-		background-color: var(--primary-light-color);
+		background-color: var(--primary-soft-color);
 		border-color: var(--surface-d);
 		color: var(--primary-disabled-color);
 	}
@@ -160,24 +160,24 @@
 		.lambda-pagination-button-active
 	):not(.lambda-pagination-button-ellipsis) {
 	&.lambda-pagination-button-solid {
-		border-color: var(--primary-color);
-		background-color: var(--primary-color);
+		border-color: var(--primary-base-color);
+		background-color: var(--primary-base-color);
 		color: var(--white-color);
 	}
 
 	&.lambda-pagination-button-bordered {
-		border-color: var(--primary-color);
-		background-color: var(--primary-light-color);
+		border-color: var(--primary-base-color);
+		background-color: var(--primary-soft-color);
 		color: var(--primary-text-color);
 	}
 
 	&.lambda-pagination-button-soft {
-		background-color: var(--primary-outline-color);
+		background-color: var(--primary-subtle-color);
 		color: var(--primary-text-color);
 	}
 
 	&.lambda-pagination-button-outline {
-		border-color: var(--primary-color);
+		border-color: var(--primary-base-color);
 		background-color: transparent;
 		color: var(--primary-text-color);
 	}
@@ -186,7 +186,7 @@
 .lambda-pagination-button:focus-visible:not(.lambda-pagination-button-disabled):not(
 		.lambda-pagination-button-ellipsis
 	) {
-	outline: 2px solid var(--primary-outline-color);
+	outline: 2px solid var(--primary-subtle-color);
 	outline-offset: 1px;
 }
 
@@ -197,33 +197,33 @@
 
 	&:hover,
 	&:focus-visible {
-		border-color: var(--primary-color);
-		background-color: var(--primary-color);
+		border-color: var(--primary-base-color);
+		background-color: var(--primary-base-color);
 		outline: none;
 	}
 }
 
 .lambda-pagination-button-bordered-active {
 	border-color: var(--primary-hover-color);
-	background-color: var(--primary-outline-color);
+	background-color: var(--primary-subtle-color);
 	color: var(--primary-text-color);
 }
 
 .lambda-pagination-button-soft-active {
 	border: none;
-	background-color: var(--primary-color);
+	background-color: var(--primary-base-color);
 	color: var(--white-color);
 }
 
 .lambda-pagination-button-solid-active {
-	border-color: var(--primary-color);
-	background-color: var(--primary-color);
+	border-color: var(--primary-base-color);
+	background-color: var(--primary-base-color);
 	color: var(--white-color);
 }
 
 .lambda-pagination-button-outline-active {
-	border-color: var(--primary-color);
-	outline: var(--border-width-xs) solid var(--primary-color);
+	border-color: var(--primary-base-color);
+	outline: var(--border-width-xs) solid var(--primary-base-color);
 	background-color: transparent;
 	color: var(--primary-text-color);
 }

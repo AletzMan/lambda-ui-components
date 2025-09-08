@@ -9,7 +9,7 @@
 	width: 100%;
 
 	&:focus-within {
-		outline: 2px solid var(--primary-outline-color);
+		outline: 2px solid var(--primary-subtle-color);
 	}
 
 	&.lambda-carousel-horizontal {
@@ -318,8 +318,8 @@
 	}
 
 	&.lambda-carousel-dot-active {
-		background-color: var(--primary-color);
-		border-color: var(--primary-darkened-color);
+		background-color: var(--primary-base-color);
+		border-color: var(--primary-dark-color);
 
 		&::after {
 			color: var(--white-color);
@@ -327,8 +327,8 @@
 	}
 
 	&.lambda-carousel-dot:hover:not(.lambda-carousel-dot-active):not(:disabled) {
-		background-color: var(--primary-color);
-		border-color: var(--primary-darkened-color);
+		background-color: var(--primary-base-color);
+		border-color: var(--primary-dark-color);
 
 		&::after {
 			color: var(--white-color);
@@ -338,8 +338,8 @@
 
 .lambda-carousel-dot-active {
 	background-color: var(--primary-hover-color);
-	border-color: var(--primary-color);
-	outline: 3px solid var(--primary-outline-color);
+	border-color: var(--primary-base-color);
+	outline: 3px solid var(--primary-subtle-color);
 }
 
 .lambda-carousel-button svg {
@@ -419,7 +419,7 @@
 	}
 
 	&.lambda-carousel-thumbnails-item-active {
-		border-color: var(--primary-color);
+		border-color: var(--primary-base-color);
 		opacity: 1;
 	}
 }

@@ -145,26 +145,26 @@
 }
 
 .lambda-badge-color-primary {
-	background-color: var(--primary-color);
+	background-color: var(--primary-base-color);
 }
 
 .lambda-badge-color-secondary {
-	background-color: var(--secondary-color);
+	background-color: var(--secondary-base-color);
 	color: var(--foreground-invert-color);
 }
 
 .lambda-badge-color-success {
-	background-color: var(--success-color);
+	background-color: var(--success-base-color);
 }
 
 .lambda-badge-color-danger {
-	background-color: var(--danger-color);
+	background-color: var(--danger-base-color);
 }
 
 .lambda-badge-color-warning {
-	background-color: var(--warning-color);
+	background-color: var(--warning-base-color);
 }
 
 .lambda-badge-color-info {
-	background-color: var(--info-color);
+	background-color: var(--info-base-color);
 }

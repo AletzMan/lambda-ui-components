@@ -20,7 +20,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--primary-outline-color);
+			border-color: var(--primary-subtle-color);
 		}
 	}
 
@@ -28,7 +28,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--secondary-outline-color);
+			border-color: var(--secondary-subtle-color);
 		}
 	}
 
@@ -36,7 +36,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--success-outline-color);
+			border-color: var(--success-subtle-color);
 		}
 	}
 
@@ -44,7 +44,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--danger-outline-color);
+			border-color: var(--danger-subtle-color);
 		}
 	}
 
@@ -52,7 +52,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--warning-outline-color);
+			border-color: var(--warning-subtle-color);
 		}
 	}
 
@@ -60,7 +60,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--info-outline-color);
+			border-color: var(--info-subtle-color);
 		}
 	}
 
@@ -291,27 +291,27 @@
 }
 
 .lambda-divider-primary {
-	border-color: var(--primary-outline-color);
+	border-color: var(--primary-subtle-color);
 }
 
 .lambda-divider-secondary {
-	border-color: var(--secondary-outline-color);
+	border-color: var(--secondary-subtle-color);
 }
 
 .lambda-divider-success {
-	border-color: var(--success-outline-color);
+	border-color: var(--success-subtle-color);
 }
 
 .lambda-divider-danger {
-	border-color: var(--danger-outline-color);
+	border-color: var(--danger-subtle-color);
 }
 
 .lambda-divider-warning {
-	border-color: var(--warning-outline-color);
+	border-color: var(--warning-subtle-color);
 }
 
 .lambda-divider-info {
-	border-color: var(--info-outline-color);
+	border-color: var(--info-subtle-color);
 }
 
 .lambda-divider-default {

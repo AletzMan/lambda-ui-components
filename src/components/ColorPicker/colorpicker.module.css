@@ -8,7 +8,7 @@
 	box-sizing: border-box;
 
 	&:hover {
-		border-color: var(--primary-color);
+		border-color: var(--primary-base-color);
 	}
 
 	&:is(.lambda-colorpicker-show-text) {

@@ -184,13 +184,13 @@
 
 /* Estado Hover y Foco */
 .lambda-dialog-close-button:hover {
-	color: var(--danger-color);
-	background-color: var(--danger-light-color);
+	color: var(--danger-base-color);
+	background-color: var(--danger-soft-color);
 }
 
 /* Estilo de foco visible para accesibilidad */
 .lambda-dialog-close-button:focus-visible {
-	outline: 2px solid var(--danger-outline-color);
+	outline: 2px solid var(--danger-subtle-color);
 	border-radius: var(--radius-small, 4px);
 	outline-offset: 2px;
 }

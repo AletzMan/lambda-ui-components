@@ -217,7 +217,7 @@
 }
 
 .lambda-input-group-invalid {
-	background-color: var(--danger-light-color);
+	background-color: var(--danger-soft-color);
 }
 
 .lambda-input-group {

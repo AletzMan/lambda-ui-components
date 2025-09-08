@@ -11,8 +11,8 @@
 }
 
 .select-option-active {
-	background-color: var(--primary-outline-color);
-	color: var(--primary-color);
+	background-color: var(--primary-subtle-color);
+	color: var(--primary-base-color);
 }
 
 .select-icon-svg {
@@ -45,7 +45,7 @@
 	&.select-label-required {
 		&::after {
 			content: " *";
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 		}
 	}
 
@@ -114,21 +114,21 @@
 		border: var(--border-width-xs) solid var(--surface-d);
 
 		&:is(.select-btn-invalid) {
-			border: var(--border-width-xs) dashed var(--danger-color);
-			background-color: var(--danger-light-color);
+			border: var(--border-width-xs) dashed var(--danger-base-color);
+			background-color: var(--danger-soft-color);
 		}
 	}
 
 	&.select-btn-soft:not(.select-btn-disabled) {
 		border: none;
-		background-color: var(--secondary-light-color);
+		background-color: var(--secondary-soft-color);
 
 		.select-placeholder {
 			color: var(--surface-g);
 		}
 
 		&:is(.select-btn-invalid) {
-			background-color: var(--danger-light-color);
+			background-color: var(--danger-soft-color);
 		}
 	}
 
@@ -136,8 +136,8 @@
 		border: none;
 
 		&:is(.select-btn-invalid) {
-			border-bottom: 2px dashed var(--danger-color);
-			background-color: var(--danger-light-color);
+			border-bottom: 2px dashed var(--danger-base-color);
+			background-color: var(--danger-soft-color);
 		}
 	}
 
@@ -210,14 +210,14 @@
 	}
 
 	&:focus:not(.select-btn-disabled) {
-		box-shadow: 0 0 0px 3px var(--primary-outline-color);
+		box-shadow: 0 0 0px 3px var(--primary-subtle-color);
 
 		&.select-btn-outline {
 			border: var(--border-width-xs) solid var(--primary-hover-color);
 		}
 
 		&.select-btn-borderless {
-			border-bottom-color: var(--primary-color);
+			border-bottom-color: var(--primary-base-color);
 		}
 	}
 
@@ -391,7 +391,7 @@
 	cursor: pointer;
 
 	&.select-option-selected {
-		background-color: var(--primary-light-color);
+		background-color: var(--primary-soft-color);
 		color: var(--primary-text-color);
 		font-weight: var(--font-weight-md);
 		cursor: default;
@@ -399,7 +399,7 @@
 }
 
 .select-option:hover:not(.select-option-selected) {
-	background-color: var(--primary-outline-color);
+	background-color: var(--primary-subtle-color);
 	color: var(--foreground-color);
 }
 

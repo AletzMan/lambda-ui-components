@@ -49,7 +49,7 @@ body {
 
 .title {
 	padding: 0.5em 1em;
-	color: var(--info-color);
+	color: var(--info-base-color);
 }
 
 .header_controls {
@@ -93,7 +93,7 @@ body {
 	gap: 2em;
 	padding: 1.5em 1em;
 	width: 100%;
-	background-color: var(--secondary-light-color);
+	background-color: var(--secondary-soft-color);
 	border-radius: var(--border-radius-sm);
 }
 

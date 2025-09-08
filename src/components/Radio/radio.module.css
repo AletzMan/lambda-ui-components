@@ -15,42 +15,42 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-primary):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--primary-outline-color);
+		box-shadow: 0 0 1px 3px var(--primary-subtle-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-secondary):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--secondary-outline-color);
+		box-shadow: 0 0 1px 3px var(--secondary-subtle-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-danger):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--danger-outline-color);
+		box-shadow: 0 0 1px 3px var(--danger-subtle-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-success):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--success-outline-color);
+		box-shadow: 0 0 1px 3px var(--success-subtle-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-warning):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--warning-outline-color);
+		box-shadow: 0 0 1px 3px var(--warning-subtle-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-info):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--info-outline-color);
+		box-shadow: 0 0 1px 3px var(--info-subtle-color);
 	}
 }
 
@@ -259,78 +259,78 @@
 		&.lambda-radio-view {
 			&:is(.lambda-radio-view-primary) {
 				& ~ .lambda-radio-label {
-					background-color: var(--primary-light-color);
+					background-color: var(--primary-soft-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border-right: 1px solid var(--primary-outline-color);
+						border-right: 1px solid var(--primary-subtle-color);
 					}
 					&:is(.lambda-radio-label-vertical) {
-						border-bottom: 1px solid var(--primary-outline-color);
+						border-bottom: 1px solid var(--primary-subtle-color);
 					}
 				}
 			}
 
 			&:is(.lambda-radio-view-secondary) {
 				& ~ .lambda-radio-label {
-					background-color: var(--secondary-light-color);
+					background-color: var(--secondary-soft-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border-right: 1px solid var(--secondary-outline-color);
+						border-right: 1px solid var(--secondary-subtle-color);
 					}
 					&:is(.lambda-radio-label-vertical) {
-						border-bottom: 1px solid var(--secondary-outline-color);
+						border-bottom: 1px solid var(--secondary-subtle-color);
 					}
 				}
 			}
 
 			&:is(.lambda-radio-view-success) {
 				& ~ .lambda-radio-label {
-					background-color: var(--success-light-color);
+					background-color: var(--success-soft-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border-right: 1px solid var(--success-outline-color);
+						border-right: 1px solid var(--success-subtle-color);
 					}
 					&:is(.lambda-radio-label-vertical) {
-						border-bottom: 1px solid var(--success-outline-color);
+						border-bottom: 1px solid var(--success-subtle-color);
 					}
 				}
 			}
 
 			&:is(.lambda-radio-view-danger) {
 				& ~ .lambda-radio-label {
-					background-color: var(--danger-light-color);
+					background-color: var(--danger-soft-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border-right: 1px solid var(--danger-outline-color);
+						border-right: 1px solid var(--danger-subtle-color);
 					}
 					&:is(.lambda-radio-label-vertical) {
-						border-bottom: 1px solid var(--danger-outline-color);
+						border-bottom: 1px solid var(--danger-subtle-color);
 					}
 				}
 			}
 
 			&:is(.lambda-radio-view-warning) {
 				& ~ .lambda-radio-label {
-					background-color: var(--warning-light-color);
+					background-color: var(--warning-soft-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border-right: 1px solid var(--warning-outline-color);
+						border-right: 1px solid var(--warning-subtle-color);
 					}
 					&:is(.lambda-radio-label-vertical) {
-						border-bottom: 1px solid var(--warning-outline-color);
+						border-bottom: 1px solid var(--warning-subtle-color);
 					}
 				}
 			}
 
 			&:is(.lambda-radio-view-info) {
 				& ~ .lambda-radio-label {
-					background-color: var(--info-light-color);
+					background-color: var(--info-soft-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border-right: 1px solid var(--info-outline-color);
+						border-right: 1px solid var(--info-subtle-color);
 					}
 					&:is(.lambda-radio-label-vertical) {
-						border-bottom: 1px solid var(--info-outline-color);
+						border-bottom: 1px solid var(--info-subtle-color);
 					}
 				}
 			}
@@ -564,11 +564,11 @@
 			.lambda-radio-view-disabled
 		) {
 		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
-			background-color: var(--primary-outline-color);
+			background-color: var(--primary-subtle-color);
 		}
 		&:is(.lambda-radio-view-solid) {
 			& ~ .lambda-radio-label {
-				background-color: var(--primary-outline-color);
+				background-color: var(--primary-subtle-color);
 			}
 		}
 	}
@@ -578,11 +578,11 @@
 			.lambda-radio-view-disabled
 		) {
 		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 		}
 		&:is(.lambda-radio-view-solid) {
 			& ~ .lambda-radio-label {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
@@ -592,11 +592,11 @@
 			.lambda-radio-view-disabled
 		) {
 		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 		}
 		&:is(.lambda-radio-view-solid) {
 			& ~ .lambda-radio-label {
-				background-color: var(--danger-outline-color);
+				background-color: var(--danger-subtle-color);
 			}
 		}
 	}
@@ -606,11 +606,11 @@
 			.lambda-radio-view-disabled
 		) {
 		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 		}
 		&:is(.lambda-radio-view-solid) {
 			& ~ .lambda-radio-label {
-				background-color: var(--success-outline-color);
+				background-color: var(--success-subtle-color);
 			}
 		}
 	}
@@ -620,11 +620,11 @@
 			.lambda-radio-view-disabled
 		) {
 		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 		}
 		&:is(.lambda-radio-view-solid) {
 			& ~ .lambda-radio-label {
-				background-color: var(--warning-outline-color);
+				background-color: var(--warning-subtle-color);
 			}
 		}
 	}
@@ -634,11 +634,11 @@
 			.lambda-radio-view-disabled
 		) {
 		&:is(.lambda-radio-view-outline, .lambda-radio-view-soft) {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 		}
 		&:is(.lambda-radio-view-solid) {
 			& ~ .lambda-radio-label {
-				background-color: var(--info-outline-color);
+				background-color: var(--info-subtle-color);
 			}
 		}
 	}
@@ -653,23 +653,23 @@
 			&:is(.lambda-radio-view-outline) {
 				&:is(.lambda-radio-view-primary) {
 					& ~ .lambda-radio-label {
-						background-color: var(--primary-color);
+						background-color: var(--primary-base-color);
 					}
 				}
 
 				&:is(.lambda-radio-view-secondary) {
 					& ~ .lambda-radio-label {
-						background-color: var(--secondary-color);
-						border-top: 1px solid var(--secondary-color);
-						border-bottom: 1px solid var(--secondary-color);
-						border-right: 1px solid var(--secondary-color);
+						background-color: var(--secondary-base-color);
+						border-top: 1px solid var(--secondary-base-color);
+						border-bottom: 1px solid var(--secondary-base-color);
+						border-right: 1px solid var(--secondary-base-color);
 						color: var(--foreground-invert-color);
 					}
 				}
 
 				&:is(.lambda-radio-view-success) {
 					& ~ .lambda-radio-label {
-						background-color: var(--success-color);
+						background-color: var(--success-base-color);
 						border-top: 1px solid var(--success-disabled-color);
 						border-bottom: 1px solid var(--success-disabled-color);
 						border-right: 1px solid var(--success-disabled-color);
@@ -678,7 +678,7 @@
 
 				&:is(.lambda-radio-view-danger) {
 					& ~ .lambda-radio-label {
-						background-color: var(--danger-color);
+						background-color: var(--danger-base-color);
 						border-top: 1px solid var(--danger-disabled-color);
 						border-bottom: 1px solid var(--danger-disabled-color);
 						border-right: 1px solid var(--danger-disabled-color);
@@ -687,14 +687,14 @@
 
 				&:is(.lambda-radio-view-warning) {
 					& ~ .lambda-radio-label {
-						background-color: var(--warning-color);
+						background-color: var(--warning-base-color);
 						font-weight: var(--font-weight-semibold);
 					}
 				}
 
 				&:is(.lambda-radio-view-info) {
 					& ~ .lambda-radio-label {
-						background-color: var(--info-color);
+						background-color: var(--info-base-color);
 						border-top: 1px solid var(--info-disabled-color);
 						border-bottom: 1px solid var(--info-disabled-color);
 						border-right: 1px solid var(--info-disabled-color);
@@ -706,7 +706,7 @@
 			&:is(.lambda-radio-view-solid) {
 				&:is(.lambda-radio-view-primary) {
 					& ~ .lambda-radio-label {
-						background-color: var(--primary-color);
+						background-color: var(--primary-base-color);
 						border-top: 1px solid var(--border-color);
 						border-bottom: 1px solid var(--border-color);
 						border-right: 1px solid var(--border-color);
@@ -715,7 +715,7 @@
 
 				&:is(.lambda-radio-view-secondary) {
 					& ~ .lambda-radio-label {
-						background-color: var(--secondary-color);
+						background-color: var(--secondary-base-color);
 						border-top: 1px solid var(--border-color);
 						border-bottom: 1px solid var(--border-color);
 						border-right: 1px solid var(--border-color);
@@ -725,7 +725,7 @@
 
 				&:is(.lambda-radio-view-success) {
 					& ~ .lambda-radio-label {
-						background-color: var(--success-color);
+						background-color: var(--success-base-color);
 						border-top: 1px solid var(--border-color);
 						border-bottom: 1px solid var(--border-color);
 						border-right: 1px solid var(--border-color);
@@ -734,7 +734,7 @@
 
 				&:is(.lambda-radio-view-danger) {
 					& ~ .lambda-radio-label {
-						background-color: var(--danger-color);
+						background-color: var(--danger-base-color);
 						border-top: 1px solid var(--border-color);
 						border-bottom: 1px solid var(--border-color);
 						border-right: 1px solid var(--border-color);
@@ -743,7 +743,7 @@
 
 				&:is(.lambda-radio-view-warning) {
 					& ~ .lambda-radio-label {
-						background-color: var(--warning-color);
+						background-color: var(--warning-base-color);
 						font-weight: var(--font-weight-semibold);
 						border-top: 1px solid var(--border-color);
 						border-bottom: 1px solid var(--border-color);
@@ -753,7 +753,7 @@
 
 				&:is(.lambda-radio-view-info) {
 					& ~ .lambda-radio-label {
-						background-color: var(--info-color);
+						background-color: var(--info-base-color);
 						font-weight: var(--font-weight-semibold);
 						border-top: 1px solid var(--border-color);
 						border-bottom: 1px solid var(--border-color);
@@ -1000,66 +1000,66 @@
 		&:is(.lambda-radio-wrapper-primary) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--primary-hover-color);
-				box-shadow: 0 0 0 3px var(--primary-outline-color);
+				box-shadow: 0 0 0 3px var(--primary-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--primary-color);
+				border-color: var(--primary-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-secondary) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--secondary-hover-color);
-				box-shadow: 0 0 0 3px var(--secondary-outline-color);
+				box-shadow: 0 0 0 3px var(--secondary-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--secondary-color);
+				border-color: var(--secondary-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-success) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--success-hover-color);
-				box-shadow: 0 0 0 3px var(--success-outline-color);
+				box-shadow: 0 0 0 3px var(--success-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--success-color);
+				border-color: var(--success-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-danger) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--danger-hover-color);
-				box-shadow: 0 0 0 3px var(--danger-outline-color);
+				box-shadow: 0 0 0 3px var(--danger-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--danger-color);
+				border-color: var(--danger-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-warning) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--warning-hover-color);
-				box-shadow: 0 0 0 3px var(--warning-outline-color);
+				box-shadow: 0 0 0 3px var(--warning-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--warning-color);
+				border-color: var(--warning-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-info) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--info-hover-color);
-				box-shadow: 0 0 0 3px var(--info-outline-color);
+				box-shadow: 0 0 0 3px var(--info-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--info-color);
+				border-color: var(--info-base-color);
 			}
 		}
 	}
@@ -1070,61 +1070,61 @@
 
 		&:is(.lambda-radio-wrapper-primary) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--primary-outline-color);
+				background-color: var(--primary-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--primary-outline-color);
+				border-color: var(--primary-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-secondary) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--secondary-outline-color);
+				border-color: var(--secondary-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-success) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--success-outline-color);
+				background-color: var(--success-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--success-outline-color);
+				border-color: var(--success-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-danger) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--danger-outline-color);
+				background-color: var(--danger-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--danger-outline-color);
+				border-color: var(--danger-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-warning) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--warning-outline-color);
+				background-color: var(--warning-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--warning-outline-color);
+				border-color: var(--warning-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-info) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--info-outline-color);
+				background-color: var(--info-subtle-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--info-outline-color);
+				border-color: var(--info-subtle-color);
 			}
 		}
 	}
@@ -1135,61 +1135,61 @@
 
 		&:is(.lambda-radio-wrapper-primary) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--primary-color);
+				background-color: var(--primary-base-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--primary-outline-color);
+				border-color: var(--primary-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-secondary) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--secondary-color);
+				background-color: var(--secondary-base-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--secondary-outline-color);
+				border-color: var(--secondary-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-success) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--success-color);
+				background-color: var(--success-base-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--success-outline-color);
+				border-color: var(--success-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-danger) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--danger-color);
+				background-color: var(--danger-base-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--danger-outline-color);
+				border-color: var(--danger-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-warning) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--warning-color);
+				background-color: var(--warning-base-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--warning-outline-color);
+				border-color: var(--warning-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-wrapper-info) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--info-color);
+				background-color: var(--info-base-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--info-outline-color);
+				border-color: var(--info-subtle-color);
 			}
 		}
 	}
@@ -1749,54 +1749,54 @@
 	&.lambda-radio-view-outline {
 		background-color: transparent;
 		&:is(.lambda-radio-view-primary) {
-			border-color: var(--primary-color);
+			border-color: var(--primary-base-color);
 		}
 
 		&:is(.lambda-radio-view-secondary) {
-			border-color: var(--secondary-color);
+			border-color: var(--secondary-base-color);
 		}
 
 		&:is(.lambda-radio-view-success) {
-			border-color: var(--success-color);
+			border-color: var(--success-base-color);
 		}
 
 		&:is(.lambda-radio-view-danger) {
-			border-color: var(--danger-color);
+			border-color: var(--danger-base-color);
 		}
 
 		&:is(.lambda-radio-view-warning) {
-			border-color: var(--warning-color);
+			border-color: var(--warning-base-color);
 		}
 
 		&:is(.lambda-radio-view-info) {
-			border-color: var(--info-color);
+			border-color: var(--info-base-color);
 		}
 	}
 
 	&.lambda-radio-view-soft {
 		border-color: transparent;
 		&:is(.lambda-radio-view-primary) {
-			background-color: var(--primary-outline-color);
+			background-color: var(--primary-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-secondary) {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-success) {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-danger) {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-warning) {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-info) {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 		}
 	}
 }
@@ -1817,44 +1817,44 @@
 	&.lambda-radio-view-outline {
 		background-color: transparent;
 		&:is(.lambda-radio-view-primary) {
-			border-color: var(--primary-light-color);
+			border-color: var(--primary-soft-color);
 			&:is(.lambda-radio-view-checked) {
-				border-color: var(--primary-color);
+				border-color: var(--primary-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-view-secondary) {
-			border-color: var(--secondary-light-color);
+			border-color: var(--secondary-soft-color);
 			&:is(.lambda-radio-view-checked) {
-				border-color: var(--secondary-color);
+				border-color: var(--secondary-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-view-success) {
-			border-color: var(--success-light-color);
+			border-color: var(--success-soft-color);
 			&:is(.lambda-radio-view-checked) {
-				border-color: var(--success-color);
+				border-color: var(--success-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-view-danger) {
-			border-color: var(--danger-light-color);
+			border-color: var(--danger-soft-color);
 			&:is(.lambda-radio-view-checked) {
-				border-color: var(--danger-color);
+				border-color: var(--danger-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-view-warning) {
-			border-color: var(--warning-light-color);
+			border-color: var(--warning-soft-color);
 			&:is(.lambda-radio-view-checked) {
-				border-color: var(--warning-color);
+				border-color: var(--warning-base-color);
 			}
 		}
 
 		&:is(.lambda-radio-view-info) {
-			border-color: var(--info-light-color);
+			border-color: var(--info-soft-color);
 			&:is(.lambda-radio-view-checked) {
-				border-color: var(--info-color);
+				border-color: var(--info-base-color);
 			}
 		}
 	}
@@ -1862,31 +1862,31 @@
 	&.lambda-radio-view-soft {
 		border-color: transparent;
 		&:is(.lambda-radio-view-primary) {
-			background-color: var(--primary-outline-color);
+			background-color: var(--primary-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-secondary) {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-success) {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 		}
 
 		&:is(.lambda-radio-view-danger) {
-			background-color: var(--danger-light-color);
+			background-color: var(--danger-soft-color);
 
 			&:is(.lambda-radio-view-checked) {
-				background-color: var(--danger-outline-color);
+				background-color: var(--danger-subtle-color);
 			}
 		}
 
 		&:is(.lambda-radio-view-warning) {
-			background-color: var(--warning-light-color);
+			background-color: var(--warning-soft-color);
 		}
 
 		&:is(.lambda-radio-view-info) {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 		}
 	}
 }
@@ -1982,27 +1982,27 @@
 		display: block;
 
 		&.lambda-radio-icon-primary {
-			background-color: var(--primary-color);
+			background-color: var(--primary-base-color);
 		}
 
 		&.lambda-radio-icon-secondary {
-			background-color: var(--secondary-color);
+			background-color: var(--secondary-base-color);
 		}
 
 		&.lambda-radio-icon-success {
-			background-color: var(--success-color);
+			background-color: var(--success-base-color);
 		}
 
 		&.lambda-radio-icon-danger {
-			background-color: var(--danger-color);
+			background-color: var(--danger-base-color);
 		}
 
 		&.lambda-radio-icon-warning {
-			background-color: var(--warning-color);
+			background-color: var(--warning-base-color);
 		}
 
 		&.lambda-radio-icon-info {
-			background-color: var(--info-color);
+			background-color: var(--info-base-color);
 		}
 	}
 

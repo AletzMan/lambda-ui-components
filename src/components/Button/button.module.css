@@ -56,7 +56,7 @@
 	color: var(--white-color);
 
 	&.lambda-btn-primary {
-		background: var(--primary-color);
+		background: var(--primary-base-color);
 		border: var(--border-width-xs) solid var(--primary-hover-color);
 
 		&.lambda-btn-loading,
@@ -71,7 +71,7 @@
 	}
 
 	&.lambda-btn-secondary {
-		background: var(--secondary-color);
+		background: var(--secondary-base-color);
 		color: var(--foreground-invert-color);
 		border: var(--border-width-xs) solid var(--secondary-hover-color);
 
@@ -87,7 +87,7 @@
 	}
 
 	&.lambda-btn-success {
-		background: var(--success-color);
+		background: var(--success-base-color);
 		border: var(--border-width-xs) solid var(--success-hover-color);
 
 		&.lambda-btn-loading,
@@ -102,7 +102,7 @@
 	}
 
 	&.lambda-btn-danger {
-		background: var(--danger-color);
+		background: var(--danger-base-color);
 		border: var(--border-width-xs) solid var(--danger-hover-color);
 
 		&.lambda-btn-loading,
@@ -117,7 +117,7 @@
 	}
 
 	&.lambda-btn-warning {
-		background: var(--warning-color);
+		background: var(--warning-base-color);
 		border: var(--border-width-xs) solid var(--warning-hover-color);
 		color: var(--black-color);
 
@@ -133,7 +133,7 @@
 	}
 
 	&.lambda-btn-info {
-		background: var(--info-color);
+		background: var(--info-base-color);
 		border: var(--border-width-xs) solid var(--info-hover-color);
 
 		&.lambda-btn-loading,
@@ -171,7 +171,7 @@
 	transition: filter 0.1s ease-in-out;
 
 	&.lambda-btn-primary {
-		background: var(--primary-color);
+		background: var(--primary-base-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -180,7 +180,7 @@
 	}
 
 	&.lambda-btn-secondary {
-		background: var(--secondary-color);
+		background: var(--secondary-base-color);
 		color: var(--foreground-invert-color);
 
 		&.lambda-btn-loading,
@@ -190,7 +190,7 @@
 	}
 
 	&.lambda-btn-success {
-		background: var(--success-color);
+		background: var(--success-base-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -199,7 +199,7 @@
 	}
 
 	&.lambda-btn-danger {
-		background: var(--danger-color);
+		background: var(--danger-base-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -208,8 +208,8 @@
 	}
 
 	&.lambda-btn-warning {
-		background: var(--warning-color);
-		color: var(--warning-darkened-color);
+		background: var(--warning-base-color);
+		color: var(--warning-dark-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -218,7 +218,7 @@
 	}
 
 	&.lambda-btn-info {
-		background: var(--info-color);
+		background: var(--info-base-color);
 
 		&.lambda-btn-loading,
 		&.lambda-btn-disabled {
@@ -260,11 +260,11 @@
 		color: var(--primary-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-light-color);
+			background-color: var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-outline-color);
+			background-color: var(--primary-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -279,11 +279,11 @@
 		color: var(--secondary-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-light-color);
+			background-color: var(--secondary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -298,11 +298,11 @@
 		color: var(--success-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-light-color);
+			background-color: var(--success-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -317,11 +317,11 @@
 		color: var(--danger-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-light-color);
+			background-color: var(--danger-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -336,11 +336,11 @@
 		color: var(--warning-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-light-color);
+			background-color: var(--warning-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -355,11 +355,11 @@
 		color: var(--info-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-light-color);
+			background-color: var(--info-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -379,11 +379,11 @@
 		border-color: var(--primary-hover-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-light-color);
+			background-color: var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-outline-color);
+			background-color: var(--primary-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -398,11 +398,11 @@
 		border-color: var(--secondary-hover-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-light-color);
+			background-color: var(--secondary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -417,11 +417,11 @@
 		border-color: var(--success-hover-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-light-color);
+			background-color: var(--success-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -436,11 +436,11 @@
 		border-color: var(--danger-hover-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-light-color);
+			background-color: var(--danger-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -455,11 +455,11 @@
 		border-color: var(--warning-hover-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-light-color);
+			background-color: var(--warning-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -474,11 +474,11 @@
 		border-color: var(--info-hover-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-light-color);
+			background-color: var(--info-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -494,16 +494,16 @@
 	border: var(--border-width-xs) solid transparent;
 
 	&.lambda-btn-primary {
-		background-color: var(--primary-light-color);
+		background-color: var(--primary-soft-color);
 		color: var(--primary-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-outline-color);
-			border: var(--border-width-xs) solid var(--primary-light-color);
+			background-color: var(--primary-subtle-color);
+			border: var(--border-width-xs) solid var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-light-color);
+			background-color: var(--primary-soft-color);
 		}
 
 		&.lambda-btn-loading,
@@ -514,15 +514,15 @@
 
 	&.lambda-btn-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-light-color);
+		background-color: var(--secondary-soft-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-outline-color);
-			border: var(--border-width-xs) solid var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
+			border: var(--border-width-xs) solid var(--secondary-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-light-color);
+			background-color: var(--secondary-soft-color);
 		}
 
 		&.lambda-btn-loading,
@@ -533,15 +533,15 @@
 
 	&.lambda-btn-success {
 		color: var(--success-text-color);
-		background-color: var(--success-light-color);
+		background-color: var(--success-soft-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-outline-color);
-			border: var(--border-width-xs) solid var(--success-outline-color);
+			background-color: var(--success-subtle-color);
+			border: var(--border-width-xs) solid var(--success-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-light-color);
+			background-color: var(--success-soft-color);
 		}
 
 		&.lambda-btn-loading,
@@ -552,15 +552,15 @@
 
 	&.lambda-btn-danger {
 		color: var(--danger-text-color);
-		background-color: var(--danger-light-color);
+		background-color: var(--danger-soft-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-outline-color);
-			border: var(--border-width-xs) solid var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
+			border: var(--border-width-xs) solid var(--danger-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-light-color);
+			background-color: var(--danger-soft-color);
 		}
 
 		&.lambda-btn-loading,
@@ -571,15 +571,15 @@
 
 	&.lambda-btn-warning {
 		color: var(--warning-text-color);
-		background-color: var(--warning-light-color);
+		background-color: var(--warning-soft-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-outline-color);
-			border: var(--border-width-xs) solid var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
+			border: var(--border-width-xs) solid var(--warning-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-light-color);
+			background-color: var(--warning-soft-color);
 		}
 
 		&.lambda-btn-loading,
@@ -590,15 +590,15 @@
 
 	&.lambda-btn-info {
 		color: var(--info-text-color);
-		background-color: var(--info-light-color);
+		background-color: var(--info-soft-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-outline-color);
-			border: var(--border-width-xs) solid var(--info-outline-color);
+			background-color: var(--info-subtle-color);
+			border: var(--border-width-xs) solid var(--info-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-light-color);
+			background-color: var(--info-soft-color);
 		}
 
 		&.lambda-btn-loading,
@@ -617,12 +617,12 @@
 		color: var(--primary-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-light-color);
-			border-color: var(--primary-light-color);
+			background-color: var(--primary-soft-color);
+			border-color: var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-outline-color);
+			background-color: var(--primary-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -635,12 +635,12 @@
 		color: var(--secondary-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-light-color);
-			border-color: var(--secondary-light-color);
+			background-color: var(--secondary-soft-color);
+			border-color: var(--secondary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -653,12 +653,12 @@
 		color: var(--success-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-light-color);
-			border-color: var(--success-light-color);
+			background-color: var(--success-soft-color);
+			border-color: var(--success-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -671,12 +671,12 @@
 		color: var(--danger-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-light-color);
-			border-color: var(--danger-light-color);
+			background-color: var(--danger-soft-color);
+			border-color: var(--danger-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -689,12 +689,12 @@
 		color: var(--warning-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-light-color);
-			border-color: var(--warning-light-color);
+			background-color: var(--warning-soft-color);
+			border-color: var(--warning-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 		}
 
 		&.lambda-btn-loading,
@@ -707,12 +707,12 @@
 		color: var(--info-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-light-color);
-			border-color: var(--info-light-color);
+			background-color: var(--info-soft-color);
+			border-color: var(--info-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 		}
 
 		&.lambda-btn-loading,

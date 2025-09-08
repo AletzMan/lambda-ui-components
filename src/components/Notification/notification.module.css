@@ -62,7 +62,7 @@
 .notification-footer-soft {
 	&.notification-footer-secondary {
 		.notification-footer-button-confirm {
-			background-color: var(--secondary-color);
+			background-color: var(--secondary-base-color);
 			color: var(--foreground-invert-color);
 
 			&:hover {
@@ -71,18 +71,18 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--secondary-light-color);
+			background-color: var(--secondary-soft-color);
 			color: var(--secondary-disbled-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-success {
 		.notification-footer-button-confirm {
-			background-color: var(--success-color);
+			background-color: var(--success-base-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -91,18 +91,18 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--success-light-color);
+			background-color: var(--success-soft-color);
 			color: var(--success-text-color);
 
 			&:hover {
-				background-color: var(--success-outline-color);
+				background-color: var(--success-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-danger {
 		.notification-footer-button-confirm {
-			background-color: var(--danger-color);
+			background-color: var(--danger-base-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -111,18 +111,18 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--danger-light-color);
+			background-color: var(--danger-soft-color);
 			color: var(--danger-text-color);
 
 			&:hover {
-				background-color: var(--danger-outline-color);
+				background-color: var(--danger-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-warning {
 		.notification-footer-button-confirm {
-			background-color: var(--warning-color);
+			background-color: var(--warning-base-color);
 			color: var(--black-color);
 
 			&:hover {
@@ -131,18 +131,18 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--warning-light-color);
+			background-color: var(--warning-soft-color);
 			color: var(--warning-text-color);
 
 			&:hover {
-				background-color: var(--warning-outline-color);
+				background-color: var(--warning-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-info {
 		.notification-footer-button-confirm {
-			background-color: var(--info-color);
+			background-color: var(--info-base-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -151,11 +151,11 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--info-light-color);
+			background-color: var(--info-soft-color);
 			color: var(--info-text-color);
 
 			&:hover {
-				background-color: var(--info-outline-color);
+				background-color: var(--info-subtle-color);
 			}
 		}
 	}
@@ -169,7 +169,7 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 			color: var(--foreground-invert-color);
 		}
 	}
@@ -180,17 +180,17 @@
 			color: var(--success-hover-color);
 
 			&:hover {
-				background-color: var(--success-lightened-color);
+				background-color: var(--success-light-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-lightened-color);
+			border: var(--border-width-xs) solid var(--success-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
@@ -201,17 +201,17 @@
 			color: var(--danger-hover-color);
 
 			&:hover {
-				background-color: var(--danger-lightened-color);
+				background-color: var(--danger-light-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-lightened-color);
+			border: var(--border-width-xs) solid var(--danger-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
@@ -222,17 +222,17 @@
 			color: var(--warning-hover-color);
 
 			&:hover {
-				background-color: var(--warning-lightened-color);
+				background-color: var(--warning-light-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-lightened-color);
+			border: var(--border-width-xs) solid var(--warning-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
@@ -243,17 +243,17 @@
 			color: var(--info-hover-color);
 
 			&:hover {
-				background-color: var(--info-lightened-color);
+				background-color: var(--info-light-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-lightened-color);
+			border: var(--border-width-xs) solid var(--info-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
@@ -262,7 +262,7 @@
 .notification-footer-darkened {
 	&.notification-footer-secondary {
 		.notification-footer-button-confirm {
-			background-color: var(--secondary-lightened-color);
+			background-color: var(--secondary-light-color);
 			color: var(--black-color);
 
 			&:hover {
@@ -272,19 +272,19 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--secondary-lightened-color);
+			border: var(--border-width-xs) solid var(--secondary-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-success {
 		.notification-footer-button-confirm {
-			background-color: var(--success-lightened-color);
-			color: var(--success-darkened-color);
+			background-color: var(--success-light-color);
+			color: var(--success-dark-color);
 
 			&:hover {
 				background-color: var(--white-color);
@@ -293,19 +293,19 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-lightened-color);
+			border: var(--border-width-xs) solid var(--success-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-danger {
 		.notification-footer-button-confirm {
-			background-color: var(--danger-lightened-color);
-			color: var(--danger-darkened-color);
+			background-color: var(--danger-light-color);
+			color: var(--danger-dark-color);
 
 			&:hover {
 				background-color: var(--white-color);
@@ -314,19 +314,19 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-lightened-color);
+			border: var(--border-width-xs) solid var(--danger-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-warning {
 		.notification-footer-button-confirm {
-			background-color: var(--warning-lightened-color);
-			color: var(--warning-darkened-color);
+			background-color: var(--warning-light-color);
+			color: var(--warning-dark-color);
 
 			&:hover {
 				background-color: var(--white-color);
@@ -335,19 +335,19 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-lightened-color);
+			border: var(--border-width-xs) solid var(--warning-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-info {
 		.notification-footer-button-confirm {
-			background-color: var(--info-lightened-color);
-			color: var(--info-darkened-color);
+			background-color: var(--info-light-color);
+			color: var(--info-dark-color);
 
 			&:hover {
 				background-color: var(--white-color);
@@ -356,11 +356,11 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-lightened-color);
+			border: var(--border-width-xs) solid var(--info-light-color);
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
@@ -369,105 +369,105 @@
 .notification-footer-lightened {
 	&.notification-footer-secondary {
 		.notification-footer-button-confirm {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 			color: var(--black-color);
 
 			&:hover {
-				background-color: var(--secondary-light-color);
+				background-color: var(--secondary-soft-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--secondary-outline-color);
+			border: var(--border-width-xs) solid var(--secondary-subtle-color);
 			color: var(--black-color);
 
 			&:hover {
-				background-color: var(--secondary-outline-color);
+				background-color: var(--secondary-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-success {
 		.notification-footer-button-confirm {
-			background-color: var(--success-outline-color);
-			color: var(--success-darkened-color);
+			background-color: var(--success-subtle-color);
+			color: var(--success-dark-color);
 
 			&:hover {
-				background-color: var(--success-color);
+				background-color: var(--success-base-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-outline-color);
-			color: var(--success-darkened-color);
+			border: var(--border-width-xs) solid var(--success-subtle-color);
+			color: var(--success-dark-color);
 
 			&:hover {
-				background-color: var(--success-light-color);
+				background-color: var(--success-soft-color);
 			}
 		}
 	}
 
 	&.notification-footer-danger {
 		.notification-footer-button-confirm {
-			background-color: var(--danger-outline-color);
-			color: var(--danger-darkened-color);
+			background-color: var(--danger-subtle-color);
+			color: var(--danger-dark-color);
 
 			&:hover {
-				background-color: var(--danger-color);
+				background-color: var(--danger-base-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-outline-color);
-			color: var(--danger-darkened-color);
+			border: var(--border-width-xs) solid var(--danger-subtle-color);
+			color: var(--danger-dark-color);
 
 			&:hover {
-				background-color: var(--danger-light-color);
+				background-color: var(--danger-soft-color);
 			}
 		}
 	}
 
 	&.notification-footer-warning {
 		.notification-footer-button-confirm {
-			background-color: var(--warning-outline-color);
-			color: var(--warning-darkened-color);
+			background-color: var(--warning-subtle-color);
+			color: var(--warning-dark-color);
 
 			&:hover {
-				background-color: var(--warning-color);
+				background-color: var(--warning-base-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-outline-color);
-			color: var(--warning-darkened-color);
+			border: var(--border-width-xs) solid var(--warning-subtle-color);
+			color: var(--warning-dark-color);
 
 			&:hover {
-				background-color: var(--warning-outline-color);
+				background-color: var(--warning-subtle-color);
 			}
 		}
 	}
 
 	&.notification-footer-info {
 		.notification-footer-button-confirm {
-			background-color: var(--info-outline-color);
-			color: var(--info-darkened-color);
+			background-color: var(--info-subtle-color);
+			color: var(--info-dark-color);
 
 			&:hover {
-				background-color: var(--info-color);
+				background-color: var(--info-base-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-outline-color);
-			color: var(--info-darkened-color);
+			border: var(--border-width-xs) solid var(--info-subtle-color);
+			color: var(--info-dark-color);
 
 			&:hover {
-				background-color: var(--info-light-color);
+				background-color: var(--info-soft-color);
 			}
 		}
 	}
@@ -572,27 +572,27 @@
 	}
 
 	&:is(.notification-secondary) {
-		border-left: 4px solid var(--secondary-color);
+		border-left: 4px solid var(--secondary-base-color);
 		color: var(--secondary-hover-color);
 	}
 
 	&:is(.notification-success) {
-		border-left: 4px solid var(--success-color);
+		border-left: 4px solid var(--success-base-color);
 		color: var(--success-hover-color);
 	}
 
 	&:is(.notification-danger) {
-		border-left: 4px solid var(--danger-color);
+		border-left: 4px solid var(--danger-base-color);
 		color: var(--danger-hover-color);
 	}
 
 	&:is(.notification-warning) {
-		border-left: 4px solid var(--warning-color);
+		border-left: 4px solid var(--warning-base-color);
 		color: var(--warning-hover-color);
 	}
 
 	&:is(.notification-info) {
-		border-left: 4px solid var(--info-color);
+		border-left: 4px solid var(--info-base-color);
 		color: var(--info-hover-color);
 	}
 }
@@ -613,7 +613,7 @@
 	}
 
 	&:is(.notification-secondary) {
-		background-color: var(--secondary-color);
+		background-color: var(--secondary-base-color);
 		color: var(--foreground-invert-color);
 
 		.notification-message {
@@ -627,37 +627,37 @@
 	}
 
 	&:is(.notification-success) {
-		background-color: var(--success-color);
+		background-color: var(--success-base-color);
 
 		.notification-time {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 			filter: brightness(450%);
 		}
 	}
 
 	&:is(.notification-danger) {
-		background-color: var(--danger-color);
+		background-color: var(--danger-base-color);
 
 		.notification-time {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 			filter: brightness(450%);
 		}
 	}
 
 	&:is(.notification-warning) {
-		background-color: var(--warning-color);
+		background-color: var(--warning-base-color);
 
 		.notification-time {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 			filter: brightness(500%);
 		}
 	}
 
 	&:is(.notification-info) {
-		background-color: var(--info-color);
+		background-color: var(--info-base-color);
 
 		.notification-time {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 			filter: brightness(450%);
 		}
 	}
@@ -674,7 +674,7 @@
 	}
 
 	&:is(.notification-secondary) {
-		background-color: var(--secondary-darkened-color);
+		background-color: var(--secondary-dark-color);
 
 		.notification-message {
 			color: var(--surface-g);
@@ -688,85 +688,85 @@
 	}
 
 	&:is(.notification-success) {
-		background-color: var(--success-darkened-color);
+		background-color: var(--success-dark-color);
 
 		.notification-title {
-			color: var(--success-color);
+			color: var(--success-base-color);
 		}
 
 		.notification-message {
-			color: var(--success-color);
+			color: var(--success-base-color);
 		}
 
 		.notification-icon {
-			color: var(--success-color);
+			color: var(--success-base-color);
 		}
 
 		.notification-time {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 			filter: brightness(450%);
 		}
 	}
 
 	&:is(.notification-danger) {
-		background-color: var(--danger-darkened-color);
+		background-color: var(--danger-dark-color);
 
 		.notification-title {
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 		}
 
 		.notification-message {
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 		}
 
 		.notification-icon {
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 		}
 
 		.notification-time {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 			filter: brightness(450%);
 		}
 	}
 
 	&:is(.notification-warning) {
-		background-color: var(--warning-darkened-color);
+		background-color: var(--warning-dark-color);
 
 		.notification-title {
-			color: var(--warning-color);
+			color: var(--warning-base-color);
 		}
 
 		.notification-message {
-			color: var(--warning-color);
+			color: var(--warning-base-color);
 		}
 
 		.notification-icon {
-			color: var(--warning-color);
+			color: var(--warning-base-color);
 		}
 
 		.notification-time {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 			filter: brightness(500%);
 		}
 	}
 
 	&:is(.notification-info) {
-		background-color: var(--info-darkened-color);
+		background-color: var(--info-dark-color);
 
 		.notification-title {
-			color: var(--info-color);
+			color: var(--info-base-color);
 		}
 
 		.notification-message {
-			color: var(--info-color);
+			color: var(--info-base-color);
 		}
 
 		.notification-icon {
-			color: var(--info-color);
+			color: var(--info-base-color);
 		}
 
 		.notification-time {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 			filter: brightness(450%);
 		}
 	}
@@ -788,10 +788,10 @@
 	}
 
 	&:is(.notification-secondary) {
-		background-color: var(--secondary-lightened-color);
+		background-color: var(--secondary-light-color);
 
 		.notification-title {
-			color: var(--secondary-darkened-color);
+			color: var(--secondary-dark-color);
 		}
 
 		.notification-icon {
@@ -805,10 +805,10 @@
 	}
 
 	&:is(.notification-success) {
-		background-color: var(--success-lightened-color);
+		background-color: var(--success-light-color);
 
 		.notification-title {
-			color: var(--success-darkened-color);
+			color: var(--success-dark-color);
 		}
 
 		.notification-message {
@@ -816,20 +816,20 @@
 		}
 
 		.notification-icon {
-			color: var(--success-color);
+			color: var(--success-base-color);
 		}
 
 		.notification-time {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 			filter: brightness(45%);
 		}
 	}
 
 	&:is(.notification-danger) {
-		background-color: var(--danger-lightened-color);
+		background-color: var(--danger-light-color);
 
 		.notification-title {
-			color: var(--danger-darkened-color);
+			color: var(--danger-dark-color);
 		}
 
 		.notification-message {
@@ -841,16 +841,16 @@
 		}
 
 		.notification-time {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 			filter: brightness(45%);
 		}
 	}
 
 	&:is(.notification-warning) {
-		background-color: var(--warning-lightened-color);
+		background-color: var(--warning-light-color);
 
 		.notification-title {
-			color: var(--warning-darkened-color);
+			color: var(--warning-dark-color);
 		}
 
 		.notification-message {
@@ -862,16 +862,16 @@
 		}
 
 		.notification-time {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 			filter: brightness(45%);
 		}
 	}
 
 	&:is(.notification-info) {
-		background-color: var(--info-lightened-color);
+		background-color: var(--info-light-color);
 
 		.notification-title {
-			color: var(--info-darkened-color);
+			color: var(--info-dark-color);
 		}
 
 		.notification-message {
@@ -879,11 +879,11 @@
 		}
 
 		.notification-icon {
-			color: var(--info-color);
+			color: var(--info-base-color);
 		}
 
 		.notification-time {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 			filter: brightness(45%);
 		}
 	}
@@ -912,8 +912,8 @@ body[data-theme="light"] {
 	box-shadow: var(--box-shadow);
 
 	&:is(.notification-secondary) {
-		background-color: var(--secondary-light-color);
-		border-left: 5px solid var(--secondary-color);
+		background-color: var(--secondary-soft-color);
+		border-left: 5px solid var(--secondary-base-color);
 		color: var(--secondary-text-color);
 
 		.notification-title {
@@ -925,7 +925,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--secondary-outline-color);
+			background-color: var(--secondary-subtle-color);
 		}
 
 		.notification-close-button {
@@ -936,8 +936,8 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-success) {
-		background-color: var(--success-light-color);
-		border-left: 5px solid var(--success-color);
+		background-color: var(--success-soft-color);
+		border-left: 5px solid var(--success-base-color);
 		color: var(--success-text-color);
 
 		.notification-title {
@@ -949,7 +949,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--success-outline-color);
+			background-color: var(--success-subtle-color);
 		}
 
 		.notification-close-button {
@@ -960,8 +960,8 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-danger) {
-		background-color: var(--danger-light-color);
-		border-left: 5px solid var(--danger-color);
+		background-color: var(--danger-soft-color);
+		border-left: 5px solid var(--danger-base-color);
 		color: var(--danger-text-color);
 
 		.notification-title {
@@ -973,7 +973,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--danger-outline-color);
+			background-color: var(--danger-subtle-color);
 		}
 
 		.notification-close-button {
@@ -984,8 +984,8 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-warning) {
-		background-color: var(--warning-light-color);
-		border-left: 5px solid var(--warning-color);
+		background-color: var(--warning-soft-color);
+		border-left: 5px solid var(--warning-base-color);
 		color: var(--warning-text-color);
 
 		.notification-title {
@@ -997,7 +997,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--warning-outline-color);
+			background-color: var(--warning-subtle-color);
 		}
 
 		.notification-close-button {
@@ -1008,8 +1008,8 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-info) {
-		background-color: var(--info-light-color);
-		border-left: 5px solid var(--info-color);
+		background-color: var(--info-soft-color);
+		border-left: 5px solid var(--info-base-color);
 		color: var(--info-text-color);
 
 		.notification-title {
@@ -1021,7 +1021,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--info-outline-color);
+			background-color: var(--info-subtle-color);
 		}
 
 		.notification-close-button {

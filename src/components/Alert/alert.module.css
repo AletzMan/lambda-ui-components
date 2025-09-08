@@ -35,7 +35,7 @@
 }
 
 .lambda-alert-close-button:focus-visible {
-	outline: 2px solid var(--primary-color);
+	outline: 2px solid var(--primary-base-color);
 	outline-offset: 2px;
 	border-radius: 2px;
 }
@@ -114,12 +114,12 @@
 	font-weight: var(--font-weight-reg);
 
 	&.lambda-alert-default {
-		background-color: var(--secondary-light-color);
-		border-color: var(--secondary-color);
+		background-color: var(--secondary-soft-color);
+		border-color: var(--secondary-base-color);
 		color: var(--secondary-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--secondary-color);
+			color: var(--secondary-base-color);
 		}
 
 		.lambda-alert-close-button {
@@ -132,16 +132,16 @@
 	}
 
 	&.lambda-alert-primary {
-		background-color: var(--primary-light-color);
-		border-color: var(--primary-color);
+		background-color: var(--primary-soft-color);
+		border-color: var(--primary-base-color);
 		color: var(--primary-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--primary-color);
+			color: var(--primary-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--primary-color);
+			color: var(--primary-base-color);
 
 			&:hover {
 				color: var(--primary-text-color);
@@ -150,16 +150,16 @@
 	}
 
 	&.lambda-alert-danger {
-		background-color: var(--danger-light-color);
-		border-color: var(--danger-color);
+		background-color: var(--danger-soft-color);
+		border-color: var(--danger-base-color);
 		color: var(--danger-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 
 			&:hover {
 				color: var(--danger-text-color);
@@ -168,16 +168,16 @@
 	}
 
 	&.lambda-alert-success {
-		background-color: var(--success-light-color);
-		border-color: var(--success-color);
+		background-color: var(--success-soft-color);
+		border-color: var(--success-base-color);
 		color: var(--success-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--success-color);
+			color: var(--success-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--success-color);
+			color: var(--success-base-color);
 
 			&:hover {
 				color: var(--success-text-color);
@@ -186,16 +186,16 @@
 	}
 
 	&.lambda-alert-warning {
-		background-color: var(--warning-light-color);
-		border-color: var(--warning-color);
+		background-color: var(--warning-soft-color);
+		border-color: var(--warning-base-color);
 		color: var(--warning-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--warning-color);
+			color: var(--warning-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--warning-color);
+			color: var(--warning-base-color);
 
 			&:hover {
 				color: var(--warning-text-color);
@@ -204,16 +204,16 @@
 	}
 
 	&.lambda-alert-info {
-		background-color: var(--info-light-color);
-		border-color: var(--info-color);
+		background-color: var(--info-soft-color);
+		border-color: var(--info-base-color);
 		color: var(--info-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--info-color);
+			color: var(--info-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--info-color);
+			color: var(--info-base-color);
 
 			&:hover {
 				color: var(--info-text-color);
@@ -228,11 +228,11 @@
 	border-radius: var(--border-radius-sm);
 
 	&.lambda-alert-default {
-		background-color: var(--secondary-light-color);
+		background-color: var(--secondary-soft-color);
 		color: var(--secondary-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--secondary-color);
+			color: var(--secondary-base-color);
 		}
 
 		.lambda-alert-close-button {
@@ -245,15 +245,15 @@
 	}
 
 	&.lambda-alert-primary {
-		background-color: var(--primary-light-color);
+		background-color: var(--primary-soft-color);
 		color: var(--primary-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--primary-color);
+			color: var(--primary-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--primary-color);
+			color: var(--primary-base-color);
 
 			&:hover {
 				color: var(--primary-text-color);
@@ -262,15 +262,15 @@
 	}
 
 	&.lambda-alert-danger {
-		background-color: var(--danger-light-color);
+		background-color: var(--danger-soft-color);
 		color: var(--danger-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--danger-color);
+			color: var(--danger-base-color);
 
 			&:hover {
 				color: var(--danger-text-color);
@@ -279,15 +279,15 @@
 	}
 
 	&.lambda-alert-success {
-		background-color: var(--success-light-color);
+		background-color: var(--success-soft-color);
 		color: var(--success-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--success-color);
+			color: var(--success-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--success-color);
+			color: var(--success-base-color);
 
 			&:hover {
 				color: var(--success-text-color);
@@ -296,15 +296,15 @@
 	}
 
 	&.lambda-alert-warning {
-		background-color: var(--warning-light-color);
+		background-color: var(--warning-soft-color);
 		color: var(--warning-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--warning-color);
+			color: var(--warning-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--warning-color);
+			color: var(--warning-base-color);
 
 			&:hover {
 				color: var(--warning-text-color);
@@ -313,15 +313,15 @@
 	}
 
 	&.lambda-alert-info {
-		background-color: var(--info-light-color);
+		background-color: var(--info-soft-color);
 		color: var(--info-text-color);
 
 		.lambda-alert-icon-container {
-			color: var(--info-color);
+			color: var(--info-base-color);
 		}
 
 		.lambda-alert-close-button {
-			color: var(--info-color);
+			color: var(--info-base-color);
 
 			&:hover {
 				color: var(--info-text-color);
@@ -337,8 +337,8 @@
 	border: none;
 
 	&.lambda-alert-default {
-		color: var(--foreground-invert-color);
-		background-color: var(--secondary-color);
+		color: var(--white-color);
+		background-color: var(--secondary-base-color);
 
 		.lambda-alert-close-button {
 			color: var(--secondary-disabled-color);
@@ -350,7 +350,7 @@
 	}
 
 	&.lambda-alert-primary {
-		background-color: var(--primary-color);
+		background-color: var(--primary-base-color);
 
 		.lambda-alert-close-button {
 			color: var(--primary-disabled-color);
@@ -362,7 +362,7 @@
 	}
 
 	&.lambda-alert-danger {
-		background-color: var(--danger-color);
+		background-color: var(--danger-base-color);
 
 		.lambda-alert-close-button {
 			color: var(--danger-disabled-color);
@@ -374,7 +374,7 @@
 	}
 
 	&.lambda-alert-success {
-		background-color: var(--success-color);
+		background-color: var(--success-base-color);
 
 		.lambda-alert-close-button {
 			color: var(--success-disabled-color);
@@ -386,7 +386,7 @@
 	}
 
 	&.lambda-alert-warning {
-		background-color: var(--warning-color);
+		background-color: var(--warning-base-color);
 
 		.lambda-alert-close-button {
 			color: var(--warning-disabled-color);
@@ -398,7 +398,7 @@
 	}
 
 	&.lambda-alert-info {
-		background-color: var(--info-color);
+		background-color: var(--info-base-color);
 
 		.lambda-alert-close-button {
 			color: var(--info-disabled-color);

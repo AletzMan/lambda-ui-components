@@ -127,8 +127,8 @@
 	transition: all 0.2s ease-in-out;
 
 	&:hover {
-		color: var(--primary-color);
-		background-color: var(--primary-light-color);
+		color: var(--primary-base-color);
+		background-color: var(--primary-soft-color);
 		cursor: pointer;
 	}
 

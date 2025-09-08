@@ -142,7 +142,7 @@
 		cursor: pointer;
 		transition: color 0.2s ease;
 		background-color: transparent;
-		color: var(--primary-color);
+		color: var(--primary-base-color);
 
 		&:hover {
 			color: var(--primary-text-color);
