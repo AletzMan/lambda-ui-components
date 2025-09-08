@@ -1,12 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
+import { ButtonProps } from "./button.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { CircleCheck } from "lucide-react";
 
 const meta: Meta<typeof Button> = {
 	title: "Components/Button",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Button,
 	argTypes: {
 		variant: {
@@ -14,24 +13,30 @@ const meta: Meta<typeof Button> = {
 			options: ["classic", "solid", "outline", "dashed", "soft", "text"],
 			description: "Visual style of the button",
 			type: "string",
+			table: {
+				disable: true,
+			},
 		},
 		color: {
 			control: "select",
 			options: ["primary", "secondary", "danger", "success", "warning", "info"],
 			description: "Background color",
+			table: {
+				disable: true,
+			},
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Button size",
 		},
 		radius: {
-			control: "select",
+			control: "inline-radio",
 			options: ["none", "small", "medium", "large", "pill", "circle"],
 			description: "Corner shape",
 		},
 		iconPosition: {
-			control: "select",
+			control: "inline-radio",
 			options: ["left", "right"],
 			description: "Icon position",
 		},
@@ -43,6 +48,18 @@ const meta: Meta<typeof Button> = {
 			control: "boolean",
 			description: "Disables the button and makes it inactive.",
 		},
+		"aria-label": {
+			control: "text",
+			description: "Aria label for the button",
+			table: {
+				disable: true,
+			},
+		},
+		icon: {
+			table: {
+				disable: true,
+			},
+		},
 	},
 };
 
@@ -50,21 +67,34 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
-	args: {
-		color: "primary",
-		variant: "solid",
-		size: "medium",
-		radius: "small",
-		loading: false,
-		loadingText: "Loading",
-		disabled: false,
-		iconPosition: "left",
-		label: "Button",
-	},
+const buttonColors = ["primary", "secondary", "danger", "success", "warning", "info"];
+
+const Template = (args: ButtonProps) => {
+	return (
+		<ContainerComponent title="Button" subtitle={args.variant?.toString() || ""}>
+			<div style={{ display: "flex", gap: "1rem" }}>
+				{buttonColors.map((color) => (
+					<Button
+						key={color}
+						color={color as ButtonProps["color"]}
+						variant={args.variant}
+						size={args.size}
+						radius={args.radius}
+						loading={args.loading}
+						disabled={args.disabled}
+						iconPosition={args.iconPosition}
+						icon={args.loading ? undefined : args.icon}
+						label={args.radius === "circle" ? "" : args.loading ? args.loadingText : color}
+						style={{ textTransform: "capitalize" }}
+					/>
+				))}
+			</div>
+		</ContainerComponent>
+	);
 };
 
-export const Secondary: Story = {
+export const Solid: Story = {
+	render: Template,
 	args: {
 		color: "secondary",
 		variant: "solid",
@@ -75,13 +105,31 @@ export const Secondary: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		icon: <CircleCheck />,
 	},
 };
 
-export const Danger: Story = {
+export const Classic: Story = {
+	render: Template,
+	args: {
+		color: "primary",
+		variant: "classic",
+		size: "medium",
+		radius: "small",
+		loading: false,
+		loadingText: "Loading",
+		disabled: false,
+		iconPosition: "left",
+		label: "Button",
+		icon: <CircleCheck />,
+	},
+};
+
+export const Outline: Story = {
+	render: Template,
 	args: {
 		color: "danger",
-		variant: "solid",
+		variant: "outline",
 		size: "medium",
 		radius: "small",
 		loading: false,
@@ -89,13 +137,15 @@ export const Danger: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		icon: <CircleCheck />,
 	},
 };
 
-export const Success: Story = {
+export const Dashed: Story = {
+	render: Template,
 	args: {
 		color: "success",
-		variant: "solid",
+		variant: "dashed",
 		size: "medium",
 		radius: "small",
 		loading: false,
@@ -103,13 +153,15 @@ export const Success: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		icon: <CircleCheck />,
 	},
 };
 
-export const Warning: Story = {
+export const Soft: Story = {
+	render: Template,
 	args: {
 		color: "warning",
-		variant: "solid",
+		variant: "soft",
 		size: "medium",
 		radius: "small",
 		loading: false,
@@ -117,5 +169,22 @@ export const Warning: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		icon: <CircleCheck />,
+	},
+};
+
+export const Text: Story = {
+	render: Template,
+	args: {
+		color: "warning",
+		variant: "text",
+		size: "medium",
+		radius: "small",
+		loading: false,
+		loadingText: "Loading",
+		disabled: false,
+		iconPosition: "left",
+		label: "Button",
+		icon: <CircleCheck />,
 	},
 };
