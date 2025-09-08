@@ -88,7 +88,7 @@
 
 .lambda-checkbox-wrapper-solid {
 	background-color: var(--surface-a);
-	border-color: var(--surface-d);
+	border-color: var(--surface-a);
 }
 
 .lambda-checkbox-wrapper-soft {
@@ -119,7 +119,30 @@
 
 .lambda-checkbox-wrapper-outline {
 	background-color: transparent;
-	border-color: var(--surface-d);
+
+	&.lambda-checkbox-wrapper-primary {
+		border-color: var(--primary-base-color);
+	}
+
+	&.lambda-checkbox-wrapper-secondary {
+		border-color: var(--secondary-base-color);
+	}
+
+	&.lambda-checkbox-wrapper-success {
+		border-color: var(--success-base-color);
+	}
+
+	&.lambda-checkbox-wrapper-danger {
+		border-color: var(--danger-base-color);
+	}
+
+	&.lambda-checkbox-wrapper-warning {
+		border-color: var(--warning-base-color);
+	}
+
+	&.lambda-checkbox-wrapper-info {
+		border-color: var(--info-base-color);
+	}
 }
 
 .lambda-checkbox-wrapper-checked:is(.lambda-checkbox-wrapper-solid) {
@@ -127,12 +150,12 @@
 
 	&.lambda-checkbox-wrapper-primary {
 		background-color: var(--primary-base-color);
-		border-color: var(--primary-soft-color);
+		border-color: var(--primary-base-color);
 	}
 
 	&.lambda-checkbox-wrapper-secondary {
 		background-color: var(--secondary-base-color);
-		border-color: var(--secondary-soft-color);
+		border-color: var(--secondary-base-color);
 
 		& > svg {
 			color: var(--foreground-invert-color);
@@ -141,17 +164,17 @@
 
 	&.lambda-checkbox-wrapper-danger {
 		background-color: var(--danger-base-color);
-		border-color: var(--danger-soft-color);
+		border-color: var(--danger-base-color);
 	}
 
 	&.lambda-checkbox-wrapper-success {
 		background-color: var(--success-base-color);
-		border-color: var(--success-soft-color);
+		border-color: var(--success-base-color);
 	}
 
 	&.lambda-checkbox-wrapper-warning {
 		background-color: var(--warning-base-color);
-		border-color: var(--warning-soft-color);
+		border-color: var(--warning-base-color);
 
 		& > svg {
 			color: var(--black);
@@ -160,7 +183,7 @@
 
 	&.lambda-checkbox-wrapper-info {
 		background-color: var(--info-base-color);
-		border-color: var(--info-soft-color);
+		border-color: var(--info-base-color);
 	}
 }
 
