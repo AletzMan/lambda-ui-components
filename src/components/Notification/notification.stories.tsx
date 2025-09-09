@@ -162,7 +162,7 @@ const NotificationWithButton = (
 					<Button onClick={handleClickError} color="danger">
 						Error
 					</Button>
-					<Button onClick={handleClickInfo} color="primary">
+					<Button onClick={handleClickInfo} color="info">
 						Info
 					</Button>
 					<Button onClick={handleClickWarning} color="warning">
