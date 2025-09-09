@@ -3,13 +3,10 @@ import { Notification } from "./Notification";
 import { NotificationProvider, useNotification } from "./NotificationProvider";
 import { Button } from "../../main";
 import { NotificationProps } from "./notifications.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Notification> = {
 	title: "Components/Notification",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Notification,
 	argTypes: {
 		notificationType: {
@@ -27,6 +24,9 @@ const meta: Meta<typeof Notification> = {
 			options: ["themed", "soft", "solid", "darkened", "lightened"],
 			description: "Style of the notification",
 			type: "string",
+			table: {
+				disable: true,
+			},
 		},
 		placement: {
 			control: "select",
@@ -75,6 +75,11 @@ const meta: Meta<typeof Notification> = {
 			},
 		},
 		icon: {
+			table: {
+				disable: true,
+			},
+		},
+		"aria-label": {
 			table: {
 				disable: true,
 			},
@@ -132,83 +137,98 @@ const NotificationWithButton = (
 	};
 
 	return (
-		<div style={{ display: "flex", flexDirection: "row", gap: "0.25em" }}>
-			<Button onClick={handleClick} color="secondary">
-				Default
-			</Button>
-			<Button onClick={handleClickSuccess} color="success">
-				Success
-			</Button>
-			<Button onClick={handleClickError} color="danger">
-				Error
-			</Button>
-			<Button onClick={handleClickInfo} color="primary">
-				Info
-			</Button>
-			<Button onClick={handleClickWarning} color="warning">
-				Warning
-			</Button>
-		</div>
+		<ContainerComponent
+			title="Notification"
+			subtitle={args?.variant?.toString() || ""}
+			color={args?.placement?.toString() || ""}
+		>
+			<div style={{ height: "100%" }}>
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						justifyContent: "center",
+						alignItems: "center",
+						height: "100%",
+						gap: "0.25em",
+					}}
+				>
+					<Button onClick={handleClick} color="secondary">
+						Default
+					</Button>
+					<Button onClick={handleClickSuccess} color="success">
+						Success
+					</Button>
+					<Button onClick={handleClickError} color="danger">
+						Error
+					</Button>
+					<Button onClick={handleClickInfo} color="primary">
+						Info
+					</Button>
+					<Button onClick={handleClickWarning} color="warning">
+						Warning
+					</Button>
+				</div>
+			</div>
+		</ContainerComponent>
 	);
 };
 
-export const Default: StoryObj<typeof Notification> = {
+export const Solid: StoryObj<typeof Notification> = {
+	render: (args) => <NotificationWithButton {...args} />,
 	args: {
-		notificationType: "secondary",
+		title: "Notification Title",
+		message: "You have a new notification.",
+		placement: "top-center",
+		variant: "solid",
+		duration: 7000,
+		closable: false,
+	},
+};
+
+export const Soft: StoryObj<typeof Notification> = {
+	render: (args) => <NotificationWithButton {...args} />,
+	args: {
+		title: "Notification Title",
 		message: "You have a new notification.",
 		placement: "top-center",
 		variant: "soft",
 		duration: 7000,
+		closable: false,
 	},
 };
 
-export const Success: StoryObj<typeof Notification> = {
+export const Themed: StoryObj<typeof Notification> = {
+	render: (args) => <NotificationWithButton {...args} />,
 	args: {
-		notificationType: "success",
-		message: "Success! Everything completed smoothly",
+		title: "Notification Title",
+		message: "You have a new notification.",
 		placement: "top-center",
-		variant: "soft",
+		variant: "themed",
 		duration: 7000,
+		closable: false,
 	},
 };
 
-export const Error: StoryObj<typeof Notification> = {
-	args: {
-		notificationType: "danger",
-		message: "Oops! Something went wrong. Please try again",
-		placement: "top-center",
-		variant: "soft",
-		duration: 7000,
-	},
-};
-
-export const Info: StoryObj<typeof Notification> = {
-	args: {
-		notificationType: "info",
-		message: "Here's some additional context about this action.",
-		placement: "top-center",
-		variant: "soft",
-		duration: 7000,
-	},
-};
-
-export const Warning: StoryObj<typeof Notification> = {
-	args: {
-		notificationType: "warning",
-		message: "Something didn't go as expected. Check the details.",
-		placement: "top-center",
-		variant: "soft",
-		duration: 7000,
-	},
-};
-
-export const WithButton: StoryObj<typeof Notification> = {
+export const Darkened: StoryObj<typeof Notification> = {
 	render: (args) => <NotificationWithButton {...args} />,
 	args: {
 		title: "Notification Title",
 		message: "You have a new notification.",
 		placement: "top-center",
 		variant: "darkened",
+		duration: 7000,
+		closable: false,
+	},
+};
+
+export const Lightened: StoryObj<typeof Notification> = {
+	render: (args) => <NotificationWithButton {...args} />,
+	args: {
+		title: "Notification Title",
+		message: "You have a new notification.",
+		placement: "top-center",
+		variant: "lightened",
 		duration: 7000,
 		closable: false,
 	},

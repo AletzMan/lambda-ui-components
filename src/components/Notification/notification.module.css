@@ -622,7 +622,7 @@
 
 		.notification-time {
 			background-color: var(--secondary-disabled-color);
-			filter: brightness(135%);
+			filter: brightness(100%);
 		}
 	}
 
@@ -631,7 +631,7 @@
 
 		.notification-time {
 			background-color: var(--success-subtle-color);
-			filter: brightness(450%);
+			filter: brightness(100%);
 		}
 	}
 
@@ -640,7 +640,7 @@
 
 		.notification-time {
 			background-color: var(--danger-subtle-color);
-			filter: brightness(450%);
+			filter: brightness(100%);
 		}
 	}
 
@@ -649,7 +649,7 @@
 
 		.notification-time {
 			background-color: var(--warning-subtle-color);
-			filter: brightness(500%);
+			filter: brightness(100%);
 		}
 	}
 
@@ -658,7 +658,7 @@
 
 		.notification-time {
 			background-color: var(--info-subtle-color);
-			filter: brightness(450%);
+			filter: brightness(100%);
 		}
 	}
 }
@@ -820,8 +820,8 @@
 		}
 
 		.notification-time {
-			background-color: var(--success-subtle-color);
-			filter: brightness(45%);
+			background-color: var(--success-disabled-color);
+			filter: brightness(90%);
 		}
 	}
 
@@ -841,8 +841,8 @@
 		}
 
 		.notification-time {
-			background-color: var(--danger-subtle-color);
-			filter: brightness(45%);
+			background-color: var(--danger-disabled-color);
+			filter: brightness(110%);
 		}
 	}
 
@@ -862,8 +862,8 @@
 		}
 
 		.notification-time {
-			background-color: var(--warning-subtle-color);
-			filter: brightness(45%);
+			background-color: var(--warning-disabled-color);
+			filter: brightness(110%);
 		}
 	}
 
@@ -883,8 +883,8 @@
 		}
 
 		.notification-time {
-			background-color: var(--info-subtle-color);
-			filter: brightness(45%);
+			background-color: var(--info-disabled-color);
+			filter: brightness(110%);
 		}
 	}
 }
