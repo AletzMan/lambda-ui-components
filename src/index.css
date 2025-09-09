@@ -7,7 +7,7 @@
 	/* --- Lambda Colors --- */
 	/* Primary */
 	--lambda-color-primary-100: #dfecec;
-	--lambda-color-primary-200: #bfd8d9;
+	--lambda-color-primary-200: #c8e0e0;
 	--lambda-color-primary-300: #9fc5c6;
 	--lambda-color-primary-400: #7fb1b3;
 	--lambda-color-primary-500: #5f9ea0;
@@ -196,7 +196,7 @@
 	--foreground-label-color: #8fa2b3;
 	--foreground-disabled-color: #b7b5b5;
 	--placeholder-color: #999999;
-	--label-color: #3f3f3f;
+	--label-color: var(--lambda-color-secondary-700);
 	--visited-link-color: #75208a;
 	--transparent-color: #87878710;
 	--badge-background-color: #b3261e;
@@ -286,7 +286,7 @@
 	--foreground-label-color: #b1c0cc;
 	--foreground-disabled-color: #b7b5b5;
 	--placeholder-color: #626262;
-	--label-color: #a6a9ab;
+	--label-color: var(--lambda-color-secondary-500);
 	--visited-link-color: #8c29a4;
 	--transparent-color: #ffffff08;
 	--badge-background-color: #f01e12;
