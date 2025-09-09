@@ -269,14 +269,9 @@ input[type="number"] {
 	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid var(--surface-d);
 
-	&:hover:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		border-color: var(--primary-hover-color);
-	}
-
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border: var(--border-width-xs) solid var(--primary-hover-color);
-		outline: 3px solid var(--primary-subtle-color);
-		background-color: var(--primary-soft-color);
+		outline: 3px solid var(--primary-soft-color);
 	}
 
 	&.lambda-number-invalid {
@@ -290,13 +285,8 @@ input[type="number"] {
 	background-color: var(--surface-a);
 	border: none;
 
-	&:hover:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		background-color: var(--primary-soft-color);
-	}
-
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		outline: 3px solid var(--primary-subtle-color);
-		background-color: var(--primary-soft-color);
+		outline: 3px solid var(--primary-soft-color);
 	}
 
 	&.lambda-number-invalid {
