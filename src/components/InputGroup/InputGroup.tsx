@@ -34,7 +34,7 @@ type InputGroupContextType = {
 
 const InputGroupContext = createContext<InputGroupContextType | null>(null);
 
-interface InputGroupProps
+export interface InputGroupProps
 	extends Omit<InputProps, "invalid" | "disabled">,
 		VariantProps<typeof inputGroup>,
 		RefAttributes<HTMLDivElement> {
