@@ -1,13 +1,11 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Pagination } from "./Pagination";
 import { useState } from "react";
+import { PaginationProps } from "./pagination.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Pagination> = {
 	title: "Components/Pagination",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Pagination,
 	argTypes: {
 		totalPages: {
@@ -29,7 +27,9 @@ const meta: Meta<typeof Pagination> = {
 			control: "select",
 			options: ["solid", "outline", "soft"],
 			description: "Pagination variant",
-			type: "string",
+			table: {
+				disable: true,
+			},
 		},
 		radius: {
 			control: "select",
@@ -46,55 +46,99 @@ const meta: Meta<typeof Pagination> = {
 			control: "boolean",
 			description: "Disables the input and makes it inactive",
 		},
+		showFirstLastButtons: {
+			control: "boolean",
+			description: "Show first and last buttons",
+		},
+		showPrevNextButtons: {
+			control: "boolean",
+			description: "Show previous and next buttons",
+		},
+		"aria-label": {
+			table: {
+				disable: true,
+			},
+		},
 	},
 };
 
 export default meta;
 
-export const Solid = () => {
+type Story = StoryObj<typeof Pagination>;
+
+const Template = (args: PaginationProps) => {
 	const [activePage, setActivePage] = useState(1);
 	return (
-		<Pagination
-			variant="solid"
-			size="small"
-			radius="small"
-			disabled={false}
-			totalPages={10}
-			currentPage={activePage}
-			maxVisiblePages={3}
-			onPageChange={(page) => setActivePage(page)}
-		/>
+		<ContainerComponent
+			title="Pagination"
+			subtitle={args.variant?.toString() || ""}
+			color={args.color?.toString() || ""}
+		>
+			<Pagination {...args} onPageChange={(page) => setActivePage(page)} currentPage={activePage} />
+		</ContainerComponent>
 	);
 };
 
-export const Ouline = () => {
-	const [activePage, setActivePage] = useState(1);
-	return (
-		<Pagination
-			variant="outline"
-			size="small"
-			radius="small"
-			disabled={false}
-			totalPages={10}
-			currentPage={activePage}
-			maxVisiblePages={3}
-			onPageChange={(page) => setActivePage(page)}
-		/>
-	);
+export const Solid: Story = {
+	render: Template,
+	args: {
+		variant: "solid",
+		size: "small",
+		radius: "small",
+		disabled: false,
+		totalPages: 10,
+		currentPage: 1,
+		maxVisiblePages: 3,
+		onPageChange: () => {},
+		showFirstLastButtons: true,
+		showPrevNextButtons: true,
+	},
 };
 
-export const Soft = () => {
-	const [activePage, setActivePage] = useState(1);
-	return (
-		<Pagination
-			variant="soft"
-			size="small"
-			radius="small"
-			disabled={false}
-			totalPages={10}
-			currentPage={activePage}
-			maxVisiblePages={3}
-			onPageChange={(page) => setActivePage(page)}
-		/>
-	);
+export const Ouline: Story = {
+	render: Template,
+	args: {
+		variant: "outline",
+		size: "small",
+		radius: "small",
+		disabled: false,
+		totalPages: 10,
+		currentPage: 1,
+		maxVisiblePages: 3,
+		onPageChange: () => {},
+		showFirstLastButtons: true,
+		showPrevNextButtons: true,
+	},
+};
+
+export const Soft: Story = {
+	render: Template,
+	args: {
+		variant: "soft",
+		size: "small",
+		radius: "small",
+		disabled: false,
+		totalPages: 10,
+		currentPage: 1,
+		maxVisiblePages: 3,
+		onPageChange: () => {},
+		showFirstLastButtons: true,
+		showPrevNextButtons: true,
+	},
+};
+
+export const Bordered: Story = {
+	render: Template,
+	args: {
+		variant: "bordered",
+		size: "small",
+		radius: "small",
+		disabled: false,
+		totalPages: 10,
+		currentPage: 1,
+		maxVisiblePages: 3,
+		onPageChange: () => {},
+		showFirstLastButtons: true,
+		showPrevNextButtons: true,
+	},
 };
