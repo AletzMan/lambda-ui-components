@@ -908,11 +908,11 @@ body[data-theme="light"] {
 }
 
 .notification-soft {
-	backdrop-filter: blur(12px);
+	backdrop-filter: blur(10px);
 	box-shadow: var(--box-shadow);
 
 	&:is(.notification-secondary) {
-		background-color: var(--secondary-soft-color);
+		background-color: var(--secondary-opacity-color);
 		border-left: 5px solid var(--secondary-base-color);
 		color: var(--secondary-text-color);
 
@@ -936,7 +936,7 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-success) {
-		background-color: var(--success-soft-color);
+		background-color: var(--success-opacity-color);
 		border-left: 5px solid var(--success-base-color);
 		color: var(--success-text-color);
 
@@ -960,7 +960,7 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-danger) {
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 		border-left: 5px solid var(--danger-base-color);
 		color: var(--danger-text-color);
 
@@ -984,7 +984,7 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-warning) {
-		background-color: var(--warning-soft-color);
+		background-color: var(--warning-opacity-color);
 		border-left: 5px solid var(--warning-base-color);
 		color: var(--warning-text-color);
 
@@ -1008,7 +1008,7 @@ body[data-theme="light"] {
 	}
 
 	&:is(.notification-info) {
-		background-color: var(--info-soft-color);
+		background-color: var(--info-opacity-color);
 		border-left: 5px solid var(--info-base-color);
 		color: var(--info-text-color);
 
