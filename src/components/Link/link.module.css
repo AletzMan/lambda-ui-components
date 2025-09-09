@@ -103,12 +103,6 @@
 	flex-direction: row;
 	padding-left: var(--padding-lg);
 	padding-right: var(--padding-lg);
-
-	&.lambda-link-button-active {
-		background-color: var(--primary-subtle-color);
-		color: var(--primary-text-color);
-		pointer-events: none;
-	}
 }
 
 .lambda-link-button-start {
@@ -117,11 +111,22 @@
 
 .lambda-link-button-center {
 	justify-content: center;
+
+	& > * {
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
 }
 
 .lambda-link-button-end {
-	justify-content: flex-start;
-	flex-direction: row-reverse !important;
+	justify-content: flex-end;
+
+	& > * {
+		width: 100%;
+		text-align: end;
+		justify-content: end;
+	}
 }
 
 /* Estilos para el estado deshabilitado (aplica a ambos tipos, aplicado con una clase) */
@@ -139,6 +144,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.lambda-link-icon-left {
+	flex-direction: row;
+}
+
+.lambda-link-icon-right {
+	flex-direction: row-reverse;
 }
 
 /* Nota: Los estilos para la apariencia de botón (cuando type="button") se obtendrán al importar el CSS Module del componente Button. */
