@@ -1,69 +1,46 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, RefObject, useCallback } from "react";
 
-import { useState, useEffect, RefObject } from 'react';
-
-/**
- * Hook to determine if a dropdown should open "up" or "down"
- * based on available space in the viewport below the trigger element.
- * @param triggerRef Ref object for the element that triggers the dropdown (e.g., the button).
- * @param dropdownRef Ref object for the dropdown list element (e.g., the ul).
- * @param isOpen Boolean indicating if the dropdown is currently open.
- */
 export function useDropdownPlacement(
-    triggerRef: RefObject<HTMLButtonElement | null>,
-    dropdownRef: RefObject<HTMLElement>,
-    isOpen: boolean
+	triggerRef: RefObject<HTMLButtonElement | null>,
+	dropdownRef: RefObject<HTMLUListElement> | null,
+	isOpen: boolean
 ) {
-    const [direction, setDirection] = useState<"up" | "down">("down");
+	const [direction, setDirection] = useState<"up" | "down">("down");
 
-    const checkDirection = () => {
+	const checkDirection = useCallback(() => {
+		if (triggerRef.current && dropdownRef?.current) {
+			const { top, bottom } = triggerRef.current.getBoundingClientRect();
+			const { height: dropdownHeight } = dropdownRef.current.getBoundingClientRect();
+			const viewportHeight = window.innerHeight;
+			const spaceBelow = viewportHeight - bottom;
+			const spaceAbove = top;
+			if (spaceBelow < dropdownHeight) {
+				setDirection("up");
+			} else {
+				setDirection("down");
+			}
+		}
+	}, [triggerRef, dropdownRef]);
 
-        if (triggerRef.current && dropdownRef.current) {
-            const { bottom } = triggerRef.current.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            const { height: listHeight } = dropdownRef.current.getBoundingClientRect();
+	useEffect(() => {
+		if (isOpen) {
+			const timeoutId = setTimeout(checkDirection, 0);
 
-            if (viewportHeight - bottom < listHeight) {
-                const { top } = triggerRef.current.getBoundingClientRect();
-                if (top > listHeight) {
-                    setDirection("up");
-                } else {
-                    setDirection("down");
-                }
-            } else {
-                setDirection("down");
-            }
-        }
-    };
+			const handleScrollOrResize = () => {
+				checkDirection();
+			};
 
-    useEffect(() => {
-        const handleScrollOrResize = () => {
-            checkDirection();
-        };
+			window.addEventListener("scroll", handleScrollOrResize);
+			window.addEventListener("resize", handleScrollOrResize);
 
-        const handleTransitionEnd = (event: TransitionEvent) => {
-            if (event.propertyName === 'transform') {
-                checkDirection();
-            }
-        };
+			return () => {
+				clearTimeout(timeoutId);
+				window.removeEventListener("scroll", handleScrollOrResize);
+				window.removeEventListener("resize", handleScrollOrResize);
+			};
+		}
+	}, [isOpen, checkDirection]);
 
-        if (isOpen) {
-            if (dropdownRef.current) {
-                dropdownRef.current.addEventListener('transitionend', handleTransitionEnd);
-            }
-            window.addEventListener("scroll", handleScrollOrResize);
-            window.addEventListener("resize", handleScrollOrResize);
-
-        }
-        return () => {
-            if (dropdownRef.current) {
-                dropdownRef.current.removeEventListener('transitionend', handleTransitionEnd);
-            }
-            window.removeEventListener("scroll", handleScrollOrResize);
-            window.removeEventListener("resize", handleScrollOrResize);
-        };
-
-    }, [isOpen, triggerRef, dropdownRef]);
-
-    return { direction, checkDirection };
+	return { direction };
 }
