@@ -88,7 +88,6 @@
 }
 
 .select-container {
-	position: relative;
 	width: 100%;
 }
 
@@ -252,6 +251,7 @@
 }
 
 .select-dropdown {
+	display: none;
 	position: absolute;
 	bottom: auto;
 	left: 0;
@@ -350,6 +350,7 @@
 }
 
 .select-dropdown-open {
+	display: block;
 	animation: growDown 0.2s ease-in-out forwards;
 }
 
@@ -359,7 +360,7 @@
 	}
 
 	80% {
-		transform: scaleY(1.1);
+		transform: scaleY(1);
 	}
 
 	100% {
@@ -505,6 +506,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: var(--border-radius-xs) var(--padding-none);
+	pointer-events: none;
 
 	.select-view-description {
 		padding: var(--padding-xs) var(--padding-xs);
