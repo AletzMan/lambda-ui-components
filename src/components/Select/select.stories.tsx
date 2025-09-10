@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Select } from "./Select";
 import { SelectProps } from "./select.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { CheckCheckIcon } from "lucide-react";
 
 const meta: Meta<typeof Select> = {
 	title: "Components/Select",
