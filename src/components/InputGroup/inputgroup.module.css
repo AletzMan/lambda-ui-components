@@ -1,8 +1,11 @@
 .lambda-input-group-outline,
-.lambda-input-group-soft,
 .lambda-input-group-underline {
 	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid var(--surface-d);
+}
+.lambda-input-group-soft,
+.lambda-input-group-underline {
+	background-color: var(--surface-a);
 }
 
 .lambda-input-group-tiny {
@@ -228,7 +231,6 @@
 	outline: none;
 	font-family: var(--font-family);
 	background: var(--surface-c);
-	box-shadow: var(--box-shadow);
 
 	.lambda-input-group-start,
 	.lambda-input-group-end {
@@ -325,8 +327,16 @@
 	height: 100%;
 	border: none;
 	box-sizing: border-box;
-	margin: -3px 0 0 0;
+	margin: -2px 0 0 0;
 	background-color: var(--surface-a);
+
+	&.lambda-input-group-outline,
+	&.lambda-input-group-underline {
+		border: var(--border-width-xs) solid var(--surface-d);
+	}
+	&:is(.lambda-input-group-wrapper-soft) {
+		margin: -0px 0 0 0;
+	}
 }
 
 .lambda-input-group-disabled {

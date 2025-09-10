@@ -14,7 +14,7 @@ import styles from "./inputGroup.module.css";
 import clsx from "clsx";
 import { VariantProps } from "class-variance-authority";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
-import { inputGroup } from "./inputgroup.variants";
+import { inputGroup, inputGroupWrapper } from "./inputgroup.variants";
 import { InputProps } from "../Input/input.types";
 
 type InputGroupContextType = {
@@ -91,7 +91,14 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 					<div
 						ref={ref}
 						className={clsx(
-							inputGroup({ variant: undefined, radius, size, invalid, disabled, hasElements })
+							inputGroup({
+								variant: variant,
+								radius,
+								size,
+								invalid,
+								disabled,
+								hasElements,
+							})
 						)}
 					>
 						{prefixElement && (
@@ -99,7 +106,7 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 								{prefixElement}
 							</div>
 						)}
-						<div className={styles["lambda-input-group-wrapper"]}>{children}</div>
+						<div className={clsx(inputGroupWrapper({ variant: variant }))}>{children}</div>
 						{suffixElement && (
 							<div className={styles["lambda-input-group-end"]}>{suffixElement}</div>
 						)}

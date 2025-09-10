@@ -44,3 +44,13 @@ export const inputGroup = cva(styles["lambda-input-group"], {
 		disabled: false,
 	},
 });
+
+export const inputGroupWrapper = cva(styles["lambda-input-group-wrapper"], {
+	variants: {
+		variant: {
+			outline: styles["lambda-input-group-wrapper-outline"],
+			soft: styles["lambda-input-group-wrapper-soft"],
+			underline: styles["lambda-input-group-wrapper-underline"],
+		},
+	},
+});

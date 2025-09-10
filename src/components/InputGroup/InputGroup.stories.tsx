@@ -11,7 +11,7 @@ const meta: Meta<typeof InputGroup> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["outline", "flat", "underline"],
+			options: ["outline", "soft", "underline"],
 			description: "Visual style of the input",
 			type: "string",
 		},
