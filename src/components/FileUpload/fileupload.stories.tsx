@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { FileUpload } from "./FileUpload";
 import { FileUploadProps } from "./file-upload-types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { ConfigProvider } from "../../_internal/hooks/translation/ConfigProvider";
 
 const meta: Meta<typeof FileUpload> = {
 	title: "Components/FileUpload",
@@ -91,8 +90,16 @@ type Story = StoryObj<typeof FileUpload>;
 
 const Template = (args: FileUploadProps) => {
 	return (
-		<ConfigProvider lang="en">
-			<ContainerComponent title="FileUpload" subtitle={args.type?.toString() || ""}>
+		<ContainerComponent title="FileUpload" subtitle={args.type?.toString() || ""}>
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					width: "100%",
+					height: "100%",
+				}}
+			>
 				<div
 					style={{
 						display: "flex",
@@ -100,23 +107,13 @@ const Template = (args: FileUploadProps) => {
 						justifyContent: "center",
 						width: "100%",
 						height: "100%",
+						maxWidth: "20em",
 					}}
 				>
-					<div
-						style={{
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
-							width: "100%",
-							height: "100%",
-							maxWidth: "20em",
-						}}
-					>
-						<FileUpload {...args} />
-					</div>
+					<FileUpload {...args} />
 				</div>
-			</ContainerComponent>
-		</ConfigProvider>
+			</div>
+		</ContainerComponent>
 	);
 };
 
