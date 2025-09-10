@@ -8,6 +8,7 @@
 
 	/* --- Lambda Colors --- */
 	/* Primary */
+	/*
 	--lambda-color-primary-100: #dfecec;
 	--lambda-color-primary-200: #c8e0e0;
 	--lambda-color-primary-300: #9fc5c6;
@@ -17,6 +18,16 @@
 	--lambda-color-primary-700: #395f60;
 	--lambda-color-primary-800: #263f40;
 	--lambda-color-primary-900: #132020;
+	*/
+	--lambda-color-primary-100: #e8eaf6;
+	--lambda-color-primary-200: #c5cae9;
+	--lambda-color-primary-300: #9fa8da;
+	--lambda-color-primary-400: #7986cb;
+	--lambda-color-primary-500: #5c6bc0;
+	--lambda-color-primary-600: #3f51b5;
+	--lambda-color-primary-700: #3949ab;
+	--lambda-color-primary-800: #303f9f;
+	--lambda-color-primary-900: #283593;
 
 	/* Secondary */
 	--lambda-color-secondary-100: #eeeeee;
@@ -219,10 +230,10 @@
 
 	--border-color: #cacaca;
 	--border-inverse-color: #c5c3c3;
-	--shadow-color: #30353130;
+	--shadow-color: #adadad30;
 	--shadow-inset-color: #f1f1f155;
 
-	--box-shadow: 0 0 2px 1px var(--shadow-color);
+	--box-shadow: 0 0 1px 2px var(--shadow-color) inset;
 
 	--primary-soft-color: var(--lambda-color-primary-200);
 	--primary-subtle-color: var(--lambda-color-primary-300);
@@ -319,10 +330,10 @@
 
 	--border-color: #45494f;
 	--border-inverse-color: #c0c0c0;
-	--shadow-color: #ebebeb15;
+	--shadow-color: #00000050;
 	--shadow-inset-color: #f1f1f155;
 
-	--box-shadow: 0 0 3px 1px var(--shadow-color);
+	--box-shadow: 0 0 1px 1px var(--shadow-color) inset;
 
 	/* Primary */
 	--primary-soft-color: var(--lambda-color-primary-800);
