@@ -18,11 +18,6 @@ export interface RadioGroupProps {
 	color?: RadioGroupVariants["color"];
 
 	/**
-	 * (Esta prop específica depende de la implementación interna). Define una variación en la apariencia o comportamiento del grupo de radios.
-	 */
-	type?: RadioGroupVariants["type"];
-
-	/**
 	 * Ajusta la redondez de las esquinas del contenedor del grupo.
 	 */
 	radius?: RadioGroupVariants["radius"];
