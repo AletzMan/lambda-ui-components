@@ -5,25 +5,28 @@ interface ContainerComponentProps {
 	title: string;
 	subtitle?: string;
 	color?: string;
+	optional?: string;
 	children: React.ReactNode;
 }
 
 const colors = {
-	default: "var(--secondary-text-color)",
-	primary: "var(--primary-text-color)",
-	danger: "var(--danger-text-color)",
-	success: "var(--success-text-color)",
-	warning: "var(--warning-text-color)",
-	info: "var(--info-text-color)",
+	default: "var(--secondary-disabled-color)",
+	primary: "var(--primary-disabled-color)",
+	danger: "var(--danger-disabled-color)",
+	success: "var(--success-disabled-color)",
+	warning: "var(--warning-disabled-color)",
+	info: "var(--info-disabled-color)",
 };
 
 export default function ContainerComponent({
 	title,
 	subtitle,
 	color,
+	optional,
 	children,
 }: ContainerComponentProps) {
 	const colorValue = colors[color as keyof typeof colors] || colors.default;
+	const optionalValue = colors[optional as keyof typeof colors] || colors.default;
 	console.log(colorValue);
 	return (
 		<div className={styles.container}>
@@ -35,9 +38,14 @@ export default function ContainerComponent({
 						{color}
 					</span>
 				)}
+				{optional && (
+					<span className={styles.optional} style={{ color: optionalValue }}>
+						{optional}
+					</span>
+				)}
 			</div>
 			<Divider color="secondary" />
-			<div className={styles.content}>{children}</div>
+			<div className={`${styles.content} scrollBar`}>{children}</div>
 		</div>
 	);
 }
