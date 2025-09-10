@@ -5,6 +5,7 @@ import { ThemeProvider } from "../src/components/ThemeProvider/ThemeProvider";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
 import "../src/index.css";
+import { ConfigProvider } from "../src/_internal/hooks/translation/ConfigProvider";
 
 const ThemeDecorator = (Story, context) => {
 	const theme = context.globals.theme || "dark";
@@ -23,9 +24,11 @@ const ThemeDecorator = (Story, context) => {
 	}, [theme, Story, context]);
 
 	return (
-		<ThemeProvider defaultTheme={theme}>
-			<Story />
-		</ThemeProvider>
+		<ConfigProvider lang="en">
+			<ThemeProvider defaultTheme={theme}>
+				<Story />
+			</ThemeProvider>
+		</ConfigProvider>
 	);
 };
 
