@@ -4,6 +4,8 @@
 	--black-color: #171717;
 	--white-color: #ffffff;
 
+	--gap-radio-size: 8px;
+
 	/* --- Lambda Colors --- */
 	/* Primary */
 	--lambda-color-primary-100: #dfecec;
@@ -204,7 +206,7 @@
 
 	--rating-solid-color: #f8c622;
 	--rating-fill-color: #fac51565;
-	--rating-stroke-color: #5f4c0d;
+	--rating-stroke-color: #91720c;
 
 	--surface-a: #fefafa;
 	--surface-b: #f0f0f0;
@@ -230,7 +232,7 @@
 	--primary-disabled-color: var(--lambda-color-primary-800);
 	--primary-text-color: var(--lambda-color-primary-700);
 	--primary-dark-color: var(--lambda-color-primary-900);
-	--primary-opacity-color: rgba(var(--lambda-color-primary-500), 0.5);
+	--primary-opacity-color: color-mix(in srgb, var(--lambda-color-primary-500) 30%, transparent 10%);
 
 	--secondary-soft-color: var(--lambda-color-secondary-100);
 	--secondary-subtle-color: var(--lambda-color-secondary-300);
@@ -338,7 +340,7 @@
 	--secondary-subtle-color: var(--lambda-color-secondary-700);
 	--secondary-light-color: var(--lambda-color-secondary-100);
 	--secondary-base-color: var(--lambda-color-secondary-100);
-	--secondary-hover-color: var(--lambda-color-secondary-200);
+	--secondary-hover-color: var(--lambda-color-secondary-300);
 	--secondary-disabled-color: var(--lambda-color-secondary-600);
 	--secondary-text-color: var(--lambda-color-secondary-200);
 	--secondary-dark-color: var(--lambda-color-secondary-900);
