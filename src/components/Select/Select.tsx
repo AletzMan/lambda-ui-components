@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, forwardRef, useRef, useEffect, useCallback } from "react";
+import React, { useState, forwardRef, useRef, useEffect, useCallback, RefObject } from "react";
+import ReactDOM from "react-dom";
 import styles from "./select.module.css";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import clsx from "clsx";
@@ -43,19 +44,53 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 		const [selectedValue, setSelectedValue] = useState<string | null | undefined>(
 			defaultValue ?? value
 		);
-		// --- Refs ---
+		const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
+
 		const containerRef = useRef<HTMLDivElement>(null);
 		const buttonRef = useRef<HTMLButtonElement>(null);
 		const listRef = useRef<HTMLUListElement>(null);
-		// Hook para cerrar al hacer click fuera
-		useClickOutside(containerRef, () => setIsOpen(false)); // Cerrar si click fuera del container
 
-		// Hook para determinar la dirección de apertura del dropdown
-		const { direction, checkDirection } = useDropdownPlacement(
+		useClickOutside([containerRef, listRef], () => setIsOpen(false));
+
+		const { direction } = useDropdownPlacement(
 			buttonRef,
-			listRef as React.RefObject<HTMLElement>,
+			listRef as RefObject<HTMLUListElement>,
 			isOpen
 		);
+
+		// Controla el scroll del body
+		useEffect(() => {
+			if (isOpen) {
+				document.body.style.overflow = "hidden";
+			} else {
+				document.body.style.overflow = "auto";
+			}
+			return () => {
+				document.body.style.overflow = "auto";
+			};
+		}, [isOpen]);
+
+		// Calcula la posición del dropdown
+		useEffect(() => {
+			if (isOpen && containerRef.current && listRef.current) {
+				const buttonRect = containerRef.current.getBoundingClientRect();
+				const listHeight = listRef.current.getBoundingClientRect().height;
+
+				setTimeout(() => {
+					let topPosition = 0;
+					if (direction === "up") {
+						topPosition = buttonRect.top - listHeight;
+					} else if (direction === "down") {
+						topPosition = buttonRect.bottom + window.scrollY;
+					}
+					setDropdownPosition({
+						top: topPosition,
+						left: buttonRect.left + window.scrollX,
+						width: buttonRect.width,
+					});
+				}, 10);
+			}
+		}, [isOpen, direction, listRef.current]);
 
 		useEffect(() => {
 			if (value !== undefined && value !== selectedValue) {
@@ -72,11 +107,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			[onChange]
 		);
 
-		// --- Handlers ---
 		const handleButtonClick = useCallback(
 			(e: React.MouseEvent<HTMLButtonElement>) => {
 				e.preventDefault();
-				checkDirection();
 				if (!disabled) {
 					setIsOpen((prev) => !prev);
 				}
@@ -84,15 +117,13 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			[disabled]
 		);
 
-		// Este handler simplemente llama a la lógica de selección unificada
 		const handleOptionClick = useCallback(
 			(val: string) => {
 				performOptionSelection(val);
 			},
 			[performOptionSelection]
-		); // Dependencia: performOptionSelection
+		);
 
-		// Hook para la accesibilidad (ARIA, teclado, opción activa)
 		const { getButtonProps, getListboxProps, getOptionProps, getLabelProps, activeOptionId } =
 			useSelectAccessibility({
 				isOpen,
@@ -157,12 +188,21 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 							)}
 						</div>
 					</button>
-					{
+				</div>
+
+				{isOpen &&
+					ReactDOM.createPortal(
 						<ul
+							style={{
+								top: dropdownPosition.top,
+								left: dropdownPosition.left,
+								width: dropdownPosition.width,
+							}}
 							className={clsx(dropdown({ size, direction, radius, variant }), "scrollBar", {
 								[styles["select-dropdown-open"]]: isOpen,
 							})}
 							ref={listRef}
+							onWheel={(e) => e.stopPropagation()}
 							{...getListboxProps()}
 						>
 							{options?.map((option, index) => (
@@ -176,9 +216,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 									{...getOptionProps(option, index)}
 								/>
 							))}
-						</ul>
-					}
-				</div>
+						</ul>,
+						document.body
+					)}
 
 				{invalid && errorMessage && (
 					<InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />
