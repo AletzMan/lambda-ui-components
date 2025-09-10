@@ -336,43 +336,43 @@
 
 		&:is(.lambda-rating-item-primary) {
 			& > svg {
-				stroke: var(--primary-text-color);
-				fill: var(--primary-subtle-color);
+				stroke: var(--primary-base-color);
+				fill: var(--primary-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-secondary) {
 			& > svg {
-				stroke: var(--secondary-text-color);
-				fill: var(--secondary-subtle-color);
+				stroke: var(--secondary-hover-color);
+				fill: var(--secondary-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-danger) {
 			& > svg {
-				stroke: var(--danger-text-color);
-				fill: var(--danger-subtle-color);
+				stroke: var(--danger-disabled-color);
+				fill: var(--danger-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-success) {
 			& > svg {
-				stroke: var(--success-text-color);
-				fill: var(--success-subtle-color);
+				stroke: var(--success-disabled-color);
+				fill: var(--success-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-warning) {
 			& > svg {
-				stroke: var(--warning-text-color);
-				fill: var(--warning-subtle-color);
+				stroke: var(--warning-disabled-color);
+				fill: var(--warning-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-info) {
 			& > svg {
-				stroke: var(--info-text-color);
-				fill: var(--info-subtle-color);
+				stroke: var(--info-disabled-color);
+				fill: var(--info-opacity-color);
 			}
 		}
 	}
@@ -385,32 +385,25 @@
 	&:is(.lambda-rating-item-active) {
 		filter: grayscale(0);
 		&:is(.lambda-rating-item-default) {
-			/*background-color: var(--rating-fill-color);*/
-			color: var(--rating-stroke-color);
+			color: var(--rating-solid-color);
 		}
 		&:is(.lambda-rating-item-primary) {
-			color: var(--primary-text-color);
-			/*background-color: var(--primary-subtle-color);*/
+			color: var(--primary-base-color);
 		}
 		&:is(.lambda-rating-item-secondary) {
-			color: var(--secondary-text-color);
-			/*background-color: var(--secondary-subtle-color);*/
+			color: var(--secondary-base-color);
 		}
 		&:is(.lambda-rating-item-danger) {
-			color: var(--danger-text-color);
-			/*background-color: var(--danger-subtle-color);*/
+			color: var(--danger-base-color);
 		}
 		&:is(.lambda-rating-item-success) {
-			color: var(--success-text-color);
-			/*background-color: var(--success-subtle-color);*/
+			color: var(--success-base-color);
 		}
 		&:is(.lambda-rating-item-warning) {
-			color: var(--warning-text-color);
-			/*background-color: var(--warning-subtle-color);*/
+			color: var(--warning-base-color);
 		}
 		&:is(.lambda-rating-item-info) {
-			color: var(--info-text-color);
-			/*background-color: var(--info-subtle-color);*/
+			color: var(--info-base-color);
 		}
 	}
 
