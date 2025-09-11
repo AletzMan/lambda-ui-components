@@ -455,6 +455,95 @@
 	}
 }
 
+.lambda-btn-subtle {
+	background-color: transparent;
+	border: var(--border-width-xs) solid transparent;
+
+	&.lambda-btn-primary {
+		background-color: var(--primary-soft-color);
+		border-color: var(--primary-subtle-color);
+		color: var(--primary-text-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--primary-subtle-color);
+		}
+
+		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--primary-soft-color);
+		}
+	}
+
+	&.lambda-btn-secondary {
+		color: var(--secondary-text-color);
+		background-color: var(--secondary-content-color);
+		border-color: var(--surface-e);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--secondary-disabled-color);
+		}
+
+		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--secondary-content-color);
+		}
+	}
+
+	&.lambda-btn-success {
+		color: var(--success-text-color);
+		background-color: var(--success-soft-color);
+		border-color: var(--success-subtle-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--success-subtle-color);
+		}
+
+		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--success-soft-color);
+		}
+	}
+
+	&.lambda-btn-danger {
+		color: var(--danger-text-color);
+		background-color: var(--danger-soft-color);
+		border-color: var(--danger-subtle-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--danger-subtle-color);
+		}
+
+		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--danger-soft-color);
+		}
+	}
+
+	&.lambda-btn-warning {
+		color: var(--warning-text-color);
+		background-color: var(--warning-soft-color);
+		border-color: var(--warning-subtle-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--warning-subtle-color);
+		}
+
+		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--warning-soft-color);
+		}
+	}
+
+	&.lambda-btn-info {
+		color: var(--info-text-color);
+		background-color: var(--info-soft-color);
+		border-color: var(--info-subtle-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--info-subtle-color);
+		}
+
+		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--info-soft-color);
+		}
+	}
+}
+
 .lambda-btn-text {
 	background-color: transparent;
 	border: var(--border-width-xs) solid transparent;

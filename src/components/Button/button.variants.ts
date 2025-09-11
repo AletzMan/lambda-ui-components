@@ -17,6 +17,7 @@ export const button = cva(styles[`lambda-btn`], {
 			outline: styles[`lambda-btn-outline`],
 			dashed: styles[`lambda-btn-dashed`],
 			soft: styles[`lambda-btn-soft`],
+			subtle: styles[`lambda-btn-subtle`],
 			text: styles[`lambda-btn-text`],
 		},
 		size: {

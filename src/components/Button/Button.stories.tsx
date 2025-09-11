@@ -10,7 +10,7 @@ const meta: Meta<typeof Button> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["classic", "solid", "outline", "dashed", "soft", "text"],
+			options: ["classic", "solid", "outline", "dashed", "soft", "subtle", "text"],
 			description: "Visual style of the button",
 			type: "string",
 			table: {
@@ -162,6 +162,22 @@ export const Soft: Story = {
 	args: {
 		color: "warning",
 		variant: "soft",
+		size: "medium",
+		radius: "small",
+		loading: false,
+		loadingText: "Loading",
+		disabled: false,
+		iconPosition: "left",
+		label: "Button",
+		icon: <CircleCheck />,
+	},
+};
+
+export const Subtle: Story = {
+	render: Template,
+	args: {
+		color: "warning",
+		variant: "subtle",
 		size: "medium",
 		radius: "small",
 		loading: false,
