@@ -382,11 +382,6 @@
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--primary-soft-color);
 		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--primary-disabled-color);
-		}
 	}
 
 	&.lambda-btn-secondary {
@@ -400,11 +395,6 @@
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--secondary-soft-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--secondary-disabled-color);
 		}
 	}
 
@@ -420,11 +410,6 @@
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--success-soft-color);
 		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--success-disabled-color);
-		}
 	}
 
 	&.lambda-btn-danger {
@@ -438,11 +423,6 @@
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--danger-soft-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--danger-disabled-color);
 		}
 	}
 
@@ -458,11 +438,6 @@
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--warning-soft-color);
 		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--warning-disabled-color);
-		}
 	}
 
 	&.lambda-btn-info {
@@ -477,11 +452,6 @@
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--info-soft-color);
 		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--info-disabled-color);
-		}
 	}
 }
 
@@ -494,16 +464,10 @@
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--primary-soft-color);
-			border-color: var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--primary-subtle-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--primary-disabled-color);
 		}
 	}
 
@@ -512,16 +476,10 @@
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--secondary-soft-color);
-			border-color: var(--secondary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--secondary-subtle-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--secondary-disabled-color);
 		}
 	}
 
@@ -530,16 +488,10 @@
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--success-soft-color);
-			border-color: var(--success-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--success-subtle-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--success-disabled-color);
 		}
 	}
 
@@ -548,16 +500,10 @@
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--danger-soft-color);
-			border-color: var(--danger-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--danger-subtle-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--danger-disabled-color);
 		}
 	}
 
@@ -566,16 +512,10 @@
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--warning-soft-color);
-			border-color: var(--warning-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--warning-subtle-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--warning-disabled-color);
 		}
 	}
 
@@ -584,16 +524,10 @@
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--info-soft-color);
-			border-color: var(--info-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--info-subtle-color);
-		}
-
-		&.lambda-btn-loading,
-		&.lambda-btn-disabled {
-			color: var(--info-disabled-color);
 		}
 	}
 }
