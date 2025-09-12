@@ -23,7 +23,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	box-sizing: border-box;
 	outline: none;
 	font-family: var(--font-family);
-	box-shadow: 0 0 1px 1px var(--surface-b);
+	box-shadow: var(--box-shadow);
 
 	&.lambda-input-wrapper-password {
 		padding-right: 0;
