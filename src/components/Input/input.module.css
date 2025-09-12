@@ -23,7 +23,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	box-sizing: border-box;
 	outline: none;
 	font-family: var(--font-family);
-	box-shadow: var(--box-shadow);
+	box-shadow: 0 0 1px 1px var(--surface-b);
 
 	&.lambda-input-wrapper-password {
 		padding-right: 0;
@@ -242,10 +242,11 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-wrapper-outline {
 	background-color: var(--surface-a);
-	border: var(--border-width-xs) solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--border-color);
 
 	&:focus-within:not(.lambda-input-wrapper-invalid) {
-		outline: 3px solid var(--primary-soft-color);
+		outline: 3px solid var(--primary-outline-color);
+		background-color: var(--primary-light-color);
 		border-color: var(--primary-base-color);
 	}
 
@@ -260,6 +261,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	background-color: var(--surface-a);
 
 	&:focus-within:not(.lambda-input-wrapper-invalid) {
+		background-color: var(--primary-light-color);
 		outline: 3px solid var(--primary-soft-color);
 	}
 
@@ -270,16 +272,15 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-wrapper-underline {
 	background-color: var(--surface-a);
-	border-bottom: 1px solid var(--surface-d);
+	border-bottom: var(--border-width-sm) solid var(--border-color);
 
 	&:focus-within:not(.lambda-input-wrapper-invalid) {
-		outline: 3px solid var(--primary-soft-color);
-		border-bottom: 1px solid var(--primary-base-color);
-		box-shadow: var(--box-shadow);
+		background-color: var(--primary-light-color);
+		border-bottom: var(--border-width-sm) solid var(--primary-base-color);
 	}
 
 	&.lambda-input-wrapper-invalid {
-		border-bottom: 1px var(--danger-base-color);
+		border-bottom: var(--border-width-sm) var(--danger-base-color);
 		border-style: dashed;
 		background-color: var(--danger-soft-color);
 	}
@@ -528,34 +529,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .lambda-input-disabled {
-	cursor: not-allowed;
-
-	.lambda-input-label {
-		color: var(--secondary-disabled-color);
-	}
-
-	.lambda-input-input-wrapper {
-		pointer-events: none;
-
-		.lambda-input-toggle-password,
-		.lambda-input-clear-search {
-			color: var(--surface-f);
-		}
-
-		.lambda-input-field {
-			color: var(--surface-e);
-
-			&::placeholder {
-				color: var(--surface-f);
-			}
-		}
-	}
-
-	.lambda-input-wrapper-disabled {
-		background-color: var(--surface-c);
-
-		&:hover:not(.lambda-input-wrapper-invalid) {
-			border-color: var(--surface-d);
-		}
+	opacity: 0.5;
+	* {
+		cursor: not-allowed;
 	}
 }
