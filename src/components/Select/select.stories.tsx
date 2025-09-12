@@ -52,9 +52,9 @@ const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" 
 	return (
 		<ContainerComponent title="Select" subtitle={args.type}>
 			<div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "250px" }}>
-				<Select {...args} variant="borderless" label="Borderless" />
-				<Select {...args} variant="soft" label="Soft" />
 				<Select {...args} variant="outline" label="Outline" />
+				<Select {...args} variant="soft" label="Soft" />
+				<Select {...args} variant="underline" label="Underline" />
 			</div>
 		</ContainerComponent>
 	);

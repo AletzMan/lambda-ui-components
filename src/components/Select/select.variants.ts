@@ -12,7 +12,7 @@ export const select = cva(styles["select-container"], {
 		variant: {
 			outline: styles["select-container-outline"],
 			soft: styles["select-container-soft"],
-			borderless: styles["select-container-borderless"],
+			underline: styles["select-container-underline"],
 		},
 		radius: {
 			none: styles["select-container-radius-none"],
@@ -49,7 +49,7 @@ export const buttonSelect = cva(styles["select-btn"], {
 		variant: {
 			outline: styles["select-btn-outline"],
 			soft: styles["select-btn-soft"],
-			borderless: styles["select-btn-borderless"],
+			underline: styles["select-btn-underline"],
 		},
 		radius: {
 			none: styles["select-btn-radius-none"],
@@ -81,7 +81,7 @@ export const selectIcon = cva(styles["select-icon"], {
 		variant: {
 			outline: styles["select-icon-outline"],
 			soft: styles["select-icon-soft"],
-			borderless: styles["select-icon-borderless"],
+			underline: styles["select-icon-underline"],
 		},
 		size: {
 			tiny: styles["select-icon-tiny"],
@@ -121,7 +121,7 @@ export const dropdown = cva(styles["select-dropdown"], {
 		variant: {
 			outline: styles["select-dropdown-outline"],
 			soft: styles["select-dropdown-soft"],
-			borderless: styles["select-dropdown-borderless"],
+			underline: styles["select-dropdown-underline"],
 		},
 		radius: {
 			none: styles["select-dropdown-radius-none"],
@@ -186,7 +186,7 @@ export const selectedView = cva(styles["select-view"], {
 		variant: {
 			outline: styles["select-view-outline"],
 			soft: styles["select-view-soft"],
-			borderless: styles["select-view-borderless"],
+			underline: styles["select-view-underline"],
 		},
 		disabled: {
 			true: styles["select-view-disabled"],

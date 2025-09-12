@@ -24,7 +24,7 @@
 	position: absolute;
 	top: -1.4em;
 	display: block;
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	font-family: var(--font-family);
 	color: var(--label-color);
 
@@ -96,7 +96,9 @@
 	outline: none;
 
 	&.select-btn-outline {
-		border: var(--border-width-xs) solid var(--surface-d);
+		border: var(--border-width-xs) solid var(--border-color);
+		box-shadow: 0 0 1px 1px var(--surface-b);
+		background-color: var(--surface-b);
 
 		&:is(.select-btn-invalid) {
 			border: var(--border-width-xs) dashed var(--danger-base-color);
@@ -106,7 +108,8 @@
 
 	&.select-btn-soft {
 		border: none;
-		background-color: var(--secondary-soft-color);
+		background-color: var(--surface-b);
+		box-shadow: 0 0 1px 1px var(--surface-b);
 
 		.select-placeholder {
 			color: var(--surface-g);
@@ -117,8 +120,11 @@
 		}
 	}
 
-	&.select-btn-borderless {
+	&.select-btn-underline {
 		border: none;
+		border-bottom: 2px solid var(--border-color);
+		background-color: var(--surface-b);
+		box-shadow: 0 0 1px 1px var(--surface-b);
 
 		&:is(.select-btn-invalid) {
 			border-bottom: 2px dashed var(--danger-base-color);
@@ -201,7 +207,7 @@
 			border: var(--border-width-xs) solid var(--primary-hover-color);
 		}
 
-		&.select-btn-borderless {
+		&.select-btn-underline {
 			border-bottom-color: var(--primary-base-color);
 		}
 	}
@@ -326,7 +332,7 @@
 		border: var(--border-width-xs) solid transparent;
 	}
 
-	&.select-dropdown-borderless {
+	&.select-dropdown-underline {
 		border: var(--border-width-xs) solid transparent;
 		border-bottom: 1px solid var(--surface-d);
 	}
@@ -447,7 +453,7 @@
 			}
 		}
 
-		&.select-view-borderless {
+		&.select-view-underline {
 			.select-selected {
 				display: flex;
 				align-items: center;
@@ -493,7 +499,7 @@
 			}
 		}
 
-		&.select-view-borderless {
+		&.select-view-underline {
 			.select-selected {
 				display: flex;
 				align-items: center;
@@ -529,9 +535,9 @@
 }
 
 .select-wrapper-disabled {
+	opacity: 0.5;
 	* {
 		cursor: not-allowed;
-		filter: brightness(0.9) contrast(0.9);
-		color: var(--secondary-subtle-color);
+		color: var(--foreground-title-color);
 	}
 }
