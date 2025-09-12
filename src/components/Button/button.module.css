@@ -16,6 +16,7 @@
 	min-width: 24px;
 	color: var(--white-color);
 	text-shadow: 0 0 1px #00000045;
+	box-shadow: var(--box-shadow);
 	transition: background-color 0.15s ease-in-out, color 0.3s ease-in-out, shadow 0.3s ease-in-out;
 
 	&.lambda-btn-icon-left {
@@ -546,6 +547,7 @@
 
 .lambda-btn-text {
 	background-color: transparent;
+	box-shadow: none;
 	border: var(--border-width-xs) solid transparent;
 
 	&.lambda-btn-primary {

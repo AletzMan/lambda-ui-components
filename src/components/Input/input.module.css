@@ -427,7 +427,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	border: var(--border-width-xs) solid var(--surface-d);
 	border-radius: var(--border-radius-none);
 	outline: none;
-	box-shadow: var(--box-shadow);
+	box-shadow: none;
 
 	&.lambda-input-wrapper-outline,
 	&.lambda-input-wrapper-underline {
