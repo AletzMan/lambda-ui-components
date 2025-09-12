@@ -93,7 +93,7 @@
 	color: var(--foreground-color);
 	background-color: var(--surface-a);
 	outline: none;
-	box-shadow: 0 0 1px 1px var(--surface-b);
+	box-shadow: var(--box-shadow);
 
 	&.select-btn-outline {
 		border: var(--border-width-xs) solid var(--border-color);
@@ -198,8 +198,6 @@
 	}
 
 	&:focus:not(.select-btn-disabled) {
-		box-shadow: 0 0 0px 3px var(--primary-subtle-color);
-
 		&.select-btn-outline {
 			border: var(--border-width-xs) solid var(--primary-hover-color);
 		}
@@ -322,7 +320,7 @@
 	}
 
 	&.select-dropdown-outline {
-		border: var(--border-width-xs) solid var(--surface-d);
+		border: var(--border-width-xs) solid var(--border-color);
 	}
 
 	&.select-dropdown-soft {
@@ -330,8 +328,7 @@
 	}
 
 	&.select-dropdown-underline {
-		border: var(--border-width-xs) solid transparent;
-		border-bottom: 1px solid var(--surface-d);
+		border: var(--border-width-xs) solid var(--border-color);
 	}
 }
 
