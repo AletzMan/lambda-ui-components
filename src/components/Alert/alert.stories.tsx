@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "./Alert";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { AlertColor, AlertProps } from "./alert.types";
 
 const meta: Meta<typeof Alert> = {
 	title: "Components/Alert",
@@ -12,13 +13,8 @@ const meta: Meta<typeof Alert> = {
 			},
 		},
 		color: {
-			control: "inline-radio",
-			options: ["default", "primary", "danger", "success", "warning", "info"],
-			description: "Background color",
-			type: "string",
-			if: {
-				arg: "variant",
-				exists: true,
+			table: {
+				disable: true,
 			},
 		},
 		size: {
@@ -59,16 +55,47 @@ export default meta;
 
 type Story = StoryObj<typeof Alert>;
 
+const colors = ["default", "primary", "danger", "success", "warning", "info"];
+
+const Template = (args: AlertProps) => (
+	<ContainerComponent
+		title="Alert"
+		subtitle={args.variant?.toString() || ""}
+		color={args.size?.toString() || ""}
+	>
+		<div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "1rem" }}>
+			{colors.map((color) => (
+				<div style={{ width: "350px" }}>
+					<label
+						style={{
+							fontSize: "12px",
+							fontWeight: "bold",
+							marginBottom: "0.5rem",
+							textTransform: "capitalize",
+							color: `${
+								color === "default"
+									? "var(--lambda-color-secondary-500)"
+									: `var(--lambda-color-${color}-500)`
+							}`,
+						}}
+					>
+						{color}
+					</label>
+					<Alert
+						{...args}
+						key={color}
+						color={color as AlertColor}
+						title="Título del Alert"
+						message="Este es un mensaje de alerta interactivo."
+					/>
+				</div>
+			))}
+		</div>
+	</ContainerComponent>
+);
+
 export const Soft: Story = {
-	render: (args) => (
-		<ContainerComponent
-			title="Alert"
-			subtitle={args.variant?.toString() || ""}
-			color={args.color?.toString() || ""}
-		>
-			<Alert {...args} />
-		</ContainerComponent>
-	),
+	render: (args) => <Template {...args} />,
 	args: {
 		color: "primary",
 		variant: "soft",
@@ -79,15 +106,7 @@ export const Soft: Story = {
 };
 
 export const Outline: Story = {
-	render: (args) => (
-		<ContainerComponent
-			title="Alert"
-			subtitle={args.variant?.toString() || ""}
-			color={args.color?.toString() || ""}
-		>
-			<Alert {...args} />
-		</ContainerComponent>
-	),
+	render: (args) => <Template {...args} />,
 	args: {
 		color: "primary",
 		variant: "outline",
@@ -98,15 +117,7 @@ export const Outline: Story = {
 };
 
 export const Solid: Story = {
-	render: (args) => (
-		<ContainerComponent
-			title="Alert"
-			subtitle={args.variant?.toString() || ""}
-			color={args.color?.toString() || ""}
-		>
-			<Alert {...args} />
-		</ContainerComponent>
-	),
+	render: (args) => <Template {...args} />,
 	args: {
 		color: "primary",
 		variant: "solid",
