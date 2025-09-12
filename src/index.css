@@ -233,7 +233,7 @@
 	--shadow-color: #9e9e9e50;
 	--shadow-inset-color: #f1f1f155;
 
-	--box-shadow: 0 0 1px 1px var(--shadow-color) inset;
+	--box-shadow: 0 0 2px 1px var(--shadow-color);
 
 	--primary-text-color: var(--lambda-color-primary-700);
 	--primary-content-color: var(--lambda-color-primary-400);
@@ -340,13 +340,13 @@
 	--shadow-color: #3d3d3d50;
 	--shadow-inset-color: #f1f1f155;
 
-	--box-shadow: 0 0 1px 1px var(--shadow-color) inset;
+	--box-shadow: 0 0 1px 1px var(--shadow-color);
 
 	--primary-text-color: var(--lambda-color-primary-200);
 	--primary-content-color: var(--lambda-color-primary-400);
 	--primary-soft-color: var(--lambda-color-primary-800);
 	--primary-subtle-color: var(--lambda-color-primary-700);
-	--primary-outline-color: var(--lambda-color-primary-700);
+	--primary-outline-color: var(--lambda-color-primary-800);
 	--primary-base-color: var(--lambda-color-primary-500);
 	--primary-hover-color: var(--lambda-color-primary-600);
 	--primary-disabled-color: var(--lambda-color-primary-300);
