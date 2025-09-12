@@ -19,15 +19,15 @@
 	--lambda-color-primary-800: #263f40;
 	--lambda-color-primary-900: #132020;
 	*/
-	--lambda-color-primary-100: #d9dcf0;
-	--lambda-color-primary-200: #b2b9e1;
-	--lambda-color-primary-300: #8c97d3;
-	--lambda-color-primary-400: #6574c4;
-	--lambda-color-primary-500: #3f51b5;
-	--lambda-color-primary-600: #324191;
-	--lambda-color-primary-700: #26316d;
-	--lambda-color-primary-800: #192048;
-	--lambda-color-primary-900: #0d1024;
+	--lambda-color-primary-100: #ccf3f6;
+	--lambda-color-primary-200: #99e7ed;
+	--lambda-color-primary-300: #66dbe3;
+	--lambda-color-primary-400: #33cfda;
+	--lambda-color-primary-500: #00c3d1;
+	--lambda-color-primary-600: #009ca7;
+	--lambda-color-primary-700: #00757d;
+	--lambda-color-primary-800: #004e54;
+	--lambda-color-primary-900: #142425;
 
 	/* Secondary */
 	--lambda-color-secondary-100: #f6f6f6;
@@ -239,6 +239,7 @@
 	--primary-content-color: var(--lambda-color-primary-400);
 	--primary-soft-color: var(--lambda-color-primary-200);
 	--primary-subtle-color: var(--lambda-color-primary-300);
+	--primary-outline-color: var(--lambda-color-primary-200);
 	--primary-base-color: var(--lambda-color-primary-500);
 	--primary-hover-color: var(--lambda-color-primary-600);
 	--primary-disabled-color: var(--lambda-color-primary-800);
@@ -315,7 +316,7 @@
 	--foreground-label-color: #b1c0cc;
 	--foreground-disabled-color: #b7b5b5;
 	--placeholder-color: #626262;
-	--label-color: var(--lambda-color-secondary-500);
+	--label-color: var(--lambda-color-secondary-600);
 	--visited-link-color: #8c29a4;
 	--transparent-color: #ffffff08;
 	--badge-background-color: #f01e12;
@@ -345,10 +346,11 @@
 	--primary-content-color: var(--lambda-color-primary-400);
 	--primary-soft-color: var(--lambda-color-primary-800);
 	--primary-subtle-color: var(--lambda-color-primary-700);
+	--primary-outline-color: var(--lambda-color-primary-700);
 	--primary-base-color: var(--lambda-color-primary-500);
 	--primary-hover-color: var(--lambda-color-primary-600);
 	--primary-disabled-color: var(--lambda-color-primary-300);
-	--primary-light-color: var(--lambda-color-primary-100);
+	--primary-light-color: var(--lambda-color-primary-900);
 	--primary-dark-color: var(--lambda-color-primary-900);
 	--primary-opacity-color: color-mix(in srgb, var(--lambda-color-primary-500) 30%, transparent 80%);
 
