@@ -119,7 +119,7 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		border-color: var(--secondary-disabled-color);
+		border-color: var(--secondary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -201,7 +201,7 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-soft-color);
+		background-color: var(--secondary-outline-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -367,8 +367,8 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		border-color: var(--secondary-subtle-color);
-		background-color: var(--secondary-soft-color);
+		border-color: var(--secondary-hover-color);
+		background-color: var(--secondary-outline-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);

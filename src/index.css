@@ -254,7 +254,7 @@
 	--secondary-outline-color: var(--lambda-color-secondary-500);
 	--secondary-base-color: var(--lambda-color-secondary-800);
 	--secondary-hover-color: var(--lambda-color-secondary-700);
-	--secondary-disabled-color: var(--lambda-color-secondary-500);
+	--secondary-disabled-color: var(--lambda-color-secondary-600);
 	--secondary-light-color: var(--lambda-color-secondary-100);
 	--secondary-dark-color: var(--lambda-color-secondary-900);
 	--secondary-opacity-color: color-mix(
