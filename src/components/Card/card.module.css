@@ -126,7 +126,7 @@
 	padding: var(--padding-md) var(--padding-sm);
 	width: 100%;
 	border: none;
-	color: var(--surface-g);
+	color: var(--secondary-text-color);
 	background-color: var(--surface-a);
 	transition: all 0.2s ease-in-out;
 
