@@ -82,10 +82,10 @@
 	&.lambda-btn-secondary {
 		background: linear-gradient(
 			180deg,
-			var(--secondary-hover-color) 0%,
+			var(--secondary-content-color) 0%,
 			var(--secondary-base-color) 10%,
 			var(--secondary-base-color) 90%,
-			var(--secondary-hover-color) 100%
+			var(--secondary-content-color) 100%
 		);
 		border: var(--border-width-xs) solid var(--secondary-base-color);
 
