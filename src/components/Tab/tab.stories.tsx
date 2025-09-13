@@ -1,12 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Tab } from "./Tab";
+import { TabProps } from "./tab.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Tab> = {
 	title: "Components/Tab",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Tab,
 	argTypes: {
 		variant: {
@@ -41,7 +39,29 @@ export default meta;
 
 type Story = StoryObj<typeof Tab>;
 
+const colors: TabProps["color"][] = [
+	"primary",
+	"secondary",
+	"success",
+	"danger",
+	"warning",
+	"info",
+];
+
+const Template = (args: TabProps) => {
+	return (
+		<ContainerComponent title="Tab" subtitle={args.variant}>
+			<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+				{colors.map((color) => (
+					<Tab key={color} {...args} color={color} />
+				))}
+			</div>
+		</ContainerComponent>
+	);
+};
+
 export const Underline: Story = {
+	render: Template,
 	args: {
 		items: [
 			{ id: "1", label: "Products", content: "Products content" },
@@ -58,6 +78,7 @@ export const Underline: Story = {
 };
 
 export const Soft: Story = {
+	render: Template,
 	args: {
 		items: [
 			{ id: "1", label: "Products", content: "Products content" },
@@ -74,6 +95,7 @@ export const Soft: Story = {
 };
 
 export const Box: Story = {
+	render: Template,
 	args: {
 		items: [
 			{ id: "1", label: "Products", content: "Products content" },
@@ -90,6 +112,7 @@ export const Box: Story = {
 };
 
 export const Border: Story = {
+	render: Template,
 	args: {
 		items: [
 			{ id: "1", label: "Products", content: "Products content" },
