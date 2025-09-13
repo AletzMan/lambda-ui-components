@@ -10,6 +10,10 @@ export interface TableProps extends Omit<React.HTMLAttributes<HTMLTableElement>,
 	 */
 	variant?: TableVariants["variant"];
 	/**
+	 * Define el número de filas por página.
+	 */
+	rowsPerPage?: number;
+	/**
 	 * Configura la paginación de la tabla.
 	 */
 	pagination?: {
