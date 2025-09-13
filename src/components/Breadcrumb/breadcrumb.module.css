@@ -51,7 +51,7 @@
 }
 
 .breadcrumb-item:hover {
-	&:is(.breadcrumb-item-default) {
+	&:is(.breadcrumb-item-neutral) {
 		color: var(--neutral-text-color);
 	}
 
@@ -448,7 +448,7 @@
 				}
 			}
 
-			&.breadcrumb-item-default {
+			&.breadcrumb-item-neutral {
 				background-color: var(--neutral-soft-color);
 				color: var(--neutral-text-color);
 
