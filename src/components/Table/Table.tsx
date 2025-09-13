@@ -33,7 +33,7 @@ interface SortConfig {
 
 interface TableProperties {
 	size?: "tiny" | "small" | "medium" | "large";
-	variant?: "soft" | "underlined" | "bordered" | "striped";
+	variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
 	sortConfig: SortConfig;
 	handleSort: (key: string, type: string) => void;
 	pagination?: {
@@ -59,6 +59,7 @@ const TableRoot = <T,>({
 	children,
 	data,
 	renderRow,
+	rowsPerPage = 10,
 	pagination = { page: 1, totalPages: 1 },
 	...props
 }: {
@@ -71,10 +72,11 @@ const TableRoot = <T,>({
 	};
 } & HTMLAttributes<HTMLTableElement> & {
 		size?: "tiny" | "small" | "medium" | "large";
-		variant?: "soft" | "underlined" | "bordered" | "striped";
+		variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
+		rowsPerPage?: number;
 	}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
-	const [maxRows, setMaxRows] = useState(10);
+	const [maxRows, setMaxRows] = useState(rowsPerPage);
 	const { t } = useConfig();
 
 	const sortedData = useMemo(() => {
