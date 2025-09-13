@@ -71,20 +71,14 @@
 		border-radius: var(--border-radius-sm);
 		box-shadow: var(--box-shadow);
 
+		.lambda-accordion-header {
+			border-radius: var(--border-radius-sm);
+		}
+
 		.lambda-accordion-header-open {
 			border-bottom: 1px solid var(--surface-d);
 		}
 	}
-}
-
-/* Contenedor de cada AccordionItem */
-.lambda-accordion-item {
-	overflow: hidden;
-}
-
-/* Variantes del AccordionItem */
-.lambda-accordion-item-open {
-	background-color: var(--surface-b);
 }
 
 .lambda-accordion-item-disabled {
@@ -101,7 +95,7 @@
 	text-align: left;
 	cursor: pointer;
 	font-weight: var(--font-weight-reg);
-	color: var(--surface-h);
+	color: var(--foreground-secondary-color);
 	transition: background-color 0.2s ease, color 0.2s ease;
 	background-color: transparent;
 }
@@ -137,6 +131,7 @@
 }
 
 .lambda-accordion-header-large {
+	min-height: 4em;
 	padding: var(--padding-xl) var(--padding-lg);
 	font-size: var(--font-size-xl);
 
