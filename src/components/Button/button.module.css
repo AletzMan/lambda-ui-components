@@ -476,15 +476,15 @@
 
 	&.lambda-btn-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-content-color);
-		border-color: var(--surface-e);
+		background-color: var(--secondary-soft-color);
+		border-color: var(--secondary-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-disabled-color);
+			background-color: var(--secondary-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-content-color);
+			background-color: var(--secondary-soft-color);
 		}
 	}
 

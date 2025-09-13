@@ -72,7 +72,15 @@ const buttonColors = ["primary", "secondary", "danger", "success", "warning", "i
 const Template = (args: ButtonProps) => {
 	return (
 		<ContainerComponent title="Button" subtitle={args.variant?.toString() || ""}>
-			<div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+			<div
+				style={{
+					display: "flex",
+					flexWrap: "wrap",
+					alignItems: "center",
+					justifyContent: "center",
+					gap: "1rem",
+				}}
+			>
 				{buttonColors.map((color) => (
 					<Button
 						key={color}
