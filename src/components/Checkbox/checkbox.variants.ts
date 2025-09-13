@@ -4,6 +4,7 @@ import styles from "./checkbox.module.css";
 export const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-checkbox-wrapper-neutral"],
 			primary: styles["lambda-checkbox-wrapper-primary"],
 			secondary: styles["lambda-checkbox-wrapper-secondary"],
 			danger: styles["lambda-checkbox-wrapper-danger"],

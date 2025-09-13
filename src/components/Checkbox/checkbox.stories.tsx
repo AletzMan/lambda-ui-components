@@ -18,7 +18,7 @@ const meta: Meta<typeof Checkbox> = {
 		},
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "danger", "success", "warning", "info"],
+			options: ["neutral", "primary", "secondary", "danger", "success", "warning", "info"],
 			description: "Background color",
 			table: {
 				disable: true,
@@ -60,7 +60,7 @@ export default meta;
 
 type Story = StoryObj<typeof Checkbox>;
 
-const colors = ["Primary", "Secondary", "Danger", "Success", "Warning", "Info"];
+const colors = ["Neutral", "Primary", "Secondary", "Danger", "Success", "Warning", "Info"];
 
 const Template = (args: CheckBoxProps) => (
 	<ContainerComponent title="Checkbox" subtitle={args.variant?.toString() || ""}>
