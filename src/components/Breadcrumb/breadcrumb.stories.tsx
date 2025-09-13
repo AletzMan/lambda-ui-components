@@ -47,6 +47,7 @@ const meta: Meta<typeof Breadcrumb> = {
 export default meta;
 
 type Story = StoryObj<typeof Breadcrumb>;
+const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: BreadcrumbProps) => {
 	return (
@@ -55,7 +56,37 @@ const Template = (args: BreadcrumbProps) => {
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
 		>
-			<Breadcrumb {...args} />
+			<div
+				style={{
+					display: "flex",
+					flexWrap: "wrap",
+					flexDirection: "row",
+					alignItems: "center",
+					justifyContent: "center",
+					gap: "2rem",
+				}}
+			>
+				{colors.map((color) => (
+					<div key={color}>
+						<label
+							style={{
+								fontSize: "12px",
+								fontWeight: "bold",
+								marginBottom: "0.5rem",
+								textTransform: "capitalize",
+								color: `${
+									color === "default"
+										? "var(--lambda-color-secondary-500)"
+										: `var(--lambda-color-${color}-500)`
+								}`,
+							}}
+						>
+							{color}
+						</label>
+						<Breadcrumb key={color} {...args} color={color as BreadcrumbProps["color"]} />
+					</div>
+				))}
+			</div>
 		</ContainerComponent>
 	);
 };
