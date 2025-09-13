@@ -32,7 +32,7 @@
 	border: var(--border-width-xs) solid var(--border-color);
 	border-radius: var(--border-radius-sm);
 	width: 100%;
-	background-color: var(--surface-c);
+	background-color: var(--surface-b);
 }
 
 .tokens-color-key {
