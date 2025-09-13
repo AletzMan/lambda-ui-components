@@ -1,13 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { Switch } from "./Switch";
+import { SwitchProps } from "./switch.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Switch> = {
 	title: "Components/Switch",
-	tags: ["autodocs"],
-	parameters: {
-		layout: "centered",
-	},
 	component: Switch,
 	argTypes: {
 		variant: {
@@ -48,7 +46,42 @@ export default meta;
 
 type Story = StoryObj<typeof Switch>;
 
-export const Bordered: Story = {
+const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
+
+const Template = (args: SwitchProps) => {
+	return (
+		<ContainerComponent title="Switch" subtitle={args.variant?.toString() || ""}>
+			<div
+				style={{
+					display: "flex",
+					flexWrap: "wrap",
+					flexDirection: "row",
+					alignItems: "center",
+					justifyContent: "center",
+					width: "100%",
+					gap: "2em",
+					padding: "var(--padding-lg)",
+				}}
+			>
+				{colors.map((color) => (
+					<Switch
+						key={color}
+						{...args}
+						color={color as SwitchProps["color"]}
+						label={color}
+						style={{
+							textTransform: "capitalize",
+						}}
+						position_label="top"
+					/>
+				))}
+			</div>
+		</ContainerComponent>
+	);
+};
+
+export const Solid: Story = {
+	render: Template,
 	args: {
 		variant: "solid",
 		color: "primary",
@@ -61,6 +94,7 @@ export const Bordered: Story = {
 };
 
 export const Soft: Story = {
+	render: Template,
 	args: {
 		variant: "soft",
 		color: "primary",
@@ -73,6 +107,7 @@ export const Soft: Story = {
 };
 
 export const Outline: Story = {
+	render: Template,
 	args: {
 		variant: "outline",
 		color: "primary",
