@@ -270,7 +270,7 @@ input[type="number"] {
 	border: var(--border-width-xs) solid var(--border-color);
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		background-color: var(--primary-light-color);
+		background-color: var(--primary-background-color);
 		border: var(--border-width-xs) solid var(--primary-hover-color);
 		outline: 3px solid var(--primary-outline-color);
 	}
@@ -287,7 +287,7 @@ input[type="number"] {
 	border: none;
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		background-color: var(--primary-light-color);
+		background-color: var(--primary-background-color);
 		outline: 3px solid var(--primary-soft-color);
 	}
 
