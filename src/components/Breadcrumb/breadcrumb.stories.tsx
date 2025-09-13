@@ -47,7 +47,7 @@ const meta: Meta<typeof Breadcrumb> = {
 export default meta;
 
 type Story = StoryObj<typeof Breadcrumb>;
-const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
+const colors = ["default", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: BreadcrumbProps) => {
 	return (
@@ -76,7 +76,7 @@ const Template = (args: BreadcrumbProps) => {
 								textTransform: "capitalize",
 								color: `${
 									color === "default"
-										? "var(--lambda-color-secondary-500)"
+										? "var(--lambda-color-neutral-500)"
 										: `var(--lambda-color-${color}-500)`
 								}`,
 							}}

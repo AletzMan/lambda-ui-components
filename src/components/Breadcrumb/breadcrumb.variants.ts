@@ -39,6 +39,7 @@ export const breadcrumbItem = cva(styles["breadcrumb-item"], {
 			stepped: styles["breadcrumb-item-stepped"],
 		},
 		color: {
+			default: styles["breadcrumb-item-default"],
 			primary: styles["breadcrumb-item-primary"],
 			secondary: styles["breadcrumb-item-secondary"],
 			success: styles["breadcrumb-item-success"],
