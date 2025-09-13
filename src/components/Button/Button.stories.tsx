@@ -19,7 +19,7 @@ const meta: Meta<typeof Button> = {
 		},
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "danger", "success", "warning", "info"],
+			options: ["neutral", "primary", "secondary", "danger", "success", "warning", "info"],
 			description: "Background color",
 			table: {
 				disable: true,
