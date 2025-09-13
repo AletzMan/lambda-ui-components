@@ -350,7 +350,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	position: absolute;
 	top: -1.4em;
 	font-family: var(--font-family);
-	color: var(--label-color);
+	color: var(--foreground-label-color);
 	padding: 0 0 0 4px;
 	font-weight: var(--font-weight-md);
 	transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out;

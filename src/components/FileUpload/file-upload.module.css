@@ -40,7 +40,7 @@
 .lambda-file-upload-label {
 	display: block;
 	font-family: var(--font-family);
-	color: var(--label-color);
+	color: var(--foreground-label-color);
 	font-weight: var(--font-weight-md);
 	padding: 0 0 0 4px;
 	cursor: pointer;
