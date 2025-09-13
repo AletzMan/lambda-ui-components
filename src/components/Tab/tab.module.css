@@ -29,7 +29,7 @@
 	&:is(.tab-container-underline) {
 		background-color: transparent;
 		gap: var(--gap-md);
-		border-bottom: 1px solid var(--surface-d);
+		border-bottom: 1px solid var(--border-color);
 		border-bottom-left-radius: var(--border-radius-none) !important;
 		border-bottom-right-radius: var(--border-radius-none) !important;
 	}
@@ -42,7 +42,7 @@
 	&:is(.tab-container-box) {
 		padding: var(--padding-xs);
 		gap: var(--gap-md);
-		border: var(--border-width-xs) solid var(--surface-c);
+		border: var(--border-width-xs) solid var(--border-color);
 		background-color: var(--surface-a);
 	}
 
@@ -51,7 +51,7 @@
 		background-color: transparent;
 		border: var(--border-width-xs) solid transparent;
 		gap: var(--gap-xs);
-		border-bottom: 1px solid var(--surface-d);
+		border-bottom: 1px solid var(--border-color);
 		border-bottom-left-radius: var(--border-radius-none) !important;
 		border-bottom-right-radius: var(--border-radius-none) !important;
 	}
