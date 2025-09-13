@@ -201,7 +201,7 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-outline-color);
+		background-color: var(--secondary-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -367,8 +367,8 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		border-color: var(--secondary-hover-color);
-		background-color: var(--secondary-outline-color);
+		border-color: var(--secondary-subtle-color);
+		background-color: var(--secondary-soft-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
