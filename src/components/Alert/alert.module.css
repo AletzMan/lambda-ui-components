@@ -112,7 +112,7 @@
 
 .lambda-alert-outline {
 	font-weight: var(--font-weight-md);
-	text-shadow: 0 0 1px var(--lambda-color-secondary-700);
+	text-shadow: 0 0 0px var(--lambda-color-secondary-700);
 
 	.lambda-alert-title {
 		font-weight: var(--font-weight-semibold);
@@ -231,7 +231,7 @@
 	border: none;
 	font-weight: var(--font-weight-md);
 	border-radius: var(--border-radius-sm);
-	text-shadow: 0 0 1px var(--lambda-color-secondary-700);
+	text-shadow: 0 0 0px var(--lambda-color-secondary-700);
 
 	.lambda-alert-title {
 		font-weight: var(--font-weight-semibold);
@@ -345,7 +345,7 @@
 	font-weight: var(--font-weight-reg);
 	border-radius: var(--border-radius-sm);
 	border: none;
-	text-shadow: 0 0 1px var(--lambda-color-secondary-900);
+	text-shadow: 0 0 0px var(--lambda-color-secondary-900);
 
 	&.lambda-alert-default {
 		color: var(--foreground-invert-color);
