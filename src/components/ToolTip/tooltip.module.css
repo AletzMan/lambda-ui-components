@@ -6,7 +6,9 @@
 
 /* Contenedor del tooltip (el pop-up box que va al Portal) */
 .lambda-tooltip-container {
-	position: absolute;
+	position: fixed;
+	top: -500px;
+	left: -500px;
 	z-index: 1000;
 	pointer-events: none;
 	font-family: var(--font-family);
@@ -18,7 +20,7 @@
 	word-wrap: break-word;
 	opacity: 0;
 	border-radius: var(--border-radius-sm);
-	transition: all 5s ease;
+	/*transition: all 5s ease;*/
 	/* Animación opcional (requiere estilos adicionales en la clase visible) */
 	transform-origin: center bottom;
 	transform: scale(0.9);

@@ -1,57 +1,88 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Tooltip } from "./ToolTip";
 import { TooltipProps } from "./tooltip.types";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Tooltip> = {
-    title: "Components/Tooltip",
-    tags: ['autodocs'],
-    parameters: {
-        layout: "centered",
-    },
-    component: Tooltip,
-    argTypes: {
-        size: {
-            control: "select",
-            options: ['tiny', 'small', 'medium', 'large'],
-            description: "Size of the card",
-        },
-        content: {
-            control: "text",
-            description: "Content of the tooltip",
-        },
-        delayShow: {
-            control: "number",
-            type: "number",
-            description: "Delay before showing the tooltip in milliseconds",
-        },
-        delayHide: {
-            control: "number",
-            type: "number",
-            description: "Delay before hiding the tooltip in milliseconds",
-        },
-    }
-
+	title: "Components/Tooltip",
+	component: Tooltip,
+	argTypes: {
+		size: {
+			control: "select",
+			options: ["tiny", "small", "medium", "large"],
+			description: "Size of the card",
+		},
+		content: {
+			control: "text",
+			description: "Content of the tooltip",
+		},
+		delayShow: {
+			control: "number",
+			type: "number",
+			description: "Delay before showing the tooltip in milliseconds",
+		},
+		delayHide: {
+			control: "number",
+			type: "number",
+			description: "Delay before hiding the tooltip in milliseconds",
+		},
+	},
 };
 
 export default meta;
+const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
-
-    return (
-        <Tooltip {...args} >
-            <div style={{ width: "100px", height: "100px", backgroundColor: "lightblue", fontFamily: "var(--font-family)", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", fontSize: "0.8em", fontWeight: "bold", borderRadius: "var(--border-radius-sm)" }}>
-                Hover over me
-            </div>
-        </Tooltip>
-    );
+	return (
+		<ContainerComponent
+			title="Tooltip"
+			subtitle={args.size?.toString() || ""}
+			color={args.position?.toString() || ""}
+		>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "row",
+					flexWrap: "wrap",
+					gap: "2rem",
+					rowGap: "4rem",
+					justifyContent: "center",
+				}}
+			>
+				{colors.map((color) => (
+					<Tooltip {...args} color={color as TooltipProps["color"]}>
+						<div
+							key={color}
+							style={{
+								width: "100px",
+								height: "50px",
+								backgroundColor: `var(--${color}-soft-color)`,
+								color: `var(--${color}-text-color)`,
+								fontFamily: "var(--font-family)",
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+								textAlign: "center",
+								fontSize: "0.8em",
+								fontWeight: "bold",
+								borderRadius: "var(--border-radius-sm)",
+							}}
+						>
+							Hover over me
+						</div>
+					</Tooltip>
+				))}
+			</div>
+		</ContainerComponent>
+	);
 };
 
 export const Default: StoryObj<TooltipProps> = {
-    render: (args) => <Template {...args} />,
-    args: {
-        size: "medium",
-        delayShow: 100,
-        delayHide: 100,
-        content: "This is a tooltip",
-    },
-}; 
+	render: (args) => <Template {...args} />,
+	args: {
+		size: "tiny",
+		delayShow: 100,
+		delayHide: 100,
+		content: "This is a tooltip",
+	},
+};
