@@ -414,7 +414,7 @@
 	--secondary-disabled-color: var(--lambda-color-secondary-800);
 	--secondary-border-color: var(--lambda-color-secondary-600);
 	--secondary-light-color: var(--lambda-color-secondary-050);
-	--secondary-dark-color: var(--lambda-color-secondary-900);
+	--secondary-dark-color: var(--lambda-color-secondary-950);
 	--secondary-background-color: var(--lambda-color-secondary-950);
 	--secondary-opacity-color: color-mix(
 		in srgb,
@@ -432,7 +432,7 @@
 	--success-disabled-color: var(--lambda-color-success-300);
 	--success-border-color: var(--lambda-color-success-100);
 	--success-light-color: var(--lambda-color-success-050);
-	--success-dark-color: var(--lambda-color-success-900);
+	--success-dark-color: var(--lambda-color-success-950);
 	--success-background-color: var(--lambda-color-success-950);
 	--success-opacity-color: color-mix(in srgb, var(--lambda-color-success-500) 30%, transparent 80%);
 
@@ -446,7 +446,7 @@
 	--danger-disabled-color: var(--lambda-color-danger-300);
 	--danger-border-color: var(--lambda-color-danger-100);
 	--danger-light-color: var(--lambda-color-danger-050);
-	--danger-dark-color: var(--lambda-color-danger-900);
+	--danger-dark-color: var(--lambda-color-danger-950);
 	--danger-background-color: var(--lambda-color-danger-950);
 	--danger-opacity-color: color-mix(in srgb, var(--lambda-color-danger-500) 30%, transparent 80%);
 
@@ -460,7 +460,7 @@
 	--warning-disabled-color: var(--lambda-color-warning-300);
 	--warning-border-color: var(--lambda-color-warning-100);
 	--warning-light-color: var(--lambda-color-warning-050);
-	--warning-dark-color: var(--lambda-color-warning-900);
+	--warning-dark-color: var(--lambda-color-warning-950);
 	--warning-background-color: var(--lambda-color-warning-950);
 	--warning-opacity-color: color-mix(in srgb, var(--lambda-color-warning-500) 30%, transparent 80%);
 
@@ -472,7 +472,7 @@
 	--info-base-color: var(--lambda-color-info-500);
 	--info-hover-color: var(--lambda-color-info-600);
 	--info-disabled-color: var(--lambda-color-info-100);
-	--info-border-color: var(--lambda-color-info-600);
+	--info-border-color: var(--lambda-color-info-300);
 	--info-light-color: var(--lambda-color-info-050);
 	--info-dark-color: var(--lambda-color-info-900);
 	--info-background-color: var(--lambda-color-info-950);
