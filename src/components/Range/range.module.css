@@ -20,7 +20,7 @@
 .lambda-range-label {
 	display: block;
 	margin-bottom: var(--spacing-1, 4px);
-	color: var(--label-color);
+	color: var(--foreground-label-color);
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-md);
 }
