@@ -65,8 +65,9 @@ const Template = (args: CardProps) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					justifyContent: "center",
+					justifyContent: "flex-start",
 					gap: "var(--gap-lg)",
+					height: "100%",
 					padding: "var(--padding-lg)",
 				}}
 			>
@@ -84,7 +85,7 @@ const Template = (args: CardProps) => {
 						onChange={(e) => setContent(e.target.checked)}
 					/>
 				</div>
-				<div style={{ width: "300px" }}>
+				<div style={{ width: "350px" }}>
 					<Card
 						{...args}
 						image={image ? args.image : undefined}

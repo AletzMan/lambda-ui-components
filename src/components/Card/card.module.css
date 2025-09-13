@@ -3,7 +3,7 @@
 	flex-direction: column;
 	background-color: var(--surface-b);
 	min-width: 5em;
-	min-height: 5em;
+	min-height: 2em;
 	height: 100%;
 	box-shadow: var(--box-shadow);
 	font-family: var(--font-family);
@@ -110,6 +110,10 @@
 	flex-direction: row;
 	border-top: 1px solid var(--border-color);
 	width: 100%;
+
+	&.lambda-card-footer-onlyactions {
+		border-top: none;
+	}
 }
 
 .lambda-card-action {
@@ -127,7 +131,7 @@
 	transition: all 0.2s ease-in-out;
 
 	&:hover {
-		color: var(--primary-base-color);
+		color: var(--primary-text-color);
 		background-color: var(--primary-soft-color);
 		cursor: pointer;
 	}
@@ -189,7 +193,7 @@
 
 	.lambda-card-action-text {
 		font-size: var(--font-size-xs);
-		font-weight: var(--font-weight-reg);
+		font-weight: var(--font-weight-md);
 	}
 
 	.lambda-card-action-icon {
@@ -283,7 +287,7 @@
 	}
 
 	.lambda-card-action-text {
-		font-size: var(--font-size-md);
-		font-weight: var(--font-weight-reg);
+		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-md);
 	}
 }
