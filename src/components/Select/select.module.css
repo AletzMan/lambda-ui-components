@@ -134,6 +134,7 @@
 		padding: 0 0 0 var(--padding-md);
 		height: var(--height-input-xs);
 		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-md);
 
 		.select-icon-svg {
 			width: var(--icon-size-sm);
@@ -262,6 +263,7 @@
 	&.select-dropdown-tiny {
 		top: calc(90% + var(--padding-xs));
 		font-size: var(--font-size-sm);
+		font-weight: var(--font-weight-md);
 
 		.select-icon-svg {
 			width: var(--icon-size-sm);

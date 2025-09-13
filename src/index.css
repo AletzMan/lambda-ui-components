@@ -255,7 +255,7 @@
 	--shadow-color: #9e9e9e50;
 	--shadow-inset-color: #f1f1f155;
 
-	--box-shadow: 0 0 2px 1px var(--shadow-color);
+	--box-shadow: 0 0 1px 1px var(--shadow-color);
 
 	--primary-text-color: var(--lambda-color-primary-800);
 	--primary-content-color: var(--lambda-color-primary-400);
