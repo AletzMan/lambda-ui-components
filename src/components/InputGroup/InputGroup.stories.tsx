@@ -70,7 +70,7 @@ type Story = StoryObj<typeof InputGroup>;
 
 const Template = (args: InputGroupProps) => {
 	return (
-		<ContainerComponent title="Input" subtitle={args.variant?.toString() || ""}>
+		<ContainerComponent title="Input Group" subtitle={args.variant?.toString() || ""}>
 			<div
 				style={{
 					display: "flex",
