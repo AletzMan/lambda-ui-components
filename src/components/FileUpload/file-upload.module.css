@@ -78,7 +78,7 @@
 	text-align: center;
 	cursor: pointer;
 	border: var(--border-width-xs) dashed var(--surface-d);
-	background-color: var(--surface-a);
+	background-color: var(--surface-b);
 	transition: all 0.2s ease-in-out;
 	position: relative;
 	overflow: hidden;
@@ -105,7 +105,7 @@
 		width: 100%;
 		flex-grow: 1;
 		min-height: inherit;
-		background-color: var(--surface-c);
+		background-color: var(--surface-a);
 	}
 
 	.lambda-file-upload-drop-zone-icon {
@@ -116,7 +116,7 @@
 		max-width: 20ch;
 		margin: 0 0 var(--gap-sm) 0;
 		font-weight: var(--font-weight-sm);
-		color: var(--surface-f);
+		color: var(--foreground-secondary-color);
 	}
 
 	.lambda-file-upload-drop-zone-file-count {
@@ -177,13 +177,13 @@
 	}
 
 	.lambda-file-upload-drop-zone-placeholder {
-		color: var(--primary-base-color);
+		color: var(--primary-border-color);
 	}
 }
 
 .lambda-file-upload-drop-zone-max-size {
 	font-size: var(--font-size-xs);
-	color: var(--warning-text-color);
+	color: var(--warning-hover-color);
 	font-style: italic;
 }
 
