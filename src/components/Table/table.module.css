@@ -4,6 +4,7 @@
 	overflow: hidden;
 	width: 100%;
 	box-sizing: border-box;
+	font-family: var(--font-family);
 
 	&:is(.lambda-table-container-soft) {
 		border: var(--border-width-xs) solid transparent;
@@ -271,6 +272,6 @@
 .lambda-table-pagination-select {
 	justify-self: flex-end;
 	margin: var(--padding-sm);
-	width: 6.7em;
+	max-width: 6.7em;
 	z-index: 10;
 }
