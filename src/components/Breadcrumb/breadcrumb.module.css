@@ -10,7 +10,8 @@
 	gap: 4px;
 	font-weight: 600;
 	text-decoration: none;
-	color: var(--foreground-secondary-color);
+	color: var(--surface-f);
+	transition: color 0.2s ease-in-out;
 
 	&.breadcrumb-item-tiny {
 		font-size: var(--font-size-xs);
@@ -50,7 +51,29 @@
 }
 
 .breadcrumb-item:hover {
-	color: var(--foreground-color);
+	&:is(.breadcrumb-item-primary) {
+		color: var(--primary-text-color);
+	}
+
+	&:is(.breadcrumb-item-secondary) {
+		color: var(--secondary-text-color);
+	}
+
+	&:is(.breadcrumb-item-success) {
+		color: var(--success-text-color);
+	}
+
+	&:is(.breadcrumb-item-danger) {
+		color: var(--danger-text-color);
+	}
+
+	&:is(.breadcrumb-item-warning) {
+		color: var(--warning-text-color);
+	}
+
+	&:is(.breadcrumb-item-info) {
+		color: var(--info-text-color);
+	}
 }
 
 .breadcrumb-separator {
@@ -201,8 +224,6 @@
 	height: var(--height-button-xs);
 	border-radius: var(--border-radius-sm);
 	background-color: var(--secondary-soft-color);
-	color: var(--secondary-text-color);
-	font-weight: 700;
 	border: none;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
@@ -269,6 +290,7 @@
 
 	:first-child {
 		& .breadcrumb-item {
+			font-weight: var(--font-weight-md);
 			border-radius: var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none)
 				var(--border-radius-sm);
 
@@ -309,6 +331,7 @@
 
 	:not(:first-child):not(:last-child) {
 		& .breadcrumb-item {
+			font-weight: var(--font-weight-md);
 			&::before {
 				left: -11px;
 				border-bottom: 11px solid var(--surface-c);
@@ -374,6 +397,7 @@
 	& :nth-last-child(1) {
 		& .breadcrumb-item {
 			cursor: auto;
+			font-weight: var(--font-weight-semibold);
 			border-radius: var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm)
 				var(--border-radius-none);
 
@@ -421,12 +445,12 @@
 			}
 
 			&.breadcrumb-item-secondary {
-				background-color: var(--secondary-soft-color);
+				background-color: var(--secondary-opacity-color);
 				color: var(--secondary-text-color);
 
 				&::before {
-					border-bottom-color: var(--secondary-soft-color);
-					border-top-color: var(--secondary-soft-color);
+					border-bottom-color: var(--secondary-opacity-color);
+					border-top-color: var(--secondary-opacity-color);
 				}
 			}
 
