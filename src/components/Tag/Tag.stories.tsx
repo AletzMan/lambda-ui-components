@@ -9,24 +9,19 @@ const meta: Meta<typeof Tag> = {
 	component: Tag,
 	argTypes: {
 		variant: {
-			control: "select",
-			options: ["solid", "outline", "soft", "dashed", "subtle"],
-			description: "Visual style of the input",
-			type: "string",
-			defaultValue: "subtle",
 			table: {
-				defaultValue: {
-					summary: "subtle",
-				},
+				disabled: true,
 			},
 		},
 		color: {
-			control: "select",
-			options: ["primary", "secondary", "success", "danger", "warning", "info"],
-			description: "Background color",
+			table: {
+				disabled: true,
+			},
 		},
 		size: {
-			control: "select",
+			table: {
+				disabled: true,
+			},
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
