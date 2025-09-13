@@ -10,7 +10,7 @@
 	gap: 4px;
 	font-weight: 600;
 	text-decoration: none;
-	color: var(--surface-f);
+	color: var(--surface-g);
 	transition: color 0.2s ease-in-out;
 
 	&.breadcrumb-item-tiny {
