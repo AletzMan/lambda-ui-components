@@ -4,6 +4,7 @@ import styles from "./button.module.css";
 export const button = cva(styles[`lambda-btn`], {
 	variants: {
 		color: {
+			neutral: styles[`lambda-btn-neutral`],
 			primary: styles[`lambda-btn-primary`],
 			secondary: styles[`lambda-btn-secondary`],
 			danger: styles[`lambda-btn-danger`],

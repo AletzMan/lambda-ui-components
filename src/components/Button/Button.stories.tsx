@@ -67,7 +67,7 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-const buttonColors = ["primary", "secondary", "danger", "success", "warning", "info"];
+const buttonColors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const Template = (args: ButtonProps) => {
 	return (
