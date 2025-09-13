@@ -11,6 +11,7 @@ export const alertVariants = cva(styles["lambda-alert"], {
 		color: {
 			default: styles["lambda-alert-default"],
 			primary: styles["lambda-alert-primary"],
+			secondary: styles["lambda-alert-secondary"],
 			danger: styles["lambda-alert-danger"],
 			success: styles["lambda-alert-success"],
 			warning: styles["lambda-alert-warning"],

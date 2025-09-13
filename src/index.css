@@ -7,19 +7,8 @@
 	--gap-radio-size: 8px;
 
 	/* --- Lambda Colors --- */
-	/* Primary */
-	/*
-	--lambda-color-primary-100: #dfecec;
-	--lambda-color-primary-200: #c8e0e0;
-	--lambda-color-primary-300: #9fc5c6;
-	--lambda-color-primary-400: #7fb1b3;
-	--lambda-color-primary-500: #5f9ea0;
-	--lambda-color-primary-600: #4c7e80;
-	--lambda-color-primary-700: #395f60;
-	--lambda-color-primary-800: #263f40;
-	--lambda-color-primary-900: #132020;
-	*/
 
+	/* Primary */
 	--lambda-color-primary-050: #eafdf9;
 	--lambda-color-primary-100: #c0f8ee;
 	--lambda-color-primary-200: #96f4e3;
@@ -33,17 +22,30 @@
 	--lambda-color-primary-950: #021512;
 
 	/* Secondary */
-	--lambda-color-secondary-050: #f3f3f4;
-	--lambda-color-secondary-100: #dadcdf;
-	--lambda-color-secondary-200: #c1c5c9;
-	--lambda-color-secondary-300: #a8aeb4;
-	--lambda-color-secondary-400: #8f979e;
-	--lambda-color-secondary-500: #768089;
-	--lambda-color-secondary-600: #616970;
-	--lambda-color-secondary-700: #4b5157;
-	--lambda-color-secondary-800: #363a3e;
-	--lambda-color-secondary-900: #202325;
-	--lambda-color-secondary-950: #0b0c0c;
+	--lambda-color-secondary-050: #f1edfa;
+	--lambda-color-secondary-100: #d6c8f1;
+	--lambda-color-secondary-200: #bba3e7;
+	--lambda-color-secondary-300: #a07ede;
+	--lambda-color-secondary-400: #8459d5;
+	--lambda-color-secondary-500: #6934cb;
+	--lambda-color-secondary-600: #562aa6;
+	--lambda-color-secondary-700: #432181;
+	--lambda-color-secondary-800: #30175c;
+	--lambda-color-secondary-900: #1d0e37;
+	--lambda-color-secondary-950: #0a0512;
+
+	/* Neutral */
+	--lambda-color-neutral-050: #f3f3f4;
+	--lambda-color-neutral-100: #dadcdf;
+	--lambda-color-neutral-200: #c1c5c9;
+	--lambda-color-neutral-300: #a8aeb4;
+	--lambda-color-neutral-400: #8f979e;
+	--lambda-color-neutral-500: #768089;
+	--lambda-color-neutral-600: #616970;
+	--lambda-color-neutral-700: #4b5157;
+	--lambda-color-neutral-800: #363a3e;
+	--lambda-color-neutral-900: #202325;
+	--lambda-color-neutral-950: #0b0c0c;
 
 	/* Success */
 	--lambda-color-success-050: #eefaed;
@@ -275,10 +277,10 @@
 	--secondary-content-color: var(--lambda-color-secondary-400);
 	--secondary-soft-color: var(--lambda-color-secondary-200);
 	--secondary-subtle-color: var(--lambda-color-secondary-300);
-	--secondary-outline-color: var(--lambda-color-secondary-500);
-	--secondary-base-color: var(--lambda-color-secondary-800);
-	--secondary-hover-color: var(--lambda-color-secondary-700);
-	--secondary-border-color: var(--lambda-color-secondary-600);
+	--secondary-outline-color: var(--lambda-color-secondary-200);
+	--secondary-base-color: var(--lambda-color-secondary-500);
+	--secondary-hover-color: var(--lambda-color-secondary-600);
+	--secondary-border-color: var(--lambda-color-secondary-700);
 	--secondary-disabled-color: var(--lambda-color-secondary-900);
 	--secondary-light-color: var(--lambda-color-secondary-100);
 	--secondary-dark-color: var(--lambda-color-secondary-950);
@@ -288,6 +290,20 @@
 		var(--lambda-color-secondary-600) 30%,
 		transparent 10%
 	);
+
+	--neutral-text-color: var(--lambda-color-neutral-800);
+	--neutral-content-color: var(--lambda-color-neutral-400);
+	--neutral-soft-color: var(--lambda-color-neutral-200);
+	--neutral-subtle-color: var(--lambda-color-neutral-300);
+	--neutral-outline-color: var(--lambda-color-neutral-500);
+	--neutral-base-color: var(--lambda-color-neutral-800);
+	--neutral-hover-color: var(--lambda-color-neutral-700);
+	--neutral-border-color: var(--lambda-color-neutral-600);
+	--neutral-disabled-color: var(--lambda-color-neutral-900);
+	--neutral-light-color: var(--lambda-color-neutral-100);
+	--neutral-dark-color: var(--lambda-color-neutral-950);
+	--neutral-background-color: var(--lambda-color-neutral-050);
+	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-600) 30%, transparent 10%);
 
 	--success-text-color: var(--lambda-color-success-800);
 	--success-content-color: var(--lambda-color-success-400);
@@ -405,22 +421,36 @@
 	--primary-opacity-color: color-mix(in srgb, var(--lambda-color-primary-500) 30%, transparent 80%);
 
 	--secondary-text-color: var(--lambda-color-secondary-200);
-	--secondary-content-color: var(--lambda-color-secondary-900);
-	--secondary-soft-color: var(--lambda-color-secondary-800);
+	--secondary-content-color: var(--lambda-color-secondary-400);
+	--secondary-soft-color: var(--lambda-color-secondary-900);
 	--secondary-subtle-color: var(--lambda-color-secondary-700);
 	--secondary-outline-color: var(--lambda-color-secondary-800);
-	--secondary-base-color: var(--lambda-color-secondary-100);
-	--secondary-hover-color: var(--lambda-color-secondary-300);
-	--secondary-disabled-color: var(--lambda-color-secondary-800);
-	--secondary-border-color: var(--lambda-color-secondary-600);
+	--secondary-base-color: var(--lambda-color-secondary-500);
+	--secondary-hover-color: var(--lambda-color-secondary-600);
+	--secondary-disabled-color: var(--lambda-color-secondary-300);
+	--secondary-border-color: var(--lambda-color-secondary-100);
 	--secondary-light-color: var(--lambda-color-secondary-050);
-	--secondary-dark-color: var(--lambda-color-secondary-950);
+	--secondary-dark-color: var(--lambda-color-secondary-900);
 	--secondary-background-color: var(--lambda-color-secondary-950);
 	--secondary-opacity-color: color-mix(
 		in srgb,
 		var(--lambda-color-secondary-500) 30%,
 		transparent 80%
 	);
+
+	--neutral-text-color: var(--lambda-color-neutral-200);
+	--neutral-content-color: var(--lambda-color-neutral-900);
+	--neutral-soft-color: var(--lambda-color-neutral-800);
+	--neutral-subtle-color: var(--lambda-color-neutral-700);
+	--neutral-outline-color: var(--lambda-color-neutral-800);
+	--neutral-base-color: var(--lambda-color-neutral-100);
+	--neutral-hover-color: var(--lambda-color-neutral-300);
+	--neutral-disabled-color: var(--lambda-color-neutral-800);
+	--neutral-border-color: var(--lambda-color-neutral-600);
+	--neutral-light-color: var(--lambda-color-neutral-050);
+	--neutral-dark-color: var(--lambda-color-neutral-950);
+	--neutral-background-color: var(--lambda-color-neutral-950);
+	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-500) 30%, transparent 80%);
 
 	--success-text-color: var(--lambda-color-success-200);
 	--success-content-color: var(--lambda-color-success-400);

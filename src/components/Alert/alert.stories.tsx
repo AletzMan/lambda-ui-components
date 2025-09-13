@@ -55,7 +55,7 @@ export default meta;
 
 type Story = StoryObj<typeof Alert>;
 
-const colors = ["default", "primary", "danger", "success", "warning", "info"];
+const colors = ["default", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const Template = (args: AlertProps) => (
 	<ContainerComponent
