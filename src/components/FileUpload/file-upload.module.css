@@ -77,7 +77,7 @@
 	justify-content: center;
 	text-align: center;
 	cursor: pointer;
-	border: var(--border-width-xs) dashed var(--surface-d);
+	border: var(--border-width-xs) dashed var(--border-color);
 	background-color: var(--surface-b);
 	transition: all 0.2s ease-in-out;
 	position: relative;
@@ -280,7 +280,7 @@
 
 .lambda-file-upload-drop-zone-variant-default {
 	border-style: dashed;
-	border-color: var(--surface-d);
+	border-color: var(--border-color);
 	background-color: var(--surface-a);
 
 	&:hover:not(.lambda-file-upload-drop-zone-disabled):not(.lambda-file-upload-drop-zone-invalid) {
@@ -328,7 +328,7 @@
 		outline: 3px solid var(--primary-subtle-color);
 		outline-offset: 1px;
 		border-color: var(--primary-base-color);
-		background-color: var(--primary-soft-color);
+		background-color: var(--primary-opacity-color);
 	}
 }
 
@@ -336,22 +336,24 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: nowrap;
+	min-width: max-content;
 	padding: var(--padding-sm) var(--padding-md);
 	font-size: var(--font-size-md);
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-sm);
+	font-weight: var(--font-weight-md);
 	border-radius: var(--border-radius-none);
 	border: var(--border-width-xs) solid transparent;
 	outline: none;
 	cursor: pointer;
 	transition: all 0.2s ease;
-	background-color: var(--primary-base-color);
+	background-color: var(--primary-hover-color);
 	color: var(--white-color);
 
 	&:hover:not(.lambda-file-upload-button-file-upload-disabled):not(
 			.lambda-file-upload-button-file-upload-invalid
 		) {
-		background-color: var(--primary-hover-color);
+		background-color: var(--primary-base-color);
 	}
 
 	&:focus-visible:not(.lambda-file-upload-button-file-upload-disabled):not(
@@ -384,7 +386,7 @@
 	width: 100%;
 	max-width: max-content;
 	background-color: var(--surface-c);
-	border: var(--border-width-xs) solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--border-color);
 	overflow: hidden;
 
 	&.lambda-file-upload-button-layout-container-none {
@@ -490,7 +492,7 @@
 	align-items: center;
 	justify-content: center;
 	transition: color 0.2s ease;
-	color: var(--surface-d);
+	color: var(--neutral-subtle-color);
 	width: var(--icon-size-md);
 	height: var(--icon-size-md);
 }
@@ -538,9 +540,9 @@
 	display: flex;
 	align-items: center;
 	padding: var(--padding-xs);
-	border-top: 1px solid var(--surface-d);
+	border-top: 1px solid var(--surface-b);
 	border-radius: var(--radius-sm);
-	background-color: var(--surface-a);
+	background-color: var(--surface-c);
 }
 
 .lambda-file-upload-file-item-icon-container {
@@ -607,7 +609,7 @@
 	border: none;
 	padding: 0;
 	transition: color 0.2s ease;
-	color: var(--surface-f);
+	color: var(--neutral-subtle-color);
 	cursor: pointer;
 	pointer-events: all;
 
@@ -676,5 +678,5 @@
 }
 
 .lambda-file-upload-file-item-is-image {
-	background-color: var(--surface-a);
+	background-color: var(--surface-c);
 }
