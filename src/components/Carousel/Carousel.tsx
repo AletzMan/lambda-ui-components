@@ -244,7 +244,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 				{showNavigationButtons && (
 					<Button
 						variant="text"
-						color="secondary"
+						color="neutral"
 						className={clsx(
 							carouselButtonVariants({ position: "prev", orientation, paginationType })
 						)}
@@ -259,7 +259,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 				{showNavigationButtons && (
 					<Button
 						variant="text"
-						color="secondary"
+						color="neutral"
 						className={clsx(
 							carouselButtonVariants({ position: "next", orientation, paginationType })
 						)}
