@@ -83,7 +83,7 @@
 .lambda-pagination-button-bordered {
 	border-color: var(--surface-d);
 	background-color: var(--surface-c);
-	color: var(--surface-g);
+	color: var(--neutral-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
@@ -110,7 +110,7 @@
 .lambda-pagination-button-solid {
 	border-color: var(--surface-c);
 	background-color: var(--surface-c);
-	color: var(--surface-g);
+	color: var(--neutral-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
@@ -124,7 +124,7 @@
 .lambda-pagination-button-outline {
 	border-color: var(--surface-d);
 	background-color: transparent;
-	color: var(--surface-g);
+	color: var(--neutral-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
