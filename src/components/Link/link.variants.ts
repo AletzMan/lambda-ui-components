@@ -9,6 +9,7 @@ import styles from "./Link.module.css";
 export const linkProps = cva(styles["lambda-link"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-link-neutral"],
 			primary: styles["lambda-link-primary"],
 			secondary: styles["lambda-link-secondary"],
 			success: styles["lambda-link-success"],

@@ -32,7 +32,7 @@ const meta: Meta<typeof Link> = {
 		},
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "danger", "success", "warning", "info"],
+			options: ["neutral", "primary", "secondary", "danger", "success", "warning", "info"],
 			description: "Background color",
 			table: {
 				disable: true,
@@ -93,7 +93,7 @@ export default meta;
 
 type Story = StoryObj<typeof Link>;
 
-const colors = ["primary", "secondary", "danger", "success", "warning", "info"];
+const colors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const TemplateDefault = (args: LinkProps) => {
 	const [withIcon, setWithIcon] = useState(false);
