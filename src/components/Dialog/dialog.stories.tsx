@@ -64,8 +64,7 @@ const DialogTemplate = (args: DialogProps & React.RefAttributes<HTMLDivElement>)
 								Accept
 							</Button>
 							<Button
-								color="secondary"
-								variant="outline"
+								color="neutral"
 								onClick={() => {
 									setOpenDialog(false);
 								}}
