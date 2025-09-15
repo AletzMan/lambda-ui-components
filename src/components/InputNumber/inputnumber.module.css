@@ -416,7 +416,7 @@ input[type="number"] {
 	background-color: var(--surface-c);
 	overflow: hidden;
 	border: none;
-	color: var(--surface-f);
+	color: var(--neutral-border-color);
 
 	&:not(.lambda-number-currency-default) {
 		border-right: 1px solid var(--surface-d);
