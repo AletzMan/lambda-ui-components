@@ -212,11 +212,11 @@
 	}
 
 	&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-		filter: brightness(110%) contrast(110%);
+		filter: brightness(120%);
 	}
 
 	&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-		filter: brightness(98%) contrast(95%);
+		filter: brightness(90%);
 	}
 }
 
@@ -229,7 +229,7 @@
 		color: var(--neutral-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-opacity-color);
+			background-color: var(--neutral-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -242,7 +242,7 @@
 		color: var(--primary-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-opacity-color);
+			background-color: var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -255,11 +255,11 @@
 		color: var(--secondary-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-opacity-color);
+			background-color: var(--secondary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-soft-color);
+			background-color: var(--secondary-subtle-color);
 		}
 	}
 
@@ -268,7 +268,7 @@
 		color: var(--success-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-opacity-color);
+			background-color: var(--success-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -281,7 +281,7 @@
 		color: var(--danger-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-opacity-color);
+			background-color: var(--danger-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -294,7 +294,7 @@
 		color: var(--warning-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-opacity-color);
+			background-color: var(--warning-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -307,7 +307,7 @@
 		color: var(--info-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-opacity-color);
+			background-color: var(--info-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -325,7 +325,7 @@
 		color: var(--neutral-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-opacity-color);
+			background-color: var(--neutral-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -414,10 +414,10 @@
 
 .lambda-btn-soft {
 	background-color: transparent;
-	border: var(--border-width-xs) solid transparent;
+	border: none;
 
 	&.lambda-btn-neutral {
-		background-color: var(--neutral-soft-color);
+		background-color: var(--neutral-opacity-color);
 		color: var(--neutral-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -425,91 +425,85 @@
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-subtle-color);
+			background-color: var(--neutral-opacity-color);
 		}
 	}
 
 	&.lambda-btn-primary {
-		background-color: var(--primary-soft-color);
+		background-color: var(--primary-opacity-color);
 		color: var(--primary-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--primary-subtle-color);
-			border: var(--border-width-xs) solid var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-soft-color);
+			background-color: var(--primary-opacity-color);
 		}
 	}
 
 	&.lambda-btn-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-soft-color);
+		background-color: var(--secondary-opacity-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--secondary-subtle-color);
-			border: var(--border-width-xs) solid var(--secondary-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-soft-color);
+			background-color: var(--secondary-opacity-color);
 		}
 	}
 
 	&.lambda-btn-success {
 		color: var(--success-text-color);
-		background-color: var(--success-soft-color);
+		background-color: var(--success-opacity-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--success-subtle-color);
-			border: var(--border-width-xs) solid var(--success-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-soft-color);
+			background-color: var(--success-opacity-color);
 		}
 	}
 
 	&.lambda-btn-danger {
 		color: var(--danger-text-color);
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--danger-subtle-color);
-			border: var(--border-width-xs) solid var(--danger-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-soft-color);
+			background-color: var(--danger-opacity-color);
 		}
 	}
 
 	&.lambda-btn-warning {
 		color: var(--warning-text-color);
-		background-color: var(--warning-soft-color);
+		background-color: var(--warning-opacity-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--warning-subtle-color);
-			border: var(--border-width-xs) solid var(--warning-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-soft-color);
+			background-color: var(--warning-opacity-color);
 		}
 	}
 
 	&.lambda-btn-info {
 		color: var(--info-text-color);
-		background-color: var(--info-soft-color);
+		background-color: var(--info-opacity-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--info-subtle-color);
-			border: var(--border-width-xs) solid var(--info-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-soft-color);
+			background-color: var(--info-opacity-color);
 		}
 	}
 }
@@ -519,21 +513,21 @@
 	border: var(--border-width-xs) solid transparent;
 
 	&.lambda-btn-neutral {
-		background-color: var(--neutral-soft-color);
+		background-color: var(--neutral-opacity-color);
 		border-color: var(--neutral-subtle-color);
 		color: var(--neutral-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-soft-color);
+			background-color: var(--neutral-subtle-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-soft-color);
+			background-color: var(--neutral-opacity-color);
 		}
 	}
 
 	&.lambda-btn-primary {
-		background-color: var(--primary-soft-color);
+		background-color: var(--primary-opacity-color);
 		border-color: var(--primary-subtle-color);
 		color: var(--primary-text-color);
 
@@ -542,13 +536,13 @@
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-soft-color);
+			background-color: var(--primary-opacity-color);
 		}
 	}
 
 	&.lambda-btn-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-soft-color);
+		background-color: var(--secondary-opacity-color);
 		border-color: var(--secondary-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -556,13 +550,13 @@
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-soft-color);
+			background-color: var(--secondary-opacity-color);
 		}
 	}
 
 	&.lambda-btn-success {
 		color: var(--success-text-color);
-		background-color: var(--success-soft-color);
+		background-color: var(--success-opacity-color);
 		border-color: var(--success-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -570,13 +564,13 @@
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-soft-color);
+			background-color: var(--success-opacity-color);
 		}
 	}
 
 	&.lambda-btn-danger {
 		color: var(--danger-text-color);
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 		border-color: var(--danger-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -584,13 +578,13 @@
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-soft-color);
+			background-color: var(--danger-opacity-color);
 		}
 	}
 
 	&.lambda-btn-warning {
 		color: var(--warning-text-color);
-		background-color: var(--warning-soft-color);
+		background-color: var(--warning-opacity-color);
 		border-color: var(--warning-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -598,13 +592,13 @@
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-soft-color);
+			background-color: var(--warning-opacity-color);
 		}
 	}
 
 	&.lambda-btn-info {
 		color: var(--info-text-color);
-		background-color: var(--info-soft-color);
+		background-color: var(--info-opacity-color);
 		border-color: var(--info-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -612,7 +606,7 @@
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-soft-color);
+			background-color: var(--info-opacity-color);
 		}
 	}
 }
