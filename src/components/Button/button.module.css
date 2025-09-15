@@ -620,7 +620,7 @@
 		color: var(--neutral-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-soft-color);
+			background-color: var(--neutral-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -632,7 +632,7 @@
 		color: var(--primary-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-soft-color);
+			background-color: var(--primary-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -644,7 +644,7 @@
 		color: var(--secondary-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-soft-color);
+			background-color: var(--secondary-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -656,7 +656,7 @@
 		color: var(--success-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-soft-color);
+			background-color: var(--success-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -668,7 +668,7 @@
 		color: var(--danger-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-soft-color);
+			background-color: var(--danger-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -680,7 +680,7 @@
 		color: var(--warning-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-soft-color);
+			background-color: var(--warning-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -692,7 +692,7 @@
 		color: var(--info-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-soft-color);
+			background-color: var(--info-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
