@@ -120,7 +120,7 @@
 		font-weight: var(--font-weight-semibold);
 	}
 
-	&.lambda-alert-default {
+	&.lambda-alert-neutral {
 		background-color: var(--neutral-soft-color);
 		color: var(--neutral-text-color);
 
@@ -248,7 +248,7 @@
 		font-weight: var(--font-weight-semibold);
 	}
 
-	&.lambda-alert-default {
+	&.lambda-alert-neutral {
 		background-color: var(--neutral-soft-color);
 		border-color: var(--neutral-base-color);
 		color: var(--neutral-text-color);
@@ -382,7 +382,7 @@
 	border: none;
 	text-shadow: 0 0 0px var(--lambda-color-secondary-900);
 
-	&.lambda-alert-default {
+	&.lambda-alert-neutral {
 		color: var(--foreground-invert-color);
 		background-color: var(--neutral-base-color);
 

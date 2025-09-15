@@ -55,7 +55,7 @@ export default meta;
 
 type Story = StoryObj<typeof Alert>;
 
-const colors = ["default", "primary", "secondary", "danger", "success", "warning", "info"];
+const colors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const Template = (args: AlertProps) => (
 	<ContainerComponent
@@ -73,8 +73,8 @@ const Template = (args: AlertProps) => (
 							marginBottom: "0.5rem",
 							textTransform: "capitalize",
 							color: `${
-								color === "default"
-									? "var(--lambda-color-secondary-500)"
+								color === "neutral"
+									? "var(--lambda-color-neutral-500)"
 									: `var(--lambda-color-${color}-500)`
 							}`,
 						}}

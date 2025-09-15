@@ -9,7 +9,7 @@ export const alertVariants = cva(styles["lambda-alert"], {
 			solid: styles["lambda-alert-solid"],
 		},
 		color: {
-			default: styles["lambda-alert-default"],
+			neutral: styles["lambda-alert-neutral"],
 			primary: styles["lambda-alert-primary"],
 			secondary: styles["lambda-alert-secondary"],
 			danger: styles["lambda-alert-danger"],
@@ -26,7 +26,7 @@ export const alertVariants = cva(styles["lambda-alert"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		color: "default",
+		color: "neutral",
 		variant: "soft",
 	},
 });
