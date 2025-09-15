@@ -4,7 +4,7 @@ import styles from "./notification.module.css";
 export const notificationProp = cva(styles["notification"], {
 	variants: {
 		notificationType: {
-			secondary: styles["notification-secondary"],
+			neutral: styles["notification-neutral"],
 			success: styles["notification-success"],
 			warning: styles["notification-warning"],
 			info: styles["notification-info"],
@@ -27,7 +27,7 @@ export const notificationProp = cva(styles["notification"], {
 		},
 	},
 	defaultVariants: {
-		notificationType: "secondary",
+		notificationType: "neutral",
 		placement: "top-center",
 		variant: "themed",
 	},
@@ -36,7 +36,7 @@ export const notificationProp = cva(styles["notification"], {
 export const barClass = cva(styles["notification-time"], {
 	variants: {
 		notificationType: {
-			secondary: styles["notification-time-secondary"],
+			neutral: styles["notification-time-neutral"],
 			success: styles["notification-time-success"],
 			warning: styles["notification-time-warning"],
 			info: styles["notification-time-info"],
@@ -51,7 +51,7 @@ export const barClass = cva(styles["notification-time"], {
 		},
 	},
 	defaultVariants: {
-		notificationType: "secondary",
+		notificationType: "neutral",
 		variant: "themed",
 	},
 });
@@ -59,7 +59,7 @@ export const barClass = cva(styles["notification-time"], {
 export const footer = cva(styles["notification-footer"], {
 	variants: {
 		notificationType: {
-			secondary: styles["notification-footer-secondary"],
+			neutral: styles["notification-footer-neutral"],
 			success: styles["notification-footer-success"],
 			warning: styles["notification-footer-warning"],
 			info: styles["notification-footer-info"],
@@ -74,7 +74,7 @@ export const footer = cva(styles["notification-footer"], {
 		},
 	},
 	defaultVariants: {
-		notificationType: "secondary",
+		notificationType: "neutral",
 		variant: "themed",
 	},
 });

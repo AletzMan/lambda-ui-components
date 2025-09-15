@@ -104,7 +104,7 @@ const NotificationWithButton = (
 	const handleClick = () => {
 		showNotification({
 			...args,
-			notificationType: "secondary",
+			notificationType: "neutral",
 		});
 	};
 
@@ -153,7 +153,7 @@ const NotificationWithButton = (
 						gap: "0.25em",
 					}}
 				>
-					<Button onClick={handleClick} color="secondary">
+					<Button onClick={handleClick} color="neutral">
 						Default
 					</Button>
 					<Button onClick={handleClickSuccess} color="success">

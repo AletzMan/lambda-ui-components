@@ -571,9 +571,9 @@
 		filter: brightness(115%);
 	}
 
-	&:is(.notification-secondary) {
-		border-left: 4px solid var(--secondary-base-color);
-		color: var(--secondary-hover-color);
+	&:is(.notification-neutral) {
+		border-left: 4px solid var(--neutral-base-color);
+		color: var(--neutral-hover-color);
 	}
 
 	&:is(.notification-success) {
@@ -612,8 +612,8 @@
 		}
 	}
 
-	&:is(.notification-secondary) {
-		background-color: var(--secondary-base-color);
+	&:is(.notification-neutral) {
+		background-color: var(--neutral-base-color);
 		color: var(--foreground-invert-color);
 
 		.notification-message {
@@ -621,7 +621,7 @@
 		}
 
 		.notification-time {
-			background-color: var(--secondary-disabled-color);
+			background-color: var(--neutral-border-color);
 			filter: brightness(100%);
 		}
 	}
@@ -673,17 +673,16 @@
 		}
 	}
 
-	&:is(.notification-secondary) {
-		background-color: var(--secondary-dark-color);
+	&:is(.notification-neutral) {
+		background-color: var(--neutral-dark-color);
 
 		.notification-message {
-			color: var(--secondary-light-color);
+			color: var(--neutral-light-color);
 			font-weight: var(--font-weight-reg);
 		}
 
 		.notification-time {
-			background-color: var(--secondary-disabled-color);
-			filter: brightness(135%);
+			background-color: var(--neutral-hover-color);
 		}
 	}
 
@@ -704,7 +703,7 @@
 
 		.notification-time {
 			background-color: var(--success-subtle-color);
-			filter: brightness(450%);
+			filter: brightness(100%);
 		}
 	}
 
@@ -725,7 +724,7 @@
 
 		.notification-time {
 			background-color: var(--danger-subtle-color);
-			filter: brightness(450%);
+			filter: brightness(100%);
 		}
 	}
 
@@ -746,7 +745,7 @@
 
 		.notification-time {
 			background-color: var(--warning-subtle-color);
-			filter: brightness(500%);
+			filter: brightness(100%);
 		}
 	}
 
@@ -767,7 +766,7 @@
 
 		.notification-time {
 			background-color: var(--info-subtle-color);
-			filter: brightness(450%);
+			filter: brightness(100%);
 		}
 	}
 }
@@ -787,11 +786,11 @@
 		}
 	}
 
-	&:is(.notification-secondary) {
-		background-color: var(--secondary-light-color);
+	&:is(.notification-neutral) {
+		background-color: var(--neutral-light-color);
 
 		.notification-title {
-			color: var(--secondary-dark-color);
+			color: var(--neutral-dark-color);
 		}
 
 		.notification-icon {
@@ -799,7 +798,7 @@
 		}
 
 		.notification-time {
-			background-color: var(--secondary-disabled-color);
+			background-color: var(--neutral-disabled-color);
 			filter: brightness(135%);
 		}
 	}
@@ -911,26 +910,26 @@ body[data-theme="light"] {
 	backdrop-filter: blur(10px);
 	box-shadow: var(--box-shadow);
 
-	&:is(.notification-secondary) {
-		background-color: var(--secondary-opacity-color);
-		border-left: 5px solid var(--secondary-base-color);
-		color: var(--secondary-text-color);
+	&:is(.notification-neutral) {
+		background-color: var(--neutral-opacity-color);
+		border-left: 5px solid var(--neutral-base-color);
+		color: var(--neutral-text-color);
 
 		.notification-title {
-			color: var(--secondary-text-color);
+			color: var(--neutral-text-color);
 		}
 
 		.notification-message {
-			color: var(--secondary-text-color);
+			color: var(--neutral-text-color);
 		}
 
 		.notification-time {
-			background-color: var(--secondary-subtle-color);
+			background-color: var(--neutral-subtle-color);
 		}
 
 		.notification-close-button {
 			.notification-close-button-icon {
-				color: var(--secondary-text-color);
+				color: var(--neutral-text-color);
 			}
 		}
 	}
