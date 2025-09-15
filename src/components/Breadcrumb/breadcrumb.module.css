@@ -10,7 +10,8 @@
 	gap: 4px;
 	font-weight: 600;
 	text-decoration: none;
-	color: var(--surface-g);
+	color: var(--surface-f);
+	opacity: 0.9;
 	transition: color 0.2s ease-in-out;
 
 	&.breadcrumb-item-tiny {
@@ -51,6 +52,7 @@
 }
 
 .breadcrumb-item:hover {
+	opacity: 1;
 	&:is(.breadcrumb-item-neutral) {
 		color: var(--neutral-text-color);
 	}
@@ -83,7 +85,7 @@
 .breadcrumb-separator {
 	display: flex;
 	align-items: center;
-	color: var(--foreground-label-color);
+	color: var(--surface-f);
 
 	&:has(svg) {
 		svg {
@@ -141,10 +143,11 @@
 	&:not(.breadcrumb-container-stepped) {
 		:nth-last-child(1) {
 			& .breadcrumb-item {
+				opacity: 1;
 				padding: var(--padding-xs) var(--padding-sm);
 				border-radius: var(--border-radius-sm);
 			}
-			& .breadcrumb-item.breadcrumb-item-default {
+			& .breadcrumb-item.breadcrumb-item-neutral {
 				color: var(--neutral-text-color);
 
 				&:is(.breadcrumb-item-soft) {
@@ -250,6 +253,7 @@
 
 .breadcrumb-stepped {
 	& .breadcrumb-item {
+		color: var(--surface-h);
 		background-color: var(--surface-c);
 
 		&.breadcrumb-item-tiny {
