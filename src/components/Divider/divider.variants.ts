@@ -13,6 +13,7 @@ export const dividerVariants = cva(styles["lambda-divider"], {
 			vertical: styles["lambda-divider-vertical"],
 		},
 		color: {
+			neutral: styles["lambda-divider-neutral"],
 			primary: styles["lambda-divider-primary"],
 			secondary: styles["lambda-divider-secondary"],
 			danger: styles["lambda-divider-danger"],

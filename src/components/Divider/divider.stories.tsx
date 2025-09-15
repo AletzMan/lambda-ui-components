@@ -24,7 +24,17 @@ const meta: Meta<typeof Divider> = {
 		},
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "success", "danger", "warning", "info", "white", "black"],
+			options: [
+				"neutral",
+				"primary",
+				"secondary",
+				"success",
+				"danger",
+				"warning",
+				"info",
+				"white",
+				"black",
+			],
 			description: "Background color",
 		},
 		contentPosition: {

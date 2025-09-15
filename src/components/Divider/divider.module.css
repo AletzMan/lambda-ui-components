@@ -16,6 +16,14 @@
 
 .lambda-divider-vertical:is(.lambda-divider-has-content),
 .lambda-divider-horizontal:is(.lambda-divider-has-content) {
+	&:is(.lambda-divider-neutral) {
+		&::after,
+		&::before {
+			border-width: 0;
+			border-color: var(--neutral-soft-color);
+		}
+	}
+
 	&:is(.lambda-divider-primary) {
 		&::after,
 		&::before {
@@ -64,11 +72,11 @@
 		}
 	}
 
-	&:is(.lambda-divider-default) {
+	&:is(.lambda-divider-neutral) {
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--border-color);
+			border-color: var(--neutral-soft-color);
 		}
 	}
 
@@ -288,6 +296,10 @@
 			border-left-width: var(--border-width-lg);
 		}
 	}
+}
+
+.lambda-divider-neutral {
+	border-color: var(--neutral-soft-color);
 }
 
 .lambda-divider-primary {
