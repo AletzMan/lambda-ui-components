@@ -10,7 +10,7 @@ interface ContainerComponentProps {
 }
 
 const colors = {
-	default: "var(--secondary-disabled-color)",
+	nuetral: "var(--neutral-border-color)",
 	primary: "var(--primary-disabled-color)",
 	danger: "var(--danger-disabled-color)",
 	success: "var(--success-disabled-color)",
@@ -25,8 +25,8 @@ export default function ContainerComponent({
 	optional,
 	children,
 }: ContainerComponentProps) {
-	const colorValue = colors[color as keyof typeof colors] || colors.default;
-	const optionalValue = colors[optional as keyof typeof colors] || colors.default;
+	const colorValue = colors[color as keyof typeof colors] || colors.nuetral;
+	const optionalValue = colors[optional as keyof typeof colors] || colors.nuetral;
 	console.log(colorValue);
 	return (
 		<div className={styles.container}>
@@ -44,7 +44,7 @@ export default function ContainerComponent({
 					</span>
 				)}
 			</div>
-			<Divider color="secondary" />
+			<Divider color="neutral" />
 			<div className={`${styles.content} scrollBar`}>{children}</div>
 		</div>
 	);
