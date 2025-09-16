@@ -201,6 +201,18 @@
 	}
 }
 
+@keyframes destello-pop {
+	0% {
+		transform: translate(-50%, -50%) scale(0.5);
+		opacity: 0.8;
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(2);
+		opacity: 0;
+	}
+}
+
 .lambda-rating-item-outline {
 	& > svg {
 		stroke: var(--surface-e);

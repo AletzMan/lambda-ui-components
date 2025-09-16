@@ -67,6 +67,10 @@ export const ratingItem = cva(styles["lambda-rating-item"], {
 			true: styles["lambda-rating-item-active"],
 			false: styles["lambda-rating-item-inactive"],
 		},
+		current: {
+			true: styles["lambda-rating-item-current"],
+			false: styles["lambda-rating-item-inactive"],
+		},
 		type: {
 			icon: styles["lambda-rating-item-icon"],
 			string: styles["lambda-rating-item-string"],

@@ -79,7 +79,14 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 					{Array.from({ length: 5 }, (_, index) => (
 						<button
 							key={index}
-							className={ratingItem({ size, variant, color, type, active: index < internalValue })}
+							className={ratingItem({
+								size,
+								variant,
+								color,
+								type,
+								active: index < internalValue,
+								current: index + 1 === internalValue,
+							})}
 							onClick={() => handleChange(index + 1)}
 							onMouseEnter={() => handleMouseEnter(index + 1)}
 							onMouseLeave={() => handleMouseLeave()}
