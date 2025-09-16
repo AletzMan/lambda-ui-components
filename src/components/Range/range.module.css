@@ -13,7 +13,7 @@
 }
 
 .lambda-range-container-disabled {
-	opacity: 0.9;
+	opacity: 0.5;
 	cursor: not-allowed;
 }
 
@@ -139,12 +139,12 @@
 
 /* Estado Hover del Handle */
 .lambda-range-handle:hover:not(.lambda-range-handle-disabled) {
-	box-shadow: 0 0 0 4px var(--primary-subtle-color);
+	box-shadow: 0 0 0 4px var(--primary-opacity-color);
 }
 
 /* Estado Focus-Visible del Handle */
 .lambda-range-handle:focus-visible:not(.lambda-range-handle-disabled) {
-	box-shadow: 0 0 0 4px var(--primary-subtle-color);
+	box-shadow: 0 0 0 4px var(--primary-soft-color);
 }
 
 /* Estado Arrastrando del Handle */
@@ -180,7 +180,7 @@
 	text-align: center;
 	font-weight: var(--font-weight-md);
 	color: var(--foreground-invert-color);
-	background-color: var(--secondary-base-color);
+	background-color: var(--neutral-base-color);
 	padding: var(--padding-xs) var(--padding-sm);
 	border-radius: var(--border-radius-sm);
 	white-space: nowrap;
