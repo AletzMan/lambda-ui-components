@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@fontsource-variable/plus-jakarta-sans':
-    specifier: ^5.2.5
-    version: 5.2.5
+  '@fontsource-variable/manrope':
+    specifier: ^5.2.7
+    version: 5.2.7
   '@types/node':
     specifier: ^22.13.10
     version: 22.13.10
@@ -658,8 +658,8 @@ packages:
       levn: 0.4.1
     dev: true
 
-  /@fontsource-variable/plus-jakarta-sans@5.2.5:
-    resolution: {integrity: sha512-nkAWzq+QWBSK+52HIlNCyoh5YXrZ/AwV1OqzxZz6VnPmsIpU68B1bf1YT8heRAJKY1kXNtWIJ9jJMYVaStgf+w==}
+  /@fontsource-variable/manrope@5.2.7:
+    resolution: {integrity: sha512-BIEjvyUBcd2dya41h/6XKh4Uof91VjwrcgGA6yYMiDbBLZkizEjKSBQXsavmBApNydHSuteBESv4MLF4y6PzuQ==}
     dev: false
 
   /@humanfs/core@0.19.1:

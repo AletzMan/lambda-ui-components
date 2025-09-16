@@ -16,7 +16,7 @@ const meta: Meta<typeof RadioGroup> = {
 		},
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "danger", "success", "warning", "info"],
+			options: ["neutral", "primary", "secondary", "danger", "success", "warning", "info"],
 			description: "Background color",
 		},
 		size: {
@@ -27,6 +27,11 @@ const meta: Meta<typeof RadioGroup> = {
 		orientation: {
 			control: "radio",
 			options: ["horizontal", "vertical"],
+		},
+		radius: {
+			control: "select",
+			options: ["none", "tiny", "small", "medium", "pill"],
+			description: "Input radius",
 		},
 		disabled: {
 			control: "boolean",
@@ -47,7 +52,7 @@ export default meta;
 
 type Story = StoryObj<typeof RadioGroup>;
 
-const colors = ["primary", "secondary", "danger", "success", "warning", "info"];
+const colors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const RadioTemplate = (args: RadioGroupProps) => {
 	return (
@@ -106,7 +111,11 @@ const RadioTemplate = (args: RadioGroupProps) => {
 const RadioButtonTemplate = (args: RadioGroupProps) => {
 	return (
 		<ContainerComponent title="Radio" subtitle={"Button"} color={args.variant || "solid"}>
-			<label style={{ fontWeight: "var(--font-weight-semibold)" }}>Whit icon</label>
+			<label
+				style={{ fontWeight: "var(--font-weight-semibold)", color: "var(--foreground-color)" }}
+			>
+				Whit icon
+			</label>
 			<div
 				style={{
 					display: "grid",
@@ -143,13 +152,19 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 					</div>
 				))}
 			</div>
-			<label style={{ marginTop: "1rem", fontWeight: "var(--font-weight-semibold)" }}>
+			<label
+				style={{
+					marginTop: "1rem",
+					fontWeight: "var(--font-weight-semibold)",
+					color: "var(--foreground-color)",
+				}}
+			>
 				Whit label
 			</label>
 			<div
 				style={{
 					display: "grid",
-					gridTemplateColumns: "repeat(auto-fit, minmax(195px, 1fr))",
+					gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
 					width: "100%",
 					borderRadius: "var(--border-radius-sm)",
 					border: "1px solid var(--border-color)",
@@ -182,13 +197,19 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 					</div>
 				))}
 			</div>
-			<label style={{ marginTop: "1rem", fontWeight: "var(--font-weight-semibold)" }}>
+			<label
+				style={{
+					marginTop: "1rem",
+					fontWeight: "var(--font-weight-semibold)",
+					color: "var(--foreground-color)",
+				}}
+			>
 				Whit icon and label
 			</label>
 			<div
 				style={{
 					display: "grid",
-					gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+					gridTemplateColumns: "repeat(auto-fit, minmax(355px, 1fr))",
 					width: "100%",
 					borderRadius: "var(--border-radius-sm)",
 					border: "1px solid var(--border-color)",
@@ -267,6 +288,7 @@ export const DefaultSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
+		radius: "small",
 	},
 };
 
@@ -277,6 +299,7 @@ export const DefaultSoft: Story = {
 		color: "primary",
 		variant: "soft",
 		disabled: false,
+		radius: "small",
 	},
 };
 
@@ -287,6 +310,7 @@ export const DefaultOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
+		radius: "small",
 	},
 };
 
@@ -297,6 +321,7 @@ export const ButtonSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
+		radius: "small",
 	},
 };
 
@@ -306,6 +331,7 @@ export const ButtonSoft: Story = {
 		size: "medium",
 		color: "primary",
 		variant: "soft",
+		radius: "small",
 		disabled: false,
 	},
 };
@@ -317,6 +343,7 @@ export const ButtonOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
+		radius: "small",
 	},
 };
 
@@ -327,6 +354,7 @@ export const CardSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
+		radius: "small",
 	},
 };
 
@@ -337,6 +365,7 @@ export const CardSoft: Story = {
 		color: "primary",
 		variant: "soft",
 		disabled: false,
+		radius: "small",
 	},
 };
 
@@ -347,5 +376,6 @@ export const CardOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
+		radius: "small",
 	},
 };

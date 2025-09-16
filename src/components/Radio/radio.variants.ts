@@ -32,6 +32,7 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 		},
 		radius: {
 			none: styles["lambda-radio-group-radius-none"],
+			tiny: styles["lambda-radio-group-radius-tiny"],
 			small: styles["lambda-radio-group-radius-small"],
 			medium: styles["lambda-radio-group-radius-medium"],
 			pill: styles["lambda-radio-group-radius-pill"],
@@ -40,8 +41,8 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 	compoundVariants: [],
 	defaultVariants: {
 		orientation: "horizontal",
-		radius: "small",
-		size: "medium",
+		radius: "tiny",
+		size: "small",
 		type: "radio",
 		variant: "solid",
 		color: "primary",
@@ -53,6 +54,7 @@ export type RadioGroupVariants = VariantProps<typeof RadioGroups>;
 export const radioprop = cva(styles["lambda-radio"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-radio-neutral"],
 			primary: styles["lambda-radio-primary"],
 			secondary: styles["lambda-radio-secondary"],
 			danger: styles["lambda-radio-danger"],
@@ -83,7 +85,7 @@ export const radioprop = cva(styles["lambda-radio"], {
 	},
 	compoundVariants: [],
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		variant: "solid",
 		color: "primary",
 		disabled: false,
@@ -94,6 +96,7 @@ export const radioprop = cva(styles["lambda-radio"], {
 export const view = cva(styles["lambda-radio-view"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-radio-view-neutral"],
 			primary: styles["lambda-radio-view-primary"],
 			secondary: styles["lambda-radio-view-secondary"],
 			danger: styles["lambda-radio-view-danger"],
@@ -127,7 +130,7 @@ export const view = cva(styles["lambda-radio-view"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		variant: "solid",
 		color: "primary",
 		checked: false,
@@ -149,6 +152,7 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 			bottom: styles["lambda-radio-wrapper-bottom"],
 		},
 		color: {
+			neutral: styles["lambda-radio-wrapper-neutral"],
 			primary: styles["lambda-radio-wrapper-primary"],
 			secondary: styles["lambda-radio-wrapper-secondary"],
 			danger: styles["lambda-radio-wrapper-danger"],
@@ -174,6 +178,7 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 		},
 		radius: {
 			none: styles["lambda-radio-wrapper-radius-none"],
+			tiny: styles["lambda-radio-wrapper-radius-tiny"],
 			small: styles["lambda-radio-wrapper-radius-small"],
 			medium: styles["lambda-radio-wrapper-radius-medium"],
 			pill: styles["lambda-radio-wrapper-radius-pill"],
@@ -191,10 +196,10 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 		orientation: "horizontal",
 		positionLabel: "right",
 		color: "primary",
-		size: "medium",
+		size: "small",
 		type: "radio",
 		variant: "solid",
-		radius: "small",
+		radius: "tiny",
 		disabled: false,
 		checked: false,
 	},
@@ -203,6 +208,7 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 export const iconView = cva(styles["lambda-radio-icon"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-radio-icon-neutral"],
 			primary: styles["lambda-radio-icon-primary"],
 			secondary: styles["lambda-radio-icon-secondary"],
 			danger: styles["lambda-radio-icon-danger"],
@@ -233,7 +239,7 @@ export const iconView = cva(styles["lambda-radio-icon"], {
 	defaultVariants: {
 		color: "primary",
 		disabled: false,
-		size: "medium",
+		size: "small",
 		type: "radio",
 		checked: false,
 	},
@@ -248,6 +254,7 @@ export const labelName = cva(styles["lambda-radio-label"], {
 		},
 		radius: {
 			none: styles["lambda-radio-label-radius-none"],
+			tiny: styles["lambda-radio-label-radius-tiny"],
 			small: styles["lambda-radio-label-radius-small"],
 			medium: styles["lambda-radio-label-radius-medium"],
 			pill: styles["lambda-radio-label-radius-pill"],
@@ -257,6 +264,20 @@ export const labelName = cva(styles["lambda-radio-label"], {
 			small: styles["lambda-radio-label-small"],
 			medium: styles["lambda-radio-label-medium"],
 			large: styles["lambda-radio-label-large"],
+		},
+		color: {
+			neutral: styles["lambda-radio-label-neutral"],
+			primary: styles["lambda-radio-label-primary"],
+			secondary: styles["lambda-radio-label-secondary"],
+			danger: styles["lambda-radio-label-danger"],
+			success: styles["lambda-radio-label-success"],
+			warning: styles["lambda-radio-label-warning"],
+			info: styles["lambda-radio-label-info"],
+		},
+		typeContent: {
+			icon: styles["lambda-radio-label-icon"],
+			label: styles["lambda-radio-label-label"],
+			iconLabel: styles["lambda-radio-label-iconlabel"],
 		},
 		orientation: {
 			vertical: styles["lambda-radio-label-vertical"],
@@ -270,9 +291,10 @@ export const labelName = cva(styles["lambda-radio-label"], {
 	defaultVariants: {
 		disabled: false,
 		type: "radio",
-		size: "medium",
+		size: "small",
 		orientation: "horizontal",
-		radius: "small",
+		radius: "tiny",
+		color: "neutral",
 	},
 });
 
@@ -290,6 +312,7 @@ export const contentCard = cva(styles["lambda-radio-content-card"], {
 			outline: styles["lambda-radio-content-card-outline"],
 		},
 		color: {
+			neutral: styles["lambda-radio-content-card-neutral"],
 			primary: styles["lambda-radio-content-card-primary"],
 			secondary: styles["lambda-radio-content-card-secondary"],
 			danger: styles["lambda-radio-content-card-danger"],
@@ -307,7 +330,7 @@ export const contentCard = cva(styles["lambda-radio-content-card"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		variant: "solid",
 		color: "primary",
 		disabled: false,

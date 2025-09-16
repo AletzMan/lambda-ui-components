@@ -268,6 +268,7 @@ const RadioComponent = forwardRef<
 							orientation,
 							radius,
 							type,
+							color: color || groupColor,
 						})}
 					>
 						{label}
@@ -281,10 +282,12 @@ const RadioComponent = forwardRef<
 							orientation,
 							radius,
 							type,
+							color: color || groupColor,
+							typeContent: icon && label ? "iconLabel" : icon ? "icon" : "label",
 						})}
 					>
-						{label && label}
 						{icon && icon}
+						{label && label}
 					</span>
 				)}
 				{type === "card" && (
