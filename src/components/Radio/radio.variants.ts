@@ -275,6 +275,7 @@ export const labelName = cva(styles["lambda-radio-label"], {
 			info: styles["lambda-radio-label-info"],
 		},
 		typeContent: {
+			none: styles["lambda-radio-label-none"],
 			icon: styles["lambda-radio-label-icon"],
 			label: styles["lambda-radio-label-label"],
 			iconLabel: styles["lambda-radio-label-iconlabel"],

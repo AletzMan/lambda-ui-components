@@ -283,7 +283,7 @@ const RadioComponent = forwardRef<
 							radius,
 							type,
 							color: color || groupColor,
-							typeContent: icon && label ? "iconLabel" : icon ? "icon" : "label",
+							typeContent: icon && label ? "iconLabel" : icon ? "icon" : label ? "label" : "none",
 						})}
 					>
 						{icon && icon}
