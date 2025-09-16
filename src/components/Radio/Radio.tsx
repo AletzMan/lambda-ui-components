@@ -298,6 +298,7 @@ const RadioComponent = forwardRef<
 							variant,
 							color: color || groupColor,
 							checked: isChecked,
+							radius,
 						})}
 					>
 						<header className={styles["lambda-radio-card-header"]}>

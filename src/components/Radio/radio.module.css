@@ -820,7 +820,7 @@
 
 	&:is(.lambda-radio-wrapper-soft) {
 		border: 1px solid transparent;
-		background-color: var(--surface-a);
+		background-color: var(--neutral-opacity-color);
 
 		&:is(.lambda-radio-wrapper-neutral) {
 			&:is(.lambda-radio-wrapper-checked) {
@@ -994,6 +994,10 @@
 
 	&.lambda-radio-wrapper-radius-none {
 		border-radius: none;
+	}
+
+	&.lambda-radio-wrapper-radius-tiny {
+		border-radius: var(--border-radius-xs);
 	}
 
 	&.lambda-radio-wrapper-radius-small {
