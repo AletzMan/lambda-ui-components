@@ -1,5 +1,5 @@
 :root {
-	--font-family: "Plus Jakarta Sans Variable", sans-serif;
+	--font-family: "Manrope Variable", sans-serif;
 	--disabled-color: #6b6b6b;
 	--black-color: #171717;
 	--white-color: #ffffff;
@@ -264,8 +264,8 @@
 	--primary-soft-color: var(--lambda-color-primary-200);
 	--primary-subtle-color: var(--lambda-color-primary-300);
 	--primary-outline-color: var(--lambda-color-primary-200);
-	--primary-base-color: var(--lambda-color-primary-500);
-	--primary-hover-color: var(--lambda-color-primary-600);
+	--primary-base-color: var(--lambda-color-primary-600);
+	--primary-hover-color: var(--lambda-color-primary-500);
 	--primary-disabled-color: var(--lambda-color-primary-900);
 	--primary-border-color: var(--lambda-color-primary-700);
 	--primary-light-color: var(--lambda-color-primary-100);
@@ -278,9 +278,9 @@
 	--secondary-soft-color: var(--lambda-color-secondary-200);
 	--secondary-subtle-color: var(--lambda-color-secondary-300);
 	--secondary-outline-color: var(--lambda-color-secondary-200);
-	--secondary-base-color: var(--lambda-color-secondary-500);
-	--secondary-hover-color: var(--lambda-color-secondary-600);
-	--secondary-border-color: var(--lambda-color-secondary-700);
+	--secondary-base-color: var(--lambda-color-secondary-600);
+	--secondary-hover-color: var(--lambda-color-secondary-700);
+	--secondary-border-color: var(--lambda-color-secondary-500);
 	--secondary-disabled-color: var(--lambda-color-secondary-900);
 	--secondary-light-color: var(--lambda-color-secondary-100);
 	--secondary-dark-color: var(--lambda-color-secondary-950);
@@ -411,8 +411,8 @@
 	--primary-soft-color: var(--lambda-color-primary-900);
 	--primary-subtle-color: var(--lambda-color-primary-700);
 	--primary-outline-color: var(--lambda-color-primary-800);
-	--primary-base-color: var(--lambda-color-primary-500);
-	--primary-hover-color: var(--lambda-color-primary-600);
+	--primary-base-color: var(--lambda-color-primary-600);
+	--primary-hover-color: var(--lambda-color-primary-500);
 	--primary-disabled-color: var(--lambda-color-primary-300);
 	--primary-border-color: var(--lambda-color-primary-100);
 	--primary-light-color: var(--lambda-color-primary-050);
@@ -522,7 +522,7 @@ textarea {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	letter-spacing: 0.2px;
+	/*letter-spacing: 0.2px;*/
 }
 
 .scrollBar {

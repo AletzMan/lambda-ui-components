@@ -1,4 +1,4 @@
-import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/manrope";
 import "./index.css";
 
 export { Accordion } from "./components/Accordion/Accordion";
