@@ -1,7 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { RadioGroup, Radio } from "./Radio";
 import { RadioGroupProps } from "./radio.types";
-import { AlignCenter, AlignLeft, AlignRight } from "lucide-react";
+import {
+	ArrowDownFromLine,
+	ArrowLeftFromLine,
+	ArrowRightFromLine,
+	ArrowUpFromLine,
+} from "lucide-react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof RadioGroup> = {
@@ -119,12 +124,16 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 			<div
 				style={{
 					display: "grid",
-					gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+					gridTemplateColumns:
+						args.orientation === "horizontal"
+							? "repeat(auto-fit, minmax(180px, 1fr))"
+							: "repeat(auto-fit, minmax(30px, 35px))",
 					width: "100%",
-					gap: "0.5rem",
+					gap: args.orientation === "horizontal" ? "0.5rem" : "2rem",
 					borderRadius: "var(--border-radius-sm)",
 					border: "1px solid var(--border-color)",
 					padding: "0.25rem",
+					backgroundColor: "var(--surface-a)",
 				}}
 			>
 				{colors.map((color) => (
@@ -145,9 +154,10 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							{...args}
 							color={color as RadioGroupProps["color"]}
 						>
-							<Radio.Button value="option1" icon={<AlignLeft />} />
-							<Radio.Button value="option2" icon={<AlignCenter />} />
-							<Radio.Button value="option3" icon={<AlignRight />} />
+							<Radio.Button value="option1" icon={<ArrowLeftFromLine />} />
+							<Radio.Button value="option2" icon={<ArrowUpFromLine />} />
+							<Radio.Button value="option3" icon={<ArrowRightFromLine />} />
+							<Radio.Button value="option4" icon={<ArrowDownFromLine />} />
 						</RadioGroup>
 					</div>
 				))}
@@ -164,12 +174,16 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 			<div
 				style={{
 					display: "grid",
-					gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+					gridTemplateColumns:
+						args.orientation === "horizontal"
+							? "repeat(auto-fit, minmax(250px, 1fr))"
+							: "repeat(auto-fit, minmax(100px, 1fr))",
 					width: "100%",
 					borderRadius: "var(--border-radius-sm)",
 					border: "1px solid var(--border-color)",
 					padding: "0.25rem",
 					gap: "0.5rem",
+					backgroundColor: "var(--surface-a)",
 				}}
 			>
 				{colors.map((color) => (
@@ -191,8 +205,9 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							color={color as RadioGroupProps["color"]}
 						>
 							<Radio.Button value="option1" label="Left" />
-							<Radio.Button value="option2" label="Center" />
+							<Radio.Button value="option2" label="Up" />
 							<Radio.Button value="option3" label="Right" />
+							<Radio.Button value="option4" label="Down" />
 						</RadioGroup>
 					</div>
 				))}
@@ -209,12 +224,16 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 			<div
 				style={{
 					display: "grid",
-					gridTemplateColumns: "repeat(auto-fit, minmax(355px, 1fr))",
+					gridTemplateColumns:
+						args.orientation === "horizontal"
+							? "repeat(auto-fit, minmax(355px, 1fr))"
+							: "repeat(auto-fit, minmax(100px, 1fr))",
 					width: "100%",
 					borderRadius: "var(--border-radius-sm)",
 					border: "1px solid var(--border-color)",
 					padding: "0.25rem",
 					gap: "0.5rem",
+					backgroundColor: "var(--surface-a)",
 				}}
 			>
 				{colors.map((color) => (
@@ -235,9 +254,10 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							{...args}
 							color={color as RadioGroupProps["color"]}
 						>
-							<Radio.Button value="option1" label="Left" icon={<AlignLeft />} />
-							<Radio.Button value="option2" label="Center" icon={<AlignCenter />} />
-							<Radio.Button value="option3" label="Right" icon={<AlignRight />} />
+							<Radio.Button value="option1" label="Left" icon={<ArrowLeftFromLine />} />
+							<Radio.Button value="option2" label="Up" icon={<ArrowUpFromLine />} />
+							<Radio.Button value="option3" label="Right" icon={<ArrowRightFromLine />} />
+							<Radio.Button value="option4" label="Down" icon={<ArrowDownFromLine />} />
 						</RadioGroup>
 					</div>
 				))}
@@ -284,66 +304,72 @@ const RadioCardTemplate = (args: RadioGroupProps) => {
 export const DefaultSolid: Story = {
 	render: (args) => <RadioTemplate {...args} />,
 	args: {
-		size: "medium",
+		size: "small",
 		color: "primary",
 		variant: "solid",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
 
 export const DefaultSoft: Story = {
 	render: (args) => <RadioTemplate {...args} />,
 	args: {
-		size: "medium",
+		size: "small",
 		color: "primary",
 		variant: "soft",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
 
 export const DefaultOutline: Story = {
 	render: (args) => <RadioTemplate {...args} />,
 	args: {
-		size: "medium",
+		size: "small",
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
 
 export const ButtonSolid: Story = {
 	render: (args) => <RadioButtonTemplate {...args} />,
 	args: {
-		size: "medium",
+		size: "small",
 		color: "primary",
 		variant: "solid",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
 
 export const ButtonSoft: Story = {
 	render: (args) => <RadioButtonTemplate {...args} />,
 	args: {
-		size: "medium",
+		size: "small",
 		color: "primary",
 		variant: "soft",
-		radius: "small",
+		radius: "tiny",
 		disabled: false,
+		orientation: "horizontal",
 	},
 };
 
 export const ButtonOutline: Story = {
 	render: (args) => <RadioButtonTemplate {...args} />,
 	args: {
-		size: "medium",
+		size: "small",
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
 
@@ -354,7 +380,8 @@ export const CardSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
 
@@ -365,7 +392,8 @@ export const CardSoft: Story = {
 		color: "primary",
 		variant: "soft",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
 
@@ -376,6 +404,7 @@ export const CardOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		radius: "small",
+		radius: "tiny",
+		orientation: "horizontal",
 	},
 };
