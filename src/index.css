@@ -218,7 +218,7 @@
 [data-theme="light"] {
 	/*--background-color: #ededed;*/
 	--background-color: #edefef;
-	--foreground-color: #171717;
+	--foreground-color: #424242;
 	--foreground-title-color: #525151;
 	--foreground-secondary-color: #727272;
 	--foreground-invert-color: #ffffff;
@@ -366,7 +366,7 @@
 [data-theme="dark"] {
 	/*--background-color: #0e0e10;*/
 	--background-color: #0d0d0d;
-	--foreground-color: #ffffff;
+	--foreground-color: #f0eeee;
 	--foreground-title-color: #c4c4c4;
 	--foreground-secondary-color: #888888;
 	--foreground-invert-color: #222222;

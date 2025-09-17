@@ -108,10 +108,6 @@
 		border: none;
 		background-color: var(--surface-a);
 
-		.select-placeholder {
-			color: var(--surface-g);
-		}
-
 		&:is(.select-btn-invalid) {
 			background-color: var(--danger-soft-color);
 		}
@@ -199,7 +195,9 @@
 
 	&:focus:not(.select-btn-disabled) {
 		&.select-btn-outline {
+			background-color: var(--primary-background-color);
 			border: var(--border-width-xs) solid var(--primary-hover-color);
+			color: var(--primary-text-color);
 		}
 
 		&.select-btn-underline {
@@ -257,6 +255,10 @@
 	font-family: var(--font-family);
 	background-color: var(--surface-a);
 	z-index: 99;
+
+	.select-icon-svg {
+		color: var(--white-color);
+	}
 
 	&.select-dropdown-tiny {
 		top: calc(90% + var(--padding-xs));
@@ -337,11 +339,11 @@
 	display: block;
 
 	&:is(.select-dropdown-down) {
-		animation: growDown 0.2s cubic-bezier(0.66, 0.38, 0.42, 1.21) forwards;
+		animation: growDown 0.35s cubic-bezier(0.55, 0.57, 0.05, 1.46) forwards;
 	}
 
 	&:is(.select-dropdown-up) {
-		animation: growUp 0.2s cubic-bezier(0.66, 0.38, 0.42, 1.21) forwards;
+		animation: growUp 0.35s cubic-bezier(0.55, 0.57, 0.05, 1.46) forwards;
 	}
 }
 
@@ -392,20 +394,24 @@
 	gap: 0.5em;
 	padding: var(--padding-none) var(--padding-md);
 	color: var(--foreground-color);
+	background-color: var(--surface-a);
 	list-style: none;
-	/*cursor: pointer;*/
+}
 
-	&.select-option-selected {
-		background-color: var(--primary-soft-color);
-		color: var(--primary-text-color);
-		font-weight: var(--font-weight-md);
-		cursor: default;
-	}
+.select-option-selected {
+	background-color: var(--primary-base-color);
+	color: var(--white-color);
+	font-weight: var(--font-weight-md);
+	cursor: default;
 }
 
 .select-option:hover:not(.select-option-selected) {
-	background-color: var(--primary-subtle-color);
-	color: var(--foreground-color);
+	background-color: var(--primary-soft-color);
+	color: var(--primary-text-color);
+
+	.select-view-description {
+		color: var(--primary-border-color);
+	}
 }
 
 .select-view {
@@ -514,7 +520,8 @@
 
 .select-view-description {
 	font-size: var(--font-size-sm);
-	color: var(--foreground-title-color);
+	color: var(--foreground-secondary-color);
+	font-weight: var(--font-weight-md);
 }
 
 .select-option-text-content {
