@@ -45,7 +45,7 @@ export default meta;
 
 type Story = StoryObj<typeof Tag>;
 
-const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
+const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: TagProps) => {
 	return (

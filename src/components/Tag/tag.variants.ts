@@ -4,6 +4,7 @@ import styles from "./tag.module.css";
 export const tagStyles = cva(styles["lambda-tag"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-tag-neutral"],
 			primary: styles["lambda-tag-primary"],
 			secondary: styles["lambda-tag-secondary"],
 			danger: styles["lambda-tag-danger"],

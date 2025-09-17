@@ -22,28 +22,41 @@
 }
 
 .lambda-tag-solid {
+	&.lambda-tag-neutral {
+		color: var(--foreground-invert-color);
+		background-color: var(--neutral-base-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--lambda-color-neutral-300);
+
+			&:hover {
+				color: var(--lambda-color-neutral-600);
+			}
+		}
+	}
+
 	&.lambda-tag-primary {
 		color: var(--white-color);
 		background-color: var(--primary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--primary-disabled-color);
+			color: var(--lambda-color-primary-400);
 
 			&:hover {
-				color: var(--primary-text-color);
+				color: var(--lambda-color-primary-100);
 			}
 		}
 	}
 
 	&.lambda-tag-secondary {
-		color: var(--foreground-invert-color);
+		color: var(--white-color);
 		background-color: var(--secondary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--secondary-disabled-color);
+			color: var(--lambda-color-secondary-300);
 
 			&:hover {
-				color: var(--foreground-invert-color);
+				color: var(--lambda-color-secondary-100);
 			}
 		}
 	}
@@ -53,10 +66,10 @@
 		background-color: var(--danger-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--danger-light-color);
+			color: var(--lambda-color-danger-300);
 
 			&:hover {
-				color: var(--danger-disabled-color);
+				color: var(--lambda-color-danger-100);
 			}
 		}
 	}
@@ -66,23 +79,23 @@
 		background-color: var(--success-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--success-light-color);
+			color: var(--lambda-color-success-300);
 
 			&:hover {
-				color: var(--success-disabled-color);
+				color: var(--lambda-color-success-100);
 			}
 		}
 	}
 
 	&.lambda-tag-warning {
-		color: var(--foreground-invert-color);
+		color: var(--white-color);
 		background-color: var(--warning-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--warning-light-color);
+			color: var(--lambda-color-warning-300);
 
 			&:hover {
-				color: var(--warning-disabled-color);
+				color: var(--lambda-color-warning-100);
 			}
 		}
 	}
@@ -92,10 +105,10 @@
 		background-color: var(--info-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
-			color: var(--info-light-color);
+			color: var(--lambda-color-info-300);
 
 			&:hover {
-				color: var(--info-disabled-color);
+				color: var(--lambda-color-info-100);
 			}
 		}
 	}
@@ -104,9 +117,22 @@
 .lambda-tag-outline {
 	border: var(--border-width-xs) solid;
 
+	&.lambda-tag-neutral {
+		color: var(--neutral-base-color);
+		border-color: var(--neutral-base-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--neutral-hover-color);
+
+			&:hover {
+				color: var(--neutral-text-color);
+			}
+		}
+	}
+
 	&.lambda-tag-primary {
-		color: var(--primary-text-color);
-		border-color: var(--primary-disabled-color);
+		color: var(--primary-base-color);
+		border-color: var(--primary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--primary-hover-color);
@@ -118,7 +144,7 @@
 	}
 
 	&.lambda-tag-secondary {
-		color: var(--secondary-text-color);
+		color: var(--secondary-base-color);
 		border-color: var(--secondary-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
@@ -131,8 +157,8 @@
 	}
 
 	&.lambda-tag-success {
-		color: var(--success-text-color);
-		border-color: var(--success-disabled-color);
+		color: var(--success-base-color);
+		border-color: var(--success-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--success-hover-color);
@@ -144,8 +170,8 @@
 	}
 
 	&.lambda-tag-danger {
-		color: var(--danger-text-color);
-		border-color: var(--danger-disabled-color);
+		color: var(--danger-base-color);
+		border-color: var(--danger-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--danger-hover-color);
@@ -157,8 +183,8 @@
 	}
 
 	&.lambda-tag-warning {
-		color: var(--warning-text-color);
-		border-color: var(--warning-disabled-color);
+		color: var(--warning-base-color);
+		border-color: var(--warning-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--warning-hover-color);
@@ -170,8 +196,8 @@
 	}
 
 	&.lambda-tag-info {
-		color: var(--info-text-color);
-		border-color: var(--info-disabled-color);
+		color: var(--info-base-color);
+		border-color: var(--info-base-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--info-hover-color);
@@ -185,6 +211,19 @@
 
 .lambda-tag-soft {
 	color: var(--primary-text-color);
+
+	&.lambda-tag-neutral {
+		color: var(--neutral-text-color);
+		background-color: var(--neutral-soft-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--neutral-hover-color);
+
+			&:hover {
+				color: var(--neutral-text-color);
+			}
+		}
+	}
 
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
@@ -269,6 +308,19 @@
 	color: var(--primary-base-color);
 	border: var(--border-width-xs) dashed var(--primary-base-color);
 
+	&.lambda-tag-neutral {
+		color: var(--neutral-text-color);
+		border: var(--border-width-xs) dashed var(--neutral-base-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--neutral-hover-color);
+
+			&:hover {
+				color: var(--neutral-text-color);
+			}
+		}
+	}
+
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
 		border: var(--border-width-xs) dashed var(--primary-base-color);
@@ -350,6 +402,20 @@
 
 .lambda-tag-subtle {
 	border: var(--border-width-xs) solid;
+
+	&.lambda-tag-neutral {
+		color: var(--neutral-text-color);
+		border-color: var(--neutral-subtle-color);
+		background-color: var(--neutral-soft-color);
+
+		& .lambda-tag-close-button > svg:last-child {
+			color: var(--neutral-hover-color);
+
+			&:hover {
+				color: var(--neutral-text-color);
+			}
+		}
+	}
 
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
