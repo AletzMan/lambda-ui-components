@@ -40,6 +40,7 @@ export default meta;
 type Story = StoryObj<typeof Tab>;
 
 const colors: TabProps["color"][] = [
+	"neutral",
 	"primary",
 	"secondary",
 	"success",
@@ -50,7 +51,7 @@ const colors: TabProps["color"][] = [
 
 const Template = (args: TabProps) => {
 	return (
-		<ContainerComponent title="Tab" subtitle={args.variant}>
+		<ContainerComponent title="Tab" subtitle={args.variant || ""}>
 			<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
 				{colors.map((color) => (
 					<Tab key={color} {...args} color={color} />

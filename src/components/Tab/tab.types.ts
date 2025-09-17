@@ -1,9 +1,6 @@
 import { HTMLAttributes } from "react";
+import { TabVariants } from "./tab.variants";
 
-export type TabVariant = "underline" | "soft" | "box" | "border";
-export type TabSize = "tiny" | "small" | "medium" | "large";
-export type TabColor = "primary" | "secondary" | "success" | "danger" | "warning" | "info";
-export type TabRadius = "none" | "tiny" | "small" | "medium" | "large" | "full";
 export type TabItem = {
 	id: string;
 	label: string;
@@ -11,7 +8,7 @@ export type TabItem = {
 	content?: React.ReactNode;
 };
 
-export interface TabProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface TabProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
 	/*
 	 * Array de elementos que se renderizan como pestañas
 	 */
@@ -19,19 +16,19 @@ export interface TabProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange
 	/*
 	 * Establece el estilo de la pestaña @default "underline"
 	 */
-	variant?: TabVariant;
+	variant?: TabVariants["variant"];
 	/*
 	 * Establece el tamaño de la pestaña @default "medium"
 	 */
-	size?: TabSize;
+	size?: TabVariants["size"];
 	/*
 	 * Establece el color de la pestaña @default "primary"
 	 */
-	color?: TabColor;
+	color?: TabVariants["color"];
 	/*
 	 * Establece el radio de la pestaña @default "small"
 	 */
-	radius?: TabRadius;
+	radius?: TabVariants["radius"];
 	/*
 	 * Establece si la pestaña esta deshabilitada @default false
 	 */

@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import styles from "./tab.module.css";
 
 export const tabWrapper = cva(styles["tab-wrapper"], {
@@ -16,6 +16,7 @@ export const tabWrapper = cva(styles["tab-wrapper"], {
 			border: styles["tab-wrapper-border"],
 		},
 		color: {
+			neutral: styles["tab-wrapper-neutral"],
 			primary: styles["tab-wrapper-primary"],
 			secondary: styles["tab-wrapper-secondary"],
 			success: styles["tab-wrapper-success"],
@@ -35,7 +36,8 @@ export const tabWrapper = cva(styles["tab-wrapper"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "underline",
-		color: "secondary",
+		color: "neutral",
+		radius: "tiny",
 	},
 });
 
@@ -54,6 +56,7 @@ export const tabContainer = cva(styles["tab-container"], {
 			border: styles["tab-container-border"],
 		},
 		color: {
+			neutral: styles["tab-container-neutral"],
 			primary: styles["tab-container-primary"],
 			secondary: styles["tab-container-secondary"],
 			success: styles["tab-container-success"],
@@ -74,7 +77,7 @@ export const tabContainer = cva(styles["tab-container"], {
 		size: "medium",
 		variant: "underline",
 		radius: "small",
-		color: "secondary",
+		color: "neutral",
 	},
 });
 
@@ -93,6 +96,7 @@ export const tabItem = cva(styles["tab-item"], {
 			border: styles["tab-item-border"],
 		},
 		color: {
+			neutral: styles["tab-item-neutral"],
 			primary: styles["tab-item-primary"],
 			secondary: styles["tab-item-secondary"],
 			success: styles["tab-item-success"],
@@ -118,7 +122,7 @@ export const tabItem = cva(styles["tab-item"], {
 		variant: "underline",
 		disabled: false,
 		radius: "small",
-		color: "secondary",
+		color: "neutral",
 	},
 });
 
@@ -175,6 +179,7 @@ export const tabLabel = cva(styles["tab-label"], {
 			full: styles["tab-label-radius-full"],
 		},
 		color: {
+			neutral: styles["tab-label-neutral"],
 			primary: styles["tab-label-primary"],
 			secondary: styles["tab-label-secondary"],
 			success: styles["tab-label-success"],
@@ -192,7 +197,7 @@ export const tabLabel = cva(styles["tab-label"], {
 		variant: "underline",
 		radius: "small",
 		disabled: false,
-		color: "secondary",
+		color: "neutral",
 		selected: false,
 	},
 });
@@ -214,6 +219,7 @@ export const tabCurrent = cva(styles["tab-current"], {
 			full: styles["tab-current-radius-full"],
 		},
 		color: {
+			neutral: styles["tab-current-neutral"],
 			primary: styles["tab-current-primary"],
 			secondary: styles["tab-current-secondary"],
 			success: styles["tab-current-success"],
@@ -225,7 +231,7 @@ export const tabCurrent = cva(styles["tab-current"], {
 	defaultVariants: {
 		variant: "underline",
 		radius: "small",
-		color: "secondary",
+		color: "neutral",
 	},
 });
 
@@ -248,6 +254,7 @@ export const tabContent = cva(styles["tab-content"], {
 			false: styles["tab-content-not-disabled"],
 		},
 		color: {
+			neutral: styles["tab-content-neutral"],
 			primary: styles["tab-content-primary"],
 			secondary: styles["tab-content-secondary"],
 			success: styles["tab-content-success"],
@@ -272,8 +279,10 @@ export const tabContent = cva(styles["tab-content"], {
 		size: "medium",
 		variant: "underline",
 		disabled: false,
-		color: "secondary",
+		color: "neutral",
 		radius: "small",
 		selected: false,
 	},
 });
+
+export type TabVariants = VariantProps<typeof tabWrapper>;
