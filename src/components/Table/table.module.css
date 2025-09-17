@@ -67,7 +67,7 @@
 	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-title-color);
 	text-align: center;
-	background-color: var(--surface-c);
+	background-color: var(--surface-b);
 	width: 100%;
 
 	&:is(.lambda-table-header-cell-bordered) {
@@ -75,11 +75,11 @@
 		border-top: 1px solid var(--surface-c);
 
 		&:first-child {
-			border-left: 1px solid var(--surface-c);
+			border-left: 1px solid var(--surface-b);
 		}
 
 		&:last-child {
-			border-right: 1px solid var(--surface-c);
+			border-right: 1px solid var(--surface-b);
 		}
 	}
 
@@ -216,15 +216,32 @@
 }
 
 .lambda-table-row {
-	background-color: var(--surface-a);
+	background-color: var(--background-color);
 	&:last-child {
 		& .lambda-table-cell {
-			border-bottom: 1px solid transparent;
+			border-bottom: 1px solid var(--surface-a);
+		}
+	}
+
+	& .lambda-table-cell {
+		&:first-child {
+			border-left: 1px solid var(--surface-a);
+		}
+
+		&:last-child {
+			border-right: 1px solid var(--surface-a);
 		}
 	}
 
 	&:hover {
-		background-color: var(--surface-b);
+		background-color: var(--surface-a);
+		& .lambda-table-cell {
+			border-left: 1px solid var(--surface-a);
+
+			&:last-child {
+				border-right: 1px solid var(--surface-a);
+			}
+		}
 	}
 
 	&:is(.lambda-table-row-tiny) {

@@ -304,7 +304,7 @@
 	--neutral-light-color: var(--lambda-color-neutral-100);
 	--neutral-dark-color: var(--lambda-color-neutral-950);
 	--neutral-background-color: var(--lambda-color-neutral-050);
-	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-600) 15%, transparent 90%);
+	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-600) 10%, transparent 90%);
 
 	--success-text-color: var(--lambda-color-success-800);
 	--success-content-color: var(--lambda-color-success-400);
