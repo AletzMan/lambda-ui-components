@@ -52,7 +52,6 @@
 
 .lambda-textarea {
 	background-color: var(--surface-a);
-	box-shadow: var(--box-shadow);
 	color: var(--foreground-color);
 
 	&.lambda-textarea-tiny {
@@ -95,7 +94,7 @@
 		border: var(--border-width-xs) solid var(--border-color);
 
 		&:focus-within {
-			background-color: var(--primary-background-color);
+			background-color: var(--primary-opacity-color);
 			outline: 3px solid var(--primary-outline-color);
 			border-color: var(--primary-base-color);
 		}
@@ -115,7 +114,7 @@
 		border: none;
 
 		&:focus-within {
-			background-color: var(--primary-background-color);
+			background-color: var(--primary-opacity-color);
 			outline: 3px solid var(--primary-outline-color);
 		}
 
