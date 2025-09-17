@@ -424,12 +424,12 @@
 	--primary-opacity-color: color-mix(in srgb, var(--lambda-color-primary-500) 15%, transparent 90%);
 
 	--secondary-text-color: var(--lambda-color-secondary-200);
-	--secondary-content-color: var(--lambda-color-secondary-400);
+	--secondary-content-color: var(--lambda-color-secondary-600);
 	--secondary-soft-color: var(--lambda-color-secondary-900);
 	--secondary-subtle-color: var(--lambda-color-secondary-700);
 	--secondary-outline-color: var(--lambda-color-secondary-800);
-	--secondary-base-color: var(--lambda-color-secondary-500);
-	--secondary-hover-color: var(--lambda-color-secondary-600);
+	--secondary-base-color: var(--lambda-color-secondary-400);
+	--secondary-hover-color: var(--lambda-color-secondary-500);
 	--secondary-disabled-color: var(--lambda-color-secondary-300);
 	--secondary-border-color: var(--lambda-color-secondary-100);
 	--secondary-light-color: var(--lambda-color-secondary-050);
