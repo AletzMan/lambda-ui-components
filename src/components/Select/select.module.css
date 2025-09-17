@@ -93,7 +93,6 @@
 	color: var(--foreground-color);
 	background-color: var(--surface-a);
 	outline: none;
-	box-shadow: var(--box-shadow);
 
 	&.select-btn-outline {
 		border: var(--border-width-xs) solid var(--border-color);
@@ -257,7 +256,6 @@
 	overflow-y: auto;
 	font-family: var(--font-family);
 	background-color: var(--surface-a);
-	box-shadow: var(--box-shadow);
 	z-index: 99;
 
 	&.select-dropdown-tiny {
