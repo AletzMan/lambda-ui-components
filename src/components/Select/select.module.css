@@ -195,13 +195,18 @@
 
 	&:focus:not(.select-btn-disabled) {
 		&.select-btn-outline {
-			background-color: var(--primary-background-color);
+			background-color: var(--primary-opacity-color);
 			border: var(--border-width-xs) solid var(--primary-hover-color);
 			color: var(--primary-text-color);
 		}
 
 		&.select-btn-underline {
 			border-bottom-color: var(--primary-base-color);
+			background-color: var(--primary-opacity-color);
+		}
+
+		&.select-btn-soft {
+			background-color: var(--primary-opacity-color);
 		}
 	}
 
