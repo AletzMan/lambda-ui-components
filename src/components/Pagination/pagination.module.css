@@ -10,7 +10,6 @@
 
 .lambda-pagination-wrapper-disabled {
 	opacity: 0.6;
-	pointer-events: none;
 	cursor: not-allowed;
 }
 
@@ -81,16 +80,13 @@
 }
 
 .lambda-pagination-button-bordered {
-	border-color: var(--surface-d);
-	background-color: var(--surface-c);
+	border-color: var(--border-color);
+	background-color: var(--surface-b);
 	color: var(--neutral-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
 		opacity: 0.5;
-		background-color: var(--surface-c);
-		border-color: var(--surface-d);
-		color: var(--surface-g);
 	}
 }
 
@@ -102,36 +98,28 @@
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
 		opacity: 0.4;
-		border-color: var(--surface-d);
-		color: var(--primary-disabled-color);
 	}
 }
 
 .lambda-pagination-button-solid {
-	border-color: var(--surface-c);
-	background-color: var(--surface-c);
+	border-color: var(--surface-b);
+	background-color: var(--surface-b);
 	color: var(--neutral-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
 		opacity: 0.5;
-		background-color: var(--surface-c);
-		border-color: var(--surface-c);
-		color: var(--surface-g);
 	}
 }
 
 .lambda-pagination-button-outline {
-	border-color: var(--surface-d);
+	border-color: var(--border-color);
 	background-color: transparent;
 	color: var(--neutral-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
 		cursor: not-allowed;
 		opacity: 0.5;
-		background-color: transparent;
-		border-color: var(--surface-d);
-		color: var(--surface-g);
 	}
 }
 
