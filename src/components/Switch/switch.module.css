@@ -121,7 +121,6 @@
 	box-sizing: border-box;
 	background-color: var(--surface-b);
 	transition: all 0.2s ease-out;
-	box-shadow: var(--box-shadow);
 }
 
 .lambda-switch-background-square {
@@ -137,13 +136,17 @@
 }
 
 .lambda-switch-background-solid {
-	border: var(--border-width-xs) solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--border-color);
 	background-color: var(--surface-a);
+
+	.lambda-switch-handle {
+		background-color: var(--neutral-hover-color);
+	}
 
 	&.lambda-switch-background-primary {
 		&.lambda-switch-background-checked {
-			border-color: var(--primary-soft-color);
-			background-color: var(--primary-base-color);
+			border-color: var(--primary-base-color);
+			background-color: var(--primary-hover-color);
 
 			.lambda-switch-handle {
 				background-color: var(--white-color);
@@ -153,18 +156,18 @@
 
 	&.lambda-switch-background-secondary {
 		&.lambda-switch-background-checked {
+			border-color: var(--secondary-hover-color);
 			background-color: var(--secondary-base-color);
-			border-color: var(--secondary-soft-color);
 
 			.lambda-switch-handle {
-				background-color: var(--foreground-invert-color);
+				background-color: var(--white-color);
 			}
 		}
 	}
 
 	&.lambda-switch-background-success {
 		&.lambda-switch-background-checked {
-			border-color: var(--success-soft-color);
+			border-color: var(--success-hover-color);
 			background-color: var(--success-base-color);
 
 			.lambda-switch-handle {
@@ -175,7 +178,7 @@
 
 	&.lambda-switch-background-danger {
 		&.lambda-switch-background-checked {
-			border-color: var(--danger-soft-color);
+			border-color: var(--danger-hover-color);
 			background-color: var(--danger-base-color);
 
 			.lambda-switch-handle {
@@ -186,7 +189,7 @@
 
 	&.lambda-switch-background-warning {
 		&.lambda-switch-background-checked {
-			border-color: var(--warning-soft-color);
+			border-color: var(--warning-hover-color);
 			background-color: var(--warning-base-color);
 
 			.lambda-switch-handle {
@@ -197,7 +200,7 @@
 
 	&.lambda-switch-background-info {
 		&.lambda-switch-background-checked {
-			border-color: var(--info-soft-color);
+			border-color: var(--info-hover-color);
 			background-color: var(--info-base-color);
 
 			.lambda-switch-handle {
@@ -221,7 +224,7 @@
 	background-color: var(--surface-b);
 
 	.lambda-switch-handle {
-		background-color: var(--foreground-secondary-color);
+		background-color: var(--neutral-hover-color);
 	}
 
 	&.lambda-switch-background-primary {
@@ -236,7 +239,7 @@
 
 	&.lambda-switch-background-secondary {
 		&.lambda-switch-background-checked {
-			background-color: var(--secondary-base-color);
+			background-color: var(--secondary-subtle-color);
 
 			.lambda-switch-handle {
 				background-color: var(--white-color);
@@ -300,11 +303,11 @@
 }
 
 .lambda-switch-background-outline {
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width-xs) solid var(--surface-h);
 	background-color: transparent;
 
 	.lambda-switch-handle {
-		background-color: var(--secondary-hover-color);
+		background-color: var(--neutral-hover-color);
 	}
 
 	&.lambda-switch-background-primary {
@@ -413,7 +416,6 @@
 	transition: all 0.25s ease-in-out;
 	width: var(--height-checkbox-sm);
 	height: var(--height-checkbox-sm);
-	background-color: var(--secondary-base-color);
 	box-shadow: 0 0 1px 2px #00000020;
 }
 
