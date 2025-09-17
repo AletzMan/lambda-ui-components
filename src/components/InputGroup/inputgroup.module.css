@@ -231,14 +231,14 @@
 	outline: none;
 	font-family: var(--font-family);
 	background: var(--surface-c);
-	box-shadow: var(--box-shadow);
 
 	.lambda-input-group-start,
 	.lambda-input-group-end {
 		display: flex;
 		align-items: center;
 		height: 100%;
-		color: var(--surface-f);
+		color: var(--surface-g);
+		font-weight: var(--font-weight-semibold);
 
 		& > button {
 			height: 100%;
