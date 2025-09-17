@@ -24,7 +24,6 @@ input[type="number"] {
 	width: 100%;
 	font-family: var(--font-family);
 	transition: border 0.2s ease-in-out, color 0.3s ease-in-out;
-	box-shadow: var(--box-shadow);
 
 	&.lambda-number-default,
 	&.lambda-number-decimal {
@@ -245,18 +244,18 @@ input[type="number"] {
 	}
 
 	&.lambda-number-handler-radius-small {
-		border-radius: var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm)
-			var(--border-radius-none);
+		border-radius: var(--border-radius-none) calc(var(--border-radius-xs) + 1px)
+			calc(var(--border-radius-xs) + 1px) var(--border-radius-none);
 	}
 
 	&.lambda-number-handler-radius-medium {
-		border-radius: var(--border-radius-none) var(--border-radius-md) var(--border-radius-md)
-			var(--border-radius-none);
+		border-radius: var(--border-radius-none) calc(var(--border-radius-sm) + 3px)
+			calc(var(--border-radius-sm) + 3px) var(--border-radius-none);
 	}
 
 	&.lambda-number-handler-radius-large {
-		border-radius: var(--border-radius-none) var(--border-radius-lg) var(--border-radius-lg)
-			var(--border-radius-none);
+		border-radius: var(--border-radius-none) calc(var(--border-radius-md) + 3px)
+			calc(var(--border-radius-md) + 3px) var(--border-radius-none);
 	}
 
 	&.lambda-number-handler-radius-pill {
@@ -351,9 +350,9 @@ input[type="number"] {
 	box-sizing: border-box;
 	transition: all 0.15s ease-in-out;
 	color: var(--surface-f);
-	background-color: var(--surface-c);
+	background-color: var(--surface-b);
 	transition: background-color 0.15s ease-in-out;
-	box-shadow: 0 0 1px 1px #00000010 inset;
+	/*box-shadow: 0 0 1px 1px #00000010 inset;*/
 
 	&:hover:not(:disabled) {
 		background-color: var(--primary-subtle-color);
@@ -361,11 +360,13 @@ input[type="number"] {
 	}
 
 	&:active:not(:disabled) {
-		background-color: var(--primary-disabled-color);
+		background-color: var(--primary-soft-color);
 	}
 
 	&:disabled {
 		cursor: not-allowed;
+		background-color: var(--surface-a);
+		color: var(--surface-d);
 	}
 
 	.lambda-number-icon {
@@ -413,7 +414,7 @@ input[type="number"] {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--surface-c);
+	background-color: var(--surface-b);
 	overflow: hidden;
 	border: none;
 	color: var(--neutral-border-color);
@@ -473,18 +474,18 @@ input[type="number"] {
 	}
 
 	&.lambda-number-currency-radius-small {
-		border-radius: var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none)
-			var(--border-radius-sm);
+		border-radius: calc(var(--border-radius-xs) + 1px) var(--border-radius-none)
+			var(--border-radius-none) calc(var(--border-radius-xs) + 1px);
 	}
 
 	&.lambda-number-currency-radius-medium {
-		border-radius: var(--border-radius-md) var(--border-radius-none) var(--border-radius-none)
-			var(--border-radius-md);
+		border-radius: calc(var(--border-radius-sm) + 1px) var(--border-radius-none)
+			var(--border-radius-none) calc(var(--border-radius-sm) + 1px);
 	}
 
 	&.lambda-number-currency-radius-large {
-		border-radius: var(--border-radius-lg) var(--border-radius-none) var(--border-radius-none)
-			var(--border-radius-lg);
+		border-radius: calc(var(--border-radius-md) + 3px) var(--border-radius-none)
+			var(--border-radius-none) calc(var(--border-radius-md) + 3px);
 	}
 
 	&.lambda-number-currency-radius-pill {
@@ -525,8 +526,5 @@ input[type="number"] {
 
 .lambda-number-wrapper-disabled {
 	cursor: not-allowed;
-
-	.lambda-number {
-		background-color: var(--surface-c);
-	}
+	opacity: 0.5;
 }
