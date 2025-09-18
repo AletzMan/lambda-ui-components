@@ -12,10 +12,9 @@
 	z-index: 1000;
 	pointer-events: none;
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-reg);
 	padding: var(--padding-xs) var(--padding-md);
 	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-semibold) !important;
 	line-height: 1.5;
 	max-width: 200px;
 	text-align: center;
@@ -47,7 +46,7 @@
 			.lambda-tooltip-container-top-left,
 			.lambda-tooltip-container-top-right
 		) {
-		animation: fadeInTop 0.3s ease-in-out both;
+		animation: fadeInTop 0.25s ease-in-out both;
 	}
 
 	&:is(
@@ -55,7 +54,7 @@
 			.lambda-tooltip-container-bottom-left,
 			.lambda-tooltip-container-bottom-right
 		) {
-		animation: fadeInBottom 0.3s ease-in-out both;
+		animation: fadeInBottom 0.25s ease-in-out both;
 	}
 }
 
