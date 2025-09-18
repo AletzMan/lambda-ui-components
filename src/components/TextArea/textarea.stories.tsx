@@ -8,8 +8,8 @@ const meta: Meta<typeof TextArea> = {
 	component: TextArea,
 	argTypes: {
 		variant: {
-			table: {
-				disabled: true,
+			if: {
+				arg: "variant",
 			},
 		},
 		size: {
@@ -21,9 +21,31 @@ const meta: Meta<typeof TextArea> = {
 			control: "boolean",
 			description: "Invalid state of the card",
 		},
+		required: {
+			control: "boolean",
+			description: "Required state of the card",
+		},
+		errorMessage: {
+			control: "text",
+			description: "Error message of the card",
+		},
+		helperText: {
+			control: "text",
+			description: "Helper text of the card",
+		},
 		disabled: {
 			control: "boolean",
 			description: "Disabled state of the card",
+		},
+		onFocus: {
+			table: {
+				disable: true,
+			},
+		},
+		onBlur: {
+			table: {
+				disable: true,
+			},
 		},
 	},
 };
@@ -45,25 +67,29 @@ const Template = (args: TextAreaProps) => {
 };
 
 export const Outline: Story = {
-	render: Template,
+	render: (args) => <Template {...args} variant="outline" />,
 	args: {
-		variant: "outline",
 		size: "medium",
 		invalid: false,
 		disabled: false,
+		required: false,
 		label: "Outline",
 		placeholder: "Placeholder",
+		helperText: "Helper Text",
+		errorMessage: "Error Message",
 	},
 };
 
 export const Soft: Story = {
-	render: Template,
+	render: (args) => <Template {...args} variant="soft" />,
 	args: {
-		variant: "soft",
 		size: "medium",
 		invalid: false,
 		disabled: false,
+		required: false,
 		label: "Soft",
 		placeholder: "Placeholder",
+		helperText: "Helper Text",
+		errorMessage: "Error Message",
 	},
 };

@@ -152,4 +152,8 @@
 .lambda-textarea-wrapper-disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
+
+	.lambda-textarea {
+		cursor: not-allowed;
+	}
 }
