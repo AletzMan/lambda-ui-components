@@ -143,8 +143,8 @@
 	border-radius: var(--border-radius-lg);
 }
 
-.lambda-pagination-button-radius-pill {
-	border-radius: var(--border-radius-pill);
+.lambda-pagination-button-radius-full {
+	border-radius: var(--border-radius-full);
 }
 
 .lambda-pagination-button:hover:not(.lambda-pagination-button-disabled):not(

@@ -47,7 +47,7 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
 			small: styles["lambda-pagination-button-radius-small"],
 			medium: styles["lambda-pagination-button-radius-medium"],
 			large: styles["lambda-pagination-button-radius-large"],
-			pill: styles["lambda-pagination-button-radius-pill"],
+			full: styles["lambda-pagination-button-radius-full"],
 		},
 		isActive: {
 			true: styles["lambda-pagination-button-active"],

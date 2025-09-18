@@ -80,7 +80,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 		},
 		ref
 	) => {
-		const { radius } = useConfig();
+		const { radiusField } = useConfig();
 		// --- Lógica para calcular los números de página visibles ---
 		const pageNumbers = useMemo(() => {
 			const pages: (number | string)[] = [];
@@ -188,7 +188,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radius}
+							radius={radiusField}
 							disabled={areNavButtonsDisabled || isFirstPage}
 							isNavigation
 							aria-label="Go to first page"
@@ -204,7 +204,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radius}
+							radius={radiusField}
 							disabled={areNavButtonsDisabled || isFirstPage}
 							isNavigation
 							aria-label="Go to previous page"
@@ -224,7 +224,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 							disabled={typeof page !== "number" || disabled}
 							size={size}
 							variant={variant}
-							radius={radius}
+							radius={radiusField}
 							aria-label={typeof page === "number" ? `Página ${page}` : undefined}
 							onClick={typeof page === "number" ? () => handleGoToPage(page) : undefined}
 						>
@@ -237,7 +237,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radius}
+							radius={radiusField}
 							disabled={areNavButtonsDisabled || isLastPage}
 							isNavigation
 							aria-label="Go to next page"
@@ -253,7 +253,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radius}
+							radius={radiusField}
 							disabled={areNavButtonsDisabled || isLastPage}
 							isNavigation
 							aria-label="Go to last page"
