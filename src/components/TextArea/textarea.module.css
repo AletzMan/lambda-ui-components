@@ -54,6 +54,10 @@
 	background-color: var(--surface-a);
 	color: var(--foreground-color);
 
+	&::placeholder {
+		color: var(--placeholder-color);
+	}
+
 	&.lambda-textarea-tiny {
 		font-size: var(--font-size-xs);
 		padding: var(--padding-xs);
@@ -76,6 +80,10 @@
 
 	&.lambda-textarea-radius-none {
 		border-radius: var(--border-radius-none);
+	}
+
+	&.lambda-textarea-radius-tiny {
+		border-radius: var(--border-radius-xs);
 	}
 
 	&:is(.lambda-textarea-radius-small) {
@@ -101,11 +109,11 @@
 
 		&.lambda-textarea-invalid {
 			border: var(--border-width-xs) dashed var(--danger-base-color);
-			background-color: var(--danger-light-color);
+			background-color: var(--danger-opacity-color);
 
 			&:focus-within {
 				outline: 3px solid var(--danger-outline-color);
-				border-color: var(--danger-o-color);
+				border-color: var(--danger-base-color);
 			}
 		}
 	}
@@ -119,7 +127,7 @@
 		}
 
 		&.lambda-textarea-invalid {
-			background-color: var(--danger-background-color);
+			background-color: var(--danger-opacity-color);
 
 			&:focus-within {
 				outline: 3px solid var(--danger-outline-color);
@@ -137,31 +145,11 @@
 	top: var(--padding-xs);
 
 	&.lambda-textarea-invalid-icon-whitlabel {
-		top: calc(var(--padding-xs) + var(--icon-size-sm));
+		top: calc(var(--padding-xs) + var(--icon-size-lg));
 	}
 }
 
 .lambda-textarea-wrapper-disabled {
+	opacity: 0.5;
 	cursor: not-allowed;
-}
-
-.lambda-textarea-disabled {
-	background-color: var(--surface-c);
-	color: var(--foreground-disabled-color);
-	cursor: not-allowed;
-	pointer-events: none;
-
-	&::placeholder {
-		color: var(--surface-e);
-	}
-
-	&.lambda-textarea-outline {
-		border: var(--border-width-xs) solid var(--surface-d);
-		color: var(--foreground-disabled-color);
-	}
-
-	&.lambda-textarea-soft {
-		border: none;
-		color: var(--foreground-disabled-color);
-	}
 }

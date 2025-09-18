@@ -25,11 +25,6 @@ const meta: Meta<typeof TextArea> = {
 			control: "boolean",
 			description: "Disabled state of the card",
 		},
-		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "large"],
-			description: "Radius of the card",
-		},
 	},
 };
 
@@ -54,7 +49,6 @@ export const Outline: Story = {
 	args: {
 		variant: "outline",
 		size: "medium",
-		radius: "small",
 		invalid: false,
 		disabled: false,
 		label: "Outline",
@@ -67,7 +61,6 @@ export const Soft: Story = {
 	args: {
 		variant: "soft",
 		size: "medium",
-		radius: "small",
 		invalid: false,
 		disabled: false,
 		label: "Soft",
