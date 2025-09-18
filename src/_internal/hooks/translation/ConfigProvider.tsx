@@ -36,7 +36,11 @@ export const ConfigProvider = ({
 		return value.replace(/{{(\w+)}}/g, (_: any, v: any) => vars[v] ?? "");
 	};
 
-	return <ConfigContext.Provider value={{ lang, t, radius }}>{children}</ConfigContext.Provider>;
+	return (
+		<ConfigContext.Provider value={{ lang, t, radius: radius || "tiny" }}>
+			{children}
+		</ConfigContext.Provider>
+	);
 };
 
 export const useConfig = () => useContext(ConfigContext);
