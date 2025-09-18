@@ -13,84 +13,102 @@
 	pointer-events: none;
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-md);
+	padding: var(--padding-xs) var(--padding-md);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-semibold) !important;
 	line-height: 1.5;
 	max-width: 200px;
 	text-align: center;
 	box-sizing: border-box;
 	word-wrap: break-word;
 	opacity: 0;
-	border-radius: var(--border-radius-sm);
-	/*transition: all 5s ease;*/
-	/* Animación opcional (requiere estilos adicionales en la clase visible) */
-	transform-origin: center bottom;
-	transform: scale(0.9);
+	color: var(--white-color);
+	border-radius: var(--border-radius-xs);
+	border: none;
+	transform-origin: bottom center;
+	transform: translateY(25%);
+	text-shadow: 0 0 1px #000000;
+
+	&::before {
+		content: "";
+		position: absolute;
+		border-width: var(--icon-size-md);
+		border-style: solid;
+		pointer-events: none;
+		z-index: -1;
+		border-width: 5px;
+	}
 }
 
 /* Estado Visible */
 .lambda-tooltip-container.visible {
-	opacity: 1;
-	transform: scale(1);
+	&:is(
+			.lambda-tooltip-container-top-center,
+			.lambda-tooltip-container-top-left,
+			.lambda-tooltip-container-top-right
+		) {
+		animation: fadeInTop 0.3s ease-in-out both;
+	}
+
+	&:is(
+			.lambda-tooltip-container-bottom-center,
+			.lambda-tooltip-container-bottom-left,
+			.lambda-tooltip-container-bottom-right
+		) {
+		animation: fadeInBottom 0.3s ease-in-out both;
+	}
 }
 
-/* Variantes de Tamaño del Contenedor */
-.lambda-tooltip-container-tiny {
-	padding: var(--padding-xs) var(--padding-sm);
-	font-size: var(--font-size-xs);
-	max-width: 150px;
+@keyframes fadeInTop {
+	from {
+		opacity: 0;
+		transform: translateY(25%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
-.lambda-tooltip-container-small {
-	padding: var(--padding-xs) var(--padding-sm);
-	font-size: var(--font-size-sm);
-	max-width: 150px;
+@keyframes fadeInBottom {
+	from {
+		opacity: 0;
+		transform: translateY(-25%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
-.lambda-tooltip-container-medium {
-	padding: var(--padding-sm) var(--padding-md);
-	font-size: var(--font-size-md);
-	max-width: 200px;
-}
-
-.lambda-tooltip-container-large {
-	padding: var(--padding-sm) var(--padding-md);
-	font-size: var(--font-size-lg);
-	max-width: 250px;
+.lambda-tooltip-container-neutral {
+	background-color: var(--neutral-base-color);
+	color: var(--foreground-invert-color);
+	text-shadow: none;
 }
 
 .lambda-tooltip-container-primary {
 	background-color: var(--primary-base-color);
-	color: var(--white-color);
-	border: none;
 }
 
 .lambda-tooltip-container-secondary {
 	background-color: var(--secondary-base-color);
-	color: var(--foreground-invert-color);
-	border: none;
 }
 
 .lambda-tooltip-container-success {
 	background-color: var(--success-base-color);
-	color: var(--white-color);
-	border: none;
 }
 
 .lambda-tooltip-container-danger {
 	background-color: var(--danger-base-color);
-	color: var(--white-color);
-	border: none;
 }
 
 .lambda-tooltip-container-warning {
 	background-color: var(--warning-base-color);
-	color: var(--white-color);
-	border: none;
 }
 
 .lambda-tooltip-container-info {
 	background-color: var(--info-base-color);
-	color: var(--white-color);
-	border: none;
 }
 
 /* Posición para ayudar en estilos específicos (principalmente transform-origin si hay animación) */
@@ -122,6 +140,10 @@
 .lambda-tooltip-container-top-center,
 .lambda-tooltip-container-top-left,
 .lambda-tooltip-container-top-right {
+	&.lambda-tooltip-container-neutral::before {
+		border-top-color: var(--neutral-base-color);
+	}
+
 	&.lambda-tooltip-container-primary::before {
 		border-top-color: var(--primary-base-color);
 	}
@@ -150,8 +172,8 @@
 .lambda-tooltip-container-bottom-center,
 .lambda-tooltip-container-bottom-left,
 .lambda-tooltip-container-bottom-right {
-	&.lambda-tooltip-container-default::before {
-		border-bottom-color: var(--foreground-color);
+	&.lambda-tooltip-container-neutral::before {
+		border-bottom-color: var(--neutral-base-color);
 	}
 
 	&.lambda-tooltip-container-primary::before {
@@ -177,33 +199,6 @@
 	&.lambda-tooltip-container-info::before {
 		border-bottom-color: var(--info-base-color);
 	}
-}
-
-/* Flecha del Tooltip (Pseudo-elemento ::before en el contenedor del tooltip) */
-.lambda-tooltip-container::before {
-	content: "";
-	position: absolute;
-	border-width: var(--icon-size-md);
-	border-style: solid;
-	pointer-events: none;
-	z-index: -1;
-}
-
-/* Variantes de Tamaño de la Flecha (afecta border-width) */
-.lambda-tooltip-arrow-tiny::before {
-	border-width: 5px;
-}
-
-.lambda-tooltip-arrow-small::before {
-	border-width: 5px;
-}
-
-.lambda-tooltip-arrow-medium::before {
-	border-width: 5px;
-}
-
-.lambda-tooltip-arrow-large::before {
-	border-width: 5px;
 }
 
 /* Flecha abajo, apuntando hacia arriba (para tooltips posicionados ABOVE el target) */

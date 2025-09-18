@@ -54,7 +54,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 			delayHide = 100,
 			offset = 8,
 			color = "secondary",
-			size = "medium",
 			disabled = false,
 			ariaLabel,
 			id,
@@ -389,13 +388,12 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 						style={{
 							...tooltipPositionStyle,
 						}}
-						// Aplicar variantes CVA para el contenedor (size, variant, position para estilos específicos)
+						// Aplicar variantes CVA para el contenedor ( variant, position para estilos específicos)
 						className={clsx(
-							tooltipContainer({ size, color, position }),
+							tooltipContainer({ color, position }),
 							{ [styles.visible]: isVisible },
 							tooltipArrow({
 								arrowPosition: mapTooltipPositionToArrowPosition(position),
-								size,
 								color,
 							})
 						)}

@@ -7,11 +7,6 @@ const meta: Meta<typeof Tooltip> = {
 	title: "Components/Tooltip",
 	component: Tooltip,
 	argTypes: {
-		size: {
-			control: "select",
-			options: ["tiny", "small", "medium", "large"],
-			description: "Size of the card",
-		},
 		content: {
 			control: "text",
 			description: "Content of the tooltip",
@@ -30,15 +25,11 @@ const meta: Meta<typeof Tooltip> = {
 };
 
 export default meta;
-const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
+const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 	return (
-		<ContainerComponent
-			title="Tooltip"
-			subtitle={args.size?.toString() || ""}
-			color={args.position?.toString() || ""}
-		>
+		<ContainerComponent title="Tooltip" color={args.position?.toString() || ""}>
 			<div
 				style={{
 					display: "flex",
@@ -80,7 +71,6 @@ const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 export const Default: StoryObj<TooltipProps> = {
 	render: (args) => <Template {...args} />,
 	args: {
-		size: "tiny",
 		delayShow: 100,
 		delayHide: 100,
 		content: "This is a tooltip",
