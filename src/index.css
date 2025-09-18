@@ -529,6 +529,6 @@ textarea {
 }
 
 .scrollBar {
-	scrollbar-color: var(--primary-hover-color) var(--neutral-soft-color);
+	scrollbar-color: var(--primary-base-color) var(--neutral-soft-color);
 	scrollbar-width: thin;
 }
