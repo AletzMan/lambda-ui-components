@@ -13,10 +13,6 @@ export interface TagProps
 	 */
 	color?: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | undefined;
 	/**
-	 * Define la forma del tag (por ejemplo, con extremos redondeados o cuadrados).
-	 */
-	radius?: "none" | "tiny" | "small" | "medium" | "large" | "full" | undefined;
-	/**
 	 * Define el texto que se muestra en el tag.
 	 */
 	text?: string;

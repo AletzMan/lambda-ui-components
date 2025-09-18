@@ -25,11 +25,6 @@ const meta: Meta<typeof Tag> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
-		radius: {
-			control: "select",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
-			description: "Input radius",
-		},
 		text: {
 			control: "text",
 			description: "Input text",
@@ -75,7 +70,6 @@ export const Outline: Story = {
 		icon: <BadgeCheck />,
 		size: "small",
 		text: "Tag",
-		radius: "small",
 	},
 };
 
@@ -87,7 +81,6 @@ export const Solid: Story = {
 		icon: <BadgeCheck />,
 		size: "small",
 		text: "Tag",
-		radius: "small",
 	},
 };
 
@@ -99,19 +92,6 @@ export const Soft: Story = {
 		icon: <BadgeCheck />,
 		size: "small",
 		text: "Tag",
-		radius: "small",
-	},
-};
-
-export const Dashed: Story = {
-	render: Template,
-	args: {
-		variant: "dashed",
-		color: "primary",
-		icon: <BadgeCheck />,
-		size: "small",
-		text: "Tag",
-		radius: "small",
 	},
 };
 
@@ -123,6 +103,16 @@ export const Subtle: Story = {
 		icon: <BadgeCheck />,
 		size: "small",
 		text: "Tag",
-		radius: "small",
+	},
+};
+
+export const Dashed: Story = {
+	render: Template,
+	args: {
+		variant: "dashed",
+		color: "primary",
+		icon: <BadgeCheck />,
+		size: "small",
+		text: "Tag",
 	},
 };

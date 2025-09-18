@@ -6,6 +6,7 @@
 	gap: var(--padding-md);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-md);
+	box-sizing: border-box;
 
 	& > svg {
 		display: flex;
@@ -22,6 +23,7 @@
 }
 
 .lambda-tag-solid {
+	border: var(--border-width-xs) solid transparent;
 	&.lambda-tag-neutral {
 		color: var(--foreground-invert-color);
 		background-color: var(--neutral-base-color);
@@ -210,6 +212,7 @@
 }
 
 .lambda-tag-soft {
+	border: var(--border-width-xs) solid transparent;
 	color: var(--primary-text-color);
 
 	&.lambda-tag-neutral {
