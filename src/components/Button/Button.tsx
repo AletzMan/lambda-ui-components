@@ -24,7 +24,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		},
 		ref
 	) => {
-		const { radius } = useConfig();
+		const { radiusField } = useConfig();
 		let contextSize, contextDisabled;
 		try {
 			const context = useInputGroup();
@@ -54,7 +54,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						size: contextSize,
 						color,
 						disabled: contextDisabled,
-						radius,
+						radius: radiusField,
 						loading,
 						iconPosition,
 						isCircle,
