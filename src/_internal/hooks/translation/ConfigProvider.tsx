@@ -5,21 +5,25 @@ import fr from "./fr-FR.json";
 
 const translations = { en, es, fr };
 
-type LambdaRadius = "tiny" | "small" | "medium" | "large" | "full" | "none" | null | undefined;
+type LambdaRadiusField = "tiny" | "small" | "medium" | "large" | "full" | "none" | null | undefined;
+type LambdaRadiusBox = "tiny" | "small" | "medium" | "large" | "none" | null | undefined;
 
 const ConfigContext = createContext({
 	lang: "en",
-	radius: "tiny" as LambdaRadius,
+	radiusField: "tiny" as LambdaRadiusField,
+	radiusBox: "tiny" as LambdaRadiusBox,
 	t: (key: string, vars?: Record<string, any>) => key,
 });
 
 export const ConfigProvider = ({
 	lang,
-	radius,
+	radiusField,
+	radiusBox,
 	children,
 }: {
 	lang: string;
-	radius?: LambdaRadius;
+	radiusField?: LambdaRadiusField;
+	radiusBox?: LambdaRadiusBox;
 	children: ReactNode;
 }) => {
 	const dict = translations[lang as keyof typeof translations] || translations.en;
@@ -37,7 +41,9 @@ export const ConfigProvider = ({
 	};
 
 	return (
-		<ConfigContext.Provider value={{ lang, t, radius: radius || "tiny" }}>
+		<ConfigContext.Provider
+			value={{ lang, t, radiusField: radiusField || "tiny", radiusBox: radiusBox || "tiny" }}
+		>
 			{children}
 		</ConfigContext.Provider>
 	);
