@@ -532,3 +532,28 @@ textarea {
 	scrollbar-color: var(--primary-base-color) var(--neutral-soft-color);
 	scrollbar-width: thin;
 }
+
+.button-docs {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(
+		90deg,
+		var(--lambda-color-primary-600),
+		var(--lambda-color-primary-400)
+	);
+	background-size: 200% 100%;
+
+	border-radius: var(--border-radius-sm);
+	border: none;
+	padding: 0.5rem 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-decoration: none !important;
+	color: var(--lambda-color-primary-050) !important;
+}
+
+.button-docs:hover {
+	background-position: 100%;
+}

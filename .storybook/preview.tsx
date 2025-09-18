@@ -1,11 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
-import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/manrope";
 import React, { useEffect } from "react";
 import { ThemeProvider } from "../src/components/ThemeProvider/ThemeProvider";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
 import "../src/index.css";
 import { ConfigProvider } from "../src/_internal/hooks/translation/ConfigProvider";
+import { create } from "@storybook/theming";
 
 const ThemeDecorator = (Story, context) => {
 	const theme = context.globals.theme || "dark";
@@ -24,7 +25,7 @@ const ThemeDecorator = (Story, context) => {
 	}, [theme, Story, context]);
 
 	return (
-		<ConfigProvider lang="en" radiusField="tiny" radiusBox="tiny">
+		<ConfigProvider lang="en" radiusField="tiny" radiusBox="small">
 			<ThemeProvider defaultTheme={theme}>
 				<Story />
 			</ThemeProvider>
@@ -34,6 +35,14 @@ const ThemeDecorator = (Story, context) => {
 
 const preview: Preview = {
 	parameters: {
+		docs: {
+			theme: create({
+				base: "dark",
+				brandTitle: "Lambda UI Components",
+				brandUrl: "https://github.com/lambda-ui/lambda-ui-components",
+				fontBase: "Manrope Variable, sans-serif",
+			}),
+		},
 		options: {
 			storySort: {
 				order: ["overview", "components", "pages"],

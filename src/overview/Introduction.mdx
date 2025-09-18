@@ -178,17 +178,7 @@ Nuestra librería cuenta con una amplia gama de componentes listos para usar, in
 	{COMPONENTS.map((component) => (
 		<li key={component.component} style={{ width: "100%" }}>
 			<a
-				style={{
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					width: "100%",
-					padding: "0.5rem",
-					backgroundColor: "#a0dffa",
-					color: "#0861aa",
-					borderRadius: "0.5rem",
-					textDecoration: "none",
-				}}
+				className="button-docs"
 				href={`/story/components-${component.component.toLowerCase()}--${component.default.toLowerCase()}`}
 			>
 				{component.component}
