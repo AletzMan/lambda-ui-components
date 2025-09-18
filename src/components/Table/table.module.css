@@ -41,6 +41,10 @@
 	&:is(.lambda-table-container-radius-large) {
 		border-radius: var(--border-radius-lg);
 	}
+
+	&:is(.lambda-table-container-radius-full) {
+		border-radius: var(--border-radius-full);
+	}
 }
 
 .lambda-table-container-table {

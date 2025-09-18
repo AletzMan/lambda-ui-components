@@ -9,6 +9,7 @@ export const containerVariants = cva(styles["lambda-table-container"], {
 			small: styles["lambda-table-container-radius-small"],
 			medium: styles["lambda-table-container-radius-medium"],
 			large: styles["lambda-table-container-radius-large"],
+			full: styles["lambda-table-container-radius-full"],
 		},
 		variant: {
 			soft: styles["lambda-table-container-soft"],
