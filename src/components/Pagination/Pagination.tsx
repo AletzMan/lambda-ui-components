@@ -13,7 +13,7 @@ import {
 } from "./pagination.variants";
 import styles from "./pagination.module.css";
 import { PaginationButtonProps, PaginationProps } from "./pagination.types";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 const PaginationButton = ({
 	isActive,
@@ -80,7 +80,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 		},
 		ref
 	) => {
-		const { radiusField } = useConfig();
+		const { radiusField } = useUIConfig();
 		// --- Lógica para calcular los números de página visibles ---
 		const pageNumbers = useMemo(() => {
 			const pages: (number | string)[] = [];

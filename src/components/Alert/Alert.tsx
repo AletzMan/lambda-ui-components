@@ -13,7 +13,7 @@ import {
 import styles from "./Alert.module.css";
 import { AlertProps } from "./alert.types";
 import { AlertVariants, alertVariants } from "./alert.variants";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 // --- Función helper para obtener el icono por defecto según la colore ---
 const getDefaultIcon = (color: AlertVariants["color"]) => {
@@ -53,7 +53,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 		},
 		ref
 	) => {
-		const { radiusBox } = useConfig();
+		const { radiusBox } = useUIConfig();
 		// Determinar si se debe mostrar algún icono
 		const shouldShowIcon = showIcon || Boolean(customIcon);
 

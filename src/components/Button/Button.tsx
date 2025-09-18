@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { useInputGroup } from "../InputGroup/InputGroup";
 import { button } from "./button.variants";
 import { ButtonProps } from "./button.types";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(
@@ -24,7 +24,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		},
 		ref
 	) => {
-		const { radiusField } = useConfig();
+		const { radiusField } = useUIConfig();
 		let contextSize, contextDisabled;
 		try {
 			const context = useInputGroup();

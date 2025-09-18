@@ -11,14 +11,14 @@ import clsx from "clsx";
 import { AccordionHeader } from "./AccordionHeader";
 import { AccordionContent } from "./AccordionContent";
 import { useAccordionContext } from "./hooks/useContext";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 // --- Componente Hijo: AccordionItem (Revisado para Inyectar Props) ---
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 	({ value, children, disabled = false, className, style }, ref) => {
 		// Obtener el estado activo y el handler del contexto del Accordion padre
 		const { activeValue, size, variant } = useAccordionContext();
-		const { radiusBox } = useConfig();
+		const { radiusBox } = useUIConfig();
 
 		// Determinar si este AccordionItem específico está abierto
 		const isOpen = activeValue === value;

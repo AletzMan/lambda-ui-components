@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { forwardRef, useEffect, useState } from "react";
 import { RatingProps } from "./rating.types";
 import styles from "./rating.module.css";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/ConfigProvider";
 
 export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 	(
@@ -13,7 +13,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 	) => {
 		const [internalValue, setInternalValue] = useState(value || 0);
 		const [type, setType] = useState<"icon" | "custom" | "string">("icon");
-		const { t } = useConfig();
+		const { t } = useTranslation();
 
 		useEffect(() => {
 			const firstTypeIcon = typeof arrayIcons[0];

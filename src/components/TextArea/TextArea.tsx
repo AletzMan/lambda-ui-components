@@ -6,7 +6,7 @@ import { CircleX } from "lucide-react";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { labelString, textarea } from "./textarea.variants";
 import { TextAreaProps } from "./textarea.types";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	(
@@ -27,7 +27,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 		ref
 	) => {
 		const [focused, setFocused] = useState(false);
-		const { radius } = useConfig();
+		const { radiusField } = useUIConfig();
 
 		const textareaId = useId();
 		const errorId = errorMessage && invalid ? `${textareaId}-error` : undefined;
@@ -57,7 +57,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			>
 				{label && (
 					<label
-						className={clsx(labelString({ disabled, radius: radius || "tiny", size }), {
+						className={clsx(labelString({ disabled, radius: radiusField || "tiny", size }), {
 							[styles["lambda-textarea-label-required"]]: required,
 						})}
 						htmlFor={textareaId}
@@ -68,7 +68,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 				<textarea
 					className={clsx(
 						"scrollBar",
-						textarea({ variant, radius, className, size, invalid, disabled })
+						textarea({ variant, radius: radiusField || "tiny", className, size, invalid, disabled })
 					)}
 					ref={ref}
 					id={textareaId}

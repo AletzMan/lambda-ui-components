@@ -22,7 +22,7 @@ import styles from "./table.module.css";
 import { Pagination } from "../Pagination/Pagination";
 import clsx from "clsx";
 import { Select } from "../Select/Select";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig, useTranslation } from "../../_internal/hooks/translation/ConfigProvider";
 
 // Definición de tipos
 interface SortConfig {
@@ -77,7 +77,8 @@ const TableRoot = <T,>({
 	}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
 	const [maxRows, setMaxRows] = useState(rowsPerPage);
-	const { t, radiusBox } = useConfig();
+	const { radiusBox } = useUIConfig();
+	const { t } = useTranslation();
 
 	const sortedData = useMemo(() => {
 		if (!sortConfig.key || !data) {

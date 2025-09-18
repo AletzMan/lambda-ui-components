@@ -15,6 +15,7 @@ export const textarea = cva(styles[`lambda-textarea`], {
 			small: styles["lambda-textarea-radius-small"],
 			medium: styles["lambda-textarea-radius-medium"],
 			large: styles["lambda-textarea-radius-large"],
+			full: styles["lambda-textarea-radius-full"],
 		},
 		variant: {
 			outline: styles["lambda-textarea-outline"],
@@ -46,6 +47,7 @@ export const labelString = cva(styles[`lambda-textarea-label`], {
 			small: styles["lambda-textarea-label-radius-small"],
 			medium: styles["lambda-textarea-label-radius-medium"],
 			large: styles["lambda-textarea-label-radius-large"],
+			full: styles["lambda-textarea-label-radius-full"],
 		},
 		size: {
 			tiny: styles["lambda-textarea-label-tiny"],

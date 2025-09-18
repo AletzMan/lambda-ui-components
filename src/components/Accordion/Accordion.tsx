@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { AccordionProps, AccordionValue } from "./accordion.types";
 import { accordionVariants } from "./accordion.variants";
 import { AccordionContext } from "./hooks/useContext";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 	(
@@ -22,7 +22,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 		ref
 	) => {
 		// Gestionar el estado interno del item activo para Accordion no controlado
-		const { radiusBox } = useConfig();
+		const { radiusBox } = useUIConfig();
 		const isControlled = onValueChange !== undefined;
 		const [uncontrolledActiveValue, setUncontrolledActiveValue] =
 			useState<AccordionValue>(defaultValue);

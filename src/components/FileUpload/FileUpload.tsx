@@ -18,7 +18,7 @@ import { FileUploadProps, SelectedFileData } from "./file-upload-types";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { formatBytes } from "../../_util/helpers";
-import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/ConfigProvider";
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	(
@@ -55,7 +55,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const [isDragging, setIsDragging] = useState(false);
 		// Estado para foco (para helperText/estilos)
 		const [focused, setFocused] = useState(false);
-		const { t } = useConfig();
+		const { t } = useTranslation();
 
 		// Refs para elementos DOM
 		const fileInputRef = useRef<HTMLInputElement>(null);
