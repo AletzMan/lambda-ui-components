@@ -5,7 +5,7 @@ import fr from "./fr-FR.json";
 
 const translations = { en, es, fr };
 
-type LambdaRadius = "tiny" | "small" | "medium" | "large" | "none" | null | undefined;
+type LambdaRadius = "tiny" | "small" | "medium" | "large" | "full" | "none" | null | undefined;
 
 const ConfigContext = createContext({
 	lang: "en",
