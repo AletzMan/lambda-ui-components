@@ -30,11 +30,6 @@ const meta: Meta<typeof Button> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Button size",
 		},
-		radius: {
-			control: "inline-radio",
-			options: ["none", "small", "medium", "large", "pill", "circle"],
-			description: "Corner shape",
-		},
 		iconPosition: {
 			control: "inline-radio",
 			options: ["left", "right"],
@@ -47,6 +42,10 @@ const meta: Meta<typeof Button> = {
 		disabled: {
 			control: "boolean",
 			description: "Disables the button and makes it inactive.",
+		},
+		isCircle: {
+			control: "boolean",
+			description: "Makes the button circular.",
 		},
 		"aria-label": {
 			control: "text",
@@ -83,17 +82,17 @@ const Template = (args: ButtonProps) => {
 			>
 				{buttonColors.map((color) => (
 					<Button
+						{...args}
 						key={color}
 						color={color as ButtonProps["color"]}
 						variant={args.variant}
 						size={args.size}
-						radius={args.radius}
 						loading={args.loading}
 						disabled={args.disabled}
 						iconPosition={args.iconPosition}
 						icon={args.loading ? undefined : args.icon}
-						label={args.radius === "circle" ? "" : args.loading ? args.loadingText : color}
-						style={{ textTransform: "capitalize", width: "150px" }}
+						label={args.isCircle ? "" : args.loading ? args.loadingText : color}
+						style={{ textTransform: "capitalize" }}
 					/>
 				))}
 			</div>
@@ -107,12 +106,12 @@ export const Solid: Story = {
 		color: "secondary",
 		variant: "solid",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		loadingText: "Loading",
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		isCircle: false,
 		icon: <CircleCheck />,
 	},
 };
@@ -123,12 +122,12 @@ export const Classic: Story = {
 		color: "primary",
 		variant: "classic",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		loadingText: "Loading",
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		isCircle: false,
 		icon: <CircleCheck />,
 	},
 };
@@ -139,12 +138,12 @@ export const Outline: Story = {
 		color: "danger",
 		variant: "outline",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		loadingText: "Loading",
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		isCircle: false,
 		icon: <CircleCheck />,
 	},
 };
@@ -155,12 +154,12 @@ export const Dashed: Story = {
 		color: "success",
 		variant: "dashed",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		loadingText: "Loading",
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		isCircle: false,
 		icon: <CircleCheck />,
 	},
 };
@@ -171,12 +170,12 @@ export const Soft: Story = {
 		color: "warning",
 		variant: "soft",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		loadingText: "Loading",
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		isCircle: false,
 		icon: <CircleCheck />,
 	},
 };
@@ -187,12 +186,12 @@ export const Subtle: Story = {
 		color: "warning",
 		variant: "subtle",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		loadingText: "Loading",
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		isCircle: false,
 		icon: <CircleCheck />,
 	},
 };
@@ -203,12 +202,12 @@ export const Text: Story = {
 		color: "warning",
 		variant: "text",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		loadingText: "Loading",
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		isCircle: false,
 		icon: <CircleCheck />,
 	},
 };
