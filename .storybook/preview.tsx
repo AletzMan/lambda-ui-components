@@ -24,7 +24,7 @@ const ThemeDecorator = (Story, context) => {
 	}, [theme, Story, context]);
 
 	return (
-		<ConfigProvider lang="en">
+		<ConfigProvider lang="en" radius="tiny">
 			<ThemeProvider defaultTheme={theme}>
 				<Story />
 			</ThemeProvider>
