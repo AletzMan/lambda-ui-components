@@ -124,7 +124,11 @@
 }
 
 .lambda-pagination-button-radius-none {
-	border-radius: 0;
+	border-radius: var(--border-radius-none);
+}
+
+.lambda-pagination-button-radius-tiny {
+	border-radius: var(--border-radius-xs);
 }
 
 .lambda-pagination-button-radius-small {
