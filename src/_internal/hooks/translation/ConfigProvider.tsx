@@ -6,6 +6,7 @@ import fr from "./fr-FR.json";
 const translations = { en, es, fr };
 
 type LambdaRadiusField = "tiny" | "small" | "medium" | "large" | "full" | "none" | null | undefined;
+
 type LambdaRadiusBox = "tiny" | "small" | "medium" | "large" | "none" | null | undefined;
 
 const ConfigContext = createContext({
