@@ -1,26 +1,21 @@
 // src/components/Alert/Alert.types.ts
 
 import React, { HTMLAttributes } from "react";
-
-// Define los tipos posibles para la variante de color del Alert
-export type AlertColor = "default" | "primary" | "danger" | "success" | "warning" | "info";
-
-export type AlertSize = "tiny" | "small" | "medium" | "large" | undefined;
-export type AlertVariant = "outline" | "soft" | "solid" | undefined;
+import { AlertVariants } from "./alert.variants";
 
 // Props para el componente Alert
 // Extiende HTMLAttributes<HTMLDivElement> para permitir props estándar de div
-export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
+export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "color"> {
 	/**
 	 * Define la variante visual del alert, afectando típicamente el color de fondo y texto.
 	 * Corresponde a los tipos semánticos de alerta.
 	 */
-	color: AlertColor;
+	color: AlertVariants["color"];
 	/**
 	 * Define la variante visual del alert, afectando típicamente el color de fondo y texto.
 	 * Corresponde a los tipos semánticos de alerta.
 	 */
-	variant: AlertVariant;
+	variant: AlertVariants["variant"];
 
 	/**
 	 * El texto que representa el titulo del contenido.
@@ -42,7 +37,7 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
 	 * Modifica el tamaño de la Alert
 	 * @default small
 	 */
-	size?: AlertSize;
+	size?: AlertVariants["size"];
 
 	/**
 	 * Si es `true`, se mostrará un icono por defecto basado en la variante (success, danger, warning, info).

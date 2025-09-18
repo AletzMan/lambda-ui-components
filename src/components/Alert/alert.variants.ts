@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import styles from "./Alert.module.css";
 
 export const alertVariants = cva(styles["lambda-alert"], {
@@ -17,6 +17,13 @@ export const alertVariants = cva(styles["lambda-alert"], {
 			warning: styles["lambda-alert-warning"],
 			info: styles["lambda-alert-info"],
 		},
+		radius: {
+			none: styles["lambda-alert-radius-none"],
+			tiny: styles["lambda-alert-radius-tiny"],
+			small: styles["lambda-alert-radius-small"],
+			medium: styles["lambda-alert-radius-medium"],
+			large: styles["lambda-alert-radius-large"],
+		},
 		size: {
 			tiny: styles["lambda-alert-tiny"],
 			small: styles["lambda-alert-small"],
@@ -30,3 +37,5 @@ export const alertVariants = cva(styles["lambda-alert"], {
 		variant: "soft",
 	},
 });
+
+export type AlertVariants = VariantProps<typeof alertVariants>;

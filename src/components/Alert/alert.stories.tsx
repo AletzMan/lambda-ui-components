@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "./Alert";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { AlertColor, AlertProps } from "./alert.types";
+import { AlertProps } from "./alert.types";
+import { AlertVariants } from "./alert.variants";
 
 const meta: Meta<typeof Alert> = {
 	title: "Components/Alert",
@@ -84,7 +85,7 @@ const Template = (args: AlertProps) => (
 					<Alert
 						{...args}
 						key={color}
-						color={color as AlertColor}
+						color={color as AlertVariants["color"]}
 						title="Título del Alert"
 						message="Este es un mensaje de alerta interactivo."
 					/>
