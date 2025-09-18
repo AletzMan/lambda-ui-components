@@ -7,14 +7,13 @@ import { ChevronDownIcon } from "lucide-react";
 import { useAccordionContext } from "./hooks/useContext";
 
 export const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProps>(
-	({ children, className, style, ...restProps }, ref) => {
+	({ children, className, style, disabled, ...restProps }, ref) => {
 		const { onValueChange } = useAccordionContext();
 
 		// Desestructuramos para extraer explícitamente las props problemáticas.
 		// El resto de las props se queda en 'domProps'.
-		const { itemvalue, isopen, disabled, size, variant } =
-			restProps as AccordionHeaderInjectedProps;
-
+		const { itemvalue, isopen, size, variant } = restProps as AccordionHeaderInjectedProps;
+		console.log(disabled);
 		const headerId = useId();
 		const contentId = `content-${headerId}`;
 
@@ -25,7 +24,7 @@ export const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProp
 		const headerClasses = clsx(
 			accordionHeaderVariants({
 				state: isopen ? "open" : "closed",
-				disabled: disabled,
+				disabled,
 				size,
 				variant,
 			}),
@@ -38,7 +37,6 @@ export const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProp
 				className={headerClasses}
 				style={style}
 				onClick={handleHeaderClick}
-				disabled={disabled}
 				// Atributos HTML válidos
 				id={headerId}
 				role="button"

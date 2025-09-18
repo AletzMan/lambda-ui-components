@@ -87,6 +87,16 @@ export interface AccordionHeaderProps extends HTMLAttributes<HTMLButtonElement> 
 	 * El contenido del encabezado del item (el texto clickeable).
 	 */
 	children: React.ReactNode;
+	/**
+	 * Si es true, este item está deshabilitado y no se puede expandir/colapsar.
+	 * @default false
+	 */
+	disabled?: boolean;
+	/**
+	 * Opcional: Tamaño visual del Accordion.
+	 * @type `AccordionSize`
+	 * @default `medium`
+	 */
 	size?: AccordionSize;
 	/**
 	 * Opcional: Variante visual del Accordion.

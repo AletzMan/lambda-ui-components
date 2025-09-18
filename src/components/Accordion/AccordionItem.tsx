@@ -11,12 +11,14 @@ import clsx from "clsx";
 import { AccordionHeader } from "./AccordionHeader";
 import { AccordionContent } from "./AccordionContent";
 import { useAccordionContext } from "./hooks/useContext";
+import { useConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 // --- Componente Hijo: AccordionItem (Revisado para Inyectar Props) ---
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 	({ value, children, disabled = false, className, style }, ref) => {
 		// Obtener el estado activo y el handler del contexto del Accordion padre
 		const { activeValue, size, variant } = useAccordionContext();
+		const { radiusBox } = useConfig();
 
 		// Determinar si este AccordionItem específico está abierto
 		const isOpen = activeValue === value;
@@ -29,7 +31,12 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 
 		// Clases CSS para el contenedor del AccordionItem
 		const itemClasses = clsx(
-			accordionItemVariants({ state: isOpen ? "open" : "closed", disabled, variant }),
+			accordionItemVariants({
+				state: isOpen ? "open" : "closed",
+				disabled,
+				variant,
+				radius: radiusBox,
+			}),
 			className
 		);
 
@@ -46,7 +53,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 				const injectedProps: AccordionHeaderFinalInjectedProps = {
 					itemvalue: value, // Inyectar el valor de ESTE item
 					isopen: isOpen, // Inyectar si ESTE item está abierto
-					disabled: disabled, // Inyectar si ESTE item está deshabilitado
+					disabled, // Inyectar si ESTE item está deshabilitado
 					headerid: headerId, // Inyectar el ID del header generado para ESTE item
 					contentid: contentId, // Inyectar el ID del content generado para ESTE item
 					size,
