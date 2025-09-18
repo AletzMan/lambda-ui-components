@@ -31,12 +31,6 @@ const meta: Meta<typeof Pagination> = {
 				disable: true,
 			},
 		},
-		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "circle"],
-			description: "Corner shape",
-			type: "string",
-		},
 		size: {
 			control: "select",
 			options: ["tiny", "small", "medium", "large"],
@@ -84,7 +78,6 @@ export const Solid: Story = {
 	args: {
 		variant: "solid",
 		size: "small",
-		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,
@@ -100,7 +93,6 @@ export const Ouline: Story = {
 	args: {
 		variant: "outline",
 		size: "small",
-		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,
@@ -116,7 +108,6 @@ export const Soft: Story = {
 	args: {
 		variant: "soft",
 		size: "small",
-		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,
@@ -132,7 +123,6 @@ export const Bordered: Story = {
 	args: {
 		variant: "bordered",
 		size: "small",
-		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,
