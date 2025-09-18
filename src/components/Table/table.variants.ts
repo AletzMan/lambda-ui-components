@@ -3,6 +3,13 @@ import styles from "./table.module.css";
 
 export const containerVariants = cva(styles["lambda-table-container"], {
 	variants: {
+		radius: {
+			none: styles["lambda-table-container-radius-none"],
+			tiny: styles["lambda-table-container-radius-tiny"],
+			small: styles["lambda-table-container-radius-small"],
+			medium: styles["lambda-table-container-radius-medium"],
+			large: styles["lambda-table-container-radius-large"],
+		},
 		variant: {
 			soft: styles["lambda-table-container-soft"],
 			underlined: styles["lambda-table-container-underlined"],

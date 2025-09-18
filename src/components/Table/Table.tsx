@@ -77,7 +77,7 @@ const TableRoot = <T,>({
 	}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
 	const [maxRows, setMaxRows] = useState(rowsPerPage);
-	const { t } = useConfig();
+	const { t, radius } = useConfig();
 
 	const sortedData = useMemo(() => {
 		if (!sortConfig.key || !data) {
@@ -121,7 +121,7 @@ const TableRoot = <T,>({
 
 	return (
 		<TableContext.Provider value={{ size, variant, sortConfig, handleSort }}>
-			<div className={containerVariants({ variant })}>
+			<div className={containerVariants({ variant, radius })}>
 				<Select
 					className={styles["lambda-table-pagination-select"]}
 					value={maxRows.toString()}
