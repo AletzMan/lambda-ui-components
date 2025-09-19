@@ -17,6 +17,10 @@ const meta: Meta<typeof Drawer> = {
 		showCloseButton: {
 			control: "boolean",
 		},
+		backdropType: {
+			control: "inline-radio",
+			options: ["dark", "blur", "transparent"],
+		},
 		isOpen: {
 			if: {
 				arg: "isOpen",
@@ -129,6 +133,7 @@ export const Left: StoryObj<typeof Drawer> = {
 	args: {
 		width: "small",
 		showCloseButton: true,
+		backdropType: "dark",
 	},
 };
 
@@ -137,6 +142,7 @@ export const Right: StoryObj<typeof Drawer> = {
 	args: {
 		width: "small",
 		showCloseButton: true,
+		backdropType: "dark",
 	},
 };
 
@@ -145,6 +151,7 @@ export const Top: StoryObj<typeof Drawer> = {
 	args: {
 		width: "small",
 		showCloseButton: true,
+		backdropType: "dark",
 	},
 };
 
@@ -153,5 +160,6 @@ export const Bottom: StoryObj<typeof Drawer> = {
 	args: {
 		width: "small",
 		showCloseButton: true,
+		backdropType: "dark",
 	},
 };
