@@ -23,11 +23,6 @@ const meta: Meta<typeof Input> = {
 			options: ["text", "email", "password", "search"],
 			description: "Input size",
 		},
-		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "large", "pill"],
-			description: "Corner shape",
-		},
 		label: {
 			control: "text",
 			type: "string",
@@ -95,7 +90,6 @@ export const Outline: Story = {
 	render: Template,
 	args: {
 		variant: "outline",
-		radius: "small",
 		size: "medium",
 		label: "Password",
 		floatingLabel: false,
@@ -113,7 +107,6 @@ export const Soft: Story = {
 	render: Template,
 	args: {
 		variant: "soft",
-		radius: "small",
 		size: "medium",
 		label: "Passwword",
 		floatingLabel: false,
@@ -131,7 +124,6 @@ export const Underline: Story = {
 	render: Template,
 	args: {
 		variant: "underline",
-		radius: "small",
 		size: "medium",
 		label: "Search",
 		floatingLabel: false,

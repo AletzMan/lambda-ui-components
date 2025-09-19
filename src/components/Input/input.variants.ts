@@ -11,10 +11,11 @@ export const lambdaInput = cva(styles["lambda-input"], {
 		},
 		radius: {
 			none: styles["lambda-input-radius-none"],
+			tiny: styles["lambda-input-radius-none"],
 			small: styles["lambda-input-radius-small"],
 			medium: styles["lambda-input-radius-medium"],
 			large: styles["lambda-input-radius-large"],
-			pill: styles["lambda-input-radius-pill"],
+			full: styles["lambda-input-radius-full"],
 		},
 		disabled: {
 			false: styles["lambda-input-enabled"],
@@ -26,7 +27,7 @@ export const lambdaInput = cva(styles["lambda-input"], {
 		},
 	},
 	defaultVariants: {
-		radius: "small",
+		radius: "tiny",
 		disabled: false,
 	},
 });
@@ -51,10 +52,11 @@ export const input = cva(styles["lambda-input-wrapper"], {
 		},
 		radius: {
 			none: styles["lambda-input-wrapper-radius-none"],
+			tiny: styles["lambda-input-wrapper-radius-tiny"],
 			small: styles["lambda-input-wrapper-radius-small"],
 			medium: styles["lambda-input-wrapper-radius-medium"],
 			large: styles["lambda-input-wrapper-radius-large"],
-			pill: styles["lambda-input-wrapper-radius-pill"],
+			full: styles["lambda-input-wrapper-radius-full"],
 		},
 		invalid: {
 			true: styles["lambda-input-wrapper-invalid"],
@@ -74,7 +76,7 @@ export const input = cva(styles["lambda-input-wrapper"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "small",
+		radius: "tiny",
 		type: "text",
 		hasElements: "none",
 		invalid: false,
@@ -92,10 +94,11 @@ export const labels = cva(styles["lambda-input-label"], {
 		},
 		radius: {
 			none: styles["lambda-input-label-radius-none"],
+			tiny: styles["lambda-input-label-radius-tiny"],
 			small: styles["lambda-input-label-radius-small"],
 			medium: styles["lambda-input-label-radius-medium"],
 			large: styles["lambda-input-label-radius-large"],
-			pill: styles["lambda-input-label-radius-pill"],
+			full: styles["lambda-input-label-radius-full"],
 		},
 		hasElements: {
 			none: styles["lambda-input-label-elements-none"],
@@ -105,7 +108,7 @@ export const labels = cva(styles["lambda-input-label"], {
 		},
 	},
 	defaultVariants: {
-		radius: "small",
+		radius: "tiny",
 		size: "medium",
 	},
 });

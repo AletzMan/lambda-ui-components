@@ -1,80 +1,77 @@
 import { InputVariants } from "./input.variants";
 
 export interface InputProps
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "disabled" | "size" | "type" | "onChange" | "value" | "placeholder"> {
+	extends Omit<
+		React.InputHTMLAttributes<HTMLInputElement>,
+		"disabled" | "size" | "type" | "onChange" | "value" | "placeholder"
+	> {
+	/**
+	 * Define el tamaño visual del input, ajustando el padding y el tamaño del texto.
+	 */
+	size?: InputVariants["size"];
 
-    /**
-     * Define el tamaño visual del input, ajustando el padding y el tamaño del texto.
-     */
-    size?: InputVariants["size"];
+	/**
+	 * Controla el estilo visual del input, como el color del borde o el fondo.
+	 */
+	variant?: InputVariants["variant"];
 
-    /**
-     * Ajusta la redondez de las esquinas del input.
-     */
-    radius?: InputVariants["radius"];
+	/**
+	 * Activa un estado visual de error o inválido para el input, típicamente cambiando el color del borde a rojo.
+	 */
+	invalid?: InputVariants["invalid"];
 
-    /**
-     * Controla el estilo visual del input, como el color del borde o el fondo.
-     */
-    variant?: InputVariants["variant"];
+	/**
+	 * Desactiva completamente el input, haciendo que no se pueda interactuar con él.
+	 */
+	disabled?: InputVariants["disabled"];
 
-    /**
-     * Activa un estado visual de error o inválido para el input, típicamente cambiando el color del borde a rojo.
-     */
-    invalid?: InputVariants["invalid"];
+	/**
+	 * Establece el tipo de entrada nativa subyacente (ej. 'text', 'password', 'email').
+	 */
+	type?: InputVariants["type"];
 
-    /**
-     * Desactiva completamente el input, haciendo que no se pueda interactuar con él.
-     */
-    disabled?: InputVariants["disabled"];
+	/**
+	 * Indica si el input tiene elementos adicionales a los lados (como iconos o botones), lo que puede afectar el espaciado interno (padding).
+	 */
+	hasElements?: InputVariants["hasElements"];
 
-    /**
-     * Establece el tipo de entrada nativa subyacente (ej. 'text', 'password', 'email'). 
-     */
-    type?: InputVariants["type"];
+	/**
+	 * Una etiqueta de texto asociada al input, que generalmente aparece sobre o junto a él.
+	 */
+	label?: string;
 
-    /**
-     * Indica si el input tiene elementos adicionales a los lados (como iconos o botones), lo que puede afectar el espaciado interno (padding).
-     */
-    hasElements?: InputVariants["hasElements"];
+	/**
+	 * Un mensaje de texto que se muestra debajo del input cuando está marcado como inválido (`invalid={true}`).
+	 */
+	errorMessage?: string;
 
-    /**
-     * Una etiqueta de texto asociada al input, que generalmente aparece sobre o junto a él.
-     */
-    label?: string;
+	/**
+	 * Habilita una animación donde la etiqueta (`label`) se mueve y reduce de tamaño cuando el input está enfocado o tiene valor.
+	 */
+	floatingLabel?: boolean;
 
-    /**
-     * Un mensaje de texto que se muestra debajo del input cuando está marcado como inválido (`invalid={true}`).
-     */
-    errorMessage?: string;
+	/**
+	 * Texto adicional que se muestra debajo del input para proporcionar ayuda o contexto.
+	 */
+	helperText?: string;
 
-    /**
-     * Habilita una animación donde la etiqueta (`label`) se mueve y reduce de tamaño cuando el input está enfocado o tiene valor.
-     */
-    floatingLabel?: boolean;
+	/**
+	 * Indica que este campo debe ser llenado para que un formulario sea válido.
+	 */
+	required?: boolean;
 
-    /**
-     * Texto adicional que se muestra debajo del input para proporcionar ayuda o contexto.
-     */
-    helperText?: string;
+	/**
+	 * Una función que se ejecuta cada vez que el texto en el input es modificado por el usuario. Recibe el valor actual del input como un string.
+	 */
+	onChange?: (value: string) => void;
 
-    /**
-     * Indica que este campo debe ser llenado para que un formulario sea válido.
-     */
-    required?: boolean;
+	/**
+	 * El texto actual que debe mostrar el input. Al usar esta prop, controlas el valor desde el componente padre.
+	 */
+	value?: string;
 
-    /**
-     * Una función que se ejecuta cada vez que el texto en el input es modificado por el usuario. Recibe el valor actual del input como un string.
-     */
-    onChange?: (value: string) => void;
-
-    /**
-     * El texto actual que debe mostrar el input. Al usar esta prop, controlas el valor desde el componente padre.
-     */
-    value?: string;
-
-    /**
-     * Texto que aparece dentro del input cuando está vacío y no tiene foco, sirviendo como pista para el usuario.
-     */
-    placeholder?: string;
+	/**
+	 * Texto que aparece dentro del input cuando está vacío y no tiene foco, sirviendo como pista para el usuario.
+	 */
+	placeholder?: string;
 }
