@@ -47,7 +47,6 @@
 .lambda-btn-classic {
 	transition: background 0.2s ease-in-out;
 	color: var(--white-color);
-	box-shadow: var(--box-shadow);
 
 	&.lambda-btn-neutral {
 		background: linear-gradient(
@@ -181,7 +180,6 @@
 .lambda-btn-solid {
 	border: var(--border-width-xs) solid transparent;
 	transition: filter 0.1s ease-in-out;
-	box-shadow: var(--box-shadow);
 
 	&.lambda-btn-neutral {
 		background: var(--neutral-base-color);
@@ -225,7 +223,6 @@
 .lambda-btn-outline {
 	border: var(--border-width-xs) solid;
 	background-color: transparent;
-	box-shadow: var(--box-shadow);
 
 	&.lambda-btn-neutral {
 		border-color: var(--neutral-base-color);
@@ -322,7 +319,6 @@
 .lambda-btn-dashed {
 	background-color: transparent;
 	border: var(--border-width-xs) dashed;
-	box-shadow: var(--box-shadow);
 
 	&.lambda-btn-neutral {
 		border-color: var(--neutral-base-color);
@@ -515,7 +511,6 @@
 .lambda-btn-subtle {
 	background-color: transparent;
 	border: var(--border-width-xs) solid transparent;
-	box-shadow: var(--box-shadow);
 
 	&.lambda-btn-neutral {
 		background-color: var(--neutral-opacity-color);
