@@ -93,12 +93,12 @@
 	height: 100%;
 	font-family: var(--font-family);
 	color: var(--foreground-color);
-	background-color: var(--surface-a);
-	box-shadow: 0 0 2px 1px var(--shadow-color);
+	background-color: var(--background-color);
+	box-shadow: var(--box-shadow);
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	border-left: 1px solid var(--border-color);
+	border: 1px solid var(--border-color);
 	transition: all 0.3s ease-in-out;
 	opacity: 0;
 	pointer-events: none;
@@ -132,10 +132,33 @@
 
 .lambda-drawer-panel-left {
 	transform: translateX(-100%);
-	border-top-right-radius: var(--border-radius-sm);
-	border-bottom-right-radius: var(--border-radius-sm);
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+
+	&.lambda-drawer-panel-radius-tiny {
+		border-top-right-radius: var(--border-radius-xs);
+		border-bottom-right-radius: var(--border-radius-xs);
+	}
+
+	&.lambda-drawer-panel-radius-small {
+		border-top-right-radius: var(--border-radius-sm);
+		border-bottom-right-radius: var(--border-radius-sm);
+	}
+
+	&.lambda-drawer-panel-radius-medium {
+		border-top-right-radius: var(--border-radius-md);
+		border-bottom-right-radius: var(--border-radius-md);
+	}
+
+	&.lambda-drawer-panel-radius-large {
+		border-top-right-radius: var(--border-radius-lg);
+		border-bottom-right-radius: var(--border-radius-lg);
+	}
+
+	&.lambda-drawer-panel-radius-none {
+		border-top-right-radius: var(--border-radius-none);
+		border-bottom-right-radius: var(--border-radius-none);
+	}
 }
 
 .lambda-drawer-panel-right {
@@ -143,16 +166,64 @@
 	right: 0;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
+
+	&.lambda-drawer-panel-radius-tiny {
+		border-top-left-radius: var(--border-radius-xs);
+		border-bottom-left-radius: var(--border-radius-xs);
+	}
+
+	&.lambda-drawer-panel-radius-small {
+		border-top-left-radius: var(--border-radius-sm);
+		border-bottom-left-radius: var(--border-radius-sm);
+	}
+
+	&.lambda-drawer-panel-radius-medium {
+		border-top-left-radius: var(--border-radius-md);
+		border-bottom-left-radius: var(--border-radius-md);
+	}
+
+	&.lambda-drawer-panel-radius-large {
+		border-top-left-radius: var(--border-radius-lg);
+		border-bottom-left-radius: var(--border-radius-lg);
+	}
+
+	&.lambda-drawer-panel-radius-none {
+		border-top-left-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--border-radius-none);
+	}
 }
 
 .lambda-drawer-panel-top {
 	width: 100svw;
 	max-height: max-content;
 	transform: translateY(-100%);
-	border-bottom-left-radius: var(--border-radius-md);
-	border-bottom-right-radius: var(--border-radius-md);
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
+
+	&.lambda-drawer-panel-radius-tiny {
+		border-bottom-right-radius: var(--border-radius-xs);
+		border-bottom-left-radius: var(--border-radius-xs);
+	}
+
+	&.lambda-drawer-panel-radius-small {
+		border-bottom-right-radius: var(--border-radius-sm);
+		border-bottom-left-radius: var(--border-radius-sm);
+	}
+
+	&.lambda-drawer-panel-radius-medium {
+		border-bottom-right-radius: var(--border-radius-md);
+		border-bottom-left-radius: var(--border-radius-md);
+	}
+
+	&.lambda-drawer-panel-radius-large {
+		border-bottom-right-radius: var(--border-radius-lg);
+		border-bottom-left-radius: var(--border-radius-lg);
+	}
+
+	&.lambda-drawer-panel-radius-none {
+		border-bottom-right-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--border-radius-none);
+	}
 }
 
 .lambda-drawer-panel-bottom {
@@ -165,6 +236,31 @@
 	border-top-right-radius: var(--border-radius-md);
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
+
+	&.lambda-drawer-panel-radius-tiny {
+		border-top-left-radius: var(--border-radius-xs);
+		border-top-right-radius: var(--border-radius-xs);
+	}
+
+	&.lambda-drawer-panel-radius-small {
+		border-top-left-radius: var(--border-radius-sm);
+		border-top-right-radius: var(--border-radius-sm);
+	}
+
+	&.lambda-drawer-panel-radius-medium {
+		border-top-left-radius: var(--border-radius-md);
+		border-top-right-radius: var(--border-radius-md);
+	}
+
+	&.lambda-drawer-panel-radius-large {
+		border-top-left-radius: var(--border-radius-lg);
+		border-top-right-radius: var(--border-radius-lg);
+	}
+
+	&.lambda-drawer-panel-radius-none {
+		border-top-left-radius: var(--border-radius-none);
+		border-top-right-radius: var(--border-radius-none);
+	}
 }
 
 /* EXITED: Estado final al salir (oculto y fuera de pantalla). Debería coincidir con la posición INICIAL definida por placement. */
@@ -202,8 +298,9 @@
 .lambda-drawer-header {
 	display: grid;
 	grid-template-columns: 1fr 2em;
-	padding: var(--padding-lg) var(--padding-lg);
+	padding: var(--padding-md) var(--padding-lg);
 	border-bottom: 1px solid var(--border-color);
+	background-color: var(--surface-a);
 	flex-shrink: 0;
 }
 
@@ -242,33 +339,5 @@
 	align-items: center;
 	justify-content: center;
 	grid-column: 2 / 3;
-	border: none;
-	background: none;
-	cursor: pointer;
-	padding: 0;
-	margin: 0;
-	width: var(--height-input-xs);
-	height: var(--height-input-xs);
-	font-size: var(--font-size-xl);
-	color: var(--surface-e);
-	transition: all 0.2s ease;
-	border-radius: var(--border-radius-xs);
 	flex-shrink: 0;
-}
-
-/* Estilo de hover y foco para el botón de cerrar */
-.lambda-drawer-close-button:hover {
-	color: var(--danger-hover-color);
-	background-color: var(--danger-soft-color);
-}
-
-.lambda-drawer-close-button:focus-visible {
-	outline: 2px solid var(--danger-subtle-color);
-	outline-offset: 2px;
-	border-radius: var(--border-radius-xs);
-}
-
-/* Estilo básico para el icono SVG dentro del botón de cerrar */
-.lambda-drawer-close-button svg {
-	display: block;
 }

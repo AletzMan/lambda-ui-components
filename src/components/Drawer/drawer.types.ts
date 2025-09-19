@@ -36,6 +36,13 @@ export interface DrawerProps extends Omit<HTMLAttributes<HTMLDivElement>, "child
 	title?: React.ReactNode;
 
 	/**
+	 * Define el tipo de backdrop que se mostrará detrás del drawer.
+	 * Puede ser 'dark' (fondo oscuro), 'blur' (fondo con desenfoque), o 'transparent' (fondo transparente).
+	 * @default 'dark'
+	 */
+	backdropType?: DrawerVariants["backdropType"];
+
+	/**
 	 * Opcional: Contenido para la sección del pie del drawer.
 	 * Se usa comúnmente para botones de acción (por ejemplo, "Aceptar", "Cancelar").
 	 */

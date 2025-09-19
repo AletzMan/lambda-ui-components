@@ -9,9 +9,15 @@ export const drawerOverlayVariants = cva(styles["lambda-drawer-overlay"], {
 			exiting: styles["lambda-drawer-overlay-exiting"],
 			exited: styles["lambda-drawer-overlay-exited"],
 		},
+		backdropType: {
+			dark: styles["lambda-drawer-overlay-backdrop-dark"],
+			blur: styles["lambda-drawer-overlay-backdrop-blur"],
+			transparent: styles["lambda-drawer-overlay-backdrop-transparent"],
+		},
 	},
 	defaultVariants: {
 		state: "exited",
+		backdropType: "dark",
 	},
 });
 
@@ -37,9 +43,24 @@ export const drawerPanelVariants = cva(styles["lambda-drawer-panel"], {
 			half: styles["lambda-drawer-panel-half"],
 			full: styles["lambda-drawer-panel-full"],
 		},
+		radius: {
+			none: styles["lambda-drawer-panel-radius-none"],
+			tiny: styles["lambda-drawer-panel-radius-tiny"],
+			small: styles["lambda-drawer-panel-radius-small"],
+			medium: styles["lambda-drawer-panel-radius-medium"],
+			large: styles["lambda-drawer-panel-radius-large"],
+		},
+		backdropType: {
+			dark: styles["lambda-drawer-panel-backdrop-dark"],
+			blur: styles["lambda-drawer-panel-backdrop-blur"],
+			transparent: styles["lambda-drawer-panel-backdrop-transparent"],
+		},
 	},
 	defaultVariants: {
 		state: "exited",
+		placement: "left",
+		width: "xsmall",
+		backdropType: "dark",
 	},
 });
 

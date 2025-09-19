@@ -4,37 +4,52 @@ import { DrawerProps } from "./drawer.types";
 import { Button } from "../Button/Button";
 import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { Input } from "../Input/Input";
 
 const meta: Meta<typeof Drawer> = {
 	title: "Components/Drawer",
 	component: Drawer,
 	argTypes: {
+		width: {
+			control: "inline-radio",
+			options: ["xsmall", "small", "medium", "half", "full"],
+		},
+		showCloseButton: {
+			control: "boolean",
+		},
 		isOpen: {
-			control: {
-				type: "boolean",
+			if: {
+				arg: "isOpen",
 			},
-			defaultValue: true,
 		},
 		title: {
-			control: {
-				type: "text",
+			if: {
+				arg: "title",
 			},
-			defaultValue: "Drawer Title",
 		},
 		footer: {
-			control: {
-				type: "text",
+			if: {
+				arg: "footer",
 			},
-			defaultValue: "Drawer Footer",
+		},
+		children: {
+			if: {
+				arg: "children",
+			},
 		},
 		placement: {
-			table: {
-				disabled: true,
+			if: {
+				arg: "placement",
 			},
 		},
 		onClose: {
-			table: {
-				disabled: true,
+			if: {
+				arg: "onClose",
+			},
+		},
+		size: {
+			if: {
+				arg: "size",
 			},
 		},
 	},
@@ -63,7 +78,8 @@ const DrawerTemplate = (args: DrawerProps & React.RefAttributes<HTMLDivElement>)
 					footer={
 						<>
 							<Button
-								color="secondary"
+								color="neutral"
+								size="small"
 								onClick={() => {
 									setOpenDrawer(false);
 								}}
@@ -71,8 +87,9 @@ const DrawerTemplate = (args: DrawerProps & React.RefAttributes<HTMLDivElement>)
 								Accept
 							</Button>
 							<Button
-								color="secondary"
+								color="neutral"
 								variant="outline"
+								size="small"
 								onClick={() => {
 									setOpenDrawer(false);
 								}}
@@ -83,8 +100,17 @@ const DrawerTemplate = (args: DrawerProps & React.RefAttributes<HTMLDivElement>)
 						</>
 					}
 				>
-					<div style={{ display: "flex", flexDirection: "column", gap: "2em", padding: "1em" }}>
-						<p>¿Estás seguro de que deseas realizar esta acción?</p>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							gap: "2em",
+							padding: "1em 1em 1em 1em",
+						}}
+					>
+						<h2 style={{ textAlign: "left", fontSize: "1em" }}>Form</h2>
+						<Input label="Name" placeholder="John Doe" />
+						<Input label="Email" placeholder="john.doe@example.com" />
 					</div>
 				</Drawer>
 				<Button
@@ -99,45 +125,33 @@ const DrawerTemplate = (args: DrawerProps & React.RefAttributes<HTMLDivElement>)
 };
 
 export const Left: StoryObj<typeof Drawer> = {
-	render: (args) => <DrawerTemplate {...args} />,
+	render: (args) => <DrawerTemplate {...args} placement="left" />,
 	args: {
-		isOpen: true,
-		children: "This is the dialog content.",
-		title: "Drawer Title",
-		footer: "Drawer Footer",
-		placement: "left",
+		width: "small",
+		showCloseButton: true,
 	},
 };
 
 export const Right: StoryObj<typeof Drawer> = {
-	render: (args) => <DrawerTemplate {...args} />,
+	render: (args) => <DrawerTemplate {...args} placement="right" />,
 	args: {
-		isOpen: true,
-		children: "This is the dialog content.",
-		title: "Drawer Title",
-		footer: "Drawer Footer",
-		placement: "right",
+		width: "small",
+		showCloseButton: true,
 	},
 };
 
 export const Top: StoryObj<typeof Drawer> = {
-	render: (args) => <DrawerTemplate {...args} />,
+	render: (args) => <DrawerTemplate {...args} placement="top" />,
 	args: {
-		isOpen: true,
-		children: "This is the dialog content.",
-		title: "Drawer Title",
-		footer: "Drawer Footer",
-		placement: "top",
+		width: "small",
+		showCloseButton: true,
 	},
 };
 
 export const Bottom: StoryObj<typeof Drawer> = {
-	render: (args) => <DrawerTemplate {...args} />,
+	render: (args) => <DrawerTemplate {...args} placement="bottom" />,
 	args: {
-		isOpen: true,
-		children: "This is the dialog content.",
-		title: "Drawer Title",
-		footer: "Drawer Footer",
-		placement: "bottom",
+		width: "small",
+		showCloseButton: true,
 	},
 };

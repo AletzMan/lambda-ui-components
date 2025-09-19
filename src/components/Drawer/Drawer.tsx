@@ -14,6 +14,8 @@ import { X as CloseIcon } from "lucide-react";
 import styles from "./Drawer.module.css";
 import { DrawerPlacement, DrawerProps, DrawerState } from "./drawer.types";
 import { drawerOverlayVariants, drawerPanelVariants } from "./drawer.variants";
+import { Button } from "../Button/Button";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 let portalContainer: HTMLElement | null = null;
 
@@ -51,6 +53,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 			title,
 			footer,
 			placement,
+			backdropType,
 			size,
 			closeOnOverlayClick = true,
 			closeOnEscape = true,
@@ -71,6 +74,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 		const shouldRender = animationState !== "exited";
 		const drawerPanelRef = useRef<HTMLDivElement>(null);
 		const titleId = "drawer-title-" + useId();
+		const { radiusBox } = useUIConfig();
 
 		// --- Efecto principal para gestionar la transición de estados de animación ---
 		useEffect(() => {
@@ -203,7 +207,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 				<div
 					className={clsx(
 						styles["lambda-drawer-overlay"],
-						drawerOverlayVariants({ state: animationState }),
+						drawerOverlayVariants({ state: animationState, backdropType }),
 						overlayClassName
 					)}
 					onClick={handleOverlayClick}
@@ -215,7 +219,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 					ref={drawerPanelRef}
 					className={clsx(
 						styles["lambda-drawer-panel"],
-						drawerPanelVariants({ state: animationState, placement, width }),
+						drawerPanelVariants({ state: animationState, placement, width, radius: radiusBox }),
 						panelClassName
 					)}
 					role="dialog"
@@ -242,13 +246,15 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 							)}
 							{/* Botón de cerrar */}
 							{showCloseButton && (
-								<button
+								<Button
+									variant="text"
+									size="small"
+									color="danger"
+									icon={<CloseIcon />}
 									className={styles["lambda-drawer-close-button"]}
 									onClick={handleCloseButtonClick}
 									aria-label="Cerrar drawer"
-								>
-									<CloseIcon size={20} />
-								</button>
+								/>
 							)}
 						</div>
 					)}
