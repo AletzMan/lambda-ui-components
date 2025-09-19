@@ -65,7 +65,6 @@ export interface LinkProps
 	variant?: ButtonVariants["variant"];
 	color?: ButtonVariants["color"];
 	size?: ButtonVariants["size"];
-	radius?: ButtonVariants["radius"];
 	iconPosition?: ButtonVariants["iconPosition"];
 	// El estado 'loading' es más complejo en un <a>, pero podemos añadirlo si se requiere un indicador visual
 	// sin deshabilitar completamente el link (aunque deshabilitarlo suele ser mejor en estado de carga).

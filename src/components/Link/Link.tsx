@@ -7,6 +7,7 @@ import buttonStyles from "../Button/button.module.css";
 import { LinkProps, LinkRef } from "./link.types";
 import { button } from "../Button/button.variants";
 import { linkButtonProps, linkProps } from "./link.variants";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Link = forwardRef<LinkRef, LinkProps>(
 	(
@@ -25,7 +26,6 @@ export const Link = forwardRef<LinkRef, LinkProps>(
 			variant,
 			color,
 			size,
-			radius,
 			justify,
 			loading,
 			iconPosition,
@@ -33,6 +33,7 @@ export const Link = forwardRef<LinkRef, LinkProps>(
 		},
 		ref
 	) => {
+		const { radiusField } = useUIConfig();
 		// Determinar el contenido visible del Link (label tiene prioridad si ambos existen)
 		const content = label ?? children;
 		const isButtonType = type === "button";
@@ -40,7 +41,7 @@ export const Link = forwardRef<LinkRef, LinkProps>(
 		const linkClasses = clsx(
 			...(isButtonType
 				? [
-						button({ variant, color, size, radius, loading, disabled, iconPosition }),
+						button({ variant, color, size, radius: radiusField, loading, disabled, iconPosition }),
 						linkButtonProps({ justify }),
 				  ]
 				: [linkProps({ color, size, disabled })]),

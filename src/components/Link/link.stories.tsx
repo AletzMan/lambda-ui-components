@@ -43,11 +43,6 @@ const meta: Meta<typeof Link> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Link size",
 		},
-		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "large", "pill", "circle"],
-			description: "Corner shape",
-		},
 		iconPosition: {
 			control: "inline-radio",
 			options: ["left", "right"],
@@ -100,7 +95,7 @@ const TemplateDefault = (args: LinkProps) => {
 	return (
 		<ContainerComponent title="Link" subtitle={args.type?.toString() || ""}>
 			<Checkbox label="With Icon" checked={withIcon} onChange={() => setWithIcon(!withIcon)} />
-			<div style={{ display: "flex", gap: "3rem", padding: "0.5rem" }}>
+			<div style={{ display: "flex", flexWrap: "wrap", gap: "3rem", padding: "0.5rem" }}>
 				{colors.map((color) => (
 					<Link
 						key={color}
@@ -150,7 +145,6 @@ export const Default: Story = {
 		color: "secondary",
 		variant: "solid",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		disabled: false,
 		iconPosition: "left",
@@ -165,7 +159,6 @@ export const ButtonSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		disabled: false,
 		iconPosition: "left",
@@ -179,7 +172,6 @@ export const ButtonClassic: Story = {
 		color: "primary",
 		variant: "classic",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		disabled: false,
 		iconPosition: "left",
@@ -193,7 +185,6 @@ export const ButtonOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		disabled: false,
 		iconPosition: "left",
@@ -207,7 +198,6 @@ export const ButtonDashed: Story = {
 		color: "primary",
 		variant: "dashed",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		disabled: false,
 		iconPosition: "left",
@@ -221,7 +211,6 @@ export const ButtonSoft: Story = {
 		color: "primary",
 		variant: "soft",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		disabled: false,
 		iconPosition: "left",
@@ -235,7 +224,6 @@ export const ButtonText: Story = {
 		color: "primary",
 		variant: "text",
 		size: "medium",
-		radius: "small",
 		loading: false,
 		disabled: false,
 		iconPosition: "left",
