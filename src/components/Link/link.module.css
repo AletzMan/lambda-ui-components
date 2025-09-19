@@ -13,6 +13,13 @@
 	text-decoration: underline;
 }
 
+.lambda-link-neutral {
+	color: var(--neutral-hover-color);
+
+	&:hover {
+		color: var(--neutral-text-color);
+	}
+}
 .lambda-link-primary {
 	color: var(--primary-base-color);
 

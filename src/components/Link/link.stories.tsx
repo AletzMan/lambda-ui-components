@@ -95,7 +95,16 @@ const TemplateDefault = (args: LinkProps) => {
 	return (
 		<ContainerComponent title="Link" subtitle={args.type?.toString() || ""}>
 			<Checkbox label="With Icon" checked={withIcon} onChange={() => setWithIcon(!withIcon)} />
-			<div style={{ display: "flex", flexWrap: "wrap", gap: "3rem", padding: "0.5rem" }}>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					flexWrap: "wrap",
+					gap: "3rem",
+					padding: "0.5rem",
+					width: "100%",
+				}}
+			>
 				{colors.map((color) => (
 					<Link
 						key={color}
@@ -121,7 +130,16 @@ const TemplateButton = (args: LinkProps) => {
 			color={args.variant?.toString() || ""}
 		>
 			<Checkbox label="With Icon" checked={withIcon} onChange={() => setWithIcon(!withIcon)} />
-			<div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					flexDirection: "row",
+					flexWrap: "wrap",
+					gap: "1rem",
+					width: "100%",
+				}}
+			>
 				{colors.map((color) => (
 					<Link
 						key={color}
