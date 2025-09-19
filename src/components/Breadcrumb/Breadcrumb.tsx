@@ -50,7 +50,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 		const IconSeparator = NOTIFICATION_ICONS[variant as keyof typeof NOTIFICATION_ICONS];
 		const shouldCollapse = items!.length > maxItems + 1;
 		const language = document.documentElement.lang;
-		const { radiusField } = useUIConfig();
+		const { radiusSelector } = useUIConfig();
 
 		useEffect(() => {
 			if (maxItems === 0) {
@@ -76,7 +76,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 								<>
 									<ul>
 										<button
-											className={breadcrumbEllipsis({ size, radius: radiusField })}
+											className={breadcrumbEllipsis({ size, radius: radiusSelector })}
 											onClick={handleEllipsisClick}
 											title={language === "es" ? "Mostrar más" : "Show more"}
 										>
@@ -94,7 +94,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 									size={size}
 									variant={variant}
 									color={color}
-									radius={radiusField}
+									radius={radiusSelector}
 								/>
 							</ul>
 							{index < array!.length - 1 && (
