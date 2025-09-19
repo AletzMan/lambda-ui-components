@@ -42,7 +42,7 @@ export const dividerVariants = cva(styles["lambda-divider"], {
 	defaultVariants: {
 		variant: "solid",
 		orientation: "horizontal",
-		color: "primary",
+		color: "neutral",
 		contentPosition: "center",
 		size: "tiny",
 	},

@@ -11,19 +11,18 @@ const meta: Meta<typeof Divider> = {
 	component: Divider,
 	argTypes: {
 		variant: {
-			control: "select",
-			options: ["solid", "dashed", "dotted"],
-			description: "Visual style of the input",
-			type: "string",
+			if: {
+				arg: "variant",
+			},
 		},
 		orientation: {
-			control: "select",
+			control: "inline-radio",
 			options: ["horizontal", "vertical"],
 			description: "Orientation of the divider",
 			type: "string",
 		},
 		color: {
-			control: "select",
+			control: "inline-radio",
 			options: [
 				"neutral",
 				"primary",
@@ -38,13 +37,13 @@ const meta: Meta<typeof Divider> = {
 			description: "Background color",
 		},
 		contentPosition: {
-			control: "select",
-			options: ["center", "start", "end"],
+			control: "inline-radio",
+			options: ["start", "center", "end"],
 			description: "Content position of the divider",
 			type: "string",
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Size of the divider",
 			type: "string",
@@ -115,33 +114,30 @@ const Template = (args: DividerProps) => {
 };
 
 export const Solid: Story = {
-	render: Template,
+	render: (args) => <Template {...args} variant="solid" />,
 	args: {
-		variant: "solid",
 		orientation: "horizontal",
-		color: "primary",
+		color: "neutral",
 		size: "tiny",
 		contentPosition: "center",
 	},
 };
 
 export const Dashed: Story = {
-	render: Template,
+	render: (args) => <Template {...args} variant="dashed" />,
 	args: {
-		variant: "dashed",
 		orientation: "horizontal",
-		color: "primary",
+		color: "neutral",
 		size: "tiny",
 		contentPosition: "center",
 	},
 };
 
 export const Dotted: Story = {
-	render: Template,
+	render: (args) => <Template {...args} variant="dotted" />,
 	args: {
-		variant: "dotted",
 		orientation: "horizontal",
-		color: "primary",
+		color: "neutral",
 		size: "tiny",
 		contentPosition: "center",
 	},
