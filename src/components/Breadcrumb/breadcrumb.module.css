@@ -233,7 +233,6 @@
 .breadcrumb-stepped {
 	& .breadcrumb-item {
 		color: var(--surface-f);
-		background-color: var(--surface-b);
 
 		&.breadcrumb-item-tiny {
 			padding: var(--padding-xs) var(--padding-sm);
