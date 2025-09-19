@@ -17,10 +17,6 @@ export interface BadgeProps
 		| "info"
 		| undefined;
 	/**
-	 * Define la forma del badge (por ejemplo, con extremos redondeados o cuadrados).
-	 */
-	radius?: "none" | "tiny" | "small" | "medium" | "large" | "full" | undefined;
-	/**
 	 * Define el texto que se muestra en el badge.
 	 */
 	text?: string;

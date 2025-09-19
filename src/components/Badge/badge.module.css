@@ -23,7 +23,6 @@
 			min-width: var(--badge-size-3xs);
 			min-height: var(--badge-size-3xs);
 			padding: var(--padding-none);
-			transform: translateX(-15%) translateY(15%);
 		}
 
 		& > span {
@@ -47,7 +46,6 @@
 			min-width: var(--badge-size-2xs);
 			min-height: var(--badge-size-2xs);
 			padding: var(--padding-none);
-			transform: translateX(-20%) translateY(20%);
 		}
 
 		& > span {
@@ -65,10 +63,9 @@
 		font-size: var(--font-size-md);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
-			min-width: var(--badge-size-2xs);
-			min-height: var(--badge-size-2xs);
+			min-width: var(--badge-size-xs);
+			min-height: var(--badge-size-xs);
 			padding: var(--padding-none);
-			transform: translateX(-45%) translateY(70%);
 		}
 
 		& > span {
@@ -88,10 +85,9 @@
 		font-weight: var(--font-weight-md);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
-			min-width: var(--badge-size-xs);
-			min-height: var(--badge-size-xs);
+			min-width: var(--badge-size-sm);
+			min-height: var(--badge-size-sm);
 			padding: var(--padding-none);
-			transform: translateX(-110%) translateY(60%);
 		}
 
 		& > span {
@@ -167,4 +163,10 @@
 
 .lambda-badge-color-info {
 	background-color: var(--info-base-color);
+}
+
+.lambda-badge:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
+	border-radius: var(--border-radius-pill);
+	top: 30%;
+	right: 30%;
 }

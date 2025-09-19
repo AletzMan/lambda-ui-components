@@ -19,11 +19,6 @@ const meta: Meta<typeof Badge> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
-		radius: {
-			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
-			description: "Input radius",
-		},
 		count: {
 			control: {
 				type: "number",
@@ -91,7 +86,6 @@ export const Default: StoryObj<BadgeProps> = {
 	render: (args) => <Template {...args} />,
 	args: {
 		size: "small",
-		radius: "small",
 		color: "default",
 	},
 };
@@ -100,7 +94,6 @@ export const WithCount: StoryObj<BadgeProps> = {
 	render: (args) => <Template {...args} />,
 	args: {
 		size: "small",
-		radius: "small",
 		count: 10,
 		maxCount: 10,
 		color: "default",
@@ -111,7 +104,6 @@ export const WithText: StoryObj<BadgeProps> = {
 	render: (args) => <Template {...args} />,
 	args: {
 		size: "small",
-		radius: "small",
 		text: "Badge",
 		color: "default",
 	},

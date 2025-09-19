@@ -3,15 +3,17 @@ import { BadgeProps } from "./badge.types";
 import { badgeStyles } from "./badge.variants";
 import clsx from "clsx";
 import { PlusIcon } from "lucide-react";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
-	({ className, color, size, radius, children, text, count, maxCount, ...props }, ref) => {
+	({ className, color, size, children, text, count, maxCount, ...props }, ref) => {
+		const { radiusField } = useUIConfig();
 		return (
 			<div
 				className={clsx(
 					badgeStyles({
 						size,
-						radius,
+						radius: radiusField,
 						color,
 						hasCount: count !== undefined && count >= 0,
 						hasText: text !== undefined,
