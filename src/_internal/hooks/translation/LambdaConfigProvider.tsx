@@ -50,7 +50,7 @@ interface ConfigProviderProps extends UIConfigContextProps {
 	lang: keyof Dictionary;
 }
 
-export const ConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = ({
+export const LambdaConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = ({
 	children,
 	lang,
 	radiusField,

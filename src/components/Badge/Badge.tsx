@@ -3,7 +3,7 @@ import { BadgeProps } from "./badge.types";
 import { badgeStyles } from "./badge.variants";
 import clsx from "clsx";
 import { PlusIcon } from "lucide-react";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 	({ className, color, size, children, text, count, maxCount, ...props }, ref) => {

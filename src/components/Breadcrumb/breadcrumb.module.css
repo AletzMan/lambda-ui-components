@@ -193,7 +193,9 @@
 	width: var(--height-button-xs);
 	height: var(--height-button-xs);
 	border-radius: var(--border-radius-sm);
+	font-weight: var(--font-weight-semibold);
 	background-color: var(--surface-b);
+	color: var(--surface-f);
 	border: none;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;

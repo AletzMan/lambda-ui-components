@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { AccordionProps, AccordionValue } from "./accordion.types";
 import { accordionVariants } from "./accordion.variants";
 import { AccordionContext } from "./hooks/useContext";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 	(

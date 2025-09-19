@@ -13,7 +13,7 @@ import {
 } from "./pagination.variants";
 import styles from "./pagination.module.css";
 import { PaginationButtonProps, PaginationProps } from "./pagination.types";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const PaginationButton = ({
 	isActive,

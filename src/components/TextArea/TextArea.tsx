@@ -6,7 +6,7 @@ import { CircleX } from "lucide-react";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { labelString, textarea } from "./textarea.variants";
 import { TextAreaProps } from "./textarea.types";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	(

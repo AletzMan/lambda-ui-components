@@ -22,7 +22,7 @@ import useEyeDropper from "use-eye-dropper";
 // Importa el componente Range
 import { Range } from "../Range/Range";
 import { Tooltip } from "../ToolTip/ToolTip";
-import { useTranslation } from "../../_internal/hooks/translation/ConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {

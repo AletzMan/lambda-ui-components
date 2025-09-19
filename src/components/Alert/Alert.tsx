@@ -13,7 +13,7 @@ import {
 import styles from "./Alert.module.css";
 import { AlertProps } from "./alert.types";
 import { AlertVariants, alertVariants } from "./alert.variants";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // --- Función helper para obtener el icono por defecto según la colore ---
 const getDefaultIcon = (color: AlertVariants["color"]) => {

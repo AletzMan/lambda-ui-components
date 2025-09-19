@@ -9,7 +9,7 @@ import {
 	VariantBreadcrumb,
 } from "./breadcrumb.variants";
 import { ChevronRight, Dot, ArrowRight } from "lucide-react";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const NOTIFICATION_ICONS = {
 	chevron: <ChevronRight />,

@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { forwardRef, useEffect, useState } from "react";
 import { RatingProps } from "./rating.types";
 import styles from "./rating.module.css";
-import { useTranslation } from "../../_internal/hooks/translation/ConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 	(

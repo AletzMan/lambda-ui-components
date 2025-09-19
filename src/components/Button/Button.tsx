@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { useInputGroup } from "../InputGroup/InputGroup";
 import { button } from "./button.variants";
 import { ButtonProps } from "./button.types";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(

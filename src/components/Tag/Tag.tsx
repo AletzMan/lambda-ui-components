@@ -3,7 +3,7 @@ import { TagProps } from "./tag.types";
 import { tagStyles, closeButtonStyles } from "./tag.variants";
 import { X } from "lucide-react";
 import styles from "./tag.module.css";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Tag = forwardRef<HTMLDivElement, TagProps>(
 	({ className, color, size, variant, children, text, icon, onClose, ...props }, ref) => {

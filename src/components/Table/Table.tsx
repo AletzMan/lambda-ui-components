@@ -22,7 +22,10 @@ import styles from "./table.module.css";
 import { Pagination } from "../Pagination/Pagination";
 import clsx from "clsx";
 import { Select } from "../Select/Select";
-import { useUIConfig, useTranslation } from "../../_internal/hooks/translation/ConfigProvider";
+import {
+	useUIConfig,
+	useTranslation,
+} from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // Definición de tipos
 interface SortConfig {

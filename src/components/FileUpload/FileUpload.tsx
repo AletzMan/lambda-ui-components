@@ -18,7 +18,7 @@ import { FileUploadProps, SelectedFileData } from "./file-upload-types";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { formatBytes } from "../../_util/helpers";
-import { useTranslation } from "../../_internal/hooks/translation/ConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	(

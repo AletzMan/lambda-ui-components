@@ -5,7 +5,7 @@ import { ThemeProvider } from "../src/components/ThemeProvider/ThemeProvider";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
 import "../src/index.css";
-import { ConfigProvider } from "../src/_internal/hooks/translation/ConfigProvider";
+import { LambdaConfigProvider } from "../src/_internal/hooks/translation/LambdaConfigProvider";
 import { create } from "@storybook/theming";
 
 const ThemeDecorator = (Story, context) => {
@@ -25,11 +25,11 @@ const ThemeDecorator = (Story, context) => {
 	}, [theme, Story, context]);
 
 	return (
-		<ConfigProvider lang="en" radiusField="tiny" radiusBox="small">
+		<LambdaConfigProvider lang="en" radiusField="tiny" radiusBox="small">
 			<ThemeProvider defaultTheme={theme}>
 				<Story />
 			</ThemeProvider>
-		</ConfigProvider>
+		</LambdaConfigProvider>
 	);
 };
 

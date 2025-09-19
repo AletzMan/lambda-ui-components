@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { AccordionHeader } from "./AccordionHeader";
 import { AccordionContent } from "./AccordionContent";
 import { useAccordionContext } from "./hooks/useContext";
-import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // --- Componente Hijo: AccordionItem (Revisado para Inyectar Props) ---
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
