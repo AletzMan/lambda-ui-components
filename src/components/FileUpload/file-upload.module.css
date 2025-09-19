@@ -347,13 +347,13 @@
 	outline: none;
 	cursor: pointer;
 	transition: all 0.2s ease;
-	background-color: var(--primary-hover-color);
+	background-color: var(--primary-base-color);
 	color: var(--white-color);
 
 	&:hover:not(.lambda-file-upload-button-file-upload-disabled):not(
 			.lambda-file-upload-button-file-upload-invalid
 		) {
-		background-color: var(--primary-base-color);
+		background-color: var(--primary-hover-color);
 	}
 
 	&:focus-visible:not(.lambda-file-upload-button-file-upload-disabled):not(
@@ -385,12 +385,15 @@
 	flex-direction: column;
 	width: 100%;
 	max-width: max-content;
-	background-color: var(--surface-c);
+	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid var(--border-color);
 	overflow: hidden;
 
 	&.lambda-file-upload-button-layout-container-none {
 		border-radius: var(--border-radius-none);
+	}
+	&.lambda-file-upload-button-layout-container-tiny {
+		border-radius: var(--border-radius-xs);
 	}
 
 	&.lambda-file-upload-button-layout-container-small {
@@ -540,9 +543,9 @@
 	display: flex;
 	align-items: center;
 	padding: var(--padding-xs);
-	border-top: 1px solid var(--surface-b);
+	border-top: 1px solid var(--border-color);
 	border-radius: var(--radius-sm);
-	background-color: var(--surface-c);
+	background-color: var(--surface-a);
 }
 
 .lambda-file-upload-file-item-icon-container {
@@ -678,5 +681,5 @@
 }
 
 .lambda-file-upload-file-item-is-image {
-	background-color: var(--surface-c);
+	background-color: var(--surface-b);
 }

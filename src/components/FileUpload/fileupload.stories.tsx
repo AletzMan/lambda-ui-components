@@ -12,12 +12,6 @@ const meta: Meta<typeof FileUpload> = {
 			options: ["button", "dropzone"],
 			description: "Type of file upload component",
 		},
-		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "circle"],
-			description: "Corner shape",
-			type: "string",
-		},
 		size: {
 			control: "select",
 			options: ["small", "medium", "large"],
@@ -123,7 +117,6 @@ export const Button: Story = {
 		type: "button",
 		size: "medium",
 		label: "Upload",
-		radius: "small",
 		disabled: false,
 		multiple: false,
 		accept: "image/*",
@@ -141,7 +134,6 @@ export const DropZone: Story = {
 		type: "dropzone",
 		size: "medium",
 		label: "Upload",
-		radius: "small",
 		disabled: false,
 		multiple: false,
 		accept: "image/*",

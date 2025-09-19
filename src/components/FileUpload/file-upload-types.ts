@@ -47,11 +47,6 @@ export interface FileUploadProps
 	size?: FileUploadVariants["size"];
 
 	/**
-	 * Define el radio de las esquinas del área de soltar o el botón.
-	 */
-	radius?: DropZoneVariants["radius"];
-
-	/**
 	 * Deshabilita el componente, impidiendo la selección de archivos y la interacción de arrastrar y soltar.
 	 * @default false
 	 */
