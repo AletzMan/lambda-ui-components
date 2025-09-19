@@ -1,8 +1,13 @@
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import styles from "./Dialog.module.css";
 
 export const dialogOverlayVariants = cva(styles["lambda-dialog-overlay"], {
 	variants: {
+		backdropType: {
+			dark: styles["lambda-dialog-overlay-dark"],
+			blur: styles["lambda-dialog-overlay-blur"],
+			transparent: styles["lambda-dialog-overlay-transparent"],
+		},
 		state: {
 			entering: styles["lambda-dialog-overlay-entering"], // Estado inicial de la animación de entrada
 			entered: styles["lambda-dialog-overlay-entered"], // Estado final de la animación de entrada (diálogo completamente visible)
@@ -17,6 +22,7 @@ export const dialogOverlayVariants = cva(styles["lambda-dialog-overlay"], {
 	defaultVariants: {
 		state: "exited",
 		isModal: false,
+		backdropType: "dark",
 	},
 });
 
@@ -51,3 +57,5 @@ export const dialogPanelVariants = cva(styles["lambda-dialog-panel"], {
 		radius: "small",
 	},
 });
+
+export type DialogVariants = VariantProps<typeof dialogOverlayVariants>;

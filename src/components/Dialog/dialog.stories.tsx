@@ -27,6 +27,13 @@ const meta: Meta<typeof Dialog> = {
 			},
 			defaultValue: true,
 		},
+		backdropType: {
+			control: {
+				type: "inline-radio",
+			},
+			options: ["dark", "blur", "transparent"],
+			defaultValue: "dark",
+		},
 		isModal: {
 			control: {
 				type: "boolean",
@@ -119,5 +126,6 @@ export const Default: StoryObj<typeof Dialog> = {
 		showCloseButton: true,
 		isModal: false,
 		isDraggable: false,
+		backdropType: "dark",
 	},
 };

@@ -45,6 +45,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 			headerClassName,
 			bodyClassName,
 			footerClassName,
+			backdropType,
 			isModal = false,
 			isDraggable = false,
 			...rest
@@ -248,7 +249,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 				{/* Overlay: El fondo oscuro detrás del diálogo */}
 				<div
 					className={clsx(
-						dialogOverlayVariants({ state: animationState, isModal }),
+						dialogOverlayVariants({ state: animationState, isModal, backdropType }),
 						overlayClassName
 					)}
 					onClick={handleOverlayClick}

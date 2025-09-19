@@ -29,10 +29,21 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.6);
 	opacity: 0;
 	transition: opacity 0.3s ease, visibility 0.3s ease;
 	pointer-events: auto;
+
+	&.lambda-dialog-overlay-dark {
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
+	&.lambda-dialog-overlay-blur {
+		backdrop-filter: blur(5px);
+	}
+
+	&.lambda-dialog-overlay-transparent {
+		background-color: transparent;
+	}
 }
 
 /* Estado ENTERING: Al inicio de la animación de entrada */

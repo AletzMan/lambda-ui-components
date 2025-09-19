@@ -1,6 +1,7 @@
 // src/components/Dialog/Dialog.types.ts
 
 import React, { RefObject } from "react";
+import { DialogVariants } from "./dialog.variants";
 // Importar las variantes CVA si se definen en el archivo de variantes.
 // Aunque no usemos props de variantes CVA directamente en las props del componente
 // (como size, variant), los tipos de los estados de animación (DialogState)
@@ -49,6 +50,12 @@ export interface DialogProps
 	 * Se usa comúnmente para botones de acción (por ejemplo, "Aceptar", "Cancelar").
 	 */
 	footer?: React.ReactNode;
+
+	/**
+	 * Opcional: Tipo de backdrop
+	 * @default dark
+	 */
+	backdropType?: DialogVariants["backdropType"];
 
 	/**
 	 * Si es `true`, presionar la tecla 'Escape' cuando el diálogo está abierto
