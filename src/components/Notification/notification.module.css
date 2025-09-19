@@ -386,23 +386,23 @@
 }
 
 .notification-footer-lightened {
-	&.notification-footer-secondary {
+	&.notification-footer-neutral {
 		.notification-footer-button-confirm {
-			background-color: var(--secondary-subtle-color);
+			background-color: var(--neutral-subtle-color);
 			color: var(--black-color);
 
 			&:hover {
-				background-color: var(--secondary-soft-color);
+				background-color: var(--neutral-soft-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--secondary-subtle-color);
+			border: var(--border-width-xs) solid var(--neutral-subtle-color);
 			color: var(--black-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--neutral-subtle-color);
 			}
 		}
 	}
@@ -808,7 +808,7 @@
 		background-color: var(--neutral-light-color);
 
 		.notification-title {
-			color: var(--neutral-dark-color);
+			color: var(--neutral-disabled-color);
 		}
 
 		.notification-icon {
@@ -825,7 +825,7 @@
 		background-color: var(--success-light-color);
 
 		.notification-title {
-			color: var(--success-dark-color);
+			color: var(--success-hover-color);
 		}
 
 		.notification-message {
@@ -846,11 +846,11 @@
 		background-color: var(--danger-light-color);
 
 		.notification-title {
-			color: var(--danger-dark-color);
+			color: var(--danger-hover-color);
 		}
 
 		.notification-message {
-			color: var(--danger-disabled-color);
+			color: var(--danger-dark-color);
 		}
 
 		.notification-icon {
@@ -867,11 +867,11 @@
 		background-color: var(--warning-light-color);
 
 		.notification-title {
-			color: var(--warning-dark-color);
+			color: var(--warning-hover-color);
 		}
 
 		.notification-message {
-			color: var(--warning-disabled-color);
+			color: var(--warning-dark-color);
 		}
 
 		.notification-icon {
@@ -888,11 +888,11 @@
 		background-color: var(--info-light-color);
 
 		.notification-title {
-			color: var(--info-dark-color);
+			color: var(--info-hover-color);
 		}
 
 		.notification-message {
-			color: var(--info-content-color);
+			color: var(--info-dark-color);
 		}
 
 		.notification-icon {
