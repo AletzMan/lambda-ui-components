@@ -8,6 +8,7 @@ import {
 	breadcrumbSeparator,
 } from "./breadcrumb.variants";
 import { ChevronRight, Dot, ArrowRight } from "lucide-react";
+import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
 
 const NOTIFICATION_ICONS = {
 	chevron: <ChevronRight />,
@@ -27,13 +28,14 @@ const BreadcrumbItem = ({
 	variant: "chevron" | "slash" | "dot" | "arrow" | "stepped" | undefined;
 	color: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | undefined;
 }) => {
+	const { radiusField } = useUIConfig();
 	return item.href ? (
-		<a href={item.href} className={breadcrumbItem({ size, variant, color })}>
+		<a href={item.href} className={breadcrumbItem({ size, variant, color, radius: radiusField })}>
 			{item.icon}
 			{item.label}
 		</a>
 	) : (
-		<span className={breadcrumbItem({ size, variant, color })}>
+		<span className={breadcrumbItem({ size, variant, color, radius: radiusField })}>
 			{item.icon}
 			{item.label}
 		</span>

@@ -31,6 +31,14 @@ export const breadcrumbItem = cva(styles["breadcrumb-item"], {
 			medium: styles["breadcrumb-item-medium"],
 			large: styles["breadcrumb-item-large"],
 		},
+		radius: {
+			none: styles["breadcrumb-item-radius-none"],
+			tiny: styles["breadcrumb-item-radius-tiny"],
+			small: styles["breadcrumb-item-radius-sm"],
+			medium: styles["breadcrumb-item-radius-md"],
+			large: styles["breadcrumb-item-radius-lg"],
+			full: styles["breadcrumb-item-radius-full"],
+		},
 		variant: {
 			chevron: styles["breadcrumb-item-chevron"],
 			slash: styles["breadcrumb-item-slash"],
