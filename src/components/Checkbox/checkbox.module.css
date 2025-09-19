@@ -7,6 +7,7 @@
 	font-family: var(--font-family);
 	box-sizing: border-box;
 	width: max-content;
+	transition: all 0.2s ease-out;
 
 	&:hover:not(.lambda-checkbox-container-disabled)
 		> .lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-neutral) {
@@ -23,7 +24,7 @@
 	&:hover:not(.lambda-checkbox-container-disabled)
 		> .lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-secondary) {
 		border-color: var(--secondary-base-color);
-		box-shadow: 0 0 0px 3px var(--secondary-soft-color);
+		box-shadow: 0 0 0px 3px var(--secondary-subtle-color);
 	}
 
 	&:hover:not(.lambda-checkbox-container-disabled)
@@ -88,7 +89,6 @@
 	transition: all 0.2s ease-out;
 	box-sizing: border-box;
 	border: var(--border-width-xs) solid transparent;
-	box-shadow: var(--box-shadow);
 	transition: background-color 0.3s ease;
 }
 
