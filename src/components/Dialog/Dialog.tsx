@@ -13,6 +13,8 @@ import styles from "./dialog.module.css";
 import { DialogProps, DialogState } from "./dialog.types";
 import { dialogOverlayVariants, dialogPanelVariants } from "./dialog.variants";
 import { XIcon } from "lucide-react";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { Button } from "../Button/Button";
 
 let portalContainer: HTMLElement | null = null;
 
@@ -58,6 +60,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		const [isDragging, setIsDragging] = useState(false);
 		const [offset, setOffset] = useState({ x: 0, y: 0 });
 		const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+		const { radiusBox } = useUIConfig();
 
 		// --- Efecto principal para gestionar la transición de estados de animación ---
 		useEffect(() => {
@@ -255,7 +258,12 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 				<div
 					ref={dialogPanelRef}
 					className={clsx(
-						dialogPanelVariants({ state: animationState, isModal: modalAnimation, isDraggable }),
+						dialogPanelVariants({
+							state: animationState,
+							isModal: modalAnimation,
+							isDraggable,
+							radius: radiusBox,
+						}),
 						panelClassName
 					)}
 					role="dialog"
@@ -280,13 +288,15 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 							)}
 							{/* Botón de cerrar */}
 							{showCloseButton && (
-								<button
+								<Button
 									className={styles["lambda-dialog-close-button"]}
+									variant="text"
+									color="danger"
+									icon={<XIcon />}
 									onClick={handleCloseButtonClick}
 									aria-label="Cerrar diálogo"
-								>
-									<XIcon />
-								</button>
+									size="tiny"
+								/>
 							)}
 						</header>
 					)}

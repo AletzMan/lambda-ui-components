@@ -4,25 +4,40 @@ import { DialogProps } from "./dialog.types";
 import { Button } from "../Button/Button";
 import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { UserRoundX } from "lucide-react";
 
 const meta: Meta<typeof Dialog> = {
 	title: "Components/Dialog",
 	component: Dialog,
 	argTypes: {
-		isOpen: {
-			control: {
-				type: "boolean",
-			},
-			defaultValue: true,
-		},
 		onClose: {
-			action: "onClose",
+			table: {
+				disabled: true,
+			},
 		},
 		title: {
 			control: {
 				type: "text",
 			},
 			defaultValue: "Dialog Title",
+		},
+		showCloseButton: {
+			control: {
+				type: "boolean",
+			},
+			defaultValue: true,
+		},
+		isModal: {
+			control: {
+				type: "boolean",
+			},
+			defaultValue: false,
+		},
+		isDraggable: {
+			control: {
+				type: "boolean",
+			},
+			defaultValue: false,
 		},
 		footer: {
 			control: {
@@ -53,10 +68,17 @@ const DialogTemplate = (args: DialogProps & React.RefAttributes<HTMLDivElement>)
 					{...args}
 					isOpen={openDialog}
 					onClose={() => setOpenDialog(false)}
+					title={
+						<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+							<UserRoundX color="var(--danger-base-color)" />
+							<span>Eliminar usuario</span>
+						</div>
+					}
 					footer={
 						<>
 							<Button
-								color="secondary"
+								color="primary"
+								size="small"
 								onClick={() => {
 									setOpenDialog(false);
 								}}
@@ -65,6 +87,7 @@ const DialogTemplate = (args: DialogProps & React.RefAttributes<HTMLDivElement>)
 							</Button>
 							<Button
 								color="neutral"
+								size="small"
 								onClick={() => {
 									setOpenDialog(false);
 								}}
@@ -93,10 +116,8 @@ const DialogTemplate = (args: DialogProps & React.RefAttributes<HTMLDivElement>)
 export const Default: StoryObj<typeof Dialog> = {
 	render: (args) => <DialogTemplate {...args} />,
 	args: {
-		isOpen: true,
-		onClose: () => console.log("Dialog closed"),
-		children: "This is the dialog content.",
-		title: "Dialog Title",
-		footer: "Dialog Footer",
+		showCloseButton: true,
+		isModal: false,
+		isDraggable: false,
 	},
 };

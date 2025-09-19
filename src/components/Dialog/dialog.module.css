@@ -59,12 +59,12 @@
 	position: absolute;
 	border-radius: var(--border-radius-sm);
 	max-width: 90%;
-	width: 500px;
+	min-width: 400px;
 	max-height: 90vh;
 	display: flex;
 	flex-direction: column;
-	border: var(--border-width-xs) solid var(--surface-d);
-	background-color: var(--surface-b);
+	border: var(--border-width-xs) solid var(--border-color);
+	background-color: var(--surface-a);
 	opacity: 0;
 	transform: translateY(-20px);
 	transition: opacity 0.3s ease, transform 0.3s ease;
@@ -80,7 +80,28 @@
 			cursor: move;
 		}
 	}
+
+	&:is(.lambda-dialog-panel-radius-none) {
+		border-radius: var(--border-radius-none);
+	}
+
+	&:is(.lambda-dialog-panel-radius-tiny) {
+		border-radius: var(--border-radius-xs);
+	}
+
+	&:is(.lambda-dialog-panel-radius-small) {
+		border-radius: var(--border-radius-sm);
+	}
+
+	&:is(.lambda-dialog-panel-radius-medium) {
+		border-radius: var(--border-radius-md);
+	}
+
+	&:is(.lambda-dialog-panel-radius-large) {
+		border-radius: var(--border-radius-lg);
+	}
 }
+
 @keyframes modal-shake {
 	0% {
 		transform: translateX(0);
@@ -124,8 +145,8 @@
 /* Encabezado del diálogo */
 .lambda-dialog-header {
 	display: grid;
-	grid-template-columns: 1fr 1.5em;
-	padding: var(--padding-lg);
+	grid-template-columns: 1fr 1.6em;
+	padding: calc(var(--padding-md) + var(--padding-xs)) var(--padding-lg);
 	border-bottom: 1px solid var(--border-color);
 	background-color: var(--surface-b);
 	flex-shrink: 0;
@@ -138,7 +159,7 @@
 	margin: 0;
 	font-size: var(--font-size-lg);
 	font-weight: var(--font-weight-bold);
-	color: var(--foreground-color);
+	color: var(--foreground-title-color);
 	flex-grow: 1;
 	min-width: 0;
 	word-wrap: break-word;
@@ -150,6 +171,7 @@
 	overflow-y: auto;
 	height: 100%;
 	color: var(--foreground-color);
+	font-size: var(--font-size-md);
 	padding: var(--padding-lg);
 }
 
@@ -158,39 +180,12 @@
 	display: flex;
 	justify-content: flex-end;
 	gap: var(--gap-md);
-	padding: var(--padding-lg) var(--padding-lg);
+	padding: var(--padding-md) var(--padding-lg);
 	border-top: 1px solid var(--border-color);
-	background-color: var(--surface-b);
+	background-color: var(--surface-a);
 	flex-shrink: 0;
 }
 
-/* Botón de cerrar (generalmente en la esquina del encabezado) */
 .lambda-dialog-close-button {
-	display: flex;
-	align-items: center;
-	grid-column: 2 / 3;
-	border: none;
-	background: none;
-	cursor: pointer;
-	width: var(--height-input-xs);
-	height: var(--height-input-xs);
-	padding: var(--padding-none);
-	font-size: var(--font-size-xl);
-	border-radius: var(--border-radius-xs);
-	color: var(--surface-e);
-	transition: color 0.2s ease;
-	flex-shrink: 0;
-}
-
-/* Estado Hover y Foco */
-.lambda-dialog-close-button:hover {
-	color: var(--danger-base-color);
-	background-color: var(--danger-soft-color);
-}
-
-/* Estilo de foco visible para accesibilidad */
-.lambda-dialog-close-button:focus-visible {
-	outline: 2px solid var(--danger-subtle-color);
-	border-radius: var(--radius-small, 4px);
-	outline-offset: 2px;
+	grid-column: 2;
 }
