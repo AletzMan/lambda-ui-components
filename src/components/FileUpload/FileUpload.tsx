@@ -480,7 +480,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 							<ul
 								className={clsx(
 									styles["lambda-file-upload-file-list"],
-									fileList({ size, invalid })
+									fileList({ size, invalid }),
+									"scrollBar"
 								)}
 								role="list"
 							>

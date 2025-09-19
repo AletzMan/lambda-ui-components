@@ -8,12 +8,12 @@ const meta: Meta<typeof FileUpload> = {
 	component: FileUpload,
 	argTypes: {
 		type: {
-			control: "select",
+			control: "inline-radio",
 			options: ["button", "dropzone"],
 			description: "Type of file upload component",
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["small", "medium", "large"],
 			description: "Input size",
 		},

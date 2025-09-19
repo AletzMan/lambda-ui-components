@@ -32,11 +32,6 @@
 	gap: var(--gap-xs);
 }
 
-.lambda-file-upload-wrapper-disabled {
-	cursor: not-allowed;
-	opacity: 0.6;
-}
-
 .lambda-file-upload-label {
 	display: block;
 	font-family: var(--font-family);
@@ -57,11 +52,6 @@
 
 .lambda-file-upload-label-large {
 	font-size: var(--font-size-md);
-}
-
-.lambda-file-upload-label-disabled {
-	color: var(--primary-disabled-color);
-	cursor: not-allowed;
 }
 
 .lambda-file-upload-label-required::after {
@@ -185,19 +175,6 @@
 	font-size: var(--font-size-xs);
 	color: var(--warning-hover-color);
 	font-style: italic;
-}
-
-.lambda-file-upload-drop-zone-disabled {
-	cursor: not-allowed;
-	opacity: 0.6;
-	background-color: var(--surface-c);
-	border-color: var(--color-border-disabled);
-
-	.lambda-file-upload-drop-zone-icon,
-	.lambda-file-upload-drop-zone-placeholder,
-	.lambda-file-upload-drop-zone-file-count {
-		color: var(--primary-disabled-color);
-	}
 }
 
 .lambda-file-upload-drop-zone-invalid {
@@ -363,14 +340,6 @@
 		outline-offset: 2px;
 	}
 
-	&.lambda-file-upload-button-file-upload-disabled {
-		cursor: not-allowed;
-		opacity: 0.6;
-		background-color: var(--surface-c);
-		border-color: var(--surface-d);
-		color: var(--primary-disabled-color);
-	}
-
 	&.lambda-file-upload-button-file-upload-invalid {
 		border-color: var(--danger-base-color);
 	}
@@ -437,7 +406,7 @@
 
 .lambda-file-upload-file-name-display {
 	font-family: var(--font-family);
-	font-size: var(--font-size-md);
+	font-size: var(--font-size-sm);
 	color: var(--foreground-color);
 	font-weight: var(--font-weight-reg);
 	white-space: nowrap;
@@ -518,7 +487,6 @@
 	flex-direction: column;
 	max-height: 200px;
 	overflow-y: auto;
-	pointer-events: none;
 }
 
 /*
@@ -682,4 +650,13 @@
 
 .lambda-file-upload-file-item-is-image {
 	background-color: var(--surface-b);
+}
+
+.lambda-file-upload-wrapper-disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+
+	& * {
+		cursor: not-allowed;
+	}
 }
