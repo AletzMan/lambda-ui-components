@@ -534,13 +534,14 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 							style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
 						/>
 						<Tooltip
+							color="neutral"
 							content={copied ? t("color-picker.copy-success") : t("color-picker.copy")}
 							className={styles["lambda-colorpicker-preview-copy"]}
 						>
 							<Button
 								type="button"
 								variant="soft"
-								color="secondary"
+								color="neutral"
 								size="tiny"
 								onClick={handleCopyClick}
 								icon={copied ? <CheckIcon /> : <CopyIcon />}
@@ -602,10 +603,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 								}}
 							/>
 							{isSupported() && (
-								<Tooltip content={t("color-picker.eye-dropper")}>
+								<Tooltip content={t("color-picker.eye-dropper")} color="neutral">
 									<Button
 										variant="soft"
-										color="secondary"
+										color="neutral"
 										size="tiny"
 										icon={<Pipette />}
 										onClick={pickColor}
@@ -663,10 +664,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 										onChange={handleInputChange}
 										className={styles["lambda-colorpicker-input-single"]}
 									/>
-									<Tooltip content={t("color-picker.format")}>
+									<Tooltip content={t("color-picker.format")} color="neutral">
 										<Button
 											variant="soft"
-											color="secondary"
+											color="neutral"
 											size="tiny"
 											label={format.toUpperCase()}
 											onClick={handleChangeFormat}
