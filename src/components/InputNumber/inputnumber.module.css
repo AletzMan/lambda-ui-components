@@ -243,6 +243,11 @@ input[type="number"] {
 		border-radius: var(--border-radius-none);
 	}
 
+	&.lambda-number-handler-radius-tiny {
+		border-radius: var(--border-radius-none) calc(var(--border-radius-xs) + 1px)
+			calc(var(--border-radius-xs) + 1px) var(--border-radius-none);
+	}
+
 	&.lambda-number-handler-radius-small {
 		border-radius: var(--border-radius-none) calc(var(--border-radius-xs) + 1px)
 			calc(var(--border-radius-xs) + 1px) var(--border-radius-none);
@@ -258,7 +263,7 @@ input[type="number"] {
 			calc(var(--border-radius-md) + 3px) var(--border-radius-none);
 	}
 
-	&.lambda-number-handler-radius-pill {
+	&.lambda-number-handler-radius-full {
 		border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill)
 			var(--border-radius-none);
 	}
@@ -319,6 +324,10 @@ input[type="number"] {
 	border-radius: var(--border-radius-none);
 }
 
+.lambda-number-radius-tiny {
+	border-radius: var(--border-radius-xs);
+}
+
 .lambda-number-radius-small {
 	border-radius: var(--border-radius-sm);
 }
@@ -331,7 +340,7 @@ input[type="number"] {
 	border-radius: var(--border-radius-lg);
 }
 
-.lambda-number-radius-pill {
+.lambda-number-radius-full {
 	border-radius: var(--border-radius-pill);
 }
 
@@ -473,6 +482,10 @@ input[type="number"] {
 		border-radius: var(--border-radius-none);
 	}
 
+	&.lambda-number-currency-radius-tiny {
+		border-radius: var(--border-radius-xs);
+	}
+
 	&.lambda-number-currency-radius-small {
 		border-radius: calc(var(--border-radius-xs) + 1px) var(--border-radius-none)
 			var(--border-radius-none) calc(var(--border-radius-xs) + 1px);
@@ -488,7 +501,7 @@ input[type="number"] {
 			var(--border-radius-none) calc(var(--border-radius-md) + 3px);
 	}
 
-	&.lambda-number-currency-radius-pill {
+	&.lambda-number-currency-radius-full {
 		border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none)
 			var(--border-radius-pill);
 

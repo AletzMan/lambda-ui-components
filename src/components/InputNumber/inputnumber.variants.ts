@@ -23,10 +23,11 @@ export const inputNumber = cva(styles["lambda-number"], {
 		},
 		radius: {
 			none: styles["lambda-number-radius-none"],
+			tiny: styles["lambda-number-radius-tiny"],
 			small: styles["lambda-number-radius-small"],
 			medium: styles["lambda-number-radius-medium"],
 			large: styles["lambda-number-radius-large"],
-			pill: styles["lambda-number-radius-pill"],
+			full: styles["lambda-number-radius-full"],
 		},
 		invalid: {
 			true: styles["lambda-number-invalid"],
@@ -40,7 +41,7 @@ export const inputNumber = cva(styles["lambda-number"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "small",
+		radius: "tiny",
 		typeNumber: "default",
 		invalid: false,
 		disabled: false,
@@ -68,17 +69,18 @@ export const labels = cva(styles["lambda-number-label"], {
 		},
 		radius: {
 			none: styles["lambda-number-label-radius-none"],
+			tiny: styles["lambda-number-label-radius-tiny"],
 			small: styles["lambda-number-label-radius-small"],
 			medium: styles["lambda-number-label-radius-medium"],
 			large: styles["lambda-number-label-radius-large"],
-			pill: styles["lambda-number-label-radius-pill"],
+			full: styles["lambda-number-label-radius-full"],
 		},
 		required: {
 			true: styles["lambda-number-label-required"],
 		},
 	},
 	defaultVariants: {
-		radius: "small",
+		radius: "tiny",
 		size: "medium",
 	},
 });
@@ -116,10 +118,11 @@ export const handler = cva(styles["lambda-number-handler"], {
 		},
 		radius: {
 			none: styles["lambda-number-handler-radius-none"],
+			tiny: styles["lambda-number-handler-radius-tiny"],
 			small: styles["lambda-number-handler-radius-small"],
 			medium: styles["lambda-number-handler-radius-medium"],
 			large: styles["lambda-number-handler-radius-large"],
-			pill: styles["lambda-number-handler-radius-pill"],
+			full: styles["lambda-number-handler-radius-full"],
 		},
 		variant: {
 			outline: styles["lambda-number-handler-outline"],
@@ -129,7 +132,7 @@ export const handler = cva(styles["lambda-number-handler"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "small",
+		radius: "tiny",
 	},
 });
 
@@ -143,10 +146,11 @@ export const typeCurrency = cva(styles["lambda-number-currency"], {
 		},
 		radius: {
 			none: styles["lambda-number-currency-radius-none"],
+			tiny: styles["lambda-number-currency-radius-tiny"],
 			small: styles["lambda-number-currency-radius-small"],
 			medium: styles["lambda-number-currency-radius-medium"],
 			large: styles["lambda-number-currency-radius-large"],
-			pill: styles["lambda-number-currency-radius-pill"],
+			full: styles["lambda-number-currency-radius-full"],
 		},
 		variant: {
 			outline: styles["lambda-number-currency-outline"],
@@ -165,7 +169,7 @@ export const typeCurrency = cva(styles["lambda-number-currency"], {
 		size: "medium",
 		variant: "outline",
 		typeNumber: "default",
-		radius: "small",
+		radius: "tiny",
 	},
 });
 

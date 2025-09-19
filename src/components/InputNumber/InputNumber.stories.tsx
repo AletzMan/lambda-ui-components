@@ -19,11 +19,6 @@ const meta: Meta<typeof InputNumber> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
-		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "large", "pill"],
-			description: "Corner shape",
-		},
 		label: {
 			control: "text",
 			type: "string",
@@ -88,7 +83,6 @@ export const Outline: Story = {
 	render: Template,
 	args: {
 		variant: "outline",
-		radius: "small",
 		size: "medium",
 		step: 1,
 		min: 0,
@@ -109,7 +103,6 @@ export const Soft: Story = {
 	render: Template,
 	args: {
 		variant: "soft",
-		radius: "small",
 		size: "medium",
 		step: 1,
 		min: 0,
