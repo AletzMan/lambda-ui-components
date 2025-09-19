@@ -30,10 +30,6 @@ export interface ColorPickerProps
 	 */
 	variant?: ColorPickerVariants["variant"];
 	/**
-	 * Define el radio del color picker.
-	 */
-	radius?: ColorPickerVariants["radius"];
-	/**
 	 * Define si se muestra el texto del color picker.
 	 */
 	showText?: boolean;

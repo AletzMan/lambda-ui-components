@@ -1,6 +1,5 @@
 .lambda-colorpicker {
 	position: relative;
-	border-radius: var(--border-radius-sm);
 	transition: border-color 0.2s ease;
 	font-family: var(--font-family);
 	box-shadow: var(--box-shadow);
@@ -153,6 +152,10 @@
 		border-radius: var(--border-radius-none);
 	}
 
+	&:is(.lambda-colorpicker-radius-tiny) {
+		border-radius: var(--border-radius-xs);
+	}
+
 	&:is(.lambda-colorpicker-radius-small) {
 		border-radius: var(--border-radius-sm);
 	}
@@ -160,7 +163,7 @@
 	&:is(.lambda-colorpicker-radius-medium) {
 		border-radius: var(--border-radius-md);
 	}
-	&:is(.lambda-colorpicker-radius-circle) {
+	&:is(.lambda-colorpicker-radius-full) {
 		border-radius: var(--border-radius-full);
 	}
 
@@ -220,6 +223,14 @@
 		}
 	}
 
+	&:is(.lambda-colorpicker-group-radius-tiny) {
+		.lambda-colorpicker-button,
+		.lambda-colorpicker-border,
+		.lambda-colorpicker-pattern {
+			border-radius: var(--border-radius-xs);
+		}
+	}
+
 	&:is(.lambda-colorpicker-group-radius-small) {
 		.lambda-colorpicker-button,
 		.lambda-colorpicker-border,
@@ -236,7 +247,7 @@
 		}
 	}
 
-	&:is(.lambda-colorpicker-group-radius-circle) {
+	&:is(.lambda-colorpicker-group-radius-full) {
 		.lambda-colorpicker-button,
 		.lambda-colorpicker-border,
 		.lambda-colorpicker-pattern {
@@ -305,7 +316,6 @@
 	width: 0;
 	height: 0;
 	opacity: 0;
-	border-radius: var(--border-radius-sm);
 	background-color: var(--surface-b);
 	border: var(--border-width-xs) solid var(--surface-d);
 	overflow: hidden;
@@ -313,6 +323,50 @@
 	box-sizing: border-box;
 	pointer-events: none;
 	z-index: 3;
+
+	&:is(.lambda-colorpicker-box-radius-none) {
+		border-radius: var(--border-radius-none);
+	}
+
+	&:is(.lambda-colorpicker-box-radius-tiny) {
+		border-radius: var(--border-radius-xs);
+
+		& .lambda-colorpicker-preview-color,
+		& .lambda-colorpicker-preview-background {
+			border-radius: var(--border-radius-xs) var(--border-radius-xs) var(--border-radius-xs)
+				var(--border-radius-xs);
+		}
+	}
+
+	&:is(.lambda-colorpicker-box-radius-small) {
+		border-radius: var(--border-radius-sm);
+
+		& .lambda-colorpicker-preview-color,
+		& .lambda-colorpicker-preview-background {
+			border-radius: calc(var(--border-radius-sm) - var(--border-radius-xs)) var(--border-radius-xs)
+				var(--border-radius-xs) var(--border-radius-xs);
+		}
+	}
+
+	&:is(.lambda-colorpicker-box-radius-medium) {
+		border-radius: var(--border-radius-md);
+
+		& .lambda-colorpicker-preview-color,
+		& .lambda-colorpicker-preview-background {
+			border-radius: calc(var(--border-radius-md) - var(--border-radius-xs)) var(--border-radius-xs)
+				var(--border-radius-xs) var(--border-radius-xs);
+		}
+	}
+
+	&:is(.lambda-colorpicker-box-radius-large) {
+		border-radius: var(--border-radius-lg);
+
+		& .lambda-colorpicker-preview-color,
+		& .lambda-colorpicker-preview-background {
+			border-radius: calc(var(--border-radius-lg) - var(--border-radius-xs)) var(--border-radius-xs)
+				var(--border-radius-xs) var(--border-radius-xs);
+		}
+	}
 }
 
 .lambda-colorpicker-box-view {
@@ -360,7 +414,6 @@
 		left: var(--padding-xs);
 		width: 15em;
 		height: calc(100% - var(--padding-md));
-		border-radius: var(--border-radius-xs);
 		border: var(--border-width-xs) solid transparent;
 		z-index: 2;
 	}

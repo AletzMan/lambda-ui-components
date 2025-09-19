@@ -15,9 +15,11 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 		},
 		radius: {
 			none: styles["lambda-colorpicker-radius-none"],
+			tiny: styles["lambda-colorpicker-radius-tiny"],
 			small: styles["lambda-colorpicker-radius-small"],
 			medium: styles["lambda-colorpicker-radius-medium"],
-			circle: styles["lambda-colorpicker-radius-circle"],
+			large: styles["lambda-colorpicker-radius-large"],
+			full: styles["lambda-colorpicker-radius-full"],
 		},
 		disabled: {
 			true: styles["lambda-colorpicker-disabled"],
@@ -55,9 +57,11 @@ export const colorpickerGroupVariants = cva(styles["lambda-colorpicker-group"], 
 	variants: {
 		radius: {
 			none: styles["lambda-colorpicker-group-radius-none"],
+			tiny: styles["lambda-colorpicker-group-radius-tiny"],
 			small: styles["lambda-colorpicker-group-radius-small"],
 			medium: styles["lambda-colorpicker-group-radius-medium"],
-			circle: styles["lambda-colorpicker-group-radius-circle"],
+			large: styles["lambda-colorpicker-group-radius-large"],
+			full: styles["lambda-colorpicker-group-radius-full"],
 		},
 		size: {
 			tiny: styles["lambda-colorpicker-group-tiny"],
@@ -68,6 +72,18 @@ export const colorpickerGroupVariants = cva(styles["lambda-colorpicker-group"], 
 	},
 	defaultVariants: {
 		size: "medium",
+	},
+});
+
+export const colorpickerBoxVariants = cva(styles["lambda-colorpicker-box"], {
+	variants: {
+		radius: {
+			none: styles["lambda-colorpicker-box-radius-none"],
+			tiny: styles["lambda-colorpicker-box-radius-tiny"],
+			small: styles["lambda-colorpicker-box-radius-small"],
+			medium: styles["lambda-colorpicker-box-radius-medium"],
+			large: styles["lambda-colorpicker-box-radius-large"],
+		},
 	},
 });
 

@@ -8,6 +8,7 @@ import {
 } from "react";
 import { ColorPickerProps } from "./colorpicker.types";
 import {
+	colorpickerBoxVariants,
 	colorpickerGroupVariants,
 	colorpickerTextVariants,
 	colorpickerVariants,
@@ -22,7 +23,10 @@ import useEyeDropper from "use-eye-dropper";
 // Importa el componente Range
 import { Range } from "../Range/Range";
 import { Tooltip } from "../ToolTip/ToolTip";
-import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import {
+	useTranslation,
+	useUIConfig,
+} from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
@@ -167,22 +171,12 @@ const alphaToHex = (a: number): string => {
 
 export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 	(
-		{
-			className,
-			size,
-			variant,
-			radius,
-			disabled,
-			value,
-			onChange,
-			format: formatProp,
-			showText,
-			...props
-		},
+		{ className, size, variant, disabled, value, onChange, format: formatProp, showText, ...props },
 		ref
 	) => {
 		const { open, isSupported } = useEyeDropper();
 		const { t } = useTranslation();
+		const { radiusField, radiusBox } = useUIConfig();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
 		const [format, setFormat] = useState<"hex" | "hsl" | "rgb" | "rgba" | "hsla">(
@@ -509,14 +503,14 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		return (
 			<div
 				className={clsx(
-					colorpickerVariants({ size, variant, radius, disabled, showText }),
+					colorpickerVariants({ size, variant, radius: radiusField, disabled, showText }),
 					className
 				)}
 				ref={ref}
 				{...props}
 				role="colorpicker"
 			>
-				<div className={clsx(colorpickerGroupVariants({ size, radius }))}>
+				<div className={clsx(colorpickerGroupVariants({ size, radius: radiusField }))}>
 					<div className={styles["lambda-colorpicker-border"]}></div>
 					<div className={styles["lambda-colorpicker-pattern"]}></div>
 					<button
@@ -527,7 +521,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					></button>
 				</div>
 				<div
-					className={clsx(styles["lambda-colorpicker-box"], {
+					className={clsx(colorpickerBoxVariants({ radius: radiusBox }), {
 						[styles["lambda-colorpicker-box-view"]]: viewPicker,
 					})}
 					ref={colorPickerRef}
