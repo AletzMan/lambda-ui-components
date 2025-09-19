@@ -164,17 +164,14 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				let nextValue: RangeValue;
 
 				if (isDoubleHandled) {
-					// Para sliders de doble handle, obtenemos los valores actuales del prop 'value'
-					const [currentStart, currentEnd] = value as [number, number];
-
-					if (draggingHandleIndex === 0) {
-						// Clampear el nuevo valor potencial: entre min global y el valor actual del handle de fin
-						const clampedStart = Math.max(min, Math.min(potentialNewValue, currentEnd));
-						nextValue = [clampedStart, currentEnd];
+					let [currentStart, currentEnd] = value as [number, number];
+					let handleIdx = draggingHandleIndex;
+					if (handleIdx === 0) {
+						let newStart = Math.max(min, Math.min(potentialNewValue, max));
+						nextValue = [newStart, currentEnd];
 					} else {
-						// Clampear el nuevo valor potencial: entre el valor actual del handle de inicio y max global
-						const clampedEnd = Math.max(currentStart, Math.min(potentialNewValue, max));
-						nextValue = [currentStart, clampedEnd];
+						let newEnd = Math.max(min, Math.min(potentialNewValue, max));
+						nextValue = [currentStart, newEnd];
 					}
 				} else {
 					// Para slider de handle único, el nuevo valor es simplemente el valor potencial, clampado entre min y max global
@@ -219,30 +216,25 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				let nextValue: RangeValue;
 
 				if (isDoubleHandled) {
-					// Para sliders de doble handle, obtenemos los valores actuales del prop 'value'
-					// Usamos el prop 'value' original aquí porque 'valueToFinalize' podría ser null
-					// si getValueFromPointerEvent falló. Queremos asegurar que [currentStart, currentEnd] son números.
-					const [currentStart, currentEnd] = value as [number, number];
-
-					// Usamos el valor obtenido del evento (si es válido) para actualizar el handle correspondiente.
-					// Si finalValue fue null, valueToFinalize es el 'value' prop original.
-					// Si es así, no hubo un cambio de valor efectivo, y 'valueToApply' debería ser el valor actual del handle que se 'terminó de arrastrar'.
+					let [currentStart, currentEnd] = value as [number, number];
+					let handleIdx = draggingHandleIndex;
 					const valueToApply =
 						finalValue === null
-							? draggingHandleIndex === 0
+							? handleIdx === 0
 								? currentStart
 								: currentEnd
 							: (valueToFinalize as number);
 
-					if (draggingHandleIndex === 0) {
-						// Clampear el valor a aplicar: entre min global y el valor actual del handle de fin
-						const clampedStart = Math.max(min, Math.min(valueToApply, currentEnd));
-						nextValue = [clampedStart, currentEnd];
+					if (handleIdx === 0) {
+						let newStart = Math.max(min, Math.min(valueToApply, max));
+						nextValue = [newStart, currentEnd];
 					} else {
-						// Finalizando arrastre del handle de fin (index 1)
-						// Clampear el valor a aplicar: entre el valor actual del handle de inicio y max global
-						const clampedEnd = Math.max(currentStart, Math.min(valueToApply, max));
-						nextValue = [currentStart, clampedEnd];
+						let newEnd = Math.max(min, Math.min(valueToApply, max));
+						nextValue = [currentStart, newEnd];
+					}
+					// Normaliza al soltar: menor primero
+					if (Array.isArray(nextValue) && nextValue[0] > nextValue[1]) {
+						nextValue = [nextValue[1], nextValue[0]];
 					}
 				} else {
 					// Para slider de handle único, el valor final es simplemente el valor a aplicar, clampado

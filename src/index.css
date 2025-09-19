@@ -512,7 +512,6 @@
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-info-500) 15%, transparent 90%);
 }
 
-/* Asegura que los botones y otros elementos tengan la fuente correcta */
 button,
 input,
 textarea {
