@@ -7,13 +7,13 @@ import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvi
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 	({ className, color, size, children, text, count, maxCount, ...props }, ref) => {
-		const { radiusField } = useUIConfig();
+		const { radiusSelector } = useUIConfig();
 		return (
 			<div
 				className={clsx(
 					badgeStyles({
 						size,
-						radius: radiusField,
+						radius: radiusSelector,
 						color,
 						hasCount: count !== undefined && count >= 0,
 						hasText: text !== undefined,
