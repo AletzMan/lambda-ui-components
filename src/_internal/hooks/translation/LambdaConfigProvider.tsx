@@ -7,9 +7,19 @@ const translations = { en, es, fr };
 
 type Dictionary = typeof translations;
 
+type LambdaRadiusBox = "tiny" | "small" | "medium" | "large" | "none" | null | undefined;
+
 type LambdaRadiusField = "tiny" | "small" | "medium" | "large" | "full" | "none" | null | undefined;
 
-type LambdaRadiusBox = "tiny" | "small" | "medium" | "large" | "none" | null | undefined;
+type LambdaRadiusSelector =
+	| "tiny"
+	| "small"
+	| "medium"
+	| "large"
+	| "full"
+	| "none"
+	| null
+	| undefined;
 
 //
 // Contexto para traducciones
@@ -31,8 +41,24 @@ export const useTranslation = () => {
 // Contexto para UI config
 //
 interface UIConfigContextProps {
-	radiusField?: LambdaRadiusField;
+	/**
+	 * Define the radius(tiny, small, medium, large, none) of components that have a radius.
+	 * Apply to components (Card, Modal, Drawer, Alert, Notification,  etc).
+	 * @default "small"
+	 */
 	radiusBox?: LambdaRadiusBox;
+	/**
+	 * Define the radius(tiny, small, medium, large, full, none) of components that have a radius.
+	 * Apply to components (Button, Input, InputNumber, Select, Tab, Pagination, etc).
+	 * @default "tiny"
+	 */
+	radiusField?: LambdaRadiusField;
+	/**
+	 * Define the radius(tiny, small, medium, large, full, none) of components that have a radius.
+	 * Apply to components (  Switch, Checkbox, Range, Tag, Badge, Breadcrumb  etc).
+	 * @default "small"
+	 */
+	radiusSelector?: LambdaRadiusSelector;
 }
 
 const UIConfigContext = createContext<UIConfigContextProps | undefined>(undefined);
@@ -53,8 +79,9 @@ interface ConfigProviderProps extends UIConfigContextProps {
 export const LambdaConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = ({
 	children,
 	lang,
-	radiusField,
-	radiusBox,
+	radiusBox = "small",
+	radiusField = "tiny",
+	radiusSelector = "small",
 }) => {
 	const dict = translations[lang];
 
@@ -75,7 +102,10 @@ export const LambdaConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = 
 
 	// Valores memoizados para no re-renderizar innecesariamente
 	const translationValue = useMemo(() => ({ lang, t }), [lang, t]);
-	const uiConfigValue = useMemo(() => ({ radiusField, radiusBox }), [radiusField, radiusBox]);
+	const uiConfigValue = useMemo(
+		() => ({ radiusField, radiusBox, radiusSelector }),
+		[radiusField, radiusBox, radiusSelector]
+	);
 
 	return (
 		<TranslationContext.Provider value={translationValue}>
