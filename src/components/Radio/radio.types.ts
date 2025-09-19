@@ -18,14 +18,15 @@ export interface RadioGroupProps {
 	color?: RadioGroupVariants["color"];
 
 	/**
-	 * Ajusta la redondez de las esquinas del contenedor del grupo.
-	 */
-	radius?: RadioGroupVariants["radius"];
-
-	/**
 	 * Controla el estilo visual general del grupo de radios.
 	 */
 	variant?: RadioGroupVariants["variant"];
+
+	/**
+	 * Controla si se muestra el radio o no.
+	 * @default true
+	 */
+	showRadio?: boolean;
 
 	/**
 	 * Deshabilita todos los botones de radio individuales contenidos dentro de este grupo.

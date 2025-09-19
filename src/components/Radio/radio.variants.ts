@@ -13,6 +13,7 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 			large: styles["lambda-radio-group-large"],
 		},
 		color: {
+			neutral: styles["lambda-radio-group-neutral"],
 			primary: styles["lambda-radio-group-primary"],
 			secondary: styles["lambda-radio-group-secondary"],
 			danger: styles["lambda-radio-group-danger"],
@@ -35,7 +36,8 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 			tiny: styles["lambda-radio-group-radius-tiny"],
 			small: styles["lambda-radio-group-radius-small"],
 			medium: styles["lambda-radio-group-radius-medium"],
-			pill: styles["lambda-radio-group-radius-pill"],
+			large: styles["lambda-radio-group-radius-large"],
+			full: styles["lambda-radio-group-radius-full"],
 		},
 	},
 	compoundVariants: [],
@@ -181,7 +183,8 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 			tiny: styles["lambda-radio-wrapper-radius-tiny"],
 			small: styles["lambda-radio-wrapper-radius-small"],
 			medium: styles["lambda-radio-wrapper-radius-medium"],
-			pill: styles["lambda-radio-wrapper-radius-pill"],
+			large: styles["lambda-radio-wrapper-radius-large"],
+			full: styles["lambda-radio-wrapper-radius-full"],
 		},
 		disabled: {
 			true: styles["lambda-radio-wrapper-disabled"],
@@ -257,7 +260,8 @@ export const labelName = cva(styles["lambda-radio-label"], {
 			tiny: styles["lambda-radio-label-radius-tiny"],
 			small: styles["lambda-radio-label-radius-small"],
 			medium: styles["lambda-radio-label-radius-medium"],
-			pill: styles["lambda-radio-label-radius-pill"],
+			large: styles["lambda-radio-label-radius-large"],
+			full: styles["lambda-radio-label-radius-full"],
 		},
 		size: {
 			tiny: styles["lambda-radio-label-tiny"],
@@ -321,13 +325,6 @@ export const contentCard = cva(styles["lambda-radio-content-card"], {
 			warning: styles["lambda-radio-content-card-warning"],
 			info: styles["lambda-radio-content-card-info"],
 		},
-		radius: {
-			none: styles["lambda-radio-content-card-radius-none"],
-			tiny: styles["lambda-radio-content-card-radius-tiny"],
-			small: styles["lambda-radio-content-card-radius-small"],
-			medium: styles["lambda-radio-content-card-radius-medium"],
-			pill: styles["lambda-radio-content-card-radius-pill"],
-		},
 		checked: {
 			true: styles["lambda-radio-content-card-checked"],
 			false: "",
@@ -341,10 +338,10 @@ export const contentCard = cva(styles["lambda-radio-content-card"], {
 		size: "small",
 		variant: "solid",
 		color: "primary",
-		radius: "small",
 		disabled: false,
 		checked: false,
 	},
 });
 
 export type RadioVariants = VariantProps<typeof wrapper>;
+export type RadioCardVariants = Omit<VariantProps<typeof contentCard>, "radius">;

@@ -22,12 +22,14 @@ import {
 	RadioGroups,
 	RadioGroupVariants,
 	radioprop,
+	RadioVariants,
 	view,
 	wrapper,
 } from "./radio.variants";
 import clsx from "clsx";
 import { RadioGroupProps, RadioProps } from "./radio.types";
 import styles from "./radio.module.css";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export type RadioGroupContextType = {
 	name: string;
@@ -35,9 +37,11 @@ export type RadioGroupContextType = {
 	onChange: (value: string) => void;
 	size: RadioGroupVariants["size"];
 	color: RadioGroupVariants["color"];
-	radius: RadioGroupVariants["radius"];
+	radiusSelector: RadioVariants["radius"];
+	radiusCard: Exclude<RadioVariants["radius"], "full">;
 	variant: RadioGroupVariants["variant"];
 	orientation: RadioGroupVariants["orientation"];
+	showRadio: boolean;
 	disabled: boolean;
 	type: RadioGroupVariants["type"];
 };
@@ -61,7 +65,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	color,
 	variant,
 	disabled = false,
-	radius,
+	showRadio = false,
 	orientation,
 	gap = "8px",
 	children,
@@ -70,6 +74,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	const refGroup = useRef<HTMLDivElement | null>(null);
 	const defaultNameId = useId();
 	const effectiveName = name ?? `radio-group-${defaultNameId}`;
+	const { radiusSelector, radiusBox: radiusCard } = useUIConfig();
 
 	const handleChange = useCallback(
 		(newValue: string) => {
@@ -108,7 +113,9 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			onChange: handleChange,
 			size,
 			color,
-			radius,
+			radiusSelector,
+			radiusCard,
+			showRadio,
 			variant,
 			orientation,
 			disabled,
@@ -122,7 +129,9 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			size,
 			color,
 			variant,
-			radius,
+			radiusSelector,
+			radiusCard,
+			showRadio,
 			orientation,
 			disabled,
 			inferredType,
@@ -143,13 +152,13 @@ const RadioGroupComponent = ({
 	children: ReactNode;
 	refGroup: React.RefObject<HTMLDivElement | null>;
 }) => {
-	const { size, variant, orientation, radius, color, type } = useRadioGroup();
+	const { size, variant, orientation, radiusSelector, color, type } = useRadioGroup();
 
 	return (
 		<div
 			role="radiogroup"
 			ref={refGroup}
-			className={RadioGroups({ orientation, size, radius, variant, color, type })}
+			className={RadioGroups({ orientation, size, radius: radiusSelector, variant, color, type })}
 		>
 			{children}
 		</div>
@@ -163,7 +172,6 @@ const RadioComponent = forwardRef<
 		title?: string;
 		subtitle?: string;
 		body?: React.ReactElement;
-		showRadio?: boolean;
 		icon?: ReactNode;
 		color?: RadioGroupVariants["color"];
 	}
@@ -178,7 +186,6 @@ const RadioComponent = forwardRef<
 			title,
 			subtitle,
 			body,
-			showRadio,
 			icon,
 			color,
 			...props
@@ -191,7 +198,9 @@ const RadioComponent = forwardRef<
 			size,
 			variant,
 			orientation,
-			radius,
+			radiusSelector,
+			radiusCard,
+			showRadio,
 			onChange,
 			disabled: groupDisabled,
 			name,
@@ -213,7 +222,7 @@ const RadioComponent = forwardRef<
 					size,
 					type,
 					orientation,
-					radius,
+					radius: type === "card" ? radiusCard : radiusSelector,
 					variant,
 					checked: isChecked,
 				})}
@@ -266,7 +275,7 @@ const RadioComponent = forwardRef<
 							size,
 							disabled: isDisabled,
 							orientation,
-							radius,
+							radius: radiusSelector,
 							type,
 							color: color || groupColor,
 						})}
@@ -280,7 +289,7 @@ const RadioComponent = forwardRef<
 							size,
 							disabled: isDisabled,
 							orientation,
-							radius,
+							radius: radiusSelector,
 							type,
 							color: color || groupColor,
 							typeContent: icon && label ? "iconLabel" : icon ? "icon" : label ? "label" : "none",
@@ -298,7 +307,6 @@ const RadioComponent = forwardRef<
 							variant,
 							color: color || groupColor,
 							checked: isChecked,
-							radius,
 						})}
 					>
 						<header className={styles["lambda-radio-card-header"]}>
@@ -361,7 +369,6 @@ const Card = forwardRef<
 			type="card"
 			title={props.title}
 			subtitle={props.subtitle}
-			showRadio={props.showRadio}
 			body={props.body}
 		/>
 	);

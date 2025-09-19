@@ -29,14 +29,13 @@ const meta: Meta<typeof RadioGroup> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
+		showRadio: {
+			control: "boolean",
+			description: "Show radio",
+		},
 		orientation: {
 			control: "radio",
 			options: ["horizontal", "vertical"],
-		},
-		radius: {
-			control: "select",
-			options: ["none", "tiny", "small", "medium", "pill"],
-			description: "Input radius",
 		},
 		disabled: {
 			control: "boolean",
@@ -308,8 +307,8 @@ export const DefaultSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -320,8 +319,8 @@ export const DefaultSoft: Story = {
 		color: "primary",
 		variant: "soft",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -332,8 +331,8 @@ export const DefaultOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -344,8 +343,8 @@ export const ButtonSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -355,9 +354,9 @@ export const ButtonSoft: Story = {
 		size: "small",
 		color: "primary",
 		variant: "soft",
-		radius: "tiny",
 		disabled: false,
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -368,8 +367,8 @@ export const ButtonOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -380,8 +379,8 @@ export const CardSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -392,8 +391,8 @@ export const CardSoft: Story = {
 		color: "primary",
 		variant: "soft",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
 
@@ -404,7 +403,7 @@ export const CardOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		radius: "tiny",
 		orientation: "horizontal",
+		showRadio: false,
 	},
 };
