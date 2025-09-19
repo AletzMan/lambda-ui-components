@@ -1,7 +1,7 @@
 .lambda-input-group-outline,
 .lambda-input-group-underline {
 	background-color: var(--surface-a);
-	border: var(--border-width-xs) solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--border-color);
 }
 .lambda-input-group-soft,
 .lambda-input-group-underline {
@@ -50,6 +50,46 @@
 
 		.lambda-input-group-end > button {
 			border-radius: var(--border-radius-none);
+		}
+	}
+}
+
+.lambda-input-group-radius-tiny {
+	border-radius: var(--border-radius-xs);
+
+	&.lambda-input-group-elements-last {
+		.lambda-input-group-wrapper {
+			border-radius: var(--border-radius-xs) var(--border-radius-none) var(--border-radius-none)
+				var(--border-radius-xs);
+		}
+
+		.lambda-input-group-end > button {
+			border-radius: var(--border-radius-none) var(--border-radius-xs) var(--border-radius-xs)
+				var(--border-radius-none);
+		}
+	}
+
+	&.lambda-input-group-elements-first {
+		.lambda-input-group-wrapper {
+			border-radius: var(--border-radius-none) var(--border-radius-xs) var(--border-radius-xs)
+				var(--border-radius-none);
+		}
+
+		.lambda-input-group-start > button {
+			border-radius: var(--border-radius-xs) var(--border-radius-none) var(--border-radius-none)
+				var(--border-radius-xs);
+		}
+	}
+
+	&.lambda-input-group-elements-both {
+		.lambda-input-group-start > button {
+			border-radius: var(--border-radius-xs) var(--border-radius-none) var(--border-radius-none)
+				var(--border-radius-xs);
+		}
+
+		.lambda-input-group-end > button {
+			border-radius: var(--border-radius-none) var(--border-radius-xs) var(--border-radius-xs)
+				var(--border-radius-none);
 		}
 	}
 }
@@ -182,7 +222,7 @@
 	}
 }
 
-.lambda-input-group-radius-pill {
+.lambda-input-group-radius-full {
 	border-radius: var(--border-radius-pill);
 
 	&.lambda-input-group-underline {
@@ -205,20 +245,19 @@
 		border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none)
 			var(--border-radius-pill);
 	}
-}
 
-&.lambda-input-group-elements-both {
-	.lambda-input-group-start > button {
-		border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none)
-			var(--border-radius-pill);
+	&.lambda-input-group-elements-both {
+		.lambda-input-group-start > button {
+			border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none)
+				var(--border-radius-pill);
+		}
+
+		.lambda-input-group-end > button {
+			border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill)
+				var(--border-radius-none);
+		}
 	}
-
-	.lambda-input-group-end > button {
-		border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill)
-			var(--border-radius-none);
-	}
 }
-
 .lambda-input-group-invalid {
 	background-color: var(--danger-soft-color);
 }
@@ -230,15 +269,15 @@
 	position: relative;
 	outline: none;
 	font-family: var(--font-family);
-	background: var(--surface-c);
+	background: var(--surface-b);
 
 	.lambda-input-group-start,
 	.lambda-input-group-end {
 		display: flex;
 		align-items: center;
 		height: 100%;
-		color: var(--surface-g);
-		font-weight: var(--font-weight-semibold);
+		color: var(--surface-f);
+		font-weight: var(--font-weight-md);
 
 		& > button {
 			height: 100%;
@@ -333,7 +372,7 @@
 
 	&.lambda-input-group-outline,
 	&.lambda-input-group-underline {
-		border: var(--border-width-xs) solid var(--surface-d);
+		border: var(--border-width-xs) solid transparent;
 	}
 	&:is(.lambda-input-group-wrapper-soft) {
 		margin: -0px 0 0 0;

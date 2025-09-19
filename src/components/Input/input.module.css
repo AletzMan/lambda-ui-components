@@ -432,7 +432,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .lambda-input-wrapper-group {
 	background-color: var(--surface-a);
 	border: none;
-	border: var(--border-width-xs) solid var(--surface-d);
+	border: var(--border-width-xs) solid var(--border-color);
 	border-radius: var(--border-radius-none);
 	outline: none;
 
@@ -450,8 +450,8 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 	&.lambda-input-wrapper-soft {
 		border: none;
-		border-bottom: var(--border-width-xs) solid var(--surface-c);
-		border-top: var(--border-width-xs) solid var(--surface-c);
+		border-bottom: var(--border-width-xs) solid var(--surface-b);
+		border-top: var(--border-width-xs) solid var(--surface-b);
 	}
 }
 

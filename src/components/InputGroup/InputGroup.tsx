@@ -16,12 +16,11 @@ import { VariantProps } from "class-variance-authority";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { inputGroup, inputGroupWrapper } from "./inputgroup.variants";
 import { InputProps } from "../Input/input.types";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 type InputGroupContextType = {
 	/** Variante del componente */
 	variant?: "outline" | "soft" | "underline" | null;
-	/** Radio del componente */
-	radius?: "none" | "small" | "medium" | "large" | "pill" | null;
 	/** Tamaño del componente */
 	size?: "tiny" | "small" | "medium" | "large" | null;
 	/** Indica si el componente es inválido */
@@ -50,19 +49,10 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 	InputGroupProps
 >(
 	(
-		{
-			prefixElement,
-			suffixElement,
-			children,
-			variant,
-			radius,
-			size,
-			invalid,
-			disabled,
-			errorMessage,
-		},
+		{ prefixElement, suffixElement, children, variant, size, invalid, disabled, errorMessage },
 		ref
 	) => {
+		const { radiusField } = useUIConfig();
 		const hasElements: "none" | "first" | "last" | "both" =
 			prefixElement && suffixElement
 				? "both"
@@ -76,13 +66,12 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 		const contextValue = useMemo(
 			() => ({
 				variant: variant ?? "outline",
-				radius: radius ?? "medium",
 				size: size ?? "medium",
 				invalid: invalid ?? false,
 				hasElements: hasElements,
 				disabled: disabled ?? false,
 			}),
-			[variant, radius, size, invalid, disabled, hasElements]
+			[variant, size, invalid, disabled, hasElements]
 		);
 
 		return (
@@ -93,10 +82,10 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 						className={clsx(
 							inputGroup({
 								variant: variant,
-								radius,
 								size,
 								invalid,
 								disabled,
+								radius: radiusField,
 								hasElements,
 							})
 						)}

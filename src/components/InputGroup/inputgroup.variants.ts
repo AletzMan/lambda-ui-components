@@ -16,10 +16,11 @@ export const inputGroup = cva(styles["lambda-input-group"], {
 		},
 		radius: {
 			none: styles["lambda-input-group-radius-none"],
+			tiny: styles["lambda-input-group-radius-tiny"],
 			small: styles["lambda-input-group-radius-small"],
 			medium: styles["lambda-input-group-radius-medium"],
 			large: styles["lambda-input-group-radius-large"],
-			pill: styles["lambda-input-group-radius-pill"],
+			full: styles["lambda-input-group-radius-full"],
 		},
 		hasElements: {
 			none: styles["lambda-input-group-elements-none"],
@@ -39,7 +40,7 @@ export const inputGroup = cva(styles["lambda-input-group"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "medium",
+		radius: "tiny",
 		invalid: false,
 		disabled: false,
 	},
