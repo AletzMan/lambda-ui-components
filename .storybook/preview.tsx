@@ -25,7 +25,7 @@ const ThemeDecorator = (Story, context) => {
 	}, [theme, Story, context]);
 
 	return (
-		<LambdaConfigProvider lang="en" radiusField="tiny" radiusBox="small">
+		<LambdaConfigProvider lang="en" radiusField="tiny" radiusBox="none">
 			<ThemeProvider defaultTheme={theme}>
 				<Story />
 			</ThemeProvider>
