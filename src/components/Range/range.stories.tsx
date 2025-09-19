@@ -143,7 +143,7 @@ export const Double: StoryObj<typeof Range> = {
 	args: {
 		min: 0,
 		max: 100,
-		step: 1,
+		step: 5,
 		disabled: false,
 		size: "medium",
 		label: "",
