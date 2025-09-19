@@ -206,10 +206,6 @@
 	outline: none;
 }
 
-.lambda-accordion-header:focus-visible:not(.lambda-accordion-header-disabled) {
-	box-shadow: 0 0 3px 2px var(--primary-base-color) inset;
-}
-
 /* Variantes del AccordionHeader */
 .lambda-accordion-header-open {
 	background-color: var(--surface-b);
