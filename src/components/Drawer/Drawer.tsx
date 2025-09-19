@@ -23,12 +23,12 @@ const getPortalContainer = (placement: DrawerPlacement) => {
 		// Si no existe, crearlo y añadirlo al cuerpo del documento
 		portalContainer = document.createElement("div");
 		portalContainer.classList.add(styles["lambda-drawer-portal-container"]);
-		portalContainer.setAttribute("data-placement", placement);
+		portalContainer.setAttribute("data-placement", placement || "left");
 		document.body.appendChild(portalContainer);
 	} else {
 		// Si ya existe, actualizar el atributo data-placement si ha cambiado
 		if (portalContainer.getAttribute("data-placement") !== placement) {
-			portalContainer.setAttribute("data-placement", placement);
+			portalContainer.setAttribute("data-placement", placement || "left");
 		}
 	}
 	return portalContainer;
