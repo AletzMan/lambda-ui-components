@@ -10,6 +10,13 @@ export const notificationProp = cva(styles["notification"], {
 			info: styles["notification-info"],
 			danger: styles["notification-danger"],
 		},
+		radius: {
+			none: styles["notification-radius-none"],
+			tiny: styles["notification-radius-tiny"],
+			small: styles["notification-radius-small"],
+			medium: styles["notification-radius-medium"],
+			large: styles["notification-radius-large"],
+		},
 		variant: {
 			themed: styles["notification-themed"],
 			solid: styles["notification-solid"],

@@ -10,7 +10,7 @@ const NOTIFICATION_ICONS = {
 	warning: <CircleAlert />,
 	info: <Info />,
 	danger: <CircleX />,
-	secondary: <Bell />, // O el ícono por defecto que prefieras
+	neutral: <Bell />, // O el ícono por defecto que prefieras
 };
 
 export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
@@ -81,7 +81,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 			>
 				<div className={styles["notification-header"]}>
 					<div className={styles["notification-icon"]}>
-						{icon ?? NOTIFICATION_ICONS[notificationType ?? "secondary"] ?? <Bell />}
+						{icon ?? NOTIFICATION_ICONS[notificationType ?? "neutral"] ?? <Bell />}
 					</div>
 
 					<div className={styles["notification-content"]}>
