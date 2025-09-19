@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from "react";
-import { DropZoneVariants, FileUploadVariants } from "./file-upload.variants";
+import { FileUploadVariants } from "./file-upload.variants";
 
 export interface SelectedFileData {
 	/**
