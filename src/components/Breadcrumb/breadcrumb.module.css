@@ -262,6 +262,7 @@
 	:first-child {
 		& .breadcrumb-item {
 			font-weight: var(--font-weight-md);
+			padding: var(--padding-xs) var(--padding-md) var(--padding-xs) var(--padding-lg);
 
 			&.breadcrumb-item-radius-none {
 				border-radius: var(--border-radius-none);
@@ -269,22 +270,22 @@
 
 			&.breadcrumb-item-radius-tiny {
 				border-radius: var(--border-radius-tiny) var(--border-radius-none) var(--border-radius-none)
-					var(--border-radius-full);
+					var(--border-radius-tiny);
 			}
 
 			&.breadcrumb-item-radius-small {
 				border-radius: var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none)
-					var(--border-radius-full);
+					var(--border-radius-sm);
 			}
 
 			&.breadcrumb-item-radius-medium {
 				border-radius: var(--border-radius-md) var(--border-radius-none) var(--border-radius-none)
-					var(--border-radius-full);
+					var(--border-radius-md);
 			}
 
 			&.breadcrumb-item-radius-large {
 				border-radius: var(--border-radius-lg) var(--border-radius-none) var(--border-radius-none)
-					var(--border-radius-full);
+					var(--border-radius-lg);
 			}
 
 			&.breadcrumb-item-radius-full {
@@ -395,6 +396,7 @@
 	& :nth-last-child(1) {
 		& .breadcrumb-item {
 			cursor: auto;
+			padding: var(--padding-xs) var(--padding-lg) var(--padding-xs) var(--padding-md);
 			font-weight: var(--font-weight-semibold);
 
 			&.breadcrumb-item-radius-none {
