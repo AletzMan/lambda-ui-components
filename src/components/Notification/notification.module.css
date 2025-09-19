@@ -20,10 +20,29 @@
 	max-width: 450px;
 	min-height: 4em;
 	padding: var(--padding-sm) var(--padding-sm);
-	border-radius: var(--border-radius-sm);
 	font-family: var(--font-family);
 	color: var(--foreground-color);
 	transition: all 0.3s ease-in-out;
+
+	&.notification-radius-none {
+		border-radius: var(--border-radius-none);
+	}
+
+	&.notification-radius-tiny {
+		border-radius: var(--border-radius-xs);
+	}
+
+	&.notification-radius-small {
+		border-radius: var(--border-radius-sm);
+	}
+
+	&.notification-radius-medium {
+		border-radius: var(--border-radius-md);
+	}
+
+	&.notification-radius-large {
+		border-radius: var(--border-radius-lg);
+	}
 }
 
 @media (width < 500px) {

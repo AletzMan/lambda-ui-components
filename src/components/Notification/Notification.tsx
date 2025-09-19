@@ -4,6 +4,7 @@ import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react";
 import clsx from "clsx";
 import { barClass, footer, notificationProp } from "./notification.variant";
 import { NotificationProps } from "./notifications.types";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const NOTIFICATION_ICONS = {
 	success: <CircleCheck />,
@@ -35,6 +36,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 	) => {
 		const [isVisible, setIsVisible] = useState(true);
 		const [closing, setClosing] = useState(false);
+		const { radiusBox } = useUIConfig();
 
 		// Cerrar automáticamente después de la duración especificada
 		useEffect(() => {
@@ -72,7 +74,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 		return (
 			<div
 				className={clsx(
-					notificationProp({ notificationType, placement, variant }),
+					notificationProp({ notificationType, placement, variant, radius: radiusBox }),
 					closing ? styles["notification-exit"] : styles["notification-active"]
 				)}
 				{...props}
