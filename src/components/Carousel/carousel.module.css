@@ -256,16 +256,13 @@
 	background-color: var(--surface-d);
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
+	box-shadow: var(--box-shadow);
 }
 
 .lambda-carousel-dot:hover:not(:disabled),
 .lambda-carousel-dot:focus-visible:not(:disabled) {
 	background-color: var(--primary-hover-color);
 	outline: none;
-}
-
-.lambda-carousel-dot:focus-visible:not(:disabled) {
-	box-shadow: var(--box-shadow);
 }
 
 .lambda-carousel-dot-circle {

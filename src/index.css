@@ -255,7 +255,7 @@
 
 	--border-color: #bec5c5;
 	--border-inverse-color: #c5c3c3;
-	--shadow-color: #91909035;
+	--shadow-color: #91909030;
 	--shadow-inset-color: #f1f1f155;
 
 	--box-shadow: 0 0 2px 1px var(--shadow-color);
@@ -404,7 +404,7 @@
 
 	--border-color: #37393d;
 	--border-inverse-color: #c0c0c0;
-	--shadow-color: #61616140;
+	--shadow-color: #61616130;
 	--shadow-inset-color: #f1f1f155;
 
 	--box-shadow: 0 0 2px 1px var(--shadow-color);

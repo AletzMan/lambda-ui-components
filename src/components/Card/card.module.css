@@ -5,7 +5,6 @@
 	min-width: 5em;
 	min-height: 2em;
 	height: 100%;
-	box-shadow: var(--box-shadow);
 	font-family: var(--font-family);
 	color: var(--foreground-color);
 	overflow: hidden;
