@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import styles from "./breadcrumb.module.css";
 
 export const breadcrumb = cva(styles["breadcrumb"], {
@@ -109,6 +109,14 @@ export const breadcrumbContainer = cva(styles["breadcrumb-container"], {
 
 export const breadcrumbEllipsis = cva(styles["breadcrumb-ellipsis"], {
 	variants: {
+		radius: {
+			none: styles["breadcrumb-ellipsis-radius-none"],
+			tiny: styles["breadcrumb-ellipsis-radius-tiny"],
+			small: styles["breadcrumb-ellipsis-radius-small"],
+			medium: styles["breadcrumb-ellipsis-radius-medium"],
+			large: styles["breadcrumb-ellipsis-radius-large"],
+			full: styles["breadcrumb-ellipsis-radius-full"],
+		},
 		size: {
 			tiny: styles["breadcrumb-ellipsis-tiny"],
 			small: styles["breadcrumb-ellipsis-small"],
@@ -120,3 +128,5 @@ export const breadcrumbEllipsis = cva(styles["breadcrumb-ellipsis"], {
 		size: "medium",
 	},
 });
+
+export type VariantBreadcrumb = VariantProps<typeof breadcrumbItem>;

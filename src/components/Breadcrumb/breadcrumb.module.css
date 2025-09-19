@@ -202,6 +202,30 @@
 		background-color: var(--surface-c);
 		color: var(--neutral-text-color);
 	}
+
+	&.breadcrumb-ellipsis-radius-none {
+		border-radius: var(--border-radius-none);
+	}
+
+	&.breadcrumb-ellipsis-radius-tiny {
+		border-radius: var(--border-radius-xs);
+	}
+
+	&.breadcrumb-ellipsis-radius-small {
+		border-radius: var(--border-radius-sm);
+	}
+
+	&.breadcrumb-ellipsis-radius-medium {
+		border-radius: var(--border-radius-md);
+	}
+
+	&.breadcrumb-ellipsis-radius-large {
+		border-radius: var(--border-radius-lg);
+	}
+
+	&.breadcrumb-ellipsis-radius-full {
+		border-radius: var(--border-radius-full);
+	}
 }
 
 .breadcrumb-stepped {

@@ -6,6 +6,7 @@ import {
 	breadcrumbEllipsis,
 	breadcrumbItem,
 	breadcrumbSeparator,
+	VariantBreadcrumb,
 } from "./breadcrumb.variants";
 import { ChevronRight, Dot, ArrowRight } from "lucide-react";
 import { useUIConfig } from "../../_internal/hooks/translation/ConfigProvider";
@@ -21,21 +22,22 @@ const BreadcrumbItem = ({
 	item,
 	size,
 	variant,
+	radius,
 	color,
 }: {
 	item: ItemBreadcrumb;
-	size: "tiny" | "small" | "medium" | "large" | undefined;
-	variant: "chevron" | "slash" | "dot" | "arrow" | "stepped" | undefined;
-	color: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | undefined;
+	size: VariantBreadcrumb["size"];
+	variant: VariantBreadcrumb["variant"];
+	color: VariantBreadcrumb["color"];
+	radius: VariantBreadcrumb["radius"];
 }) => {
-	const { radiusField } = useUIConfig();
 	return item.href ? (
-		<a href={item.href} className={breadcrumbItem({ size, variant, color, radius: radiusField })}>
+		<a href={item.href} className={breadcrumbItem({ size, variant, color, radius })}>
 			{item.icon}
 			{item.label}
 		</a>
 	) : (
-		<span className={breadcrumbItem({ size, variant, color, radius: radiusField })}>
+		<span className={breadcrumbItem({ size, variant, color, radius })}>
 			{item.icon}
 			{item.label}
 		</span>
@@ -48,6 +50,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 		const IconSeparator = NOTIFICATION_ICONS[variant as keyof typeof NOTIFICATION_ICONS];
 		const shouldCollapse = items!.length > maxItems + 1;
 		const language = document.documentElement.lang;
+		const { radiusField } = useUIConfig();
 
 		useEffect(() => {
 			if (maxItems === 0) {
@@ -73,7 +76,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 								<>
 									<ul>
 										<button
-											className={breadcrumbEllipsis({ size })}
+											className={breadcrumbEllipsis({ size, radius: radiusField })}
 											onClick={handleEllipsisClick}
 											title={language === "es" ? "Mostrar más" : "Show more"}
 										>
@@ -86,7 +89,13 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 								</>
 							)}
 							<ul>
-								<BreadcrumbItem item={item} size={size} variant={variant} color={color} />
+								<BreadcrumbItem
+									item={item}
+									size={size}
+									variant={variant}
+									color={color}
+									radius={radiusField}
+								/>
 							</ul>
 							{index < array!.length - 1 && (
 								<ul>
