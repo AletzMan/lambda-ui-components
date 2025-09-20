@@ -38,7 +38,6 @@
 	transform: translateY(50%);
 	left: 0;
 	right: 0;
-	height: var(--size-track-md, 6px);
 	border-radius: var(--border-radius-sm);
 	border: none;
 	background-color: transparent;
@@ -52,15 +51,15 @@
 }
 
 .lambda-range-track-small {
-	height: var(--size-track-sm, 4px);
+	height: var(--track-size-sm, 4px);
 }
 
 .lambda-range-track-medium {
-	height: var(--size-track-md, 6px);
+	height: var(--track-size-md, 6px);
 }
 
 .lambda-range-track-large {
-	height: var(--size-track-lg, 8px);
+	height: var(--track-size-lg, 8px);
 }
 
 .lambda-range-fill {
@@ -75,15 +74,15 @@
 }
 
 .lambda-range-fill-small {
-	height: var(--size-track-sm, 4px);
+	height: var(--track-size-sm, 4px);
 }
 
 .lambda-range-fill-medium {
-	height: var(--size-track-md, 6px);
+	height: var(--track-size-md, 6px);
 }
 
 .lambda-range-fill-large {
-	height: var(--size-track-lg, 8px);
+	height: var(--track-size-lg, 8px);
 }
 
 .lambda-range-handle {
@@ -211,33 +210,46 @@
 }
 
 .lambda-range-mark {
-	position: relative;
-	height: 100%;
+	position: absolute;
 	width: var(--border-width-xs);
-	background-color: var(--surface-d);
 	box-sizing: border-box;
+
+	&:is(.lambda-range-mark-small) {
+		height: calc(var(--track-size-sm) * 3);
+		&:not(.lambda-range-mark-has-label) {
+			height: calc(var(--track-size-sm) * 0.85);
+		}
+	}
+	&:is(.lambda-range-mark-medium) {
+		height: calc(var(--track-size-md) * 2.75);
+		&:not(.lambda-range-mark-has-label) {
+			height: calc(var(--track-size-md) * 0.9);
+		}
+	}
+	&:is(.lambda-range-mark-large) {
+		height: calc(var(--track-size-lg) * 2.5);
+		&:not(.lambda-range-mark-has-label) {
+			height: calc(var(--track-size-lg) * 0.9);
+		}
+	}
 
 	&:is(:last-child, :first-child) {
 		background-color: transparent;
 	}
 
-	&:is(:nth-child(5n + 1)) {
-		height: 300%;
-		&:after {
-			content: attr(data-value);
-			position: absolute;
-			top: 100%;
-			left: 50%;
-			transform: translateX(-50%);
-			width: max-content;
-			height: 100%;
-			font-size: var(--font-size-sm);
-			text-align: center;
-			color: var(--foreground-color);
-			/*border-width: 5px;
-			border-style: solid;
-			border-color: var(--surface-d) transparent transparent transparent;*/
-		}
+	&:after {
+		content: attr(data-value);
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: max-content;
+		font-size: var(--font-size-sm);
+		text-align: center;
+		color: var(--foreground-color);
+	}
+	&.lambda-range-mark-inrange:not(:first-child) {
+		background-color: var(--surface-d);
 	}
 }
 

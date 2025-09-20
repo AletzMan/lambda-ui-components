@@ -7,6 +7,11 @@ export type RangeValue = number | [number, number];
 // Tipos para variantes visuales
 export type RangeSize = RangeTrackVariants["size"];
 
+export type RangeMarks = {
+	value: number;
+	label?: string;
+};
+
 // Props para el componente Range
 export interface RangeProps
 	extends Omit<
@@ -91,4 +96,9 @@ export interface RangeProps
 	 * Muestra la barra de progreso en el slider. Por defecto es true.
 	 */
 	viewBar?: boolean;
+
+	/**
+	 * Marca en el slider.
+	 */
+	marks?: RangeMarks[];
 }

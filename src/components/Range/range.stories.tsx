@@ -135,6 +135,14 @@ export const Single: StoryObj<typeof Range> = {
 		ariaLabel: "",
 		viewValue: true,
 		viewBar: true,
+		marks: [
+			{ value: 0, label: "0" },
+			{ value: 10, label: "" },
+			{ value: 25, label: "25" },
+			{ value: 50, label: "50" },
+			{ value: 75, label: "75" },
+			{ value: 100, label: "100" },
+		],
 	},
 };
 
@@ -142,13 +150,20 @@ export const Double: StoryObj<typeof Range> = {
 	render: (args) => <RangeDouble {...args} />,
 	args: {
 		min: 0,
-		max: 1,
-		step: 0.1,
+		max: 100,
+		step: 25,
 		disabled: false,
 		size: "medium",
 		label: "",
 		ariaLabel: "",
 		viewValue: true,
 		viewBar: true,
+		marks: [
+			{ value: 0, label: "0" },
+			{ value: 25, label: "25" },
+			{ value: 50, label: "50" },
+			{ value: 75, label: "75" },
+			{ value: 100, label: "100" },
+		],
 	},
 };

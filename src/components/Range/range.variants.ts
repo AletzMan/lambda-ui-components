@@ -90,6 +90,8 @@ export const rangeMarkContainer = cva(styles["lambda-range-mark-container"], {
 
 export const rangeMark = cva(styles["lambda-range-mark"], {
 	variants: {
+		hasLabel: { true: styles["lambda-range-mark-has-label"], false: "" },
+		inRange: { true: styles["lambda-range-mark-inrange"], false: "" },
 		size: {
 			small: styles["lambda-range-mark-small"],
 			medium: styles["lambda-range-mark-medium"],

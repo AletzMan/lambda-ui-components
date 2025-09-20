@@ -22,6 +22,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 			onChange,
 			onInput,
 			disabled = false,
+			marks = [],
 			size = "medium",
 			ariaLabel,
 			viewValue = true,
@@ -421,10 +422,20 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 						}, 0);
 					}}
 				>
-					{viewBar && (
+					{viewBar && marks.length > 0 && (
 						<div className={clsx(rangeMarkContainer({ size }))}>
-							{Array.from({ length: (max - min) / step + 1 }, (_, i) => (
-								<div key={i} className={clsx(rangeMark({ size }))} data-value={i * step} />
+							{marks.map((mark, index) => (
+								<div
+									key={index}
+									className={clsx(
+										rangeMark({ size, inRange: mark.value < max, hasLabel: !!mark.label })
+									)}
+									data-value={mark.label}
+									style={{
+										left: `${valueToPercentage(mark.value)}%`,
+										display: mark.value <= max ? "block" : "none",
+									}}
+								/>
 							))}
 						</div>
 					)}
