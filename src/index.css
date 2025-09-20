@@ -187,10 +187,10 @@
 	--handle-md: 22px;
 	--handle-lg: 26px;
 
-	--track-size-sm: 4px;
-	--track-size-md: 6px;
-	--track-size-lg: 8px;
-	--track-size-xl: 12px;
+	--track-size-xs: 4px;
+	--track-size-sm: 6px;
+	--track-size-md: 8px;
+	--track-size-lg: 12px;
 
 	--card-size-xs: 32px;
 	--card-size-sm: 48px;
@@ -433,7 +433,7 @@
 	--primary-subtle-color: var(--lambda-color-primary-700);
 	--primary-outline-color: var(--lambda-color-primary-800);
 	--primary-base-color: var(--lambda-color-primary-500);
-	--primary-hover-color: var(--lambda-color-primary-500);
+	--primary-hover-color: var(--lambda-color-primary-600);
 	--primary-disabled-color: var(--lambda-color-primary-300);
 	--primary-border-color: var(--lambda-color-primary-100);
 	--primary-light-color: var(--lambda-color-primary-050);
