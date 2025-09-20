@@ -52,7 +52,7 @@ type Story = StoryObj<typeof meta>;
 const colors = ["default", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const DefaultRating = (args: RatingProps) => {
-	const [value, setValue] = useState(3);
+	const [value, setValue] = useState([3, 3, 3, 3, 3, 3, 3]);
 	const [whitCustomIcon, setWhitCustomIcon] = useState(false);
 	const [typeCustomIcon, setTypeCustomIcon] = useState<"icon" | "string">("icon");
 	const [customIcon, setCustomIcon] = useState<ReactNode[] | undefined>(args.customIcon);
@@ -107,7 +107,7 @@ const DefaultRating = (args: RatingProps) => {
 					padding: "var(--padding-lg) var(--padding-xl)",
 				}}
 			>
-				{colors.map((color) => (
+				{colors.map((color, index) => (
 					<div
 						key={color}
 						style={{ display: "flex", flexDirection: "column", gap: "var(--padding-xs)" }}
@@ -127,8 +127,10 @@ const DefaultRating = (args: RatingProps) => {
 						<Rating
 							key={color}
 							{...args}
-							value={value}
-							onChange={(value) => setValue(value)}
+							value={value[index]}
+							onChange={(value) =>
+								setValue((prev) => prev.map((_, i) => (i === index ? value : prev[i])))
+							}
 							customIcon={whitCustomIcon ? customIcon : undefined}
 							color={color as RatingVariants["color"]}
 						/>
