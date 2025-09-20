@@ -1,4 +1,5 @@
-import { Divider } from "../../../../main";
+import { useState } from "react";
+import { Divider, Switch } from "../../../../main";
 import styles from "./container.module.css";
 
 interface ContainerComponentProps {
@@ -7,6 +8,8 @@ interface ContainerComponentProps {
 	color?: string;
 	optional?: string;
 	children: React.ReactNode;
+	onChangeStyleSource?: (value: "global" | "local") => void;
+	styleSource?: "global" | "local";
 }
 
 const colors = {
@@ -24,26 +27,47 @@ export default function ContainerComponent({
 	color,
 	optional,
 	children,
+	onChangeStyleSource,
 }: ContainerComponentProps) {
 	const colorValue = colors[color as keyof typeof colors] || colors.nuetral;
 	const optionalValue = colors[optional as keyof typeof colors] || colors.nuetral;
-	console.log(colorValue);
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
+
+	const handleStyleChange = (value: string) => {
+		setCurrentStyle(value as "global" | "local");
+		onChangeStyleSource?.(value as "global" | "local");
+	};
+
 	return (
 		<div className={styles.container}>
-			<h1 className={styles.title}>{title}</h1>
-			<div className={styles.subtitleContainer}>
-				{subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}
-				{color && (
-					<span className={styles.color} style={{ color: colorValue }}>
-						{color}
-					</span>
-				)}
-				{optional && (
-					<span className={styles.optional} style={{ color: optionalValue }}>
-						{optional}
-					</span>
-				)}
-			</div>
+			<header className={styles.header}>
+				<div className={styles.headerContainer}>
+					<h1 className={styles.title}>{title}</h1>
+					<div className={styles.subtitleContainer}>
+						{subtitle && <h2 className={styles.subtitle}>{subtitle}</h2>}
+						{color && (
+							<span className={styles.color} style={{ color: colorValue }}>
+								{color}
+							</span>
+						)}
+						{optional && (
+							<span className={styles.optional} style={{ color: optionalValue }}>
+								{optional}
+							</span>
+						)}
+					</div>
+				</div>
+				<div>
+					<label className={styles.label}>Style Source </label>
+					<Switch
+						checked={currentStyle === "global"}
+						onChange={(e) => handleStyleChange(e.target.checked ? "global" : "local")}
+						value="global"
+						position_label="bottom"
+						label={currentStyle === "global" ? "Global" : "Local"}
+					/>
+				</div>
+			</header>
 			<Divider color="neutral" />
 			<div className={`${styles.content} scrollBar`}>{children}</div>
 		</div>

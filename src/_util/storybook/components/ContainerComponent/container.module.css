@@ -6,6 +6,30 @@
 	height: calc(100svh - 2em);
 }
 
+.header {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: var(--background-color);
+}
+
+.headerContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.label {
+	margin-bottom: 10px;
+	font-size: var(--font-size-md);
+	font-weight: 700;
+	color: var(--foreground-title-color);
+}
+
 .title {
 	margin-bottom: 5px;
 	color: var(--foreground-title-color);
