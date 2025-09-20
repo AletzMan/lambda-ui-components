@@ -244,7 +244,7 @@ const TableCell = ({
 	const { size, variant } = useTableContext();
 	return (
 		<td className={cellVariants({ size, variant, align })} {...props}>
-			{children}
+			<div>{children}</div>
 		</td>
 	);
 };

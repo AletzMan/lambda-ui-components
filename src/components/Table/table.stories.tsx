@@ -66,9 +66,9 @@ const TableComponent = (args: Partial<TableProps>) => {
 							<Table.Cell align="center">{item.age}</Table.Cell>
 							<Table.Cell align="center">
 								{item.active ? (
-									<Tag color="success" size="tiny" text="Active" />
+									<Tag color="success" size="tiny" text="Active" variant="subtle" />
 								) : (
-									<Tag color="danger" size="tiny" text="Inactive" />
+									<Tag color="danger" size="tiny" text="Inactive" variant="subtle" />
 								)}
 							</Table.Cell>
 							<Table.Cell align="center">{item.joined}</Table.Cell>
