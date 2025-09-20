@@ -153,8 +153,10 @@
 	--border-width-none: 0px;
 	--border-width-xs: 1px;
 	--border-width-sm: 2px;
-	--border-width-md: 4px;
-	--border-width-lg: 8px;
+	--border-width-md: 3px;
+	--border-width-lg: 4px;
+	--border-width-xl: 5px;
+	--border-width-2xl: 6px;
 
 	--icon-size-4xs: 8px;
 	--icon-size-3xs: 10px;
@@ -273,6 +275,7 @@
 	--primary-dark-color: var(--lambda-color-primary-950);
 	--primary-background-color: var(--lambda-color-primary-050);
 	--primary-opacity-color: color-mix(in srgb, var(--lambda-color-primary-600) 15%, transparent 90%);
+	--primary-shadow-color: color-mix(in srgb, var(--lambda-color-primary-600) 50%, transparent 90%);
 
 	--secondary-text-color: var(--lambda-color-secondary-800);
 	--secondary-content-color: var(--lambda-color-secondary-400);
@@ -291,6 +294,11 @@
 		var(--lambda-color-secondary-600) 15%,
 		transparent 90%
 	);
+	--secondary-shadow-color: color-mix(
+		in srgb,
+		var(--lambda-color-secondary-600) 50%,
+		transparent 90%
+	);
 
 	--neutral-text-color: var(--lambda-color-neutral-800);
 	--neutral-content-color: var(--lambda-color-neutral-400);
@@ -305,6 +313,7 @@
 	--neutral-dark-color: var(--lambda-color-neutral-950);
 	--neutral-background-color: var(--lambda-color-neutral-050);
 	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-600) 10%, transparent 90%);
+	--neutral-shadow-color: color-mix(in srgb, var(--lambda-color-neutral-600) 50%, transparent 90%);
 
 	--success-text-color: var(--lambda-color-success-800);
 	--success-content-color: var(--lambda-color-success-400);
@@ -319,6 +328,7 @@
 	--success-dark-color: var(--lambda-color-success-950);
 	--success-background-color: var(--lambda-color-success-050);
 	--success-opacity-color: color-mix(in srgb, var(--lambda-color-success-600) 15%, transparent 90%);
+	--success-shadow-color: color-mix(in srgb, var(--lambda-color-success-600) 50%, transparent 90%);
 
 	--danger-text-color: var(--lambda-color-danger-800);
 	--danger-content-color: var(--lambda-color-danger-400);
@@ -333,6 +343,7 @@
 	--danger-dark-color: var(--lambda-color-danger-950);
 	--danger-background-color: var(--lambda-color-danger-050);
 	--danger-opacity-color: color-mix(in srgb, var(--lambda-color-danger-600) 15%, transparent 90%);
+	--danger-shadow-color: color-mix(in srgb, var(--lambda-color-danger-600) 50%, transparent 90%);
 
 	--warning-text-color: var(--lambda-color-warning-800);
 	--warning-content-color: var(--lambda-color-warning-400);
@@ -347,6 +358,7 @@
 	--warning-dark-color: var(--lambda-color-warning-950);
 	--warning-background-color: var(--lambda-color-warning-050);
 	--warning-opacity-color: color-mix(in srgb, var(--lambda-color-warning-600) 15%, transparent 90%);
+	--warning-shadow-color: color-mix(in srgb, var(--lambda-color-warning-600) 50%, transparent 90%);
 
 	--info-text-color: var(--lambda-color-info-800);
 	--info-content-color: var(--lambda-color-info-400);
@@ -361,6 +373,7 @@
 	--info-dark-color: var(--lambda-color-info-950);
 	--info-background-color: var(--lambda-color-info-050);
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-info-600) 15%, transparent 90%);
+	--info-shadow-color: color-mix(in srgb, var(--lambda-color-info-600) 50%, transparent 90%);
 }
 
 [data-theme="dark"] {
@@ -402,7 +415,7 @@
 	--surface-g: #666868;
 	--surface-h: #737575;
 
-	--border-color: #37393d;
+	--border-color: #4e4e4e;
 	--border-inverse-color: #c0c0c0;
 	--shadow-color: #61616130;
 	--shadow-inset-color: #f1f1f155;
@@ -414,7 +427,7 @@
 	--primary-soft-color: var(--lambda-color-primary-900);
 	--primary-subtle-color: var(--lambda-color-primary-700);
 	--primary-outline-color: var(--lambda-color-primary-800);
-	--primary-base-color: var(--lambda-color-primary-600);
+	--primary-base-color: var(--lambda-color-primary-500);
 	--primary-hover-color: var(--lambda-color-primary-500);
 	--primary-disabled-color: var(--lambda-color-primary-300);
 	--primary-border-color: var(--lambda-color-primary-100);
@@ -422,6 +435,7 @@
 	--primary-dark-color: var(--lambda-color-primary-900);
 	--primary-background-color: var(--lambda-color-primary-950);
 	--primary-opacity-color: color-mix(in srgb, var(--lambda-color-primary-500) 15%, transparent 90%);
+	--primary-shadow-color: color-mix(in srgb, var(--lambda-color-primary-500) 50%, transparent 90%);
 
 	--secondary-text-color: var(--lambda-color-secondary-200);
 	--secondary-content-color: var(--lambda-color-secondary-600);
@@ -440,6 +454,11 @@
 		var(--lambda-color-secondary-500) 15%,
 		transparent 90%
 	);
+	--secondary-shadow-color: color-mix(
+		in srgb,
+		var(--lambda-color-secondary-500) 50%,
+		transparent 90%
+	);
 
 	--neutral-text-color: var(--lambda-color-neutral-200);
 	--neutral-content-color: var(--lambda-color-neutral-900);
@@ -454,6 +473,7 @@
 	--neutral-dark-color: var(--lambda-color-neutral-950);
 	--neutral-background-color: var(--lambda-color-neutral-950);
 	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-500) 15%, transparent 90%);
+	--neutral-shadow-color: color-mix(in srgb, var(--lambda-color-neutral-500) 50%, transparent 90%);
 
 	--success-text-color: var(--lambda-color-success-200);
 	--success-content-color: var(--lambda-color-success-400);
@@ -468,6 +488,7 @@
 	--success-dark-color: var(--lambda-color-success-950);
 	--success-background-color: var(--lambda-color-success-950);
 	--success-opacity-color: color-mix(in srgb, var(--lambda-color-success-500) 15%, transparent 90%);
+	--success-shadow-color: color-mix(in srgb, var(--lambda-color-success-500) 50%, transparent 90%);
 
 	--danger-text-color: var(--lambda-color-danger-200);
 	--danger-content-color: var(--lambda-color-danger-400);
@@ -482,6 +503,7 @@
 	--danger-dark-color: var(--lambda-color-danger-950);
 	--danger-background-color: var(--lambda-color-danger-950);
 	--danger-opacity-color: color-mix(in srgb, var(--lambda-color-danger-500) 15%, transparent 90%);
+	--danger-shadow-color: color-mix(in srgb, var(--lambda-color-danger-500) 50%, transparent 90%);
 
 	--warning-text-color: var(--lambda-color-warning-200);
 	--warning-content-color: var(--lambda-color-warning-400);
@@ -496,6 +518,7 @@
 	--warning-dark-color: var(--lambda-color-warning-950);
 	--warning-background-color: var(--lambda-color-warning-950);
 	--warning-opacity-color: color-mix(in srgb, var(--lambda-color-warning-500) 15%, transparent 90%);
+	--warning-shadow-color: color-mix(in srgb, var(--lambda-color-warning-500) 50%, transparent 90%);
 
 	--info-text-color: var(--lambda-color-info-200);
 	--info-content-color: var(--lambda-color-info-400);
@@ -510,6 +533,7 @@
 	--info-dark-color: var(--lambda-color-info-900);
 	--info-background-color: var(--lambda-color-info-950);
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-info-500) 15%, transparent 90%);
+	--info-shadow-color: color-mix(in srgb, var(--lambda-color-info-500) 50%, transparent 90%);
 }
 
 button,
