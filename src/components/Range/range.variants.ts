@@ -16,6 +16,7 @@ export const rangeContainer = cva(styles["lambda-range-container"], {
 export const rangeTrack = cva(styles["lambda-range-track"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-range-track-tiny"],
 			small: styles["lambda-range-track-small"],
 			medium: styles["lambda-range-track-medium"],
 			large: styles["lambda-range-track-large"],
@@ -33,6 +34,7 @@ export const rangeTrack = cva(styles["lambda-range-track"], {
 export const rangeFill = cva(styles["lambda-range-fill"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-range-fill-tiny"],
 			small: styles["lambda-range-fill-small"],
 			medium: styles["lambda-range-fill-medium"],
 			large: styles["lambda-range-fill-large"],
@@ -48,6 +50,7 @@ export const rangeFill = cva(styles["lambda-range-fill"], {
 export const rangeHandle = cva(styles["lambda-range-handle"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-range-handle-tiny"],
 			small: styles["lambda-range-handle-small"],
 			medium: styles["lambda-range-handle-medium"],
 			large: styles["lambda-range-handle-large"],
@@ -65,6 +68,7 @@ export const rangeHandle = cva(styles["lambda-range-handle"], {
 export const rangeValue = cva(styles["lambda-range-handle-value"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-range-handle-value-tiny"],
 			small: styles["lambda-range-handle-value-small"],
 			medium: styles["lambda-range-handle-value-medium"],
 			large: styles["lambda-range-handle-value-large"],
@@ -78,6 +82,7 @@ export const rangeValue = cva(styles["lambda-range-handle-value"], {
 export const rangeMarkContainer = cva(styles["lambda-range-mark-container"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-range-mark-container-tiny"],
 			small: styles["lambda-range-mark-small"],
 			medium: styles["lambda-range-mark-medium"],
 			large: styles["lambda-range-mark-large"],
@@ -93,6 +98,7 @@ export const rangeMark = cva(styles["lambda-range-mark"], {
 		hasLabel: { true: styles["lambda-range-mark-has-label"], false: "" },
 		inRange: { true: styles["lambda-range-mark-inrange"], false: "" },
 		size: {
+			tiny: styles["lambda-range-mark-tiny"],
 			small: styles["lambda-range-mark-small"],
 			medium: styles["lambda-range-mark-medium"],
 			large: styles["lambda-range-mark-large"],

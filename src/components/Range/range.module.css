@@ -38,7 +38,7 @@
 	transform: translateY(50%);
 	left: 0;
 	right: 0;
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--border-radius-pill);
 	border: none;
 	background-color: transparent;
 	box-sizing: border-box;
@@ -50,39 +50,46 @@
 	}
 }
 
+.lambda-range-track-tiny {
+	height: var(--track-size-xs, 4px);
+}
+
 .lambda-range-track-small {
-	height: var(--track-size-sm, 4px);
+	height: var(--track-size-sm, 6px);
 }
 
 .lambda-range-track-medium {
-	height: var(--track-size-md, 6px);
+	height: var(--track-size-md, 8px);
 }
 
 .lambda-range-track-large {
-	height: var(--track-size-lg, 8px);
+	height: var(--track-size-lg, 12px);
 }
 
 .lambda-range-fill {
 	position: absolute;
 	bottom: 50%;
 	transform: translateY(50%);
-	height: var(--size-track-md, 6px);
 	background-color: var(--primary-hover-color);
 	border: var(--border-width-xs) solid var(--primary-base-color);
-	border-radius: var(--radius-pill, 9999px);
+	border-radius: var(--border-radius-pill);
 	z-index: 2;
 }
 
+.lambda-range-fill-tiny {
+	height: var(--track-size-xs, 4px);
+}
+
 .lambda-range-fill-small {
-	height: var(--track-size-sm, 4px);
+	height: var(--track-size-sm, 6px);
 }
 
 .lambda-range-fill-medium {
-	height: var(--track-size-md, 6px);
+	height: var(--track-size-md, 8px);
 }
 
 .lambda-range-fill-large {
-	height: var(--track-size-lg, 8px);
+	height: var(--track-size-lg, 12x);
 }
 
 .lambda-range-handle {
@@ -108,6 +115,12 @@
 }
 
 /* Variantes de Tamaño del Handle */
+.lambda-range-handle-tiny {
+	width: var(--handle-2xs);
+	height: var(--handle-2xs);
+	border-width: var(--border-width-sm);
+}
+
 .lambda-range-handle-small {
 	width: var(--handle-xs);
 	height: var(--handle-xs);
@@ -176,6 +189,10 @@
 	min-width: 2em;
 	z-index: 4;
 
+	&:is(.lambda-range-handle-value-tiny) {
+		font-size: var(--font-size-xs);
+	}
+
 	&.lambda-range-handle-value-small {
 		font-size: var(--font-size-xs);
 	}
@@ -214,20 +231,27 @@
 	width: var(--border-width-xs);
 	box-sizing: border-box;
 
+	&:is(.lambda-range-mark-tiny) {
+		height: calc(var(--track-size-xs) * 2.25);
+		&:not(.lambda-range-mark-has-label) {
+			height: calc(var(--track-size-xs) * 0.85);
+		}
+	}
+
 	&:is(.lambda-range-mark-small) {
-		height: calc(var(--track-size-sm) * 3);
+		height: calc(var(--track-size-sm) * 2.25);
 		&:not(.lambda-range-mark-has-label) {
 			height: calc(var(--track-size-sm) * 0.85);
 		}
 	}
 	&:is(.lambda-range-mark-medium) {
-		height: calc(var(--track-size-md) * 2.75);
+		height: calc(var(--track-size-md) * 2);
 		&:not(.lambda-range-mark-has-label) {
 			height: calc(var(--track-size-md) * 0.9);
 		}
 	}
 	&:is(.lambda-range-mark-large) {
-		height: calc(var(--track-size-lg) * 2.5);
+		height: calc(var(--track-size-lg) * 1.75);
 		&:not(.lambda-range-mark-has-label) {
 			height: calc(var(--track-size-lg) * 0.9);
 		}
