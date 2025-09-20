@@ -359,11 +359,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				{/* Pista del slider */}
 				<div
 					ref={trackRef}
-					className={clsx(rangeTrack({ size, disabled }))}
-					style={{
-						backgroundColor: viewBar ? "var(--surface-c)" : "transparent",
-						border: viewBar ? "1px solid var(--surface-d)" : "none",
-					}}
+					className={clsx(rangeTrack({ size, viewBar, disabled }))}
 					// onPointerDown en el track para manejar clicks/taps fuera de los handles (comportamiento "salto")
 					onPointerDown={(event) => {
 						// Prevenir comportamiento por defecto
