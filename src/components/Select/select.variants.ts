@@ -16,10 +16,11 @@ export const select = cva(styles["select-container"], {
 		},
 		radius: {
 			none: styles["select-container-radius-none"],
+			tiny: styles["select-container-radius-tiny"],
 			small: styles["select-container-radius-small"],
 			medium: styles["select-container-radius-medium"],
 			large: styles["select-container-radius-large"],
-			pill: styles["select-container-radius-pill"],
+			full: styles["select-container-radius-full"],
 		},
 		disabled: {
 			true: styles["select-container-disabled"],
@@ -53,10 +54,11 @@ export const buttonSelect = cva(styles["select-btn"], {
 		},
 		radius: {
 			none: styles["select-btn-radius-none"],
+			tiny: styles["select-btn-radius-tiny"],
 			small: styles["select-btn-radius-small"],
 			medium: styles["select-btn-radius-medium"],
 			large: styles["select-btn-radius-large"],
-			pill: styles["select-btn-radius-pill"],
+			full: styles["select-btn-radius-full"],
 		},
 		disabled: {
 			true: styles["select-btn-disabled"],
@@ -125,10 +127,11 @@ export const dropdown = cva(styles["select-dropdown"], {
 		},
 		radius: {
 			none: styles["select-dropdown-radius-none"],
+			tiny: styles["select-dropdown-radius-tiny"],
 			small: styles["select-dropdown-radius-small"],
 			medium: styles["select-dropdown-radius-medium"],
 			large: styles["select-dropdown-radius-large"],
-			pill: styles["select-dropdown-radius-pill"],
+			full: styles["select-dropdown-radius-full"],
 		},
 		isOpen: {
 			true: styles["select-dropdown-opn"],
@@ -158,10 +161,11 @@ export const labelSelect = cva(styles["select-label"], {
 		},
 		radius: {
 			none: styles["select-label-radius-none"],
+			tiny: styles["select-label-radius-tiny"],
 			small: styles["select-label-radius-small"],
 			medium: styles["select-label-radius-medium"],
 			large: styles["select-label-radius-large"],
-			pill: styles["select-label-radius-pill"],
+			full: styles["select-label-radius-full"],
 		},
 		required: {
 			true: styles["select-label-required"],

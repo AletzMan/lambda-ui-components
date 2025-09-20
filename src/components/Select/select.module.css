@@ -55,19 +55,23 @@
 		padding: 0 0 0 var(--padding-none);
 	}
 
-	&.select-label-radius-small {
+	&.select-label-radius-tiny {
 		padding: 0 0 0 var(--padding-xs);
 	}
 
-	&.select-label-radius-medium {
+	&.select-label-radius-small {
 		padding: 0 0 0 var(--padding-sm);
 	}
 
-	&.select-label-radius-large {
+	&.select-label-radius-medium {
 		padding: 0 0 0 var(--padding-md);
 	}
 
-	&.select-label-radius-pill {
+	&.select-label-radius-large {
+		padding: 0 0 0 var(--padding-lg);
+	}
+
+	&.select-label-radius-full {
 		padding: 0 0 0 var(--padding-lg);
 	}
 }
@@ -177,6 +181,10 @@
 		border-radius: var(--border-radius-none);
 	}
 
+	&.select-btn-radius-tiny {
+		border-radius: var(--border-radius-xs);
+	}
+
 	&.select-btn-radius-small {
 		border-radius: var(--border-radius-sm);
 	}
@@ -189,7 +197,7 @@
 		border-radius: var(--border-radius-lg);
 	}
 
-	&.select-btn-radius-pill {
+	&.select-btn-radius-full {
 		border-radius: var(--border-radius-pill);
 	}
 
@@ -310,6 +318,10 @@
 		border-radius: var(--border-radius-none);
 	}
 
+	&.select-dropdown-radius-tiny {
+		border-radius: var(--border-radius-xs);
+	}
+
 	&.select-dropdown-radius-small {
 		border-radius: var(--border-radius-sm);
 	}
@@ -322,7 +334,7 @@
 		border-radius: var(--border-radius-lg);
 	}
 
-	&.select-dropdown-radius-pill {
+	&.select-dropdown-radius-full {
 		border-radius: var(--border-radius-md);
 	}
 

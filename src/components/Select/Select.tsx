@@ -19,6 +19,7 @@ import { useDropdownPlacement } from "./hooks/useDropdownPlacement";
 import { useSelectAccessibility } from "./hooks/useSelectAccessibility";
 import { SelectOptionItem } from "./SelectOptionItem";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 	(
@@ -27,7 +28,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			options,
 			size = "medium",
 			variant = "outline",
-			radius = "small",
 			disabled,
 			invalid,
 			required,
@@ -45,6 +45,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			defaultValue ?? value
 		);
 		const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
+		const { radiusField } = useUIConfig();
 
 		const containerRef = useRef<HTMLDivElement>(null);
 		const buttonRef = useRef<HTMLButtonElement>(null);
@@ -149,7 +150,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 				{label && (
 					<label
 						className={clsx(
-							labelSelect({ direction, radius, size, required }),
+							labelSelect({ direction, radius: radiusField, size, required }),
 							styles["select-label"]
 						)}
 						{...getLabelProps()}
@@ -157,9 +158,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 						{label}
 					</label>
 				)}
-				<div className={select({ size, variant, radius, disabled, invalid })}>
+				<div className={select({ size, variant, radius: radiusField, disabled, invalid })}>
 					<button
-						className={buttonSelect({ size, variant, radius, invalid, disabled })}
+						className={buttonSelect({ size, variant, radius: radiusField, invalid, disabled })}
 						onClick={handleButtonClick}
 						disabled={disabled}
 						ref={ref || buttonRef}
@@ -198,9 +199,13 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 								left: dropdownPosition.left,
 								width: dropdownPosition.width,
 							}}
-							className={clsx(dropdown({ size, direction, radius, variant }), "scrollBar", {
-								[styles["select-dropdown-open"]]: isOpen,
-							})}
+							className={clsx(
+								dropdown({ size, direction, radius: radiusField, variant }),
+								"scrollBar",
+								{
+									[styles["select-dropdown-open"]]: isOpen,
+								}
+							)}
 							ref={listRef}
 							onWheel={(e) => e.stopPropagation()}
 							{...getListboxProps()}

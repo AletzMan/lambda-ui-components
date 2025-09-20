@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Select } from "./Select";
 import { SelectProps } from "./select.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { CheckCheckIcon } from "lucide-react";
 
 const meta: Meta<typeof Select> = {
 	title: "Components/Select",
@@ -17,11 +16,6 @@ const meta: Meta<typeof Select> = {
 			control: "select",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
-		},
-		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "large", "pill"],
-			description: "Corner shape",
 		},
 		label: {
 			control: "text",
@@ -63,7 +57,6 @@ const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" 
 export const Normal: Story = {
 	render: (args) => <Template {...args} type="Normal" />,
 	args: {
-		radius: "small",
 		size: "medium",
 		options: [
 			{
@@ -97,7 +90,6 @@ export const Normal: Story = {
 export const Description: Story = {
 	render: (args) => <Template {...args} type="Description" />,
 	args: {
-		radius: "small",
 		size: "medium",
 		options: [
 			{
@@ -137,7 +129,6 @@ export const Description: Story = {
 export const Icon: Story = {
 	render: (args) => <Template {...args} type="Icon" />,
 	args: {
-		radius: "small",
 		size: "medium",
 		options: [
 			{
@@ -179,7 +170,6 @@ export const Icon: Story = {
 export const IconAndDescrption: Story = {
 	render: (args) => <Template {...args} type="Icon" />,
 	args: {
-		radius: "small",
 		size: "medium",
 		options: [
 			{
