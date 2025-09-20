@@ -9,18 +9,18 @@ const meta: Meta<typeof Switch> = {
 	component: Switch,
 	argTypes: {
 		variant: {
-			control: "select",
+			control: "inline-radio",
 			options: ["solid", "soft", "outline"],
 			description: "Visual style of the input",
 			type: "string",
 		},
 		color: {
-			control: "select",
-			options: ["primary", "secondary", "success", "danger", "warning", "info"],
+			control: "inline-radio",
+			options: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
 			description: "Background color",
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
@@ -30,7 +30,7 @@ const meta: Meta<typeof Switch> = {
 			description: "Text to display as the label for the component",
 		},
 		position_label: {
-			control: "select",
+			control: "inline-radio",
 			options: ["right", "left", "top", "bottom"],
 			description: "Select position label right or left",
 			type: "string",
@@ -46,7 +46,7 @@ export default meta;
 
 type Story = StoryObj<typeof Switch>;
 
-const colors = ["primary", "secondary", "success", "danger", "warning", "info"];
+const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: SwitchProps) => {
 	return (

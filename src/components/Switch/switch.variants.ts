@@ -4,6 +4,7 @@ import styles from "./switch.module.css";
 export const switchprop = cva(styles["lambda-switch"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-switch-neutral"],
 			primary: styles["lambda-switch-primary"],
 			secondary: styles["lambda-switch-secondary"],
 			danger: styles["lambda-switch-danger"],
@@ -49,6 +50,7 @@ export const switchprop = cva(styles["lambda-switch"], {
 export const background = cva(styles["lambda-switch-background"], {
 	variants: {
 		color: {
+			neutral: styles["lambda-switch-background-neutral"],
 			primary: styles["lambda-switch-background-primary"],
 			secondary: styles["lambda-switch-background-secondary"],
 			danger: styles["lambda-switch-background-danger"],
