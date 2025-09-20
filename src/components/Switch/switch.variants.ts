@@ -25,7 +25,7 @@ export const switchprop = cva(styles["lambda-switch"], {
 		},
 		shape: {
 			square: styles["lambda-switch-square"],
-			soft: styles["lambda-switch-soft"],
+			subtle: styles["lambda-switch-subtle"],
 			rounded: styles["lambda-switch-rounded"],
 		},
 		disabled: {
@@ -71,7 +71,7 @@ export const background = cva(styles["lambda-switch-background"], {
 		},
 		shape: {
 			square: styles["lambda-switch-background-square"],
-			soft: styles["lambda-switch-background-soft"],
+			subtle: styles["lambda-switch-background-subtle"],
 			rounded: styles["lambda-switch-background-rounded"],
 		},
 		disabled: {
@@ -127,7 +127,7 @@ export const handle = cva(styles["lambda-switch-handle"], {
 		},
 		shape: {
 			square: styles["lambda-switch-handle-square"],
-			soft: styles["lambda-switch-handle-soft"],
+			subtle: styles["lambda-switch-handle-subtle"],
 			rounded: styles["lambda-switch-handle-rounded"],
 		},
 		disabled: {

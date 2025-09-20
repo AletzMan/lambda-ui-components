@@ -128,11 +128,11 @@
 }
 
 .lambda-switch-background-square {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--border-radius-none);
 }
 
-.lambda-switch-background-soft {
-	border-radius: var(--border-radius-md);
+.lambda-switch-background-subtle {
+	border-radius: var(--border-radius-sm);
 }
 
 .lambda-switch-background-rounded {
@@ -459,11 +459,11 @@
 }
 
 .lambda-switch-handle-square {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--border-radius-none);
 }
 
-.lambda-switch-handle-soft {
-	border-radius: var(--border-radius-sm);
+.lambda-switch-handle-subtle {
+	border-radius: calc(var(--border-radius-xs) + 1px);
 }
 
 .lambda-switch-handle-rounded {
