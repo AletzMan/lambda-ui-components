@@ -264,6 +264,7 @@ const RadioComponent = forwardRef<
 								disabled: isDisabled,
 								checked: isChecked,
 								type,
+								variant,
 							})}
 						/>
 					</div>

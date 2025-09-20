@@ -225,6 +225,11 @@ export const iconView = cva(styles["lambda-radio-icon"], {
 			medium: styles["lambda-radio-icon-medium"],
 			large: styles["lambda-radio-icon-large"],
 		},
+		variant: {
+			solid: styles["lambda-radio-icon-solid"],
+			soft: styles["lambda-radio-icon-soft"],
+			outline: styles["lambda-radio-icon-outline"],
+		},
 		type: {
 			radio: styles["lambda-radio-icon-radio"],
 			button: styles["lambda-radio-icon-button"],
@@ -244,6 +249,7 @@ export const iconView = cva(styles["lambda-radio-icon"], {
 		disabled: false,
 		size: "small",
 		type: "radio",
+		variant: "solid",
 		checked: false,
 	},
 });

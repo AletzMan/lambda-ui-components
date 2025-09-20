@@ -15,49 +15,49 @@
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-neutral):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--neutral-soft-color);
+		box-shadow: 0 0 1px 3px var(--neutral-shadow-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-primary):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--primary-subtle-color);
+		box-shadow: 0 0 1px 3px var(--primary-shadow-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-secondary):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--secondary-subtle-color);
+		box-shadow: 0 0 1px 3px var(--secondary-shadow-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-danger):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--danger-subtle-color);
+		box-shadow: 0 0 1px 3px var(--danger-shadow-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-success):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--success-subtle-color);
+		box-shadow: 0 0 1px 3px var(--success-shadow-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-warning):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--warning-subtle-color);
+		box-shadow: 0 0 1px 3px var(--warning-shadow-color);
 	}
 
 	&:hover
 		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-info):not(
 			.lambda-radio-view-disabled
 		) {
-		box-shadow: 0 0 1px 3px var(--info-subtle-color);
+		box-shadow: 0 0 1px 3px var(--info-shadow-color);
 	}
 }
 
@@ -1588,8 +1588,43 @@
 	border: 1px solid var(--surface-d);
 
 	&.lambda-radio-view-solid {
-		background-color: var(--surface-a);
 		border-color: var(--border-color);
+		background-color: var(--foreground-invert-color);
+
+		&:is(.lambda-radio-view-neutral):is(.lambda-radio-view-checked) {
+			background-color: var(--neutral-base-color);
+			border-color: var(--neutral-base-color);
+		}
+
+		&:is(.lambda-radio-view-primary):is(.lambda-radio-view-checked) {
+			background-color: var(--primary-hover-color);
+			border-color: var(--primary-base-color);
+		}
+
+		&:is(.lambda-radio-view-secondary):is(.lambda-radio-view-checked) {
+			background-color: var(--secondary-hover-color);
+			border-color: var(--secondary-base-color);
+		}
+
+		&:is(.lambda-radio-view-success):is(.lambda-radio-view-checked) {
+			background-color: var(--success-hover-color);
+			border-color: var(--success-base-color);
+		}
+
+		&:is(.lambda-radio-view-danger):is(.lambda-radio-view-checked) {
+			background-color: var(--danger-hover-color);
+			border-color: var(--danger-base-color);
+		}
+
+		&:is(.lambda-radio-view-warning):is(.lambda-radio-view-checked) {
+			background-color: var(--warning-hover-color);
+			border-color: var(--warning-base-color);
+		}
+
+		&:is(.lambda-radio-view-info):is(.lambda-radio-view-checked) {
+			background-color: var(--info-hover-color);
+			border-color: var(--info-base-color);
+		}
 	}
 
 	&.lambda-radio-view-outline {
@@ -1957,7 +1992,7 @@
 	border-radius: var(--border-radius-pill);
 	animation: animateIcon 0.3s ease-out both;
 
-	&.lambda-radio-icon-checked.lambda-radio-icon-radio,
+	&.lambda-radio-icon-checked.lambda-radio-icon-radio:not(.lambda-radio-icon-solid),
 	&.lambda-radio-icon-checked.lambda-radio-icon-card {
 		display: block;
 
@@ -1987,6 +2022,23 @@
 
 		&.lambda-radio-icon-info {
 			background-color: var(--info-base-color);
+		}
+	}
+
+	&:is(.lambda-radio-icon-solid):not(.lambda-radio-icon-card):is(.lambda-radio-icon-checked) {
+		display: block;
+		&:is(.lambda-radio-icon-neutral, .lambda-radio-icon-warning) {
+			background-color: var(--foreground-invert-color);
+		}
+
+		&:is(
+				.lambda-radio-icon-primary,
+				.lambda-radio-icon-secondary,
+				.lambda-radio-icon-success,
+				.lambda-radio-icon-danger,
+				.lambda-radio-icon-info
+			) {
+			background-color: var(--white-color);
 		}
 	}
 
