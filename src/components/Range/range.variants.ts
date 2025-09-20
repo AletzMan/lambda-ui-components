@@ -7,9 +7,14 @@ export const rangeContainer = cva(styles["lambda-range-container"], {
 			true: styles["lambda-range-container-disabled"],
 			false: "",
 		},
+		orientation: {
+			vertical: styles["lambda-range-container-vertical"],
+			horizontal: styles["lambda-range-container-horizontal"],
+		},
 	},
 	defaultVariants: {
 		disabled: false,
+		orientation: "horizontal",
 	},
 });
 
@@ -23,11 +28,16 @@ export const rangeTrack = cva(styles["lambda-range-track"], {
 		},
 		viewBar: { true: styles["lambda-range-track-view-bar"], false: "" },
 		disabled: { true: styles["lambda-range-track-disabled"], false: "" },
+		orientation: {
+			vertical: styles["lambda-range-track-vertical"],
+			horizontal: styles["lambda-range-track-horizontal"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		viewBar: true,
 		disabled: false,
+		orientation: "horizontal",
 	},
 });
 
@@ -40,10 +50,15 @@ export const rangeFill = cva(styles["lambda-range-fill"], {
 			large: styles["lambda-range-fill-large"],
 		},
 		disabled: { true: styles["lambda-range-fill-disabled"], false: "" },
+		orientation: {
+			vertical: styles["lambda-range-fill-vertical"],
+			horizontal: styles["lambda-range-fill-horizontal"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		disabled: false,
+		orientation: "horizontal",
 	},
 });
 
@@ -57,11 +72,16 @@ export const rangeHandle = cva(styles["lambda-range-handle"], {
 		},
 		disabled: { true: styles["lambda-range-handle-disabled"], false: "" },
 		isDragging: { true: styles["lambda-range-handle-dragging"], false: "" },
+		orientation: {
+			vertical: styles["lambda-range-handle-vertical"],
+			horizontal: styles["lambda-range-handle-horizontal"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		disabled: false,
 		isDragging: false,
+		orientation: "horizontal",
 	},
 });
 
@@ -73,9 +93,14 @@ export const rangeValue = cva(styles["lambda-range-handle-value"], {
 			medium: styles["lambda-range-handle-value-medium"],
 			large: styles["lambda-range-handle-value-large"],
 		},
+		orientation: {
+			vertical: styles["lambda-range-handle-value-vertical"],
+			horizontal: styles["lambda-range-handle-value-horizontal"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
+		orientation: "horizontal",
 	},
 });
 
@@ -87,9 +112,14 @@ export const rangeMarkContainer = cva(styles["lambda-range-mark-container"], {
 			medium: styles["lambda-range-mark-medium"],
 			large: styles["lambda-range-mark-large"],
 		},
+		orientation: {
+			vertical: styles["lambda-range-mark-container-vertical"],
+			horizontal: styles["lambda-range-mark-container-horizontal"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
+		orientation: "horizontal",
 	},
 });
 
@@ -103,9 +133,14 @@ export const rangeMark = cva(styles["lambda-range-mark"], {
 			medium: styles["lambda-range-mark-medium"],
 			large: styles["lambda-range-mark-large"],
 		},
+		orientation: {
+			vertical: styles["lambda-range-mark-vertical"],
+			horizontal: styles["lambda-range-mark-horizontal"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
+		orientation: "horizontal",
 	},
 });
 

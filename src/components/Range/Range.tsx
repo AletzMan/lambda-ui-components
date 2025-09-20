@@ -23,6 +23,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 			onInput,
 			disabled = false,
 			marks = [],
+			orientation = "horizontal",
 			size = "medium",
 			ariaLabel,
 			viewValue = true,
@@ -61,6 +62,9 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 			[min, max]
 		);
 
+		// --- Utilidad para orientación ---
+		const isVertical = orientation === "vertical";
+
 		// Convierte una posición en porcentaje (0-100) a un valor numérico, aplicando el step
 		const percentageToValue = useCallback(
 			(percentage: number) => {
@@ -91,24 +95,37 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 
 		// Propiedades de estilo para el fill (barra de selección)
 		const fillStyle = useMemo(() => {
-			if (isDoubleHandled) {
-				// Para dos handles, el fill abarca entre ellos
-				// left es la posición del handle más a la izquierda
-				const left = Math.min(startPosPercentage, endPosPercentage);
-				// width es la distancia entre los dos handles
-				const width = Math.abs(endPosPercentage - startPosPercentage);
-				return {
-					left: `${left}%`,
-					width: `${width}%`,
-				};
+			if (isVertical) {
+				if (isDoubleHandled) {
+					const top = 100 - Math.max(startPosPercentage, endPosPercentage);
+					const height = Math.abs(endPosPercentage - startPosPercentage);
+					return {
+						top: `${top}%`,
+						height: `${height}%`,
+					};
+				} else {
+					const top = 100 - endPosPercentage;
+					return {
+						top: `${top}%`,
+						height: `${endPosPercentage}%`,
+					};
+				}
 			} else {
-				// Para un handle único, el fill va desde el min (0%) hasta la posición del handle
-				return {
-					left: "0%",
-					width: `${endPosPercentage}%`,
-				};
+				if (isDoubleHandled) {
+					const left = Math.min(startPosPercentage, endPosPercentage);
+					const width = Math.abs(endPosPercentage - startPosPercentage);
+					return {
+						left: `${left}%`,
+						width: `${width}%`,
+					};
+				} else {
+					return {
+						left: "0%",
+						width: `${endPosPercentage}%`,
+					};
+				}
 			}
-		}, [isDoubleHandled, startPosPercentage, endPosPercentage]);
+		}, [isVertical, isDoubleHandled, startPosPercentage, endPosPercentage]);
 
 		// --- Handlers de eventos de arrastre ---
 
@@ -117,21 +134,27 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 			(event: React.PointerEvent<HTMLDivElement>) => {
 				if (!trackRef.current) return null;
 
-				// Usar clientX directamente de PointerEvent
-				const clientX = event.clientX;
 				const trackRect = trackRef.current.getBoundingClientRect();
-				const positionOnTrack = clientX - trackRect.left;
-				const trackWidth = trackRect.width;
+				let newPercentage = 0;
 
-				// Evitar división por cero si el track no tiene ancho
-				if (trackWidth === 0) return null;
-
-				let newPercentage = (positionOnTrack / trackWidth) * 100;
+				if (isVertical) {
+					const clientY = event.clientY;
+					const positionOnTrack = clientY - trackRect.top;
+					const trackHeight = trackRect.height;
+					if (trackHeight === 0) return null;
+					// Invertimos porque en vertical el 0 está arriba
+					newPercentage = 100 - (positionOnTrack / trackHeight) * 100;
+				} else {
+					const clientX = event.clientX;
+					const positionOnTrack = clientX - trackRect.left;
+					const trackWidth = trackRect.width;
+					if (trackWidth === 0) return null;
+					newPercentage = (positionOnTrack / trackWidth) * 100;
+				}
 				newPercentage = Math.max(0, Math.min(100, newPercentage));
-
 				return percentageToValue(newPercentage);
 			},
-			[percentageToValue]
+			[percentageToValue, isVertical]
 		);
 
 		// Inicia el arrastre en un handle
@@ -359,7 +382,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 			// Añadimos onPointerMove y onPointerUp aquí para recibir eventos después de setPointerCapture en el handle
 			<div
 				ref={ref}
-				className={clsx(rangeContainer({ disabled }), className)}
+				className={clsx(rangeContainer({ disabled, orientation }), className)}
 				onPointerMove={handlePointerMove}
 				onPointerUp={handlePointerUp}
 				// onTouchMove y onTouchEnd ya no son necesarios si onPointerMove/Up con setPointerCapture funciona
@@ -368,7 +391,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				{/* Pista del slider */}
 				<div
 					ref={trackRef}
-					className={clsx(rangeTrack({ size, viewBar, disabled }))}
+					className={clsx(rangeTrack({ size, viewBar, disabled, orientation }))}
 					// onPointerDown en el track para manejar clicks/taps fuera de los handles (comportamiento "salto")
 					onPointerDown={(event) => {
 						// Prevenir comportamiento por defecto
@@ -423,25 +446,40 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 					}}
 				>
 					{viewBar && marks.length > 0 && (
-						<div className={clsx(rangeMarkContainer({ size }))}>
-							{marks.map((mark, index) => (
-								<div
-									key={index}
-									className={clsx(
-										rangeMark({ size, inRange: mark.value < max, hasLabel: !!mark.label })
-									)}
-									data-value={mark.label}
-									style={{
-										left: `${valueToPercentage(mark.value)}%`,
-										display: mark.value <= max ? "block" : "none",
-									}}
-								/>
-							))}
+						<div className={clsx(rangeMarkContainer({ size, orientation }))}>
+							{marks.map((mark, index) => {
+								const percent = valueToPercentage(mark.value);
+								return (
+									<div
+										key={index}
+										className={clsx(
+											rangeMark({
+												size,
+												inRange: mark.value < max,
+												hasLabel: !!mark.label,
+												orientation,
+											})
+										)}
+										data-value={mark.label}
+										style={
+											isVertical
+												? {
+														top: `${100 - percent}%`,
+														display: mark.value <= max ? "block" : "none",
+												  }
+												: {
+														left: `${percent}%`,
+														display: mark.value <= max ? "block" : "none",
+												  }
+										}
+									/>
+								);
+							})}
 						</div>
 					)}
 					{/* Relleno de la selección */}
 					<div
-						className={clsx(rangeFill({ size, disabled }))}
+						className={clsx(rangeFill({ size, disabled, orientation }))}
 						style={{ ...fillStyle, opacity: viewBar ? 1 : 0 }}
 					></div>
 
@@ -449,14 +487,22 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 					{/* Handle izquierdo (o único) */}
 					<div
 						className={clsx(
-							rangeHandle({ size, disabled, isDragging: isDragging && draggingHandleIndex === 0 })
+							rangeHandle({
+								size,
+								disabled,
+								isDragging: isDragging && draggingHandleIndex === 0,
+								orientation,
+							})
 						)}
-						// *** CORRECCIÓN CLAVE AQUÍ: Posiciona el handle único usando endPosPercentage ***
-						style={{ left: `${isDoubleHandled ? startPosPercentage : endPosPercentage}%` }}
+						// Posiciona el handle único u izquierdo
+						style={
+							isVertical
+								? { top: `${100 - (isDoubleHandled ? startPosPercentage : endPosPercentage)}%` }
+								: { left: `${isDoubleHandled ? startPosPercentage : endPosPercentage}%` }
+						}
 						onPointerDown={(e) => handleHandlePointerDown(e, 0)}
 						onKeyDown={(e) => handleKeyDown(e, 0)}
 						role="slider"
-						// *** CORRECCIÓN ARIA LABEL: Usa la etiqueta correcta según si es doble o simple ***
 						aria-label={
 							isDoubleHandled
 								? Array.isArray(ariaLabel)
@@ -466,7 +512,6 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 						}
 						aria-valuemin={min}
 						aria-valuemax={max}
-						// *** CORRECCIÓN ARIA VALUENOW: Usa el valor correcto según si es doble o simple ***
 						aria-valuenow={
 							isDoubleHandled ? Number(startValue.toFixed(2)) : Number(endValue.toFixed(2))
 						}
@@ -474,7 +519,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 						tabIndex={disabled ? -1 : 0}
 					>
 						{viewValue && (
-							<div className={rangeValue({ size })}>
+							<div className={rangeValue({ size, orientation })}>
 								{isDoubleHandled ? Number(startValue.toFixed(2)) : Number(endValue.toFixed(2))}
 							</div>
 						)}
@@ -484,9 +529,18 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 					{isDoubleHandled && (
 						<div
 							className={clsx(
-								rangeHandle({ size, disabled, isDragging: isDragging && draggingHandleIndex === 1 })
+								rangeHandle({
+									size,
+									disabled,
+									isDragging: isDragging && draggingHandleIndex === 1,
+									orientation,
+								})
 							)}
-							style={{ left: `${endPosPercentage}%` }}
+							style={
+								isVertical
+									? { top: `${100 - endPosPercentage}%` }
+									: { left: `${endPosPercentage}%` }
+							}
 							onPointerDown={(e) => handleHandlePointerDown(e, 1)}
 							onKeyDown={(e) => handleKeyDown(e, 1)}
 							role="slider"
@@ -501,7 +555,9 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 							tabIndex={disabled ? -1 : 0}
 						>
 							{viewValue && (
-								<div className={rangeValue({ size })}>{Number(endValue.toFixed(2))}</div>
+								<div className={rangeValue({ size, orientation })}>
+									{Number(endValue.toFixed(2))}
+								</div>
 							)}
 						</div>
 					)}

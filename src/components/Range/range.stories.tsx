@@ -9,21 +9,25 @@ const meta: Meta<typeof Range> = {
 	title: "Components/Range",
 	component: Range,
 	argTypes: {
+		orientation: {
+			control: "inline-radio",
+			options: ["horizontal", "vertical"],
+			description: "Orientation of the range slider",
+			defaultValue: "horizontal",
+		},
 		onChange: {
-			action: "changed",
-			description: "Callback function when the value changes",
 			table: {
-				type: { summary: "(value: number | [number, number]) => void" },
+				disabled: true,
+			},
+		},
+		onInput: {
+			table: {
+				disabled: true,
 			},
 		},
 		value: {
-			control: "range",
-			type: "number",
-			description:
-				"Value of the range, can be a single number or an array of two numbers for a range",
-			defaultValue: 0,
 			table: {
-				type: { summary: "number | [number, number]" },
+				disabled: true,
 			},
 		},
 		min: {
@@ -50,7 +54,7 @@ const meta: Meta<typeof Range> = {
 			defaultValue: false,
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Size of the card",
 		},
@@ -81,7 +85,17 @@ const RangeSingle = (args: RangeProps) => {
 					label="Value"
 				/>
 			</div>
-			<div style={{ width: "100%", maxWidth: "700px", padding: "20px" }}>
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					width: "100%",
+					maxWidth: "700px",
+					height: "25em",
+					padding: "20px",
+				}}
+			>
 				<Range
 					{...args}
 					value={valueRange}
@@ -111,7 +125,17 @@ const RangeDouble = (args: RangeProps & React.RefAttributes<HTMLDivElement>) => 
 					label="Max"
 				/>
 			</div>
-			<div style={{ width: "100%", maxWidth: "700px", padding: "20px" }}>
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					width: "100%",
+					maxWidth: "700px",
+					height: "25em",
+					padding: "20px",
+				}}
+			>
 				<Range
 					{...args}
 					value={valueRange}
@@ -128,8 +152,9 @@ export const Single: StoryObj<typeof Range> = {
 	args: {
 		min: 0,
 		max: 100,
-		step: 1,
+		step: 25,
 		disabled: false,
+		orientation: "horizontal",
 		size: "medium",
 		label: "",
 		ariaLabel: "",
@@ -152,6 +177,7 @@ export const Double: StoryObj<typeof Range> = {
 		max: 100,
 		step: 5,
 		disabled: false,
+		orientation: "horizontal",
 		size: "medium",
 		label: "",
 		ariaLabel: "",

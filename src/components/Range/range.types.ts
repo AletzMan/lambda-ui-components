@@ -12,6 +12,8 @@ export type RangeMarks = {
 	label?: string;
 };
 
+export type RangeOrientation = 'horizontal' | 'vertical';
+
 // Props para el componente Range
 export interface RangeProps
 	extends Omit<
@@ -101,4 +103,9 @@ export interface RangeProps
 	 * Marca en el slider.
 	 */
 	marks?: RangeMarks[];
+
+	/**
+	 * Orientación del slider: horizontal o vertical. Por defecto es 'horizontal'.
+	 */
+	orientation?: RangeOrientation;
 }
