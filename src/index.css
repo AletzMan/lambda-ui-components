@@ -187,6 +187,11 @@
 	--handle-md: 22px;
 	--handle-lg: 26px;
 
+	--track-size-sm: 4px;
+	--track-size-md: 6px;
+	--track-size-lg: 8px;
+	--track-size-xl: 12px;
+
 	--card-size-xs: 32px;
 	--card-size-sm: 48px;
 	--card-size-md: 64px;
