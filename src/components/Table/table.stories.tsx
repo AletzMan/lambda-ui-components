@@ -1,8 +1,8 @@
 import { Table } from "./Table";
 import type { Meta, StoryObj } from "@storybook/react";
 import { TableProps } from "./table.types";
-import { Circle } from "lucide-react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { Tag } from "../Tag/Tag";
 
 const meta: Meta<typeof Table> = {
 	title: "Components/Table",
@@ -66,9 +66,9 @@ const TableComponent = (args: Partial<TableProps>) => {
 							<Table.Cell align="center">{item.age}</Table.Cell>
 							<Table.Cell align="center">
 								{item.active ? (
-									<Circle color="green" size={10} fill="green" />
+									<Tag color="success" size="tiny" text="Active" />
 								) : (
-									<Circle color="red" size={10} fill="red" />
+									<Tag color="danger" size="tiny" text="Inactive" />
 								)}
 							</Table.Cell>
 							<Table.Cell align="center">{item.joined}</Table.Cell>
