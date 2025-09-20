@@ -100,8 +100,8 @@ const DefaultRating = (args: RatingProps) => {
 			<div
 				style={{
 					display: "grid",
-					gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-					gap: "var(--padding-xl)",
+					gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+					gap: "var(--gap-xl)",
 					width: "100%",
 					marginBottom: "var(--padding-xl)",
 					padding: "var(--padding-lg) var(--padding-xl)",
@@ -110,7 +110,12 @@ const DefaultRating = (args: RatingProps) => {
 				{colors.map((color, index) => (
 					<div
 						key={color}
-						style={{ display: "flex", flexDirection: "column", gap: "var(--padding-xs)" }}
+						style={{
+							display: "flex",
+							alignItems: "flex-start",
+							flexDirection: "column",
+							gap: "var(--padding-xs)",
+						}}
 					>
 						<label
 							style={{
