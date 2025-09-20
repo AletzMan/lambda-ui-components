@@ -181,7 +181,7 @@ const TableRoot = <T,>({
 							totalPages={totalPages}
 							maxVisiblePages={1}
 							onPageChange={handlePageChange}
-							size="small"
+							size={size === "tiny" ? "tiny" : "small"}
 							variant={
 								variant === "soft"
 									? "soft"
@@ -254,12 +254,14 @@ const TableColumnHeader = ({
 	sortKey,
 	type = "string",
 	width,
+	isSortable = false,
 	...props
 }: HTMLAttributes<HTMLTableCellElement> & {
 	children: ReactNode;
 	sortKey: string;
 	type?: "string" | "number" | "date" | "boolean";
 	width?: string;
+	isSortable?: boolean;
 }) => {
 	const { size, variant, sortConfig, handleSort } = useTableContext();
 	const isSorted = sortConfig.key === sortKey;
@@ -267,15 +269,20 @@ const TableColumnHeader = ({
 	return (
 		<th
 			className={headerCellVariants({ size, variant })}
-			onClick={() => handleSort(sortKey, type)}
+			onClick={isSortable ? () => handleSort(sortKey, type) : undefined}
 			{...props}
 			style={{ width }}
 		>
-			<div className={styles["lambda-header-group"]}>
+			<div
+				className={clsx(
+					styles["lambda-header-group"],
+					isSortable && styles["lambda-header-group-sortable"]
+				)}
+			>
 				{children}
 				{isSorted && (
 					<button className={styles["lambda-header-button"]}>
-						{sortConfig.direction === "asc" ? <ArrowDownWideNarrow /> : <ArrowUpWideNarrow />}
+						{sortConfig.direction === "asc" ? <ArrowUpWideNarrow /> : <ArrowDownWideNarrow />}
 					</button>
 				)}
 			</div>

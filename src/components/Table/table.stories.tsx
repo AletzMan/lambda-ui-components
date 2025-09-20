@@ -77,10 +77,10 @@ const TableComponent = (args: Partial<TableProps>) => {
 				>
 					<Table.Header>
 						<Table.Row>
-							<Table.ColumnHeader sortKey="id" type="number" width="70px">
+							<Table.ColumnHeader sortKey="id" type="number" width="70px" isSortable>
 								ID
 							</Table.ColumnHeader>
-							<Table.ColumnHeader sortKey="name" type="string" width="150px">
+							<Table.ColumnHeader sortKey="name" type="string" width="150px" isSortable>
 								Nombre
 							</Table.ColumnHeader>
 							<Table.ColumnHeader sortKey="age" type="number" width="100px">
