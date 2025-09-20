@@ -39,9 +39,10 @@
 	left: 0;
 	right: 0;
 	height: var(--size-track-md, 6px);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--border-radius-sm);
 	border: none;
 	background-color: transparent;
+	box-sizing: border-box;
 	z-index: 1;
 
 	&.lambda-range-track-view-bar {
@@ -67,8 +68,8 @@
 	bottom: 50%;
 	transform: translateY(50%);
 	height: var(--size-track-md, 6px);
-	background-color: var(--primary-base-color);
-	border: var(--border-width-xs) solid var(--primary-text-color);
+	background-color: var(--primary-hover-color);
+	border: var(--border-width-xs) solid var(--primary-base-color);
 	border-radius: var(--radius-pill, 9999px);
 	z-index: 2;
 }
@@ -91,14 +92,14 @@
 	transform: translate(-50%, 50%);
 	width: var(--size-handle-md, 20px);
 	height: var(--size-handle-md, 20px);
-	cursor: grab;
 	border-radius: var(--radius-pill, 9999px);
-	border: var(--border-width-xs) solid var(--border-color);
-	background-color: var(--white-color);
-	box-shadow: 0 0 4px 2px #0000001a inset;
+	border: var(--border-width-xs) solid var(--primary-base-color);
+	background: var(--foreground-invert-color);
+	/*box-shadow: 0 0 4px 2px #0000001a inset;*/
 	transition: transform 0.1s ease, box-shadow 0.2s ease;
 	outline: none;
 	z-index: 3;
+	cursor: pointer;
 
 	&:hover:not(.lambda-range-handle-disabled) {
 		.lambda-range-handle-value {
@@ -111,36 +112,36 @@
 .lambda-range-handle-small {
 	width: var(--handle-xs);
 	height: var(--handle-xs);
-	border-width: 1px;
+	border-width: var(--border-width-sm);
 }
 
 .lambda-range-handle-medium {
 	width: var(--handle-sm);
 	height: var(--handle-sm);
-	border-width: 1px;
+	border-width: var(--border-width-sm);
 }
 
 .lambda-range-handle-large {
 	width: var(--handle-md);
 	height: var(--handle-md);
-	border-width: 2px;
+	border-width: var(--border-width-md);
 }
 
 /* Estado Hover del Handle */
 .lambda-range-handle:hover:not(.lambda-range-handle-disabled) {
-	box-shadow: 0 0 0 4px var(--primary-opacity-color);
+	box-shadow: 0 0 0 4px var(--primary-shadow-color);
 }
 
 /* Estado Focus-Visible del Handle */
-.lambda-range-handle:focus-visible:not(.lambda-range-handle-disabled) {
-	box-shadow: 0 0 0 4px var(--primary-soft-color);
+.lambda-range-handle:focus-visible:not(.lambda-range-handle-disabled):not(:hover) {
+	box-shadow: 0 0 0 4px var(--primary-shadow-color);
 }
 
 /* Estado Arrastrando del Handle */
 .lambda-range-handle-dragging {
 	cursor: grabbing;
 	transform: translate(-50%, 50%) scale(1.1);
-	box-shadow: 0 0 0 6px var(--primary-subtle-color);
+	box-shadow: 0 0 0 4px var(--primary-shadow-color);
 }
 
 /* Estado Deshabilitado del Handle */
@@ -197,6 +198,46 @@
 		border-width: 5px;
 		border-style: solid;
 		border-color: var(--neutral-base-color) transparent transparent transparent;
+	}
+}
+
+.lambda-range-mark-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.lambda-range-mark {
+	position: relative;
+	height: 100%;
+	width: var(--border-width-xs);
+	background-color: var(--surface-d);
+	box-sizing: border-box;
+
+	&:is(:last-child, :first-child) {
+		background-color: transparent;
+	}
+
+	&:is(:nth-child(5n + 1)) {
+		height: 300%;
+		&:after {
+			content: attr(data-value);
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: max-content;
+			height: 100%;
+			font-size: var(--font-size-sm);
+			text-align: center;
+			color: var(--foreground-color);
+			/*border-width: 5px;
+			border-style: solid;
+			border-color: var(--surface-d) transparent transparent transparent;*/
+		}
 	}
 }
 

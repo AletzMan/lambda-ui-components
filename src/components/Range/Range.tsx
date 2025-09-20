@@ -1,7 +1,15 @@
 import React, { forwardRef, useCallback, useRef, useState, useMemo } from "react";
 import clsx from "clsx";
 
-import { rangeContainer, rangeTrack, rangeFill, rangeHandle, rangeValue } from "./range.variants";
+import {
+	rangeContainer,
+	rangeTrack,
+	rangeFill,
+	rangeHandle,
+	rangeValue,
+	rangeMark,
+	rangeMarkContainer,
+} from "./range.variants";
 import { RangeProps, RangeValue } from "./range.types";
 
 export const Range = forwardRef<HTMLDivElement, RangeProps>(
@@ -373,6 +381,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 						if (newValue === null) return;
 
 						let finalValue: RangeValue;
+						let closestHandleIdx = 0;
 
 						if (isDoubleHandled) {
 							const [currentStart, currentEnd] = value as [number, number];
@@ -388,21 +397,37 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 								// Mover el handle de inicio, asegurándose de no cruzar el handle de fin
 								const clampedStart = Math.min(newValue, currentEnd);
 								finalValue = [Math.max(min, clampedStart), currentEnd];
+								closestHandleIdx = 0;
 							} else {
 								// Mover el handle de fin, asegurándose de no cruzar el handle de inicio
 								const clampedEnd = Math.max(newValue, currentStart);
 								finalValue = [currentStart, Math.min(max, clampedEnd)];
+								closestHandleIdx = 1;
 							}
 						} else {
 							// Mover el handle único
 							finalValue = Math.max(min, Math.min(max, newValue));
+							closestHandleIdx = 0;
 						}
 
 						// Llamar a onChange con el valor final calculado para el "salto"
 						// El padre actualizará la prop 'value' basándose en esto.
 						onChange?.(finalValue);
+
+						// Iniciar el drag sobre el handle más cercano
+						// NOTA: Esto solo funcionará bien si el padre actualiza el valor inmediatamente (componente controlado)
+						setTimeout(() => {
+							handleHandlePointerDown(event, closestHandleIdx);
+						}, 0);
 					}}
 				>
+					{viewBar && (
+						<div className={clsx(rangeMarkContainer({ size }))}>
+							{Array.from({ length: (max - min) / step + 1 }, (_, i) => (
+								<div key={i} className={clsx(rangeMark({ size }))} data-value={i * step} />
+							))}
+						</div>
+					)}
 					{/* Relleno de la selección */}
 					<div
 						className={clsx(rangeFill({ size, disabled }))}
@@ -431,12 +456,16 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 						aria-valuemin={min}
 						aria-valuemax={max}
 						// *** CORRECCIÓN ARIA VALUENOW: Usa el valor correcto según si es doble o simple ***
-						aria-valuenow={isDoubleHandled ? startValue : endValue}
+						aria-valuenow={
+							isDoubleHandled ? Number(startValue.toFixed(2)) : Number(endValue.toFixed(2))
+						}
 						aria-disabled={disabled}
 						tabIndex={disabled ? -1 : 0}
 					>
 						{viewValue && (
-							<div className={rangeValue({ size })}>{isDoubleHandled ? startValue : endValue}</div>
+							<div className={rangeValue({ size })}>
+								{isDoubleHandled ? Number(startValue.toFixed(2)) : Number(endValue.toFixed(2))}
+							</div>
 						)}
 					</div>
 
@@ -456,11 +485,13 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 							}
 							aria-valuemin={min}
 							aria-valuemax={max}
-							aria-valuenow={endValue}
+							aria-valuenow={Number(endValue.toFixed(2))}
 							aria-disabled={disabled}
 							tabIndex={disabled ? -1 : 0}
 						>
-							{viewValue && <div className={rangeValue({ size })}>{endValue}</div>}
+							{viewValue && (
+								<div className={rangeValue({ size })}>{Number(endValue.toFixed(2))}</div>
+							)}
 						</div>
 					)}
 				</div>

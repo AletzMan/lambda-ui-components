@@ -142,8 +142,8 @@ export const Double: StoryObj<typeof Range> = {
 	render: (args) => <RangeDouble {...args} />,
 	args: {
 		min: 0,
-		max: 100,
-		step: 5,
+		max: 1,
+		step: 0.1,
 		disabled: false,
 		size: "medium",
 		label: "",

@@ -75,6 +75,32 @@ export const rangeValue = cva(styles["lambda-range-handle-value"], {
 	},
 });
 
+export const rangeMarkContainer = cva(styles["lambda-range-mark-container"], {
+	variants: {
+		size: {
+			small: styles["lambda-range-mark-small"],
+			medium: styles["lambda-range-mark-medium"],
+			large: styles["lambda-range-mark-large"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
+	},
+});
+
+export const rangeMark = cva(styles["lambda-range-mark"], {
+	variants: {
+		size: {
+			small: styles["lambda-range-mark-small"],
+			medium: styles["lambda-range-mark-medium"],
+			large: styles["lambda-range-mark-large"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
+	},
+});
+
 export type RangeContainerVariants = VariantProps<typeof rangeContainer>;
 export type RangeTrackVariants = VariantProps<typeof rangeTrack>;
 export type RangeFillVariants = VariantProps<typeof rangeFill>;
