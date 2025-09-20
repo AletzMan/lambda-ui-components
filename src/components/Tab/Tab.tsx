@@ -1,5 +1,6 @@
 import {
 	forwardRef,
+	useCallback,
 	useEffect,
 	useId,
 	useImperativeHandle,
@@ -17,6 +18,7 @@ import {
 	tabLabel,
 	tabWrapper,
 } from "./tab.variants";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 const hasResizeObserver = typeof window !== "undefined" && typeof ResizeObserver !== "undefined";
 
 export const Tab = forwardRef<HTMLDivElement, TabProps>(
@@ -28,6 +30,9 @@ export const Tab = forwardRef<HTMLDivElement, TabProps>(
 		const itemsArr = items ?? [];
 		// índice seleccionado (usa 0 como fallback)
 		const [checked, setChecked] = useState<number>(0);
+		const { radiusField } = useUIConfig();
+		const currentRadius = useCallback(() => radius ?? radiusField, [radius, radiusField]);
+		console.log(currentRadius());
 
 		// refs
 		const containerRef = useRef<HTMLDivElement | null>(null);
@@ -84,19 +89,22 @@ export const Tab = forwardRef<HTMLDivElement, TabProps>(
 		const groupId = useId();
 
 		return (
-			<div className={tabWrapper({ size, variant, color, radius })}>
+			<div className={tabWrapper({ size, variant, color, radius: currentRadius() })}>
 				<div
 					// el ref expuesto hacia afuera y usado interno
 					ref={(node) => {
 						localRef.current = node;
 						containerRef.current = node;
 					}}
-					className={clsx(tabContainer({ size, variant, color, radius }), className)}
+					className={clsx(
+						tabContainer({ size, variant, color, radius: currentRadius() }),
+						className
+					)}
 					{...props}
 				>
 					{/* Indicador detrás de las tabs */}
 					<div
-						className={tabCurrent({ variant, radius, color })}
+						className={tabCurrent({ variant, radius: currentRadius(), color })}
 						style={{
 							left: `${indicator.left}px`,
 							width: `${indicator.width}px`,
@@ -119,7 +127,7 @@ export const Tab = forwardRef<HTMLDivElement, TabProps>(
 									disabled,
 									selected: checked === index,
 									color,
-									radius,
+									radius: currentRadius(),
 								})}
 							>
 								<input
@@ -139,7 +147,7 @@ export const Tab = forwardRef<HTMLDivElement, TabProps>(
 					})}
 				</div>
 
-				<div className={tabContent({ size, variant, color, radius })}>
+				<div className={tabContent({ size, variant, color, radius: currentRadius() })}>
 					{itemsArr[checked]?.content}
 				</div>
 			</div>

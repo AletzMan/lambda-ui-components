@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Tab } from "./Tab";
 import { TabProps } from "./tab.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof Tab> = {
 	title: "Components/Tab",
@@ -50,11 +51,21 @@ const colors: TabProps["color"][] = [
 ];
 
 const Template = (args: TabProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Tab" subtitle={args.variant || ""}>
-			<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+		<ContainerComponent
+			title="Tab"
+			subtitle={args.variant || ""}
+			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
+		>
+			<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", padding: "1rem" }}>
 				{colors.map((color) => (
-					<Tab key={color} {...args} color={color} />
+					<Tab
+						key={color}
+						{...args}
+						color={color}
+						radius={currentStyle === "local" ? args.radius : undefined}
+					/>
 				))}
 			</div>
 		</ContainerComponent>

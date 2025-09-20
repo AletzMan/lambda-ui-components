@@ -239,6 +239,10 @@
 
 .tab-label-radius-full {
 	border-radius: var(--border-radius-full);
+
+	&:is(.tab-label-border) {
+		border-radius: var(--border-radius-lg);
+	}
 }
 
 .tab-current {
@@ -372,6 +376,10 @@
 
 	&:is(.tab-current-radius-full) {
 		border-radius: var(--border-radius-full);
+
+		&:is(.tab-current-border) {
+			border-radius: var(--border-radius-lg);
+		}
 	}
 }
 
