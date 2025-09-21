@@ -2,6 +2,7 @@ import { forwardRef, useState, ChangeEvent } from "react";
 import styles from "./checkbox.module.css";
 import { checkboxprop, container, icon, textLabel } from "./checkbox.variants";
 import { CheckBoxProps } from "./checkbox.types";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 	(
@@ -21,6 +22,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		ref
 	) => {
 		const [internalChecked, setInternalChecked] = useState(checked);
+		const { radiusSelector } = useUIConfig();
+		const radiusValue = radius || radiusSelector;
 
 		const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 			const newChecked = e.currentTarget.checked;
@@ -36,7 +39,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 					className={checkboxprop({
 						variant,
 						size,
-						radius,
+						radius: radiusValue,
 						color,
 						checked: internalChecked,
 						disabled,

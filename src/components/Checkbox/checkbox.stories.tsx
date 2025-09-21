@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox } from "./Checkbox";
 import { CheckBoxProps } from "./checkbox.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof Checkbox> = {
 	title: "Components/Checkbox",
@@ -25,13 +26,13 @@ const meta: Meta<typeof Checkbox> = {
 			},
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
 		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "circle"],
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
 			description: "Corner shape",
 			type: "string",
 		},
@@ -62,27 +63,35 @@ type Story = StoryObj<typeof Checkbox>;
 
 const colors = ["Neutral", "Primary", "Secondary", "Danger", "Success", "Warning", "Info"];
 
-const Template = (args: CheckBoxProps) => (
-	<ContainerComponent title="Checkbox" subtitle={args.variant?.toString() || ""}>
-		<div
-			style={{
-				display: "grid",
-				gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-				gap: "var(--gap-lg)",
-				padding: "var(--padding-lg)",
-			}}
+const Template = (args: CheckBoxProps) => {
+	const [currentStyles, setCurrentStyles] = useState<"global" | "local">("global");
+	return (
+		<ContainerComponent
+			title="Checkbox"
+			subtitle={args.variant?.toString() || ""}
+			onChangeStyleSource={(value) => setCurrentStyles(value)}
 		>
-			{colors.map((color) => (
-				<Checkbox
-					key={color}
-					{...args}
-					color={color.toLowerCase() as CheckBoxProps["color"]}
-					label={color}
-				/>
-			))}
-		</div>
-	</ContainerComponent>
-);
+			<div
+				style={{
+					display: "grid",
+					gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
+					gap: "var(--gap-lg)",
+					padding: "var(--padding-lg)",
+				}}
+			>
+				{colors.map((color) => (
+					<Checkbox
+						key={color}
+						{...args}
+						color={color.toLowerCase() as CheckBoxProps["color"]}
+						label={color}
+						radius={currentStyles === "local" ? args.radius : undefined}
+					/>
+				))}
+			</div>
+		</ContainerComponent>
+	);
+};
 
 export const Solid: Story = {
 	render: Template,

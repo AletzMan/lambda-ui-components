@@ -25,9 +25,11 @@ export const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
 		},
 		radius: {
 			none: styles["lambda-checkbox-wrapper-radius-none"],
+			tiny: styles["lambda-checkbox-wrapper-radius-tiny"],
 			small: styles["lambda-checkbox-wrapper-radius-small"],
 			medium: styles["lambda-checkbox-wrapper-radius-medium"],
-			circle: styles["lambda-checkbox-wrapper-radius-circle"],
+			large: styles["lambda-checkbox-wrapper-radius-large"],
+			full: styles["lambda-checkbox-wrapper-radius-full"],
 		},
 		disabled: {
 			true: styles["lambda-checkbox-wrapper-disabled"],
@@ -41,7 +43,7 @@ export const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "solid",
-		radius: "small",
+		radius: "tiny",
 		color: "primary",
 		disabled: false,
 		checked: false,

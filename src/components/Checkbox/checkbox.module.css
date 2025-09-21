@@ -404,15 +404,39 @@
 	border-radius: var(--border-radius-none);
 }
 
+.lambda-checkbox-wrapper-radius-tiny {
+	border-radius: var(--border-radius-xs);
+}
+
 .lambda-checkbox-wrapper-radius-small {
 	border-radius: var(--border-radius-sm);
 }
 
 .lambda-checkbox-wrapper-radius-medium {
 	border-radius: var(--border-radius-md);
+
+	&:is(
+			.lambda-checkbox-wrapper-tiny,
+			.lambda-checkbox-wrapper-small,
+			.lambda-checkbox-wrapper-medium
+		) {
+		border-radius: calc(var(--border-radius-sm) + var(--border-radius-xs));
+	}
 }
 
-.lambda-checkbox-wrapper-radius-circle {
+.lambda-checkbox-wrapper-radius-large {
+	border-radius: var(--border-radius-lg);
+
+	&:is(
+			.lambda-checkbox-wrapper-tiny,
+			.lambda-checkbox-wrapper-small,
+			.lambda-checkbox-wrapper-medium
+		) {
+		border-radius: var(--border-radius-md);
+	}
+}
+
+.lambda-checkbox-wrapper-radius-full {
 	border-radius: var(--border-radius-full);
 }
 
