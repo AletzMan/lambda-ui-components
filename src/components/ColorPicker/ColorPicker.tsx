@@ -20,8 +20,8 @@ import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { CheckIcon, CopyIcon, Pipette } from "lucide-react";
 import useEyeDropper from "use-eye-dropper";
-// Importa el componente Range
-import { Range } from "../Range/Range";
+// Importa el componente Slider
+import { Slider } from "../Slider/Slider";
 import { Tooltip } from "../ToolTip/ToolTip";
 import {
 	useTranslation,
@@ -246,7 +246,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			}
 		}, [internalValue, format, alpha]);
 
-		// Lógica de arrastre del picker, el resto es manejado por el componente Range
+		// Lógica de arrastre del picker, el resto es manejado por el componente Slider
 		useEffect(() => {
 			const handlePointerMove = (event: PointerEvent) => {
 				let newColor: string | undefined;
@@ -573,7 +573,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 						<div className={styles["lambda-colorpicker-controls-colors"]}>
 							<div className={styles["lambda-colorpicker-controls-slider"]}></div>
 
-							<Range
+							<Slider
 								size="small"
 								value={hue}
 								min={0}
@@ -624,7 +624,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 									background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
 								}}
 							></div>
-							<Range
+							<Slider
 								size="small"
 								value={alpha}
 								min={0}

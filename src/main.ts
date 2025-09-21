@@ -20,7 +20,7 @@ export { Link } from "./components/Link/Link";
 export { Notification } from "./components/Notification/Notification";
 export { Pagination } from "./components/Pagination/Pagination";
 export { Radio, RadioGroup } from "./components/Radio/Radio";
-export { Range } from "./components/Range/Range";
+export { Slider } from "./components/Slider/Slider";
 export { Rating } from "./components/Rating/Rating";
 export { Select } from "./components/Select/Select";
 export { Switch } from "./components/Switch/Switch";

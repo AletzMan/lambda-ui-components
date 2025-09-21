@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./range.module.css";
+import styles from "./slider.module.css";
 
 export const rangeContainer = cva(styles["lambda-range-container"], {
 	variants: {
@@ -153,7 +153,7 @@ export const rangeMarkContainer = cva(styles["lambda-range-mark-container"], {
 export const rangeMark = cva(styles["lambda-range-mark"], {
 	variants: {
 		hasLabel: { true: styles["lambda-range-mark-has-label"], false: "" },
-		inRange: { true: styles["lambda-range-mark-inrange"], false: "" },
+		inSlider: { true: styles["lambda-range-mark-inrange"], false: "" },
 		size: {
 			tiny: styles["lambda-range-mark-tiny"],
 			small: styles["lambda-range-mark-small"],
@@ -171,7 +171,7 @@ export const rangeMark = cva(styles["lambda-range-mark"], {
 	},
 });
 
-export type RangeContainerVariants = VariantProps<typeof rangeContainer>;
-export type RangeTrackVariants = VariantProps<typeof rangeTrack>;
-export type RangeFillVariants = VariantProps<typeof rangeFill>;
-export type RangeHandleVariants = VariantProps<typeof rangeHandle>;
+export type SliderContainerVariants = VariantProps<typeof rangeContainer>;
+export type SliderTrackVariants = VariantProps<typeof rangeTrack>;
+export type SliderFillVariants = VariantProps<typeof rangeFill>;
+export type SliderHandleVariants = VariantProps<typeof rangeHandle>;

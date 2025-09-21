@@ -9,11 +9,11 @@ import {
 	rangeValue,
 	rangeMark,
 	rangeMarkContainer,
-} from "./range.variants";
-import { RangeProps, RangeValue } from "./range.types";
+} from "./slider.variants";
+import { SliderProps, SliderValue } from "./slider.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
-export const Range = forwardRef<HTMLDivElement, RangeProps>(
+export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 	(
 		{
 			value,
@@ -197,7 +197,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 					return;
 				}
 
-				let nextValue: RangeValue;
+				let nextValue: SliderValue;
 
 				if (isDoubleHandled) {
 					let [currentStart, currentEnd] = value as [number, number];
@@ -215,13 +215,13 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				}
 
 				// Llamar al handler onInput para retroalimentación en tiempo real (si existe)
-				// Pasamos el 'nextValue' calculado (que es RangeValue: number | [number, number])
+				// Pasamos el 'nextValue' calculado (que es SliderValue: number | [number, number])
 				onInput?.(nextValue);
 
 				// NOTA IMPORTANTE: En un componente controlado (usando 'value' prop),
-				// NO LLAMAMOS setInternalSelectedFiles O setSingleValue/setRangeValues AQUI.
+				// NO LLAMAMOS setInternalSelectedFiles O setSingleValue/setSliderValues AQUI.
 				// El componente padre debe manejar el 'onInput' o 'onChange' y actualizar la prop 'value',
-				// lo que hará que el componente Range se re-renderice con la nueva posición del handle.
+				// lo que hará que el componente Slider se re-renderice con la nueva posición del handle.
 			},
 			[
 				isDragging,
@@ -249,7 +249,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				// usamos el valor actual del prop 'value' como valor final.
 				const valueToFinalize = finalValue === null ? value : finalValue;
 
-				let nextValue: RangeValue;
+				let nextValue: SliderValue;
 
 				if (isDoubleHandled) {
 					let [currentStart, currentEnd] = value as [number, number];
@@ -354,7 +354,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				}
 
 				if (delta !== 0) {
-					let nextValue: RangeValue;
+					let nextValue: SliderValue;
 
 					if (isDoubleHandled) {
 						const [currentStart, currentEnd] = value as [number, number];
@@ -410,7 +410,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 						const newValue = getValueFromPointerEvent(event);
 						if (newValue === null) return;
 
-						let finalValue: RangeValue;
+						let finalValue: SliderValue;
 						let closestHandleIdx = 0;
 
 						if (isDoubleHandled) {
@@ -461,7 +461,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 										className={clsx(
 											rangeMark({
 												size,
-												inRange: mark.value < max,
+												inSlider: mark.value < max,
 												hasLabel: !!mark.label,
 												orientation,
 											})

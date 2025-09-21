@@ -1,19 +1,19 @@
 import { HTMLAttributes } from "react";
-import { RangeTrackVariants } from "./range.variants"; // Importar tipos de variantes
+import { SliderTrackVariants } from "./slider.variants"; // Importar tipos de variantes
 
-// Tipos para el valor del Range (número para handle único, tupla para dos handles)
-export type RangeValue = number | [number, number];
+// Tipos para el valor del Slider (número para handle único, tupla para dos handles)
+export type SliderValue = number | [number, number];
 
 // Tipos para variantes visuales
-export type RangeSize = RangeTrackVariants["size"];
+export type SliderSize = SliderTrackVariants["size"];
 
-export type RangeMarks = {
+export type SliderMarks = {
 	value: number;
 	label?: string;
 };
 
-// Props para el componente Range
-export interface RangeProps
+// Props para el componente Slider
+export interface SliderProps
 	extends Omit<
 		// Omitir props de HTMLAttributes<HTMLDivElement> que vamos a redefinir
 		HTMLAttributes<HTMLDivElement>,
@@ -24,7 +24,7 @@ export interface RangeProps
 	 * Usa un número para un solo handle, o una tupla [inicio, fin] para dos handles.
 	 * Componente controlado.
 	 */
-	value: RangeValue;
+	value: SliderValue;
 
 	/**
 	 * El valor mínimo del rango.
@@ -49,14 +49,14 @@ export interface RangeProps
 	 * Callback que se llama cuando el valor/rango cambia al soltar el handle.
 	 * Recibe el nuevo valor: number o [number, number].
 	 */
-	onChange?: (value: RangeValue) => void;
+	onChange?: (value: SliderValue) => void;
 
 	/**
 	 * Callback que se llama mientras el handle se está moviendo.
 	 * Puede usarse para retroalimentación en tiempo real.
 	 * Recibe el valor intermedio: number o [number, number].
 	 */
-	onInput?: (value: RangeValue) => void;
+	onInput?: (value: SliderValue) => void;
 
 	/**
 	 * Deshabilitar el slider.
@@ -68,7 +68,7 @@ export interface RangeProps
 	 * Tamaño del slider.
 	 * @default "medium"
 	 */
-	size?: RangeSize;
+	size?: SliderSize;
 
 	/**
 	 * Variante visual del slider (afecta track y fill).
@@ -100,12 +100,12 @@ export interface RangeProps
 	/**
 	 * Marca en el slider.
 	 */
-	marks?: RangeMarks[];
+	marks?: SliderMarks[];
 
 	/**
 	 * Orientación del slider: horizontal o vertical. Por defecto es 'horizontal'.
 	 */
-	orientation?: RangeTrackVariants["orientation"];
+	orientation?: SliderTrackVariants["orientation"];
 
-	radius?: RangeTrackVariants["radius"];
+	radius?: SliderTrackVariants["radius"];
 }

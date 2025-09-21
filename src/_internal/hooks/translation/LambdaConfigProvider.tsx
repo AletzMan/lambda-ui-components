@@ -55,7 +55,7 @@ interface UIConfigContextProps {
 	radiusField?: LambdaRadiusField;
 	/**
 	 * Define the radius(tiny, small, medium, large, full, none) of components that have a radius.
-	 * Apply to components (  Switch, Checkbox, Range, Tag, Badge, Breadcrumb  etc).
+	 * Apply to components (  Switch, Checkbox, Slider, Tag, Badge, Breadcrumb  etc).
 	 * @default "small"
 	 */
 	radiusSelector?: LambdaRadiusSelector;

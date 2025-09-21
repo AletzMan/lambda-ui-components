@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Range } from "./Range";
+import { Slider } from "./Slider";
 import { useState } from "react";
-import { RangeProps, RangeValue } from "./range.types";
+import { SliderProps, SliderValue } from "./slider.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Input } from "../Input/Input";
 
-const meta: Meta<typeof Range> = {
-	title: "Components/Range",
-	component: Range,
+const meta: Meta<typeof Slider> = {
+	title: "Components/Slider",
+	component: Slider,
 	argTypes: {
 		orientation: {
 			control: "inline-radio",
@@ -79,19 +79,19 @@ const meta: Meta<typeof Range> = {
 
 export default meta;
 
-const RangeSingle = (args: RangeProps) => {
-	const [valueRange, setValueRange] = useState<RangeValue>(50);
+const SliderSingle = (args: SliderProps) => {
+	const [valueSlider, setValueSlider] = useState<SliderValue>(50);
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
-			title="Range"
+			title="Slider"
 			subtitle="Single"
 			onChangeStyleSource={(e) => setCurrentStyle(e)}
 			styleSource={currentStyle}
 		>
 			<div style={{ width: "130px", padding: "20px" }}>
 				<Input
-					value={valueRange.toString()}
+					value={valueSlider.toString()}
 					disabled
 					style={{ textAlign: "center" }}
 					label="Value"
@@ -108,11 +108,11 @@ const RangeSingle = (args: RangeProps) => {
 					padding: "20px",
 				}}
 			>
-				<Range
+				<Slider
 					{...args}
-					value={valueRange}
-					onInput={(e) => setValueRange(e)}
-					onChange={(e) => setValueRange(e)}
+					value={valueSlider}
+					onInput={(e) => setValueSlider(e)}
+					onChange={(e) => setValueSlider(e)}
 					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 			</div>
@@ -120,25 +120,25 @@ const RangeSingle = (args: RangeProps) => {
 	);
 };
 
-const RangeDouble = (args: RangeProps & React.RefAttributes<HTMLDivElement>) => {
-	const [valueRange, setValueRange] = useState<RangeValue>([10, 80]);
+const SliderDouble = (args: SliderProps & React.RefAttributes<HTMLDivElement>) => {
+	const [valueSlider, setValueSlider] = useState<SliderValue>([10, 80]);
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
-			title="Range"
+			title="Slider"
 			subtitle="Double"
 			onChangeStyleSource={(e) => setCurrentStyle(e)}
 			styleSource={currentStyle}
 		>
 			<div style={{ display: "flex", gap: "var(--gap-lg)", width: "150px", padding: "20px" }}>
 				<Input
-					value={valueRange.toString().split(",")[0]}
+					value={valueSlider.toString().split(",")[0]}
 					disabled
 					style={{ textAlign: "center" }}
 					label="Min"
 				/>
 				<Input
-					value={valueRange.toString().split(",")[1]}
+					value={valueSlider.toString().split(",")[1]}
 					disabled
 					style={{ textAlign: "center" }}
 					label="Max"
@@ -155,20 +155,20 @@ const RangeDouble = (args: RangeProps & React.RefAttributes<HTMLDivElement>) => 
 					padding: "20px",
 				}}
 			>
-				<Range
+				<Slider
 					{...args}
-					value={valueRange}
+					value={valueSlider}
 					radius={currentStyle === "local" ? args.radius : undefined}
-					onInput={(e) => setValueRange(e)}
-					onChange={(e) => setValueRange(e)}
+					onInput={(e) => setValueSlider(e)}
+					onChange={(e) => setValueSlider(e)}
 				/>
 			</div>
 		</ContainerComponent>
 	);
 };
 
-export const Single: StoryObj<typeof Range> = {
-	render: (args) => <RangeSingle {...args} />,
+export const Single: StoryObj<typeof Slider> = {
+	render: (args) => <SliderSingle {...args} />,
 	args: {
 		min: 0,
 		max: 100,
@@ -191,8 +191,8 @@ export const Single: StoryObj<typeof Range> = {
 	},
 };
 
-export const Double: StoryObj<typeof Range> = {
-	render: (args) => <RangeDouble {...args} />,
+export const Double: StoryObj<typeof Slider> = {
+	render: (args) => <SliderDouble {...args} />,
 	args: {
 		min: 0,
 		max: 100,
