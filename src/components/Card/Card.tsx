@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import styles from "./card.module.css";
 import { card } from "./card.variants";
-import { CardProps } from "./card-types";
+import { CardProps } from "./card.types";
 import { clsx } from "clsx";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
@@ -12,10 +12,11 @@ const SizeHeight: Record<"medium" | "small" | "large", number> = {
 };
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-	({ className, variant = "outline", size = "medium", header, image, actions, ...props }, ref) => {
+	({ className, variant, size, radius, header, image, actions, ...props }, ref) => {
 		const { radiusBox } = useUIConfig();
+		const radiusValue = radius || radiusBox;
 		return (
-			<div ref={ref} className={card({ variant, size, radius: radiusBox, className })} {...props}>
+			<div ref={ref} className={card({ variant, size, radius: radiusValue, className })} {...props}>
 				{image && (
 					<div
 						className={styles[`lambda-card-header-image-container`]}

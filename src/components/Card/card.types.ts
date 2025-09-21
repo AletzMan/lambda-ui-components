@@ -1,6 +1,6 @@
 import { VariantProps } from "class-variance-authority";
 import { HTMLAttributes } from "react";
-import { card } from "./card.variants";
+import { card, CardVariants } from "./card.variants";
 
 export interface ICardHeader {
 	/**
@@ -73,7 +73,12 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, "disable
 	/**
 	 * Define el tamaño de la tarjeta, afectando dimensiones, espaciado interno (padding) y quizás el tamaño de otros elementos internos.
 	 */
-	size?: "medium" | "small" | "large";
+	size?: CardVariants["size"];
+
+	/**
+	 * Define el radio de la tarjeta, afectando dimensiones, espaciado interno (padding) y quizás el tamaño de otros elementos internos.
+	 */
+	radius?: CardVariants["radius"];
 
 	/**
 	 * El contenido principal de la tarjeta. Este es el área donde se coloca el contenido principal

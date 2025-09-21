@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Card } from "./Card";
 import { Bookmark, CircleEllipsis, CodeXml, RssIcon } from "lucide-react";
-import { CardProps } from "./card-types";
+import { CardProps } from "./card.types";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
@@ -11,20 +11,19 @@ const meta: Meta<typeof Card> = {
 	component: Card,
 	argTypes: {
 		variant: {
-			control: "select",
-			options: ["borderless", "outline"],
-			description: "Optional variant of the card",
-			type: "string",
+			table: {
+				disabled: true,
+			},
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["small", "medium", "large"],
 			description: "Size of the card",
 			type: "string",
 		},
 		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "large"],
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large"],
 			description: "Radius of the card",
 			type: "string",
 		},
@@ -58,8 +57,13 @@ const Template = (args: CardProps) => {
 	const [header, setHeader] = useState(true);
 	const [actions, setActions] = useState(true);
 	const [content, setContent] = useState(true);
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Card" subtitle={args.variant?.toString() || ""}>
+		<ContainerComponent
+			title="Card"
+			subtitle={args.variant?.toString() || ""}
+			onChangeStyleSource={(style) => setCurrentStyle(style)}
+		>
 			<div
 				style={{
 					display: "flex",
@@ -92,6 +96,7 @@ const Template = (args: CardProps) => {
 						header={header ? args.header : undefined}
 						actions={actions ? args.actions : undefined}
 						children={content ? args.children : undefined}
+						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				</div>
 			</div>
@@ -104,7 +109,6 @@ type Story = StoryObj<typeof Card>;
 export const Outline: Story = {
 	render: Template,
 	args: {
-		variant: "outline",
 		size: "small",
 		radius: "small",
 		image: {
@@ -134,6 +138,7 @@ export const Outline: Story = {
 				onClick: () => console.log("Follow"),
 			},
 		],
+		variant: "outline",
 		children: (
 			<div style={{ padding: "var(--padding-lg)" }}>
 				React Hooks revolutionized the way we write components. useState and useEffect are
@@ -147,7 +152,6 @@ export const Outline: Story = {
 export const Borderless: Story = {
 	render: Template,
 	args: {
-		variant: "borderless",
 		size: "small",
 		radius: "small",
 		image: {
@@ -184,5 +188,6 @@ export const Borderless: Story = {
 				significantly improve your code.
 			</div>
 		),
+		variant: "borderless",
 	},
 };
