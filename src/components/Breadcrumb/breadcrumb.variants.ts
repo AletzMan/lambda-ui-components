@@ -129,4 +129,4 @@ export const breadcrumbEllipsis = cva(styles["breadcrumb-ellipsis"], {
 	},
 });
 
-export type VariantBreadcrumb = VariantProps<typeof breadcrumbItem>;
+export type BreadcrumbVariants = VariantProps<typeof breadcrumbItem>;
