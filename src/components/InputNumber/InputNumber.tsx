@@ -31,6 +31,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 			className,
 			variant,
 			size,
+			radius,
 			label,
 			invalid,
 			errorMessage,
@@ -48,6 +49,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		ref
 	) => {
 		const { radiusField } = useUIConfig();
+		const radiusValue = radius ?? radiusField;
 		const {
 			displayedValue,
 			numericValue,
@@ -91,7 +93,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		return (
 			<div className={clsx(wrapper({ disabled, className }))}>
 				{label && (
-					<label htmlFor={inputId} className={labels({ radius: radiusField, size, required })}>
+					<label htmlFor={inputId} className={labels({ radius: radiusValue, size, required })}>
 						{label}
 					</label>
 				)}
@@ -99,14 +101,14 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 					className={inputNumber({
 						variant,
 						disabled,
-						radius: radiusField,
+						radius: radiusValue,
 						typeNumber,
 						size,
 						invalid,
 					})}
 				>
 					<div className={styles["lambda-number-container"]}>
-						<div className={typeCurrency({ typeNumber, size, variant, radius: radiusField })}>
+						<div className={typeCurrency({ typeNumber, size, variant, radius: radiusValue })}>
 							{getIcon()}
 						</div>
 						<input
@@ -129,7 +131,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 							{...props}
 						/>
 						{invalid && <CircleX className={clsx(styles["lambda-number-invalid-icon"])} />}
-						<div className={handler({ size, variant, radius: radiusField })}>
+						<div className={handler({ size, variant, radius: radiusValue })}>
 							<button
 								type="button"
 								className={clsx(button({ size }), styles["lambda-number-btn-increment"])}

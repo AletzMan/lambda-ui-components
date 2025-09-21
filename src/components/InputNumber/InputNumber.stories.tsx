@@ -3,21 +3,27 @@ import { action } from "@storybook/addon-actions";
 import { InputNumber } from "./InputNumber";
 import { InputNumberProps } from "./inputnumber.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof InputNumber> = {
 	title: "Components/InputNumber",
 	component: InputNumber,
 	argTypes: {
 		variant: {
-			control: "select",
+			control: "inline-radio",
 			options: ["outline", "flat"],
 			description: "Visual style of the input",
 			type: "string",
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Input radius",
 		},
 		label: {
 			control: "text",
@@ -30,7 +36,7 @@ const meta: Meta<typeof InputNumber> = {
 			description: "Displays helper text beneath the input.",
 		},
 		typeNumber: {
-			control: "select",
+			control: "inline-radio",
 			type: "string",
 			options: ["default", "currency-USD", "currency-EUR", "currency-GBP", "percentage", "decimal"],
 		},
@@ -52,11 +58,13 @@ export default meta;
 type Story = StoryObj<typeof InputNumber>;
 
 const Template = (args: InputNumberProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="InputNumber"
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
+			onChangeStyleSource={(value) => setCurrentStyle(value)}
 		>
 			<div
 				style={{
@@ -68,12 +76,42 @@ const Template = (args: InputNumberProps) => {
 					width: "250px",
 				}}
 			>
-				<InputNumber {...args} typeNumber="default" label="Default" />
-				<InputNumber {...args} typeNumber="currency-USD" label="Currency USD" />
-				<InputNumber {...args} typeNumber="currency-EUR" label="Currency EUR" />
-				<InputNumber {...args} typeNumber="currency-GBP" label="Currency GBP" />
-				<InputNumber {...args} typeNumber="percentage" label="Percentage" />
-				<InputNumber {...args} typeNumber="decimal" label="Decimal" />
+				<InputNumber
+					{...args}
+					typeNumber="default"
+					label="Default"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
+				<InputNumber
+					{...args}
+					typeNumber="currency-USD"
+					label="Currency USD"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
+				<InputNumber
+					{...args}
+					typeNumber="currency-EUR"
+					label="Currency EUR"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
+				<InputNumber
+					{...args}
+					typeNumber="currency-GBP"
+					label="Currency GBP"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
+				<InputNumber
+					{...args}
+					typeNumber="percentage"
+					label="Percentage"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
+				<InputNumber
+					{...args}
+					typeNumber="decimal"
+					label="Decimal"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
 			</div>
 		</ContainerComponent>
 	);
@@ -84,6 +122,7 @@ export const Outline: Story = {
 	args: {
 		variant: "outline",
 		size: "medium",
+		radius: "tiny",
 		step: 1,
 		min: 0,
 		max: 100,
@@ -104,6 +143,7 @@ export const Soft: Story = {
 	args: {
 		variant: "soft",
 		size: "medium",
+		radius: "tiny",
 		step: 1,
 		min: 0,
 		max: 100,

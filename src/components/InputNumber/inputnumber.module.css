@@ -492,8 +492,8 @@ input[type="number"] {
 	}
 
 	&.lambda-number-currency-radius-medium {
-		border-radius: calc(var(--border-radius-sm) + 1px) var(--border-radius-none)
-			var(--border-radius-none) calc(var(--border-radius-sm) + 1px);
+		border-radius: calc(var(--border-radius-sm) + 3px) var(--border-radius-none)
+			var(--border-radius-none) calc(var(--border-radius-sm) + 3px);
 	}
 
 	&.lambda-number-currency-radius-large {

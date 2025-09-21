@@ -16,6 +16,11 @@ export interface InputNumberProps
 	size?: InputNumberVariants["size"];
 
 	/**
+	 * Define el radio de los bordes del input.
+	 */
+	radius?: InputNumberVariants["radius"];
+
+	/**
 	 * Activa un estado visual de error o inválido para el input, típicamente cambiando el color del borde a rojo.
 	 */
 	invalid?: InputNumberVariants["invalid"];
