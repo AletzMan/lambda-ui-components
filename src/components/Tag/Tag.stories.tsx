@@ -54,12 +54,13 @@ type Story = StoryObj<typeof Tag>;
 const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: TagProps) => {
-	const [currentRadius, setCurrentRadius] = useState<"global" | "local">("global");
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Tag"
 			subtitle={args.variant?.toString() || ""}
-			onChangeStyleSource={(value) => setCurrentRadius(value as "global" | "local")}
+			onChangeStyleSource={(value) => setCurrentStyle(value as "global" | "local")}
+			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -75,7 +76,7 @@ const Template = (args: TagProps) => {
 						key={color}
 						{...args}
 						color={color as TagProps["color"]}
-						radius={currentRadius === "local" ? args.radius : undefined}
+						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				))}
 			</div>

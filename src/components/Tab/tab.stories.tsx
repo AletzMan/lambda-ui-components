@@ -57,6 +57,7 @@ const Template = (args: TabProps) => {
 			title="Tab"
 			subtitle={args.variant || ""}
 			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
+			styleSource={currentStyle}
 		>
 			<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", padding: "1rem" }}>
 				{colors.map((color) => (

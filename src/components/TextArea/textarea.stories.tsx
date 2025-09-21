@@ -68,6 +68,7 @@ const Template = (args: TextAreaProps) => {
 			subtitle={args.variant || ""}
 			color={args.color?.toString() || ""}
 			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
+			styleSource={currentStyle}
 		>
 			<TextArea {...args} radius={currentStyle === "local" ? args.radius : undefined} />
 		</ContainerComponent>

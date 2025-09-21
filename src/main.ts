@@ -9,6 +9,7 @@ export { Button } from "./components/Button/Button";
 export { Card } from "./components/Card/Card";
 export { Carousel } from "./components/Carousel/Carousel";
 export { Checkbox } from "./components/Checkbox/Checkbox";
+export { DatePicker } from "./components/DatePicker/DatePicker";
 export { Dialog } from "./components/Dialog/Dialog";
 export { Divider } from "./components/Divider/Divider";
 export { Drawer } from "./components/Drawer/Drawer";

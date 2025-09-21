@@ -52,6 +52,7 @@ const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 			title="Tooltip"
 			color={args.position?.toString() || ""}
 			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
+			styleSource={currentStyle}
 		>
 			<div
 				style={{
