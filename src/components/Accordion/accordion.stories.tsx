@@ -1,29 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Accordion } from "./Accordion";
-import { AccordionProps, AccordionSize, AccordionValue } from "./accordion.types";
+import { AccordionProps, AccordionValue } from "./accordion.types";
 import { useState } from "react";
 import { AccordionItem } from "./AccordionItem";
 import { AccordionContent } from "./AccordionContent";
 import { AccordionHeader } from "./AccordionHeader";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
-const sizeAccordion: AccordionSize[] = ["tiny", "small", "medium", "large"];
-
 const meta: Meta<typeof Accordion> = {
 	title: "Components/Accordion",
 	component: Accordion,
 	argTypes: {
 		size: {
-			control: {
-				type: "select",
-				options: ["tiny", "small", "medium", "large"],
-			},
-			table: {
-				type: {
-					summary: sizeAccordion.map((size) => `'${size}'`).join("|"),
-				},
-				defaultValue: { summary: `'medium'` },
-			},
+			control: "inline-radio",
+			options: ["tiny", "small", "medium", "large"],
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large"],
 		},
 		value: {
 			table: {
@@ -59,15 +53,21 @@ const PreviewAccordion = (
 	args: Partial<AccordionProps & React.RefAttributes<HTMLDivElement>> | undefined
 ) => {
 	const [openItem, setOpenItem] = useState<AccordionValue>("");
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 
 	return (
-		<ContainerComponent title="Accordion" subtitle={args?.variant?.toString() || ""}>
+		<ContainerComponent
+			title="Accordion"
+			subtitle={args?.variant?.toString() || ""}
+			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
+		>
 			<div style={{ padding: "10px" }}>
 				<Accordion
 					value={openItem}
 					onValueChange={(value) => setOpenItem(value)}
 					{...args}
 					style={{ marginBottom: "30px" }}
+					radius={currentStyle === "local" ? args?.radius : undefined}
 				>
 					<AccordionItem value="item-1">
 						<AccordionHeader>Section 1: Introduction</AccordionHeader>
@@ -121,6 +121,7 @@ export const Default: Story = {
 	render: (args) => <PreviewAccordion {...args} variant="default" />,
 	args: {
 		size: "medium",
+		radius: "small",
 	},
 };
 
@@ -128,6 +129,7 @@ export const Flush: Story = {
 	render: (args) => <PreviewAccordion {...args} variant="flush" />,
 	args: {
 		size: "medium",
+		radius: "small",
 	},
 };
 
@@ -135,5 +137,6 @@ export const Split: Story = {
 	render: (args) => <PreviewAccordion {...args} variant="split" />,
 	args: {
 		size: "medium",
+		radius: "small",
 	},
 };

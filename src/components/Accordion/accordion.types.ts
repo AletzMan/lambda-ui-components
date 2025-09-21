@@ -1,8 +1,7 @@
 import React, { HTMLAttributes } from "react";
+import { AccordionVariants } from "./accordion.variants";
 
 export type AccordionValue = string | number | null | undefined;
-export type AccordionVariant = "default" | "flush" | "split";
-export type AccordionSize = "tiny" | "small" | "medium" | "large";
 
 // --- Props para el componente Accordion (Padre) ---
 // Extiende HTMLAttributes<HTMLDivElement> para props estándar del contenedor
@@ -47,14 +46,17 @@ export interface AccordionProps extends Omit<HTMLAttributes<HTMLDivElement>, "de
 	 * @type `AccordionSize`
 	 * @default `medium`
 	 */
-	size?: AccordionSize;
+	size?: AccordionVariants["size"];
 
 	/**
 	 * Opcional: Variante visual del Accordion.
 	 */
-	variant?: AccordionVariant;
+	variant?: AccordionVariants["variant"];
 
-	// Otras props estándar de div como className, style, etc. ya están incluidas por la extensión.
+	/**
+	 * Opcional: Radio visual del Accordion.
+	 */
+	radius?: AccordionVariants["radius"];
 }
 
 // --- Props para el componente AccordionItem ---
@@ -97,11 +99,11 @@ export interface AccordionHeaderProps extends HTMLAttributes<HTMLButtonElement> 
 	 * @type `AccordionSize`
 	 * @default `medium`
 	 */
-	size?: AccordionSize;
+	size?: AccordionVariants["size"];
 	/**
 	 * Opcional: Variante visual del Accordion.
 	 */
-	variant?: AccordionVariant;
+	variant?: AccordionVariants["variant"];
 }
 
 // --- Props para el componente AccordionContent ---
@@ -111,7 +113,7 @@ export interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {
 	 * El contenido del panel del item (el contenido expandible/colapsable).
 	 */
 	children: React.ReactNode;
-	size?: AccordionSize;
+	size?: AccordionVariants["size"];
 }
 
 // Interfaz interna FINAL para las props que AccordionItem inyecta a Header y Content

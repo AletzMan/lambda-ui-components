@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import styles from "./Accordion.module.css";
 
 export const accordionVariants = cva(styles["lambda-accordion"], {
@@ -15,9 +15,17 @@ export const accordionVariants = cva(styles["lambda-accordion"], {
 			flush: styles["lambda-accordion-flush"],
 			split: styles["lambda-accordion-split"],
 		},
+		size: {
+			tiny: styles["lambda-accordion-size-tiny"],
+			small: styles["lambda-accordion-size-small"],
+			medium: styles["lambda-accordion-size-medium"],
+			large: styles["lambda-accordion-size-large"],
+		},
 	},
 	defaultVariants: {
 		variant: "default",
+		radius: "small",
+		size: "medium",
 	},
 });
 
@@ -114,3 +122,5 @@ export const accordionContentVariants = cva(styles["lambda-accordion-content"], 
 		size: "medium",
 	},
 });
+
+export type AccordionVariants = VariantProps<typeof accordionVariants>;

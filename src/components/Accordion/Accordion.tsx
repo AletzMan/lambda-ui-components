@@ -15,6 +15,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 			children,
 			variant = "default",
 			className,
+			radius,
 			style,
 			size,
 			...restProps
@@ -23,6 +24,7 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 	) => {
 		// Gestionar el estado interno del item activo para Accordion no controlado
 		const { radiusBox } = useUIConfig();
+		const radiusValue = radius || radiusBox;
 		const isControlled = onValueChange !== undefined;
 		const [uncontrolledActiveValue, setUncontrolledActiveValue] =
 			useState<AccordionValue>(defaultValue);
@@ -52,12 +54,13 @@ export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
 				onValueChange: handleValueChange,
 				size,
 				variant,
+				radius: radiusValue,
 			}),
-			[activeValue, handleValueChange, size, variant]
+			[activeValue, handleValueChange, size, variant, radiusValue]
 		);
 
 		// Clases CSS para el contenedor principal del Accordion
-		const accordionClasses = clsx(accordionVariants({ variant, radius: radiusBox }), className);
+		const accordionClasses = clsx(accordionVariants({ variant, radius: radiusValue }), className);
 
 		return (
 			// Proveedor de contexto para que los hijos AccodionItem accedan al estado y handlers
