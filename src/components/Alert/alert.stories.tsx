@@ -3,6 +3,7 @@ import { Alert } from "./Alert";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { AlertProps } from "./alert.types";
 import { AlertVariants } from "./alert.variants";
+import { useState } from "react";
 
 const meta: Meta<typeof Alert> = {
 	title: "Components/Alert",
@@ -22,6 +23,11 @@ const meta: Meta<typeof Alert> = {
 			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Alert size",
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large"],
+			description: "Alert radius",
 		},
 		title: {
 			control: "text",
@@ -58,42 +64,48 @@ type Story = StoryObj<typeof Alert>;
 
 const colors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
-const Template = (args: AlertProps) => (
-	<ContainerComponent
-		title="Alert"
-		subtitle={args.variant?.toString() || ""}
-		color={args.size?.toString() || ""}
-	>
-		<div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "1rem" }}>
-			{colors.map((color) => (
-				<div style={{ width: "350px" }}>
-					<label
-						style={{
-							fontSize: "12px",
-							fontWeight: "bold",
-							marginBottom: "0.5rem",
-							textTransform: "capitalize",
-							color: `${
-								color === "neutral"
-									? "var(--lambda-color-neutral-500)"
-									: `var(--lambda-color-${color}-500)`
-							}`,
-						}}
-					>
-						{color}
-					</label>
-					<Alert
-						{...args}
-						key={color}
-						color={color as AlertVariants["color"]}
-						title="Título del Alert"
-						message="Este es un mensaje de alerta interactivo."
-					/>
-				</div>
-			))}
-		</div>
-	</ContainerComponent>
-);
+const Template = (args: AlertProps) => {
+	const [currentStyles, setCurrentStyles] = useState<"global" | "local">("global");
+
+	return (
+		<ContainerComponent
+			title="Alert"
+			subtitle={args.variant?.toString() || ""}
+			color={args.size?.toString() || ""}
+			onChangeStyleSource={(value) => setCurrentStyles(value)}
+		>
+			<div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "1rem" }}>
+				{colors.map((color) => (
+					<div style={{ width: "350px" }}>
+						<label
+							style={{
+								fontSize: "12px",
+								fontWeight: "bold",
+								marginBottom: "0.5rem",
+								textTransform: "capitalize",
+								color: `${
+									color === "neutral"
+										? "var(--lambda-color-neutral-500)"
+										: `var(--lambda-color-${color}-500)`
+								}`,
+							}}
+						>
+							{color}
+						</label>
+						<Alert
+							{...args}
+							key={color}
+							color={color as AlertVariants["color"]}
+							title="Título del Alert"
+							message="Este es un mensaje de alerta interactivo."
+							radius={currentStyles === "local" ? args.radius : undefined}
+						/>
+					</div>
+				))}
+			</div>
+		</ContainerComponent>
+	);
+};
 
 export const Soft: Story = {
 	render: (args) => <Template {...args} />,
@@ -101,6 +113,7 @@ export const Soft: Story = {
 		color: "primary",
 		variant: "soft",
 		size: "medium",
+		radius: "small",
 		title: "Título del Alert",
 		message: "Este es un mensaje de alerta interactivo.",
 	},
@@ -112,6 +125,7 @@ export const Outline: Story = {
 		color: "primary",
 		variant: "outline",
 		size: "medium",
+		radius: "small",
 		title: "Título del Alert",
 		message: "Este es un mensaje de alerta interactivo.",
 	},
@@ -123,6 +137,7 @@ export const Solid: Story = {
 		color: "primary",
 		variant: "solid",
 		size: "medium",
+		radius: "small",
 		title: "Título del Alert",
 		message: "Este es un mensaje de alerta interactivo.",
 	},

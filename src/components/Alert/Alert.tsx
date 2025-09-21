@@ -47,6 +47,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 			customIcon,
 			role = "status",
 			size = "small",
+			radius = "small",
 			className,
 			style,
 			...restProps
@@ -54,6 +55,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 		ref
 	) => {
 		const { radiusBox } = useUIConfig();
+		const radiusValue = radius || radiusBox;
 		// Determinar si se debe mostrar algún icono
 		const shouldShowIcon = showIcon || Boolean(customIcon);
 
@@ -92,7 +94,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 		// Combinar clase base, colore de color, y clase custom
 		const alertClasses = clsx(
 			styles["lambda-alert"],
-			alertVariants({ color, size, variant, radius: radiusBox }),
+			alertVariants({ color, size, variant, radius: radiusValue }),
 
 			className
 		);

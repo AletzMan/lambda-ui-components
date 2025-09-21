@@ -40,6 +40,12 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "color"
 	size?: AlertVariants["size"];
 
 	/**
+	 * Modifica el radio de la Alert
+	 * @default small
+	 */
+	radius?: AlertVariants["radius"];
+
+	/**
 	 * Si es `true`, se mostrará un icono por defecto basado en la variante (success, danger, warning, info).
 	 * @default false
 	 */

@@ -35,6 +35,7 @@ export const alertVariants = cva(styles["lambda-alert"], {
 		size: "medium",
 		color: "neutral",
 		variant: "soft",
+		radius: "small",
 	},
 });
 
