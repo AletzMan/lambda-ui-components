@@ -1,21 +1,22 @@
+import { BadgeVariants } from "./badge.variants";
+
 export interface BadgeProps
 	extends Omit<React.HTMLAttributes<HTMLDivElement>, "size" | "disabled" | "checked" | "color"> {
 	/**
 	 * Controla el tamaño visual del badge.
 	 */
-	size?: "tiny" | "small" | "medium" | "large" | undefined;
+	size?: BadgeVariants["size"];
 	/**
 	 * Establece el esquema de color para el badge, típicamente afectando el color cuando está activado.
 	 */
-	color?:
-		| "default"
-		| "primary"
-		| "secondary"
-		| "success"
-		| "danger"
-		| "warning"
-		| "info"
-		| undefined;
+	color?: BadgeVariants["color"];
+	/**
+	 * Define el texto que se muestra en el badge.
+	 */
+	/**
+	 * Define el radio del badge.
+	 */
+	radius?: BadgeVariants["radius"];
 	/**
 	 * Define el texto que se muestra en el badge.
 	 */
