@@ -45,13 +45,13 @@ const BreadcrumbItem = ({
 };
 
 export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
-	({ items, size, variant, color, maxItems = 0, ...props }, ref) => {
+	({ items, size, radius, variant, color, maxItems = 0, ...props }, ref) => {
 		const [collapsed, setCollapsed] = useState(maxItems !== 0);
 		const IconSeparator = NOTIFICATION_ICONS[variant as keyof typeof NOTIFICATION_ICONS];
 		const shouldCollapse = items!.length > maxItems + 1;
 		const language = document.documentElement.lang;
 		const { radiusSelector } = useUIConfig();
-
+		const radiusValue = radius || radiusSelector;
 		useEffect(() => {
 			if (maxItems === 0) {
 				setCollapsed(false);
@@ -68,7 +68,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 		};
 
 		return (
-			<nav ref={ref} {...props} className={breadcrumb({ size, variant })}>
+			<nav ref={ref} {...props} className={breadcrumb({ size, variant, radius: radiusValue })}>
 				<ol className={breadcrumbContainer({ size, variant })}>
 					{visibleItems.map((item, index, array) => (
 						<Fragment key={index}>
@@ -76,7 +76,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 								<>
 									<ul>
 										<button
-											className={breadcrumbEllipsis({ size, radius: radiusSelector })}
+											className={breadcrumbEllipsis({ size, radius: radiusValue })}
 											onClick={handleEllipsisClick}
 											title={language === "es" ? "Mostrar más" : "Show more"}
 										>
