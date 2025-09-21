@@ -6,7 +6,7 @@ import {
 	breadcrumbEllipsis,
 	breadcrumbItem,
 	breadcrumbSeparator,
-	VariantBreadcrumb,
+	BreadcrumbVariants,
 } from "./breadcrumb.variants";
 import { ChevronRight, Dot, ArrowRight } from "lucide-react";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
@@ -26,10 +26,10 @@ const BreadcrumbItem = ({
 	color,
 }: {
 	item: ItemBreadcrumb;
-	size: VariantBreadcrumb["size"];
-	variant: VariantBreadcrumb["variant"];
-	color: VariantBreadcrumb["color"];
-	radius: VariantBreadcrumb["radius"];
+	size: BreadcrumbVariants["size"];
+	variant: BreadcrumbVariants["variant"];
+	color: BreadcrumbVariants["color"];
+	radius: BreadcrumbVariants["radius"];
 }) => {
 	return item.href ? (
 		<a href={item.href} className={breadcrumbItem({ size, variant, color, radius })}>
