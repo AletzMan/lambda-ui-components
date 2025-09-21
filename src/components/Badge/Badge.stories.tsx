@@ -4,6 +4,7 @@ import { BadgeProps } from "./badge.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Button } from "../Button/Button";
 import { Bell } from "lucide-react";
+import { useState } from "react";
 
 const meta: Meta<typeof Badge> = {
 	title: "Components/Badge",
@@ -18,6 +19,11 @@ const meta: Meta<typeof Badge> = {
 			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Input radius",
 		},
 		count: {
 			control: {
@@ -69,14 +75,16 @@ const getSubtitle = (args: BadgeProps) => {
 };
 
 const Template = (args: BadgeProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Badge"
 			subtitle={getSubtitle(args)}
 			color={args.color?.toString() || ""}
+			onChangeStyleSource={(value) => setCurrentStyle(value)}
 		>
 			<Button size="medium" icon={<Bell />} variant="soft">
-				<Badge {...args} />
+				<Badge {...args} radius={currentStyle === "local" ? args.radius : undefined} />
 			</Button>
 		</ContainerComponent>
 	);
@@ -94,6 +102,7 @@ export const WithCount: StoryObj<BadgeProps> = {
 	render: (args) => <Template {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		count: 10,
 		maxCount: 10,
 		color: "default",
@@ -104,6 +113,7 @@ export const WithText: StoryObj<BadgeProps> = {
 	render: (args) => <Template {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		text: "Badge",
 		color: "default",
 	},
