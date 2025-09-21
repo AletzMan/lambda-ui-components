@@ -16,6 +16,12 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
 	 * Controla el tamaño visual del botón, afectando el padding y el tamaño del texto/icono.
 	 */
 	size?: ButtonVariants["size"];
+
+	/**
+	 * Define si el botón ocupa todo el ancho disponible (cuando es true) o normal (cuando es false).
+	 */
+	block?: ButtonVariants["block"];
+
 	/**
 	 * Define si el botón es circular (cuando es true) o normal (cuando es false).
 	 */

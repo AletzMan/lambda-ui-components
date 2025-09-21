@@ -35,6 +35,10 @@ export const button = cva(styles[`lambda-btn`], {
 			large: styles[`lambda-btn-radius-large`],
 			full: styles[`lambda-btn-radius-full`],
 		},
+		block: {
+			true: styles[`lambda-btn-width-block`],
+			false: styles[`lambda-btn-width-normal`],
+		},
 		isCircle: {
 			true: styles[`lambda-btn-circle`],
 			false: styles[`lambda-btn-normal`],
@@ -57,6 +61,7 @@ export const button = cva(styles[`lambda-btn`], {
 		variant: "solid",
 		size: "medium",
 		radius: "medium",
+		block: false,
 		isCircle: false,
 		disabled: false,
 		iconPosition: "left",

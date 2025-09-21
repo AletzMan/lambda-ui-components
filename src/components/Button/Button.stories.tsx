@@ -43,6 +43,10 @@ const meta: Meta<typeof Button> = {
 			control: "boolean",
 			description: "Disables the button and makes it inactive.",
 		},
+		block: {
+			control: "boolean",
+			description: "Makes the button block.",
+		},
 		isCircle: {
 			control: "boolean",
 			description: "Makes the button circular.",
@@ -77,7 +81,9 @@ const Template = (args: ButtonProps) => {
 					flexWrap: "wrap",
 					alignItems: "center",
 					justifyContent: "center",
+					flexDirection: "column",
 					gap: "1rem",
+					width: "100%",
 				}}
 			>
 				{buttonColors.map((color) => (
@@ -92,7 +98,7 @@ const Template = (args: ButtonProps) => {
 						iconPosition={args.iconPosition}
 						icon={args.loading ? undefined : args.icon}
 						label={args.isCircle ? "" : args.loading ? args.loadingText : color}
-						style={{ textTransform: "capitalize" }}
+						style={{ textTransform: "capitalize", minWidth: "130px" }}
 					/>
 				))}
 			</div>
@@ -111,6 +117,7 @@ export const Solid: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		block: false,
 		isCircle: false,
 		icon: <CircleCheck />,
 	},
@@ -127,6 +134,7 @@ export const Classic: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		block: false,
 		isCircle: false,
 		icon: <CircleCheck />,
 	},
@@ -143,6 +151,7 @@ export const Outline: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		block: false,
 		isCircle: false,
 		icon: <CircleCheck />,
 	},
@@ -159,6 +168,7 @@ export const Dashed: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		block: false,
 		isCircle: false,
 		icon: <CircleCheck />,
 	},
@@ -175,6 +185,7 @@ export const Soft: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		block: false,
 		isCircle: false,
 		icon: <CircleCheck />,
 	},
@@ -191,6 +202,7 @@ export const Subtle: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		block: false,
 		isCircle: false,
 		icon: <CircleCheck />,
 	},
@@ -207,6 +219,7 @@ export const Text: Story = {
 		disabled: false,
 		iconPosition: "left",
 		label: "Button",
+		block: false,
 		isCircle: false,
 		icon: <CircleCheck />,
 	},

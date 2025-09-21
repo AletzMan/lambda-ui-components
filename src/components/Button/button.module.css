@@ -33,6 +33,14 @@
 			width: 100%;
 		}
 	}
+
+	&.lambda-btn-width-block {
+		width: 100%;
+	}
+
+	&.lambda-btn-width-normal {
+		width: max-content;
+	}
 }
 
 .lambda-btn-label {
@@ -41,7 +49,6 @@
 	align-items: center;
 	font-family: inherit;
 	text-align: start;
-	width: 100%;
 }
 
 .lambda-btn-classic {
