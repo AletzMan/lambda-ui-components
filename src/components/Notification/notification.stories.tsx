@@ -4,6 +4,7 @@ import { NotificationProvider, useNotification } from "./NotificationProvider";
 import { Button } from "../../main";
 import { NotificationProps } from "./notifications.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof Notification> = {
 	title: "Components/Notification",
@@ -28,8 +29,14 @@ const meta: Meta<typeof Notification> = {
 				disable: true,
 			},
 		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large"],
+			description: "Radius of the notification",
+			type: "string",
+		},
 		placement: {
-			control: "select",
+			control: "inline-radio",
 			options: [
 				"top-left",
 				"top-center",
@@ -100,10 +107,12 @@ const NotificationWithButton = (
 	args: Partial<NotificationProps & React.RefAttributes<HTMLDivElement>> | undefined
 ) => {
 	const { showNotification } = useNotification();
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 
 	const handleClick = () => {
 		showNotification({
 			...args,
+			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "neutral",
 		});
 	};
@@ -111,6 +120,7 @@ const NotificationWithButton = (
 	const handleClickSuccess = () => {
 		showNotification({
 			...args,
+			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "success",
 		});
 	};
@@ -118,6 +128,7 @@ const NotificationWithButton = (
 	const handleClickError = () => {
 		showNotification({
 			...args,
+			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "danger",
 		});
 	};
@@ -125,6 +136,7 @@ const NotificationWithButton = (
 	const handleClickInfo = () => {
 		showNotification({
 			...args,
+			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "info",
 		});
 	};
@@ -132,6 +144,7 @@ const NotificationWithButton = (
 	const handleClickWarning = () => {
 		showNotification({
 			...args,
+			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "warning",
 		});
 	};
@@ -141,6 +154,7 @@ const NotificationWithButton = (
 			title="Notification"
 			subtitle={args?.variant?.toString() || ""}
 			color={args?.placement?.toString() || ""}
+			onChangeStyleSource={(style) => setCurrentStyle(style)}
 		>
 			<div style={{ height: "100%" }}>
 				<div
@@ -179,6 +193,7 @@ export const Solid: StoryObj<typeof Notification> = {
 	args: {
 		title: "Notification Title",
 		message: "You have a new notification.",
+		radius: "small",
 		placement: "top-center",
 		variant: "solid",
 		duration: 7000,
@@ -191,6 +206,7 @@ export const Soft: StoryObj<typeof Notification> = {
 	args: {
 		title: "Notification Title",
 		message: "You have a new notification.",
+		radius: "small",
 		placement: "top-center",
 		variant: "soft",
 		duration: 7000,
@@ -203,6 +219,7 @@ export const Themed: StoryObj<typeof Notification> = {
 	args: {
 		title: "Notification Title",
 		message: "You have a new notification.",
+		radius: "small",
 		placement: "top-center",
 		variant: "themed",
 		duration: 7000,
@@ -215,6 +232,7 @@ export const Darkened: StoryObj<typeof Notification> = {
 	args: {
 		title: "Notification Title",
 		message: "You have a new notification.",
+		radius: "small",
 		placement: "top-center",
 		variant: "darkened",
 		duration: 7000,
@@ -227,6 +245,7 @@ export const Lightened: StoryObj<typeof Notification> = {
 	args: {
 		title: "Notification Title",
 		message: "You have a new notification.",
+		radius: "small",
 		placement: "top-center",
 		variant: "lightened",
 		duration: 7000,

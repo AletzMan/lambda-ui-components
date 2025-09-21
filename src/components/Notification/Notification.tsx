@@ -21,6 +21,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 			message,
 			title,
 			placement,
+			radius,
 			icon,
 			duration = 5000,
 			variant,
@@ -37,6 +38,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 		const [isVisible, setIsVisible] = useState(true);
 		const [closing, setClosing] = useState(false);
 		const { radiusBox } = useUIConfig();
+		const radiusValue = radius ?? radiusBox;
 
 		// Cerrar automáticamente después de la duración especificada
 		useEffect(() => {
@@ -74,7 +76,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 		return (
 			<div
 				className={clsx(
-					notificationProp({ notificationType, placement, variant, radius: radiusBox }),
+					notificationProp({ notificationType, placement, variant, radius: radiusValue }),
 					closing ? styles["notification-exit"] : styles["notification-active"]
 				)}
 				{...props}
