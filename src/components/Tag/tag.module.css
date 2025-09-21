@@ -218,7 +218,7 @@
 
 	&.lambda-tag-neutral {
 		color: var(--neutral-text-color);
-		background-color: var(--neutral-soft-color);
+		background-color: var(--neutral-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--neutral-hover-color);
@@ -231,7 +231,7 @@
 
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
-		background-color: var(--primary-soft-color);
+		background-color: var(--primary-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--primary-hover-color);
@@ -244,7 +244,7 @@
 
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
-		background-color: var(--secondary-soft-color);
+		background-color: var(--secondary-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -257,7 +257,7 @@
 
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--danger-hover-color);
@@ -270,7 +270,7 @@
 
 	&.lambda-tag-success {
 		color: var(--success-text-color);
-		background-color: var(--success-soft-color);
+		background-color: var(--success-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--success-hover-color);
@@ -283,7 +283,7 @@
 
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
-		background-color: var(--warning-soft-color);
+		background-color: var(--warning-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--warning-hover-color);
@@ -296,7 +296,7 @@
 
 	&.lambda-tag-info {
 		color: var(--info-text-color);
-		background-color: var(--info-soft-color);
+		background-color: var(--info-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--info-hover-color);
@@ -410,7 +410,7 @@
 	&.lambda-tag-neutral {
 		color: var(--neutral-text-color);
 		border-color: var(--neutral-subtle-color);
-		background-color: var(--neutral-soft-color);
+		background-color: var(--neutral-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--neutral-hover-color);
@@ -424,7 +424,7 @@
 	&.lambda-tag-primary {
 		color: var(--primary-text-color);
 		border-color: var(--primary-subtle-color);
-		background-color: var(--primary-soft-color);
+		background-color: var(--primary-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--primary-hover-color);
@@ -438,7 +438,7 @@
 	&.lambda-tag-secondary {
 		color: var(--secondary-text-color);
 		border-color: var(--secondary-subtle-color);
-		background-color: var(--secondary-soft-color);
+		background-color: var(--secondary-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--secondary-hover-color);
@@ -452,7 +452,7 @@
 	&.lambda-tag-danger {
 		color: var(--danger-text-color);
 		border-color: var(--danger-subtle-color);
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--danger-hover-color);
@@ -466,7 +466,7 @@
 	&.lambda-tag-success {
 		color: var(--success-text-color);
 		border-color: var(--success-subtle-color);
-		background-color: var(--success-soft-color);
+		background-color: var(--success-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--success-hover-color);
@@ -480,7 +480,7 @@
 	&.lambda-tag-warning {
 		color: var(--warning-text-color);
 		border-color: var(--warning-subtle-color);
-		background-color: var(--warning-soft-color);
+		background-color: var(--warning-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--warning-hover-color);
@@ -494,7 +494,7 @@
 	&.lambda-tag-info {
 		color: var(--info-text-color);
 		border-color: var(--info-subtle-color);
-		background-color: var(--info-soft-color);
+		background-color: var(--info-opacity-color);
 
 		& .lambda-tag-close-button > svg:last-child {
 			color: var(--info-hover-color);

@@ -1,17 +1,23 @@
+import { TagVariants } from "./tag.variants";
+
 export interface TagProps
 	extends Omit<React.HTMLAttributes<HTMLDivElement>, "size" | "disabled" | "checked" | "color"> {
 	/**
 	 * Define el estilo visual del tag, como la apariencia del carril y el pulgar.
 	 */
-	variant?: "outline" | "solid" | "soft" | "dashed" | "subtle" | undefined;
+	variant?: TagVariants["variant"];
 	/**
 	 * Controla el tamaño visual del tag.
 	 */
-	size?: "tiny" | "small" | "medium" | "large" | undefined;
+	size?: TagVariants["size"];
+	/**
+	 * Controla el radio visual del tag.
+	 */
+	radius?: TagVariants["radius"];
 	/**
 	 * Establece el esquema de color para el tag, típicamente afectando el color cuando está activado.
 	 */
-	color?: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | undefined;
+	color?: TagVariants["color"];
 	/**
 	 * Define el texto que se muestra en el tag.
 	 */

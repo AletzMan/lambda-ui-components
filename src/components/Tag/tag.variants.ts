@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./tag.module.css";
 
-export const tagStyles = cva(styles["lambda-tag"], {
+export const tagVariants = cva(styles["lambda-tag"], {
 	variants: {
 		color: {
 			neutral: styles["lambda-tag-neutral"],
@@ -42,7 +42,7 @@ export const tagStyles = cva(styles["lambda-tag"], {
 	},
 });
 
-export const countStyles = cva(styles["lambda-tag-count"], {
+export const countVariants = cva(styles["lambda-tag-count"], {
 	variants: {
 		size: {
 			tiny: styles["lambda-tag-count-tiny"],
@@ -70,4 +70,4 @@ export const closeButtonStyles = cva(styles["lambda-tag-close-button"], {
 	},
 });
 
-export type TagProps = VariantProps<typeof tagStyles> & VariantProps<typeof countStyles>;
+export type TagVariants = VariantProps<typeof tagVariants> & VariantProps<typeof countVariants>;

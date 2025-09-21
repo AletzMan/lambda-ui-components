@@ -3,27 +3,26 @@ import { Tag } from "./Tag";
 import { BadgeCheck } from "lucide-react";
 import { TagProps } from "./tag.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof Tag> = {
 	title: "Components/Tag",
 	component: Tag,
 	argTypes: {
-		variant: {
-			table: {
-				disabled: true,
-			},
-		},
 		color: {
-			table: {
-				disabled: true,
+			if: {
+				arg: "color",
 			},
 		},
 		size: {
-			table: {
-				disabled: true,
-			},
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Input radius",
 		},
 		text: {
 			control: "text",
@@ -32,6 +31,18 @@ const meta: Meta<typeof Tag> = {
 		onClose: {
 			control: "boolean",
 			description: "Input onClose",
+		},
+		variant: {
+			control: "select",
+			table: {
+				disabled: true,
+			},
+		},
+		icon: {
+			control: "select",
+			if: {
+				arg: "icon",
+			},
 		},
 	},
 };
@@ -43,8 +54,13 @@ type Story = StoryObj<typeof Tag>;
 const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: TagProps) => {
+	const [currentRadius, setCurrentRadius] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Tag" subtitle={args.variant?.toString() || ""}>
+		<ContainerComponent
+			title="Tag"
+			subtitle={args.variant?.toString() || ""}
+			onChangeStyleSource={(value) => setCurrentRadius(value as "global" | "local")}
+		>
 			<div
 				style={{
 					display: "flex",
@@ -55,7 +71,12 @@ const Template = (args: TagProps) => {
 				}}
 			>
 				{colors.map((color) => (
-					<Tag key={color} {...args} color={color as TagProps["color"]} />
+					<Tag
+						key={color}
+						{...args}
+						color={color as TagProps["color"]}
+						radius={currentRadius === "local" ? args.radius : undefined}
+					/>
 				))}
 			</div>
 		</ContainerComponent>
@@ -65,54 +86,54 @@ const Template = (args: TagProps) => {
 export const Outline: Story = {
 	render: Template,
 	args: {
-		variant: "outline",
-		color: "primary",
-		icon: <BadgeCheck />,
 		size: "small",
+		radius: "small",
 		text: "Tag",
+		variant: "outline",
+		icon: <BadgeCheck />,
 	},
 };
 
 export const Solid: Story = {
 	render: Template,
 	args: {
-		variant: "solid",
-		color: "primary",
-		icon: <BadgeCheck />,
 		size: "small",
+		radius: "small",
 		text: "Tag",
+		variant: "solid",
+		icon: <BadgeCheck />,
 	},
 };
 
 export const Soft: Story = {
 	render: Template,
 	args: {
-		variant: "soft",
-		color: "primary",
-		icon: <BadgeCheck />,
 		size: "small",
+		radius: "small",
 		text: "Tag",
+		variant: "soft",
+		icon: <BadgeCheck />,
 	},
 };
 
 export const Subtle: Story = {
 	render: Template,
 	args: {
-		variant: "subtle",
-		color: "primary",
-		icon: <BadgeCheck />,
 		size: "small",
+		radius: "small",
 		text: "Tag",
+		variant: "subtle",
+		icon: <BadgeCheck />,
 	},
 };
 
 export const Dashed: Story = {
 	render: Template,
 	args: {
-		variant: "dashed",
-		color: "primary",
-		icon: <BadgeCheck />,
 		size: "small",
+		radius: "small",
 		text: "Tag",
+		variant: "dashed",
+		icon: <BadgeCheck />,
 	},
 };
