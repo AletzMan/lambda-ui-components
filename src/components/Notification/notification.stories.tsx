@@ -155,6 +155,7 @@ const NotificationWithButton = (
 			subtitle={args?.variant?.toString() || ""}
 			color={args?.placement?.toString() || ""}
 			onChangeStyleSource={(style) => setCurrentStyle(style)}
+			styleSource={currentStyle}
 		>
 			<div style={{ height: "100%" }}>
 				<div

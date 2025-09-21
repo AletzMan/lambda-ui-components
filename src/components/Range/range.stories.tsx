@@ -122,12 +122,13 @@ const RangeSingle = (args: RangeProps) => {
 
 const RangeDouble = (args: RangeProps & React.RefAttributes<HTMLDivElement>) => {
 	const [valueRange, setValueRange] = useState<RangeValue>([10, 80]);
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
 			title="Range"
 			subtitle="Double"
 			onChangeStyleSource={(e) => setCurrentStyle(e)}
+			styleSource={currentStyle}
 		>
 			<div style={{ display: "flex", gap: "var(--gap-lg)", width: "150px", padding: "20px" }}>
 				<Input
@@ -172,7 +173,7 @@ export const Single: StoryObj<typeof Range> = {
 		min: 0,
 		max: 100,
 		step: 25,
-		radius: "medium",
+		radius: "full",
 		disabled: false,
 		orientation: "horizontal",
 		size: "medium",
@@ -196,7 +197,7 @@ export const Double: StoryObj<typeof Range> = {
 		min: 0,
 		max: 100,
 		step: 5,
-		radius: "medium",
+		radius: "full",
 		disabled: false,
 		orientation: "horizontal",
 		size: "medium",

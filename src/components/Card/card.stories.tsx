@@ -63,6 +63,7 @@ const Template = (args: CardProps) => {
 			title="Card"
 			subtitle={args.variant?.toString() || ""}
 			onChangeStyleSource={(style) => setCurrentStyle(style)}
+			styleSource={currentStyle}
 		>
 			<div
 				style={{

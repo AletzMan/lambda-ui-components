@@ -59,6 +59,7 @@ const Template = (args: BreadcrumbProps) => {
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
 			onChangeStyleSource={(style) => setCurrentStyle(style)}
+			styleSource={currentStyle}
 		>
 			<div
 				style={{

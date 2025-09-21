@@ -74,6 +74,7 @@ const Template = (args: PaginationProps) => {
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
 			onChangeStyleSource={(style) => setCurrentStyle(style)}
+			styleSource={currentStyle}
 		>
 			<Pagination
 				{...args}

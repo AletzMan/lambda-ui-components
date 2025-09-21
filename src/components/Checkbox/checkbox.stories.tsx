@@ -70,6 +70,7 @@ const Template = (args: CheckBoxProps) => {
 			title="Checkbox"
 			subtitle={args.variant?.toString() || ""}
 			onChangeStyleSource={(value) => setCurrentStyles(value)}
+			styleSource={currentStyles}
 		>
 			<div
 				style={{

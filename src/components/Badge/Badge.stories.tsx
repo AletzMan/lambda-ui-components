@@ -82,6 +82,7 @@ const Template = (args: BadgeProps) => {
 			subtitle={getSubtitle(args)}
 			color={args.color?.toString() || ""}
 			onChangeStyleSource={(value) => setCurrentStyle(value)}
+			styleSource={currentStyle}
 		>
 			<Button size="medium" icon={<Bell />} variant="soft">
 				<Badge {...args} radius={currentStyle === "local" ? args.radius : undefined} />

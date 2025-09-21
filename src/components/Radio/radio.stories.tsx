@@ -126,6 +126,7 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 			subtitle={"Button"}
 			color={args.variant || "solid"}
 			onChangeStyleSource={(style) => setCurrentStyle(style)}
+			styleSource={currentStyle}
 		>
 			<label
 				style={{ fontWeight: "var(--font-weight-semibold)", color: "var(--foreground-color)" }}

@@ -46,6 +46,7 @@ export const rangeTrack = cva(styles["lambda-range-track"], {
 		viewBar: true,
 		disabled: false,
 		orientation: "horizontal",
+		radius: "full",
 	},
 });
 
@@ -75,6 +76,7 @@ export const rangeFill = cva(styles["lambda-range-fill"], {
 		size: "medium",
 		disabled: false,
 		orientation: "horizontal",
+		radius: "full",
 	},
 });
 
@@ -106,6 +108,7 @@ export const rangeHandle = cva(styles["lambda-range-handle"], {
 		disabled: false,
 		isDragging: false,
 		orientation: "horizontal",
+		radius: "full",
 	},
 });
 

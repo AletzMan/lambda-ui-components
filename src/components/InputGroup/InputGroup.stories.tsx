@@ -76,6 +76,7 @@ const Template = (args: InputGroupProps) => {
 			title="Input Group"
 			subtitle={args.variant?.toString() || ""}
 			onChangeStyleSource={(value) => setCurrentStyle(value)}
+			styleSource={currentStyle}
 		>
 			<div
 				style={{

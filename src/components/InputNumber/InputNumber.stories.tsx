@@ -65,6 +65,7 @@ const Template = (args: InputNumberProps) => {
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
 			onChangeStyleSource={(value) => setCurrentStyle(value)}
+			styleSource={currentStyle}
 		>
 			<div
 				style={{

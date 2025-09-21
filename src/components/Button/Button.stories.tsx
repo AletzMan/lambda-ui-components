@@ -85,6 +85,7 @@ const Template = (args: ButtonProps) => {
 			title="Button"
 			subtitle={args.variant?.toString() || ""}
 			onChangeStyleSource={(style) => setCurrentStyle(style)}
+			styleSource={currentStyle}
 		>
 			<div
 				style={{
