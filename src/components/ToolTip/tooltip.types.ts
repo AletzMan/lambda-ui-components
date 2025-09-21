@@ -62,6 +62,12 @@ export interface TooltipProps
 	color?: TooltipContainerVariants["color"];
 
 	/**
+	 * Variante visual del tooltip.
+	 * @default 'default'
+	 */
+	radius?: TooltipContainerVariants["radius"];
+
+	/**
 	 * Deshabilitar el tooltip.
 	 * @default false
 	 */

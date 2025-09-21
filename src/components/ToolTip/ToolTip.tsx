@@ -16,6 +16,7 @@ import { tooltipContainer, tooltipArrow } from "./tooltip.variants";
 
 import styles from "./tooltip.module.css";
 import { TooltipPosition, TooltipProps } from "./tooltip.types";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // Helper para mapear la posición principal del tooltip a la clase de posición de la flecha
 const mapTooltipPositionToArrowPosition = (tooltipPos: TooltipPosition): TooltipPosition => {
@@ -54,6 +55,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 			delayHide = 100,
 			offset = 8,
 			color = "secondary",
+			radius,
 			disabled = false,
 			ariaLabel,
 			id,
@@ -75,6 +77,10 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 		// Timers para los retrasos de mostrar/ocultar
 		const showTimerRef = useRef<number | null>(null);
 		const hideTimerRef = useRef<number | null>(null);
+
+		// Obtenemos el radio para selectores desde el contexto de la configuración
+		const { radiusSelector } = useUIConfig();
+		const radiusValue = radius || radiusSelector;
 
 		// Generar ID único para el tooltip si no se proporciona (para accesibilidad)
 		const generatedId = useId();
@@ -390,7 +396,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 						}}
 						// Aplicar variantes CVA para el contenedor ( variant, position para estilos específicos)
 						className={clsx(
-							tooltipContainer({ color, position }),
+							tooltipContainer({ color, position, radius: radiusValue }),
 							{ [styles.visible]: isVisible },
 							tooltipArrow({
 								arrowPosition: mapTooltipPositionToArrowPosition(position),

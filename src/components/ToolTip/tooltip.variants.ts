@@ -3,6 +3,14 @@ import styles from "./tooltip.module.css";
 
 export const tooltipContainer = cva(styles["lambda-tooltip-container"], {
 	variants: {
+		radius: {
+			none: styles["lambda-tooltip-container-radius-none"],
+			tiny: styles["lambda-tooltip-container-radius-tiny"],
+			small: styles["lambda-tooltip-container-radius-small"],
+			medium: styles["lambda-tooltip-container-radius-medium"],
+			large: styles["lambda-tooltip-container-radius-large"],
+			full: styles["lambda-tooltip-container-radius-full"],
+		},
 		color: {
 			neutral: styles["lambda-tooltip-container-neutral"],
 			primary: styles["lambda-tooltip-container-primary"],
@@ -22,6 +30,7 @@ export const tooltipContainer = cva(styles["lambda-tooltip-container"], {
 		},
 	},
 	defaultVariants: {
+		radius: "tiny",
 		color: "neutral",
 		position: "top-center",
 	},

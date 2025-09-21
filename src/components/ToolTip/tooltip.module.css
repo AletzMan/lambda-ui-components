@@ -22,7 +22,6 @@
 	word-wrap: break-word;
 	opacity: 0;
 	color: var(--white-color);
-	border-radius: var(--border-radius-xs);
 	border: none;
 	transform-origin: bottom center;
 	transform: translateY(25%);
@@ -36,6 +35,27 @@
 		pointer-events: none;
 		z-index: -1;
 		border-width: 5px;
+	}
+
+	&.lambda-tooltip-container-radius-none {
+		border-radius: var(--border-radius-none);
+	}
+
+	&.lambda-tooltip-container-radius-tiny {
+		border-radius: var(--border-radius-tiny);
+	}
+
+	&.lambda-tooltip-container-radius-small {
+		border-radius: var(--border-radius-sm);
+	}
+
+	&.lambda-tooltip-container-radius-medium {
+		border-radius: var(--border-radius-md);
+	}
+
+	&.lambda-tooltip-container-radius-large,
+	&.lambda-tooltip-container-radius-full {
+		border-radius: var(--border-radius-lg);
 	}
 }
 
