@@ -8,26 +8,32 @@ import {
 	ArrowUpFromLine,
 } from "lucide-react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof RadioGroup> = {
 	title: "Components/Radio",
 	component: RadioGroup,
 	argTypes: {
 		variant: {
-			control: "select",
+			control: "inline-radio",
 			options: ["solid", "soft", "outline"],
 			description: "Visual style of the input",
 			type: "string",
 		},
 		color: {
-			control: "select",
+			control: "inline-radio",
 			options: ["neutral", "primary", "secondary", "danger", "success", "warning", "info"],
 			description: "Background color",
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["tiny", "small", "medium", "large", "full", "none"],
+			description: "Input radius",
 		},
 		showRadio: {
 			control: "boolean",
@@ -113,8 +119,14 @@ const RadioTemplate = (args: RadioGroupProps) => {
 };
 
 const RadioButtonTemplate = (args: RadioGroupProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Radio" subtitle={"Button"} color={args.variant || "solid"}>
+		<ContainerComponent
+			title="Radio"
+			subtitle={"Button"}
+			color={args.variant || "solid"}
+			onChangeStyleSource={(style) => setCurrentStyle(style)}
+		>
 			<label
 				style={{ fontWeight: "var(--font-weight-semibold)", color: "var(--foreground-color)" }}
 			>
@@ -152,6 +164,7 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							defaultValue="option1"
 							{...args}
 							color={color as RadioGroupProps["color"]}
+							radius={currentStyle === "local" ? args.radius : undefined}
 						>
 							<Radio.Button value="option1" icon={<ArrowLeftFromLine />} />
 							<Radio.Button value="option2" icon={<ArrowUpFromLine />} />
@@ -201,6 +214,7 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							name="example"
 							defaultValue="option1"
 							{...args}
+							radius={currentStyle === "local" ? args.radius : undefined}
 							color={color as RadioGroupProps["color"]}
 						>
 							<Radio.Button value="option1" label="Left" />
@@ -251,6 +265,7 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							name="example"
 							defaultValue="option1"
 							{...args}
+							radius={currentStyle === "local" ? args.radius : undefined}
 							color={color as RadioGroupProps["color"]}
 						>
 							<Radio.Button value="option1" label="Left" icon={<ArrowLeftFromLine />} />
@@ -266,14 +281,21 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 };
 
 const RadioCardTemplate = (args: RadioGroupProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Radio"
 			subtitle={"Card"}
 			color={`${args.variant || "solid"} `}
 			optional={args.color || ""}
+			onChangeStyleSource={(style) => setCurrentStyle(style)}
 		>
-			<RadioGroup name="example" defaultValue="option1" {...args}>
+			<RadioGroup
+				name="example"
+				defaultValue="option1"
+				{...args}
+				radius={currentStyle === "local" ? args.radius : undefined}
+			>
 				<Radio.Card
 					value="option1"
 					label="Option 1"
@@ -304,6 +326,7 @@ export const DefaultSolid: Story = {
 	render: (args) => <RadioTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "solid",
 		disabled: false,
@@ -316,6 +339,7 @@ export const DefaultSoft: Story = {
 	render: (args) => <RadioTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "soft",
 		disabled: false,
@@ -328,6 +352,7 @@ export const DefaultOutline: Story = {
 	render: (args) => <RadioTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "outline",
 		disabled: false,
@@ -340,6 +365,7 @@ export const ButtonSolid: Story = {
 	render: (args) => <RadioButtonTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "solid",
 		disabled: false,
@@ -352,6 +378,7 @@ export const ButtonSoft: Story = {
 	render: (args) => <RadioButtonTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "soft",
 		disabled: false,
@@ -364,6 +391,7 @@ export const ButtonOutline: Story = {
 	render: (args) => <RadioButtonTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "outline",
 		disabled: false,
@@ -376,6 +404,7 @@ export const CardSolid: Story = {
 	render: (args) => <RadioCardTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "solid",
 		disabled: false,
@@ -388,6 +417,7 @@ export const CardSoft: Story = {
 	render: (args) => <RadioCardTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "soft",
 		disabled: false,
@@ -400,6 +430,7 @@ export const CardOutline: Story = {
 	render: (args) => <RadioCardTemplate {...args} />,
 	args: {
 		size: "small",
+		radius: "small",
 		color: "primary",
 		variant: "outline",
 		disabled: false,

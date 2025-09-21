@@ -38,7 +38,7 @@ export type RadioGroupContextType = {
 	size: RadioGroupVariants["size"];
 	color: RadioGroupVariants["color"];
 	radiusSelector: RadioVariants["radius"];
-	radiusCard: Exclude<RadioVariants["radius"], "full">;
+	radiusCard: RadioVariants["radius"];
 	variant: RadioGroupVariants["variant"];
 	orientation: RadioGroupVariants["orientation"];
 	showRadio: boolean;
@@ -62,6 +62,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	onChange,
 	defaultValue,
 	size,
+	radius,
 	color,
 	variant,
 	disabled = false,
@@ -74,7 +75,9 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	const refGroup = useRef<HTMLDivElement | null>(null);
 	const defaultNameId = useId();
 	const effectiveName = name ?? `radio-group-${defaultNameId}`;
-	const { radiusSelector, radiusBox: radiusCard } = useUIConfig();
+	const { radiusSelector, radiusBox } = useUIConfig();
+	const radiusValueSelector = radius || radiusSelector;
+	const radiusValueCard = radius || radiusBox;
 
 	const handleChange = useCallback(
 		(newValue: string) => {
@@ -113,8 +116,8 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			onChange: handleChange,
 			size,
 			color,
-			radiusSelector,
-			radiusCard,
+			radiusSelector: radiusValueSelector,
+			radiusCard: radiusValueCard,
 			showRadio,
 			variant,
 			orientation,
@@ -130,7 +133,8 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			color,
 			variant,
 			radiusSelector,
-			radiusCard,
+			radiusBox,
+			radius,
 			showRadio,
 			orientation,
 			disabled,

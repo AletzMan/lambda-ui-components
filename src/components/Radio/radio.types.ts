@@ -13,6 +13,11 @@ export interface RadioGroupProps {
 	size?: RadioGroupVariants["size"];
 
 	/**
+	 * Controla el radio general del grupo y puede influir en el radio de los botones de radio individuales dentro de él.
+	 */
+	radius?: RadioGroupVariants["radius"];
+
+	/**
 	 * Establece el esquema de color para todos los botones de radio dentro del grupo.
 	 */
 	color?: RadioGroupVariants["color"];

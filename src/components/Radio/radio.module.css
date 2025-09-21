@@ -1030,7 +1030,7 @@
 	}
 
 	&.lambda-radio-wrapper-radius-full {
-		border-radius: var(--border-radius-pill);
+		border-radius: var(--border-radius-lg);
 	}
 }
 
