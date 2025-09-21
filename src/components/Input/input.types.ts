@@ -11,6 +11,11 @@ export interface InputProps
 	size?: InputVariants["size"];
 
 	/**
+	 * Define el radio de los bordes del input.
+	 */
+	radius?: InputVariants["radius"];
+
+	/**
 	 * Controla el estilo visual del input, como el color del borde o el fondo.
 	 */
 	variant?: InputVariants["variant"];

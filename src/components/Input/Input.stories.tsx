@@ -2,24 +2,31 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "./Input";
 import { InputProps } from "./input.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof Input> = {
 	title: "Components/Input",
 	component: Input,
 	argTypes: {
 		variant: {
-			control: "select",
+			control: "inline-radio",
 			options: ["outline", "flat", "underline"],
 			description: "Visual style of the input",
 			type: "string",
 		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Input radius",
+			type: "string",
+		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
 		type: {
-			control: "select",
+			control: "inline-radio",
 			options: ["text", "email", "password", "search"],
 			description: "Input size",
 		},
@@ -62,8 +69,13 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 const Template = (args: InputProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Input" subtitle={args.variant?.toString() || ""}>
+		<ContainerComponent
+			title="Input"
+			subtitle={args.variant?.toString() || ""}
+			onChangeStyleSource={(value) => setCurrentStyle(value)}
+		>
 			<div
 				style={{
 					display: "flex",
@@ -76,10 +88,34 @@ const Template = (args: InputProps) => {
 				<div
 					style={{ display: "flex", flexDirection: "column", gap: "var(--gap-xl", width: "300px" }}
 				>
-					<Input {...args} type="text" placeholder="Text input example" label="Text" />
-					<Input {...args} type="password" placeholder="Password input example" label="Password" />
-					<Input {...args} type="email" placeholder="Email input example" label="Email" />
-					<Input {...args} type="search" placeholder="Search input example" label="Search" />
+					<Input
+						{...args}
+						type="text"
+						placeholder="Text input example"
+						label="Text"
+						radius={currentStyle === "local" ? args.radius : undefined}
+					/>
+					<Input
+						{...args}
+						type="password"
+						placeholder="Password input example"
+						label="Password"
+						radius={currentStyle === "local" ? args.radius : undefined}
+					/>
+					<Input
+						{...args}
+						type="email"
+						placeholder="Email input example"
+						label="Email"
+						radius={currentStyle === "local" ? args.radius : undefined}
+					/>
+					<Input
+						{...args}
+						type="search"
+						placeholder="Search input example"
+						label="Search"
+						radius={currentStyle === "local" ? args.radius : undefined}
+					/>
 				</div>
 			</div>
 		</ContainerComponent>
@@ -91,6 +127,7 @@ export const Outline: Story = {
 	args: {
 		variant: "outline",
 		size: "medium",
+		radius: "tiny",
 		label: "Password",
 		floatingLabel: false,
 		invalid: false,
@@ -108,6 +145,7 @@ export const Soft: Story = {
 	args: {
 		variant: "soft",
 		size: "medium",
+		radius: "tiny",
 		label: "Passwword",
 		floatingLabel: false,
 		invalid: false,
@@ -125,6 +163,7 @@ export const Underline: Story = {
 	args: {
 		variant: "underline",
 		size: "medium",
+		radius: "tiny",
 		label: "Search",
 		floatingLabel: false,
 		invalid: false,

@@ -14,15 +14,17 @@ import styles from "./inputGroup.module.css";
 import clsx from "clsx";
 import { VariantProps } from "class-variance-authority";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
-import { inputGroup, inputGroupWrapper } from "./inputgroup.variants";
+import { inputGroup, InputGroupVariants, inputGroupWrapper } from "./inputgroup.variants";
 import { InputProps } from "../Input/input.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 type InputGroupContextType = {
 	/** Variante del componente */
-	variant?: "outline" | "soft" | "underline" | null;
+	variant?: InputGroupVariants["variant"];
 	/** Tamaño del componente */
-	size?: "tiny" | "small" | "medium" | "large" | null;
+	size?: InputGroupVariants["size"];
+	/** Radio del componente */
+	radius?: InputGroupVariants["radius"];
 	/** Indica si el componente es inválido */
 	invalid?: boolean | null;
 	/** Indica si el componente está deshabilitado */
@@ -49,10 +51,21 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 	InputGroupProps
 >(
 	(
-		{ prefixElement, suffixElement, children, variant, size, invalid, disabled, errorMessage },
+		{
+			prefixElement,
+			suffixElement,
+			children,
+			variant,
+			size,
+			radius,
+			invalid,
+			disabled,
+			errorMessage,
+		},
 		ref
 	) => {
 		const { radiusField } = useUIConfig();
+		const radiusValue = radius ?? radiusField;
 		const hasElements: "none" | "first" | "last" | "both" =
 			prefixElement && suffixElement
 				? "both"
@@ -67,11 +80,12 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 			() => ({
 				variant: variant ?? "outline",
 				size: size ?? "medium",
+				radius: radiusValue,
 				invalid: invalid ?? false,
 				hasElements: hasElements,
 				disabled: disabled ?? false,
 			}),
-			[variant, size, invalid, disabled, hasElements]
+			[variant, size, radiusValue, invalid, disabled, hasElements]
 		);
 
 		return (
@@ -85,7 +99,7 @@ export const InputGroup: FC<PropsWithChildren<InputGroupProps>> = forwardRef<
 								size,
 								invalid,
 								disabled,
-								radius: radiusField,
+								radius: radiusValue,
 								hasElements,
 							})
 						)}

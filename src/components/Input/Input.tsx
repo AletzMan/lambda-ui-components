@@ -22,6 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			className,
 			variant: propVariant,
 			size: propSize,
+			radius: propRadius,
 			label,
 			invalid,
 			errorMessage,
@@ -38,6 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		ref
 	) => {
 		let contextVariant,
+			contextRadius,
 			contextSize,
 			isGroup,
 			contextDisabled,
@@ -46,6 +48,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		try {
 			const context = useInputGroup();
 			contextVariant = context.variant;
+			contextRadius = context.radius;
 			contextSize = context.size;
 			contextDisabled = context.disabled;
 			contextInvalid = context.invalid;
@@ -53,6 +56,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			isGroup = true;
 		} catch (_e) {
 			contextVariant = propVariant;
+			contextRadius = propRadius;
 			contextSize = propSize;
 			contextDisabled = disabled;
 			contextInvalid = invalid;
@@ -65,6 +69,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		const [isFocused, setIsFocused] = useState(false);
 		const inputId = useId();
 		const { radiusField } = useUIConfig();
+		const radiusValue = contextRadius ?? radiusField;
 
 		const errorId = errorMessage ? `${inputId}-error` : undefined;
 		const helperId = helperText ? `${inputId}-helper` : undefined;
@@ -124,7 +129,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			<div
 				className={clsx(
 					lambdaInput({
-						radius: radiusField,
+						radius: radiusValue,
 						disabled: contextDisabled,
 						size: contextSize,
 						invalid: contextInvalid,
@@ -163,7 +168,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						input({
 							variant: contextVariant,
 							disabled: contextDisabled,
-							radius: radiusField,
+							radius: radiusValue,
 							size: contextSize,
 							invalid: contextInvalid,
 							type,

@@ -1,5 +1,5 @@
 import styles from "./inputGroup.module.css";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 
 export const inputGroup = cva(styles["lambda-input-group"], {
 	variants: {
@@ -55,3 +55,5 @@ export const inputGroupWrapper = cva(styles["lambda-input-group-wrapper"], {
 		},
 	},
 });
+
+export type InputGroupVariants = VariantProps<typeof inputGroup>;
