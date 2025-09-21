@@ -43,4 +43,4 @@ export const badgeStyles = cva(styles["lambda-badge"], {
 	},
 });
 
-export type BadgeProps = VariantProps<typeof badgeStyles>;
+export type BadgeVariants = VariantProps<typeof badgeStyles>;
