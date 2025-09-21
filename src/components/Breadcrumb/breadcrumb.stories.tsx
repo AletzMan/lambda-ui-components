@@ -3,31 +3,33 @@ import { Breadcrumb } from "./Breadcrumb";
 import { CheckCircle, ClipboardList, Folder, HomeIcon, LayoutGrid } from "lucide-react";
 import { BreadcrumbProps } from "./breadcrumb.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof Breadcrumb> = {
 	title: "Components/Breadcrumb",
 	component: Breadcrumb,
 	argTypes: {
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Size of the breadcrumb",
 			type: "string",
 		},
-		variant: {
-			control: "select",
-			options: ["chevron", "slash", "dot", "arrow", "stepped"],
-			description: "Variant of the breadcrumb",
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Radius of the breadcrumb",
 			type: "string",
+		},
+		variant: {
 			table: {
 				disable: true,
 			},
 		},
 		color: {
-			control: "select",
-			options: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
-			description: "Color of the breadcrumb",
-			type: "string",
+			table: {
+				disable: true,
+			},
 		},
 		maxItems: {
 			control: "number",
@@ -50,11 +52,13 @@ type Story = StoryObj<typeof Breadcrumb>;
 const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: BreadcrumbProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Breadcrumb"
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
+			onChangeStyleSource={(style) => setCurrentStyle(style)}
 		>
 			<div
 				style={{
@@ -83,7 +87,12 @@ const Template = (args: BreadcrumbProps) => {
 						>
 							{color}
 						</label>
-						<Breadcrumb key={color} {...args} color={color as BreadcrumbProps["color"]} />
+						<Breadcrumb
+							key={color}
+							{...args}
+							color={color as BreadcrumbProps["color"]}
+							radius={currentStyle === "local" ? args.radius : undefined}
+						/>
 					</div>
 				))}
 			</div>
@@ -122,6 +131,7 @@ export const Chevron: Story = {
 			},
 		],
 		size: "medium",
+		radius: "small",
 		variant: "chevron",
 		color: "primary",
 		maxItems: 0,
@@ -159,6 +169,7 @@ export const Slash: Story = {
 			},
 		],
 		size: "medium",
+		radius: "small",
 		variant: "slash",
 		color: "primary",
 		maxItems: 0,
@@ -196,6 +207,7 @@ export const Dot: Story = {
 			},
 		],
 		size: "medium",
+		radius: "small",
 		variant: "dot",
 		color: "primary",
 		maxItems: 0,
@@ -233,6 +245,7 @@ export const Arrow: Story = {
 			},
 		],
 		size: "medium",
+		radius: "small",
 		variant: "arrow",
 		color: "primary",
 		maxItems: 0,
@@ -270,6 +283,7 @@ export const Stepped: Story = {
 			},
 		],
 		size: "medium",
+		radius: "small",
 		variant: "stepped",
 		color: "primary",
 		maxItems: 0,
