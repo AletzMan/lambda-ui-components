@@ -97,4 +97,4 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
 
 export type PaginationWrapperVariants = VariantProps<typeof paginationWrapper>;
 export type PaginationListContainerVariants = VariantProps<typeof paginationListContainer>;
-export type PaginationButtonVariants = VariantProps<typeof paginationButton>;
+export type PaginationVariants = VariantProps<typeof paginationButton>;

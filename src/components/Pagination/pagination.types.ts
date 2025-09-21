@@ -1,9 +1,5 @@
 import { ButtonHTMLAttributes, HTMLAttributes } from "react";
-import { PaginationButtonVariants } from "./pagination.variants";
-
-export type PaginationButtonVariant = PaginationButtonVariants["variant"];
-export type PaginationButtonSize = PaginationButtonVariants["size"];
-export type PaginationButtonRadius = PaginationButtonVariants["radius"];
+import { PaginationVariants } from "./pagination.variants";
 
 export interface PaginationProps extends HTMLAttributes<HTMLElement> {
 	/**
@@ -51,13 +47,17 @@ export interface PaginationProps extends HTMLAttributes<HTMLElement> {
 	 * Tamaño de los botones de paginación.
 	 * @default "medium"
 	 */
-	size?: PaginationButtonSize; // Usar el tipo de variante de tamaño
-
+	size?: PaginationVariants["size"]; // Usar el tipo de variante de tamaño
+	/**
+	 * Radio de los botones de paginación.
+	 * @default "small"
+	 */
+	radius?: PaginationVariants["radius"]; // Usar el tipo de variante de radio
 	/**
 	 * Variante visual de los botones de paginación.
 	 * @default "outline"
 	 */
-	variant?: PaginationButtonVariant; // Usar el tipo de variante visual
+	variant?: PaginationVariants["variant"]; // Usar el tipo de variante visual
 	/**
 	 * Etiqueta ARIA para la navegación de paginación.
 	 * Por defecto es "Navegación de página".
@@ -68,7 +68,7 @@ export interface PaginationProps extends HTMLAttributes<HTMLElement> {
 // Props para un botón individual de paginación (interno)
 export interface PaginationButtonProps
 	extends ButtonHTMLAttributes<HTMLButtonElement>,
-		PaginationButtonVariants {
+		PaginationVariants {
 	/**
 	 * El número de página asociado a este botón.
 	 * Puede ser null para los botones '...' o navegación (anterior/siguiente/primera/última).

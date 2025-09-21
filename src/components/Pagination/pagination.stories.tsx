@@ -31,8 +31,13 @@ const meta: Meta<typeof Pagination> = {
 				disable: true,
 			},
 		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Input radius",
+		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
@@ -62,13 +67,20 @@ type Story = StoryObj<typeof Pagination>;
 
 const Template = (args: PaginationProps) => {
 	const [activePage, setActivePage] = useState(1);
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Pagination"
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
+			onChangeStyleSource={(style) => setCurrentStyle(style)}
 		>
-			<Pagination {...args} onPageChange={(page) => setActivePage(page)} currentPage={activePage} />
+			<Pagination
+				{...args}
+				onPageChange={(page) => setActivePage(page)}
+				currentPage={activePage}
+				radius={currentStyle === "local" ? args.radius : undefined}
+			/>
 		</ContainerComponent>
 	);
 };
@@ -78,6 +90,7 @@ export const Solid: Story = {
 	args: {
 		variant: "solid",
 		size: "small",
+		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,
@@ -93,6 +106,7 @@ export const Ouline: Story = {
 	args: {
 		variant: "outline",
 		size: "small",
+		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,
@@ -108,6 +122,7 @@ export const Soft: Story = {
 	args: {
 		variant: "soft",
 		size: "small",
+		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,
@@ -123,6 +138,7 @@ export const Bordered: Story = {
 	args: {
 		variant: "bordered",
 		size: "small",
+		radius: "small",
 		disabled: false,
 		totalPages: 10,
 		currentPage: 1,

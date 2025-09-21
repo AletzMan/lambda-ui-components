@@ -69,11 +69,12 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 			totalPages,
 			onPageChange,
 			maxVisiblePages = 5,
-			showFirstLastButtons = true,
-			showPrevNextButtons = true,
+			showFirstLastButtons,
+			showPrevNextButtons,
 			disabled = false,
-			size = "medium",
-			variant = "outline",
+			size,
+			variant,
+			radius,
 			ariaLabel = "Page navigation",
 			className,
 			...rest
@@ -81,6 +82,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 		ref
 	) => {
 		const { radiusField } = useUIConfig();
+		const radiusValue = radius || radiusField;
 		// --- Lógica para calcular los números de página visibles ---
 		const pageNumbers = useMemo(() => {
 			const pages: (number | string)[] = [];
@@ -188,7 +190,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radiusField}
+							radius={radiusValue}
 							disabled={areNavButtonsDisabled || isFirstPage}
 							isNavigation
 							aria-label="Go to first page"
@@ -204,7 +206,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radiusField}
+							radius={radiusValue}
 							disabled={areNavButtonsDisabled || isFirstPage}
 							isNavigation
 							aria-label="Go to previous page"
@@ -224,7 +226,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 							disabled={typeof page !== "number" || disabled}
 							size={size}
 							variant={variant}
-							radius={radiusField}
+							radius={radiusValue}
 							aria-label={typeof page === "number" ? `Página ${page}` : undefined}
 							onClick={typeof page === "number" ? () => handleGoToPage(page) : undefined}
 						>
@@ -237,7 +239,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radiusField}
+							radius={radiusValue}
 							disabled={areNavButtonsDisabled || isLastPage}
 							isNavigation
 							aria-label="Go to next page"
@@ -253,7 +255,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
 						<PaginationButton
 							size={size}
 							variant={variant}
-							radius={radiusField}
+							radius={radiusValue}
 							disabled={areNavButtonsDisabled || isLastPage}
 							isNavigation
 							aria-label="Go to last page"
