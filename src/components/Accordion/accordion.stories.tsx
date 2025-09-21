@@ -60,6 +60,7 @@ const PreviewAccordion = (
 			title="Accordion"
 			subtitle={args?.variant?.toString() || ""}
 			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
+			styleSource={currentStyle}
 		>
 			<div style={{ padding: "10px" }}>
 				<Accordion

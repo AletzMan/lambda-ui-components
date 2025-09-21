@@ -32,6 +32,11 @@ export interface SelectProps
 	size?: SelectVariants["size"];
 
 	/**
+	 * Define el radio del select, afectando el radio de las esquinas del control visible.
+	 */
+	radius?: SelectVariants["radius"];
+
+	/**
 	 * Define la variante visual del select
 	 */
 	variant?: SelectVariants["variant"];

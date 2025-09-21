@@ -73,6 +73,7 @@ const Template = (args: AlertProps) => {
 			subtitle={args.variant?.toString() || ""}
 			color={args.size?.toString() || ""}
 			onChangeStyleSource={(value) => setCurrentStyles(value)}
+			styleSource={currentStyles}
 		>
 			<div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "1rem" }}>
 				{colors.map((color) => (

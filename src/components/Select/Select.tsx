@@ -28,6 +28,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			options,
 			size = "medium",
 			variant = "outline",
+			radius,
 			disabled,
 			invalid,
 			required,
@@ -46,6 +47,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 		);
 		const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
 		const { radiusField } = useUIConfig();
+		const radiusValue = radius || radiusField;
 
 		const containerRef = useRef<HTMLDivElement>(null);
 		const buttonRef = useRef<HTMLButtonElement>(null);
@@ -150,7 +152,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 				{label && (
 					<label
 						className={clsx(
-							labelSelect({ direction, radius: radiusField, size, required }),
+							labelSelect({ direction, radius: radiusValue, size, required }),
 							styles["select-label"]
 						)}
 						{...getLabelProps()}
@@ -158,9 +160,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 						{label}
 					</label>
 				)}
-				<div className={select({ size, variant, radius: radiusField, disabled, invalid })}>
+				<div className={select({ size, variant, radius: radiusValue, disabled, invalid })}>
 					<button
-						className={buttonSelect({ size, variant, radius: radiusField, invalid, disabled })}
+						className={buttonSelect({ size, variant, radius: radiusValue, invalid, disabled })}
 						onClick={handleButtonClick}
 						disabled={disabled}
 						ref={ref || buttonRef}
@@ -200,7 +202,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 								width: dropdownPosition.width,
 							}}
 							className={clsx(
-								dropdown({ size, direction, radius: radiusField, variant }),
+								dropdown({ size, direction, radius: radiusValue, variant }),
 								"scrollBar",
 								{
 									[styles["select-dropdown-open"]]: isOpen,

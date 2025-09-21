@@ -56,14 +56,19 @@ export default function ContainerComponent({
 					</div>
 				</div>
 				<div>
-					<label className={styles.label}>Style Source </label>
-					<Switch
-						checked={styleSource === "global"}
-						onChange={(e) => handleStyleChange(e.target.checked ? "global" : "local")}
-						value="global"
-						position_label="bottom"
-						label={styleSource === "global" ? "Global" : "Local"}
-					/>
+					{onChangeStyleSource && (
+						<>
+							<label className={styles.label}>Style Source </label>
+
+							<Switch
+								checked={styleSource === "global"}
+								onChange={(e) => handleStyleChange(e.target.checked ? "global" : "local")}
+								value="global"
+								position_label="bottom"
+								label={styleSource === "global" ? "Global" : "Local"}
+							/>
+						</>
+					)}
 				</div>
 			</header>
 			<Divider color="neutral" />

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Select } from "./Select";
 import { SelectProps } from "./select.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof Select> = {
 	title: "Components/Select",
@@ -12,8 +13,13 @@ const meta: Meta<typeof Select> = {
 				disabled: true,
 			},
 		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Input radius",
+		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
@@ -43,12 +49,33 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" }) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Select" subtitle={args.type}>
+		<ContainerComponent
+			title="Select"
+			subtitle={args.type}
+			onChangeStyleSource={(value) => setCurrentStyle(value)}
+			styleSource={currentStyle}
+		>
 			<div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "250px" }}>
-				<Select {...args} variant="outline" label="Outline" />
-				<Select {...args} variant="soft" label="Soft" />
-				<Select {...args} variant="underline" label="Underline" />
+				<Select
+					{...args}
+					variant="outline"
+					label="Outline"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
+				<Select
+					{...args}
+					variant="soft"
+					label="Soft"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
+				<Select
+					{...args}
+					variant="underline"
+					label="Underline"
+					radius={currentStyle === "local" ? args.radius : undefined}
+				/>
 			</div>
 		</ContainerComponent>
 	);
@@ -58,6 +85,7 @@ export const Normal: Story = {
 	render: (args) => <Template {...args} type="Normal" />,
 	args: {
 		size: "medium",
+		radius: "medium",
 		options: [
 			{
 				label: "JavaScript",
@@ -91,6 +119,7 @@ export const Description: Story = {
 	render: (args) => <Template {...args} type="Description" />,
 	args: {
 		size: "medium",
+		radius: "medium",
 		options: [
 			{
 				label: "JavaScript",
@@ -130,6 +159,7 @@ export const Icon: Story = {
 	render: (args) => <Template {...args} type="Icon" />,
 	args: {
 		size: "medium",
+		radius: "medium",
 		options: [
 			{
 				label: "JavaScript",
@@ -171,6 +201,7 @@ export const IconAndDescrption: Story = {
 	render: (args) => <Template {...args} type="Icon" />,
 	args: {
 		size: "medium",
+		radius: "medium",
 		options: [
 			{
 				label: "JavaScript",
