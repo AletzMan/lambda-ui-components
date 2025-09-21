@@ -6,14 +6,15 @@ import { PlusIcon } from "lucide-react";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
-	({ className, color, size, children, text, count, maxCount, ...props }, ref) => {
+	({ className, color, size, radius, children, text, count, maxCount, ...props }, ref) => {
 		const { radiusSelector } = useUIConfig();
+		const radiusValue = radius || radiusSelector;
 		return (
 			<div
 				className={clsx(
 					badgeStyles({
 						size,
-						radius: radiusSelector,
+						radius: radiusValue,
 						color,
 						hasCount: count !== undefined && count >= 0,
 						hasText: text !== undefined,
