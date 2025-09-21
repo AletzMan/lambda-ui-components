@@ -18,6 +18,11 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
 	size?: ButtonVariants["size"];
 
 	/**
+	 * Define el radio del botón.
+	 */
+	radius?: ButtonVariants["radius"];
+
+	/**
 	 * Define si el botón ocupa todo el ancho disponible (cuando es true) o normal (cuando es false).
 	 */
 	block?: ButtonVariants["block"];

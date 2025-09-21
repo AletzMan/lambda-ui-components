@@ -60,7 +60,7 @@ export const button = cva(styles[`lambda-btn`], {
 		color: "primary",
 		variant: "solid",
 		size: "medium",
-		radius: "medium",
+		radius: "small",
 		block: false,
 		isCircle: false,
 		disabled: false,
