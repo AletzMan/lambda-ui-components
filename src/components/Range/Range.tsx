@@ -11,6 +11,7 @@ import {
 	rangeMarkContainer,
 } from "./range.variants";
 import { RangeProps, RangeValue } from "./range.types";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Range = forwardRef<HTMLDivElement, RangeProps>(
 	(
@@ -24,7 +25,8 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 			disabled = false,
 			marks = [],
 			orientation = "horizontal",
-			size = "medium",
+			size,
+			radius,
 			ariaLabel,
 			viewValue = true,
 			viewBar = true,
@@ -33,6 +35,8 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 		},
 		ref
 	) => {
+		const { radiusField } = useUIConfig();
+		const radiusValue = radius || radiusField;
 		// Determinar si es un slider de dos handles basado en el tipo de 'value'
 		const isDoubleHandled = Array.isArray(value);
 		// Obtener los valores de inicio y fin para el cálculo (usando min como inicio por defecto si es handle único)
@@ -391,7 +395,9 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 				{/* Pista del slider */}
 				<div
 					ref={trackRef}
-					className={clsx(rangeTrack({ size, viewBar, disabled, orientation }))}
+					className={clsx(
+						rangeTrack({ size, viewBar, disabled, orientation, radius: radiusValue })
+					)}
 					// onPointerDown en el track para manejar clicks/taps fuera de los handles (comportamiento "salto")
 					onPointerDown={(event) => {
 						// Prevenir comportamiento por defecto
@@ -479,7 +485,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 					)}
 					{/* Relleno de la selección */}
 					<div
-						className={clsx(rangeFill({ size, disabled, orientation }))}
+						className={clsx(rangeFill({ size, disabled, orientation, radius: radiusValue }))}
 						style={{ ...fillStyle, opacity: viewBar ? 1 : 0 }}
 					></div>
 
@@ -492,6 +498,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 								disabled,
 								isDragging: isDragging && draggingHandleIndex === 0,
 								orientation,
+								radius: radiusValue,
 							})
 						)}
 						// Posiciona el handle único u izquierdo
@@ -534,6 +541,7 @@ export const Range = forwardRef<HTMLDivElement, RangeProps>(
 									disabled,
 									isDragging: isDragging && draggingHandleIndex === 1,
 									orientation,
+									radius: radiusValue,
 								})
 							)}
 							style={

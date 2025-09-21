@@ -49,7 +49,7 @@
 	transform: translateY(50%);
 	left: 0;
 	right: 0;
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--border-radius-sm);
 	border: none;
 	background-color: transparent;
 	box-sizing: border-box;
@@ -59,6 +59,42 @@
 		background-color: var(--surface-b);
 		border: var(--border-width-xs) solid var(--border-color);
 	}
+
+	&:is(.lambda-range-track-radius-none) {
+		border-radius: var(--border-radius-none);
+	}
+
+	&:is(.lambda-range-track-radius-tiny) {
+		border-radius: calc(var(--border-radius-xs) - 1px);
+		&:is(.lambda-range-fill-large) {
+			border-radius: var(--border-radius-xs);
+		}
+	}
+
+	&:is(.lambda-range-track-radius-small) {
+		border-radius: var(--border-radius-xs);
+		&:is(.lambda-range-fill-large) {
+			border-radius: calc(var(--border-radius-xs) + 1px);
+		}
+	}
+
+	&:is(.lambda-range-track-radius-medium) {
+		border-radius: calc(var(--border-radius-xs) + 1px);
+		&:is(.lambda-range-fill-large) {
+			border-radius: var(--border-radius-sm);
+		}
+	}
+
+	&:is(.lambda-range-track-radius-large) {
+		border-radius: calc(var(--border-radius-xs) + 1px);
+		&:is(.lambda-range-fill-large) {
+			border-radius: calc(var(--border-radius-sm) + 1px);
+		}
+	}
+
+	&:is(.lambda-range-track-radius-full) {
+		border-radius: var(--border-radius-full);
+	}
 }
 
 .lambda-range-track-horizontal {
@@ -66,7 +102,6 @@
 	transform: translateY(50%);
 	left: 0;
 	right: 0;
-	border-radius: var(--border-radius-pill);
 	border: none;
 	background-color: transparent;
 	box-sizing: border-box;
@@ -97,7 +132,6 @@
 	height: 100%;
 	width: 8px;
 	background: var(--surface-b);
-	border-radius: var(--border-radius-pill);
 	z-index: 1;
 
 	&:is(.lambda-range-track-tiny) {
@@ -123,8 +157,43 @@
 	transform: translateY(50%);
 	background-color: var(--primary-hover-color);
 	border: var(--border-width-xs) solid var(--primary-base-color);
-	border-radius: var(--border-radius-pill);
 	z-index: 2;
+
+	&:is(.lambda-range-fill-radius-none) {
+		border-radius: var(--border-radius-none);
+	}
+
+	&:is(.lambda-range-fill-radius-tiny) {
+		border-radius: calc(var(--border-radius-xs) - 1px);
+		&:is(.lambda-range-fill-large) {
+			border-radius: var(--border-radius-xs);
+		}
+	}
+
+	&:is(.lambda-range-fill-radius-small) {
+		border-radius: var(--border-radius-xs);
+		&:is(.lambda-range-fill-large) {
+			border-radius: calc(var(--border-radius-xs) + 1px);
+		}
+	}
+
+	&:is(.lambda-range-fill-radius-medium) {
+		border-radius: calc(var(--border-radius-xs) + 1px);
+		&:is(.lambda-range-fill-large) {
+			border-radius: var(--border-radius-sm);
+		}
+	}
+
+	&:is(.lambda-range-fill-radius-large) {
+		border-radius: calc(var(--border-radius-xs) + 1px);
+		&:is(.lambda-range-fill-large) {
+			border-radius: calc(var(--border-radius-sm) + 1px);
+		}
+	}
+
+	&:is(.lambda-range-fill-radius-full) {
+		border-radius: var(--border-radius-full);
+	}
 }
 
 .lambda-range-fill-horizontal {
@@ -173,13 +242,58 @@
 
 .lambda-range-handle {
 	position: absolute;
-	border-radius: var(--border-radius-pill);
 	border: var(--border-width-xs) solid var(--primary-base-color);
 	background: var(--foreground-invert-color);
 	transition: transform 0.1s ease, box-shadow 0.2s ease;
 	outline: none;
 	z-index: 3;
 	cursor: pointer;
+
+	&:is(.lambda-range-handle-radius-none) {
+		border-radius: var(--border-radius-none);
+	}
+
+	&:is(.lambda-range-handle-radius-tiny) {
+		border-radius: calc(var(--border-radius-xs) - 1px);
+
+		&:is(.lambda-range-handle-large) {
+			border-radius: var(--border-radius-xs);
+		}
+	}
+
+	&:is(.lambda-range-handle-radius-small) {
+		border-radius: var(--border-radius-xs);
+		&:is(.lambda-range-handle-medium) {
+			border-radius: calc(var(--border-radius-xs) + 1px);
+		}
+		&:is(.lambda-range-handle-large) {
+			border-radius: calc(var(--border-radius-xs) + 2px);
+		}
+	}
+
+	&:is(.lambda-range-handle-radius-medium) {
+		border-radius: var(--border-radius-sm);
+		&:is(.lambda-range-handle-medium) {
+			border-radius: calc(var(--border-radius-sm) + 2px);
+		}
+		&:is(.lambda-range-handle-large) {
+			border-radius: calc(var(--border-radius-xs) + 4px);
+		}
+	}
+
+	&:is(.lambda-range-handle-radius-large) {
+		border-radius: calc(var(--border-radius-sm) + 2px);
+		&:is(.lambda-range-handle-medium) {
+			border-radius: calc(var(--border-radius-sm) + 4px);
+		}
+		&:is(.lambda-range-handle-large) {
+			border-radius: var(--border-radius-md);
+		}
+	}
+
+	&:is(.lambda-range-handle-radius-full) {
+		border-radius: var(--border-radius-full);
+	}
 }
 
 .lambda-range-handle-horizontal {

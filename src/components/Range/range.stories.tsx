@@ -15,6 +15,12 @@ const meta: Meta<typeof Range> = {
 			description: "Orientation of the range slider",
 			defaultValue: "horizontal",
 		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Radius of the range slider",
+			defaultValue: "medium",
+		},
 		onChange: {
 			table: {
 				disabled: true,
@@ -75,8 +81,13 @@ export default meta;
 
 const RangeSingle = (args: RangeProps) => {
 	const [valueRange, setValueRange] = useState<RangeValue>(50);
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Range" subtitle="Single">
+		<ContainerComponent
+			title="Range"
+			subtitle="Single"
+			onChangeStyleSource={(e) => setCurrentStyle(e)}
+		>
 			<div style={{ width: "130px", padding: "20px" }}>
 				<Input
 					value={valueRange.toString()}
@@ -101,6 +112,7 @@ const RangeSingle = (args: RangeProps) => {
 					value={valueRange}
 					onInput={(e) => setValueRange(e)}
 					onChange={(e) => setValueRange(e)}
+					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 			</div>
 		</ContainerComponent>
@@ -109,8 +121,13 @@ const RangeSingle = (args: RangeProps) => {
 
 const RangeDouble = (args: RangeProps & React.RefAttributes<HTMLDivElement>) => {
 	const [valueRange, setValueRange] = useState<RangeValue>([10, 80]);
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Range" subtitle="Double">
+		<ContainerComponent
+			title="Range"
+			subtitle="Double"
+			onChangeStyleSource={(e) => setCurrentStyle(e)}
+		>
 			<div style={{ display: "flex", gap: "var(--gap-lg)", width: "150px", padding: "20px" }}>
 				<Input
 					value={valueRange.toString().split(",")[0]}
@@ -139,6 +156,7 @@ const RangeDouble = (args: RangeProps & React.RefAttributes<HTMLDivElement>) => 
 				<Range
 					{...args}
 					value={valueRange}
+					radius={currentStyle === "local" ? args.radius : undefined}
 					onInput={(e) => setValueRange(e)}
 					onChange={(e) => setValueRange(e)}
 				/>
@@ -153,6 +171,7 @@ export const Single: StoryObj<typeof Range> = {
 		min: 0,
 		max: 100,
 		step: 25,
+		radius: "medium",
 		disabled: false,
 		orientation: "horizontal",
 		size: "medium",
@@ -176,6 +195,7 @@ export const Double: StoryObj<typeof Range> = {
 		min: 0,
 		max: 100,
 		step: 5,
+		radius: "medium",
 		disabled: false,
 		orientation: "horizontal",
 		size: "medium",
