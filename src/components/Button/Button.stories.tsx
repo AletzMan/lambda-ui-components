@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import { ButtonProps } from "./button.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { CircleCheck } from "lucide-react";
+import { useState } from "react";
 
 const meta: Meta<typeof Button> = {
 	title: "Components/Button",
@@ -78,8 +79,13 @@ type Story = StoryObj<typeof Button>;
 const buttonColors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const Template = (args: ButtonProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Button" subtitle={args.variant?.toString() || ""}>
+		<ContainerComponent
+			title="Button"
+			subtitle={args.variant?.toString() || ""}
+			onChangeStyleSource={(style) => setCurrentStyle(style)}
+		>
 			<div
 				style={{
 					display: "flex",
@@ -104,6 +110,7 @@ const Template = (args: ButtonProps) => {
 						icon={args.loading ? undefined : args.icon}
 						label={args.isCircle ? "" : args.loading ? args.loadingText : color}
 						style={{ textTransform: "capitalize", minWidth: "130px" }}
+						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				))}
 			</div>
