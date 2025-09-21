@@ -16,10 +16,19 @@ export const breadcrumb = cva(styles["breadcrumb"], {
 			arrow: styles["breadcrumb-arrow"],
 			stepped: styles["breadcrumb-stepped"],
 		},
+		radius: {
+			none: styles["breadcrumb-radius-none"],
+			tiny: styles["breadcrumb-radius-tiny"],
+			small: styles["breadcrumb-radius-small"],
+			medium: styles["breadcrumb-radius-medium"],
+			large: styles["breadcrumb-radius-large"],
+			full: styles["breadcrumb-radius-full"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		variant: "chevron",
+		radius: "small",
 	},
 });
 
