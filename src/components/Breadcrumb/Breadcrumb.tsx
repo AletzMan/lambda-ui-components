@@ -94,7 +94,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 									size={size}
 									variant={variant}
 									color={color}
-									radius={radiusSelector}
+									radius={radiusValue}
 								/>
 							</ul>
 							{index < array!.length - 1 && (
