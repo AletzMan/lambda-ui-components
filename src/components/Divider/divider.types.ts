@@ -21,6 +21,12 @@ export interface DividerProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
 	 * @default sm
 	 */
 	size?: DividerVariants["size"];
+
+	/*
+	 * Spacing of the divider in pixels
+	 * @default 5
+	 */
+	spacing?: number;
 	/*
 	 * Content position of the divider (center, start, end)
 	 * @default center
