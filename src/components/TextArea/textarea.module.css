@@ -33,7 +33,8 @@
 		font-size: var(--font-size-md);
 	}
 
-	&.lambda-textarea-label-radius-none {
+	&.lambda-textarea-label-radius-none,
+	&.lambda-textarea-label-radius-tiny {
 		padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-xs);
 	}
 
@@ -45,7 +46,8 @@
 		padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-sm);
 	}
 
-	&.lambda-textarea-label-radius-large {
+	&.lambda-textarea-label-radius-large,
+	&.lambda-textarea-label-radius-full {
 		padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-md);
 	}
 }
@@ -94,7 +96,8 @@
 		border-radius: var(--border-radius-md);
 	}
 
-	&.lambda-textarea-radius-large {
+	&.lambda-textarea-radius-large,
+	&.lambda-textarea-radius-full {
 		border-radius: var(--border-radius-lg);
 	}
 

@@ -14,6 +14,10 @@ export interface TextAreaProps
 	 * Define el tamaño del área de texto, afectando el padding y el tamaño de fuente.
 	 */
 	size?: TextAreaVariants["size"];
+	/**
+	 * Define el radio del área de texto, afectando el radio de los bordes.
+	 */
+	radius?: TextAreaVariants["radius"];
 
 	/**
 	 * Indica si el área de texto está en un estado de validación inválido.

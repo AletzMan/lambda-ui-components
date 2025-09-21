@@ -4,7 +4,7 @@ import { InvalidMessage } from "../../_internal/components/InvalidMessage/Invali
 import clsx from "clsx";
 import { CircleX } from "lucide-react";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
-import { labelString, textarea } from "./textarea.variants";
+import { labelStringVariants, textareaVariants } from "./textarea.variants";
 import { TextAreaProps } from "./textarea.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
@@ -14,6 +14,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			className,
 			variant = "outline",
 			size = "medium",
+			radius,
 			invalid = false,
 			disabled = false,
 			label,
@@ -28,6 +29,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	) => {
 		const [focused, setFocused] = useState(false);
 		const { radiusField } = useUIConfig();
+		const radiusValue = radius || radiusField;
 
 		const textareaId = useId();
 		const errorId = errorMessage && invalid ? `${textareaId}-error` : undefined;
@@ -57,7 +59,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			>
 				{label && (
 					<label
-						className={clsx(labelString({ disabled, radius: radiusField || "tiny", size }), {
+						className={clsx(labelStringVariants({ disabled, radius: radiusValue, size }), {
 							[styles["lambda-textarea-label-required"]]: required,
 						})}
 						htmlFor={textareaId}
@@ -68,7 +70,14 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 				<textarea
 					className={clsx(
 						"scrollBar",
-						textarea({ variant, radius: radiusField || "tiny", className, size, invalid, disabled })
+						textareaVariants({
+							variant,
+							radius: radiusValue,
+							className,
+							size,
+							invalid,
+							disabled,
+						})
 					)}
 					ref={ref}
 					id={textareaId}

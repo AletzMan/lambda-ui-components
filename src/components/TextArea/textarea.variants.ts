@@ -1,7 +1,7 @@
 import styles from "./textarea.module.css";
 import { cva, VariantProps } from "class-variance-authority";
 
-export const textarea = cva(styles[`lambda-textarea`], {
+export const textareaVariants = cva(styles[`lambda-textarea`], {
 	variants: {
 		size: {
 			tiny: styles["lambda-textarea-tiny"],
@@ -39,7 +39,7 @@ export const textarea = cva(styles[`lambda-textarea`], {
 	},
 });
 
-export const labelString = cva(styles[`lambda-textarea-label`], {
+export const labelStringVariants = cva(styles[`lambda-textarea-label`], {
 	variants: {
 		radius: {
 			none: styles["lambda-textarea-label-radius-none"],
@@ -66,4 +66,4 @@ export const labelString = cva(styles[`lambda-textarea-label`], {
 		size: "medium",
 	},
 });
-export type TextAreaVariants = VariantProps<typeof textarea>;
+export type TextAreaVariants = VariantProps<typeof textareaVariants>;

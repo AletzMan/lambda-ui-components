@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TextArea } from "./TextArea";
 import { TextAreaProps } from "./textarea.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useState } from "react";
 
 const meta: Meta<typeof TextArea> = {
 	title: "Components/TextArea",
@@ -13,9 +14,14 @@ const meta: Meta<typeof TextArea> = {
 			},
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Size of the card",
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Radius of the card",
 		},
 		invalid: {
 			control: "boolean",
@@ -55,13 +61,15 @@ export default meta;
 type Story = StoryObj<typeof TextArea>;
 
 const Template = (args: TextAreaProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="TextArea"
 			subtitle={args.variant || ""}
 			color={args.color?.toString() || ""}
+			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
 		>
-			<TextArea {...args} />
+			<TextArea {...args} radius={currentStyle === "local" ? args.radius : undefined} />
 		</ContainerComponent>
 	);
 };
@@ -70,6 +78,7 @@ export const Outline: Story = {
 	render: (args) => <Template {...args} variant="outline" />,
 	args: {
 		size: "medium",
+		radius: "small",
 		invalid: false,
 		disabled: false,
 		required: false,
@@ -84,6 +93,7 @@ export const Soft: Story = {
 	render: (args) => <Template {...args} variant="soft" />,
 	args: {
 		size: "medium",
+		radius: "small",
 		invalid: false,
 		disabled: false,
 		required: false,
