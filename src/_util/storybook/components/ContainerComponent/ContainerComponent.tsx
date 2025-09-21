@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Divider, Switch } from "../../../../main";
 import styles from "./container.module.css";
 
@@ -28,13 +27,12 @@ export default function ContainerComponent({
 	optional,
 	children,
 	onChangeStyleSource,
+	styleSource,
 }: ContainerComponentProps) {
 	const colorValue = colors[color as keyof typeof colors] || colors.nuetral;
 	const optionalValue = colors[optional as keyof typeof colors] || colors.nuetral;
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 
 	const handleStyleChange = (value: string) => {
-		setCurrentStyle(value as "global" | "local");
 		onChangeStyleSource?.(value as "global" | "local");
 	};
 
@@ -60,11 +58,11 @@ export default function ContainerComponent({
 				<div>
 					<label className={styles.label}>Style Source </label>
 					<Switch
-						checked={currentStyle === "global"}
+						checked={styleSource === "global"}
 						onChange={(e) => handleStyleChange(e.target.checked ? "global" : "local")}
 						value="global"
 						position_label="bottom"
-						label={currentStyle === "global" ? "Global" : "Local"}
+						label={styleSource === "global" ? "Global" : "Local"}
 					/>
 				</div>
 			</header>

@@ -81,12 +81,13 @@ export default meta;
 
 const RangeSingle = (args: RangeProps) => {
 	const [valueRange, setValueRange] = useState<RangeValue>(50);
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
 			title="Range"
 			subtitle="Single"
 			onChangeStyleSource={(e) => setCurrentStyle(e)}
+			styleSource={currentStyle}
 		>
 			<div style={{ width: "130px", padding: "20px" }}>
 				<Input
