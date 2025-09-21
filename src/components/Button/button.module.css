@@ -2,7 +2,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: center;
 	gap: var(--gap-md);
 	color: var(--foreground-color);
 	font-family: var(--font-family);
