@@ -4,30 +4,31 @@ import { Input } from "../Input/Input";
 import InputGroup, { InputGroupProps } from "./InputGroup";
 import { Button } from "../Button/Button";
 import { Filter, Search, Settings } from "lucide-react";
+import { useState } from "react";
 
 const meta: Meta<typeof InputGroup> = {
 	title: "Components/InputGroup",
 	component: InputGroup,
 	argTypes: {
 		variant: {
-			control: "select",
+			control: "inline-radio",
 			options: ["outline", "soft", "underline"],
 			description: "Visual style of the input",
 			type: "string",
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
 		type: {
-			control: "select",
+			control: "inline-radio",
 			options: ["text", "email", "password", "search"],
 			description: "Input size",
 		},
 		radius: {
-			control: "select",
-			options: ["none", "small", "medium", "large", "pill"],
+			control: "inline-radio",
+			options: ["none", "small", "medium", "large", "full"],
 			description: "Corner shape",
 		},
 		label: {
@@ -69,8 +70,13 @@ export default meta;
 type Story = StoryObj<typeof InputGroup>;
 
 const Template = (args: InputGroupProps) => {
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
-		<ContainerComponent title="Input Group" subtitle={args.variant?.toString() || ""}>
+		<ContainerComponent
+			title="Input Group"
+			subtitle={args.variant?.toString() || ""}
+			onChangeStyleSource={(value) => setCurrentStyle(value)}
+		>
 			<div
 				style={{
 					display: "flex",
@@ -81,7 +87,12 @@ const Template = (args: InputGroupProps) => {
 				}}
 			>
 				<div style={{ display: "flex", flexDirection: "column", gap: "40px", width: "300px" }}>
-					<InputGroup {...args} prefixElement={<span>www.</span>} suffixElement={<span>.com</span>}>
+					<InputGroup
+						{...args}
+						prefixElement={<span>www.</span>}
+						suffixElement={<span>.com</span>}
+						radius={currentStyle === "local" ? args.radius : undefined}
+					>
 						<Input type="text" placeholder="Text input example" label="Text" />
 					</InputGroup>
 					<InputGroup
@@ -92,10 +103,16 @@ const Template = (args: InputGroupProps) => {
 							</Button>
 						}
 						suffixElement={<Button color="info" icon={<Search />}></Button>}
+						radius={currentStyle === "local" ? args.radius : undefined}
 					>
 						<Input type="text" placeholder="Text input example" label="Button" />
 					</InputGroup>
-					<InputGroup {...args} prefixElement={<Settings />} suffixElement={<Filter />}>
+					<InputGroup
+						{...args}
+						prefixElement={<Settings />}
+						suffixElement={<Filter />}
+						radius={currentStyle === "local" ? args.radius : undefined}
+					>
 						<Input type="text" placeholder="Text input example" label="Icon" />
 					</InputGroup>
 				</div>
