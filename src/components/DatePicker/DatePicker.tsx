@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import styles from "./datepicker.module.css";
 import {
+	datepickerCalendarVariants,
 	datepickerCellVariants,
 	datepickerDayLabelVariants,
-	datepickerDropdownVariants,
 	datepickerVariants,
 	datepickerWrapperVariants,
 } from "./datepicker.variants";
@@ -27,6 +27,7 @@ import { Tooltip } from "../ToolTip/ToolTip";
 import InputGroup from "../InputGroup/InputGroup";
 import { Input } from "../Input/Input";
 import { createPortal } from "react-dom";
+import { Dialog } from "../Dialog/Dialog";
 
 function getDaysInMonth(year: number, month: number) {
 	return new Date(year, month + 1, 0).getDate();
@@ -66,6 +67,7 @@ export const DatePicker = ({
 	}>({ left: 0, top: 0, direction: "down" });
 	const refInput = useRef<HTMLInputElement>(null);
 	const refDropdown = useRef<HTMLDivElement>(null);
+	const refTempDate = useRef<Date | undefined>(value);
 	const { radiusField } = useUIConfig();
 	const radiusValue = radius || radiusField;
 
@@ -254,17 +256,20 @@ export const DatePicker = ({
 						);
 					})}
 				</div>
+				<Divider spacing={7} />
 				<footer className={styles["lambda-datepicker-footer"]}>
-					<Button
-						type="button"
-						variant="text"
-						color="neutral"
-						size={type === "dropdown" ? "tiny" : "small"}
-						onClick={handleReset}
-						aria-label={t("date-picker.close")}
-						icon={<RotateCcwIcon />}
-						className={clsx(styles["lambda-datepicker-nav-button"])}
-					/>
+					<Tooltip content={t("date-picker.reset")} color="neutral">
+						<Button
+							type="button"
+							variant="text"
+							color="neutral"
+							size={type === "dropdown" ? "tiny" : "small"}
+							onClick={handleReset}
+							aria-label={t("date-picker.close")}
+							icon={<RotateCcwIcon />}
+							className={clsx(styles["lambda-datepicker-nav-button"])}
+						/>
+					</Tooltip>
 				</footer>
 			</div>
 		);
@@ -292,6 +297,20 @@ export const DatePicker = ({
 		}
 		setCalendarPosition({ left: rect.left - offsetX, top, direction });
 		setIsOpen(true);
+		console.log(value);
+		refTempDate.current = value;
+	};
+
+	const handleCloseCalendar = (action: "accept" | "cancel") => {
+		if (action === "accept") {
+			onChange?.(value);
+		} else {
+			onChange?.(refTempDate.current);
+			if (refTempDate.current) {
+				setCurrentDate(refTempDate!.current!);
+			}
+		}
+		setIsOpen(false);
 	};
 
 	// --- cierre automático y listeners ---
@@ -345,13 +364,49 @@ export const DatePicker = ({
 					/>
 				}
 			>
-				<Input ref={refInput} value={value?.toISOString().split("T")[0]} />
+				<Input
+					ref={refInput}
+					value={value?.toLocaleDateString(t("date-picker.code"), {
+						day: "2-digit",
+						month: "long",
+						year: "numeric",
+						weekday: "long",
+					})}
+				/>
 			</InputGroup>
+			{type === "modal" && (
+				<Dialog
+					isOpen={isOpen}
+					onClose={() => setIsOpen(false)}
+					children={<Calendar />}
+					showCloseButton={false}
+					isDraggable
+					footer={
+						<div style={{ display: "flex", gap: "var(--gap-md)" }}>
+							<Button
+								variant="soft"
+								color="neutral"
+								size="small"
+								label={t("date-picker.cancel")}
+								onClick={() => handleCloseCalendar("cancel")}
+							/>
+							<Button
+								variant="soft"
+								color="neutral"
+								size="small"
+								label={t("date-picker.confirm")}
+								onClick={() => handleCloseCalendar("accept")}
+							/>
+						</div>
+					}
+				/>
+			)}
 			{isOpen &&
+				type === "dropdown" &&
 				createPortal(
 					<div
 						ref={refDropdown}
-						className={datepickerDropdownVariants({ type, direction: calendarPosition.direction })}
+						className={datepickerCalendarVariants({ type, direction: calendarPosition.direction })}
 						style={{
 							left: calendarPosition.left,
 							top: calendarPosition.top,

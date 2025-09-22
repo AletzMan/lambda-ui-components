@@ -12,14 +12,18 @@
 	font-family: var(--font-family);
 	padding: var(--padding-md);
 	width: 285px;
+
+	&:is(.lambda-datepicker-modal) {
+		border: none;
+	}
 }
 
-.lambda-datepicker-dropdown {
+.lambda-datepicker-calendar {
 	position: fixed;
-	&:is(.lambda-datepicker-dropdown-down) {
+	&:is(.lambda-datepicker-calendar-down) {
 		animation: animation-dropdown-down 0.2s ease-in-out;
 	}
-	&:is(.lambda-datepicker-dropdown-up) {
+	&:is(.lambda-datepicker-calendar-up) {
 		animation: animation-dropdown-up 0.2s ease-in-out;
 	}
 }
@@ -202,4 +206,9 @@
 .lambda-datepicker-variant-soft {
 	background: var(--surface-a);
 	border: var(--border-width-xs) solid transparent;
+}
+
+.lambda-datepicker-footer {
+	display: flex;
+	justify-content: flex-end;
 }
