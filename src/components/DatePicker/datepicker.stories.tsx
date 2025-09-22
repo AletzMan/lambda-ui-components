@@ -10,15 +10,15 @@ const meta: Meta<typeof DatePicker> = {
 	argTypes: {
 		size: {
 			control: "inline-radio",
-			options: ["compact", "full"],
+			options: ["tiny", "small", "medium", "large"],
 		},
 		type: {
 			control: "inline-radio",
-			options: ["inline", "modal"],
+			options: ["inline", "dropdown"],
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large"],
+			options: ["none", "tiny", "small", "medium", "large", "full"],
 		},
 		minDate: {
 			control: "date",
@@ -39,9 +39,22 @@ type Story = StoryObj<typeof DatePicker>;
 
 const Template = (args: DatePickerProps) => {
 	const [date, setDate] = useState<Date | undefined>(undefined);
+	const [currentStyles, setCurrentStyles] = useState<"global" | "local">("local");
 	return (
-		<ContainerComponent title="Date Picker" subtitle={args.variant?.toString()}>
-			<DatePicker {...args} value={date} onChange={setDate} />
+		<ContainerComponent
+			title="Date Picker"
+			subtitle={args.variant?.toString()}
+			onChangeStyleSource={(value) => setCurrentStyles(value)}
+			styleSource={currentStyles}
+		>
+			<div style={{ paddingTop: 200 }}>
+				<DatePicker
+					{...args}
+					value={date}
+					onChange={setDate}
+					radius={currentStyles === "local" ? args.radius : undefined}
+				/>
+			</div>
 			<div style={{ marginTop: 16 }}>
 				<b>Fecha seleccionada:</b> {date?.toLocaleDateString() || "Ninguna"}
 			</div>
@@ -52,7 +65,7 @@ const Template = (args: DatePickerProps) => {
 export const Default: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		size: "compact",
+		size: "small",
 		radius: "small",
 		variant: "solid",
 		type: "inline",
@@ -62,6 +75,10 @@ export const Default: Story = {
 export const WithMinMax: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
+		size: "small",
+		radius: "small",
+		variant: "solid",
+		type: "inline",
 		minDate: new Date(new Date().getFullYear(), new Date().getMonth(), 5),
 		maxDate: new Date(new Date().getFullYear(), new Date().getMonth(), 25),
 	},
@@ -70,6 +87,10 @@ export const WithMinMax: Story = {
 export const CustomDisabled: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		isDateDisabled: (date) => date.getDay() === 0,
+		size: "small",
+		radius: "small",
+		variant: "solid",
+		type: "inline",
+		isDateDisabled: (date) => date.getDay() === 6 || date.getDay() === 0,
 	},
 };

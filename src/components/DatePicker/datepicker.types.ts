@@ -38,10 +38,6 @@ export interface DatePickerProps {
 	 */
 	variant?: DatePickerVariants["variant"];
 	/**
-	 * Texto de cabecera opcional
-	 */
-	header?: string;
-	/**
 	 * Permite deshabilitar días específicos
 	 */
 	isDateDisabled?: (date: Date) => boolean;
