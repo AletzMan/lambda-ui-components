@@ -16,5 +16,15 @@
 	},
 	"rating": {
 		"text": "Sans note"
+	},
+	"date-picker": {
+		"code": "fr-FR",
+		"header": "Sélectionner une date",
+		"prev-month": "Mois précédent",
+		"next-month": "Mois suivant",
+		"prev-year": "Année précédente",
+		"next-year": "Année suivante",
+		"today": "Aujourd'hui",
+		"days": "Dim, Lun, Mar, Mer, Jeu, Ven, Sam"
 	}
 }

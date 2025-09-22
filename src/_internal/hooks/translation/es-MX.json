@@ -16,5 +16,15 @@
 	},
 	"rating": {
 		"text": "Sin calificar"
+	},
+	"date-picker": {
+		"code": "es-MX",
+		"header": "Seleccionar fecha",
+		"prev-month": "Mes anterior",
+		"next-month": "Mes siguiente",
+		"prev-year": "Año anterior",
+		"next-year": "Año siguiente",
+		"today": "Hoy",
+		"days": "Dom, Lun, Mar, Mie, Jue, Vie, Sab"
 	}
 }

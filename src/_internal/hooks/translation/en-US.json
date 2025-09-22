@@ -16,5 +16,15 @@
 	},
 	"rating": {
 		"text": "Unrated"
+	},
+	"date-picker": {
+		"code": "en-US",
+		"header": "Select Date",
+		"prev-month": "Previous Month",
+		"next-month": "Next Month",
+		"prev-year": "Previous Year",
+		"next-year": "Next Year",
+		"today": "Today",
+		"days": "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
 	}
 }
