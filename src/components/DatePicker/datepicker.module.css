@@ -11,16 +11,7 @@
 	border: 1px solid var(--border-color);
 	font-family: var(--font-family);
 	padding: var(--padding-md);
-
-	&:is(.lambda-datepicker-compact) {
-		min-width: 250px;
-		max-width: 280px;
-	}
-
-	&:is(.lambda-datepicker-full) {
-		min-width: 100%;
-		max-width: 100%;
-	}
+	width: 285px;
 }
 
 .lambda-datepicker-dropdown {
@@ -132,14 +123,6 @@
 		cursor: default;
 		pointer-events: none;
 	}
-
-	&:is(.lambda-datepicker-cell-full) {
-		aspect-ratio: 1;
-		width: 100%;
-		max-width: 80px;
-		max-height: 80px;
-		font-size: calc(var(--font-size-sm) + 0.8svw);
-	}
 }
 
 .lambda-datepicker-cell-selected {
@@ -165,10 +148,6 @@
 	color: var(--primary-base-color);
 	font-weight: var(--font-weight-semibold);
 	border: var(--border-width-xs) solid var(--primary-base-color);
-
-	&:is(.lambda-datepicker-cell-full) {
-		border: var(--border-width-sm) solid var(--primary-base-color);
-	}
 }
 
 .lambda-datepicker-cell-disabled {
@@ -190,6 +169,9 @@
 	border-radius: var(--border-radius-md);
 }
 .lambda-datepicker-radius-large {
+	border-radius: var(--border-radius-lg);
+}
+.lambda-datepicker-radius-full {
 	border-radius: var(--border-radius-lg);
 }
 
@@ -218,6 +200,6 @@
 	border: var(--border-width-xs) solid var(--border-color);
 }
 .lambda-datepicker-variant-soft {
-	background: var(--neutral-opacity-color);
+	background: var(--surface-a);
 	border: var(--border-width-xs) solid transparent;
 }
