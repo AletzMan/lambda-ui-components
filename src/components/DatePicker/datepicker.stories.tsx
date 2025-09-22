@@ -20,6 +20,10 @@ const meta: Meta<typeof DatePicker> = {
 			control: "inline-radio",
 			options: ["none", "tiny", "small", "medium", "large", "full"],
 		},
+		displayFormat: {
+			control: "inline-radio",
+			options: ["short", "medium", "long", "full"],
+		},
 		minDate: {
 			control: "date",
 		},
@@ -47,16 +51,13 @@ const Template = (args: DatePickerProps) => {
 			onChangeStyleSource={(value) => setCurrentStyles(value)}
 			styleSource={currentStyles}
 		>
-			<div style={{ paddingTop: 200, width: "250px" }}>
+			<div style={{ paddingTop: 200, width: "330px" }}>
 				<DatePicker
 					{...args}
 					value={date}
 					onChange={setDate}
 					radius={currentStyles === "local" ? args.radius : undefined}
 				/>
-			</div>
-			<div style={{ marginTop: 16 }}>
-				<b>Fecha seleccionada:</b> {date?.toLocaleDateString() || "Ninguna"}
 			</div>
 		</ContainerComponent>
 	);
@@ -70,6 +71,7 @@ export const Default: Story = {
 		variant: "solid",
 		type: "dropdown",
 		label: "Date",
+		displayFormat: "short",
 	},
 };
 
@@ -83,6 +85,7 @@ export const WithMinMax: Story = {
 		minDate: new Date(new Date().getFullYear(), new Date().getMonth(), 5),
 		maxDate: new Date(new Date().getFullYear(), new Date().getMonth(), 25),
 		label: "Date",
+		displayFormat: "short",
 	},
 };
 
@@ -95,5 +98,6 @@ export const CustomDisabled: Story = {
 		type: "dropdown",
 		isDateDisabled: (date) => date.getDay() === 6 || date.getDay() === 0,
 		label: "Date",
+		displayFormat: "short",
 	},
 };

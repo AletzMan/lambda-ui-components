@@ -54,6 +54,7 @@ export const DatePicker = ({
 	disabled,
 	size,
 	label,
+	displayFormat,
 	type,
 	radius,
 	variant,
@@ -368,10 +369,7 @@ export const DatePicker = ({
 				<Input
 					ref={refInput}
 					value={value?.toLocaleDateString(t("date-picker.code"), {
-						day: "2-digit",
-						month: "long",
-						year: "2-digit",
-						weekday: "long",
+						dateStyle: displayFormat,
 					})}
 					label={label}
 				/>

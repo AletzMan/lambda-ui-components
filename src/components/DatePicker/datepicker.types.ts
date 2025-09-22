@@ -45,4 +45,8 @@ export interface DatePickerProps {
 	 * Permite personalizar el label del calendario
 	 */
 	label?: string;
+	/**
+	 * Permite personalizar el formato de la fecha que se muestra en el input
+	 */
+	displayFormat?: "full" | "long" | "medium" | "short";
 }
