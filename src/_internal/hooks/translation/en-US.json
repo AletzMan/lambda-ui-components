@@ -25,6 +25,9 @@
 		"prev-year": "Previous Year",
 		"next-year": "Next Year",
 		"today": "Today",
-		"days": "Sun, Mon, Tue, Wed, Thu, Fri, Sat"
+		"days": "Sun, Mon, Tue, Wed, Thu, Fri, Sat",
+		"cancel": "Cancel",
+		"confirm": "Confirm",
+		"reset": "Clear selected date"
 	}
 }

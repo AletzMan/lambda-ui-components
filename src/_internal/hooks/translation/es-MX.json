@@ -25,6 +25,9 @@
 		"prev-year": "Año anterior",
 		"next-year": "Año siguiente",
 		"today": "Hoy",
-		"days": "Dom, Lun, Mar, Mie, Jue, Vie, Sab"
+		"days": "Dom, Lun, Mar, Mie, Jue, Vie, Sab",
+		"cancel": "Cancelar",
+		"confirm": "Confirmar",
+		"reset": "Borrar fecha seleccionada"
 	}
 }
