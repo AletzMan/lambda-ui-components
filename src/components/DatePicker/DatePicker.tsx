@@ -53,6 +53,7 @@ export const DatePicker = ({
 	maxDate,
 	disabled,
 	size,
+	label,
 	type,
 	radius,
 	variant,
@@ -369,9 +370,10 @@ export const DatePicker = ({
 					value={value?.toLocaleDateString(t("date-picker.code"), {
 						day: "2-digit",
 						month: "long",
-						year: "numeric",
+						year: "2-digit",
 						weekday: "long",
 					})}
+					label={label}
 				/>
 			</InputGroup>
 			{type === "modal" && (

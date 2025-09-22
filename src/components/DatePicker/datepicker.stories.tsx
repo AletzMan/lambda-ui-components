@@ -69,6 +69,7 @@ export const Default: Story = {
 		radius: "small",
 		variant: "solid",
 		type: "dropdown",
+		label: "Date",
 	},
 };
 
@@ -81,6 +82,7 @@ export const WithMinMax: Story = {
 		type: "dropdown",
 		minDate: new Date(new Date().getFullYear(), new Date().getMonth(), 5),
 		maxDate: new Date(new Date().getFullYear(), new Date().getMonth(), 25),
+		label: "Date",
 	},
 };
 
@@ -92,5 +94,6 @@ export const CustomDisabled: Story = {
 		variant: "solid",
 		type: "dropdown",
 		isDateDisabled: (date) => date.getDay() === 6 || date.getDay() === 0,
+		label: "Date",
 	},
 };

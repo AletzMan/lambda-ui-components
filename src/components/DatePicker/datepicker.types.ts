@@ -41,4 +41,8 @@ export interface DatePickerProps {
 	 * Permite deshabilitar días específicos
 	 */
 	isDateDisabled?: (date: Date) => boolean;
+	/**
+	 * Permite personalizar el label del calendario
+	 */
+	label?: string;
 }
