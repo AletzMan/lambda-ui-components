@@ -70,7 +70,6 @@
 	position: absolute;
 	border-radius: var(--border-radius-sm);
 	max-width: 90%;
-	min-width: 400px;
 	max-height: 90vh;
 	display: flex;
 	flex-direction: column;
@@ -183,7 +182,6 @@
 	height: 100%;
 	color: var(--foreground-color);
 	font-size: var(--font-size-md);
-	padding: var(--padding-lg);
 }
 
 /* Pie del diálogo (área de acciones) */
