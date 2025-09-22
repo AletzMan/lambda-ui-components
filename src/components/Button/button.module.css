@@ -623,86 +623,86 @@
 	border: var(--border-width-xs) solid transparent;
 
 	&.lambda-btn-neutral {
-		color: var(--neutral-text-color);
+		color: var(--neutral-base-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--neutral-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-subtle-color);
+			background-color: var(--neutral-soft-color);
 		}
 	}
 
 	&.lambda-btn-primary {
-		color: var(--primary-text-color);
+		color: var(--primary-base-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--primary-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-subtle-color);
+			background-color: var(--primary-soft-color);
 		}
 	}
 
 	&.lambda-btn-secondary {
-		color: var(--secondary-text-color);
+		color: var(--secondary-base-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--secondary-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-subtle-color);
+			background-color: var(--secondary-soft-color);
 		}
 	}
 
 	&.lambda-btn-success {
-		color: var(--success-text-color);
+		color: var(--success-base-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--success-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-subtle-color);
+			background-color: var(--success-soft-color);
 		}
 	}
 
 	&.lambda-btn-danger {
-		color: var(--danger-text-color);
+		color: var(--danger-base-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--danger-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-subtle-color);
+			background-color: var(--danger-soft-color);
 		}
 	}
 
 	&.lambda-btn-warning {
-		color: var(--warning-text-color);
+		color: var(--warning-base-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--warning-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-subtle-color);
+			background-color: var(--warning-soft-color);
 		}
 	}
 
 	&.lambda-btn-info {
-		color: var(--info-text-color);
+		color: var(--info-base-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background-color: var(--info-opacity-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-subtle-color);
+			background-color: var(--info-soft-color);
 		}
 	}
 }
