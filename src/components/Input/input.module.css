@@ -244,7 +244,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid var(--border-color);
 
-	&:focus-within:not(.lambda-input-wrapper-invalid) {
+	&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
 		outline: 3px solid var(--primary-outline-color);
 		background-color: var(--primary-opacity-color);
 		border-color: var(--primary-base-color);
@@ -260,7 +260,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .lambda-input-wrapper-soft {
 	background-color: var(--surface-a);
 
-	&:focus-within:not(.lambda-input-wrapper-invalid) {
+	&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
 		background-color: var(--primary-opacity-color);
 		outline: 3px solid var(--primary-soft-color);
 	}
@@ -274,7 +274,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	background-color: var(--surface-a);
 	border-bottom: var(--border-width-sm) solid var(--border-color);
 
-	&:focus-within:not(.lambda-input-wrapper-invalid) {
+	&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
 		background-color: var(--primary-opacity-color);
 		border-bottom: var(--border-width-sm) solid var(--primary-base-color);
 	}
@@ -439,7 +439,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	&.lambda-input-wrapper-outline,
 	&.lambda-input-wrapper-underline {
 		border-radius: var(--border-radius-none);
-		&:focus-within:not(.lambda-input-wrapper-invalid) {
+		&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
 			border-color: var(--primary-hover-color);
 		}
 	}
@@ -454,7 +454,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	border-right-color: var(--surface-d);
 	margin-right: -1px;
 
-	&:focus-within:not(.lambda-input-wrapper-invalid) {
+	&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
 		border-right: 1px solid;
 		border-color: var(--primary-hover-color);
 	}
@@ -494,7 +494,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	border-left-color: var(--surface-d);
 	margin-left: -1px;
 
-	&:focus-within:not(.lambda-input-wrapper-invalid) {
+	&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
 		border-left: 1px solid;
 		border-color: var(--primary-hover-color);
 	}
