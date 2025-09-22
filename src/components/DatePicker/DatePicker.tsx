@@ -15,6 +15,7 @@ import {
 	ChevronRightIcon,
 	ChevronsLeftIcon,
 	ChevronsRightIcon,
+	RotateCcwIcon,
 } from "lucide-react";
 import { Button } from "../Button/Button";
 import { Divider } from "../Divider/Divider";
@@ -133,9 +134,16 @@ export const DatePicker = ({
 		return false;
 	};
 
+	const handleReset = () => {
+		setCurrentDate(new Date());
+		onChange?.(undefined);
+	};
+
+	console.log(currentDate);
+
 	const Calendar = () => {
 		return (
-			<div className={datepickerVariants({ size, radius, variant, type })}>
+			<div className={datepickerVariants({ size, radius: radiusValue, variant, type })}>
 				<header className={styles["lambda-datepicker-header"]}>
 					<Tooltip content={t("date-picker.prev-year")} color="neutral">
 						<Button
@@ -246,24 +254,43 @@ export const DatePicker = ({
 						);
 					})}
 				</div>
+				<footer className={styles["lambda-datepicker-footer"]}>
+					<Button
+						type="button"
+						variant="text"
+						color="neutral"
+						size={type === "dropdown" ? "tiny" : "small"}
+						onClick={handleReset}
+						aria-label={t("date-picker.close")}
+						icon={<RotateCcwIcon />}
+						className={clsx(styles["lambda-datepicker-nav-button"])}
+					/>
+				</footer>
 			</div>
 		);
 	};
 
 	const handleOpenCalendar = () => {
+		const offsetInput = {
+			tiny: 7,
+			small: 7,
+			medium: 9,
+			large: 17,
+		};
 		if (!refInput.current) return;
 		const rect = refInput.current.getBoundingClientRect();
-		const calendarHeight = 218; // Ajusta según tu diseño real
-		const offset = 5; // Margen entre input y calendario
+		const offsetY = 5; // Margen entre input y calendario
+		const offsetX = offsetInput[size as keyof typeof offsetInput]; // Margen entre input y calendario
+		const calendarHeight = 225 + offsetY; // Ajusta según tu diseño real
 		const spaceBelow = window.innerHeight - rect.bottom;
 		const spaceAbove = rect.top;
 		let direction: "down" | "up" = "down";
-		let top = rect.bottom + offset;
+		let top = rect.bottom + offsetY;
 		if (spaceBelow < calendarHeight && spaceAbove > calendarHeight) {
 			direction = "up";
 			top = rect.top - calendarHeight;
 		}
-		setCalendarPosition({ left: rect.left - 10, top, direction });
+		setCalendarPosition({ left: rect.left - offsetX, top, direction });
 		setIsOpen(true);
 	};
 

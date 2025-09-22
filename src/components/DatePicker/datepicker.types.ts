@@ -8,7 +8,7 @@ export interface DatePickerProps {
 	/**
 	 * Callback cuando cambia la fecha seleccionada
 	 */
-	onChange?: (date: Date) => void;
+	onChange?: (date: Date | undefined) => void;
 	/**
 	 * Fecha mínima seleccionable
 	 */
