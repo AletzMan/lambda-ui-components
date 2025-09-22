@@ -8,6 +8,12 @@
 	background-color: var(--surface-a);
 }
 
+.lambda-input-group-soft {
+	&:is(.lambda-input-group-elements-last):not(.lambda-input-group-elements-first) {
+		padding-left: 2px;
+	}
+}
+
 .lambda-input-group-tiny {
 	font-size: var(--font-size-xs);
 	height: var(--height-input-xs);
