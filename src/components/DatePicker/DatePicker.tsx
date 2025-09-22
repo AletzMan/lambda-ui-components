@@ -381,6 +381,7 @@ export const DatePicker = ({
 					children={<Calendar />}
 					showCloseButton={false}
 					isDraggable
+					isModal
 					footer={
 						<div style={{ display: "flex", gap: "var(--gap-md)" }}>
 							<Button
