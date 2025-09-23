@@ -174,7 +174,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							type,
 							hasElements,
 						}),
-						{ [styles["lambda-input-wrapper-group"]]: isGroup }
+						{
+							[styles["lambda-input-wrapper-group"]]: isGroup,
+							[styles["lambda-input-wrapper-read-only"]]: props.readOnly,
+						}
 					)}
 				>
 					<div
