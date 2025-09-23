@@ -361,16 +361,20 @@ export const DatePicker = ({
 						<div className={styles["lambda-datepicker-picker-section-months"]}>
 							{t("date-picker.months")
 								.split(",")
-								.map((month, i) => (
+								.map((monthBtn, i) => (
 									<button
 										key={i}
 										type="button"
 										onClick={() => handleCloseMonthPicker(i)}
-										aria-label={month}
-										title={month}
-										className={clsx(styles["lambda-datepicker-picker-section-month"])}
+										aria-label={monthBtn}
+										title={monthBtn}
+										className={clsx(styles["lambda-datepicker-picker-section-month"], {
+											[styles["lambda-datepicker-picker-section-month-soft"]]: variant === "soft",
+											[styles["lambda-datepicker-picker-section-month-selected"]]:
+												month.toString() === i.toString(),
+										})}
 									>
-										{month}
+										{monthBtn}
 									</button>
 								))}
 						</div>
@@ -413,15 +417,20 @@ export const DatePicker = ({
 								<div className={styles["lambda-datepicker-picker-section-years"]}>
 									{Array.from({ length: 15 }, (_, i) => year - i)
 										.reverse()
-										.map((year) => (
+										.map((yearBtn) => (
 											<button
-												key={year}
-												onClick={() => handleCloseYearPicker(year)}
-												aria-label={year.toString()}
-												title={year.toString()}
-												className={clsx(styles["lambda-datepicker-picker-section-year"])}
+												key={yearBtn}
+												onClick={() => handleCloseYearPicker(yearBtn)}
+												aria-label={yearBtn.toString()}
+												title={yearBtn.toString()}
+												className={clsx(styles["lambda-datepicker-picker-section-year"], {
+													[styles["lambda-datepicker-picker-section-year-soft"]]:
+														variant === "soft",
+													[styles["lambda-datepicker-picker-section-year-selected"]]:
+														yearBtn.toString() === year.toString(),
+												})}
 											>
-												{year}
+												{yearBtn}
 											</button>
 										))}
 								</div>

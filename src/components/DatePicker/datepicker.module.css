@@ -418,9 +418,20 @@
 	border: var(--border-width-xs) solid var(--border-color);
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
+	background-color: var(--background-color);
 
-	&:hover {
-		color: var(--foreground-color);
+	&:is(.lambda-datepicker-picker-section-month-soft) {
+		background-color: var(--surface-b);
+		border: var(--border-width-xs) solid transparent;
+	}
+
+	&:is(.lambda-datepicker-picker-section-month-selected) {
+		background-color: var(--primary-opacity-color);
+		color: var(--primary-text-color);
+		border-color: var(--primary-shadow-color);
+	}
+
+	&:hover:not(.lambda-datepicker-picker-section-month-selected) {
 		background-color: var(--primary-opacity-color);
 		color: var(--primary-text-color);
 		border-color: var(--primary-shadow-color);
@@ -447,14 +458,24 @@
 	font-weight: var(--font-weight-reg);
 	font-size: var(--font-size-md);
 	border-radius: var(--border-radius-sm);
-	background-color: transparent;
+	background-color: var(--background-color);
 	color: var(--foreground-secondary-color);
 	border: var(--border-width-xs) solid var(--border-color);
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 
-	&:hover {
-		color: var(--foreground-color);
+	&:is(.lambda-datepicker-picker-section-year-soft) {
+		background-color: var(--surface-b);
+		border: var(--border-width-xs) solid transparent;
+	}
+
+	&:is(.lambda-datepicker-picker-section-year-selected) {
+		background-color: var(--primary-opacity-color);
+		color: var(--primary-text-color);
+		border-color: var(--primary-shadow-color);
+	}
+
+	&:hover:not(.lambda-datepicker-picker-section-year-selected) {
 		background-color: var(--primary-opacity-color);
 		color: var(--primary-text-color);
 		border-color: var(--primary-shadow-color);
