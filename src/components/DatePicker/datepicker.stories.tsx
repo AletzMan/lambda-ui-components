@@ -16,6 +16,12 @@ const meta: Meta<typeof DatePicker> = {
 			control: "inline-radio",
 			options: ["inline", "dropdown", "modal"],
 		},
+		invalid: {
+			control: "boolean",
+		},
+		errorMessage: {
+			control: "text",
+		},
 		radius: {
 			control: "inline-radio",
 			options: ["none", "tiny", "small", "medium", "large", "full"],
@@ -51,7 +57,7 @@ const Template = (args: DatePickerProps) => {
 			onChangeStyleSource={(value) => setCurrentStyles(value)}
 			styleSource={currentStyles}
 		>
-			<div style={{ paddingTop: 200, width: "330px" }}>
+			<div style={{ paddingTop: 150, width: "330px" }}>
 				<DatePicker
 					{...args}
 					value={date}
@@ -72,6 +78,8 @@ export const Default: Story = {
 		type: "dropdown",
 		label: "Date",
 		displayFormat: "short",
+		invalid: false,
+		errorMessage: "",
 	},
 };
 
@@ -86,6 +94,8 @@ export const WithMinMax: Story = {
 		maxDate: new Date(new Date().getFullYear(), new Date().getMonth(), 25),
 		label: "Date",
 		displayFormat: "short",
+		invalid: false,
+		errorMessage: "",
 	},
 };
 
@@ -99,5 +109,7 @@ export const CustomDisabled: Story = {
 		isDateDisabled: (date) => date.getDay() === 6 || date.getDay() === 0,
 		label: "Date",
 		displayFormat: "short",
+		invalid: false,
+		errorMessage: "",
 	},
 };

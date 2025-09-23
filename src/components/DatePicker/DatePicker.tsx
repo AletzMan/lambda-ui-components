@@ -4,6 +4,7 @@ import {
 	datepickerCalendarVariants,
 	datepickerCellVariants,
 	datepickerDayLabelVariants,
+	datepickerInlineSectionVariants,
 	datepickerVariants,
 	datepickerWrapperVariants,
 } from "./datepicker.variants";
@@ -28,6 +29,7 @@ import InputGroup from "../InputGroup/InputGroup";
 import { Input } from "../Input/Input";
 import { createPortal } from "react-dom";
 import { Dialog } from "../Dialog/Dialog";
+import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 
 function getDaysInMonth(year: number, month: number) {
 	return new Date(year, month + 1, 0).getDate();
@@ -58,6 +60,8 @@ export const DatePicker = ({
 	type,
 	radius,
 	variant,
+	errorMessage,
+	invalid = false,
 	isDateDisabled,
 }: DatePickerProps) => {
 	const [currentDate, setCurrentDate] = useState(value ? new Date(value) : new Date());
@@ -147,7 +151,7 @@ export const DatePicker = ({
 
 	const Calendar = () => {
 		return (
-			<div className={datepickerVariants({ size, radius: radiusValue, variant, type })}>
+			<div className={datepickerVariants({ size, radius: radiusValue, variant, type, invalid })}>
 				<header className={styles["lambda-datepicker-header"]}>
 					<Tooltip content={t("date-picker.prev-year")} color="neutral">
 						<Button
@@ -258,21 +262,25 @@ export const DatePicker = ({
 						);
 					})}
 				</div>
-				<Divider spacing={7} />
-				<footer className={styles["lambda-datepicker-footer"]}>
-					<Tooltip content={t("date-picker.reset")} color="neutral">
-						<Button
-							type="button"
-							variant="text"
-							color="neutral"
-							size={type === "dropdown" ? "tiny" : "small"}
-							onClick={handleReset}
-							aria-label={t("date-picker.close")}
-							icon={<RotateCcwIcon />}
-							className={clsx(styles["lambda-datepicker-nav-button"])}
-						/>
-					</Tooltip>
-				</footer>
+				{type === "dropdown" && (
+					<>
+						<Divider spacing={7} />
+						<footer className={styles["lambda-datepicker-footer"]}>
+							<Tooltip content={t("date-picker.reset")} color="neutral">
+								<Button
+									type="button"
+									variant="text"
+									color="neutral"
+									size="tiny"
+									onClick={handleReset}
+									aria-label={t("date-picker.close")}
+									icon={<RotateCcwIcon />}
+									className={clsx(styles["lambda-datepicker-nav-button"])}
+								/>
+							</Tooltip>
+						</footer>
+					</>
+				)}
 			</div>
 		);
 	};
@@ -353,27 +361,69 @@ export const DatePicker = ({
 
 	return (
 		<div className={datepickerWrapperVariants({ size, type })}>
-			<InputGroup
-				size={size}
-				radius={radiusValue}
-				variant={variant === "solid" ? "outline" : variant}
-				suffixElement={
-					<Button
-						variant="text"
-						color="neutral"
-						icon={<CalendarIcon />}
-						onClick={handleOpenCalendar}
+			{type === "inline" && (
+				<div className={datepickerInlineSectionVariants({ radius: radiusValue, invalid })}>
+					<header>
+						<CalendarIcon />
+						<Divider orientation="vertical" spacing={7} />
+						<div>
+							<span>
+								{value?.toLocaleDateString(t("date-picker.code"), {
+									weekday: "long",
+								}) || ""}
+							</span>
+							<span>
+								{value?.toLocaleDateString(t("date-picker.code"), {
+									day: "numeric",
+									month: "long",
+									year: "numeric",
+								}) ||
+									label ||
+									t("date-picker.header")}
+							</span>
+						</div>
+						<Tooltip content={t("date-picker.reset")} color="neutral">
+							<Button
+								type="button"
+								variant="text"
+								color="neutral"
+								size="small"
+								onClick={handleReset}
+								aria-label={t("date-picker.close")}
+								icon={<RotateCcwIcon />}
+								className={clsx(styles["lambda-datepicker-nav-button"])}
+							/>
+						</Tooltip>
+					</header>
+					<Calendar />
+					{invalid && <InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />}
+				</div>
+			)}
+			{(type === "dropdown" || type === "modal") && (
+				<InputGroup
+					size={size}
+					radius={radiusValue}
+					variant={variant === "solid" ? "outline" : variant}
+					errorMessage={errorMessage}
+					invalid={invalid}
+					suffixElement={
+						<Button
+							variant="text"
+							color="neutral"
+							icon={<CalendarIcon />}
+							onClick={handleOpenCalendar}
+						/>
+					}
+				>
+					<Input
+						ref={refInput}
+						value={value?.toLocaleDateString(t("date-picker.code"), {
+							dateStyle: displayFormat,
+						})}
+						label={label}
 					/>
-				}
-			>
-				<Input
-					ref={refInput}
-					value={value?.toLocaleDateString(t("date-picker.code"), {
-						dateStyle: displayFormat,
-					})}
-					label={label}
-				/>
-			</InputGroup>
+				</InputGroup>
+			)}
 			{type === "modal" && (
 				<Dialog
 					isOpen={isOpen}
@@ -383,21 +433,47 @@ export const DatePicker = ({
 					isDraggable
 					isModal
 					footer={
-						<div style={{ display: "flex", gap: "var(--gap-md)" }}>
-							<Button
-								variant="soft"
-								color="neutral"
-								size="small"
-								label={t("date-picker.cancel")}
-								onClick={() => handleCloseCalendar("cancel")}
-							/>
-							<Button
-								variant="soft"
-								color="neutral"
-								size="small"
-								label={t("date-picker.confirm")}
-								onClick={() => handleCloseCalendar("accept")}
-							/>
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								justifyContent: "space-between",
+							}}
+						>
+							<Tooltip content={t("date-picker.reset")} color="neutral">
+								<Button
+									type="button"
+									variant="text"
+									color="neutral"
+									size="small"
+									onClick={handleReset}
+									aria-label={t("date-picker.close")}
+									icon={<RotateCcwIcon />}
+									className={clsx(styles["lambda-datepicker-nav-button"])}
+								/>
+							</Tooltip>
+							<div
+								style={{
+									display: "flex",
+									gap: "var(--gap-md)",
+									justifySelf: "flex-end",
+								}}
+							>
+								<Button
+									variant="soft"
+									color="neutral"
+									size="small"
+									label={t("date-picker.cancel")}
+									onClick={() => handleCloseCalendar("cancel")}
+								/>
+								<Button
+									variant="soft"
+									color="neutral"
+									size="small"
+									label={t("date-picker.confirm")}
+									onClick={() => handleCloseCalendar("accept")}
+								/>
+							</div>
 						</div>
 					}
 				/>

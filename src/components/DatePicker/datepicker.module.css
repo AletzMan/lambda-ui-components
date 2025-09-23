@@ -8,7 +8,6 @@
 	display: flex;
 	flex-direction: column;
 	background: var(--surface-a);
-	border: 1px solid var(--border-color);
 	font-family: var(--font-family);
 	padding: var(--padding-md);
 	width: 285px;
@@ -165,18 +164,43 @@
 }
 .lambda-datepicker-radius-tiny {
 	border-radius: var(--border-radius-xs);
+
+	&:is(.lambda-datepicker-inline) {
+		border-top-left-radius: var(--border-radius-none);
+		border-top-right-radius: var(--border-radius-none);
+	}
 }
 .lambda-datepicker-radius-small {
 	border-radius: var(--border-radius-sm);
+
+	&:is(.lambda-datepicker-inline) {
+		border-top-left-radius: var(--border-radius-none);
+		border-top-right-radius: var(--border-radius-none);
+	}
 }
 .lambda-datepicker-radius-medium {
 	border-radius: var(--border-radius-md);
+
+	&:is(.lambda-datepicker-inline) {
+		border-top-left-radius: var(--border-radius-none);
+		border-top-right-radius: var(--border-radius-none);
+	}
 }
 .lambda-datepicker-radius-large {
 	border-radius: var(--border-radius-lg);
+
+	&:is(.lambda-datepicker-inline) {
+		border-top-left-radius: var(--border-radius-none);
+		border-top-right-radius: var(--border-radius-none);
+	}
 }
 .lambda-datepicker-radius-full {
 	border-radius: var(--border-radius-lg);
+
+	&:is(.lambda-datepicker-inline) {
+		border-top-left-radius: var(--border-radius-none);
+		border-top-right-radius: var(--border-radius-none);
+	}
 }
 
 /* Colores y variantes pueden extenderse según tus tokens */
@@ -202,6 +226,11 @@
 .lambda-datepicker-variant-solid {
 	background: var(--surface-a);
 	border: var(--border-width-xs) solid var(--border-color);
+
+	&:is(.lambda-datepicker-invalid) {
+		border: var(--border-width-xs) dashed var(--danger-base-color);
+		border-top: var(--border-width-xs) solid var(--border-color);
+	}
 }
 .lambda-datepicker-variant-soft {
 	background: var(--surface-a);
@@ -211,4 +240,97 @@
 .lambda-datepicker-footer {
 	display: flex;
 	justify-content: flex-end;
+}
+
+.lambda-datepicker-inline-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-none);
+	width: 285px;
+
+	&:is(.lambda-datepicker-inline-section-radius-none) {
+		& > header {
+			border-top-left-radius: var(--border-radius-none);
+			border-top-right-radius: var(--border-radius-none);
+		}
+	}
+	&:is(.lambda-datepicker-inline-section-radius-tiny) {
+		& > header {
+			border-top-left-radius: var(--border-radius-xs);
+			border-top-right-radius: var(--border-radius-xs);
+		}
+	}
+	&:is(.lambda-datepicker-inline-section-radius-small) {
+		& > header {
+			border-top-left-radius: var(--border-radius-sm);
+			border-top-right-radius: var(--border-radius-sm);
+		}
+	}
+	&:is(.lambda-datepicker-inline-section-radius-medium) {
+		& > header {
+			border-top-left-radius: var(--border-radius-md);
+			border-top-right-radius: var(--border-radius-md);
+		}
+	}
+	&:is(.lambda-datepicker-inline-section-radius-large) {
+		& > header {
+			border-top-left-radius: var(--border-radius-lg);
+			border-top-right-radius: var(--border-radius-lg);
+		}
+	}
+	&:is(.lambda-datepicker-inline-section-radius-full) {
+		& > header {
+			border-top-left-radius: var(--border-radius-lg);
+			border-top-right-radius: var(--border-radius-lg);
+		}
+	}
+
+	& > header {
+		display: grid;
+		grid-template-columns: 2.1em 1em auto 2em;
+		place-items: center center;
+		border: var(--border-width-xs) solid var(--border-color);
+		padding: var(--padding-xs) var(--padding-sm);
+		border-bottom: none;
+		min-height: 45px;
+		width: 100%;
+		background-color: var(--surface-b);
+
+		& > svg {
+			width: 1em;
+			height: 1em;
+			color: var(--neutral-text-color);
+		}
+
+		& > div {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			justify-content: flex-start;
+			width: 100%;
+			font-weight: var(--font-weight-reg);
+
+			& > span:is(:first-child) {
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				font-size: var(--font-size-sm);
+				font-weight: var(--font-weight-reg);
+				color: var(--foreground-title-color);
+				text-transform: capitalize;
+			}
+			& > span:is(:last-child) {
+				font-size: var(--font-size-md);
+				font-weight: var(--font-weight-reg);
+				color: var(--primary-text-color);
+			}
+		}
+	}
+
+	&:is(.lambda-datepicker-inline-section-invalid) {
+		& > header {
+			border: var(--border-width-xs) dashed var(--danger-base-color);
+			border-bottom: none;
+		}
+	}
 }

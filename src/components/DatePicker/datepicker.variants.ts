@@ -42,6 +42,10 @@ export const datepickerVariants = cva(styles["lambda-datepicker"], {
 			solid: styles["lambda-datepicker-variant-solid"],
 			soft: styles["lambda-datepicker-variant-soft"],
 		},
+		invalid: {
+			true: styles["lambda-datepicker-invalid"],
+			false: styles["lambda-datepicker-not-invalid"],
+		},
 	},
 	defaultVariants: {
 		type: "dropdown",
@@ -127,10 +131,36 @@ export const datepickerCalendarVariants = cva(styles["lambda-datepicker-calendar
 			up: styles["lambda-datepicker-calendar-up"],
 			down: styles["lambda-datepicker-calendar-down"],
 		},
+		invalid: {
+			true: styles["lambda-datepicker-calendar-invalid"],
+			false: styles["lambda-datepicker-calendar-not-invalid"],
+		},
 	},
 	defaultVariants: {
 		type: "dropdown",
 		direction: "down",
+		invalid: false,
+	},
+});
+
+export const datepickerInlineSectionVariants = cva(styles["lambda-datepicker-inline-section"], {
+	variants: {
+		radius: {
+			none: styles["lambda-datepicker-inline-section-radius-none"],
+			tiny: styles["lambda-datepicker-inline-section-radius-tiny"],
+			small: styles["lambda-datepicker-inline-section-radius-small"],
+			medium: styles["lambda-datepicker-inline-section-radius-medium"],
+			large: styles["lambda-datepicker-inline-section-radius-large"],
+			full: styles["lambda-datepicker-inline-section-radius-full"],
+		},
+		invalid: {
+			true: styles["lambda-datepicker-inline-section-invalid"],
+			false: styles["lambda-datepicker-inline-section-not-invalid"],
+		},
+	},
+	defaultVariants: {
+		radius: "small",
+		invalid: false,
 	},
 });
 

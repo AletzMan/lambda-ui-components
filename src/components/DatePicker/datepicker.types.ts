@@ -49,4 +49,12 @@ export interface DatePickerProps {
 	 * Permite personalizar el formato de la fecha que se muestra en el input
 	 */
 	displayFormat?: "full" | "long" | "medium" | "short";
+	/**
+	 * Permite personalizar el mensaje de error
+	 */
+	errorMessage?: string;
+	/**
+	 * Permite personalizar el estado de error
+	 */
+	invalid?: boolean;
 }
