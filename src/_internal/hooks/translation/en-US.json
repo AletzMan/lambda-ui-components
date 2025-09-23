@@ -26,6 +26,7 @@
 		"next-year": "Next Year",
 		"today": "Today",
 		"days": "Sun, Mon, Tue, Wed, Thu, Fri, Sat",
+		"months": "Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec",
 		"cancel": "Cancel",
 		"confirm": "Confirm",
 		"reset": "Clear selected date"
