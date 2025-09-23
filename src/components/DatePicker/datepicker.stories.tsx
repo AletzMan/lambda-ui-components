@@ -57,7 +57,7 @@ const Template = (args: DatePickerProps) => {
 			onChangeStyleSource={(value) => setCurrentStyles(value)}
 			styleSource={currentStyles}
 		>
-			<div style={{ paddingTop: 150, width: "330px" }}>
+			<div style={{ paddingTop: 200, width: "330px" }}>
 				<DatePicker
 					{...args}
 					value={date}
@@ -76,7 +76,7 @@ export const Default: Story = {
 		radius: "small",
 		variant: "solid",
 		type: "dropdown",
-		label: "Date",
+		label: "Select Date",
 		displayFormat: "short",
 		invalid: false,
 		errorMessage: "",
@@ -92,7 +92,7 @@ export const WithMinMax: Story = {
 		type: "dropdown",
 		minDate: new Date(new Date().getFullYear(), new Date().getMonth(), 5),
 		maxDate: new Date(new Date().getFullYear(), new Date().getMonth(), 25),
-		label: "Date",
+		label: "Select Date",
 		displayFormat: "short",
 		invalid: false,
 		errorMessage: "",
@@ -107,7 +107,7 @@ export const CustomDisabled: Story = {
 		variant: "solid",
 		type: "dropdown",
 		isDateDisabled: (date) => date.getDay() === 6 || date.getDay() === 0,
-		label: "Date",
+		label: "Select Date",
 		displayFormat: "short",
 		invalid: false,
 		errorMessage: "",

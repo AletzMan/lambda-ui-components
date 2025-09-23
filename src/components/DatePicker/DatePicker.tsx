@@ -66,6 +66,8 @@ export const DatePicker = ({
 }: DatePickerProps) => {
 	const [currentDate, setCurrentDate] = useState(value ? new Date(value) : new Date());
 	const [isOpen, setIsOpen] = useState(false);
+	const [isMonthPickerOpen, setIsMonthPickerOpen] = useState(false);
+	const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
 	const [calendarPosition, setCalendarPosition] = useState<{
 		left: number;
 		top: number;
@@ -74,6 +76,7 @@ export const DatePicker = ({
 	const refInput = useRef<HTMLInputElement>(null);
 	const refDropdown = useRef<HTMLDivElement>(null);
 	const refTempDate = useRef<Date | undefined>(value);
+	const refTempYear = useRef<string>("");
 	const { radiusField } = useUIConfig();
 	const radiusValue = radius || radiusField;
 
@@ -121,6 +124,7 @@ export const DatePicker = ({
 	};
 
 	const handlePrevYear = () => {
+		refTempYear.current = "prev";
 		setCurrentDate((prev) => {
 			const prevYear = new Date(prev.getFullYear() - 1, prev.getMonth(), 1);
 			return prevYear;
@@ -128,6 +132,7 @@ export const DatePicker = ({
 	};
 
 	const handleNextYear = () => {
+		refTempYear.current = "next";
 		setCurrentDate((prev) => {
 			const nextYear = new Date(prev.getFullYear() + 1, prev.getMonth(), 1);
 			return nextYear;
@@ -145,9 +150,42 @@ export const DatePicker = ({
 	const handleReset = () => {
 		setCurrentDate(new Date());
 		onChange?.(undefined);
+		setIsMonthPickerOpen(false);
+		setIsYearPickerOpen(false);
+		refTempYear.current = "";
 	};
 
-	console.log(currentDate);
+	const handleCloseMonthPicker = (month: number) => {
+		setIsMonthPickerOpen(false);
+		setCurrentDate((prev) => {
+			const nextMonth = new Date(prev.getFullYear(), month, 1);
+			return nextMonth;
+		});
+	};
+
+	const handleCloseYearPicker = (year: number) => {
+		setIsYearPickerOpen(false);
+		setCurrentDate((prev) => {
+			const nextYear = new Date(year, prev.getMonth(), 1);
+			return nextYear;
+		});
+	};
+
+	const handlePrevYears = () => {
+		refTempYear.current = "prev";
+		setCurrentDate((prev) => {
+			const prevYear = new Date(prev.getFullYear() - 15, prev.getMonth(), 1);
+			return prevYear;
+		});
+	};
+
+	const handleNextYears = () => {
+		refTempYear.current = "next";
+		setCurrentDate((prev) => {
+			const nextYear = new Date(prev.getFullYear() + 15, prev.getMonth(), 1);
+			return nextYear;
+		});
+	};
 
 	const Calendar = () => {
 		return (
@@ -158,6 +196,7 @@ export const DatePicker = ({
 							type="button"
 							variant="text"
 							color="neutral"
+							title="Previous Year"
 							size={type === "dropdown" ? "tiny" : "small"}
 							onClick={handlePrevYear}
 							aria-label={t("date-picker.prev-year")}
@@ -171,6 +210,7 @@ export const DatePicker = ({
 							type="button"
 							variant="text"
 							color="neutral"
+							title="Previous Month"
 							size={type === "dropdown" ? "tiny" : "small"}
 							onClick={handlePrevMonth}
 							aria-label={t("date-picker.prev-month")}
@@ -183,11 +223,12 @@ export const DatePicker = ({
 						className={styles["lambda-datepicker-title"]}
 						variant="text"
 						color="neutral"
-						size={type === "dropdown" ? "tiny" : "medium"}
+						title="Select Month"
+						size="medium"
 						label={`${currentDate.toLocaleString(t("date-picker.code"), {
 							month: "long",
-							timeZone: "America/Mexico_City",
 						})} ${year}`}
+						onClick={() => setIsMonthPickerOpen(true)}
 					/>
 					<Tooltip content={t("date-picker.next-month")} color="neutral">
 						<Button
@@ -198,6 +239,7 @@ export const DatePicker = ({
 							onClick={handleNextMonth}
 							aria-label={t("date-picker.next-month")}
 							disabled={disabled}
+							title="Next Month"
 							icon={<ChevronRightIcon />}
 							className={clsx(styles["lambda-datepicker-nav-button"])}
 						/>
@@ -211,6 +253,7 @@ export const DatePicker = ({
 							onClick={handleNextYear}
 							aria-label={t("date-picker.next-year")}
 							disabled={disabled}
+							title="Next Year"
 							icon={<ChevronsRightIcon />}
 							className={clsx(styles["lambda-datepicker-nav-button"])}
 						/>
@@ -281,6 +324,111 @@ export const DatePicker = ({
 						</footer>
 					</>
 				)}
+				{isMonthPickerOpen && (
+					<div className={styles["lambda-datepicker-picker-section"]}>
+						<div className={styles["lambda-datepicker-picker-section-header"]}>
+							<Button
+								type="button"
+								variant="text"
+								color="neutral"
+								size="small"
+								onClick={handlePrevYear}
+								aria-label={t("date-picker.close")}
+								title="Previous Year"
+								icon={<ChevronLeftIcon />}
+								className={clsx(styles["lambda-datepicker-nav-button"])}
+							/>
+							<button
+								onClick={() => setIsYearPickerOpen(true)}
+								aria-label={year.toString()}
+								className={styles["lambda-datepicker-picker-section-header-year"]}
+							>
+								{year}
+							</button>
+							<Button
+								type="button"
+								variant="text"
+								color="neutral"
+								size="small"
+								onClick={handleNextYear}
+								aria-label={t("date-picker.close")}
+								title="Next Year"
+								icon={<ChevronRightIcon />}
+								className={clsx(styles["lambda-datepicker-nav-button"])}
+							/>
+						</div>
+
+						<div className={styles["lambda-datepicker-picker-section-months"]}>
+							{t("date-picker.months")
+								.split(",")
+								.map((month, i) => (
+									<button
+										key={i}
+										type="button"
+										onClick={() => handleCloseMonthPicker(i)}
+										aria-label={month}
+										title={month}
+										className={clsx(styles["lambda-datepicker-picker-section-month"])}
+									>
+										{month}
+									</button>
+								))}
+						</div>
+						{isYearPickerOpen && (
+							<div className={styles["lambda-datepicker-picker-section"]}>
+								<div className={styles["lambda-datepicker-picker-section-header"]}>
+									<div className={styles["lambda-datepicker-picker-section-header"]}>
+										<Button
+											type="button"
+											variant="text"
+											color="neutral"
+											size="small"
+											onClick={handlePrevYears}
+											aria-label={t("date-picker.close")}
+											title="Previous Years"
+											icon={<ChevronsLeftIcon />}
+											className={clsx(styles["lambda-datepicker-nav-button"])}
+										/>
+										<span
+											aria-label={year.toString()}
+											title={year.toString()}
+											style={{ cursor: "default", pointerEvents: "none" }}
+											className={styles["lambda-datepicker-picker-section-header-year"]}
+										>
+											{year}
+										</span>
+										<Button
+											type="button"
+											variant="text"
+											color="neutral"
+											size="small"
+											onClick={handleNextYears}
+											aria-label={t("date-picker.close")}
+											title="Next Years"
+											icon={<ChevronsRightIcon />}
+											className={clsx(styles["lambda-datepicker-nav-button"])}
+										/>
+									</div>
+								</div>
+								<div className={styles["lambda-datepicker-picker-section-years"]}>
+									{Array.from({ length: 15 }, (_, i) => year - i)
+										.reverse()
+										.map((year) => (
+											<button
+												key={year}
+												onClick={() => handleCloseYearPicker(year)}
+												aria-label={year.toString()}
+												title={year.toString()}
+												className={clsx(styles["lambda-datepicker-picker-section-year"])}
+											>
+												{year}
+											</button>
+										))}
+								</div>
+							</div>
+						)}
+					</div>
+				)}
 			</div>
 		);
 	};
@@ -296,7 +444,7 @@ export const DatePicker = ({
 		const rect = refInput.current.getBoundingClientRect();
 		const offsetY = 5; // Margen entre input y calendario
 		const offsetX = offsetInput[size as keyof typeof offsetInput]; // Margen entre input y calendario
-		const calendarHeight = 225 + offsetY; // Ajusta según tu diseño real
+		const calendarHeight = 264 + offsetY; // Ajusta según tu diseño real
 		const spaceBelow = window.innerHeight - rect.bottom;
 		const spaceAbove = rect.top;
 		let direction: "down" | "up" = "down";
@@ -335,14 +483,28 @@ export const DatePicker = ({
 				!refInput.current.contains(event.target as Node)
 			) {
 				setIsOpen(false);
+				setIsMonthPickerOpen(false);
+				setIsYearPickerOpen(false);
 			}
 		};
 		const handleScroll = () => setIsOpen(false);
 		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") setIsOpen(false);
+			if (event.key === "Escape") {
+				setIsOpen(false);
+				setIsMonthPickerOpen(false);
+				setIsYearPickerOpen(false);
+			}
 		};
-		const handleResize = () => setIsOpen(false);
-		const handleBlur = () => setIsOpen(false);
+		const handleResize = () => {
+			setIsOpen(false);
+			setIsMonthPickerOpen(false);
+			setIsYearPickerOpen(false);
+		};
+		const handleBlur = () => {
+			setIsOpen(false);
+			setIsMonthPickerOpen(false);
+			setIsYearPickerOpen(false);
+		};
 
 		document.addEventListener("mousedown", handleClickOutside);
 		window.addEventListener("scroll", handleScroll, true);
