@@ -8,8 +8,8 @@ export const calendarWrapperVariants = cva(styles["lambda-calendar-wrapper"], {
 			dropdown: styles["lambda-calendar-wrapper-dropdown"],
 		},
 		size: {
-			compact: styles["lambda-datepicker-wrapper-compact"],
-			full: styles["lambda-datepicker-wrapper-full"],
+			compact: styles["lambda-calendar-wrapper-compact"],
+			full: styles["lambda-calendar-wrapper-full"],
 		},
 	},
 });
@@ -41,6 +41,19 @@ export const calendarVariants = cva(styles["lambda-calendar"], {
 		size: "compact",
 		radius: "small",
 		variant: "solid",
+	},
+});
+
+export const calendarGridVariants = cva(styles["lambda-calendar-grid"], {
+	variants: {
+		type: {
+			inline: styles["lambda-calendar-grid-inline"],
+			dropdown: styles["lambda-calendar-grid-dropdown"],
+		},
+		size: {
+			compact: styles["lambda-calendar-grid-compact"],
+			full: styles["lambda-calendar-grid-full"],
+		},
 	},
 });
 

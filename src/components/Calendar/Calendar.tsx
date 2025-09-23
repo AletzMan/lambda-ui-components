@@ -3,14 +3,13 @@ import styles from "./calendar.module.css";
 import {
 	calendarCellVariants,
 	calendarDayLabelVariants,
-	calendarDropdownVariants,
+	calendarGridVariants,
 	calendarVariants,
 	calendarWrapperVariants,
 } from "./calendar.variants";
 import { CalendarProps } from "./calendar.types";
 import clsx from "clsx";
 import {
-	CalendarIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	ChevronsLeftIcon,
@@ -20,9 +19,6 @@ import { Button } from "../Button/Button";
 import { Divider } from "../Divider/Divider";
 import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { Tooltip } from "../ToolTip/ToolTip";
-import InputGroup from "../InputGroup/InputGroup";
-import { Input } from "../Input/Input";
-import { createPortal } from "react-dom";
 
 function getDaysInMonth(year: number, month: number) {
 	return new Date(year, month + 1, 0).getDate();
@@ -55,11 +51,6 @@ export const Calendar = ({
 }: CalendarProps) => {
 	const [currentDate, setCurrentDate] = useState(value ? new Date(value) : new Date());
 	const [isOpen, setIsOpen] = useState(false);
-	const [calendarPosition, setCalendarPosition] = useState<{
-		left: number;
-		top: number;
-		direction: "down" | "up";
-	}>({ left: 0, top: 0, direction: "down" });
 	const refInput = useRef<HTMLInputElement>(null);
 	const refDropdown = useRef<HTMLDivElement>(null);
 
@@ -128,8 +119,44 @@ export const Calendar = ({
 		return false;
 	};
 
-	const Calendar = () => {
-		return (
+	// --- cierre automático y listeners ---
+	useEffect(() => {
+		if (!isOpen) return;
+
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				refDropdown.current &&
+				!refDropdown.current.contains(event.target as Node) &&
+				refInput.current &&
+				!refInput.current.contains(event.target as Node)
+			) {
+				setIsOpen(false);
+			}
+		};
+		const handleScroll = () => setIsOpen(false);
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape") setIsOpen(false);
+		};
+		const handleResize = () => setIsOpen(false);
+		const handleBlur = () => setIsOpen(false);
+
+		document.addEventListener("mousedown", handleClickOutside);
+		window.addEventListener("scroll", handleScroll, true);
+		document.addEventListener("keydown", handleKeyDown);
+		window.addEventListener("resize", handleResize);
+		window.addEventListener("blur", handleBlur);
+
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+			window.removeEventListener("scroll", handleScroll, true);
+			document.removeEventListener("keydown", handleKeyDown);
+			window.removeEventListener("resize", handleResize);
+			window.removeEventListener("blur", handleBlur);
+		};
+	}, [isOpen]);
+
+	return (
+		<div className={calendarWrapperVariants({ size, type })}>
 			<div className={calendarVariants({ size, radius, variant, type })}>
 				<header className={styles["lambda-calendar-header"]}>
 					<Tooltip content={t("date-picker.prev-year")} color="neutral">
@@ -205,12 +232,14 @@ export const Calendar = ({
 							</span>
 						))}
 				</div>
-				<div className={styles["lambda-calendar-grid"]}>
+				<div className={calendarGridVariants({ type, size })}>
 					{days.map((date, idx) => {
 						if (date?.type === "prev" || date?.type === "next") {
 							return (
 								<span key={idx} className={calendarCellVariants({ type, size, month: false })}>
-									{date?.date.getDate()}
+									<span className={styles["lambda-calendar-cell-date"]}>
+										{date?.date.getDate()}
+									</span>
 								</span>
 							);
 						}
@@ -236,97 +265,12 @@ export const Calendar = ({
 								disabled={outOfRange}
 								aria-label={date!.date.toLocaleDateString()}
 							>
-								{date!.date.getDate()}
+								<span className={styles["lambda-calendar-cell-date"]}>{date!.date.getDate()}</span>
 							</button>
 						);
 					})}
 				</div>
 			</div>
-		);
-	};
-
-	const handleOpenCalendar = () => {
-		if (!refInput.current) return;
-		const rect = refInput.current.getBoundingClientRect();
-		const calendarHeight = 218; // Ajusta según tu diseño real
-		const offset = 5; // Margen entre input y calendario
-		const spaceBelow = window.innerHeight - rect.bottom;
-		const spaceAbove = rect.top;
-		let direction: "down" | "up" = "down";
-		let top = rect.bottom + offset;
-		if (spaceBelow < calendarHeight && spaceAbove > calendarHeight) {
-			direction = "up";
-			top = rect.top - calendarHeight;
-		}
-		setCalendarPosition({ left: rect.left - 10, top, direction });
-		setIsOpen(true);
-	};
-
-	// --- cierre automático y listeners ---
-	useEffect(() => {
-		if (!isOpen) return;
-
-		const handleClickOutside = (event: MouseEvent) => {
-			if (
-				refDropdown.current &&
-				!refDropdown.current.contains(event.target as Node) &&
-				refInput.current &&
-				!refInput.current.contains(event.target as Node)
-			) {
-				setIsOpen(false);
-			}
-		};
-		const handleScroll = () => setIsOpen(false);
-		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") setIsOpen(false);
-		};
-		const handleResize = () => setIsOpen(false);
-		const handleBlur = () => setIsOpen(false);
-
-		document.addEventListener("mousedown", handleClickOutside);
-		window.addEventListener("scroll", handleScroll, true);
-		document.addEventListener("keydown", handleKeyDown);
-		window.addEventListener("resize", handleResize);
-		window.addEventListener("blur", handleBlur);
-
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-			window.removeEventListener("scroll", handleScroll, true);
-			document.removeEventListener("keydown", handleKeyDown);
-			window.removeEventListener("resize", handleResize);
-			window.removeEventListener("blur", handleBlur);
-		};
-	}, [isOpen]);
-
-	return (
-		<div className={calendarWrapperVariants({ size, type })}>
-			<InputGroup
-				suffixElement={
-					<Button
-						variant="text"
-						color="neutral"
-						icon={<CalendarIcon />}
-						onClick={handleOpenCalendar}
-					/>
-				}
-			>
-				<Input ref={refInput} value={value?.toISOString().split("T")[0]} />
-			</InputGroup>
-			{isOpen &&
-				createPortal(
-					<div
-						ref={refDropdown}
-						className={calendarDropdownVariants({ type, direction: calendarPosition.direction })}
-						style={{
-							left: calendarPosition.left,
-							top: calendarPosition.top,
-							zIndex: 9999,
-						}}
-					>
-						<Calendar />
-					</div>,
-					document.body
-				)}
 		</div>
 	);
 };

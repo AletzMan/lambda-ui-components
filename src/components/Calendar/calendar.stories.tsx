@@ -41,11 +41,16 @@ const Template = (args: CalendarProps) => {
 	const [date, setDate] = useState<Date | undefined>(undefined);
 	return (
 		<ContainerComponent title="Calendar" subtitle={args.variant?.toString()}>
-			<div style={{ paddingTop: 200 }}>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "flex-start",
+					width: "100%",
+					height: "100%",
+				}}
+			>
 				<Calendar {...args} value={date} onChange={setDate} />
-			</div>
-			<div style={{ marginTop: 16 }}>
-				<b>Fecha seleccionada:</b> {date?.toLocaleDateString() || "Ninguna"}
 			</div>
 		</ContainerComponent>
 	);

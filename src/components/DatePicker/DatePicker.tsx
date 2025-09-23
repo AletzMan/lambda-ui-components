@@ -592,6 +592,7 @@ export const DatePicker = ({
 							dateStyle: displayFormat,
 						})}
 						label={label}
+						readOnly
 					/>
 				</InputGroup>
 			)}
