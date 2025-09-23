@@ -362,7 +362,7 @@ export const DatePicker = ({
 	return (
 		<div className={datepickerWrapperVariants({ size, type })}>
 			{type === "inline" && (
-				<div className={datepickerInlineSectionVariants({ radius: radiusValue, invalid })}>
+				<div className={datepickerInlineSectionVariants({ radius: radiusValue, invalid, variant })}>
 					<header>
 						<CalendarIcon />
 						<Divider orientation="vertical" spacing={7} />

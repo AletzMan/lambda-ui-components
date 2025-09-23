@@ -145,6 +145,10 @@ export const datepickerCalendarVariants = cva(styles["lambda-datepicker-calendar
 
 export const datepickerInlineSectionVariants = cva(styles["lambda-datepicker-inline-section"], {
 	variants: {
+		variant: {
+			solid: styles["lambda-datepicker-inline-section-solid"],
+			soft: styles["lambda-datepicker-inline-section-soft"],
+		},
 		radius: {
 			none: styles["lambda-datepicker-inline-section-radius-none"],
 			tiny: styles["lambda-datepicker-inline-section-radius-tiny"],

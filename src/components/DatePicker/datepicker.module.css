@@ -235,6 +235,11 @@
 .lambda-datepicker-variant-soft {
 	background: var(--surface-a);
 	border: var(--border-width-xs) solid transparent;
+
+	&:is(.lambda-datepicker-invalid) {
+		border: var(--border-width-xs) dashed var(--danger-base-color);
+		border-top: var(--border-width-xs) solid var(--border-color);
+	}
 }
 
 .lambda-datepicker-footer {
@@ -285,13 +290,24 @@
 		}
 	}
 
+	&:is(.lambda-datepicker-inline-section-solid) {
+		& > header {
+			border: var(--border-width-xs) solid var(--border-color);
+			border-bottom: none;
+		}
+	}
+	&:is(.lambda-datepicker-inline-section-soft) {
+		& > header {
+			border: var(--border-width-xs) solid transparent;
+			border-bottom: none;
+		}
+	}
+
 	& > header {
 		display: grid;
 		grid-template-columns: 2.1em 1em auto 2em;
 		place-items: center center;
-		border: var(--border-width-xs) solid var(--border-color);
 		padding: var(--padding-xs) var(--padding-sm);
-		border-bottom: none;
 		min-height: 45px;
 		width: 100%;
 		background-color: var(--surface-b);
