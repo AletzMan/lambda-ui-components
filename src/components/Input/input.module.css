@@ -246,14 +246,13 @@ input[type="search"]::-webkit-search-cancel-button {
 	border: var(--border-width-xs) solid var(--border-color);
 
 	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
-		outline: 3px solid var(--primary-outline-color);
-		background-color: var(--primary-opacity-color);
+		outline: 3px solid var(--primary-shadow-color);
 		border-color: var(--primary-base-color);
 	}
 
 	&.lambda-input-wrapper-invalid {
+		outline: 3px solid var(--danger-shadow-color);
 		border-color: var(--danger-base-color);
-		background-color: var(--danger-soft-color);
 		border-style: dashed;
 	}
 }
@@ -261,13 +260,12 @@ input[type="search"]::-webkit-search-cancel-button {
 .lambda-input-wrapper-soft {
 	background-color: var(--surface-a);
 
-	&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
-		background-color: var(--primary-opacity-color);
-		outline: 3px solid var(--primary-soft-color);
+	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
+		outline: 3px solid var(--primary-shadow-color);
 	}
 
 	&.lambda-input-wrapper-invalid {
-		background-color: var(--danger-soft-color);
+		outline: 3px solid var(--danger-shadow-color);
 	}
 }
 
@@ -275,8 +273,8 @@ input[type="search"]::-webkit-search-cancel-button {
 	background-color: var(--surface-a);
 	border-bottom: var(--border-width-sm) solid var(--border-color);
 
-	&:focus-within:not(.lambda-input-wrapper-invalid):not(:read-only) {
-		background-color: var(--primary-opacity-color);
+	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
+		outline: 3px solid var(--primary-shadow-color);
 		border-bottom: var(--border-width-sm) solid var(--primary-base-color);
 	}
 
