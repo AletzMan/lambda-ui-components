@@ -14,6 +14,7 @@ import {
 	ChevronRightIcon,
 	ChevronsLeftIcon,
 	ChevronsRightIcon,
+	Circle,
 } from "lucide-react";
 import { Button } from "../Button/Button";
 import { Divider } from "../Divider/Divider";
@@ -43,6 +44,7 @@ export const Calendar = ({
 	minDate,
 	maxDate,
 	disabled,
+	events,
 	size,
 	type,
 	radius = "small",
@@ -266,6 +268,30 @@ export const Calendar = ({
 								aria-label={date!.date.toLocaleDateString()}
 							>
 								<span className={styles["lambda-calendar-cell-date"]}>{date!.date.getDate()}</span>
+								<ul className={styles["lambda-calendar-cell-events"]}>
+									{events
+										?.find((event) => isSameDay(event.date, date!.date))
+										?.label.map((s, i) => (
+											<li className={styles["lambda-calendar-cell-event"]}>
+												<Circle
+													fill={
+														events?.find((event) => isSameDay(event.date, date!.date))?.status[
+															i
+														] === "success"
+															? "var(--success-base-color)"
+															: events?.find((event) => isSameDay(event.date, date!.date))?.status[
+																	i
+															  ] === "warning"
+															? "var(--warning-base-color)"
+															: "var(--danger-base-color)"
+													}
+													stroke="transparent"
+													size={10}
+												/>
+												<span>{s}</span>
+											</li>
+										))}
+								</ul>
 							</button>
 						);
 					})}
