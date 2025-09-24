@@ -87,7 +87,7 @@ const Template = (args: InputGroupProps) => {
 					padding: "var(--padding-lg)",
 				}}
 			>
-				<div style={{ display: "flex", flexDirection: "column", gap: "40px", width: "300px" }}>
+				<div style={{ display: "flex", flexDirection: "column", gap: "40px", width: "350px" }}>
 					<InputGroup
 						{...args}
 						prefixElement={<span>www.</span>}
