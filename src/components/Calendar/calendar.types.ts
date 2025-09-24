@@ -1,5 +1,13 @@
 import { CalendarVariants } from "./calendar.variants";
 
+export type CalendarEventStatus = "success" | "warning" | "danger";
+
+export interface CalendarEvents {
+	date: Date;
+	label: string[];
+	status: CalendarEventStatus[];
+}
+
 export interface CalendarProps {
 	/**
 	 * Fecha actualmente seleccionada
@@ -41,4 +49,8 @@ export interface CalendarProps {
 	 * Permite deshabilitar días específicos
 	 */
 	isDateDisabled?: (date: Date) => boolean;
+	/**
+	 * Permite personalizar los eventos del calendario
+	 */
+	events?: CalendarEvents[];
 }
