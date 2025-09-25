@@ -30,14 +30,6 @@ export interface CalendarProps {
 	 */
 	disabled?: boolean;
 	/**
-	 * Permite personalizar el tamaño del calendario
-	 */
-	size?: CalendarVariants["size"];
-	/**
-	 * Permite personalizar el tipo del calendario
-	 */
-	type?: CalendarVariants["type"];
-	/**
 	 * Permite personalizar el radio del calendario
 	 */
 	radius?: CalendarVariants["radius"];

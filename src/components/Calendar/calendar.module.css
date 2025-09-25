@@ -2,15 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap-md);
-
-	&:is(.lambda-calendar-wrapper-compact) {
-		width: max-content;
-	}
-
-	&:is(.lambda-calendar-wrapper-full) {
-		width: 100%;
-		padding: var(--padding-sm);
-	}
+	width: 100%;
+	padding: var(--padding-sm);
 }
 
 .lambda-calendar {
@@ -20,14 +13,7 @@
 	border: 1px solid var(--border-color);
 	font-family: var(--font-family);
 	padding: var(--padding-md);
-
-	&:is(.lambda-calendar-compact) {
-		width: 285px;
-	}
-
-	&:is(.lambda-calendar-full) {
-		width: 100%;
-	}
+	width: 100%;
 }
 
 .lambda-calendar-header {
@@ -90,11 +76,16 @@
 	text-align: center;
 	padding: var(--padding-xs);
 	font-size: var(--font-size-sm);
-	background: transparent;
-	transition: background 0.2s, color 0.2s;
-	color: var(--foreground-color);
 	min-width: 28px;
 	border: none;
+	aspect-ratio: 1;
+	width: 100%;
+	max-height: 110px;
+	background-color: var(--surface-b);
+	color: var(--foreground-color);
+	border-radius: var(--border-radius-sm);
+	border: var(--border-width-xs) solid var(--border-color);
+	transition: background 0.2s, color 0.2s;
 
 	&:not(.lambda-calendar-cell-selected):not(.lambda-calendar-cell-disabled) {
 		cursor: pointer;
@@ -118,24 +109,12 @@
 		pointer-events: none;
 	}
 
-	&:is(.lambda-calendar-cell-full) {
-		aspect-ratio: 1;
-		width: 100%;
-		max-height: 110px;
-		background-color: var(--surface-b);
-		border-radius: var(--border-radius-sm);
-		border: var(--border-width-xs) solid var(--border-color);
-
-		.lambda-calendar-cell-date {
-			font-size: calc(var(--font-size-xs) + 0.4svw);
-		}
-	}
-
 	.lambda-calendar-cell-date {
 		position: absolute;
 		right: 0;
 		top: 0;
 		width: 1.5em;
+		font-size: calc(var(--font-size-xs) + 0.4svw);
 		height: 1.5em;
 		background-color: var(--surface-b);
 		/*border-left: var(--border-width-xs) solid var(--border-color);

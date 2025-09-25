@@ -45,8 +45,6 @@ export const Calendar = ({
 	maxDate,
 	disabled,
 	events,
-	size,
-	type,
 	radius = "small",
 	variant = "solid",
 	isDateDisabled,
@@ -158,15 +156,15 @@ export const Calendar = ({
 	}, [isOpen]);
 
 	return (
-		<div className={calendarWrapperVariants({ size, type })}>
-			<div className={calendarVariants({ size, radius, variant, type })}>
+		<div className={calendarWrapperVariants({ variant })}>
+			<div className={calendarVariants({ radius, variant })}>
 				<header className={styles["lambda-calendar-header"]}>
 					<Tooltip content={t("date-picker.prev-year")} color="neutral">
 						<Button
 							type="button"
 							variant="text"
 							color="neutral"
-							size={size === "compact" ? "tiny" : "small"}
+							size="small"
 							onClick={handlePrevYear}
 							aria-label={t("date-picker.prev-year")}
 							disabled={disabled}
@@ -179,7 +177,7 @@ export const Calendar = ({
 							type="button"
 							variant="text"
 							color="neutral"
-							size={size === "compact" ? "tiny" : "small"}
+							size="small"
 							onClick={handlePrevMonth}
 							aria-label={t("date-picker.prev-month")}
 							disabled={disabled}
@@ -191,7 +189,7 @@ export const Calendar = ({
 						className={styles["lambda-calendar-title"]}
 						variant="text"
 						color="neutral"
-						size={size === "compact" ? "tiny" : "medium"}
+						size="medium"
 						label={`${currentDate.toLocaleString(t("date-picker.code"), {
 							month: "long",
 							timeZone: "America/Mexico_City",
@@ -202,7 +200,7 @@ export const Calendar = ({
 							type="button"
 							variant="text"
 							color="neutral"
-							size={size === "compact" ? "tiny" : "small"}
+							size="small"
 							onClick={handleNextMonth}
 							aria-label={t("date-picker.next-month")}
 							disabled={disabled}
@@ -215,7 +213,7 @@ export const Calendar = ({
 							type="button"
 							variant="text"
 							color="neutral"
-							size={size === "compact" ? "tiny" : "small"}
+							size="small"
 							onClick={handleNextYear}
 							aria-label={t("date-picker.next-year")}
 							disabled={disabled}
@@ -229,16 +227,16 @@ export const Calendar = ({
 					{t("date-picker.days")
 						.split(",")
 						.map((day, i) => (
-							<span key={i} className={calendarDayLabelVariants({ type, size })}>
+							<span key={i} className={calendarDayLabelVariants({ variant })}>
 								{day}
 							</span>
 						))}
 				</div>
-				<div className={calendarGridVariants({ type, size })}>
+				<div className={calendarGridVariants({ variant })}>
 					{days.map((date, idx) => {
 						if (date?.type === "prev" || date?.type === "next") {
 							return (
-								<span key={idx} className={calendarCellVariants({ type, size, month: false })}>
+								<span key={idx} className={calendarCellVariants({ variant, month: false })}>
 									<span className={styles["lambda-calendar-cell-date"]}>
 										{date?.date.getDate()}
 									</span>
@@ -254,8 +252,6 @@ export const Calendar = ({
 								type="button"
 								className={clsx(
 									calendarCellVariants({
-										type,
-										size,
 										variant,
 										selected,
 										today,

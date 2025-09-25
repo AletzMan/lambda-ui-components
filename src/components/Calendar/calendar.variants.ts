@@ -3,27 +3,18 @@ import styles from "./calendar.module.css";
 
 export const calendarWrapperVariants = cva(styles["lambda-calendar-wrapper"], {
 	variants: {
-		type: {
-			inline: styles["lambda-calendar-wrapper-inline"],
-			dropdown: styles["lambda-calendar-wrapper-dropdown"],
+		variant: {
+			solid: styles["lambda-calendar-wrapper-solid"],
+			soft: styles["lambda-calendar-wrapper-soft"],
 		},
-		size: {
-			compact: styles["lambda-calendar-wrapper-compact"],
-			full: styles["lambda-calendar-wrapper-full"],
-		},
+	},
+	defaultVariants: {
+		variant: "solid",
 	},
 });
 
 export const calendarVariants = cva(styles["lambda-calendar"], {
 	variants: {
-		type: {
-			inline: styles["lambda-calendar-inline"],
-			dropdown: styles["lambda-calendar-dropdown"],
-		},
-		size: {
-			compact: styles["lambda-calendar-compact"],
-			full: styles["lambda-calendar-full"],
-		},
 		radius: {
 			none: styles["lambda-calendar-radius-none"],
 			tiny: styles["lambda-calendar-radius-tiny"],
@@ -37,8 +28,6 @@ export const calendarVariants = cva(styles["lambda-calendar"], {
 		},
 	},
 	defaultVariants: {
-		type: "inline",
-		size: "compact",
 		radius: "small",
 		variant: "solid",
 	},
@@ -46,40 +35,30 @@ export const calendarVariants = cva(styles["lambda-calendar"], {
 
 export const calendarGridVariants = cva(styles["lambda-calendar-grid"], {
 	variants: {
-		type: {
-			inline: styles["lambda-calendar-grid-inline"],
-			dropdown: styles["lambda-calendar-grid-dropdown"],
+		variant: {
+			solid: styles["lambda-calendar-grid-solid"],
+			soft: styles["lambda-calendar-grid-soft"],
 		},
-		size: {
-			compact: styles["lambda-calendar-grid-compact"],
-			full: styles["lambda-calendar-grid-full"],
-		},
+	},
+	defaultVariants: {
+		variant: "solid",
 	},
 });
 
 export const calendarDayLabelVariants = cva(styles["lambda-calendar-day-label"], {
 	variants: {
-		type: {
-			inline: styles["lambda-calendar-day-label-inline"],
-			dropdown: styles["lambda-calendar-day-label-dropdown"],
+		variant: {
+			solid: styles["lambda-calendar-day-label-solid"],
+			soft: styles["lambda-calendar-day-label-soft"],
 		},
-		size: {
-			compact: styles["lambda-calendar-day-label-compact"],
-			full: styles["lambda-calendar-day-label-full"],
-		},
+	},
+	defaultVariants: {
+		variant: "solid",
 	},
 });
 
 export const calendarCellVariants = cva(styles["lambda-calendar-cell"], {
 	variants: {
-		type: {
-			inline: styles["lambda-calendar-cell-inline"],
-			dropdown: styles["lambda-calendar-cell-dropdown"],
-		},
-		size: {
-			compact: styles["lambda-calendar-cell-compact"],
-			full: styles["lambda-calendar-cell-full"],
-		},
 		variant: {
 			solid: styles["lambda-calendar-cell-solid"],
 			soft: styles["lambda-calendar-cell-soft"],
@@ -101,18 +80,29 @@ export const calendarCellVariants = cva(styles["lambda-calendar-cell"], {
 			false: styles["lambda-calendar-cell-not-disabled"],
 		},
 	},
+	defaultVariants: {
+		variant: "solid",
+		selected: false,
+		today: false,
+		month: false,
+		disabled: false,
+	},
 });
 
 export const calendarDropdownVariants = cva(styles["lambda-calendar-dropdown"], {
 	variants: {
-		type: {
-			inline: styles["lambda-calendar-dropdown-inline"],
-			dropdown: styles["lambda-calendar-dropdown-dropdown"],
+		variant: {
+			solid: styles["lambda-calendar-dropdown-solid"],
+			soft: styles["lambda-calendar-dropdown-soft"],
 		},
 		direction: {
 			up: styles["lambda-calendar-dropdown-up"],
 			down: styles["lambda-calendar-dropdown-down"],
 		},
+	},
+	defaultVariants: {
+		variant: "solid",
+		direction: "down",
 	},
 });
 

@@ -8,14 +8,6 @@ const meta: Meta<typeof Calendar> = {
 	title: "Components/Calendar",
 	component: Calendar,
 	argTypes: {
-		size: {
-			control: "inline-radio",
-			options: ["compact", "full"],
-		},
-		type: {
-			control: "inline-radio",
-			options: ["inline", "dropdown"],
-		},
 		radius: {
 			control: "inline-radio",
 			options: ["none", "tiny", "small", "medium", "large"],
@@ -59,10 +51,8 @@ const Template = (args: CalendarProps) => {
 export const Default: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		size: "compact",
 		radius: "small",
 		variant: "solid",
-		type: "inline",
 		events: [
 			{
 				date: new Date(new Date().getFullYear(), new Date().getMonth(), 5),
@@ -96,10 +86,8 @@ export const Default: Story = {
 export const WithMinMax: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		size: "compact",
 		radius: "small",
 		variant: "solid",
-		type: "inline",
 		minDate: new Date(new Date().getFullYear(), new Date().getMonth(), 5),
 		maxDate: new Date(new Date().getFullYear(), new Date().getMonth(), 25),
 	},
@@ -108,10 +96,8 @@ export const WithMinMax: Story = {
 export const CustomDisabled: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		size: "compact",
 		radius: "small",
 		variant: "solid",
-		type: "inline",
 		isDateDisabled: (date) => date.getDay() === 6 || date.getDay() === 0,
 	},
 };
