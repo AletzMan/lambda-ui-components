@@ -9,6 +9,7 @@
 	/* --- Lambda Colors --- */
 
 	/* Primary */
+	/*
 	--lambda-color-primary-050: #eafdf9;
 	--lambda-color-primary-100: #c0f8ee;
 	--lambda-color-primary-200: #96f4e3;
@@ -20,6 +21,18 @@
 	--lambda-color-primary-800: #0b6958;
 	--lambda-color-primary-900: #073f35;
 	--lambda-color-primary-950: #021512;
+	*/
+	--lambda-color-primary-050: #f1ffd5;
+	--lambda-color-primary-100: #e9ffbc;
+	--lambda-color-primary-200: #d8ff89;
+	--lambda-color-primary-300: #c6ff56;
+	--lambda-color-primary-400: #b5ff23;
+	--lambda-color-primary-500: #9fef00;
+	--lambda-color-primary-600: #7dbc00;
+	--lambda-color-primary-700: #5b8900;
+	--lambda-color-primary-800: #395600;
+	--lambda-color-primary-900: #172300;
+	--lambda-color-primary-950: #0c1200;
 
 	/* Secondary */
 	--lambda-color-secondary-050: #f1edfa;
@@ -225,7 +238,7 @@
 [data-theme="light"] {
 	/*--background-color: #ededed;
 	--background-color: #edefef;*/
-	--background-color: #e6ebee;
+	--background-color: #dce4e9;
 	--foreground-color: #424242;
 	--foreground-title-color: #525151;
 	--foreground-secondary-color: #727272;
@@ -252,14 +265,14 @@
 	--surface-h: #505d5b;
 
 */
-	--surface-a: #e6e9e9;
-	--surface-b: #d9dddd;
-	--surface-c: #bec5c5;
-	--surface-d: #a3adad;
-	--surface-e: #889595;
-	--surface-f: #6f7c7c;
-	--surface-g: #566161;
-	--surface-h: #3e4646;
+	--surface-a: #f1f5f9; /* El fondo más claro */
+	--surface-b: #e2e8f0;
+	--surface-c: #cbd5e1;
+	--surface-d: #94a3b8;
+	--surface-e: #64748b;
+	--surface-f: #475569;
+	--surface-g: #334155;
+	--surface-h: #1e293b;
 
 	--border-color: #bec5c5;
 	--border-inverse-color: #c5c3c3;
@@ -383,8 +396,9 @@
 }
 
 [data-theme="dark"] {
-	/*--background-color: #0e0e10;*/
-	--background-color: #151516;
+	/*--background-color: #0e0e10;
+	--background-color: #151516;*/
+	--background-color: #101927;
 	--foreground-color: #d6d6d6;
 	--foreground-title-color: #c4c4c4;
 	--foreground-secondary-color: #888888;
@@ -410,7 +424,7 @@
 	--surface-f: #505050;
 	--surface-g: #5b5b5b;
 	--surface-h: #676767;
-	*/
+	
 
 	--surface-a: #17171b;
 	--surface-b: #202024;
@@ -420,8 +434,18 @@
 	--surface-f: #595b5b;
 	--surface-g: #666668;
 	--surface-h: #737475;
+	*/
 
-	--border-color: #3c3c41;
+	--surface-a: #171f2c;
+	--surface-b: #1d2531;
+	--surface-c: #242b37;
+	--surface-d: #2a313c;
+	--surface-e: #313741;
+	--surface-f: #373d46;
+	--surface-g: #434952;
+	--surface-h: #4f555d;
+
+	--border-color: #313741;
 	--border-inverse-color: #c0c0c0;
 	--shadow-color: #61616130;
 	--shadow-inset-color: #f1f1f155;
