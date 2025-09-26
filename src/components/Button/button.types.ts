@@ -61,4 +61,9 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
 	 * Una etiqueta para accesibilidad (ARIA). Proporciona una descripción concisa para lectores de pantalla, especialmente útil si el botón solo contiene un icono.
 	 */
 	"aria-label"?: string;
+
+	/**
+	 * Indica la posición del hijo dentro del Join(Si el botón está dentro de un Join).
+	 */
+	joinposition?: "first" | "last" | "middle";
 }

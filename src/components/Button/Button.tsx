@@ -22,6 +22,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			iconPosition,
 			loadingText,
 			loading,
+			joinposition,
 			...props
 		},
 		ref
@@ -65,6 +66,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						block,
 						isCircle,
 						className,
+						joinposition,
 					}),
 					{
 						[styles["lambda-btn-only-icon"]]: !(isValidElement<ReactNode>(props.children) || label),

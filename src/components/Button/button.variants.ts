@@ -55,6 +55,12 @@ export const button = cva(styles[`lambda-btn`], {
 			false: styles[`lambda-btn-enabled`],
 			true: styles[`lambda-btn-disabled`],
 		},
+		joinposition: {
+			first: styles[`lambda-btn-first`],
+			middle: styles[`lambda-btn-middle`],
+			last: styles[`lambda-btn-last`],
+			single: styles[`lambda-btn-single`],
+		},
 	},
 	defaultVariants: {
 		color: "primary",
@@ -66,6 +72,7 @@ export const button = cva(styles[`lambda-btn`], {
 		disabled: false,
 		iconPosition: "left",
 		loading: false,
+		joinposition: "single",
 	},
 });
 
