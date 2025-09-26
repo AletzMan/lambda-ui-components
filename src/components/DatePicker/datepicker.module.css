@@ -132,7 +132,7 @@
 }
 
 .lambda-datepicker-cell-selected {
-	background: var(--primary-base-color);
+	background: var(--primary-hover-color);
 	color: var(--white-color);
 	text-shadow: 0 0 1px var(--black-color);
 	animation: datepicker-selected 0.2s ease-in-out;
@@ -151,7 +151,7 @@
 }
 
 .lambda-datepicker-cell-today {
-	color: var(--primary-base-color);
+	color: var(--primary-text-color);
 	font-weight: var(--font-weight-semibold);
 	border: var(--border-width-xs) solid var(--primary-base-color);
 }
