@@ -51,6 +51,23 @@ const Template = (args: JoinProps) => {
 			>
 				<div style={{ display: "flex", flexDirection: "column", gap: "40px", width: "100%" }}>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<Input
+							type="text"
+							placeholder="Text input example"
+							label="Input"
+							helperText="Helper text"
+						/>
+						<Select
+							placeholder="Select"
+							label="Select"
+							options={[
+								{ value: "Option 1", label: "Option 1" },
+								{ value: "Option 2", label: "Option 2" },
+								{ value: "Option 3", label: "Option 3" },
+							]}
+						/>
+					</Join>
+					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
 						<Select
 							placeholder="Select example"
 							label="Select"

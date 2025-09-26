@@ -3,7 +3,6 @@
 	display: flex;
 	flex-direction: column;
 	font-family: var(--font-family);
-	width: max-content;
 
 	&:is(:first-child) {
 		margin-inline-end: -1px;
@@ -222,8 +221,8 @@
 
 	&:focus:not(.select-btn-disabled) {
 		&.select-btn-outline {
-			background-color: var(--primary-opacity-color);
 			border: var(--border-width-xs) solid var(--primary-hover-color);
+			box-shadow: 0 0 0 3px var(--primary-shadow-color);
 			color: var(--primary-text-color);
 		}
 
@@ -432,21 +431,29 @@
 	color: var(--foreground-color);
 	background-color: var(--surface-a);
 	list-style: none;
+
+	.select-view-description {
+		color: var(--foreground-secondary-color);
+	}
 }
 
 .select-option-selected {
-	background-color: var(--primary-base-color);
+	background-color: var(--primary-hover-color);
 	color: var(--white-color);
 	font-weight: var(--font-weight-md);
 	cursor: default;
+
+	.select-view-description {
+		color: var(--lambda-color-neutral-100);
+	}
 }
 
 .select-option:hover:not(.select-option-selected) {
-	background-color: var(--primary-soft-color);
-	color: var(--primary-text-color);
+	background-color: var(--primary-opacity-color);
+	color: var(--foreground-color);
 
 	.select-view-description {
-		color: var(--primary-border-color);
+		color: var(--foreground-color);
 	}
 }
 
@@ -561,9 +568,13 @@
 }
 
 .select-view-description {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	font-size: var(--font-size-sm);
-	color: var(--foreground-secondary-color);
 	font-weight: var(--font-weight-md);
+	text-overflow: ellipsis;
+	white-space: wrap;
 }
 
 .select-option-text-content {
@@ -571,7 +582,10 @@
 	flex-direction: column;
 	padding: var(--border-radius-xs) var(--padding-none);
 	pointer-events: none;
-	width: max-content;
+
+	& > div {
+		width: max-content;
+	}
 
 	.select-view-description {
 		padding: var(--padding-xs) var(--padding-xs);
