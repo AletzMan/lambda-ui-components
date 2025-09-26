@@ -28,13 +28,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	) => {
 		const { radiusField } = useUIConfig();
 		const radiusValue = radius || radiusField;
-		let contextSize, contextDisabled;
+		let contextSize, contextRadius, contextDisabled;
 		try {
 			const context = useJoin();
 			contextSize = context.size;
+			contextRadius = context.radius;
 			contextDisabled = context.disabled;
 		} catch (_e) {
 			contextSize = size;
+			contextRadius = radiusValue;
 			contextDisabled = props.disabled;
 		}
 
@@ -57,7 +59,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						size: contextSize,
 						color,
 						disabled: contextDisabled,
-						radius: radiusValue,
+						radius: contextRadius,
 						loading,
 						iconPosition,
 						block,
