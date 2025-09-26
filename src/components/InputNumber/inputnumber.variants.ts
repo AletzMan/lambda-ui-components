@@ -37,6 +37,12 @@ export const inputNumber = cva(styles["lambda-number"], {
 			false: styles["lambda-number-enabled"],
 			true: styles["lambda-number-disabled"],
 		},
+		joinposition: {
+			first: styles["lambda-number-joinposition-first"],
+			last: styles["lambda-number-joinposition-last"],
+			middle: styles["lambda-number-joinposition-middle"],
+			single: styles["lambda-number-joinposition-single"],
+		},
 	},
 	defaultVariants: {
 		variant: "outline",
@@ -45,6 +51,7 @@ export const inputNumber = cva(styles["lambda-number"], {
 		typeNumber: "default",
 		invalid: false,
 		disabled: false,
+		joinposition: "single",
 	},
 });
 export const wrapper = cva(styles["lambda-number-wrapper"], {

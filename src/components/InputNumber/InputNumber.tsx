@@ -44,6 +44,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 			value: controlledValue,
 			typeNumber = "default",
 			onChange,
+			joinposition,
 			...props
 		},
 		ref
@@ -53,7 +54,6 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		const {
 			displayedValue,
 			numericValue,
-			isEditing,
 			handleChange,
 			handleBlur,
 			handleFocus,
@@ -105,6 +105,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 						typeNumber,
 						size,
 						invalid,
+						joinposition,
 					})}
 				>
 					<div className={styles["lambda-number-container"]}>
@@ -156,13 +157,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 						</div>
 					</div>
 					{helperText && (
-						<HelperText
-							id={helperId}
-							text={helperText}
-							disabled={disabled}
-							focused={isEditing}
-							size={size}
-						/>
+						<HelperText id={helperId} text={helperText} disabled={disabled} size={size} />
 					)}
 				</div>
 				{invalid && errorMessage && (

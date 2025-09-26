@@ -79,4 +79,9 @@ export interface InputNumberProps
 	 * El valor numérico actual que el input debe mostrar. Al usar esta prop, controlas el valor desde el componente padre.
 	 */
 	value?: number;
+
+	/**
+	 * Indica la posición del input dentro de un grupo(join).
+	 */
+	joinposition?: "first" | "last" | "middle";
 }

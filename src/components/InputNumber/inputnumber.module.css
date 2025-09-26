@@ -274,15 +274,14 @@ input[type="number"] {
 	border: var(--border-width-xs) solid var(--border-color);
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		background-color: var(--primary-opacity-color);
 		border: var(--border-width-xs) solid var(--primary-hover-color);
-		outline: 3px solid var(--primary-outline-color);
+		outline: 3px solid var(--primary-shadow-color);
 	}
 
 	&.lambda-number-invalid {
 		border-color: var(--danger-base-color);
 		border-style: dashed;
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 	}
 }
 
@@ -291,12 +290,11 @@ input[type="number"] {
 	border: none;
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		background-color: var(--primary-opacity-color);
-		outline: 3px solid var(--primary-soft-color);
+		outline: 3px solid var(--primary-shadow-color);
 	}
 
 	&.lambda-number-invalid {
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 	}
 }
 
@@ -342,6 +340,20 @@ input[type="number"] {
 
 .lambda-number-radius-full {
 	border-radius: var(--border-radius-pill);
+}
+
+.lambda-number-first {
+	border-top-right-radius: var(--border-radius-none);
+	border-bottom-right-radius: var(--border-radius-none);
+}
+
+.lambda-number-middle {
+	border-radius: var(--border-radius-none);
+}
+
+.lambda-number-last {
+	border-top-left-radius: var(--border-radius-none);
+	border-bottom-left-radius: var(--border-radius-none);
 }
 
 /*--------BUTTONS-------------*/
