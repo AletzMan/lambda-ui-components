@@ -21,7 +21,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
 		{
 			className,
-			variant: propVariant,
+			variant,
 			size: propSize,
 			radius: propRadius,
 			label,
@@ -42,7 +42,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		},
 		ref
 	) => {
-		let contextVariant, contextRadius, contextSize, contextDisabled;
+		let contextRadius, contextSize, contextDisabled;
 		try {
 			const context = useJoin();
 			contextRadius = context.radius;
@@ -164,7 +164,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				<div
 					className={clsx(
 						input({
-							variant: contextVariant,
+							variant,
 							disabled: contextDisabled,
 							radius: radiusValue,
 							size: contextSize,
@@ -206,7 +206,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						{isPasswordType && (
 							<button
 								onClick={togglePasswordVisibility}
-								className={buttonPassword({ size: contextSize, variant: contextVariant })}
+								className={buttonPassword({ size: contextSize, variant })}
 								type="button"
 								aria-label={showPassword ? "Hide password" : "Show password"}
 								aria-pressed={showPassword}

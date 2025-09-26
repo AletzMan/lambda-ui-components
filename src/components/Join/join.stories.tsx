@@ -5,6 +5,7 @@ import Join, { JoinProps } from "./Join";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
+import { SearchIcon } from "lucide-react";
 
 const meta: Meta<typeof Join> = {
 	title: "Components/Join",
@@ -32,7 +33,7 @@ export default meta;
 type Story = StoryObj<typeof Join>;
 
 const Template = (args: JoinProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
+	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
 			title="Input Group"
@@ -68,12 +69,30 @@ const Template = (args: JoinProps) => {
 						<Button type="button" variant="solid" color="neutral" label="Button" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<Input type="text" placeholder="Text input example" floatingLabel label="Name" />
-						<Button type="button" variant="soft" color="neutral" label="Button" />
+						<Input
+							type="text"
+							placeholder="Text input example"
+							floatingLabel
+							label="Name"
+							prefix={<SearchIcon />}
+						/>
+						<Button type="button" variant="subtle" color="warning" label="Search" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<Input type="text" placeholder="Text input example" />
-						<Button type="button" variant="subtle" color="neutral" label="Button" />
+						<Input type="text" placeholder="Text input example" prefix={<SearchIcon />} />
+						<Button type="button" variant="solid" color="info" label="Search" />
+					</Join>
+					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<Button type="button" variant="subtle" color="info" label="Search" />
+						<Button type="button" variant="subtle" color="info" label="Search" />
+						<Button type="button" variant="subtle" color="info" label="Search" />
+					</Join>
+					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<Button type="button" variant="subtle" color="danger" label="Search" />
+						<Button type="button" variant="subtle" color="danger" label="Search" />
+						<Button type="button" variant="subtle" color="danger" label="Search" />
+						<Button type="button" variant="subtle" color="danger" label="Search" />
+						<Button type="button" variant="subtle" color="danger" label="Search" />
 					</Join>
 				</div>
 			</div>
