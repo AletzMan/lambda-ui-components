@@ -82,7 +82,10 @@
 .select-placeholder {
 	color: var(--surface-e);
 	font-style: italic;
-	width: max-content;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
 }
 
 .select-container {
