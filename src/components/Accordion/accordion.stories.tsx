@@ -106,7 +106,7 @@ const PreviewAccordion = (
 								This is the beginning of content that is a bit longer to test scrolling if the
 								Accordion's main container allows it.
 							</p>
-							<div style={{ height: "400px", background: "#e9e9e9" }}></div>
+							<div style={{ height: "200px", background: "#e9e9e9" }}></div>
 							<p>End of long content.</p>
 						</AccordionContent>
 					</AccordionItem>
@@ -136,6 +136,14 @@ export const Flush: Story = {
 
 export const Split: Story = {
 	render: (args) => <PreviewAccordion {...args} variant="split" />,
+	args: {
+		size: "medium",
+		radius: "small",
+	},
+};
+
+export const Soft: Story = {
+	render: (args) => <PreviewAccordion {...args} variant="soft" />,
 	args: {
 		size: "medium",
 		radius: "small",

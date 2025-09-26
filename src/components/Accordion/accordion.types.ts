@@ -131,6 +131,8 @@ export interface AccordionContentFinalInjectedProps extends AccordionContentProp
 	isopen: boolean;
 	headerid: string;
 	contentid: string;
+	variant?: AccordionVariants["variant"];
+	size?: AccordionVariants["size"];
 }
 
 // Interfaz interna para las props que AccordionItem inyecta a Header y Content

@@ -23,6 +23,7 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps
 		const headerIdFinal = injectedPropsFinal.headerid; // ID del header asociado (inyectado)
 		const contentIdFinal = injectedPropsFinal.contentid; // ID de este panel (inyectado)
 		const associatedItemValue = injectedPropsFinal.itemvalue; // Valor del item padre (inyectado, útil para logs)
+		const variant = injectedPropsFinal.variant;
 		const size = injectedPropsFinal.size;
 
 		// --- useLayoutEffect para medir altura y controlar la animación ---
@@ -79,7 +80,7 @@ export const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps
 
 		// --- Clases CSS ---
 		const contentClasses = clsx(
-			accordionContentVariants({ state: isItemOpen ? "open" : "closed", size }),
+			accordionContentVariants({ state: isItemOpen ? "open" : "closed", size, variant }),
 			className
 		);
 

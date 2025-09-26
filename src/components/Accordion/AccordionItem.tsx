@@ -71,6 +71,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
 					isopen: isOpen, // Inyectar si ESTE item está abierto
 					headerid: headerId, // Inyectar el ID del header asociado (de ESTE item)
 					contentid: contentId, // Inyectar el ID de este content (de ESTE item)
+					variant,
 					size,
 					// Pasar props originales del Content también
 					...(child.props as AccordionContentProps),

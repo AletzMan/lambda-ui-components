@@ -22,6 +22,10 @@
 	&:is(.lambda-accordion-radius-large) {
 		border-radius: var(--border-radius-lg);
 	}
+
+	&:is(.lambda-accordion-flush) {
+		border-radius: var(--border-radius-xs);
+	}
 }
 
 /* Variantes del contenedor principal */
@@ -62,12 +66,6 @@
 		}
 	}
 
-	.lambda-accordion-item:last-child {
-		.lambda-accordion-header {
-			border-bottom: 1px solid transparent;
-		}
-	}
-
 	.lambda-accordion-item-open:last-child {
 		.lambda-accordion-header {
 			border-bottom: 1px solid var(--border-color);
@@ -90,6 +88,68 @@
 		.lambda-accordion-header-open {
 			border-bottom: 1px solid var(--border-color);
 		}
+
+		&:is(.lambda-accordion-item-radius-none) {
+			border-radius: var(--border-radius-none);
+
+			.lambda-accordion-header {
+				border-radius: var(--border-radius-none);
+			}
+		}
+
+		&:is(.lambda-accordion-item-radius-tiny) {
+			border-radius: var(--border-radius-xs);
+			overflow: hidden;
+
+			.lambda-accordion-header {
+				border-radius: calc(var(--border-radius-xs) - 1px) calc(var(--border-radius-xs) - 1px)
+					var(--border-radius-none) var(--border-radius-none);
+			}
+		}
+
+		&:is(.lambda-accordion-item-radius-small) {
+			border-radius: var(--border-radius-sm);
+			overflow: hidden;
+
+			.lambda-accordion-header {
+				border-radius: calc(var(--border-radius-sm) - 1px) calc(var(--border-radius-sm) - 1px)
+					var(--border-radius-none) var(--border-radius-none);
+			}
+		}
+
+		&:is(.lambda-accordion-item-radius-medium) {
+			border-radius: var(--border-radius-md);
+			overflow: hidden;
+
+			.lambda-accordion-header {
+				border-radius: calc(var(--border-radius-md) - 1px) calc(var(--border-radius-md) - 1px)
+					var(--border-radius-none) var(--border-radius-none);
+			}
+		}
+
+		&:is(.lambda-accordion-item-radius-large) {
+			border-radius: calc(var(--border-radius-lg) + 4px);
+			overflow: hidden;
+
+			.lambda-accordion-header {
+				border-radius: var(--border-radius-lg) var(--border-radius-lg) var(--border-radius-none)
+					var(--border-radius-none);
+			}
+		}
+	}
+}
+
+.lambda-accordion-soft {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	border-radius: var(--border-radius-none);
+	padding: var(--padding-xs);
+	box-sizing: border-box;
+
+	.lambda-accordion-item {
+		border: var(--border-width-xs) solid var(--neutral-opacity-color);
+		box-sizing: border-box;
 
 		&:is(.lambda-accordion-item-radius-none) {
 			border-radius: var(--border-radius-none);
@@ -202,19 +262,23 @@
 	),
 .lambda-accordion-header:focus-visible:not(.lambda-accordion-header-disabled) {
 	color: var(--foreground-color);
-	background-color: var(--neutral-opacity-color);
+	background-color: var(--surface-b);
 	outline: none;
+
+	&:is(.lambda-accordion-header-flush) {
+		background-color: var(--surface-a);
+	}
 }
 
 /* Variantes del AccordionHeader */
-.lambda-accordion-header-open {
-	background-color: var(--surface-b);
+.lambda-accordion-header-open:not(.lambda-accordion-header-flush) {
+	background-color: var(--surface-a);
 	font-weight: var(--font-weight-md);
 	color: var(--foreground-color);
 }
 
-.lambda-accordion-header-closed {
-	background-color: var(--background-color);
+.lambda-accordion-header-closed:not(.lambda-accordion-header-flush) {
+	background-color: var(--surface-a);
 }
 
 /* Contenedor del icono dentro del header (si existe) */
@@ -251,6 +315,11 @@
 /* Variantes del AccordionContent */
 .lambda-accordion-content-open {
 	background-color: var(--surface-a);
+
+	&:is(.lambda-accordion-content-flush) {
+		border-bottom: var(--border-width-xs) solid var(--border-color);
+		background-color: transparent;
+	}
 }
 
 .lambda-accordion-content-closed {
@@ -280,7 +349,7 @@
 }
 
 .lambda-accordion-item-disabled {
-	opacity: 0.5;
+	opacity: 0.4;
 	cursor: not-allowed;
 	& > .lambda-accordion-header {
 		pointer-events: none;

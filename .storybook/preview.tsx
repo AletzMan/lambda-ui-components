@@ -13,14 +13,17 @@ const ThemeDecorator = (Story, context) => {
 
 	useEffect(() => {
 		document.body.setAttribute("data-theme", theme || "dark");
-		document.body.style.backgroundColor = "var(--background-color)";
+		document.body.style.background =
+			theme === "dark"
+				? "linear-gradient(135deg, var(--background-color) 60%, var(--surface-a) 100%)"
+				: "linear-gradient(135deg, var(--background-color) 60%, var(--surface-a) 100%)";
 		const element = document.getElementById("storybook-docs")?.children[0] as HTMLElement;
 		const container = document.querySelector(".docs-story") as HTMLElement;
 		if (element) {
 			element.style.backgroundColor = "transparent";
 		}
 		if (container) {
-			container.style.backgroundColor = "var(--surface-a)";
+			container.style.background = "var(--surface-a)";
 		}
 	}, [theme, Story, context]);
 
