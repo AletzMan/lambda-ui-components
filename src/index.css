@@ -296,8 +296,8 @@
 	--primary-soft-color: var(--lambda-color-primary-200);
 	--primary-subtle-color: var(--lambda-color-primary-600);
 	--primary-outline-color: var(--lambda-color-primary-200);
-	--primary-base-color: var(--lambda-color-primary-600);
-	--primary-hover-color: var(--lambda-color-primary-500);
+	--primary-base-color: var(--lambda-color-primary-500);
+	--primary-hover-color: var(--lambda-color-primary-600);
 	--primary-disabled-color: var(--lambda-color-primary-900);
 	--primary-border-color: var(--lambda-color-primary-700);
 	--primary-light-color: var(--lambda-color-primary-100);
