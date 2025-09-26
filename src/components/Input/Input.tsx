@@ -5,6 +5,7 @@ import {
 	useState,
 	MouseEvent,
 	useId,
+	InputHTMLAttributes,
 } from "react";
 import styles from "./input.module.css";
 import { CircleX, Eye, EyeOff, X } from "lucide-react";
@@ -27,6 +28,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			invalid,
 			errorMessage,
 			disabled,
+			prefix,
+			suffix,
 			type = "text",
 			value: controlledValue,
 			onChange,
@@ -38,13 +41,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		},
 		ref
 	) => {
-		let contextVariant,
-			contextRadius,
-			contextSize,
-			isGroup,
-			contextDisabled,
-			contextInvalid,
-			hasElements: "none" | "first" | "last" | "both";
+		let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextInvalid;
 		try {
 			const context = useInputGroup();
 			contextVariant = context.variant;
@@ -52,7 +49,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			contextSize = context.size;
 			contextDisabled = disabled || context.disabled;
 			contextInvalid = context.invalid;
-			hasElements = context.hasElements;
 			isGroup = true;
 		} catch (_e) {
 			contextVariant = propVariant;
@@ -61,7 +57,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			contextDisabled = disabled;
 			contextInvalid = invalid;
 			isGroup = false;
-			hasElements = "none";
 		}
 		const [showPassword, setShowPassword] = useState(false);
 		const [internalValue, setInternalValue] = useState("");
@@ -124,7 +119,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		};
 
 		const inputPlaceholder = floatingLabel ? "" : placeholder;
-
+		console.log(helperText);
 		return (
 			<div
 				className={clsx(
@@ -133,6 +128,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						disabled: contextDisabled,
 						size: contextSize,
 						invalid: contextInvalid,
+						hasLabel: floatingLabel || label !== "",
+						hasHelper: helperText !== "",
 						className,
 					}),
 					{
@@ -143,12 +140,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			>
 				{label && (
 					<label
-						className={clsx(labels({ radius: radiusField, size: contextSize, hasElements }), {
-							[styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,
-							[styles["lambda-input-label-default"]]: floatingLabel && !isLabelFloating,
-							[styles["lambda-input-label-placeholder"]]: floatingLabel && !isLabelFloating,
-							[styles["lambda-input-label-required"]]: required,
-						})}
+						className={clsx(
+							labels({
+								radius: radiusField,
+								size: contextSize,
+								hasElements: prefix ? "first" : "none",
+							}),
+							{
+								[styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,
+								[styles["lambda-input-label-default"]]: floatingLabel && !isLabelFloating,
+								[styles["lambda-input-label-placeholder"]]: floatingLabel && !isLabelFloating,
+								[styles["lambda-input-label-required"]]: required,
+							}
+						)}
 						htmlFor={inputId}
 					>
 						{`${label as string}`}
@@ -160,9 +164,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						text={helperText}
 						size={contextSize}
 						disabled={contextDisabled}
-						focused={isFocused}
 					/>
 				)}
+
 				<div
 					className={clsx(
 						input({
@@ -172,7 +176,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							size: contextSize,
 							invalid: contextInvalid,
 							type,
-							hasElements,
+							hasElements: "none",
 						}),
 						{
 							[styles["lambda-input-wrapper-group"]]: isGroup,
@@ -180,6 +184,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						}
 					)}
 				>
+					{prefix && <div className={styles["lambda-input-prefix"]}>{prefix}</div>}
 					<div
 						className={clsx(styles["lambda-input-input-wrapper"], {
 							[styles["lambda-input-input-wrapper-password"]]: isPasswordType || isSearchType,
@@ -202,7 +207,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							})}
 							disabled={contextDisabled || undefined}
 							placeholder={inputPlaceholder}
-							{...props}
+							{...(props as InputHTMLAttributes<HTMLInputElement>)}
 						/>
 						{isPasswordType && (
 							<button
@@ -237,6 +242,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							/>
 						)}
 					</div>
+
+					{suffix && <div className={styles["lambda-input-suffix"]}>{suffix}</div>}
 				</div>
 				{contextInvalid && errorMessage && !isGroup && (
 					<InvalidMessage

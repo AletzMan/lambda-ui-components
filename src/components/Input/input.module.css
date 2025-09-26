@@ -28,6 +28,12 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 }
 
+.lambda-input-suffix,
+.lambda-input-prefix {
+	display: flex;
+	color: var(--surface-h);
+}
+
 .lambda-input {
 	position: relative;
 	display: flex;
@@ -62,6 +68,20 @@ input[type="search"]::-webkit-search-cancel-button {
 	&.lambda-input-invalid {
 		margin: 0 0 0.25em 0;
 	}
+
+	&:is(.lambda-input-has-label) {
+		margin: var(--padding-lg) 0 0 0;
+	}
+
+	&:is(.lambda-input-has-helper) {
+		margin: 0 0 var(--padding-lg) 0;
+	}
+
+	&:is(.lambda-input-has-label) {
+		&:is(.lambda-input-has-helper) {
+			margin: var(--padding-lg) 0 var(--padding-lg) 0;
+		}
+	}
 }
 
 .lambda-input-field {
@@ -77,7 +97,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	&::placeholder {
 		color: var(--placeholder-color);
 		font-family: var(--font-family);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-reg);
 	}
 
 	&.lambda-input-field-tiny {
@@ -242,7 +262,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .lambda-input-wrapper-outline {
-	background-color: var(--surface-a);
+	background-color: var(--background-color);
 	border: var(--border-width-xs) solid var(--border-color);
 
 	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
@@ -265,44 +285,85 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 
 	&.lambda-input-wrapper-invalid {
+		background-color: var(--danger-opacity-color);
 		outline: 3px solid var(--danger-shadow-color);
 	}
 }
 
 .lambda-input-wrapper-underline {
 	background-color: var(--surface-a);
+	border: var(--border-width-xs) solid transparent;
 	border-bottom: var(--border-width-sm) solid var(--border-color);
 
 	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
-		outline: 3px solid var(--primary-shadow-color);
 		border-bottom: var(--border-width-sm) solid var(--primary-base-color);
 	}
 
 	&.lambda-input-wrapper-invalid {
 		border-bottom: var(--border-width-sm) var(--danger-base-color);
 		border-style: dashed;
-		background-color: var(--danger-soft-color);
+		background-color: var(--danger-opacity-color);
 	}
 }
 
 .lambda-input-wrapper-tiny {
 	padding: var(--padding-none) var(--padding-sm);
 	height: var(--height-input-xs);
+	gap: var(--gap-sm);
+
+	.lambda-input-suffix,
+	.lambda-input-prefix {
+		font-size: var(--font-size-xs);
+		& > svg {
+			width: var(--icon-size-sm);
+			height: var(--icon-size-sm);
+		}
+	}
 }
 
 .lambda-input-wrapper-small {
 	padding: var(--padding-none) var(--padding-sm);
 	height: var(--height-input-sm);
+	gap: var(--gap-sm);
+
+	.lambda-input-suffix,
+	.lambda-input-prefix {
+		font-size: var(--font-size-xs);
+		& > svg {
+			width: var(--icon-size-sm);
+			height: var(--icon-size-sm);
+		}
+	}
 }
 
 .lambda-input-wrapper-medium {
 	padding: var(--padding-none) var(--padding-md);
 	height: var(--height-input-md);
+	gap: var(--gap-md);
+
+	.lambda-input-suffix,
+	.lambda-input-prefix {
+		font-size: var(--font-size-sm);
+		& > svg {
+			width: var(--icon-size-md);
+			height: var(--icon-size-md);
+		}
+	}
 }
 
 .lambda-input-wrapper-large {
 	padding: var(--padding-none) var(--padding-lg);
 	height: var(--height-input-lg);
+	gap: var(--gap-lg);
+
+	.lambda-input-suffix,
+	.lambda-input-prefix {
+		font-size: var(--font-size-md);
+		& > svg {
+			width: var(--icon-size-lg);
+			height: var(--icon-size-lg);
+		}
+	}
 }
 
 .lambda-input-wrapper-radius-none {
@@ -401,21 +462,27 @@ input[type="search"]::-webkit-search-cancel-button {
 	color: var(--placeholder-color);
 	pointer-events: none;
 
-	&.lambda-input-label-tiny {
+	&:is(.lambda-input-label-tiny) {
 		font-size: var(--font-size-xs);
 		transform: translateY(20px) translateX(5px) scale(1);
+
+		&:is(.lambda-input-label-elements-first) {
+			transform: translateY(20px) translateX(5px) scale(1);
+		}
 	}
 
-	&.lambda-input-label-small {
+	&:is(.lambda-input-label-small) {
 		font-size: var(--font-size-sm);
 		transform: translateY(24px) translateX(5px) scale(1);
 	}
 
-	&.lambda-input-label-medium {
+	&:is(.lambda-input-label-medium) {
 		font-size: var(--font-size-sm);
 		transform: translateY(27px) translateX(6px) scale(1);
 
-		&.lambda-input-label-elements-first {
+		&:is(.lambda-input-label-elements-first) {
+			transform: translateY(27px) translateX(30px) scale(1);
+
 			&.lambda-input-label-radius-pill {
 				transform: translateY(30px) translateX(0px) scale(1);
 			}

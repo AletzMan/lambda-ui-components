@@ -16,24 +16,17 @@
 
 .lambda-helper {
 	position: absolute;
-	left: 0;
+	left: var(--padding-sm);
 	bottom: 0;
-	opacity: 0;
+	opacity: 1;
 	font-family: var(--font-family);
-	font-style: italic;
 	font-weight: var(--font-weight-reg);
 	font-size: var(--font-size-xs);
-	color: var(--surface-f);
-	transform: translateY(0);
+	color: var(--foreground-helper-color);
+	transform: translateY(15px);
 	transition: all 0.3s ease-in-out;
-	z-index: -1;
+}
 
-	&.lambda-helper-disabled {
-		color: var(--surface-c);
-	}
-
-	&.lambda-helper-focused {
-		opacity: 1;
-		transform: translateY(15px);
-	}
+.lambda-helper-disabled {
+	opacity: 0.5;
 }

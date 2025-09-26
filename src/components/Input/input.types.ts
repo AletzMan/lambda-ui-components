@@ -3,7 +3,7 @@ import { InputVariants } from "./input.variants";
 export interface InputProps
 	extends Omit<
 		React.InputHTMLAttributes<HTMLInputElement>,
-		"disabled" | "size" | "type" | "onChange" | "value" | "placeholder"
+		"disabled" | "size" | "type" | "onChange" | "value" | "placeholder" | "prefix" | "suffix"
 	> {
 	/**
 	 * Define el tamaño visual del input, ajustando el padding y el tamaño del texto.
@@ -36,11 +36,6 @@ export interface InputProps
 	type?: InputVariants["type"];
 
 	/**
-	 * Indica si el input tiene elementos adicionales a los lados (como iconos o botones), lo que puede afectar el espaciado interno (padding).
-	 */
-	hasElements?: InputVariants["hasElements"];
-
-	/**
 	 * Una etiqueta de texto asociada al input, que generalmente aparece sobre o junto a él.
 	 */
 	label?: string;
@@ -64,6 +59,16 @@ export interface InputProps
 	 * Indica que este campo debe ser llenado para que un formulario sea válido.
 	 */
 	required?: boolean;
+
+	/**
+	 * Un elemento React que se muestra antes del valor del input, como un icono o un botón.
+	 */
+	prefix?: React.ReactNode | string | undefined;
+
+	/**
+	 * Un elemento React que se muestra después del valor del input, como un icono o un botón.
+	 */
+	suffix?: React.ReactNode | string | undefined;
 
 	/**
 	 * Una función que se ejecuta cada vez que el texto en el input es modificado por el usuario. Recibe el valor actual del input como un string.

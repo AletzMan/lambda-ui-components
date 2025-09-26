@@ -25,10 +25,19 @@ export const lambdaInput = cva(styles["lambda-input"], {
 			true: styles["lambda-input-invalid"],
 			false: "",
 		},
+		hasLabel: {
+			true: styles["lambda-input-has-label"],
+			false: "",
+		},
+		hasHelper: {
+			true: styles["lambda-input-has-helper"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		radius: "tiny",
 		disabled: false,
+		hasLabel: false,
 	},
 });
 export const input = cva(styles["lambda-input-wrapper"], {
