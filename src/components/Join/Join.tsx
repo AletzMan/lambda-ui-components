@@ -6,12 +6,14 @@ import {
 	PropsWithChildren,
 	useContext,
 	RefAttributes,
+	Attributes,
 } from "react";
 import styles from "./join.module.css";
 import clsx from "clsx";
 import { VariantProps } from "class-variance-authority";
 import { join, JoinVariants, joinWrapper } from "./join.variants";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import React from "react";
 
 type JoinContextType = {
 	/** Tamaño del componente */
@@ -42,6 +44,21 @@ export const Join = forwardRef<HTMLDivElement, PropsWithChildren<JoinProps>>(
 			[size, radiusValue, disabled]
 		);
 
+		const childrenConAtributo = React.Children.map(children, (child, index) => {
+			// 1. Verificar si el nodo es un elemento válido de React (no un string, null, etc.)
+			if (React.isValidElement(child)) {
+				const childrenPosition =
+					index === 0 ? "first" : index === React.Children.count(children) - 1 ? "last" : "middle";
+				// 2. Clonar el elemento, pasando un objeto con las nuevas props a agregar.
+				return React.cloneElement(child, {
+					joinposition: `${childrenPosition}`,
+					// Las props originales del hijo se mantienen y las nuevas se fusionan
+				} as Attributes);
+			}
+
+			// Devolver el nodo original si no es un elemento válido
+			return child;
+		});
 		return (
 			<JoinContext.Provider value={contextValue}>
 				<div className={styles["lambda-input-group-container"]}>
@@ -55,7 +72,7 @@ export const Join = forwardRef<HTMLDivElement, PropsWithChildren<JoinProps>>(
 							})
 						)}
 					>
-						<div className={clsx(joinWrapper({ size }))}>{children}</div>
+						<div className={clsx(joinWrapper({ size }))}>{childrenConAtributo}</div>
 					</div>
 				</div>
 			</JoinContext.Provider>

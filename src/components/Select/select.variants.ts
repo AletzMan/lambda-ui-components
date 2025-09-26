@@ -68,6 +68,11 @@ export const buttonSelect = cva(styles["select-btn"], {
 			true: styles["select-btn-invalid"],
 			false: "",
 		},
+		joinposition: {
+			first: styles["select-btn-first"],
+			last: styles["select-btn-last"],
+			middle: styles["select-btn-middle"],
+		},
 	},
 	defaultVariants: {
 		variant: "outline",

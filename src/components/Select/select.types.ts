@@ -1,4 +1,4 @@
-import { SelectHTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 import { SelectVariants } from "./select.variants";
 
@@ -23,7 +23,7 @@ export interface IListCollection {
 
 export interface SelectProps
 	extends Omit<
-		SelectHTMLAttributes<HTMLSelectElement>,
+		HTMLAttributes<HTMLDivElement>,
 		"size" | "disabled" | "value" | "onChange" | "placeholder" | "required" | "multiple" | "name"
 	> {
 	/**
@@ -103,4 +103,9 @@ export interface SelectProps
 	 * Es útil para la serialización de formularios.
 	 */
 	name?: string;
+
+	/**
+	 * Indica la posición del hijo dentro del Join(Si el select está dentro de un Join).
+	 */
+	joinposition?: "first" | "last" | "middle";
 }

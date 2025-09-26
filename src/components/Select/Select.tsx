@@ -22,7 +22,7 @@ import { InvalidMessage } from "../../_internal/components/InvalidMessage/Invali
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
 
-export const Select = forwardRef<HTMLButtonElement, SelectProps>(
+export const Select = forwardRef<HTMLDivElement, SelectProps>(
 	(
 		{
 			label,
@@ -39,6 +39,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			placeholder = "Select an option",
 			onChange,
 			className,
+			...props
 		},
 		ref
 	) => {
@@ -48,9 +49,16 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 		);
 		const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
 		const { radiusField } = useUIConfig();
-		const { radius: joinRadius, size: joinSize } = useJoin();
-		const radiusValue = joinRadius || radius || radiusField;
-		const sizeValue = joinSize || size;
+		let radiusValue = radius || radiusField;
+		let sizeValue = size;
+
+		try {
+			const { radius: joinRadius, size: joinSize } = useJoin();
+			radiusValue = joinRadius || radius || radiusField;
+			sizeValue = joinSize || size;
+		} catch (error) {
+			console.log(error);
+		}
 
 		const containerRef = useRef<HTMLDivElement>(null);
 		const buttonRef = useRef<HTMLButtonElement>(null);
@@ -142,7 +150,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			});
 
 		const selectedOption = options.find((opt) => opt.value === selectedValue);
-
+		console.log(props!.joinposition);
 		return (
 			<div
 				className={clsx(
@@ -150,7 +158,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 					{ [styles["select-wrapper-disabled"]]: disabled },
 					className
 				)}
-				ref={containerRef}
+				ref={ref || containerRef}
+				{...props}
 			>
 				{label && (
 					<label
@@ -173,10 +182,11 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 							radius: radiusValue,
 							invalid,
 							disabled,
+							joinposition: props!.joinposition,
 						})}
 						onClick={handleButtonClick}
 						disabled={disabled}
-						ref={ref || buttonRef}
+						ref={buttonRef}
 						{...getButtonProps()}
 					>
 						{selectedOption ? (

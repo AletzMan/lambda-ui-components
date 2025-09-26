@@ -201,6 +201,20 @@
 		border-radius: var(--border-radius-pill);
 	}
 
+	&.select-btn-first {
+		border-top-right-radius: var(--border-radius-none);
+		border-bottom-right-radius: var(--border-radius-none);
+	}
+
+	&.select-btn-middle {
+		border-radius: var(--border-radius-none);
+	}
+
+	&.select-btn-last {
+		border-top-left-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--border-radius-none);
+	}
+
 	&:focus:not(.select-btn-disabled) {
 		&.select-btn-outline {
 			background-color: var(--primary-opacity-color);

@@ -84,4 +84,9 @@ export interface InputProps
 	 * Texto que aparece dentro del input cuando está vacío y no tiene foco, sirviendo como pista para el usuario.
 	 */
 	placeholder?: string;
+
+	/**
+	 * Indica la posición del hijo dentro del Join(Si el input está dentro de un Join).
+	 */
+	joinposition?: "first" | "last" | "middle";
 }
