@@ -3,6 +3,7 @@ import { Input } from "./Input";
 import { InputProps } from "./input.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { useState } from "react";
+import { Card } from "../Card/Card";
 
 const meta: Meta<typeof Input> = {
 	title: "Components/Input",
@@ -86,38 +87,46 @@ const Template = (args: InputProps) => {
 					padding: "var(--padding-lg)",
 				}}
 			>
-				<div
-					style={{ display: "flex", flexDirection: "column", gap: "var(--gap-xl", width: "300px" }}
-				>
-					<Input
-						{...args}
-						type="text"
-						placeholder="Text input example"
-						label="Text"
-						radius={currentStyle === "local" ? args.radius : undefined}
-					/>
-					<Input
-						{...args}
-						type="password"
-						placeholder="Password input example"
-						label="Password"
-						radius={currentStyle === "local" ? args.radius : undefined}
-					/>
-					<Input
-						{...args}
-						type="email"
-						placeholder="Email input example"
-						label="Email"
-						radius={currentStyle === "local" ? args.radius : undefined}
-					/>
-					<Input
-						{...args}
-						type="search"
-						placeholder="Search input example"
-						label="Search"
-						radius={currentStyle === "local" ? args.radius : undefined}
-					/>
-				</div>
+				<Card>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							padding: "var(--padding-xs)",
+							gap: "var(--gap-xl",
+							width: "300px",
+						}}
+					>
+						<Input
+							{...args}
+							type="text"
+							placeholder="Text input example"
+							label="Text"
+							radius={currentStyle === "local" ? args.radius : undefined}
+						/>
+						<Input
+							{...args}
+							type="password"
+							placeholder="Password input example"
+							label="Password"
+							radius={currentStyle === "local" ? args.radius : undefined}
+						/>
+						<Input
+							{...args}
+							type="email"
+							placeholder="Email input example"
+							label="Email"
+							radius={currentStyle === "local" ? args.radius : undefined}
+						/>
+						<Input
+							{...args}
+							type="search"
+							placeholder="Search input example"
+							label="Search"
+							radius={currentStyle === "local" ? args.radius : undefined}
+						/>
+					</div>
+				</Card>
 			</div>
 		</ContainerComponent>
 	);

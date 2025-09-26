@@ -326,6 +326,7 @@
 	transition: all 0.2s ease;
 	background-color: var(--primary-base-color);
 	color: var(--white-color);
+	text-shadow: 0 0 1px var(--black-color);
 
 	&:hover:not(.lambda-file-upload-button-file-upload-disabled):not(
 			.lambda-file-upload-button-file-upload-invalid

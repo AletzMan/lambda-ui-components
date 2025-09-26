@@ -195,6 +195,7 @@
 
 	&.lambda-btn-primary {
 		background: var(--primary-base-color);
+		text-shadow: 0 0 1px var(--black-color);
 	}
 
 	&.lambda-btn-secondary {

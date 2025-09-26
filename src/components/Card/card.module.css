@@ -1,11 +1,12 @@
 .lambda-card {
 	display: flex;
 	flex-direction: column;
-	background-color: var(--surface-b);
 	min-width: 5em;
 	min-height: 2em;
 	height: 100%;
+	background-color: var(--background-color);
 	font-family: var(--font-family);
+
 	color: var(--foreground-color);
 	overflow: hidden;
 
@@ -104,8 +105,10 @@
 	color: inherit;
 	height: 100%;
 	max-height: max-content;
+	padding: var(--padding-md);
 	overflow-y: auto;
-	max-width: 38ch;
+	width: 100%;
+	background-color: var(--surface-a);
 }
 
 .lambda-card-footer {
