@@ -59,11 +59,16 @@ const Template = (args: JoinProps) => {
 								{ value: "Option 3", label: "Option 3" },
 							]}
 						/>
-						<Input type="text" placeholder="Text input example" />
+						<Input
+							type="text"
+							placeholder="Text input example"
+							label="Input"
+							helperText="Helper text"
+						/>
 						<Button type="button" variant="solid" color="neutral" label="Button" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<Input type="text" placeholder="Text input example" />
+						<Input type="text" placeholder="Text input example" floatingLabel label="Name" />
 						<Button type="button" variant="soft" color="neutral" label="Button" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>

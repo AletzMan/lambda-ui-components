@@ -53,19 +53,6 @@
 	outline: none;
 	width: 100%;
 	font-family: var(--font-family);
-	background: var(--surface-b);
-
-	&.lambda-join-tiny {
-	}
-
-	&.lambda-join-small {
-	}
-
-	&.lambda-join-medium {
-	}
-
-	&.lambda-join-large {
-	}
 
 	.lambda-join-input {
 		flex-grow: 1;
@@ -81,7 +68,6 @@
 	border: none;
 	box-sizing: border-box;
 	margin: -2px 0 0 0;
-	background-color: var(--surface-a);
 
 	& > * {
 		margin-inline-start: -1px;

@@ -37,22 +37,21 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			floatingLabel,
 			placeholder,
 			helperText,
+			joinposition,
 			...props
 		},
 		ref
 	) => {
-		let contextVariant, contextRadius, contextSize, isGroup, contextDisabled;
+		let contextVariant, contextRadius, contextSize, contextDisabled;
 		try {
 			const context = useJoin();
 			contextRadius = context.radius;
 			contextSize = context.size;
 			contextDisabled = disabled || context.disabled;
-			isGroup = true;
 		} catch (_e) {
 			contextRadius = propRadius;
 			contextSize = propSize;
 			contextDisabled = disabled;
-			isGroup = false;
 		}
 		const [showPassword, setShowPassword] = useState(false);
 		const [internalValue, setInternalValue] = useState("");
@@ -129,8 +128,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						className,
 					}),
 					{
-						[styles["lambda-input-group"]]: isGroup,
-						[styles["lambda-input-group-helper"]]: isGroup && helperText,
+						[styles["lambda-input-group-helper"]]: helperText,
 					}
 				)}
 			>
@@ -173,9 +171,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							invalid,
 							type,
 							hasElements: "none",
+							joinposition,
 						}),
 						{
-							[styles["lambda-input-wrapper-group"]]: isGroup,
 							[styles["lambda-input-wrapper-read-only"]]: props.readOnly,
 						}
 					)}
@@ -241,7 +239,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
 					{suffix && <div className={styles["lambda-input-suffix"]}>{suffix}</div>}
 				</div>
-				{invalid && errorMessage && !isGroup && (
+				{invalid && errorMessage && (
 					<InvalidMessage
 						id={errorId}
 						errorMessage={errorMessage}

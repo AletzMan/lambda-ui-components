@@ -81,6 +81,12 @@ export const input = cva(styles["lambda-input-wrapper"], {
 			false: styles["lambda-input-wrapper-enabled"],
 			true: styles["lambda-input-wrapper-disabled"],
 		},
+		joinposition: {
+			first: styles["lambda-input-wrapper-first"],
+			middle: styles["lambda-input-wrapper-middle"],
+			last: styles["lambda-input-wrapper-last"],
+			single: styles["lambda-input-wrapper-single"],
+		},
 	},
 	defaultVariants: {
 		variant: "outline",
@@ -90,6 +96,7 @@ export const input = cva(styles["lambda-input-wrapper"], {
 		hasElements: "none",
 		invalid: false,
 		disabled: false,
+		joinposition: "single",
 	},
 });
 
