@@ -525,7 +525,7 @@
 		color: var(--neutral-text-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--neutral-subtle-color);
+			background-color: var(--neutral-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -539,7 +539,7 @@
 		color: var(--primary-text-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--primary-subtle-color);
+			background-color: var(--primary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -553,7 +553,7 @@
 		border-color: var(--secondary-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--secondary-subtle-color);
+			background-color: var(--secondary-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -567,7 +567,7 @@
 		border-color: var(--success-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--success-subtle-color);
+			background-color: var(--success-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -581,7 +581,7 @@
 		border-color: var(--danger-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--danger-subtle-color);
+			background-color: var(--danger-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -595,7 +595,7 @@
 		border-color: var(--warning-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--warning-subtle-color);
+			background-color: var(--warning-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
@@ -609,7 +609,7 @@
 		border-color: var(--info-subtle-color);
 
 		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background-color: var(--info-subtle-color);
+			background-color: var(--info-soft-color);
 		}
 
 		&:active:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
