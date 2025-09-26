@@ -10,7 +10,7 @@ import {
 import styles from "./input.module.css";
 import { CircleX, Eye, EyeOff, X } from "lucide-react";
 import clsx from "clsx";
-import { useInputGroup } from "../InputGroup/InputGroup";
+import { useJoin } from "../Join/Join";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants";
@@ -41,21 +41,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		},
 		ref
 	) => {
-		let contextVariant, contextRadius, contextSize, isGroup, contextDisabled, contextInvalid;
+		let contextVariant, contextRadius, contextSize, isGroup, contextDisabled;
 		try {
-			const context = useInputGroup();
-			contextVariant = context.variant;
+			const context = useJoin();
 			contextRadius = context.radius;
 			contextSize = context.size;
 			contextDisabled = disabled || context.disabled;
-			contextInvalid = context.invalid;
 			isGroup = true;
 		} catch (_e) {
-			contextVariant = propVariant;
 			contextRadius = propRadius;
 			contextSize = propSize;
 			contextDisabled = disabled;
-			contextInvalid = invalid;
 			isGroup = false;
 		}
 		const [showPassword, setShowPassword] = useState(false);
@@ -127,7 +123,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						radius: radiusValue,
 						disabled: contextDisabled,
 						size: contextSize,
-						invalid: contextInvalid,
+						invalid,
 						hasLabel: floatingLabel || label !== "",
 						hasHelper: helperText !== "",
 						className,
@@ -174,7 +170,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							disabled: contextDisabled,
 							radius: radiusValue,
 							size: contextSize,
-							invalid: contextInvalid,
+							invalid,
 							type,
 							hasElements: "none",
 						}),
@@ -198,7 +194,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							onFocus={handleFocus}
 							onBlur={handleBlur}
 							required={required}
-							aria-invalid={contextInvalid || undefined}
+							aria-invalid={invalid || undefined}
 							aria-describedby={describedByIds || undefined}
 							type={inputType as HTMLInputTypeAttribute}
 							className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), {
@@ -234,7 +230,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 								<X className={styles["lambda-input-clear-search-icon"]} />
 							</button>
 						)}
-						{contextInvalid && (
+						{invalid && (
 							<CircleX
 								className={clsx(styles["lambda-input-invalid-icon"], {
 									[styles["lambda-input-invalid-icon-password"]]: isPasswordType || isSearchType,
@@ -245,11 +241,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
 					{suffix && <div className={styles["lambda-input-suffix"]}>{suffix}</div>}
 				</div>
-				{contextInvalid && errorMessage && !isGroup && (
+				{invalid && errorMessage && !isGroup && (
 					<InvalidMessage
 						id={errorId}
 						errorMessage={errorMessage}
-						invalid={contextInvalid}
+						invalid={invalid}
 						size={contextSize}
 					/>
 				)}

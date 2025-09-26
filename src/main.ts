@@ -15,7 +15,7 @@ export { Divider } from "./components/Divider/Divider";
 export { Drawer } from "./components/Drawer/Drawer";
 export { FileUpload } from "./components/FileUpload/FileUpload";
 export { Input } from "./components/Input/Input";
-export { InputGroup } from "./components/InputGroup/InputGroup";
+export { Join } from "./components/Join/Join";
 export { InputNumber } from "./components/InputNumber/InputNumber";
 export { Link } from "./components/Link/Link";
 export { Notification } from "./components/Notification/Notification";

@@ -2,7 +2,7 @@ import { ReactNode, forwardRef, isValidElement } from "react";
 import styles from "./button.module.css";
 import { Loader } from "lucide-react";
 import clsx from "clsx";
-import { useInputGroup } from "../InputGroup/InputGroup";
+import { useJoin } from "../Join/Join";
 import { button } from "./button.variants";
 import { ButtonProps } from "./button.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
@@ -30,7 +30,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		const radiusValue = radius || radiusField;
 		let contextSize, contextDisabled;
 		try {
-			const context = useInputGroup();
+			const context = useJoin();
 			contextSize = context.size;
 			contextDisabled = context.disabled;
 		} catch (_e) {

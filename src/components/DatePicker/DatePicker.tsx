@@ -25,7 +25,7 @@ import {
 	useUIConfig,
 } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { Tooltip } from "../ToolTip/ToolTip";
-import InputGroup from "../InputGroup/InputGroup";
+import { Join } from "../Join/Join";
 import { Input } from "../Input/Input";
 import { createPortal } from "react-dom";
 import { Dialog } from "../Dialog/Dialog";
@@ -571,21 +571,14 @@ export const DatePicker = ({
 				</div>
 			)}
 			{(type === "dropdown" || type === "modal") && (
-				<InputGroup
-					size={size}
-					radius={radiusValue}
-					variant={variant === "solid" ? "outline" : variant}
-					errorMessage={errorMessage}
-					invalid={invalid}
-					suffixElement={
-						<Button
-							variant="text"
-							color="neutral"
-							icon={<CalendarIcon />}
-							onClick={handleOpenCalendar}
-						/>
-					}
-				>
+				<Join size={size} radius={radiusValue}>
+					<Button
+						variant="text"
+						color="neutral"
+						icon={<CalendarIcon />}
+						onClick={handleOpenCalendar}
+					/>
+
 					<Input
 						ref={refInput}
 						value={value?.toLocaleDateString(t("date-picker.code"), {
@@ -594,7 +587,7 @@ export const DatePicker = ({
 						label={label}
 						readOnly
 					/>
-				</InputGroup>
+				</Join>
 			)}
 			{type === "modal" && (
 				<Dialog

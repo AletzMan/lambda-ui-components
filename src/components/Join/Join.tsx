@@ -1,0 +1,74 @@
+/* eslint-disable react-refresh/only-export-components */
+import {
+	forwardRef,
+	createContext,
+	useMemo,
+	PropsWithChildren,
+	useContext,
+	RefAttributes,
+} from "react";
+import styles from "./join.module.css";
+import clsx from "clsx";
+import { VariantProps } from "class-variance-authority";
+import { join, JoinVariants, joinWrapper } from "./join.variants";
+import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
+
+type JoinContextType = {
+	/** Tamaño del componente */
+	size?: JoinVariants["size"];
+	/** Radio del componente */
+	radius?: JoinVariants["radius"];
+	/** Indica si el componente está deshabilitado */
+	disabled?: boolean | null;
+};
+
+const JoinContext = createContext<JoinContextType | null>(null);
+
+export interface JoinProps extends VariantProps<typeof join>, RefAttributes<HTMLDivElement> {
+	errorMessage?: string;
+}
+
+export const Join = forwardRef<HTMLDivElement, PropsWithChildren<JoinProps>>(
+	({ children, size, radius, disabled }, ref) => {
+		const { radiusField } = useUIConfig();
+		const radiusValue = radius ?? radiusField;
+
+		const contextValue = useMemo(
+			() => ({
+				size: size ?? "medium",
+				radius: radiusValue,
+				disabled: disabled ?? false,
+			}),
+			[size, radiusValue, disabled]
+		);
+
+		return (
+			<JoinContext.Provider value={contextValue}>
+				<div className={styles["lambda-input-group-container"]}>
+					<div
+						ref={ref}
+						className={clsx(
+							join({
+								size,
+								disabled,
+								radius: radiusValue,
+							})
+						)}
+					>
+						<div className={clsx(joinWrapper({ size }))}>{children}</div>
+					</div>
+				</div>
+			</JoinContext.Provider>
+		);
+	}
+);
+
+export const useJoin = () => {
+	const context = useContext(JoinContext);
+	if (!context) {
+		throw new Error("useJoin must be used within an Join");
+	}
+	return context;
+};
+
+export default Join; // Exportamos el componente con forwardRef
