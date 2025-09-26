@@ -294,7 +294,7 @@
 	--primary-text-color: var(--lambda-color-primary-800);
 	--primary-content-color: var(--lambda-color-primary-400);
 	--primary-soft-color: var(--lambda-color-primary-200);
-	--primary-subtle-color: var(--lambda-color-primary-300);
+	--primary-subtle-color: var(--lambda-color-primary-600);
 	--primary-outline-color: var(--lambda-color-primary-200);
 	--primary-base-color: var(--lambda-color-primary-600);
 	--primary-hover-color: var(--lambda-color-primary-500);
@@ -479,7 +479,7 @@
 
 	--secondary-text-color: var(--lambda-color-secondary-200);
 	--secondary-content-color: var(--lambda-color-secondary-600);
-	--secondary-soft-color: var(--lambda-color-secondary-900);
+	--secondary-soft-color: var(--lambda-color-secondary-800);
 	--secondary-subtle-color: var(--lambda-color-secondary-700);
 	--secondary-outline-color: var(--lambda-color-secondary-800);
 	--secondary-base-color: var(--lambda-color-secondary-500);
