@@ -20,6 +20,7 @@ import { useSelectAccessibility } from "./hooks/useSelectAccessibility";
 import { SelectOptionItem } from "./SelectOptionItem";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { useJoin } from "../Join/Join";
 
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 	(
@@ -47,7 +48,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 		);
 		const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
 		const { radiusField } = useUIConfig();
-		const radiusValue = radius || radiusField;
+		const { radius: joinRadius, size: joinSize } = useJoin();
+		const radiusValue = joinRadius || radius || radiusField;
+		const sizeValue = joinSize || size;
 
 		const containerRef = useRef<HTMLDivElement>(null);
 		const buttonRef = useRef<HTMLButtonElement>(null);
@@ -152,7 +155,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 				{label && (
 					<label
 						className={clsx(
-							labelSelect({ direction, radius: radiusValue, size, required }),
+							labelSelect({ direction, radius: radiusValue, size: sizeValue, required }),
 							styles["select-label"]
 						)}
 						{...getLabelProps()}
@@ -160,16 +163,24 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 						{label}
 					</label>
 				)}
-				<div className={select({ size, variant, radius: radiusValue, disabled, invalid })}>
+				<div
+					className={select({ size: sizeValue, variant, radius: radiusValue, disabled, invalid })}
+				>
 					<button
-						className={buttonSelect({ size, variant, radius: radiusValue, invalid, disabled })}
+						className={buttonSelect({
+							size: sizeValue,
+							variant,
+							radius: radiusValue,
+							invalid,
+							disabled,
+						})}
 						onClick={handleButtonClick}
 						disabled={disabled}
 						ref={ref || buttonRef}
 						{...getButtonProps()}
 					>
 						{selectedOption ? (
-							<div className={selectedView({ size, disabled: disabled, variant })}>
+							<div className={selectedView({ size: sizeValue, disabled: disabled, variant })}>
 								{selectedOption.avatar && (
 									<img
 										className={styles["select-view-avatar"]}
@@ -183,7 +194,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 							<span className={styles["select-placeholder"]}>{placeholder}</span>
 						)}
 
-						<div className={selectIcon({ variant, size, disabled, invalid })}>
+						<div className={selectIcon({ variant, size: sizeValue, disabled, invalid })}>
 							{isOpen ? (
 								<ChevronUp className={styles["select-icon-svg"]} />
 							) : (
@@ -202,7 +213,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 								width: dropdownPosition.width,
 							}}
 							className={clsx(
-								dropdown({ size, direction, radius: radiusValue, variant }),
+								dropdown({ size: sizeValue, direction, radius: radiusValue, variant }),
 								"scrollBar",
 								{
 									[styles["select-dropdown-open"]]: isOpen,
@@ -218,7 +229,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 									option={option}
 									activeOptionId={activeOptionId}
 									selectedValue={selectedValue}
-									size={size}
+									size={sizeValue}
 									onClick={handleOptionClick}
 									{...getOptionProps(option, index)}
 								/>
@@ -228,7 +239,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 					)}
 
 				{invalid && errorMessage && (
-					<InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />
+					<InvalidMessage errorMessage={errorMessage} invalid={invalid} size={sizeValue} />
 				)}
 			</div>
 		);
