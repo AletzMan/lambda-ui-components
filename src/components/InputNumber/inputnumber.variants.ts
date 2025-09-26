@@ -38,10 +38,10 @@ export const inputNumber = cva(styles["lambda-number"], {
 			true: styles["lambda-number-disabled"],
 		},
 		joinposition: {
-			first: styles["lambda-number-joinposition-first"],
-			last: styles["lambda-number-joinposition-last"],
-			middle: styles["lambda-number-joinposition-middle"],
-			single: styles["lambda-number-joinposition-single"],
+			first: styles["lambda-number-first"],
+			last: styles["lambda-number-last"],
+			middle: styles["lambda-number-middle"],
+			single: styles["lambda-number-single"],
 		},
 	},
 	defaultVariants: {
@@ -60,9 +60,16 @@ export const wrapper = cva(styles["lambda-number-wrapper"], {
 			false: styles["lambda-number-wrapper-enabled"],
 			true: styles["lambda-number-wrapper-disabled"],
 		},
+		joinposition: {
+			first: styles["lambda-number-first"],
+			last: styles["lambda-number-last"],
+			middle: styles["lambda-number-middle"],
+			single: styles["lambda-number-single"],
+		},
 	},
 	defaultVariants: {
 		disabled: false,
+		joinposition: "single",
 	},
 });
 
@@ -135,11 +142,18 @@ export const handler = cva(styles["lambda-number-handler"], {
 			outline: styles["lambda-number-handler-outline"],
 			soft: styles["lambda-number-handler-soft"],
 		},
+		joinposition: {
+			first: styles["lambda-number-handler-first"],
+			last: styles["lambda-number-handler-last"],
+			middle: styles["lambda-number-handler-middle"],
+			single: styles["lambda-number-handler-single"],
+		},
 	},
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
 		radius: "tiny",
+		joinposition: "single",
 	},
 });
 

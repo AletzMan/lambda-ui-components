@@ -24,6 +24,7 @@ import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { useNumberInput } from "./hooks/useNumberInput";
 import { InputNumberProps } from "./inputnumber.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { useJoin } from "../Join/Join";
 
 export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 	(
@@ -50,7 +51,15 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		ref
 	) => {
 		const { radiusField } = useUIConfig();
-		const radiusValue = radius ?? radiusField;
+		let radiusValue, sizeValue, disabledValue;
+		try {
+			const { radius: radiusJoin, size: sizeJoin, disabled: disabledJoin } = useJoin();
+			radiusValue = radiusJoin || radiusField || radiusValue;
+			sizeValue = sizeJoin || sizeValue;
+			disabledValue = disabledJoin || disabled;
+		} catch (error) {
+			console.log(error);
+		}
 		const {
 			displayedValue,
 			numericValue,
@@ -91,7 +100,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		const describedByIds = [errorId, helperId].filter(Boolean).join(" ");
 
 		return (
-			<div className={clsx(wrapper({ disabled, className }))}>
+			<div className={clsx(wrapper({ disabled: disabledValue, joinposition, className }))}>
 				{label && (
 					<label htmlFor={inputId} className={labels({ radius: radiusValue, size, required })}>
 						{label}
@@ -100,16 +109,23 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 				<div
 					className={inputNumber({
 						variant,
-						disabled,
+						disabled: disabledValue,
 						radius: radiusValue,
 						typeNumber,
-						size,
+						size: sizeValue,
 						invalid,
 						joinposition,
 					})}
 				>
 					<div className={styles["lambda-number-container"]}>
-						<div className={typeCurrency({ typeNumber, size, variant, radius: radiusValue })}>
+						<div
+							className={typeCurrency({
+								typeNumber,
+								size: sizeValue,
+								variant,
+								radius: radiusValue,
+							})}
+						>
 							{getIcon()}
 						</div>
 						<input
@@ -124,18 +140,20 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 							type="text"
 							role="number"
 							inputMode="numeric"
-							disabled={disabled || undefined}
-							className={number({ size, typeNumber })}
+							disabled={disabledValue || undefined}
+							className={number({ size: sizeValue, typeNumber })}
 							step={step}
 							min={min}
 							max={max}
 							{...props}
 						/>
 						{invalid && <CircleX className={clsx(styles["lambda-number-invalid-icon"])} />}
-						<div className={handler({ size, variant, radius: radiusValue })}>
+						<div
+							className={handler({ size: sizeValue, variant, radius: radiusValue, joinposition })}
+						>
 							<button
 								type="button"
-								className={clsx(button({ size }), styles["lambda-number-btn-increment"])}
+								className={clsx(button({ size: sizeValue }), styles["lambda-number-btn-increment"])}
 								onMouseDown={startIncrementing}
 								onMouseUp={stopIncrementing}
 								aria-label="Increase value"
@@ -146,22 +164,24 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 							<hr className={styles["lambda-number-separator"]} />
 							<button
 								type="button"
-								className={clsx(button({ size }), styles["lambda-number-btn-decrement"])}
+								className={clsx(button({ size: sizeValue }), styles["lambda-number-btn-decrement"])}
 								aria-label="Decrease value"
 								onMouseDown={startDecrementing}
 								onMouseUp={stopDecrementing}
-								disabled={disabled || (min !== undefined && Number(numericValue) <= Number(min))}
+								disabled={
+									disabledValue || (min !== undefined && Number(numericValue) <= Number(min))
+								}
 							>
 								<ChevronDown className={styles["lambda-number-icon"]} />
 							</button>
 						</div>
 					</div>
 					{helperText && (
-						<HelperText id={helperId} text={helperText} disabled={disabled} size={size} />
+						<HelperText id={helperId} text={helperText} disabled={disabledValue} size={sizeValue} />
 					)}
 				</div>
 				{invalid && errorMessage && (
-					<InvalidMessage errorMessage={errorMessage} invalid={invalid} size={size} />
+					<InvalidMessage errorMessage={errorMessage} invalid={invalid} size={sizeValue} />
 				)}
 			</div>
 		);

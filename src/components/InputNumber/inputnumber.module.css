@@ -114,6 +114,10 @@ input[type="number"] {
 	font-family: var(--font-family);
 	width: 100%;
 	box-sizing: border-box;
+
+	&:is(.lambda-number-first) {
+		margin-inline-end: -1px;
+	}
 }
 
 .lambda-number-invalid-icon {
@@ -266,6 +270,15 @@ input[type="number"] {
 	&.lambda-number-handler-radius-full {
 		border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill)
 			var(--border-radius-none);
+	}
+
+	&:is(.lambda-number-handler-first) {
+		border-top-right-radius: var(--border-radius-none);
+		border-bottom-right-radius: var(--border-radius-none);
+	}
+
+	&:is(.lambda-number-handler-middle) {
+		border-radius: var(--border-radius-none);
 	}
 }
 
