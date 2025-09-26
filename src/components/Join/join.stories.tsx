@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
 import { SearchIcon } from "lucide-react";
+import { InputNumber } from "../InputNumber/InputNumber";
 
 const meta: Meta<typeof Join> = {
 	title: "Components/Join",
@@ -49,7 +50,7 @@ const Template = (args: JoinProps) => {
 					padding: "var(--padding-lg)",
 				}}
 			>
-				<div style={{ display: "flex", flexDirection: "column", gap: "40px", width: "100%" }}>
+				<div style={{ display: "flex", flexDirection: "column", gap: "35px", width: "100%" }}>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
 						<Input
 							type="text"
@@ -86,6 +87,7 @@ const Template = (args: JoinProps) => {
 						<Button type="button" variant="solid" color="neutral" label="Button" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<InputNumber />
 						<Input
 							type="text"
 							placeholder="Text input example"
@@ -96,20 +98,31 @@ const Template = (args: JoinProps) => {
 						<Button type="button" variant="subtle" color="warning" label="Search" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<InputNumber typeNumber="currency-USD" />
+						<Input
+							type="text"
+							placeholder="Text input example"
+							floatingLabel
+							label="Name"
+							prefix={<SearchIcon />}
+						/>
+						<Button type="button" variant="subtle" color="success" label="Search" />
+					</Join>
+					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
 						<Input type="text" placeholder="Text input example" prefix={<SearchIcon />} />
 						<Button type="button" variant="solid" color="info" label="Search" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<Button type="button" variant="subtle" color="info" label="Search" />
-						<Button type="button" variant="subtle" color="info" label="Search" />
-						<Button type="button" variant="subtle" color="info" label="Search" />
+						<Button type="button" variant="subtle" color="info" label="Clear" />
+						<Button type="button" variant="subtle" color="info" label="Cancel" />
+						<Button type="button" variant="subtle" color="info" label="Confirm" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<Button type="button" variant="subtle" color="danger" label="Search" />
-						<Button type="button" variant="subtle" color="danger" label="Search" />
-						<Button type="button" variant="subtle" color="danger" label="Search" />
-						<Button type="button" variant="subtle" color="danger" label="Search" />
-						<Button type="button" variant="subtle" color="danger" label="Search" />
+						<Button type="button" variant="solid" color="danger" label="Button 1" />
+						<Button type="button" variant="solid" color="danger" label="Button 2" />
+						<Button type="button" variant="solid" color="danger" label="Button 3" />
+						<Button type="button" variant="solid" color="danger" label="Button 4" />
+						<Button type="button" variant="solid" color="danger" label="Button 5" />
 					</Join>
 				</div>
 			</div>
