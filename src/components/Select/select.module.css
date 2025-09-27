@@ -231,11 +231,10 @@
 
 		&.select-btn-underline {
 			border-bottom-color: var(--primary-base-color);
-			background-color: var(--primary-opacity-color);
 		}
 
 		&.select-btn-soft {
-			background-color: var(--primary-opacity-color);
+			box-shadow: 0 0 0 3px var(--primary-shadow-color);
 		}
 	}
 
