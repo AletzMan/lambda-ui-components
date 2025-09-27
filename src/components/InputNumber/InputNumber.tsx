@@ -58,7 +58,9 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 			sizeValue = sizeJoin || sizeValue;
 			disabledValue = disabledJoin || disabled;
 		} catch (error) {
-			console.log(error);
+			radiusValue = radius || radiusField;
+			sizeValue = size || sizeValue;
+			disabledValue = disabled || disabledValue;
 		}
 		const {
 			displayedValue,
