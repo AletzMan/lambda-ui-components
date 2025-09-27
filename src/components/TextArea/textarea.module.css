@@ -105,7 +105,6 @@
 		border: var(--border-width-xs) solid var(--border-color);
 
 		&:focus-within {
-			background-color: var(--primary-opacity-color);
 			outline: 3px solid var(--primary-outline-color);
 			border-color: var(--primary-base-color);
 		}
