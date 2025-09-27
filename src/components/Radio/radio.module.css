@@ -465,6 +465,9 @@
 			}
 
 			&:is(.lambda-radio-view-solid) {
+				& .lambda-radio-icon {
+					display: none;
+				}
 				&:is(.lambda-radio-view-neutral) {
 					& ~ .lambda-radio-label {
 						background-color: var(--neutral-base-color);
