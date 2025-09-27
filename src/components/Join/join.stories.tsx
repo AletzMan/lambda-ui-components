@@ -7,7 +7,6 @@ import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight, SearchIcon } from "lucide-react";
 import { InputNumber } from "../InputNumber/InputNumber";
-import { Radio } from "../Radio/Radio";
 import { Checkbox } from "../Checkbox/Checkbox";
 
 const meta: Meta<typeof Join> = {
