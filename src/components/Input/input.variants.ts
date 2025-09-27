@@ -33,11 +33,16 @@ export const lambdaInput = cva(styles["lambda-input"], {
 			true: styles["lambda-input-has-helper"],
 			false: "",
 		},
+		join: {
+			true: styles["lambda-input-join"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		radius: "tiny",
 		disabled: false,
 		hasLabel: false,
+		join: false,
 	},
 });
 export const input = cva(styles["lambda-input-wrapper"], {

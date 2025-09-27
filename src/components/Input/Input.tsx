@@ -126,6 +126,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						hasLabel: floatingLabel || label !== undefined,
 						hasHelper: helperText !== undefined,
 						className,
+						join: joinposition !== undefined,
 					}),
 					{
 						[styles["lambda-input-group-helper"]]: helperText,

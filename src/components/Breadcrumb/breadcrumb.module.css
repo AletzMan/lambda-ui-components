@@ -9,7 +9,7 @@
 	align-items: center;
 	gap: 4px;
 	text-decoration: none;
-	color: var(--foreground-secondary-color);
+	color: var(--placeholder-color);
 	opacity: 0.9;
 	transition: color 0.2s ease-in-out;
 	font-weight: var(--font-weight-reg);
@@ -148,37 +148,37 @@
 				border-radius: var(--border-radius-sm);
 			}
 			& .breadcrumb-item.breadcrumb-item-neutral {
-				color: var(--neutral-text-color);
-				background-color: var(--neutral-opacity-color);
+				color: var(--neutral-base-color);
+				/*background-color: var(--neutral-opacity-color);*/
 			}
 			& .breadcrumb-item.breadcrumb-item-primary {
-				color: var(--primary-text-color);
-				background-color: var(--primary-opacity-color);
+				color: var(--primary-base-color);
+				/*background-color: var(--primary-opacity-color);*/
 			}
 
 			& .breadcrumb-item.breadcrumb-item-secondary {
-				color: var(--secondary-text-color);
-				background-color: var(--secondary-opacity-color);
+				color: var(--secondary-base-color);
+				/*background-color: var(--secondary-opacity-color);*/
 			}
 
 			& .breadcrumb-item.breadcrumb-item-success {
-				color: var(--success-text-color);
-				background-color: var(--success-opacity-color);
+				color: var(--success-base-color);
+				/*background-color: var(--success-opacity-color);*/
 			}
 
 			& .breadcrumb-item.breadcrumb-item-danger {
-				color: var(--danger-text-color);
-				background-color: var(--danger-opacity-color);
+				color: var(--danger-base-color);
+				/*background-color: var(--danger-opacity-color);*/
 			}
 
 			& .breadcrumb-item.breadcrumb-item-warning {
-				color: var(--warning-text-color);
-				background-color: var(--warning-opacity-color);
+				color: var(--warning-base-color);
+				/*background-color: var(--warning-opacity-color);*/
 			}
 
 			& .breadcrumb-item.breadcrumb-item-info {
-				color: var(--info-text-color);
-				background-color: var(--info-opacity-color);
+				color: var(--info-base-color);
+				/*background-color: var(--info-opacity-color);*/
 			}
 		}
 	}
