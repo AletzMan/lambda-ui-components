@@ -101,6 +101,10 @@
 .lambda-checkbox-wrapper-solid {
 	background-color: var(--surface-a);
 	border-color: var(--border-color);
+
+	& > .lambda-checkbox-icon {
+		color: var(--foreground-color);
+	}
 }
 
 .lambda-checkbox-wrapper-soft {
@@ -238,6 +242,10 @@
 	&:is(.lambda-checkbox-wrapper-join) {
 		border-color: var(--border-color);
 	}
+
+	& > .lambda-checkbox-icon {
+		color: var(--foreground-secondary-color);
+	}
 }
 
 .lambda-checkbox-wrapper-checked:is(.lambda-checkbox-wrapper-solid) {
@@ -250,7 +258,7 @@
 			border-color: var(--neutral-base-color);
 		}
 
-		& > svg {
+		& > .lambda-checkbox-icon {
 			color: var(--foreground-invert-color);
 		}
 	}
@@ -262,8 +270,8 @@
 			border-color: var(--primary-base-color);
 		}
 
-		& > svg {
-			color: var(--foreground-invert-color);
+		& > .lambda-checkbox-icon {
+			color: var(--black-color);
 		}
 	}
 
@@ -273,6 +281,10 @@
 		&:not(.lambda-checkbox-wrapper-join) {
 			border-color: var(--secondary-base-color);
 		}
+
+		& > .lambda-checkbox-icon {
+			color: var(--white-color);
+		}
 	}
 
 	&.lambda-checkbox-wrapper-danger {
@@ -280,6 +292,10 @@
 
 		&:not(.lambda-checkbox-wrapper-join) {
 			border-color: var(--danger-base-color);
+		}
+
+		& > .lambda-checkbox-icon {
+			color: var(--white-color);
 		}
 	}
 
@@ -289,6 +305,10 @@
 		&:not(.lambda-checkbox-wrapper-join) {
 			border-color: var(--success-base-color);
 		}
+
+		& > .lambda-checkbox-icon {
+			color: var(--white-color);
+		}
 	}
 
 	&.lambda-checkbox-wrapper-warning {
@@ -297,6 +317,10 @@
 		&:not(.lambda-checkbox-wrapper-join) {
 			border-color: var(--warning-base-color);
 		}
+
+		& > .lambda-checkbox-icon {
+			color: var(--black-color);
+		}
 	}
 
 	&.lambda-checkbox-wrapper-info {
@@ -304,6 +328,10 @@
 
 		&:not(.lambda-checkbox-wrapper-join) {
 			border-color: var(--info-base-color);
+		}
+
+		& > .lambda-checkbox-icon {
+			color: var(--white-color);
 		}
 	}
 }
@@ -432,105 +460,123 @@
 	&:is(.lambda-checkbox-wrapper-neutral) {
 		border-color: var(--neutral-base-color);
 
+		.lambda-checkbox-icon {
+			color: var(--neutral-base-color);
+		}
+
 		&:is(.lambda-checkbox-wrapper-join) {
 			background-color: var(--neutral-soft-color);
 			& > .lambda-checkbox-label {
-				color: var(--neutral-base-color);
+				color: var(--neutral-text-color);
 			}
-		}
-
-		.lambda-checkbox-icon {
-			color: var(--neutral-base-color);
 		}
 	}
 
 	&:is(.lambda-checkbox-wrapper-primary) {
 		border-color: var(--primary-base-color);
 
+		.lambda-checkbox-icon {
+			color: var(--primary-base-color);
+		}
+
 		&:is(.lambda-checkbox-wrapper-join) {
 			background-color: var(--primary-soft-color);
 			& > .lambda-checkbox-label {
 				color: var(--primary-border-color);
 			}
-		}
-
-		.lambda-checkbox-icon {
-			color: var(--primary-base-color);
+			& > .lambda-checkbox-icon {
+				color: var(--primary-text-color);
+			}
 		}
 	}
 
 	&:is(.lambda-checkbox-wrapper-secondary) {
 		border-color: var(--secondary-base-color);
 
+		.lambda-checkbox-icon {
+			color: var(--secondary-text-color);
+		}
+
 		&:is(.lambda-checkbox-wrapper-join) {
 			background-color: var(--secondary-soft-color);
 			& > .lambda-checkbox-label {
 				color: var(--secondary-border-color);
 			}
-		}
-
-		.lambda-checkbox-icon {
-			color: var(--secondary-text-color);
-		}
-	}
-
-	&:is(.lambda-checkbox-wrapper-danger) {
-		border-color: var(--danger-base-color);
-
-		&:is(.lambda-checkbox-wrapper-join) {
-			background-color: var(--danger-soft-color);
-			& > .lambda-checkbox-label {
-				color: var(--danger-border-color);
+			& > .lambda-checkbox-icon {
+				color: var(--secondary-text-color);
 			}
-		}
-
-		.lambda-checkbox-icon {
-			color: var(--danger-base-color);
 		}
 	}
 
 	&:is(.lambda-checkbox-wrapper-success) {
 		border-color: var(--success-base-color);
 
+		.lambda-checkbox-icon {
+			color: var(--success-base-color);
+		}
+
 		&:is(.lambda-checkbox-wrapper-join) {
 			background-color: var(--success-soft-color);
 			& > .lambda-checkbox-label {
 				color: var(--success-border-color);
 			}
+			& > .lambda-checkbox-icon {
+				color: var(--success-text-color);
+			}
 		}
+	}
+
+	&:is(.lambda-checkbox-wrapper-danger) {
+		border-color: var(--danger-base-color);
 
 		.lambda-checkbox-icon {
-			color: var(--success-base-color);
+			color: var(--danger-base-color);
+		}
+
+		&:is(.lambda-checkbox-wrapper-join) {
+			background-color: var(--danger-soft-color);
+			& > .lambda-checkbox-label {
+				color: var(--danger-border-color);
+			}
+			& > .lambda-checkbox-icon {
+				color: var(--danger-text-color);
+			}
 		}
 	}
 
 	&:is(.lambda-checkbox-wrapper-warning) {
 		border-color: var(--warning-base-color);
 
+		.lambda-checkbox-icon {
+			color: var(--warning-base-color);
+		}
+
 		&:is(.lambda-checkbox-wrapper-join) {
 			background-color: var(--warning-soft-color);
 			& > .lambda-checkbox-label {
 				color: var(--warning-border-color);
 			}
-		}
-
-		.lambda-checkbox-icon {
-			color: var(--warning-base-color);
+			& > .lambda-checkbox-icon {
+				color: var(--warning-text-color);
+			}
 		}
 	}
 
 	&:is(.lambda-checkbox-wrapper-info) {
 		border-color: var(--info-base-color);
 
+		.lambda-checkbox-icon {
+			color: var(--info-base-color);
+		}
+
 		&:is(.lambda-checkbox-wrapper-join) {
 			background-color: var(--info-soft-color);
 			& > .lambda-checkbox-label {
 				color: var(--info-border-color);
 			}
-		}
-
-		.lambda-checkbox-icon {
-			color: var(--info-base-color);
+			& > .lambda-checkbox-icon {
+				color: var(--info-text-color);
+			}
 		}
 	}
 }
@@ -547,7 +593,7 @@
 		gap: var(--gap-sm);
 		width: min-content;
 		padding: var(--padding-none) var(--padding-sm);
-		& > svg {
+		& svg {
 			width: var(--icon-size-xs);
 			height: var(--icon-size-xs);
 		}
@@ -633,14 +679,20 @@
 }
 
 .lambda-checkbox-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	stroke-width: 4px;
 	pointer-events: none;
 	box-sizing: border-box;
-	color: var(--white-color);
-	fill: transparent;
-	transform: scale(1);
-	stroke-dasharray: 250; /* Longitud del trazado */
-	stroke-dashoffset: 250; /* Oculta el trazo al inicio */
+
+	&:not(.lambda-checkbox-icon-join) {
+		color: var(--white-color);
+		fill: transparent;
+		transform: scale(1);
+		stroke-dasharray: 250; /* Longitud del trazado */
+		stroke-dashoffset: 250; /* Oculta el trazo al inicio */
+	}
 }
 
 .lambda-checkbox-icon-checked {

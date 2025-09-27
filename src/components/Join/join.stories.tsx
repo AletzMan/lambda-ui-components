@@ -5,7 +5,7 @@ import Join, { JoinProps } from "./Join";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
-import { SearchIcon } from "lucide-react";
+import { AlignCenter, AlignJustify, AlignLeft, AlignRight, SearchIcon } from "lucide-react";
 import { InputNumber } from "../InputNumber/InputNumber";
 import { Radio } from "../Radio/Radio";
 import { Checkbox } from "../Checkbox/Checkbox";
@@ -89,6 +89,7 @@ const Template = (args: JoinProps) => {
 						<Button type="button" variant="solid" color="neutral" label="Button" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<Checkbox label="Is Required" color="danger" variant="solid" />
 						<InputNumber />
 						<Input
 							type="text"
@@ -119,6 +120,12 @@ const Template = (args: JoinProps) => {
 						<Checkbox label="Checkbox 2" color="info" variant="solid" />
 						<Checkbox label="Checkbox 3" color="info" variant="solid" />
 						<Checkbox label="Checkbox 4" color="info" variant="solid" />
+					</Join>
+					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<Checkbox color="info" variant="solid" icon={<AlignLeft />} />
+						<Checkbox color="info" variant="solid" icon={<AlignCenter />} />
+						<Checkbox color="info" variant="solid" icon={<AlignRight />} />
+						<Checkbox color="info" variant="solid" icon={<AlignJustify />} />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
 						<Button type="button" variant="classic" color="danger" label="Button 1" />

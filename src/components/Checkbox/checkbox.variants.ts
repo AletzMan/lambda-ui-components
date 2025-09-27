@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import styles from "./checkbox.module.css";
 
-export const checkboxWrapper = cva(styles["lambda-checkbox-wrapper"], {
+export const checkboxWrapperVariants = cva(styles["lambda-checkbox-wrapper"], {
 	variants: {
 		color: {
 			neutral: styles["lambda-checkbox-wrapper-neutral"],
@@ -60,7 +60,7 @@ export const checkboxWrapper = cva(styles["lambda-checkbox-wrapper"], {
 	},
 });
 
-export const container = cva(styles["lambda-checkbox-container"], {
+export const checkboxContainerVariants = cva(styles["lambda-checkbox-container"], {
 	variants: {
 		positionLabel: {
 			left: styles["lambda-checkbox-container-left"],
@@ -79,7 +79,7 @@ export const container = cva(styles["lambda-checkbox-container"], {
 	},
 });
 
-export const textLabel = cva(styles["lambda-checkbox-label"], {
+export const checkboxTextLabelVariants = cva(styles["lambda-checkbox-label"], {
 	variants: {
 		size: {
 			tiny: styles["lambda-checkbox-label-tiny"],
@@ -98,7 +98,7 @@ export const textLabel = cva(styles["lambda-checkbox-label"], {
 	},
 });
 
-export const icon = cva(styles["lambda-checkbox-icon"], {
+export const checkBoxIconVariants = cva(styles["lambda-checkbox-icon"], {
 	variants: {
 		size: {
 			tiny: styles["lambda-checkbox-icon-tyny"],
@@ -114,15 +114,20 @@ export const icon = cva(styles["lambda-checkbox-icon"], {
 			true: styles["lambda-checkbox-icon-checked"],
 			false: styles["lambda-checkbox-icon-unchecked"],
 		},
+		join: {
+			true: styles["lambda-checkbox-icon-join"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		disabled: false,
 		checked: false,
+		join: false,
 	},
 });
 
-export type CheckboxVariants = VariantProps<typeof checkboxWrapper>;
-export type ContainerVariants = VariantProps<typeof container>;
-export type IconVariants = VariantProps<typeof icon>;
-export type TextLabelVariants = VariantProps<typeof textLabel>;
+export type CheckboxVariants = VariantProps<typeof checkboxWrapperVariants>;
+export type ContainerVariants = VariantProps<typeof checkboxContainerVariants>;
+export type IconVariants = VariantProps<typeof checkBoxIconVariants>;
+export type TextLabelVariants = VariantProps<typeof checkboxTextLabelVariants>;

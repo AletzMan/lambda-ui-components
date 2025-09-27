@@ -1,6 +1,11 @@
 import { forwardRef, useState, ChangeEvent } from "react";
 import styles from "./checkbox.module.css";
-import { checkboxWrapper, container, icon, textLabel } from "./checkbox.variants";
+import {
+	checkboxContainerVariants,
+	checkBoxIconVariants,
+	checkboxTextLabelVariants,
+	checkboxWrapperVariants,
+} from "./checkbox.variants";
 import { CheckBoxProps } from "./checkbox.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
@@ -12,6 +17,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			size,
 			variant,
 			label,
+			icon,
 			disabled,
 			radius,
 			positionLabel = "right",
@@ -47,9 +53,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		};
 
 		return (
-			<label className={container({ positionLabel, disabled })}>
+			<label className={checkboxContainerVariants({ positionLabel, disabled })}>
 				<div
-					className={checkboxWrapper({
+					className={checkboxWrapperVariants({
 						variant,
 						size: sizeValue,
 						radius: radiusValue,
@@ -70,9 +76,9 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 						className={styles["lambda-checkbox"]}
 						{...props}
 					/>
-					{joinposition === undefined && (
+					{joinposition === undefined && icon === undefined && (
 						<svg
-							className={icon({
+							className={checkBoxIconVariants({
 								size: sizeValue,
 								disabled: disabledValue,
 								checked: internalChecked,
@@ -89,12 +95,29 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 							<path d="M4 12l5 5 11-11"></path>
 						</svg>
 					)}
+					{icon && joinposition !== undefined && (
+						<span
+							className={checkBoxIconVariants({
+								size: sizeValue,
+								disabled: disabledValue,
+								join: joinposition !== undefined,
+							})}
+						>
+							{icon}
+						</span>
+					)}
 					{label && joinposition !== undefined && (
-						<span className={textLabel({ size: sizeValue, disabled: disabledValue })}>{label}</span>
+						<span
+							className={checkboxTextLabelVariants({ size: sizeValue, disabled: disabledValue })}
+						>
+							{label}
+						</span>
 					)}
 				</div>
 				{label && joinposition === undefined && (
-					<span className={textLabel({ size: sizeValue, disabled: disabledValue })}>{label}</span>
+					<span className={checkboxTextLabelVariants({ size: sizeValue, disabled: disabledValue })}>
+						{label}
+					</span>
 				)}
 			</label>
 		);

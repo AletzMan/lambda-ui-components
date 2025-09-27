@@ -55,6 +55,11 @@ export interface CheckBoxProps
 	disabled?: boolean;
 
 	/**
+	 * Icono personalizado que se muestra en la casilla de verificación cuando está marcada.
+	 */
+	icon?: React.ReactNode;
+
+	/**
 	 * Indica la posición de la casilla de verificación dentro de un grupo de casillas de verificación (Join).
 	 * @default "middle"
 	 */
