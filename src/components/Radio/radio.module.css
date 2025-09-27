@@ -854,11 +854,11 @@
 
 		&:is(.lambda-radio-wrapper-primary) {
 			&:is(.lambda-radio-wrapper-checked) {
-				background-color: var(--primary-subtle-color);
+				background-color: var(--primary-soft-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
-				border-color: var(--primary-subtle-color);
+				border-color: var(--primary-base-color);
 			}
 		}
 
