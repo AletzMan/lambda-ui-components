@@ -7,6 +7,8 @@ import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
 import { SearchIcon } from "lucide-react";
 import { InputNumber } from "../InputNumber/InputNumber";
+import { Radio } from "../Radio/Radio";
+import { Checkbox } from "../Checkbox/Checkbox";
 
 const meta: Meta<typeof Join> = {
 	title: "Components/Join",
@@ -113,16 +115,17 @@ const Template = (args: JoinProps) => {
 						<Button type="button" variant="solid" color="info" label="Search" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<Button type="button" variant="subtle" color="info" label="Clear" />
-						<Button type="button" variant="subtle" color="info" label="Cancel" />
-						<Button type="button" variant="subtle" color="info" label="Confirm" />
+						<Checkbox label="Checkbox 1" color="info" variant="solid" />
+						<Checkbox label="Checkbox 2" color="info" variant="solid" />
+						<Checkbox label="Checkbox 3" color="info" variant="solid" />
+						<Checkbox label="Checkbox 4" color="info" variant="solid" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<Button type="button" variant="solid" color="danger" label="Button 1" />
-						<Button type="button" variant="solid" color="danger" label="Button 2" />
-						<Button type="button" variant="solid" color="danger" label="Button 3" />
-						<Button type="button" variant="solid" color="danger" label="Button 4" />
-						<Button type="button" variant="solid" color="danger" label="Button 5" />
+						<Button type="button" variant="classic" color="danger" label="Button 1" />
+						<Button type="button" variant="classic" color="danger" label="Button 2" />
+						<Button type="button" variant="classic" color="danger" label="Button 3" />
+						<Button type="button" variant="classic" color="danger" label="Button 4" />
+						<Button type="button" variant="classic" color="danger" label="Button 5" />
 					</Join>
 				</div>
 			</div>
