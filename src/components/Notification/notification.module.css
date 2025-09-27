@@ -585,7 +585,7 @@
 	}
 
 	.notification-time {
-		background-color: var(--surface-d);
+		background-color: var(--neutral-soft-color);
 		filter: brightness(115%);
 	}
 
