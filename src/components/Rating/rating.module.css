@@ -239,7 +239,7 @@
 		}
 
 		&:is(.lambda-rating-item-primary) {
-			& > span svg {
+			& > svg {
 				stroke: var(--primary-base-color);
 				fill: transparent;
 			}

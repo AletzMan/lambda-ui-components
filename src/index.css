@@ -22,30 +22,30 @@
 	--lambda-color-primary-900: #073f35;
 	--lambda-color-primary-950: #021512;
 	*/
-	--lambda-color-primary-050: #f6fee6;
-	--lambda-color-primary-100: #e7fbbe;
-	--lambda-color-primary-200: #d7f796;
-	--lambda-color-primary-300: #c6f16e;
-	--lambda-color-primary-400: #afe441;
-	--lambda-color-primary-500: #87c400;
-	--lambda-color-primary-600: #5e8f00;
-	--lambda-color-primary-700: #466c00;
-	--lambda-color-primary-800: #355300;
-	--lambda-color-primary-900: #293d00;
-	--lambda-color-primary-950: #111b00;
+	--lambda-color-primary-050: #fdefea;
+	--lambda-color-primary-100: #f9cec0;
+	--lambda-color-primary-200: #f4ad96;
+	--lambda-color-primary-300: #f08c6c;
+	--lambda-color-primary-400: #ec6c41;
+	--lambda-color-primary-500: #e84b17;
+	--lambda-color-primary-600: #bd3d13;
+	--lambda-color-primary-700: #93300f;
+	--lambda-color-primary-800: #69220b;
+	--lambda-color-primary-900: #3f1406;
+	--lambda-color-primary-950: #150702;
 
 	/* Secondary */
-	--lambda-color-secondary-050: #f1edfa;
-	--lambda-color-secondary-100: #d6c8f1;
-	--lambda-color-secondary-200: #bba3e7;
-	--lambda-color-secondary-300: #a07ede;
-	--lambda-color-secondary-400: #8459d5;
-	--lambda-color-secondary-500: #6934cb;
-	--lambda-color-secondary-600: #562aa6;
-	--lambda-color-secondary-700: #432181;
-	--lambda-color-secondary-800: #30175c;
-	--lambda-color-secondary-900: #1d0e37;
-	--lambda-color-secondary-950: #0a0512;
+	--lambda-color-secondary-050: #f1e8ff;
+	--lambda-color-secondary-100: #d5b9ff;
+	--lambda-color-secondary-200: #b98bff;
+	--lambda-color-secondary-300: #9e5dff;
+	--lambda-color-secondary-400: #822eff;
+	--lambda-color-secondary-500: #6600ff;
+	--lambda-color-secondary-600: #5300d1;
+	--lambda-color-secondary-700: #4100a2;
+	--lambda-color-secondary-800: #2e0074;
+	--lambda-color-secondary-900: #1c0046;
+	--lambda-color-secondary-950: #090017;
 
 	/* Neutral */
 	--lambda-color-neutral-050: #f3f3f4;
