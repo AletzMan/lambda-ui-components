@@ -45,6 +45,7 @@ const Template = (args: ColorPickerProps) => {
 					alignItems: "center",
 					justifyContent: "center",
 					width: "100%",
+					height: "100%",
 					gap: "1rem",
 				}}
 			>

@@ -5,6 +5,7 @@ import {
 	useRef,
 	PointerEvent as PointerEventReact,
 	useCallback,
+	useLayoutEffect,
 } from "react";
 import { ColorPickerProps } from "./colorpicker.types";
 import {
@@ -27,6 +28,7 @@ import {
 	useTranslation,
 	useUIConfig,
 } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { createPortal } from "react-dom";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
@@ -191,6 +193,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 		const pickerRef = useRef<HTMLDivElement>(null);
 		const pickerButtonRef = useRef<HTMLButtonElement>(null);
+		const containerColorRef = useRef<HTMLDivElement>(null);
 		const viewRef = useRef<HTMLDivElement>(null);
 		const colorPickerRef = useRef<HTMLDivElement>(null);
 		const buttonSliderRef = useRef<HTMLButtonElement>(null);
@@ -198,6 +201,39 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 		const [isDraggingPicker, setIsDraggingPicker] = useState(false);
 		const lastPointerPosition = useRef({ x: 0, y: 0 });
+
+		const [pickerPosition, setPickerPosition] = useState<{
+			left: number;
+			top: number;
+			width: number;
+			position: "below" | "above";
+		}>({ left: 0, top: 0, width: 0, position: "below" });
+
+		useLayoutEffect(() => {
+			if (viewPicker && containerColorRef.current) {
+				const rect = containerColorRef.current.getBoundingClientRect();
+				const offsetY = 3;
+				const offsetX = 3;
+				const pickerHeight = 336;
+				const spaceBelow = window.innerHeight - rect.bottom;
+				const spaceAbove = rect.top;
+				console.log("spaceBelow", spaceBelow);
+				console.log("spaceAbove", spaceAbove);
+				console.log("rect", rect);
+				let top = rect.top - offsetY;
+				let position: "below" | "above" = "below";
+				if (spaceBelow < pickerHeight - rect.height && spaceAbove > pickerHeight - rect.height) {
+					top = rect.top + (rect.height - pickerHeight) + offsetY;
+					position = "above";
+				}
+				setPickerPosition({
+					left: rect.left - offsetX,
+					top: top,
+					width: rect.width,
+					position: position,
+				});
+			}
+		}, [viewPicker]);
 
 		// Sincroniza el estado interno con el valor de la prop "value"
 		useEffect(() => {
@@ -317,7 +353,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		}, [isDraggingPicker, internalValue, onChange]);
 
 		useEffect(() => {
-			function handleClickOutside(event: MouseEvent) {
+			function handleClickOutside(event: MouseEvent | TouchEvent) {
 				const componentRef = (colorPickerRef as React.RefObject<HTMLDivElement>).current;
 
 				// Si el componente existe y el clic no fue dentro de él
@@ -326,14 +362,26 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				}
 			}
 
+			function handleScroll() {
+				setViewPicker(false);
+			}
+
 			// Añade el event listener solo cuando el picker está visible
 			if (viewPicker) {
 				document.addEventListener("mousedown", handleClickOutside);
+				document.addEventListener("touchstart", handleClickOutside);
+				document.addEventListener("scroll", handleScroll);
+				window.addEventListener("resize", handleScroll);
+				window.addEventListener("blur", handleScroll);
 			}
 
 			// Función de limpieza para eliminar el listener
 			return () => {
 				document.removeEventListener("mousedown", handleClickOutside);
+				document.removeEventListener("touchstart", handleClickOutside);
+				document.removeEventListener("scroll", handleScroll);
+				window.removeEventListener("resize", handleScroll);
+				window.removeEventListener("blur", handleScroll);
 			};
 		}, [viewPicker, colorPickerRef]); // Dependencias: viewPicker y ref
 
@@ -510,7 +558,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				{...props}
 				role="colorpicker"
 			>
-				<div className={clsx(colorpickerGroupVariants({ size, radius: radiusField }))}>
+				<div
+					className={clsx(colorpickerGroupVariants({ size, radius: radiusField }))}
+					ref={containerColorRef}
+				>
 					<div className={styles["lambda-colorpicker-border"]}></div>
 					<div className={styles["lambda-colorpicker-pattern"]}></div>
 					<button
@@ -520,211 +571,224 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 						style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
 					></button>
 				</div>
-				<div
-					className={clsx(colorpickerBoxVariants({ radius: radiusBox }), {
-						[styles["lambda-colorpicker-box-view"]]: viewPicker,
-					})}
-					ref={colorPickerRef}
-				>
-					<div className={styles["lambda-colorpicker-preview"]}>
-						<div className={styles["lambda-colorpicker-preview-background"]}></div>
-						<div
-							className={styles["lambda-colorpicker-preview-color"]}
-							ref={viewRef}
-							style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
-						/>
-						<Tooltip
-							color="neutral"
-							content={copied ? t("color-picker.copy-success") : t("color-picker.copy")}
-							className={styles["lambda-colorpicker-preview-copy"]}
-						>
-							<Button
-								type="button"
-								variant="soft"
-								color="neutral"
-								size="tiny"
-								onClick={handleCopyClick}
-								icon={copied ? <CheckIcon /> : <CopyIcon />}
-							/>
-						</Tooltip>
-					</div>
-					<div
-						className={styles["lambda-colorpicker-picker"]}
-						onPointerDown={handlePickerDown}
-						ref={pickerRef}
-						style={{
-							backgroundColor: `hsl(${hue}, 100%, 50%)`,
-							backgroundImage: `
-                                linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%),
-                                linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%)
-                            `,
-						}}
-					>
-						<button
-							type="button"
-							className={styles["lambda-colorpicker-picker-button"]}
-							ref={pickerButtonRef}
-							style={{
-								transform: `translate(${finalPickerX}px, ${finalPickerY}px)`,
-							}}
-						/>
-					</div>
-					<div className={styles["lambda-colorpicker-controls"]}>
-						<div className={styles["lambda-colorpicker-controls-colors"]}>
-							<div className={styles["lambda-colorpicker-controls-slider"]}></div>
 
-							<Slider
-								size="small"
-								value={hue}
-								min={0}
-								max={360}
-								step={1}
-								label="Hue"
-								radius="full"
-								ariaLabel="Hue Slider"
-								viewValue={false}
-								viewBar={false}
-								onInput={(e) => {
-									const hsv = hslToHsv(hue, s, l);
-									const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
-									const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
-										newHsl.s
-									)}%, ${Math.round(newHsl.l)}%)`;
-									setInternalValue(newColor);
-									onChange?.(newColor);
-								}}
-								onChange={(e) => {
-									const hsv = hslToHsv(hue, s, l);
-									const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
-									const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
-										newHsl.s
-									)}%, ${Math.round(newHsl.l)}%)`;
-									setInternalValue(newColor);
-									onChange?.(newColor);
-								}}
-							/>
-							{isSupported() && (
-								<Tooltip content={t("color-picker.eye-dropper")} color="neutral">
+				{viewPicker &&
+					createPortal(
+						<div
+							className={clsx(
+								colorpickerBoxVariants({ radius: radiusBox, position: pickerPosition.position }),
+								{
+									[styles["lambda-colorpicker-box-view"]]: viewPicker,
+								}
+							)}
+							style={{
+								left: pickerPosition.left,
+								top: pickerPosition.top,
+							}}
+							ref={colorPickerRef}
+						>
+							<div className={styles["lambda-colorpicker-preview"]}>
+								<div className={styles["lambda-colorpicker-preview-background"]}></div>
+								<div
+									className={styles["lambda-colorpicker-preview-color"]}
+									ref={viewRef}
+									style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
+								/>
+								<Tooltip
+									color="neutral"
+									content={copied ? t("color-picker.copy-success") : t("color-picker.copy")}
+									className={styles["lambda-colorpicker-preview-copy"]}
+								>
 									<Button
+										type="button"
 										variant="soft"
 										color="neutral"
 										size="tiny"
-										icon={<Pipette />}
-										onClick={pickColor}
-										ref={buttonSliderRef}
-										className={styles["lambda-colorpicker-dropper"]}
+										onClick={handleCopyClick}
+										icon={copied ? <CheckIcon /> : <CopyIcon />}
 									/>
 								</Tooltip>
-							)}
-						</div>
-						<div className={styles["lambda-colorpicker-controls-alpha"]}>
-							<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
+							</div>
 							<div
-								className={styles["lambda-colorpicker-controls-slider-alpha"]}
+								className={styles["lambda-colorpicker-picker"]}
+								onPointerDown={handlePickerDown}
+								ref={pickerRef}
 								style={{
-									background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
+									backgroundColor: `hsl(${hue}, 100%, 50%)`,
+									backgroundImage: `
+                                linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%),
+                                linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%)
+                            `,
 								}}
-							></div>
-							<Slider
-								size="small"
-								value={alpha}
-								min={0}
-								max={100}
-								label="Alpha"
-								radius="full"
-								ariaLabel="Alpha Slider"
-								viewValue={false}
-								viewBar={false}
-								onInput={(e) => {
-									setAlpha(e as number);
-									onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
-								}}
-								onChange={(e) => {
-									setAlpha(e as number);
-									onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
-								}}
-							/>
-							<InputNumber
-								value={alpha}
-								min={0}
-								max={100}
-								onChange={(value) => {
-									setAlpha(Math.min(100, Math.max(0, value || 0)));
-								}}
-								size="tiny"
-							/>
-						</div>
-						<div className={styles["lambda-colorpicker-controls-inputs"]}>
-							{format === "hex" ? (
-								<div className={styles["lambda-colorpicker-input-group"]}>
-									<Input
-										type="text"
-										value={inputValue}
-										id="lambda-colorpicker-input-hex"
-										name="lambda-colorpicker-input-hex"
-										size="tiny"
-										onChange={handleInputChange}
-										className={styles["lambda-colorpicker-input-single"]}
+							>
+								<button
+									type="button"
+									className={styles["lambda-colorpicker-picker-button"]}
+									ref={pickerButtonRef}
+									style={{
+										transform: `translate(${finalPickerX}px, ${finalPickerY}px)`,
+									}}
+								/>
+							</div>
+							<div className={styles["lambda-colorpicker-controls"]}>
+								<div className={styles["lambda-colorpicker-controls-colors"]}>
+									<div className={styles["lambda-colorpicker-controls-slider"]}></div>
+
+									<Slider
+										size="small"
+										value={hue}
+										min={0}
+										max={360}
+										step={1}
+										label="Hue"
+										radius="full"
+										ariaLabel="Hue Slider"
+										viewValue={false}
+										viewBar={false}
+										onInput={(e) => {
+											const hsv = hslToHsv(hue, s, l);
+											const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
+											const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
+												newHsl.s
+											)}%, ${Math.round(newHsl.l)}%)`;
+											setInternalValue(newColor);
+											onChange?.(newColor);
+										}}
+										onChange={(e) => {
+											const hsv = hslToHsv(hue, s, l);
+											const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
+											const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
+												newHsl.s
+											)}%, ${Math.round(newHsl.l)}%)`;
+											setInternalValue(newColor);
+											onChange?.(newColor);
+										}}
 									/>
-									<Tooltip content={t("color-picker.format")} color="neutral">
-										<Button
-											variant="soft"
-											color="neutral"
-											size="tiny"
-											label={format.toUpperCase()}
-											onClick={handleChangeFormat}
-											className={styles["lambda-colorpicker-input-format"]}
-										/>
-									</Tooltip>
+									{isSupported() && (
+										<Tooltip content={t("color-picker.eye-dropper")} color="neutral">
+											<Button
+												variant="soft"
+												color="neutral"
+												size="tiny"
+												icon={<Pipette />}
+												onClick={pickColor}
+												ref={buttonSliderRef}
+												className={styles["lambda-colorpicker-dropper"]}
+											/>
+										</Tooltip>
+									)}
 								</div>
-							) : (
-								<div className={styles["lambda-colorpicker-input-group"]}>
-									<InputNumber
-										value={format === "hsl" ? hue : rgbValues.r}
-										size="tiny"
+								<div className={styles["lambda-colorpicker-controls-alpha"]}>
+									<div className={styles["lambda-colorpicker-controls-slider-pattern"]}></div>
+									<div
+										className={styles["lambda-colorpicker-controls-slider-alpha"]}
+										style={{
+											background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
+										}}
+									></div>
+									<Slider
+										size="small"
+										value={alpha}
 										min={0}
-										max={format === "hsl" ? 360 : 255}
-										onChange={(value) =>
-											handleSingleInputChange(value, format === "hsl" ? "h" : "r")
-										}
-										className={styles["lambda-colorpicker-input-multiple"]}
+										max={100}
+										label="Alpha"
+										radius="full"
+										ariaLabel="Alpha Slider"
+										viewValue={false}
+										viewBar={false}
+										onInput={(e) => {
+											setAlpha(e as number);
+											onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
+										}}
+										onChange={(e) => {
+											setAlpha(e as number);
+											onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
+										}}
 									/>
 									<InputNumber
-										value={format === "hsl" ? s : rgbValues.g}
-										onChange={(value) =>
-											handleSingleInputChange(value, format === "hsl" ? "s" : "g")
-										}
+										value={alpha}
 										min={0}
-										max={format === "hsl" ? 100 : 255}
+										max={100}
+										onChange={(value) => {
+											setAlpha(Math.min(100, Math.max(0, value || 0)));
+										}}
 										size="tiny"
-										className={styles["lambda-colorpicker-input-multiple"]}
 									/>
-									<InputNumber
-										value={format === "hsl" ? l : rgbValues.b}
-										onChange={(value) =>
-											handleSingleInputChange(value, format === "hsl" ? "l" : "b")
-										}
-										min={0}
-										max={format === "hsl" ? 100 : 255}
-										size="tiny"
-										className={styles["lambda-colorpicker-input-multiple"]}
-									/>
-									<Tooltip content={t("color-picker.format")}>
-										<Button
-											variant="soft"
-											color="secondary"
-											size="tiny"
-											label={format.toUpperCase()}
-											onClick={handleChangeFormat}
-											ref={buttonAlphaRef}
-											className={styles["lambda-colorpicker-input-format"]}
-										/>
-									</Tooltip>
 								</div>
-							)}
-						</div>
-					</div>
-				</div>
+								<div className={styles["lambda-colorpicker-controls-inputs"]}>
+									{format === "hex" ? (
+										<div className={styles["lambda-colorpicker-input-group"]}>
+											<Input
+												type="text"
+												value={inputValue}
+												id="lambda-colorpicker-input-hex"
+												name="lambda-colorpicker-input-hex"
+												size="tiny"
+												onChange={handleInputChange}
+												className={styles["lambda-colorpicker-input-single"]}
+											/>
+											<Tooltip content={t("color-picker.format")} color="neutral">
+												<Button
+													variant="soft"
+													color="neutral"
+													size="tiny"
+													label={format.toUpperCase()}
+													onClick={handleChangeFormat}
+													className={styles["lambda-colorpicker-input-format"]}
+												/>
+											</Tooltip>
+										</div>
+									) : (
+										<div className={styles["lambda-colorpicker-input-group"]}>
+											<InputNumber
+												value={format === "hsl" ? hue : rgbValues.r}
+												size="tiny"
+												min={0}
+												max={format === "hsl" ? 360 : 255}
+												onChange={(value) =>
+													handleSingleInputChange(value, format === "hsl" ? "h" : "r")
+												}
+												className={styles["lambda-colorpicker-input-multiple"]}
+											/>
+											<InputNumber
+												value={format === "hsl" ? s : rgbValues.g}
+												onChange={(value) =>
+													handleSingleInputChange(value, format === "hsl" ? "s" : "g")
+												}
+												min={0}
+												max={format === "hsl" ? 100 : 255}
+												size="tiny"
+												className={styles["lambda-colorpicker-input-multiple"]}
+											/>
+											<InputNumber
+												value={format === "hsl" ? l : rgbValues.b}
+												onChange={(value) =>
+													handleSingleInputChange(value, format === "hsl" ? "l" : "b")
+												}
+												min={0}
+												max={format === "hsl" ? 100 : 255}
+												size="tiny"
+												className={styles["lambda-colorpicker-input-multiple"]}
+											/>
+											<Tooltip content={t("color-picker.format")}>
+												<Button
+													variant="soft"
+													color="secondary"
+													size="tiny"
+													label={format.toUpperCase()}
+													onClick={handleChangeFormat}
+													ref={buttonAlphaRef}
+													className={styles["lambda-colorpicker-input-format"]}
+												/>
+											</Tooltip>
+										</div>
+									)}
+								</div>
+							</div>
+						</div>,
+						document.body
+					)}
+
 				{showText && (
 					<span className={clsx(colorpickerTextVariants({ size }))}>{getFormatValue()}</span>
 				)}

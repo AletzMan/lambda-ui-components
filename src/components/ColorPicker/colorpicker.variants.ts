@@ -84,6 +84,14 @@ export const colorpickerBoxVariants = cva(styles["lambda-colorpicker-box"], {
 			medium: styles["lambda-colorpicker-box-radius-medium"],
 			large: styles["lambda-colorpicker-box-radius-large"],
 		},
+		position: {
+			below: styles["lambda-colorpicker-box-position-below"],
+			above: styles["lambda-colorpicker-box-position-above"],
+		},
+	},
+	defaultVariants: {
+		radius: "small",
+		position: "below",
 	},
 });
 

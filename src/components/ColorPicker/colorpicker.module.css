@@ -308,21 +308,18 @@
 }
 
 .lambda-colorpicker-box {
-	position: absolute;
-	top: -2px;
-	left: -2px;
+	position: fixed;
 	display: flex;
 	flex-direction: column;
-	width: 0;
-	height: 0;
-	opacity: 0;
-	background-color: var(--surface-b);
-	border: var(--border-width-xs) solid var(--surface-d);
+	height: 21em;
+	width: 18em;
+	opacity: 1;
+	background-color: var(--background-color);
+	border: var(--border-width-xs) solid var(--border-color);
 	overflow: hidden;
-	transition: all 0.2s ease;
 	box-sizing: border-box;
 	pointer-events: none;
-	z-index: 3;
+	z-index: 9999;
 
 	&:is(.lambda-colorpicker-box-radius-none) {
 		border-radius: var(--border-radius-none);
@@ -370,10 +367,40 @@
 }
 
 .lambda-colorpicker-box-view {
-	height: 21em;
-	width: 18em;
 	opacity: 1;
 	pointer-events: auto;
+
+	&:is(.lambda-colorpicker-box-position-below) {
+		transform-origin: top left;
+		animation: animation-dropdown-down 0.2s ease-in-out;
+	}
+
+	&:is(.lambda-colorpicker-box-position-above) {
+		transform-origin: bottom left;
+		animation: animation-dropdown-up 0.2s ease-in-out;
+	}
+}
+
+@keyframes animation-dropdown-down {
+	from {
+		opacity: 0;
+		transform: translateY(-10px) scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes animation-dropdown-up {
+	from {
+		opacity: 0;
+		transform: translateY(10px) scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 .lambda-colorpicker-preview {
@@ -426,7 +453,7 @@
 .lambda-colorpicker-picker {
 	position: relative;
 	width: calc(100% - var(--padding-xs) * 2);
-	height: 55%;
+	height: 50%;
 	margin: var(--padding-none) var(--padding-xs) var(--padding-xs) var(--padding-xs);
 	border: var(--border-width-xs) solid var(--surface-a);
 	overflow: hidden;
@@ -474,8 +501,8 @@
 	padding: var(--padding-sm) var(--padding-xs);
 	border-top: 1px solid var(--surface-d);
 	width: 100%;
-	height: 35%;
-	background-color: var(--surface-b);
+	height: 40%;
+	background-color: var(--background-color);
 }
 
 .lambda-colorpicker-controls-colors {
