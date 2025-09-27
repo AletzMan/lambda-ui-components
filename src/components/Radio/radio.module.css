@@ -763,7 +763,7 @@
 		&:is(.lambda-radio-wrapper-neutral) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--neutral-hover-color);
-				box-shadow: 0 0 0 3px var(--neutral-subtle-color);
+				box-shadow: 0 0 0 3px var(--neutral-shadow-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
@@ -774,7 +774,7 @@
 		&:is(.lambda-radio-wrapper-primary) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--primary-hover-color);
-				box-shadow: 0 0 0 3px var(--primary-subtle-color);
+				box-shadow: 0 0 0 3px var(--primary-shadow-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
@@ -785,7 +785,7 @@
 		&:is(.lambda-radio-wrapper-secondary) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--secondary-hover-color);
-				box-shadow: 0 0 0 3px var(--secondary-subtle-color);
+				box-shadow: 0 0 0 3px var(--secondary-shadow-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
@@ -796,7 +796,7 @@
 		&:is(.lambda-radio-wrapper-success) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--success-hover-color);
-				box-shadow: 0 0 0 3px var(--success-subtle-color);
+				box-shadow: 0 0 0 3px var(--success-shadow-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
@@ -807,7 +807,7 @@
 		&:is(.lambda-radio-wrapper-danger) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--danger-hover-color);
-				box-shadow: 0 0 0 3px var(--danger-subtle-color);
+				box-shadow: 0 0 0 3px var(--danger-shadow-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
@@ -818,7 +818,7 @@
 		&:is(.lambda-radio-wrapper-warning) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--warning-hover-color);
-				box-shadow: 0 0 0 3px var(--warning-subtle-color);
+				box-shadow: 0 0 0 3px var(--warning-shadow-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
@@ -829,7 +829,7 @@
 		&:is(.lambda-radio-wrapper-info) {
 			&:is(.lambda-radio-wrapper-checked) {
 				border-color: var(--info-base-color);
-				box-shadow: 0 0 0 3px var(--info-subtle-color);
+				box-shadow: 0 0 0 3px var(--info-shadow-color);
 			}
 
 			&:hover:not(.lambda-radio-wrapper-checked) {
