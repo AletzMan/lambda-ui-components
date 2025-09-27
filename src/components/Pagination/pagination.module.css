@@ -81,7 +81,7 @@
 
 .lambda-pagination-button-bordered {
 	border-color: var(--border-color);
-	background-color: var(--surface-b);
+	background-color: var(--surface-a);
 	color: var(--neutral-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
@@ -92,7 +92,7 @@
 
 .lambda-pagination-button-soft {
 	border: none;
-	background-color: var(--primary-soft-color);
+	background-color: var(--primary-opacity-color);
 	color: var(--primary-text-color);
 
 	&:is(.lambda-pagination-button-disabled) {
@@ -163,12 +163,13 @@
 	}
 
 	&.lambda-pagination-button-soft {
-		background-color: var(--primary-subtle-color);
+		background-color: var(--primary-shadow-color);
 		color: var(--primary-text-color);
 	}
 
 	&.lambda-pagination-button-outline {
 		border-color: var(--primary-base-color);
+		box-shadow: 0 0 0 3px var(--primary-shadow-color);
 		background-color: transparent;
 		color: var(--primary-text-color);
 	}
@@ -197,7 +198,7 @@
 .lambda-pagination-button-bordered-active {
 	border-color: var(--primary-hover-color);
 	background-color: var(--primary-subtle-color);
-	color: var(--primary-text-color);
+	color: var(--white-color);
 }
 
 .lambda-pagination-button-soft-active {
@@ -215,7 +216,7 @@
 .lambda-pagination-button-outline-active {
 	border-color: var(--primary-base-color);
 	outline: var(--border-width-xs) solid var(--primary-base-color);
-	background-color: transparent;
+	background-color: var(--primary-opacity-color);
 	color: var(--primary-text-color);
 }
 
