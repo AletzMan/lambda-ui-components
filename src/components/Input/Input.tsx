@@ -123,8 +123,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						disabled: contextDisabled,
 						size: contextSize,
 						invalid,
-						hasLabel: floatingLabel || label !== "",
-						hasHelper: helperText !== "",
+						hasLabel: floatingLabel || label !== undefined,
+						hasHelper: helperText !== undefined,
 						className,
 					}),
 					{
