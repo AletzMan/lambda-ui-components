@@ -357,7 +357,7 @@
 	}
 
 	&.lambda-checkbox-wrapper-primary {
-		background-color: var(--primary-subtle-color);
+		background-color: var(--primary-outline-color);
 
 		&:is(.lambda-checkbox-wrapper-join) {
 			background-color: var(--primary-base-color);
