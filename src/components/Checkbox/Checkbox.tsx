@@ -1,8 +1,9 @@
 import { forwardRef, useState, ChangeEvent } from "react";
 import styles from "./checkbox.module.css";
-import { checkboxprop, container, icon, textLabel } from "./checkbox.variants";
+import { checkboxWrapper, container, icon, textLabel } from "./checkbox.variants";
 import { CheckBoxProps } from "./checkbox.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { useJoin } from "../Join/Join";
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 	(
@@ -10,12 +11,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			className,
 			size,
 			variant,
-			label = "Label",
+			label,
 			disabled,
 			radius,
 			positionLabel = "right",
 			color,
 			checked,
+			joinposition,
 			onChange,
 			...props
 		},
@@ -23,7 +25,18 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 	) => {
 		const [internalChecked, setInternalChecked] = useState(checked);
 		const { radiusSelector } = useUIConfig();
-		const radiusValue = radius || radiusSelector;
+		let sizeValue, radiusValue, disabledValue;
+
+		try {
+			const joinContext = useJoin();
+			sizeValue = joinContext.size;
+			radiusValue = joinContext.radius;
+			disabledValue = joinContext.disabled;
+		} catch (error) {
+			radiusValue = radiusSelector || radius;
+			sizeValue = size;
+			disabledValue = disabled;
+		}
 
 		const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 			const newChecked = e.currentTarget.checked;
@@ -36,13 +49,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		return (
 			<label className={container({ positionLabel, disabled })}>
 				<div
-					className={checkboxprop({
+					className={checkboxWrapper({
 						variant,
-						size,
+						size: sizeValue,
 						radius: radiusValue,
 						color,
 						checked: internalChecked,
-						disabled,
+						disabled: disabledValue,
+						joinposition,
+						join: joinposition !== undefined,
 						className,
 					})}
 				>
@@ -55,9 +70,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 						className={styles["lambda-checkbox"]}
 						{...props}
 					/>
-					{
+					{joinposition === undefined && (
 						<svg
-							className={icon({ size, disabled, checked: internalChecked })}
+							className={icon({
+								size: sizeValue,
+								disabled: disabledValue,
+								checked: internalChecked,
+							})}
 							width="24"
 							height="24"
 							viewBox="0 0 24 24"
@@ -69,9 +88,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 						>
 							<path d="M4 12l5 5 11-11"></path>
 						</svg>
-					}
+					)}
+					{label && joinposition !== undefined && (
+						<span className={textLabel({ size: sizeValue, disabled: disabledValue })}>{label}</span>
+					)}
 				</div>
-				{label && <span className={textLabel({ size, disabled })}>{label}</span>}
+				{label && joinposition === undefined && (
+					<span className={textLabel({ size: sizeValue, disabled: disabledValue })}>{label}</span>
+				)}
 			</label>
 		);
 	}

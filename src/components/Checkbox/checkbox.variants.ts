@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import styles from "./checkbox.module.css";
 
-export const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
+export const checkboxWrapper = cva(styles["lambda-checkbox-wrapper"], {
 	variants: {
 		color: {
 			neutral: styles["lambda-checkbox-wrapper-neutral"],
@@ -38,6 +38,16 @@ export const checkboxprop = cva(styles["lambda-checkbox-wrapper"], {
 		checked: {
 			true: styles["lambda-checkbox-wrapper-checked"],
 			false: "",
+		},
+		join: {
+			true: styles["lambda-checkbox-wrapper-join"],
+			false: "",
+		},
+		joinposition: {
+			first: styles["lambda-checkbox-wrapper-first"],
+			last: styles["lambda-checkbox-wrapper-last"],
+			middle: styles["lambda-checkbox-wrapper-middle"],
+			single: styles["lambda-checkbox-wrapper-single"],
 		},
 	},
 	defaultVariants: {
@@ -112,7 +122,7 @@ export const icon = cva(styles["lambda-checkbox-icon"], {
 	},
 });
 
-export type CheckboxVariants = VariantProps<typeof checkboxprop>;
+export type CheckboxVariants = VariantProps<typeof checkboxWrapper>;
 export type ContainerVariants = VariantProps<typeof container>;
 export type IconVariants = VariantProps<typeof icon>;
 export type TextLabelVariants = VariantProps<typeof textLabel>;
