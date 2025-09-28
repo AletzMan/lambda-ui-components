@@ -4,6 +4,10 @@
 	flex-direction: column;
 	font-family: var(--font-family);
 
+	&:focus-within {
+		z-index: 1;
+	}
+
 	&:is(:first-child) {
 		margin-inline-end: -1px;
 	}

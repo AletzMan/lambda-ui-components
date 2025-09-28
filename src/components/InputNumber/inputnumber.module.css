@@ -81,6 +81,7 @@ input[type="number"] {
 	}
 
 	&:focus-within {
+		z-index: 1;
 		.lambda-number-helper {
 			opacity: 1;
 		}
