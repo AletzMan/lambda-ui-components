@@ -10,10 +10,12 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 		top: number;
 		left: number;
 		position: "below" | "above";
+		width: number;
 	}>({
 		top: 0,
 		left: 0,
 		position: "below",
+		width: 0,
 	});
 	// El hook crea las referencias (inicia en null, tipadas genéricamente)
 	const triggerRef = useRef<T>(null);
@@ -43,6 +45,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 				left: rect.left + (offset?.x || 0),
 				top: top,
 				position: position,
+				width: rect.width,
 			});
 		}
 	}, [isOpen]);
