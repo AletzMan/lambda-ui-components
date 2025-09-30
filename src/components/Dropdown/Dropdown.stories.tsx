@@ -108,6 +108,27 @@ const Template = (args: DropdownProps) => {
 						shortcutKeys={["Ctrl", "L"]}
 						url="/logout"
 					/>
+					<Divider contentPosition="start">User</Divider>
+					<Dropdown.ItemCustom>
+						<div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+							<img
+								style={{
+									width: "24px",
+									height: "24px",
+									borderRadius: "50%",
+									border: "2px solid purple",
+								}}
+								src="https://placehold.co/50x50?text=J+D"
+								alt=""
+							/>
+							<div style={{ display: "flex", flexDirection: "column", gap: "0.05rem" }}>
+								<span style={{ fontWeight: "bold" }}>John Doe</span>
+								<span style={{ color: "var(--disabled-color)", fontSize: "var(--font-size-xs)" }}>
+									john.doe@gmail.com
+								</span>
+							</div>
+						</div>
+					</Dropdown.ItemCustom>
 				</Dropdown>
 			</div>
 		</ContainerComponent>

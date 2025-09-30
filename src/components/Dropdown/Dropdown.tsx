@@ -152,6 +152,11 @@ const DropdownItem = ({
 	);
 };
 
+const DropdownItemCustom = ({ children }: { children: ReactNode }) => {
+	return <div className={clsx(styles["lambda-dropdown-item-custom"])}>{children}</div>;
+};
+
 export const Dropdown = Object.assign(DropdownRoot, {
 	Item: DropdownItem,
+	ItemCustom: DropdownItemCustom,
 });
