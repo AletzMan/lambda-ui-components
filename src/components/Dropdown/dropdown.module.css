@@ -57,21 +57,37 @@
 .lambda-dropdown-solid {
 	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid var(--border-color);
+
+	&.lambda-dropdown-active {
+		background-color: var(--surface-b);
+	}
 }
 
 .lambda-dropdown-soft {
 	background-color: var(--surface-a);
 	border: none;
+
+	&.lambda-dropdown-active {
+		background-color: var(--surface-b);
+	}
 }
 
 .lambda-dropdown-subtle {
 	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid var(--surface-b);
+
+	&.lambda-dropdown-active {
+		background-color: var(--surface-b);
+	}
 }
 
 .lambda-dropdown-text {
 	background-color: transparent;
 	border: none;
+
+	&.lambda-dropdown-active {
+		background-color: var(--surface-b);
+	}
 }
 
 .lambda-dropdown-tiny {

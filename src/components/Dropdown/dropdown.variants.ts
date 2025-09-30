@@ -41,6 +41,10 @@ export const dropdownVariants = cva(styles[`lambda-dropdown`], {
 			true: styles[`lambda-dropdown-icon-only`],
 			false: "",
 		},
+		active: {
+			true: styles[`lambda-dropdown-active`],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		variant: "solid",
@@ -50,6 +54,7 @@ export const dropdownVariants = cva(styles[`lambda-dropdown`], {
 		joinposition: "single",
 		menuPosition: "below",
 		iconOnly: false,
+		active: false,
 	},
 });
 

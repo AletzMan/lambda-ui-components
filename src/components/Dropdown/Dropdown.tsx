@@ -66,6 +66,7 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 								radius: contextRadius,
 								joinposition,
 								iconOnly: text ? false : true,
+								active: isOpen,
 							})
 						)}
 						disabled={contextDisabled || undefined}
