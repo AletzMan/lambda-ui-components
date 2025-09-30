@@ -122,8 +122,8 @@ export const dropdown = cva(styles["select-dropdown"], {
 			large: styles["select-dropdown-large"],
 		},
 		direction: {
-			up: styles["select-dropdown-up"],
-			down: styles["select-dropdown-down"],
+			above: styles["select-dropdown-above"],
+			below: styles["select-dropdown-below"],
 		},
 		variant: {
 			outline: styles["select-dropdown-outline"],
@@ -144,7 +144,7 @@ export const dropdown = cva(styles["select-dropdown"], {
 		},
 	},
 	defaultVariants: {
-		direction: "down",
+		direction: "below",
 		isOpen: false,
 		radius: "small",
 		size: "medium",
@@ -161,8 +161,8 @@ export const labelSelect = cva(styles["select-label"], {
 			large: styles["select-label-large"],
 		},
 		direction: {
-			up: styles["select-label-up"],
-			down: styles["select-label-down"],
+			above: styles["select-label-above"],
+			below: styles["select-label-below"],
 		},
 		radius: {
 			none: styles["select-label-radius-none"],
@@ -177,7 +177,7 @@ export const labelSelect = cva(styles["select-label"], {
 		},
 	},
 	defaultVariants: {
-		direction: "down",
+		direction: "below",
 		radius: "small",
 		size: "medium",
 		required: false,

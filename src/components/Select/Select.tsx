@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, forwardRef, useRef, useEffect, useCallback, RefObject } from "react";
+import React, { useState, forwardRef, useEffect, useCallback, RefObject } from "react";
 import ReactDOM from "react-dom";
 import styles from "./select.module.css";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -14,13 +14,12 @@ import {
 	selectedView,
 } from "./select.variants";
 import { SelectProps } from "./select.types";
-import { useClickOutside } from "./hooks/useClickOutside";
-import { useDropdownPlacement } from "./hooks/useDropdownPlacement";
 import { useSelectAccessibility } from "./hooks/useSelectAccessibility";
 import { SelectOptionItem } from "./SelectOptionItem";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
+import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(
 	(
@@ -43,68 +42,21 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 		},
 		ref
 	) => {
-		const [isOpen, setIsOpen] = useState(false);
 		const [selectedValue, setSelectedValue] = useState<string | null | undefined>(
 			defaultValue ?? value
 		);
-		const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 });
+		const { isOpen, setIsOpen, contentRef, triggerRef, menuPosition } = usePopover();
 		const { radiusField } = useUIConfig();
-		let radiusValue = radius || radiusField;
-		let sizeValue = size;
+		let sizeValue, radiusValue;
 
 		try {
 			const { radius: joinRadius, size: joinSize } = useJoin();
-			radiusValue = joinRadius || radius || radiusField;
-			sizeValue = joinSize || size;
+			radiusValue = joinRadius || radius;
+			sizeValue = joinSize;
 		} catch (error) {
-			console.log(error);
+			radiusValue = radius || radiusField;
+			sizeValue = size;
 		}
-
-		const containerRef = useRef<HTMLDivElement>(null);
-		const buttonRef = useRef<HTMLButtonElement>(null);
-		const listRef = useRef<HTMLUListElement>(null);
-
-		useClickOutside([containerRef, listRef], () => setIsOpen(false));
-
-		const { direction } = useDropdownPlacement(
-			buttonRef,
-			listRef as RefObject<HTMLUListElement>,
-			isOpen
-		);
-
-		// Controla el scroll del body
-		useEffect(() => {
-			if (isOpen) {
-				document.body.style.overflow = "hidden";
-			} else {
-				document.body.style.overflow = "auto";
-			}
-			return () => {
-				document.body.style.overflow = "auto";
-			};
-		}, [isOpen]);
-
-		// Calcula la posición del dropdown
-		useEffect(() => {
-			if (isOpen && containerRef.current && listRef.current) {
-				const buttonRect = containerRef.current.getBoundingClientRect();
-				const listHeight = listRef.current.getBoundingClientRect().height;
-
-				setTimeout(() => {
-					let topPosition = 0;
-					if (direction === "up") {
-						topPosition = buttonRect.top - listHeight;
-					} else if (direction === "down") {
-						topPosition = buttonRect.bottom + window.scrollY;
-					}
-					setDropdownPosition({
-						top: topPosition,
-						left: buttonRect.left + window.scrollX,
-						width: buttonRect.width,
-					});
-				}, 10);
-			}
-		}, [isOpen, direction, listRef.current]);
 
 		useEffect(() => {
 			if (value !== undefined && value !== selectedValue) {
@@ -145,8 +97,8 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 				selectedValue,
 				onOptionSelect: performOptionSelection,
 				onClose: () => setIsOpen(false),
-				buttonRef,
-				listRef,
+				buttonRef: triggerRef as RefObject<HTMLButtonElement>,
+				listRef: contentRef as RefObject<HTMLUListElement>,
 			});
 
 		const selectedOption = options.find((opt) => opt.value === selectedValue);
@@ -158,13 +110,18 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 					{ [styles["select-wrapper-disabled"]]: disabled },
 					className
 				)}
-				ref={ref || containerRef}
+				ref={ref || (triggerRef as RefObject<HTMLDivElement>)}
 				{...props}
 			>
 				{label && (
 					<label
 						className={clsx(
-							labelSelect({ direction, radius: radiusValue, size: sizeValue, required }),
+							labelSelect({
+								direction: menuPosition.position,
+								radius: radiusValue,
+								size: sizeValue,
+								required,
+							}),
 							styles["select-label"]
 						)}
 						{...getLabelProps()}
@@ -186,7 +143,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 						})}
 						onClick={handleButtonClick}
 						disabled={disabled}
-						ref={buttonRef}
+						ref={triggerRef as RefObject<HTMLButtonElement>}
 						{...getButtonProps()}
 					>
 						{selectedOption ? (
@@ -218,18 +175,23 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 					ReactDOM.createPortal(
 						<ul
 							style={{
-								top: dropdownPosition.top,
-								left: dropdownPosition.left,
-								width: dropdownPosition.width,
+								top: menuPosition.top,
+								left: menuPosition.left,
+								width: menuPosition.width,
 							}}
 							className={clsx(
-								dropdown({ size: sizeValue, direction, radius: radiusValue, variant }),
+								dropdown({
+									size: sizeValue,
+									direction: menuPosition.position,
+									radius: radiusValue,
+									variant,
+								}),
 								"scrollBar",
 								{
 									[styles["select-dropdown-open"]]: isOpen,
 								}
 							)}
-							ref={listRef}
+							ref={contentRef as RefObject<HTMLUListElement>}
 							onWheel={(e) => e.stopPropagation()}
 							{...getListboxProps()}
 						>
