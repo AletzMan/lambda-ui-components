@@ -53,7 +53,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		};
 
 		return (
-			<label className={checkboxContainerVariants({ positionLabel, disabled })}>
+			<label className={checkboxContainerVariants({ positionLabel, disabled: disabledValue })}>
 				<div
 					className={checkboxWrapperVariants({
 						variant,

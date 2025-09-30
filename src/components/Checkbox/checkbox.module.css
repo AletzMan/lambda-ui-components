@@ -60,11 +60,11 @@
 }
 
 .lambda-checkbox-container-disabled {
-	filter: contrast(70%) brightness(70%);
+	opacity: 0.5;
 	cursor: not-allowed;
 
 	.lambda-checkbox-wrapper {
-		background-color: var(--secondary-soft-color);
+		cursor: not-allowed;
 	}
 }
 
