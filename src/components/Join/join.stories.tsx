@@ -5,9 +5,19 @@ import Join, { JoinProps } from "./Join";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
-import { AlignCenter, AlignJustify, AlignLeft, AlignRight, SearchIcon } from "lucide-react";
+import {
+	AlignCenter,
+	AlignJustify,
+	AlignLeft,
+	AlignRight,
+	BellIcon,
+	SearchIcon,
+	SettingsIcon,
+	UserIcon,
+} from "lucide-react";
 import { InputNumber } from "../InputNumber/InputNumber";
 import { Checkbox } from "../Checkbox/Checkbox";
+import { Dropdown } from "../Dropdown/Dropdown";
 
 const meta: Meta<typeof Join> = {
 	title: "Components/Join",
@@ -38,7 +48,7 @@ const Template = (args: JoinProps) => {
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
-			title="Input Group"
+			title="Join"
 			onChangeStyleSource={(value) => setCurrentStyle(value)}
 			styleSource={currentStyle}
 		>
@@ -111,6 +121,11 @@ const Template = (args: JoinProps) => {
 						<Button type="button" variant="subtle" color="success" label="Search" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+						<Dropdown icon={<SettingsIcon />}>
+							<Dropdown.Item text="Settings" icon={<SettingsIcon />} />
+							<Dropdown.Item text="Notifications" icon={<BellIcon />} />
+							<Dropdown.Item text="Profile" icon={<UserIcon />} />
+						</Dropdown>
 						<Input type="text" placeholder="Text input example" prefix={<SearchIcon />} />
 						<Button type="button" variant="solid" color="info" label="Search" />
 					</Join>
