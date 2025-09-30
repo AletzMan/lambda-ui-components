@@ -282,11 +282,38 @@
 	left: 0;
 	padding: var(--padding-xs);
 	min-width: 145px;
-	background-color: var(--background-color);
+	background: radial-gradient(var(--surface-a), var(--background-color));
 	border: var(--border-width-xs) solid var(--border-color);
 	z-index: 100;
-	overflow: hidden;
 	border-radius: var(--border-radius-sm);
+
+	/* triangle */
+	&::after {
+		content: "";
+		position: absolute;
+		top: -5px;
+		left: 6px;
+		z-index: -1;
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 5px solid var(--background-color);
+	}
+
+	/*Border triangle*/
+	&::before {
+		content: "";
+		position: absolute;
+		top: -6px;
+		left: 5px;
+		z-index: -1;
+		width: 0;
+		height: 0;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-bottom: 6px solid var(--border-color);
+	}
 
 	&.lambda-dropdown-menu-position-above {
 		animation: lambda-dropdown-menu-animation-above 0.2s forwards;

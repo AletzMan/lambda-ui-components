@@ -35,7 +35,7 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 		const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef } = usePopover<
 			HTMLDivElement,
 			HTMLDivElement
-		>();
+		>({ x: 0, y: 5 });
 		const radiusValue = radius || radiusField;
 		let contextSize, contextRadius, contextDisabled;
 
@@ -153,7 +153,16 @@ const DropdownItem = ({
 };
 
 const DropdownItemCustom = ({ children }: { children: ReactNode }) => {
-	return <div className={clsx(styles["lambda-dropdown-item-custom"])}>{children}</div>;
+	const { setIsOpen } = useDropdownContext();
+	const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		setIsOpen?.(false);
+		e.stopPropagation();
+	};
+	return (
+		<div className={clsx(styles["lambda-dropdown-item-custom"])} onClick={onClick}>
+			{children}
+		</div>
+	);
 };
 
 export const Dropdown = Object.assign(DropdownRoot, {

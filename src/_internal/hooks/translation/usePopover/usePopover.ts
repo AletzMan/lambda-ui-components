@@ -1,7 +1,10 @@
 import { useEffect, useLayoutEffect, useState, useRef } from "react";
 
 // 2. El hook es genérico para recibir los tipos T y U
-export const usePopover = <T extends HTMLElement, U extends HTMLElement>() => {
+export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?: {
+	x?: number;
+	y?: number;
+}) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [menuPosition, setMenuPosition] = useState<{
 		top: number;
@@ -20,26 +23,24 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>() => {
 	useLayoutEffect(() => {
 		if (isOpen && triggerRef.current && contentRef.current) {
 			const rect = triggerRef.current.getBoundingClientRect();
-			const offsetY = 3;
-			const offsetX = 0;
 			// Se usa offsetHeight para obtener la altura renderizada del popover
 			const pickerHeight = contentRef.current.offsetHeight;
 			const spaceBelow = window.innerHeight - rect.bottom;
 			const spaceAbove = rect.top;
 
-			let top = rect.bottom + offsetY; // Posición inicial por defecto: justo debajo del trigger
+			let top = rect.bottom + (offset?.y || 0); // Posición inicial por defecto: justo debajo del trigger
 			let position: "below" | "above" = "below";
 
 			// Lógica para invertir la posición si no hay espacio abajo
 			// La condición se simplifica: ¿Hay espacio abajo? Si no, ¿hay espacio arriba?
 			if (spaceBelow < pickerHeight && spaceAbove > pickerHeight) {
 				// Posición arriba: top del trigger - altura del popover - offset
-				top = rect.top - pickerHeight - offsetY;
+				top = rect.top - pickerHeight - (offset?.y || 0);
 				position = "above";
 			}
 
 			setMenuPosition({
-				left: rect.left + offsetX,
+				left: rect.left + (offset?.x || 0),
 				top: top,
 				position: position,
 			});
