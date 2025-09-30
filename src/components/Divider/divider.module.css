@@ -1,5 +1,12 @@
 .lambda-divider {
+	display: flex;
+	align-items: center;
+	gap: var(--padding-md);
 	box-sizing: border-box;
+	font-family: var(--font-family);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-md);
+	color: var(--foreground-secondary-color);
 }
 
 .lambda-divider-solid:not(.lambda-divider-has-content) {
