@@ -27,7 +27,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--neutral-soft-color);
+			border-color: var(--border-color);
 		}
 	}
 
@@ -83,7 +83,7 @@
 		&::after,
 		&::before {
 			border-width: 0;
-			border-color: var(--neutral-soft-color);
+			border-color: var(--border-color);
 		}
 	}
 
@@ -306,7 +306,7 @@
 }
 
 .lambda-divider-neutral {
-	border-color: var(--neutral-soft-color);
+	border-color: var(--border-color);
 }
 
 .lambda-divider-primary {
