@@ -97,15 +97,34 @@ const DropdownItem = ({
 	icon,
 	text,
 	shortcutKeys,
+	url,
 	...props
-}: Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
+}: Omit<HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>, "children"> & {
 	icon?: ReactNode;
 	text?: string;
 	shortcutKeys?: string[];
+	url?: string;
+	onClick?: () => void;
 }) => {
 	const { size } = useDropdownContext();
+
+	const RenderItem = ({ children }: { children: ReactNode }) => {
+		if (url) {
+			return (
+				<a href={url} className={clsx(dropdownItemVariants({ size }))}>
+					{children}
+				</a>
+			);
+		} else {
+			return (
+				<button className={clsx(dropdownItemVariants({ size }))} onClick={props.onClick}>
+					{children}
+				</button>
+			);
+		}
+	};
 	return (
-		<div {...props} className={clsx(dropdownItemVariants({ size }))}>
+		<RenderItem {...props}>
 			{isValidElement<SVGAElement>(icon)
 				? cloneElement(icon, {
 						className: clsx(styles["lambda-dropdown-item-icon"]),
@@ -121,7 +140,7 @@ const DropdownItem = ({
 					))}
 				</div>
 			)}
-		</div>
+		</RenderItem>
 	);
 };
 

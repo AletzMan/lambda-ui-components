@@ -84,15 +84,30 @@ const Template = (args: DropdownProps) => {
 					text={hasText ? args.text : undefined}
 					radius={currentStyle === "local" ? args.radius : undefined}
 				>
-					<Dropdown.Item icon={<FolderOpen />} text="Open" shortcutKeys={["Ctrl", "O"]} />
+					<Dropdown.Item
+						icon={<FolderOpen />}
+						text="Open"
+						shortcutKeys={["Ctrl", "O"]}
+						onClick={() => console.log("Open")}
+					/>
 					<Dropdown.Item icon={<FilePlus />} text="New" shortcutKeys={["Ctrl", "N"]} />
 					<Dropdown.Item icon={<X />} text="Close" shortcutKeys={["Ctrl", "C"]} />
 					<Divider contentPosition="start">Document</Divider>
 					<Dropdown.Item icon={<Printer />} text="Print" shortcutKeys={["Ctrl", "P"]} />
 					<Dropdown.Item icon={<FileUp />} text="Export" shortcutKeys={["Ctrl", "E"]} />
 					<Divider contentPosition="start">Settings</Divider>
-					<Dropdown.Item icon={<Settings />} text="Preferences" shortcutKeys={["Ctrl", "P"]} />
-					<Dropdown.Item icon={<LogOut />} text="Logout" shortcutKeys={["Ctrl", "L"]} />
+					<Dropdown.Item
+						icon={<Settings />}
+						text="Preferences"
+						shortcutKeys={["Ctrl", "P"]}
+						url="/preferences"
+					/>
+					<Dropdown.Item
+						icon={<LogOut />}
+						text="Logout"
+						shortcutKeys={["Ctrl", "L"]}
+						url="/logout"
+					/>
 				</Dropdown>
 			</div>
 		</ContainerComponent>

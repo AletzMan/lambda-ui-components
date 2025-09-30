@@ -331,29 +331,16 @@
 	font-family: var(--font-family);
 	padding: var(--padding-xs) var(--padding-md);
 	border-radius: var(--border-radius-xs);
+	background-color: transparent;
+	border: none;
+	text-decoration: none;
 
 	&:hover {
 		background-color: var(--surface-b);
 	}
 
 	&:is(.lambda-dropdown-item-tiny),
-	&:is(.lambda-dropdown-item-small) {
-		height: var(--height-option-xs);
-		font-size: var(--font-size-xs);
-
-		.lambda-dropdown-item-icon {
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
-			line-height: var(--icon-size-xs);
-		}
-
-		.lambda-dropdown-item-label {
-			font-size: var(--font-size-xs);
-			line-height: var(--font-size-xs);
-			font-weight: var(--font-weight-medium);
-		}
-	}
-
+	&:is(.lambda-dropdown-item-small),
 	&:is(.lambda-dropdown-item-medium) {
 		height: var(--height-option-md);
 		font-size: var(--font-size-sm);
@@ -392,13 +379,17 @@
 }
 
 .lambda-dropdown-item-label {
+	display: flex;
+	align-items: flex-start;
 	min-width: 80px;
 	color: var(--foreground-color);
+	pointer-events: none;
 }
 
 .lambda-dropdown-item-icon {
 	color: var(--foreground-secondary-color);
 	opacity: 0.5;
+	pointer-events: none;
 }
 
 .lambda-dropdown-item-shortcut-container {
@@ -406,7 +397,10 @@
 	align-items: center;
 	justify-content: center;
 	gap: var(--padding-xs);
+	grid-column: 3/4;
+	margin-left: var(--padding-md);
 	height: 100%;
+	pointer-events: none;
 }
 
 .lambda-dropdown-item-shortcut {
@@ -416,7 +410,7 @@
 	color: var(--foreground-color);
 	font-size: var(--font-size-2xs);
 	line-height: var(--font-size-2xs);
-	font-weight: var(--font-weight-lg);
+	font-weight: var(--font-weight-bold);
 	height: 100%;
 	max-height: 1.8em;
 	padding: var(--padding-none) var(--padding-xs);
