@@ -13,7 +13,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	transition: color 0.3s ease-in-out, border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 	pointer-events: all;
 	overflow: hidden;
@@ -95,7 +95,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	&::placeholder {
 		color: var(--placeholder-color);
 		font-family: var(--font-family);
-		font-weight: var(--font-weight-reg);
+		font-weight: var(--font-weight-medium);
 	}
 
 	&.lambda-input-field-tiny {
@@ -429,7 +429,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	font-family: var(--font-family);
 	color: var(--foreground-label-color);
 	padding: 0 0 0 4px;
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out;
 	z-index: 2;
 
@@ -471,7 +471,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .lambda-input-label-default {
-	font-weight: var(--font-weight-sm);
+	font-weight: var(--font-weight-regular);
 	color: var(--placeholder-color);
 	pointer-events: none;
 

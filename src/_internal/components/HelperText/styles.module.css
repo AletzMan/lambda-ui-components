@@ -20,7 +20,7 @@
 	bottom: 0;
 	opacity: 1;
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-xs);
 	color: var(--foreground-helper-color);
 	transform: translateY(15px);

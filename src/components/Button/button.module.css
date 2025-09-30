@@ -6,7 +6,7 @@
 	gap: var(--gap-md);
 	color: var(--foreground-color);
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	letter-spacing: 0.75px;
 	text-decoration: none;
 	cursor: pointer;
@@ -733,7 +733,7 @@
 	}
 
 	.lambda-btn-label {
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 }
 
@@ -761,7 +761,7 @@
 	}
 
 	.lambda-btn-label {
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 }
 
@@ -789,7 +789,7 @@
 	}
 
 	.lambda-btn-label {
-		font-weight: var(--font-weight-reg);
+		font-weight: var(--font-weight-medium);
 	}
 }
 
@@ -817,7 +817,7 @@
 	}
 
 	.lambda-btn-label {
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 }
 

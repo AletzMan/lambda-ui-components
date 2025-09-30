@@ -72,7 +72,7 @@
 
 .lambda-switch-text {
 	color: var(--foreground-label-color);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 
 	&.lambda-switch-text-tiny {
 		font-size: var(--font-size-sm);

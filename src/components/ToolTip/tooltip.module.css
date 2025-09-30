@@ -12,7 +12,7 @@
 	z-index: 9999;
 	pointer-events: none;
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	padding: var(--padding-xs) var(--padding-md);
 	font-size: var(--font-size-xs);
 	line-height: 1.5;

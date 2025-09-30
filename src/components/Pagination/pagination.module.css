@@ -3,7 +3,7 @@
 	flex-direction: column;
 	align-items: center;
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	box-sizing: border-box;
 	padding: var(--padding-xs) var(--padding-none);
 }
@@ -47,7 +47,7 @@
 	height: var(--height-button-xs);
 	padding: 0 var(--padding-xs);
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	outline: none;
 	text-decoration: none;
 	border: var(--border-width-xs) solid transparent;
@@ -185,7 +185,7 @@
 .lambda-pagination-button-active {
 	cursor: default;
 	pointer-events: none;
-	font-weight: var(--font-weight-bold);
+	font-weight: var(--font-weight-extrabold);
 
 	&:hover,
 	&:focus-visible {

@@ -48,7 +48,7 @@
 
 .lambda-calendar-day-label {
 	text-align: center;
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-title-color);
 	font-size: var(--font-size-xs);
 
@@ -164,7 +164,7 @@
 
 		span {
 			font-size: var(--font-size-xs);
-			font-weight: var(--font-weight-reg);
+			font-weight: var(--font-weight-medium);
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
@@ -191,7 +191,7 @@
 
 .lambda-calendar-cell-today {
 	color: var(--primary-base-color);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	border: var(--border-width-xs) solid var(--primary-base-color);
 
 	&:is(.lambda-calendar-cell-full) {

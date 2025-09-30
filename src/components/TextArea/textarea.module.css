@@ -6,7 +6,7 @@
 
 .lambda-textarea-label {
 	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-label-color);
 	margin: 0 0 var(--gap-xs) 0;
 

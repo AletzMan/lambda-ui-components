@@ -17,7 +17,7 @@
 		min-width: var(--badge-size-xl);
 		min-height: var(--badge-size-xs);
 		font-size: var(--font-size-xs);
-		font-weight: var(--font-weight-reg);
+		font-weight: var(--font-weight-medium);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
 			min-width: var(--badge-size-3xs);
@@ -40,7 +40,7 @@
 		padding: var(--padding-3xs) calc(var(--padding-sm) + var(--padding-2xs));
 		min-height: var(--badge-size-md);
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
 			min-width: var(--badge-size-2xs);
@@ -59,7 +59,7 @@
 
 	&.lambda-badge-medium {
 		padding: var(--padding-2xs) var(--padding-md);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 		font-size: var(--font-size-md);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
@@ -82,7 +82,7 @@
 	&.lambda-badge-large {
 		padding: var(--padding-xs) var(--padding-md);
 		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
 			min-width: var(--badge-size-sm);

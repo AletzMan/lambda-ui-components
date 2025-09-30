@@ -10,7 +10,7 @@
 	letter-spacing: 0.5px;
 	opacity: 0;
 	border-radius: var(--border-radius-sm);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	color: var(--white-color);
 	transform: translateY(-10px);
 	background-color: var(--danger-base-color);

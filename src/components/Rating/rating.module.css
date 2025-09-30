@@ -87,7 +87,7 @@
 		height: var(--icon-size-md);
 		font-size: var(--font-size-sm);
 		line-height: var(--font-size-sm);
-		font-weight: var(--font-weight-bold);
+		font-weight: var(--font-weight-extrabold);
 	}
 
 	&:is(.lambda-rating-item-medium) {
@@ -95,7 +95,7 @@
 		height: var(--icon-size-3xl);
 		font-size: var(--font-size-xl);
 		line-height: var(--font-size-xl);
-		font-weight: var(--font-weight-bold);
+		font-weight: var(--font-weight-extrabold);
 	}
 
 	&:is(.lambda-rating-item-large) {
@@ -103,7 +103,7 @@
 		height: var(--height-button-lg);
 		font-size: var(--font-size-4xl);
 		line-height: var(--font-size-4xl);
-		font-weight: var(--font-weight-bold);
+		font-weight: var(--font-weight-extrabold);
 
 		& > svg {
 			width: var(--icon-size-4xl);

@@ -13,7 +13,7 @@
 	position: relative;
 	display: flex;
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	box-sizing: border-box;
 	outline: none;
 	width: 100%;
@@ -36,7 +36,7 @@
 	display: block;
 	font-family: var(--font-family);
 	color: var(--foreground-label-color);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	padding: 0 0 0 4px;
 	cursor: pointer;
 	transition: color 0.2s ease;
@@ -105,13 +105,13 @@
 	.lambda-file-upload-drop-zone-placeholder {
 		max-width: 20ch;
 		margin: 0 0 var(--gap-sm) 0;
-		font-weight: var(--font-weight-sm);
+		font-weight: var(--font-weight-regular);
 		color: var(--foreground-secondary-color);
 	}
 
 	.lambda-file-upload-drop-zone-file-count {
 		font-size: var(--font-size-md);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 		color: var(--foreground-color);
 	}
 
@@ -318,7 +318,7 @@
 	padding: var(--padding-sm) var(--padding-md);
 	font-size: var(--font-size-md);
 	font-family: var(--font-family);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	border-radius: var(--border-radius-none);
 	border: var(--border-width-xs) solid transparent;
 	outline: none;
@@ -409,7 +409,7 @@
 	font-family: var(--font-family);
 	font-size: var(--font-size-sm);
 	color: var(--foreground-color);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -561,7 +561,7 @@
 	justify-content: space-between;
 	gap: var(--gap-lg);
 	font-style: italic;
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	padding: var(--padding-none) var(--padding-sm);
 	font-size: var(--font-size-xs);
 	color: var(--surface-f);

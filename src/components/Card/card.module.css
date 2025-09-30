@@ -172,13 +172,13 @@
 	}
 
 	.lambda-card-header-title {
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 		color: var(--foreground-color);
 		font-size: var(--font-size-md);
 	}
 
 	.lambda-card-header-description {
-		font-weight: var(--font-weight-reg);
+		font-weight: var(--font-weight-medium);
 		font-size: var(--font-size-xs);
 		color: var(--surface-g);
 	}
@@ -199,7 +199,7 @@
 
 	.lambda-card-action-text {
 		font-size: var(--font-size-xs);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 
 	.lambda-card-action-icon {
@@ -217,12 +217,12 @@
 
 	.lambda-card-header-title {
 		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 		color: var(--foreground-color);
 	}
 
 	.lambda-card-header-description {
-		font-weight: var(--font-weight-reg);
+		font-weight: var(--font-weight-medium);
 		font-size: var(--font-size-sm);
 		color: var(--surface-g);
 	}
@@ -243,7 +243,7 @@
 
 	.lambda-card-action-text {
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 
 	.lambda-card-action-icon {
@@ -261,12 +261,12 @@
 
 	.lambda-card-header-title {
 		font-size: var(--font-size-xl);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 		color: var(--foreground-color);
 	}
 
 	.lambda-card-header-description {
-		font-weight: var(--font-weight-reg);
+		font-weight: var(--font-weight-medium);
 		font-size: var(--font-size-sm);
 		color: var(--surface-g);
 	}
@@ -294,6 +294,6 @@
 
 	.lambda-card-action-text {
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 }

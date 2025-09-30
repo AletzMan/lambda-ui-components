@@ -122,7 +122,7 @@ const DefaultRating = (args: RatingProps) => {
 								marginBottom: "var(--padding-xs)",
 								color:
 									color === "default" ? "var(--rating-solid-color)" : `var(--${color}-base-color)`,
-								fontWeight: "var(--font-weight-md)",
+								fontWeight: "var(--font-weight-semibold)",
 								fontSize: "var(--font-size-md)",
 								textTransform: "capitalize",
 							}}

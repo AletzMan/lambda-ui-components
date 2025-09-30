@@ -31,7 +31,7 @@
 	position: absolute;
 	top: -1.4em;
 	display: block;
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	font-family: var(--font-family);
 	color: var(--foreground-label-color);
 
@@ -144,7 +144,7 @@
 		padding: 0 0 0 var(--padding-md);
 		height: var(--height-input-xs);
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 
 		.select-icon-svg {
 			width: var(--icon-size-sm);
@@ -300,7 +300,7 @@
 	&.select-dropdown-tiny {
 		top: calc(90% + var(--padding-xs));
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 
 		.select-icon-svg {
 			width: var(--icon-size-sm);
@@ -446,7 +446,7 @@
 .select-option-selected {
 	background-color: var(--primary-hover-color);
 	color: var(--white-color);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	cursor: default;
 
 	.select-view-description {
@@ -578,7 +578,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	text-overflow: ellipsis;
 	white-space: wrap;
 }

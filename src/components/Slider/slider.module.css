@@ -28,7 +28,7 @@
 	margin-bottom: var(--spacing-1, 4px);
 	color: var(--foreground-label-color);
 	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 }
 
 .lambda-range-label-small {
@@ -392,7 +392,7 @@
 	transform: translateX(-50%) translateY(-130%);
 	transform-origin: bottom center;
 	text-align: center;
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-invert-color);
 	background-color: var(--neutral-base-color);
 	padding: var(--padding-xs) var(--padding-sm);
@@ -503,7 +503,7 @@
 		transform: translateX(-50%);
 		width: max-content;
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 		text-align: center;
 		color: var(--foreground-secondary-color);
 	}
@@ -546,7 +546,7 @@
 		transform: translateY(-50%);
 		width: max-content;
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 		text-align: center;
 		color: var(--foreground-secondary-color);
 	}

@@ -38,7 +38,7 @@
 .tokens-color-key {
 	color: var(--foreground-color);
 	font-size: var(--font-size-lg);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	text-transform: capitalize;
 	text-align: center;
 	padding: var(--padding-xs) var(--padding-none);
@@ -60,6 +60,6 @@
 .tokens-color-opacity-key {
 	color: var(--foreground-title-color);
 	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	text-transform: capitalize;
 }

@@ -130,12 +130,12 @@
 	--gap-lg: 16px;
 	--gap-xl: 24px;
 
-	--font-weight-xs: 300;
-	--font-weight-sm: 400;
-	--font-weight-reg: 500;
-	--font-weight-md: 600;
-	--font-weight-semibold: 700;
-	--font-weight-bold: 800;
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+	--font-weight-extrabold: 800;
 
 	--font-size-2xs: 0.625rem; /* 10px */
 	--font-size-xs: 0.75rem; /* 12px */
@@ -465,7 +465,7 @@
 
 	--border-color: #313741;
 	--border-inverse-color: #c0c0c0;
-	--shadow-color: #61616130;
+	--shadow-color: #2b2a2a30;
 	--shadow-inset-color: #f1f1f155;
 
 	--box-shadow: 0 0 2px 1px var(--shadow-color);

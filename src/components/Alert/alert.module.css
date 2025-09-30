@@ -67,11 +67,11 @@
 .lambda-alert-tiny {
 	font-size: var(--font-size-xs);
 	padding: var(--padding-xs) var(--padding-lg);
-	font-weight: var(--font-weight-sm);
+	font-weight: var(--font-weight-regular);
 
 	.lambda-alert-title {
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 
 	.lambda-alert-icon {
@@ -83,11 +83,11 @@
 .lambda-alert-small {
 	font-size: var(--font-size-sm);
 	padding: var(--padding-sm) var(--padding-lg);
-	font-weight: var(--font-weight-sm);
+	font-weight: var(--font-weight-regular);
 
 	.lambda-alert-title {
 		font-size: var(--font-size-md);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 
 	.lambda-alert-icon {
@@ -99,11 +99,11 @@
 .lambda-alert-medium {
 	font-size: var(--font-size-md);
 	padding: var(--padding-md) var(--padding-lg);
-	font-weight: var(--font-weight-xs);
+	font-weight: var(--font-weight-light);
 
 	.lambda-alert-title {
 		font-size: var(--font-size-md);
-		font-weight: var(--font-weight-bold);
+		font-weight: var(--font-weight-extrabold);
 	}
 
 	.lambda-alert-icon {
@@ -115,11 +115,11 @@
 .lambda-alert-large {
 	font-size: var(--font-size-md);
 	padding: var(--padding-lg) var(--padding-lg);
-	font-weight: var(--font-weight-xs);
+	font-weight: var(--font-weight-light);
 
 	.lambda-alert-title {
 		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-md);
+		font-weight: var(--font-weight-semibold);
 	}
 
 	.lambda-alert-icon {
@@ -130,7 +130,7 @@
 
 .lambda-alert-soft {
 	border: none;
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	text-shadow: 0 0 0px var(--lambda-color-secondary-700);
 
 	.lambda-alert-title {
@@ -258,7 +258,7 @@
 }
 
 .lambda-alert-outline {
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	text-shadow: 0 0 0px var(--lambda-color-secondary-700);
 
 	.lambda-alert-title {
@@ -394,7 +394,7 @@
 
 .lambda-alert-solid {
 	color: var(--white-color);
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	border: none;
 	text-shadow: 0 0 0px var(--lambda-color-secondary-900);
 

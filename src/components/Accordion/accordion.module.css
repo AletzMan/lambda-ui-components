@@ -209,7 +209,7 @@
 	border: none;
 	text-align: left;
 	cursor: pointer;
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	color: var(--foreground-secondary-color);
 	transition: background-color 0.2s ease, color 0.2s ease;
 	background-color: transparent;
@@ -273,7 +273,7 @@
 /* Variantes del AccordionHeader */
 .lambda-accordion-header-open:not(.lambda-accordion-header-flush) {
 	background-color: var(--surface-a);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-color);
 }
 

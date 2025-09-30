@@ -1827,7 +1827,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-weight: var(--font-weight-reg);
+	font-weight: var(--font-weight-medium);
 	text-shadow: 0 0 0px #00000015;
 	width: max-content;
 	transition: background-color 0.2s ease-in-out;

@@ -168,7 +168,7 @@
 	align-items: center;
 	margin: 0;
 	font-size: var(--font-size-lg);
-	font-weight: var(--font-weight-bold);
+	font-weight: var(--font-weight-extrabold);
 	color: var(--foreground-title-color);
 	flex-grow: 1;
 	min-width: 0;

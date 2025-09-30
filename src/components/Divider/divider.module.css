@@ -5,7 +5,7 @@
 	box-sizing: border-box;
 	font-family: var(--font-family);
 	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-md);
+	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-secondary-color);
 }
 
