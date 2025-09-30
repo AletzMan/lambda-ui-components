@@ -17,7 +17,9 @@ import { ChevronDown } from "lucide-react";
 import { createPortal } from "react-dom";
 import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
 
-const DropdownContext = createContext<DropdownProps | undefined>(undefined);
+const DropdownContext = createContext<
+	(DropdownProps & { setIsOpen?: (value: boolean) => void }) | undefined
+>(undefined);
 
 const useDropdownContext = () => {
 	const context = useContext(DropdownContext);
@@ -49,7 +51,9 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 		}
 
 		return (
-			<DropdownContext.Provider value={{ variant, size, radius, icon, text, joinposition }}>
+			<DropdownContext.Provider
+				value={{ variant, size, radius, icon, text, joinposition, setIsOpen }}
+			>
 				<div className={clsx(styles[`lambda-dropdown-wrapper`])} ref={triggerRef}>
 					<button
 						ref={ref}
@@ -104,20 +108,24 @@ const DropdownItem = ({
 	text?: string;
 	shortcutKeys?: string[];
 	url?: string;
-	onClick?: () => void;
 }) => {
-	const { size } = useDropdownContext();
+	const { size, setIsOpen } = useDropdownContext();
+
+	const onClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+		setIsOpen?.(false);
+		props.onClick?.(e);
+	};
 
 	const RenderItem = ({ children }: { children: ReactNode }) => {
 		if (url) {
 			return (
-				<a href={url} className={clsx(dropdownItemVariants({ size }))}>
+				<a href={url} className={clsx(dropdownItemVariants({ size }))} onClick={onClick}>
 					{children}
 				</a>
 			);
 		} else {
 			return (
-				<button className={clsx(dropdownItemVariants({ size }))} onClick={props.onClick}>
+				<button className={clsx(dropdownItemVariants({ size }))} onClick={onClick}>
 					{children}
 				</button>
 			);

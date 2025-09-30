@@ -334,6 +334,7 @@
 	background-color: transparent;
 	border: none;
 	text-decoration: none;
+	cursor: pointer;
 
 	&:hover {
 		background-color: var(--surface-b);
