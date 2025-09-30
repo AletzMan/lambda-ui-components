@@ -5,7 +5,7 @@ import {
 	useRef,
 	PointerEvent as PointerEventReact,
 	useCallback,
-	useLayoutEffect,
+	RefObject,
 } from "react";
 import { ColorPickerProps } from "./colorpicker.types";
 import {
@@ -29,6 +29,7 @@ import {
 	useUIConfig,
 } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { createPortal } from "react-dom";
+import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
 
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
@@ -177,6 +178,13 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		ref
 	) => {
 		const { open, isSupported } = useEyeDropper();
+		const {
+			triggerRef,
+			contentRef,
+			menuPosition,
+			isOpen: viewPicker,
+			setIsOpen: setViewPicker,
+		} = usePopover({ x: -3, y: -39 });
 		const { t } = useTranslation();
 		const { radiusField, radiusBox } = useUIConfig();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
@@ -189,51 +197,15 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		const [copied, setCopied] = useState(false);
 		const [pickerX, setPickerX] = useState(0);
 		const [pickerY, setPickerY] = useState(0);
-		const [viewPicker, setViewPicker] = useState(false);
 
 		const pickerRef = useRef<HTMLDivElement>(null);
 		const pickerButtonRef = useRef<HTMLButtonElement>(null);
-		const containerColorRef = useRef<HTMLDivElement>(null);
 		const viewRef = useRef<HTMLDivElement>(null);
-		const colorPickerRef = useRef<HTMLDivElement>(null);
 		const buttonSliderRef = useRef<HTMLButtonElement>(null);
 		const buttonAlphaRef = useRef<HTMLButtonElement>(null);
 
 		const [isDraggingPicker, setIsDraggingPicker] = useState(false);
 		const lastPointerPosition = useRef({ x: 0, y: 0 });
-
-		const [pickerPosition, setPickerPosition] = useState<{
-			left: number;
-			top: number;
-			width: number;
-			position: "below" | "above";
-		}>({ left: 0, top: 0, width: 0, position: "below" });
-
-		useLayoutEffect(() => {
-			if (viewPicker && containerColorRef.current) {
-				const rect = containerColorRef.current.getBoundingClientRect();
-				const offsetY = 3;
-				const offsetX = 3;
-				const pickerHeight = 336;
-				const spaceBelow = window.innerHeight - rect.bottom;
-				const spaceAbove = rect.top;
-				console.log("spaceBelow", spaceBelow);
-				console.log("spaceAbove", spaceAbove);
-				console.log("rect", rect);
-				let top = rect.top - offsetY;
-				let position: "below" | "above" = "below";
-				if (spaceBelow < pickerHeight - rect.height && spaceAbove > pickerHeight - rect.height) {
-					top = rect.top + (rect.height - pickerHeight) + offsetY;
-					position = "above";
-				}
-				setPickerPosition({
-					left: rect.left - offsetX,
-					top: top,
-					width: rect.width,
-					position: position,
-				});
-			}
-		}, [viewPicker]);
 
 		// Sincroniza el estado interno con el valor de la prop "value"
 		useEffect(() => {
@@ -351,39 +323,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				document.removeEventListener("pointerup", handlePointerUp);
 			};
 		}, [isDraggingPicker, internalValue, onChange]);
-
-		useEffect(() => {
-			function handleClickOutside(event: MouseEvent | TouchEvent) {
-				const componentRef = (colorPickerRef as React.RefObject<HTMLDivElement>).current;
-
-				// Si el componente existe y el clic no fue dentro de él
-				if (componentRef && !componentRef.contains(event.target as Node)) {
-					setViewPicker(false);
-				}
-			}
-
-			function handleScroll() {
-				setViewPicker(false);
-			}
-
-			// Añade el event listener solo cuando el picker está visible
-			if (viewPicker) {
-				document.addEventListener("mousedown", handleClickOutside);
-				document.addEventListener("touchstart", handleClickOutside);
-				document.addEventListener("scroll", handleScroll);
-				window.addEventListener("resize", handleScroll);
-				window.addEventListener("blur", handleScroll);
-			}
-
-			// Función de limpieza para eliminar el listener
-			return () => {
-				document.removeEventListener("mousedown", handleClickOutside);
-				document.removeEventListener("touchstart", handleClickOutside);
-				document.removeEventListener("scroll", handleScroll);
-				window.removeEventListener("resize", handleScroll);
-				window.removeEventListener("blur", handleScroll);
-			};
-		}, [viewPicker, colorPickerRef]); // Dependencias: viewPicker y ref
 
 		const handlePickerDown = (event: PointerEventReact) => {
 			if (disabled || !pickerRef.current || !pickerButtonRef.current) return;
@@ -560,7 +499,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			>
 				<div
 					className={clsx(colorpickerGroupVariants({ size, radius: radiusField }))}
-					ref={containerColorRef}
+					ref={triggerRef as RefObject<HTMLDivElement>}
 				>
 					<div className={styles["lambda-colorpicker-border"]}></div>
 					<div className={styles["lambda-colorpicker-pattern"]}></div>
@@ -576,16 +515,16 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					createPortal(
 						<div
 							className={clsx(
-								colorpickerBoxVariants({ radius: radiusBox, position: pickerPosition.position }),
+								colorpickerBoxVariants({ radius: radiusBox, position: menuPosition.position }),
 								{
 									[styles["lambda-colorpicker-box-view"]]: viewPicker,
 								}
 							)}
 							style={{
-								left: pickerPosition.left,
-								top: pickerPosition.top,
+								left: menuPosition.left,
+								top: menuPosition.top,
 							}}
-							ref={colorPickerRef}
+							ref={contentRef as RefObject<HTMLDivElement>}
 						>
 							<div className={styles["lambda-colorpicker-preview"]}>
 								<div className={styles["lambda-colorpicker-preview-background"]}></div>
