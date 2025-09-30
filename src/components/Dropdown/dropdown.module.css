@@ -399,7 +399,7 @@
 	justify-content: center;
 	gap: var(--padding-xs);
 	grid-column: 3/4;
-	margin-left: var(--padding-md);
+	margin-left: var(--padding-lg);
 	height: 100%;
 	pointer-events: none;
 }
