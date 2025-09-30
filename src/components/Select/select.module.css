@@ -281,7 +281,7 @@
 	position: fixed;
 	bottom: auto;
 	left: 0;
-	width: 100%;
+	width: max-content;
 	max-height: 19em;
 	padding: 0;
 	margin: 0;
@@ -379,11 +379,11 @@
 	pointer-events: auto;
 	display: block;
 
-	&:is(.select-dropdown-down) {
+	&:is(.select-dropdown-below) {
 		animation: growDown 0.35s cubic-bezier(0.55, 0.57, 0.05, 1.46) forwards;
 	}
 
-	&:is(.select-dropdown-up) {
+	&:is(.select-dropdown-above) {
 		animation: growUp 0.35s cubic-bezier(0.55, 0.57, 0.05, 1.46) forwards;
 	}
 }
@@ -420,11 +420,11 @@
 	}
 }
 
-.select-dropdown-up {
+.select-dropdown-above {
 	transform-origin: bottom center;
 }
 
-.select-dropdown-down {
+.select-dropdown-below {
 	transform-origin: top center;
 }
 
