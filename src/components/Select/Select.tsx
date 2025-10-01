@@ -14,7 +14,6 @@ import {
 	selectedView,
 } from "./select.variants";
 import { SelectProps } from "./select.types";
-import { useSelectAccessibility } from "./hooks/useSelectAccessibility";
 import { SelectOptionItem } from "./SelectOptionItem";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
@@ -45,7 +44,15 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 		const [selectedValue, setSelectedValue] = useState<string | null | undefined>(
 			defaultValue ?? value
 		);
-		const { isOpen, setIsOpen, contentRef, triggerRef, menuPosition } = usePopover();
+		const {
+			isOpen,
+			setIsOpen,
+			contentRef,
+			triggerRef,
+			menuPosition,
+			handleKeyDown,
+			selectedOptionIndex,
+		} = usePopover();
 		const { radiusField } = useUIConfig();
 		let sizeValue, radiusValue;
 
@@ -58,11 +65,20 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			sizeValue = size;
 		}
 
+		const selectedOption = options.find((opt) => opt.value === selectedValue);
+
 		useEffect(() => {
 			if (value !== undefined && value !== selectedValue) {
 				setSelectedValue(value);
 			}
 		}, [value, selectedValue]);
+
+		useEffect(() => {
+			if (selectedOptionIndex !== null) {
+				const selected = options[selectedOptionIndex];
+				setSelectedValue(selected?.value);
+			}
+		}, [selectedOptionIndex]);
 
 		const performOptionSelection = useCallback(
 			(val: string | undefined) => {
@@ -90,19 +106,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			[performOptionSelection]
 		);
 
-		const { getButtonProps, getListboxProps, getOptionProps, getLabelProps, activeOptionId } =
-			useSelectAccessibility({
-				isOpen,
-				options,
-				selectedValue,
-				onOptionSelect: performOptionSelection,
-				onClose: () => setIsOpen(false),
-				buttonRef: triggerRef as RefObject<HTMLButtonElement>,
-				listRef: contentRef as RefObject<HTMLUListElement>,
-			});
-
-		const selectedOption = options.find((opt) => opt.value === selectedValue);
-
 		return (
 			<div
 				className={clsx(
@@ -124,7 +127,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							}),
 							styles["select-label"]
 						)}
-						{...getLabelProps()}
 					>
 						{label}
 					</label>
@@ -144,7 +146,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 						onClick={handleButtonClick}
 						disabled={disabled}
 						ref={triggerRef as RefObject<HTMLButtonElement>}
-						{...getButtonProps()}
 					>
 						{selectedOption ? (
 							<div className={selectedView({ size: sizeValue, disabled: disabled, variant })}>
@@ -192,18 +193,15 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 								}
 							)}
 							ref={contentRef as RefObject<HTMLUListElement>}
-							onWheel={(e) => e.stopPropagation()}
-							{...getListboxProps()}
+							onKeyDown={(e) => handleKeyDown(e as React.KeyboardEvent<HTMLUListElement>)}
 						>
-							{options?.map((option, index) => (
+							{options?.map((option) => (
 								<SelectOptionItem
 									key={option.value}
 									option={option}
-									activeOptionId={activeOptionId}
 									selectedValue={selectedValue}
 									size={sizeValue}
 									onClick={handleOptionClick}
-									{...getOptionProps(option, index)}
 								/>
 							))}
 						</ul>,
