@@ -236,6 +236,11 @@
 	--height-option-md: 1.875rem; /* 26px (Base estándar de interacción) */
 	--height-option-lg: 2.25rem; /* 32px */
 
+	--breadcrumb-size-xs: 1.5rem; /* 24px */
+	--breadcrumb-size-sm: 1.875rem; /* 30px */
+	--breadcrumb-size-md: 2.25rem; /* 36px (Base estándar de interacción) */
+	--breadcrumb-size-lg: 2.75rem; /* 44px */
+
 	--accordion-transition-duration: 300ms;
 	--accordion-transition-timing-function: ease-in-out;
 	--accordion-max-height-open: 15em;
@@ -417,7 +422,7 @@
 	--background-color: #151516;*/
 	--background-color: #101927;
 	--foreground-color: #d6d6d6;
-	--foreground-title-color: #c4c4c4;
+	--foreground-title-color: #a1a1aa;
 	--foreground-secondary-color: #888888;
 	--foreground-invert-color: #222222;
 	--foreground-label-color: #a6b6c2;
