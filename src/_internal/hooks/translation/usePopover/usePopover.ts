@@ -47,8 +47,44 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 				position: position,
 				width: rect.width,
 			});
+			setTimeout(() => {
+				if (isOpen && contentRef.current) {
+					const items = getFocusableItems();
+					items[0]?.focus();
+				}
+			}, 100);
 		}
 	}, [isOpen]);
+
+	const getFocusableItems = () => {
+		if (!contentRef.current) return [];
+		const all = Array.from(contentRef.current.querySelectorAll<HTMLElement>(":scope > *"));
+		return all.filter((el) => el.tagName === "BUTTON" || el.tagName === "A" || el.tabIndex >= 0);
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+		const items = getFocusableItems();
+		if (!items) return;
+
+		const activeIndex = Array.from(items).findIndex((el) => el === document.activeElement);
+
+		if (e.key === "ArrowDown") {
+			e.preventDefault();
+			const next = items[(activeIndex + 1) % items.length];
+			next?.focus();
+		}
+
+		if (e.key === "ArrowUp") {
+			e.preventDefault();
+			const prev = items[(activeIndex - 1 + items.length) % items.length];
+			prev?.focus();
+		}
+
+		if (e.key === "Escape") {
+			e.preventDefault();
+			setIsOpen(false);
+		}
+	};
 
 	// --- LÓGICA DE CIERRE POR EVENTOS ---
 	useEffect(() => {
@@ -103,5 +139,6 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 		menuPosition,
 		triggerRef,
 		contentRef,
+		handleKeyDown,
 	};
 };
