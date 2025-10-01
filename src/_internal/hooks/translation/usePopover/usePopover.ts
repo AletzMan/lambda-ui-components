@@ -6,6 +6,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 	y?: number;
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
 	const [menuPosition, setMenuPosition] = useState<{
 		top: number;
 		left: number;
@@ -50,7 +51,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 			setTimeout(() => {
 				if (isOpen && contentRef.current) {
 					const items = getFocusableItems();
-					items[0]?.focus();
+					position === "above" ? items[items.length - 1]?.focus() : items[0]?.focus();
 				}
 			}, 100);
 		}
@@ -62,7 +63,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 		return all.filter((el) => el.tagName === "BUTTON" || el.tagName === "A" || el.tabIndex >= 0);
 	};
 
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | HTMLUListElement>) => {
 		const items = getFocusableItems();
 		if (!items) return;
 
@@ -83,6 +84,12 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 		if (e.key === "Escape") {
 			e.preventDefault();
 			setIsOpen(false);
+		}
+
+		if (e.key === "Enter") {
+			e.preventDefault();
+			setIsOpen(false);
+			setSelectedOptionIndex(activeIndex);
 		}
 	};
 
@@ -112,13 +119,30 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 			}
 		}
 
+		function handleScrollEvent(event: Event) {
+			if (!isOpen) return;
+
+			const contentEl = contentRef.current;
+			if (!contentEl) return;
+
+			const target = event.target as Node | null;
+
+			// 👉 Si el scroll ocurrió dentro del popover, lo ignoramos
+			if (target && contentEl.contains(target)) {
+				return;
+			}
+
+			// 👉 Si no, cerramos
+			setIsOpen(false);
+		}
+
 		if (isOpen) {
 			// Eventos de clic/tap para cerrar fuera
 			document.addEventListener("mousedown", handleClickOutside);
 			document.addEventListener("touchstart", handleClickOutside);
 
 			// Eventos globales para cerrar en movimiento o pérdida de foco (usando el modo captura 'true')
-			window.addEventListener("scroll", handleGlobalEvent, true);
+			window.addEventListener("scroll", handleScrollEvent, true);
 			window.addEventListener("resize", handleGlobalEvent);
 			window.addEventListener("blur", handleGlobalEvent);
 		}
@@ -127,7 +151,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 			document.removeEventListener("touchstart", handleClickOutside);
-			window.removeEventListener("scroll", handleGlobalEvent, true);
+			window.removeEventListener("scroll", handleScrollEvent, true);
 			window.removeEventListener("resize", handleGlobalEvent);
 			window.removeEventListener("blur", handleGlobalEvent);
 		};
@@ -140,5 +164,6 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 		triggerRef,
 		contentRef,
 		handleKeyDown,
+		selectedOptionIndex,
 	};
 };
