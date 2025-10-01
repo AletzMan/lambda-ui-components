@@ -77,7 +77,7 @@ const Template = (args: AlertProps) => {
 		>
 			<div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "1rem" }}>
 				{colors.map((color) => (
-					<div style={{ width: "350px" }}>
+					<div style={{ width: "400px" }}>
 						<label
 							style={{
 								fontSize: "12px",
@@ -97,7 +97,6 @@ const Template = (args: AlertProps) => {
 							{...args}
 							key={color}
 							color={color as AlertVariants["color"]}
-							title="Título del Alert"
 							message="Este es un mensaje de alerta interactivo."
 							radius={currentStyles === "local" ? args.radius : undefined}
 						/>
