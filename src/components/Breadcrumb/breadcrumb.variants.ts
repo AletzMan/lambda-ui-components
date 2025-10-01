@@ -26,7 +26,7 @@ export const breadcrumb = cva(styles["breadcrumb"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		variant: "chevron",
 		radius: "small",
 	},
@@ -66,7 +66,7 @@ export const breadcrumbItem = cva(styles["breadcrumb-item"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		variant: "chevron",
 		color: "primary",
 	},
@@ -111,7 +111,7 @@ export const breadcrumbContainer = cva(styles["breadcrumb-container"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		variant: "chevron",
 	},
 });
@@ -134,7 +134,7 @@ export const breadcrumbEllipsis = cva(styles["breadcrumb-ellipsis"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 	},
 });
 
