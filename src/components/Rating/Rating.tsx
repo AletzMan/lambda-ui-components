@@ -28,7 +28,6 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 			}
 
 			if (customIcon) {
-				console.log("customIcon", customIcon);
 				setType(firstTypeIcon === "string" ? "string" : "custom");
 			} else {
 				setType("icon");

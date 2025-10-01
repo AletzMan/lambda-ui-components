@@ -470,8 +470,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					const { h, s, l } = hexToHslAndAlpha(color.sRGBHex);
 					setInternalValue(`hsl(${h}, ${s}%, ${l}%)`);
 					onChange?.(`hsl(${h}, ${s}%, ${l}%)`);
-				} catch (e) {
-					console.log(e);
+				} catch (_e) {
 					//if (!e.canceled) setError(e)
 				}
 			};

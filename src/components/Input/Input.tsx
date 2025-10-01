@@ -114,7 +114,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		};
 
 		const inputPlaceholder = floatingLabel ? "" : placeholder;
-		console.log(helperText);
+
 		return (
 			<div
 				className={clsx(

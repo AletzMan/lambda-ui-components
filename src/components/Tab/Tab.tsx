@@ -32,7 +32,6 @@ export const Tab = forwardRef<HTMLDivElement, TabProps>(
 		const [checked, setChecked] = useState<number>(0);
 		const { radiusField } = useUIConfig();
 		const currentRadius = useCallback(() => radius ?? radiusField, [radius, radiusField]);
-		console.log(currentRadius());
 
 		// refs
 		const containerRef = useRef<HTMLDivElement | null>(null);

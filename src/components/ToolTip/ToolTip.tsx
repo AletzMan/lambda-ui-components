@@ -184,9 +184,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 				let top = 0;
 				let left = 0;
 
-				console.log("targetRect", targetRect);
-				console.log("tooltipRect", tooltipRect);
-
 				// Calcular la posición basada en la prop 'position'
 				switch (position) {
 					case "top-left":

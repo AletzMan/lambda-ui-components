@@ -13,7 +13,7 @@ export const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProp
 		// Desestructuramos para extraer explícitamente las props problemáticas.
 		// El resto de las props se queda en 'domProps'.
 		const { itemvalue, isopen, size, variant } = restProps as AccordionHeaderInjectedProps;
-		console.log(disabled);
+
 		const headerId = useId();
 		const contentId = `content-${headerId}`;
 
