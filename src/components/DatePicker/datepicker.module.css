@@ -22,10 +22,10 @@
 
 .lambda-datepicker-calendar {
 	position: fixed;
-	&:is(.lambda-datepicker-calendar-down) {
+	&:is(.lambda-datepicker-calendar-below) {
 		animation: animation-dropdown-down 0.2s ease-in-out;
 	}
-	&:is(.lambda-datepicker-calendar-up) {
+	&:is(.lambda-datepicker-calendar-above) {
 		animation: animation-dropdown-up 0.2s ease-in-out;
 	}
 }

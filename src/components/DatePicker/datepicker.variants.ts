@@ -128,8 +128,8 @@ export const datepickerCalendarVariants = cva(styles["lambda-datepicker-calendar
 			modal: styles["lambda-datepicker-calendar-modal"],
 		},
 		direction: {
-			up: styles["lambda-datepicker-calendar-up"],
-			down: styles["lambda-datepicker-calendar-down"],
+			above: styles["lambda-datepicker-calendar-above"],
+			below: styles["lambda-datepicker-calendar-below"],
 		},
 		invalid: {
 			true: styles["lambda-datepicker-calendar-invalid"],
@@ -138,7 +138,7 @@ export const datepickerCalendarVariants = cva(styles["lambda-datepicker-calendar
 	},
 	defaultVariants: {
 		type: "dropdown",
-		direction: "down",
+		direction: "below",
 		invalid: false,
 	},
 });

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, Ref } from "react";
 import styles from "./datepicker.module.css";
 import {
 	datepickerCalendarVariants,
@@ -30,6 +30,7 @@ import { Input } from "../Input/Input";
 import { createPortal } from "react-dom";
 import { Dialog } from "../Dialog/Dialog";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
+import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
 
 function getDaysInMonth(year: number, month: number) {
 	return new Date(year, month + 1, 0).getDate();
@@ -65,18 +66,13 @@ export const DatePicker = ({
 	isDateDisabled,
 }: DatePickerProps) => {
 	const [currentDate, setCurrentDate] = useState(value ? new Date(value) : new Date());
-	const [isOpen, setIsOpen] = useState(false);
 	const [isMonthPickerOpen, setIsMonthPickerOpen] = useState(false);
 	const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
-	const [calendarPosition, setCalendarPosition] = useState<{
-		left: number;
-		top: number;
-		direction: "down" | "up";
-	}>({ left: 0, top: 0, direction: "down" });
-	const refInput = useRef<HTMLInputElement>(null);
-	const refDropdown = useRef<HTMLDivElement>(null);
+
 	const refTempDate = useRef<Date | undefined>(value);
 	const refTempYear = useRef<string>("");
+
+	const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef } = usePopover({ y: 3 });
 	const { radiusField } = useUIConfig();
 	const radiusValue = radius || radiusField;
 
@@ -442,32 +438,6 @@ export const DatePicker = ({
 		);
 	};
 
-	const handleOpenCalendar = () => {
-		const offsetInput = {
-			tiny: 7,
-			small: 7,
-			medium: 9,
-			large: 17,
-		};
-		if (!refInput.current) return;
-		const rect = refInput.current.getBoundingClientRect();
-		const offsetY = 5; // Margen entre input y calendario
-		const offsetX = offsetInput[size as keyof typeof offsetInput]; // Margen entre input y calendario
-		const calendarHeight = 264 + offsetY; // Ajusta según tu diseño real
-		const spaceBelow = window.innerHeight - rect.bottom;
-		const spaceAbove = rect.top;
-		let direction: "down" | "up" = "down";
-		let top = rect.bottom + offsetY;
-		if (spaceBelow < calendarHeight && spaceAbove > calendarHeight) {
-			direction = "up";
-			top = rect.top - calendarHeight;
-		}
-		setCalendarPosition({ left: rect.left - offsetX, top, direction });
-		setIsOpen(true);
-		console.log(value);
-		refTempDate.current = value;
-	};
-
 	const handleCloseCalendar = (action: "accept" | "cancel") => {
 		if (action === "accept") {
 			onChange?.(value);
@@ -479,56 +449,6 @@ export const DatePicker = ({
 		}
 		setIsOpen(false);
 	};
-
-	// --- cierre automático y listeners ---
-	useEffect(() => {
-		if (!isOpen) return;
-
-		const handleClickOutside = (event: MouseEvent) => {
-			if (
-				refDropdown.current &&
-				!refDropdown.current.contains(event.target as Node) &&
-				refInput.current &&
-				!refInput.current.contains(event.target as Node)
-			) {
-				setIsOpen(false);
-				setIsMonthPickerOpen(false);
-				setIsYearPickerOpen(false);
-			}
-		};
-		const handleScroll = () => setIsOpen(false);
-		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") {
-				setIsOpen(false);
-				setIsMonthPickerOpen(false);
-				setIsYearPickerOpen(false);
-			}
-		};
-		const handleResize = () => {
-			setIsOpen(false);
-			setIsMonthPickerOpen(false);
-			setIsYearPickerOpen(false);
-		};
-		const handleBlur = () => {
-			setIsOpen(false);
-			setIsMonthPickerOpen(false);
-			setIsYearPickerOpen(false);
-		};
-
-		document.addEventListener("mousedown", handleClickOutside);
-		window.addEventListener("scroll", handleScroll, true);
-		document.addEventListener("keydown", handleKeyDown);
-		window.addEventListener("resize", handleResize);
-		window.addEventListener("blur", handleBlur);
-
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-			window.removeEventListener("scroll", handleScroll, true);
-			document.removeEventListener("keydown", handleKeyDown);
-			window.removeEventListener("resize", handleResize);
-			window.removeEventListener("blur", handleBlur);
-		};
-	}, [isOpen]);
 
 	return (
 		<div className={datepickerWrapperVariants({ size, type })}>
@@ -571,21 +491,19 @@ export const DatePicker = ({
 				</div>
 			)}
 			{(type === "dropdown" || type === "modal") && (
-				<Join size={size} radius={radiusValue}>
-					<Button
-						variant="text"
-						color="neutral"
-						icon={<CalendarIcon />}
-						onClick={handleOpenCalendar}
-					/>
-
+				<Join size={size} radius={radiusValue} ref={triggerRef as Ref<HTMLDivElement>}>
 					<Input
-						ref={refInput}
 						value={value?.toLocaleDateString(t("date-picker.code"), {
 							dateStyle: displayFormat,
 						})}
 						label={label}
 						readOnly
+					/>
+					<Button
+						variant="subtle"
+						color="neutral"
+						icon={<CalendarIcon />}
+						onClick={() => setIsOpen(true)}
 					/>
 				</Join>
 			)}
@@ -647,11 +565,11 @@ export const DatePicker = ({
 				type === "dropdown" &&
 				createPortal(
 					<div
-						ref={refDropdown}
-						className={datepickerCalendarVariants({ type, direction: calendarPosition.direction })}
+						ref={contentRef as Ref<HTMLDivElement>}
+						className={datepickerCalendarVariants({ type, direction: menuPosition.position })}
 						style={{
-							left: calendarPosition.left,
-							top: calendarPosition.top,
+							left: menuPosition.left,
+							top: menuPosition.top,
 							zIndex: 9999,
 						}}
 					>
