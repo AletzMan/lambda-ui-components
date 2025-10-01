@@ -24,6 +24,11 @@
 		background-color: var(--surface-b);
 	}
 
+	&:focus-within {
+		outline: var(--border-width-sm) solid var(--primary-shadow-color);
+		outline-offset: var(--border-width-sm);
+	}
+
 	& > .lambda-dropdown-icon {
 		&.lambda-dropdown-icon-only {
 			justify-content: center;
@@ -383,6 +388,11 @@
 		background-color: var(--surface-b);
 	}
 
+	&:focus-within {
+		outline: none;
+		background-color: var(--surface-b);
+	}
+
 	&:is(.lambda-dropdown-item-tiny),
 	&:is(.lambda-dropdown-item-small),
 	&:is(.lambda-dropdown-item-medium) {
@@ -476,6 +486,11 @@
 	font-size: var(--font-size-sm);
 
 	&:hover {
+		background-color: var(--surface-b);
+	}
+
+	&:focus-within {
+		outline: none;
 		background-color: var(--surface-b);
 	}
 }

@@ -32,7 +32,7 @@ const useDropdownContext = () => {
 const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 	({ className, variant, size, radius, icon, text, joinposition, children, ...props }, ref) => {
 		const { radiusField } = useUIConfig();
-		const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef } = usePopover<
+		const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef, handleKeyDown } = usePopover<
 			HTMLDivElement,
 			HTMLDivElement
 		>({ x: 0, y: 5 });
@@ -87,6 +87,9 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 								className={clsx(dropdownMenuVariants({ menuPosition: menuPosition.position }))}
 								style={{ top: menuPosition.top, left: menuPosition.left }}
 								ref={contentRef}
+								onKeyDown={(e) => {
+									handleKeyDown(e);
+								}}
 							>
 								{children}
 							</div>,
@@ -160,7 +163,7 @@ const DropdownItemCustom = ({ children }: { children: ReactNode }) => {
 		e.stopPropagation();
 	};
 	return (
-		<div className={clsx(styles["lambda-dropdown-item-custom"])} onClick={onClick}>
+		<div className={clsx(styles["lambda-dropdown-item-custom"])} onClick={onClick} tabIndex={0}>
 			{children}
 		</div>
 	);
