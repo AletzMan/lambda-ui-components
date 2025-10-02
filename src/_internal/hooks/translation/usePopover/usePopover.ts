@@ -50,8 +50,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 			});
 			setTimeout(() => {
 				if (isOpen && contentRef.current) {
-					const items = getFocusableItems();
-					position === "above" ? items[items.length - 1]?.focus() : items[0]?.focus();
+					contentRef.current?.focus();
 				}
 			}, 100);
 		}
