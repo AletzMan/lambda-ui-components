@@ -6,6 +6,8 @@ import {
 	PointerEvent as PointerEventReact,
 	useCallback,
 	RefObject,
+	KeyboardEvent,
+	useLayoutEffect,
 } from "react";
 import { ColorPickerProps } from "./colorpicker.types";
 import {
@@ -59,8 +61,9 @@ const hsvToHsl = (h: number, s: number, v: number) => {
 
 // Helper para convertir HSV a XY del picker
 const hsvToXy = (s: number, v: number, pickerRect: DOMRect) => {
-	const x = (s / 100) * pickerRect.width;
-	const y = ((100 - v) / 100) * pickerRect.height;
+	const { minX, minY, usableWidth, usableHeight } = getUsableArea(pickerRect);
+	const x = minX + (s / 100) * usableWidth;
+	const y = minY + ((100 - v) / 100) * usableHeight;
 	return { x, y };
 };
 
@@ -172,6 +175,37 @@ const alphaToHex = (a: number): string => {
 	return alphaValue.toString(16).padStart(2, "0").toUpperCase();
 };
 
+// Utilidades para conversión entre posición y saturación/brillo
+const PICKER_BUTTON_SIZE = 14; // px, según el CSS
+
+function getUsableArea(rect: DOMRect) {
+	const minX = PICKER_BUTTON_SIZE / 2;
+	const maxX = rect.width - PICKER_BUTTON_SIZE / 2;
+	const minY = PICKER_BUTTON_SIZE / 2;
+	const maxY = rect.height - PICKER_BUTTON_SIZE / 2;
+	const usableWidth = rect.width - PICKER_BUTTON_SIZE;
+	const usableHeight = rect.height - PICKER_BUTTON_SIZE;
+	return { minX, maxX, minY, maxY, usableWidth, usableHeight };
+}
+
+function clamp(v: number, min: number, max: number) {
+	return Math.max(min, Math.min(max, v));
+}
+
+function colorToPosition(s: number, v: number, rect: DOMRect) {
+	const { minX, minY, usableWidth, usableHeight } = getUsableArea(rect);
+	const x = minX + (s / 100) * usableWidth;
+	const y = minY + ((100 - v) / 100) * usableHeight;
+	return { x, y };
+}
+
+function positionToColor(x: number, y: number, rect: DOMRect) {
+	const { minX, minY, usableWidth, usableHeight } = getUsableArea(rect);
+	const s = clamp(((x - minX) / usableWidth) * 100, 0, 100);
+	const v = clamp(100 - ((y - minY) / usableHeight) * 100, 0, 100);
+	return { s, v };
+}
+
 export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 	(
 		{ className, size, variant, disabled, value, onChange, format: formatProp, showText, ...props },
@@ -184,6 +218,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			menuPosition,
 			isOpen: viewPicker,
 			setIsOpen: setViewPicker,
+			handleKeyDown,
 		} = usePopover({ x: -3, y: -39 });
 		const { t } = useTranslation();
 		const { radiusField, radiusBox } = useUIConfig();
@@ -217,6 +252,20 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		useEffect(() => {
 			setFormat(formatProp || "hex");
 		}, [formatProp]);
+
+		useLayoutEffect(() => {
+			if (!pickerRef.current) return;
+			const rect = pickerRef.current.getBoundingClientRect();
+			const match = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
+			if (!match) return;
+			const h = parseInt(match[1]);
+			const s = parseInt(match[2]);
+			const l = parseInt(match[3]);
+			const hsv = hslToHsv(h, s, l);
+			const { x, y } = hsvToXy(hsv.s, hsv.v, rect);
+			setPickerX(x);
+			setPickerY(y);
+		}, [internalValue, viewPicker]);
 
 		// Sincroniza la interfaz visual con el estado interno
 		useEffect(() => {
@@ -261,20 +310,20 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 				if (isDraggingPicker && pickerRef.current && pickerButtonRef.current) {
 					const rect = pickerRef.current.getBoundingClientRect();
-					const buttonRect = pickerButtonRef.current.getBoundingClientRect();
-					let x = Math.max(0, Math.min(rect.width, event.clientX - rect.left));
-					let y = Math.max(0, Math.min(rect.height, event.clientY - rect.top));
-					pickerButtonRef.current.style.transform = `translate(${x - buttonRect.width / 2}px, ${
-						y - buttonRect.height / 2
-					}px)`;
+					const { minX, maxX, minY, maxY } = getUsableArea(rect);
+					let x = clamp(event.clientX - rect.left, minX, maxX);
+					let y = clamp(event.clientY - rect.top, minY, maxY);
+
 					lastPointerPosition.current.x = x;
 					lastPointerPosition.current.y = y;
 
+					setPickerX(x);
+					setPickerY(y);
+
 					const match = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 					const currentHue = match ? parseInt(match[1]) : 0;
-					const newSaturation = (x / rect.width) * 100;
-					const newBrillo = 100 - (y / rect.height) * 100;
-					const newHsl = hsvToHsl(currentHue, newSaturation, newBrillo);
+					const { s, v } = positionToColor(x, y, rect);
+					const newHsl = hsvToHsl(currentHue, s, v);
 					newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
 						newHsl.l
 					)}%)`;
@@ -285,27 +334,33 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				}
 			};
 
-			const handlePointerUp = () => {
+			const handlePointerUp = (event?: PointerEvent) => {
 				const match = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 				const currentHue = match ? parseInt(match[1]) : 0;
 				let finalColor: string | undefined;
 
 				if (isDraggingPicker && pickerRef.current && pickerButtonRef.current) {
 					const rect = pickerRef.current.getBoundingClientRect();
-					const buttonRect = pickerButtonRef.current.getBoundingClientRect();
-					const x = lastPointerPosition.current.x;
-					const y = lastPointerPosition.current.y;
+					const { minX, maxX, minY, maxY } = getUsableArea(rect);
+					// Usa la posición real del cursor si viene del evento, si no, usa la última conocida
+					const x = event
+						? clamp(event.clientX - rect.left, minX, maxX)
+						: clamp(lastPointerPosition.current.x, minX, maxX);
+					const y = event
+						? clamp(event.clientY - rect.top, minY, maxY)
+						: clamp(lastPointerPosition.current.y, minY, maxY);
 
-					pickerButtonRef.current.style.transform = `translate(${x - buttonRect.width / 2}px, ${
-						y - buttonRect.height / 2
-					}px)`;
+					setPickerX(x);
+					setPickerY(y);
 
-					const newSaturation = (x / rect.width) * 100;
-					const newBrillo = 100 - (y / rect.height) * 100;
-					const newHsl = hsvToHsl(currentHue, newSaturation, newBrillo);
+					const { s, v } = positionToColor(x, y, rect);
+					const newHsl = hsvToHsl(currentHue, s, v);
 					finalColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
 						newHsl.l
 					)}%)`;
+
+					setPickerX(x);
+					setPickerY(y);
 				}
 
 				if (finalColor) {
@@ -317,7 +372,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			};
 
 			document.addEventListener("pointermove", handlePointerMove);
-			document.addEventListener("pointerup", handlePointerUp);
+			document.addEventListener("pointerup", handlePointerUp, false);
 			return () => {
 				document.removeEventListener("pointermove", handlePointerMove);
 				document.removeEventListener("pointerup", handlePointerUp);
@@ -327,16 +382,17 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		const handlePickerDown = (event: PointerEventReact) => {
 			if (disabled || !pickerRef.current || !pickerButtonRef.current) return;
 			const rect = pickerRef.current.getBoundingClientRect();
-			const buttonRect = pickerButtonRef.current.getBoundingClientRect();
-			const x = event.clientX - rect.left;
-			const y = event.clientY - rect.top;
+			const { minX, maxX, minY, maxY } = getUsableArea(rect);
+			// Clamp el click para que el centro del botón nunca se salga
+			const x = clamp(event.clientX - rect.left, minX, maxX);
+			const y = clamp(event.clientY - rect.top, minY, maxY);
 
 			lastPointerPosition.current.x = x;
 			lastPointerPosition.current.y = y;
 
-			pickerButtonRef.current.style.transform = `translate(${x - buttonRect.width / 2}px, ${
-				y - buttonRect.height / 2
-			}px)`;
+			setPickerX(x);
+			setPickerY(y);
+
 			setIsDraggingPicker(true);
 		};
 
@@ -400,13 +456,14 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 			if (!hueMatch) return;
 			let [_, h, s, l] = hueMatch.map(Number);
-			let newColor: string;
 
 			if (format === "hsl") {
 				if (part === "h") h = Math.min(360, Math.max(0, value));
 				if (part === "s") s = Math.min(100, Math.max(0, value));
 				if (part === "l") l = Math.min(100, Math.max(0, value));
-				newColor = `hsl(${h}, ${s}%, ${l}%)`;
+				const newColor = `hsl(${h}, ${s}%, ${l}%)`;
+				setInternalValue(newColor);
+				onChange?.(newColor);
 			} else {
 				// format === "rgb"
 				let { r, g, b } = rgbValues;
@@ -414,12 +471,11 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				if (part === "g") g = Math.min(255, Math.max(0, value));
 				if (part === "b") b = Math.min(255, Math.max(0, value));
 				const newHsl = rgbToHsl(r, g, b);
-				newColor = `hsl(${newHsl.h}, ${newHsl.s}%, ${newHsl.l}%)`;
+				const newColor = `hsl(${newHsl.h}, ${newHsl.s}%, ${newHsl.l}%)`;
+				setInternalValue(newColor);
+				onChange?.(newColor);
 				setRgbValues({ r, g, b });
 			}
-
-			setInternalValue(newColor);
-			onChange?.(newColor);
 		};
 
 		const handleCopyClick = async () => {
@@ -477,6 +533,60 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			openPicker();
 		}, [open, onChange]);
 
+		const handlePickerKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+			const pickerRect = pickerRef.current?.getBoundingClientRect();
+			if (!pickerRect) return;
+
+			const match = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
+			if (!match) return;
+			const h = parseInt(match[1]);
+			const s0 = hslToHsv(h, parseInt(match[2]), parseInt(match[3])).s;
+			const v0 = hslToHsv(h, parseInt(match[2]), parseInt(match[3])).v;
+
+			let s = s0;
+			let v = v0;
+			let moved = false;
+
+			const step = 2; // Cambia este valor para sensibilidad
+
+			if (e.key === "ArrowUp") {
+				e.preventDefault();
+				v = clamp(v + step, 0, 100);
+				moved = true;
+			}
+			if (e.key === "ArrowDown") {
+				e.preventDefault();
+				v = clamp(v - step, 0, 100);
+				moved = true;
+			}
+			if (e.key === "ArrowLeft") {
+				e.preventDefault();
+				s = clamp(s - step, 0, 100);
+				moved = true;
+			}
+			if (e.key === "ArrowRight") {
+				e.preventDefault();
+				s = clamp(s + step, 0, 100);
+				moved = true;
+			}
+			if (e.key === "Enter") {
+				e.preventDefault();
+			}
+
+			if (moved) {
+				const { x, y } = colorToPosition(s, v, pickerRect);
+				setPickerX(x);
+				setPickerY(y);
+
+				const newHsl = hsvToHsl(h, s, v);
+				const finalColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(newHsl.s)}%, ${Math.round(
+					newHsl.l
+				)}%)`;
+				setInternalValue(finalColor);
+				onChange?.(finalColor);
+			}
+		};
+
 		const hueMatch = internalValue.match(/hsl\((\d+),\s*(\d+)%?,\s*(\d+)%?\)/);
 		const hue = hueMatch ? parseInt(hueMatch[1]) : 0;
 		const s = hueMatch ? parseInt(hueMatch[2]) : 0;
@@ -523,6 +633,9 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 								left: menuPosition.left,
 								top: menuPosition.top,
 							}}
+							role="colorpicker"
+							tabIndex={0}
+							onKeyDown={handleKeyDown}
 							ref={contentRef as RefObject<HTMLDivElement>}
 						>
 							<div className={styles["lambda-colorpicker-preview"]}>
@@ -563,6 +676,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 									type="button"
 									className={styles["lambda-colorpicker-picker-button"]}
 									ref={pickerButtonRef}
+									onKeyDown={handlePickerKeyDown}
 									style={{
 										transform: `translate(${finalPickerX}px, ${finalPickerY}px)`,
 									}}
