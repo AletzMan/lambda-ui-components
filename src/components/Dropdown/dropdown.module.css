@@ -308,6 +308,11 @@
 	z-index: 100;
 	border-radius: var(--border-radius-sm);
 
+	&:focus-within {
+		outline: var(--border-width-sm) solid transparent;
+		outline-offset: var(--border-width-sm);
+	}
+
 	/* triangle */
 	&::after {
 		content: "";

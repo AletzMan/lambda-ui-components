@@ -90,6 +90,7 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 								onKeyDown={(e) => {
 									handleKeyDown(e);
 								}}
+								tabIndex={0}
 							>
 								{children}
 							</div>,
