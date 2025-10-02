@@ -96,6 +96,17 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 			}
 		};
 
+		const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+			if (event.key === "ArrowUp") {
+				startIncrementing();
+				stopIncrementing();
+			}
+			if (event.key === "ArrowDown") {
+				startDecrementing();
+				stopDecrementing();
+			}
+		};
+
 		const inputId = useId();
 		const errorId = errorMessage && invalid ? `${inputId}-error` : undefined;
 		const helperId = helperText ? `${inputId}-helper` : undefined;
@@ -139,6 +150,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 							onChange={handleChange}
 							onBlur={handleBlur}
 							onFocus={handleFocus}
+							onKeyDown={handleKeyDown}
 							type="text"
 							role="number"
 							inputMode="numeric"
