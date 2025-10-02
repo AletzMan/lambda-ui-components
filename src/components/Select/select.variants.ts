@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import styles from "./select.module.css";
 
-export const select = cva(styles["select-container"], {
+export const selectContainerVariants = cva(styles["select-container"], {
 	variants: {
 		size: {
 			tiny: styles["select-container-tiny"],
@@ -39,7 +39,7 @@ export const select = cva(styles["select-container"], {
 		invalid: false,
 	},
 });
-export const buttonSelect = cva(styles["select-btn"], {
+export const selectBtnVariants = cva(styles["select-btn"], {
 	variants: {
 		size: {
 			tiny: styles["select-btn-tiny"],
@@ -83,7 +83,7 @@ export const buttonSelect = cva(styles["select-btn"], {
 	},
 });
 
-export const selectIcon = cva(styles["select-icon"], {
+export const selectIconVariants = cva(styles["select-icon"], {
 	variants: {
 		variant: {
 			outline: styles["select-icon-outline"],
@@ -113,7 +113,7 @@ export const selectIcon = cva(styles["select-icon"], {
 	},
 });
 
-export const dropdown = cva(styles["select-dropdown"], {
+export const selectDropdownVariants = cva(styles["select-dropdown"], {
 	variants: {
 		size: {
 			tiny: styles["select-dropdown-tiny"],
@@ -152,7 +152,7 @@ export const dropdown = cva(styles["select-dropdown"], {
 	},
 });
 
-export const labelSelect = cva(styles["select-label"], {
+export const labelSelectVariants = cva(styles["select-label"], {
 	variants: {
 		size: {
 			tiny: styles["select-label-tiny"],
@@ -184,7 +184,7 @@ export const labelSelect = cva(styles["select-label"], {
 	},
 });
 
-export const selectedView = cva(styles["select-view"], {
+export const selectedViewVariants = cva(styles["select-view"], {
 	variants: {
 		size: {
 			tiny: styles["select-view-tiny"],
@@ -201,13 +201,18 @@ export const selectedView = cva(styles["select-view"], {
 			true: styles["select-view-disabled"],
 			false: styles["select-view-enabled"],
 		},
+		selected: {
+			true: styles["select-view-selected"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		disabled: false,
+		selected: false,
 	},
 });
-export const textContent = cva(styles["select-option-text-content"], {
+export const textContentVariants = cva(styles["select-option-text-content"], {
 	variants: {
 		size: {
 			tiny: styles["select-option-text-content-tiny"],
@@ -221,4 +226,28 @@ export const textContent = cva(styles["select-option-text-content"], {
 	},
 });
 
-export type SelectVariants = VariantProps<typeof select>;
+export const selectOptionVariants = cva(styles["select-option"], {
+	variants: {
+		size: {
+			tiny: styles["select-option-tiny"],
+			small: styles["select-option-small"],
+			medium: styles["select-option-medium"],
+			large: styles["select-option-large"],
+		},
+		selected: {
+			true: styles["select-option-selected"],
+			false: "",
+		},
+		active: {
+			true: styles["select-option-active"],
+			false: "",
+		},
+	},
+	defaultVariants: {
+		size: "medium",
+		selected: false,
+		active: false,
+	},
+});
+
+export type SelectVariants = VariantProps<typeof selectContainerVariants>;

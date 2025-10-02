@@ -6,12 +6,12 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import clsx from "clsx";
 
 import {
-	buttonSelect,
-	dropdown,
-	labelSelect,
-	select,
-	selectIcon,
-	selectedView,
+	selectBtnVariants,
+	selectDropdownVariants,
+	labelSelectVariants,
+	selectContainerVariants,
+	selectIconVariants,
+	selectedViewVariants,
 } from "./select.variants";
 import { SelectProps } from "./select.types";
 import { SelectOptionItem } from "./SelectOptionItem";
@@ -119,7 +119,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 				{label && (
 					<label
 						className={clsx(
-							labelSelect({
+							labelSelectVariants({
 								direction: menuPosition.position,
 								radius: radiusValue,
 								size: sizeValue,
@@ -132,10 +132,16 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 					</label>
 				)}
 				<div
-					className={select({ size: sizeValue, variant, radius: radiusValue, disabled, invalid })}
+					className={selectContainerVariants({
+						size: sizeValue,
+						variant,
+						radius: radiusValue,
+						disabled,
+						invalid,
+					})}
 				>
 					<button
-						className={buttonSelect({
+						className={selectBtnVariants({
 							size: sizeValue,
 							variant,
 							radius: radiusValue,
@@ -148,7 +154,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 						ref={triggerRef as RefObject<HTMLButtonElement>}
 					>
 						{selectedOption ? (
-							<div className={selectedView({ size: sizeValue, disabled: disabled, variant })}>
+							<div
+								className={selectedViewVariants({ size: sizeValue, disabled: disabled, variant })}
+							>
 								{selectedOption.avatar && (
 									<img
 										className={styles["select-view-avatar"]}
@@ -162,7 +170,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							<span className={styles["select-placeholder"]}>{placeholder}</span>
 						)}
 
-						<div className={selectIcon({ variant, size: sizeValue, disabled, invalid })}>
+						<div className={selectIconVariants({ variant, size: sizeValue, disabled, invalid })}>
 							{isOpen ? (
 								<ChevronUp className={styles["select-icon-svg"]} />
 							) : (
@@ -181,7 +189,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 								width: menuPosition.width,
 							}}
 							className={clsx(
-								dropdown({
+								selectDropdownVariants({
 									size: sizeValue,
 									direction: menuPosition.position,
 									radius: radiusValue,
@@ -192,6 +200,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 									[styles["select-dropdown-open"]]: isOpen,
 								}
 							)}
+							tabIndex={0}
 							ref={contentRef as RefObject<HTMLUListElement>}
 							onKeyDown={(e) => handleKeyDown(e as React.KeyboardEvent<HTMLUListElement>)}
 						>

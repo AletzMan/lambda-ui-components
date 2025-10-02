@@ -57,7 +57,7 @@ const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" 
 			onChangeStyleSource={(value) => setCurrentStyle(value)}
 			styleSource={currentStyle}
 		>
-			<div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "250px" }}>
+			<div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "290px" }}>
 				<Select
 					{...args}
 					variant="outline"

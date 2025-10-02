@@ -4,7 +4,7 @@ import React from "react";
 import clsx from "clsx";
 import { Check } from "lucide-react";
 import { IListCollection, SelectProps } from "./select.types";
-import { selectedView, textContent } from "./select.variants";
+import { selectedViewVariants, selectOptionVariants, textContentVariants } from "./select.variants";
 
 import styles from "./select.module.css";
 
@@ -42,26 +42,22 @@ export const SelectOptionItem: React.FC<SelectOptionItemProps> = ({
 			id={id}
 			role={role}
 			aria-selected={ariaSelected}
-			className={clsx(
-				styles["select-option"],
-				isSelected && styles["select-option-selected"],
-				isActive && styles["select-option-active"]
-			)}
+			className={clsx(selectOptionVariants({ size, selected: isSelected, active: isActive }))}
 			onClick={handleClick}
 			tabIndex={0}
 		>
-			<div className={clsx(selectedView({ size }))}>
+			<div className={clsx(selectedViewVariants({ size, selected: isSelected }))}>
 				{option.avatar && (
 					<img className={styles["select-view-avatar"]} src={option?.avatar} alt="" />
 				)}
-				<div className={clsx(textContent({ size }))}>
-					<div>{option.label}</div>
+				<div className={clsx(textContentVariants({ size }))}>
+					<div className={styles["select-view-label"]}>{option.label}</div>
 					{option.description && (
 						<p className={styles["select-view-description"]}>{option.description}</p>
 					)}
 				</div>
 			</div>
-			{isSelected && <Check className={styles["select-icon-svg"]} />}
+			{isSelected && <Check className={styles["select-icon-check"]} />}
 		</li>
 	);
 };
