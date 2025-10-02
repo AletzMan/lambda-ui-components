@@ -72,7 +72,9 @@ export const DatePicker = ({
 	const refTempDate = useRef<Date | undefined>(value);
 	const refTempYear = useRef<string>("");
 
-	const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef } = usePopover({ y: 3 });
+	const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef, handleKeyDown } = usePopover({
+		y: 3,
+	});
 	const { radiusField } = useUIConfig();
 	const radiusValue = radius || radiusField;
 
@@ -572,6 +574,8 @@ export const DatePicker = ({
 							top: menuPosition.top,
 							zIndex: 9999,
 						}}
+						tabIndex={0}
+						onKeyDown={handleKeyDown}
 					>
 						<Calendar />
 					</div>,
