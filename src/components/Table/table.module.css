@@ -334,7 +334,7 @@
 
 .lambda-table-pagination-select {
 	justify-self: flex-end;
-	margin: var(--padding-sm);
+	margin: var(--padding-sm) var(--padding-md) var(--padding-sm) var(--padding-sm);
 	max-width: 6.7em;
 	z-index: 10;
 }
