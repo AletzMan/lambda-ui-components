@@ -2,7 +2,11 @@ import { forwardRef, useEffect, useState } from "react";
 import styles from "./notification.module.css";
 import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react";
 import clsx from "clsx";
-import { footer, notificationProp, notificationTimeVariants } from "./notification.variant";
+import {
+	notificationFooterVariants,
+	notificationVariants,
+	notificationTimeVariants,
+} from "./notification.variant";
 import { NotificationProps } from "./notifications.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
@@ -76,7 +80,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 		return (
 			<div
 				className={clsx(
-					notificationProp({ notificationType, placement, variant, radius: radiusValue }),
+					notificationVariants({ notificationType, placement, variant, radius: radiusValue }),
 					closing ? styles["notification-exit"] : styles["notification-active"]
 				)}
 				{...props}
@@ -103,7 +107,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 					)}
 				</div>
 				{(onCancel || onConfirm) && (
-					<footer className={footer({ notificationType, variant })}>
+					<footer className={notificationFooterVariants({ notificationType, variant })}>
 						{onConfirm && (
 							<button
 								className={clsx(

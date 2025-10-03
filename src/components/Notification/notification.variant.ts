@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import styles from "./notification.module.css";
 
-export const notificationProp = cva(styles["notification"], {
+export const notificationVariants = cva(styles["notification"], {
 	variants: {
 		notificationType: {
 			neutral: styles["notification-neutral"],
@@ -63,7 +63,7 @@ export const notificationTimeVariants = cva(styles["notification-time"], {
 	},
 });
 
-export const footer = cva(styles["notification-footer"], {
+export const notificationFooterVariants = cva(styles["notification-footer"], {
 	variants: {
 		notificationType: {
 			neutral: styles["notification-footer-neutral"],
@@ -86,7 +86,7 @@ export const footer = cva(styles["notification-footer"], {
 	},
 });
 
-export const notificationGroup = cva(styles["notification-group"], {
+export const notificationGroupVariants = cva(styles["notification-group"], {
 	variants: {
 		placement: {
 			"top-left": styles["notification-group-top-left"],
@@ -102,4 +102,4 @@ export const notificationGroup = cva(styles["notification-group"], {
 	},
 });
 
-export type NotificationVariants = VariantProps<typeof notificationProp>;
+export type NotificationVariants = VariantProps<typeof notificationVariants>;
