@@ -716,8 +716,12 @@
 			font-weight: var(--font-weight-medium);
 		}
 
+		.notification-time-container {
+			background-color: var(--neutral-shadow-color);
+		}
+
 		.notification-time {
-			background-color: var(--neutral-hover-color);
+			background-color: var(--white-color);
 		}
 	}
 
@@ -736,9 +740,12 @@
 			color: var(--success-base-color);
 		}
 
+		.notification-time-container {
+			background-color: var(--success-shadow-color);
+		}
+
 		.notification-time {
-			background-color: var(--success-subtle-color);
-			filter: brightness(100%);
+			background-color: var(--success-base-color);
 		}
 	}
 
@@ -757,9 +764,12 @@
 			color: var(--danger-base-color);
 		}
 
+		.notification-time-container {
+			background-color: var(--danger-shadow-color);
+		}
+
 		.notification-time {
-			background-color: var(--danger-subtle-color);
-			filter: brightness(100%);
+			background-color: var(--danger-base-color);
 		}
 	}
 
@@ -778,9 +788,12 @@
 			color: var(--warning-base-color);
 		}
 
+		.notification-time-container {
+			background-color: var(--warning-shadow-color);
+		}
+
 		.notification-time {
-			background-color: var(--warning-subtle-color);
-			filter: brightness(100%);
+			background-color: var(--warning-base-color);
 		}
 	}
 
@@ -799,9 +812,12 @@
 			color: var(--info-base-color);
 		}
 
+		.notification-time-container {
+			background-color: var(--info-shadow-color);
+		}
+
 		.notification-time {
-			background-color: var(--info-subtle-color);
-			filter: brightness(100%);
+			background-color: var(--info-base-color);
 		}
 	}
 }

@@ -583,7 +583,7 @@
 	--info-disabled-color: var(--lambda-color-info-100);
 	--info-border-color: var(--lambda-color-info-300);
 	--info-light-color: var(--lambda-color-info-050);
-	--info-dark-color: var(--lambda-color-info-900);
+	--info-dark-color: var(--lambda-color-info-950);
 	--info-background-color: var(--lambda-color-info-950);
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-info-500) 15%, transparent 90%);
 	--info-shadow-color: color-mix(in srgb, var(--lambda-color-info-500) 50%, transparent 90%);
