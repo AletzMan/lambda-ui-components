@@ -552,7 +552,7 @@
 
 .notification-title {
 	font-size: var(--font-size-sm);
-	font-weight: var(--font-weight-extrabold);
+	font-weight: var(--font-weight-bold);
 	text-transform: capitalize;
 }
 
@@ -642,7 +642,6 @@
 
 .notification-solid {
 	color: var(--white-color);
-	box-shadow: var(--box-shadow);
 
 	.notification-title {
 		color: var(--white-color);
@@ -650,13 +649,19 @@
 
 	.notification-message {
 		color: var(--white-color);
-		text-shadow: var(--box-shadow);
 	}
 
 	.notification-close-button {
 		.notification-close-button-icon {
 			color: var(--surface-c);
 		}
+	}
+	.notification-time-container {
+		background-color: #ffffff50;
+	}
+
+	.notification-time {
+		background-color: #ffffff80;
 	}
 
 	&:is(.notification-neutral) {
@@ -672,45 +677,24 @@
 		}
 
 		.notification-time {
-			background-color: var(--neutral-border-color);
-			filter: brightness(100%);
+			background-color: var(--neutral-soft-color);
 		}
 	}
 
 	&:is(.notification-success) {
-		background-color: var(--success-base-color);
-
-		.notification-time {
-			background-color: var(--success-subtle-color);
-			filter: brightness(100%);
-		}
+		background-color: var(--success-hover-color);
 	}
 
 	&:is(.notification-danger) {
-		background-color: var(--danger-base-color);
-
-		.notification-time {
-			background-color: var(--danger-subtle-color);
-			filter: brightness(100%);
-		}
+		background-color: var(--danger-hover-color);
 	}
 
 	&:is(.notification-warning) {
-		background-color: var(--warning-base-color);
-
-		.notification-time {
-			background-color: var(--warning-subtle-color);
-			filter: brightness(100%);
-		}
+		background-color: var(--warning-hover-color);
 	}
 
 	&:is(.notification-info) {
-		background-color: var(--info-base-color);
-
-		.notification-time {
-			background-color: var(--info-subtle-color);
-			filter: brightness(100%);
-		}
+		background-color: var(--info-hover-color);
 	}
 }
 
@@ -828,7 +812,6 @@
 
 	.notification-message {
 		color: var(--black-color);
-		text-shadow: var(--box-shadow);
 	}
 
 	.notification-close-button {
@@ -963,7 +946,6 @@ body[data-theme="light"] {
 
 	&:is(.notification-neutral) {
 		background-color: var(--neutral-opacity-color);
-		border-left: 5px solid var(--neutral-base-color);
 		color: var(--neutral-text-color);
 
 		.notification-title {
@@ -987,7 +969,6 @@ body[data-theme="light"] {
 
 	&:is(.notification-success) {
 		background-color: var(--success-opacity-color);
-		border-left: 5px solid var(--success-base-color);
 		color: var(--success-text-color);
 
 		.notification-title {
@@ -1011,7 +992,6 @@ body[data-theme="light"] {
 
 	&:is(.notification-danger) {
 		background-color: var(--danger-opacity-color);
-		border-left: 5px solid var(--danger-base-color);
 		color: var(--danger-text-color);
 
 		.notification-title {
@@ -1035,7 +1015,6 @@ body[data-theme="light"] {
 
 	&:is(.notification-warning) {
 		background-color: var(--warning-opacity-color);
-		border-left: 5px solid var(--warning-base-color);
 		color: var(--warning-text-color);
 
 		.notification-title {
@@ -1059,7 +1038,6 @@ body[data-theme="light"] {
 
 	&:is(.notification-info) {
 		background-color: var(--info-opacity-color);
-		border-left: 5px solid var(--info-base-color);
 		color: var(--info-text-color);
 
 		.notification-title {
