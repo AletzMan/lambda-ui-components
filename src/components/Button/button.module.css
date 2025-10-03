@@ -810,7 +810,7 @@
 }
 
 .lambda-btn-medium {
-	font-size: var(--font-size-md);
+	font-size: var(--font-size-sm);
 	padding: var(--padding-none) var(--padding-md);
 	height: var(--height-button-md);
 
@@ -838,7 +838,7 @@
 }
 
 .lambda-btn-large {
-	font-size: var(--font-size-lg);
+	font-size: var(--font-size-md);
 	padding: var(--padding-none) var(--padding-lg);
 	height: var(--height-button-lg);
 
