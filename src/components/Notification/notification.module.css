@@ -68,33 +68,35 @@
 
 .notification-footer-button {
 	width: 5.5em;
-	padding: var(--padding-sm) var(--padding-sm);
-	font-size: var(--font-size-sm);
+	padding: var(--padding-xs) var(--padding-sm);
+	font-size: var(--font-size-xs);
 	border: none;
 	border-radius: var(--border-radius-xs);
 	cursor: pointer;
-	transition: background-color 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	font-weight: var(--font-weight-semibold);
 }
 
 .notification-footer-themed,
 .notification-footer-soft {
-	&.notification-footer-secondary {
+	&.notification-footer-neutral {
 		.notification-footer-button-confirm {
-			background-color: var(--secondary-base-color);
+			background-color: var(--neutral-base-color);
 			color: var(--foreground-invert-color);
 
 			&:hover {
-				background-color: var(--secondary-hover-color);
+				background-color: var(--neutral-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--secondary-soft-color);
-			color: var(--secondary-disbled-color);
+			background-color: transparent;
+			border: var(--border-width-xs) solid var(--neutral-text-color);
+			color: var(--neutral-disbled-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--neutral-subtle-color);
+				color: var(--neutral-text-color);
 			}
 		}
 	}
@@ -110,11 +112,13 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--success-soft-color);
-			color: var(--success-text-color);
+			background-color: transparent;
+			color: var(--success-base-color);
+			border: var(--border-width-xs) solid var(--success-base-color);
 
 			&:hover {
 				background-color: var(--success-subtle-color);
+				color: var(--success-text-color);
 			}
 		}
 	}
@@ -130,11 +134,13 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--danger-soft-color);
-			color: var(--danger-text-color);
+			background-color: transparent;
+			color: var(--danger-base-color);
+			border: var(--border-width-xs) solid var(--danger-base-color);
 
 			&:hover {
 				background-color: var(--danger-subtle-color);
+				color: var(--danger-text-color);
 			}
 		}
 	}
@@ -142,7 +148,7 @@
 	&.notification-footer-warning {
 		.notification-footer-button-confirm {
 			background-color: var(--warning-base-color);
-			color: var(--black-color);
+			color: var(--white-color);
 
 			&:hover {
 				background-color: var(--warning-hover-color);
@@ -150,11 +156,13 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--warning-soft-color);
-			color: var(--warning-text-color);
+			background-color: transparent;
+			color: var(--warning-base-color);
+			border: var(--border-width-xs) solid var(--warning-base-color);
 
 			&:hover {
 				background-color: var(--warning-subtle-color);
+				color: var(--warning-text-color);
 			}
 		}
 	}
@@ -170,26 +178,38 @@
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--info-soft-color);
-			color: var(--info-text-color);
+			background-color: transparent;
+			color: var(--info-base-color);
+			border: var(--border-width-xs) solid var(--info-base-color);
 
 			&:hover {
 				background-color: var(--info-subtle-color);
+				color: var(--info-text-color);
 			}
 		}
 	}
 }
 
 .notification-footer-solid {
-	&.notification-footer-secondary {
+	&.notification-footer-neutral {
 		.notification-footer-button-confirm {
 			background-color: var(--foreground-invert-color);
 			color: var(--foreground-color);
+
+			&:hover {
+				opacity: 0.8;
+			}
 		}
 
 		.notification-footer-button-cancel {
-			background-color: var(--secondary-subtle-color);
+			background-color: transparent;
+			border: var(--border-width-xs) solid var(--neutral-subtle-color);
 			color: var(--foreground-invert-color);
+
+			&:hover {
+				background-color: var(--foreground-invert-color);
+				color: var(--foreground-color);
+			}
 		}
 	}
 
@@ -199,7 +219,7 @@
 			color: var(--success-hover-color);
 
 			&:hover {
-				background-color: var(--success-light-color);
+				opacity: 0.8;
 			}
 		}
 
@@ -209,7 +229,8 @@
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--white-color);
+				color: var(--success-hover-color);
 			}
 		}
 	}
@@ -220,7 +241,7 @@
 			color: var(--danger-hover-color);
 
 			&:hover {
-				background-color: var(--danger-light-color);
+				opacity: 0.8;
 			}
 		}
 
@@ -230,7 +251,8 @@
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--white-color);
+				color: var(--danger-hover-color);
 			}
 		}
 	}
@@ -241,7 +263,7 @@
 			color: var(--warning-hover-color);
 
 			&:hover {
-				background-color: var(--warning-light-color);
+				opacity: 0.8;
 			}
 		}
 
@@ -251,7 +273,8 @@
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--white-color);
+				color: var(--warning-hover-color);
 			}
 		}
 	}
@@ -262,7 +285,7 @@
 			color: var(--info-hover-color);
 
 			&:hover {
-				background-color: var(--info-light-color);
+				opacity: 0.8;
 			}
 		}
 
@@ -272,20 +295,21 @@
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--white-color);
+				color: var(--info-hover-color);
 			}
 		}
 	}
 }
 
 .notification-footer-darkened {
-	&.notification-footer-secondary {
+	&.notification-footer-neutral {
 		.notification-footer-button-confirm {
-			background-color: var(--secondary-light-color);
+			background-color: var(--neutral-light-color);
 			color: var(--black-color);
 
 			&:hover {
-				background-color: var(--secondary-disabled-color);
+				background-color: var(--neutral-subtle-color);
 			}
 		}
 
@@ -295,91 +319,96 @@
 			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--neutral-shadow-color);
+				color: var(--white-color);
 			}
 		}
 	}
 
 	&.notification-footer-success {
 		.notification-footer-button-confirm {
-			background-color: var(--success-light-color);
-			color: var(--success-dark-color);
+			background-color: var(--success-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--white-color);
+				background-color: var(--success-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-light-color);
-			color: var(--white-color);
+			border: var(--border-width-xs) solid var(--success-base-color);
+			color: var(--success-base-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--success-shadow-color);
+				color: var(--white-color);
 			}
 		}
 	}
 
 	&.notification-footer-danger {
 		.notification-footer-button-confirm {
-			background-color: var(--danger-light-color);
-			color: var(--danger-dark-color);
+			background-color: var(--danger-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--white-color);
+				background-color: var(--danger-shadow-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-light-color);
-			color: var(--white-color);
+			border: var(--border-width-xs) solid var(--danger-base-color);
+			color: var(--danger-base-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--danger-shadow-color);
+				color: var(--white-color);
 			}
 		}
 	}
 
 	&.notification-footer-warning {
 		.notification-footer-button-confirm {
-			background-color: var(--warning-light-color);
-			color: var(--warning-dark-color);
+			background-color: var(--warning-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--white-color);
+				background-color: var(--warning-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-light-color);
-			color: var(--white-color);
+			border: var(--border-width-xs) solid var(--warning-base-color);
+			color: var(--warning-base-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--warning-shadow-color);
+				color: var(--white-color);
 			}
 		}
 	}
 
 	&.notification-footer-info {
 		.notification-footer-button-confirm {
-			background-color: var(--info-light-color);
-			color: var(--info-dark-color);
+			background-color: var(--info-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--white-color);
+				background-color: var(--info-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-light-color);
-			color: var(--white-color);
+			border: var(--border-width-xs) solid var(--info-base-color);
+			color: var(--info-base-color);
 
 			&:hover {
-				background-color: var(--secondary-subtle-color);
+				background-color: var(--info-shadow-color);
+				color: var(--white-color);
 			}
 		}
 	}
@@ -388,105 +417,105 @@
 .notification-footer-lightened {
 	&.notification-footer-neutral {
 		.notification-footer-button-confirm {
-			background-color: var(--neutral-subtle-color);
-			color: var(--black-color);
+			background-color: var(--black-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--neutral-soft-color);
+				background-color: var(--lambda-color-neutral-800);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--neutral-subtle-color);
+			border: var(--border-width-xs) solid var(--black-color);
 			color: var(--black-color);
 
 			&:hover {
-				background-color: var(--neutral-subtle-color);
+				background-color: var(--neutral-shadow-color);
 			}
 		}
 	}
 
 	&.notification-footer-success {
 		.notification-footer-button-confirm {
-			background-color: var(--success-subtle-color);
-			color: var(--success-dark-color);
+			background-color: var(--success-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--success-base-color);
+				background-color: var(--success-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-subtle-color);
-			color: var(--success-dark-color);
+			border: var(--border-width-xs) solid var(--success-base-color);
+			color: var(--success-base-color);
 
 			&:hover {
-				background-color: var(--success-soft-color);
+				background-color: var(--success-opacity-color);
 			}
 		}
 	}
 
 	&.notification-footer-danger {
 		.notification-footer-button-confirm {
-			background-color: var(--danger-subtle-color);
-			color: var(--danger-dark-color);
+			background-color: var(--danger-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--danger-base-color);
+				background-color: var(--danger-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-subtle-color);
-			color: var(--danger-dark-color);
+			border: var(--border-width-xs) solid var(--danger-base-color);
+			color: var(--danger-base-color);
 
 			&:hover {
-				background-color: var(--danger-soft-color);
+				background-color: var(--danger-opacity-color);
 			}
 		}
 	}
 
 	&.notification-footer-warning {
 		.notification-footer-button-confirm {
-			background-color: var(--warning-subtle-color);
-			color: var(--warning-dark-color);
+			background-color: var(--warning-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--warning-base-color);
+				background-color: var(--warning-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-subtle-color);
-			color: var(--warning-dark-color);
+			border: var(--border-width-xs) solid var(--warning-base-color);
+			color: var(--warning-base-color);
 
 			&:hover {
-				background-color: var(--warning-subtle-color);
+				background-color: var(--warning-opacity-color);
 			}
 		}
 	}
 
 	&.notification-footer-info {
 		.notification-footer-button-confirm {
-			background-color: var(--info-subtle-color);
-			color: var(--info-dark-color);
+			background-color: var(--info-base-color);
+			color: var(--white-color);
 
 			&:hover {
-				background-color: var(--info-base-color);
+				background-color: var(--info-hover-color);
 			}
 		}
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-subtle-color);
-			color: var(--info-dark-color);
+			border: var(--border-width-xs) solid var(--info-base-color);
+			color: var(--info-base-color);
 
 			&:hover {
-				background-color: var(--info-soft-color);
+				background-color: var(--info-opacity-color);
 			}
 		}
 	}

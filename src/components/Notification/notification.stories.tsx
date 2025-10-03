@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Notification } from "./Notification";
 import { NotificationProvider, useNotification } from "./NotificationProvider";
-import { Button } from "../../main";
+import { Button, Switch } from "../../main";
 import { NotificationProps } from "./notifications.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { useState } from "react";
@@ -108,12 +108,17 @@ const NotificationWithButton = (
 ) => {
 	const { showNotification } = useNotification();
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
+	const [viewButtons, setViewButtons] = useState(false);
 
 	const handleClick = () => {
 		showNotification({
 			...args,
 			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "neutral",
+			onCancel: viewButtons ? () => console.log("Cancel") : undefined,
+			onConfirm: viewButtons ? () => console.log("Confirm") : undefined,
+			cancelText: viewButtons ? "Cancel" : undefined,
+			confirmText: viewButtons ? "Confirm" : undefined,
 		});
 	};
 
@@ -122,6 +127,10 @@ const NotificationWithButton = (
 			...args,
 			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "success",
+			onCancel: viewButtons ? () => console.log("Cancel") : undefined,
+			onConfirm: viewButtons ? () => console.log("Confirm") : undefined,
+			cancelText: viewButtons ? "Cancel" : undefined,
+			confirmText: viewButtons ? "Confirm" : undefined,
 		});
 	};
 
@@ -130,6 +139,10 @@ const NotificationWithButton = (
 			...args,
 			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "danger",
+			onCancel: viewButtons ? () => console.log("Cancel") : undefined,
+			onConfirm: viewButtons ? () => console.log("Confirm") : undefined,
+			cancelText: viewButtons ? "Cancel" : undefined,
+			confirmText: viewButtons ? "Confirm" : undefined,
 		});
 	};
 
@@ -138,6 +151,10 @@ const NotificationWithButton = (
 			...args,
 			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "info",
+			onCancel: viewButtons ? () => console.log("Cancel") : undefined,
+			onConfirm: viewButtons ? () => console.log("Confirm") : undefined,
+			cancelText: viewButtons ? "Cancel" : undefined,
+			confirmText: viewButtons ? "Confirm" : undefined,
 		});
 	};
 
@@ -146,6 +163,10 @@ const NotificationWithButton = (
 			...args,
 			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "warning",
+			onCancel: viewButtons ? () => console.log("Cancel") : undefined,
+			onConfirm: viewButtons ? () => console.log("Confirm") : undefined,
+			cancelText: viewButtons ? "Cancel" : undefined,
+			confirmText: viewButtons ? "Confirm" : undefined,
 		});
 	};
 
@@ -158,6 +179,13 @@ const NotificationWithButton = (
 			styleSource={currentStyle}
 		>
 			<div style={{ height: "100%" }}>
+				<Switch
+					checked={viewButtons}
+					onChange={(checked) => setViewButtons(checked.target.checked)}
+					label="View buttons"
+					position_label="top"
+					color="info"
+				/>
 				<div
 					style={{
 						display: "flex",
