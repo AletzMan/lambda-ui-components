@@ -172,6 +172,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 								onMouseUp={stopIncrementing}
 								aria-label="Increase value"
 								disabled={disabled || (max !== undefined && Number(numericValue) >= Number(max))}
+								tabIndex={-1}
 							>
 								<ChevronUp className={styles["lambda-number-icon"]} />
 							</button>
@@ -185,6 +186,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 								disabled={
 									disabledValue || (min !== undefined && Number(numericValue) <= Number(min))
 								}
+								tabIndex={-1}
 							>
 								<ChevronDown className={styles["lambda-number-icon"]} />
 							</button>
