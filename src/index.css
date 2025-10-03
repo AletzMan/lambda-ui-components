@@ -350,7 +350,7 @@
 	--neutral-hover-color: var(--lambda-color-neutral-700);
 	--neutral-border-color: var(--lambda-color-neutral-600);
 	--neutral-disabled-color: var(--lambda-color-neutral-900);
-	--neutral-light-color: var(--lambda-color-neutral-100);
+	--neutral-light-color: var(--lambda-color-neutral-050);
 	--neutral-dark-color: var(--lambda-color-neutral-950);
 	--neutral-background-color: var(--lambda-color-neutral-050);
 	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-600) 10%, transparent 90%);
@@ -365,7 +365,7 @@
 	--success-hover-color: var(--lambda-color-success-600);
 	--success-disabled-color: var(--lambda-color-success-900);
 	--success-border-color: var(--lambda-color-success-700);
-	--success-light-color: var(--lambda-color-success-100);
+	--success-light-color: var(--lambda-color-success-050);
 	--success-dark-color: var(--lambda-color-success-950);
 	--success-background-color: var(--lambda-color-success-050);
 	--success-opacity-color: color-mix(in srgb, var(--lambda-color-success-600) 15%, transparent 90%);
@@ -380,7 +380,7 @@
 	--danger-hover-color: var(--lambda-color-danger-600);
 	--danger-disabled-color: var(--lambda-color-danger-900);
 	--danger-border-color: var(--lambda-color-danger-700);
-	--danger-light-color: var(--lambda-color-danger-100);
+	--danger-light-color: var(--lambda-color-danger-050);
 	--danger-dark-color: var(--lambda-color-danger-950);
 	--danger-background-color: var(--lambda-color-danger-050);
 	--danger-opacity-color: color-mix(in srgb, var(--lambda-color-danger-600) 15%, transparent 90%);
@@ -395,7 +395,7 @@
 	--warning-hover-color: var(--lambda-color-warning-600);
 	--warning-disabled-color: var(--lambda-color-warning-900);
 	--warning-border-color: var(--lambda-color-warning-700);
-	--warning-light-color: var(--lambda-color-warning-100);
+	--warning-light-color: var(--lambda-color-warning-050);
 	--warning-dark-color: var(--lambda-color-warning-950);
 	--warning-background-color: var(--lambda-color-warning-050);
 	--warning-opacity-color: color-mix(in srgb, var(--lambda-color-warning-600) 15%, transparent 90%);
@@ -410,7 +410,7 @@
 	--info-hover-color: var(--lambda-color-info-600);
 	--info-disabled-color: var(--lambda-color-info-900);
 	--info-border-color: var(--lambda-color-info-700);
-	--info-light-color: var(--lambda-color-info-100);
+	--info-light-color: var(--lambda-color-info-050);
 	--info-dark-color: var(--lambda-color-info-950);
 	--info-background-color: var(--lambda-color-info-050);
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-info-600) 15%, transparent 90%);

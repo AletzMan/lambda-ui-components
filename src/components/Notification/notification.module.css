@@ -830,6 +830,10 @@
 		color: var(--black-color);
 	}
 
+	.notification-time-container {
+		background-color: #00000020;
+	}
+
 	.notification-close-button {
 		.notification-close-button-icon {
 			color: var(--black-color);
@@ -848,8 +852,7 @@
 		}
 
 		.notification-time {
-			background-color: var(--neutral-disabled-color);
-			filter: brightness(135%);
+			background-color: var(--black-color);
 		}
 	}
 
@@ -869,8 +872,7 @@
 		}
 
 		.notification-time {
-			background-color: var(--success-disabled-color);
-			filter: brightness(90%);
+			background-color: var(--success-base-color);
 		}
 	}
 
@@ -890,8 +892,7 @@
 		}
 
 		.notification-time {
-			background-color: var(--danger-disabled-color);
-			filter: brightness(110%);
+			background-color: var(--danger-base-color);
 		}
 	}
 
@@ -911,8 +912,7 @@
 		}
 
 		.notification-time {
-			background-color: var(--warning-disabled-color);
-			filter: brightness(110%);
+			background-color: var(--warning-base-color);
 		}
 	}
 
@@ -932,8 +932,7 @@
 		}
 
 		.notification-time {
-			background-color: var(--info-disabled-color);
-			filter: brightness(110%);
+			background-color: var(--info-base-color);
 		}
 	}
 }
