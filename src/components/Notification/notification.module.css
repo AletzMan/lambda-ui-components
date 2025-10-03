@@ -942,7 +942,6 @@ body[data-theme="light"] {
 
 .notification-soft {
 	backdrop-filter: blur(10px);
-	box-shadow: var(--box-shadow);
 
 	&:is(.notification-neutral) {
 		background-color: var(--neutral-opacity-color);
@@ -957,7 +956,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--neutral-subtle-color);
+			background-color: var(--neutral-base-color);
 		}
 
 		.notification-close-button {
@@ -980,7 +979,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--success-subtle-color);
+			background-color: var(--success-base-color);
 		}
 
 		.notification-close-button {
@@ -1003,7 +1002,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--danger-subtle-color);
+			background-color: var(--danger-base-color);
 		}
 
 		.notification-close-button {
@@ -1026,7 +1025,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--warning-subtle-color);
+			background-color: var(--warning-base-color);
 		}
 
 		.notification-close-button {
@@ -1049,7 +1048,7 @@ body[data-theme="light"] {
 		}
 
 		.notification-time {
-			background-color: var(--info-subtle-color);
+			background-color: var(--info-base-color);
 		}
 
 		.notification-close-button {
