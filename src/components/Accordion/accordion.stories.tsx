@@ -2,9 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Accordion } from "./Accordion";
 import { AccordionProps, AccordionValue } from "./accordion.types";
 import { useState } from "react";
-import { AccordionItem } from "./AccordionItem";
-import { AccordionContent } from "./AccordionContent";
-import { AccordionHeader } from "./AccordionHeader";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Accordion> = {
@@ -70,17 +67,17 @@ const PreviewAccordion = (
 					style={{ marginBottom: "30px" }}
 					radius={currentStyle === "local" ? args?.radius : undefined}
 				>
-					<AccordionItem value="item-1">
-						<AccordionHeader>Section 1: Introduction</AccordionHeader>
-						<AccordionContent>
+					<Accordion.Item value="item-1">
+						<Accordion.Header>Section 1: Introduction</Accordion.Header>
+						<Accordion.Content>
 							<p>Here goes the content of section 1.</p>
 							<p>It can be text, images, other components.</p>
-						</AccordionContent>
-					</AccordionItem>
+						</Accordion.Content>
+					</Accordion.Item>
 
-					<AccordionItem value="item-2">
-						<AccordionHeader>Section 2: Components</AccordionHeader>
-						<AccordionContent>
+					<Accordion.Item value="item-2">
+						<Accordion.Header>Section 2: Components</Accordion.Header>
+						<Accordion.Content>
 							<ul>
 								<li>Alert Component</li>
 								<li>Button Component</li>
@@ -88,28 +85,28 @@ const PreviewAccordion = (
 								<li>Accordion Component</li>
 							</ul>
 							<div style={{ height: "50px" }}>Extra content to test transition</div>
-						</AccordionContent>
-					</AccordionItem>
+						</Accordion.Content>
+					</Accordion.Item>
 
-					<AccordionItem value="item-3" disabled>
+					<Accordion.Item value="item-3" disabled>
 						{/* Disabled Item */}
-						<AccordionHeader>Section 3: Disabled</AccordionHeader>
-						<AccordionContent>
+						<Accordion.Header>Section 3: Disabled</Accordion.Header>
+						<Accordion.Content>
 							This content cannot be expanded because the item is disabled.
-						</AccordionContent>
-					</AccordionItem>
+						</Accordion.Content>
+					</Accordion.Item>
 
-					<AccordionItem value="item-4">
-						<AccordionHeader>Section 4: With Long Content</AccordionHeader>
-						<AccordionContent>
+					<Accordion.Item value="item-4">
+						<Accordion.Header>Section 4: With Long Content</Accordion.Header>
+						<Accordion.Content>
 							<p>
 								This is the beginning of content that is a bit longer to test scrolling if the
 								Accordion's main container allows it.
 							</p>
 							<div style={{ height: "200px", background: "#e9e9e9" }}></div>
 							<p>End of long content.</p>
-						</AccordionContent>
-					</AccordionItem>
+						</Accordion.Content>
+					</Accordion.Item>
 				</Accordion>
 			</div>
 		</ContainerComponent>
