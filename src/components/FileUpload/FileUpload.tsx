@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, forwardRef, useRef, useCallback, useId, RefObject } from "react";
 import clsx from "clsx";
-import { UploadCloudIcon, XCircleIcon, ImageIcon } from "lucide-react";
+import { UploadCloudIcon, ImageIcon, Trash2 } from "lucide-react";
 import {
 	fileUploadWrapper,
 	dropZone,
@@ -10,6 +10,7 @@ import {
 	buttonFileUpload,
 	buttonFilePreview,
 	fileUploadLayout,
+	fileUploadEmptyVariants,
 } from "./file-upload.variants";
 import { useImagePreviews } from "./hooks/useImagePreviews";
 import { FileItem } from "./FileItem";
@@ -41,6 +42,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			onChange,
 			onFocus,
 			onBlur,
+			displayMode = "list",
 			onDragOver: onDragOverProp,
 			onDragLeave: onDragLeaveProp,
 			onDrop: onDropProp,
@@ -55,8 +57,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		const [internalSelectedFiles, setInternalSelectedFiles] = useState<SelectedFileData[]>([]);
 		// Estado para efecto visual de arrastrar (solo para type="dropzone")
 		const [isDragging, setIsDragging] = useState(false);
-		// Estado para foco (para helperText/estilos)
-		const [focused, setFocused] = useState(false);
 		const { t } = useTranslation();
 		const { radiusBox } = useUIConfig();
 
@@ -67,10 +67,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		// IDs para Accesibilidad: Generar IDs únicos para el componente y sus partes
 		const componentId = useId();
-		const labelId = label ? `lambda-file-upload-label-${componentId}` : undefined;
-		const inputId = `lambda-file-upload-input-${componentId}`;
-		const errorId = errorMessage && invalid ? `lambda-file-upload-error-${componentId}` : undefined;
-		const helperId = helperText ? `lambda-file-upload-helper-${componentId}` : undefined;
+		const labelId = label ? `lambda-fileup-label-${componentId}` : undefined;
+		const inputId = `lambda-fileup-input-${componentId}`;
+		const errorId = errorMessage && invalid ? `lambda-fileup-error-${componentId}` : undefined;
+		const helperId = helperText ? `lambda-fileup-helper-${componentId}` : undefined;
 		// Construir la cadena de IDs para aria-describedby (asocia input con mensajes)
 		const describedByIds = [errorId, helperId].filter(Boolean).join(" ");
 
@@ -93,8 +93,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		// --- Lógica de validación de tipo de archivo contra la prop 'accept' ---
 		// Helper para verificar si un archivo coincide con la cadena accept y validar el tamaño del archivo
 		const isValidFileType = useCallback((file: File, acceptString: string): boolean => {
-			if (!acceptString) return true;
-
 			const acceptedTypes = acceptString.split(",").map((type) => type.trim().toLowerCase());
 			const fileType = file.type.toLowerCase();
 			const fileName = file.name.toLowerCase();
@@ -103,7 +101,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			const lastDotIndex = fileName.lastIndexOf(".");
 			const fileExtension = lastDotIndex > -1 ? fileName.slice(lastDotIndex) : "";
 			if (maxSize && fileSize > maxSize) {
-				return false; // Si el tamaño excede el máximo, no es válido
+				return false;
 			}
 
 			return acceptedTypes.some((acceptedType) => {
@@ -236,12 +234,10 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 
 		// Handlers de Foco (para estilos y helper text)
 		const handleFocus = (e: React.FocusEvent<HTMLElement>) => {
-			setFocused(true);
 			onFocus?.(e as React.FocusEvent<HTMLInputElement>);
 		};
 
 		const handleBlur = (e: React.FocusEvent<HTMLElement>) => {
-			setFocused(false);
 			onBlur?.(e as React.FocusEvent<HTMLInputElement>);
 		};
 
@@ -268,31 +264,26 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				// Dropzone vacío: ícono + placeholder
 				interactiveContentJSX = (
 					<>
-						<UploadCloudIcon className={styles["lambda-file-upload-drop-zone-icon"]} />
-						<span className={styles["lambda-file-upload-drop-zone-placeholder"]}>
+						<UploadCloudIcon className={styles["lambda-fileup-drop-zone-icon"]} />
+						<span className={styles["lambda-fileup-drop-zone-placeholder"]}>
 							{t("file-upload.drop-zone-placeholder")}
-						</span>
-						<span className={styles["lambda-file-upload-drop-zone-max-size"]}>
-							{maxSize ? t("file-upload.max-size", { maxSize: formatBytes(maxSize) }) : ""}
 						</span>
 					</>
 				);
 			} else if (isSingleImage) {
 				// Dropzone con una sola imagen: previsualización GRANDE
 				interactiveContentJSX = (
-					<div className={styles["lambda-file-upload-drop-zone-single-image-preview-container"]}>
+					<div className={styles["lambda-fileup-drop-zone-single-image-preview-container"]}>
 						{singleFileData?.previewUrl ? (
 							<img
 								src={singleFileData.previewUrl}
 								alt={`Preview of ${singleFileData.file.name}`}
-								className={styles["lambda-file-upload-drop-zone-single-image-preview"]}
+								className={styles["lambda-fileup-drop-zone-single-image-preview"]}
 							/>
 						) : (
-							<ImageIcon
-								className={styles["lambda-file-upload-drop-zone-single-image-preview-icon"]}
-							/>
+							<ImageIcon className={styles["lambda-fileup-drop-zone-single-image-preview-icon"]} />
 						)}
-						<div className={styles["lambda-file-upload-drop-zone-single-image-preview-overlay"]}>
+						<div className={styles["lambda-fileup-drop-zone-single-image-preview-overlay"]}>
 							{singleFileData?.file.name}
 						</div>
 					</div>
@@ -300,7 +291,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			} else {
 				// Dropzone con múltiples archivos o archivo individual no imagen: contador
 				interactiveContentJSX = (
-					<span className={styles["lambda-file-upload-drop-zone-file-count"]}>
+					<span className={styles["lambda-fileup-drop-zone-file-count"]}>
 						{selectedFilesData.length} file{selectedFilesData.length > 1 ? "s" : ""} selected
 					</span>
 				);
@@ -311,7 +302,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				<button
 					ref={buttonRef}
 					className={clsx(buttonFileUpload({ size, radius: radiusBox, disabled, invalid }), {
-						[styles["lambda-file-upload-button-file-upload-hasFiles"]]: hasFiles,
+						[styles["lambda-fileup-button-upload-hasFiles"]]: hasFiles,
 					})}
 					onClick={handleInteractiveAreaClick}
 					onFocus={handleFocus}
@@ -323,7 +314,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					aria-disabled={disabled}
 					aria-invalid={invalid}
 				>
-					{t("file-upload.button-text")}
+					{multiple ? t("file-upload.button-text-multiple") : t("file-upload.button-text-single")}
 				</button>
 			);
 		}
@@ -331,7 +322,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		return (
 			<div
 				className={clsx(
-					styles["lambda-file-upload-wrapper"],
+					styles["lambda-fileup-wrapper"],
 					fileUploadWrapper({ type, size, disabled, invalid }),
 					className
 				)}
@@ -356,7 +347,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					name={name}
 					onChange={handleFileChange}
 					style={{ display: "none" }}
-					className={styles["lambda-file-upload-hidden-native-input"]}
+					className={styles["lambda-fileup-hidden-native-input"]}
 					aria-labelledby={labelId}
 					aria-describedby={describedByIds || undefined}
 					aria-invalid={invalid || undefined}
@@ -367,10 +358,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				{type === "dropzone" ? (
 					<div
 						ref={dropZoneRef}
-						className={clsx(
-							styles["lambda-file-upload-drop-zone"],
-							dropZone({ size, radius: radiusBox, disabled, invalid, isDragging })
-						)}
+						className={dropZone({ size, radius: radiusBox, disabled, invalid, isDragging })}
 						onClick={handleInteractiveAreaClick}
 						onDragOver={handleDragOver}
 						onDragLeave={handleDragLeave}
@@ -384,13 +372,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						aria-invalid={invalid}
 					>
 						{/* Contenido dinámico del Drop Zone (placeholder/contador/preview grande) */}
-						<div className={styles["lambda-file-upload-drop-zone-content"]}>
-							{interactiveContentJSX}
-						</div>
+						<div className={styles["lambda-fileup-drop-zone-content"]}>{interactiveContentJSX}</div>
 
 						{/* Lista de archivos seleccionados (visual) - solo en dropzone, solo si hay archivos */}
 						{hasFiles && (
-							<ul className={fileList({ size, invalid })} role="list">
+							<ul
+								className={clsx(fileList({ size, invalid, type, displayMode }), "scrollBar")}
+								role="list"
+							>
 								{selectedFilesData.map((fileData) => (
 									<FileItem
 										key={fileData.id}
@@ -399,6 +388,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										size={size}
 										invalid={invalid}
 										viewFileSize={viewFileSize}
+										type="dropzone"
+										displayMode={displayMode}
 									/>
 								))}
 							</ul>
@@ -410,77 +401,78 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 					<div className={clsx(fileUploadLayout({ radius: radiusBox, disabled, invalid }))}>
 						{/* Contenedor para el botón y el contenido al lado (nombre/preview de archivo único o contador) */}
 						{/* Este contenedor es flex-row para alinear horizontalmente el botón y el display */}
-						<div className={clsx(styles["lambda-file-upload-button-container"])}>
+						<div className={clsx(styles["lambda-fileup-button-container"])}>
 							{interactiveContentJSX}
 							{/* Contenido al lado del botón (nombre/preview de archivo único o contador) */}
 							{/* Se muestra si hay archivos Y (es single O (es multiple Y tiene archivos)) */}
-							{hasFiles && (!multiple || (multiple && hasFiles)) && (
-								<div className={styles["lambda-file-upload-file-display-container"]}>
-									{
-										isSingleFile && isSingleImage ? (
-											<>
-												<div className={buttonFilePreview({ size })}>
-													{singleFileData?.previewUrl ? (
-														<img
-															src={singleFileData.previewUrl}
-															alt={`Preview of ${singleFileData.file.name}`}
-															className={styles["lambda-file-upload-button-file-preview-image"]}
-														/>
-													) : (
-														<ImageIcon
-															className={styles["lambda-file-upload-button-file-preview-icon"]}
-														/>
-													)}
-												</div>
-												<span className={styles["lambda-file-upload-file-name-display"]}>
-													{singleFileData?.file.name}
-												</span>
 
-												{/* Botón X para remover (solo si es archivo único) */}
-												<button
-													type="button"
-													onClick={() => singleFileData && handleRemoveFile(singleFileData.id)}
-													className={styles["lambda-file-upload-file-name-remove-button"]}
-													aria-label={`Remover archivo ${singleFileData?.file.name}`}
-												>
-													<XCircleIcon
-														className={styles["lambda-file-upload-file-name-remove-icon"]}
+							<div className={styles["lambda-fileup-file-display-container"]}>
+								{
+									isSingleFile && isSingleImage ? (
+										<>
+											<div className={buttonFilePreview({ size })}>
+												{singleFileData?.previewUrl ? (
+													<img
+														src={singleFileData.previewUrl}
+														alt={`Preview of ${singleFileData.file.name}`}
+														className={styles["lambda-fileup-button-file-preview-image"]}
 													/>
-												</button>
-											</>
-										) : isSingleFile && !isSingleImage ? (
-											<>
-												<span className={styles["lambda-file-upload-file-name-display"]}>
-													{singleFileData?.file.name}
-												</span>
-												<button
-													type="button"
-													onClick={() => singleFileData && handleRemoveFile(singleFileData.id)}
-													className={styles["lambda-file-upload-file-name-remove-button"]}
-													aria-label={`Remover archivo ${singleFileData?.file.name}`}
-												>
-													<XCircleIcon
-														className={styles["lambda-file-upload-file-name-remove-icon"]}
-													/>
-												</button>
-											</>
-										) : multiple && hasFiles ? (
-											<span className={styles["lambda-file-upload-file-name-display"]}>
-												{selectedFilesData.length} file{selectedFilesData.length > 1 ? "s" : ""}{" "}
-												selected
+												) : (
+													<ImageIcon className={styles["lambda-fileup-button-file-preview-icon"]} />
+												)}
+											</div>
+											<span className={styles["lambda-fileup-file-name-display"]}>
+												{singleFileData?.file.name}
 											</span>
-										) : null /* No mostrar nada si no hay archivos */
-									}
-								</div>
-							)}
+
+											{/* Botón X para remover (solo si es archivo único) */}
+											<button
+												type="button"
+												onClick={() => singleFileData && handleRemoveFile(singleFileData.id)}
+												className={styles["lambda-fileup-file-name-remove-button"]}
+												aria-label={`Remover archivo ${singleFileData?.file.name}`}
+											>
+												<Trash2 className={styles["lambda-fileup-file-name-remove-icon"]} />
+											</button>
+										</>
+									) : isSingleFile && !isSingleImage ? (
+										<>
+											<span className={styles["lambda-fileup-file-name-display"]}>
+												{singleFileData?.file.name}
+											</span>
+											<button
+												type="button"
+												onClick={() => singleFileData && handleRemoveFile(singleFileData.id)}
+												className={styles["lambda-fileup-file-name-remove-button"]}
+												aria-label={`Remover archivo ${singleFileData?.file.name}`}
+											>
+												<Trash2 className={styles["lambda-fileup-file-name-remove-icon"]} />
+											</button>
+										</>
+									) : multiple && hasFiles ? (
+										<span className={fileUploadEmptyVariants({ size })}>
+											{selectedFilesData.length}{" "}
+											{multiple
+												? t("file-upload.files-selected-multiple")
+												: t("file-upload.file-selected-single")}
+										</span>
+									) : (
+										<p className={fileUploadEmptyVariants({ size })}>
+											{multiple
+												? t("file-upload.files-empty-multiple")
+												: t("file-upload.file-empty-single")}
+										</p>
+									) /* No mostrar nada si no hay archivos */
+								}
+							</div>
 						</div>
 
 						{/* Renderiza la lista de archivos si es tipo 'button' Y es multiple Y hay archivos */}
 						{type === "button" && hasFiles && multiple && (
 							<ul
 								className={clsx(
-									styles["lambda-file-upload-file-list"],
-									fileList({ size, invalid }),
+									styles["lambda-fileup-file-list"],
+									fileList({ size, invalid, type }),
 									"scrollBar"
 								)}
 								role="list"
@@ -493,6 +485,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										size={size}
 										invalid={invalid}
 										viewFileSize={viewFileSize}
+										type="button"
 									/>
 								))}
 							</ul>
@@ -501,29 +494,26 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				)}
 
 				{helperText && !invalid && (
-					<HelperText
-						id={helperId}
-						text={helperText}
-						size={size}
-						disabled={disabled}
-						focused={focused}
-					/>
+					<HelperText id={helperId} text={helperText} size={size} disabled={disabled} />
 				)}
-				{invalid && errorMessage && (
+				{invalid && errorMessage !== "" && (
 					<InvalidMessage id={errorId} errorMessage={errorMessage} invalid={invalid} size={size} />
 				)}
-				{type === "button" && viewFileSize && !multiple && (
-					<div className={styles["lambda-file-upload-file-item-size"]}>
+				{viewFileSize && (
+					<div className={styles["lambda-fileup-file-item-size"]}>
 						{maxSize !== undefined && maxSize > 0 && (
-							<span className={styles["lambda-file-upload-file-item-size-max"]}>
+							<span className={styles["lambda-fileup-file-item-size-max"]}>
 								Max: {formatBytes(maxSize)}
 							</span>
 						)}
-						{singleFileData?.file.size && singleFileData?.file.size > 0 && (
-							<span className={styles["lambda-file-upload-file-item-size-current"]}>
-								{formatBytes(singleFileData?.file.size)}
-							</span>
-						)}
+						{!multiple &&
+							type === "button" &&
+							singleFileData?.file.size &&
+							singleFileData?.file.size > 0 && (
+								<span className={styles["lambda-fileup-file-item-size-current"]}>
+									{formatBytes(singleFileData?.file.size)}
+								</span>
+							)}
 					</div>
 				)}
 			</div>

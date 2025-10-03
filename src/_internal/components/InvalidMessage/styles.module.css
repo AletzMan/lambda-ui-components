@@ -36,15 +36,15 @@
 	}
 
 	&.lambda-message-invalid-small {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.lambda-message-invalid-medium {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.lambda-message-invalid-large {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 }
 

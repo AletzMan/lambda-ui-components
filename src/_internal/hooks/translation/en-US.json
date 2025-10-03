@@ -2,7 +2,16 @@
 	"file-upload": {
 		"drop-zone-placeholder": "Drop files here or click to upload",
 		"max-size": "Max size: {{maxSize}}",
-		"button-text": "Select File"
+		"button-text-single": "Select File",
+		"button-text-multiple": "Select Files",
+		"file-empty-single": "No file selected",
+		"files-empty-multiple": "No files selected",
+		"file-selected-single": "file selected",
+		"files-selected-multiple": "files selected",
+		"max-size-error-single": "The file exceeds the maximum allowed size {{fileSize}}",
+		"max-size-error-multiple": "{{count}} files exceed the maximum allowed size {{fileSize}}",
+		"type-error-single": "The file is not valid, it must be of type {{accept}}",
+		"type-error-multiple": "{{count}} files are not valid, they must be of type {{accept}}"
 	},
 	"table": {
 		"rows": "Showing {{from}} to {{to}} of {{total}} entries",

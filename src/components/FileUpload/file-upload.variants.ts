@@ -1,17 +1,17 @@
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./file-upload.module.css";
 
-export const fileUploadLayout = cva(styles["lambda-file-upload-button-layout-container"], {
+export const fileUploadLayout = cva(styles["lambda-fileup-button-layout-container"], {
 	variants: {
 		radius: {
-			none: styles["lambda-file-upload-button-layout-container-none"],
-			tiny: styles["lambda-file-upload-button-layout-container-tiny"],
-			small: styles["lambda-file-upload-button-layout-container-small"],
-			medium: styles["lambda-file-upload-button-layout-container-medium"],
-			large: styles["lambda-file-upload-button-layout-container-large"],
+			none: styles["lambda-fileup-button-layout-container-none"],
+			tiny: styles["lambda-fileup-button-layout-container-tiny"],
+			small: styles["lambda-fileup-button-layout-container-small"],
+			medium: styles["lambda-fileup-button-layout-container-medium"],
+			large: styles["lambda-fileup-button-layout-container-large"],
 		},
-		disabled: { true: styles["lambda-file-upload-button-layout-container-disabled"], false: "" },
-		invalid: { true: styles["lambda-file-upload-button-layout-container-invalid"], false: "" },
+		disabled: { true: styles["lambda-fileup-button-layout-container-disabled"], false: "" },
+		invalid: { true: styles["lambda-fileup-button-layout-container-invalid"], false: "" },
 	},
 	defaultVariants: {
 		radius: "small",
@@ -20,19 +20,19 @@ export const fileUploadLayout = cva(styles["lambda-file-upload-button-layout-con
 	},
 });
 
-export const fileUploadWrapper = cva(styles["lambda-file-upload-wrapper"], {
+export const fileUploadWrapper = cva(styles["lambda-fileup-wrapper"], {
 	variants: {
 		type: {
-			dropzone: styles["lambda-file-upload-wrapper-dropzone"],
-			button: styles["lambda-file-upload-wrapper-button"],
+			dropzone: styles["lambda-fileup-wrapper-dropzone"],
+			button: styles["lambda-fileup-wrapper-button"],
 		},
 		size: {
-			small: styles["lambda-file-upload-wrapper-small"],
-			medium: styles["lambda-file-upload-wrapper-medium"],
-			large: styles["lambda-file-upload-wrapper-large"],
+			small: styles["lambda-fileup-wrapper-small"],
+			medium: styles["lambda-fileup-wrapper-medium"],
+			large: styles["lambda-fileup-wrapper-large"],
 		},
-		disabled: { true: styles["lambda-file-upload-wrapper-disabled"], false: "" },
-		invalid: { true: styles["lambda-file-upload-wrapper-invalid"], false: "" },
+		disabled: { true: styles["lambda-fileup-wrapper-disabled"], false: "" },
+		invalid: { true: styles["lambda-fileup-wrapper-invalid"], false: "" },
 	},
 	defaultVariants: {
 		type: "dropzone",
@@ -42,23 +42,23 @@ export const fileUploadWrapper = cva(styles["lambda-file-upload-wrapper"], {
 	},
 });
 
-export const dropZone = cva(styles["lambda-file-upload-drop-zone"], {
+export const dropZone = cva(styles["lambda-fileup-drop-zone"], {
 	variants: {
 		size: {
-			small: styles["lambda-file-upload-drop-zone-small"],
-			medium: styles["lambda-file-upload-drop-zone-medium"],
-			large: styles["lambda-file-upload-drop-zone-large"],
+			small: styles["lambda-fileup-drop-zone-small"],
+			medium: styles["lambda-fileup-drop-zone-medium"],
+			large: styles["lambda-fileup-drop-zone-large"],
 		},
 		radius: {
-			none: styles["lambda-file-upload-drop-zone-radius-none"],
-			tiny: styles["lambda-file-upload-drop-zone-radius-tiny"],
-			small: styles["lambda-file-upload-drop-zone-radius-small"],
-			medium: styles["lambda-file-upload-drop-zone-radius-medium"],
-			large: styles["lambda-file-upload-drop-zone-radius-large"],
+			none: styles["lambda-fileup-drop-zone-radius-none"],
+			tiny: styles["lambda-fileup-drop-zone-radius-tiny"],
+			small: styles["lambda-fileup-drop-zone-radius-small"],
+			medium: styles["lambda-fileup-drop-zone-radius-medium"],
+			large: styles["lambda-fileup-drop-zone-radius-large"],
 		},
-		disabled: { true: styles["lambda-file-upload-drop-zone-disabled"], false: "" },
-		invalid: { true: styles["lambda-file-upload-drop-zone-invalid"], false: "" },
-		isDragging: { true: styles["lambda-file-upload-drop-zone-dragging"], false: "" },
+		disabled: { true: styles["lambda-fileup-drop-zone-disabled"], false: "" },
+		invalid: { true: styles["lambda-fileup-drop-zone-invalid"], false: "" },
+		isDragging: { true: styles["lambda-fileup-drop-zone-dragging"], false: "" },
 	},
 	defaultVariants: {
 		size: "medium",
@@ -69,22 +69,22 @@ export const dropZone = cva(styles["lambda-file-upload-drop-zone"], {
 	},
 });
 
-export const buttonFileUpload = cva(styles["lambda-file-upload-button-file-upload"], {
+export const buttonFileUpload = cva(styles["lambda-fileup-button-file-upload"], {
 	variants: {
 		size: {
-			small: styles["lambda-file-upload-button-file-upload-small"],
-			medium: styles["lambda-file-upload-button-file-upload-medium"],
-			large: styles["lambda-file-upload-button-file-upload-large"],
+			small: styles["lambda-fileup-button-upload-small"],
+			medium: styles["lambda-fileup-button-upload-medium"],
+			large: styles["lambda-fileup-button-upload-large"],
 		},
 		radius: {
-			none: styles["lambda-file-upload-button-file-upload-radius-none"],
-			tiny: styles["lambda-file-upload-button-file-upload-radius-tiny"],
-			small: styles["lambda-file-upload-button-file-upload-radius-small"],
-			medium: styles["lambda-file-upload-button-file-upload-radius-medium"],
-			large: styles["lambda-file-upload-button-file-upload-radius-large"],
+			none: styles["lambda-fileup-button-upload-radius-none"],
+			tiny: styles["lambda-fileup-button-upload-radius-tiny"],
+			small: styles["lambda-fileup-button-upload-radius-small"],
+			medium: styles["lambda-fileup-button-upload-radius-medium"],
+			large: styles["lambda-fileup-button-upload-radius-large"],
 		},
-		disabled: { true: styles["lambda-file-upload-button-file-upload-disabled"], false: "" },
-		invalid: { true: styles["lambda-file-upload-button-file-upload-invalid"], false: "" },
+		disabled: { true: styles["lambda-fileup-button-upload-disabled"], false: "" },
+		invalid: { true: styles["lambda-fileup-button-upload-invalid"], false: "" },
 	},
 	defaultVariants: {
 		size: "medium",
@@ -94,15 +94,15 @@ export const buttonFileUpload = cva(styles["lambda-file-upload-button-file-uploa
 	},
 });
 
-export const labelFileUpload = cva(styles["lambda-file-upload-label"], {
+export const labelFileUpload = cva(styles["lambda-fileup-label"], {
 	variants: {
 		size: {
-			small: styles["lambda-file-upload-label-small"],
-			medium: styles["lambda-file-upload-label-medium"],
-			large: styles["lambda-file-upload-label-large"],
+			small: styles["lambda-fileup-label-small"],
+			medium: styles["lambda-fileup-label-medium"],
+			large: styles["lambda-fileup-label-large"],
 		},
-		disabled: { true: styles["lambda-file-upload-label-disabled"], false: "" },
-		required: { true: styles["lambda-file-upload-label-required"], false: "" },
+		disabled: { true: styles["lambda-fileup-label-disabled"], false: "" },
+		required: { true: styles["lambda-fileup-label-required"], false: "" },
 	},
 	defaultVariants: {
 		size: "medium",
@@ -111,44 +111,77 @@ export const labelFileUpload = cva(styles["lambda-file-upload-label"], {
 	},
 });
 
-export const fileList = cva(styles["lambda-file-upload-file-list"], {
+export const fileList = cva(styles["lambda-fileup-file-list"], {
 	variants: {
 		size: {
-			small: styles["lambda-file-upload-file-list-small"],
-			medium: styles["lambda-file-upload-file-list-medium"],
-			large: styles["lambda-file-upload-file-list-large"],
+			small: styles["lambda-fileup-file-list-small"],
+			medium: styles["lambda-fileup-file-list-medium"],
+			large: styles["lambda-fileup-file-list-large"],
 		},
-		invalid: { true: styles["lambda-file-upload-file-list-invalid"], false: "" },
+		displayMode: {
+			list: styles["lambda-fileup-file-list-list"],
+			thumbnail: styles["lambda-fileup-file-list-thumbnail"],
+		},
+		type: {
+			dropzone: styles["lambda-fileup-file-list-dropzone"],
+			button: styles["lambda-fileup-file-list-button"],
+		},
+		invalid: { true: styles["lambda-fileup-file-list-invalid"], false: "" },
 	},
 	defaultVariants: {
 		size: "medium",
+		type: "dropzone",
 		invalid: false,
+		displayMode: "list",
 	},
 });
 
-export const fileItem = cva(styles["lambda-file-upload-file-item"], {
+export const fileItem = cva(styles["lambda-fileup-file-item"], {
 	variants: {
 		size: {
-			small: styles["lambda-file-upload-file-item-small"],
-			medium: styles["lambda-file-upload-file-item-medium"],
-			large: styles["lambda-file-upload-file-item-large"],
+			small: styles["lambda-fileup-file-item-small"],
+			medium: styles["lambda-fileup-file-item-medium"],
+			large: styles["lambda-fileup-file-item-large"],
 		},
-		invalid: { true: styles["lambda-file-upload-file-item-invalid"], false: "" },
-		isImage: { true: styles["lambda-file-upload-file-item-is-image"], false: "" },
+		type: {
+			dropzone: styles["lambda-fileup-file-item-dropzone"],
+			button: styles["lambda-fileup-file-item-button"],
+		},
+		displayMode: {
+			list: styles["lambda-fileup-file-item-list"],
+			thumbnail: styles["lambda-fileup-file-item-thumbnail"],
+		},
+		invalid: { true: styles["lambda-fileup-file-item-invalid"], false: "" },
+		isImage: { true: styles["lambda-fileup-file-item-is-image"], false: "" },
 	},
 	defaultVariants: {
 		size: "medium",
+		displayMode: "list",
 		invalid: false,
 		isImage: false,
+		type: "dropzone",
 	},
 });
 
-export const buttonFilePreview = cva(styles["lambda-file-upload-button-file-preview"], {
+export const buttonFilePreview = cva(styles["lambda-fileup-button-file-preview"], {
 	variants: {
 		size: {
-			small: styles["lambda-file-upload-button-file-preview-small"],
-			medium: styles["lambda-file-upload-button-file-preview-medium"],
-			large: styles["lambda-file-upload-button-file-preview-large"],
+			small: styles["lambda-fileup-button-file-preview-small"],
+			medium: styles["lambda-fileup-button-file-preview-medium"],
+			large: styles["lambda-fileup-button-file-preview-large"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
+	},
+});
+
+export const fileUploadEmptyVariants = cva(styles["lambda-fileup-file-empty"], {
+	variants: {
+		size: {
+			small: styles["lambda-fileup-file-empty-small"],
+			medium: styles["lambda-fileup-file-empty-medium"],
+			large: styles["lambda-fileup-file-empty-large"],
 		},
 	},
 	defaultVariants: {

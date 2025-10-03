@@ -17,6 +17,11 @@ const meta: Meta<typeof FileUpload> = {
 			options: ["small", "medium", "large"],
 			description: "Input size",
 		},
+		displayMode: {
+			control: "inline-radio",
+			options: ["list", "thumbnail"],
+			description: "Display mode for the file list",
+		},
 		label: {
 			control: "text",
 			type: "string",
@@ -101,7 +106,7 @@ const Template = (args: FileUploadProps) => {
 						justifyContent: "center",
 						width: "100%",
 						height: "100%",
-						maxWidth: "20em",
+						maxWidth: "60em",
 					}}
 				>
 					<FileUpload {...args} />
@@ -119,13 +124,14 @@ export const Button: Story = {
 		label: "Upload",
 		disabled: false,
 		multiple: false,
-		accept: "image/*",
-		maxSize: 1000000,
+		accept: ".jpg, .png, .gif, .pdf",
+		maxSize: 150000000,
 		viewFileSize: false,
 		invalid: false,
 		errorMessage: "Invalid file type or size",
-		helperText: "Helper text",
+		helperText: "JPG, PNG, GIF, PDF",
 		required: false,
+		displayMode: "list",
 	},
 };
 export const DropZone: Story = {
@@ -140,9 +146,10 @@ export const DropZone: Story = {
 		maxSize: 1000000,
 		invalid: false,
 		errorMessage: "Invalid file type or size",
-		helperText: "Helper text",
+		helperText: "JPG, PNG, GIF, PDF",
 		required: false,
 		viewFileSize: false,
 		placeholder: "Drag and drop your files here or click to select",
+		displayMode: "list",
 	},
 };

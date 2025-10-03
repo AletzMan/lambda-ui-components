@@ -2,7 +2,16 @@
 	"file-upload": {
 		"drop-zone-placeholder": "Arrastra y suelta archivos aquí o haz clic para cargar",
 		"max-size": "Tamaño max: {{maxSize}}",
-		"button-text": "Seleccionar archivo"
+		"button-text-single": "Seleccionar archivo",
+		"button-text-multiple": "Seleccionar archivos",
+		"file-empty-single": "Ningún archivo seleccionado",
+		"files-empty-multiple": "Ningún archivo seleccionado",
+		"file-selected-single": "archivo seleccionado",
+		"files-selected-multiple": "archivos seleccionados",
+		"max-size-error-single": "El archivo excede el tamaño máximo permitido {{fileSize}}",
+		"max-size-error-multiple": "{{count}} archivos exceden el tamaño máximo permitido {{fileSize}}",
+		"type-error-single": "El archivo no es válido, debe ser de tipo {{accept}}",
+		"type-error-multiple": "{{count}} archivos no son válidos, deben ser de tipo {{accept}}"
 	},
 	"table": {
 		"rows": "Mostrando {{from}} al {{to}} de {{total}} entradas",

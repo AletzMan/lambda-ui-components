@@ -142,7 +142,11 @@ export interface FileUploadProps
 	 */
 	viewFileSize?: boolean;
 
-	// Nota: Como FileUploadProps extiende Omit<InputHTMLAttributes<HTMLInputElement>, ...>,
-	// también acepta otras props estándar de HTMLInputElement (type="file") que no han sido
-	// omitidas o redefinidas, como 'id', 'className', 'style', etc.
+	/**
+	 * Define el modo de visualización de los archivos seleccionados.
+	 * - 'list': Muestra una lista de archivos con sus nombres y tamaños.
+	 * - 'thumbnail': Muestra una lista de archivos con miniaturas y nombres.
+	 * @default 'list'
+	 */
+	displayMode?: "list" | "thumbnail";
 }
