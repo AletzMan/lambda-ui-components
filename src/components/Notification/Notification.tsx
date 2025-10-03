@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useState } from "react";
 import styles from "./notification.module.css";
 import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react";
 import clsx from "clsx";
-import { barClass, footer, notificationProp } from "./notification.variant";
+import { footer, notificationProp, notificationTimeVariants } from "./notification.variant";
 import { NotificationProps } from "./notifications.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
@@ -128,10 +128,12 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 						)}
 					</footer>
 				)}
-				<div
-					className={barClass({ variant, notificationType })}
-					style={{ animationDuration: `${duration}ms` }}
-				/>
+				<div className={styles["notification-time-container"]}>
+					<div
+						className={notificationTimeVariants({ variant, notificationType })}
+						style={{ animationDuration: `${duration}ms` }}
+					/>
+				</div>
 			</div>
 		);
 	}

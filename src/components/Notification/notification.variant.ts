@@ -40,7 +40,7 @@ export const notificationProp = cva(styles["notification"], {
 	},
 });
 
-export const barClass = cva(styles["notification-time"], {
+export const notificationTimeVariants = cva(styles["notification-time"], {
 	variants: {
 		notificationType: {
 			neutral: styles["notification-time-neutral"],
