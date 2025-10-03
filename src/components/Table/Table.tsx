@@ -126,33 +126,34 @@ const TableRoot = <T,>({
 	return (
 		<TableContext.Provider value={{ size, variant, sortConfig, handleSort }}>
 			<div className={containerVariants({ variant, radius: radiusBox })}>
-				<Select
-					className={styles["lambda-table-pagination-select"]}
-					value={maxRows.toString()}
-					size="tiny"
-					onChange={(e) => {
-						setMaxRows(Number(e));
-						setCurrentPage(1);
-					}}
-					options={[
-						{
-							value: "5",
-							label: t("table.page", { count: 5 }),
-						},
-						{
-							value: "10",
-							label: t("table.page", { count: 10 }),
-						},
-						{
-							value: "20",
-							label: t("table.page", { count: 20 }),
-						},
-						{
-							value: "50",
-							label: t("table.page", { count: 50 }),
-						},
-					]}
-				/>
+				<div className={styles["lambda-table-pagination-select"]}>
+					<Select
+						value={maxRows.toString()}
+						size="tiny"
+						onChange={(e) => {
+							setMaxRows(Number(e));
+							setCurrentPage(1);
+						}}
+						options={[
+							{
+								value: "5",
+								label: t("table.page", { count: 5 }),
+							},
+							{
+								value: "10",
+								label: t("table.page", { count: 10 }),
+							},
+							{
+								value: "20",
+								label: t("table.page", { count: 20 }),
+							},
+							{
+								value: "50",
+								label: t("table.page", { count: 50 }),
+							},
+						]}
+					/>
+				</div>
 				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
 					<table className={tableVariants({ size, variant })} {...props}>
 						{children}
@@ -180,6 +181,8 @@ const TableRoot = <T,>({
 							currentPage={currentPage}
 							totalPages={totalPages}
 							maxVisiblePages={1}
+							showFirstLastButtons
+							showPrevNextButtons
 							onPageChange={handlePageChange}
 							size={size === "tiny" ? "tiny" : "small"}
 							variant={
