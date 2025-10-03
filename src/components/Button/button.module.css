@@ -45,9 +45,7 @@
 }
 
 .lambda-btn-label {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: block;
 	font-family: inherit;
 	text-align: start;
 }
@@ -755,8 +753,9 @@
 
 .lambda-btn-tiny {
 	font-size: var(--font-size-xs);
-	padding: var(--padding-none) var(--padding-xs);
+	padding: var(--padding-none) var(--padding-md);
 	height: var(--height-button-xs);
+	line-height: var(--height-button-xs);
 
 	.lambda-btn-icon {
 		display: flex;
@@ -777,13 +776,14 @@
 	}
 
 	.lambda-btn-label {
-		font-weight: var(--font-weight-semibold);
+		font-weight: var(--font-weight-medium);
+		line-height: var(--font-size-xs);
 	}
 }
 
 .lambda-btn-small {
 	font-size: var(--font-size-sm);
-	padding: var(--padding-none) var(--padding-sm);
+	padding: var(--padding-none) calc(var(--padding-md) + var(--padding-xs));
 	height: var(--height-button-sm);
 
 	.lambda-btn-icon {
@@ -805,13 +805,13 @@
 	}
 
 	.lambda-btn-label {
-		font-weight: var(--font-weight-semibold);
+		font-weight: var(--font-weight-medium);
 	}
 }
 
 .lambda-btn-medium {
 	font-size: var(--font-size-sm);
-	padding: var(--padding-none) var(--padding-md);
+	padding: var(--padding-none) var(--padding-lg);
 	height: var(--height-button-md);
 
 	.lambda-btn-icon {
@@ -839,7 +839,7 @@
 
 .lambda-btn-large {
 	font-size: var(--font-size-md);
-	padding: var(--padding-none) var(--padding-lg);
+	padding: var(--padding-none) calc(var(--padding-lg) + var(--padding-xs));
 	height: var(--height-button-lg);
 
 	.lambda-btn-icon {
@@ -861,7 +861,7 @@
 	}
 
 	.lambda-btn-label {
-		font-weight: var(--font-weight-semibold);
+		font-weight: var(--font-weight-medium);
 	}
 }
 

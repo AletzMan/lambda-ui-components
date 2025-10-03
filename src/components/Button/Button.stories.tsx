@@ -4,6 +4,7 @@ import { ButtonProps } from "./button.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { CircleCheck } from "lucide-react";
 import { useState } from "react";
+import { Switch } from "../Switch/Switch";
 
 const meta: Meta<typeof Button> = {
 	title: "Components/Button",
@@ -80,6 +81,7 @@ const buttonColors = ["neutral", "primary", "secondary", "danger", "success", "w
 
 const Template = (args: ButtonProps) => {
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
+	const [viewIcon, setViewIcon] = useState<boolean>(false);
 	return (
 		<ContainerComponent
 			title="Button"
@@ -87,6 +89,7 @@ const Template = (args: ButtonProps) => {
 			onChangeStyleSource={(style) => setCurrentStyle(style)}
 			styleSource={currentStyle}
 		>
+			<Switch checked={viewIcon} onChange={() => setViewIcon(!viewIcon)} label="View Icon" />
 			<div
 				style={{
 					display: "flex",
@@ -108,9 +111,9 @@ const Template = (args: ButtonProps) => {
 						loading={args.loading}
 						disabled={args.disabled}
 						iconPosition={args.iconPosition}
-						icon={args.loading ? undefined : args.icon}
+						icon={viewIcon && !args.loading ? args.icon : undefined}
 						label={args.isCircle ? "" : args.loading ? args.loadingText : color}
-						style={{ textTransform: "capitalize", minWidth: "130px" }}
+						style={{ textTransform: "capitalize" }}
 						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				))}
