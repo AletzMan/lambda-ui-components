@@ -115,29 +115,3 @@ export interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {
 	children: React.ReactNode;
 	size?: AccordionVariants["size"];
 }
-
-// Interfaz interna FINAL para las props que AccordionItem inyecta a Header y Content
-// Esto coincide con lo que AccordionItem CLONARÁ y pasará.
-export interface AccordionHeaderFinalInjectedProps extends AccordionHeaderProps {
-	itemvalue: string | number;
-	isopen: boolean;
-	disabled: boolean;
-	headerid: string;
-	contentid: string;
-}
-
-export interface AccordionContentFinalInjectedProps extends AccordionContentProps {
-	itemvalue: string | number;
-	isopen: boolean;
-	headerid: string;
-	contentid: string;
-	variant?: AccordionVariants["variant"];
-	size?: AccordionVariants["size"];
-}
-
-// Interfaz interna para las props que AccordionItem inyecta a Header y Content
-export interface AccordionHeaderInjectedProps extends AccordionHeaderProps {
-	itemvalue: string | number;
-	isopen: boolean;
-	disabled: boolean;
-}
