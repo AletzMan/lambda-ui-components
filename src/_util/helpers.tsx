@@ -1,4 +1,5 @@
 import {
+	File,
 	FileArchive,
 	FileAudio,
 	FileIcon,
@@ -7,6 +8,8 @@ import {
 	FileVideo,
 } from "lucide-react";
 import { APKIcon, PDFIcon } from "../_assets/icons";
+import { TreeNode } from "../components/TreeView/treeview.types";
+import { JSX } from "react";
 
 export const formatBytes = (bytes: number, decimals = 2): string => {
 	if (bytes === 0) return "0 Bytes";
@@ -48,4 +51,13 @@ export const getIconOfFile = (file: File) => {
 		return <APKIcon />;
 	}
 	return <FileIcon />;
+};
+
+export const getIconFileTreeItem = (node: TreeNode): JSX.Element => {
+	const extension = node.label.split(".")[1];
+	if (extension === "pdf") {
+		return <PDFIcon />;
+	} else {
+		return <File />;
+	}
 };
