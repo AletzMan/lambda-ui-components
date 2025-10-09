@@ -5,9 +5,10 @@ import React, {
 	useMemo,
 	useCallback,
 	forwardRef,
+	isValidElement,
 } from "react";
 import clsx from "clsx";
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronRight, Folder, FolderOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./treeview.module.css";
 import type {
@@ -18,12 +19,15 @@ import type {
 } from "./treeview.types";
 import {
 	treeViewExpandedIconVariants,
+	treeViewItemBranchVariants,
 	treeViewItemContentVariants,
 	treeViewItemVariants,
+	treeViewLabelIconVariants,
 	treeViewLabelVariants,
 	treeViewVariants,
 	TreeViewVariants,
 } from "./treeview.variants";
+import { getIconFileTreeItem } from "../../_util/helpers";
 
 interface TreeViewContextValue {
 	expanded: Set<string>;
@@ -32,6 +36,7 @@ interface TreeViewContextValue {
 	size?: TreeViewVariants["size"];
 	selectNode: (id: string) => void;
 	renderLabel?: (node: TreeNode) => React.ReactNode;
+	isDirectory?: boolean;
 }
 
 const TreeViewContext = createContext<TreeViewContextValue | undefined>(undefined);
@@ -44,7 +49,17 @@ const useTreeViewContext = () => {
 // -------------------- TreeView Root --------------------
 const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewProps>(
 	(
-		{ data, defaultExpanded = [], selectedId, onNodeSelect, renderLabel, className, style, size },
+		{
+			data,
+			defaultExpanded = [],
+			selectedId,
+			onNodeSelect,
+			renderLabel,
+			className,
+			style,
+			size,
+			isDirectory,
+		},
 		ref
 	) => {
 		const [expanded, setExpanded] = useState<Set<string>>(new Set(defaultExpanded));
@@ -74,16 +89,23 @@ const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewProps>(
 				selectedId: selected,
 				selectNode,
 				renderLabel,
+				isDirectory,
 				size,
 			}),
-			[expanded, toggleNode, selected, selectNode, renderLabel, size]
+			[expanded, toggleNode, selected, selectNode, renderLabel, size, isDirectory]
 		);
 
 		return (
 			<TreeViewContext.Provider value={contextValue}>
 				<div ref={ref} className={clsx(treeViewVariants({ size }), className)} style={style}>
-					{data.map((node) => (
-						<TreeViewItem key={node.id} node={node} level={0} />
+					{data.map((node, index) => (
+						<TreeViewItem
+							key={node.id}
+							node={node}
+							level={0}
+							isFirst={index === 0}
+							isLast={index === data.length - 1}
+						/>
 					))}
 				</div>
 			</TreeViewContext.Provider>
@@ -92,82 +114,111 @@ const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewProps>(
 );
 
 // -------------------- TreeView Item --------------------
-const TreeViewItem = forwardRef<HTMLDivElement, TreeViewItemProps>(({ node, level = 0 }, ref) => {
-	const { expanded, toggleNode, selectedId, selectNode, size } = useTreeViewContext();
-	const isExpanded = !!node.children && expanded.has(node.id);
-	const isSelected = selectedId === node.id;
-	const isDisabled = !!node.disabled;
+const TreeViewItem = forwardRef<HTMLDivElement, TreeViewItemProps>(
+	({ node, level = 0, isFirst = false, isLast = false }, ref) => {
+		const { expanded, toggleNode, selectedId, selectNode, size } = useTreeViewContext();
+		const isExpanded = !!node.children && expanded.has(node.id);
+		const isSelected = selectedId === node.id;
+		const isDisabled = !!node.disabled;
+		const hasChildren = !!node.children;
 
-	return (
-		<div
-			ref={ref}
-			className={clsx(
-				treeViewItemVariants({ selected: isSelected, disabled: isDisabled }),
-				styles[`lambda-treeview-item-level${level}`]
-			)}
-			role="treeitem"
-			aria-expanded={!!node.children ? isExpanded : undefined}
-			aria-selected={isSelected}
-			aria-disabled={isDisabled}
-			tabIndex={isDisabled ? -1 : 0}
-		>
-			<div className={treeViewItemContentVariants({ selected: isSelected, disabled: isDisabled })}>
-				{node.children && (
-					<button
-						type="button"
-						className={clsx(styles["lambda-treeview-toggle"], {
-							[styles["lambda-treeview-toggle-expanded"]]: isExpanded,
-						})}
-						onClick={() => toggleNode(node.id)}
-						aria-label={isExpanded ? "Collapse" : "Expand"}
-						disabled={isDisabled}
-						tabIndex={-1}
-					>
-						{isExpanded ? (
-							<ChevronDown
-								className={treeViewExpandedIconVariants({ size, expanded: isExpanded })}
-							/>
-						) : (
-							<ChevronLeft
-								className={treeViewExpandedIconVariants({ size, expanded: isExpanded })}
-							/>
-						)}
-					</button>
+		return (
+			<div
+				ref={ref}
+				className={clsx(
+					treeViewItemVariants({ selected: isSelected, disabled: isDisabled, isLast }),
+					styles[`lambda-treeview-item-level${level}`]
 				)}
-				<TreeViewLabel
-					node={node}
-					selected={isSelected}
-					onClick={() => !isDisabled && selectNode(node.id)}
-				/>
-			</div>
-
-			{node.children && (
-				<AnimatePresence initial={false}>
-					{isExpanded && (
-						<motion.div
-							role="group"
-							initial={{ height: 0, opacity: 0 }}
-							animate={{ height: "auto", opacity: 1 }}
-							exit={{ height: 0, opacity: 0 }}
-							transition={{ duration: 0.25, ease: "easeInOut" }}
-							className={styles["lambda-treeview-group"]}
+				role="treeitem"
+				aria-expanded={!!node.children ? isExpanded : undefined}
+				aria-selected={isSelected}
+				aria-disabled={isDisabled}
+				tabIndex={isDisabled ? -1 : 0}
+			>
+				<div
+					className={treeViewItemBranchVariants({
+						hasChildren,
+						expanded: isExpanded,
+						isFirst,
+						isLast,
+					})}
+				></div>
+				<div
+					className={treeViewItemContentVariants({
+						selected: isSelected,
+						disabled: isDisabled,
+						hasChildren,
+					})}
+				>
+					{node.children && (
+						<button
+							type="button"
+							className={clsx(styles["lambda-treeview-toggle"], {
+								[styles["lambda-treeview-toggle-expanded"]]: isExpanded,
+							})}
+							onClick={() => toggleNode(node.id)}
+							aria-label={isExpanded ? "Collapse" : "Expand"}
+							disabled={isDisabled}
+							tabIndex={-1}
 						>
-							{node.children.map((child) => (
-								<TreeViewItem key={child.id} node={child} level={level + 1} />
-							))}
-						</motion.div>
+							<ChevronRight
+								className={treeViewExpandedIconVariants({ size, expanded: isExpanded })}
+							/>
+						</button>
 					)}
-				</AnimatePresence>
-			)}
-		</div>
-	);
-});
+					<TreeViewLabel
+						node={node}
+						selected={isSelected}
+						onClick={() => !isDisabled && selectNode(node.id)}
+					/>
+				</div>
+
+				{node.children && (
+					<AnimatePresence initial={false}>
+						{isExpanded && (
+							<motion.div
+								role="group"
+								initial={{ height: 0, opacity: 0 }}
+								animate={{ height: "auto", opacity: 1 }}
+								exit={{ height: 0, opacity: 0 }}
+								transition={{ duration: 0.25, ease: "easeInOut" }}
+								className={styles["lambda-treeview-group"]}
+							>
+								{node.children.map((child, index) => (
+									<TreeViewItem
+										key={child.id}
+										node={child}
+										level={level + 1}
+										isFirst={index === 0}
+										isLast={index === node.children!.length - 1}
+									/>
+								))}
+							</motion.div>
+						)}
+					</AnimatePresence>
+				)}
+			</div>
+		);
+	}
+);
 
 // -------------------- TreeView Label --------------------
 const TreeViewLabel = forwardRef<HTMLDivElement, TreeViewLabelProps>(
 	({ node, selected, onClick }, ref) => {
-		const { renderLabel, size } = useTreeViewContext();
+		const { renderLabel, size, isDirectory, expanded } = useTreeViewContext();
+		const isExpanded = expanded.has(node.id);
 		const hasChildren = !!node.children;
+
+		const Icon = isValidElement(getIconFileTreeItem(node))
+			? React.cloneElement(getIconFileTreeItem(node), {
+					className: clsx(treeViewLabelIconVariants({ size }), {}),
+			  })
+			: null;
+		const customIcon = isValidElement<SVGAElement>(node.icon)
+			? React.cloneElement(node.icon, {
+					className: clsx(treeViewLabelIconVariants({ size }), {}),
+			  })
+			: null;
 		return (
 			<div
 				ref={ref}
@@ -177,6 +228,18 @@ const TreeViewLabel = forwardRef<HTMLDivElement, TreeViewLabelProps>(
 				onClick={onClick}
 				role="presentation"
 			>
+				{customIcon}
+				{isDirectory && !hasChildren && !node.icon && Icon}
+				{isDirectory && hasChildren && !node.icon && (
+					<>
+						{isExpanded ? (
+							<FolderOpen className={treeViewExpandedIconVariants({ size })} />
+						) : (
+							<Folder className={treeViewExpandedIconVariants({ size })} />
+						)}
+					</>
+				)}
+
 				{renderLabel ? renderLabel(node) : node.label}
 			</div>
 		);

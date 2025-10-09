@@ -24,10 +24,42 @@ export const treeViewItemVariants = cva(styles["lambda-treeview-item"], {
 			true: styles["lambda-treeview-item-disabled"],
 			false: "",
 		},
+		isLast: {
+			true: styles["lambda-treeview-item-last"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		selected: false,
 		disabled: false,
+		isLast: false,
+	},
+});
+
+export const treeViewItemBranchVariants = cva(styles["lambda-treeview-item-branch"], {
+	variants: {
+		hasChildren: {
+			true: styles["lambda-treeview-item-branch-has-children"],
+			false: "",
+		},
+		expanded: {
+			true: styles["lambda-treeview-item-branch-expanded"],
+			false: styles["lambda-treeview-item-branch-collapsed"],
+		},
+		isFirst: {
+			true: styles["lambda-treeview-item-branch-first"],
+			false: "",
+		},
+		isLast: {
+			true: styles["lambda-treeview-item-branch-last"],
+			false: "",
+		},
+	},
+	defaultVariants: {
+		hasChildren: false,
+		expanded: false,
+		isFirst: false,
+		isLast: false,
 	},
 });
 
@@ -41,10 +73,15 @@ export const treeViewItemContentVariants = cva(styles["lambda-treeview-item-cont
 			true: styles["lambda-treeview-item-content-disabled"],
 			false: "",
 		},
+		hasChildren: {
+			true: styles["lambda-treeview-item-content-has-children"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		selected: false,
 		disabled: false,
+		hasChildren: false,
 	},
 });
 
@@ -86,6 +123,19 @@ export const treeViewLabelVariants = cva(styles["lambda-treeview-label"], {
 		size: "medium",
 		selected: false,
 		hasChildren: false,
+	},
+});
+
+export const treeViewLabelIconVariants = cva(styles["lambda-treeview-label-icon"], {
+	variants: {
+		size: {
+			small: styles["lambda-treeview-label-icon-small"],
+			medium: styles["lambda-treeview-label-icon-medium"],
+			large: styles["lambda-treeview-label-icon-large"],
+		},
+	},
+	defaultVariants: {
+		size: "medium",
 	},
 });
 

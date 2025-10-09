@@ -1,7 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { TreeView } from "./TreeView";
-import type { TreeNode } from "./treeview.types";
+import type { TreeNode, TreeViewProps } from "./treeview.types";
 import { useState } from "react";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import {
+	Users,
+	Settings,
+	Briefcase,
+	TrendingUp,
+	DollarSign,
+	BookOpen,
+	UserCheck,
+	Scale,
+} from "lucide-react";
 
 const meta: Meta<typeof TreeView> = {
 	title: "Components/TreeView",
@@ -13,6 +24,7 @@ const meta: Meta<typeof TreeView> = {
 		onNodeSelect: { table: { disable: true } },
 		renderLabel: { table: { disable: true } },
 		size: { control: "inline-radio", options: ["small", "medium", "large"] },
+		isDirectory: { control: "boolean" },
 	},
 };
 
@@ -22,79 +34,275 @@ type Story = StoryObj<typeof TreeView>;
 
 const treeData: TreeNode[] = [
 	{
-		id: "root",
-		label: "Raíz",
+		id: "corp",
+		label: "Corporativo Global (CEO)",
 		children: [
 			{
-				id: "1",
-				label: "Carpeta 1",
+				id: "vp-tech",
+				label: "VP de Tecnología",
 				children: [
-					{ id: "1-1", label: "Archivo 1-1" },
-					{ id: "1-2", label: "Archivo 1-2" },
+					{
+						id: "dir-dev",
+						label: "Director de Ingeniería",
+						children: [
+							// Proyectos o Sub-equipos
+							{ id: "team-a", label: "Equipo Alpha (Plataforma Core)" },
+							{ id: "team-b", label: "Equipo Beta (Aplicaciones Móviles)" },
+							{ id: "team-c", label: "Equipo Gamma (Servicios de Pago)" },
+						],
+					},
+					{
+						id: "dir-ops",
+						label: "Director de Operaciones",
+						children: [
+							{ id: "ops-1", label: "Soporte Nivel 1" },
+							{ id: "ops-2", label: "Mantenimiento Cloud" },
+						],
+					},
 				],
 			},
 			{
-				id: "2",
-				label: "Carpeta 2",
+				id: "vp-mkt",
+				label: "VP de Marketing",
 				children: [
-					{ id: "2-1", label: "Archivo 2-1" },
-					{ id: "2-2", label: "Archivo 2-2", disabled: true },
+					{
+						id: "mkt-digital",
+						label: "Marketing Digital",
+						children: [
+							{ id: "mkt-sem", label: "Campaña SEM 2024" },
+							{ id: "mkt-social", label: "Redes Sociales" },
+						],
+					},
+					{ id: "mkt-branding", label: "Branding y Diseño" },
 				],
 			},
-			{ id: "3", label: "Archivo suelto" },
+			{
+				id: "legal",
+				label: "Departamento Legal",
+				disabled: true, // Ejemplo de nodo deshabilitado
+			},
 		],
 	},
 	{
-		id: "main",
-		label: "Main",
+		id: "rrhh",
+		label: "Recursos Humanos",
 		children: [
 			{
-				id: "main-1",
-				label: "Carpeta 1",
-				children: [
-					{ id: "main-1-1", label: "Archivo 1-1" },
-					{ id: "main-1-2", label: "Archivo 1-2" },
-				],
+				id: "rrhh-talento",
+				label: "Adquisición de Talento",
+				children: [{ id: "rrhh-ta-it", label: "Reclutamiento IT" }],
 			},
-			{
-				id: "main-2",
-				label: "Carpeta 2",
-				children: [
-					{ id: "main-2-1", label: "Archivo 2-1" },
-					{ id: "main-2-2", label: "Archivo 2-2", disabled: true },
-				],
-			},
-			{ id: "main-3", label: "Archivo suelto" },
+			{ id: "rrhh-payroll", label: "Nóminas y Beneficios" },
 		],
 	},
 ];
 
-export const Default: Story = {
-	render: (args) => {
-		const [selectedId, setSelectedId] = useState<string | undefined>();
-		return (
-			<div style={{ maxWidth: 400 }}>
-				<TreeView
-					{...args}
-					data={treeData}
-					selectedId={selectedId}
-					onNodeSelect={setSelectedId}
-					defaultExpanded={["root", "main"]}
-				/>
+const treeDataDirectory: TreeNode[] = [
+	{
+		id: "root",
+		label: "Components",
+		children: [
+			{
+				id: "1",
+				label: "UI Components",
+				children: [
+					{ id: "1-1", label: "Button.tsx" },
+					{ id: "1-2", label: "Input.tsx" },
+					// Componentes adicionales
+					{ id: "1-3", label: "Checkbox.tsx" },
+					{ id: "1-4", label: "Modal.tsx" },
+				],
+			},
+			{
+				id: "2",
+				label: "Layout Components",
+				children: [
+					{ id: "2-1", label: "PageLayout.tsx" },
+					{ id: "2-2", label: "Sidebar.tsx" },
+					// Componente anidado
+					{ id: "2-3", label: "Header", children: [{ id: "2-3-1", label: "Logo.tsx" }] },
+				],
+			},
+			{ id: "3", label: "AppRouter.tsx" },
+		],
+	},
+	{
+		id: "hooks",
+		label: "Hooks",
+		children: [
+			{
+				id: "hooks-1",
+				label: "Data Management", // Renombrado a un tema específico
+				children: [
+					{ id: "hooks-1-1", label: "useFetch.ts" }, // Hook real
+					{
+						id: "hooks-1-2",
+						label: "State Logic", // Carpeta anidada
+						children: [
+							{ id: "hooks-1-2-1", label: "useCounter.ts" },
+							{
+								id: "hooks-1-2-2",
+								label: "useTimeout.ts",
+							},
+						],
+					},
+				],
+			},
+			{
+				id: "hooks-2", // Cambiado de 'main-2' a 'hooks-2' para consistencia
+				label: "Utilities", // Carpeta de utilidades
+				children: [
+					{ id: "hooks-2-1", label: "useWindowSize.ts" },
+					{ id: "hooks-2-2", label: "useDebounce.ts", disabled: true }, // Elemento deshabilitado
+				],
+			},
+		],
+	},
+	{
+		id: "styles",
+		label: "Styles",
+		children: [
+			{ id: "styles-1", label: "variables.css" },
+			{ id: "styles-2", label: "theme.scss" },
+		],
+	},
+];
+
+const treeDataOrganization: TreeNode[] = [
+	{
+		id: "corp",
+		label: "Corporativo Global (CEO)",
+		icon: <Users size={16} />, // Icono para el nivel más alto
+		children: [
+			{
+				id: "vp-tech",
+				label: "VP de Tecnología",
+				icon: <Settings size={16} />, // Icono para Tecnología
+				children: [
+					{
+						id: "dir-dev",
+						label: "Director de Ingeniería",
+						icon: <Briefcase size={16} />,
+						children: [
+							{
+								id: "team-a",
+								label: "Equipo Alpha (Plataforma Core)",
+								icon: <Briefcase size={16} />,
+							},
+							{
+								id: "team-b",
+								label: "Equipo Beta (Aplicaciones Móviles)",
+								icon: <Briefcase size={16} />,
+							},
+							{
+								id: "team-c",
+								label: "Equipo Gamma (Servicios de Pago)",
+								icon: <Briefcase size={16} />,
+							},
+						],
+					},
+					{
+						id: "dir-ops",
+						label: "Director de Operaciones",
+						icon: <TrendingUp size={16} />, // Icono para Operaciones
+						children: [
+							{ id: "ops-1", label: "Soporte Nivel 1", icon: <UserCheck size={16} /> },
+							{ id: "ops-2", label: "Mantenimiento Cloud", icon: <Settings size={16} /> },
+						],
+					},
+				],
+			},
+			{
+				id: "vp-mkt",
+				label: "VP de Marketing",
+				icon: <DollarSign size={16} />, // Icono para Marketing
+				children: [
+					{
+						id: "mkt-digital",
+						label: "Marketing Digital",
+						icon: <BookOpen size={16} />,
+						children: [
+							{ id: "mkt-sem", label: "Campaña SEM 2024", icon: <TrendingUp size={16} /> },
+							{ id: "mkt-social", label: "Redes Sociales", icon: <BookOpen size={16} /> },
+						],
+					},
+					{ id: "mkt-branding", label: "Branding y Diseño", icon: <Scale size={16} /> },
+				],
+			},
+			{
+				id: "legal",
+				label: "Departamento Legal",
+				icon: <Scale size={16} />, // Icono para Legal
+				disabled: true,
+			},
+		],
+	},
+	{
+		id: "rrhh",
+		label: "Recursos Humanos",
+		icon: <UserCheck size={16} />, // Icono para RRHH
+		children: [
+			{
+				id: "rrhh-talento",
+				label: "Adquisición de Talento",
+				icon: <Users size={16} />,
+				children: [{ id: "rrhh-ta-it", label: "Reclutamiento IT", icon: <Briefcase size={16} /> }],
+			},
+			{ id: "rrhh-payroll", label: "Nóminas y Beneficios", icon: <DollarSign size={16} /> },
+		],
+	},
+];
+
+const Template = (args: TreeViewProps) => {
+	const [selectedId, setSelectedId] = useState<string | undefined>();
+	return (
+		<ContainerComponent title="TreeView">
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "flex-start",
+					justifyContent: "flex-start",
+					width: "100%",
+					maxWidth: 400,
+				}}
+			>
+				<TreeView {...args} selectedId={selectedId} onNodeSelect={setSelectedId} />
 				<div style={{ marginTop: 16 }}>
 					<strong>Seleccionado:</strong> {selectedId || "Ninguno"}
 				</div>
 			</div>
-		);
-	},
+		</ContainerComponent>
+	);
+};
+
+export const Default: Story = {
+	render: (args) => <Template {...args} data={treeData} />,
 	args: {
 		size: "medium",
+		isDirectory: false,
+	},
+};
+
+export const CustomIcon: Story = {
+	render: (args) => <Template {...args} data={treeDataOrganization} />,
+	args: {
+		size: "medium",
+		isDirectory: false,
+	},
+};
+
+export const Directory: Story = {
+	render: (args) => <Template {...args} data={treeDataDirectory} />,
+	args: {
+		size: "medium",
+		isDirectory: true,
 	},
 };
 
 export const CustomLabel: Story = {
 	render: (args) => (
-		<TreeView
+		<Template
 			{...args}
 			data={treeData}
 			renderLabel={(node) => (
@@ -106,5 +314,6 @@ export const CustomLabel: Story = {
 	),
 	args: {
 		size: "medium",
+		isDirectory: false,
 	},
 };
