@@ -20,6 +20,8 @@ export interface TreeViewProps {
 	className?: string;
 	style?: React.CSSProperties;
 	isDirectory?: boolean;
+	showLines?: boolean;
+	styleLines?: TreeViewVariants["styleLines"];
 }
 
 export interface TreeViewItemProps {

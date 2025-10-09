@@ -37,6 +37,8 @@ interface TreeViewContextValue {
 	selectNode: (id: string) => void;
 	renderLabel?: (node: TreeNode) => React.ReactNode;
 	isDirectory?: boolean;
+	showLines?: TreeViewVariants["showLines"];
+	styleLines?: TreeViewVariants["styleLines"];
 }
 
 const TreeViewContext = createContext<TreeViewContextValue | undefined>(undefined);
@@ -59,6 +61,8 @@ const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewProps>(
 			style,
 			size,
 			isDirectory,
+			showLines,
+			styleLines,
 		},
 		ref
 	) => {
@@ -90,14 +94,30 @@ const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewProps>(
 				selectNode,
 				renderLabel,
 				isDirectory,
+				showLines,
+				styleLines,
 				size,
 			}),
-			[expanded, toggleNode, selected, selectNode, renderLabel, size, isDirectory]
+			[
+				expanded,
+				toggleNode,
+				selected,
+				selectNode,
+				renderLabel,
+				size,
+				isDirectory,
+				showLines,
+				styleLines,
+			]
 		);
 
 		return (
 			<TreeViewContext.Provider value={contextValue}>
-				<div ref={ref} className={clsx(treeViewVariants({ size }), className)} style={style}>
+				<div
+					ref={ref}
+					className={clsx(treeViewVariants({ size, showLines, styleLines }), className)}
+					style={style}
+				>
 					{data.map((node, index) => (
 						<TreeViewItem
 							key={node.id}

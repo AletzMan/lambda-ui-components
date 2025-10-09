@@ -25,6 +25,8 @@ const meta: Meta<typeof TreeView> = {
 		renderLabel: { table: { disable: true } },
 		size: { control: "inline-radio", options: ["small", "medium", "large"] },
 		isDirectory: { control: "boolean" },
+		showLines: { control: "boolean" },
+		styleLines: { control: "inline-radio", options: ["solid", "dashed", "dotted"] },
 	},
 };
 
@@ -281,6 +283,8 @@ export const Default: Story = {
 	args: {
 		size: "medium",
 		isDirectory: false,
+		showLines: false,
+		styleLines: "solid",
 	},
 };
 
@@ -289,6 +293,8 @@ export const CustomIcon: Story = {
 	args: {
 		size: "medium",
 		isDirectory: false,
+		showLines: false,
+		styleLines: "solid",
 	},
 };
 
@@ -297,6 +303,8 @@ export const Directory: Story = {
 	args: {
 		size: "medium",
 		isDirectory: true,
+		showLines: false,
+		styleLines: "solid",
 	},
 };
 
@@ -304,9 +312,9 @@ export const CustomLabel: Story = {
 	render: (args) => (
 		<Template
 			{...args}
-			data={treeData}
+			data={treeDataOrganization}
 			renderLabel={(node) => (
-				<span style={{ color: node.disabled ? "#aaa" : "#0a0" }}>
+				<span style={{ color: node.disabled ? "#aaa" : "#0aa" }}>
 					{node.label} {node.disabled ? "(Deshabilitado)" : ""}
 				</span>
 			)}
@@ -315,5 +323,7 @@ export const CustomLabel: Story = {
 	args: {
 		size: "medium",
 		isDirectory: false,
+		showLines: false,
+		styleLines: "solid",
 	},
 };

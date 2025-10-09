@@ -8,9 +8,20 @@ export const treeViewVariants = cva(styles["lambda-treeview"], {
 			medium: styles["lambda-treeview-medium"],
 			large: styles["lambda-treeview-large"],
 		},
+		showLines: {
+			true: styles["lambda-treeview-show-lines"],
+			false: styles["lambda-treeview-hide-lines"],
+		},
+		styleLines: {
+			solid: styles["lambda-treeview-line-solid"],
+			dashed: styles["lambda-treeview-line-dashed"],
+			dotted: styles["lambda-treeview-line-dotted"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
+		showLines: false,
+		styleLines: "solid",
 	},
 });
 
