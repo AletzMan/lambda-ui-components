@@ -6,12 +6,13 @@ import ContainerComponent from "../../_util/storybook/components/ContainerCompon
 import {
 	Users,
 	Settings,
-	Briefcase,
-	TrendingUp,
-	DollarSign,
-	BookOpen,
-	UserCheck,
 	Scale,
+	LayoutDashboard,
+	Database,
+	BarChart3,
+	Shield,
+	Bell,
+	HelpCircle,
 } from "lucide-react";
 import { MenuProps } from "./menu.types.";
 
@@ -35,224 +36,87 @@ export default meta;
 
 type Story = StoryObj<typeof Menu>;
 
-const treeData: MenuNode[] = [
+const treeDataAppNav: MenuNode[] = [
 	{
-		id: "corp",
-		label: "Corporativo Global (CEO)",
+		id: "dashboard",
+		label: "Dashboard",
+		icon: <LayoutDashboard size={16} />,
+		path: "/app/dashboard",
+	},
+	{
+		id: "data",
+		label: "Datos y Modelos",
+		icon: <Database size={16} />,
 		children: [
+			{ id: "data-models", label: "Modelos", path: "/app/data/models" },
+			{ id: "data-sources", label: "Fuentes de Datos", path: "/app/data/sources" },
 			{
-				id: "vp-tech",
-				label: "VP de Tecnología",
-				children: [
-					{
-						id: "dir-dev",
-						label: "Director de Ingeniería",
-						children: [
-							// Proyectos o Sub-equipos
-							{ id: "team-a", label: "Equipo Alpha (Plataforma Core)" },
-							{ id: "team-b", label: "Equipo Beta (Aplicaciones Móviles)" },
-							{ id: "team-c", label: "Equipo Gamma (Servicios de Pago)" },
-						],
-					},
-					{
-						id: "dir-ops",
-						label: "Director de Operaciones",
-						children: [
-							{ id: "ops-1", label: "Soporte Nivel 1" },
-							{ id: "ops-2", label: "Mantenimiento Cloud" },
-						],
-					},
-				],
-			},
-			{
-				id: "vp-mkt",
-				label: "VP de Marketing",
-				children: [
-					{
-						id: "mkt-digital",
-						label: "Marketing Digital",
-						children: [
-							{ id: "mkt-sem", label: "Campaña SEM 2024" },
-							{ id: "mkt-social", label: "Redes Sociales" },
-						],
-					},
-					{ id: "mkt-branding", label: "Branding y Diseño" },
-				],
-			},
-			{
-				id: "legal",
-				label: "Departamento Legal",
-				disabled: true, // Ejemplo de nodo deshabilitado
+				id: "data-import",
+				label: "Importar",
+				path: "/app/data/import",
+				disabled: true, // Deshabilitado hasta que se configure
 			},
 		],
 	},
 	{
-		id: "rrhh",
-		label: "Recursos Humanos",
+		id: "reports",
+		label: "Reportes",
+		icon: <BarChart3 size={16} />,
 		children: [
-			{
-				id: "rrhh-talento",
-				label: "Adquisición de Talento",
-				children: [{ id: "rrhh-ta-it", label: "Reclutamiento IT" }],
-			},
-			{ id: "rrhh-payroll", label: "Nóminas y Beneficios" },
+			{ id: "reports-general", label: "Reporte General", path: "/app/reports/general" },
+			{ id: "reports-finance", label: "Financieros", path: "/app/reports/finance" },
+			{ id: "reports-performance", label: "Rendimiento", path: "/app/reports/performance" },
+		],
+	},
+	{
+		id: "admin",
+		label: "Administración",
+		icon: <Shield size={16} />,
+		children: [
+			{ id: "admin-users", label: "Usuarios y Roles", path: "/app/admin/users" },
+			{ id: "admin-settings", label: "Configuración Global", path: "/app/admin/settings" },
 		],
 	},
 ];
 
-const treeDataDirectory: MenuNode[] = [
+const treeDataUserSettings: MenuNode[] = [
 	{
-		id: "root",
-		label: "Components",
+		id: "profile",
+		label: "Mi Perfil",
+		icon: <Users size={16} />,
+		path: "/profile",
+	},
+	{
+		id: "settings",
+		label: "Ajustes",
+		icon: <Settings size={16} />,
 		children: [
-			{
-				id: "1",
-				label: "UI Components",
-				children: [
-					{ id: "1-1", label: "Button.tsx" },
-					{ id: "1-2", label: "Input.tsx" },
-					// Componentes adicionales
-					{ id: "1-3", label: "Checkbox.tsx" },
-					{ id: "1-4", label: "Modal.tsx" },
-				],
-			},
-			{
-				id: "2",
-				label: "Layout Components",
-				children: [
-					{ id: "2-1", label: "PageLayout.tsx" },
-					{ id: "2-2", label: "Sidebar.tsx" },
-					// Componente anidado
-					{ id: "2-3", label: "Header", children: [{ id: "2-3-1", label: "Logo.tsx" }] },
-				],
-			},
-			{ id: "3", label: "AppRouter.tsx" },
+			{ id: "settings-general", label: "General", path: "/settings/general" },
+			{ id: "settings-billing", label: "Facturación", path: "/settings/billing" },
+			{ id: "settings-security", label: "Seguridad y API", path: "/settings/security" },
 		],
 	},
 	{
-		id: "hooks",
-		label: "Hooks",
-		children: [
-			{
-				id: "hooks-1",
-				label: "Data Management", // Renombrado a un tema específico
-				children: [
-					{ id: "hooks-1-1", label: "useFetch.ts" }, // Hook real
-					{
-						id: "hooks-1-2",
-						label: "State Logic", // Carpeta anidada
-						children: [
-							{ id: "hooks-1-2-1", label: "useCounter.ts" },
-							{
-								id: "hooks-1-2-2",
-								label: "useTimeout.ts",
-							},
-						],
-					},
-				],
-			},
-			{
-				id: "hooks-2", // Cambiado de 'main-2' a 'hooks-2' para consistencia
-				label: "Utilities", // Carpeta de utilidades
-				children: [
-					{ id: "hooks-2-1", label: "useWindowSize.ts" },
-					{ id: "hooks-2-2", label: "useDebounce.ts", disabled: true }, // Elemento deshabilitado
-				],
-			},
-		],
+		id: "notifications",
+		label: "Notificaciones",
+		icon: <Bell size={16} />,
+		path: "/notifications",
 	},
 	{
-		id: "styles",
-		label: "Styles",
+		id: "help-center",
+		label: "Centro de Ayuda",
+		icon: <HelpCircle size={16} />,
 		children: [
-			{ id: "styles-1", label: "variables.css" },
-			{ id: "styles-2", label: "theme.scss" },
+			{ id: "help-docs", label: "Documentación", path: "/help/docs" },
+			{ id: "help-contact", label: "Contactar Soporte", path: "/help/contact" },
 		],
 	},
-];
-
-const treeDataOrganization: MenuNode[] = [
+	// Elemento que podría ser un separador o una acción directa sin hijos
 	{
-		id: "corp",
-		label: "Corporativo Global (CEO)",
-		icon: <Users size={16} />, // Icono para el nivel más alto
-		children: [
-			{
-				id: "vp-tech",
-				label: "VP de Tecnología",
-				icon: <Settings size={16} />, // Icono para Tecnología
-				children: [
-					{
-						id: "dir-dev",
-						label: "Director de Ingeniería",
-						icon: <Briefcase size={16} />,
-						children: [
-							{
-								id: "team-a",
-								label: "Equipo Alpha (Plataforma Core)",
-								icon: <Briefcase size={16} />,
-							},
-							{
-								id: "team-b",
-								label: "Equipo Beta (Aplicaciones Móviles)",
-								icon: <Briefcase size={16} />,
-							},
-							{
-								id: "team-c",
-								label: "Equipo Gamma (Servicios de Pago)",
-								icon: <Briefcase size={16} />,
-							},
-						],
-					},
-					{
-						id: "dir-ops",
-						label: "Director de Operaciones",
-						icon: <TrendingUp size={16} />, // Icono para Operaciones
-						children: [
-							{ id: "ops-1", label: "Soporte Nivel 1", icon: <UserCheck size={16} /> },
-							{ id: "ops-2", label: "Mantenimiento Cloud", icon: <Settings size={16} /> },
-						],
-					},
-				],
-			},
-			{
-				id: "vp-mkt",
-				label: "VP de Marketing",
-				icon: <DollarSign size={16} />, // Icono para Marketing
-				children: [
-					{
-						id: "mkt-digital",
-						label: "Marketing Digital",
-						icon: <BookOpen size={16} />,
-						children: [
-							{ id: "mkt-sem", label: "Campaña SEM 2024", icon: <TrendingUp size={16} /> },
-							{ id: "mkt-social", label: "Redes Sociales", icon: <BookOpen size={16} /> },
-						],
-					},
-					{ id: "mkt-branding", label: "Branding y Diseño", icon: <Scale size={16} /> },
-				],
-			},
-			{
-				id: "legal",
-				label: "Departamento Legal",
-				icon: <Scale size={16} />, // Icono para Legal
-				disabled: true,
-			},
-		],
-	},
-	{
-		id: "rrhh",
-		label: "Recursos Humanos",
-		icon: <UserCheck size={16} />, // Icono para RRHH
-		children: [
-			{
-				id: "rrhh-talento",
-				label: "Adquisición de Talento",
-				icon: <Users size={16} />,
-				children: [{ id: "rrhh-ta-it", label: "Reclutamiento IT", icon: <Briefcase size={16} /> }],
-			},
-			{ id: "rrhh-payroll", label: "Nóminas y Beneficios", icon: <DollarSign size={16} /> },
-		],
+		id: "logout",
+		label: "Cerrar Sesión",
+		icon: <Scale size={16} />,
+		path: "/auth/logout", // Un path que dispara una acción
 	},
 ];
 
@@ -280,7 +144,7 @@ const Template = (args: MenuProps) => {
 };
 
 export const Default: Story = {
-	render: (args) => <Template {...args} data={treeData} />,
+	render: (args) => <Template {...args} data={treeDataAppNav} />,
 	args: {
 		size: "medium",
 		isDirectory: false,
@@ -290,37 +154,7 @@ export const Default: Story = {
 };
 
 export const CustomIcon: Story = {
-	render: (args) => <Template {...args} data={treeDataOrganization} />,
-	args: {
-		size: "medium",
-		isDirectory: false,
-		showLines: false,
-		styleLines: "solid",
-	},
-};
-
-export const Directory: Story = {
-	render: (args) => <Template {...args} data={treeDataDirectory} />,
-	args: {
-		size: "medium",
-		isDirectory: true,
-		showLines: false,
-		styleLines: "solid",
-	},
-};
-
-export const CustomLabel: Story = {
-	render: (args) => (
-		<Template
-			{...args}
-			data={treeDataOrganization}
-			renderLabel={(node) => (
-				<span style={{ color: node.disabled ? "#aaa" : "#0aa" }}>
-					{node.label} {node.disabled ? "(Deshabilitado)" : ""}
-				</span>
-			)}
-		/>
-	),
+	render: (args) => <Template {...args} data={treeDataUserSettings} />,
 	args: {
 		size: "medium",
 		isDirectory: false,

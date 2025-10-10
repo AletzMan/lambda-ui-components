@@ -158,35 +158,25 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 						isLast,
 					})}
 				></div>
-				<div
+				<button
 					className={menuItemContentVariants({
 						selected: isSelected,
 						disabled: isDisabled,
 						hasChildren,
 					})}
+					onClick={() => toggleNode(node.id)}
 				>
-					{node.children && (
-						<button
-							type="button"
-							className={clsx(styles["lambda-menu-toggle"], {
-								[styles["lambda-menu-toggle-expanded"]]: isExpanded,
-							})}
-							onClick={() => toggleNode(node.id)}
-							aria-label={isExpanded ? "Collapse" : "Expand"}
-							disabled={isDisabled}
-							tabIndex={-1}
-						>
-							<ChevronRight
-								className={menuItemExpandedIconVariants({ size, expanded: isExpanded })}
-							/>
-						</button>
-					)}
 					<MenuLabel
 						node={node}
 						selected={isSelected}
 						onClick={() => !isDisabled && selectNode(node.id)}
 					/>
-				</div>
+					{node.children && (
+						<ChevronRight
+							className={menuItemExpandedIconVariants({ size, expanded: isExpanded })}
+						/>
+					)}
+				</button>
 
 				{node.children && (
 					<AnimatePresence initial={false}>

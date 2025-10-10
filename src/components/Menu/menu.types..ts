@@ -8,6 +8,7 @@ export interface MenuNode {
 	icon?: ReactNode;
 	children?: MenuNode[];
 	disabled?: boolean;
+	path?: string;
 	// Puedes agregar más campos según tus necesidades
 }
 
