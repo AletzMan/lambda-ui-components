@@ -43,7 +43,7 @@ const useMenuContext = () => {
 };
 
 // -------------------- Menu Root --------------------
-const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
+const MenuRoot = forwardRef<HTMLElement, MenuProps>(
 	(
 		{
 			data,
@@ -107,7 +107,7 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
 
 		return (
 			<MenuContext.Provider value={contextValue}>
-				<div
+				<nav
 					ref={ref}
 					className={clsx(menuVariants({ size, showLines, styleLines }), className)}
 					style={style}
@@ -121,7 +121,7 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
 							isLast={index === data.length - 1}
 						/>
 					))}
-				</div>
+				</nav>
 			</MenuContext.Provider>
 		);
 	}
@@ -129,18 +129,25 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
 
 // -------------------- Menu Item --------------------
 const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
-	({ node, level = 0, isFirst = false, isLast = false }, ref) => {
+	({ node, level = 0, isLast = false }, ref) => {
 		const { expanded, toggleNode, selectedId, selectNode, size } = useMenuContext();
 		const isExpanded = !!node.children && expanded.has(node.id);
 		const isSelected = selectedId === node.id;
 		const isDisabled = !!node.disabled;
 		const hasChildren = !!node.children;
+		const isChildrenSelected = node.children?.some((child) => child.id === selectedId);
 
 		return (
 			<div
 				ref={ref}
 				className={clsx(
-					menuItemVariants({ selected: isSelected, disabled: isDisabled, isLast, hasChildren }),
+					menuItemVariants({
+						selected: isSelected,
+						disabled: isDisabled,
+						isLast,
+						hasChildren,
+						isChildrenSelected,
+					}),
 					styles[`lambda-menu-item-level${level}`]
 				)}
 				role="menuitem"
@@ -151,7 +158,7 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 			>
 				<button
 					className={menuItemContentVariants({
-						selected: isSelected || isExpanded,
+						selected: isSelected,
 						disabled: isDisabled,
 						hasChildren,
 					})}

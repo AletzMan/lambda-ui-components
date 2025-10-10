@@ -43,12 +43,17 @@ export const menuItemVariants = cva(styles["lambda-menu-item"], {
 			true: styles["lambda-menu-item-has-children"],
 			false: "",
 		},
+		isChildrenSelected: {
+			true: styles["lambda-menu-item-children-selected"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		selected: false,
 		disabled: false,
 		isLast: false,
 		hasChildren: false,
+		isChildrenSelected: false,
 	},
 });
 
