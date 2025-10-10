@@ -167,7 +167,7 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 					<MenuLabel
 						node={node}
 						selected={isSelected}
-						onClick={() => !isDisabled && selectNode(node.id)}
+						onClick={() => !isDisabled && !hasChildren && selectNode(node.id)}
 					/>
 					{node.children && (
 						<ChevronRight

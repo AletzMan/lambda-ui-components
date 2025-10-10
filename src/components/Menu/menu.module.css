@@ -10,7 +10,7 @@
 	font-family: var(--font-family);
 	gap: var(--gap-xs);
 	color: var(--foreground-color);
-	width: max-content;
+	width: 100%;
 	padding: 0.5em;
 	border-radius: var(--border-radius-sm);
 
@@ -44,6 +44,7 @@
 	user-select: none;
 	display: flex;
 	align-items: flex-start;
+	width: 100%;
 
 	& > .lambda-menu-group {
 		border-left: var(--border-style);
@@ -98,6 +99,7 @@
 	margin-top: var(--padding-xs);
 	margin-left: calc(var(--padding-lg) + var(--padding-none));
 	padding-left: var(--padding-md);
+	width: calc(100% - var(--padding-lg));
 }
 
 .lambda-menu-item-content {
