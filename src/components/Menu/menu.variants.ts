@@ -47,33 +47,6 @@ export const menuItemVariants = cva(styles["lambda-menu-item"], {
 	},
 });
 
-export const menuItemBranchVariants = cva(styles["lambda-menu-item-branch"], {
-	variants: {
-		hasChildren: {
-			true: styles["lambda-menu-item-branch-has-children"],
-			false: "",
-		},
-		expanded: {
-			true: styles["lambda-menu-item-branch-expanded"],
-			false: styles["lambda-menu-item-branch-collapsed"],
-		},
-		isFirst: {
-			true: styles["lambda-menu-item-branch-first"],
-			false: "",
-		},
-		isLast: {
-			true: styles["lambda-menu-item-branch-last"],
-			false: "",
-		},
-	},
-	defaultVariants: {
-		hasChildren: false,
-		expanded: false,
-		isFirst: false,
-		isLast: false,
-	},
-});
-
 export const menuItemContentVariants = cva(styles["lambda-menu-item-content"], {
 	variants: {
 		selected: {

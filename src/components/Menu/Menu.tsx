@@ -14,7 +14,6 @@ import styles from "./menu.module.css";
 import type { MenuProps, MenuItemProps, MenuLabelProps, MenuNode } from "./menu.types.";
 import {
 	menuItemExpandedIconVariants,
-	menuItemBranchVariants,
 	menuItemContentVariants,
 	menuItemVariants,
 	menuItemLabelIconVariants,
@@ -150,14 +149,6 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 				aria-disabled={isDisabled}
 				tabIndex={isDisabled ? -1 : 0}
 			>
-				<div
-					className={menuItemBranchVariants({
-						hasChildren,
-						expanded: isExpanded,
-						isFirst,
-						isLast,
-					})}
-				></div>
 				<button
 					className={menuItemContentVariants({
 						selected: isSelected,

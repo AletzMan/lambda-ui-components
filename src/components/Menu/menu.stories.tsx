@@ -13,6 +13,12 @@ import {
 	Shield,
 	Bell,
 	HelpCircle,
+	TrendingUp,
+	DollarSign,
+	FileText,
+	GitBranch,
+	Zap,
+	Upload,
 } from "lucide-react";
 import { MenuProps } from "./menu.types.";
 
@@ -48,13 +54,25 @@ const treeDataAppNav: MenuNode[] = [
 		label: "Datos y Modelos",
 		icon: <Database size={16} />,
 		children: [
-			{ id: "data-models", label: "Modelos", path: "/app/data/models" },
-			{ id: "data-sources", label: "Fuentes de Datos", path: "/app/data/sources" },
+			// Iconos para "Datos y Modelos"
+			{
+				id: "data-models",
+				label: "Modelos",
+				icon: <GitBranch size={16} />,
+				path: "/app/data/models",
+			},
+			{
+				id: "data-sources",
+				label: "Fuentes de Datos",
+				icon: <Zap size={16} />,
+				path: "/app/data/sources",
+			},
 			{
 				id: "data-import",
 				label: "Importar",
+				icon: <Upload size={16} />, // Icono para la acción de importar
 				path: "/app/data/import",
-				disabled: true, // Deshabilitado hasta que se configure
+				disabled: true,
 			},
 		],
 	},
@@ -63,9 +81,25 @@ const treeDataAppNav: MenuNode[] = [
 		label: "Reportes",
 		icon: <BarChart3 size={16} />,
 		children: [
-			{ id: "reports-general", label: "Reporte General", path: "/app/reports/general" },
-			{ id: "reports-finance", label: "Financieros", path: "/app/reports/finance" },
-			{ id: "reports-performance", label: "Rendimiento", path: "/app/reports/performance" },
+			// Iconos para "Reportes"
+			{
+				id: "reports-general",
+				label: "Reporte General",
+				icon: <FileText size={16} />,
+				path: "/app/reports/general",
+			},
+			{
+				id: "reports-finance",
+				label: "Financieros",
+				icon: <DollarSign size={16} />,
+				path: "/app/reports/finance",
+			},
+			{
+				id: "reports-performance",
+				label: "Rendimiento",
+				icon: <TrendingUp size={16} />,
+				path: "/app/reports/performance",
+			},
 		],
 	},
 	{
@@ -73,8 +107,19 @@ const treeDataAppNav: MenuNode[] = [
 		label: "Administración",
 		icon: <Shield size={16} />,
 		children: [
-			{ id: "admin-users", label: "Usuarios y Roles", path: "/app/admin/users" },
-			{ id: "admin-settings", label: "Configuración Global", path: "/app/admin/settings" },
+			// Iconos para "Administración"
+			{
+				id: "admin-users",
+				label: "Usuarios y Roles",
+				icon: <Users size={16} />,
+				path: "/app/admin/users",
+			},
+			{
+				id: "admin-settings",
+				label: "Configuración Global",
+				icon: <Settings size={16} />,
+				path: "/app/admin/settings",
+			},
 		],
 	},
 ];
