@@ -140,7 +140,7 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 			<div
 				ref={ref}
 				className={clsx(
-					menuItemVariants({ selected: isSelected, disabled: isDisabled, isLast }),
+					menuItemVariants({ selected: isSelected, disabled: isDisabled, isLast, hasChildren }),
 					styles[`lambda-menu-item-level${level}`]
 				)}
 				role="menuitem"
@@ -151,7 +151,7 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 			>
 				<button
 					className={menuItemContentVariants({
-						selected: isSelected,
+						selected: isSelected || isExpanded,
 						disabled: isDisabled,
 						hasChildren,
 					})}
