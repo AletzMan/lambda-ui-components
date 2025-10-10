@@ -33,6 +33,8 @@ interface MenuContextValue {
 	isDirectory?: boolean;
 	showLines?: MenuVariants["showLines"];
 	styleLines?: MenuVariants["styleLines"];
+	alwaysOpen?: boolean;
+	selectedStyle?: MenuVariants["selectedStyle"];
 }
 
 const MenuContext = createContext<MenuContextValue | undefined>(undefined);
@@ -57,6 +59,8 @@ const MenuRoot = forwardRef<HTMLElement, MenuProps>(
 			isDirectory,
 			showLines,
 			styleLines,
+			alwaysOpen,
+			selectedStyle,
 		},
 		ref
 	) => {
@@ -82,7 +86,7 @@ const MenuRoot = forwardRef<HTMLElement, MenuProps>(
 
 		const contextValue = useMemo(
 			() => ({
-				expanded,
+				expanded: alwaysOpen ? new Set(data.map((node) => node.id)) : expanded,
 				toggleNode,
 				selectedId: selected,
 				selectNode,
@@ -91,6 +95,8 @@ const MenuRoot = forwardRef<HTMLElement, MenuProps>(
 				showLines,
 				styleLines,
 				size,
+				alwaysOpen,
+				selectedStyle,
 			}),
 			[
 				expanded,
@@ -102,6 +108,8 @@ const MenuRoot = forwardRef<HTMLElement, MenuProps>(
 				isDirectory,
 				showLines,
 				styleLines,
+				alwaysOpen,
+				selectedStyle,
 			]
 		);
 
@@ -130,7 +138,8 @@ const MenuRoot = forwardRef<HTMLElement, MenuProps>(
 // -------------------- Menu Item --------------------
 const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 	({ node, level = 0, isLast = false }, ref) => {
-		const { expanded, toggleNode, selectedId, selectNode, size } = useMenuContext();
+		const { expanded, toggleNode, selectedId, selectNode, size, alwaysOpen, selectedStyle } =
+			useMenuContext();
 		const isExpanded = !!node.children && expanded.has(node.id);
 		const isSelected = selectedId === node.id;
 		const isDisabled = !!node.disabled;
@@ -147,6 +156,8 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 						isLast,
 						hasChildren,
 						isChildrenSelected,
+						alwaysOpen,
+						selectedStyle,
 					}),
 					styles[`lambda-menu-item-level${level}`]
 				)}
@@ -171,7 +182,7 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
 					/>
 					{node.children && (
 						<ChevronRight
-							className={menuItemExpandedIconVariants({ size, expanded: isExpanded })}
+							className={menuItemExpandedIconVariants({ size, expanded: isExpanded, alwaysOpen })}
 						/>
 					)}
 				</button>

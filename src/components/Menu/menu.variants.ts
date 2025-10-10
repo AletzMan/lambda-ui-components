@@ -17,11 +17,16 @@ export const menuVariants = cva(styles["lambda-menu"], {
 			dashed: styles["lambda-menu-line-dashed"],
 			dotted: styles["lambda-menu-line-dotted"],
 		},
+		selectedStyle: {
+			highlight: styles["lambda-menu-item-selected-style-highlight"],
+			border: styles["lambda-menu-item-selected-style-border"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		showLines: false,
 		styleLines: "solid",
+		selectedStyle: "highlight",
 	},
 });
 
@@ -47,6 +52,14 @@ export const menuItemVariants = cva(styles["lambda-menu-item"], {
 			true: styles["lambda-menu-item-children-selected"],
 			false: "",
 		},
+		alwaysOpen: {
+			true: styles["lambda-menu-item-always-open"],
+			false: "",
+		},
+		selectedStyle: {
+			highlight: styles["lambda-menu-item-selected-style-highlight"],
+			border: styles["lambda-menu-item-selected-style-border"],
+		},
 	},
 	defaultVariants: {
 		selected: false,
@@ -54,6 +67,8 @@ export const menuItemVariants = cva(styles["lambda-menu-item"], {
 		isLast: false,
 		hasChildren: false,
 		isChildrenSelected: false,
+		alwaysOpen: false,
+		selectedStyle: "highlight",
 	},
 });
 
@@ -90,10 +105,15 @@ export const menuItemExpandedIconVariants = cva(styles["lambda-menu-expanded-ico
 			true: styles["lambda-menu-expanded-icon-expanded"],
 			false: styles["lambda-menu-expanded-icon-collapsed"],
 		},
+		alwaysOpen: {
+			true: styles["lambda-menu-expanded-icon-always-open"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		expanded: false,
+		alwaysOpen: false,
 	},
 });
 

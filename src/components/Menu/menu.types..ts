@@ -24,6 +24,8 @@ export interface MenuProps {
 	isDirectory?: boolean;
 	showLines?: boolean;
 	styleLines?: TreeViewVariants["styleLines"];
+	alwaysOpen?: boolean;
+	selectedStyle?: MenuVariants["selectedStyle"];
 }
 
 export interface MenuItemProps {

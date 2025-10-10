@@ -30,11 +30,13 @@ const meta: Meta<typeof Menu> = {
 		defaultExpanded: { table: { disable: true } },
 		selectedId: { table: { disable: true } },
 		onNodeSelect: { table: { disable: true } },
+		alwaysOpen: { control: "boolean" },
 		renderLabel: { table: { disable: true } },
 		size: { control: "inline-radio", options: ["small", "medium", "large"] },
 		isDirectory: { control: "boolean" },
 		showLines: { control: "boolean" },
 		styleLines: { control: "inline-radio", options: ["solid", "dashed", "dotted"] },
+		selectedStyle: { control: "inline-radio", options: ["highlight", "border"] },
 	},
 };
 
@@ -195,6 +197,8 @@ export const Default: Story = {
 		isDirectory: false,
 		showLines: false,
 		styleLines: "solid",
+		alwaysOpen: false,
+		selectedStyle: "highlight",
 	},
 };
 
@@ -205,5 +209,7 @@ export const CustomIcon: Story = {
 		isDirectory: false,
 		showLines: false,
 		styleLines: "solid",
+		alwaysOpen: false,
+		selectedStyle: "highlight",
 	},
 };
