@@ -1,7 +1,7 @@
+// Archivo renombrado, el contenido está en menu.stories.tsx (ahora navigationMenu.stories.tsx).
 import type { Meta, StoryObj } from "@storybook/react";
-import { Menu } from "./Menu";
-import type { MenuNode } from "./menu.types.";
-import { useState } from "react";
+import { NavigationMenu } from "./NavigationMenu";
+import type { NavigationMenuNode } from "./navigationMenu.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import {
 	Users,
@@ -20,20 +20,18 @@ import {
 	Zap,
 	Upload,
 } from "lucide-react";
-import { MenuProps } from "./menu.types.";
+import { NavigationMenuProps } from "./navigationMenu.types";
 
-const meta: Meta<typeof Menu> = {
-	title: "Components/Menu",
-	component: Menu,
+const meta: Meta<typeof NavigationMenu> = {
+	title: "Components/NavigationMenu",
+	component: NavigationMenu,
 	argTypes: {
 		data: { table: { disable: true } },
 		defaultExpanded: { table: { disable: true } },
-		selectedId: { table: { disable: true } },
 		onNodeSelect: { table: { disable: true } },
 		alwaysOpen: { control: "boolean" },
 		renderLabel: { table: { disable: true } },
 		size: { control: "inline-radio", options: ["small", "medium", "large"] },
-		isDirectory: { control: "boolean" },
 		showLines: { control: "boolean" },
 		styleLines: { control: "inline-radio", options: ["solid", "dashed", "dotted"] },
 		selectedStyle: { control: "inline-radio", options: ["highlight", "border"] },
@@ -42,14 +40,15 @@ const meta: Meta<typeof Menu> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Menu>;
+type Story = StoryObj<typeof NavigationMenu>;
 
-const treeDataAppNav: MenuNode[] = [
+const treeDataAppNav: NavigationMenuNode[] = [
 	{
 		id: "dashboard",
 		label: "Dashboard",
 		icon: <LayoutDashboard size={16} />,
 		path: "/app/dashboard",
+		target: "_self",
 	},
 	{
 		id: "data",
@@ -62,12 +61,14 @@ const treeDataAppNav: MenuNode[] = [
 				label: "Modelos",
 				icon: <GitBranch size={16} />,
 				path: "/app/data/models",
+				target: "_self",
 			},
 			{
 				id: "data-sources",
 				label: "Fuentes de Datos",
 				icon: <Zap size={16} />,
 				path: "/app/data/sources",
+				target: "_self",
 			},
 			{
 				id: "data-import",
@@ -75,6 +76,7 @@ const treeDataAppNav: MenuNode[] = [
 				icon: <Upload size={16} />, // Icono para la acción de importar
 				path: "/app/data/import",
 				disabled: true,
+				target: "_self",
 			},
 		],
 	},
@@ -82,6 +84,8 @@ const treeDataAppNav: MenuNode[] = [
 		id: "reports",
 		label: "Reportes",
 		icon: <BarChart3 size={16} />,
+		path: "/app/reports",
+		target: "_self",
 		children: [
 			// Iconos para "Reportes"
 			{
@@ -89,18 +93,21 @@ const treeDataAppNav: MenuNode[] = [
 				label: "Reporte General",
 				icon: <FileText size={16} />,
 				path: "/app/reports/general",
+				target: "_self",
 			},
 			{
 				id: "reports-finance",
 				label: "Financieros",
 				icon: <DollarSign size={16} />,
 				path: "/app/reports/finance",
+				target: "_self",
 			},
 			{
 				id: "reports-performance",
 				label: "Rendimiento",
 				icon: <TrendingUp size={16} />,
 				path: "/app/reports/performance",
+				target: "_self",
 			},
 		],
 	},
@@ -108,6 +115,8 @@ const treeDataAppNav: MenuNode[] = [
 		id: "admin",
 		label: "Administración",
 		icon: <Shield size={16} />,
+		path: "/app/admin",
+		target: "_self",
 		children: [
 			// Iconos para "Administración"
 			{
@@ -115,18 +124,20 @@ const treeDataAppNav: MenuNode[] = [
 				label: "Usuarios y Roles",
 				icon: <Users size={16} />,
 				path: "/app/admin/users",
+				target: "_self",
 			},
 			{
 				id: "admin-settings",
 				label: "Configuración Global",
 				icon: <Settings size={16} />,
 				path: "/app/admin/settings",
+				target: "_blank",
 			},
 		],
 	},
 ];
 
-const treeDataUserSettings: MenuNode[] = [
+const treeDataUserSettings: NavigationMenuNode[] = [
 	{
 		id: "profile",
 		label: "Mi Perfil",
@@ -137,6 +148,7 @@ const treeDataUserSettings: MenuNode[] = [
 		id: "settings",
 		label: "Ajustes",
 		icon: <Settings size={16} />,
+		path: "/settings",
 		children: [
 			{ id: "settings-general", label: "General", path: "/settings/general" },
 			{ id: "settings-billing", label: "Facturación", path: "/settings/billing" },
@@ -153,6 +165,7 @@ const treeDataUserSettings: MenuNode[] = [
 		id: "help-center",
 		label: "Centro de Ayuda",
 		icon: <HelpCircle size={16} />,
+		path: "/help-center",
 		children: [
 			{ id: "help-docs", label: "Documentación", path: "/help/docs" },
 			{ id: "help-contact", label: "Contactar Soporte", path: "/help/contact" },
@@ -167,10 +180,9 @@ const treeDataUserSettings: MenuNode[] = [
 	},
 ];
 
-const Template = (args: MenuProps) => {
-	const [selectedId, setSelectedId] = useState<string | undefined>();
+const Template = (args: NavigationMenuProps) => {
 	return (
-		<ContainerComponent title="Menu">
+		<ContainerComponent title="NavigationMenu">
 			<div
 				style={{
 					display: "flex",
@@ -181,10 +193,7 @@ const Template = (args: MenuProps) => {
 					maxWidth: 400,
 				}}
 			>
-				<Menu {...args} selectedId={selectedId} onNodeSelect={setSelectedId} />
-				<div style={{ marginTop: 16 }}>
-					<strong>Seleccionado:</strong> {selectedId || "Ninguno"}
-				</div>
+				<NavigationMenu {...args} />
 			</div>
 		</ContainerComponent>
 	);
@@ -194,7 +203,6 @@ export const Default: Story = {
 	render: (args) => <Template {...args} data={treeDataAppNav} />,
 	args: {
 		size: "medium",
-		isDirectory: false,
 		showLines: false,
 		styleLines: "solid",
 		alwaysOpen: false,
@@ -206,7 +214,6 @@ export const CustomIcon: Story = {
 	render: (args) => <Template {...args} data={treeDataUserSettings} />,
 	args: {
 		size: "medium",
-		isDirectory: false,
 		showLines: false,
 		styleLines: "solid",
 		alwaysOpen: false,
