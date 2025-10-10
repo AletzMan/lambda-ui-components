@@ -157,10 +157,6 @@
 	background-color: transparent;
 	text-decoration: none;
 
-	&:not(.lambda-navigation-menu-item-content-has-children) {
-		/*margin-left: var(--margin-left);*/
-	}
-
 	&:hover {
 		background-color: var(--surface-b);
 		color: var(--foreground-color);
