@@ -1,0 +1,208 @@
+.lambda-stepper {
+	display: flex;
+	justify-content: space-between;
+	gap: var(--gap-lg);
+	padding: var(--padding-none) var(--padding-sm);
+	width: 100%;
+	align-items: flex-start;
+	font-family: var(--font-family);
+}
+
+.lambda-stepper-horizontal {
+	flex-direction: row;
+}
+.lambda-stepper-vertical {
+	flex-direction: column;
+}
+
+.lambda-stepper-primary {
+}
+.lambda-stepper-secondary {
+}
+
+.lambda-step {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: var(--gap-md);
+	position: relative;
+	padding: var(--padding-sm);
+	min-width: 0;
+	width: 100%;
+	height: 100%;
+}
+.lambda-step-vertical {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.lambda-step-indicator {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	min-width: 32px;
+	min-height: 32px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	border: 2px solid var(--border-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: var(--font-size-md);
+	transition: border-color 0.2s, background 0.2s;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: -6px;
+		left: -6px;
+		width: 40px;
+		height: 40px;
+		min-width: 40px;
+		min-height: 40px;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		border: 2px solid red;
+		background: transparent;
+	}
+}
+
+.lambda-step-pending .lambda-step-indicator {
+	border-color: var(--border-color);
+	background: var(--surface-c);
+	color: var(--foreground-secondary-color);
+
+	&::before {
+		border-color: var(--border-color);
+	}
+}
+.lambda-step-active .lambda-step-indicator {
+	border-color: var(--warning-base-color);
+	background: var(--warning-base-color);
+	color: var(--white-color);
+
+	&::before {
+		border-color: var(--warning-base-color);
+	}
+}
+.lambda-step-completed .lambda-step-indicator {
+	border-color: var(--success-base-color);
+	background: var(--success-base-color);
+	color: var(--white-color);
+
+	&::before {
+		border-color: var(--success-base-color);
+	}
+}
+.lambda-step-error .lambda-step-indicator {
+	border-color: var(--danger-base-color);
+	background: var(--danger-base-color);
+	color: var(--danger-base-color);
+
+	&::before {
+		border-color: var(--danger-base-color);
+	}
+}
+.lambda-step-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.3em;
+}
+.lambda-step-icon-check {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--icon-size-xl);
+	height: var(--icon-size-xl);
+	stroke-width: var(--border-width-md);
+	stroke-dasharray: 250; /* Longitud del trazado */
+	stroke-dashoffset: 250; /* Oculta el trazo al inicio */
+	animation: animateIcon 4s ease both;
+}
+
+@keyframes animateIcon {
+	from {
+		stroke-dashoffset: 250; /* Oculta el trazo al inicio */
+	}
+	to {
+		stroke-dashoffset: 0; /* Mostrar el trazo completo */
+	}
+}
+
+.lambda-step-index {
+}
+.lambda-step-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: var(--gap-xs);
+	min-width: 0;
+	height: 100%;
+}
+.lambda-step-title {
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-semibold);
+	color: var(--foreground-color);
+	text-align: center;
+	flex: 1;
+}
+.lambda-step-description {
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-regular);
+	color: var(--foreground-secondary-color);
+	text-align: center;
+	flex: 1;
+}
+.lambda-step-connector {
+	position: absolute;
+	top: 22px;
+	left: calc(50% + 24px);
+	width: calc(100% - 32px);
+	height: 2px;
+	background: var(--border-color);
+	transform: translateY(-50%);
+	z-index: 1;
+
+	&:is(.lambda-step-connector-pending) {
+		background: var(--border-color);
+	}
+
+	&:is(.lambda-step-connector-completed) {
+		background: var(--success-base-color);
+	}
+
+	&:is(.lambda-step-connector-error) {
+		background: var(--danger-base-color);
+	}
+}
+.lambda-step-vertical .lambda-step-connector {
+	position: relative;
+	left: 16px;
+	top: 0;
+	width: 2px;
+	height: var(--gap-xl);
+	background: var(--border-color);
+	transform: none;
+	margin: 6px 0 6px 0;
+}
+.lambda-step:last-child .lambda-step-connector {
+	display: none;
+}
+.lambda-step-active .lambda-step-title {
+	color: var(--warning-hover-color);
+}
+.lambda-step-completed .lambda-step-title {
+	color: var(--success-hover-color);
+}
+.lambda-step-error .lambda-step-title {
+	color: var(--danger-hover-color);
+}
+.lambda-step:hover {
+	cursor: pointer;
+	background: var(--surface-b);
+	border-radius: var(--border-radius-sm);
+}

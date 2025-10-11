@@ -21,3 +21,22 @@ export const APKIcon = ({ className, ...props }: IconProps) => {
 		</svg>
 	);
 };
+
+export const CheckIcon = ({ className, ...props }: IconProps) => {
+	return (
+		<svg
+			className={className}
+			{...props}
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+		>
+			<path d="M4 12l5 5 11-11"></path>
+		</svg>
+	);
+};
