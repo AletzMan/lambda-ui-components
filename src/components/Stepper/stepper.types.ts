@@ -7,6 +7,7 @@ export interface StepperStep {
 	description?: ReactNode;
 	icon?: ReactNode;
 	status?: StepperVariants["status"];
+	content?: ReactNode;
 }
 
 export interface StepperProps {

@@ -6,10 +6,14 @@ import { StepperProps } from "./stepper.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const steps = [
-	{ title: "Datos personales", description: "Ingresa tu información básica" },
-	{ title: "Dirección", description: "Confirma tu domicilio" },
-	{ title: "Pago", description: "Método de pago" },
-	{ title: "Finaliza", description: "¡Listo para enviar!" },
+	{
+		title: "Datos personales",
+		description: "Ingresa tu información básica",
+		content: <div>Content 1</div>,
+	},
+	{ title: "Dirección", description: "Confirma tu domicilio", content: <div>Content 2</div> },
+	{ title: "Pago", description: "Método de pago", content: <div>Content 3</div> },
+	{ title: "Finaliza", description: "¡Listo para enviar!", content: <div>Content 4</div> },
 ];
 
 const meta: Meta<typeof Stepper> = {
