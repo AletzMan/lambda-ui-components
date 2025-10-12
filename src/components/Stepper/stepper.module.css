@@ -298,27 +298,6 @@
 .lambda-step-error h1 {
 	color: var(--danger-hover-color);
 }
-.lambda-step:hover {
-	cursor: pointer;
-	/*background: var(--surface-b);*/
-	border-radius: var(--border-radius-sm);
-
-	&.lambda-step-active .lambda-step-indicator {
-		box-shadow: 0 0 5px 8px var(--neutral-opacity-color);
-	}
-
-	&.lambda-step-pending .lambda-step-indicator {
-		box-shadow: 0 0 5px 8px var(--neutral-opacity-color);
-	}
-
-	&.lambda-step-completed .lambda-step-indicator {
-		box-shadow: 0 0 5px 8px var(--success-opacity-color);
-	}
-
-	&.lambda-step-error .lambda-step-indicator {
-		box-shadow: 0 0 5px 8px var(--danger-opacity-color);
-	}
-}
 
 .lambda-stepper-content {
 	display: flex;

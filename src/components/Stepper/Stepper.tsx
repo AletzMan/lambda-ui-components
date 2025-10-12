@@ -21,7 +21,7 @@ export const Stepper: React.FC<StepperProps> = ({
 	stepCompletedContent,
 	activeStep = 0,
 	orientation = "horizontal",
-	onStepClick,
+	onStepCompleted,
 	className,
 	style,
 	variant = "bordered",
@@ -31,7 +31,7 @@ export const Stepper: React.FC<StepperProps> = ({
 
 	const handleStepClick = (stepIndex: number) => {
 		setCurrentStep(stepIndex);
-		onStepClick?.(stepIndex);
+		onStepCompleted?.(stepIndex);
 	};
 	return (
 		<div className={clsx(stepperWrapperVariants({ orientation }))}>
@@ -105,8 +105,6 @@ export const Step: React.FC<StepProps> = ({
 	return (
 		<div
 			className={clsx(stepVariants({ status, orientation, variant }))}
-			onClick={onClick}
-			role={onClick ? "button" : undefined}
 			tabIndex={onClick ? 0 : undefined}
 			aria-current={status === "active" ? "step" : undefined}
 		>
