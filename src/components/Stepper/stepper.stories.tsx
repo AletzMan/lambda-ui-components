@@ -5,15 +5,45 @@ import { CheckCircle, AlertCircle } from "lucide-react";
 import { StepperProps } from "./stepper.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
+const TemplateContent = (title: string, description: string) => {
+	return (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "center",
+				padding: "var(--padding-md)",
+				height: "100%",
+			}}
+		>
+			<h1>{title}</h1>
+			<p>{description}</p>
+		</div>
+	);
+};
+
 const steps = [
 	{
 		title: "Datos personales",
 		description: "Ingresa tu información básica",
-		content: <div>Content 1</div>,
+		content: TemplateContent("Datos personales", "Ingresa tu información básica"),
 	},
-	{ title: "Dirección", description: "Confirma tu domicilio", content: <div>Content 2</div> },
-	{ title: "Pago", description: "Método de pago", content: <div>Content 3</div> },
-	{ title: "Finaliza", description: "¡Listo para enviar!", content: <div>Content 4</div> },
+	{
+		title: "Dirección",
+		description: "Confirma tu domicilio",
+		content: TemplateContent("Dirección", "Confirma tu domicilio"),
+	},
+	{
+		title: "Pago",
+		description: "Método de pago",
+		content: TemplateContent("Pago", "Método de pago"),
+	},
+	{
+		title: "Finaliza",
+		description: "¡Listo para enviar!",
+		content: TemplateContent("Finaliza", "¡Listo para enviar!"),
+	},
 ];
 
 const meta: Meta<typeof Stepper> = {

@@ -57,7 +57,7 @@ export const Stepper: React.FC<StepperProps> = ({
 				<footer className={styles["lambda-stepper-footer"]}>
 					<div>
 						<Button
-							variant="solid"
+							variant="subtle"
 							size="small"
 							color="neutral"
 							icon={<ArrowLeftIcon />}
@@ -67,7 +67,7 @@ export const Stepper: React.FC<StepperProps> = ({
 							Anterior
 						</Button>
 						<Button
-							variant="solid"
+							variant="subtle"
 							size="small"
 							color="neutral"
 							icon={<ArrowRightIcon />}
