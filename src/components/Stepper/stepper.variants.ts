@@ -1,6 +1,18 @@
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./stepper.module.css";
 
+export const stepperWrapperVariants = cva(styles["lambda-stepper-wrapper"], {
+	variants: {
+		orientation: {
+			horizontal: styles["lambda-stepper-wrapper-horizontal"],
+			vertical: styles["lambda-stepper-wrapper-vertical"],
+		},
+	},
+	defaultVariants: {
+		orientation: "horizontal",
+	},
+});
+
 export const stepperVariants = cva(styles["lambda-stepper"], {
 	variants: {
 		status: {
@@ -65,6 +77,30 @@ export const stepConnectorVariants = cva(styles["lambda-step-connector"], {
 	defaultVariants: {
 		orientation: "horizontal",
 		active: "pending",
+	},
+});
+
+export const stepSummaryVariants = cva(styles["lambda-step-summary"], {
+	variants: {
+		orientation: {
+			horizontal: styles["lambda-step-summary-horizontal"],
+			vertical: styles["lambda-step-summary-vertical"],
+		},
+	},
+	defaultVariants: {
+		orientation: "horizontal",
+	},
+});
+
+export const stepContentVariants = cva(styles["lambda-stepper-content"], {
+	variants: {
+		orientation: {
+			horizontal: styles["lambda-stepper-content-horizontal"],
+			vertical: styles["lambda-stepper-content-vertical"],
+		},
+	},
+	defaultVariants: {
+		orientation: "horizontal",
 	},
 });
 
