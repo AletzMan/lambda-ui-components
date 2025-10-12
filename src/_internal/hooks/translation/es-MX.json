@@ -39,5 +39,10 @@
 		"cancel": "Cancelar",
 		"confirm": "Confirmar",
 		"reset": "Borrar fecha seleccionada"
+	},
+	"stepper": {
+		"next": "Siguiente",
+		"previous": "Anterior",
+		"finish": "Finalizar"
 	}
 }
