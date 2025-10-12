@@ -131,7 +131,7 @@ const Template = (args: StepperProps) => {
 	const [activeStep, setActiveStep] = useState(1);
 	return (
 		<ContainerComponent title="Stepper">
-			<Stepper {...args} activeStep={activeStep} onStepClick={setActiveStep} />
+			<Stepper {...args} activeStep={activeStep} onStepCompleted={setActiveStep} />
 		</ContainerComponent>
 	);
 };

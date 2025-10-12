@@ -15,7 +15,7 @@ export interface StepperProps {
 	stepCompletedContent?: ReactNode;
 	activeStep?: number;
 	orientation?: StepperVariants["orientation"];
-	onStepClick?: (stepIndex: number) => void;
+	onStepCompleted?: (stepIndex: number) => void;
 	className?: string;
 	style?: CSSProperties;
 	variant?: StepperVariants["variant"];
