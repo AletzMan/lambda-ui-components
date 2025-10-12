@@ -234,7 +234,7 @@
 		background-color: var(--neutral-base-color);
 		border-color: var(--neutral-base-color);
 		color: var(--foreground-invert-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--neutral-hover-color),
 				inset -5em 0 0 0 var(--neutral-hover-color);
 			border-color: var(--neutral-hover-color);
@@ -245,7 +245,7 @@
 		background-color: var(--primary-hover-color);
 		border-color: var(--primary-hover-color);
 		color: var(--white-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--primary-base-color),
 				inset -5em 0 0 0 var(--primary-base-color);
 			border-color: var(--primary-base-color);
@@ -256,7 +256,7 @@
 		background-color: var(--secondary-hover-color);
 		border-color: var(--secondary-hover-color);
 		color: var(--white-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--secondary-base-color),
 				inset -5em 0 0 0 var(--secondary-base-color);
 			border-color: var(--secondary-base-color);
@@ -267,7 +267,7 @@
 		background-color: var(--success-hover-color);
 		border-color: var(--success-hover-color);
 		color: var(--white-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--success-base-color),
 				inset -5em 0 0 0 var(--success-base-color);
 			border-color: var(--success-base-color);
@@ -278,7 +278,7 @@
 		background-color: var(--danger-hover-color);
 		border-color: var(--danger-hover-color);
 		color: var(--white-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--danger-base-color),
 				inset -5em 0 0 0 var(--danger-base-color);
 			border-color: var(--danger-base-color);
@@ -289,7 +289,7 @@
 		background-color: var(--warning-hover-color);
 		border-color: var(--warning-hover-color);
 		color: var(--white-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--warning-base-color),
 				inset -5em 0 0 0 var(--warning-base-color);
 			border-color: var(--warning-base-color);
@@ -300,7 +300,7 @@
 		background-color: var(--info-hover-color);
 		border-color: var(--info-hover-color);
 		color: var(--white-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--info-base-color), inset -5em 0 0 0 var(--info-base-color);
 			border-color: var(--info-base-color);
 		}
@@ -319,7 +319,7 @@
 	&.lambda-btn-neutral {
 		border-color: var(--neutral-base-color);
 		color: var(--neutral-base-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--neutral-base-color),
 				inset -5em 0 0 0 var(--neutral-base-color);
 			color: var(--foreground-invert-color);
@@ -329,7 +329,7 @@
 	&.lambda-btn-primary {
 		border-color: var(--primary-base-color);
 		color: var(--primary-base-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--primary-base-color),
 				inset -5em 0 0 0 var(--primary-base-color);
 			color: var(--white-color);
@@ -340,7 +340,7 @@
 		border-color: var(--secondary-base-color);
 		color: var(--secondary-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--secondary-base-color),
 				inset -5em 0 0 0 var(--secondary-base-color);
 			color: var(--white-color);
@@ -355,7 +355,7 @@
 		border-color: var(--success-base-color);
 		color: var(--success-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--success-base-color),
 				inset -5em 0 0 0 var(--success-base-color);
 			color: var(--white-color);
@@ -370,7 +370,7 @@
 		border-color: var(--danger-base-color);
 		color: var(--danger-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--danger-base-color),
 				inset -5em 0 0 0 var(--danger-base-color);
 			color: var(--white-color);
@@ -383,7 +383,7 @@
 	&.lambda-btn-warning {
 		border-color: var(--warning-base-color);
 		color: var(--warning-base-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--warning-base-color),
 				inset -5em 0 0 0 var(--warning-base-color);
 			color: var(--white-color);
@@ -398,7 +398,7 @@
 		border-color: var(--info-base-color);
 		color: var(--info-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--info-base-color), inset -5em 0 0 0 var(--info-base-color);
 			color: var(--white-color);
 		}
@@ -417,7 +417,7 @@
 	&.lambda-btn-neutral {
 		border-color: var(--neutral-base-color);
 		color: var(--neutral-text-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--neutral-base-color),
 				inset -5em 0 0 0 var(--neutral-base-color);
 			color: var(--foreground-invert-color);
@@ -427,7 +427,7 @@
 	&.lambda-btn-primary {
 		border-color: var(--primary-base-color);
 		color: var(--primary-base-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--primary-base-color),
 				inset -5em 0 0 0 var(--primary-base-color);
 			color: var(--white-color);
@@ -438,7 +438,7 @@
 		border-color: var(--secondary-base-color);
 		color: var(--secondary-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--secondary-base-color),
 				inset -5em 0 0 0 var(--secondary-base-color);
 			color: var(--white-color);
@@ -453,7 +453,7 @@
 		border-color: var(--success-base-color);
 		color: var(--success-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--success-base-color),
 				inset -5em 0 0 0 var(--success-base-color);
 			color: var(--white-color);
@@ -468,7 +468,7 @@
 		border-color: var(--danger-base-color);
 		color: var(--danger-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--danger-base-color),
 				inset -5em 0 0 0 var(--danger-base-color);
 			color: var(--white-color);
@@ -481,7 +481,7 @@
 	&.lambda-btn-warning {
 		border-color: var(--warning-base-color);
 		color: var(--warning-base-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--warning-base-color),
 				inset -5em 0 0 0 var(--warning-base-color);
 			color: var(--white-color);
@@ -496,7 +496,7 @@
 		border-color: var(--info-base-color);
 		color: var(--info-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--info-base-color), inset -5em 0 0 0 var(--info-base-color);
 			color: var(--white-color);
 		}
@@ -516,7 +516,7 @@
 		background-color: var(--neutral-opacity-color);
 		color: var(--neutral-text-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--neutral-soft-color),
 				inset -5em 0 0 0 var(--neutral-soft-color);
 		}
@@ -525,7 +525,7 @@
 	&.lambda-btn-primary {
 		background-color: var(--primary-opacity-color);
 		color: var(--primary-text-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--primary-soft-color),
 				inset -5em 0 0 0 var(--primary-soft-color);
 		}
@@ -535,7 +535,7 @@
 		background-color: var(--secondary-opacity-color);
 		color: var(--secondary-text-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--secondary-soft-color),
 				inset -5em 0 0 0 var(--secondary-soft-color);
 		}
@@ -545,7 +545,7 @@
 		background-color: var(--success-opacity-color);
 		color: var(--success-text-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--success-soft-color),
 				inset -5em 0 0 0 var(--success-soft-color);
 		}
@@ -555,7 +555,7 @@
 		background-color: var(--danger-opacity-color);
 		color: var(--danger-text-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--danger-soft-color),
 				inset -5em 0 0 0 var(--danger-soft-color);
 		}
@@ -564,7 +564,7 @@
 	&.lambda-btn-warning {
 		background-color: var(--warning-opacity-color);
 		color: var(--warning-text-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--warning-soft-color),
 				inset -5em 0 0 0 var(--warning-soft-color);
 		}
@@ -574,7 +574,7 @@
 		background-color: var(--info-opacity-color);
 		color: var(--info-text-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--info-soft-color), inset -5em 0 0 0 var(--info-soft-color);
 		}
 	}
@@ -594,7 +594,7 @@
 		border-color: var(--neutral-subtle-color);
 		color: var(--neutral-text-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--neutral-soft-color),
 				inset -5em 0 0 0 var(--neutral-soft-color);
 		}
@@ -604,7 +604,7 @@
 		background-color: var(--primary-opacity-color);
 		border-color: var(--primary-subtle-color);
 		color: var(--primary-border-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--primary-soft-color),
 				inset -5em 0 0 0 var(--primary-soft-color);
 			color: var(--primary-text-color);
@@ -616,7 +616,7 @@
 		border-color: var(--secondary-subtle-color);
 		color: var(--secondary-border-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--secondary-soft-color),
 				inset -5em 0 0 0 var(--secondary-soft-color);
 			color: var(--secondary-text-color);
@@ -628,7 +628,7 @@
 		border-color: var(--success-subtle-color);
 		color: var(--success-border-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--success-soft-color),
 				inset -5em 0 0 0 var(--success-soft-color);
 			color: var(--success-text-color);
@@ -640,7 +640,7 @@
 		border-color: var(--danger-subtle-color);
 		color: var(--danger-border-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--danger-soft-color),
 				inset -5em 0 0 0 var(--danger-soft-color);
 			color: var(--danger-text-color);
@@ -652,7 +652,7 @@
 		border-color: var(--warning-subtle-color);
 		color: var(--warning-border-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--warning-soft-color),
 				inset -5em 0 0 0 var(--warning-soft-color);
 			color: var(--warning-text-color);
@@ -664,7 +664,7 @@
 		border-color: var(--info-subtle-color);
 		color: var(--info-text-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--info-soft-color), inset -5em 0 0 0 var(--info-soft-color);
 		}
 	}
@@ -682,7 +682,7 @@
 	&.lambda-btn-neutral {
 		color: var(--neutral-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--neutral-soft-color),
 				inset -5em 0 0 0 var(--neutral-soft-color);
 			color: var(--neutral-text-color);
@@ -691,7 +691,7 @@
 
 	&.lambda-btn-primary {
 		color: var(--primary-base-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--primary-soft-color),
 				inset -5em 0 0 0 var(--primary-soft-color);
 			color: var(--primary-text-color);
@@ -701,7 +701,7 @@
 	&.lambda-btn-secondary {
 		color: var(--secondary-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--secondary-soft-color),
 				inset -5em 0 0 0 var(--secondary-soft-color);
 			color: var(--secondary-text-color);
@@ -711,7 +711,7 @@
 	&.lambda-btn-success {
 		color: var(--success-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--success-soft-color),
 				inset -5em 0 0 0 var(--success-soft-color);
 			color: var(--success-text-color);
@@ -721,7 +721,7 @@
 	&.lambda-btn-danger {
 		color: var(--danger-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--danger-soft-color),
 				inset -5em 0 0 0 var(--danger-soft-color);
 			color: var(--danger-text-color);
@@ -730,7 +730,7 @@
 
 	&.lambda-btn-warning {
 		color: var(--warning-base-color);
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--warning-soft-color),
 				inset -5em 0 0 0 var(--warning-soft-color);
 			color: var(--warning-text-color);
@@ -740,7 +740,7 @@
 	&.lambda-btn-info {
 		color: var(--info-base-color);
 
-		&:hover {
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			box-shadow: inset 5em 0 0 0 var(--info-soft-color), inset -5em 0 0 0 var(--info-soft-color);
 			color: var(--info-text-color);
 		}
@@ -925,6 +925,7 @@
 
 .lambda-btn-loading,
 .lambda-btn-disabled {
+	user-select: none;
 	cursor: not-allowed;
 	opacity: 0.5;
 }
