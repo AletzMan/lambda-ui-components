@@ -91,7 +91,7 @@
 	justify-content: center;
 	font-weight: bold;
 	font-size: var(--font-size-md);
-	transition: border-color 0.2s, background 0.2s;
+	transition: border-color 0.3s, background 0.3s, color 0.3s;
 
 	&::before {
 		content: "";
@@ -133,6 +133,7 @@
 	border-color: var(--success-base-color);
 	background: var(--success-base-color);
 	color: var(--white-color);
+	animation: animateOutline 0.5s ease-in-out both;
 
 	&::before {
 		border-color: var(--success-base-color);
@@ -146,6 +147,17 @@
 
 	&::before {
 		border-color: var(--danger-base-color);
+	}
+}
+
+@keyframes animateOutline {
+	from {
+		outline: 2px solid var(--success-base-color);
+		outline-offset: 3px; /* Oculta el trazo al inicio */
+	}
+	to {
+		outline: 2px solid transparent;
+		outline-offset: 10px; /* Mostrar el trazo completo */
 	}
 }
 

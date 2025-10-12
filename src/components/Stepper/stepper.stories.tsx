@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Stepper } from "./Stepper";
 import type { Meta, StoryObj } from "@storybook/react";
-import { CheckCircle, AlertCircle, Contact, MapPin, CreditCard } from "lucide-react";
+import { CheckCircle, Contact, MapPin, CreditCard } from "lucide-react";
 import { StepperProps } from "./stepper.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
