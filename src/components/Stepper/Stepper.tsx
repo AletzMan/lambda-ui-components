@@ -14,9 +14,11 @@ import {
 import { CheckIcon } from "../../_assets/icons";
 import { Button } from "../Button/Button";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Stepper: React.FC<StepperProps> = ({
 	steps,
+	stepCompletedContent,
 	activeStep = 0,
 	orientation = "horizontal",
 	onStepClick,
@@ -25,6 +27,7 @@ export const Stepper: React.FC<StepperProps> = ({
 	variant = "primary",
 }) => {
 	const [currentStep, setCurrentStep] = useState(activeStep);
+	const { t } = useTranslation();
 
 	const handleStepClick = (stepIndex: number) => {
 		setCurrentStep(stepIndex);
@@ -53,33 +56,35 @@ export const Stepper: React.FC<StepperProps> = ({
 				})}
 			</header>
 			<section className={stepContentVariants({ orientation })}>
-				{steps[currentStep].content}
+				{orientation === "vertical" && (
+					<header>
+						<h1>{currentStep <= steps.length - 1 ? steps[currentStep].title : ""}</h1>
+						<p>{currentStep <= steps.length - 1 ? steps[currentStep].description : ""}</p>
+					</header>
+				)}
+				{currentStep <= steps.length - 1 ? steps[currentStep].content : stepCompletedContent}
 				<footer className={styles["lambda-stepper-footer"]}>
-					<div>
-						<Button
-							variant="subtle"
-							size="small"
-							color="neutral"
-							icon={<ArrowLeftIcon />}
-							onClick={currentStep > 0 ? () => handleStepClick(currentStep - 1) : undefined}
-							disabled={currentStep === 0}
-						>
-							Anterior
-						</Button>
-						<Button
-							variant="subtle"
-							size="small"
-							color="neutral"
-							icon={<ArrowRightIcon />}
-							iconPosition="right"
-							onClick={
-								currentStep < steps.length - 1 ? () => handleStepClick(currentStep + 1) : undefined
-							}
-							disabled={currentStep === steps.length - 1}
-						>
-							Siguiente
-						</Button>
-					</div>
+					<Button
+						variant="solid"
+						size="small"
+						color="neutral"
+						icon={<ArrowLeftIcon />}
+						onClick={currentStep > 0 ? () => handleStepClick(currentStep - 1) : undefined}
+						disabled={currentStep === 0}
+						label={t("stepper.previous")}
+					/>
+					<Button
+						variant="solid"
+						size="small"
+						color="neutral"
+						icon={<ArrowRightIcon />}
+						iconPosition="right"
+						onClick={
+							currentStep < steps.length ? () => handleStepClick(currentStep + 1) : undefined
+						}
+						disabled={currentStep === steps.length}
+						label={currentStep === steps.length - 1 ? t("stepper.finish") : t("stepper.next")}
+					/>
 				</footer>
 			</section>
 		</div>

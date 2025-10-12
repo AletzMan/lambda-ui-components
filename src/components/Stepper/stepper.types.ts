@@ -12,6 +12,7 @@ export interface StepperStep {
 
 export interface StepperProps {
 	steps: StepperStep[];
+	stepCompletedContent?: ReactNode;
 	activeStep?: number;
 	orientation?: StepperVariants["orientation"];
 	onStepClick?: (stepIndex: number) => void;

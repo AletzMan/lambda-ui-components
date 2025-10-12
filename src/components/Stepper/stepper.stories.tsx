@@ -5,7 +5,7 @@ import { CheckCircle, AlertCircle } from "lucide-react";
 import { StepperProps } from "./stepper.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
-const TemplateContent = (title: string, description: string) => {
+const TemplateContent = (title: string, description: string, step: number) => {
 	return (
 		<div
 			style={{
@@ -17,8 +17,15 @@ const TemplateContent = (title: string, description: string) => {
 				height: "100%",
 			}}
 		>
-			<h1>{title}</h1>
-			<p>{description}</p>
+			<p
+				style={{
+					color: "var(--foreground-secondary-color)",
+					fontSize: "var(--font-size-lg)",
+					fontWeight: "var(--font-weight-semibold)",
+				}}
+			>{`Step ${step}`}</p>
+			<h1 style={{ color: "var(--foreground-title-color)" }}>{title}</h1>
+			<p style={{ color: "var(--foreground-secondary-color)" }}>{description}</p>
 		</div>
 	);
 };
@@ -27,24 +34,26 @@ const steps = [
 	{
 		title: "Datos personales",
 		description: "Ingresa tu información básica",
-		content: TemplateContent("Datos personales", "Ingresa tu información básica"),
+		content: TemplateContent("Datos personales", "Ingresa tu información básica", 1),
 	},
 	{
 		title: "Dirección",
 		description: "Confirma tu domicilio",
-		content: TemplateContent("Dirección", "Confirma tu domicilio"),
+		content: TemplateContent("Dirección", "Confirma tu domicilio", 2),
 	},
 	{
 		title: "Pago",
 		description: "Método de pago",
-		content: TemplateContent("Pago", "Método de pago"),
+		content: TemplateContent("Pago", "Método de pago", 3),
 	},
 	{
 		title: "Finaliza",
 		description: "¡Listo para enviar!",
-		content: TemplateContent("Finaliza", "¡Listo para enviar!"),
+		content: TemplateContent("Finaliza", "¡Listo para enviar!", 4),
 	},
 ];
+
+const stepCompletedContent = TemplateContent("Gracias", "Steps Completed", 5);
 
 const meta: Meta<typeof Stepper> = {
 	title: "Components/Stepper",
@@ -71,6 +80,7 @@ export const Horizontal: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
 		steps,
+		stepCompletedContent,
 		activeStep: 1,
 		orientation: "horizontal",
 		variant: "primary",
@@ -81,6 +91,7 @@ export const Vertical: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
 		steps,
+		stepCompletedContent,
 		activeStep: 2,
 		orientation: "vertical",
 		variant: "primary",
@@ -90,6 +101,7 @@ export const Vertical: Story = {
 export const WithCustomIcons: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
+		stepCompletedContent,
 		activeStep: 2,
 		orientation: "horizontal",
 		variant: "primary",
