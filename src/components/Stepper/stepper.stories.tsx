@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Stepper } from "./Stepper";
 import type { Meta, StoryObj } from "@storybook/react";
-import { CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle, AlertCircle, Contact, MapPin, CreditCard } from "lucide-react";
 import { StepperProps } from "./stepper.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
@@ -31,7 +31,7 @@ const TemplateContent = (title: string, description: string, step: number) => {
 	);
 };
 
-const steps = [
+const steps: StepperProps["steps"] = [
 	{
 		title: "Datos personales",
 		description: "Información básica",
@@ -67,6 +67,49 @@ const steps = [
 			"Revisa todos los datos y confirma para finalizar el proceso.",
 			4
 		),
+	},
+];
+
+const stepsCustomIcons: StepperProps["steps"] = [
+	{
+		title: "Datos personales",
+		description: "Información básica",
+		content: TemplateContent(
+			"Datos personales",
+			"Completa tu información básica para continuar con el proceso.",
+			1
+		),
+		icon: <Contact />,
+	},
+	{
+		title: "Dirección",
+		description: "Confirma domicilio",
+		content: TemplateContent(
+			"Dirección",
+			"Confirma y verifica tu domicilio para el envío de tus productos.",
+			2
+		),
+		icon: <MapPin />,
+	},
+	{
+		title: "Pago",
+		description: "Método de pago",
+		content: TemplateContent(
+			"Pago",
+			"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
+			3
+		),
+		icon: <CreditCard />,
+	},
+	{
+		title: "Finaliza",
+		description: "Confirmación final",
+		content: TemplateContent(
+			"Finaliza",
+			"Revisa todos los datos y confirma para finalizar el proceso.",
+			4
+		),
+		icon: <CheckCircle />,
 	},
 ];
 
@@ -122,10 +165,6 @@ export const WithCustomIcons: Story = {
 		activeStep: 2,
 		orientation: "horizontal",
 		variant: "bordered",
-		steps: [
-			{ title: "Inicio", icon: <CheckCircle color="#16a34a" /> },
-			{ title: "Verifica", icon: <AlertCircle color="#f59e42" /> },
-			{ title: "Final", icon: <CheckCircle color="#16a34a" /> },
-		],
+		steps: stepsCustomIcons,
 	},
 };

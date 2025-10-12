@@ -112,7 +112,7 @@
 .lambda-step-pending .lambda-step-indicator {
 	border-color: var(--border-color);
 	background: var(--surface-c);
-	color: var(--foreground-secondary-color);
+	color: var(--neutral-shadow-color);
 
 	&::before {
 		border-color: var(--border-color);
@@ -153,7 +153,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 1.3em;
+
+	& svg {
+		width: var(--icon-size-lg);
+		height: var(--icon-size-lg);
+	}
 }
 
 .lambda-step-icon-check {
