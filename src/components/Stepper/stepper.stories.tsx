@@ -12,7 +12,7 @@ const TemplateContent = (title: string, description: string, step: number) => {
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
-				justifyContent: "center",
+				justifyContent: "flex-start",
 				padding: "var(--padding-md)",
 				height: "100%",
 			}}
@@ -22,6 +22,7 @@ const TemplateContent = (title: string, description: string, step: number) => {
 					color: "var(--foreground-secondary-color)",
 					fontSize: "var(--font-size-lg)",
 					fontWeight: "var(--font-weight-semibold)",
+					marginBottom: "5em",
 				}}
 			>{`Step ${step}`}</p>
 			<h1 style={{ color: "var(--foreground-title-color)" }}>{title}</h1>
@@ -33,34 +34,50 @@ const TemplateContent = (title: string, description: string, step: number) => {
 const steps = [
 	{
 		title: "Datos personales",
-		description: "Ingresa tu información básica",
-		content: TemplateContent("Datos personales", "Ingresa tu información básica", 1),
+		description: "Información básica",
+		content: TemplateContent(
+			"Datos personales",
+			"Completa tu información básica para continuar con el proceso.",
+			1
+		),
 	},
 	{
 		title: "Dirección",
-		description: "Confirma tu domicilio",
-		content: TemplateContent("Dirección", "Confirma tu domicilio", 2),
+		description: "Confirma domicilio",
+		content: TemplateContent(
+			"Dirección",
+			"Confirma y verifica tu domicilio para el envío de tus productos.",
+			2
+		),
 	},
 	{
 		title: "Pago",
 		description: "Método de pago",
-		content: TemplateContent("Pago", "Método de pago", 3),
+		content: TemplateContent(
+			"Pago",
+			"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
+			3
+		),
 	},
 	{
 		title: "Finaliza",
-		description: "¡Listo para enviar!",
-		content: TemplateContent("Finaliza", "¡Listo para enviar!", 4),
+		description: "Confirmación final",
+		content: TemplateContent(
+			"Finaliza",
+			"Revisa todos los datos y confirma para finalizar el proceso.",
+			4
+		),
 	},
 ];
 
-const stepCompletedContent = TemplateContent("Gracias", "Steps Completed", 5);
+const stepCompletedContent = TemplateContent("¡Gracias!", "Has completado todos los pasos 🎉", 5);
 
 const meta: Meta<typeof Stepper> = {
 	title: "Components/Stepper",
 	component: Stepper,
 	argTypes: {
 		orientation: { control: "inline-radio", options: ["horizontal", "vertical"] },
-		variant: { control: "inline-radio", options: ["primary", "secondary"] },
+		variant: { control: "inline-radio", options: ["soft", "bordered"] },
 		activeStep: { control: { type: "number", min: 0, max: steps.length - 1 } },
 	},
 };
@@ -83,7 +100,7 @@ export const Horizontal: Story = {
 		stepCompletedContent,
 		activeStep: 1,
 		orientation: "horizontal",
-		variant: "primary",
+		variant: "bordered",
 	},
 };
 
@@ -94,7 +111,7 @@ export const Vertical: Story = {
 		stepCompletedContent,
 		activeStep: 2,
 		orientation: "vertical",
-		variant: "primary",
+		variant: "bordered",
 	},
 };
 
@@ -104,7 +121,7 @@ export const WithCustomIcons: Story = {
 		stepCompletedContent,
 		activeStep: 2,
 		orientation: "horizontal",
-		variant: "primary",
+		variant: "bordered",
 		steps: [
 			{ title: "Inicio", icon: <CheckCircle color="#16a34a" /> },
 			{ title: "Verifica", icon: <AlertCircle color="#f59e42" /> },

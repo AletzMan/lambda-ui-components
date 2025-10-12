@@ -24,7 +24,7 @@ export const Stepper: React.FC<StepperProps> = ({
 	onStepClick,
 	className,
 	style,
-	variant = "primary",
+	variant = "bordered",
 }) => {
 	const [currentStep, setCurrentStep] = useState(activeStep);
 	const { t } = useTranslation();
@@ -55,7 +55,7 @@ export const Stepper: React.FC<StepperProps> = ({
 					);
 				})}
 			</header>
-			<section className={stepContentVariants({ orientation })}>
+			<section className={stepContentVariants({ orientation, variant })}>
 				{orientation === "vertical" && (
 					<header>
 						<h1>{currentStep <= steps.length - 1 ? steps[currentStep].title : ""}</h1>
@@ -100,7 +100,7 @@ export const Step: React.FC<StepProps> = ({
 	isLast,
 	orientation = "horizontal",
 	onClick,
-	variant = "primary",
+	variant = "bordered",
 }) => {
 	return (
 		<div

@@ -26,14 +26,14 @@ export const stepperVariants = cva(styles["lambda-stepper"], {
 			vertical: styles["lambda-stepper-vertical"],
 		},
 		variant: {
-			primary: styles["lambda-stepper-primary"],
-			secondary: styles["lambda-stepper-secondary"],
+			soft: styles["lambda-stepper-soft"],
+			bordered: styles["lambda-stepper-bordered"],
 		},
 	},
 	defaultVariants: {
 		status: "pending",
 		orientation: "horizontal",
-		variant: "primary",
+		variant: "bordered",
 	},
 });
 
@@ -50,14 +50,14 @@ export const stepVariants = cva(styles["lambda-step"], {
 			vertical: styles["lambda-step-vertical"],
 		},
 		variant: {
-			primary: styles["lambda-step-primary"],
-			secondary: styles["lambda-step-secondary"],
+			soft: styles["lambda-step-soft"],
+			bordered: styles["lambda-step-bordered"],
 		},
 	},
 	defaultVariants: {
 		status: "pending",
 		orientation: "horizontal",
-		variant: "primary",
+		variant: "bordered",
 	},
 });
 
@@ -98,9 +98,14 @@ export const stepContentVariants = cva(styles["lambda-stepper-content"], {
 			horizontal: styles["lambda-stepper-content-horizontal"],
 			vertical: styles["lambda-stepper-content-vertical"],
 		},
+		variant: {
+			soft: styles["lambda-stepper-content-soft"],
+			bordered: styles["lambda-stepper-content-bordered"],
+		},
 	},
 	defaultVariants: {
 		orientation: "horizontal",
+		variant: "bordered",
 	},
 });
 
