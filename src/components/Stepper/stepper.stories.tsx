@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { CheckCircle, Contact, MapPin, CreditCard } from "lucide-react";
 import { StepperProps } from "./stepper.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { Input } from "../Input/Input";
 
 const TemplateContent = (title: string, description: string, step: number) => {
 	return (
@@ -55,7 +56,7 @@ const TemplateContentWithFields = (title: string, description: string, step: num
 			<p style={{ color: "var(--foreground-secondary-color)" }}>{description}</p>
 			<div style={{ marginBottom: 16 }}>
 				<label htmlFor="nombre">Nombre requerido para avanzar: </label>
-				<input id="nombre" type="text" style={{ marginLeft: 8 }} />
+				<Input id="nombre" type="text" />
 			</div>
 		</div>
 	);
@@ -220,13 +221,14 @@ const Template = (args: StepperProps) => {
 
 const TemplateValidation = (args: StepperProps) => {
 	const [nombreUsuario, setNombreUsuario] = useState("");
+	const [isValidStep, setIsValidStep] = useState(false);
+	const [errorName, setErrorName] = useState(false);
 
 	const handleStepClick = (name: string) => {
 		setNombreUsuario(name);
-	};
-
-	const validateStep = () => {
-		return Boolean(nombreUsuario && nombreUsuario.trim() !== "");
+		const isValid = name !== "";
+		setErrorName(!isValid);
+		setIsValidStep(isValid);
 	};
 
 	return (
@@ -241,11 +243,7 @@ const TemplateValidation = (args: StepperProps) => {
 						index={idx}
 					/>
 				))}
-				<Stepper.Content
-					validate
-					isValid={validateStep()}
-					errorMessage="Favor de ingresar un nombre"
-				>
+				<Stepper.Content validate isValid={isValidStep} errorMessage="Favor de ingresar un nombre">
 					<div
 						style={{
 							display: "flex",
@@ -268,14 +266,15 @@ const TemplateValidation = (args: StepperProps) => {
 						<p style={{ color: "var(--foreground-secondary-color)" }}>
 							{stepsValidation[0].description}
 						</p>
-						<div style={{ marginBottom: 16 }}>
-							<label htmlFor="nombre">Nombre requerido para avanzar: </label>
-							<input
+						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
+							<Input
 								id="nombre"
 								type="text"
-								style={{ marginLeft: 8 }}
-								onChange={(e) => handleStepClick(e.target.value)}
+								label="Nombre"
+								placeholder="Nombre requerido para avanzar:"
+								onChange={(value) => handleStepClick(value)}
 								value={nombreUsuario}
+								invalid={errorName}
 							/>
 						</div>
 					</div>
@@ -294,7 +293,6 @@ export const Horizontal: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
 		steps,
-		stepCompletedContent,
 		defaultActiveStep: 0,
 		orientation: "horizontal",
 		variant: "bordered",
@@ -305,7 +303,6 @@ export const Vertical: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
 		steps,
-		stepCompletedContent,
 		defaultActiveStep: 0,
 		orientation: "vertical",
 		variant: "bordered",
@@ -315,7 +312,6 @@ export const Vertical: Story = {
 export const Validation: Story = {
 	render: (args) => <TemplateValidation {...args} />,
 	args: {
-		stepCompletedContent,
 		defaultActiveStep: 0,
 		orientation: "horizontal",
 		variant: "bordered",
@@ -326,7 +322,6 @@ export const Validation: Story = {
 export const WithCustomIcons: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		stepCompletedContent,
 		defaultActiveStep: 2,
 		orientation: "horizontal",
 		variant: "bordered",

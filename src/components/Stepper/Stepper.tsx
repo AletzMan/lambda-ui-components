@@ -38,7 +38,6 @@ const useStepperContext = () => {
 
 const StepperRoot: React.FC<StepperProps> = ({
 	steps,
-	stepCompletedContent,
 	defaultActiveStep = 0,
 	orientation = "horizontal",
 	onStepCompleted,
@@ -94,7 +93,6 @@ const StepperRoot: React.FC<StepperProps> = ({
 		<StepperContext.Provider
 			value={{
 				steps,
-				stepCompletedContent,
 				activeStep: currentStep,
 				orientation,
 				onStepCompleted,
