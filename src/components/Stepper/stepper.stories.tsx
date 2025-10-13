@@ -221,14 +221,28 @@ const Template = (args: StepperProps) => {
 
 const TemplateValidation = (args: StepperProps) => {
 	const [nombreUsuario, setNombreUsuario] = useState("");
-	const [isValidStep, setIsValidStep] = useState(false);
 	const [errorName, setErrorName] = useState(false);
+	const [direction, setDirection] = useState("");
+	const [errorDirection, setErrorDirection] = useState(false);
+	const [payment, setPayment] = useState("");
+	const [errorPayment, setErrorPayment] = useState(false);
 
-	const handleStepClick = (name: string) => {
-		setNombreUsuario(name);
-		const isValid = name !== "";
-		setErrorName(!isValid);
-		setIsValidStep(isValid);
+	const handleStepClick = (name: string, type: "name" | "direction" | "payment") => {
+		if (type === "name") {
+			setNombreUsuario(name);
+			const isValid = name !== "";
+			setErrorName(!isValid);
+		}
+		if (type === "direction") {
+			setDirection(name);
+			const isValid = name !== "";
+			setErrorDirection(!isValid);
+		}
+		if (type === "payment") {
+			setPayment(name);
+			const isValid = name !== "";
+			setErrorPayment(!isValid);
+		}
 	};
 
 	return (
@@ -243,7 +257,11 @@ const TemplateValidation = (args: StepperProps) => {
 						index={idx}
 					/>
 				))}
-				<Stepper.Content validate isValid={isValidStep} errorMessage="Favor de ingresar un nombre">
+				<Stepper.Content
+					validate
+					isValid={nombreUsuario !== ""}
+					errorMessage="Favor de ingresar un nombre"
+				>
 					<div
 						style={{
 							display: "flex",
@@ -272,15 +290,93 @@ const TemplateValidation = (args: StepperProps) => {
 								type="text"
 								label="Nombre"
 								placeholder="Nombre requerido para avanzar:"
-								onChange={(value) => handleStepClick(value)}
+								onChange={(value) => handleStepClick(value, "name")}
 								value={nombreUsuario}
 								invalid={errorName}
 							/>
 						</div>
 					</div>
 				</Stepper.Content>
-				<Stepper.Content>{stepsValidation[1].content}</Stepper.Content>
-				<Stepper.Content>{stepsValidation[2].content}</Stepper.Content>
+				<Stepper.Content
+					validate
+					isValid={direction !== ""}
+					errorMessage="Favor de ingresar una dirección"
+				>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "flex-start",
+							padding: "var(--padding-md)",
+							height: "100%",
+						}}
+					>
+						<p
+							style={{
+								color: "var(--foreground-secondary-color)",
+								fontSize: "var(--font-size-lg)",
+								fontWeight: "var(--font-weight-semibold)",
+								marginBottom: "5em",
+							}}
+						>{`Step ${stepsValidation[1].id}`}</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>{stepsValidation[1].title}</h1>
+						<p style={{ color: "var(--foreground-secondary-color)" }}>
+							{stepsValidation[1].description}
+						</p>
+						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
+							<Input
+								id="direccion"
+								type="text"
+								label="Dirección"
+								placeholder="Dirección requerida para avanzar:"
+								onChange={(value) => handleStepClick(value, "direction")}
+								value={direction}
+								invalid={errorDirection}
+							/>
+						</div>
+					</div>
+				</Stepper.Content>
+				<Stepper.Content
+					validate
+					isValid={payment !== ""}
+					errorMessage="Favor de ingresar un método de pago"
+				>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "flex-start",
+							padding: "var(--padding-md)",
+							height: "100%",
+						}}
+					>
+						<p
+							style={{
+								color: "var(--foreground-secondary-color)",
+								fontSize: "var(--font-size-lg)",
+								fontWeight: "var(--font-weight-semibold)",
+								marginBottom: "5em",
+							}}
+						>{`Step ${stepsValidation[2].id}`}</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>{stepsValidation[2].title}</h1>
+						<p style={{ color: "var(--foreground-secondary-color)" }}>
+							{stepsValidation[2].description}
+						</p>
+						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
+							<Input
+								id="direccion"
+								type="text"
+								label="Pago"
+								placeholder="Pago requerido para avanzar:"
+								onChange={(value) => handleStepClick(value, "payment")}
+								value={payment}
+								invalid={errorPayment}
+							/>
+						</div>
+					</div>
+				</Stepper.Content>
 				<Stepper.Content>{stepsValidation[3].content}</Stepper.Content>
 
 				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>

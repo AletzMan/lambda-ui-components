@@ -15,6 +15,7 @@ import { CheckIcon } from "../../_assets/icons";
 import { Button } from "../Button/Button";
 import { ArrowLeftIcon, ArrowRightIcon, X } from "lucide-react";
 import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface StepperContextType extends StepperProps {
 	isLast: boolean | undefined;
@@ -59,6 +60,9 @@ const StepperRoot: React.FC<StepperProps> = ({
 	const handleNext = () => {
 		if (stepError[currentStep]) {
 			setValidateStep(true);
+			setTimeout(() => {
+				setValidateStep(false);
+			}, 4000);
 			return;
 		}
 		handleStepClick(currentStep + 1);
@@ -112,6 +116,7 @@ const StepperRoot: React.FC<StepperProps> = ({
 				>
 					{itemChildren}
 				</header>
+
 				<section className={stepContentVariants({ orientation, variant })}>
 					{orientation === "vertical" && (
 						<header>
@@ -143,11 +148,19 @@ const StepperRoot: React.FC<StepperProps> = ({
 							label={currentStep === steps.length - 1 ? t("stepper.finish") : t("stepper.next")}
 						/>
 					</footer>
-					{stepError[currentStep] && validateStep && (
-						<div style={{ color: "var(--danger-base-color)", marginTop: 8, textAlign: "center" }}>
-							{stepError[currentStep]}
-						</div>
-					)}
+					<AnimatePresence initial={false}>
+						{stepError[currentStep] && validateStep && (
+							<motion.div
+								initial={{ opacity: 0, scale: 1, left: "50%", x: "-50%", y: "-3em" }}
+								animate={{ opacity: 1, scale: 1, left: "50%", x: "-50%", y: "0" }}
+								exit={{ opacity: 0, scale: 1, left: "50%", x: "-50%", y: "-3em" }}
+								transition={{ type: "spring" }}
+								className={styles["lambda-stepper-error"]}
+							>
+								{stepError[currentStep] || "Favor de ingresar un nombre"}
+							</motion.div>
+						)}
+					</AnimatePresence>
 				</section>
 			</div>
 		</StepperContext.Provider>
