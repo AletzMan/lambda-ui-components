@@ -21,6 +21,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	min-width: max-content;
 	box-sizing: border-box;
 	outline: none;
+	outline-offset: 2px;
 	font-family: var(--font-family);
 
 	&.lambda-input-wrapper-password {
