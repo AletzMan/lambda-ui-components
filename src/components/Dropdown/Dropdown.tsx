@@ -16,6 +16,7 @@ import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvi
 import { ChevronDown } from "lucide-react";
 import { createPortal } from "react-dom";
 import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
+import { AnimatePresence, motion } from "framer-motion";
 
 const DropdownContext = createContext<
 	(DropdownProps & { setIsOpen?: (value: boolean) => void }) | undefined
@@ -81,21 +82,28 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 							<ChevronDown className={clsx(styles["lambda-dropdown-icon-arrow"])} />
 						) : undefined}
 					</button>
-					{isOpen &&
-						createPortal(
-							<div
-								className={clsx(dropdownMenuVariants({ menuPosition: menuPosition.position }))}
-								style={{ top: menuPosition.top, left: menuPosition.left }}
-								ref={contentRef}
-								onKeyDown={(e) => {
-									handleKeyDown(e);
-								}}
-								tabIndex={0}
-							>
-								{children}
-							</div>,
-							document.body
-						)}
+					{createPortal(
+						<AnimatePresence mode="wait">
+							{isOpen && (
+								<motion.div
+									initial={{ opacity: 0, y: -16 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: -16 }}
+									transition={{ type: "spring", stiffness: 300, damping: 24 }}
+									className={clsx(dropdownMenuVariants())}
+									style={{ top: menuPosition.top, left: menuPosition.left }}
+									ref={contentRef}
+									onKeyDown={(e) => {
+										handleKeyDown(e);
+									}}
+									tabIndex={0}
+								>
+									{children}
+								</motion.div>
+							)}
+						</AnimatePresence>,
+						document.body
+					)}
 				</div>
 			</DropdownContext.Provider>
 		);
