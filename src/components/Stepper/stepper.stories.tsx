@@ -31,6 +31,36 @@ const TemplateContent = (title: string, description: string, step: number) => {
 	);
 };
 
+const TemplateContentWithFields = (title: string, description: string, step: number) => {
+	return (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "flex-start",
+				padding: "var(--padding-md)",
+				height: "100%",
+			}}
+		>
+			<p
+				style={{
+					color: "var(--foreground-secondary-color)",
+					fontSize: "var(--font-size-lg)",
+					fontWeight: "var(--font-weight-semibold)",
+					marginBottom: "5em",
+				}}
+			>{`Step ${step}`}</p>
+			<h1 style={{ color: "var(--foreground-title-color)" }}>{title}</h1>
+			<p style={{ color: "var(--foreground-secondary-color)" }}>{description}</p>
+			<div style={{ marginBottom: 16 }}>
+				<label htmlFor="nombre">Nombre requerido para avanzar: </label>
+				<input id="nombre" type="text" style={{ marginLeft: 8 }} />
+			</div>
+		</div>
+	);
+};
+
 const steps: StepperProps["steps"] = [
 	{
 		title: "Datos personales",
@@ -113,6 +143,45 @@ const stepsCustomIcons: StepperProps["steps"] = [
 	},
 ];
 
+const stepsValidation: StepperProps["steps"] = [
+	{
+		title: "Datos personales",
+		description: "Información básica",
+		content: TemplateContentWithFields(
+			"Datos personales",
+			"Completa tu información básica para continuar con el proceso.",
+			1
+		),
+	},
+	{
+		title: "Dirección",
+		description: "Confirma domicilio",
+		content: TemplateContent(
+			"Dirección",
+			"Confirma y verifica tu domicilio para el envío de tus productos.",
+			2
+		),
+	},
+	{
+		title: "Pago",
+		description: "Método de pago",
+		content: TemplateContent(
+			"Pago",
+			"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
+			3
+		),
+	},
+	{
+		title: "Finaliza",
+		description: "Confirmación final",
+		content: TemplateContent(
+			"Finaliza",
+			"Revisa todos los datos y confirma para finalizar el proceso.",
+			4
+		),
+	},
+];
+
 const stepCompletedContent = TemplateContent("¡Gracias!", "Has completado todos los pasos 🎉", 5);
 
 const meta: Meta<typeof Stepper> = {
@@ -121,17 +190,102 @@ const meta: Meta<typeof Stepper> = {
 	argTypes: {
 		orientation: { control: "inline-radio", options: ["horizontal", "vertical"] },
 		variant: { control: "inline-radio", options: ["soft", "bordered"] },
-		activeStep: { control: { type: "number", min: 0, max: steps.length - 1 } },
+		defaultActiveStep: { control: { type: "number", min: 0, max: steps.length - 1 } },
 	},
 };
 export default meta;
 type Story = StoryObj<typeof Stepper>;
 
 const Template = (args: StepperProps) => {
-	const [activeStep, setActiveStep] = useState(1);
 	return (
 		<ContainerComponent title="Stepper">
-			<Stepper {...args} activeStep={activeStep} onStepCompleted={setActiveStep} />
+			<Stepper {...args}>
+				{steps.map((step, idx) => (
+					<Stepper.Step
+						key={idx}
+						title={step.title}
+						description={step.description}
+						content={step.content}
+						index={idx}
+					/>
+				))}
+				{steps.map((step, idx) => (
+					<Stepper.Content key={idx}>{step.content} </Stepper.Content>
+				))}
+				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>
+			</Stepper>
+		</ContainerComponent>
+	);
+};
+
+const TemplateValidation = (args: StepperProps) => {
+	const [nombreUsuario, setNombreUsuario] = useState("");
+
+	const handleStepClick = (name: string) => {
+		setNombreUsuario(name);
+	};
+
+	const validateStep = () => {
+		return Boolean(nombreUsuario && nombreUsuario.trim() !== "");
+	};
+
+	return (
+		<ContainerComponent title="Stepper">
+			<Stepper {...args} defaultActiveStep={0}>
+				{stepsValidation.map((step, idx) => (
+					<Stepper.Step
+						key={idx}
+						title={step.title}
+						description={step.description}
+						content={step.content}
+						index={idx}
+					/>
+				))}
+				<Stepper.Content
+					validate
+					isValid={validateStep()}
+					errorMessage="Favor de ingresar un nombre"
+				>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "flex-start",
+							padding: "var(--padding-md)",
+							height: "100%",
+						}}
+					>
+						<p
+							style={{
+								color: "var(--foreground-secondary-color)",
+								fontSize: "var(--font-size-lg)",
+								fontWeight: "var(--font-weight-semibold)",
+								marginBottom: "5em",
+							}}
+						>{`Step ${stepsValidation[0].id}`}</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>{stepsValidation[0].title}</h1>
+						<p style={{ color: "var(--foreground-secondary-color)" }}>
+							{stepsValidation[0].description}
+						</p>
+						<div style={{ marginBottom: 16 }}>
+							<label htmlFor="nombre">Nombre requerido para avanzar: </label>
+							<input
+								id="nombre"
+								type="text"
+								style={{ marginLeft: 8 }}
+								onChange={(e) => handleStepClick(e.target.value)}
+								value={nombreUsuario}
+							/>
+						</div>
+					</div>
+				</Stepper.Content>
+				<Stepper.Content>{stepsValidation[1].content}</Stepper.Content>
+				<Stepper.Content>{stepsValidation[2].content}</Stepper.Content>
+				<Stepper.Content>{stepsValidation[3].content}</Stepper.Content>
+
+				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>
+			</Stepper>
 		</ContainerComponent>
 	);
 };
@@ -141,7 +295,7 @@ export const Horizontal: Story = {
 	args: {
 		steps,
 		stepCompletedContent,
-		activeStep: 1,
+		defaultActiveStep: 0,
 		orientation: "horizontal",
 		variant: "bordered",
 	},
@@ -152,9 +306,20 @@ export const Vertical: Story = {
 	args: {
 		steps,
 		stepCompletedContent,
-		activeStep: 2,
+		defaultActiveStep: 0,
 		orientation: "vertical",
 		variant: "bordered",
+	},
+};
+
+export const Validation: Story = {
+	render: (args) => <TemplateValidation {...args} />,
+	args: {
+		stepCompletedContent,
+		defaultActiveStep: 0,
+		orientation: "horizontal",
+		variant: "bordered",
+		steps: stepsValidation,
 	},
 };
 
@@ -162,7 +327,7 @@ export const WithCustomIcons: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
 		stepCompletedContent,
-		activeStep: 2,
+		defaultActiveStep: 2,
 		orientation: "horizontal",
 		variant: "bordered",
 		steps: stepsCustomIcons,

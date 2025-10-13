@@ -143,7 +143,8 @@
 .lambda-step-error .lambda-step-indicator {
 	border-color: var(--danger-base-color);
 	background: var(--danger-base-color);
-	color: var(--danger-base-color);
+	color: var(--white-color);
+	animation: animateOutlineError 0.8s ease-in-out infinite;
 
 	&::before {
 		border-color: var(--danger-base-color);
@@ -153,6 +154,17 @@
 @keyframes animateOutline {
 	from {
 		outline: 2px solid var(--success-base-color);
+		outline-offset: 3px; /* Oculta el trazo al inicio */
+	}
+	to {
+		outline: 2px solid transparent;
+		outline-offset: 10px; /* Mostrar el trazo completo */
+	}
+}
+
+@keyframes animateOutlineError {
+	from {
+		outline: 2px solid var(--danger-base-color);
 		outline-offset: 3px; /* Oculta el trazo al inicio */
 	}
 	to {

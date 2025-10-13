@@ -13,19 +13,23 @@ export interface StepperStep {
 export interface StepperProps {
 	steps: StepperStep[];
 	stepCompletedContent?: ReactNode;
-	activeStep?: number;
+	defaultActiveStep?: number;
 	orientation?: StepperVariants["orientation"];
 	onStepCompleted?: (stepIndex: number) => void;
 	className?: string;
 	style?: CSSProperties;
 	variant?: StepperVariants["variant"];
+	children?: ReactNode;
 }
 
 export interface StepProps extends StepperStep {
 	index: number;
-	status: StepperVariants["status"];
-	isLast: boolean;
-	orientation: StepperVariants["orientation"];
-	onClick?: () => void;
-	variant: StepperVariants["variant"];
+}
+
+export interface StepContentProps {
+	index?: number;
+	children: ReactNode;
+	validate?: boolean;
+	isValid?: boolean;
+	errorMessage?: string;
 }
