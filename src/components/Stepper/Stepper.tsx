@@ -62,7 +62,7 @@ const StepperRoot: React.FC<StepperProps> = ({
 			setValidateStep(true);
 			setTimeout(() => {
 				setValidateStep(false);
-			}, 4000);
+			}, 2750);
 			return;
 		}
 		handleStepClick(currentStep + 1);
@@ -128,25 +128,29 @@ const StepperRoot: React.FC<StepperProps> = ({
 						? contentChildren[currentStep]
 						: stepCompletedContentChildren[0]}
 					<footer className={styles["lambda-stepper-footer"]}>
-						<Button
-							variant="solid"
-							size="small"
-							color="neutral"
-							icon={<ArrowLeftIcon />}
-							onClick={currentStep > 0 ? () => handleStepClick(currentStep - 1) : undefined}
-							disabled={currentStep === 0}
-							label={t("stepper.previous")}
-						/>
-						<Button
-							variant="solid"
-							size="small"
-							color="neutral"
-							icon={<ArrowRightIcon />}
-							iconPosition="right"
-							onClick={currentStep < steps.length ? handleNext : undefined}
-							disabled={currentStep === steps.length}
-							label={currentStep === steps.length - 1 ? t("stepper.finish") : t("stepper.next")}
-						/>
+						{currentStep < steps.length && (
+							<Button
+								variant="solid"
+								size="small"
+								color="neutral"
+								icon={<ArrowLeftIcon />}
+								onClick={currentStep > 0 ? () => handleStepClick(currentStep - 1) : undefined}
+								disabled={currentStep === 0 || validateStep}
+								label={t("stepper.previous")}
+							/>
+						)}
+						{currentStep < steps.length && (
+							<Button
+								variant="solid"
+								size="small"
+								color="neutral"
+								icon={<ArrowRightIcon />}
+								iconPosition="right"
+								onClick={currentStep < steps.length ? handleNext : undefined}
+								disabled={currentStep === steps.length || validateStep}
+								label={currentStep === steps.length - 1 ? t("stepper.finish") : t("stepper.next")}
+							/>
+						)}
 					</footer>
 					<AnimatePresence initial={false}>
 						{stepError[currentStep] && validateStep && (
@@ -172,7 +176,7 @@ const Step: React.FC<StepProps> = ({ title, description, icon, index }) => {
 	const [status, setStatus] = useState<StepperVariants["status"]>("pending");
 
 	useEffect(() => {
-		if (stepError![index]) {
+		if (stepError![index] && activeStep === index) {
 			setStatus("error");
 		} else if (index < activeStep!) {
 			setStatus("completed");

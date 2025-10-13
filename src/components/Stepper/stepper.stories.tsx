@@ -385,6 +385,29 @@ const TemplateValidation = (args: StepperProps) => {
 	);
 };
 
+const TemplateCustomIcons = (args: StepperProps) => {
+	return (
+		<ContainerComponent title="Stepper">
+			<Stepper {...args}>
+				{stepsCustomIcons.map((step, idx) => (
+					<Stepper.Step
+						key={idx}
+						title={step.title}
+						description={step.description}
+						content={step.content}
+						icon={step.icon}
+						index={idx}
+					/>
+				))}
+				{stepsCustomIcons.map((step, idx) => (
+					<Stepper.Content key={idx}>{step.content} </Stepper.Content>
+				))}
+				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>
+			</Stepper>
+		</ContainerComponent>
+	);
+};
+
 export const Horizontal: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
@@ -416,9 +439,9 @@ export const Validation: Story = {
 };
 
 export const WithCustomIcons: Story = {
-	render: (args) => <Template {...args} />,
+	render: (args) => <TemplateCustomIcons {...args} />,
 	args: {
-		defaultActiveStep: 2,
+		defaultActiveStep: 0,
 		orientation: "horizontal",
 		variant: "bordered",
 		steps: stepsCustomIcons,

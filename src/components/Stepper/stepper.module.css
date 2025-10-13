@@ -110,7 +110,7 @@
 }
 
 .lambda-step-pending .lambda-step-indicator {
-	border-color: var(--border-color);
+	border-color: var(--surface-c);
 	background: var(--surface-c);
 	color: var(--neutral-shadow-color);
 
@@ -217,7 +217,7 @@
 	h1 {
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-semibold);
-		color: var(--foreground-color);
+		color: var(--foreground-secondary-color);
 		text-align: center;
 		flex: 1;
 	}
@@ -372,7 +372,7 @@
 	position: absolute;
 	margin-top: 8px;
 	text-align: center;
-	padding: var(--padding-xs) var(--padding-md);
+	padding: var(--padding-xs) var(--padding-lg);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-regular);
 	border-radius: var(--border-radius-xs);
