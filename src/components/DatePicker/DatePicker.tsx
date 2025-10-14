@@ -162,12 +162,13 @@ export const DatePicker = ({
 	};
 
 	const handleReset = () => {
-		setCalendarTransitionType("fade");
 		setCurrentDate(value ? new Date(value) : new Date());
 		refTempDate.current = value;
 		setIsMonthPickerOpen(false);
 		setIsYearPickerOpen(false);
 		refTempYear.current = "";
+		setCalendarTransitionType("none");
+		onChange?.(undefined);
 	};
 
 	const handleCloseMonthPicker = (month: number) => {
