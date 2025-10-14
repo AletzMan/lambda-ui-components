@@ -380,64 +380,7 @@ export const DatePicker = ({
 								aria-label={year.toString()}
 								className={styles["lambda-datepicker-picker-section-header-year"]}
 							>
-								<span className={styles["lambda-datepicker-year-digits"]}>
-									{year
-										.toString()
-										.padStart(4, "0")
-										.split("")
-										.map((digit, idx) => {
-											const prevYearStr = prevYear.toString().padStart(4, "0");
-											const prevDigit = prevYearStr[idx];
-											let digitDirection = 0;
-											let didChange = prevDigit !== undefined && prevDigit !== digit;
-											if (didChange) {
-												digitDirection = Number(digit) > Number(prevDigit) ? 1 : -1;
-											}
-											return (
-												<span key={`digit-${idx}`} className={styles["lambda-datepicker-year-digit"]}>
-													{didChange ? (
-														<motion.span
-															key={digit + year}
-															custom={digitDirection}
-															variants={{
-																initial: (direction: number) => ({
-																	y: direction > 0 ? "100%" : "-100%",
-																	opacity: 0,
-																	position: "absolute",
-																	left: 0,
-																	right: 0,
-																}),
-																animate: {
-																	y: "0%",
-																	opacity: 1,
-																	position: "absolute",
-																	left: 0,
-																	right: 0,
-																	transition: { duration: 0.25 },
-																},
-																exit: (direction: number) => ({
-																	y: direction > 0 ? "-100%" : "100%",
-																	opacity: 0,
-																	position: "absolute",
-																	left: 0,
-																	right: 0,
-																	transition: { duration: 0.25 },
-																}),
-															}}
-															initial="initial"
-															animate="animate"
-															exit="exit"
-															style={{ position: "absolute", width: "100%" }}
-														>
-															{digit}
-														</motion.span>
-													) : (
-														<span className={styles["lambda-datepicker-year-digit-inner"]}>{digit}</span>
-													)}
-												</span>
-											);
-										})}
-								</span>
+								<YearDigitsAnimated year={year} prevYear={prevYear} />
 							</button>
 							<Button
 								type="button"
@@ -490,10 +433,10 @@ export const DatePicker = ({
 										<span
 											aria-label={year.toString()}
 											title={year.toString()}
-											style={{ cursor: "default", pointerEvents: "none" }}
 											className={styles["lambda-datepicker-picker-section-header-year"]}
+											style={{ cursor: "default", pointerEvents: "none" }}
 										>
-											{year}
+											<YearDigitsAnimated year={year} prevYear={prevYear} />
 										</span>
 										<Button
 											type="button"
@@ -696,5 +639,68 @@ export const DatePicker = ({
 				document.body
 			)}
 		</div>
+	);
+};
+
+const YearDigitsAnimated = ({ year, prevYear }: { year: number; prevYear: number }) => {
+	return (
+		<span className={styles["lambda-datepicker-year-digits"]}>
+			{year
+				.toString()
+				.padStart(4, "0")
+				.split("")
+				.map((digit, idx) => {
+					const prevYearStr = prevYear.toString().padStart(4, "0");
+					const prevDigit = prevYearStr[idx];
+					let digitDirection = 0;
+					let didChange = prevDigit !== undefined && prevDigit !== digit;
+					if (didChange) {
+						digitDirection = Number(digit) > Number(prevDigit) ? 1 : -1;
+					}
+					return (
+						<span key={`digit-${idx}`} className={styles["lambda-datepicker-year-digit"]}>
+							{didChange ? (
+								<motion.span
+									key={digit + year}
+									custom={digitDirection}
+									variants={{
+										initial: (direction: number) => ({
+											y: direction > 0 ? "100%" : "-100%",
+											opacity: 0,
+											position: "absolute",
+											left: 0,
+											right: 0,
+										}),
+										animate: {
+											y: "0%",
+											opacity: 1,
+											position: "absolute",
+											left: 0,
+											right: 0,
+											transition: { duration: 0.25 },
+										},
+										exit: (direction: number) => ({
+											y: direction > 0 ? "-100%" : "100%",
+											opacity: 0,
+											position: "absolute",
+											left: 0,
+											right: 0,
+											transition: { duration: 0.25 },
+										}),
+									}}
+									initial="initial"
+									animate="animate"
+									exit="exit"
+									style={{ position: "absolute", width: "100%" }}
+								>
+									{digit}
+								</motion.span>
+							) : (
+								<span className={styles["lambda-datepicker-year-digit-inner"]}>{digit}</span>
+							)}
+						</span>
+					);
+				})}
+		</span>
 	);
 };
