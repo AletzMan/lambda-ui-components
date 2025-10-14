@@ -70,6 +70,9 @@ export const DatePicker = ({
 	const [isMonthPickerOpen, setIsMonthPickerOpen] = useState(false);
 	const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
 	const [direction, setDirection] = useState(0);
+	const [calendarTransitionType, setCalendarTransitionType] = useState<"slide" | "fade" | "none">(
+		"slide"
+	);
 	const year = currentDate.getFullYear();
 	const [prevYear, setPrevYear] = useState(year);
 
@@ -113,6 +116,7 @@ export const DatePicker = ({
 	// Navegación
 	const handlePrevMonth = () => {
 		setDirection(-1);
+		setCalendarTransitionType("slide");
 		setCurrentDate((prev) => {
 			const prevMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
 			return prevMonth;
@@ -120,6 +124,7 @@ export const DatePicker = ({
 	};
 	const handleNextMonth = () => {
 		setDirection(1);
+		setCalendarTransitionType("slide");
 		setCurrentDate((prev) => {
 			const nextMonth = new Date(prev.getFullYear(), prev.getMonth() + 1, 1);
 			return nextMonth;
@@ -129,6 +134,7 @@ export const DatePicker = ({
 	const handlePrevYear = () => {
 		setDirection(-1);
 		setPrevYear(year);
+		setCalendarTransitionType("slide");
 		refTempYear.current = "prev";
 		setCurrentDate((prev) => {
 			const prevYear = new Date(prev.getFullYear() - 1, prev.getMonth(), 1);
@@ -139,6 +145,7 @@ export const DatePicker = ({
 	const handleNextYear = () => {
 		setDirection(1);
 		setPrevYear(year);
+		setCalendarTransitionType("slide");
 		refTempYear.current = "next";
 		setCurrentDate((prev) => {
 			const nextYear = new Date(prev.getFullYear() + 1, prev.getMonth(), 1);
@@ -155,8 +162,9 @@ export const DatePicker = ({
 	};
 
 	const handleReset = () => {
-		setCurrentDate(new Date());
-		onChange?.(undefined);
+		setCalendarTransitionType("fade");
+		setCurrentDate(value ? new Date(value) : new Date());
+		refTempDate.current = value;
 		setIsMonthPickerOpen(false);
 		setIsYearPickerOpen(false);
 		refTempYear.current = "";
@@ -277,24 +285,44 @@ export const DatePicker = ({
 						))}
 				</div>
 				<motion.div
-					key={`${month}-${year}`} // esto es importante para que detecte el cambio
-					variants={{
-						enter: (dir: number) => ({
-							x: dir > 0 ? 100 : -100,
-							opacity: 0,
-							position: "absolute",
-						}),
-						center: {
-							x: 0,
-							opacity: 1,
-							position: "relative",
-						},
-						exit: (dir: number) => ({
-							x: dir > 0 ? -100 : 100,
-							opacity: 0,
-							position: "absolute",
-						}),
-					}}
+					key={
+						calendarTransitionType === "slide"
+							? `${month}-${year}`
+							: calendarTransitionType === "fade"
+							? `calendar-fade-${month}-${year}`
+							: `calendar-none`
+					}
+					variants={
+						calendarTransitionType === "slide"
+							? {
+									enter: (dir: number) => ({
+										x: dir > 0 ? 100 : -100,
+										opacity: 0,
+										position: "absolute",
+									}),
+									center: {
+										x: 0,
+										opacity: 1,
+										position: "relative",
+									},
+									exit: (dir: number) => ({
+										x: dir > 0 ? -100 : 100,
+										opacity: 0,
+										position: "absolute",
+									}),
+							  }
+							: calendarTransitionType === "fade"
+							? {
+									enter: { opacity: 0 },
+									center: { opacity: 1 },
+									exit: { opacity: 0 },
+							  }
+							: {
+									enter: { opacity: 1 },
+									center: { opacity: 1 },
+									exit: { opacity: 1 },
+							  }
+					}
 					initial="enter"
 					animate="center"
 					exit="exit"
@@ -332,7 +360,10 @@ export const DatePicker = ({
 											disabled: outOfRange,
 										})
 									)}
-									onClick={() => !outOfRange && onChange?.(date!.date)}
+									onClick={() => {
+										setCalendarTransitionType("none");
+										if (!outOfRange) onChange?.(date!.date);
+									}}
 									disabled={outOfRange}
 								>
 									{date!.date.getDate()}
