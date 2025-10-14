@@ -23,21 +23,16 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 	const contentRef = useRef<U>(null);
 
 	// --- LÓGICA DE POSICIONAMIENTO ---
-	useLayoutEffect(() => {
+	const recalculatePosition = () => {
 		if (isOpen && triggerRef.current && contentRef.current) {
 			const rect = triggerRef.current.getBoundingClientRect();
-			// Se usa offsetHeight para obtener la altura renderizada del popover
-			const pickerHeight = contentRef.current.offsetHeight;
+			const pickerHeight = contentRef.current.clientHeight;
 			const spaceBelow = window.innerHeight - rect.bottom;
 			const spaceAbove = rect.top;
 
-			let top = rect.bottom + (offset?.y || 0); // Posición inicial por defecto: justo debajo del trigger
+			let top = rect.bottom + (offset?.y || 0);
 			let position: "below" | "above" = "below";
-
-			// Lógica para invertir la posición si no hay espacio abajo
-			// La condición se simplifica: ¿Hay espacio abajo? Si no, ¿hay espacio arriba?
 			if (spaceBelow < pickerHeight && spaceAbove > pickerHeight) {
-				// Posición arriba: top del trigger - altura del popover - offset
 				top = rect.top - pickerHeight - (offset?.y || 0);
 				position = "above";
 			}
@@ -48,13 +43,27 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 				position: position,
 				width: rect.width,
 			});
+		}
+	};
+
+	useLayoutEffect(() => {
+		recalculatePosition();
+		if (isOpen && contentRef.current) {
 			setTimeout(() => {
-				if (isOpen && contentRef.current) {
-					contentRef.current?.focus();
-				}
+				contentRef.current?.focus();
 			}, 100);
 		}
 	}, [isOpen]);
+
+	// --- NUEVO: Observa cambios de tamaño del popover ---
+	useEffect(() => {
+		if (!isOpen || !contentRef.current) return;
+		const observer = new ResizeObserver(() => {
+			recalculatePosition();
+		});
+		observer.observe(contentRef.current);
+		return () => observer.disconnect();
+	}, [isOpen, contentRef.current]);
 
 	const getFocusableItems = () => {
 		if (!contentRef.current) return [];
