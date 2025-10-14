@@ -96,12 +96,11 @@ input[type="search"]::-webkit-search-cancel-button {
 	&::placeholder {
 		color: var(--placeholder-color);
 		font-family: var(--font-family);
-		font-weight: var(--font-weight-medium);
+		font-weight: var(--font-weight-regular);
 	}
 
 	&.lambda-input-field-tiny {
 		font-size: var(--font-size-sm);
-		letter-spacing: 0.7px;
 
 		&::placeholder {
 			font-size: var(--font-size-xs);
@@ -110,7 +109,6 @@ input[type="search"]::-webkit-search-cancel-button {
 
 	&.lambda-input-field-small {
 		font-size: var(--font-size-sm);
-		letter-spacing: 0.5px;
 
 		&::placeholder {
 			font-size: var(--font-size-sm);
