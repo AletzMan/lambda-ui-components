@@ -12,7 +12,6 @@
 	font-family: var(--font-family);
 	padding: var(--padding-md);
 	width: 285px;
-	min-height: 274px;
 	overflow: hidden;
 
 	&:is(.lambda-datepicker-modal) {
