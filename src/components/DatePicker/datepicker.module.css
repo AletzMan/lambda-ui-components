@@ -22,34 +22,6 @@
 
 .lambda-datepicker-calendar {
 	position: fixed;
-	&:is(.lambda-datepicker-calendar-below) {
-		animation: animation-dropdown-down 0.2s ease-in-out;
-	}
-	&:is(.lambda-datepicker-calendar-above) {
-		animation: animation-dropdown-up 0.2s ease-in-out;
-	}
-}
-
-@keyframes animation-dropdown-down {
-	from {
-		opacity: 0;
-		transform: translateY(-10px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes animation-dropdown-up {
-	from {
-		opacity: 0;
-		transform: translateY(10px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }
 
 .lambda-datepicker-header {
@@ -388,6 +360,40 @@
 }
 
 .lambda-datepicker-picker-section-header-year {
+	/* ... estilos existentes ... */
+
+	/* Contenedor de los dígitos del año */
+	& > .lambda-datepicker-year-digits {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0;
+	}
+
+	/* Cada dígito */
+	& > .lambda-datepicker-year-digits > .lambda-datepicker-year-digit {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		width: 10px;
+		height: 32px;
+		overflow: hidden;
+		text-align: center;
+		font-variant-numeric: tabular-nums;
+		font-size: 1em;
+		line-height: 32px;
+	}
+
+	/* El span interno (animado o estático) */
+	&
+		> .lambda-datepicker-year-digits
+		> .lambda-datepicker-year-digit
+		> .lambda-datepicker-year-digit-inner {
+		position: absolute;
+		width: 100%;
+	}
+
 	display: flex;
 	align-items: center;
 	justify-content: center;

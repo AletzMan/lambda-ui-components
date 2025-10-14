@@ -31,6 +31,7 @@ import { createPortal } from "react-dom";
 import { Dialog } from "../Dialog/Dialog";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
+import { AnimatePresence, motion } from "framer-motion";
 
 function getDaysInMonth(year: number, month: number) {
 	return new Date(year, month + 1, 0).getDate();
@@ -68,6 +69,9 @@ export const DatePicker = ({
 	const [currentDate, setCurrentDate] = useState(value ? new Date(value) : new Date());
 	const [isMonthPickerOpen, setIsMonthPickerOpen] = useState(false);
 	const [isYearPickerOpen, setIsYearPickerOpen] = useState(false);
+	const [direction, setDirection] = useState(0);
+	const year = currentDate.getFullYear();
+	const [prevYear, setPrevYear] = useState(year);
 
 	const refTempDate = useRef<Date | undefined>(value);
 	const refTempYear = useRef<string>("");
@@ -82,7 +86,6 @@ export const DatePicker = ({
 
 	const selectedDate = value ? new Date(value) : undefined;
 
-	const year = currentDate.getFullYear();
 	const month = currentDate.getMonth();
 
 	const daysInMonth = getDaysInMonth(year, month);
@@ -109,12 +112,14 @@ export const DatePicker = ({
 
 	// Navegación
 	const handlePrevMonth = () => {
+		setDirection(-1);
 		setCurrentDate((prev) => {
 			const prevMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
 			return prevMonth;
 		});
 	};
 	const handleNextMonth = () => {
+		setDirection(1);
 		setCurrentDate((prev) => {
 			const nextMonth = new Date(prev.getFullYear(), prev.getMonth() + 1, 1);
 			return nextMonth;
@@ -122,6 +127,8 @@ export const DatePicker = ({
 	};
 
 	const handlePrevYear = () => {
+		setDirection(-1);
+		setPrevYear(year);
 		refTempYear.current = "prev";
 		setCurrentDate((prev) => {
 			const prevYear = new Date(prev.getFullYear() - 1, prev.getMonth(), 1);
@@ -130,6 +137,8 @@ export const DatePicker = ({
 	};
 
 	const handleNextYear = () => {
+		setDirection(1);
+		setPrevYear(year);
 		refTempYear.current = "next";
 		setCurrentDate((prev) => {
 			const nextYear = new Date(prev.getFullYear() + 1, prev.getMonth(), 1);
@@ -267,42 +276,72 @@ export const DatePicker = ({
 							</span>
 						))}
 				</div>
-				<div className={styles["lambda-datepicker-grid"]}>
-					{days.map((date, idx) => {
-						if (date?.type === "prev" || date?.type === "next") {
+				<motion.div
+					key={`${month}-${year}`} // esto es importante para que detecte el cambio
+					variants={{
+						enter: (dir: number) => ({
+							x: dir > 0 ? 100 : -100,
+							opacity: 0,
+							position: "absolute",
+						}),
+						center: {
+							x: 0,
+							opacity: 1,
+							position: "relative",
+						},
+						exit: (dir: number) => ({
+							x: dir > 0 ? -100 : 100,
+							opacity: 0,
+							position: "absolute",
+						}),
+					}}
+					initial="enter"
+					animate="center"
+					exit="exit"
+					custom={direction}
+					transition={{
+						x: { type: "spring", stiffness: 300, damping: 30 },
+						opacity: { duration: 0.2 },
+					}}
+					style={{ width: "100%" }}
+				>
+					<div className={styles["lambda-datepicker-grid"]}>
+						{days.map((date, idx) => {
+							if (date?.type === "prev" || date?.type === "next") {
+								return (
+									<span key={idx} className={datepickerCellVariants({ type, size, month: false })}>
+										{date?.date.getDate()}
+									</span>
+								);
+							}
+							const selected = selectedDate && isSameDay(date!.date, selectedDate);
+							const today = isToday(date!.date);
+							const outOfRange = isOutOfRange(date!.date) || disabled;
 							return (
-								<span key={idx} className={datepickerCellVariants({ type, size, month: false })}>
-									{date?.date.getDate()}
-								</span>
+								<button
+									key={idx}
+									type="button"
+									className={clsx(
+										datepickerCellVariants({
+											type,
+											size,
+											variant,
+											selected,
+											today,
+											month: true,
+											disabled: outOfRange,
+										})
+									)}
+									onClick={() => !outOfRange && onChange?.(date!.date)}
+									disabled={outOfRange}
+								>
+									{date!.date.getDate()}
+								</button>
 							);
-						}
-						const selected = selectedDate && isSameDay(date!.date, selectedDate);
-						const today = isToday(date!.date);
-						const outOfRange = isOutOfRange(date!.date) || disabled;
-						return (
-							<button
-								key={idx}
-								type="button"
-								className={clsx(
-									datepickerCellVariants({
-										type,
-										size,
-										variant,
-										selected,
-										today,
-										month: true,
-										disabled: outOfRange,
-									})
-								)}
-								onClick={() => !outOfRange && onChange?.(date!.date)}
-								disabled={outOfRange}
-								aria-label={date!.date.toLocaleDateString()}
-							>
-								{date!.date.getDate()}
-							</button>
-						);
-					})}
-				</div>
+						})}
+					</div>
+				</motion.div>
+
 				{type === "dropdown" && (
 					<>
 						<Divider spacing={7} />
@@ -341,7 +380,64 @@ export const DatePicker = ({
 								aria-label={year.toString()}
 								className={styles["lambda-datepicker-picker-section-header-year"]}
 							>
-								{year}
+								<span className={styles["lambda-datepicker-year-digits"]}>
+									{year
+										.toString()
+										.padStart(4, "0")
+										.split("")
+										.map((digit, idx) => {
+											const prevYearStr = prevYear.toString().padStart(4, "0");
+											const prevDigit = prevYearStr[idx];
+											let digitDirection = 0;
+											let didChange = prevDigit !== undefined && prevDigit !== digit;
+											if (didChange) {
+												digitDirection = Number(digit) > Number(prevDigit) ? 1 : -1;
+											}
+											return (
+												<span key={`digit-${idx}`} className={styles["lambda-datepicker-year-digit"]}>
+													{didChange ? (
+														<motion.span
+															key={digit + year}
+															custom={digitDirection}
+															variants={{
+																initial: (direction: number) => ({
+																	y: direction > 0 ? "100%" : "-100%",
+																	opacity: 0,
+																	position: "absolute",
+																	left: 0,
+																	right: 0,
+																}),
+																animate: {
+																	y: "0%",
+																	opacity: 1,
+																	position: "absolute",
+																	left: 0,
+																	right: 0,
+																	transition: { duration: 0.25 },
+																},
+																exit: (direction: number) => ({
+																	y: direction > 0 ? "-100%" : "100%",
+																	opacity: 0,
+																	position: "absolute",
+																	left: 0,
+																	right: 0,
+																	transition: { duration: 0.25 },
+																}),
+															}}
+															initial="initial"
+															animate="animate"
+															exit="exit"
+															style={{ position: "absolute", width: "100%" }}
+														>
+															{digit}
+														</motion.span>
+													) : (
+														<span className={styles["lambda-datepicker-year-digit-inner"]}>{digit}</span>
+													)}
+												</span>
+											);
+										})}
+								</span>
 							</button>
 							<Button
 								type="button"
@@ -563,24 +659,42 @@ export const DatePicker = ({
 					}
 				/>
 			)}
-			{isOpen &&
-				type === "dropdown" &&
-				createPortal(
-					<div
-						ref={contentRef as Ref<HTMLDivElement>}
-						className={datepickerCalendarVariants({ type, direction: menuPosition.position })}
-						style={{
-							left: menuPosition.left,
-							top: menuPosition.top,
-							zIndex: 9999,
-						}}
-						tabIndex={0}
-						onKeyDown={handleKeyDown}
-					>
-						<Calendar />
-					</div>,
-					document.body
-				)}
+			{createPortal(
+				<AnimatePresence mode="wait">
+					{isOpen && type === "dropdown" && (
+						<motion.div
+							initial={
+								menuPosition.position === "above"
+									? { opacity: 0, y: 16, zIndex: -1 } // arriba → viene de abajo
+									: { opacity: 0, y: -16, zIndex: -1 } // abajo → viene de arriba
+							}
+							animate={{
+								opacity: 1,
+								y: 0,
+								zIndex: 9999,
+							}}
+							exit={
+								menuPosition.position === "above"
+									? { opacity: 0, y: 16, zIndex: -1 } // arriba → sigue subiendo
+									: { opacity: 0, y: -16, zIndex: -1 } // abajo → sigue bajando
+							}
+							transition={{ type: "spring", stiffness: 300, damping: 24 }}
+							ref={contentRef as Ref<HTMLDivElement>}
+							className={datepickerCalendarVariants({ type, direction: menuPosition.position })}
+							style={{
+								left: menuPosition.left,
+								top: menuPosition.top,
+								zIndex: 9999,
+							}}
+							tabIndex={0}
+							onKeyDown={handleKeyDown}
+						>
+							<Calendar />
+						</motion.div>
+					)}
+				</AnimatePresence>,
+				document.body
+			)}
 		</div>
 	);
 };
