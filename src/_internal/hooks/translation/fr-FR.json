@@ -29,6 +29,7 @@
 	"date-picker": {
 		"code": "fr-FR",
 		"header": "Sélectionner une date",
+		"placeholder": "Date non sélectionnée",
 		"prev-month": "Mois précédent",
 		"next-month": "Mois suivant",
 		"prev-year": "Année précédente",

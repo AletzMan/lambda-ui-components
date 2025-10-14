@@ -568,6 +568,7 @@ export const DatePicker = ({
 						value={value?.toLocaleDateString(t("date-picker.code"), {
 							dateStyle: displayFormat,
 						})}
+						placeholder={t("date-picker.placeholder")}
 						label={label}
 						readOnly
 					/>
