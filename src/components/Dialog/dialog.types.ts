@@ -1,15 +1,57 @@
-// src/components/Dialog/Dialog.types.ts
-
 import React, { RefObject } from "react";
 import { DialogVariants } from "./dialog.variants";
-// Importar las variantes CVA si se definen en el archivo de variantes.
-// Aunque no usemos props de variantes CVA directamente en las props del componente
-// (como size, variant), los tipos de los estados de animación (DialogState)
-// pueden depender de la estructura de las variantes si se definen allí.
-// Asegúrate de que la ruta de importación sea correcta.
+import { TargetAndTransition, Transition, VariantLabels } from "framer-motion";
 
-// Define los posibles estados de animación del diálogo
-export type DialogState = "entering" | "entered" | "exiting" | "exited";
+export interface TransitionOptions {
+	fade: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+	scaleUp: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+	fadeFromTop: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+	fadeFromBottom: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+	fadeFromLeft: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+	fadeFromRight: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+	unfold: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+	undefined: {
+		initial: boolean | TargetAndTransition | VariantLabels | undefined;
+		animate: boolean | TargetAndTransition | VariantLabels | undefined;
+		exit: TargetAndTransition | VariantLabels | undefined;
+		transition: Transition<any> | undefined;
+	};
+}
 
 // Props para el componente Dialog
 // Extiende HTMLAttributes para que el componente acepte props estándar de div,
@@ -50,6 +92,12 @@ export interface DialogProps
 	 * Se usa comúnmente para botones de acción (por ejemplo, "Aceptar", "Cancelar").
 	 */
 	footer?: React.ReactNode;
+
+	/**
+	 * Opcional: Tipo de animación del diálogo al abrirse y cerrarse.
+	 * @default scaleUp
+	 */
+	transitionMode?: DialogVariants["transitionMode"];
 
 	/**
 	 * Opcional: Tipo de backdrop

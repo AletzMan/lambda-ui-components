@@ -2,7 +2,7 @@ import React, { forwardRef, useCallback, useRef, useState, useEffect, useId } fr
 import ReactDOM from "react-dom";
 import clsx from "clsx";
 import styles from "./dialog.module.css";
-import { DialogProps } from "./dialog.types";
+import { DialogProps, TransitionOptions } from "./dialog.types";
 import { dialogOverlayVariants, dialogPanelVariants } from "./dialog.variants";
 import { XIcon } from "lucide-react";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
@@ -39,6 +39,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 			bodyClassName,
 			footerClassName,
 			backdropType,
+			transitionMode,
 			isModal = false,
 			isDraggable = false,
 			...rest
@@ -168,6 +169,60 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 			};
 		}, []);
 
+		const variantTransition: TransitionOptions = {
+			fade: {
+				initial: { opacity: 0 },
+				animate: { opacity: 1 },
+				exit: { opacity: 0 },
+				transition: {
+					ease: "easeInOut",
+					duration: 0.3,
+				},
+			},
+			unfold: {
+				initial: { opacity: 0, scaleY: 0.5 },
+				animate: { opacity: 1, scaleY: 1 },
+				exit: { opacity: 0, scaleY: 0.5 },
+				transition: { type: "spring", stiffness: 400, damping: 25 },
+			},
+			scaleUp: {
+				initial: { opacity: 0, scale: 0.5 },
+				animate: { opacity: 1, scale: 1 },
+				exit: { opacity: 0, scale: 0.5 },
+				transition: { type: "spring", stiffness: 400, damping: 25 },
+			},
+			fadeFromTop: {
+				initial: { opacity: 0, y: -20 },
+				animate: { opacity: 1, y: 0 },
+				exit: { opacity: 0, y: -20 },
+				transition: { type: "spring", stiffness: 400, damping: 25 },
+			},
+			fadeFromBottom: {
+				initial: { opacity: 0, y: 20 },
+				animate: { opacity: 1, y: 0 },
+				exit: { opacity: 0, y: 20 },
+				transition: { type: "spring", stiffness: 400, damping: 25 },
+			},
+			fadeFromLeft: {
+				initial: { opacity: 0, x: -20 },
+				animate: { opacity: 1, x: 0 },
+				exit: { opacity: 0, x: -20 },
+				transition: { type: "spring", stiffness: 400, damping: 25 },
+			},
+			fadeFromRight: {
+				initial: { opacity: 0, x: 20 },
+				animate: { opacity: 1, x: 0 },
+				exit: { opacity: 0, x: 20 },
+				transition: { type: "spring", stiffness: 400, damping: 25 },
+			},
+			undefined: {
+				initial: { opacity: 0 },
+				animate: { opacity: 1 },
+				exit: { opacity: 0 },
+				transition: { type: "spring", stiffness: 400, damping: 25 },
+			},
+		};
+
 		// --- Renderizado ---
 		// Si el estado de animación es 'exited', no renderizamos nada en el Portal.
 		return ReactDOM.createPortal(
@@ -188,10 +243,10 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 						{/* Panel animado */}
 						<motion.div
 							key="panel"
-							initial={{ opacity: 0, y: -20 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -20 }}
-							transition={{ duration: 0.3, ease: "easeOut" }}
+							initial={variantTransition[transitionMode || "scaleUp"].initial}
+							animate={variantTransition[transitionMode || "scaleUp"].animate}
+							exit={variantTransition[transitionMode || "scaleUp"].exit}
+							transition={variantTransition[transitionMode || "scaleUp"].transition}
 							ref={dialogPanelRef}
 							className={clsx(
 								dialogPanelVariants({

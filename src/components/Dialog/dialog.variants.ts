@@ -18,11 +18,21 @@ export const dialogOverlayVariants = cva(styles["lambda-dialog-overlay"], {
 			true: styles["lambda-dialog-overlay-modal"],
 			false: styles["lambda-dialog-overlay"],
 		},
+		transitionMode: {
+			fade: styles["lambda-dialog-overlay-fade"],
+			fadeFromTop: styles["lambda-dialog-overlay-fade-from-top"],
+			fadeFromBottom: styles["lambda-dialog-overlay-fade-from-bottom"],
+			fadeFromLeft: styles["lambda-dialog-overlay-fade-from-left"],
+			fadeFromRight: styles["lambda-dialog-overlay-fade-from-right"],
+			scaleUp: styles["lambda-dialog-overlay-scale-up"],
+			unfold: styles["lambda-dialog-overlay-unfold"],
+		},
 	},
 	defaultVariants: {
 		state: "exited",
 		isModal: false,
 		backdropType: "dark",
+		transitionMode: "scaleUp",
 	},
 });
 
@@ -49,12 +59,22 @@ export const dialogPanelVariants = cva(styles["lambda-dialog-panel"], {
 			true: styles["lambda-dialog-panel-draggable"],
 			false: styles[""],
 		},
+		transitionMode: {
+			fade: styles["lambda-dialog-panel-fade"],
+			fadeFromTop: styles["lambda-dialog-panel-fade-from-top"],
+			fadeFromBottom: styles["lambda-dialog-panel-fade-from-bottom"],
+			fadeFromLeft: styles["lambda-dialog-panel-fade-from-left"],
+			fadeFromRight: styles["lambda-dialog-panel-fade-from-right"],
+			scaleUp: styles["lambda-dialog-panel-scale-up"],
+			unfold: styles["lambda-dialog-panel-unfold"],
+		},
 	},
 	defaultVariants: {
 		state: "exited",
 		isModal: false,
 		isDraggable: false,
 		radius: "small",
+		transitionMode: "scaleUp",
 	},
 });
 

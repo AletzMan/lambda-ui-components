@@ -46,26 +46,6 @@
 	}
 }
 
-/*
-.lambda-dialog-overlay-entering,
-.lambda-dialog-overlay-entered {
-	opacity: 1;
-}
-
- 
-.lambda-dialog-overlay-exiting {
-	opacity: 0;
-	visibility: visible;
-}
-
- 
-.lambda-dialog-overlay-exited {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-}
-	*/
-
 /* Panel del Diálogo (la caja blanca o de color con el contenido) */
 .lambda-dialog-panel {
 	position: absolute;
@@ -131,27 +111,6 @@
 	}
 }
 
-/* 
-.lambda-dialog-panel-entering {
-	opacity: 0;
-	transform: translateY(-20px);
-}
-
-.lambda-dialog-panel-entered {
-	opacity: 1;
-	transform: translateY(0);
-}
- 
-.lambda-dialog-panel-exiting {
-	opacity: 0;
-	transform: translateY(-20px);
-}
- 
-.lambda-dialog-panel-exited {
-	opacity: 0;
-	transform: translateY(-20px);
-}
-*/
 /* Encabezado del diálogo */
 .lambda-dialog-header {
 	display: grid;

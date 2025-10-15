@@ -27,6 +27,21 @@ const meta: Meta<typeof Dialog> = {
 			},
 			defaultValue: true,
 		},
+		transitionMode: {
+			control: {
+				type: "inline-radio",
+			},
+			options: [
+				"fade",
+				"scaleUp",
+				"unfold",
+				"fadeFromTop",
+				"fadeFromBottom",
+				"fadeFromLeft",
+				"fadeFromRight",
+			],
+			defaultValue: "fade",
+		},
 		backdropType: {
 			control: {
 				type: "inline-radio",
@@ -134,5 +149,6 @@ export const Default: StoryObj<typeof Dialog> = {
 		isDraggable: false,
 		backdropType: "dark",
 		closeOnEscape: true,
+		transitionMode: "scaleUp",
 	},
 };
