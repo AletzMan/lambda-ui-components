@@ -269,10 +269,6 @@
 		&:not(.lambda-checkbox-wrapper-join) {
 			border-color: var(--primary-base-color);
 		}
-
-		& > .lambda-checkbox-icon {
-			color: var(--black-color);
-		}
 	}
 
 	&.lambda-checkbox-wrapper-secondary {
@@ -316,10 +312,6 @@
 
 		&:not(.lambda-checkbox-wrapper-join) {
 			border-color: var(--warning-base-color);
-		}
-
-		& > .lambda-checkbox-icon {
-			color: var(--black-color);
 		}
 	}
 
