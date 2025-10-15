@@ -1,20 +1,13 @@
-import React, {
-	forwardRef,
-	useCallback,
-	useRef,
-	useState,
-	useEffect,
-	useId,
-	useLayoutEffect,
-} from "react";
+import React, { forwardRef, useCallback, useRef, useState, useEffect, useId } from "react";
 import ReactDOM from "react-dom";
 import clsx from "clsx";
 import styles from "./dialog.module.css";
-import { DialogProps, DialogState } from "./dialog.types";
+import { DialogProps } from "./dialog.types";
 import { dialogOverlayVariants, dialogPanelVariants } from "./dialog.variants";
 import { XIcon } from "lucide-react";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { Button } from "../Button/Button";
+import { AnimatePresence, motion } from "framer-motion";
 
 let portalContainer: HTMLElement | null = null;
 
@@ -52,9 +45,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		},
 		ref
 	) => {
-		// Estado interno para controlar la fase de la animación
-		const [animationState, setAnimationState] = useState<DialogState>("exited");
-		const shouldRender = animationState !== "exited";
 		const dialogPanelRef = useRef<HTMLDivElement>(null);
 		const idDialog = "dialog-" + useId();
 		const [modalAnimation, setModalAnimation] = useState(false);
@@ -62,52 +52,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		const [offset, setOffset] = useState({ x: 0, y: 0 });
 		const [startPos, setStartPos] = useState({ x: 0, y: 0 });
 		const { radiusBox } = useUIConfig();
-
-		// --- Efecto principal para gestionar la transición de estados de animación ---
-		useEffect(() => {
-			if (isOpen) {
-				// Si la prop isOpen cambia a true:
-				setAnimationState("entering");
-			} else {
-				// 1. Pasar al estado 'exiting' inmediatamente.
-				setAnimationState("exiting");
-
-				const timer = setTimeout(() => {
-					setAnimationState("exited");
-				}, 500);
-
-				// Limpieza: Limpiar el timer si el componente se desmonta
-				// o si isOpen cambia a true de nuevo antes de que termine la animación de salida.
-				return () => {
-					clearTimeout(timer);
-				};
-			}
-		}, [isOpen]);
-
-		// --- Efecto para manejar la transición de 'entering' a 'entered' ---
-		useLayoutEffect(() => {
-			if (animationState === "entering") {
-				const timer = setTimeout(() => {
-					setAnimationState("entered");
-				}, 50);
-				return () => {
-					clearTimeout(timer);
-				};
-			}
-		}, [animationState]);
-
-		// --- Efecto para manejar el foco inicial al abrir ---
-		useEffect(() => {
-			if (animationState === "entered") {
-				if (initialFocusRef?.current) {
-					initialFocusRef.current.focus();
-				} else if (dialogPanelRef.current) {
-					dialogPanelRef.current.focus();
-				}
-			}
-		}, [animationState, initialFocusRef]);
-
-		// --- Handlers de eventos ---
 
 		// --- Lógica de arrastre ---
 		const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -196,23 +140,10 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 			onClose();
 		}, [onClose]);
 
-		// --- Efecto para gestionar el listener de teclado global (Escape) ---
-		useEffect(() => {
-			// El listener solo se añade/remueve cuando el estado pasa a 'entered' o sale de 'entered'.
-			if (animationState === "entered") {
-				document.addEventListener("keydown", handleKeyDown);
-			} else {
-				document.removeEventListener("keydown", handleKeyDown);
-			}
-
-			// Limpieza: Asegurarse de que el listener siempre se remueva al desmontar el componente.
-			return () => {
-				document.removeEventListener("keydown", handleKeyDown);
-			};
-		}, [animationState, handleKeyDown]);
-
 		// --- Efecto para los eventos de movimiento globales ---
 		useEffect(() => {
+			document.addEventListener("keydown", handleKeyDown);
+
 			if (isDragging) {
 				document.addEventListener("mousemove", handleMouseMove);
 				document.addEventListener("mouseup", handleMouseUp);
@@ -221,6 +152,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 			return () => {
 				document.removeEventListener("mousemove", handleMouseMove);
 				document.removeEventListener("mouseup", handleMouseUp);
+				document.removeEventListener("keydown", handleKeyDown);
 			};
 		}, [isDragging, handleMouseMove, handleMouseUp]);
 
@@ -238,83 +170,87 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 
 		// --- Renderizado ---
 		// Si el estado de animación es 'exited', no renderizamos nada en el Portal.
-		if (!shouldRender) {
-			return null;
-		}
-
-		// Usar createPortal para renderizar el diálogo y su overlay fuera de la jerarquía DOM normal.
 		return ReactDOM.createPortal(
-			// El div principal dentro del portal. Este div envuelve el overlay y el panel.
-			<div ref={ref} className={styles["lambda-dialog-portal-wrapper"]} {...rest}>
-				{/* Overlay: El fondo oscuro detrás del diálogo */}
-				<div
-					className={clsx(
-						dialogOverlayVariants({ state: animationState, isModal, backdropType }),
-						overlayClassName
-					)}
-					onClick={handleOverlayClick}
-				></div>
+			<AnimatePresence initial={false}>
+				{isOpen && (
+					<div ref={ref} className={styles["lambda-dialog-portal-wrapper"]} {...rest}>
+						{/* Overlay animado */}
+						<motion.div
+							key="overlay"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.25 }}
+							className={clsx(dialogOverlayVariants({ isModal, backdropType }), overlayClassName)}
+							onClick={handleOverlayClick}
+						/>
 
-				{/* Panel del Diálogo: La caja principal con el contenido */}
-				<div
-					ref={dialogPanelRef}
-					className={clsx(
-						dialogPanelVariants({
-							state: animationState,
-							isModal: modalAnimation,
-							isDraggable,
-							radius: radiusBox,
-						}),
-						panelClassName
-					)}
-					role="dialog"
-					aria-modal="true"
-					aria-labelledby={title ? idDialog : undefined}
-					tabIndex={-1}
-				>
-					{/* Sección del Encabezado */}
-					{(title || showCloseButton) && (
-						<header
-							className={clsx(styles["lambda-dialog-header"], headerClassName)}
-							onMouseDown={isDraggable ? handleMouseDown : undefined}
+						{/* Panel animado */}
+						<motion.div
+							key="panel"
+							initial={{ opacity: 0, y: -20 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: -20 }}
+							transition={{ duration: 0.3, ease: "easeOut" }}
+							ref={dialogPanelRef}
+							className={clsx(
+								dialogPanelVariants({
+									isModal: modalAnimation,
+									isDraggable,
+									radius: radiusBox,
+								}),
+								panelClassName
+							)}
+							role="dialog"
+							aria-modal="true"
+							aria-labelledby={title ? idDialog : undefined}
+							tabIndex={-1}
 						>
-							{/* Título */}
-							{title && (
-								<div
-									id={title ? idDialog : undefined}
-									className={styles["lambda-dialog-header-title"]}
+							{/* Sección del Encabezado */}
+							{(title || showCloseButton) && (
+								<header
+									className={clsx(styles["lambda-dialog-header"], headerClassName)}
+									onMouseDown={isDraggable ? handleMouseDown : undefined}
 								>
-									{title}
-								</div>
+									{/* Título */}
+									{title && (
+										<div
+											id={title ? idDialog : undefined}
+											className={styles["lambda-dialog-header-title"]}
+										>
+											{title}
+										</div>
+									)}
+									{/* Botón de cerrar */}
+									{showCloseButton && (
+										<Button
+											className={styles["lambda-dialog-close-button"]}
+											variant="text"
+											color="danger"
+											icon={<XIcon />}
+											onClick={handleCloseButtonClick}
+											aria-label="Cerrar diálogo"
+											size="tiny"
+										/>
+									)}
+								</header>
 							)}
-							{/* Botón de cerrar */}
-							{showCloseButton && (
-								<Button
-									className={styles["lambda-dialog-close-button"]}
-									variant="text"
-									color="danger"
-									icon={<XIcon />}
-									onClick={handleCloseButtonClick}
-									aria-label="Cerrar diálogo"
-									size="tiny"
-								/>
+
+							{/* Sección del Cuerpo */}
+							<article className={clsx(styles["lambda-dialog-body"], bodyClassName)}>
+								{children}
+							</article>
+
+							{/* Sección del Pie */}
+							{footer && (
+								<footer className={clsx(styles["lambda-dialog-footer"], footerClassName)}>
+									{footer}
+								</footer>
 							)}
-						</header>
-					)}
-
-					{/* Sección del Cuerpo */}
-					<article className={clsx(styles["lambda-dialog-body"], bodyClassName)}>
-						{children}
-					</article>
-
-					{/* Sección del Pie */}
-					{footer && (
-						<footer className={clsx(styles["lambda-dialog-footer"], footerClassName)}>
-							{footer}
-						</footer>
-					)}
-				</div>
-			</div>,
+						</motion.div>
+					</div>
+				)}
+			</AnimatePresence>,
 			getPortalContainer()
 		);
 	}

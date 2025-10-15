@@ -34,6 +34,12 @@ const meta: Meta<typeof Dialog> = {
 			options: ["dark", "blur", "transparent"],
 			defaultValue: "dark",
 		},
+		closeOnEscape: {
+			control: {
+				type: "boolean",
+			},
+			defaultValue: true,
+		},
 		isModal: {
 			control: {
 				type: "boolean",
@@ -127,5 +133,6 @@ export const Default: StoryObj<typeof Dialog> = {
 		isModal: false,
 		isDraggable: false,
 		backdropType: "dark",
+		closeOnEscape: true,
 	},
 };
