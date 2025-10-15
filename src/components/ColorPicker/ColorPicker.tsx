@@ -627,14 +627,14 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 							<motion.div
 								initial={
 									menuPosition.position === "above"
-										? { opacity: 0, y: 40, scale: 0.8 }
-										: { opacity: 0, y: -40, scale: 0.8 }
+										? { opacity: 0, y: 0, scale: 0.8 }
+										: { opacity: 0, y: 0, scale: 0.8 }
 								}
 								animate={{ opacity: 1, y: 0, scale: 1 }}
 								exit={
 									menuPosition.position === "above"
-										? { opacity: 0, y: 40, scale: 0.8 }
-										: { opacity: 0, y: -40, scale: 0.8 }
+										? { opacity: 0, y: 0, scale: 0.8 }
+										: { opacity: 0, y: 0, scale: 0.8 }
 								}
 								transition={{ type: "spring", stiffness: 300, damping: 24 }}
 								className={clsx(
