@@ -368,38 +368,6 @@
 .lambda-colorpicker-box-view {
 	opacity: 1;
 	pointer-events: auto;
-
-	&:is(.lambda-colorpicker-box-position-below) {
-		transform-origin: top left;
-		animation: animation-dropdown-down 0.2s ease-in-out;
-	}
-
-	&:is(.lambda-colorpicker-box-position-above) {
-		transform-origin: bottom left;
-		animation: animation-dropdown-up 0.2s ease-in-out;
-	}
-}
-
-@keyframes animation-dropdown-down {
-	from {
-		opacity: 0;
-		transform: translateY(-10px) scale(0);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0) scale(1);
-	}
-}
-
-@keyframes animation-dropdown-up {
-	from {
-		opacity: 0;
-		transform: translateY(10px) scale(0.9);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0) scale(1);
-	}
 }
 
 .lambda-colorpicker-preview {
