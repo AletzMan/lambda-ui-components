@@ -4,7 +4,28 @@ import { DrawerProps } from "./drawer.types";
 import { Button } from "../Button/Button";
 import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { Input } from "../Input/Input";
+import { NavigationMenuNode } from "../NavigationMenu/navigationMenu.types";
+import {
+	BarChart3,
+	Clock,
+	Database,
+	DollarSign,
+	FileText,
+	GitBranch,
+	LayoutDashboard,
+	Library,
+	MessageSquare,
+	PackageCheck,
+	Settings,
+	Shield,
+	Terminal,
+	TrendingUp,
+	Upload,
+	Users,
+	Workflow,
+	Zap,
+} from "lucide-react";
+import { NavigationMenu } from "../NavigationMenu/NavigationMenu";
 
 const meta: Meta<typeof Drawer> = {
 	title: "Components/Drawer",
@@ -61,6 +82,147 @@ const meta: Meta<typeof Drawer> = {
 
 export default meta;
 
+const treeDataAppNav: NavigationMenuNode[] = [
+	{
+		id: "dashboard",
+		label: "Dashboard",
+		icon: <LayoutDashboard size={16} />,
+		path: "/app/dashboard",
+		target: "_self",
+	},
+	{
+		id: "data",
+		label: "Datos y Modelos",
+		icon: <Database size={16} />,
+		children: [
+			{
+				id: "data-models",
+				label: "Modelos",
+				icon: <GitBranch size={16} />,
+				path: "/app/data/models",
+				target: "_self",
+			},
+			{
+				id: "data-sources",
+				label: "Fuentes de Datos",
+				icon: <Zap size={16} />,
+				path: "/app/data/sources",
+				target: "_self",
+			},
+			{
+				id: "data-import",
+				label: "Importar",
+				icon: <Upload size={16} />,
+				path: "/app/data/import",
+				disabled: true,
+				target: "_self",
+			},
+		],
+	},
+	// --- NUEVA SECCIÓN: PROCESOS Y TAREAS (Automation/CI/CD) ---
+	{
+		id: "processes",
+		label: "Procesos y Tareas",
+		icon: <Workflow size={16} />,
+		children: [
+			{
+				id: "processes-workflows",
+				label: "Flujos de Trabajo",
+				icon: <PackageCheck size={16} />,
+				path: "/app/processes/workflows",
+				target: "_self",
+			},
+			{
+				id: "processes-schedules",
+				label: "Programación",
+				icon: <Clock size={16} />,
+				path: "/app/processes/schedules",
+				target: "_self",
+			},
+			{
+				id: "processes-logs",
+				label: "Registro de Logs",
+				icon: <Terminal size={16} />,
+				path: "/app/processes/logs",
+				target: "_self",
+			},
+		],
+	},
+	// --- FIN NUEVA SECCIÓN ---
+	{
+		id: "reports",
+		label: "Reportes",
+		icon: <BarChart3 size={16} />,
+		children: [
+			{
+				id: "reports-general",
+				label: "Reporte General",
+				icon: <FileText size={16} />,
+				path: "/app/reports/general",
+				target: "_self",
+			},
+			{
+				id: "reports-finance",
+				label: "Financieros",
+				icon: <DollarSign size={16} />,
+				path: "/app/reports/finance",
+				target: "_self",
+			},
+			{
+				id: "reports-performance",
+				label: "Rendimiento",
+				icon: <TrendingUp size={16} />,
+				path: "/app/reports/performance",
+				target: "_self",
+			},
+		],
+	},
+	{
+		id: "admin",
+		label: "Administración",
+		icon: <Shield size={16} />,
+		children: [
+			{
+				id: "admin-users",
+				label: "Usuarios y Roles",
+				icon: <Users size={16} />,
+				path: "/app/admin/users",
+				target: "_self",
+			},
+			{
+				id: "admin-settings",
+				label: "Configuración Global",
+				icon: <Settings size={16} />,
+				path: "/app/admin/settings",
+				target: "_blank",
+			},
+		],
+	},
+	// --- NUEVA SECCIÓN: SOPORTE Y DOCUMENTACIÓN ---
+	{
+		id: "help",
+		label: "Ayuda y Soporte",
+		icon: <Library size={16} />,
+		children: [
+			{
+				id: "help-docs",
+				label: "Documentación",
+				icon: <Library size={16} />,
+				path: "/app/help/docs",
+				target: "_blank", // Abrir documentación externa en nueva pestaña
+			},
+			{
+				id: "help-tickets",
+				label: "Tickets de Soporte",
+				icon: <MessageSquare size={16} />,
+				path: "/app/help/tickets",
+				target: "_self",
+			},
+		],
+	},
+	// --- FIN NUEVA SECCIÓN ---
+];
+
 const DrawerTemplate = (args: DrawerProps & React.RefAttributes<HTMLDivElement>) => {
 	const [openDrawer, setOpenDrawer] = useState(false);
 	return (
@@ -108,13 +270,9 @@ const DrawerTemplate = (args: DrawerProps & React.RefAttributes<HTMLDivElement>)
 						style={{
 							display: "flex",
 							flexDirection: "column",
-							gap: "2em",
-							padding: "1em 1em 1em 1em",
 						}}
 					>
-						<h2 style={{ textAlign: "left", fontSize: "1em" }}>Form</h2>
-						<Input label="Name" placeholder="John Doe" />
-						<Input label="Email" placeholder="john.doe@example.com" />
+						<NavigationMenu data={treeDataAppNav} alwaysOpen />
 					</div>
 				</Drawer>
 				<Button
