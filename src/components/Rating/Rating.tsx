@@ -5,6 +5,7 @@ import { forwardRef, useEffect, useState } from "react";
 import { RatingProps } from "./rating.types";
 import styles from "./rating.module.css";
 import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { motion } from "framer-motion";
 
 export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 	(
@@ -76,7 +77,11 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 			>
 				<div className={styles["lambda-rating-container"]}>
 					{Array.from({ length: 5 }, (_, index) => (
-						<button
+						<motion.button
+							whileHover={{ scale: 1.2 }}
+							whileTap={{ scale: 0.8 }}
+							whileFocus={{ scale: 1.2 }}
+							transition={{ type: "spring", stiffness: 260, damping: 20 }}
 							key={index}
 							className={ratingItem({
 								size,
@@ -91,7 +96,7 @@ export const Rating = forwardRef<HTMLDivElement, RatingProps>(
 							onMouseLeave={() => handleMouseLeave()}
 						>
 							{type === "string" ? <span>{arrayIcons[index]}</span> : arrayIcons[index]}
-						</button>
+						</motion.button>
 					))}
 				</div>
 				{text && (
