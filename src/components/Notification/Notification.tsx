@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef } from "react";
 import styles from "./notification.module.css";
 import { Bell, CircleAlert, CircleCheck, CircleX, Info, X } from "lucide-react";
 import clsx from "clsx";
@@ -39,49 +39,25 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 		},
 		ref
 	) => {
-		const [isVisible, setIsVisible] = useState(true);
-		const [closing, setClosing] = useState(false);
+		// Elimina el control local de visibilidad y cierre, AnimatePresence lo gestiona
+
 		const { radiusBox } = useUIConfig();
 		const radiusValue = radius ?? radiusBox;
 
-		// Cerrar automáticamente después de la duración especificada
-		useEffect(() => {
-			const timer = setTimeout(() => {
-				setClosing(true); // Comienza la animación de cierre
-			}, duration);
-
-			return () => clearTimeout(timer);
-		}, [duration, onClose]);
-
-		// Después de la animación de cierre, la notificación desaparece
-		useEffect(() => {
-			if (closing) {
-				const timer = setTimeout(() => {
-					setIsVisible(false);
-					if (onClose) onClose(); // Notificamos que cerró
-				}, 600); // Duración de la animación de salida
-
-				return () => clearTimeout(timer);
-			}
-		}, [closing, onClose]);
-
+		// El cierre lo gestiona AnimatePresence/remoción del estado
 		const handleOnCancel = () => {
-			setClosing(true);
-			if (onCancel) onCancel(); // Notificamos que canceló
+			if (onCancel) onCancel();
+			if (onClose) onClose();
 		};
 		const handleOnConfirm = () => {
-			setClosing(true);
-			if (onConfirm) onConfirm(); // Notificamos que confirmó
+			if (onConfirm) onConfirm();
+			if (onClose) onClose();
 		};
-
-		// No renderizamos si la notificación no es visible
-		if (!isVisible) return null;
 
 		return (
 			<div
 				className={clsx(
-					notificationVariants({ notificationType, placement, variant, radius: radiusValue }),
-					closing ? styles["notification-exit"] : styles["notification-active"]
+					notificationVariants({ notificationType, placement, variant, radius: radiusValue })
 				)}
 				{...props}
 				ref={ref}
@@ -100,7 +76,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 						<button
 							className={styles["notification-close-button"]}
 							aria-label="Close notification"
-							onClick={() => setClosing(true)}
+							onClick={handleOnCancel}
 						>
 							<X className={styles["notification-close-button-icon"]} />
 						</button>
