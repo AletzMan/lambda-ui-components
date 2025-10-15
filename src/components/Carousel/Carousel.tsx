@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CarouselProps, Breakpoint } from "./carousel.types";
@@ -15,6 +15,7 @@ import {
 } from "./carousel.variants";
 import { useThumbnalControl } from "./hooks/useThumbnailControl";
 import { useSliderControl } from "./hooks/useSliderConrol";
+import { motion } from "framer-motion";
 
 const DEFAULT_BREAKPOINTS: Breakpoint[] = [
 	{ breakpoint: 0, items: 1 },
@@ -95,6 +96,15 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 			thumbnailTouchStartPos,
 			thumbnailsContainerRef,
 		});
+		// Justo antes del return:
+		const prevActiveIndex = useRef(activeIndex);
+		const isLoopJump =
+			loop &&
+			(Math.abs(activeIndex - prevActiveIndex.current) > 1 ||
+				Math.abs(activeIndex - prevActiveIndex.current) === allSlides.length - 1);
+		useEffect(() => {
+			prevActiveIndex.current = activeIndex;
+		}, [activeIndex]);
 
 		// Determinar si los botones de navegación deben estar deshabilitados
 		const isPrevDisabled = !loop && activeIndex <= 0;
@@ -189,7 +199,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 				);
 			}
 		};
-
 		return (
 			<div
 				className={clsx(
@@ -224,19 +233,64 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 						ref={slideRef}
 					>
 						{allSlides &&
-							allSlides.map((item, index) => (
-								<div
-									key={index}
-									className={clsx(styles["lambda-carousel-item"])}
-									style={
-										orientation === "vertical"
-											? { height: `${itemSize}%` }
-											: { width: `${itemSize}%` }
+							allSlides.map((item, index) => {
+								const isPureFadeMode = slideMode === "single" && visibleItems === 1;
+
+								// 2. Determinar la visibilidad real (ya la tenías)
+								let isVisible = false;
+								if (slideMode === "auto" || visibleItems > 1) {
+									if (!loop) {
+										isVisible = index >= activeIndex && index < activeIndex + visibleItems;
+									} else {
+										const end = activeIndex + visibleItems;
+										isVisible =
+											(index >= activeIndex && index < end) ||
+											(end > allSlides.length && index < end % allSlides.length);
 									}
-								>
-									<div className={clsx(styles["lambda-carousel-item-inner"])}>{item}</div>
-								</div>
-							))}
+								} else {
+									// Si slideMode es "single" (y visibleItems=1), la visibilidad es binaria
+									isVisible = index === activeIndex;
+								}
+
+								// 3. Definir los valores de la animación
+								let animationProps;
+
+								if (isPureFadeMode) {
+									// 🅰️ MODO FADE PURO (Single item, sin desplazamiento visual)
+									animationProps = {
+										opacity: isVisible ? 1 : 0,
+										scale: isVisible ? 1 : 0.98,
+										zIndex: isVisible ? 2 : 1,
+									};
+								} else {
+									// 🅱️ MODO DESPLAZAMIENTO (Auto o Múltiples ítems)
+									// Aplicamos un efecto de enfoque/desenfoque estético, pero manteniendo la opacidad
+									// suficiente para que se vean mientras el contenedor se mueve.
+									animationProps = {
+										// Opacidad a 1 si es visible. Si no es visible, un valor intermedio
+										// para un efecto suave, pero el CSS de overflow lo ocultará.
+										opacity: isVisible ? 1 : 0.4,
+										scale: isVisible ? 1 : 0.95,
+										zIndex: isVisible ? 2 : 1,
+									};
+								}
+
+								return (
+									<motion.div
+										key={index}
+										className={clsx(styles["lambda-carousel-item"])}
+										animate={animationProps} // <-- Usamos el objeto de props calculado
+										transition={{ duration: isLoopJump ? 0 : 0.4, ease: "easeOut" }}
+										style={
+											orientation === "vertical"
+												? { height: `${itemSize}%` }
+												: { width: `${itemSize}%` }
+										}
+									>
+										<div className={clsx(styles["lambda-carousel-item-inner"])}>{item}</div>
+									</motion.div>
+								);
+							})}
 					</div>
 				</div>
 
