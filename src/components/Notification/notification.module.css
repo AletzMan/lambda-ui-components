@@ -2,8 +2,8 @@
 	position: fixed;
 	max-width: 450px;
 	display: flex;
-	flex-flow: column;
-	gap: 5px;
+	flex-direction: column;
+	gap: 8px;
 	padding: var(--padding-md) 0 0 0;
 	height: max-content;
 	z-index: 1000;
@@ -13,8 +13,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	opacity: 0;
-	transform: translateY(0);
+	opacity: 1;
 	overflow: hidden;
 	width: 100%;
 	max-width: 450px;
@@ -22,7 +21,7 @@
 	padding: var(--padding-sm) var(--padding-sm);
 	font-family: var(--font-family);
 	color: var(--foreground-color);
-	transition: all 0.3s ease-in-out;
+	/* No transition ni animation: Framer Motion controla todo */
 
 	&.notification-radius-none {
 		border-radius: var(--border-radius-none);
@@ -1104,7 +1103,7 @@ body[data-theme="light"] {
 }
 
 /* Posiciones de las notificaciones según placement */
-
+/*
 .notification-top-left {
 	animation: fadeInTopLeft 0.5s forwards;
 
@@ -1152,7 +1151,7 @@ body[data-theme="light"] {
 		animation: fadeOutBottomRight 0.5s forwards;
 	}
 }
-
+*/
 .notification-group-top-left {
 	flex-direction: column-reverse;
 	top: 10px;
@@ -1187,7 +1186,7 @@ body[data-theme="light"] {
 	bottom: 10px;
 	right: 10px;
 }
-
+/*
 @keyframes fadeInTopCenter {
 	0% {
 		opacity: 0;
@@ -1331,7 +1330,7 @@ body[data-theme="light"] {
 		transform: translate(100px, 100px);
 	}
 }
-
+*/
 .notification-close-button {
 	background-color: transparent;
 	place-self: center right;

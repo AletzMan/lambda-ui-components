@@ -1,4 +1,5 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
 import { Notification } from "./Notification";
 import { notificationGroupVariants } from "./notification.variant";
 import { NotificationProps } from "./notifications.types";
@@ -20,7 +21,6 @@ interface NotificationContainerProps {
 	 */
 	maxNotifications?: number;
 }
-
 export const NotificationContainer = ({
 	notifications,
 	maxNotifications,
@@ -40,13 +40,29 @@ export const NotificationContainer = ({
 			{Object.entries(groupedNotifications).map(([placement, notifs]) => (
 				<div
 					key={placement}
-					className={` ${notificationGroupVariants({
+					className={notificationGroupVariants({
 						placement: placement as (typeof validPlacements)[number],
-					})}`}
+					})}
 				>
-					{notifs.slice(0, maxNotifications).map((notification) => (
-						<Notification key={notification.id} {...notification} />
-					))}
+					<AnimatePresence initial={false}>
+						{notifs.slice(0, maxNotifications).map((notification) => (
+							<motion.div
+								key={notification.id}
+								layout // <-- ESTA LÍNEA ES LA CLAVE PARA ANIMAR EL REORDENAMIENTO
+								initial={{ opacity: 0, y: 24 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, scale: 0.95, y: -24 }}
+								transition={{
+									opacity: { duration: 0.22 },
+									y: { type: "spring", stiffness: 500, damping: 32, mass: 1 },
+									scale: { duration: 0.16 },
+								}}
+								style={{ width: "100%" }}
+							>
+								<Notification {...notification} />
+							</motion.div>
+						))}
+					</AnimatePresence>
 				</div>
 			))}
 		</>
