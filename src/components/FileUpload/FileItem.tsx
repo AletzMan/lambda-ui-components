@@ -12,6 +12,7 @@ interface FileItemProps extends FileItemVariants {
 	onRemove: (id: string) => void;
 	viewFileSize: boolean;
 	type: "dropzone" | "button";
+	multiple?: boolean;
 	displayMode?: "list" | "thumbnail";
 }
 
@@ -22,6 +23,7 @@ export const FileItem = ({
 	invalid,
 	viewFileSize,
 	type,
+	multiple,
 	displayMode,
 }: FileItemProps) => {
 	const isImage = fileData.file.type.startsWith("image/");
@@ -48,7 +50,7 @@ export const FileItem = ({
 
 	return (
 		<>
-			{type === "button" || displayMode === "list" ? (
+			{type === "button" || displayMode === "list" || (type === "dropzone" && !multiple) ? (
 				<li
 					key={fileData.id}
 					className={clsx(fileItem({ size, invalid, isImage, type, displayMode }))}
@@ -76,8 +78,8 @@ export const FileItem = ({
 					</button>
 				</li>
 			) : (
-				type === "dropzone" &&
-				displayMode === "thumbnail" && (
+				(type === "dropzone" && !multiple) ||
+				(displayMode === "thumbnail" && (
 					<li
 						key={fileData.id}
 						className={clsx(fileItem({ size, invalid, isImage, type, displayMode }))}
@@ -121,7 +123,7 @@ export const FileItem = ({
 							</div>
 						</Tooltip>
 					</li>
-				)
+				))
 			)}
 		</>
 	);

@@ -386,6 +386,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										fileData={fileData}
 										onRemove={handleRemoveFile}
 										size={size}
+										multiple={multiple}
 										invalid={invalid}
 										viewFileSize={viewFileSize}
 										type="dropzone"
@@ -486,6 +487,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 										invalid={invalid}
 										viewFileSize={viewFileSize}
 										type="button"
+										multiple={multiple}
 									/>
 								))}
 							</ul>
