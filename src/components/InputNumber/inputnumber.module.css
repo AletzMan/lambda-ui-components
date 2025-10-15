@@ -285,7 +285,7 @@ input[type="number"] {
 }
 
 .lambda-number-outline {
-	background-color: var(--surface-a);
+	background-color: var(--background-color);
 	border: var(--border-width-xs) solid var(--border-color);
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
@@ -401,7 +401,7 @@ input[type="number"] {
 
 	&:disabled {
 		cursor: not-allowed;
-		background-color: var(--surface-a);
+		opacity: 0.5;
 		color: var(--surface-d);
 	}
 
