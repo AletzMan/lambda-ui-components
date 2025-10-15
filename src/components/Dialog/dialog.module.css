@@ -140,7 +140,7 @@
 	overflow-y: auto;
 	height: 100%;
 	color: var(--foreground-color);
-	font-size: var(--font-size-md);
+	font-size: var(--font-size-sm);
 }
 
 /* Pie del diálogo (área de acciones) */

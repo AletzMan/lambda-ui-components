@@ -126,7 +126,7 @@ const DialogTemplate = (args: DialogProps & React.RefAttributes<HTMLDivElement>)
 						</>
 					}
 				>
-					<div style={{ display: "flex", flexDirection: "column", gap: "2em", padding: "1em" }}>
+					<div style={{ display: "flex", flexDirection: "column", gap: "2em", padding: "3em 1em" }}>
 						<p>¿Estás seguro de que deseas realizar esta acción?</p>
 					</div>
 				</Dialog>
