@@ -147,11 +147,11 @@
 .lambda-carousel-item-inner {
 	pointer-events: none;
 	user-select: none;
-	padding: var(--padding-none) var(--padding-xs);
 	height: 100%;
 
 	& > img {
 		pointer-events: none;
+		width: 100%;
 		aspect-ratio: 16/8;
 	}
 }
@@ -159,12 +159,12 @@
 .lambda-carousel-button {
 	position: absolute;
 	height: 3.5em;
-	width: 2em;
+	padding: var(--padding-xs) var(--padding-xs);
 	z-index: 10;
 }
 
 .lambda-carousel-button-prev {
-	left: var(--gap-md);
+	left: calc(var(--gap-2xs) + var(--gap-xs));
 
 	&.lambda-carousel-button-horizontal {
 		transform: translateY(-50%);
@@ -186,7 +186,7 @@
 }
 
 .lambda-carousel-button-next {
-	right: var(--gap-md);
+	right: calc(var(--gap-xs) + var(--gap-2xs));
 
 	&.lambda-carousel-button-horizontal {
 		transform: translateY(-50%);
