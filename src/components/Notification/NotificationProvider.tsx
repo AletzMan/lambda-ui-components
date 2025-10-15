@@ -13,6 +13,10 @@ const NotificationContext = createContext<NotificationContextType | undefined>(u
 export const NotificationProvider = ({ children, maxNotifications = 4, placement: defaultPlacement, duration: defaultDuration }: { children?: ReactNode, maxNotifications?: number, placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right", duration?: number }) => {
     const [notifications, setNotifications] = useState<NotificationProps[]>([]);
 
+    const removeNotification = (id: string) => {
+        setNotifications((prev) => prev.filter((n) => n.id !== id));
+    };
+
     const showNotification = (props: Omit<NotificationProps, "id">) => {
         const id = uuidv4();
         const newNotification: NotificationProps = {
@@ -20,6 +24,7 @@ export const NotificationProvider = ({ children, maxNotifications = 4, placement
             placement: props.placement ?? defaultPlacement, // Prioriza props.placement
             duration: props.duration ?? defaultDuration, // Prioriza props.duration
             id,
+            onClose: () => removeNotification(id),
         };
 
         setNotifications((prev) => {
@@ -33,6 +38,7 @@ export const NotificationProvider = ({ children, maxNotifications = 4, placement
 
         if (newNotification.duration && newNotification.duration > 0) {
             setTimeout(() => {
+                removeNotification(id);
                 newNotification.onClose?.();
             }, newNotification.duration);
         }
