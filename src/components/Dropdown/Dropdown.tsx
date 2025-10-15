@@ -36,7 +36,7 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 		const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef, handleKeyDown } = usePopover<
 			HTMLDivElement,
 			HTMLDivElement
-		>({ x: 0, y: 5 });
+		>({ x: 0, y: 3 });
 		const radiusValue = radius || radiusField;
 		let contextSize, contextRadius, contextDisabled;
 

@@ -312,34 +312,6 @@
 		outline: var(--border-width-sm) solid transparent;
 		outline-offset: var(--border-width-sm);
 	}
-
-	/* triangle */
-	&::after {
-		content: "";
-		position: absolute;
-		top: -5px;
-		left: 6px;
-		z-index: -1;
-		width: 0;
-		height: 0;
-		border-left: 5px solid transparent;
-		border-right: 5px solid transparent;
-		border-bottom: 5px solid var(--background-color);
-	}
-
-	/*Border triangle*/
-	&::before {
-		content: "";
-		position: absolute;
-		top: -6px;
-		left: 5px;
-		z-index: -1;
-		width: 0;
-		height: 0;
-		border-left: 6px solid transparent;
-		border-right: 6px solid transparent;
-		border-bottom: 6px solid var(--border-color);
-	}
 }
 
 .lambda-dropdown-item {
