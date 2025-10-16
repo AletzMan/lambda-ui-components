@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TableProps } from "./table.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Tag } from "../Tag/Tag";
+import { useState } from "react";
 
 const meta: Meta<typeof Table> = {
 	title: "Components/Table",
@@ -30,17 +31,11 @@ export default meta;
 
 type Story = StoryObj<typeof Table>;
 
-interface User {
-	id: number;
-	name: string;
-	email: string;
-	age: number;
-	active: boolean;
-	joined: string;
-	city: string;
-}
-
 const TableComponent = (args: Partial<TableProps>) => {
+	const [currentPage, setCurrentPage] = useState(1);
+	const [sortBy, setSortBy] = useState<SortBy>("id");
+	const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+	const users = getUsersPaginatedAndSorted(currentPage, 3, sortBy, sortDirection);
 	return (
 		<ContainerComponent title="Table" subtitle={args.variant?.toString() || ""}>
 			<div
@@ -55,25 +50,17 @@ const TableComponent = (args: Partial<TableProps>) => {
 					{...args}
 					size={args.size || "medium"}
 					pagination={{
-						page: 1,
-						totalPages: Math.ceil(USERS_DATA.length / 3),
+						page: currentPage,
+						totalPages: users.pagination.totalPages,
+						onPageChange: (page) => {
+							setCurrentPage(page);
+						},
 					}}
-					data={USERS_DATA}
-					renderRow={(item) => (
-						<Table.Row key={item.id}>
-							<Table.Cell align="center">{item.id}</Table.Cell>
-							<Table.Cell align="center">{item.name}</Table.Cell>
-							<Table.Cell align="center">{item.age}</Table.Cell>
-							<Table.Cell align="center">
-								{item.active ? (
-									<Tag color="success" size="tiny" text="Active" variant="subtle" />
-								) : (
-									<Tag color="danger" size="tiny" text="Inactive" variant="subtle" />
-								)}
-							</Table.Cell>
-							<Table.Cell align="center">{item.joined}</Table.Cell>
-						</Table.Row>
-					)}
+					data={users.data}
+					onSortColumn={(column, direction, _type) => {
+						setSortBy(column as SortBy);
+						setSortDirection(direction);
+					}}
 				>
 					<Table.Header>
 						<Table.Row>
@@ -94,6 +81,21 @@ const TableComponent = (args: Partial<TableProps>) => {
 							</Table.ColumnHeader>
 						</Table.Row>
 					</Table.Header>
+					{users.data.map((item) => (
+						<Table.Row key={item.id}>
+							<Table.Cell align="center">{item.id}</Table.Cell>
+							<Table.Cell align="center">{item.name}</Table.Cell>
+							<Table.Cell align="center">{item.age}</Table.Cell>
+							<Table.Cell align="center">
+								{item.active ? (
+									<Tag color="success" size="tiny" text="Active" variant="subtle" />
+								) : (
+									<Tag color="danger" size="tiny" text="Inactive" variant="subtle" />
+								)}
+							</Table.Cell>
+							<Table.Cell align="center">{item.joined}</Table.Cell>
+						</Table.Row>
+					))}
 				</Table>
 			</div>
 		</ContainerComponent>
@@ -135,6 +137,38 @@ export const Striped: Story = {
 		rowsPerPage: 5,
 	},
 };
+
+export interface User {
+	id: number;
+	name: string;
+	email: string;
+	age: number;
+	active: boolean;
+	joined: string;
+	city: string;
+}
+
+export type SortDirection = "asc" | "desc";
+
+/** Define los campos válidos para la ordenación. */
+export type SortBy = keyof User;
+
+/** Define la estructura de la respuesta de la API para paginación. */
+interface PaginatedResponse<T> {
+	data: T[];
+	pagination: {
+		totalItems: number;
+		totalPages: number;
+		currentPage: number;
+		itemsPerPage: number;
+		hasNextPage: boolean;
+		hasPreviousPage: boolean;
+		sortBy: SortBy;
+		sortDirection: SortDirection;
+	};
+}
+
+// --- Datos de Usuario Proporcionados ---
 
 const USERS_DATA: User[] = [
 	{
@@ -588,3 +622,64 @@ const USERS_DATA: User[] = [
 		city: "Dover",
 	},
 ];
+
+/**
+ * Simula la respuesta de una API de paginación de usuarios.
+ * @param page La página solicitada (base 1).
+ * @param limit El número de ítems por página.
+ * @returns Un objeto de respuesta paginado.
+ */
+function getUsersPaginatedAndSorted(
+	page: number,
+	limit: number,
+	sortBy: SortBy = "id", // Default: ordenar por ID
+	sortDirection: SortDirection = "asc" // Default: orden ascendente
+): PaginatedResponse<User> {
+	const totalItems = USERS_DATA.length;
+	const totalPages = Math.ceil(totalItems / limit);
+
+	// 1. Clonar y Ordenar los Datos
+	const sortedData = [...USERS_DATA].sort((a, b) => {
+		const aValue = a[sortBy];
+		const bValue = b[sortBy];
+
+		let comparison = 0;
+
+		// Lógica de comparación para diferentes tipos de datos
+		if (typeof aValue === "string" && typeof bValue === "string") {
+			// Comparación de cadenas de texto (insensible a mayúsculas/minúsculas)
+			comparison = aValue.localeCompare(bValue, "en", { sensitivity: "base" });
+		} else if (aValue > bValue) {
+			comparison = 1;
+		} else if (aValue < bValue) {
+			comparison = -1;
+		}
+
+		// Aplicar la dirección
+		return sortDirection === "desc" ? comparison * -1 : comparison;
+	});
+
+	// 2. Aplicar Paginación
+	const currentPage = Math.min(Math.max(1, page), totalPages);
+	const startIndex = (currentPage - 1) * limit;
+	const endIndex = startIndex + limit;
+	const paginatedData = sortedData.slice(startIndex, endIndex);
+
+	// 3. Devolver la Respuesta con Metadatos
+	const hasNextPage = currentPage < totalPages;
+	const hasPreviousPage = currentPage > 1;
+
+	return {
+		data: paginatedData,
+		pagination: {
+			totalItems: totalItems,
+			totalPages: totalPages,
+			currentPage: currentPage,
+			itemsPerPage: limit,
+			hasNextPage: hasNextPage,
+			hasPreviousPage: hasPreviousPage,
+			sortBy: sortBy,
+			sortDirection: sortDirection,
+		},
+	};
+}

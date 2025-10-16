@@ -1,12 +1,4 @@
-import {
-	createContext,
-	useContext,
-	ReactNode,
-	HTMLAttributes,
-	useState,
-	useMemo,
-	useCallback,
-} from "react";
+import { createContext, useContext, ReactNode, HTMLAttributes, useState, useCallback } from "react";
 import {
 	containerVariants,
 	tableVariants,
@@ -26,24 +18,7 @@ import {
 	useUIConfig,
 	useTranslation,
 } from "../../_internal/hooks/translation/LambdaConfigProvider";
-
-// Definición de tipos
-interface SortConfig {
-	key: string | null;
-	direction: "asc" | "desc";
-	type?: "string" | "number" | "date" | "boolean";
-}
-
-interface TableProperties {
-	size?: "tiny" | "small" | "medium" | "large";
-	variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
-	sortConfig: SortConfig;
-	handleSort: (key: string, type: string) => void;
-	pagination?: {
-		page?: number;
-		totalPages?: number;
-	};
-}
+import { SortConfig, TableProperties } from "./table.types";
 
 const TableContext = createContext<TableProperties | undefined>(undefined);
 
@@ -61,17 +36,18 @@ const TableRoot = <T,>({
 	variant = "soft",
 	children,
 	data,
-	renderRow,
 	rowsPerPage = 10,
 	pagination = { page: 1, totalPages: 1 },
+	onSortColumn,
 	...props
 }: {
 	children: ReactNode;
 	data: T[];
-	renderRow: (item: T) => ReactNode;
+	onSortColumn?: (column: string, direction: "asc" | "desc", type: SortConfig["type"]) => void;
 	pagination?: {
 		page?: number;
 		totalPages?: number;
+		onPageChange?: (page: number) => void;
 	};
 } & HTMLAttributes<HTMLTableElement> & {
 		size?: "tiny" | "small" | "medium" | "large";
@@ -83,44 +59,21 @@ const TableRoot = <T,>({
 	const { radiusBox } = useUIConfig();
 	const { t } = useTranslation();
 
-	const sortedData = useMemo(() => {
-		if (!sortConfig.key || !data) {
-			return data;
-		}
-		const sortableData = [...data];
-		sortableData.sort((a, b) => {
-			const aValue = a[sortConfig.key as keyof T];
-			const bValue = b[sortConfig.key as keyof T];
-			let compare = 0;
-
-			if (sortConfig.type === "string" || typeof aValue === "string") {
-				compare = String(aValue).localeCompare(String(bValue));
-			} else if (sortConfig.type === "number" || typeof aValue === "number") {
-				compare = Number(aValue) - Number(bValue);
-			} else if (sortConfig.type === "date") {
-				compare = new Date(aValue as string).getTime() - new Date(bValue as string).getTime();
-			} else if (sortConfig.type === "boolean") {
-				compare = aValue === bValue ? 0 : aValue ? 1 : -1;
-			}
-
-			return sortConfig.direction === "asc" ? compare : -compare;
-		});
-		return sortableData;
-	}, [data, sortConfig]);
-
-	const handleSort = useCallback((key: string, type: string) => {
-		setSortConfig((prevConfig) => ({
-			key,
-			direction: prevConfig.key === key && prevConfig.direction === "asc" ? "desc" : "asc",
-			type: type as SortConfig["type"],
-		}));
-	}, []);
-
-	const [currentPage, setCurrentPage] = useState(1);
-	const totalPages = Math.ceil(sortedData.length / (maxRows && maxRows > 0 ? maxRows : 10));
+	const handleSort = useCallback(
+		(key: string, type: string) => {
+			const prevDirection = sortConfig.direction;
+			onSortColumn?.(key, prevDirection === "asc" ? "desc" : "asc", type as SortConfig["type"]);
+			setSortConfig({
+				key,
+				direction: prevDirection === "asc" ? "desc" : "asc",
+				type: type as SortConfig["type"],
+			});
+		},
+		[sortConfig]
+	);
 
 	const handlePageChange = (page: number) => {
-		setCurrentPage(page);
+		pagination.onPageChange?.(page);
 	};
 
 	return (
@@ -132,7 +85,7 @@ const TableRoot = <T,>({
 						size="tiny"
 						onChange={(e) => {
 							setMaxRows(Number(e));
-							setCurrentPage(1);
+							handlePageChange(1);
 						}}
 						options={[
 							{
@@ -157,29 +110,21 @@ const TableRoot = <T,>({
 				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
 					<table className={tableVariants({ size, variant })} {...props}>
 						{children}
-						<TableBody>
-							{sortedData
-								.map(renderRow)
-								.slice(
-									(currentPage - 1) * (maxRows && maxRows > 0 ? maxRows : 1),
-									currentPage * (maxRows && maxRows > 0 ? maxRows : 10)
-								)}
-						</TableBody>
 					</table>
 				</div>
 				{pagination && (
 					<div className={styles["lambda-table-pagination"]}>
 						<div className={styles["lambda-table-pagination-text"]}>
 							{t("table.rows", {
-								from: (currentPage - 1) * maxRows + 1,
-								to: currentPage * maxRows,
-								total: sortedData.length,
+								from: ((pagination?.page || 1) - 1) * maxRows + 1,
+								to: (pagination?.page || 1) * maxRows,
+								total: data.length,
 							})}
 						</div>
 						<Pagination
 							className={styles["lambda-table-pagination-pagination"]}
-							currentPage={currentPage}
-							totalPages={totalPages}
+							currentPage={pagination.page || 1}
+							totalPages={pagination.totalPages || 1}
 							maxVisiblePages={1}
 							showFirstLastButtons
 							showPrevNextButtons
