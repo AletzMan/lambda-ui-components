@@ -125,7 +125,7 @@ const TableRoot = <T,>({
 							className={styles["lambda-table-pagination-pagination"]}
 							currentPage={pagination.page || 1}
 							totalPages={pagination.totalPages || 1}
-							maxVisiblePages={1}
+							maxVisiblePages={2}
 							showFirstLastButtons
 							showPrevNextButtons
 							onPageChange={handlePageChange}
