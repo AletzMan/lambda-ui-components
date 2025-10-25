@@ -36,7 +36,7 @@ const TableComponent = (args: Partial<TableProps>) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [sortBy, setSortBy] = useState<SortBy>("id");
 	const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-	const [maxRows, setMaxRows] = useState(args.rowsPerPage || 10);
+	const [maxRows, setMaxRows] = useState(5);
 	const users = getUsersPaginatedAndSorted(currentPage, maxRows, sortBy, sortDirection);
 	return (
 		<ContainerComponent title="Table" subtitle={args.variant?.toString() || ""}>
@@ -92,6 +92,8 @@ const TableComponent = (args: Partial<TableProps>) => {
 					pagination={{
 						page: currentPage,
 						totalPages: users.pagination.totalPages,
+						rowsPerPage: maxRows,
+						totalRows: users.pagination.totalItems,
 						onPageChange: (page) => {
 							setCurrentPage(page);
 						},
@@ -147,7 +149,6 @@ export const Bordered: Story = {
 	args: {
 		variant: "bordered",
 		size: "medium",
-		rowsPerPage: 5,
 	},
 };
 
@@ -156,7 +157,6 @@ export const Soft: Story = {
 	args: {
 		variant: "soft",
 		size: "medium",
-		rowsPerPage: 5,
 	},
 };
 
@@ -165,7 +165,6 @@ export const Underlined: Story = {
 	args: {
 		variant: "underlined",
 		size: "medium",
-		rowsPerPage: 5,
 	},
 };
 
@@ -174,7 +173,6 @@ export const Striped: Story = {
 	args: {
 		variant: "striped",
 		size: "medium",
-		rowsPerPage: 5,
 	},
 };
 

@@ -27,10 +27,6 @@ export interface TableProps extends Omit<React.HTMLAttributes<HTMLTableElement>,
 	 * Define el estilo visual de la tabla, como la apariencia de las filas y las celdas.
 	 */
 	variant?: TableVariants["variant"];
-	/**
-	 * Define el número de filas por página.
-	 */
-	rowsPerPage?: number;
 
 	onSortColumn?: (column: string, direction: "asc" | "desc", type: SortConfig["type"]) => void;
 	/**
@@ -45,6 +41,14 @@ export interface TableProps extends Omit<React.HTMLAttributes<HTMLTableElement>,
 		 * Define el número total de páginas.
 		 */
 		totalPages?: number;
+		/**
+		 * Define el número de filas por página.
+		 */
+		rowsPerPage?: number;
+		/**
+		 * Define el número total de filas.
+		 */
+		totalRows?: number;
 		/**
 		 * Define la función de callback que se ejecuta cuando se cambia la página.
 		 */

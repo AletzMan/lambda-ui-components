@@ -35,8 +35,7 @@ const TableRoot = <T,>({
 	variant = "soft",
 	children,
 	data,
-	rowsPerPage = 10,
-	pagination = { page: 1, totalPages: 1 },
+	pagination = { page: 1, rowsPerPage: 10, totalPages: 1, totalRows: 0 },
 	onSortColumn,
 	...props
 }: {
@@ -46,15 +45,15 @@ const TableRoot = <T,>({
 	pagination?: {
 		page?: number;
 		totalPages?: number;
+		rowsPerPage?: number;
+		totalRows?: number;
 		onPageChange?: (page: number) => void;
 	};
 } & HTMLAttributes<HTMLTableElement> & {
 		size?: "tiny" | "small" | "medium" | "large";
 		variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
-		rowsPerPage?: number;
 	}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
-	const [maxRows, setMaxRows] = useState(rowsPerPage);
 	const { radiusBox } = useUIConfig();
 	const { t } = useTranslation();
 
@@ -87,9 +86,9 @@ const TableRoot = <T,>({
 					<div className={styles["lambda-table-pagination"]}>
 						<div className={styles["lambda-table-pagination-text"]}>
 							{t("table.rows", {
-								from: ((pagination?.page || 1) - 1) * maxRows + 1,
-								to: (pagination?.page || 1) * maxRows,
-								total: data.length,
+								from: ((pagination?.page || 1) - 1) * (pagination?.rowsPerPage || 10) + 1,
+								to: (pagination?.page || 1) * (pagination?.rowsPerPage || 10),
+								total: pagination.totalRows,
 							})}
 						</div>
 						<Pagination
