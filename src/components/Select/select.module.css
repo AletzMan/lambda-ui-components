@@ -2,7 +2,10 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	gap: var(--padding-xs);
 	font-family: var(--font-family);
+	max-width: max-content;
+	width: 100%;
 
 	&:focus-within {
 		z-index: 1;
@@ -26,12 +29,12 @@
 }
 
 .select-label {
-	position: absolute;
-	top: -1.4em;
 	display: block;
 	font-weight: var(--font-weight-semibold);
 	font-family: var(--font-family);
 	color: var(--foreground-label-color);
+	min-width: max-content;
+	width: max-content;
 
 	&.select-label-required {
 		&::after {
@@ -41,7 +44,7 @@
 	}
 
 	&.select-label-tiny {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.select-label-small {
