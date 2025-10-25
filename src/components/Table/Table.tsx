@@ -13,7 +13,6 @@ import { ArrowDownWideNarrow, ArrowUpWideNarrow } from "lucide-react";
 import styles from "./table.module.css";
 import { Pagination } from "../Pagination/Pagination";
 import clsx from "clsx";
-import { Select } from "../Select/Select";
 import {
 	useUIConfig,
 	useTranslation,
@@ -79,34 +78,6 @@ const TableRoot = <T,>({
 	return (
 		<TableContext.Provider value={{ size, variant, sortConfig, handleSort }}>
 			<div className={containerVariants({ variant, radius: radiusBox })}>
-				<div className={styles["lambda-table-pagination-select"]}>
-					<Select
-						value={maxRows.toString()}
-						size="tiny"
-						onChange={(e) => {
-							setMaxRows(Number(e));
-							handlePageChange(1);
-						}}
-						options={[
-							{
-								value: "5",
-								label: t("table.page", { count: 5 }),
-							},
-							{
-								value: "10",
-								label: t("table.page", { count: 10 }),
-							},
-							{
-								value: "20",
-								label: t("table.page", { count: 20 }),
-							},
-							{
-								value: "50",
-								label: t("table.page", { count: 50 }),
-							},
-						]}
-					/>
-				</div>
 				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
 					<table className={tableVariants({ size, variant })} {...props}>
 						{children}

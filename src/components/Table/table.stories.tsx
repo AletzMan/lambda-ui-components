@@ -4,6 +4,7 @@ import { TableProps } from "./table.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Tag } from "../Tag/Tag";
 import { useState } from "react";
+import { Select } from "../Select/Select";
 
 const meta: Meta<typeof Table> = {
 	title: "Components/Table",
@@ -35,17 +36,56 @@ const TableComponent = (args: Partial<TableProps>) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [sortBy, setSortBy] = useState<SortBy>("id");
 	const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-	const users = getUsersPaginatedAndSorted(currentPage, 3, sortBy, sortDirection);
+	const [maxRows, setMaxRows] = useState(args.rowsPerPage || 10);
+	const users = getUsersPaginatedAndSorted(currentPage, maxRows, sortBy, sortDirection);
 	return (
 		<ContainerComponent title="Table" subtitle={args.variant?.toString() || ""}>
 			<div
 				style={{
 					display: "flex",
 					alignItems: "flex-start",
+					flexDirection: "column",
 					justifyContent: "flex-start",
+					gap: "0.5rem",
 					width: "90svw",
 				}}
 			>
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "flex-end",
+						gap: "1rem",
+						width: "100%",
+					}}
+				>
+					<Select
+						label="Rows per page"
+						value={maxRows.toString()}
+						size="tiny"
+						onChange={(e) => {
+							setMaxRows(Number(e));
+						}}
+						options={[
+							{
+								value: "5",
+								label: "5",
+							},
+							{
+								value: "10",
+								label: "10",
+							},
+							{
+								value: "20",
+								label: "20",
+							},
+							{
+								value: "50",
+								label: "50",
+							},
+						]}
+					/>
+				</div>
 				<Table
 					{...args}
 					size={args.size || "medium"}
