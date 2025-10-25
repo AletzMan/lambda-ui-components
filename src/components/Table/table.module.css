@@ -6,6 +6,7 @@
 	box-sizing: border-box;
 	font-family: var(--font-family);
 
+	/*
 	&:is(.lambda-table-container-soft) {
 		border: var(--border-width-xs) solid transparent;
 	}
@@ -21,7 +22,7 @@
 	&:is(.lambda-table-container-striped) {
 		border: var(--border-width-xs) solid var(--border-color);
 	}
-
+*/
 	&:is(.lambda-table-container-radius-none) {
 		border-radius: var(--border-radius-none);
 	}
@@ -49,6 +50,11 @@
 	box-sizing: border-box;
 	overflow-x: auto;
 	overflow-y: hidden;
+
+	&:is(.lambda-table-container-table-bordered) {
+		border: 1px solid var(--border-color);
+		border-bottom: none;
+	}
 }
 
 .lambda-table {
@@ -80,6 +86,12 @@
 
 .lambda-table-header {
 	background-color: var(--surface-a);
+
+	& .lambda-table-row:is(.lambda-table-row-bordered) {
+		& .lambda-table-header-cell {
+			border-top: none;
+		}
+	}
 }
 
 .lambda-table-header-cell {
@@ -267,7 +279,14 @@
 
 .lambda-table-row {
 	background-color: var(--background-color);
-	&:last-child {
+
+	&:is(.lambda-table-row-striped) {
+		&:is(:nth-child(odd)) {
+			background-color: var(--surface-b);
+		}
+	}
+
+	&:is(:last-child) {
 		& .lambda-table-cell {
 			border-bottom: 1px solid var(--surface-a);
 		}
