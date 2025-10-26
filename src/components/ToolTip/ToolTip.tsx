@@ -74,6 +74,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 		const [tooltipPositionStyle, setTooltipPositionStyle] = useState<
 			{ top?: number; left?: number } | undefined
 		>(undefined);
+		// Estado para almacenar la posición efectiva (real) del tooltip
+		const [effectivePosition, setEffectivePosition] = useState<TooltipPosition>(position);
 
 		// Refs para el div que envuelve el target y el elemento del tooltip en el Portal
 		const targetWrapperRef = useRef<HTMLDivElement>(null);
@@ -187,9 +189,46 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
 				let top = 0;
 				let left = 0;
+				let nextPosition: TooltipPosition = position;
 
-				// Calcular la posición basada en la prop 'position'
-				switch (position) {
+				// Función para verificar si hay espacio suficiente en la dirección deseada
+				const fits = (pos: TooltipPosition) => {
+					switch (pos) {
+						case "top-left":
+						case "top-center":
+						case "top-right":
+							return targetRect.top - tooltipRect.height - offset >= 0;
+						case "bottom-left":
+						case "bottom-center":
+						case "bottom-right":
+							return targetRect.bottom + tooltipRect.height + offset <= window.innerHeight;
+						case "left-center":
+							return targetRect.left - tooltipRect.width - offset >= 0;
+						case "right-center":
+							return targetRect.right + tooltipRect.width + offset <= window.innerWidth;
+						default:
+							return true;
+					}
+				};
+
+				// Mapeo de opuestos
+				const opposite: Record<TooltipPosition, TooltipPosition> = {
+					"top-left": "bottom-left",
+					"top-center": "bottom-center",
+					"top-right": "bottom-right",
+					"bottom-left": "top-left",
+					"bottom-center": "top-center",
+					"bottom-right": "top-right",
+					"left-center": "right-center",
+					"right-center": "left-center",
+				};
+
+				// Si no cabe en la posición deseada, usar la opuesta si cabe
+				if (!fits(position) && fits(opposite[position])) {
+					nextPosition = opposite[position];
+				}
+
+				switch (nextPosition) {
 					case "top-left":
 						top = targetRect.top - tooltipRect.height - offset;
 						left = targetRect.left;
@@ -219,10 +258,14 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 						left = targetRect.left - tooltipRect.width - offset;
 						break;
 					case "right-center":
+						if (targetRect.right + tooltipRect.width + offset > window.innerWidth) {
+							left = targetRect.left - tooltipRect.width - offset;
+							nextPosition = "left-center";
+						} else {
+							left = targetRect.right + offset;
+						}
 						top = targetRect.top + targetRect.height / 2 - tooltipRect.height / 2;
-						left = targetRect.right + offset;
 						break;
-					// No hay lógica para left/right positions por ahora
 				}
 
 				// Nota: Aquí podrías añadir lógica para ajustar la posición si el tooltip se sale de la pantalla.
@@ -233,6 +276,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 					top: top + window.scrollY,
 					left: left,
 				});
+				setEffectivePosition(nextPosition);
 			} else {
 				// Resetear la posición cuando el tooltip no es visible
 				// Esto evita que el tooltip parpadee en la última posición visible antes de ocultarse completamente.
@@ -251,6 +295,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
 					let top = 0;
 					let left = 0;
+					let nextPosition: TooltipPosition = position;
 
 					// Recalcular lógica de posición (duplicado, idealmente extraer a una función)
 					switch (position) {
@@ -283,8 +328,13 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 							left = targetRect.left - tooltipRect.width - offset;
 							break;
 						case "right-center":
+							if (targetRect.right + tooltipRect.width + offset > window.innerWidth) {
+								left = targetRect.left - tooltipRect.width - offset;
+								position = "left-center";
+							} else {
+								left = targetRect.right + offset;
+							}
 							top = targetRect.top + targetRect.height / 2 - tooltipRect.height / 2;
-							left = targetRect.right + offset;
 							break;
 					}
 
@@ -292,6 +342,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 						top: top + window.scrollY,
 						left: left + window.scrollX,
 					});
+					setEffectivePosition(nextPosition);
 				}
 			};
 
@@ -413,10 +464,10 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 						}}
 						// Aplicar variantes CVA para el contenedor ( variant, position para estilos específicos)
 						className={clsx(
-							tooltipContainer({ color, position, radius: radiusValue }),
+							tooltipContainer({ color, position: effectivePosition, radius: radiusValue }),
 							{ [styles.visible]: isVisible },
 							tooltipArrow({
-								arrowPosition: mapTooltipPositionToArrowPosition(position),
+								arrowPosition: mapTooltipPositionToArrowPosition(effectivePosition),
 								color,
 							})
 						)}
