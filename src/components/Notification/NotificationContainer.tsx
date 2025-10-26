@@ -61,9 +61,10 @@ export const NotificationContainer = ({
 										animate={animation.animate}
 										exit={animation.exit}
 										transition={{
-											opacity: { duration: 0.22 },
-											y: { type: "spring", stiffness: 500, damping: 32, mass: 1 },
-											scale: { duration: 0.16 },
+											opacity: { duration: 0.5 },
+											y: { type: "spring", stiffness: 300, damping: 32, mass: 2 },
+											x: { type: "spring", stiffness: 300, damping: 32, mass: 2 },
+											scale: { duration: 0.5 },
 										}}
 										style={{ width: "100%" }}
 									>
@@ -83,39 +84,39 @@ const getAnimationByPlacement = (placement: string) => {
 	switch (placement) {
 		case "top-left":
 			return {
-				initial: { opacity: 0, x: -140, y: 0, zIndex: 1 },
+				initial: { opacity: 0, x: -350, y: 0, zIndex: 1 },
 				animate: { opacity: 1, x: 0, y: 0, zIndex: 2 },
-				exit: { opacity: 0, x: -140, y: 0, scale: 0.95, zIndex: 1 },
+				exit: { opacity: 0, x: -350, y: 0, scale: 0.95, zIndex: 1 },
 			};
 		case "top-center":
 			return {
-				initial: { opacity: 0, y: -40, zIndex: 1 },
-				animate: { opacity: 1, y: 0, zIndex: 2 },
-				exit: { opacity: 0, y: -40, scale: 0.95, zIndex: 1 },
+				initial: { opacity: 0, y: -80, zIndex: 1, scale: 0.95 },
+				animate: { opacity: 1, y: 0, zIndex: 2, scale: 1 },
+				exit: { opacity: 0, y: -80, scale: 0.95, zIndex: 1 },
 			};
 		case "top-right":
 			return {
-				initial: { opacity: 0, x: 140, y: 0, zIndex: 1 },
+				initial: { opacity: 0, x: 350, y: 0, zIndex: 1 },
 				animate: { opacity: 1, x: 0, y: 0, zIndex: 2 },
-				exit: { opacity: 0, x: 140, y: 0, scale: 0.95, zIndex: 1 },
+				exit: { opacity: 0, x: 350, y: 0, scale: 0.95, zIndex: 1 },
 			};
 		case "bottom-left":
 			return {
-				initial: { opacity: 0, x: -40, y: 24 },
-				animate: { opacity: 1, x: 0, y: 0 },
-				exit: { opacity: 0, x: -40, y: 24, scale: 0.95 },
+				initial: { opacity: 0, x: -350, y: 70, scale: 0.95 },
+				animate: { opacity: 1, x: 0, y: 0, scale: 1 },
+				exit: { opacity: 0, x: -350, y: 70, scale: 0.95 },
 			};
 		case "bottom-center":
 			return {
-				initial: { opacity: 0, y: 40 },
-				animate: { opacity: 1, y: 0 },
-				exit: { opacity: 0, y: 40, scale: 0.95 },
+				initial: { opacity: 0, y: 70, scale: 0.95 },
+				animate: { opacity: 1, y: 0, scale: 1 },
+				exit: { opacity: 0, y: 70, scale: 0.95 },
 			};
 		case "bottom-right":
 			return {
-				initial: { opacity: 0, x: 40, y: 24 },
-				animate: { opacity: 1, x: 0, y: 0 },
-				exit: { opacity: 0, x: 40, y: 24, scale: 0.95 },
+				initial: { opacity: 0, x: 350, y: 70, scale: 0.95 },
+				animate: { opacity: 1, x: 0, y: 0, scale: 1 },
+				exit: { opacity: 0, x: 350, y: 70, scale: 0.95 },
 			};
 		default:
 			return {
