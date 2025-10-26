@@ -10,8 +10,9 @@ export type TooltipPosition =
 	| "top-right"
 	| "bottom-left"
 	| "bottom-center"
-	| "bottom-right";
-// No implementamos posiciones laterales (left/right) inicialmente para mantener la complejidad manejable.
+	| "bottom-right"
+	| "left-center"
+	| "right-center";
 
 // Props para el componente Tooltip
 export interface TooltipProps

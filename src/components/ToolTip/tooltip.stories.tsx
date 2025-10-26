@@ -26,6 +26,8 @@ const meta: Meta<typeof Tooltip> = {
 				"bottom-left",
 				"bottom-center",
 				"bottom-right",
+				"left-center",
+				"right-center",
 			],
 			description: "Position of the tooltip",
 		},

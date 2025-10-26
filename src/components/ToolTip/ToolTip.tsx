@@ -33,6 +33,10 @@ const mapTooltipPositionToArrowPosition = (tooltipPos: TooltipPosition): Tooltip
 			return "top-center";
 		case "bottom-right":
 			return "top-right";
+		case "left-center":
+			return "right-center";
+		case "right-center":
+			return "left-center";
 		// Si añades más posiciones en el futuro, mapearlas aquí
 		default:
 			return "bottom-center";
@@ -210,6 +214,14 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 						top = targetRect.bottom + offset;
 						left = targetRect.right - tooltipRect.width;
 						break;
+					case "left-center":
+						top = targetRect.top + targetRect.height / 2 - tooltipRect.height / 2;
+						left = targetRect.left - tooltipRect.width - offset;
+						break;
+					case "right-center":
+						top = targetRect.top + targetRect.height / 2 - tooltipRect.height / 2;
+						left = targetRect.right + offset;
+						break;
 					// No hay lógica para left/right positions por ahora
 				}
 
@@ -265,6 +277,14 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 						case "bottom-right":
 							top = targetRect.bottom + offset;
 							left = targetRect.right - tooltipRect.width;
+							break;
+						case "left-center":
+							top = targetRect.top + targetRect.height / 2 - tooltipRect.height / 2;
+							left = targetRect.left - tooltipRect.width - offset;
+							break;
+						case "right-center":
+							top = targetRect.top + targetRect.height / 2 - tooltipRect.height / 2;
+							left = targetRect.right + offset;
 							break;
 					}
 
