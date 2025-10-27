@@ -1,0 +1,53 @@
+.codeblock {
+  position: relative;
+  background: #282c34;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
+  overflow: auto;
+  margin: 1rem 0;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #444;
+  background: #23272f;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.tab {
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+}
+.tab.active, .tab:hover {
+  background: #282c34;
+  color: #fff;
+}
+.pre {
+  display: flex;
+  margin: 0;
+  padding: 1rem;
+  background: transparent;
+  overflow-x: auto;
+}
+.lineNumbers {
+  text-align: right;
+  user-select: none;
+  color: #555;
+  padding-right: 1.5rem;
+  border-right: 1px solid #444;
+  margin-right: 1rem;
+}
+.lineNumbers span {
+  display: block;
+  height: 1.5em;
+}
+.code {
+  flex: 1;
+  white-space: pre;
+  background: none;
+}

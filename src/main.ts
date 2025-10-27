@@ -35,3 +35,4 @@ export { Tag } from "./components/Tag/Tag";
 export { TextArea } from "./components/TextArea/TextArea";
 export { Tooltip } from "./components/ToolTip/ToolTip";
 export { TreeView } from "./components/TreeView/TreeView";
+export { default as CodeBlock } from "./components/CodeBlock/CodeBlock";
