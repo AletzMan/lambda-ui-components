@@ -1,6 +1,10 @@
 import React, { useMemo } from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/themes/prism-okaidia.css";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-javascript";
+// Si en el futuro agregas tabs con otros lenguajes, importa aquí: https://prismjs.com/#supported-languages
+
 import styles from "./codeblock.module.css";
 
 export interface CodeTab {
