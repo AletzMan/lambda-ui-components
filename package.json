@@ -18,11 +18,13 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.482.0",
-    "prismjs": "^1.30.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "typescript-plugin-css-modules": "^5.1.0",
     "use-eye-dropper": "^1.7.1"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "prismjs": ">=1.29.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
