@@ -60,3 +60,28 @@
 	white-space: pre;
 	background: none;
 }
+.copy-button {
+	position: absolute;
+	right: var(--padding-sm);
+	top: var(--padding-sm);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #141b1e;
+	padding: var(--padding-xs);
+	color: var(--white-color);
+	border: none;
+	border-radius: var(--border-radius-sm);
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
+
+	& svg {
+		width: var(--icon-size-xs);
+		height: var(--icon-size-xs);
+	}
+}
+
+.copy-button:hover {
+	background-color: #242d31;
+	color: var(--white-color);
+}

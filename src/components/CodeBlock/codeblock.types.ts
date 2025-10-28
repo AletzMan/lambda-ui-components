@@ -30,6 +30,10 @@ export interface CodeBlockProps {
 	 */
 	showLineNumbers?: boolean;
 	/**
+	 * Whether to show copy button
+	 */
+	buttonCopy?: boolean;
+	/**
 	 * The tabs to be displayed
 	 */
 	tabs?: CodeTab[];

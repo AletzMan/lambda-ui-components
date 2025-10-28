@@ -6,7 +6,20 @@ import "prismjs/components/prism-typescript";
 const meta: Meta<CodeBlockProps> = {
 	title: "Components/CodeBlock",
 	component: CodeBlock,
-	tags: ["autodocs"],
+	argTypes: {
+		code: {
+			type: "string",
+		},
+		language: {
+			type: "string",
+		},
+		showLineNumbers: {
+			type: "boolean",
+		},
+		buttonCopy: {
+			type: "boolean",
+		},
+	},
 };
 export default meta;
 
@@ -17,6 +30,7 @@ export const Basic: Story = {
 		code: `const x = 42;\nconsole.log(x);`,
 		language: "javascript",
 		showLineNumbers: true,
+		buttonCopy: true,
 	},
 };
 
@@ -28,5 +42,6 @@ export const WithTabs: Story = {
 		],
 		showLineNumbers: true,
 		language: "typescript",
+		buttonCopy: true,
 	},
 };

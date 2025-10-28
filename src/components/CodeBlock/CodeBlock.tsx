@@ -1,34 +1,22 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
-// Si en el futuro agregas tabs con otros lenguajes, importa aquí: https://prismjs.com/#supported-languages
-
 import styles from "./codeblock.module.css";
 import clsx from "clsx";
 import { codeBlockTabVariants, codeBlockVariants } from "./codeblock.variants";
-
-export interface CodeTab {
-	label: string;
-	language: string;
-	code: string;
-}
-
-interface CodeBlockProps {
-	code?: string;
-	language?: string;
-	showLineNumbers?: boolean;
-	tabs?: CodeTab[];
-	className?: string;
-}
+import { CodeBlockProps } from "./codeblock.types";
+import { CheckIcon, CopyIcon } from "lucide-react";
 
 const CodeBlock: React.FC<CodeBlockProps> = ({
 	code = "",
 	language = "javascript",
 	showLineNumbers = false,
 	tabs,
+	buttonCopy = false,
 	className = "",
 }) => {
 	const [activeTab, setActiveTab] = React.useState(0);
+	const [copied, setCopied] = useState(false);
 	const codeToShow = tabs ? tabs[activeTab].code : code;
 	const langToShow = tabs ? tabs[activeTab].language : language;
 
@@ -72,6 +60,19 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 					dangerouslySetInnerHTML={{ __html: highlighted }}
 				/>
 			</pre>
+			{buttonCopy && (
+				<button
+					className={styles["copy-button"]}
+					type="button"
+					onClick={() => {
+						navigator.clipboard.writeText(codeToShow);
+						setCopied(true);
+						setTimeout(() => setCopied(false), 2000);
+					}}
+				>
+					{copied ? <CheckIcon /> : <CopyIcon />}
+				</button>
+			)}
 		</div>
 	);
 };
