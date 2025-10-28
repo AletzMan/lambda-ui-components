@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import CodeBlock from "./CodeBlock";
-import type { CodeBlockProps } from "./codebloxk.types";
+import type { CodeBlockProps } from "./codeblock.types";
+import "prismjs/components/prism-typescript";
 
 const meta: Meta<CodeBlockProps> = {
 	title: "Components/CodeBlock",

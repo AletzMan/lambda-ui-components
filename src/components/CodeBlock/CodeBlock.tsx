@@ -1,11 +1,11 @@
 import React, { useMemo } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
-import "prismjs/components/prism-typescript";
-import "prismjs/components/prism-javascript";
 // Si en el futuro agregas tabs con otros lenguajes, importa aquí: https://prismjs.com/#supported-languages
 
 import styles from "./codeblock.module.css";
+import clsx from "clsx";
+import { codeBlockTabVariants, codeBlockVariants } from "./codeblock.variants";
 
 export interface CodeTab {
 	label: string;
@@ -42,13 +42,15 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 	const lines = codeToShow.split("\n");
 
 	return (
-		<div className={`${styles.codeblock} ${className}`}>
+		<div className={clsx(codeBlockVariants({ showLineNumbers, tabStyle: "default" }), className)}>
 			{tabs && (
-				<div className={styles.tabs}>
+				<div className={styles["tabs"]}>
 					{tabs.map((tab, idx) => (
 						<button
 							key={tab.label}
-							className={`${styles.tab} ${idx === activeTab ? styles.active : ""}`}
+							className={clsx(
+								codeBlockTabVariants({ tabStyle: "default", active: idx === activeTab })
+							)}
 							onClick={() => setActiveTab(idx)}
 							type="button"
 						>
@@ -57,16 +59,16 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
 					))}
 				</div>
 			)}
-			<pre className={styles.pre}>
+			<pre className={styles["pre"]}>
 				{showLineNumbers && (
-					<code className={styles.lineNumbers} aria-hidden="true">
+					<code className={styles["lineNumbers"]} aria-hidden="true">
 						{lines.map((_, i) => (
 							<span key={i}>{i + 1}</span>
 						))}
 					</code>
 				)}
 				<code
-					className={`language-${langToShow} ${styles.code}`}
+					className={`language-${langToShow} ${styles["code"]}`}
 					dangerouslySetInnerHTML={{ __html: highlighted }}
 				/>
 			</pre>

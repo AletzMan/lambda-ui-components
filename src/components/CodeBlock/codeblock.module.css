@@ -1,53 +1,62 @@
 .codeblock {
-  position: relative;
-  background: #282c34;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
-  overflow: auto;
-  margin: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	background-color: #0b1012;
+	border-radius: var(--border-radius-sm);
+	border: 1px solid var(--border-color);
+	font-size: var(--font-size-sm);
+	font-family: "Fira Mono", "Consolas", "Monaco", monospace;
+	overflow: auto;
+	margin: 1rem 0;
 }
 .tabs {
-  display: flex;
-  border-bottom: 1px solid #444;
-  background: #23272f;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+	display: flex;
+	border-bottom: 1px solid #333333;
+	background-color: #141b1e;
+	border-top-left-radius: var(--border-radius-sm);
+	border-top-right-radius: var(--border-radius-sm);
 }
-.tab {
-  padding: 0.5rem 1rem;
-  background: none;
-  border: none;
-  color: #bbb;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  font-weight: 500;
+.codeblock-tab {
+	padding: 0.5rem 1rem;
+	background: none;
+	border: none;
+	border-bottom: 2px solid transparent;
+	color: #a09f9f;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
+	font-weight: 500;
 }
-.tab.active, .tab:hover {
-  background: #282c34;
-  color: #fff;
+.codeblock-tab-active {
+	/*background-color: #242d31;*/
+	color: var(--white-color);
+	border-bottom: 2px solid var(--primary-base-color);
+}
+.codeblock-tab:hover {
+	/*background-color: #242d31;*/
+	color: var(--white-color);
 }
 .pre {
-  display: flex;
-  margin: 0;
-  padding: 1rem;
-  background: transparent;
-  overflow-x: auto;
+	display: flex;
+	margin: 0;
+	padding: 1rem;
+	background: transparent;
+	overflow-x: auto;
 }
 .lineNumbers {
-  text-align: right;
-  user-select: none;
-  color: #555;
-  padding-right: 1.5rem;
-  border-right: 1px solid #444;
-  margin-right: 1rem;
+	text-align: right;
+	user-select: none;
+	color: #555;
+	padding-right: 1.5rem;
+	border-right: 1px solid #444;
+	margin-right: 1rem;
 }
 .lineNumbers span {
-  display: block;
-  height: 1.5em;
+	display: block;
+	height: 1.5em;
 }
 .code {
-  flex: 1;
-  white-space: pre;
-  background: none;
+	flex: 1;
+	white-space: pre;
+	background: none;
 }

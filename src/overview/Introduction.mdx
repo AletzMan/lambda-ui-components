@@ -238,3 +238,32 @@ function App() {
 ```
 
 ¡Explora la documentación para descubrir todo lo que puedes crear!
+
+---
+
+## ⚠️ Dependencias requeridas (peer dependencies)
+
+Esta librería requiere que instales `react`, `react-dom` y `prismjs` en tu proyecto:
+
+```bash
+npm install react react-dom prismjs
+```
+
+> **Nota:**
+>
+> - Si tu proyecto ya usa React, solo instala `prismjs`.
+> - Esto evita duplicados y conflictos de versiones.
+
+### PrismJS y resaltado de código
+
+Si usas componentes como `CodeBlock`, por defecto solo se resalta JavaScript. Para resaltar otros lenguajes, debes importar el soporte de PrismJS para esos lenguajes en tu proyecto (por ejemplo, en tu `main.tsx` o `App.tsx`):
+
+```js
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-python";
+// Agrega aquí los lenguajes que necesites
+```
+
+Consulta la lista completa de lenguajes soportados aquí: [PrismJS Supported Languages](https://prismjs.com/#supported-languages)
+
+Si no importas el lenguaje, el código se mostrará sin resaltado de sintaxis.
