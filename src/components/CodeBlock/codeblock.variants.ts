@@ -7,22 +7,34 @@ export const codeBlockVariants = cva(styles["codeblock"], {
 			true: styles["codeblock-line-numbers"],
 			false: "",
 		},
-		tabStyle: {
-			default: styles["tabs"],
-			minimal: styles["tabs-minimal"],
+		theme: {
+			dark: styles["codeblock-dark"],
+			light: styles["codeblock-light"],
 		},
 	},
 	defaultVariants: {
 		showLineNumbers: false,
-		tabStyle: "default",
+		theme: "dark",
+	},
+});
+
+export const codeBlockTasbVariants = cva(styles["codeblock-tabs"], {
+	variants: {
+		theme: {
+			dark: styles["codeblock-tabs-dark"],
+			light: styles["codeblock-tabs-light"],
+		},
+	},
+	defaultVariants: {
+		theme: "dark",
 	},
 });
 
 export const codeBlockTabVariants = cva(styles["codeblock-tab"], {
 	variants: {
-		tabStyle: {
-			default: styles["codeblock-tab-default"],
-			minimal: styles["codeblock-tab-minimal"],
+		theme: {
+			dark: styles["codeblock-tab-dark"],
+			light: styles["codeblock-tab-light"],
 		},
 		active: {
 			true: styles["codeblock-tab-active"],
@@ -30,8 +42,20 @@ export const codeBlockTabVariants = cva(styles["codeblock-tab"], {
 		},
 	},
 	defaultVariants: {
-		tabStyle: "default",
+		theme: "dark",
 		active: false,
+	},
+});
+
+export const codeBlockCopyButtonVariants = cva(styles["copy-button"], {
+	variants: {
+		theme: {
+			dark: styles["copy-button-dark"],
+			light: styles["copy-button-light"],
+		},
+	},
+	defaultVariants: {
+		theme: "dark",
 	},
 });
 

@@ -6,6 +6,11 @@ export interface CodeTab {
 	 * The label of the tab
 	 */
 	label: string;
+
+	/**
+	 * The icon of the tab
+	 */
+	icon?: ReactNode;
 	/**
 	 * The language of the code
 	 */
@@ -18,6 +23,10 @@ export interface CodeTab {
 
 export interface CodeBlockProps {
 	/**
+	 * Theme for code block: 'light' (default) or 'dark'
+	 */
+	theme?: "light" | "dark";
+	/**
 	 * The code to be displayed
 	 */
 	code?: string;
@@ -25,6 +34,10 @@ export interface CodeBlockProps {
 	 * The language of the code
 	 */
 	language?: string;
+	/**
+	 * Líneas a resaltar, formato: '2,4-6'
+	 */
+	highlightLines?: string;
 	/**
 	 * Whether to show line numbers
 	 */

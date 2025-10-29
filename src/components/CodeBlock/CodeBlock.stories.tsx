@@ -13,6 +13,9 @@ const meta: Meta<CodeBlockProps> = {
 		language: {
 			type: "string",
 		},
+		highlightLines: {
+			type: "string",
+		},
 		showLineNumbers: {
 			type: "boolean",
 		},
@@ -29,19 +32,80 @@ export const Basic: Story = {
 	args: {
 		code: `const x = 42;\nconsole.log(x);`,
 		language: "javascript",
+		highlightLines: "2",
 		showLineNumbers: true,
 		buttonCopy: true,
+		theme: "light",
+	},
+};
+
+export const DarkTheme: Story = {
+	args: {
+		code: `const x = 42;\nconsole.log(x);`,
+		language: "javascript",
+		highlightLines: "2",
+		showLineNumbers: true,
+		buttonCopy: true,
+		theme: "dark",
 	},
 };
 
 export const WithTabs: Story = {
 	args: {
 		tabs: [
-			{ label: "JS", language: "javascript", code: "const x = 42;\nconsole.log(x);" },
-			{ label: "TS", language: "typescript", code: "const x: number = 42;\nconsole.log(x);" },
+			{
+				label: "JS",
+				language: "javascript",
+				code: "const x = 42;\nconsole.log(x);",
+			},
+			{
+				label: "TS",
+				language: "typescript",
+				code: "const x: number = 42;\nconsole.log(x);",
+			},
 		],
+		highlightLines: "2",
 		showLineNumbers: true,
 		language: "typescript",
 		buttonCopy: true,
+		theme: "light",
+	},
+};
+
+export const WithTabsIcon: Story = {
+	args: {
+		tabs: [
+			{
+				label: "index.js",
+				language: "javascript",
+				code: "const x = 42;\nconsole.log(x);",
+				icon: (
+					<svg width={16} height={16} viewBox="0 0 16 16">
+						<path
+							fill="#ffca28"
+							d="M2 2v12h12V2zm6 6h1v4a1.003 1.003 0 0 1-1 1H7a1.003 1.003 0 0 1-1-1v-1h1v1h1zm3 0h2v1h-2v1h1a1.003 1.003 0 0 1 1 1v1a1.003 1.003 0 0 1-1 1h-2v-1h2v-1h-1a1.003 1.003 0 0 1-1-1V9a1.003 1.003 0 0 1 1-1"
+						></path>
+					</svg>
+				),
+			},
+			{
+				label: "index.ts",
+				language: "typescript",
+				code: "const x: number = 42;\nconsole.log(x);",
+				icon: (
+					<svg width={16} height={16} viewBox="0 0 16 16">
+						<path
+							fill="#0288d1"
+							d="M2 2v12h12V2zm4 6h3v1H8v4H7V9H6zm5 0h2v1h-2v1h1a1.003 1.003 0 0 1 1 1v1a1.003 1.003 0 0 1-1 1h-2v-1h2v-1h-1a1.003 1.003 0 0 1-1-1V9a1.003 1.003 0 0 1 1-1"
+						></path>
+					</svg>
+				),
+			},
+		],
+		highlightLines: "2",
+		showLineNumbers: true,
+		language: "typescript",
+		buttonCopy: true,
+		theme: "dark",
 	},
 };
