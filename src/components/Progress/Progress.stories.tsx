@@ -34,7 +34,11 @@ type Story = StoryObj<typeof Progress>;
 
 const Template = (args: ProgressProps) => {
 	return (
-		<ContainerComponent title="Progress" subtitle={args.variant?.toString()}>
+		<ContainerComponent
+			title="Progress"
+			subtitle={args.variant?.toString()}
+			color={args.indeterminate ? "indeterminate" : ""}
+		>
 			<Progress {...args} />
 		</ContainerComponent>
 	);
@@ -107,8 +111,16 @@ export const AllColors: Story = {
 export const Sizes: Story = {
 	render: (args) => (
 		<ContainerComponent title="Progress" subtitle="Sizes">
-			<div style={{ display: "flex", flexDirection: "row", gap: 24, alignItems: "center" }}>
-				{["xs", "sm", "md", "lg"].map((size) => (
+			<div
+				style={{
+					display: "flex",
+					flexDirection: args.variant === "bar" ? "column" : "row",
+					gap: 24,
+					alignItems: "center",
+					width: "100%",
+				}}
+			>
+				{["tiny", "small", "medium", "large"].map((size) => (
 					<Progress key={size} {...args} size={size as ProgressProps["size"]} label={size} />
 				))}
 			</div>
