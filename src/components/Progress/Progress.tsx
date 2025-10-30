@@ -92,10 +92,10 @@ export const Progress: React.FC<ProgressProps> = ({
 								fill="none"
 								strokeDasharray={circumference}
 								strokeDashoffset={offset}
-								strokeLinecap="round"
+								strokeLinecap="butt"
 								initial={{ strokeDashoffset: circumference }}
 								animate={{ strokeDashoffset: offset }}
-								transition={{ ease: "linear" }}
+								transition={{ type: "spring", stiffness: 300, damping: 32, mass: 2 }}
 							/>
 						)}
 					</svg>
@@ -122,7 +122,7 @@ export const Progress: React.FC<ProgressProps> = ({
 								className={clsx(progressInnerVariants({ color }))}
 								initial={{ width: 0 }}
 								animate={{ width: `${val}%` }}
-								transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+								transition={{ type: "spring", stiffness: 300, damping: 32, mass: 2 }}
 							/>
 						)}
 					</div>

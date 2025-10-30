@@ -6,7 +6,6 @@ import ContainerComponent from "../../_util/storybook/components/ContainerCompon
 const meta: Meta<typeof Progress> = {
 	title: "Components/Progress",
 	component: Progress,
-	tags: ["autodocs"],
 	argTypes: {
 		value: { control: { type: "range", min: 0, max: 100 } },
 		size: { control: "radio", options: ["tiny", "small", "medium", "large"] },
@@ -77,20 +76,42 @@ export const IndeterminateCircle: Story = {
 
 export const AllColors: Story = {
 	render: (args) => (
-		<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-			{["primary", "secondary", "neutral", "success", "danger", "warning", "info"].map((color) => (
-				<Progress key={color} {...args} color={color as ProgressProps["color"]} label={color} />
-			))}
-		</div>
+		<ContainerComponent title="Progress" subtitle="All Colors">
+			<div
+				style={{
+					display: args.variant === "bar" ? "flex" : "grid",
+					flexDirection: "column",
+					gap: 30,
+					width: "100%",
+					gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+				}}
+			>
+				{["primary", "secondary", "neutral", "success", "danger", "warning", "info"].map(
+					(color) => (
+						<Progress
+							key={color}
+							{...args}
+							color={color as ProgressProps["color"]}
+							label={color
+								.split("")
+								.map((letter, index) => (index === 0 ? letter.toUpperCase() : letter))
+								.join("")}
+						/>
+					)
+				)}
+			</div>
+		</ContainerComponent>
 	),
 };
 
 export const Sizes: Story = {
 	render: (args) => (
-		<div style={{ display: "flex", flexDirection: "row", gap: 24, alignItems: "center" }}>
-			{["xs", "sm", "md", "lg"].map((size) => (
-				<Progress key={size} {...args} size={size as ProgressProps["size"]} label={size} />
-			))}
-		</div>
+		<ContainerComponent title="Progress" subtitle="Sizes">
+			<div style={{ display: "flex", flexDirection: "row", gap: 24, alignItems: "center" }}>
+				{["xs", "sm", "md", "lg"].map((size) => (
+					<Progress key={size} {...args} size={size as ProgressProps["size"]} label={size} />
+				))}
+			</div>
+		</ContainerComponent>
 	),
 };

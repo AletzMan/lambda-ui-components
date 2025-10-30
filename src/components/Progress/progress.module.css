@@ -110,7 +110,6 @@
 
 .lambda-progress-bar-inner {
 	height: 100%;
-	border: 1px solid;
 	box-sizing: border-box;
 	background-color: var(--progress-color);
 }
@@ -175,7 +174,6 @@
 }
 .lambda-progress-circle-fg {
 	stroke: var(--progress-color);
-	transition: stroke-dashoffset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lambda-progress-label {
@@ -228,8 +226,8 @@
 		min-width: 32px;
 	}
 	&:is(.lambda-progress-value-small) {
-		font-size: var(--font-size-xs);
-		line-height: var(--font-size-xs);
+		font-size: var(--font-size-2xs);
+		line-height: var(--font-size-2xs);
 		min-width: 32px;
 
 		&:after {
@@ -237,8 +235,8 @@
 		}
 	}
 	&:is(.lambda-progress-value-medium) {
-		font-size: var(--font-size-sm);
-		line-height: var(--font-size-sm);
+		font-size: var(--font-size-xs);
+		line-height: var(--font-size-xs);
 		min-width: 37px;
 
 		&:after {
