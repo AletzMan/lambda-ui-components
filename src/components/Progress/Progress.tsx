@@ -12,7 +12,7 @@ import styles from "./progress.module.css";
 
 const sizeMap = {
 	tiny: 24,
-	small: 32,
+	small: 36,
 	medium: 48,
 	large: 64,
 } as const;
@@ -78,7 +78,9 @@ export const Progress: React.FC<ProgressProps> = ({
 							transition={{ ease: "linear" }}
 						/>
 					</svg>
-					{showValue && <span className={styles["lambda-progress-value"]}>{displayValue}%</span>}
+					{showValue && (
+						<span className={clsx(progressValueVariants({ size, variant }))}>{displayValue}</span>
+					)}
 				</div>
 				{label && <span className={styles["lambda-progress-label"]}>{label}</span>}
 			</div>

@@ -62,6 +62,10 @@ export const progressInnerVariants = cva(styles["lambda-progress-bar-inner"], {
 
 export const progressValueVariants = cva(styles["lambda-progress-value"], {
 	variants: {
+		variant: {
+			bar: styles["lambda-progress-value-bar"],
+			circle: styles["lambda-progress-value-circle"],
+		},
 		size: {
 			tiny: styles["lambda-progress-value-tiny"],
 			small: styles["lambda-progress-value-small"],
@@ -70,6 +74,7 @@ export const progressValueVariants = cva(styles["lambda-progress-value"], {
 		},
 	},
 	defaultVariants: {
+		variant: "bar",
 		size: "small",
 	},
 });
