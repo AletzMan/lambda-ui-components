@@ -19,7 +19,7 @@ import { CodeBlockProps } from "./codeblock.types";
 
 import { CheckIcon, CopyIcon } from "lucide-react";
 
-const CodeBlock: React.FC<CodeBlockProps> = ({
+export const CodeBlock: React.FC<CodeBlockProps> = ({
 	code = "",
 	language = "javascript",
 	showLineNumbers = false,
