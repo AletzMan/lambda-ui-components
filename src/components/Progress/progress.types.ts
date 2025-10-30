@@ -2,9 +2,13 @@ import { ProgressVariants } from "./progress.variants";
 
 export interface ProgressProps {
 	/**
-	 * Valor del progreso (0-100)
+	 * Valor del progreso (0-100).
 	 */
 	value: number;
+	/**
+	 * Si es true, muestra el progreso como indeterminado (animación infinita).
+	 */
+	indeterminate?: boolean;
 	/**
 	 * Tamaño del progreso
 	 */

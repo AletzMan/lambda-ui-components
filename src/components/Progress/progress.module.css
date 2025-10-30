@@ -52,6 +52,42 @@
 	overflow: hidden;
 	border-radius: var(--border-radius-pill);
 	box-sizing: border-box;
+
+	/* Indeterminate Bar */
+	.lambda-progress-indeterminate-bar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 40%;
+		background-color: var(--progress-color);
+		animation: indeterminate-bar 1.2s linear infinite;
+		border-radius: var(--border-radius-pill);
+	}
+}
+
+/* Indeterminate Circle */
+.lambda-progress-indeterminate-circle {
+	animation: indeterminate-circle 1.2s linear infinite;
+	transform-origin: 50% 50%;
+}
+
+@keyframes indeterminate-bar {
+	0% {
+		left: -40%;
+	}
+	100% {
+		left: 100%;
+	}
+}
+
+@keyframes indeterminate-circle {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 /* Tamaños */

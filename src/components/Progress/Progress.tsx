@@ -19,6 +19,7 @@ const sizeMap = {
 
 export const Progress: React.FC<ProgressProps> = ({
 	value,
+	indeterminate = false,
 	size = "small",
 	color = "primary",
 	variant = "bar",
@@ -26,8 +27,9 @@ export const Progress: React.FC<ProgressProps> = ({
 	label,
 	showValue = false,
 }) => {
-	// Clamp value
-	const val = Math.max(0, Math.min(100, value));
+	const isIndeterminate = !!indeterminate;
+	// Clamp value solo si no es indeterminado
+	const val = !isIndeterminate ? Math.max(0, Math.min(100, value)) : 0;
 
 	// Animación del número
 	const motionValue = useMotionValue(0);
@@ -35,12 +37,14 @@ export const Progress: React.FC<ProgressProps> = ({
 	const rounded = useTransform(spring, (latest) => Math.round(latest));
 	const [displayValue, setDisplayValue] = React.useState(val);
 	React.useEffect(() => {
-		motionValue.set(val);
-	}, [val, motionValue]);
+		if (!isIndeterminate) motionValue.set(val);
+	}, [val, motionValue, isIndeterminate]);
 	React.useEffect(() => {
-		const unsubscribe = rounded.on("change", (latest) => setDisplayValue(latest));
-		return () => unsubscribe();
-	}, [rounded]);
+		if (!isIndeterminate) {
+			const unsubscribe = rounded.on("change", (latest) => setDisplayValue(latest));
+			return () => unsubscribe();
+		}
+	}, [rounded, isIndeterminate]);
 
 	if (variant === "circle") {
 		const strokeWidth = size === "tiny" ? 3 : size === "small" ? 4 : size === "large" ? 8 : 6;
@@ -63,22 +67,39 @@ export const Progress: React.FC<ProgressProps> = ({
 							strokeWidth={strokeWidth}
 							fill="none"
 						/>
-						<motion.circle
-							className={styles["lambda-progress-circle-fg"]}
-							cx={sizeMap[size as keyof typeof sizeMap] / 2}
-							cy={sizeMap[size as keyof typeof sizeMap] / 2}
-							r={radius}
-							strokeWidth={strokeWidth}
-							fill="none"
-							strokeDasharray={circumference}
-							strokeDashoffset={offset}
-							strokeLinecap="round"
-							initial={{ strokeDashoffset: circumference }}
-							animate={{ strokeDashoffset: offset }}
-							transition={{ ease: "linear" }}
-						/>
+						{isIndeterminate ? (
+							<circle
+								className={clsx(
+									styles["lambda-progress-circle-fg"],
+									styles["lambda-progress-indeterminate-circle"]
+								)}
+								cx={sizeMap[size as keyof typeof sizeMap] / 2}
+								cy={sizeMap[size as keyof typeof sizeMap] / 2}
+								r={radius}
+								strokeWidth={strokeWidth}
+								fill="none"
+								strokeDasharray={circumference}
+								strokeDashoffset={circumference * 0.25}
+								strokeLinecap="round"
+							/>
+						) : (
+							<motion.circle
+								className={styles["lambda-progress-circle-fg"]}
+								cx={sizeMap[size as keyof typeof sizeMap] / 2}
+								cy={sizeMap[size as keyof typeof sizeMap] / 2}
+								r={radius}
+								strokeWidth={strokeWidth}
+								fill="none"
+								strokeDasharray={circumference}
+								strokeDashoffset={offset}
+								strokeLinecap="round"
+								initial={{ strokeDashoffset: circumference }}
+								animate={{ strokeDashoffset: offset }}
+								transition={{ ease: "linear" }}
+							/>
+						)}
 					</svg>
-					{showValue && (
+					{showValue && !isIndeterminate && (
 						<span className={clsx(progressValueVariants({ size, variant }))}>{displayValue}</span>
 					)}
 				</div>
@@ -93,15 +114,19 @@ export const Progress: React.FC<ProgressProps> = ({
 			<div className={styles["lambda-progress-container"]}>
 				{label && <span className={styles["lambda-progress-label"]}>{label}</span>}
 				<div className={styles["lambda-progress-bar-container"]}>
-					<div className={clsx(progressBarVariants({ size }))}>
-						<motion.div
-							className={clsx(progressInnerVariants({ color }))}
-							initial={{ width: 0 }}
-							animate={{ width: `${val}%` }}
-							transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-						/>
+					<div className={clsx(progressBarVariants({ size }))} style={{ position: "relative" }}>
+						{isIndeterminate ? (
+							<div className={styles["lambda-progress-indeterminate-bar"]} />
+						) : (
+							<motion.div
+								className={clsx(progressInnerVariants({ color }))}
+								initial={{ width: 0 }}
+								animate={{ width: `${val}%` }}
+								transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+							/>
+						)}
 					</div>
-					{showValue && (
+					{showValue && !isIndeterminate && (
 						<span className={clsx(progressValueVariants({ size }))}>{displayValue}%</span>
 					)}
 				</div>

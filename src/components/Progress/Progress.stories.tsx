@@ -17,6 +17,7 @@ const meta: Meta<typeof Progress> = {
 		variant: { control: "radio", options: ["bar", "circle"] },
 		showValue: { control: "boolean" },
 		label: { control: "text" },
+		indeterminate: { control: "boolean" },
 	},
 	args: {
 		value: 60,
@@ -25,6 +26,7 @@ const meta: Meta<typeof Progress> = {
 		variant: "bar",
 		showValue: true,
 		label: "Progreso",
+		indeterminate: false,
 	},
 };
 
@@ -46,10 +48,30 @@ export const Bar: Story = {
 	},
 };
 
+export const IndeterminateBar: Story = {
+	render: (args) => Template({ ...args }),
+	args: {
+		variant: "bar",
+		indeterminate: true,
+		value: 0,
+		label: "Indeterminado",
+	},
+};
+
 export const Circle: Story = {
 	render: (args) => Template(args),
 	args: {
 		variant: "circle",
+	},
+};
+
+export const IndeterminateCircle: Story = {
+	render: (args) => Template({ ...args }),
+	args: {
+		variant: "circle",
+		indeterminate: true,
+		value: 0,
+		label: "Indeterminado",
 	},
 };
 
