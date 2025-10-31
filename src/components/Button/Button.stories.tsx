@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
 import { ButtonProps } from "./button.types";
 import { CircleCheck } from "lucide-react";

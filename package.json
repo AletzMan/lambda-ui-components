@@ -1,106 +1,102 @@
 {
-	"name": "lambda-ui-components",
-	"version": "1.0.0",
-	"description": "Modern, accessible, and themeable React UI components library built with TypeScript and Framer Motion.",
-	"license": "MIT",
-	"sideEffects": false,
-	"types": "dist/main.d.ts",
-	"main": "dist/main.js",
-	"module": "dist/main.js",
-	"exports": {
-		".": {
-			"import": "./dist/main.js",
-			"require": "./dist/main.js"
-		}
-	},
-	"files": [
-		"dist",
-		"LICENSE",
-		"README.md"
-	],
-	"scripts": {
-		"dev": "vite",
-		"build": "tsc -b && vite build",
-		"lint": "eslint .",
-		"preview": "vite preview",
-		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
-	},
-	"dependencies": {
-		"@fontsource-variable/manrope": "^5.2.7",
-		"@types/node": "^22.13.10",
-		"class-variance-authority": "^0.7.1",
-		"clsx": "^2.1.1",
-		"framer-motion": "^12.23.22",
-		"lucide-react": "^0.482.0",
-		"typescript-plugin-css-modules": "^5.1.0",
-		"use-eye-dropper": "^1.7.1"
-	},
-	"peerDependencies": {
-		"prismjs": ">=1.29.0",
-		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
-	},
-	"devDependencies": {
-		"@chromatic-com/storybook": "^4.1.1",
-		"@eslint/js": "^9.21.0",
-		"@storybook/addon-essentials": "^8.6.7",
-		"@storybook/addon-onboarding": "^9.1.15",
-		"@storybook/addon-themes": "^9.1.15",
-		"@storybook/blocks": "^8.6.7",
-		"@storybook/experimental-addon-test": "^8.6.7",
-		"@storybook/manager-api": "^8.6.7",
-		"@storybook/react": "^9.1.15",
-		"@storybook/react-vite": "^9.1.15",
-		"@storybook/test": "^8.6.7",
-		"@testing-library/jest-dom": "^6.9.1",
-		"@testing-library/react": "^16.3.0",
-		"@types/prismjs": "^1.26.5",
-		"@types/react": "^19.0.10",
-		"@types/react-dom": "^19.0.4",
-		"@vitejs/plugin-react": "^4.3.4",
-		"@vitest/browser": "^3.0.9",
-		"@vitest/coverage-v8": "^3.0.9",
-		"eslint": "^9.21.0",
-		"eslint-plugin-react-hooks": "^5.1.0",
-		"eslint-plugin-react-refresh": "^0.4.19",
-		"eslint-plugin-storybook": "^9.1.15",
-		"globals": "^15.15.0",
-		"jsdom": "^27.1.0",
-		"playwright": "^1.51.1",
-		"storybook": "^9.1.15",
-		"storybook-dark-mode": "^4.0.2",
-		"typescript": "~5.7.2",
-		"typescript-eslint": "^8.24.1",
-		"vite": "^6.2.0",
-		"vite-plugin-dts": "^4.5.3",
-		"vitest": "^3.0.9"
-	},
-	"eslintConfig": {
-		"extends": [
-			"plugin:storybook/recommended"
-		]
-	},
-	"keywords": [
-		"react",
-		"ui",
-		"components",
-		"typescript",
-		"framer-motion",
-		"skeleton",
-		"card",
-		"button",
-		"lambda-ui",
-		"bitcoer",
-		"design-system"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/AletzMan/lambda-ui-components.git"
-	},
-	"homepage": "https://github.com/AletzMan/lambda-ui-components",
-	"bugs": {
-		"url": "https://github.com/AletzMan/lambda-ui-components/issues"
-	},
-	"author": "BitCoer_ (https://alejandro-garcia.dev)"
+  "name": "lambda-ui-components",
+  "version": "1.0.0",
+  "description": "Modern, accessible, and themeable React UI components library built with TypeScript and Framer Motion.",
+  "license": "MIT",
+  "sideEffects": false,
+  "types": "dist/main.d.ts",
+  "main": "dist/main.js",
+  "module": "dist/main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "require": "./dist/main.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.7",
+    "@types/node": "^22.13.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.22",
+    "lucide-react": "^0.482.0",
+    "typescript-plugin-css-modules": "^5.1.0",
+    "use-eye-dropper": "^1.7.1"
+  },
+  "peerDependencies": {
+    "prismjs": ">=1.29.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.2",
+    "@eslint/js": "^9.21.0",
+    "@storybook/addon-onboarding": "^10.0.2",
+    "@storybook/addon-themes": "^10.0.2",
+    "@storybook/experimental-addon-test": "^8.6.7",
+    "@storybook/react-vite": "^10.0.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/prismjs": "^1.26.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/browser": "^3.0.9",
+    "@vitest/coverage-v8": "^3.0.9",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-storybook": "^10.0.2",
+    "globals": "^15.15.0",
+    "jsdom": "^27.1.0",
+    "playwright": "^1.51.1",
+    "storybook": "^10.0.2",
+    "storybook-dark-mode": "^4.0.2",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.3",
+    "vitest": "^3.0.9",
+    "@storybook/addon-docs": "^10.0.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "typescript",
+    "framer-motion",
+    "skeleton",
+    "card",
+    "button",
+    "lambda-ui",
+    "bitcoer",
+    "design-system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AletzMan/lambda-ui-components.git"
+  },
+  "homepage": "https://github.com/AletzMan/lambda-ui-components",
+  "bugs": {
+    "url": "https://github.com/AletzMan/lambda-ui-components/issues"
+  },
+  "author": "BitCoer_ (https://alejandro-garcia.dev)"
 }

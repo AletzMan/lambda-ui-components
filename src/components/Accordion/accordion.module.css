@@ -324,6 +324,7 @@
 
 .lambda-accordion-content-closed {
 	background-color: var(--surface-b);
+	height: 0;
 }
 
 /* Estilo para el contenido real dentro del panel (si necesitas estilos específicos) */

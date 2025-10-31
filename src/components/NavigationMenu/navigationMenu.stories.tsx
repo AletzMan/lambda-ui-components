@@ -1,5 +1,5 @@
 // Archivo renombrado, el contenido está en menu.stories.tsx (ahora navigationMenu.stories.tsx).
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { NavigationMenu } from "./NavigationMenu";
 import type { NavigationMenuNode } from "./navigationMenu.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";

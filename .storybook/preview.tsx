@@ -3,10 +3,10 @@ import "@fontsource-variable/manrope";
 import React, { useEffect } from "react";
 import { ThemeProvider } from "../src/components/ThemeProvider/ThemeProvider";
 import { withThemeByClassName } from "@storybook/addon-themes";
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-vite";
 import "../src/index.css";
 import { LambdaConfigProvider } from "../src/_internal/hooks/translation/LambdaConfigProvider";
-import { create } from "@storybook/theming";
+import { create } from "storybook/theming";
 
 const ThemeDecorator = (Story, context) => {
 	const theme = context.globals.theme || "dark";

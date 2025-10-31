@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Breadcrumb } from "./Breadcrumb";
 import { CheckCircle, ClipboardList, Folder, HomeIcon, LayoutGrid } from "lucide-react";
 import { BreadcrumbProps } from "./breadcrumb.types";

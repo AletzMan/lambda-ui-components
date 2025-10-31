@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Skeleton } from "./Skeleton";
 import type { SkeletonProps } from "./skeleton.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";

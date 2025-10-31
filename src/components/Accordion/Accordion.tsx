@@ -166,6 +166,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
 		const [isAnimating, setIsAnimating] = useState(false);
 		const { isOpen, headerId, contentId } = React.useContext(AccordionItemContext);
 		const { size, variant } = useAccordionContext();
+
 		useLayoutEffect(() => {
 			const innerElement = innerContentRef.current;
 			if (!innerElement) return;
@@ -177,7 +178,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
 					setContentHeight(`${naturalHeight}px`);
 				});
 			} else {
-				setIsAnimating(true);
+				//setIsAnimating(true);
 				const currentHeight = innerElement.scrollHeight;
 				setContentHeight(`${currentHeight}px`);
 				requestAnimationFrame(() => {

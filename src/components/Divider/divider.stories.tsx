@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Divider } from "./Divider";
 import { DividerProps } from "./divider.types";
 import { Card } from "../Card/Card";

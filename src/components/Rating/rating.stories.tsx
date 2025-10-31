@@ -1,6 +1,6 @@
-import { StoryObj } from "@storybook/react";
+import { StoryObj } from "@storybook/react-vite";
 import { Rating } from "./Rating";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react-vite";
 import { ReactNode, useState } from "react";
 import { RatingProps } from "./rating.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";

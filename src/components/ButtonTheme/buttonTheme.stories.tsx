@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { ButtonTheme } from "./ButtonTheme";
 
 import type { ButtonThemeAnimation } from "./buttonTheme.types";

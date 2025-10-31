@@ -1,5 +1,5 @@
 import { Table } from "./Table";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TableProps } from "./table.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Tag } from "../Tag/Tag";

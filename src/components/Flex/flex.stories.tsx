@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Flex } from "./Flex";
 import { AlignItems, Direction, JustifyContent, Wrap } from "./flex.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";

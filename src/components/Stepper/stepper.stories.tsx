@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Stepper } from "./Stepper";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { CheckCircle, Contact, MapPin, CreditCard } from "lucide-react";
 import { StepperProps } from "./stepper.types";
 import { Input } from "../Input/Input";

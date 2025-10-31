@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "./Badge";
 import { BadgeProps } from "./badge.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";

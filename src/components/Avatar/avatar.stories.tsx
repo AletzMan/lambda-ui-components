@@ -1,5 +1,5 @@
 import { Avatar } from "./Avatar";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AvatarGroupProps, AvatarProps } from "./avatar.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 

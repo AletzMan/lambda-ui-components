@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Splitter } from "./Splitter";
 import type { SplitterDirection } from "./splitter.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";

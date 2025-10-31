@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import CodeBlock from "./CodeBlock";
 import type { CodeBlockProps } from "./codeblock.types";
 import "prismjs/components/prism-typescript";

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import Progress from "./Progress";
 import { ProgressProps } from "./progress.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
