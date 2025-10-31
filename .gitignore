@@ -46,6 +46,8 @@ package-lock.json
 
 *storybook.log
 
+# Screenshots generados por tests visuales
+**/__screenshots__/
 
 # windsurf rules
 .windsurfrules
