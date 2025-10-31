@@ -1,7 +1,7 @@
 import { Table } from "./Table";
 import type { Meta, StoryObj } from "@storybook/react";
 import { TableProps } from "./table.types";
-import ContainerComponent from "../../../.storybook/ContainerComponent";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Tag } from "../Tag/Tag";
 import { useState } from "react";
 import { Select } from "../Select/Select";

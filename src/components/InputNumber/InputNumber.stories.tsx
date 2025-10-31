@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { InputNumber } from "./InputNumber";
 import { InputNumberProps } from "./inputnumber.types";
-import ContainerComponent from "../../../.storybook/ContainerComponent";
 import { useState } from "react";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof InputNumber> = {
 	title: "Components/InputNumber",

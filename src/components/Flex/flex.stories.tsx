@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Flex } from "./Flex";
 import { AlignItems, Direction, JustifyContent, Wrap } from "./flex.types";
-import ContainerComponent from "../../../.storybook/ContainerComponent";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const flexDirectionOptions: Direction[] = [
 	"row",

@@ -4,7 +4,7 @@ import { Bookmark, CircleEllipsis, CodeXml, RssIcon } from "lucide-react";
 import { CardProps } from "./card.types";
 import { Checkbox } from "../Checkbox/Checkbox";
 import { useState } from "react";
-import ContainerComponent from "../../../.storybook/ContainerComponent";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Card> = {
 	title: "Components/Card",

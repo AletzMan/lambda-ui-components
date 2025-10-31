@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Splitter } from "./Splitter";
 import type { SplitterDirection } from "./splitter.types";
-import ContainerComponent from "../../../.storybook/ContainerComponent";
+import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const directionOptions: SplitterDirection[] = ["horizontal", "vertical"];
 
