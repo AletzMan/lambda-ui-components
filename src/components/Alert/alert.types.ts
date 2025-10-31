@@ -15,7 +15,7 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "color"
 	 * Define la variante visual del alert, afectando típicamente el color de fondo y texto.
 	 * Corresponde a los tipos semánticos de alerta.
 	 */
-	variant: AlertVariants["variant"];
+	variant?: AlertVariants["variant"];
 
 	/**
 	 * El texto que representa el titulo del contenido.

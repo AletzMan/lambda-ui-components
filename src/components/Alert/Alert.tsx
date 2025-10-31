@@ -39,7 +39,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 	(
 		{
 			color,
-			variant,
+			variant = "soft",
 			message,
 			title,
 			onClose,
