@@ -61,6 +61,10 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 			} else if (prevTheme.current === "dark" && theme === "light") {
 				setDirection("ltr"); // Moon sale a la derecha, Sun entra de la izquierda
 			}
+			document.body.style.background =
+				theme === "dark"
+					? "linear-gradient(135deg, var(--background-color) 60%, var(--surface-a) 100%)"
+					: "linear-gradient(135deg, var(--background-color) 60%, var(--surface-a) 100%)";
 			prevTheme.current = theme;
 		}
 	}, [theme]);
