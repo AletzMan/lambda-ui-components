@@ -8,8 +8,29 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
+# Build output
+/dist/
+/dist-ssr/
+/lib/
+/build/
+
+# Test coverage
+/coverage/
+
+# Test & Vitest outputs
+/.vitest/
+*.test-results.json
+
+# Storybook build
+/storybook-static/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Lockfiles (except pnpm)
+yarn.lock
+package-lock.json
+
 *.local
 
 # Editor directories and files

@@ -34,6 +34,9 @@
 .lambda-skeleton-circle {
 	border-radius: 50%;
 }
+.lambda-skeleton-rect {
+	border-radius: 0;
+}
 
 .lambda-skeleton-rounded {
 	border-radius: 8px;
