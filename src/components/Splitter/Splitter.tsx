@@ -59,7 +59,9 @@ export const Splitter: React.FC<SplitterProps> = ({
 		let newPx = dragStart.current.positionPx + delta;
 		// Limitar por min/max (convertidos a px)
 		const minPx = toPx(min, direction, container);
-		const maxPx = toPx(max, direction, container);
+		let maxPx = toPx(max, direction, container);
+		const containerPx = direction === "horizontal" ? container?.offsetWidth ?? 0 : container?.offsetHeight ?? 0;
+		if (maxPx > containerPx) maxPx = containerPx;
 		if (minPx !== undefined) newPx = Math.max(minPx, newPx);
 		if (maxPx !== undefined) newPx = Math.min(maxPx, newPx);
 		setPositionPx(newPx);
