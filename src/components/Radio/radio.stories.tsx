@@ -7,7 +7,7 @@ import {
 	ArrowRightFromLine,
 	ArrowUpFromLine,
 } from "lucide-react";
-import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import ContainerComponent from "../../../.storybook/ContainerComponent";
 import { useState } from "react";
 
 const meta: Meta<typeof RadioGroup> = {

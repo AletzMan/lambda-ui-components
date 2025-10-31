@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Pagination } from "./Pagination";
 import { useState } from "react";
 import { PaginationProps } from "./pagination.types";
-import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import ContainerComponent from "../../../.storybook/ContainerComponent";
 
 const meta: Meta<typeof Pagination> = {
 	title: "Components/Pagination",

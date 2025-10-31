@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Carousel } from "./Carousel";
 import { CarouselProps } from "./carousel.types";
-import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import ContainerComponent from "../../../.storybook/ContainerComponent";
 // Configuración de breakpoints para el carrusel
 const responsiveBreakpoints = [
 	{ breakpoint: 0, items: 1 },

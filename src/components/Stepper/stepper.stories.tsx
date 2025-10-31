@@ -3,7 +3,7 @@ import { Stepper } from "./Stepper";
 import type { Meta, StoryObj } from "@storybook/react";
 import { CheckCircle, Contact, MapPin, CreditCard } from "lucide-react";
 import { StepperProps } from "./stepper.types";
-import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import ContainerComponent from "../../../.storybook/ContainerComponent";
 import { Input } from "../Input/Input";
 
 const TemplateContent = (title: string, description: string, step: number) => {

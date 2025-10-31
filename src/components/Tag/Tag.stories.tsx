@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Tag } from "./Tag";
 import { BadgeCheck } from "lucide-react";
 import { TagProps } from "./tag.types";
-import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import ContainerComponent from "../../../.storybook/ContainerComponent";
 import { useState } from "react";
 
 const meta: Meta<typeof Tag> = {

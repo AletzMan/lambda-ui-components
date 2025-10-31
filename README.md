@@ -1,54 +1,125 @@
-# React + TypeScript + Vite
+# Lambda UI Components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![npm version](https://img.shields.io/npm/v/lambda-ui-components.svg)](https://www.npmjs.com/package/lambda-ui-components)
+[![license](https://img.shields.io/npm/l/lambda-ui-components.svg)](LICENSE)
+[![downloads](https://img.shields.io/npm/dm/lambda-ui-components.svg)](https://www.npmjs.com/package/lambda-ui-components)
+[![GitHub Repo stars](https://img.shields.io/github/stars/AletzMan/lambda-ui-components?style=social)](https://github.com/AletzMan/lambda-ui-components)
+[![React 18+](https://img.shields.io/badge/react-18%2B-blue.svg)](https://react.dev/)
+[![Build Status](https://github.com/AletzMan/lambda-ui-components/actions/workflows/main.yml/badge.svg)](https://github.com/AletzMan/lambda-ui-components/actions)
 
-Currently, two official plugins are available:
+Component library for React built with TypeScript, Framer Motion, and Vite. Includes a modern, themeable, and accessible set of UI primitives for rapid product development.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Características
 
-## Expanding the ESLint configuration
+- Componentes accesibles, tipados y listos para producción
+- Soporte para dark mode y personalización por CSS variables
+- Animaciones fluidas con Framer Motion
+- Fácil integración con React 18+
+- Incluye Skeleton, Button, Card, Input, Table, Modal, y más
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Instalación
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+pnpm add lambda-ui-components
+# o
+npm install lambda-ui-components
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> **Nota:** Debes tener React 18+ y ReactDOM como peerDependencies en tu proyecto.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📦 Uso Básico
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+1. **Importa los estilos globales una vez en tu entrypoint:**
+   ```js
+   import "lambda-ui-components/dist/index.css";
+   ```
+2. **Importa componentes individuales:**
+   ```jsx
+   import { Skeleton, Button, Card } from "lambda-ui-components";
+   ```
+
+### Ejemplo de uso
+
+```jsx
+import "lambda-ui-components/dist/index.css";
+import { Skeleton, Button, Card } from "lambda-ui-components";
+
+function Demo() {
+	return (
+		<Card style={{ width: 320 }}>
+			<Skeleton width={80} height={16} animationType="wave" />
+			<Button variant="primary">Acción</Button>
+		</Card>
+	);
+}
 ```
+
+## 🧩 Componentes incluidos
+
+- Accordion
+- Alert
+- Avatar
+- Badge
+- Breadcrumb
+- Button
+- Calendar
+- Card
+- Carousel
+- Checkbox
+- CodeBlock
+- ColorPicker
+- DatePicker
+- Dialog
+- Divider
+- Drawer
+- Dropdown
+- FileUpload
+- Flex
+- Input
+- InputNumber
+- Join
+- Link
+- NavigationMenu
+- Notification
+- Pagination
+- Progress
+- Radio/RadioGroup
+- Rating
+- Select
+- Skeleton
+- Slider
+- Splitter
+- Stepper
+- Switch
+- Tab
+- Table
+- Tag
+- TextArea
+- Tooltip
+- TreeView
+
+## 🎨 Temas y Personalización
+
+- Usa CSS variables para sobrescribir colores y estilos globales.
+- Soporte nativo para dark mode (`[data-theme="dark"]` y `[data-theme="light"]`).
+
+## ⚡ Peer Dependencies
+
+- `react` >= 18
+- `react-dom` >= 18
+- (Opcional) `prismjs` para CodeBlock
+
+## 🤝 Contribuir
+
+- Haz un fork y un PR con tu mejora o bugfix.
+- Sigue la convención de componentes y estilos.
+
+---
+
+¡Disfruta construyendo con Lambda UI Components!
+
+## 📝 Licencia
+
+Este proyecto está licenciado bajo la licencia MIT. Puedes usarlo libremente en proyectos personales y comerciales. Consulta el archivo LICENSE para más detalles.
+
+Desarrollado por [BitCoder\_\_](https://alejandro-garcia.dev)

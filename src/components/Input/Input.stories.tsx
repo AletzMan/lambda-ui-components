@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from "./Input";
 import { InputProps } from "./input.types";
-import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import ContainerComponent from "../../../.storybook/ContainerComponent";
 import { useState } from "react";
 import { CaseUpper, Mail, RectangleEllipsis, Search } from "lucide-react";
 

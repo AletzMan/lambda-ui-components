@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Slider } from "./Slider";
 import { useState } from "react";
 import { SliderProps, SliderValue } from "./slider.types";
-import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import ContainerComponent from "../../../.storybook/ContainerComponent";
 import { Input } from "../Input/Input";
 
 const meta: Meta<typeof Slider> = {
