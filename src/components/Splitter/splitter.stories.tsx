@@ -44,37 +44,20 @@ export const Playground: Story = {
 						<strong>Panel 1</strong>
 						<p>Contenido del panel izquierdo/arriba.</p>
 					</div>
-					<Splitter {...args} direction="vertical">
-						<div
-							style={{
-								padding: 16,
-								backgroundSize: "10px 10px",
-								backgroundImage:
-									"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
-								borderRadius: "0 var(--border-radius-xs) var(--border-radius-xs) 0",
-								border: "1px solid var(--border-color)",
-								height: "100%",
-							}}
-						>
-							<strong>Panel 1</strong>
-							<p>Contenido del panel izquierdo/arriba.</p>
-						</div>
-						<div
-							style={{
-								padding: 16,
-								opacity: 0.8,
-								backgroundSize: "10px 10px",
-								backgroundImage:
-									"repeating-linear-gradient(-45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
-								borderRadius: "0 0 var(--border-radius-xs) 0",
-								border: "1px solid var(--border-color)",
-								height: "100%",
-							}}
-						>
-							<strong>Panel 2</strong>
-							<p>Contenido del panel derecho/abajo.</p>
-						</div>
-					</Splitter>
+					<div
+						style={{
+							padding: 16,
+							backgroundSize: "10px 10px",
+							backgroundImage:
+								"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
+							borderRadius: "0 var(--border-radius-xs) var(--border-radius-xs) 0",
+							border: "1px solid var(--border-color)",
+							height: "100%",
+						}}
+					>
+						<strong>Panel 2</strong>
+						<p>Contenido del panel derecho/abajo.</p>
+					</div>
 				</Splitter>
 			</div>
 		</ContainerComponent>
