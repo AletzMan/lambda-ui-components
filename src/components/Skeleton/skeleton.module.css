@@ -1,0 +1,40 @@
+[data-theme="dark"] {
+	--skeleton-color-start: var(--surface-c);
+	--skeleton-color-end: var(--surface-b);
+}
+
+[data-theme="light"] {
+	--skeleton-color-start: var(--surface-g);
+	--skeleton-color-end: var(--surface-d);
+}
+
+.lambda-skeleton {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	min-width: 4px;
+	min-height: 4px;
+
+	&:is(.lambda-skeleton-wave) {
+		background: linear-gradient(
+			90deg,
+			var(--skeleton-color-start) 0%,
+			var(--skeleton-color-end) 20%,
+			var(--skeleton-color-end) 80%,
+			var(--skeleton-color-start) 100%
+		);
+		background-size: 400% 200%;
+	}
+
+	&:is(.lambda-skeleton-fade) {
+		background-color: var(--skeleton-color-end);
+	}
+}
+
+.lambda-skeleton-circle {
+	border-radius: 50%;
+}
+
+.lambda-skeleton-rounded {
+	border-radius: 8px;
+}

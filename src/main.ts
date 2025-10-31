@@ -32,6 +32,8 @@ export { Radio, RadioGroup } from "./components/Radio/Radio";
 export { Rating } from "./components/Rating/Rating";
 export { Select } from "./components/Select/Select";
 export { Slider } from "./components/Slider/Slider";
+export { Skeleton } from "./components/Skeleton/Skeleton";
+export { Splitter } from "./components/Splitter/Splitter";
 export { Stepper } from "./components/Stepper/Stepper";
 export { Switch } from "./components/Switch/Switch";
 export { Tab } from "./components/Tab/Tab";
