@@ -60,8 +60,10 @@ export const Splitter: React.FC<SplitterProps> = ({
 		// Limitar por min/max (convertidos a px)
 		const minPx = toPx(min, direction, container);
 		let maxPx = toPx(max, direction, container);
-		const containerPx = direction === "horizontal" ? container?.offsetWidth ?? 0 : container?.offsetHeight ?? 0;
-		if (maxPx > containerPx) maxPx = containerPx;
+		const BAR_SIZE = 2;
+		const containerPx =
+			direction === "horizontal" ? container?.offsetWidth ?? 0 : container?.offsetHeight ?? 0;
+		if (maxPx > containerPx - BAR_SIZE) maxPx = containerPx - BAR_SIZE;
 		if (minPx !== undefined) newPx = Math.max(minPx, newPx);
 		if (maxPx !== undefined) newPx = Math.min(maxPx, newPx);
 		setPositionPx(newPx);
