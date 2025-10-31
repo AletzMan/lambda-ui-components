@@ -1,15 +1,15 @@
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./codeblock.module.css";
 
-export const codeBlockVariants = cva(styles["codeblock"], {
+export const codeBlockVariants = cva(styles["lambda-codeblock"], {
 	variants: {
 		showLineNumbers: {
-			true: styles["codeblock-line-numbers"],
+			true: styles["lambda-codeblock-line-numbers"],
 			false: "",
 		},
 		theme: {
-			dark: styles["codeblock-dark"],
-			light: styles["codeblock-light"],
+			dark: styles["lambda-codeblock-dark"],
+			light: styles["lambda-codeblock-light"],
 		},
 	},
 	defaultVariants: {
@@ -18,11 +18,11 @@ export const codeBlockVariants = cva(styles["codeblock"], {
 	},
 });
 
-export const codeBlockTasbVariants = cva(styles["codeblock-tabs"], {
+export const codeBlockTasbVariants = cva(styles["lambda-codeblock-tabs"], {
 	variants: {
 		theme: {
-			dark: styles["codeblock-tabs-dark"],
-			light: styles["codeblock-tabs-light"],
+			dark: styles["lambda-codeblock-tabs-dark"],
+			light: styles["lambda-codeblock-tabs-light"],
 		},
 	},
 	defaultVariants: {
@@ -30,14 +30,14 @@ export const codeBlockTasbVariants = cva(styles["codeblock-tabs"], {
 	},
 });
 
-export const codeBlockTabVariants = cva(styles["codeblock-tab"], {
+export const codeBlockTabVariants = cva(styles["lambda-codeblock-tab"], {
 	variants: {
 		theme: {
-			dark: styles["codeblock-tab-dark"],
-			light: styles["codeblock-tab-light"],
+			dark: styles["lambda-codeblock-tab-dark"],
+			light: styles["lambda-codeblock-tab-light"],
 		},
 		active: {
-			true: styles["codeblock-tab-active"],
+			true: styles["lambda-codeblock-tab-active"],
 			false: "",
 		},
 	},
@@ -47,11 +47,11 @@ export const codeBlockTabVariants = cva(styles["codeblock-tab"], {
 	},
 });
 
-export const codeBlockCopyButtonVariants = cva(styles["copy-button"], {
+export const codeBlockCopyButtonVariants = cva(styles["lambda-copy-button"], {
 	variants: {
 		theme: {
-			dark: styles["copy-button-dark"],
-			light: styles["copy-button-light"],
+			dark: styles["lambda-copy-button-dark"],
+			light: styles["lambda-copy-button-light"],
 		},
 	},
 	defaultVariants: {

@@ -86,16 +86,16 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 			)}
 			<pre
 				className={clsx(
-					styles["pre"],
+					styles["lambda-pre"],
 					{ "line-numbers": showLineNumbers },
-					{ [styles["pre-line-highlight"]]: highlightLines },
-					{ [styles["pre-line-numbers"]]: showLineNumbers },
-					{ [styles["pre-dark"]]: theme === "dark" },
-					{ [styles["pre-light"]]: theme === "light" }
+					{ [styles["lambda-pre-line-highlight"]]: highlightLines },
+					{ [styles["lambda-pre-line-numbers"]]: showLineNumbers },
+					{ [styles["lambda-pre-dark"]]: theme === "dark" },
+					{ [styles["lambda-pre-light"]]: theme === "light" }
 				)}
 				data-line={highlightLines}
 			>
-				<code ref={codeRef} className={`language-${langToShow} ${styles["code"]}`}>
+				<code ref={codeRef} className={`language-${langToShow} ${styles["lambda-code"]}`}>
 					{codeToShow}
 				</code>
 			</pre>
