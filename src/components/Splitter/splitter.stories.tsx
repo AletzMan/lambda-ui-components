@@ -36,7 +36,7 @@ export const Playground: Story = {
 							backgroundSize: "10px 10px",
 							backgroundImage:
 								"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
-							borderRadius: "var(--border-radius-xs)",
+							borderRadius: "var(--border-radius-xs) 0 0 var(--border-radius-xs)",
 							border: "1px solid var(--border-color)",
 							height: "100%",
 						}}
@@ -51,7 +51,7 @@ export const Playground: Story = {
 								backgroundSize: "10px 10px",
 								backgroundImage:
 									"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
-								borderRadius: "var(--border-radius-xs)",
+								borderRadius: "0 var(--border-radius-xs) var(--border-radius-xs) 0",
 								border: "1px solid var(--border-color)",
 								height: "100%",
 							}}
@@ -66,7 +66,7 @@ export const Playground: Story = {
 								backgroundSize: "10px 10px",
 								backgroundImage:
 									"repeating-linear-gradient(-45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
-								borderRadius: "var(--border-radius-xs)",
+								borderRadius: "0 0 var(--border-radius-xs) 0",
 								border: "1px solid var(--border-color)",
 								height: "100%",
 							}}
