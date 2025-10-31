@@ -19,7 +19,7 @@
 	overflow: auto;
 }
 .lambda-splitter-bar {
-	background: var(--border-color);
+	background: var(--surface-e);
 	cursor: col-resize;
 	transition: background 0.2s;
 	z-index: 2;
@@ -38,7 +38,8 @@
 		right: -1px;
 		width: 4px;
 		height: 20px;
-		background: var(--border-color);
+		background: var(--surface-h);
+		border-radius: var(--border-radius-sm);
 		z-index: 1;
 	}
 }
@@ -56,7 +57,8 @@
 		top: -1px;
 		width: 20px;
 		height: 4px;
-		background: var(--border-color);
+		background: var(--surface-h);
+		border-radius: var(--border-radius-sm);
 		z-index: 1;
 	}
 }

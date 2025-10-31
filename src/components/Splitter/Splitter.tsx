@@ -21,6 +21,25 @@ export const Splitter: React.FC<SplitterProps> = ({
 	const dragStart = useRef({ mouse: 0, positionPx: 0, containerPx: 0 });
 	const barRef = useRef<HTMLDivElement>(null);
 
+	// Ajusta la barra si el contenedor cambia de tamaño
+	React.useEffect(() => {
+		const container = containerRef.current;
+		if (!container) return;
+		const BAR_SIZE = 2;
+		const resizeObserver = new window.ResizeObserver(() => {
+			const containerPx =
+				direction === "horizontal" ? container.offsetWidth : container.offsetHeight;
+			let maxPx = toPx(max, direction, container);
+			if (maxPx > containerPx - BAR_SIZE) maxPx = containerPx - BAR_SIZE;
+			if (positionPx > maxPx) {
+				setPositionPx(maxPx);
+				setPositionRaw(toRaw(maxPx, positionRaw, direction, container));
+			}
+		});
+		resizeObserver.observe(container);
+		return () => resizeObserver.disconnect();
+	}, [direction, max, positionPx, positionRaw]);
+
 	function toPx(
 		val: number | string,
 		dir: "horizontal" | "vertical",
@@ -110,7 +129,7 @@ export const Splitter: React.FC<SplitterProps> = ({
 			style={containerStyle}
 			{...props}
 		>
-			<div className={styles["lambda-splitter-pane"]}>
+			<div className={clsx(styles["lambda-splitter-pane"], "scrollBar")}>
 				{children && (Array.isArray(children) ? children[0] : children)}
 			</div>
 			<div
@@ -121,7 +140,7 @@ export const Splitter: React.FC<SplitterProps> = ({
 				tabIndex={0}
 				aria-orientation={direction}
 			/>
-			<div className={styles["lambda-splitter-pane"]}>
+			<div className={clsx(styles["lambda-splitter-pane"], "scrollBar")}>
 				{children && Array.isArray(children) ? children[1] : null}
 			</div>
 		</div>

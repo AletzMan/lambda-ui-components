@@ -30,14 +30,51 @@ export const Playground: Story = {
 		<ContainerComponent title="Splitter" subtitle={args.direction}>
 			<div style={{ minHeight: 220, minWidth: 320, height: "100%", width: "100%" }}>
 				<Splitter {...args}>
-					<div style={{ padding: 16, background: "var(--surface-b)", height: "100%" }}>
+					<div
+						style={{
+							padding: 16,
+							backgroundSize: "10px 10px",
+							backgroundImage:
+								"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
+							borderRadius: "var(--border-radius-xs)",
+							border: "1px solid var(--border-color)",
+							height: "100%",
+						}}
+					>
 						<strong>Panel 1</strong>
 						<p>Contenido del panel izquierdo/arriba.</p>
 					</div>
-					<div style={{ padding: 16, background: "var(--surface-a)", height: "100%" }}>
-						<strong>Panel 2</strong>
-						<p>Contenido del panel derecho/abajo.</p>
-					</div>
+					<Splitter {...args} direction="vertical">
+						<div
+							style={{
+								padding: 16,
+								backgroundSize: "10px 10px",
+								backgroundImage:
+									"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
+								borderRadius: "var(--border-radius-xs)",
+								border: "1px solid var(--border-color)",
+								height: "100%",
+							}}
+						>
+							<strong>Panel 1</strong>
+							<p>Contenido del panel izquierdo/arriba.</p>
+						</div>
+						<div
+							style={{
+								padding: 16,
+								opacity: 0.8,
+								backgroundSize: "10px 10px",
+								backgroundImage:
+									"repeating-linear-gradient(-45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
+								borderRadius: "var(--border-radius-xs)",
+								border: "1px solid var(--border-color)",
+								height: "100%",
+							}}
+						>
+							<strong>Panel 2</strong>
+							<p>Contenido del panel derecho/abajo.</p>
+						</div>
+					</Splitter>
 				</Splitter>
 			</div>
 		</ContainerComponent>
