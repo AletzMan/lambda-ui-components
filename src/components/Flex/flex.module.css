@@ -1,0 +1,182 @@
+.lambda-flex {
+	display: flex;
+	font-family: var(--font-family);
+	color: var(--foreground-color);
+}
+
+.lambda-flex-direction-row {
+	flex-direction: row;
+}
+
+.lambda-flex-direction-column {
+	flex-direction: column;
+}
+
+.lambda-flex-direction-row-reverse {
+	flex-direction: row-reverse;
+}
+
+.lambda-flex-direction-column-reverse {
+	flex-direction: column-reverse;
+}
+
+.lambda-flex-direction-revert-layer {
+	flex-direction: revert-layer;
+}
+
+.lambda-flex-direction-revert {
+	flex-direction: revert;
+}
+
+.lambda-flex-direction-initial {
+	flex-direction: initial;
+}
+
+.lambda-flex-direction-inherit {
+	flex-direction: inherit;
+}
+
+.lambda-flex-direction-moz-initial {
+	flex-direction: -moz-initial;
+}
+
+.lambda-flex-direction-unset {
+	flex-direction: unset;
+}
+
+.lambda-flex-wrap-nowrap {
+	flex-wrap: nowrap;
+}
+
+.lambda-flex-wrap-wrap {
+	flex-wrap: wrap;
+}
+
+.lambda-flex-wrap-wrap-reverse {
+	flex-wrap: wrap-reverse;
+}
+
+.lambda-flex-wrap-inherit {
+	flex-wrap: inherit;
+}
+.lambda-flex-wrap-initial {
+	flex-wrap: initial;
+}
+.lambda-flex-wrap-revert {
+	flex-wrap: revert;
+}
+.lambda-flex-wrap-revert-layer {
+	flex-wrap: revert-layer;
+}
+.lambda-flex-wrap-unset {
+	flex-wrap: unset;
+}
+.lambda-flex-wrap-moz-initial {
+	flex-wrap: -moz-initial;
+}
+
+/* Justify Content */
+.lambda-flex-justify-flex-start {
+	justify-content: flex-start;
+}
+.lambda-flex-justify-flex-end {
+	justify-content: flex-end;
+}
+.lambda-flex-justify-center {
+	justify-content: center;
+}
+.lambda-flex-justify-start {
+	justify-content: start;
+}
+.lambda-flex-justify-end {
+	justify-content: end;
+}
+.lambda-flex-justify-left {
+	justify-content: left;
+}
+.lambda-flex-justify-right {
+	justify-content: right;
+}
+.lambda-flex-justify-normal {
+	justify-content: normal;
+}
+.lambda-flex-justify-space-between {
+	justify-content: space-between;
+}
+.lambda-flex-justify-space-around {
+	justify-content: space-around;
+}
+.lambda-flex-justify-space-evenly {
+	justify-content: space-evenly;
+}
+.lambda-flex-justify-stretch {
+	justify-content: stretch;
+}
+.lambda-flex-justify-inherit {
+	justify-content: inherit;
+}
+.lambda-flex-justify-initial {
+	justify-content: initial;
+}
+.lambda-flex-justify-revert {
+	justify-content: revert;
+}
+.lambda-flex-justify-revert-layer {
+	justify-content: revert-layer;
+}
+.lambda-flex-justify-unset {
+	justify-content: unset;
+}
+.lambda-flex-justify-moz-initial {
+	justify-content: -moz-initial;
+}
+
+/* Align Items */
+.lambda-flex-align-flex-start {
+	align-items: flex-start;
+}
+.lambda-flex-align-flex-end {
+	align-items: flex-end;
+}
+.lambda-flex-align-center {
+	align-items: center;
+}
+.lambda-flex-align-start {
+	align-items: start;
+}
+.lambda-flex-align-end {
+	align-items: end;
+}
+.lambda-flex-align-self-start {
+	align-items: self-start;
+}
+.lambda-flex-align-self-end {
+	align-items: self-end;
+}
+.lambda-flex-align-baseline {
+	align-items: baseline;
+}
+.lambda-flex-align-stretch {
+	align-items: stretch;
+}
+.lambda-flex-align-normal {
+	align-items: normal;
+}
+.lambda-flex-align-inherit {
+	align-items: inherit;
+}
+.lambda-flex-align-initial {
+	align-items: initial;
+}
+.lambda-flex-align-revert {
+	align-items: revert;
+}
+.lambda-flex-align-revert-layer {
+	align-items: revert-layer;
+}
+.lambda-flex-align-unset {
+	align-items: unset;
+}
+.lambda-flex-align-moz-initial {
+	align-items: -moz-initial;
+}
