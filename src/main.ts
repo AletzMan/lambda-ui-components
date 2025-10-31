@@ -3,6 +3,7 @@ import "./index.css";
 
 export { Accordion } from "./components/Accordion/Accordion";
 export { Alert } from "./components/Alert/Alert";
+export { Avatar } from "./components/Avatar/Avatar";
 export { Badge } from "./components/Badge/Badge";
 export { Breadcrumb } from "./components/Breadcrumb/Breadcrumb";
 export { Button } from "./components/Button/Button";
@@ -16,6 +17,7 @@ export { DatePicker } from "./components/DatePicker/DatePicker";
 export { Dialog } from "./components/Dialog/Dialog";
 export { Divider } from "./components/Divider/Divider";
 export { Drawer } from "./components/Drawer/Drawer";
+export { Dropdown } from "./components/Dropdown/Dropdown";
 export { FileUpload } from "./components/FileUpload/FileUpload";
 export { Input } from "./components/Input/Input";
 export { InputNumber } from "./components/InputNumber/InputNumber";
