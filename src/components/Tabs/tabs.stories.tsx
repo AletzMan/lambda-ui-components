@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react-vite";
-import { Tab } from "./Tab";
-import { TabProps } from "./tab.types";
+import { Tabs } from "./Tabs";
+import { TabProps } from "./tabs.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { useState } from "react";
 
-const meta: Meta<typeof Tab> = {
-	title: "Components/Tab",
-	component: Tab,
+const meta: Meta<typeof Tabs> = {
+	title: "Components/Tabs",
+	component: Tabs,
 	argTypes: {
 		variant: {
 			control: "select",
@@ -38,7 +38,7 @@ const meta: Meta<typeof Tab> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Tab>;
+type Story = StoryObj<typeof Tabs>;
 
 const colors: TabProps["color"][] = [
 	"neutral",
@@ -48,6 +48,12 @@ const colors: TabProps["color"][] = [
 	"danger",
 	"warning",
 	"info",
+];
+
+const tabs = [
+	{ title: "Products", disabled: false, icon: null, content: "Products content" },
+	{ title: "Orders", disabled: false, icon: null, content: "Orders content" },
+	{ title: "Customers", disabled: false, icon: null, content: "Customers content" },
 ];
 
 const Template = (args: TabProps) => {
@@ -61,12 +67,24 @@ const Template = (args: TabProps) => {
 		>
 			<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", padding: "1rem" }}>
 				{colors.map((color) => (
-					<Tab
+					<Tabs
 						key={color}
-						{...args}
+						size={args.size}
+						variant={args.variant}
 						color={color}
 						radius={currentStyle === "local" ? args.radius : undefined}
-					/>
+					>
+						<Tabs.List>
+							{tabs.map((tab, i) => (
+								<Tabs.Tab key={i} title={tab.title} disabled={tab.disabled} icon={tab.icon} />
+							))}
+						</Tabs.List>
+						<Tabs.Panels>
+							{tabs.map((tab, i) => (
+								<Tabs.Panel key={i}>{tab.content}</Tabs.Panel>
+							))}
+						</Tabs.Panels>
+					</Tabs>
 				))}
 			</div>
 		</ContainerComponent>
@@ -76,62 +94,36 @@ const Template = (args: TabProps) => {
 export const Underline: Story = {
 	render: Template,
 	args: {
-		items: [
-			{ id: "1", label: "Products", content: "Products content" },
-			{ id: "2", label: "Orders", content: "Orders content" },
-			{ id: "3", label: "Customers", content: "Customers content" },
-		],
 		variant: "underline",
 		size: "medium",
 		color: "secondary",
 		radius: "small",
-		disabled: false,
-		onChange: () => {},
 	},
 };
 
 export const Soft: Story = {
 	render: Template,
 	args: {
-		items: [
-			{ id: "1", label: "Products", content: "Products content" },
-			{ id: "2", label: "Orders", content: "Orders content" },
-			{ id: "3", label: "Customers", content: "Customers content" },
-		],
 		variant: "soft",
 		size: "medium",
 		color: "secondary",
 		radius: "small",
-		disabled: false,
-		onChange: () => {},
 	},
 };
 
 export const Box: Story = {
 	render: Template,
 	args: {
-		items: [
-			{ id: "1", label: "Products", content: "Products content" },
-			{ id: "2", label: "Orders", content: "Orders content" },
-			{ id: "3", label: "Customers", content: "Customers content" },
-		],
 		variant: "box",
 		size: "medium",
 		color: "secondary",
 		radius: "small",
-		disabled: false,
-		onChange: () => {},
 	},
 };
 
 export const Border: Story = {
 	render: Template,
 	args: {
-		items: [
-			{ id: "1", label: "Products", content: "Products content" },
-			{ id: "2", label: "Orders", content: "Orders content" },
-			{ id: "3", label: "Customers", content: "Customers content" },
-		],
 		variant: "border",
 		size: "medium",
 		color: "secondary",

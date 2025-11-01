@@ -36,7 +36,7 @@ export { Skeleton } from "./components/Skeleton/Skeleton";
 export { Splitter } from "./components/Splitter/Splitter";
 export { Stepper } from "./components/Stepper/Stepper";
 export { Switch } from "./components/Switch/Switch";
-export { Tab } from "./components/Tab/Tab";
+export { Tabs } from "./components/Tabs/Tabs";
 export { Table } from "./components/Table/Table";
 export { Tag } from "./components/Tag/Tag";
 export { TextArea } from "./components/TextArea/TextArea";

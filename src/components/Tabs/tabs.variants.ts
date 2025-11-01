@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./tab.module.css";
+import styles from "./tabs.module.css";
 
 export const tabWrapper = cva(styles["tab-wrapper"], {
 	variants: {

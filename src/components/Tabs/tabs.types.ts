@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { TabVariants } from "./tab.variants";
+import { TabVariants } from "./tabs.variants";
 
 export type TabItem = {
 	id: string;
@@ -8,11 +8,14 @@ export type TabItem = {
 	content?: React.ReactNode;
 };
 
-export interface TabProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange" | "color"> {
-	/*
-	 * Array de elementos que se renderizan como pestañas
-	 */
-	items?: TabItem[];
+export interface TabItemProps {
+	title: string;
+	icon?: React.ReactNode;
+	disabled?: boolean;
+}
+
+export interface TabProps
+	extends Omit<HTMLAttributes<HTMLDivElement>, "onChange" | "color" | "value" | "FormEvent"> {
 	/*
 	 * Establece el estilo de la pestaña @default "underline"
 	 */
