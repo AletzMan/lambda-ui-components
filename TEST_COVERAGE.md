@@ -44,9 +44,9 @@ Tener tests para los componentes críticos garantiza:
 
 - **Accordion** ✅
 - **Tabs** ✅
-- **Pagination** ⬜
-- **Stepper** ⬜
-- **Carousel** ⬜
+- **Pagination** ✅
+- **Stepper** ✅
+- **Carousel** ✅
   > Manejan interacción y organización de contenido. Errores pueden bloquear navegación o romper flujos.
 
 ### 5. **Componentes con lógica visual compleja**
