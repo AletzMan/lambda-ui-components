@@ -433,7 +433,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	z-index: 2;
 
 	&.lambda-input-label-tiny {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.lambda-input-label-radius-tiny {
@@ -441,7 +441,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 
 	&.lambda-input-label-small {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.lambda-input-label-medium {
