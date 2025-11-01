@@ -279,6 +279,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 									<motion.div
 										key={index}
 										className={clsx(styles["lambda-carousel-item"])}
+										aria-hidden={!isVisible}
 										animate={animationProps} // <-- Usamos el objeto de props calculado
 										transition={{ duration: isLoopJump ? 0 : 0.4, ease: "easeOut" }}
 										style={

@@ -43,7 +43,7 @@ Tener tests para los componentes críticos garantiza:
 ### 4. **Navegación y Layout**
 
 - **Accordion** ✅
-- **Tabs** ⬜
+- **Tabs** ✅
 - **Pagination** ⬜
 - **Stepper** ⬜
 - **Carousel** ⬜
