@@ -4,7 +4,6 @@
 	flex-direction: column;
 	gap: var(--padding-xs);
 	font-family: var(--font-family);
-	max-width: max-content;
 	width: 100%;
 
 	&:focus-within {
