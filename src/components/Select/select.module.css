@@ -2,7 +2,6 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: var(--padding-xs);
 	font-family: var(--font-family);
 	width: 100%;
 
@@ -47,7 +46,7 @@
 	}
 
 	&.select-label-small {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.select-label-medium {
