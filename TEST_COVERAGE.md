@@ -58,6 +58,30 @@ Tener tests para los componentes críticos garantiza:
 - **Popover** ⬜
   > Manejan overlays, focus, stacking, etc. Difíciles de testear manualmente.
 
+### 6. **Visuales y utilidades**
+
+- **Avatar** ⬜
+- **Badge** ⬜
+- **Breadcrumb** ⬜
+- **Calendar** ⬜
+- **CodeBlock** ⬜
+- **ColorPicker** ⬜
+- **DatePicker** ⬜
+- **Divider** ⬜
+- **FileUpload** ⬜
+- **Flex** ⬜
+- **Join** ⬜
+- **Link** ⬜
+- **NavigationMenu** ⬜
+- **Notification** ⬜
+- **Rating** ⬜
+- **Slider** ⬜
+- **Splitter** ⬜
+- **Table** ⬜
+- **Tag** ⬜
+- **ThemeProvider** ⬜
+- **TreeView** ⬜
+
 ---
 
 ## Leyenda
