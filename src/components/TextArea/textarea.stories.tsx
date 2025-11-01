@@ -70,7 +70,9 @@ const Template = (args: TextAreaProps) => {
 			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
 			styleSource={currentStyle}
 		>
-			<TextArea {...args} radius={currentStyle === "local" ? args.radius : undefined} />
+			<div style={{ width: "300px" }}>
+				<TextArea {...args} radius={currentStyle === "local" ? args.radius : undefined} />
+			</div>
 		</ContainerComponent>
 	);
 };

@@ -2,6 +2,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 }
 
 .lambda-textarea-label {
@@ -22,7 +23,7 @@
 	}
 
 	&.lambda-textarea-label-small {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.lambda-textarea-label-medium {
