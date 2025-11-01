@@ -59,9 +59,9 @@ export const DatePicker = ({
 	size,
 	label,
 	displayFormat,
-	type,
+	type = "dropdown",
 	radius,
-	variant,
+	variant = "solid",
 	errorMessage,
 	invalid = false,
 	isDateDisabled,
@@ -114,7 +114,8 @@ export const DatePicker = ({
 	}
 
 	// Navegación
-	const handlePrevMonth = () => {
+	const handlePrevMonth = (e: React.MouseEvent) => {
+		e.preventDefault();
 		setDirection(-1);
 		setCalendarTransitionType("slide");
 		setCurrentDate((prev) => {
@@ -122,7 +123,8 @@ export const DatePicker = ({
 			return prevMonth;
 		});
 	};
-	const handleNextMonth = () => {
+	const handleNextMonth = (e: React.MouseEvent) => {
+		e.preventDefault();
 		setDirection(1);
 		setCalendarTransitionType("slide");
 		setCurrentDate((prev) => {
@@ -131,7 +133,8 @@ export const DatePicker = ({
 		});
 	};
 
-	const handlePrevYear = () => {
+	const handlePrevYear = (e: React.MouseEvent) => {
+		e.preventDefault();
 		setDirection(-1);
 		setPrevYear(year);
 		setCalendarTransitionType("slide");
@@ -142,7 +145,8 @@ export const DatePicker = ({
 		});
 	};
 
-	const handleNextYear = () => {
+	const handleNextYear = (e: React.MouseEvent) => {
+		e.preventDefault();
 		setDirection(1);
 		setPrevYear(year);
 		setCalendarTransitionType("slide");
@@ -161,7 +165,8 @@ export const DatePicker = ({
 		return false;
 	};
 
-	const handleReset = () => {
+	const handleReset = (e: React.MouseEvent) => {
+		e.preventDefault();
 		setCurrentDate(value ? new Date(value) : new Date());
 		refTempDate.current = value;
 		setIsMonthPickerOpen(false);
@@ -171,7 +176,8 @@ export const DatePicker = ({
 		onChange?.(undefined);
 	};
 
-	const handleCloseMonthPicker = (month: number) => {
+	const handleCloseMonthPicker = (e: React.MouseEvent, month: number) => {
+		e.preventDefault();
 		setIsMonthPickerOpen(false);
 		setCurrentDate((prev) => {
 			const nextMonth = new Date(prev.getFullYear(), month, 1);
@@ -179,7 +185,8 @@ export const DatePicker = ({
 		});
 	};
 
-	const handleCloseYearPicker = (year: number) => {
+	const handleCloseYearPicker = (e: React.MouseEvent, year: number) => {
+		e.preventDefault();
 		setIsYearPickerOpen(false);
 		setCurrentDate((prev) => {
 			const nextYear = new Date(year, prev.getMonth(), 1);
@@ -187,7 +194,8 @@ export const DatePicker = ({
 		});
 	};
 
-	const handlePrevYears = () => {
+	const handlePrevYears = (e: React.MouseEvent) => {
+		e.preventDefault();
 		refTempYear.current = "prev";
 		setCurrentDate((prev) => {
 			const prevYear = new Date(prev.getFullYear() - 15, prev.getMonth(), 1);
@@ -195,7 +203,8 @@ export const DatePicker = ({
 		});
 	};
 
-	const handleNextYears = () => {
+	const handleNextYears = (e: React.MouseEvent) => {
+		e.preventDefault();
 		refTempYear.current = "next";
 		setCurrentDate((prev) => {
 			const nextYear = new Date(prev.getFullYear() + 15, prev.getMonth(), 1);
@@ -434,7 +443,7 @@ export const DatePicker = ({
 									<button
 										key={i}
 										type="button"
-										onClick={() => handleCloseMonthPicker(i)}
+										onClick={(e) => handleCloseMonthPicker(e, i)}
 										aria-label={monthBtn}
 										title={monthBtn}
 										className={clsx(styles["lambda-datepicker-picker-section-month"], {
@@ -489,7 +498,7 @@ export const DatePicker = ({
 										.map((yearBtn) => (
 											<button
 												key={yearBtn}
-												onClick={() => handleCloseYearPicker(yearBtn)}
+												onClick={(e) => handleCloseYearPicker(e, yearBtn)}
 												aria-label={yearBtn.toString()}
 												title={yearBtn.toString()}
 												className={clsx(styles["lambda-datepicker-picker-section-year"], {
@@ -511,7 +520,8 @@ export const DatePicker = ({
 		);
 	};
 
-	const handleCloseCalendar = (action: "accept" | "cancel") => {
+	const handleCloseCalendar = (e: React.MouseEvent, action: "accept" | "cancel") => {
+		e.preventDefault();
 		if (action === "accept") {
 			onChange?.(value);
 		} else {
@@ -577,7 +587,10 @@ export const DatePicker = ({
 						variant="subtle"
 						color="neutral"
 						icon={<CalendarIcon />}
-						onClick={() => setIsOpen(true)}
+						onClick={(e) => {
+							e.preventDefault();
+							setIsOpen(true);
+						}}
 					/>
 				</Join>
 			)}
@@ -621,14 +634,14 @@ export const DatePicker = ({
 									color="neutral"
 									size="small"
 									label={t("date-picker.cancel")}
-									onClick={() => handleCloseCalendar("cancel")}
+									onClick={(e) => handleCloseCalendar(e, "cancel")}
 								/>
 								<Button
 									variant="soft"
 									color="neutral"
 									size="small"
 									label={t("date-picker.confirm")}
-									onClick={() => handleCloseCalendar("accept")}
+									onClick={(e) => handleCloseCalendar(e, "accept")}
 								/>
 							</div>
 						</div>
