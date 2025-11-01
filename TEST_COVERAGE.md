@@ -23,7 +23,7 @@ Tener tests para los componentes críticos garantiza:
 - **Select** ✅
 - **Checkbox** ⬜
 - **Radio** ✅
-- **Switch** ⬜
+- **Switch** ✅
   > Son la base de cualquier formulario. Errores aquí afectan UX y accesibilidad.
 
 ### 2. **Botones y acciones**
@@ -66,14 +66,3 @@ Tener tests para los componentes críticos garantiza:
 - ⬜ Test pendiente
 
 ---
-
-## ¿Vale la pena subir esto al repo?
-
-¡Sí! Un README o documento de cobertura de tests es **muy valioso** porque:
-
-- Ayuda a nuevos contribuidores a identificar prioridades.
-- Permite visualizar el progreso y planificar mejoras.
-- Es útil para revisiones de código y auditorías de calidad.
-- Motiva a mantener y aumentar la cobertura.
-
-Puedes agregarlo como `TEST_COVERAGE.md` o una sección en tu `README.md` principal.
