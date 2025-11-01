@@ -107,6 +107,7 @@
 
 		&:focus-within {
 			outline: 3px solid var(--primary-outline-color);
+			outline-offset: 2px;
 			border-color: var(--primary-base-color);
 		}
 
@@ -127,6 +128,7 @@
 		&:focus-within {
 			background-color: var(--primary-opacity-color);
 			outline: 3px solid var(--primary-outline-color);
+			outline-offset: 2px;
 		}
 
 		&.lambda-textarea-invalid {

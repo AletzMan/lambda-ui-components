@@ -227,7 +227,8 @@
 	&:focus:not(.select-btn-disabled) {
 		&.select-btn-outline {
 			border: var(--border-width-xs) solid var(--primary-hover-color);
-			box-shadow: 0 0 0 3px var(--primary-shadow-color);
+			outline: 3px solid var(--primary-shadow-color);
+			outline-offset: 2px;
 			color: var(--primary-text-color);
 		}
 
@@ -236,7 +237,8 @@
 		}
 
 		&.select-btn-soft {
-			box-shadow: 0 0 0 3px var(--primary-shadow-color);
+			outline: 3px solid var(--primary-shadow-color);
+			outline-offset: 2px;
 		}
 	}
 
