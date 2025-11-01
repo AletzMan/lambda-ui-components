@@ -51,3 +51,6 @@ package-lock.json
 
 # windsurf rules
 .windsurfrules
+
+# Paquetes generados por npm pack
+*.tgz

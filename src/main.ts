@@ -1,6 +1,7 @@
 import "@fontsource-variable/manrope";
 import "./index.css";
 
+// -- COMPONENTS
 export { Accordion } from "./components/Accordion/Accordion";
 export { Alert } from "./components/Alert/Alert";
 export { Avatar } from "./components/Avatar/Avatar";
@@ -43,3 +44,7 @@ export { Tag } from "./components/Tag/Tag";
 export { TextArea } from "./components/TextArea/TextArea";
 export { Tooltip } from "./components/ToolTip/ToolTip";
 export { TreeView } from "./components/TreeView/TreeView";
+
+//-- PROVIDERS
+export { LambdaConfigProvider } from "./_internal/hooks/translation/LambdaConfigProvider";
+export { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";

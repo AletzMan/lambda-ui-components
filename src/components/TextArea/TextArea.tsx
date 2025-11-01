@@ -1,4 +1,4 @@
-import { forwardRef, FocusEvent, useState, useId } from "react";
+import { forwardRef, FocusEvent, useId } from "react";
 import styles from "./textArea.module.css";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import clsx from "clsx";
@@ -27,7 +27,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 		},
 		ref
 	) => {
-		const [focused, setFocused] = useState(false);
 		const { radiusField } = useUIConfig();
 		const radiusValue = radius || radiusField;
 
@@ -38,14 +37,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 		const describedByIds = [errorId, helperId].filter(Boolean).join(" ");
 
 		const handleOnFocus = (e: FocusEvent<HTMLTextAreaElement>) => {
-			setFocused(true);
 			if (onFocus) {
 				onFocus(e);
 			}
 		};
 
 		const handleOnBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
-			setFocused(false);
 			if (onBlur) {
 				onBlur(e);
 			}
@@ -96,13 +93,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 					/>
 				)}
 				{helperText && !invalid && (
-					<HelperText
-						id={helperId}
-						text={helperText}
-						size={size}
-						disabled={disabled}
-						focused={focused}
-					/>
+					<HelperText id={helperId} text={helperText} size={size} disabled={disabled} />
 				)}
 				{invalid && errorMessage && (
 					<InvalidMessage id={errorId} errorMessage={errorMessage} invalid={invalid} size={size} />

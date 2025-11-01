@@ -10,11 +10,10 @@ export function useDropdownPlacement(
 
 	const checkDirection = useCallback(() => {
 		if (triggerRef.current && dropdownRef?.current) {
-			const { top, bottom } = triggerRef.current.getBoundingClientRect();
+			const { bottom } = triggerRef.current.getBoundingClientRect();
 			const { height: dropdownHeight } = dropdownRef.current.getBoundingClientRect();
 			const viewportHeight = window.innerHeight;
 			const spaceBelow = viewportHeight - bottom;
-			const spaceAbove = top;
 			if (spaceBelow < dropdownHeight) {
 				setDirection("up");
 			} else {
