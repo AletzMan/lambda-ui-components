@@ -52,8 +52,8 @@ Tener tests para los componentes críticos garantiza:
 ### 5. **Componentes con lógica visual compleja**
 
 - **Card** ✅
-- **Modal/Dialog** ⬜
-- **Drawer** ⬜
+- **Modal/Dialog** ✅
+- **Drawer** ✅
 - **Dropdown** ⬜
 - **Popover** ⬜
   > Manejan overlays, focus, stacking, etc. Difíciles de testear manualmente.
