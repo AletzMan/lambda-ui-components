@@ -52,7 +52,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 			children,
 			title,
 			footer,
-			placement,
+			placement = "left",
 			backdropType,
 			size,
 			closeOnOverlayClick = true,

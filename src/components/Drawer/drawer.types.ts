@@ -52,7 +52,7 @@ export interface DrawerProps extends Omit<HTMLAttributes<HTMLDivElement>, "child
 	 * Define desde qué borde de la pantalla se abre el drawer.
 	 * Requerido.
 	 */
-	placement: DrawerVariants["placement"];
+	placement?: DrawerVariants["placement"];
 
 	/**
 	 * Define el ancho del drawer.
