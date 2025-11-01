@@ -29,7 +29,7 @@ Tener tests para los componentes críticos garantiza:
 ### 2. **Botones y acciones**
 
 - **Button** ✅
-- **ButtonTheme** ⬜
+- **ButtonTheme** ✅
   > Son el principal disparador de acciones. Deben responder bien a clicks, loading, disabled, variantes.
 
 ### 3. **Feedback y mensajes**
