@@ -66,7 +66,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 			Prism.highlightElement(codeRef.current);
 		}
 	}, [codeToShow, langToShow, highlightLines, showLineNumbers, theme]);
-	console.log(tabs);
+
 	return (
 		<div className={clsx(codeBlockVariants({ showLineNumbers, theme }), className)}>
 			{tabs && (
