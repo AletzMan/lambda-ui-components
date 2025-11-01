@@ -51,7 +51,7 @@ Tener tests para los componentes críticos garantiza:
 
 ### 5. **Componentes con lógica visual compleja**
 
-- **Card** ⬜
+- **Card** ✅
 - **Modal/Dialog** ⬜
 - **Drawer** ⬜
 - **Dropdown** ⬜
