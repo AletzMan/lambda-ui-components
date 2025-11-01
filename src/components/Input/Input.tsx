@@ -125,7 +125,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						invalid,
 						hasLabel: floatingLabel || label !== undefined,
 						hasHelper: helperText !== undefined,
-						className,
 						join: joinposition !== undefined,
 					}),
 					{
@@ -183,6 +182,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 					<div
 						className={clsx(styles["lambda-input-input-wrapper"], {
 							[styles["lambda-input-input-wrapper-password"]]: isPasswordType || isSearchType,
+							className,
 						})}
 					>
 						<input

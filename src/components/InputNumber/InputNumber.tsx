@@ -118,7 +118,6 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 					wrapper({
 						disabled: disabledValue,
 						joinposition,
-						className,
 						hasHelper: helperText !== undefined,
 					})
 				)}
@@ -137,6 +136,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 						size: sizeValue,
 						invalid,
 						joinposition,
+						className,
 					})}
 				>
 					<div className={styles["lambda-number-container"]}>
