@@ -25,9 +25,8 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 			disabled = false,
 			marks = [],
 			orientation = "horizontal",
-			size,
-			radius,
-			ariaLabel,
+			size = "small",
+			radius = "small",
 			viewValue = true,
 			viewBar = true,
 			className,
@@ -512,10 +511,10 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 						role="slider"
 						aria-label={
 							isDoubleHandled
-								? Array.isArray(ariaLabel)
-									? ariaLabel[0]
-									: (ariaLabel as string) || "Inicio del rango"
-								: (ariaLabel as string)
+								? Array.isArray(value)
+									? value[0].toString()
+									: (value as string) || "Inicio del rango"
+								: value.toString()
 						}
 						aria-valuemin={min}
 						aria-valuemax={max}
@@ -554,7 +553,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 							role="slider"
 							// *** CORRECCIÓN ARIA LABEL: Usa la segunda etiqueta si es array, o un fallback ***
 							aria-label={
-								Array.isArray(ariaLabel) ? ariaLabel[1] : `${ariaLabel || "Fin del rango"}`
+								Array.isArray(value) ? value[1].toString() : `${value || "Fin del rango"}`
 							}
 							aria-valuemin={min}
 							aria-valuemax={max}
