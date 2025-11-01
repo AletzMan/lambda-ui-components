@@ -21,7 +21,7 @@ Tener tests para los componentes críticos garantiza:
 - **InputNumber** ✅
 - **TextArea** ✅
 - **Select** ✅
-- **Checkbox** ⬜
+- **Checkbox** ✅
 - **Radio** ✅
 - **Switch** ✅
   > Son la base de cualquier formulario. Errores aquí afectan UX y accesibilidad.
@@ -36,7 +36,7 @@ Tener tests para los componentes críticos garantiza:
 
 - **Alert** ✅
 - **Skeleton** ✅
-- **Progress** ⬜
+- **Progress** ✅
 - **Tooltip** ⬜
   > Informan al usuario sobre el estado de la app o de operaciones. Su visibilidad y accesibilidad es clave.
 

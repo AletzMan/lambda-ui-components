@@ -1,6 +1,7 @@
 import { ProgressVariants } from "./progress.variants";
 
-export interface ProgressProps {
+export interface ProgressProps
+	extends Omit<React.HTMLAttributes<HTMLDivElement>, "value" | "color"> {
 	/**
 	 * Valor del progreso (0-100).
 	 */
