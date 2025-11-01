@@ -69,18 +69,19 @@ input[type="search"]::-webkit-search-cancel-button {
 	&.lambda-input-invalid {
 		margin: 0 0 0.25em 0;
 	}
-
+	/*
 	&:is(.lambda-input-has-label):not(.lambda-input-has-helper):not(.lambda-input-join) {
 		margin: var(--padding-lg) 0 0 0;
 	}
-
-	&:is(.lambda-input-has-helper):not(.lambda-input-has-label):not(.lambda-input-join) {
+*/
+	&:is(.lambda-input-has-helper):not(.lambda-input-join) {
 		margin: 0 0 var(--padding-lg) 0;
 	}
-
+	/*
 	&:is(.lambda-input-has-label):is(.lambda-input-has-helper):not(.lambda-input-join) {
 		margin: var(--padding-lg) 0 var(--padding-lg) 0;
 	}
+		*/
 }
 
 .lambda-input-field {

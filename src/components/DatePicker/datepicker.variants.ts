@@ -14,6 +14,10 @@ export const datepickerWrapperVariants = cva(styles["lambda-datepicker-wrapper"]
 			medium: styles["lambda-datepicker-wrapper-medium"],
 			large: styles["lambda-datepicker-wrapper-large"],
 		},
+		hasLabel: {
+			true: styles["lambda-datepicker-wrapper-has-label"],
+			false: "",
+		},
 	},
 });
 

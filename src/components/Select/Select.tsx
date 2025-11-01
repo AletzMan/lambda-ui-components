@@ -118,6 +118,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			>
 				{label && (
 					<label
+						aria-label="ComponentLabel"
 						className={clsx(
 							labelSelectVariants({
 								direction: menuPosition.position,

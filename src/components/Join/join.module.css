@@ -57,6 +57,13 @@
 	.lambda-join-input {
 		flex-grow: 1;
 	}
+
+	&:has(label[aria-label="ComponentLabel"]) {
+		& label[aria-label="ComponentLabel"] {
+			position: absolute;
+			top: -1.4em;
+		}
+	}
 }
 
 .lambda-join-wrapper {

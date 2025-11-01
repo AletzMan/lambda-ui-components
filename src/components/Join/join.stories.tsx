@@ -99,7 +99,7 @@ const Template = (args: JoinProps) => {
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
 						<Checkbox label="Is Required" color="danger" variant="solid" />
-						<InputNumber />
+						<InputNumber label="InputNumber" />
 						<Input
 							type="text"
 							placeholder="Text input example"
@@ -110,7 +110,7 @@ const Template = (args: JoinProps) => {
 						<Button type="button" variant="subtle" color="warning" label="Search" />
 					</Join>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
-						<InputNumber typeNumber="currency-USD" />
+						<InputNumber typeNumber="currency-USD" label="Currency-USD" />
 						<Input
 							type="text"
 							placeholder="Text input example"

@@ -57,7 +57,7 @@ const Template = (args: DatePickerProps) => {
 			onChangeStyleSource={(value) => setCurrentStyles(value)}
 			styleSource={currentStyles}
 		>
-			<div style={{ paddingTop: 200, width: "330px" }}>
+			<div style={{ paddingTop: 200, width: "350px" }}>
 				<DatePicker
 					{...args}
 					value={date}

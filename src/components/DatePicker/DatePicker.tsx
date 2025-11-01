@@ -534,7 +534,7 @@ export const DatePicker = ({
 	};
 
 	return (
-		<div className={datepickerWrapperVariants({ size, type })}>
+		<div className={datepickerWrapperVariants({ size, type, hasLabel: label !== undefined })}>
 			{type === "inline" && (
 				<div className={datepickerInlineSectionVariants({ radius: radiusValue, invalid, variant })}>
 					<header>

@@ -123,7 +123,11 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 				)}
 			>
 				{label && (
-					<label htmlFor={inputId} className={labels({ radius: radiusValue, size, required })}>
+					<label
+						aria-label="ComponentLabel"
+						htmlFor={inputId}
+						className={labels({ radius: radiusValue, size, required })}
+					>
 						{label}
 					</label>
 				)}

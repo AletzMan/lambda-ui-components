@@ -134,6 +134,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			>
 				{label && (
 					<label
+						aria-label="ComponentLabel"
 						className={clsx(
 							labels({
 								radius: radiusField,
