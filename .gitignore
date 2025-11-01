@@ -25,11 +25,14 @@ node_modules
 /storybook-static/
 
 # TypeScript cache
-*.tsbuildinfo
+*.tsbuildinfo 
 
 # Lockfiles (except pnpm)
 yarn.lock
 package-lock.json
+
+#Windsurf Rules
+.windsurfrules
 
 *.local
 
