@@ -37,7 +37,7 @@ Tener tests para los componentes críticos garantiza:
 - **Alert** ✅
 - **Skeleton** ✅
 - **Progress** ✅
-- **Tooltip** ⬜
+- **Tooltip** ✅
   > Informan al usuario sobre el estado de la app o de operaciones. Su visibilidad y accesibilidad es clave.
 
 ### 4. **Navegación y Layout**
