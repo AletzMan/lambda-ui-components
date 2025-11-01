@@ -61,7 +61,7 @@ export const Join = forwardRef<HTMLDivElement, PropsWithChildren<JoinProps>>(
 		});
 		return (
 			<JoinContext.Provider value={contextValue}>
-				<div className={styles["lambda-input-group-container"]}>
+				<div className={styles["lambda-input-container"]}>
 					<div
 						ref={ref}
 						className={clsx(

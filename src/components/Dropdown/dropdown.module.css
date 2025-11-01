@@ -1,5 +1,6 @@
 .lambda-dropdown-wrapper {
 	font-family: var(--font-family);
+	height: max-content;
 }
 
 .lambda-dropdown {
