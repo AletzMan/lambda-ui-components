@@ -66,10 +66,15 @@ export const wrapper = cva(styles["lambda-number-wrapper"], {
 			middle: styles["lambda-number-middle"],
 			single: styles["lambda-number-single"],
 		},
+		hasHelper: {
+			true: styles["lambda-number-has-helper"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		disabled: false,
 		joinposition: "single",
+		hasHelper: false,
 	},
 });
 

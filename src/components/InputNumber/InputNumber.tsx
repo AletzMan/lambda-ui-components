@@ -113,7 +113,16 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		const describedByIds = [errorId, helperId].filter(Boolean).join(" ");
 
 		return (
-			<div className={clsx(wrapper({ disabled: disabledValue, joinposition, className }))}>
+			<div
+				className={clsx(
+					wrapper({
+						disabled: disabledValue,
+						joinposition,
+						className,
+						hasHelper: helperText !== undefined,
+					})
+				)}
+			>
 				{label && (
 					<label htmlFor={inputId} className={labels({ radius: radiusValue, size, required })}>
 						{label}

@@ -72,9 +72,9 @@ const Template = (args: InputNumberProps) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					gap: "40px",
 					justifyContent: "center",
 					width: "250px",
+					gap: "1rem",
 				}}
 			>
 				<InputNumber

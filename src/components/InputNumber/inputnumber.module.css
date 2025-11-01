@@ -120,6 +120,10 @@ input[type="number"] {
 	&:is(.lambda-number-first) {
 		margin-inline-end: -1px;
 	}
+
+	&.lambda-number-has-helper {
+		margin-bottom: var(--padding-md);
+	}
 }
 
 .lambda-number-invalid-icon {
@@ -132,8 +136,6 @@ input[type="number"] {
 }
 
 .lambda-number-label {
-	position: absolute;
-	top: -1.4em;
 	font-family: var(--font-family);
 	color: var(--foreground-label-color);
 	font-weight: var(--font-weight-semibold);
@@ -148,11 +150,11 @@ input[type="number"] {
 }
 
 .lambda-number-label-tiny {
-	font-size: var(--font-size-sm);
+	font-size: var(--font-size-xs);
 }
 
 .lambda-number-label-small {
-	font-size: var(--font-size-sm);
+	font-size: var(--font-size-xs);
 }
 
 .lambda-number-label-medium {
