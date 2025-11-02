@@ -68,43 +68,6 @@
 	}
 }
 
-.lambda-link-tiny {
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-medium);
-
-	.lambda-link-icon {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
-	}
-}
-
-.lambda-link-small {
-	font-size: var(--font-size-sm);
-
-	.lambda-link-icon {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
-	}
-}
-
-.lambda-link-medium {
-	font-size: var(--font-size-md);
-
-	.lambda-link-icon {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
-	}
-}
-
-.lambda-link-large {
-	font-size: var(--font-size-lg);
-
-	.lambda-link-icon {
-		width: var(--icon-size-md);
-		height: var(--icon-size-md);
-	}
-}
-
 .lambda-link-button {
 	display: flex;
 	flex-direction: row;
@@ -144,9 +107,6 @@
 	outline: none !important;
 }
 
-/* Estilos para el icono dentro del Link */
-/* El espaciado entre el icono y el texto se manejará con gap en .lambda-link-base
-   (display: inline-flex) o con margin en Link.tsx/CSS del botón. */
 .lambda-link-icon {
 	display: flex;
 	align-items: center;
@@ -161,7 +121,67 @@
 	flex-direction: row-reverse;
 }
 
-/* Nota: Los estilos para la apariencia de botón (cuando type="button") se obtendrán al importar el CSS Module del componente Button. */
-/* Las clases como .lambda-button, .lambda-button-variant-solid, .lambda-button-color-primary,
-   .lambda-button-size-medium, .lambda-button-radius-medium, .lambda-button-iconPosition-left,
-   .lambda-button-loading-true, etc., deben estar definidas en el archivo CSS Module de tu componente Button. */
+.lambda-link-tiny {
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-medium);
+
+	.lambda-link-icon {
+		width: var(--icon-size-xs);
+		height: var(--icon-size-xs);
+	}
+
+	&:is(.lambda-link-only-icon) {
+		padding-left: 0;
+		padding-right: 0;
+		width: var(--height-xs);
+		height: var(--height-xs);
+	}
+}
+
+.lambda-link-small {
+	font-size: var(--font-size-sm);
+
+	.lambda-link-icon {
+		width: var(--icon-size-sm);
+		height: var(--icon-size-sm);
+	}
+
+	&:is(.lambda-link-only-icon) {
+		padding-left: 0;
+		padding-right: 0;
+		width: var(--height-sm);
+		height: var(--height-sm);
+	}
+}
+
+.lambda-link-medium {
+	font-size: var(--font-size-md);
+
+	.lambda-link-icon {
+		width: var(--icon-size-sm);
+		height: var(--icon-size-sm);
+	}
+
+	&:is(.lambda-link-only-icon) {
+		padding-left: 0;
+		padding-right: 0;
+		width: var(--height-md);
+		height: var(--height-md);
+	}
+}
+
+.lambda-link-large {
+	font-size: var(--font-size-lg);
+
+	.lambda-link-icon {
+		width: var(--icon-size-md);
+		height: var(--icon-size-md);
+	}
+
+	&:is(.lambda-link-only-icon) {
+		padding-left: 0;
+		padding-right: 0;
+		width: var(--height-lg);
+		height: var(--height-lg);
+	}
+}

@@ -23,6 +23,9 @@ export const linkProps = cva(styles["lambda-link"], {
 			medium: styles["lambda-link-medium"],
 			large: styles["lambda-link-large"],
 		},
+		onlyIcon: {
+			true: styles["lambda-link-only-icon"],
+		},
 		disabled: {
 			true: styles["lambda-link-disabled"],
 		},
@@ -30,6 +33,7 @@ export const linkProps = cva(styles["lambda-link"], {
 	defaultVariants: {
 		color: "primary",
 		size: "medium",
+		onlyIcon: false,
 		disabled: false,
 	},
 });

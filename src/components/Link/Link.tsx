@@ -41,7 +41,16 @@ export const Link = forwardRef<LinkRef, LinkProps>(
 		const linkClasses = clsx(
 			...(isButtonType
 				? [
-						button({ variant, color, size, radius: radiusField, loading, disabled, iconPosition }),
+						button({
+							variant,
+							color,
+							size,
+							radius: radiusField,
+							loading,
+							disabled,
+							iconPosition,
+							onlyIcon: icon !== undefined && !label,
+						}),
 						linkButtonProps({ justify }),
 				  ]
 				: [linkProps({ color, size, disabled })]),
