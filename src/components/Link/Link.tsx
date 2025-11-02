@@ -26,6 +26,7 @@ export const Link = forwardRef<LinkRef, LinkProps>(
 			variant,
 			color,
 			size,
+			radius,
 			justify,
 			loading,
 			iconPosition,
@@ -34,6 +35,7 @@ export const Link = forwardRef<LinkRef, LinkProps>(
 		ref
 	) => {
 		const { radiusField } = useUIConfig();
+		const radiusFieldLink = radius ?? radiusField;
 		// Determinar el contenido visible del Link (label tiene prioridad si ambos existen)
 		const content = label ?? children;
 		const isButtonType = type === "button";
@@ -45,7 +47,7 @@ export const Link = forwardRef<LinkRef, LinkProps>(
 							variant,
 							color,
 							size,
-							radius: radiusField,
+							radius: radiusFieldLink,
 							loading,
 							disabled,
 							iconPosition,
