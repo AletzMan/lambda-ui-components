@@ -1,8 +1,9 @@
 "use client";
-import { Button } from "lambda-ui-components";
+import { Button, ButtonTheme } from "lambda-ui-components";
 export default function Home() {
 	return (
-		<div className="flex min-h-screen items-center justify-center">
+		<div className="flex min-h-screen items-center justify-center text-(--foreground-color)">
+			<ButtonTheme />
 			<svg viewBox="0 0 394.35 394.35" width={50} height={50}>
 				<g id="Capa_5" data-name="Capa 5">
 					<path
