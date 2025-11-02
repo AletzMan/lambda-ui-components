@@ -12,7 +12,7 @@ const meta: Meta<typeof Button> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["classic", "solid", "outline", "dashed", "soft", "subtle", "text"],
+			options: ["classic", "solid", "outline", "dashed", "soft", "subtle", "text", "unstyled"],
 			description: "Visual style of the button",
 			type: "string",
 			table: {
@@ -77,7 +77,16 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-const buttonColors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
+const buttonColors = [
+	"neutral",
+	"primary",
+	"secondary",
+	"danger",
+	"success",
+	"warning",
+	"info",
+	"custom",
+];
 
 const Template = (args: ButtonProps) => {
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");

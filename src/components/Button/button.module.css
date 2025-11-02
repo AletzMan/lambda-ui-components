@@ -4,7 +4,6 @@
 	align-items: center;
 	justify-content: center;
 	gap: var(--gap-md);
-	color: var(--foreground-color);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-medium);
 	letter-spacing: 0.01px;
@@ -16,8 +15,6 @@
 	min-height: 24px;
 	min-width: max-content;
 	overflow: hidden;
-
-	color: var(--white-color);
 	text-shadow: 0 0 1px #00000045;
 	transition: background-color 0.15s ease-in-out, color 0.3s ease-in-out, shadow 0.3s ease-in-out;
 
