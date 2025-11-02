@@ -27,6 +27,35 @@ npm install lambda-ui-components
 
 > **Nota:** Debes tener React 18+ y ReactDOM como peerDependencies en tu proyecto.
 
+## 🎨 Estilos globales recomendados
+
+Para que los componentes de `lambda-ui-components` funcionen correctamente y evitar flashes de color al usar dark mode, agrega este snippet a tu CSS global (por ejemplo, en `globals.css` o el archivo global de tu proyecto):
+
+```css
+body {
+	background-color: var(--background-color);
+}
+```
+
+Si quieres máxima compatibilidad con dark/light mode y variables:
+
+```css
+html,
+body {
+	background: #09090b;
+	color-scheme: dark;
+}
+html.light,
+body.light {
+	background: #fff !important;
+	color-scheme: light;
+}
+```
+
+> **Nota:**  
+> No forzamos estos estilos desde la librería para no interferir con el diseño de tu app.  
+> Si usas un ThemeProvider, asegúrate de que sincroniza la clase `dark`/`light` en `<html>`.
+
 ## 📦 Uso Básico
 
 1. **Importa los estilos globales una vez en tu entrypoint:**
