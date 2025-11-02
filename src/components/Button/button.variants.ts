@@ -62,6 +62,10 @@ export const button = cva(styles[`lambda-btn`], {
 			last: styles[`lambda-btn-last`],
 			single: styles[`lambda-btn-single`],
 		},
+		onlyIcon: {
+			true: styles[`lambda-btn-only-icon`],
+			false: styles[`lambda-btn-without-icon`],
+		},
 	},
 	defaultVariants: {
 		color: "primary",

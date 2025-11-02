@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef, isValidElement } from "react";
+import { forwardRef } from "react";
 import styles from "./button.module.css";
 import { Loader } from "lucide-react";
 import clsx from "clsx";
@@ -67,10 +67,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						isCircle,
 						className,
 						joinposition,
-					}),
-					{
-						[styles["lambda-btn-only-icon"]]: !(isValidElement<ReactNode>(props.children) || label),
-					}
+						onlyIcon: icon !== undefined && !label,
+					})
 				)}
 				disabled={contextDisabled || undefined}
 				{...props}
