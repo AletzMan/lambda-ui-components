@@ -25,7 +25,7 @@ export function HeaderApp() {
 			<Flex gap={6} align="center" className="max-md:hidden">
 				<nav className="flex gap-1">
 					{links.map((link) => (
-						<Flex key={link.name} align="center">
+						<div key={link.name} className="flex items-center gap-x-2 ml-[2px]">
 							<Link
 								key={link.name}
 								href={link.href}
@@ -37,8 +37,8 @@ export function HeaderApp() {
 							>
 								{link.name}
 							</Link>
-							{link.name !== "Changelog" && <Divider orientation="vertical" />}
-						</Flex>
+							{link.name !== "Changelog" && <Divider orientation="vertical" color="white" />}
+						</div>
 					))}
 				</nav>
 			</Flex>
