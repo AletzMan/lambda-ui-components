@@ -1,62 +1,91 @@
 "use client";
-import { CodeBlock, Link } from "lambda-ui-components";
+import { Button, CodeBlock, Link } from "lambda-ui-components";
 import { motion } from "framer-motion";
 import { RocketIcon } from "@/components/icons/RocketIcon";
 import { Flex } from "lambda-ui-components";
+import { FeatureSection } from "./FeatureSection";
+import "prismjs/components/prism-jsx";
 
 export default function HomeHero() {
 	const code = `pnpm add lambda-ui-components`;
 	return (
-		<section className="relative flex flex-row justify-between max-[839px]:flex-col-reverse items-center  min-h-[90vh] w-full py-16 text-center overflow-hidden px-14 gap-10">
-			<Flex
-				gap={6}
-				align="flex-start"
-				justify="start"
-				direction="column"
-				className="w-3/5 max-[839px]:w-full"
-			>
-				<motion.h1
-					className="text-4xl md:text-6xl font-bold text-(--foreground-color) max-[839px]:text-center text-left mb-4 z-10 w-full"
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
+		<Flex className="flex flex-col items-center justify-center">
+			<section className="relative flex flex-row justify-between max-[839px]:flex-col-reverse items-center  min-h-[90vh] w-full py-16 text-center overflow-hidden px-14 gap-10">
+				<Flex
+					gap={6}
+					align="flex-start"
+					justify="start"
+					direction="column"
+					className="w-3/5 max-[839px]:w-full"
 				>
-					Lambda <span className="text-(--primary-base-color)">UI</span> Components
-				</motion.h1>
-				<motion.p
-					className="w-full text-left text-lg md:text-lg max-[839px]:text-center text-(--foreground-secondary-color) mb-8 z-10"
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
-				>
-					A modern, flexible, and production-ready React component library.
-					<br />
-					Build beautiful and accessible interfaces with speed and consistency.
-				</motion.p>
-				<motion.div
-					className="flex flex-row max-[839px]:flex-col gap-4 justify-start max-[839px]:items-center w-full"
-					initial={{ opacity: 0, scale: 0.9 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ duration: 0.7, delay: 0.7, type: "spring" }}
-				>
-					<Link
-						size="large"
-						variant="solid"
-						color="primary"
-						radius="small"
-						label="Get started"
-						href="/introduction"
-						type="button"
-						iconPosition="right"
-						icon={<RocketIcon />}
+					<motion.h1
+						className="text-4xl md:text-6xl font-bold text-(--foreground-color) max-[839px]:text-center text-left mb-4 w-full"
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
+					>
+						Lambda <span className="text-(--primary-base-color)">UI</span> Components
+					</motion.h1>
+					<motion.p
+						className="w-full text-left text-lg md:text-lg max-[839px]:text-center text-(--foreground-secondary-color) mb-8 "
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
+					>
+						A modern, flexible, and production-ready React component library.
+						<br />
+						Build beautiful and accessible interfaces with speed and consistency.
+					</motion.p>
+					<motion.div
+						className="flex flex-row max-[839px]:flex-col gap-4 justify-start max-[839px]:items-center w-full"
+						initial={{ opacity: 0, scale: 0.9 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.7, delay: 0.7, type: "spring" }}
+					>
+						<Link
+							size="large"
+							variant="solid"
+							color="primary"
+							radius="small"
+							label="Get started"
+							href="/introduction"
+							type="button"
+							iconPosition="right"
+							icon={<RocketIcon />}
+						/>
+						<CodeBlock
+							code={code}
+							language="bash"
+							buttonCopy
+							showLineNumbers={false}
+							theme="dark"
+						/>
+					</motion.div>
+				</Flex>
+				<Flex className="flex w-2/5 max-[839px]:w-full max-[839px]:justify-center justify-center">
+					<AnimatedSVGDecorative />
+				</Flex>
+			</section>
+
+			<Flex className="flex w-full max-[839px]:w-full max-[839px]:justify-center justify-center px-14 py-16">
+				<FeatureSection />
+			</Flex>
+			<section className="py-16 w-full flex flex-col items-center">
+				<h2 className="text-2xl font-bold mb-6">See it in action</h2>
+				<div className="flex flex-col md:flex-row gap-8 justify-center items-center w-full">
+					<CodeBlock
+						code={`<Button variant="primary">Click me</Button>`}
+						language="jsx"
+						buttonCopy
+						showLineNumbers={false}
+						theme="dark"
 					/>
-					<CodeBlock code={code} language="bash" buttonCopy showLineNumbers={false} theme="dark" />
-				</motion.div>
-			</Flex>
-			<Flex className="flex w-2/5 max-[839px]:w-full max-[839px]:justify-center justify-center">
-				<AnimatedSVGDecorative />
-			</Flex>
-		</section>
+					<div className="p-6 rounded-lg bg-(--surface-b) border border-(--border-color)">
+						<Button variant="solid">Click me</Button>
+					</div>
+				</div>
+			</section>
+		</Flex>
 	);
 }
 
@@ -66,7 +95,7 @@ export function AnimatedSVGDecorative() {
 			viewBox="0 0 394.35 394.35"
 			width={220}
 			height={220}
-			className=" pointer-events-none select-none z-0"
+			className=" pointer-events-none select-none"
 			style={{
 				opacity: 0.16,
 			}}
