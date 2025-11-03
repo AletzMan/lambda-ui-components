@@ -273,7 +273,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
 				// Establecer la posición calculada en el estado
 				setTooltipPositionStyle({
-					top: top + window.scrollY,
+					top: top,
 					left: left,
 				});
 				setEffectivePosition(nextPosition);
@@ -339,8 +339,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 					}
 
 					setTooltipPositionStyle({
-						top: top + window.scrollY,
-						left: left + window.scrollX,
+						top: top,
+						left: left,
 					});
 					setEffectivePosition(nextPosition);
 				}
