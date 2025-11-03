@@ -1,7 +1,9 @@
+import HomeHero from "./home-components/HomeHero";
+
 export default function Home() {
 	return (
-		<div className="flex min-h-screen items-center justify-center text-(--foreground-color)">
-			<div>Lambda UI Components</div>
+		<div className="flex min-h-screen flex-col text-(--foreground-color) mx-auto w-full">
+			<HomeHero />
 		</div>
 	);
 }

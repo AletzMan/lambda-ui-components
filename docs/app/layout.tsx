@@ -1,19 +1,8 @@
 import "lambda-ui-components/dist/main.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { ClientProviders } from "./ClientProviders";
 import { HeaderApp } from "../components/ui/HeaderApp";
-
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
 	title: "Lambda UI Components",
@@ -26,7 +15,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" data-theme="dark">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased scrollBar`}>
+			<body
+				className={`  antialiased  max-w-[1400px] mx-auto flex flex-col items-center  justify-center min-h-screen `}
+			>
 				<ClientProviders>
 					<HeaderApp />
 					{children}
