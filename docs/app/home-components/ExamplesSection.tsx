@@ -244,7 +244,7 @@ export function ExamplesSection() {
 		},
 	];
 	return (
-		<section className="flex flex-col items-center justify-center gap-8 w-full">
+		<section className="flex flex-col items-center justify-center gap-8 w-full my-25">
 			<h2 className="text-5xl font-bold mb-6">See in action</h2>
 			<section className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4 px-14 min-h-[400px] w-full">
 				{examples.map((example, index) => (
