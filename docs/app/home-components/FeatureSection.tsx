@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { FeatureCard } from "./FeatureCard";
 
 import {
@@ -49,30 +50,29 @@ export function FeatureSection() {
 			color: "text-blue-500",
 			icon: Code2,
 		},
-		/*{
-			title: "Customizable",
-			description: "Easy to theme and extend.",
-			color: "text-pink-500",
-			icon: <Sliders />,
-		},
-		{
-			title: "Performance",
-			description: "Optimized for speed and low bundle size.",
-			color: "text-yellow-500",
-			icon: <Zap />,
-		},*/
 	];
 	return (
-		<section className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-4  min-h-[400px] w-full">
-			{features.map((feature, index) => (
-				<FeatureCard
-					key={index}
-					title={feature.title}
-					description={feature.description}
-					color={feature.color}
-					icon={feature.icon}
-				/>
-			))}
+		<section className="flex flex-col items-center justify-center gap-8 w-full">
+			<motion.h2
+				className="text-5xl font-bold mb-6 bg-linear-to-r from-cyan-400 via-indigo-500 to-cyan-500 bg-clip-text text-transparent"
+				initial={{ backgroundPosition: "0% 50%" }}
+				animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+				transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+				style={{ backgroundSize: "200% 200%" }}
+			>
+				Why Lambda UI?
+			</motion.h2>
+			<section className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-4  min-h-[400px] w-full">
+				{features.map((feature, index) => (
+					<FeatureCard
+						key={index}
+						title={feature.title}
+						description={feature.description}
+						color={feature.color}
+						icon={feature.icon}
+					/>
+				))}
+			</section>
 		</section>
 	);
 }
