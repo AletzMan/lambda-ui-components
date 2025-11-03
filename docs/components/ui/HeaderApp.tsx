@@ -17,8 +17,12 @@ export function HeaderApp() {
 				<AppLogo width={40} height={40} />
 				<div className="text-lg font-bold text-(--foreground-color)">Lambda UI</div>
 				<Tag size="tiny" variant="soft" radius="medium" text="v1.0.0" />
+				<span className="flex items-center gap-1">
+					<span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+					<span className="text-xs text-green-500 font-medium">Stable</span>
+				</span>
 			</Flex>
-			<Flex gap={6} align="center">
+			<Flex gap={6} align="center" className="max-md:hidden">
 				<nav className="flex gap-1">
 					{links.map((link) => (
 						<Flex key={link.name} align="center">
