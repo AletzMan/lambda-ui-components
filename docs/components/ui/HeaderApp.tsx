@@ -12,7 +12,7 @@ const links = [
 
 export function HeaderApp() {
 	return (
-		<header className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-4 bg-linear-to-b from-(--primary-background-color) to-cyan-400/5 backdrop-blur-sm">
+		<header className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-4 bg-linear-to-b from-(--primary-background-color) to-cyan-400/0 backdrop-blur-sm">
 			<Flex gap={6} align="center">
 				<AppLogo width={40} height={40} />
 				<div className="text-lg font-bold text-(--foreground-color)">Lambda UI</div>
