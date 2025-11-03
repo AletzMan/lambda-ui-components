@@ -9,15 +9,17 @@ import "prismjs/components/prism-jsx";
 export default function HomeHero() {
 	const code = `pnpm add lambda-ui-components`;
 	return (
-		<Flex className="flex flex-col items-center justify-center">
+		<Flex direction="column">
 			<section className="relative flex flex-row justify-between max-[839px]:flex-col-reverse items-center  min-h-[90vh] w-full py-16 text-center overflow-hidden px-14 gap-10">
-				<Flex
-					gap={6}
-					align="flex-start"
-					justify="start"
-					direction="column"
-					className="w-3/5 max-[839px]:w-full"
-				>
+				<Flex gap={8} align="flex-start" justify="start" direction="column">
+					<span className="block text-xl md:text-2xl text-left font-semibold text-(--foreground-title-color) max-[839px]:text-center mb-2 w-full">
+						Precision in every <span className="text-(--primary-base-color)">Piece</span>. Harmony
+						in the{" "}
+						<span className="inline-block text-(--primary-base-color) bg-(--primary-opacity-color)  rounded px-2 py-0.5 font-semibold">
+							Whole
+						</span>
+						.
+					</span>
 					<motion.h1
 						className="text-4xl md:text-6xl font-bold text-(--foreground-color) max-[839px]:text-center text-left mb-4 w-full"
 						initial={{ opacity: 0, y: 30 }}
@@ -37,7 +39,7 @@ export default function HomeHero() {
 						Build beautiful and accessible interfaces with speed and consistency.
 					</motion.p>
 					<motion.div
-						className="flex flex-row max-[839px]:flex-col gap-4 justify-start max-[839px]:items-center w-full"
+						className="flex flex-row max-[839px]:flex-col gap-4 justify-start max-[839px]:items-center mt-6 w-full"
 						initial={{ opacity: 0, scale: 0.9 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ duration: 0.7, delay: 0.7, type: "spring" }}
@@ -62,7 +64,7 @@ export default function HomeHero() {
 						/>
 					</motion.div>
 				</Flex>
-				<Flex className="flex w-2/5 max-[839px]:w-full max-[839px]:justify-center justify-center">
+				<Flex className="flex flex-col items-center w-2/5 max-[839px]:w-full max-[839px]:justify-center justify-center">
 					<AnimatedSVGDecorative />
 				</Flex>
 			</section>
