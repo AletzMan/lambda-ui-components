@@ -228,7 +228,7 @@
 	&:focus:not(.select-btn-disabled) {
 		&.select-btn-outline {
 			border: var(--border-width-xs) solid var(--primary-hover-color);
-			outline: 3px solid var(--primary-shadow-color);
+			outline: 2px solid var(--primary-shadow-color);
 			outline-offset: 2px;
 			color: var(--primary-text-color);
 		}
@@ -238,7 +238,7 @@
 		}
 
 		&.select-btn-soft {
-			outline: 3px solid var(--primary-shadow-color);
+			outline: 2px solid var(--primary-shadow-color);
 			outline-offset: 2px;
 		}
 	}
@@ -291,8 +291,8 @@
 	z-index: 9999;
 
 	&:focus-within {
-		outline: var(--border-width-md) solid var(--neutral-opacity-color);
-		outline-offset: var(--border-width-xs);
+		outline: var(--border-width-sm) solid var(--neutral-opacity-color);
+		outline-offset: var(--border-width-sm);
 	}
 }
 
