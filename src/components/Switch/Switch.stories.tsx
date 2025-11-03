@@ -78,6 +78,7 @@ const Template = (args: SwitchProps) => {
 							textTransform: "capitalize",
 						}}
 						position_label="top"
+						onChange={(e) => console.log(e)}
 					/>
 				))}
 			</div>
