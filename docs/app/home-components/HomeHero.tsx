@@ -68,10 +68,6 @@ export default function HomeHero() {
 					<AnimatedSVGDecorative />
 				</Flex>
 			</section>
-
-			<Flex className="flex w-full max-[839px]:w-full max-[839px]:justify-center justify-center px-14 py-16">
-				<FeatureSection />
-			</Flex>
 		</Flex>
 	);
 }
