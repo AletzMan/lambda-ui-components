@@ -292,7 +292,7 @@ input[type="number"] {
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border: var(--border-width-xs) solid var(--primary-hover-color);
-		outline: 3px solid var(--primary-shadow-color);
+		outline: 2px solid var(--primary-shadow-color);
 	}
 
 	&.lambda-number-invalid {
@@ -307,7 +307,7 @@ input[type="number"] {
 	border: none;
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		outline: 3px solid var(--primary-shadow-color);
+		outline: 2px solid var(--primary-shadow-color);
 	}
 
 	&.lambda-number-invalid {
