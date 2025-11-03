@@ -272,7 +272,7 @@
 	--primary-text-color: var(--lambda-color-primary-800);
 	--primary-content-color: var(--lambda-color-primary-400);
 	--primary-soft-color: var(--lambda-color-primary-200);
-	--primary-subtle-color: var(--lambda-color-primary-600);
+	--primary-subtle-color: var(--lambda-color-primary-300);
 	--primary-outline-color: var(--lambda-color-primary-300);
 	--primary-base-color: var(--lambda-color-primary-500);
 	--primary-hover-color: var(--lambda-color-primary-600);
@@ -532,7 +532,7 @@
 	--danger-text-color: var(--lambda-color-danger-200);
 	--danger-content-color: var(--lambda-color-danger-400);
 	--danger-soft-color: var(--lambda-color-danger-900);
-	--danger-subtle-color: var(--lambda-color-danger-700);
+	--danger-subtle-color: var(--lambda-color-danger-900);
 	--danger-outline-color: var(--lambda-color-danger-800);
 	--danger-base-color: var(--lambda-color-danger-500);
 	--danger-hover-color: var(--lambda-color-danger-600);

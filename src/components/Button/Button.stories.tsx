@@ -77,16 +77,7 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-const buttonColors = [
-	"neutral",
-	"primary",
-	"secondary",
-	"danger",
-	"success",
-	"warning",
-	"info",
-	"custom",
-];
+const buttonColors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const Template = (args: ButtonProps) => {
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
@@ -122,7 +113,9 @@ const Template = (args: ButtonProps) => {
 						iconPosition={args.iconPosition}
 						icon={viewIcon && !args.loading ? args.icon : undefined}
 						label={args.isCircle ? "" : args.loading ? args.loadingText : color}
-						style={{ textTransform: "capitalize" }}
+						style={{
+							textTransform: "capitalize",
+						}}
 						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				))}
