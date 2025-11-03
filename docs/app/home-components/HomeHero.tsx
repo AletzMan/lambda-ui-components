@@ -72,21 +72,6 @@ export default function HomeHero() {
 			<Flex className="flex w-full max-[839px]:w-full max-[839px]:justify-center justify-center px-14 py-16">
 				<FeatureSection />
 			</Flex>
-			<section className="py-16 w-full flex flex-col items-center">
-				<h2 className="text-2xl font-bold mb-6">See it in action</h2>
-				<div className="flex flex-col md:flex-row gap-8 justify-center items-center w-full">
-					<CodeBlock
-						code={`<Button variant="primary">Click me</Button>`}
-						language="jsx"
-						buttonCopy
-						showLineNumbers={false}
-						theme="dark"
-					/>
-					<div className="p-6 rounded-lg bg-(--surface-b) border border-(--border-color)">
-						<Button variant="solid">Click me</Button>
-					</div>
-				</div>
-			</section>
 		</Flex>
 	);
 }
