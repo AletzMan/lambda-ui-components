@@ -12,7 +12,7 @@ const links = [
 
 export function HeaderApp() {
 	return (
-		<header className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-2 bg-(--surface-a) border-b border-(--border-color)">
+		<header className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-4 bg-linear-to-b from-(--primary-background-color) to-transparent">
 			<Flex gap={6} align="center">
 				<AppLogo width={40} height={40} />
 				<div className="text-lg font-bold text-(--foreground-color)">Lambda UI</div>
@@ -42,14 +42,14 @@ export function HeaderApp() {
 				<Link
 					size="small"
 					variant="text"
-					color="neutral"
+					color="primary"
 					radius="small"
 					href="https://github.com/lambda-ui/lambda-ui-components"
 					target="_blank"
 					icon={<GitHubIcon />}
 					type="button"
 				/>
-				<ButtonTheme size="small" variant="text" radius="small" />
+				<ButtonTheme size="small" variant="text" radius="small" color="primary" />
 			</Flex>
 		</header>
 	);
