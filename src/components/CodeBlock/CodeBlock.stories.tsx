@@ -29,13 +29,17 @@ export default meta;
 type Story = StoryObj<CodeBlockProps>;
 
 export const Basic: Story = {
+	render: (args) => (
+		<div style={{ width: "270px" }}>
+			<CodeBlock {...args} />
+		</div>
+	),
 	args: {
-		code: `const x = 42;\nconsole.log(x);`,
-		language: "javascript",
-		highlightLines: "2",
-		showLineNumbers: true,
+		code: `pnpm add lambda-ui-components`,
+		highlightLines: undefined,
+		showLineNumbers: false,
 		buttonCopy: true,
-		theme: "light",
+		theme: "dark",
 	},
 };
 

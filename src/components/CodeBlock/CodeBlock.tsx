@@ -65,7 +65,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 		if (codeRef.current) {
 			Prism.highlightElement(codeRef.current);
 		}
-	}, [codeToShow, langToShow, highlightLines, showLineNumbers, theme]);
+	}, [codeToShow, langToShow, highlightLines, showLineNumbers, theme, code, language, tabs]);
 
 	return (
 		<div className={clsx(codeBlockVariants({ showLineNumbers, theme }), className)}>
@@ -91,7 +91,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 					{ [styles["lambda-pre-line-highlight"]]: highlightLines },
 					{ [styles["lambda-pre-line-numbers"]]: showLineNumbers },
 					{ [styles["lambda-pre-dark"]]: theme === "dark" },
-					{ [styles["lambda-pre-light"]]: theme === "light" }
+					{ [styles["lambda-pre-light"]]: theme === "light" },
+					"scrollBar"
 				)}
 				data-line={highlightLines}
 			>

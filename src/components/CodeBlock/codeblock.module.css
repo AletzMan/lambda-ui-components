@@ -6,8 +6,7 @@
 	border: 1px solid var(--border-color);
 	font-size: var(--font-size-sm);
 	font-family: "Fira Mono", "Consolas", "Monaco", monospace;
-	overflow: auto;
-	margin: 1rem 0;
+	overflow: hidden;
 
 	&.lambda-codeblock-dark {
 		background-color: #0b1012;
@@ -71,7 +70,6 @@
 }
 
 .lambda-codeblock-tab-active {
-	/*background-color: #242d31;*/
 	color: var(--white-color);
 	border-bottom: 2px solid var(--primary-base-color);
 }
@@ -79,20 +77,12 @@
 .lambda-pre {
 	display: flex;
 	background: transparent;
-	overflow-x: auto;
-	padding: var(--padding-md);
 
 	&.lambda-pre-dark {
 		background-color: #0b1012;
-		padding: 1em 2em 1em 3.5em !important;
 	}
 	&.lambda-pre-light {
 		background-color: #f7f7f7;
-		padding: 1em 2em 1em 3.5em !important;
-	}
-
-	&[data-line]:not(.lambda-pre-line-highlight):not(.lambda-pre-line-numbers) {
-		padding: 1em 0 1em 1em !important;
 	}
 }
 
@@ -100,6 +90,7 @@ pre[class*="language-"] {
 	background: transparent !important;
 	margin: 0 0 0 0 !important;
 	margin-bottom: 0 !important;
+	/*padding: 0.75em 1em 0.75em 1em !important;*/
 	& > code {
 		background: transparent !important;
 		border-left: none !important;
@@ -110,6 +101,15 @@ pre[class*="language-"] {
 		& > code {
 			padding-left: 0 !important;
 		}
+	}
+
+	&:not(.lambda-pre-line-highlight):not(.lambda-pre-line-numbers) {
+		padding: 0.75em 2.5em 0.75em 1em !important;
+	}
+
+	&:is(.lambda-pre-line-highlight):not(.lambda-pre-line-numbers),
+	&:is(.lambda-pre-line-numbers):not(.lambda-pre-line-highlight) {
+		padding: 0.75em 2.5em 0.75em 3.5em !important;
 	}
 }
 
