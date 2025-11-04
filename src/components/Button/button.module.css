@@ -20,6 +20,7 @@
 		outline 0.3s ease-in-out;
 	outline-offset: 2px;
 	outline-width: 2px;
+	outline-style: solid;
 
 	&.lambda-btn-icon-left {
 		flex-direction: row;
