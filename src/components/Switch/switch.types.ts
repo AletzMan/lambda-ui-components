@@ -34,7 +34,7 @@ export interface SwitchProps
 	/**
 	 * Controla dónde se coloca la etiqueta de texto (`label`) en relación con el control del interruptor (por ejemplo, a la izquierda o a la derecha).
 	 */
-	position_label?: SwitchLabelVariants["position_label"];
+	positionLabel?: SwitchLabelVariants["position_label"];
 
 	/**
 	 * Deshabilita el interruptor, impidiendo que el usuario cambie su estado y cambiando su apariencia para indicar que no está disponible.

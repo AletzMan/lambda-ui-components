@@ -11,7 +11,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 			variant,
 			label,
 			disabled,
-			position_label = "right",
+			positionLabel = "right",
 			color,
 			shape,
 			checked,
@@ -49,7 +49,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 
 		return (
 			<label
-				className={pos_label({ position_label, checked: actualChecked, disabled })}
+				className={pos_label({ position_label: positionLabel, checked: actualChecked, disabled })}
 				style={props.style}
 				tabIndex={disabled ? -1 : 0}
 				onKeyDown={handleKeyDown}

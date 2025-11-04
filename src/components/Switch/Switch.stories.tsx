@@ -34,7 +34,7 @@ const meta: Meta<typeof Switch> = {
 			type: "string",
 			description: "Text to display as the label for the component",
 		},
-		position_label: {
+		positionLabel: {
 			control: "inline-radio",
 			options: ["right", "left", "top", "bottom"],
 			description: "Select position label right or left",
@@ -77,7 +77,7 @@ const Template = (args: SwitchProps) => {
 						style={{
 							textTransform: "capitalize",
 						}}
-						position_label="top"
+						positionLabel="top"
 						onChange={(e) => console.log(e.currentTarget.checked)}
 						onCheckedChange={(e) => console.log(e)}
 					/>
@@ -94,7 +94,7 @@ export const Solid: Story = {
 		color: "primary",
 		size: "medium",
 		label: "Label",
-		position_label: "right",
+		positionLabel: "right",
 		shape: "rounded",
 		disabled: false,
 		onChange: action("onChange"),
@@ -108,7 +108,7 @@ export const Soft: Story = {
 		color: "primary",
 		size: "medium",
 		label: "Label",
-		position_label: "right",
+		positionLabel: "right",
 		shape: "rounded",
 		disabled: false,
 		onChange: action("onChange"),
@@ -123,7 +123,7 @@ export const Outline: Story = {
 		size: "medium",
 		shape: "rounded",
 		label: "Label",
-		position_label: "right",
+		positionLabel: "right",
 		disabled: false,
 		onChange: action("onChange"),
 	},
