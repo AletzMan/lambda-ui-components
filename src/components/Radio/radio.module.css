@@ -10,54 +10,28 @@
 	box-sizing: border-box;
 }
 
-.lambda-radio-wrapper-radio {
-	&:hover
-		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-neutral):not(
-			.lambda-radio-view-disabled
-		) {
-		box-shadow: 0 0 1px 3px var(--neutral-shadow-color);
+.lambda-radio-wrapper-radio:hover
+	> .lambda-radio-view:not(.lambda-radio-view-checked):not(.lambda-radio-view-disabled) {
+	&:is(.lambda-radio-view-neutral) {
+		outline-color: var(--neutral-shadow-color);
 	}
-
-	&:hover
-		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-primary):not(
-			.lambda-radio-view-disabled
-		) {
-		box-shadow: 0 0 1px 3px var(--primary-shadow-color);
+	&:is(.lambda-radio-view-primary) {
+		outline-color: var(--primary-shadow-color);
 	}
-
-	&:hover
-		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-secondary):not(
-			.lambda-radio-view-disabled
-		) {
-		box-shadow: 0 0 1px 3px var(--secondary-shadow-color);
+	&:is(.lambda-radio-view-secondary) {
+		outline-color: var(--secondary-shadow-color);
 	}
-
-	&:hover
-		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-danger):not(
-			.lambda-radio-view-disabled
-		) {
-		box-shadow: 0 0 1px 3px var(--danger-shadow-color);
+	&:is(.lambda-radio-view-success) {
+		outline-color: var(--success-shadow-color);
 	}
-
-	&:hover
-		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-success):not(
-			.lambda-radio-view-disabled
-		) {
-		box-shadow: 0 0 1px 3px var(--success-shadow-color);
+	&:is(.lambda-radio-view-danger) {
+		outline-color: var(--danger-shadow-color);
 	}
-
-	&:hover
-		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-warning):not(
-			.lambda-radio-view-disabled
-		) {
-		box-shadow: 0 0 1px 3px var(--warning-shadow-color);
+	&:is(.lambda-radio-view-warning) {
+		outline-color: var(--warning-shadow-color);
 	}
-
-	&:hover
-		> .lambda-radio-view:not(.lambda-radio-view-checked):is(.lambda-radio-view-info):not(
-			.lambda-radio-view-disabled
-		) {
-		box-shadow: 0 0 1px 3px var(--info-shadow-color);
+	&:is(.lambda-radio-view-info) {
+		outline-color: var(--info-shadow-color);
 	}
 }
 
@@ -1533,6 +1507,8 @@
 	box-sizing: border-box;
 	transition: all 0.3s ease-out;
 	border-radius: var(--border-radius-pill);
+	outline: 2px solid transparent;
+	outline-offset: 2px;
 
 	&.lambda-radio-view-tiny {
 		&.lambda-radio-view-radio,
