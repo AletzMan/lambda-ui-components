@@ -65,10 +65,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						iconPosition,
 						block,
 						isCircle,
-						className,
 						joinposition,
 						onlyIcon: icon !== undefined && !label,
-					})
+					}),
+					className
 				)}
 				disabled={contextDisabled || undefined}
 				{...props}
