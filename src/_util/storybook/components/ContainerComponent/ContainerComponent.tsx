@@ -64,7 +64,7 @@ export default function ContainerComponent({
 								checked={styleSource === "global"}
 								onChange={(e) => handleStyleChange(e.target.checked ? "global" : "local")}
 								value="global"
-								position_label="bottom"
+								positionLabel="bottom"
 								label={styleSource === "global" ? "Global" : "Local"}
 							/>
 						</>
