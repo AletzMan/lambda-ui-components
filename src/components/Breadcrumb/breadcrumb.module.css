@@ -9,7 +9,7 @@
 	align-items: center;
 	gap: 4px;
 	text-decoration: none;
-	color: var(--foreground-title-color);
+	color: var(--foreground-secondary-color);
 	opacity: 0.9;
 	transition: color 0.2s ease-in-out;
 
@@ -53,7 +53,7 @@
 .breadcrumb-item:hover {
 	opacity: 1;
 	&:is(.breadcrumb-item-neutral) {
-		color: var(--foreground-color);
+		color: var(--neutral-base-color);
 	}
 
 	&:is(.breadcrumb-item-primary) {
@@ -138,10 +138,17 @@
 	align-items: center;
 	justify-content: flex-start;
 	gap: 4px;
+	margin: 0;
+	padding: 0;
+
+	& > ul {
+		margin: 0;
+		padding: 0;
+	}
 
 	:not(:nth-last-child(1)) {
 		& .breadcrumb-item {
-			font-weight: var(--font-weight-medium);
+			font-weight: var(--font-weight-normal);
 		}
 	}
 
