@@ -222,7 +222,7 @@ export const DatePicker = ({
 							variant="text"
 							color="neutral"
 							title="Previous Year"
-							size={type === "dropdown" ? "tiny" : "small"}
+							size="tiny"
 							onClick={handlePrevYear}
 							aria-label={t("date-picker.prev-year")}
 							disabled={disabled}
@@ -236,7 +236,7 @@ export const DatePicker = ({
 							variant="text"
 							color="neutral"
 							title="Previous Month"
-							size={type === "dropdown" ? "tiny" : "small"}
+							size="tiny"
 							onClick={handlePrevMonth}
 							aria-label={t("date-picker.prev-month")}
 							disabled={disabled}
@@ -249,7 +249,7 @@ export const DatePicker = ({
 						variant="text"
 						color="neutral"
 						title="Select Month"
-						size="medium"
+						size="tiny"
 						label={`${currentDate.toLocaleString(t("date-picker.code"), {
 							month: "long",
 						})} ${year}`}
@@ -260,7 +260,7 @@ export const DatePicker = ({
 							type="button"
 							variant="text"
 							color="neutral"
-							size={type === "dropdown" ? "tiny" : "small"}
+							size="tiny"
 							onClick={handleNextMonth}
 							aria-label={t("date-picker.next-month")}
 							disabled={disabled}
@@ -274,7 +274,7 @@ export const DatePicker = ({
 							type="button"
 							variant="text"
 							color="neutral"
-							size={type === "dropdown" ? "tiny" : "small"}
+							size="tiny"
 							onClick={handleNextYear}
 							aria-label={t("date-picker.next-year")}
 							disabled={disabled}
