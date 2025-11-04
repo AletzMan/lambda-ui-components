@@ -1,10 +1,20 @@
 import { forwardRef } from "react";
 import { DividerProps } from "./divider.types";
 import { dividerVariants } from "./divider.variants";
+import clsx from "clsx";
 
 export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 	(
-		{ variant, orientation = "horizontal", color, size, children, contentPosition, spacing = 5 },
+		{
+			variant,
+			orientation = "horizontal",
+			color,
+			size,
+			children,
+			contentPosition,
+			spacing = 5,
+			className,
+		},
 		ref
 	) => {
 		return (
@@ -21,14 +31,17 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 						? "5px 0"
 						: "0 5px",
 				}}
-				className={dividerVariants({
-					variant,
-					orientation,
-					color,
-					size,
-					contentPosition,
-					hasContent: !!children,
-				})}
+				className={clsx(
+					dividerVariants({
+						variant,
+						orientation,
+						color,
+						size,
+						contentPosition,
+						hasContent: !!children,
+					}),
+					className
+				)}
 			>
 				{children}
 			</div>
