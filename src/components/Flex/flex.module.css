@@ -1,7 +1,12 @@
+:root {
+	--flex-gap: 0;
+}
+
 .lambda-flex {
 	display: flex;
 	font-family: var(--font-family);
 	color: var(--foreground-color);
+	gap: var(--flex-gap);
 }
 
 .lambda-flex-direction-row {

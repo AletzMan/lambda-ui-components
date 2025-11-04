@@ -112,7 +112,7 @@ export const Row: Story = {
 	render: (args) => (
 		<ContainerComponent title="Flex" subtitle={args.direction}>
 			<div style={{ width: "100%", height: "100%" }}>
-				<Flex {...args} style={{ height: "100%" }}>
+				<Flex {...args} style={{ width: "100%", height: "100%" }}>
 					{Array.from({ length: 7 }, (_, index) => (
 						<div
 							style={{
