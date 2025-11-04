@@ -64,10 +64,12 @@
 }
 
 .lambda-card-header-title {
+	margin: 0;
 	color: var(--foreground-color);
 }
 
 .lambda-card-header-description {
+	margin: 0;
 	color: var(--surface-g);
 }
 
