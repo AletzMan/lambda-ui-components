@@ -1,8 +1,8 @@
 "use client";
 import { FooterDocs } from "@/components/layout/FooterDocs";
-import { Rocket } from "lucide-react";
+import { HomeIcon, Rocket } from "lucide-react";
 import Link from "next/link";
-import CodeHighlighter from "../../components/CodeHighlighter";
+import CodeHighlighter from "../../components/ui/CodeHighlighter";
 
 const SECTIONS = {
 	intro: {
@@ -143,17 +143,17 @@ export default function Introduction() {
 	// Clases comunes para elementos repetidos
 	const hrClasses = "my-10 border-(--border-color)";
 	const subTitle =
-		"text-2xl font-bold text-left tracking-tight text-(--foreground-title-color) mb-4 w-full";
+		"text-2xl font-bold text-left tracking-tight text-(--foreground-color) mb-4 w-full";
 
 	const paragraph = "text-base leading-relaxed text-(--foreground-secondary-color)";
 
 	const { intro, whyLambda, whatsIncluded, theming, libraries, faq } = SECTIONS;
 
 	return (
-		<section className="relative max-w-4xl mx-auto py-16 px-6 md:px-10 text-(--text-color) bg-transparent backdrop-blur-[1px]">
+		<section className="relative max-w-4xl mx-auto py-16 px-6 md:px-10 bg-transparent backdrop-blur-[1px]">
 			{/* Encabezado Principal */}
 			<header className="mb-10 text-center">
-				<h1 className="text-5xl font-bold text-left tracking-tight text-(--foreground-color) mb-3 w-full">
+				<h1 className="flex items-center gap-2 text-4xl font-bold text-left tracking-tight text-(--primary-base-color) mb-3 w-full">
 					Introduction
 				</h1>
 			</header>
@@ -169,10 +169,7 @@ export default function Introduction() {
 				<h2 className={subTitle}>{whyLambda.title}</h2>
 				<ul className="grid sm:grid-cols-2 gap-4 list-none py-4 mb-12">
 					{whyLambda.items.map((item, i) => (
-						<li
-							key={i}
-							className="p-4 rounded-sm bg-[rgba(255,255,255,0.03)] border border-(--border-color)"
-						>
+						<li key={i} className="p-4 rounded-sm bg-(--surface-a) border border-(--border-color)">
 							<strong>{item.strong}</strong> {item.text}
 						</li>
 					))}
