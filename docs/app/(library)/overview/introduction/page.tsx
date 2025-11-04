@@ -226,7 +226,7 @@ export default function Introduction() {
 									<p dangerouslySetInnerHTML={{ __html: a }} />
 
 									{/* Bloque de Código (si existe) */}
-									{code && <CodeHighlighter code={code} />}
+									{code && <CodeHighlighter codeData={[{ code }]} />}
 								</div>
 							</div>
 						))}
