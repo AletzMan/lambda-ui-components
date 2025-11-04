@@ -19,6 +19,10 @@
 	width: 100%;
 	max-width: max-content;
 	gap: var(--gap-xs);
+
+	& p {
+		margin: 0;
+	}
 }
 
 .lambda-fileup-message {
