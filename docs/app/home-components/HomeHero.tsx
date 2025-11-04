@@ -50,7 +50,7 @@ export default function HomeHero() {
 							color="primary"
 							radius="small"
 							label="Get started"
-							href="/introduction"
+							href="overview/introduction"
 							type="button"
 							iconPosition="right"
 							icon={<RocketIcon />}
