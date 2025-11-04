@@ -169,7 +169,6 @@
 
 	&.lambda-pagination-button-outline {
 		border-color: var(--primary-base-color);
-		box-shadow: 0 0 0 3px var(--primary-shadow-color);
 		background-color: transparent;
 		color: var(--primary-text-color);
 	}
