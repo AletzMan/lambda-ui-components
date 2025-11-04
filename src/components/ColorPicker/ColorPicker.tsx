@@ -535,6 +535,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		}, [open, onChange]);
 
 		const handlePickerKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+			debugger;
 			const pickerRect = pickerRef.current?.getBoundingClientRect();
 			if (!pickerRect) return;
 
@@ -709,7 +710,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											step={1}
 											label="Hue"
 											radius="full"
-											ariaLabel="Hue Slider"
 											viewValue={false}
 											viewBar={false}
 											onInput={(e) => {
@@ -760,7 +760,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											max={100}
 											label="Alpha"
 											radius="full"
-											ariaLabel="Alpha Slider"
 											viewValue={false}
 											viewBar={false}
 											onInput={(e) => {
