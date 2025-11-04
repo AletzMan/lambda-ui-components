@@ -3,6 +3,8 @@ import { FooterDocs } from "@/components/layout/FooterDocs";
 import { HomeIcon, Rocket } from "lucide-react";
 import Link from "next/link";
 import CodeHighlighter from "../../components/ui/CodeHighlighter";
+import { SectionLayout } from "../../components/layout/Sectionlayout";
+import { SubSectionLayout } from "../../components/layout/SubSectionLayout";
 
 const SECTIONS = {
 	intro: {
@@ -150,96 +152,89 @@ export default function Introduction() {
 	const { intro, whyLambda, whatsIncluded, theming, libraries, faq } = SECTIONS;
 
 	return (
-		<section className="relative max-w-4xl mx-auto py-16 px-6 md:px-10 bg-transparent backdrop-blur-[1px]">
-			{/* Encabezado Principal */}
-			<header className="mb-10 text-center">
-				<h1 className="flex items-center gap-2 text-4xl font-bold text-left tracking-tight text-(--primary-base-color) mb-3 w-full">
-					Introduction
-				</h1>
-			</header>
-
-			<article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:scroll-mt-24 prose-a:text-(--primary-base-color)">
+		<SectionLayout title="Introduction">
+			<article className="max-w-none">
 				{/* Sección: Intro */}
-				<h2 className={subTitle}>{intro.title}</h2>
-				<p className={paragraph}>{intro.body}</p>
-
-				<hr className="my-10 border-(--border-color)" />
+				<SubSectionLayout title={intro.title}>{intro.body}</SubSectionLayout>
 
 				{/* Sección: Why Lambda */}
-				<h2 className={subTitle}>{whyLambda.title}</h2>
-				<ul className="grid sm:grid-cols-2 gap-4 list-none py-4 mb-12">
-					{whyLambda.items.map((item, i) => (
-						<li key={i} className="p-4 rounded-sm bg-(--surface-a) border border-(--border-color)">
-							<strong>{item.strong}</strong> {item.text}
-						</li>
-					))}
-				</ul>
+				<SubSectionLayout title={whyLambda.title}>
+					<ul className="grid sm:grid-cols-2 gap-4 list-none py-4 mb-12">
+						{whyLambda.items.map((item, i) => (
+							<li
+								key={i}
+								className="p-4 rounded-sm bg-(--surface-a) border border-(--border-color)"
+							>
+								<strong className="text-(--foreground-title-color)">{item.strong}</strong>{" "}
+								{item.text}
+							</li>
+						))}
+					</ul>
+				</SubSectionLayout>
 
 				{/* Sección: Included */}
-				<h2 className={subTitle}>{whatsIncluded.title}</h2>
-				<p className={`${paragraph} mb-4`}>{whatsIncluded.description}</p>
-				<ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 list-disc pl-6">
-					{whatsIncluded.components.map((component, i) => (
-						<li key={i}>{component}</li>
-					))}
-				</ul>
-
-				{/* CTA */}
-				<div className="my-12 flex justify-center">
-					<Link
-						href="/overview/getting-started"
-						className="flex items-center gap-4 px-6 py-3 rounded-sm bg-(--primary-base-color) text-white font-semibold outline-2 outline-offset-2 outline-transparent hover:outline-cyan-500/50 hover:bg-cyan-400 transition-all duration-200"
-					>
-						Get Started <Rocket className="w-5 h-5" />
-					</Link>
-				</div>
-
-				<hr className={hrClasses} />
+				<SubSectionLayout title={whatsIncluded.title}>
+					<p className={`${paragraph} mb-4`}>{whatsIncluded.description}</p>
+					<ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 list-disc pl-6">
+						{whatsIncluded.components.map((component, i) => (
+							<li key={i}>{component}</li>
+						))}
+					</ul>
+					{/* CTA */}
+					<div className="my-12 flex justify-center">
+						<Link
+							href="/overview/getting-started"
+							className="flex items-center gap-4 px-6 py-3 rounded-sm bg-(--primary-base-color) text-white font-semibold outline-2 outline-offset-2 outline-transparent hover:outline-cyan-500/50 hover:bg-cyan-400 transition-all duration-200"
+						>
+							Get Started <Rocket className="w-5 h-5" />
+						</Link>
+					</div>
+				</SubSectionLayout>
 
 				{/* Sección: Theming */}
-				<h2 className={subTitle}>{theming.title}</h2>
-				{theming.paragraphs.map((p, i) => (
-					<p key={i} className={`${paragraph} mb-4`}>
-						{p}
-					</p>
-				))}
-
-				<hr className={hrClasses} />
+				<SubSectionLayout title={theming.title}>
+					{theming.paragraphs.map((p, i) => (
+						<p key={i} className={`${paragraph} mb-4`}>
+							{p}
+						</p>
+					))}
+				</SubSectionLayout>
 
 				{/* Sección: Core Libraries */}
-				<h2 className={subTitle}>{libraries.title}</h2>
-				<ul className="list-disc pl-6 space-y-1">
-					{libraries.dependencies.map((dep, i) => (
-						<li key={i}>
-							<b>{dep.strong}</b> {dep.text}
-						</li>
-					))}
-				</ul>
-				<p className={`${paragraph} mt-6`}>{libraries.note}</p>
-
-				<hr className={hrClasses} />
+				<SubSectionLayout title={libraries.title}>
+					<ul className="list-disc pl-6 space-y-1">
+						{libraries.dependencies.map((dep, i) => (
+							<li key={i}>
+								<b className="text-(--foreground-title-color)">{dep.strong}</b> {dep.text}
+							</li>
+						))}
+					</ul>
+					<p className={`${paragraph} mt-6`}>{libraries.note}</p>
+				</SubSectionLayout>
 
 				{/* Sección: FAQ */}
-				<h2 className={subTitle}>{faq.title}</h2>
-				<div className="flex flex-col space-y-6">
-					{faq.questions.map(({ q, a, code, colors }, i) => (
-						<div key={i} className="py-2 ">
-							{/* Pregunta (destacada) */}
-							<h3 className="text-lg font-semibold text-(--foreground-title-color) mb-1">{q}</h3>
+				<SubSectionLayout title={faq.title}>
+					<div className="flex flex-col space-y-6">
+						{faq.questions.map(({ q, a, code, colors }, i) => (
+							<div key={i} className="py-2 ">
+								{/* Pregunta (destacada) */}
+								<h3 className="text-lg font-semibold text-(--foreground-title-color) mb-1">{q}</h3>
 
-							{/* Respuesta */}
-							<div className="text-base leading-relaxed text-(--foreground-secondary-color) pl-2">
-								{/* Usamos dangerouslySetInnerHTML para el link de GitHub, si existe */}
-								<p dangerouslySetInnerHTML={{ __html: a }} />
+								{/* Respuesta */}
+								<div className="text-base leading-relaxed text-(--foreground-secondary-color) pl-2">
+									{/* Usamos dangerouslySetInnerHTML para el link de GitHub, si existe */}
+									<p dangerouslySetInnerHTML={{ __html: a }} />
 
-								{/* Bloque de Código (si existe) */}
-								{code && <CodeHighlighter code={code} />}
+									{/* Bloque de Código (si existe) */}
+									{code && <CodeHighlighter code={code} />}
+								</div>
 							</div>
-						</div>
-					))}
-				</div>
+						))}
+					</div>
+				</SubSectionLayout>
 			</article>
+
 			<FooterDocs />
-		</section>
+		</SectionLayout>
 	);
 }
