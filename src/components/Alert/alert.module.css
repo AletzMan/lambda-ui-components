@@ -6,6 +6,10 @@
 	border-left: 3px solid transparent;
 	word-break: break-word;
 	user-select: text;
+
+	& p {
+		margin: 0;
+	}
 }
 
 .lambda-alert-radius-none {
