@@ -178,7 +178,6 @@ export const Single: StoryObj<typeof Slider> = {
 		orientation: "horizontal",
 		size: "medium",
 		label: "",
-		ariaLabel: "",
 		viewValue: true,
 		viewBar: true,
 		marks: [
@@ -202,7 +201,6 @@ export const Double: StoryObj<typeof Slider> = {
 		orientation: "horizontal",
 		size: "medium",
 		label: "",
-		ariaLabel: "",
 		viewValue: true,
 		viewBar: true,
 		marks: [

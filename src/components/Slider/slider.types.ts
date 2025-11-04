@@ -76,12 +76,6 @@ export interface SliderProps
 	 */
 
 	/**
-	 * Etiqueta ARIA para el slider (requerido para accesibilidad).
-	 * Usa una cadena para handle único o una tupla [etiquetaInicio, etiquetaFin] para dos handles.
-	 */
-	ariaLabel: string | [string, string];
-
-	/**
 	 * Etiqueta de texto para el slider (opcional).
 	 * Si se proporciona, se renderiza como una etiqueta <label>.
 	 */
