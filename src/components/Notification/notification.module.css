@@ -3,7 +3,7 @@
 	max-width: 450px;
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: var(--gap-sm);
 	padding: var(--padding-md) 0 0 0;
 	height: max-content;
 	z-index: 1000;
@@ -575,7 +575,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.25em;
-	padding: var(--padding-xs) 0 var(--padding-md) 0;
+	padding: var(--padding-none);
 }
 
 .notification-title {

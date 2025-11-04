@@ -183,7 +183,7 @@ const NotificationWithButton = (
 					checked={viewButtons}
 					onChange={(checked) => setViewButtons(checked.target.checked)}
 					label="View buttons"
-					position_label="top"
+					positionLabel="top"
 					color="info"
 				/>
 				<div
