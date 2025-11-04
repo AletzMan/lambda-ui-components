@@ -1,4 +1,4 @@
-import { forwardRef, useState, ChangeEvent } from "react";
+import { forwardRef, useState, ChangeEvent, useRef } from "react";
 import styles from "./checkbox.module.css";
 import {
 	checkboxContainerVariants,
@@ -25,11 +25,21 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			checked,
 			joinposition,
 			onChange,
+			onCheckedChange,
 			...props
 		},
 		ref
 	) => {
-		const [internalChecked, setInternalChecked] = useState(checked);
+		const isControlled = typeof checked === "boolean";
+		const [internalChecked, setInternalChecked] = useState(!!checked);
+		const actualChecked = isControlled ? checked! : internalChecked;
+		const inputRef = useRef<HTMLInputElement>(null);
+
+		function setRefs(el: HTMLInputElement | null) {
+			inputRef.current = el;
+			if (typeof ref === "function") ref(el);
+			else if (ref) (ref as React.MutableRefObject<HTMLInputElement | null>).current = el;
+		}
 		const { radiusSelector } = useUIConfig();
 		let sizeValue, radiusValue, disabledValue;
 
@@ -45,22 +55,32 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		}
 
 		const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-			const newChecked = e.currentTarget.checked;
-			setInternalChecked(newChecked);
-			if (onChange) {
-				onChange(e);
+			const newChecked = e.target.checked;
+			if (!isControlled) setInternalChecked(newChecked);
+			if (onCheckedChange) onCheckedChange(newChecked);
+			if (onChange) onChange(e);
+		};
+
+		const handleKeyDown = (e: React.KeyboardEvent<HTMLLabelElement>) => {
+			if (e.key === " " || e.key === "Enter") {
+				e.preventDefault();
+				if (inputRef.current) inputRef.current.click();
 			}
 		};
 
 		return (
-			<label className={checkboxContainerVariants({ positionLabel, disabled: disabledValue })}>
+			<label
+				className={checkboxContainerVariants({ positionLabel, disabled: disabledValue })}
+				onKeyDown={handleKeyDown}
+				tabIndex={disabledValue ? -1 : 0}
+			>
 				<div
 					className={checkboxWrapperVariants({
 						variant,
 						size: sizeValue,
 						radius: radiusValue,
 						color,
-						checked: internalChecked,
+						checked: actualChecked,
 						disabled: disabledValue,
 						joinposition,
 						join: joinposition !== undefined,
@@ -68,12 +88,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 					})}
 				>
 					<input
-						ref={ref}
+						ref={setRefs}
 						type={"checkbox"}
 						disabled={disabled || undefined}
-						checked={internalChecked}
+						checked={actualChecked}
 						onChange={handleChange}
 						className={styles["lambda-checkbox"]}
+						tabIndex={-1}
 						{...props}
 					/>
 					{joinposition === undefined && icon === undefined && (
@@ -81,7 +102,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 							className={checkBoxIconVariants({
 								size: sizeValue,
 								disabled: disabledValue,
-								checked: internalChecked,
+								checked: actualChecked,
 							})}
 							width="24"
 							height="24"

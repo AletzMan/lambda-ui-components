@@ -2,10 +2,22 @@ import { InputHTMLAttributes } from "react";
 import { CheckboxVariants, ContainerVariants } from "./checkbox.variants";
 
 export interface CheckBoxProps
-	extends Omit<
-		InputHTMLAttributes<HTMLInputElement>,
-		"size" | "disabled" | "checked" | "color" | "type" | "onChange"
-	> {
+	extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "disabled" | "color" | "type"> {
+	/**
+	 * Controla si el checkbox está activado (`true`) o desactivado (`false`).
+	 * Usar esta prop hace que el componente sea controlado.
+	 * @default false
+	 */
+	checked?: boolean;
+	/**
+	 * Callback simple que se ejecuta cada vez que el estado del checkbox cambia (de activado a desactivado o viceversa).
+	 * Recibe el nuevo valor booleano.
+	 */
+	onCheckedChange?: (checked: boolean) => void;
+	/**
+	 * Callback que se ejecuta con el evento nativo de cambio del input.
+	 */
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	/**
 	 * Controla el tamaño visual del control de la casilla de verificación.
 	 */
@@ -35,18 +47,6 @@ export interface CheckBoxProps
 	 * El texto que se muestra junto al control de la casilla, asociado semánticamente a él.
 	 */
 	label?: string;
-
-	/**
-	 * Controla si la casilla está marcada (`true`) o desmarcada (`false`).
-	 * Usar esta prop hace que el componente sea controlado.
-	 * @default false (o el valor por defecto del input nativo)
-	 */
-	checked?: boolean;
-
-	/**
-	 * Una función que se ejecuta cada vez que el estado de la casilla cambia (de marcado a desmarcado o viceversa). Recibe el evento de cambio nativo.
-	 */
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 
 	/**
 	 * Deshabilita la casilla de verificación, impidiendo que el usuario cambie su estado y cambiando su apariencia para indicar que no está disponible.

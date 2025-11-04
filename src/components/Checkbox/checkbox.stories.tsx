@@ -87,6 +87,8 @@ const Template = (args: CheckBoxProps) => {
 						color={color.toLowerCase() as CheckBoxProps["color"]}
 						label={color}
 						radius={currentStyles === "local" ? args.radius : undefined}
+						onCheckedChange={(checked) => console.log(checked)}
+						onChange={(e) => console.log(e.target.checked)}
 					/>
 				))}
 			</div>
@@ -103,7 +105,6 @@ export const Solid: Story = {
 		label: "Label",
 		positionLabel: "right",
 		radius: "small",
-		checked: false,
 		disabled: false,
 	},
 };
@@ -116,7 +117,6 @@ export const Soft: Story = {
 		label: "Label",
 		positionLabel: "right",
 		radius: "small",
-		checked: false,
 		disabled: false,
 	},
 };
@@ -129,7 +129,6 @@ export const Outline: Story = {
 		label: "Label",
 		positionLabel: "right",
 		radius: "small",
-		checked: false,
 		disabled: false,
 	},
 };
