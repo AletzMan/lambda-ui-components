@@ -158,52 +158,58 @@
 
 .lambda-carousel-button {
 	position: absolute;
-	height: 3.5em;
+	height: 3.5em !important;
+	width: 1.5em !important;
 	padding: var(--padding-xs) var(--padding-xs);
 	z-index: 10;
 }
 
 .lambda-carousel-button-prev {
-	left: calc(var(--gap-2xs) + var(--gap-xs));
-
 	&.lambda-carousel-button-horizontal {
-		transform: translateY(-50%);
-
+		left: calc(var(--gap-md) - var(--gap-2xs));
 		&:is(.lambda-carousel-button-dots) {
-			top: calc(50%);
+			top: calc(50% - 1.75em);
 		}
 
 		&:is(.lambda-carousel-button-thumbnail) {
-			top: calc(50% - 24px);
+			top: calc(50% - 1.75em);
 		}
 	}
 
 	&.lambda-carousel-button-vertical {
-		left: calc(50% - 23px);
-		transform: translateX(-50%) rotate(90deg);
-		top: calc(-1 * var(--gap-sm));
+		width: 3.5em !important;
+		min-height: 1.75em !important;
+		height: 1.75em !important;
+		left: calc((50% - 20px) - 1.75em);
+		top: calc(var(--gap-sm) + 1px);
+		& svg {
+			transform: rotate(90deg);
+		}
 	}
 }
 
 .lambda-carousel-button-next {
-	right: calc(var(--gap-xs) + var(--gap-2xs));
+	right: calc(var(--gap-md) - var(--gap-2xs));
 
 	&.lambda-carousel-button-horizontal {
-		transform: translateY(-50%);
-
 		&:is(.lambda-carousel-button-dots) {
-			top: calc(50%);
+			top: calc(50% - 1.75em);
 		}
 
 		&:is(.lambda-carousel-button-thumbnail) {
-			top: calc(50% - 24px);
+			top: calc(50% - 1.75em);
 		}
 	}
 
 	&.lambda-carousel-button-vertical {
-		left: calc(50% - 23px);
-		transform: translateX(-50%) rotate(90deg);
-		bottom: calc(-1 * var(--gap-sm));
+		bottom: calc(var(--gap-sm) + 1px);
+		left: calc((50% - 20px) - 1.75em);
+		width: 3.5em !important;
+		height: 1.75em !important;
+		min-height: 1.75em !important;
+		& svg {
+			transform: rotate(90deg);
+		}
 	}
 }
 
