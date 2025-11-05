@@ -267,7 +267,12 @@ export const examplesNavData = [
 ];
 export function SideBar() {
 	return (
-		<aside className="flex flex-col items-center sticky top-18 h-[calc(100svh-72px)] bg-[linear-gradient(to_right,var(--surface-a),var(--background-color),var(--background-color),transparent)] border-r border-gray-200/3 scrollBar overflow-x-auto">
+		<aside
+			className="flex flex-col items-center sticky top-18 h-[calc(100svh-72px)] 
+			max-[780px]:hidden
+		bg-[linear-gradient(to_right,var(--surface-a),var(--background-color),var(--background-color),transparent)] 
+		border-r border-gray-200/3 scrollBar overflow-x-auto"
+		>
 			<NavigationMenu data={overviewNavData} showLines defaultExpanded={["overview"]} />
 			<NavigationMenu data={customizationNavData} showLines defaultExpanded={["theming"]} />
 			<NavigationMenu data={formsInputsNavData} showLines defaultExpanded={["forms-inputs"]} />
