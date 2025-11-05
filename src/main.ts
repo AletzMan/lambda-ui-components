@@ -55,3 +55,6 @@ export { NotificationProvider } from "./components/Notification/NotificationProv
 export { useNotification } from "./components/Notification/NotificationProvider";
 export { usePathObserver } from "./_internal/hooks/usePathObserver";
 export { usePopover } from "./_internal/hooks/usePopover";
+
+//-- TYPES
+export type { NavigationMenuData } from "./components/NavigationMenu/navigationMenu.types";
