@@ -49,6 +49,8 @@ import {
 	PictureInPicture,
 	SunMoon,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const overviewNavData = [
 	{
@@ -266,24 +268,55 @@ export const examplesNavData = [
 	},
 ];
 export function SideBar() {
+	const currentPath = usePathname();
 	return (
 		<aside
 			className="flex flex-col items-center sticky top-18 h-[calc(100svh-72px)] 
-			max-[780px]:hidden
 		bg-[linear-gradient(to_right,var(--surface-a),var(--background-color),var(--background-color),transparent)] 
 		border-r border-gray-200/3 scrollBar overflow-x-auto"
 		>
-			<NavigationMenu data={overviewNavData} showLines defaultExpanded={["overview"]} />
-			<NavigationMenu data={customizationNavData} showLines defaultExpanded={["theming"]} />
-			<NavigationMenu data={formsInputsNavData} showLines defaultExpanded={["forms-inputs"]} />
-			<NavigationMenu data={layoutDisplayNavData} showLines defaultExpanded={["layout-display"]} />
+			<NavigationMenu
+				data={overviewNavData}
+				showLines
+				defaultExpanded={["overview"]}
+				currentPath={currentPath}
+			/>
+			<NavigationMenu
+				data={customizationNavData}
+				showLines
+				defaultExpanded={["theming"]}
+				currentPath={currentPath}
+			/>
+			<NavigationMenu
+				data={formsInputsNavData}
+				showLines
+				defaultExpanded={["forms-inputs"]}
+				currentPath={currentPath}
+			/>
+			<NavigationMenu
+				data={layoutDisplayNavData}
+				showLines
+				defaultExpanded={["layout-display"]}
+				currentPath={currentPath}
+			/>
 			<NavigationMenu
 				data={navigationFeedbackNavData}
 				showLines
 				defaultExpanded={["navigation-feedback"]}
+				currentPath={currentPath}
 			/>
-			<NavigationMenu data={dataUtilNavData} showLines defaultExpanded={["data-util"]} />
-			<NavigationMenu data={examplesNavData} showLines defaultExpanded={["examples"]} />
+			<NavigationMenu
+				data={dataUtilNavData}
+				showLines
+				defaultExpanded={["data-util"]}
+				currentPath={currentPath}
+			/>
+			<NavigationMenu
+				data={examplesNavData}
+				showLines
+				defaultExpanded={["examples"]}
+				currentPath={currentPath}
+			/>
 		</aside>
 	);
 }
