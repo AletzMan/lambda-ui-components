@@ -16,7 +16,7 @@ import styles from "./navigationMenu.module.css";
 import type {
 	NavigationMenuProps,
 	NavigationMenuItemProps,
-	NavigationMenuNode,
+	NavigationMenuData,
 	NavigationMenuLabelProps,
 } from "./navigationMenu.types";
 import {
@@ -34,7 +34,7 @@ interface NavigationMenuContextValue {
 	expanded: Set<string>;
 	toggleNode: (id: string) => void;
 	size?: NavigationMenuVariants["size"];
-	renderLabel?: (node: NavigationMenuNode) => React.ReactNode;
+	renderLabel?: (node: NavigationMenuData) => React.ReactNode;
 	isDirectory?: boolean;
 	showLines?: NavigationMenuVariants["showLines"];
 	styleLines?: NavigationMenuVariants["styleLines"];

@@ -4,7 +4,7 @@ import { DrawerProps } from "./drawer.types";
 import { Button } from "../Button/Button";
 import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { NavigationMenuNode } from "../NavigationMenu/navigationMenu.types";
+import { NavigationMenuData } from "../NavigationMenu/navigationMenu.types";
 import {
 	BarChart3,
 	Clock,
@@ -82,7 +82,7 @@ const meta: Meta<typeof Drawer> = {
 
 export default meta;
 
-const treeDataAppNav: NavigationMenuNode[] = [
+const treeDataAppNav: NavigationMenuData[] = [
 	{
 		id: "dashboard",
 		label: "Dashboard",

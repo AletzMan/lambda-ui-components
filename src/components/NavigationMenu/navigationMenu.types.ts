@@ -2,11 +2,11 @@
 import { HTMLAttributeAnchorTarget, ReactNode } from "react";
 import { NavigationMenuVariants } from "./navigationMenu.variants";
 
-export interface NavigationMenuNode {
+export interface NavigationMenuData {
 	id: string;
 	label: string;
 	icon?: ReactNode;
-	children?: NavigationMenuNode[];
+	children?: NavigationMenuData[];
 	disabled?: boolean;
 	path?: string;
 	target?: HTMLAttributeAnchorTarget;
@@ -14,12 +14,12 @@ export interface NavigationMenuNode {
 }
 
 export interface NavigationMenuProps {
-	data: NavigationMenuNode[];
+	data: NavigationMenuData[];
 	defaultExpanded?: string[];
 
 	size?: NavigationMenuVariants["size"];
 	onNodeSelect?: (id: string) => void;
-	renderLabel?: (node: NavigationMenuNode) => ReactNode;
+	renderLabel?: (node: NavigationMenuData) => ReactNode;
 	className?: string;
 	style?: React.CSSProperties;
 	showLines?: boolean;
@@ -30,7 +30,7 @@ export interface NavigationMenuProps {
 }
 
 export interface NavigationMenuItemProps {
-	node: NavigationMenuNode;
+	node: NavigationMenuData;
 	level?: number;
 	isFirst?: boolean;
 	isLast?: boolean;
@@ -39,12 +39,12 @@ export interface NavigationMenuItemProps {
 }
 
 export interface NavigationMenuLabelProps {
-	node: NavigationMenuNode;
+	node: NavigationMenuData;
 	selected?: boolean;
 	onClick?: () => void;
 }
 
 export interface NavigationMenuItemChildrenProps {
-	nodes: NavigationMenuNode[];
+	nodes: NavigationMenuData[];
 	level?: number;
 }

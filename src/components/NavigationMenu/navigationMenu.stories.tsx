@@ -1,7 +1,7 @@
 // Archivo renombrado, el contenido está en menu.stories.tsx (ahora navigationMenu.stories.tsx).
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { NavigationMenu } from "./NavigationMenu";
-import type { NavigationMenuNode } from "./navigationMenu.types";
+import type { NavigationMenuData } from "./navigationMenu.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import {
 	Users,
@@ -44,7 +44,7 @@ export default meta;
 
 type Story = StoryObj<typeof NavigationMenu>;
 
-const treeDataAppNav: NavigationMenuNode[] = [
+const treeDataAppNav: NavigationMenuData[] = [
 	{
 		id: "dashboard",
 		label: "Dashboard",
@@ -139,7 +139,7 @@ const treeDataAppNav: NavigationMenuNode[] = [
 	},
 ];
 
-const treeDataUserSettings: NavigationMenuNode[] = [
+const treeDataUserSettings: NavigationMenuData[] = [
 	{
 		id: "profile",
 		label: "Mi Perfil",
