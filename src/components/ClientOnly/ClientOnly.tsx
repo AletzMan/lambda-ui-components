@@ -1,5 +1,5 @@
 "use client";
-import { useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 export interface ClientOnlyProps {
 	children: React.ReactNode;
@@ -7,14 +7,11 @@ export interface ClientOnlyProps {
 }
 
 export const ClientOnly = ({ children, fallback = null }: ClientOnlyProps) => {
-	const isClient = useSyncExternalStore(
-		// No hay suscripción real: el valor nunca cambia tras montarse
-		() => () => {},
-		// En cliente retorna true
-		() => typeof window !== "undefined",
-		// En servidor siempre false
-		() => false
-	);
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
 
 	return <>{isClient ? children : fallback}</>;
 };

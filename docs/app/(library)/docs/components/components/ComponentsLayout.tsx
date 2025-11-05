@@ -1,7 +1,6 @@
 "use client";
 import { NavigationMenu, NavigationMenuData, useActiveSectionObserver } from "lambda-ui-components";
 import { BarNavButton } from "@/app/(library)/components/layout/BarNavButton";
-import { useEffect, useState } from "react";
 import { FooterDocs } from "@/components/layout/FooterDocs";
 
 interface ComponentsLayoutProps {
@@ -42,11 +41,13 @@ export const ComponentsLayout = ({
 			</header>
 			<div className="grid grid-cols-[1fr_250px]">
 				<div>
-					{children}
+					<div className="bg-(--surface-a)/55 backdrop-blur-[2px] p-1 rounded-sm rounded-tr-none border border-(--border-color)/30">
+						{children}
+					</div>
 					<BarNavButton buttonLeft={buttonLeft} buttonRight={buttonRight} />
 					<FooterDocs />
 				</div>
-				<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) border-l border-(--border-color)/30 shadow shadow-gray-900/10">
+				<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) border-t border-(--border-color)/30">
 					<NavigationMenu
 						data={data}
 						currentPath={"#" + activeId || ""}
