@@ -5,8 +5,8 @@ export default function ThemePage() {
 	return (
 		<SectionLayout
 			title="Theme"
-			buttonsRight={{ href: "/docs/overview/about", text: "About" }}
-			buttonsLeft={{ href: "/docs/theming/customization", text: "Customization" }}
+			buttonsRight={{ href: "/docs/theming/customization", text: "Customization" }}
+			buttonsLeft={{ href: "/docs/overview/about", text: "About" }}
 		>
 			<article>
 				<SubSectionLayout title="Theme">
