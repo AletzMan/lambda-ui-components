@@ -1,10 +1,10 @@
 "use client";
 import { Rocket } from "lucide-react";
 import Link from "next/link";
-import CodeHighlighter from "../../components/ui/CodeHighlighter";
-import { SubSectionLayout } from "../../components/layout/SubSectionLayout";
-import { SectionLayout } from "../../components/layout/SectionLayout";
-import { CodeBlock } from "../../../../../dist/main";
+import CodeHighlighter from "../../../components/ui/CodeHighlighter";
+import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
+import { SectionLayout } from "../../../components/layout/SectionLayout";
+import { CodeBlock } from "../../../../../../dist/main";
 
 const SECTIONS = {
 	intro: {
@@ -149,7 +149,7 @@ export default function Introduction() {
 	return (
 		<SectionLayout
 			title="Introduction"
-			buttonsRight={{ href: "/overview/getting-started", text: "Getting Started" }}
+			buttonsRight={{ href: "/docs/overview/getting-started", text: "Getting Started" }}
 		>
 			<article className="max-w-none">
 				{/* Sección: Intro */}

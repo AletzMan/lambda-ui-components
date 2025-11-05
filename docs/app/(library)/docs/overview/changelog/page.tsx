@@ -1,5 +1,5 @@
-import { SectionLayout } from "../../components/layout/SectionLayout";
-import { SubSectionLayout } from "../../components/layout/SubSectionLayout";
+import { SectionLayout } from "../../../components/layout/SectionLayout";
+import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
 
 const CHANGELOG = [
 	{
@@ -22,8 +22,8 @@ export default function ChangelogPage() {
 	return (
 		<SectionLayout
 			title="Changelog"
-			buttonsLeft={{ href: "/overview/getting-started", text: "Getting Started" }}
-			buttonsRight={{ href: "/overview/about", text: "About" }}
+			buttonsLeft={{ href: "/docs/overview/getting-started", text: "Getting Started" }}
+			buttonsRight={{ href: "/docs/overview/about", text: "About" }}
 		>
 			<article>
 				{CHANGELOG.map((release) => (

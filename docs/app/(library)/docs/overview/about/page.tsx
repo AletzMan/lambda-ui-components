@@ -1,5 +1,5 @@
-import { SectionLayout } from "../../components/layout/SectionLayout";
-import { SubSectionLayout } from "../../components/layout/SubSectionLayout";
+import { SectionLayout } from "../../../components/layout/SectionLayout";
+import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
 import { Avatar, ClientOnly } from "lambda-ui-components";
 import Link from "next/link";
 
@@ -7,8 +7,8 @@ export default function AboutPage() {
 	return (
 		<SectionLayout
 			title="About Lambda UI Components"
-			buttonsLeft={{ href: "/overview/changelog", text: "Changelog" }}
-			buttonsRight={{ href: "/theming/theme", text: "Theme" }}
+			buttonsLeft={{ href: "/docs/overview/changelog", text: "Changelog" }}
+			buttonsRight={{ href: "/docs/theming/theme", text: "Theme" }}
 		>
 			<article>
 				<SubSectionLayout title="What is Lambda UI Components?">

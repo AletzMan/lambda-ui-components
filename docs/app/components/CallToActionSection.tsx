@@ -19,7 +19,7 @@ export function CallToActionSection() {
 					color="primary"
 					variant="solid"
 					radius="small"
-					href="/introduction"
+					href="/docs/overview/introduction"
 					target="_blank"
 					iconPosition="left"
 					icon={<Rocket />}

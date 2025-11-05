@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { SubSectionLayout } from "../../components/layout/SubSectionLayout";
-import { SectionLayout } from "../../components/layout/SectionLayout";
+import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
+import { SectionLayout } from "../../../components/layout/SectionLayout";
 import { CodeBlock } from "lambda-ui-components";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-typescript";
@@ -159,8 +159,8 @@ export default function GettingStarted() {
 	return (
 		<SectionLayout
 			title="Getting Started"
-			buttonsLeft={{ href: "/overview/introduction", text: "Introduction" }}
-			buttonsRight={{ href: "/overview/changelog", text: "Changelog" }}
+			buttonsLeft={{ href: "/docs/overview/introduction", text: "Introduction" }}
+			buttonsRight={{ href: "/docs/overview/changelog", text: "Changelog" }}
 		>
 			<article className="max-w-none">
 				<SubSectionLayout title={peer.title}>{peer.body}</SubSectionLayout>
