@@ -49,4 +49,8 @@ export { TreeView } from "./components/TreeView/TreeView";
 export { LambdaConfigProvider } from "./_internal/hooks/translation/LambdaConfigProvider";
 export { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
 export { NotificationProvider } from "./components/Notification/NotificationProvider";
+
+//-- HOOKS
 export { useNotification } from "./components/Notification/NotificationProvider";
+export { usePathObserver } from "./_internal/hooks/usePathObserver";
+export { usePopover } from "./_internal/hooks/usePopover";
