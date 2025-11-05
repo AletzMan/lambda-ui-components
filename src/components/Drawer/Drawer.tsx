@@ -126,12 +126,21 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 					// Si no hay initialFocusRef, enfocar el panel del drawer mismo.
 					drawerPanelRef.current.focus();
 				}
+				const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+				if (scrollbarWidth > 0) {
+					// Añadir el ancho de la barra de desplazamiento al padding derecho del body
+					const computedStyle = window.getComputedStyle(document.body);
+					const currentPaddingRight = parseFloat(computedStyle.paddingRight) || 0;
+					const newPadding = currentPaddingRight + scrollbarWidth;
+					document.body.style.paddingRight = `${newPadding}px`;
+				}
 				// *** Deshabilitar scroll del body cuando el drawer está abierto ***
 				document.body.style.overflow = "hidden";
 			} else if (animationState === "exited") {
 				// *** Re-habilitar scroll del body cuando el drawer está cerrado ***
 				timer = window.setTimeout(() => {
 					document.body.style.overflow = "";
+					document.body.style.paddingRight = "";
 				}, 50);
 			}
 
