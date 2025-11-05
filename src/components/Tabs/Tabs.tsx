@@ -1,3 +1,4 @@
+"use client";
 import React, {
 	createContext,
 	useContext,
@@ -159,7 +160,9 @@ const TabsList = ({ children }: { children: ReactNode }) => {
 						icon={tab.props.icon}
 						disabled={tab.props.disabled}
 						index={index}
-						labelRef={el => { labelRefs.current[index] = el; }}
+						labelRef={(el) => {
+							labelRefs.current[index] = el;
+						}}
 					/>
 				);
 			})}
@@ -169,7 +172,13 @@ const TabsList = ({ children }: { children: ReactNode }) => {
 
 TabsList.displayName = "TabsList";
 
-const TabsTab = ({ title, icon, disabled, index, labelRef }: TabItemProps & { index?: number; labelRef?: (el: HTMLLabelElement | null) => void }) => {
+const TabsTab = ({
+	title,
+	icon,
+	disabled,
+	index,
+	labelRef,
+}: TabItemProps & { index?: number; labelRef?: (el: HTMLLabelElement | null) => void }) => {
 	const { activeTab, setActiveTab, groupId, size, variant, color, radius } = useTabsContext();
 	const idTab = useId();
 	const label = title || `Tab ${idTab}`;
