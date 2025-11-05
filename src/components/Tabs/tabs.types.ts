@@ -37,13 +37,13 @@ export interface TabProps
 	 */
 	disabled?: boolean;
 	/*
-	 * Establece el valor de la pestaña @default ""
+	 * Establece el valor de la pestaña @default 0
 	 */
-	value?: string;
+	value?: number;
 	/*
-	 * Funcion que se ejecuta cuando el valor de la pestaña cambia
+	 * Funcion que se ejecuta cuando el valor de la pestaña, devolviendo el index de la pestaña seleccionada
 	 */
-	onChange?: (value: string) => void;
+	onChange?: (value: number) => void;
 	/*
 	 * Define el contenido de la pestaña
 	 */

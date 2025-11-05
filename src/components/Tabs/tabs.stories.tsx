@@ -65,7 +65,16 @@ const Template = (args: TabProps) => {
 			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
 			styleSource={currentStyle}
 		>
-			<div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", padding: "1rem" }}>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "1rem",
+					flexWrap: "wrap",
+					padding: "1rem",
+					width: "100%",
+				}}
+			>
 				{colors.map((color) => (
 					<Tabs
 						key={color}

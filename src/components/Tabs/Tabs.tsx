@@ -20,6 +20,7 @@ import {
 	tabCurrent,
 	tabInput,
 	tabLabel,
+	tabTabsContainer,
 	tabWrapper,
 } from "./tabs.variants";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
@@ -42,8 +43,8 @@ function useTabsContext() {
 }
 
 const TabsRoot = forwardRef<HTMLDivElement, TabProps>(
-	({ size, variant, color, radius, children }, ref) => {
-		const [activeTab, setActiveTab] = useState(0);
+	({ size, variant, color, radius, children, onChange, value }, ref) => {
+		const [activeTab, setActiveTab] = useState(value ?? 0);
 		const groupId = useId();
 		const { radiusField } = useUIConfig();
 		const contextValue: TabsContextType = {
@@ -55,6 +56,10 @@ const TabsRoot = forwardRef<HTMLDivElement, TabProps>(
 			radius: radius ?? radiusField,
 			groupId,
 		};
+
+		useEffect(() => {
+			onChange?.(activeTab);
+		}, [activeTab]);
 
 		const childrenList: React.ReactElement<any>[] = [];
 
@@ -137,35 +142,37 @@ const TabsList = ({ children }: { children: ReactNode }) => {
 	});
 
 	return (
-		<div
-			className={tabContainer({ size, variant, color, radius })}
-			ref={containerRef}
-			style={{ position: "relative" }}
-		>
-			{/* Indicador detrás de las tabs */}
+		<div className={tabTabsContainer({ variant })}>
 			<div
-				className={tabCurrent({ variant, radius, color })}
-				style={{
-					left: `${indicator.left}px`,
-					width: `${indicator.width}px`,
-				}}
-			/>
-			{tabList.map((tab, index) => {
-				// Usa key explícita si existe, si no usa title+index
-				const tabKey = tab.key ?? (tab.props.title ? `tab-${tab.props.title}` : `tab-${index}`);
-				return (
-					<TabsTab
-						key={tabKey}
-						title={tab.props.title}
-						icon={tab.props.icon}
-						disabled={tab.props.disabled}
-						index={index}
-						labelRef={(el) => {
-							labelRefs.current[index] = el;
-						}}
-					/>
-				);
-			})}
+				className={tabContainer({ size, variant, color, radius })}
+				ref={containerRef}
+				style={{ position: "relative" }}
+			>
+				{/* Indicador detrás de las tabs */}
+				<div
+					className={tabCurrent({ variant, radius, color })}
+					style={{
+						left: `${indicator.left}px`,
+						width: `${indicator.width}px`,
+					}}
+				/>
+				{tabList.map((tab, index) => {
+					// Usa key explícita si existe, si no usa title+index
+					const tabKey = tab.key ?? (tab.props.title ? `tab-${tab.props.title}` : `tab-${index}`);
+					return (
+						<TabsTab
+							key={tabKey}
+							title={tab.props.title}
+							icon={tab.props.icon}
+							disabled={tab.props.disabled}
+							index={index}
+							labelRef={(el) => {
+								labelRefs.current[index] = el;
+							}}
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 };

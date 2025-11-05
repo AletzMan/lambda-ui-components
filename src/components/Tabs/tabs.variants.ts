@@ -285,4 +285,18 @@ export const tabContent = cva(styles["tab-content"], {
 	},
 });
 
+export const tabTabsContainer = cva(styles["tab-tabs-container"], {
+	variants: {
+		variant: {
+			underline: styles["tab-content-underline"],
+			soft: styles["tab-content-soft"],
+			box: styles["tab-content-box"],
+			border: styles["tab-content-border"],
+		},
+	},
+	defaultVariants: {
+		variant: "underline",
+	},
+});
+
 export type TabVariants = VariantProps<typeof tabWrapper>;
