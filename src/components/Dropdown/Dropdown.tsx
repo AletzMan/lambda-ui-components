@@ -15,7 +15,7 @@ import { DropdownProps } from "./dropdown.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { ChevronDown } from "lucide-react";
 import { createPortal } from "react-dom";
-import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
+import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
 
 const DropdownContext = createContext<

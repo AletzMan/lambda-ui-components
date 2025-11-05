@@ -30,7 +30,7 @@ import { Input } from "../Input/Input";
 import { createPortal } from "react-dom";
 import { Dialog } from "../Dialog/Dialog";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
-import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
+import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
 
 function getDaysInMonth(year: number, month: number) {

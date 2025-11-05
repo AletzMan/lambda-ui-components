@@ -18,7 +18,7 @@ import { SelectOptionItem } from "./SelectOptionItem";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
-import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
+import { usePopover } from "../../_internal/hooks/usePopover";
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(
 	(

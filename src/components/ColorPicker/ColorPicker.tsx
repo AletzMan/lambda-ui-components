@@ -31,7 +31,7 @@ import {
 	useUIConfig,
 } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { createPortal } from "react-dom";
-import { usePopover } from "../../_internal/hooks/translation/usePopover/usePopover";
+import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
 
 // Helper para convertir HSL a HSV
