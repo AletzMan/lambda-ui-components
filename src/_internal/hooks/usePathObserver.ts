@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
 
+let isPatched = false;
+let origPushState: History["pushState"];
+let origReplaceState: History["replaceState"];
+
 export function usePathObserver() {
 	const getPath = () => (typeof window !== "undefined" ? window.location.pathname : "");
 
 	const [path, setPath] = useState(getPath);
 
 	useEffect(() => {
-		// Patch pushState and replaceState to dispatch a custom event
-		const events = ["pushState", "replaceState"];
-		events.forEach((type) => {
-			const orig = window.history[type as keyof History];
-			(window.history as any)[type] = function (...args: any[]) {
-				const rv = orig.apply(this, args);
-				window.dispatchEvent(new Event("locationchange"));
-				return rv;
-			};
-		});
+		if (!isPatched && typeof window !== "undefined") {
+			origPushState = window.history.pushState;
+			origReplaceState = window.history.replaceState;
 
-		// Listen to popstate and locationchange
+			["pushState", "replaceState"].forEach((type) => {
+				(window.history as any)[type] = function (...args: any[]) {
+					const rv = (type === "pushState" ? origPushState : origReplaceState).apply(
+						this,
+						args as any
+					);
+					window.dispatchEvent(new Event("locationchange"));
+					return rv;
+				};
+			});
+			isPatched = true;
+		}
+
 		const onChange = () => setPath(getPath());
 		window.addEventListener("popstate", onChange);
 		window.addEventListener("locationchange", onChange);
@@ -25,7 +34,6 @@ export function usePathObserver() {
 		return () => {
 			window.removeEventListener("popstate", onChange);
 			window.removeEventListener("locationchange", onChange);
-			// Restore original methods (optional)
 		};
 	}, []);
 
