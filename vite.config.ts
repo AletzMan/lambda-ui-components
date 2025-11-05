@@ -34,6 +34,7 @@ export default defineConfig({
 					"react-dom": "ReactDom",
 					"react/jsx-runtime": "react/jsx-runtime",
 				},
+				banner: '"use client";', // 👈 preserva la directiva
 			},
 		},
 	},

@@ -91,18 +91,6 @@ const navigationMenuData = [
 				icon: <SunMoon />,
 				path: "/theming/dark-mode",
 			},
-			{
-				id: "customization",
-				label: "Customization",
-				icon: <PackageOpen />,
-				path: "/theming/customization",
-			},
-			{
-				id: "dark-mode",
-				label: "Dark Mode",
-				icon: <SunMoon />,
-				path: "/theming/dark-mode",
-			},
 		],
 	},
 	{

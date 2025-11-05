@@ -13,6 +13,7 @@ export { Calendar } from "./components/Calendar/Calendar";
 export { Card } from "./components/Card/Card";
 export { Carousel } from "./components/Carousel/Carousel";
 export { Checkbox } from "./components/Checkbox/Checkbox";
+export { ClientOnly } from "./components/ClientOnly/ClientOnly";
 export { CodeBlock } from "./components/CodeBlock/CodeBlock";
 export { ColorPicker } from "./components/ColorPicker/ColorPicker";
 export { DatePicker } from "./components/DatePicker/DatePicker";
