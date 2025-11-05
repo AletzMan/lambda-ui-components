@@ -21,13 +21,16 @@ export const NavButton = ({
 		<Link
 			href={href}
 			className={`
-        group flex items-center gap-4 px-6 py-4 rounded-lg   
+        group flex items-center gap-4 px-2 py-2 rounded-lg   
+		max-w-[290px] 
+		w-full
         bg-(--surface-a) transition-all
 		border border-(--surface-b)/70
 		outline-2 outline-offset-2 outline-transparent hover:outline-(--primary-opacity-color)
         shadow-sm font-semibold no-underline
         focus:outline-none focus-visible:ring-2 focus-visible:ring-(--primary-base-color) focus-visible:ring-offset-2
-        ${isLeft ? "justify-start col-start-1" : "justify-end col-start-2"} ${className}
+        ${isLeft ? "justify-start col-start-1" : "justify-end col-start-2 place-self-end"}
+		 ${className}
       `}
 			aria-label={text}
 		>
