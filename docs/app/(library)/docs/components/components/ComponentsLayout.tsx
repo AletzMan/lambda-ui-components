@@ -1,5 +1,5 @@
 "use client";
-import { NavigationMenu, NavigationMenuData } from "lambda-ui-components";
+import { NavigationMenu, NavigationMenuData, useActiveSectionObserver } from "lambda-ui-components";
 import { BarNavButton } from "@/app/(library)/components/layout/BarNavButton";
 import { useEffect, useState } from "react";
 import { FooterDocs } from "@/components/layout/FooterDocs";
@@ -27,32 +27,7 @@ export const ComponentsLayout = ({
 	buttonLeft,
 	buttonRight,
 }: ComponentsLayoutProps) => {
-	const [activeId, setActiveId] = useState<string | null>(null);
-
-	useEffect(() => {
-		const elements = document.querySelectorAll("h2");
-		if (!elements.length) return;
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						setActiveId(entry.target.id);
-					}
-				});
-			},
-			{
-				rootMargin: "0px 0px -70% 0px", // activa cuando el título entra al 30% superior
-				threshold: 0.1,
-			}
-		);
-
-		elements.forEach((el) => observer.observe(el));
-
-		return () => observer.disconnect();
-	}, []);
-
-	console.log(activeId);
+	const activeId = useActiveSectionObserver({ selectors: "h2", rootMargin: "-72px 0px -70% 0px" });
 	return (
 		<section className="relative flex flex-col gap-10 px-6 py-4">
 			<header className="mb-10 text-center ">
