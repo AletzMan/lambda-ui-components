@@ -1,9 +1,7 @@
 "use client";
-import { Rocket } from "lucide-react";
 import Link from "next/link";
-import { SectionLayout } from "../../components/layout/Sectionlayout";
 import { SubSectionLayout } from "../../components/layout/SubSectionLayout";
-import { FooterDocs } from "@/components/layout/FooterDocs";
+import { SectionLayout } from "../../components/layout/SectionLayout";
 import { CodeBlock } from "lambda-ui-components";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-typescript";
@@ -18,7 +16,7 @@ const SECTIONS = {
 		title: "Installation",
 		body: (
 			<>
-				<p>
+				<p className="mb-6">
 					Lambda UI Components is published as an npm package. You can install it using your
 					favorite package manager:
 				</p>
@@ -45,7 +43,7 @@ const SECTIONS = {
 						},
 					]}
 				/>
-				<p>
+				<p className="mt-6">
 					<b>Tip:</b> For best results, use <code>pnpm</code> or <code>yarn</code> in monorepo
 					setups.
 				</p>
@@ -56,7 +54,7 @@ const SECTIONS = {
 		title: "Peer Dependencies",
 		body: (
 			<>
-				<p>
+				<p className="mb-3">
 					Lambda UI Components requires <b>React 18+</b> and <b>ReactDOM</b> as peer dependencies.
 					Make sure they are installed in your project.
 				</p>
@@ -83,7 +81,7 @@ const SECTIONS = {
 						},
 					]}
 				/>
-				<p>
+				<p className="mt-3 mb-3">
 					For syntax highlighting in <code>CodeBlock</code>, install <code>prismjs</code>:
 				</p>
 				<CodeBlock
@@ -101,7 +99,7 @@ const SECTIONS = {
 		title: "Basic Usage",
 		body: (
 			<>
-				<p>Import and use components in your React app:</p>
+				<p className="mb-3">Import and use components in your React app:</p>
 				<CodeBlock
 					buttonCopy
 					tabs={[
@@ -120,7 +118,7 @@ export default function Example() {
 						},
 					]}
 				/>
-				<p>
+				<p className="mt-3 mb-3">
 					All components are fully typed and support both controlled and uncontrolled usage
 					patterns.
 				</p>
@@ -131,7 +129,7 @@ export default function Example() {
 		title: "Next.js & RSC",
 		body: (
 			<>
-				<p>
+				<p className="mb-3">
 					If you use <b>Next.js App Router</b>, add <code>"use client"</code> at the top of your
 					page or component file whenever you use interactive components:
 				</p>
@@ -147,7 +145,7 @@ import { Button } from "lambda-ui-components";
 						},
 					]}
 				/>
-				<p>
+				<p className="mt-3 mb-3">
 					This is only necessary in Next.js App Router. In Vite, Astro, Remix, or CRA, you do{" "}
 					<b>not</b> need this directive.
 				</p>
@@ -160,14 +158,18 @@ export default function GettingStarted() {
 	const { install, peer, usage, next } = SECTIONS;
 
 	return (
-		<SectionLayout title="Getting Started">
+		<SectionLayout
+			title="Getting Started"
+			buttonsLeft={{ href: "/overview/introduction", text: "Introduction" }}
+			buttonsRight={{ href: "/overview/changelog", text: "Changelog" }}
+		>
 			<article className="max-w-none">
 				<SubSectionLayout title={peer.title}>{peer.body}</SubSectionLayout>
 				<SubSectionLayout title={install.title}>{install.body}</SubSectionLayout>
 				<SubSectionLayout title={usage.title}>{usage.body}</SubSectionLayout>
 				<SubSectionLayout title={next.title}>{next.body}</SubSectionLayout>
 				<SubSectionLayout title="Importing CSS">
-					<p>
+					<p className="mb-3">
 						Import the Lambda UI CSS in your main entry file (usually <code>src/index.tsx</code> or{" "}
 						<code>_app.tsx</code> in Next.js):
 					</p>
@@ -180,10 +182,12 @@ export default function GettingStarted() {
 							},
 						]}
 					/>
-					<p>This ensures all components are styled correctly out of the box.</p>
+					<p className="mt-3 mb-3">
+						This ensures all components are styled correctly out of the box.
+					</p>
 				</SubSectionLayout>
 				<SubSectionLayout title="Theme & Configuration Providers">
-					<p>
+					<p className="mb-3">
 						For advanced theming, localization, and consistent UI configuration, wrap your app with{" "}
 						<code>LambdaConfigProvider</code> and <code>ThemeProvider</code> at the root of your
 						component tree:
@@ -208,7 +212,7 @@ export default function App({ children }) {
 							},
 						]}
 					/>
-					<p>
+					<p className="mt-3 mb-3">
 						<b>Learn more:</b>
 					</p>
 					<ul className="list-disc pl-6">
@@ -238,16 +242,7 @@ export default function App({ children }) {
 						</li>
 					</ul>
 				</SubSectionLayout>
-				<div className="my-10 flex justify-center">
-					<Link
-						href="/overview/introduction"
-						className="flex items-center gap-3 px-6 py-3 rounded bg-(--primary-base-color) text-white font-semibold shadow hover:bg-cyan-400 transition"
-					>
-						← Back to Introduction <Rocket className="w-5 h-5" />
-					</Link>
-				</div>
 			</article>
-			<FooterDocs />
 		</SectionLayout>
 	);
 }

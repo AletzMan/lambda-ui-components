@@ -1,10 +1,10 @@
 "use client";
-import { FooterDocs } from "@/components/layout/FooterDocs";
-import { HomeIcon, Rocket } from "lucide-react";
+import { Rocket } from "lucide-react";
 import Link from "next/link";
 import CodeHighlighter from "../../components/ui/CodeHighlighter";
-import { SectionLayout } from "../../components/layout/Sectionlayout";
 import { SubSectionLayout } from "../../components/layout/SubSectionLayout";
+import { SectionLayout } from "../../components/layout/SectionLayout";
+import { CodeBlock } from "../../../../../dist/main";
 
 const SECTIONS = {
 	intro: {
@@ -142,17 +142,15 @@ import { Button } from "lambda-ui-components";
 };
 
 export default function Introduction() {
-	// Clases comunes para elementos repetidos
-	const hrClasses = "my-10 border-(--border-color)";
-	const subTitle =
-		"text-2xl font-bold text-left tracking-tight text-(--foreground-color) mb-4 w-full";
-
 	const paragraph = "text-base leading-relaxed text-(--foreground-secondary-color)";
 
 	const { intro, whyLambda, whatsIncluded, theming, libraries, faq } = SECTIONS;
 
 	return (
-		<SectionLayout title="Introduction">
+		<SectionLayout
+			title="Introduction"
+			buttonsRight={{ href: "/overview/getting-started", text: "Getting Started" }}
+		>
 			<article className="max-w-none">
 				{/* Sección: Intro */}
 				<SubSectionLayout title={intro.title}>{intro.body}</SubSectionLayout>
@@ -226,15 +224,13 @@ export default function Introduction() {
 									<p dangerouslySetInnerHTML={{ __html: a }} />
 
 									{/* Bloque de Código (si existe) */}
-									{code && <CodeHighlighter codeData={[{ code }]} />}
+									{code && <CodeBlock code={code} />}
 								</div>
 							</div>
 						))}
 					</div>
 				</SubSectionLayout>
 			</article>
-
-			<FooterDocs />
 		</SectionLayout>
 	);
 }
