@@ -26,6 +26,7 @@ export interface NavigationMenuProps {
 	styleLines?: NavigationMenuVariants["styleLines"];
 	alwaysOpen?: boolean;
 	selectedStyle?: NavigationMenuVariants["selectedStyle"];
+	currentPath: string;
 }
 
 export interface NavigationMenuItemProps {

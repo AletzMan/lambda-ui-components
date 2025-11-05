@@ -21,6 +21,8 @@ import {
 	Upload,
 } from "lucide-react";
 import { NavigationMenuProps } from "./navigationMenu.types";
+import { useState } from "react";
+import React from "react";
 
 const meta: Meta<typeof NavigationMenu> = {
 	title: "Components/NavigationMenu",
@@ -181,6 +183,11 @@ const treeDataUserSettings: NavigationMenuNode[] = [
 ];
 
 const Template = (args: NavigationMenuProps) => {
+	const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
+
+	React.useEffect(() => {
+		setCurrentPath(window.location.pathname);
+	}, []);
 	return (
 		<ContainerComponent title="NavigationMenu">
 			<div
@@ -193,7 +200,7 @@ const Template = (args: NavigationMenuProps) => {
 					maxWidth: 400,
 				}}
 			>
-				<NavigationMenu {...args} />
+				<NavigationMenu {...args} currentPath={currentPath} />
 			</div>
 		</ContainerComponent>
 	);

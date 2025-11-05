@@ -40,6 +40,7 @@ interface NavigationMenuContextValue {
 	styleLines?: NavigationMenuVariants["styleLines"];
 	alwaysOpen?: boolean;
 	selectedStyle?: NavigationMenuVariants["selectedStyle"];
+	currentPath: string;
 }
 
 const NavigationMenuContext = createContext<NavigationMenuContextValue | undefined>(undefined);
@@ -63,17 +64,11 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 			styleLines,
 			alwaysOpen,
 			selectedStyle,
+			currentPath,
 		},
 		ref
 	) => {
 		const [expanded, setExpanded] = useState<Set<string>>(new Set(defaultExpanded));
-		const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
-
-		React.useEffect(() => {
-			const onPopState = () => setCurrentPath(window.location.pathname);
-			window.addEventListener("popstate", onPopState);
-			return () => window.removeEventListener("popstate", onPopState);
-		}, []);
 
 		const toggleNode = useCallback((id: string) => {
 			setExpanded((prev) => {
@@ -87,7 +82,6 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 		const handleNavigate = useCallback((path: string) => {
 			if (window.location.pathname !== path) {
 				window.history.pushState({}, "", path);
-				setCurrentPath(path);
 				window.dispatchEvent(new PopStateEvent("popstate"));
 			}
 		}, []);
@@ -102,8 +96,19 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 				size,
 				alwaysOpen,
 				selectedStyle,
+				currentPath,
 			}),
-			[expanded, toggleNode, renderLabel, size, showLines, styleLines, alwaysOpen, selectedStyle]
+			[
+				expanded,
+				toggleNode,
+				renderLabel,
+				size,
+				showLines,
+				styleLines,
+				alwaysOpen,
+				selectedStyle,
+				currentPath,
+			]
 		);
 
 		return (
@@ -131,13 +136,16 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 );
 
 const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
-	({ node, level = 0, isLast = false, currentPath, onNavigate }, ref) => {
-		const { expanded, toggleNode, size, alwaysOpen, selectedStyle } = useNavigationMenuContext();
+	({ node, level = 0, isLast = false, onNavigate }, ref) => {
+		const { expanded, toggleNode, size, alwaysOpen, selectedStyle, currentPath } =
+			useNavigationMenuContext();
 		const isExpanded = !!node.children && expanded.has(node.id);
-		const isSelected = node.path && currentPath === node.path;
+		let isSelected = node.path && currentPath === node.path;
 		const isDisabled = !!node.disabled;
 		const hasChildren = !!node.children;
 		const isChildrenSelected = node.children?.some((child) => child.path === currentPath);
+
+		console.log(currentPath);
 
 		const handleClick = () => {
 			if (!isDisabled && node.path && !hasChildren && onNavigate) {
@@ -207,7 +215,6 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 										level={level + 1}
 										isFirst={index === 0}
 										isLast={index === node.children!.length - 1}
-										currentPath={currentPath}
 										onNavigate={onNavigate}
 									/>
 								))}

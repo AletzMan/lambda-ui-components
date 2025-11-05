@@ -272,7 +272,7 @@ const DrawerTemplate = (args: DrawerProps & React.RefAttributes<HTMLDivElement>)
 							flexDirection: "column",
 						}}
 					>
-						<NavigationMenu data={treeDataAppNav} alwaysOpen />
+						<NavigationMenu data={treeDataAppNav} alwaysOpen currentPath={"/app/dashboard"} />
 					</div>
 				</Drawer>
 				<Button
