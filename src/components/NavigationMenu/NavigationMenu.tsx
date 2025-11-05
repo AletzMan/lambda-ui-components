@@ -145,12 +145,12 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 		const hasChildren = !!node.children;
 		const isChildrenSelected = node.children?.some((child) => child.path === currentPath);
 
-		const handleClick = () => {
+		/*const handleClick = () => {
 			if (!isDisabled && node.path && !hasChildren && onNavigate) {
 				onNavigate(node.path);
 				document.location.pathname = node.path;
 			}
-		};
+		};*/
 
 		return (
 			<div
@@ -173,27 +173,48 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 				aria-disabled={isDisabled}
 				tabIndex={isDisabled ? -1 : 0}
 			>
-				<a
-					className={navigationMenuItemContentVariants({
-						selected: isSelected || false,
-						disabled: isDisabled,
-						hasChildren,
-					})}
-					href={level === 0 ? undefined : node.path}
-					target={node.target}
-					onClick={hasChildren ? () => toggleNode(node.id) : handleClick}
-				>
-					<NavigationMenuLabel node={node} selected={isSelected || false} onClick={handleClick} />
-					{node.children && (
-						<ChevronRight
-							className={navigationMenuItemExpandedIconVariants({
-								size,
-								expanded: isExpanded,
-								alwaysOpen,
-							})}
-						/>
-					)}
-				</a>
+				{!hasChildren ? (
+					<a
+						className={navigationMenuItemContentVariants({
+							selected: isSelected || false,
+							disabled: isDisabled,
+							hasChildren,
+						})}
+						href={level === 0 ? undefined : node.path}
+						target={node.target}
+					>
+						<NavigationMenuLabel node={node} selected={isSelected || false} />
+						{node.children && (
+							<ChevronRight
+								className={navigationMenuItemExpandedIconVariants({
+									size,
+									expanded: isExpanded,
+									alwaysOpen,
+								})}
+							/>
+						)}
+					</a>
+				) : (
+					<button
+						className={navigationMenuItemContentVariants({
+							selected: isSelected || false,
+							disabled: isDisabled,
+							hasChildren,
+						})}
+						onClick={() => toggleNode(node.id)}
+					>
+						<NavigationMenuLabel node={node} selected={isSelected || false} />
+						{node.children && (
+							<ChevronRight
+								className={navigationMenuItemExpandedIconVariants({
+									size,
+									expanded: isExpanded,
+									alwaysOpen,
+								})}
+							/>
+						)}
+					</button>
+				)}
 
 				{node.children && (
 					<AnimatePresence initial={false}>
