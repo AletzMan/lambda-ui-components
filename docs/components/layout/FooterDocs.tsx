@@ -18,7 +18,7 @@ export function FooterDocs() {
 			</div>
 
 			<div className="mt-2 flex flex-col items-center justify-between gap-4">
-				<span className="text-xs text-(--foreground-secondary-color)">
+				<span className="text-xs text-(--foreground-secondary-color) text-pretty text-center">
 					&copy; {new Date().getFullYear()} Lambda UI. Made with{" "}
 					<Heart className="inline w-4 h-4 text-pink-400 mx-1" /> in Mexico by AletzMan.
 				</span>

@@ -145,8 +145,6 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 		const hasChildren = !!node.children;
 		const isChildrenSelected = node.children?.some((child) => child.path === currentPath);
 
-		console.log(currentPath);
-
 		const handleClick = () => {
 			if (!isDisabled && node.path && !hasChildren && onNavigate) {
 				onNavigate(node.path);

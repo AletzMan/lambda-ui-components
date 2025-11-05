@@ -1,5 +1,6 @@
 "use client";
-import { Divider, NavigationMenu } from "lambda-ui-components";
+import { FooterDocs } from "@/components/layout/FooterDocs";
+import { NavigationMenu } from "lambda-ui-components";
 import {
 	AlertTriangle,
 	BarChart3,
@@ -14,14 +15,10 @@ import {
 	Code,
 	Columns,
 	CornerDownRight,
-	Database,
-	DollarSign,
 	FileText,
-	GitBranch,
 	Grip,
 	Home,
 	Layers,
-	LayoutDashboard,
 	LayoutGrid,
 	Lightbulb,
 	List,
@@ -34,7 +31,6 @@ import {
 	Puzzle,
 	Rows,
 	Settings,
-	Shield,
 	SlidersHorizontal,
 	Split,
 	Star,
@@ -42,28 +38,21 @@ import {
 	ToggleRight,
 	TrendingUp,
 	Type,
-	Upload,
 	UploadCloud,
 	Users,
 	Zap,
-	PictureInPicture,
 	SunMoon,
+	PictureInPicture,
 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-export const overviewNavData = [
+const navigationMenuData = [
 	{
 		id: "overview",
-		label: "Fundamentals",
+		label: "Overview",
 		icon: <BookOpen />,
 		children: [
-			{
-				id: "intro",
-				label: "Introduction",
-				icon: <Home />,
-				path: "/overview/introduction",
-			},
+			{ id: "intro", label: "Introduction", icon: <Home />, path: "/overview/introduction" },
 			{
 				id: "getting-started",
 				label: "Getting Started",
@@ -84,33 +73,275 @@ export const overviewNavData = [
 			},
 		],
 	},
-];
-
-const customizationNavData = [
 	{
 		id: "theming",
 		label: "Theming",
 		icon: <Palette />,
 		children: [
-			{
-				id: "theme",
-				label: "Theme",
-				icon: <Palette />,
-				path: "/overview/theming/theme",
-			},
+			{ id: "theme", label: "Theme", icon: <Palette />, path: "/theming/theme" },
 			{
 				id: "customization",
 				label: "Customization",
 				icon: <PackageOpen />,
-				path: "/overview/customization",
+				path: "/theming/customization",
 			},
 			{
 				id: "dark-mode",
 				label: "Dark Mode",
 				icon: <SunMoon />,
-				path: "/overview/dark-mode",
+				path: "/theming/dark-mode",
+			},
+			{
+				id: "customization",
+				label: "Customization",
+				icon: <PackageOpen />,
+				path: "/theming/customization",
+			},
+			{
+				id: "dark-mode",
+				label: "Dark Mode",
+				icon: <SunMoon />,
+				path: "/theming/dark-mode",
 			},
 		],
+	},
+	{
+		id: "forms-inputs",
+		label: "Forms & Inputs",
+		icon: <Type />,
+		children: [
+			{ id: "input", label: "Input", icon: <Type />, path: "/docs/components/forms-inputs/input" },
+			{
+				id: "inputNumber",
+				label: "Input Number",
+				icon: <Minus />,
+				path: "/docs/components/forms-inputs/input-number",
+			},
+			{
+				id: "select",
+				label: "Select",
+				icon: <SlidersHorizontal />,
+				path: "/docs/components/forms-inputs/select",
+			},
+			{
+				id: "textArea",
+				label: "Text Area",
+				icon: <Rows />,
+				path: "/docs/components/forms-inputs/text-area",
+			},
+			{
+				id: "checkbox",
+				label: "Checkbox",
+				icon: <CheckSquare />,
+				path: "/docs/components/forms-inputs/checkbox",
+			},
+			{
+				id: "radio",
+				label: "Radio",
+				icon: <CircleDashed />,
+				path: "/docs/components/forms-inputs/radio",
+			},
+			{
+				id: "switch",
+				label: "Switch",
+				icon: <ToggleRight />,
+				path: "/docs/components/forms-inputs/switch",
+			},
+			{
+				id: "colorPicker",
+				label: "Color Picker",
+				icon: <Palette />,
+				path: "/docs/components/forms-inputs/color-picker",
+			},
+			{
+				id: "datePicker",
+				label: "Date Picker",
+				icon: <CalendarDays />,
+				path: "/docs/components/forms-inputs/date-picker",
+			},
+			{
+				id: "fileUpload",
+				label: "File Upload",
+				icon: <UploadCloud />,
+				path: "/docs/components/forms-inputs/file-upload",
+			},
+		],
+	},
+	{
+		id: "layout-display",
+		label: "Layout & Structure",
+		icon: <LayoutGrid />,
+		children: [
+			{
+				id: "accordion",
+				label: "Accordion",
+				icon: <Rows />,
+				path: "/docs/components/layout-display/accordion",
+			},
+			{
+				id: "card",
+				label: "Card",
+				icon: <LayoutGrid />,
+				path: "/docs/components/layout-display/card",
+			},
+			{
+				id: "carousel",
+				label: "Carousel",
+				icon: <Layers />,
+				path: "/docs/components/layout-display/carousel",
+			},
+			{
+				id: "divider",
+				label: "Divider",
+				icon: <Minus />,
+				path: "/docs/components/layout-display/divider",
+			},
+			{ id: "flex", label: "Flex", icon: <Grip />, path: "/docs/components/layout-display/flex" },
+			{
+				id: "join",
+				label: "Join",
+				icon: <CornerDownRight />,
+				path: "/docs/components/layout-display/join",
+			},
+			{
+				id: "splitter",
+				label: "Splitter",
+				icon: <Split />,
+				path: "/docs/components/layout-display/splitter",
+			},
+			{
+				id: "table",
+				label: "Table",
+				icon: <Columns />,
+				path: "/docs/components/layout-display/table",
+			},
+			{
+				id: "treeView",
+				label: "Tree View",
+				icon: <ListTree />,
+				path: "/docs/components/layout-display/tree-view",
+			},
+		],
+	},
+	{
+		id: "navigation-feedback",
+		label: "Navigation & Feedback",
+		icon: <MessageCircle />,
+		children: [
+			{
+				id: "alert",
+				label: "Alert",
+				icon: <AlertTriangle />,
+				path: "/docs/components/navigation-feedback/alert",
+			},
+			{
+				id: "breadcrumb",
+				label: "Breadcrumb",
+				icon: <ChevronRight />,
+				path: "/docs/components/navigation-feedback/breadcrumb",
+			},
+			{
+				id: "button",
+				label: "Button",
+				icon: <Puzzle />,
+				path: "/docs/components/navigation-feedback/button",
+			},
+			{
+				id: "dialog",
+				label: "Dialog",
+				icon: <PictureInPicture />,
+				path: "/docs/components/navigation-feedback/dialog",
+			},
+			{
+				id: "drawer",
+				label: "Drawer",
+				icon: <Bell />,
+				path: "/docs/components/navigation-feedback/drawer",
+			},
+			{
+				id: "dropdown",
+				label: "Dropdown",
+				icon: <List />,
+				path: "/docs/components/navigation-feedback/dropdown",
+			},
+			{
+				id: "link",
+				label: "Link",
+				icon: <Link />,
+				path: "/docs/components/navigation-feedback/link",
+			},
+			{
+				id: "navigationMenu",
+				label: "Navigation Menu",
+				icon: <Menu size={16} />,
+				path: "/docs/components/navigation-feedback/navigation-menu",
+			},
+			{
+				id: "notification",
+				label: "Notification",
+				icon: <Bell />,
+				path: "/docs/components/navigation-feedback/notification",
+			},
+			{
+				id: "pagination",
+				label: "Pagination",
+				icon: <List />,
+				path: "/docs/components/navigation-feedback/pagination",
+			},
+			{
+				id: "tooltip",
+				label: "ToolTip",
+				icon: <Lightbulb />,
+				path: "/docs/components/navigation-feedback/tool-tip",
+			},
+		],
+	},
+	{
+		id: "data-util",
+		label: "Data Viz & Utilities",
+		icon: <BarChart3 />,
+		children: [
+			{ id: "avatar", label: "Avatar", icon: <Users />, path: "/docs/components/data-util/avatar" },
+			{ id: "badge", label: "Badge", icon: <Tag />, path: "/docs/components/data-util/badge" },
+			{
+				id: "buttonTheme",
+				label: "Button Theme",
+				icon: <Palette />,
+				path: "/docs/components/data-util/button-theme",
+			},
+			{
+				id: "calendar",
+				label: "Calendar",
+				icon: <CalendarDays />,
+				path: "/docs/components/data-util/calendar",
+			},
+			{
+				id: "codeBlock",
+				label: "Code Block",
+				icon: <Code />,
+				path: "/docs/components/data-util/code-block",
+			},
+			{
+				id: "progress",
+				label: "Progress",
+				icon: <TrendingUp />,
+				path: "/docs/components/data-util/progress",
+			},
+			{ id: "rating", label: "Rating", icon: <Star />, path: "/docs/components/data-util/rating" },
+			{
+				id: "stepper",
+				label: "Stepper",
+				icon: <StepForward />,
+				path: "/docs/components/data-util/stepper",
+			},
+			{ id: "tag", label: "Tag", icon: <Tag />, path: "/docs/components/data-util/tag" },
+		],
+	},
+	{
+		id: "examples",
+		label: "Real-world Examples",
+		icon: <PackageOpen />,
+		path: "/examples",
 	},
 ];
 
@@ -275,49 +506,22 @@ export function SideBar() {
 		bg-[linear-gradient(to_right,var(--surface-a),var(--background-color),var(--background-color),transparent)] 
 		border-r border-gray-200/3 scrollBar overflow-x-auto"
 		>
-			{pathname}
 			<NavigationMenu
-				data={overviewNavData}
+				data={navigationMenuData}
 				showLines
-				defaultExpanded={["overview"]}
+				defaultExpanded={[
+					"overview",
+					"theming",
+					"forms-inputs",
+					"layout-display",
+					"navigation-feedback",
+					"data-util",
+					"examples",
+				]}
 				currentPath={pathname}
 			/>
-			<NavigationMenu
-				data={customizationNavData}
-				showLines
-				defaultExpanded={["theming"]}
-				currentPath={pathname}
-			/>
-			<NavigationMenu
-				data={formsInputsNavData}
-				showLines
-				defaultExpanded={["forms-inputs"]}
-				currentPath={pathname}
-			/>
-			<NavigationMenu
-				data={layoutDisplayNavData}
-				showLines
-				defaultExpanded={["layout-display"]}
-				currentPath={pathname}
-			/>
-			<NavigationMenu
-				data={navigationFeedbackNavData}
-				showLines
-				defaultExpanded={["navigation-feedback"]}
-				currentPath={pathname}
-			/>
-			<NavigationMenu
-				data={dataUtilNavData}
-				showLines
-				defaultExpanded={["data-util"]}
-				currentPath={pathname}
-			/>
-			<NavigationMenu
-				data={examplesNavData}
-				showLines
-				defaultExpanded={["examples"]}
-				currentPath={pathname}
-			/>
+
+			<FooterDocs />
 		</aside>
 	);
 }
