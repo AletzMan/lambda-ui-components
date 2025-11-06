@@ -1,23 +1,7 @@
-&.lambda-helper-tiny {
-	top: calc(var(--height-input-xs) + 2px);
-}
-
-&.lambda-helper-small {
-	top: calc(var(--height-input-sm) + 2px);
-}
-
-&.lambda-helper-medium {
-	top: calc(var(--height-input-md) + 2px);
-}
-
-&.lambda-helper-large {
-	top: calc(var(--height-input-lg) + 2px);
-}
-
 .lambda-helper {
 	position: absolute;
 	left: var(--padding-sm);
-	bottom: 0;
+	bottom: -4px;
 	opacity: 1;
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-medium);
@@ -29,4 +13,20 @@
 
 .lambda-helper-disabled {
 	opacity: 0.5;
+}
+
+&.lambda-helper-tiny {
+	top: calc(var(--height-input-xs) + 2px);
+}
+
+&.lambda-helper-small {
+	top: calc(var(--height-input-sm) + 2px);
+}
+
+&.lambda-helper-medium {
+	top: calc(var(--height-input-md) +50px);
+}
+
+&.lambda-helper-large {
+	top: calc(var(--height-input-lg) + 2px);
 }
