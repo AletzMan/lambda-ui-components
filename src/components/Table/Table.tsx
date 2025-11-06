@@ -35,7 +35,7 @@ const TableRoot = <T,>({
 	variant = "soft",
 	children,
 	data,
-	pagination = { page: 1, rowsPerPage: 10, totalPages: 1, totalRows: 0 },
+	pagination,
 	onSortColumn,
 	...props
 }: {
@@ -71,7 +71,7 @@ const TableRoot = <T,>({
 	);
 
 	const handlePageChange = (page: number) => {
-		pagination.onPageChange?.(page);
+		pagination?.onPageChange?.(page);
 	};
 
 	return (
