@@ -86,9 +86,19 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 			}
 		}, []);
 
+		const collectAllIds = (nodes: NavigationMenuData[], idSet = new Set<string>()) => {
+			nodes.forEach((node) => {
+				idSet.add(node.id);
+				if (node.children && node.children.length > 0) {
+					collectAllIds(node.children, idSet);
+				}
+			});
+			return idSet;
+		};
+
 		const contextValue = useMemo(
 			() => ({
-				expanded: alwaysOpen ? new Set(data.map((node) => node.id)) : expanded,
+				expanded: alwaysOpen ? collectAllIds(data) : expanded,
 				toggleNode,
 				renderLabel,
 				showLines,
@@ -144,13 +154,6 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 		const isDisabled = !!node.disabled;
 		const hasChildren = !!node.children;
 		const isChildrenSelected = node.children?.some((child) => child.path === currentPath);
-
-		/*const handleClick = () => {
-			if (!isDisabled && node.path && !hasChildren && onNavigate) {
-				onNavigate(node.path);
-				document.location.pathname = node.path;
-			}
-		};*/
 
 		return (
 			<div

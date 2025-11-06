@@ -154,7 +154,41 @@ const treeDataUserSettings: NavigationMenuData[] = [
 		children: [
 			{ id: "settings-general", label: "General", path: "/settings/general" },
 			{ id: "settings-billing", label: "Facturación", path: "/settings/billing" },
-			{ id: "settings-security", label: "Seguridad y API", path: "/settings/security" },
+			{
+				id: "settings-security",
+				label: "Seguridad y API",
+				path: "/settings/security",
+				children: [
+					{
+						id: "settings-security-api",
+						label: "API",
+						path: "/settings/security/api",
+						target: "_blank",
+						children: [
+							{
+								id: "settings-security-api-keys",
+								label: "Claves de API",
+								path: "/settings/security/api-keys",
+								target: "_blank",
+							},
+						],
+					},
+					{
+						id: "security",
+						label: "Seguridad",
+						path: "/settings/security",
+						target: "_blank",
+						children: [
+							{
+								id: "security-two-factor",
+								label: "Autenticación de dos factores",
+								path: "/settings/security/two-factor",
+								target: "_blank",
+							},
+						],
+					},
+				],
+			},
 		],
 	},
 	{
