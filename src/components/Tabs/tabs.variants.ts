@@ -288,10 +288,10 @@ export const tabContent = cva(styles["tab-content"], {
 export const tabTabsContainer = cva(styles["tab-tabs-container"], {
 	variants: {
 		variant: {
-			underline: styles["tab-content-underline"],
-			soft: styles["tab-content-soft"],
-			box: styles["tab-content-box"],
-			border: styles["tab-content-border"],
+			underline: styles["tab-tabs-container-underline"],
+			soft: styles["tab-tabs-container-soft"],
+			box: styles["tab-tabs-container-box"],
+			border: styles["tab-tabs-container-border"],
 		},
 	},
 	defaultVariants: {

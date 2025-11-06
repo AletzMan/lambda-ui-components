@@ -3,6 +3,7 @@ import { Tabs } from "./Tabs";
 import { TabProps } from "./tabs.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { useState } from "react";
+import { Code } from "lucide-react";
 
 const meta: Meta<typeof Tabs> = {
 	title: "Components/Tabs",
@@ -16,7 +17,7 @@ const meta: Meta<typeof Tabs> = {
 		},
 		color: {
 			control: "select",
-			options: ["primary", "secondary", "success", "danger", "warning", "info"],
+			options: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
 			description: "Background color",
 		},
 		size: {
@@ -39,16 +40,6 @@ const meta: Meta<typeof Tabs> = {
 export default meta;
 
 type Story = StoryObj<typeof Tabs>;
-
-const colors: TabProps["color"][] = [
-	"neutral",
-	"primary",
-	"secondary",
-	"success",
-	"danger",
-	"warning",
-	"info",
-];
 
 const tabs = [
 	{ title: "Products", disabled: false, icon: null, content: "Products content" },
@@ -75,33 +66,25 @@ const Template = (args: TabProps) => {
 					width: "100%",
 				}}
 			>
-				{colors.map((color) => (
-					<Tabs
-						key={color}
-						size={args.size}
-						variant={args.variant}
-						color={color}
-						radius={currentStyle === "local" ? args.radius : undefined}
-					>
-						<Tabs.List>
-							{tabs.map((tab, i) => (
-								<Tabs.Tab key={i} title={tab.title} disabled={tab.disabled} icon={tab.icon} />
-							))}
-						</Tabs.List>
-						<Tabs.Panels>
-							{tabs.map((tab, i) => (
-								<Tabs.Panel key={i}>{tab.content}</Tabs.Panel>
-							))}
-						</Tabs.Panels>
-					</Tabs>
-				))}
+				<Tabs {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Tabs.List>
+						{tabs.map((tab, i) => (
+							<Tabs.Tab key={i} title={tab.title} disabled={tab.disabled} icon={<Code />} />
+						))}
+					</Tabs.List>
+					<Tabs.Panels>
+						{tabs.map((tab, i) => (
+							<Tabs.Panel key={i}>{tab.content}</Tabs.Panel>
+						))}
+					</Tabs.Panels>
+				</Tabs>
 			</div>
 		</ContainerComponent>
 	);
 };
 
 export const Underline: Story = {
-	render: Template,
+	render: (args) => <Template {...args} />,
 	args: {
 		variant: "underline",
 		size: "medium",
@@ -111,7 +94,7 @@ export const Underline: Story = {
 };
 
 export const Soft: Story = {
-	render: Template,
+	render: (args) => <Template {...args} />,
 	args: {
 		variant: "soft",
 		size: "medium",
@@ -121,7 +104,7 @@ export const Soft: Story = {
 };
 
 export const Box: Story = {
-	render: Template,
+	render: (args) => <Template {...args} />,
 	args: {
 		variant: "box",
 		size: "medium",
@@ -131,7 +114,7 @@ export const Box: Story = {
 };
 
 export const Border: Story = {
-	render: Template,
+	render: (args) => <Template {...args} />,
 	args: {
 		variant: "border",
 		size: "medium",

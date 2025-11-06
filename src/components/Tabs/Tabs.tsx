@@ -216,7 +216,7 @@ const TabsTab = ({
 					setActiveTab(index || 0);
 				}}
 			/>
-			{icon && <span>{icon}</span>}
+			{icon && icon}
 			{label}
 		</label>
 	);
