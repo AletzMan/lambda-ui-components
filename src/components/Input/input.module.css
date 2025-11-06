@@ -277,7 +277,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .lambda-input-wrapper-soft {
-	background-color: var(--surface-a);
+	background-color: var(--surface-b);
 
 	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
 		outline: 2px solid var(--primary-shadow-color);
