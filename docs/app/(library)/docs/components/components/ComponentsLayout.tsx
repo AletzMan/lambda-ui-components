@@ -8,7 +8,7 @@ import {
 import { BarNavButton } from "@/app/(library)/components/layout/BarNavButton";
 import { FooterDocs } from "@/components/layout/FooterDocs";
 import { useState } from "react";
-import { Features } from "./Features";
+import { Features } from "../forms/input/InputFeatures";
 import { List } from "lucide-react";
 
 interface ComponentsLayoutProps {
