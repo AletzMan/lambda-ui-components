@@ -1,11 +1,12 @@
+"use client";
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
 import { Input } from "lambda-ui-components";
 import { Mail, User } from "lucide-react";
 
-export const Features = () => {
+export const InputFeatures = () => {
 	return (
-		<div className="flex flex-col gap-3">
+		<div className="flex flex-col gap-3 pl-2.5">
 			<PlaygroundLayout title="Playground" id="playground">
 				<p className="my-90 px-4">
 					The Input component is a form element that allows users to enter text or numbers. It is a
@@ -51,14 +52,14 @@ export const Features = () => {
 				description="Controls the border curvature of the input, defining how rounded the corners appear."
 				code={`import { Input } from "lambda-ui-components";\n\n<Input radius="none" placeholder="None" />\n<Input radius="tiny" placeholder="Tiny" />\n<Input radius="small" placeholder="Small" />\n<Input radius="medium" placeholder="Medium" />\n<Input radius="large" placeholder="Large" />\n<Input radius="full" placeholder="Full" />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input radius="none" placeholder="None" />
 					<Input radius="tiny" placeholder="Tiny" />
 					<Input radius="small" placeholder="Small" />
 					<Input radius="medium" placeholder="Medium" />
 					<Input radius="large" placeholder="Large" />
 					<Input radius="full" placeholder="Full" />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -68,12 +69,12 @@ export const Features = () => {
 				propertyName="type"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input type="text" placeholder="Text" />\n<Input type="email" placeholder="Email" />\n<Input type="password" placeholder="Password" />\n<Input type="search" placeholder="Search" />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input type="text" placeholder="Text" />
 					<Input type="email" placeholder="Email" />
-					<Input type="password" placeholder="Password" />
+					<Input type="password" placeholder="Password" autoComplete="current-password" />
 					<Input type="search" placeholder="Search" />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -83,9 +84,9 @@ export const Features = () => {
 				propertyName="disabled"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input placeholder="Disabled" disabled />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input placeholder="Disabled" disabled />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -95,9 +96,9 @@ export const Features = () => {
 				propertyName="label"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Label" placeholder="Label" />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="Label" placeholder="Label" />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -107,9 +108,9 @@ export const Features = () => {
 				propertyName="floatingLabel"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Label" floatingLabel />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="Label" floatingLabel />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -119,10 +120,10 @@ export const Features = () => {
 				propertyName="prefix"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="With Text" prefix="https://" placeholder="www.example.com" />\n<Input label="With Icon" prefix={<Mail />} placeholder="example@gmail.com" type="email" />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="With Text" prefix="https://" placeholder="www.example.com" />
 					<Input label="With Icon" prefix={<Mail />} placeholder="example@gmail.com" type="email" />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -132,10 +133,10 @@ export const Features = () => {
 				propertyName="suffix"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="With Text" suffix=".com" placeholder="www.example.com" />\n<Input label="With Icon" suffix={<Settings />} />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="With Text" suffix=".com" placeholder="www.example.com" />
 					<Input label="With Icon" suffix={<User />} placeholder="John Doe" />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -145,9 +146,9 @@ export const Features = () => {
 				propertyName="required"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Text" required />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="Text" required />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -157,9 +158,9 @@ export const Features = () => {
 				propertyName="errorMessage"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Text" required errorMessage="Error message" invalid={true} />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="Text" required errorMessage="Error message" invalid={true} />
-				</div>
+				</form>
 			</PropertyLayout>
 
 			<PropertyLayout
@@ -169,9 +170,9 @@ export const Features = () => {
 				propertyName="helperText"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Text" helperText="Helper text" />`}
 			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="Text" helperText="Helper text" />
-				</div>
+				</form>
 			</PropertyLayout>
 		</div>
 	);
