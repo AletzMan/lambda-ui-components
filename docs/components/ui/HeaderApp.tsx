@@ -30,7 +30,7 @@ export function HeaderApp() {
 	return (
 		<header
 			className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-4 
-		bg-linear-to-b from-(--primary-background-color) to-cyan-400/0 backdrop-blur-sm"
+		bg-(--surface-a) "
 		>
 			<Flex gap={6} align="center">
 				<Link className="flex items-center gap-2" href="/">
