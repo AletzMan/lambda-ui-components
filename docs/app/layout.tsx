@@ -16,7 +16,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" data-theme="dark">
 			<body
-				className={`  antialiased  max-w-[1400px] mx-auto flex flex-col items-center  justify-center min-h-screen `}
+				className={`antialiased max-w-[1920px] mx-auto flex flex-col items-center justify-center`}
 			>
 				<ClientProviders>
 					<HeaderApp />
