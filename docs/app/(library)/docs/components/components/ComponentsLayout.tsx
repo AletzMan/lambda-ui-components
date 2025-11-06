@@ -50,15 +50,69 @@ const dataFeatures: NavigationMenuData[] = [
 				target: "_top",
 			},
 			{
-				id: "colors",
-				label: "Colors",
-				path: "#colors",
-				target: "_top",
-			},
-			{
 				id: "sizes",
 				label: "Sizes",
 				path: "#sizes",
+				target: "_top",
+			},
+			{
+				id: "radius",
+				label: "Radius",
+				path: "#radius",
+				target: "_top",
+			},
+			{
+				id: "type",
+				label: "Type",
+				path: "#type",
+				target: "_top",
+			},
+			{
+				id: "disabled",
+				label: "Disabled",
+				path: "#disabled",
+				target: "_top",
+			},
+			{
+				id: "whit-label",
+				label: "Whit Label",
+				path: "#whit-label",
+				target: "_top",
+			},
+			{
+				id: "floating-label",
+				label: "Floating Label",
+				path: "#floating-label",
+				target: "_top",
+			},
+			{
+				id: "prefix",
+				label: "Prefix",
+				path: "#prefix",
+				target: "_top",
+			},
+			{
+				id: "suffix",
+				label: "Suffix",
+				path: "#suffix",
+				target: "_top",
+			},
+			{
+				id: "required",
+				label: "Required",
+				path: "#required",
+				target: "_top",
+			},
+			{
+				id: "error-message",
+				label: "Error Message",
+				path: "#error-message",
+				target: "_top",
+			},
+			{
+				id: "helper-text",
+				label: "Helper Text",
+				path: "#helper-text",
 				target: "_top",
 			},
 		],
@@ -79,7 +133,7 @@ export const ComponentsLayout = ({
 	buttonRight,
 }: ComponentsLayoutProps) => {
 	const [tabActive, setTabActive] = useState(0);
-	const activeId = useActiveSectionObserver({ selectors: "h2", rootMargin: "-72px 0px -70% 0px" });
+	const activeId = useActiveSectionObserver({ selectors: "h2", rootMargin: "72px 0px -80% 0px" });
 	return (
 		<section className="relative flex flex-col gap-10 px-6 py-4">
 			<header className="mb-10 text-center ">
@@ -93,7 +147,7 @@ export const ComponentsLayout = ({
 				)}
 			</header>
 			<div className="flex flex-col gap-10">
-				<div className="sticky top-20 bg-(--surface-a)/55 backdrop-blur-[2px] p-1 ">
+				<div className="sticky top-20 bg-(--surface-a)/45 backdrop-blur-[10px] p-1 ">
 					{children}
 					<Tabs
 						variant="underline"
