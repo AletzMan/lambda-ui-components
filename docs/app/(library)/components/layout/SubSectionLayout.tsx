@@ -6,7 +6,7 @@ interface SubSectionLayoutProps {
 
 export function SubSectionLayout({ children, title, id }: SubSectionLayoutProps) {
 	return (
-		<article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:scroll-mt-24 prose-a:text-(--primary-base-color)">
+		<article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:scroll-mt-24 prose-a:text-(--primary-base-color) pr-3">
 			<h2
 				id={id}
 				className="text-2xl font-bold text-left tracking-tight text-(--foreground-color) mb-4 w-full scroll-mt-20"
