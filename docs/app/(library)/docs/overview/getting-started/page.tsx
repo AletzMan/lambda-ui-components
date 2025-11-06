@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
 import { SectionLayout } from "../../../components/layout/SectionLayout";
