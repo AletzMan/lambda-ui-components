@@ -74,10 +74,10 @@
 
 .lambda-switch-text {
 	color: var(--foreground-label-color);
-	font-weight: var(--font-weight-semibold);
+	font-weight: var(--label-weight);
 
 	&.lambda-switch-text-tiny {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 	}
 
 	&.lambda-switch-text-small {

@@ -60,7 +60,7 @@ const Template = (args: SwitchProps) => {
 				style={{
 					display: "flex",
 					flexWrap: "wrap",
-					flexDirection: "row",
+					flexDirection: "column",
 					alignItems: "center",
 					justifyContent: "center",
 					width: "100%",

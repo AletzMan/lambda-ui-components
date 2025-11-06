@@ -97,11 +97,11 @@ input[type="search"]::-webkit-search-cancel-button {
 	&::placeholder {
 		color: var(--placeholder-color);
 		font-family: var(--font-family);
-		font-weight: var(--font-weight-regular);
+		font-weight: var(--placeholder-weight);
 	}
 
 	&.lambda-input-field-tiny {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 
 		&::placeholder {
 			font-size: var(--font-size-xs);
@@ -424,10 +424,10 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .lambda-input-label {
-	font-family: var(--font-family);
 	color: var(--foreground-label-color);
 	padding: 0 0 0 4px;
-	font-weight: var(--font-weight-semibold);
+	font-weight: var(--label-weight);
+	font-family: var(--font-family);
 	transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out;
 	z-index: 2;
 

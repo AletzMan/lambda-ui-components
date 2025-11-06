@@ -240,7 +240,7 @@
 	--foreground-title-color: #525151;
 	--foreground-secondary-color: #727272;
 	--foreground-invert-color: #ffffff;
-	--foreground-label-color: #7e91a1;
+	--foreground-label-color: var(--lambda-color-primary-800);
 	--foreground-helper-color: #28699e;
 	--foreground-disabled-color: #b7b5b5;
 	--placeholder-color: #b1b1b1;
@@ -249,6 +249,8 @@
 	--badge-background-color: #b3261e;
 	--badge-text-color: #ffffff;
 	--scrollbar-color: var(--lambda-color-primary-300);
+	--label-weight: var(--font-weight-semibold);
+	--placeholder-weight: var(--font-weight-regular);
 
 	--rating-solid-color: #f8c622;
 	--rating-fill-color: #fac51565;
@@ -390,7 +392,7 @@
 	--foreground-title-color: #a1a1aa;
 	--foreground-secondary-color: #888888;
 	--foreground-invert-color: #222222;
-	--foreground-label-color: #a6b6c2;
+	--foreground-label-color: var(--lambda-color-primary-200);
 	--foreground-helper-color: #53a4e6;
 	--foreground-disabled-color: #b7b5b5;
 	--placeholder-color: #555555;
@@ -399,6 +401,8 @@
 	--badge-background-color: #f01e12;
 	--badge-text-color: #f3f0f0;
 	--scrollbar-color: var(--lambda-color-primary-900);
+	--label-weight: var(--font-weight-regular);
+	--placeholder-weight: var(--font-weight-medium);
 
 	--rating-solid-color: #ffdd20;
 	--rating-fill-color: #ffdd2035;
