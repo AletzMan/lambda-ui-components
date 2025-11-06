@@ -14,7 +14,7 @@ interface BarNavButtonProps {
 
 export const BarNavButton = ({ buttonLeft, buttonRight }: BarNavButtonProps) => {
 	return (
-		<div className="grid grid-cols-2 gap-10 mt-10 w-full px-2">
+		<div className="grid grid-cols-2 gap-10 mt-10 w-full px-2 pr-3">
 			{buttonLeft && <NavButton href={buttonLeft.href} text={buttonLeft.text} direction="left" />}
 			{buttonRight && (
 				<NavButton href={buttonRight.href} text={buttonRight.text} direction="right" />
