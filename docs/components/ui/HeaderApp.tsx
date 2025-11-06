@@ -26,7 +26,6 @@ const links = [
 export function HeaderApp() {
 	const [isOpen, setIsOpen] = useState(false);
 	const pathName = usePathname();
-	console.log(pathName);
 	const isNotHome = pathName !== "/";
 	return (
 		<header
