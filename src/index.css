@@ -251,6 +251,7 @@
 	--scrollbar-color: var(--lambda-color-primary-300);
 	--label-weight: var(--font-weight-semibold);
 	--placeholder-weight: var(--font-weight-regular);
+	--input-font-weight: var(--font-weight-medium);
 
 	--rating-solid-color: #f8c622;
 	--rating-fill-color: #fac51565;
@@ -403,6 +404,7 @@
 	--scrollbar-color: var(--lambda-color-primary-900);
 	--label-weight: var(--font-weight-regular);
 	--placeholder-weight: var(--font-weight-medium);
+	--input-font-weight: var(--font-weight-regular);
 
 	--rating-solid-color: #ffdd20;
 	--rating-fill-color: #ffdd2035;
