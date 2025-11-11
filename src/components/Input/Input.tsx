@@ -139,7 +139,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							labels({
 								radius: radiusField,
 								size: contextSize,
-								hasElements: prefix ? "first" : "none",
+								hasElements: prefix
+									? "first"
+									: suffix
+									? "last"
+									: prefix && suffix
+									? "both"
+									: "none",
 							}),
 							{
 								[styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,

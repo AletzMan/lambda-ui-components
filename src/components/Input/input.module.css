@@ -478,13 +478,13 @@ input[type="search"]::-webkit-search-cancel-button {
 		transform: translateY(20px) translateX(5px) scale(1);
 
 		&:is(.lambda-input-label-elements-first) {
-			transform: translateY(20px) translateX(5px) scale(1);
+			transform: translateY(20px) translateX(24px) scale(1);
 		}
 	}
 
 	&:is(.lambda-input-label-small) {
 		font-size: var(--font-size-sm);
-		transform: translateY(24px) translateX(5px) scale(1);
+		transform: translateY(24px) translateX(25px) scale(1);
 	}
 
 	&:is(.lambda-input-label-medium) {
@@ -503,6 +503,10 @@ input[type="search"]::-webkit-search-cancel-button {
 	&.lambda-input-label-large {
 		font-size: var(--font-size-md);
 		transform: translateY(32px) translateX(10px) scale(1);
+
+		&:is(.lambda-input-label-elements-first) {
+			transform: translateY(32px) translateX(48px) scale(1);
+		}
 	}
 }
 
