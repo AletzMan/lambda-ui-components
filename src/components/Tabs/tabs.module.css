@@ -150,17 +150,17 @@
 		border-bottom: none;
 
 		&:not(.tab-label-selected) {
-			background-color: var(--surface-a);
+			background-color: var(--background-color);
 			color: var(--foreground-secondary-color);
-			border: var(--border-width-xs) solid var(--surface-d);
+			border: var(--border-width-xs) solid var(--border-color);
 			border-bottom: none;
 			border-bottom-left-radius: var(--border-radius-none) !important;
 			border-bottom-right-radius: var(--border-radius-none) !important;
 			z-index: 1;
-			opacity: 0.45;
+			opacity: 0.4;
 
 			&:hover {
-				opacity: 0.9;
+				opacity: 0.95;
 			}
 		}
 	}
@@ -413,7 +413,7 @@
 	}
 
 	&:is(.tab-current-border) {
-		background-color: var(--surface-a);
+		background-color: var(--background-color);
 		border: var(--border-width-xs) solid var(--border-color);
 		border-bottom: 0;
 		border-bottom-left-radius: var(--border-radius-none) !important;
@@ -423,7 +423,7 @@
 		&:after {
 			position: absolute;
 			content: "";
-			border-bottom: 1px solid var(--surface-a);
+			border-bottom: 1px solid var(--background-color);
 			height: 100%;
 			width: 100%;
 			left: 0;
@@ -495,7 +495,7 @@
 
 	&:is(.tab-content-border) {
 		padding: var(--padding-lg);
-		background-color: var(--surface-a);
+		background-color: var(--background-color);
 		border: var(--border-width-xs) solid var(--border-color);
 		border-top: 1px solid transparent;
 		border-top-left-radius: var(--border-radius-none) !important;
