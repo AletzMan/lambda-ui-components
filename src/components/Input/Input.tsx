@@ -6,6 +6,7 @@ import {
 	MouseEvent,
 	useId,
 	InputHTMLAttributes,
+	useRef,
 } from "react";
 import styles from "./input.module.css";
 import { CircleX, Eye, EyeOff, X } from "lucide-react";
@@ -60,6 +61,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		const inputId = useId();
 		const { radiusField } = useUIConfig();
 		const radiusValue = contextRadius ?? radiusField;
+		const prefixRef = useRef<HTMLDivElement>(null);
 
 		const errorId = errorMessage ? `${inputId}-error` : undefined;
 		const helperId = helperText ? `${inputId}-helper` : undefined;
@@ -114,6 +116,26 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		};
 
 		const inputPlaceholder = floatingLabel ? "" : placeholder;
+		const paddingInputSize =
+			contextSize === "tiny"
+				? 8
+				: contextSize === "small"
+				? 10
+				: contextSize === "medium"
+				? 14
+				: contextSize === "large"
+				? 24
+				: 28;
+		const heightInputSize =
+			contextSize === "tiny"
+				? 7
+				: contextSize === "small"
+				? 4
+				: contextSize === "medium"
+				? 3
+				: contextSize === "large"
+				? 2
+				: 6;
 
 		return (
 			<div
@@ -137,7 +159,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						aria-label="ComponentLabel"
 						className={clsx(
 							labels({
-								radius: radiusField,
+								radius: radiusValue,
 								size: contextSize,
 								hasElements: prefix
 									? "first"
@@ -155,6 +177,21 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							}
 						)}
 						htmlFor={inputId}
+						style={{
+							left:
+								floatingLabel && !isLabelFloating
+									? prefixRef.current
+										? prefixRef.current.offsetWidth + paddingInputSize
+										: 6
+									: 0,
+							top: floatingLabel && !isLabelFloating ? "50%" : "-50%",
+							transform:
+								floatingLabel && !isLabelFloating
+									? "translateY(-50%)"
+									: isLabelFloating
+									? `translateY(-${heightInputSize}px)`
+									: "translateY(-1px)",
+						}}
 					>
 						{`${label as string}`}
 					</label>
@@ -185,7 +222,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						}
 					)}
 				>
-					{prefix && <div className={styles["lambda-input-prefix"]}>{prefix}</div>}
+					{prefix && (
+						<div ref={prefixRef} className={styles["lambda-input-prefix"]}>
+							{prefix}
+						</div>
+					)}
 					<div
 						className={clsx(styles["lambda-input-input-wrapper"], {
 							[styles["lambda-input-input-wrapper-password"]]: isPasswordType || isSearchType,
