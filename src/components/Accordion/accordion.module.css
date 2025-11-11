@@ -278,7 +278,7 @@
 }
 
 .lambda-accordion-header-closed:not(.lambda-accordion-header-flush) {
-	background-color: var(--surface-a);
+	background-color: var(--background-color);
 }
 
 /* Contenedor del icono dentro del header (si existe) */
