@@ -119,33 +119,36 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		const inputPlaceholder = floatingLabel ? "" : placeholder;
 		const paddingInputSize =
 			contextSize === "tiny"
-				? 8
+				? 10
 				: contextSize === "small"
 				? 10
 				: contextSize === "medium"
-				? 24
+				? 20
 				: contextSize === "large"
-				? 24
+				? 28
 				: 28;
 		const heightInputSize =
 			contextSize === "tiny"
-				? 4
+				? 14
 				: contextSize === "small"
-				? 4
+				? 16
 				: contextSize === "medium"
-				? 2
+				? 14
 				: contextSize === "large"
-				? 0
+				? 14
 				: 6;
+		console.log(isLabelFloating);
 		console.log(prefixRef.current?.offsetWidth);
 		const labelVariants = {
 			default: {
-				y: `calc(50% - ${heightInputSize}px)`,
-				x: `calc(${prefixRef.current?.offsetWidth}px - ${paddingInputSize}px)`,
+				y: `calc(100% - ${heightInputSize}px)`,
+				x: prefixRef.current?.offsetWidth
+					? `calc(${prefixRef.current?.offsetWidth}px + ${paddingInputSize}px)`
+					: `calc(${paddingInputSize}px)`,
 				//scale: 1,
 				color: "var(--placeholder-color)",
 				/*fontSize: "1rem",*/
-				left: 48, // o el padding que uses
+				left: 0, // o el padding que uses
 			},
 			floating: {
 				y: "-120%",
@@ -153,7 +156,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				//scale: 0.85,
 				color: "var(--foreground-label-color)",
 				//fontSize: "0.85rem",
-				left: 8, // ajusta si quieres que se mueva a la izquierda
+				left: 0, // ajusta si quieres que se mueva a la izquierda
 			},
 		};
 

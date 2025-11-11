@@ -498,10 +498,9 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-label-default {
 	position: absolute;
+	pointer-events: none;
 	/*position: absolute;*/
 	font-weight: var(--font-weight-regular);
-	color: var(--placeholder-color);
-	pointer-events: none;
 
 	&:is(.lambda-input-label-tiny) {
 		font-size: var(--font-size-xs);
