@@ -30,6 +30,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 			viewValue = true,
 			viewBar = true,
 			className,
+			formatValue,
 			...rest
 		},
 		ref
@@ -477,7 +478,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 														display: mark.value <= max ? "block" : "none",
 												  }
 										}
-									/>
+									></div>
 								);
 							})}
 						</div>
@@ -526,7 +527,11 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 					>
 						{viewValue && (
 							<div className={rangeValue({ size, orientation })}>
-								{isDoubleHandled ? Number(startValue.toFixed(2)) : Number(endValue.toFixed(2))}
+								{formatValue
+									? formatValue(isDoubleHandled ? startValue : endValue)
+									: isDoubleHandled
+									? Number(startValue.toFixed(2))
+									: Number(endValue.toFixed(2))}
 							</div>
 						)}
 					</div>

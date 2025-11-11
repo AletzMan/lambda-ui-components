@@ -460,6 +460,18 @@
 	&.lambda-range-mark-inrange:not(:first-child) {
 		background-color: var(--border-color);
 	}
+
+	&.lambda-range-mark-tiny {
+		&:after {
+			font-size: var(--font-size-xs);
+		}
+	}
+
+	&.lambda-range-mark-small {
+		&:after {
+			font-size: var(--font-size-xs);
+		}
+	}
 }
 
 .lambda-range-mark-horizontal {

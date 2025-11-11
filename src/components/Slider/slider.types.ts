@@ -9,7 +9,7 @@ export type SliderSize = SliderTrackVariants["size"];
 
 export type SliderMarks = {
 	value: number;
-	label?: string;
+	label?: string | number;
 };
 
 // Props para el componente Slider
@@ -19,6 +19,12 @@ export interface SliderProps
 		HTMLAttributes<HTMLDivElement>,
 		"value" | "onChange" | "onInput" | "defaultValue" // Añadir 'defaultValue' a Omit por si acaso
 	> {
+	/**
+	 * Permite customizar la visualización del valor (tooltip/handle).
+	 * Recibe el valor numérico y debe devolver un string o número a mostrar.
+	 */
+	formatValue?: (value: number) => string | number;
+
 	/**
 	 * El valor o el rango de valores seleccionado.
 	 * Usa un número para un solo handle, o una tupla [inicio, fin] para dos handles.
