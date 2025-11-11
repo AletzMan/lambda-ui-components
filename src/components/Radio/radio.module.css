@@ -1813,7 +1813,7 @@
 	}
 
 	&.lambda-radio-label-tiny {
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
 
 		&.lambda-radio-label-button {
 			&:is(.lambda-radio-label-icon) {
