@@ -430,8 +430,8 @@ input[type="search"]::-webkit-search-cancel-button {
 	padding: 0 0 0 4px;
 	font-weight: var(--label-weight);
 	font-family: var(--font-family);
-	transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out, left 0.2s ease-in-out,
-		top 0.2s ease-in-out;
+	/*transition: transform 0.2s ease-in-out, font-size 0.2s ease-in-out, left 0.2s ease-in-out,
+		top 0.2s ease-in-out;*/
 	z-index: 2;
 
 	&.lambda-input-label-tiny {
@@ -491,12 +491,14 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-label-floating {
 	position: absolute;
-	transform: translateY(-3%) translateX(-0%) scale(1);
+	/*position: absolute;*/
+	/*transform: translateY(-3%) translateX(-0%) scale(1);*/
 	pointer-events: none;
 }
 
 .lambda-input-label-default {
 	position: absolute;
+	/*position: absolute;*/
 	font-weight: var(--font-weight-regular);
 	color: var(--placeholder-color);
 	pointer-events: none;

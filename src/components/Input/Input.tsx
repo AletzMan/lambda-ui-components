@@ -17,6 +17,7 @@ import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants";
 import { InputProps } from "./input.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { motion } from "framer-motion";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
@@ -122,20 +123,39 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				: contextSize === "small"
 				? 10
 				: contextSize === "medium"
-				? 14
+				? 24
 				: contextSize === "large"
 				? 24
 				: 28;
 		const heightInputSize =
 			contextSize === "tiny"
-				? 7
+				? 4
 				: contextSize === "small"
 				? 4
 				: contextSize === "medium"
-				? 3
-				: contextSize === "large"
 				? 2
+				: contextSize === "large"
+				? 0
 				: 6;
+		console.log(prefixRef.current?.offsetWidth);
+		const labelVariants = {
+			default: {
+				y: `calc(50% - ${heightInputSize}px)`,
+				x: `calc(${prefixRef.current?.offsetWidth}px - ${paddingInputSize}px)`,
+				//scale: 1,
+				color: "var(--placeholder-color)",
+				/*fontSize: "1rem",*/
+				left: 48, // o el padding que uses
+			},
+			floating: {
+				y: "-120%",
+				x: 0,
+				//scale: 0.85,
+				color: "var(--foreground-label-color)",
+				//fontSize: "0.85rem",
+				left: 8, // ajusta si quieres que se mueva a la izquierda
+			},
+		};
 
 		return (
 			<div
@@ -154,9 +174,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 					}
 				)}
 			>
-				{label && (
-					<label
+				{label && floatingLabel ? (
+					<motion.label
 						aria-label="ComponentLabel"
+						variants={labelVariants}
+						initial={isLabelFloating ? "floating" : "default"}
+						animate={isLabelFloating ? "floating" : "default"}
+						transition={{ type: "spring", stiffness: 400, damping: 28 }}
 						className={clsx(
 							labels({
 								radius: radiusValue,
@@ -177,7 +201,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							}
 						)}
 						htmlFor={inputId}
-						style={{
+						/*style={{
 							left:
 								floatingLabel && !isLabelFloating
 									? prefixRef.current
@@ -191,9 +215,29 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 									: isLabelFloating
 									? `translateY(-${heightInputSize}px)`
 									: "translateY(-1px)",
-						}}
+						}}*/
 					>
 						{`${label as string}`}
+					</motion.label>
+				) : (
+					<label
+						htmlFor={inputId}
+						aria-label="ComponentLabel"
+						className={clsx(
+							labels({
+								radius: radiusValue,
+								size: contextSize,
+								hasElements: prefix
+									? "first"
+									: suffix
+									? "last"
+									: prefix && suffix
+									? "both"
+									: "none",
+							})
+						)}
+					>
+						{label}
 					</label>
 				)}
 				{helperText && (
