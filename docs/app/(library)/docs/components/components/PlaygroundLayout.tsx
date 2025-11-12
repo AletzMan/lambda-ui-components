@@ -167,184 +167,198 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 		.join("\n\t");
 
 	return (
-		<div className="flex flex-col gap-4 bg-(--background-color) p-6 rounded-lg shadow-lg mr-3.5">
-			{title && (
-				<h2 id={id} className="text-2xl font-bold mb-1">
-					{title}
-				</h2>
-			)}
-			{description && <p className="text-(--foreground-secondary-color) mb-7">{description}</p>}
+		<>
+			<div className="flex flex-col gap-4 bg-(--background-color) p-6 rounded-lg shadow-lg mr-3.5">
+				{title && (
+					<h2 id={id} className="text-2xl font-bold mb-1">
+						{title}
+					</h2>
+				)}
+				{description && <p className="text-(--foreground-secondary-color) mb-7">{description}</p>}
 
-			<div className="grid grid-cols-[0.85fr_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-6">
-				{/* Columna de Controles de Props */}
-				<div>
-					<label className="text-lg font-semibold text-(--foreground-color) pl-2">Properties</label>
-					<div className="bg-(--background-color) p-4 rounded-md border border-(--border-color)/50">
-						<div className="space-y-2">
-							<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 my-6">
-								{propConfigs.map((config) => (
-									<Fragment key={config.name}>
-										{config.type === "select" && config.values && (
-											<Select
-												label={config.label}
-												size="tiny"
-												value={String(currentProps[config.name] ?? "")}
-												onChange={(e) => handlePropChange(config.name, e)}
-												options={config.values.map((val: any) => ({
-													value: String(val),
-													label: String(val),
-												}))}
-											/>
-										)}
-										{config.type === "string" && (
-											<Input
-												label={config.label}
-												type="text"
-												size="tiny"
-												value={String(currentProps[config.name] ?? "")} // Asegura string para input value
-												onChange={(e) => {
-													handlePropChange(config.name, e);
-												}}
-											/>
-										)}
-										{config.type === "number" && (
-											<InputNumber
-												label={config.label}
-												size="tiny"
-												value={Number(currentProps[config.name] ?? "")} // Asegura string para input value
-												onChange={(e) => {
-													handlePropChange(config.name, e);
-												}}
-											/>
-										)}
-									</Fragment>
-								))}
-							</div>
-							<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
-								{propConfigs.map((config) => (
-									<Fragment key={config.name}>
-										{config.type === "checkbox" && (
-											<Checkbox
-												label={config.label}
-												positionLabel="right"
-												size="tiny"
-												checked={!!currentProps[config.name]}
-												onChange={(e) =>
-													handlePropChange(config.name, e.target.checked ? config.default : false)
-												}
-											/>
-										)}
-									</Fragment>
-								))}
-							</div>
-							<div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-2 place-items-start my-6">
-								{propConfigs.map((config) => (
-									<Fragment key={config.name}>
-										{config.type === "radio" && (
-											<div className="flex flex-col items-start w-full gap-1">
-												<label className="text-xs font-medium text-(--foreground-label-color) ">
-													{config.label}
-												</label>
-												<RadioGroup
+				<div className="grid grid-cols-[0.85fr_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-6">
+					{/* Columna de Controles de Props */}
+					<div className="flex flex-col h-full">
+						<label
+							className="text-lg font-semibold text-(--foreground-color) 
+					border border-(--border-color)/50 rounded-t-sm border-b-0 pl-2 bg-(--surface-a)"
+						>
+							Properties
+						</label>
+						<div className="bg-(--background-color) p-4 rounded-b-md border border-(--border-color)/50">
+							<div className="space-y-2">
+								<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 mb-6">
+									{propConfigs.map((config) => (
+										<Fragment key={config.name}>
+											{config.type === "select" && config.values && (
+												<Select
+													label={config.label}
 													size="tiny"
-													variant="solid"
+													value={String(currentProps[config.name] ?? "")}
 													onChange={(e) => handlePropChange(config.name, e)}
-													selectedOption={currentProps[config.name]}
-												>
-													{config.values?.map((value: any) => (
-														<Radio.Button
-															key={value}
-															value={value}
-															label={
-																value.toString().charAt(0).toUpperCase() + value.toString().slice(1)
-															}
-														/>
-													))}
-												</RadioGroup>
-											</div>
-										)}
-									</Fragment>
-								))}
-							</div>
-							<div className="flex flex-col items-start gap-3 py-3.5 mb-5 px-1 my-6">
-								{propConfigs.map((config) => (
-									<Fragment key={config.name}>
-										{config.type === "slider" && config.values && (
-											<div className="flex flex-col items-start w-full">
-												<label className="text-xs font-medium text-(--foreground-label-color) ">
-													{config.label}
-												</label>
-												<Slider
-													size="small"
-													radius="full"
-													min={0}
-													max={config.values.length - 1}
-													formatValue={(value) =>
-														(config.values?.[value].toString().charAt(0).toUpperCase() || "") +
-														(config.values?.[value].toString().slice(1) || "")
-													}
-													value={Number(config!.values!.indexOf(currentProps[config.name]) ?? 0)}
-													onChange={(e) =>
-														handlePropChange(config.name, config!.values![e as number])
-													}
-													onInput={(e) =>
-														handlePropChange(config.name, config!.values![e as number])
-													}
-													marks={config.values?.map((val: any, index: number) => ({
-														value: index,
-														label:
-															String(config.values?.[index]).charAt(0).toUpperCase() +
-															String(config.values?.[index]).slice(1),
+													options={config.values.map((val: any) => ({
+														value: String(val),
+														label: String(val),
 													}))}
 												/>
-											</div>
-										)}
-									</Fragment>
-								))}
+											)}
+											{config.type === "string" && (
+												<Input
+													label={config.label}
+													type="text"
+													size="tiny"
+													value={String(currentProps[config.name] ?? "")} // Asegura string para input value
+													onChange={(e) => {
+														handlePropChange(config.name, e);
+													}}
+												/>
+											)}
+											{config.type === "number" && (
+												<InputNumber
+													label={config.label}
+													size="tiny"
+													value={Number(currentProps[config.name] ?? "")} // Asegura string para input value
+													onChange={(e) => {
+														handlePropChange(config.name, e);
+													}}
+												/>
+											)}
+										</Fragment>
+									))}
+								</div>
+								<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
+									{propConfigs.map((config) => (
+										<Fragment key={config.name}>
+											{config.type === "checkbox" && (
+												<Checkbox
+													label={config.label}
+													positionLabel="right"
+													size="tiny"
+													checked={!!currentProps[config.name]}
+													onChange={(e) =>
+														handlePropChange(config.name, e.target.checked ? config.default : false)
+													}
+												/>
+											)}
+										</Fragment>
+									))}
+								</div>
+								<div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-2 place-items-start my-6">
+									{propConfigs.map((config) => (
+										<Fragment key={config.name}>
+											{config.type === "radio" && (
+												<div className="flex flex-col items-start w-full gap-1">
+													<label className="text-xs font-medium text-(--foreground-label-color) ">
+														{config.label}
+													</label>
+													<RadioGroup
+														size="tiny"
+														variant="solid"
+														onChange={(e) => handlePropChange(config.name, e)}
+														selectedOption={currentProps[config.name]}
+													>
+														{config.values?.map((value: any) => (
+															<Radio.Button
+																key={value}
+																value={value}
+																label={
+																	value.toString().charAt(0).toUpperCase() +
+																	value.toString().slice(1)
+																}
+															/>
+														))}
+													</RadioGroup>
+												</div>
+											)}
+										</Fragment>
+									))}
+								</div>
+								<div className="flex flex-col items-start gap-3 py-3.5 mb-5 px-1 my-6">
+									{propConfigs.map((config) => (
+										<Fragment key={config.name}>
+											{config.type === "slider" && config.values && (
+												<div className="flex flex-col items-start w-full">
+													<label className="text-xs font-medium text-(--foreground-label-color) ">
+														{config.label}
+													</label>
+													<Slider
+														size="small"
+														radius="full"
+														min={0}
+														max={config.values.length - 1}
+														formatValue={(value) =>
+															(config.values?.[value].toString().charAt(0).toUpperCase() || "") +
+															(config.values?.[value].toString().slice(1) || "")
+														}
+														value={Number(config!.values!.indexOf(currentProps[config.name]) ?? 0)}
+														onChange={(e) =>
+															handlePropChange(config.name, config!.values![e as number])
+														}
+														onInput={(e) =>
+															handlePropChange(config.name, config!.values![e as number])
+														}
+														marks={config.values?.map((val: any, index: number) => ({
+															value: index,
+															label:
+																String(config.values?.[index]).charAt(0).toUpperCase() +
+																String(config.values?.[index]).slice(1),
+														}))}
+													/>
+												</div>
+											)}
+										</Fragment>
+									))}
+								</div>
+								<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
+									{propConfigs.map((config) => (
+										<Fragment key={config.name}>
+											{config.type === "boolean" && (
+												<Switch
+													label={config.label}
+													positionLabel="right"
+													size="tiny"
+													checked={!!currentProps[config.name]}
+													onChange={(e) => handlePropChange(config.name, e.target.checked)}
+												/>
+											)}
+										</Fragment>
+									))}
+								</div>
 							</div>
-							<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
-								{propConfigs.map((config) => (
-									<Fragment key={config.name}>
-										{config.type === "boolean" && (
-											<Switch
-												label={config.label}
-												positionLabel="right"
-												size="tiny"
-												checked={!!currentProps[config.name]}
-												onChange={(e) => handlePropChange(config.name, e.target.checked)}
-											/>
-										)}
-									</Fragment>
-								))}
+							<Divider spacing={15} />
+							<div className="flex justify-end pt-2 mt-2">
+								<Button
+									onClick={handleResetProps}
+									label="Reset Props"
+									size="tiny"
+									color="neutral"
+									variant="solid"
+								/>
 							</div>
 						</div>
-						<Divider spacing={15} />
-						<div className="flex justify-end pt-2 mt-2">
-							<Button
-								onClick={handleResetProps}
-								label="Reset Props"
-								size="tiny"
-								color="neutral"
-								variant="solid"
-							/>
+					</div>
+					{/* Columna de Previsualización del Componente */}
+					<div className="flex flex-col h-full">
+						<label className="text-lg font-semibold text-(--foreground-color) pl-2 border border-(--border-color)/50 border-b-0 rounded-t-sm bg-(--surface-a)">
+							Preview
+						</label>
+						<div
+							className="relative flex flex-col justify-center items-center 
+					 bg-(--background-color) p-5 rounded-b-md min-h-[200px] border border-(--border-color)/50 h-full"
+						>
+							{renderedComponent}
 						</div>
 					</div>
 				</div>
-				{/* Columna de Previsualización del Componente */}
-				<div className="flex flex-col gap-0.5 h-full">
-					<div className="flex items-center gap-2 text-lg font-semibold text-(--foreground-color) pl-2">
-						Preview
-					</div>
-					<div className="relative bg-(--background-color) p-5 rounded-md flex flex-col justify-center items-center min-h-[200px] border border-(--border-color)/50 h-full">
-						{renderedComponent}
-					</div>
-				</div>
+				<CodeBlock
+					buttonCopy
+					tabs={[
+						{ code: `<${componentName}\n\t${propsString}\n/>`, language: "tsx", label: "Code" },
+					]}
+				/>
 			</div>
-			<CodeBlock
-				buttonCopy
-				tabs={[{ code: `<${componentName}\n\t${propsString}\n/>`, language: "tsx", label: "Code" }]}
-			/>
-		</div>
+			<Divider spacing={70} variant="dashed" />
+		</>
 	);
 }
 
