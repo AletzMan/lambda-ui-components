@@ -220,7 +220,23 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 									</Fragment>
 								))}
 							</div>
-
+							<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
+								{propConfigs.map((config) => (
+									<Fragment key={config.name}>
+										{config.type === "checkbox" && (
+											<Checkbox
+												label={config.label}
+												positionLabel="right"
+												size="tiny"
+												checked={!!currentProps[config.name]}
+												onChange={(e) =>
+													handlePropChange(config.name, e.target.checked ? config.default : false)
+												}
+											/>
+										)}
+									</Fragment>
+								))}
+							</div>
 							<div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-2 place-items-start my-6">
 								{propConfigs.map((config) => (
 									<Fragment key={config.name}>
@@ -296,23 +312,6 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 												size="tiny"
 												checked={!!currentProps[config.name]}
 												onChange={(e) => handlePropChange(config.name, e.target.checked)}
-											/>
-										)}
-									</Fragment>
-								))}
-							</div>
-							<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
-								{propConfigs.map((config) => (
-									<Fragment key={config.name}>
-										{config.type === "checkbox" && (
-											<Checkbox
-												label={config.label}
-												positionLabel="right"
-												size="tiny"
-												checked={!!currentProps[config.name]}
-												onChange={(e) =>
-													handlePropChange(config.name, e.target.checked ? config.default : false)
-												}
 											/>
 										)}
 									</Fragment>
