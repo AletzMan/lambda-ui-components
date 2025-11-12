@@ -24,6 +24,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			color,
 			checked,
 			joinposition,
+			required,
+			invalid,
 			onChange,
 			onCheckedChange,
 			...props
@@ -84,6 +86,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 						disabled: disabledValue,
 						joinposition,
 						join: joinposition !== undefined,
+						invalid,
 						className,
 					})}
 				>
@@ -129,14 +132,23 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 					)}
 					{label && joinposition !== undefined && (
 						<span
-							className={checkboxTextLabelVariants({ size: sizeValue, disabled: disabledValue })}
+							className={checkboxTextLabelVariants({
+								size: sizeValue,
+								disabled: disabledValue,
+							})}
 						>
 							{label}
 						</span>
 					)}
 				</div>
 				{label && joinposition === undefined && (
-					<span className={checkboxTextLabelVariants({ size: sizeValue, disabled: disabledValue })}>
+					<span
+						className={checkboxTextLabelVariants({
+							size: sizeValue,
+							disabled: disabledValue,
+							required,
+						})}
+					>
 						{label}
 					</span>
 				)}

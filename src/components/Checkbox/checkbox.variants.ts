@@ -49,6 +49,10 @@ export const checkboxWrapperVariants = cva(styles["lambda-checkbox-wrapper"], {
 			middle: styles["lambda-checkbox-wrapper-middle"],
 			single: styles["lambda-checkbox-wrapper-single"],
 		},
+		invalid: {
+			true: styles["lambda-checkbox-wrapper-invalid"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		size: "medium",
@@ -57,6 +61,7 @@ export const checkboxWrapperVariants = cva(styles["lambda-checkbox-wrapper"], {
 		color: "primary",
 		disabled: false,
 		checked: false,
+		invalid: false,
 	},
 });
 
@@ -91,10 +96,15 @@ export const checkboxTextLabelVariants = cva(styles["lambda-checkbox-label"], {
 			true: styles["lambda-checkbox-label-disabled"],
 			false: "",
 		},
+		required: {
+			true: styles["lambda-checkbox-label-required"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		disabled: false,
+		required: false,
 	},
 });
 

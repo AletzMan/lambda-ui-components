@@ -50,6 +50,14 @@ const meta: Meta<typeof Checkbox> = {
 			description: "Select position label right or left",
 			type: "string",
 		},
+		required: {
+			control: "boolean",
+			description: "Disables the input and makes it inactive",
+		},
+		invalid: {
+			control: "boolean",
+			description: "Disables the input and makes it inactive",
+		},
 		disabled: {
 			control: "boolean",
 			description: "Disables the input and makes it inactive",
@@ -106,6 +114,8 @@ export const Solid: Story = {
 		positionLabel: "right",
 		radius: "small",
 		disabled: false,
+		required: false,
+		invalid: false,
 	},
 };
 export const Soft: Story = {
@@ -118,6 +128,8 @@ export const Soft: Story = {
 		positionLabel: "right",
 		radius: "small",
 		disabled: false,
+		required: false,
+		invalid: false,
 	},
 };
 export const Outline: Story = {
@@ -130,5 +142,7 @@ export const Outline: Story = {
 		positionLabel: "right",
 		radius: "small",
 		disabled: false,
+		required: false,
+		invalid: false,
 	},
 };

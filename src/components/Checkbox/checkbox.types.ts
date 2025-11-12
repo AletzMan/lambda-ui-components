@@ -55,6 +55,18 @@ export interface CheckBoxProps
 	disabled?: boolean;
 
 	/**
+	 * Marca el checkbox como requerido, lo que implica que debe estar marcado para que el formulario sea válido.
+	 * @default false
+	 */
+	required?: boolean;
+
+	/**
+	 * Marca el checkbox como inválido, lo que implica que el formulario no es válido.
+	 * @default false
+	 */
+	invalid?: boolean;
+
+	/**
 	 * Icono personalizado que se muestra en la casilla de verificación cuando está marcada.
 	 */
 	icon?: React.ReactNode;

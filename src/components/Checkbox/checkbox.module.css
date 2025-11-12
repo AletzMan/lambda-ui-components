@@ -665,6 +665,12 @@
 	}
 }
 
+.lambda-checkbox-wrapper-invalid:not(.lambda-checkbox-wrapper-checked) {
+	border-color: var(--danger-base-color);
+	border-style: dashed;
+	outline-color: var(--danger-shadow-color);
+}
+
 .lambda-checkbox-wrapper-join {
 	flex-direction: row-reverse;
 	& > .lambda-checkbox-label {
@@ -799,6 +805,13 @@
 	font-weight: var(--font-weight-semibold);
 	font-family: inherit;
 	width: max-content;
+
+	&:is(.lambda-checkbox-label-required) {
+		&::after {
+			content: " *";
+			color: var(--danger-base-color);
+		}
+	}
 }
 
 .lambda-checkbox-label-tiny {
