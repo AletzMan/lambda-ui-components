@@ -2,16 +2,119 @@
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
 import { Input } from "lambda-ui-components";
-import { Mail, User } from "lucide-react";
+import { Mail, Search, Text, User } from "lucide-react";
+import { useRef } from "react";
 
 export const InputFeatures = () => {
+	const refInput = useRef<HTMLInputElement>(null);
 	return (
-		<div className="flex flex-col gap-3 pl-2.5">
-			<PlaygroundLayout title="Playground" id="playground">
-				<p className="my-90 px-4">
-					The Input component is a form element that allows users to enter text or numbers. It is a
-					simple and easy-to-use component that can be used to collect user input in a form.
-				</p>
+		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+			<PlaygroundLayout<HTMLInputElement>
+				id="playground"
+				title="Playground"
+				componentName="Input"
+				description="Play with the Input component"
+				propConfigs={[
+					{
+						name: "placeholder",
+						type: "string",
+						defaultValue: "Placeholder",
+						default: "",
+						label: "Placeholder",
+					},
+					{ name: "label", type: "string", defaultValue: "Label", default: "", label: "Label" },
+					{
+						name: "variant",
+						type: "radio",
+						defaultValue: "outline",
+						default: "outline",
+						label: "Variant",
+						values: ["outline", "soft"],
+					},
+					{
+						name: "type",
+						type: "radio",
+						defaultValue: "text",
+						default: "text",
+						label: "Type",
+						values: ["text", "email", "password", "search"],
+					},
+					{
+						name: "size",
+						type: "slider",
+						defaultValue: "medium",
+						default: "medium",
+						label: "Size",
+						values: ["tiny", "small", "medium", "large"],
+					},
+					{
+						name: "radius",
+						type: "slider",
+						defaultValue: "tiny",
+						default: "tiny",
+						label: "Radius",
+						values: ["none", "tiny", "small", "medium", "large", "full"],
+					},
+					{
+						name: "floatingLabel",
+						type: "boolean",
+						defaultValue: false,
+						default: false,
+						label: "Floating Label",
+					},
+					{
+						name: "errorMessage",
+						type: "string",
+						defaultValue: "",
+						default: "",
+						label: "Error Message",
+					},
+					{
+						name: "helperText",
+						type: "string",
+						defaultValue: "",
+						default: "",
+						label: "Helper Text",
+					},
+					{
+						name: "invalid",
+						type: "boolean",
+						defaultValue: false,
+						default: false,
+						label: "Invalid",
+					},
+					{
+						name: "prefix",
+						type: "checkbox",
+						defaultValue: <Search />,
+						default: <Search />,
+						label: "Prefix",
+					},
+					{
+						name: "suffix",
+						type: "checkbox",
+						defaultValue: <Mail />,
+						default: <Mail />,
+						label: "Suffix",
+					},
+					{
+						name: "required",
+						type: "boolean",
+						defaultValue: false,
+						default: false,
+						label: "Required",
+					},
+					{
+						name: "disabled",
+						type: "boolean",
+						defaultValue: false,
+						default: false,
+						label: "Disabled",
+					},
+				]}
+				componentRef={refInput}
+			>
+				<Input ref={refInput} />
 			</PlaygroundLayout>
 			<PropertyLayout
 				title="Usage"
