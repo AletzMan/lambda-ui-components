@@ -109,6 +109,7 @@ const Template = (args: InputProps) => {
 						placeholder="Password input example"
 						label="Password"
 						prefix={<RectangleEllipsis />}
+						suffix={<RectangleEllipsis />}
 						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 					<Input

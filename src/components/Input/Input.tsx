@@ -204,21 +204,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							}
 						)}
 						htmlFor={inputId}
-						/*style={{
-							left:
-								floatingLabel && !isLabelFloating
-									? prefixRef.current
-										? prefixRef.current.offsetWidth + paddingInputSize
-										: 6
-									: 0,
-							top: floatingLabel && !isLabelFloating ? "50%" : "-50%",
-							transform:
-								floatingLabel && !isLabelFloating
-									? "translateY(-50%)"
-									: isLabelFloating
-									? `translateY(-${heightInputSize}px)`
-									: "translateY(-1px)",
-						}}*/
 					>
 						{`${label as string}`}
 					</motion.label>
@@ -237,7 +222,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 									: prefix && suffix
 									? "both"
 									: "none",
-							})
+							}),
+							{ [styles["lambda-input-label-required"]]: required }
 						)}
 					>
 						{label}
