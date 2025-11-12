@@ -151,7 +151,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				left: 0, // o el padding que uses
 			},
 			floating: {
-				y: "-120%",
+				y: "-105%",
 				x: 0,
 				//scale: 0.85,
 				color: "var(--foreground-label-color)",
