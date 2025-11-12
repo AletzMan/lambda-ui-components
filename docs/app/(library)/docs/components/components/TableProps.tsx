@@ -2,7 +2,7 @@
 import { Table, Tooltip } from "lambda-ui-components";
 import { Info } from "lucide-react";
 
-interface TableProps {
+export interface TableProps {
 	prop: string;
 	default: string;
 	type: string;

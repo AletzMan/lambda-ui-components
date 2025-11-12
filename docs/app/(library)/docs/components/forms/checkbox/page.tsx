@@ -1,8 +1,8 @@
 import { ComponentsLayout } from "../../components/ComponentsLayout";
 import { NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
-import { InputFeatures } from "./InputFeatures";
 import { TableProps } from "../../components/TableProps";
+import { CheckboxFeatures } from "./CheckboxFeatures";
 
 const dataFeatures: NavigationMenuData[] = [
 	{
@@ -244,16 +244,16 @@ export const inputProps: TableProps[] = [
 	},
 ];
 
-export default function InputPage() {
+export default function CheckboxPage() {
 	return (
 		<ComponentsLayout
-			title="Input"
-			description="Input component is a form element that allows users to enter text"
-			buttonLeft={{ href: "/docs/components/forms/file-upload", text: "File Upload" }}
-			buttonRight={{ href: "/docs/components/forms/input-number", text: "Input Number" }}
+			title="Checkbox"
+			description="Checkbox component is a form element that allows users to select one or more options from a list of choices."
+			buttonLeft={{ href: "/docs/theming/dark-mode", text: "Dark Mode" }}
+			buttonRight={{ href: "/docs/components/forms/color-picker", text: "Color Picker" }}
 			menuData={dataFeatures}
 		>
-			<InputFeatures />
+			<CheckboxFeatures />
 			<TableProps props={inputProps} />
 		</ComponentsLayout>
 	);
