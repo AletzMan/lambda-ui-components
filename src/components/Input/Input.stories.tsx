@@ -11,7 +11,7 @@ const meta: Meta<typeof Input> = {
 	argTypes: {
 		variant: {
 			control: "inline-radio",
-			options: ["outline", "flat", "underline"],
+			options: ["outline", "soft", "underline"],
 			description: "Visual style of the input",
 			type: "string",
 		},
@@ -95,14 +95,7 @@ const Template = (args: InputProps) => {
 						gap: "var(--gap-md)",
 					}}
 				>
-					<Input
-						{...args}
-						type="text"
-						placeholder="Text input example"
-						label="Text"
-						prefix={<CaseUpper />}
-						radius={currentStyle === "local" ? args.radius : undefined}
-					/>
+					<Input {...args} placeholder="Text input example" label="Text" prefix={<CaseUpper />} />
 					<Input
 						{...args}
 						type="password"
@@ -144,7 +137,7 @@ export const Outline: Story = {
 		floatingLabel: false,
 		invalid: false,
 		required: false,
-		type: "password",
+		type: "text",
 		helperText: "",
 		errorMessage: "This is a sample error message for demonstration",
 		placeholder: "Text input example",

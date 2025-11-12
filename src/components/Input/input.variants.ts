@@ -39,9 +39,12 @@ export const lambdaInput = cva(styles["lambda-input"], {
 		},
 	},
 	defaultVariants: {
+		size: "medium",
 		radius: "tiny",
 		disabled: false,
+		invalid: false,
 		hasLabel: false,
+		hasHelper: false,
 		join: false,
 	},
 });
@@ -131,6 +134,7 @@ export const labels = cva(styles["lambda-input-label"], {
 	defaultVariants: {
 		radius: "tiny",
 		size: "medium",
+		hasElements: "none",
 	},
 });
 
