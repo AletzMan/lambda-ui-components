@@ -697,12 +697,17 @@
 	pointer-events: none;
 	box-sizing: border-box;
 
+	& > svg {
+		color: currentColor;
+		fill: currentColor;
+	}
+
 	&:not(.lambda-checkbox-icon-join) {
 		color: var(--white-color);
 		fill: transparent;
 		transform: scale(1);
-		stroke-dasharray: 250; /* Longitud del trazado */
-		stroke-dashoffset: 250; /* Oculta el trazo al inicio */
+		stroke-dasharray: 250;
+		stroke-dashoffset: 250;
 	}
 }
 

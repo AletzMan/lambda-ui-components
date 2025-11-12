@@ -119,12 +119,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 							<path d="M4 12l5 5 11-11"></path>
 						</svg>
 					)}
-					{icon && joinposition !== undefined && (
+					{icon && actualChecked && (
 						<span
 							className={checkBoxIconVariants({
 								size: sizeValue,
 								disabled: disabledValue,
-								join: joinposition !== undefined,
 							})}
 						>
 							{icon}
