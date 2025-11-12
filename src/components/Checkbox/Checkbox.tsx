@@ -49,7 +49,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			radiusValue = joinContext.radius;
 			disabledValue = joinContext.disabled;
 		} catch (error) {
-			radiusValue = radiusSelector || radius;
+			radiusValue = radius || radiusSelector;
 			sizeValue = size;
 			disabledValue = disabled;
 		}
