@@ -23,6 +23,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			positionLabel = "right",
 			color,
 			checked,
+			defaultChecked,
 			joinposition,
 			required,
 			invalid,
@@ -33,7 +34,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		ref
 	) => {
 		const isControlled = typeof checked === "boolean";
-		const [internalChecked, setInternalChecked] = useState(!!checked);
+		const [internalChecked, setInternalChecked] = useState(!!checked || !!defaultChecked);
 		const actualChecked = isControlled ? checked! : internalChecked;
 		const inputRef = useRef<HTMLInputElement>(null);
 
