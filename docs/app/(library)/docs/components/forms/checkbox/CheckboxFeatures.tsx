@@ -142,13 +142,15 @@ export const CheckboxFeatures = () => {
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Neutral" color="neutral" defaultChecked />\n<Checkbox label="Primary" defaultChecked />\n<Checkbox label="Secondary" color="secondary" defaultChecked />\n<Checkbox label="Success" color="success" defaultChecked />\n<Checkbox label="Danger" color="danger" defaultChecked />\n<Checkbox label="Warning" color="warning" defaultChecked />\n<Checkbox label="Info" color="info" defaultChecked />`}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox label="Neutral" color="neutral" defaultChecked />
-					<Checkbox label="Primary" defaultChecked />
-					<Checkbox label="Secondary" color="secondary" defaultChecked />
-					<Checkbox label="Success" color="success" defaultChecked />
-					<Checkbox label="Danger" color="danger" defaultChecked />
-					<Checkbox label="Warning" color="warning" defaultChecked />
-					<Checkbox label="Info" color="info" defaultChecked />
+					<div className="flex flex-col gap-2">
+						<Checkbox label="Neutral" color="neutral" defaultChecked />
+						<Checkbox label="Primary" defaultChecked />
+						<Checkbox label="Secondary" color="secondary" defaultChecked />
+						<Checkbox label="Success" color="success" defaultChecked />
+						<Checkbox label="Danger" color="danger" defaultChecked />
+						<Checkbox label="Warning" color="warning" defaultChecked />
+						<Checkbox label="Info" color="info" defaultChecked />
+					</div>
 				</form>
 			</PropertyLayout>
 
@@ -172,10 +174,11 @@ export const CheckboxFeatures = () => {
 				id="disabled"
 				description="Makes the input non-interactive and visually indicates a disabled state.."
 				propertyName="disabled"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox disabled label="Disabled" />`}
+				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox disabled label="Disabled unchecked" />\n<Checkbox disabled label="Disabled checked" defaultChecked />`}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox disabled label="Disabled" />
+					<Checkbox disabled label="Disabled unchecked" />
+					<Checkbox disabled label="Disabled checked" defaultChecked />
 				</form>
 			</PropertyLayout>
 
