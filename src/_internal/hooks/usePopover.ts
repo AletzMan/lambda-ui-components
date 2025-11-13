@@ -104,20 +104,9 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 	// --- LÓGICA DE CIERRE POR EVENTOS ---
 	useEffect(() => {
 		function handleClickOutside(event: MouseEvent | TouchEvent) {
-			const triggerEl = triggerRef.current;
-			const contentEl = contentRef.current;
-			const target = event.target as Node;
-
-			// 💡 Lógica corregida: Cierra si el clic NO fue en el trigger Y NO fue en el contenido del popover.
-			if (
-				isOpen &&
-				triggerEl &&
-				contentEl &&
-				!triggerEl.contains(target) &&
-				!contentEl.contains(target)
-			) {
-				setIsOpen(false);
-			}
+			if (triggerRef.current && triggerRef.current.contains(event.target as Node)) return;
+			if (contentRef.current && contentRef.current.contains(event.target as Node)) return;
+			setIsOpen(false);
 		}
 
 		// Se usa window para manejar scroll y resize de manera global
