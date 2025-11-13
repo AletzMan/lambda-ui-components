@@ -36,6 +36,9 @@ const meta: Meta<typeof DatePicker> = {
 		maxDate: {
 			control: "date",
 		},
+		helperText: {
+			control: "text",
+		},
 		variant: {
 			control: "inline-radio",
 			options: ["solid", "soft"],
@@ -80,6 +83,7 @@ export const Default: Story = {
 		displayFormat: "short",
 		invalid: false,
 		errorMessage: "",
+		helperText: "",
 	},
 };
 
@@ -96,6 +100,7 @@ export const WithMinMax: Story = {
 		displayFormat: "short",
 		invalid: false,
 		errorMessage: "",
+		helperText: "",
 	},
 };
 
@@ -111,5 +116,6 @@ export const CustomDisabled: Story = {
 		displayFormat: "short",
 		invalid: false,
 		errorMessage: "",
+		helperText: "",
 	},
 };

@@ -1,60 +1,96 @@
 import { DatePickerVariants } from "./datepicker.variants";
-
-export interface DatePickerProps {
+export interface DatePickerProps
+	extends Omit<React.HTMLAttributes<HTMLDivElement>, "value" | "onChange"> {
 	/**
-	 * Fecha actualmente seleccionada
+	 * The currently selected date value in the calendar.
+	 * If not provided, the field will be empty (uncontrolled component).
 	 */
 	value?: Date;
 	/**
-	 * Callback cuando cambia la fecha seleccionada
+	 * Callback function that is triggered when the user selects a new date.
+	 *
+	 * @param date - The newly selected date (Date), or `undefined` if the field is cleared.
 	 */
 	onChange?: (date: Date | undefined) => void;
 	/**
-	 * Fecha mínima seleccionable
+	 * The earliest date the user can select.
+	 * Dates prior to this will be disabled.
 	 */
 	minDate?: Date;
 	/**
-	 * Fecha máxima seleccionable
+	 * The furthest (future) date the user can select.
+	 * Dates after this will be disabled.
 	 */
 	maxDate?: Date;
 	/**
-	 * Deshabilita el calendario
+	 * Completely disables the input field and the calendar, preventing user interaction.
 	 */
 	disabled?: boolean;
 	/**
-	 * Permite personalizar el tamaño del calendario
+	 * Defines the visual size of the component (e.g., `sm`, `md`, `lg`).
+	 *
+	 * @default md
 	 */
 	size?: DatePickerVariants["size"];
 	/**
-	 * Permite personalizar el tipo del calendario
+	 * Specifies the selection mode for the calendar (e.g., day, month, year).
+	 * The 'date' value allows selection of day, month, and year.
+	 *
+	 * @default date
 	 */
 	type?: DatePickerVariants["type"];
 	/**
-	 * Permite personalizar el radio del calendario
+	 * Defines the corner shape (radius) of the input field and the calendar dropdown.
+	 *
+	 * @default md
 	 */
 	radius?: DatePickerVariants["radius"];
 	/**
-	 * Permite personalizar la variante visual
+	 * The visual style (variant) of the component (e.g., 'filled', 'outline', 'ghost').
+	 *
+	 * @default filled
 	 */
 	variant?: DatePickerVariants["variant"];
 	/**
-	 * Permite deshabilitar días específicos
+	 * Custom function to disable specific dates in the calendar.
+	 * Useful for restricting holidays, weekends, etc.
+	 *
+	 * @param date - The date to evaluate.
+	 * @returns `true` if the date should be disabled, `false` otherwise.
 	 */
 	isDateDisabled?: (date: Date) => boolean;
 	/**
-	 * Permite personalizar el label del calendario
+	 * Label text that appears above the input field (Input Label).
+	 *
+	 * @default ""
 	 */
 	label?: string;
 	/**
-	 * Permite personalizar el formato de la fecha que se muestra en el input
+	 * The display format of the date shown in the input field.
+	 * Defines how the selected date is presented to the user (e.g., 'full' as "Thursday, November 13, 2025").
+	 *
+	 * @default medium
 	 */
 	displayFormat?: "full" | "long" | "medium" | "short";
+
 	/**
-	 * Permite personalizar el mensaje de error
+	 * Optional text that provides **additional guidance** or context to the user about the expected input format or purpose. It is displayed below the date input.
+	 *
+	 * @default ""
+	 */
+	helperText?: string;
+	/**
+	 * Error message displayed below the input field when a validation issue occurs.
+	 * Setting this value automatically implies an `invalid` state.
+	 *
+	 * @default ""
 	 */
 	errorMessage?: string;
 	/**
-	 * Permite personalizar el estado de error
+	 * Forces the component into an error (invalid) state, applying corresponding error styles.
+	 * Useful for showing visual error feedback even without an explicit `errorMessage`.
+	 *
+	 * @default false
 	 */
 	invalid?: boolean;
 }

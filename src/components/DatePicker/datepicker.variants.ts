@@ -19,6 +19,29 @@ export const datepickerWrapperVariants = cva(styles["lambda-datepicker-wrapper"]
 			false: "",
 		},
 	},
+	defaultVariants: {
+		type: "dropdown",
+		size: "small",
+		hasLabel: false,
+	},
+});
+
+export const datepickerContainerVariants = cva(styles["lambda-datepicker-container"], {
+	variants: {
+		type: {
+			inline: styles["lambda-datepicker-container-inline"],
+			dropdown: styles["lambda-datepicker-container-dropdown"],
+			modal: styles["lambda-datepicker-container-modal"],
+		},
+		invalid: {
+			true: styles["lambda-datepicker-container-invalid"],
+			false: styles["lambda-datepicker-container-not-invalid"],
+		},
+	},
+	defaultVariants: {
+		type: "dropdown",
+		invalid: false,
+	},
 });
 
 export const datepickerVariants = cva(styles["lambda-datepicker"], {
@@ -56,6 +79,7 @@ export const datepickerVariants = cva(styles["lambda-datepicker"], {
 		size: "small",
 		radius: "small",
 		variant: "solid",
+		invalid: false,
 	},
 });
 
@@ -167,6 +191,7 @@ export const datepickerInlineSectionVariants = cva(styles["lambda-datepicker-inl
 		},
 	},
 	defaultVariants: {
+		variant: "solid",
 		radius: "small",
 		invalid: false,
 	},
