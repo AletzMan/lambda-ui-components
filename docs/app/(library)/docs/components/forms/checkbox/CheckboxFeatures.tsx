@@ -1,12 +1,13 @@
 "use client";
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
-import { Checkbox, Input } from "lambda-ui-components";
-import { useRef } from "react";
+import { Checkbox } from "lambda-ui-components";
+import { useRef, useState } from "react";
 import { Star } from "lucide-react";
 
 export const CheckboxFeatures = () => {
 	const refInput = useRef<HTMLInputElement>(null);
+	const [checked, setChecked] = useState(false);
 	return (
 		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
 			<PlaygroundLayout<HTMLInputElement>
@@ -104,7 +105,7 @@ export const CheckboxFeatures = () => {
 
 			<PropertyLayout
 				title="Sizes"
-				description="Adjusts the visual size of the input by modifying its height, padding, and text size."
+				description="Adjusts the visual size of the checkbox by modifying its height."
 				id="sizes"
 				propertyName="size"
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox size="tiny" label="Tiny" />\n<Checkbox size="small" label="Small" />\n<Checkbox label="Medium" />\n<Checkbox size="large" label="Large" />`}
@@ -121,7 +122,7 @@ export const CheckboxFeatures = () => {
 				title="Radius"
 				id="radius"
 				propertyName="radius"
-				description="Controls the border curvature of the input, defining how rounded the corners appear."
+				description="Controls the border curvature of the checkbox, defining how rounded the corners appear."
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox radius="none" label="None" />\n<Checkbox label="Tiny" />\n<Checkbox radius="small" label="Small" />\n<Checkbox radius="medium" label="Medium" />\n<Checkbox radius="large" label="Large" />\n<Checkbox radius="full" label="Full" />`}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6 ">
@@ -157,7 +158,7 @@ export const CheckboxFeatures = () => {
 			<PropertyLayout
 				title="Position Label"
 				id="position-label"
-				description="Controls the position of the label relative to the input."
+				description="Controls the position of the label relative to the checkbox."
 				propertyName="positionLabel"
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Left" positionLabel="left" />\n<Checkbox label="Right" />\n<Checkbox label="Top" positionLabel="top" />\n<Checkbox label="Bottom" positionLabel="bottom" />`}
 			>
@@ -172,7 +173,7 @@ export const CheckboxFeatures = () => {
 			<PropertyLayout
 				title="Disabled"
 				id="disabled"
-				description="Makes the input non-interactive and visually indicates a disabled state.."
+				description="Makes the checkbox non-interactive and visually indicates a disabled state.."
 				propertyName="disabled"
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox disabled label="Disabled unchecked" />\n<Checkbox disabled label="Disabled checked" defaultChecked />`}
 			>
@@ -185,7 +186,7 @@ export const CheckboxFeatures = () => {
 			<PropertyLayout
 				title="Required"
 				id="required"
-				description="Marks the field as required for form validation."
+				description="Marks the checkbox as required for form validation."
 				propertyName="required"
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Required" required />`}
 			>
@@ -197,7 +198,7 @@ export const CheckboxFeatures = () => {
 			<PropertyLayout
 				title="Invalid"
 				id="invalid"
-				description="Marks the field as invalid for form validation."
+				description="Marks the checkbox as invalid for form validation."
 				propertyName="invalid"
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Invalid" invalid />`}
 			>
@@ -209,12 +210,24 @@ export const CheckboxFeatures = () => {
 			<PropertyLayout
 				title="Custom Icon"
 				id="custom-icon"
-				description="Marks the field as invalid for form validation."
+				description="Custom icon when the checkbox is checked."
 				propertyName="icon"
 				code={`import { Checkbox } from "lambda-ui-components";\nimport { Star } from "lucide-react";\n\n<Checkbox label="Custom Icon" icon={<Star />} />`}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Checkbox label="Custom Icon" icon={<Star />} />
+				</form>
+			</PropertyLayout>
+
+			<PropertyLayout
+				title="Controlled"
+				id="controlled"
+				description="Use this when you need to control the checked state of the checkbox."
+				propertyName=""
+				code={`import { Checkbox } from "lambda-ui-components";\nimport { useState } from "react";\n\nexport default function App() {\n\tconst [checked, setChecked] = useState(false);\n\n\treturn (\n\t\t<Checkbox label="Controlled" checked={checked} onCheckedChange={setChecked} />\n\t);\n}`}
+			>
+				<form className="flex flex-col gap-4 px-6 py-6 ">
+					<Checkbox label="Controlled" checked={checked} onCheckedChange={setChecked} />
 				</form>
 			</PropertyLayout>
 		</div>

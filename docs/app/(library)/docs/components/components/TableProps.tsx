@@ -13,7 +13,7 @@ export interface TableProps {
 const typeColors: Record<string, string> = {
 	string: "text-green-600",
 	boolean: "text-blue-600",
-	callback: "text-indigo-500",
+	callback: "text-yellow-600",
 	object: "text-(--foreground-title-color)",
 	array: "text-(--foreground-title-color)",
 	undefined: "text-(--foreground-title-color)",
