@@ -72,6 +72,7 @@ export const colorpickerGroupVariants = cva(styles["lambda-colorpicker-group"], 
 	},
 	defaultVariants: {
 		size: "medium",
+		radius: "small",
 	},
 });
 

@@ -151,12 +151,10 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 		type: typeof value,
 		default: propConfigs.find((prop) => prop.name === key)?.default,
 	}));
-	console.log(arrayProps);
 
 	const propsString = arrayProps
 		.map((prop) => {
 			if (prop.type === "boolean") {
-				console.log(prop.value);
 				return prop.value === prop.default
 					? undefined
 					: typeof prop.default == "boolean"
@@ -406,7 +404,14 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 				<CodeBlock
 					buttonCopy
 					tabs={[
-						{ code: `<${componentName}\n\t${propsString}\n/>`, language: "tsx", label: "Code" },
+						{
+							code: `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
+								propsString ? "\n" : ""
+							}/>
+							`,
+							language: "tsx",
+							label: "Code",
+						},
 					]}
 				/>
 			</div>
