@@ -6,7 +6,7 @@ export default function DarkModePage() {
 		<SectionLayout
 			title="Dark Mode"
 			buttonsLeft={{ href: "/docs/theming/customization", text: "Customization" }}
-			buttonsRight={{ href: "/docs/components/forms/input", text: "Input" }}
+			buttonsRight={{ href: "/docs/components/forms/checkbox", text: "Checkbox" }}
 		>
 			<article>
 				<SubSectionLayout title="Dark Mode">
