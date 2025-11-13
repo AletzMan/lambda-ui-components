@@ -25,6 +25,14 @@ export const CheckboxFeatures = () => {
 						values: ["solid", "outline", "soft"],
 					},
 					{
+						name: "color",
+						type: "color",
+						defaultValue: "primary",
+						default: "primary",
+						label: "Color",
+						values: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
+					},
+					{
 						name: "positionLabel",
 						type: "radio",
 						defaultValue: "right",
