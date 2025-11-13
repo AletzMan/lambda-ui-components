@@ -87,7 +87,7 @@ export function propsReducer(state: ComponentPropsState, action: PropsAction): C
 
 interface PlaygroundLayoutProps<T extends HTMLElement | ComponentType | null> {
 	id: string;
-	children: ReactElement; // El componente base a renderizar (DEBE ser un ReactElement)
+	children: React.ReactElement | ((props: Record<string, any>) => React.ReactNode); // El componente base a renderizar (DEBE ser un ReactElement)
 	componentRef?: Ref<T>; // La ref externa para el componente renderizado
 	propConfigs: PropConfig[]; // Configuración de las props controlables (NO dynamicProps)
 	title?: string;
@@ -123,18 +123,17 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 	const refToInject: Ref<T> = componentRef || internalRef;
 
 	// Combinamos las props del children original con las props del estado actual del reducer
-	const finalProps: Record<string, any> = {
-		...(children.props as Record<string, any>),
-		...currentProps,
-	};
+	const finalProps: Record<string, any> = React.isValidElement(children)
+		? { ...(children.props as Record<string, any>), ...currentProps }
+		: { ...currentProps };
 
 	// Clona el elemento y le inyecta la ref y las props combinadas
-	const renderedComponent = React.cloneElement(children, {
-		...finalProps,
-		// @ts-ignore
-		ref: refToInject,
-	});
-
+	const renderedComponent =
+		typeof children === "function"
+			? children(finalProps)
+			: React.isValidElement(children)
+			? React.createElement(children.type, finalProps)
+			: null;
 	// Manejador para los cambios en los controles UI
 	const handlePropChange = useCallback((propName: string, value: any) => {
 		dispatch({ type: "SET_PROP_VALUE", propName, value });
