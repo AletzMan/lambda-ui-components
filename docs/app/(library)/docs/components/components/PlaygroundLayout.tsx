@@ -20,11 +20,12 @@ import {
 	Select,
 	Slider,
 	Switch,
+	Tooltip,
 } from "lambda-ui-components";
 
 export interface PropConfig {
 	name: string;
-	type: "boolean" | "string" | "number" | "select" | "slider" | "radio" | "checkbox";
+	type: "boolean" | "string" | "number" | "select" | "slider" | "radio" | "checkbox" | "color";
 	values?: (string | number | boolean)[]; // Para 'select'
 	defaultValue?: any;
 	default?: any;
@@ -52,6 +53,16 @@ export function initPropsState(propConfigs: PropConfig[]): ComponentPropsState {
 	});
 	return initialState;
 }
+
+const colorOptions = [
+	{ value: "neutral", color: "bg-(--neutral-base-color)" },
+	{ value: "primary", color: "bg-(--primary-base-color)" },
+	{ value: "secondary", color: "bg-(--secondary-base-color)" },
+	{ value: "success", color: "bg-(--success-base-color)" },
+	{ value: "danger", color: "bg-(--danger-base-color)" },
+	{ value: "warning", color: "bg-(--warning-base-color)" },
+	{ value: "info", color: "bg-(--info-base-color)" },
+];
 
 /**
  * Reducer para gestionar el estado de las props de un componente.
@@ -226,23 +237,61 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 										</Fragment>
 									))}
 								</div>
-								<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
-									{propConfigs.map((config) => (
-										<Fragment key={config.name}>
-											{config.type === "checkbox" && (
-												<Checkbox
-													label={config.label}
-													positionLabel="right"
-													size="tiny"
-													checked={!!currentProps[config.name]}
-													onChange={(e) =>
-														handlePropChange(config.name, e.target.checked ? config.default : false)
-													}
-												/>
-											)}
-										</Fragment>
-									))}
-								</div>
+								{propConfigs.some((config) => config.type === "checkbox") && (
+									<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
+										{propConfigs.map((config) => (
+											<Fragment key={config.name}>
+												{config.type === "checkbox" && (
+													<Checkbox
+														label={config.label}
+														positionLabel="right"
+														size="tiny"
+														checked={!!currentProps[config.name]}
+														onChange={(e) =>
+															handlePropChange(
+																config.name,
+																e.target.checked ? config.default : false
+															)
+														}
+													/>
+												)}
+											</Fragment>
+										))}
+									</div>
+								)}
+								{propConfigs.some((config) => config.type === "color") && (
+									<div className="flex flex-col items-start gap-2 my-6">
+										<label className="text-xs font-medium text-(--foreground-label-color) ">
+											Color
+										</label>
+										{propConfigs.map((config) => (
+											<Fragment key={config.name}>
+												{config.type === "color" && (
+													<div className="flex flex-wrap gap-2 w-full">
+														{colorOptions.map((option) => (
+															<Tooltip
+																content={
+																	option.value.charAt(0).toUpperCase() + option.value.slice(1)
+																}
+																key={option.value}
+																color="neutral"
+															>
+																<button
+																	className={
+																		option.value === currentProps[config.name]
+																			? `${option.color} text-(--foreground-color) size-6 rounded-xs`
+																			: `${option.color} text-(--foreground-color) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
+																	}
+																	onClick={() => handlePropChange(config.name, option.value)}
+																></button>
+															</Tooltip>
+														))}
+													</div>
+												)}
+											</Fragment>
+										))}
+									</div>
+								)}
 								<div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-2 place-items-start my-6">
 									{propConfigs.map((config) => (
 										<Fragment key={config.name}>
@@ -273,7 +322,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 										</Fragment>
 									))}
 								</div>
-								<div className="flex flex-col items-start gap-3 py-3.5 mb-5 px-1 my-6">
+								<div className="flex flex-col items-start gap-7 py-3.5 mb-5 px-1 my-6">
 									{propConfigs.map((config) => (
 										<Fragment key={config.name}>
 											{config.type === "slider" && config.values && (
@@ -281,29 +330,33 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 													<label className="text-xs font-medium text-(--foreground-label-color) ">
 														{config.label}
 													</label>
-													<Slider
-														size="small"
-														radius="full"
-														min={0}
-														max={config.values.length - 1}
-														formatValue={(value) =>
-															(config.values?.[value].toString().charAt(0).toUpperCase() || "") +
-															(config.values?.[value].toString().slice(1) || "")
-														}
-														value={Number(config!.values!.indexOf(currentProps[config.name]) ?? 0)}
-														onChange={(e) =>
-															handlePropChange(config.name, config!.values![e as number])
-														}
-														onInput={(e) =>
-															handlePropChange(config.name, config!.values![e as number])
-														}
-														marks={config.values?.map((val: any, index: number) => ({
-															value: index,
-															label:
-																String(config.values?.[index]).charAt(0).toUpperCase() +
-																String(config.values?.[index]).slice(1),
-														}))}
-													/>
+													<div className="w-full px-4">
+														<Slider
+															size="small"
+															radius="full"
+															min={0}
+															max={config.values.length - 1}
+															formatValue={(value) =>
+																(config.values?.[value].toString().charAt(0).toUpperCase() || "") +
+																(config.values?.[value].toString().slice(1) || "")
+															}
+															value={Number(
+																config!.values!.indexOf(currentProps[config.name]) ?? 0
+															)}
+															onChange={(e) =>
+																handlePropChange(config.name, config!.values![e as number])
+															}
+															onInput={(e) =>
+																handlePropChange(config.name, config!.values![e as number])
+															}
+															marks={config.values?.map((val: any, index: number) => ({
+																value: index,
+																label:
+																	String(config.values?.[index]).charAt(0).toUpperCase() +
+																	String(config.values?.[index]).slice(1),
+															}))}
+														/>
+													</div>
 												</div>
 											)}
 										</Fragment>
