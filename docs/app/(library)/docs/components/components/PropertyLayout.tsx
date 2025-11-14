@@ -21,7 +21,7 @@ export default function PropertyLayout({
 	code,
 }: PropertyLayoutProps) {
 	return (
-		<article className="pr-3 my-4">
+		<article className="pr-3 my-6">
 			<div className="flex flex-col gap-1 mb-10">
 				<h2
 					id={id}
