@@ -18,7 +18,7 @@
 	outline: none;
 	width: 100%;
 	max-width: max-content;
-	height: 100%;
+	height: max-content;
 	gap: var(--gap-xs);
 
 	& p {
