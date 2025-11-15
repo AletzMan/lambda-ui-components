@@ -3,17 +3,18 @@ import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
 import { Input } from "lambda-ui-components";
 import { Mail, Search, Text, User } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export const InputFeatures = () => {
 	const refInput = useRef<HTMLInputElement>(null);
+	const [value, setValue] = useState("");
 	return (
 		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
 			<PlaygroundLayout<HTMLInputElement>
 				id="playground"
 				title="Playground"
 				componentName="Input"
-				description="Play with the Input component"
+				description="Experiment with all the properties of the Input component in real time."
 				propConfigs={[
 					{
 						name: "placeholder",
@@ -123,7 +124,7 @@ export const InputFeatures = () => {
 			/>
 			<PropertyLayout
 				title="Variants"
-				description="Controls the visual style of the input, such as the border color or background color."
+				description="Defines the visual style of the input, such as a outlined border or a slightly highlighted soft background."
 				propertyName="variant"
 				id="variants"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input variant="outline" placeholder="Outline" />\n<Input variant="soft" placeholder="Soft" />`}
@@ -135,7 +136,7 @@ export const InputFeatures = () => {
 			</PropertyLayout>
 			<PropertyLayout
 				title="Sizes"
-				description="Adjusts the visual size of the input by modifying its height, padding, and text size."
+				description="Adjust the scale of the input by modifying its height, internal spacing, and font size."
 				id="sizes"
 				propertyName="size"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input size="tiny" placeholder="Tiny" />\n<Input size="small" placeholder="Small" />\n<Input size="medium" placeholder="Medium" />\n<Input size="large" placeholder="Large" />`}
@@ -152,7 +153,7 @@ export const InputFeatures = () => {
 				title="Radius"
 				id="radius"
 				propertyName="radius"
-				description="Controls the border curvature of the input, defining how rounded the corners appear."
+				description="Controls the level of rounding on the corners of the input, from straight edges to a fully pill style."
 				code={`import { Input } from "lambda-ui-components";\n\n<Input radius="none" placeholder="None" />\n<Input radius="tiny" placeholder="Tiny" />\n<Input radius="small" placeholder="Small" />\n<Input radius="medium" placeholder="Medium" />\n<Input radius="large" placeholder="Large" />\n<Input radius="full" placeholder="Full" />`}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6 ">
@@ -168,7 +169,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Type"
 				id="type"
-				description="Specifies the native HTML input type (e.g., 'text', 'password', 'email')."
+				description="Specifies the native HTML input type, such as text, password, email, or search."
 				propertyName="type"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input type="text" placeholder="Text" />\n<Input type="email" placeholder="Email" />\n<Input type="password" placeholder="Password" />\n<Input type="search" placeholder="Search" />`}
 			>
@@ -183,7 +184,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Disabled"
 				id="disabled"
-				description="Makes the input non-interactive and visually indicates a disabled state.."
+				description="Disables the input and applies a visual style that indicates it cannot be interacted with."
 				propertyName="disabled"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input placeholder="Disabled" disabled />`}
 			>
@@ -195,7 +196,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Whit Label"
 				id="whit-label"
-				description="Adds a descriptive text label associated with the input field."
+				description="Add descriptive text that identifies the purpose of the field."
 				propertyName="label"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Label" placeholder="Label" />`}
 			>
@@ -207,7 +208,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Floating Label"
 				id="floating-label"
-				description="Enables a floating label animation that moves and shrinks when focused or filled."
+				description="Triggers an animation where the label floats and shrinks when the input is focused or has content."
 				propertyName="floatingLabel"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Label" floatingLabel />`}
 			>
@@ -219,7 +220,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Prefix"
 				id="prefix"
-				description="Displays an element before the input value, such as an icon or text."
+				description="Displays an element before the input value, such as contextual text or a decorative icon."
 				propertyName="prefix"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="With Text" prefix="https://" placeholder="www.example.com" />\n<Input label="With Icon" prefix={<Mail />} placeholder="example@gmail.com" type="email" />`}
 			>
@@ -232,7 +233,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Suffix"
 				id="suffix"
-				description="Displays an element after the input value, such as an icon or text."
+				description="Displays an element after the input value, useful for icons, units, domains, or other add-ons."
 				propertyName="suffix"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="With Text" suffix=".com" placeholder="www.example.com" />\n<Input label="With Icon" suffix={<Settings />} />`}
 			>
@@ -245,7 +246,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Required"
 				id="required"
-				description="Marks the field as required for form validation."
+				description="Indicates that the field is mandatory and must be completed before submitting a form."
 				propertyName="required"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Text" required />`}
 			>
@@ -257,7 +258,7 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Error Message"
 				id="error-message"
-				description="Displays an error message below the input when it's marked as invalid."
+				description="Display an error message below the input when the field is in an invalid state."
 				propertyName="errorMessage"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Text" required errorMessage="Error message" invalid={true} />`}
 			>
@@ -269,12 +270,39 @@ export const InputFeatures = () => {
 			<PropertyLayout
 				title="Helper Text"
 				id="helper-text"
-				description="Displays additional information below the input."
+				description="Provides additional or clarifying information below the input to guide the user."
 				propertyName="helperText"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input label="Text" helperText="Helper text" />`}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6 ">
 					<Input label="Text" helperText="Helper text" />
+				</form>
+			</PropertyLayout>
+
+			<PropertyLayout
+				title="Controlled"
+				id="controlled"
+				description="Allows you to manage the input value from the parent component state (controlled use)."
+				propertyName="value"
+				code={`import { Input } from "lambda-ui-components";
+import { useState } from "react";	
+
+export default function InputControlled() {
+	const [value, setValue] = useState("");
+	return (
+		<form>
+			<Input label="Text" helperText="Helper text" value={value} onChange={(newValue) => setValue(newValue)} />
+		</form>
+	);
+} `}
+			>
+				<form className="flex flex-col gap-4 px-6 py-6 ">
+					<Input
+						label="Text"
+						helperText="Helper text"
+						value={value}
+						onChangeValue={(newValue) => setValue(newValue)}
+					/>
 				</form>
 			</PropertyLayout>
 		</div>
