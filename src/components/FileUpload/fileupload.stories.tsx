@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FileUpload } from "./FileUpload";
 import { FileUploadProps } from "./file-upload-types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useEffect, useState } from "react";
 
 const meta: Meta<typeof FileUpload> = {
 	title: "Components/FileUpload",
@@ -75,7 +76,12 @@ const meta: Meta<typeof FileUpload> = {
 				disable: true,
 			},
 		},
-		onChange: {
+		files: {
+			table: {
+				disable: true,
+			},
+		},
+		onChangeFiles: {
 			table: {
 				disable: true,
 			},
@@ -88,30 +94,28 @@ export default meta;
 type Story = StoryObj<typeof FileUpload>;
 
 const Template = (args: FileUploadProps) => {
+	const [files, setFiles] = useState<File[]>([]);
+
+	useEffect(() => {
+		async function fetchImageAsFile() {
+			const response = await fetch("https://placehold.co/300x300?text=Hello+World");
+			const blob = await response.blob();
+			const file = new File([blob], "placeholder.png", { type: blob.type });
+			setFiles([file]);
+		}
+		fetchImageAsFile();
+	}, []);
+
 	return (
 		<ContainerComponent title="FileUpload" subtitle={args.type?.toString() || ""}>
-			<div
-				style={{
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					width: "100%",
-					height: "100%",
+			<FileUpload
+				{...args}
+				files={files}
+				onChangeFiles={(newFiles) => {
+					console.log("onChangeFiles", newFiles);
+					setFiles(newFiles);
 				}}
-			>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						width: "100%",
-						height: "100%",
-						maxWidth: "60em",
-					}}
-				>
-					<FileUpload {...args} />
-				</div>
-			</div>
+			/>
 		</ContainerComponent>
 	);
 };

@@ -1,5 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, forwardRef, useRef, useCallback, useId, RefObject } from "react";
+import React, {
+	useState,
+	forwardRef,
+	useRef,
+	useCallback,
+	useId,
+	RefObject,
+	useEffect,
+} from "react";
 import clsx from "clsx";
 import { UploadCloudIcon, ImageIcon, Trash2 } from "lucide-react";
 import {
@@ -39,7 +47,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			multiple = false,
 			maxSize,
 			accept,
-			onChange,
+			files,
+			onChangeFiles,
 			onFocus,
 			onBlur,
 			displayMode = "list",
@@ -86,6 +95,19 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			},
 			[ref]
 		);
+
+		// Si files es controlada, sincroniza el estado interno cuando cambia la prop
+		useEffect(() => {
+			if (files) {
+				setInternalSelectedFiles(
+					files.map((file) => ({
+						file,
+						id: `${Date.now()}-${file.name}-${Math.random().toString(36).slice(2, 9)}`,
+						previewUrl: undefined,
+					}))
+				);
+			}
+		}, [files]);
 
 		// Hook para Previsualización: Recibe el estado de archivos seleccionados y añade previewUrl
 		const selectedFilesData = useImagePreviews(internalSelectedFiles);
@@ -173,13 +195,14 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 						newSelectedFilesData = [];
 					}
 				}
-				setInternalSelectedFiles(newSelectedFilesData);
-				onChange?.(event);
-				if (event.target) {
-					event.target.value = "";
+				if (files) {
+					onChangeFiles?.(newSelectedFilesData.map((item) => item.file));
+				} else {
+					setInternalSelectedFiles(newSelectedFilesData);
+					onChangeFiles?.(newSelectedFilesData.map((item) => item.file));
 				}
 			},
-			[multiple, onChange, internalSelectedFiles, accept, isValidFileType, onFilesRejected]
+			[multiple, internalSelectedFiles, accept, isValidFileType, onFilesRejected]
 		);
 
 		// Handler para el click en el área interactiva (drop zone o botón)

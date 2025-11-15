@@ -3,22 +3,23 @@ import { FileUploadVariants } from "./file-upload.variants";
 
 export interface SelectedFileData {
 	/**
-	 * El objeto nativo `File` seleccionado por el usuario.
+	 * The native `File` object selected by the user.
 	 */
 	file: File;
 
 	/**
-	 * Un identificador único para este archivo seleccionado.
-	 * Es útil para operaciones de eliminación o gestión individual de archivos cuando se permite selección múltiple.
+	 * A unique identifier for this file entry.
+	 * Useful for removing or managing individual files when multiple selection is enabled.
 	 */
 	id: string;
 
 	/**
-	 * Opcional: Una URL temporal para previsualizar el archivo (por ejemplo, una URL de datos para imágenes).
-	 * Si el archivo es un tipo que se puede previsualizar (como una imagen), este campo puede contener la URL para mostrar una vista previa.
+	 * Optional temporary preview URL generated for the file (e.g., object URL for images).
+	 * When the file type supports previewing, this value can be used to display a thumbnail.
 	 */
 	previewUrl?: string;
 }
+
 
 export interface FileUploadProps
 	extends Omit<
@@ -35,118 +36,130 @@ export interface FileUploadProps
 		| "aria-labelledby"
 	> {
 	/**
-	 * Define la apariencia visual y el comportamiento principal del componente.
-	 * - 'dropzone': Renderiza un área donde los archivos pueden ser arrastrados y soltados.
-	 * - 'button': Renderiza un botón que, al hacer clic, abre el diálogo de selección de archivos.
+	 * Determines the main appearance and interaction pattern of the component.
+	 * - `dropzone`: Renders an area where users can drag and drop files.
+	 * - `button`: Renders a button that opens the file selection dialog on click.
 	 * @default 'dropzone'
 	 */
 	type?: "dropzone" | "button";
+
 	/**
-	 * Define el tamaño del componente, afectando la dimensión del área de soltar o el botón.
+	 * Controls the visual size of the component, affecting the dropzone area
+	 * or the dimensions of the button.
 	 */
 	size?: FileUploadVariants["size"];
 
 	/**
-	 * Deshabilita el componente, impidiendo la selección de archivos y la interacción de arrastrar y soltar.
+	 * Disables the component, preventing file selection and drag-and-drop interactions.
 	 * @default false
 	 */
 	disabled?: boolean;
 
 	/**
-	 * Indica si el componente está en un estado de validación inválido.
-	 * Esto suele usarse para mostrar estilos de error alrededor del área de soltar o el botón.
+	 * Indicates that the component is in an invalid or error state.
+	 * Commonly used to display error styling around the dropzone or button.
 	 * @default false
 	 */
 	invalid?: boolean;
 
 	/**
-	 * Permite al usuario seleccionar múltiples archivos a la vez.
-	 * Si es `false`, solo se puede seleccionar un archivo.
+	 * Allows selecting multiple files at once.
+	 * When set to `false`, only a single file can be selected.
 	 * @default false
 	 */
 	multiple?: boolean;
 
 	/**
-	 * Especifica los tipos de archivo permitidos (por ejemplo, "image/*", ".pdf", "image/png,image/jpeg").
-	 * Utiliza el formato estándar del atributo `accept` de input.
+	 * Specifies which file types can be selected (e.g., `"image/*"`, `".pdf"`, `"image/png,image/jpeg"`).
+	 * Uses the standard HTML `accept` attribute format.
 	 */
 	accept?: string;
 
 	/**
-	 * Indica si la selección de archivo es obligatoria.
-	 * No añade validación por sí solo, pero puede usarse para estilos o lógica del formulario padre.
+	 * Marks the file selection as required.
+	 * This does not perform validation by itself, but can be used for styling
+	 * or integrated with form libraries for validation logic.
 	 * @default false
 	 */
 	required?: boolean;
 
 	/**
-	 * Etiqueta de texto asociada al componente.
-	 * Si se proporciona, se renderizará típicamente un elemento `<label>` vinculado al componente.
+	 * Label text associated with the component.
+	 * When provided, a `<label>` element will typically be rendered.
 	 */
 	label?: string;
+
 	/**
-	 * Mensaje de error que se muestra cuando `invalid` es true o cuando se rechazan archivos.
-	 * Este texto suele aparecer debajo del componente.
+	 * Error message displayed when `invalid` is true or when file selection fails validation.
+	 * Usually shown below the component.
 	 */
 	errorMessage?: string;
 
 	/**
-	 * Texto de ayuda o descripción adicional que se muestra debajo del componente.
+	 * Secondary descriptive text shown below the component.
+	 * Useful for instructions or validation hints.
 	 */
 	helperText?: string;
 
 	/**
-	 * Tamaño máximo de archivo permitido en bytes.
-	 * Los archivos que excedan este tamaño serán rechazados y se disparará `onFilesRejected`.
+	 * Maximum allowed file size in bytes.
+	 * Files that exceed this limit will be rejected and passed to `onFilesRejected`.
 	 */
 	maxSize?: number;
-
 	/**
-	 * Callback que se dispara cuando el usuario selecciona archivos a través del diálogo de selección.
-	 * Recibe el evento nativo de cambio de input.
+	 * Array of currently selected files.
+	 * Each file is represented by a native `File` object.
 	 */
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	files?: File[];
 
 	/**
-	 * Callback que se dispara cuando un elemento arrastrable entra en el área de soltar.
-	 * Recibe el evento nativo de arrastrar.
+	 * Callback fired when one or more files are selected via the file dialog
+	 * or dropped into the dropzone area.
+	 * Receives an array of selected `File` objects.
+	 */
+	onChangeFiles?: (files: File[]) => void;
+
+	/**
+	 * Callback fired when a draggable item enters the dropzone area.
+	 * Receives the native drag event.
 	 */
 	onDragOver?: (event: React.DragEvent<HTMLElement>) => void;
 
 	/**
-	 * Callback que se dispara cuando un elemento arrastrable sale del área de soltar.
-	 * Recibe el evento nativo de arrastrar.
+	 * Callback fired when a draggable item leaves the dropzone area.
+	 * Receives the native drag event.
 	 */
 	onDragLeave?: (event: React.DragEvent<HTMLElement>) => void;
 
 	/**
-	 * Callback que se dispara cuando se sueltan archivos en el área de soltar.
+	 * Callback fired when files are dropped into the dropzone area.
 	 */
 	onDrop?: (event: React.DragEvent<HTMLElement>) => void;
 
 	/**
-	 * El atributo `name` para el elemento input nativo subyacente.
+	 * Name attribute for the underlying native input element.
 	 */
-	name?: string; // Sobrescribe el name nativo (aunque no estaba omitido)
+	name?: string;
 
 	/**
-	 * Callback que se dispara cuando uno o más archivos son seleccionados pero no cumplen
-	 * con los criterios de validación (por ejemplo, tipo de archivo, tamaño máximo).
-	 * Recibe un array de objetos `File` que fueron rechazados.
+	 * Callback fired when one or more selected files fail validation
+	 * (e.g., unsupported file type or file size exceeds `maxSize`).
+	 * Receives an array of rejected `File` objects.
 	 */
 	onFilesRejected?: (files: File[]) => void;
 
 	/**
-	 * Indica si el componente debe mostrar el tamaño de los archivos seleccionados junto a su nombre.
+	 * Displays the file size next to each selected file.
 	 * @default false
 	 */
 	viewFileSize?: boolean;
 
 	/**
-	 * Define el modo de visualización de los archivos seleccionados.
-	 * - 'list': Muestra una lista de archivos con sus nombres y tamaños.
-	 * - 'thumbnail': Muestra una lista de archivos con miniaturas y nombres.
+	 * Controls how selected files are displayed:
+	 * - `list`: Shows files in a vertical list with name and size.
+	 * - `thumbnail`: Shows files with preview thumbnails when available.
 	 * @default 'list'
 	 */
 	displayMode?: "list" | "thumbnail";
 }
+

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { SelectedFileData } from '../file-upload-types';
+import { useEffect, useMemo, useRef } from "react";
+import { SelectedFileData } from "../file-upload-types";
 
 /**
  * Hook para añadir URLs de previsualización a objetos SelectedFileData y gestionar su limpieza.
@@ -8,49 +8,39 @@ import { SelectedFileData } from '../file-upload-types';
  * @returns {SelectedFileData[]} Array de objetos SelectedFileData con previewUrl añadido para imágenes.
  */
 export function useImagePreviews(selectedFilesData: SelectedFileData[]): SelectedFileData[] {
-    const filesWithPreviews = useMemo(() => {
-        return selectedFilesData.map(item => {
-            if (item.file.type.startsWith('image/') && !item.previewUrl) {
-                try {
-                    return { ...item, previewUrl: URL.createObjectURL(item.file) };
-                } catch (error) {
-                    console.error("Error creating object URL for file:", item.file.name, error);
-                    return item;
-                }
-            }
-            return item;
-        });
-    }, [selectedFilesData]);
+	const filesWithPreviews = useMemo(() => {
+		return selectedFilesData.map((item) => {
+			if (item.file.type.startsWith("image/") && !item.previewUrl) {
+				try {
+					return { ...item, previewUrl: URL.createObjectURL(item.file) };
+				} catch (error) {
+					console.error("Error creating object URL for file:", item.file.name, error);
+					return item;
+				}
+			}
+			return item;
+		});
+	}, [selectedFilesData]);
 
-    const prevFilesWithPreviewsRef = useRef<SelectedFileData[]>([]);
+	const prevFilesWithPreviewsRef = useRef<SelectedFileData[]>([]);
 
-    useEffect(() => {
-        const previousFiles = prevFilesWithPreviewsRef.current;
-        const currentFiles = filesWithPreviews;
+	useEffect(() => {
+		const previousFiles = prevFilesWithPreviewsRef.current;
+		const currentFiles = filesWithPreviews;
 
-        const removedFiles = previousFiles.filter(prevItem =>
-            !currentFiles.some(currentItem => currentItem.id === prevItem.id)
-        );
+		// Revoca los previews de archivos que ya no están
+		const removedFiles = previousFiles.filter(
+			(prevItem) => !currentFiles.some((currentItem) => currentItem.id === prevItem.id)
+		);
 
+		removedFiles.forEach((item) => {
+			if (item.previewUrl && item.previewUrl.startsWith("blob:")) {
+				URL.revokeObjectURL(item.previewUrl);
+			}
+		});
 
-        removedFiles.forEach(item => {
-            if (item.previewUrl && item.previewUrl.startsWith('blob:')) {
-                URL.revokeObjectURL(item.previewUrl);
-            }
-        });
+		prevFilesWithPreviewsRef.current = currentFiles;
+	}, [filesWithPreviews]);
 
-
-        prevFilesWithPreviewsRef.current = currentFiles;
-
-        return () => {
-            prevFilesWithPreviewsRef.current.forEach(item => {
-                if (item.previewUrl && item.previewUrl.startsWith('blob:')) {
-                    URL.revokeObjectURL(item.previewUrl);
-                }
-            });
-        };
-
-    }, [filesWithPreviews]);
-
-    return filesWithPreviews;
+	return filesWithPreviews;
 }
