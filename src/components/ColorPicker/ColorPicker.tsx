@@ -790,7 +790,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													id="lambda-colorpicker-input-hex"
 													name="lambda-colorpicker-input-hex"
 													size="tiny"
-													onChange={handleInputChange}
+													onChangeValue={handleInputChange}
 													className={styles["lambda-colorpicker-input-single"]}
 												/>
 												<Tooltip content={t("color-picker.format")} color="neutral">

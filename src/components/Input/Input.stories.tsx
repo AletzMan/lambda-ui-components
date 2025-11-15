@@ -62,6 +62,10 @@ const meta: Meta<typeof Input> = {
 			control: "boolean",
 			description: "Disables the input and makes it inactive",
 		},
+		onChangeValue: {
+			control: "object",
+			description: "Disables the input and makes it inactive",
+		},
 	},
 };
 

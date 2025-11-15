@@ -34,7 +34,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			suffix,
 			type = "text",
 			value: controlledValue,
-			onChange,
+			onChangeValue,
 			required,
 			floatingLabel,
 			placeholder,
@@ -85,7 +85,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		const clearInput = () => {
 			if (isSearchType) {
 				if (!isControlled) setInternalValue("");
-				if (onChange) onChange("");
+				if (onChangeValue) onChangeValue("");
 			}
 		};
 
@@ -94,8 +94,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			if (!isControlled) {
 				setInternalValue(newValue);
 			}
-			if (onChange) {
-				onChange(e.currentTarget.value);
+			if (onChangeValue) {
+				onChangeValue(e.currentTarget.value);
 			}
 			if (floatingLabel) {
 				setIsLabelFloating(!!newValue || isFocused);

@@ -3,7 +3,7 @@ import { InputVariants } from "./input.variants";
 export interface InputProps
 	extends Omit<
 		React.InputHTMLAttributes<HTMLInputElement>,
-		"disabled" | "size" | "type" | "onChange" | "value" | "placeholder" | "prefix" | "suffix"
+		"disabled" | "size" | "type" | "value" | "placeholder" | "prefix" | "suffix"
 	> {
 	/**
 	 * Define el tamaño visual del input, ajustando el padding y el tamaño del texto.
@@ -73,7 +73,7 @@ export interface InputProps
 	/**
 	 * Una función que se ejecuta cada vez que el texto en el input es modificado por el usuario. Recibe el valor actual del input como un string.
 	 */
-	onChange?: (value: string) => void;
+	onChangeValue?: (value: string) => void;
 
 	/**
 	 * El texto actual que debe mostrar el input. Al usar esta prop, controlas el valor desde el componente padre.

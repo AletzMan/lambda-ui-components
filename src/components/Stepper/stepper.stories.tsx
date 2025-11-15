@@ -290,7 +290,7 @@ const TemplateValidation = (args: StepperProps) => {
 								type="text"
 								label="Nombre"
 								placeholder="Nombre requerido para avanzar:"
-								onChange={(value) => handleStepClick(value, "name")}
+								onChangeValue={(value) => handleStepClick(value, "name")}
 								value={nombreUsuario}
 								invalid={errorName}
 							/>
@@ -330,7 +330,7 @@ const TemplateValidation = (args: StepperProps) => {
 								type="text"
 								label="Dirección"
 								placeholder="Dirección requerida para avanzar:"
-								onChange={(value) => handleStepClick(value, "direction")}
+								onChangeValue={(value) => handleStepClick(value, "direction")}
 								value={direction}
 								invalid={errorDirection}
 							/>
@@ -370,7 +370,7 @@ const TemplateValidation = (args: StepperProps) => {
 								type="text"
 								label="Pago"
 								placeholder="Pago requerido para avanzar:"
-								onChange={(value) => handleStepClick(value, "payment")}
+								onChangeValue={(value) => handleStepClick(value, "payment")}
 								value={payment}
 								invalid={errorPayment}
 							/>
