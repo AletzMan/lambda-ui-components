@@ -226,7 +226,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 													label={config.label}
 													size="tiny"
 													value={Number(currentProps[config.name] ?? "")} // Asegura string para input value
-													onChange={(e) => {
+													onChangeValue={(e) => {
 														handlePropChange(config.name, e);
 													}}
 												/>
