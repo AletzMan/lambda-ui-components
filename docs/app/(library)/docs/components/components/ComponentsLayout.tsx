@@ -28,7 +28,7 @@ export const ComponentsLayout = ({
 }: ComponentsLayoutProps) => {
 	const activeId = useActiveSectionObserver({ selectors: "h2", rootMargin: "72px 0px -80% 0px" });
 	return (
-		<section className="relative flex flex-col gap-10 px-6 py-4">
+		<section className="relative flex flex-col gap-10 px-6 py-4 w-full ">
 			<header className="mb-10 text-center ">
 				<h1 className="flex items-center gap-2 text-4xl font-bold text-left tracking-tight text-(--primary-base-color) mb-1 w-full ">
 					{title}
@@ -42,7 +42,7 @@ export const ComponentsLayout = ({
 			<div className="flex flex-col gap-10">
 				<div className="sticky top-20 bg-(--surface-a) backdrop-blur-[5px] p-1 ">
 					<div className="grid grid-cols-[1fr_250px] max-[1220px]:grid-cols-1">
-						<div className="flex flex-col gap-10 max-w-[1150px] mx-auto">
+						<div className="flex flex-col gap-10 max-w-[1150px] mx-auto w-full">
 							{children}
 
 							<BarNavButton buttonLeft={buttonLeft} buttonRight={buttonRight} />

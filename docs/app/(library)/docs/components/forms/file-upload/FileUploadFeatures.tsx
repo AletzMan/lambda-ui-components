@@ -3,14 +3,39 @@
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
 import { FileUpload } from "lambda-ui-components";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const FileUploadFeatures = () => {
 	// ref para el dropzone / button wrapper
 	const refInput = useRef<HTMLInputElement>(null);
 
 	// estado controlado de archivos
-	const [files, setFiles] = useState<File[] | null>(null);
+	const [files, setFiles] = useState<File[]>([]);
+	const [filesPreview, setFilesPreview] = useState<File[]>([]);
+	const [filesPlayground, setFilesPlayground] = useState<File[]>([]);
+
+	useEffect(() => {
+		async function fetchImageAsFile() {
+			const response = await fetch("https://placehold.co/300x300?text=Hello+World");
+			const blob = await response.blob();
+			const file = new File([blob], "placeholder.png", { type: blob.type });
+			setFiles([file]);
+		}
+		fetchImageAsFile();
+	}, []);
+
+	useEffect(() => {
+		async function fetchImageAsFile() {
+			const response = await fetch("https://placehold.co/300x300?text=Hello");
+			const blob = await response.blob();
+			const file = new File([blob], "placeholder.png", { type: blob.type });
+			const responseTwo = await fetch("https://placehold.co/300x300?text=World");
+			const blobTwo = await responseTwo.blob();
+			const fileTwo = new File([blobTwo], "placeholderTwo.png", { type: blobTwo.type });
+			setFilesPreview([file, fileTwo]);
+		}
+		fetchImageAsFile();
+	}, []);
 
 	return (
 		<div className="flex flex-col gap-3 pl-2.5 pt-2.5">
@@ -67,10 +92,24 @@ export const FileUploadFeatures = () => {
 						label: "Label",
 					},
 					{
+						name: "helperText",
+						type: "string",
+						defaultValue: "Helper Text",
+						default: "Helper Text",
+						label: "Helper Text",
+					},
+					{
+						name: "errorMessage",
+						type: "string",
+						defaultValue: "Error Message",
+						default: "Error Message",
+						label: "Error Message",
+					},
+					{
 						name: "accept",
 						type: "string",
-						defaultValue: "",
-						default: "",
+						defaultValue: ".png,.jpg,.jpeg",
+						default: ".png,.jpg,.jpeg",
 						label: "Accept",
 					},
 					{
@@ -104,7 +143,7 @@ export const FileUploadFeatures = () => {
 				]}
 				componentRef={refInput}
 			>
-				<FileUpload ref={refInput} onChange={(e) => setFiles(Array.from(e.target.files || []))} />
+				<FileUpload ref={refInput} files={filesPlayground} onChangeFiles={setFilesPlayground} />
 			</PlaygroundLayout>
 
 			{/* USAGE */}
@@ -119,16 +158,13 @@ export default function App() {
 
 	return (
 		<form className="flex flex-col gap-4">
-			<FileUpload
-				multiple
-				onChange={setFiles}
-			/>
+			<FileUpload files={files} onChangeFiles={setFiles} />
 		</form>
 	);
 }`}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload multiple onChange={(e) => setFiles(Array.from(e.target.files || []))} />
+					<FileUpload />
 				</form>
 			</PropertyLayout>
 
@@ -138,12 +174,23 @@ export default function App() {
 				id="type"
 				propertyName="type"
 				description="Controls whether the component behaves as a dropzone or a button."
-				code={`<FileUpload type="dropzone" />
-<FileUpload type="button" />`}
+				code={`import { FileUpload } from "lambda-ui-components";
+import { useState } from "react";
+					
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+					
+	return (
+		<form className="flex flex-col gap-4">
+			<FileUpload files={files} onChangeFiles={setFiles} />
+			<FileUpload type="button" files={files} onChangeFiles={setFiles} />
+		</form>
+	);	
+}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload type="dropzone" label="Dropzone" />
-					<FileUpload type="button" label="Button" />
+					<FileUpload label="Dropzone" files={files} onChangeFiles={setFiles} />
+					<FileUpload type="button" label="Button" files={files} onChangeFiles={setFiles} />
 				</div>
 			</PropertyLayout>
 
@@ -153,9 +200,18 @@ export default function App() {
 				id="size"
 				description="Adjusts the component size."
 				propertyName="size"
-				code={`<FileUpload size="small" />
-<FileUpload size="medium" />
-<FileUpload size="large" />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+		<FileUpload files={files} onChangeFiles={setFiles} size="small" label="Small" />
+		<FileUpload files={files} onChangeFiles={setFiles} label="Medium" />
+		<FileUpload files={files} onChangeFiles={setFiles} size="large" label="Large" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
 					<FileUpload size="small" label="Small" />
@@ -170,10 +226,24 @@ export default function App() {
 				id="multiple"
 				description="Allows selecting multiple files."
 				propertyName="multiple"
-				code={`<FileUpload multiple />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+		<FileUpload files={files} onChangeFiles={setFiles} multiple label="Multiple Files" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload multiple label="Multiple Files" />
+					<FileUpload
+						multiple
+						label="Multiple Files"
+						files={filesPreview}
+						onChangeFiles={setFilesPreview}
+					/>
 				</div>
 			</PropertyLayout>
 
@@ -183,10 +253,19 @@ export default function App() {
 				id="accept"
 				description="Controls which file types the user can select."
 				propertyName="accept"
-				code={`<FileUpload accept="image/*" />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+		<FileUpload files={files} onChangeFiles={setFiles} accept="image/*" helperText="Only images are allowed" label="Images Only" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload accept="image/*" label="Images Only" />
+					<FileUpload accept="image/*" label="Images Only" helperText="Only images are allowed" />
 				</div>
 			</PropertyLayout>
 
@@ -196,10 +275,19 @@ export default function App() {
 				id="maxSize"
 				description="Rejects files that exceed the provided maximum size."
 				propertyName="maxSize"
-				code={`<FileUpload maxSize={2000000} /> // 2MB`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+		<FileUpload files={files} onChangeFiles={setFiles} maxSize={2000000} viewFileSize label="Max Size: 1.91MB" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload maxSize={2000000} label="Max Size: 2MB" />
+					<FileUpload maxSize={2000000} viewFileSize label="Max Size: 1.91MB" />
 				</div>
 			</PropertyLayout>
 
@@ -209,11 +297,33 @@ export default function App() {
 				id="displayMode"
 				description="How selected files are displayed: list or thumbnail."
 				propertyName="displayMode"
-				code={`<FileUpload displayMode="thumbnail" />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+		<FileUpload files={files} onChangeFiles={setFiles} multiple label="List Mode" />
+		<FileUpload files={files} onChangeFiles={setFiles} displayMode="thumbnail" multiple label="Thumbnail Mode" /> 
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload displayMode="list" label="List Mode" />
-					<FileUpload displayMode="thumbnail" label="Thumbnail Mode" />
+					<FileUpload
+						displayMode="list"
+						label="List Mode"
+						multiple
+						files={filesPreview}
+						onChangeFiles={setFilesPreview}
+					/>
+					<FileUpload
+						displayMode="thumbnail"
+						label="Thumbnail Mode"
+						multiple
+						files={filesPreview}
+						onChangeFiles={setFilesPreview}
+					/>
 				</div>
 			</PropertyLayout>
 
@@ -223,10 +333,19 @@ export default function App() {
 				id="viewFileSize"
 				description="Shows the file size next to each filename."
 				propertyName="viewFileSize"
-				code={`<FileUpload viewFileSize />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+	<FileUpload files={files} onChangeFiles={setFiles} viewFileSize maxSize={2000000} label="Showing File Size" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload viewFileSize label="Showing File Size" />
+					<FileUpload viewFileSize maxSize={2000000} label="Showing File Size" />
 				</div>
 			</PropertyLayout>
 
@@ -236,7 +355,16 @@ export default function App() {
 				id="helperText"
 				description="Displays helper text below the component."
 				propertyName="helperText"
-				code={`<FileUpload helperText="Max 2MB" />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+	<FileUpload files={files} onChangeFiles={setFiles} helperText="Max 2MB" label="Upload File" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
 					<FileUpload helperText="Max 2MB" label="Upload File" />
@@ -249,10 +377,19 @@ export default function App() {
 				id="invalid"
 				description="Shows error styling."
 				propertyName="invalid"
-				code={`<FileUpload invalid />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+	<FileUpload files={files} onChangeFiles={setFiles} invalid errorMessage="File too large" label="Invalid State" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload invalid label="Invalid State" />
+					<FileUpload invalid errorMessage="File too large" label="Invalid State" />
 				</div>
 			</PropertyLayout>
 
@@ -262,7 +399,16 @@ export default function App() {
 				id="errorMessage"
 				description="Displays an error message under the component."
 				propertyName="errorMessage"
-				code={`<FileUpload invalid errorMessage="File too large" />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+	<FileUpload files={files} onChangeFiles={setFiles} invalid errorMessage="File too large" label="With Error Message" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
 					<FileUpload invalid errorMessage="File too large" label="With Error Message" />
@@ -275,7 +421,16 @@ export default function App() {
 				id="disabled"
 				description="Prevents user interaction."
 				propertyName="disabled"
-				code={`<FileUpload disabled />`}
+				code={`import { useState } from "react";
+
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+	<FileUpload files={files} onChangeFiles={setFiles} disabled label="Disabled FileUpload" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
 					<FileUpload disabled label="Disabled FileUpload" />
@@ -288,15 +443,19 @@ export default function App() {
 				id="controlled"
 				description="Control the selected files using value and onChange."
 				propertyName="onChange"
-				code={`const [files, setFiles] = useState<File[] | null>(null);
+				code={`import { useState } from "react";
 
-<FileUpload onChange={(e) => setFiles(Array.from(e.target.files || []))} />`}
+export default function App() {
+const [files, setFiles] = useState<File[] | null>(null);
+
+return (
+	<form className="flex flex-col gap-4">
+	<FileUpload files={files} onChangeFiles={setFiles} label="Controlled" />
+	</form>
+);}`}
 			>
 				<div className="flex flex-col gap-4 px-6 py-6">
-					<FileUpload
-						label="Controlled"
-						onChange={(e) => setFiles(Array.from(e.target.files || []))}
-					/>
+					<FileUpload label="Controlled" files={files} onChangeFiles={setFiles} />
 				</div>
 			</PropertyLayout>
 		</div>
