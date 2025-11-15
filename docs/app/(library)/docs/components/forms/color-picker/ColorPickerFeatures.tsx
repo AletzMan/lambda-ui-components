@@ -14,7 +14,7 @@ export const ColorPickerFeatures = () => {
 				id="playground"
 				title="Playground"
 				componentName="ColorPicker"
-				description="Play with the ColorPicker component"
+				description="Experiment with all the properties of the ColorPicker component in real time."
 				propConfigs={[
 					{
 						name: "size",

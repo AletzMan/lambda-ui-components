@@ -24,7 +24,7 @@ export const DatePickerFeatures = () => {
 				title="Playground"
 				// 3. Cambiar nombres
 				componentName="DatePicker"
-				description="Play with the DatePicker component"
+				description="Experiment with all the properties of the DatePicker component in real time."
 				propConfigs={[
 					{
 						name: "size",

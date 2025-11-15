@@ -44,7 +44,7 @@ export const FileUploadFeatures = () => {
 				id="playground"
 				title="Playground"
 				componentName="FileUpload"
-				description="Play with the FileUpload component"
+				description="Experiment with all the properties of the FileUpload component in real time."
 				propConfigs={[
 					{
 						name: "type",

@@ -14,7 +14,7 @@ export const CheckboxFeatures = () => {
 				id="playground"
 				title="Playground"
 				componentName="Checkbox"
-				description="Play with the Checkbox component"
+				description="Experiment with all the properties of the Checkbox component in real time."
 				propConfigs={[
 					{ name: "label", type: "string", defaultValue: "Label", default: "", label: "Label" },
 					{
