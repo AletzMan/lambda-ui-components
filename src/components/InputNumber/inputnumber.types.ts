@@ -71,9 +71,14 @@ export interface InputNumberProps
 	required?: boolean;
 
 	/**
+	 * Define el valor por defecto del input numérico.
+	 */
+	defaultValue?: number;
+
+	/**
 	 * Una función que se ejecuta cada vez que el número en el input es modificado por el usuario. Recibe el nuevo valor numérico.
 	 */
-	onChange?: (value: number | undefined) => void;
+	onChangeValue?: (value: number) => void;
 
 	/**
 	 * El valor numérico actual que el input debe mostrar. Al usar esta prop, controlas el valor desde el componente padre.

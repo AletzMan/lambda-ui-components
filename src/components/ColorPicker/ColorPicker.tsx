@@ -775,7 +775,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											value={alpha}
 											min={0}
 											max={100}
-											onChange={(value) => {
+											onChangeValue={(value) => {
 												setAlpha(Math.min(100, Math.max(0, value || 0)));
 											}}
 											size="tiny"
@@ -811,14 +811,14 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													size="tiny"
 													min={0}
 													max={format === "hsl" ? 360 : 255}
-													onChange={(value) =>
+													onChangeValue={(value) =>
 														handleSingleInputChange(value, format === "hsl" ? "h" : "r")
 													}
 													className={styles["lambda-colorpicker-input-multiple"]}
 												/>
 												<InputNumber
 													value={format === "hsl" ? s : rgbValues.g}
-													onChange={(value) =>
+													onChangeValue={(value) =>
 														handleSingleInputChange(value, format === "hsl" ? "s" : "g")
 													}
 													min={0}
@@ -828,7 +828,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 												/>
 												<InputNumber
 													value={format === "hsl" ? l : rgbValues.b}
-													onChange={(value) =>
+													onChangeValue={(value) =>
 														handleSingleInputChange(value, format === "hsl" ? "l" : "b")
 													}
 													min={0}

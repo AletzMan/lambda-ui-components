@@ -8,7 +8,8 @@ const DEFAULT_STEP = 1;
 
 export function useNumberInput({
 	controlledValue,
-	onChange,
+	onChangeValue,
+	defaultValue,
 	min = DEFAULT_MIN,
 	max = DEFAULT_MAX,
 	step = DEFAULT_STEP,
@@ -16,7 +17,8 @@ export function useNumberInput({
 	disabled,
 }: {
 	controlledValue: number | undefined;
-	onChange?: (value: number | undefined) => void;
+	onChangeValue?: (value: number) => void;
+	defaultValue?: number;
 	min?: number;
 	max?: number;
 	step?: number;
@@ -24,7 +26,7 @@ export function useNumberInput({
 	disabled?: boolean;
 }) {
 	const [internalValue, setInternalValue] = useState<string>(
-		controlledValue !== undefined && controlledValue !== null ? controlledValue.toString() : ""
+		defaultValue !== undefined && defaultValue !== null ? defaultValue.toString() : ""
 	);
 	const [isEditing, setIsEditing] = useState(false);
 	const isControlled = controlledValue !== undefined && controlledValue !== null;
@@ -48,7 +50,7 @@ export function useNumberInput({
 		formatValue: ((_value: number | undefined | null) => "") as (
 			value: number | undefined | null
 		) => string,
-		onChange: undefined as ((value: number | undefined) => void) | undefined,
+		onChangeValue: undefined as ((value: number) => void) | undefined,
 	});
 
 	// --- Efecto para mantener latestValuesRef actualizado ---
@@ -74,9 +76,9 @@ export function useNumberInput({
 			numericValue: isNaN(currentNumericValue) ? undefined : currentNumericValue,
 			parseValue: parseValue, // Asignar la función useCallback real aquí
 			formatValue: formatValue, // Asignar la función useCallback real aquí
-			onChange: onChange, // Asignar la función useCallback real aquí
+			onChangeValue: onChangeValue, // Asignar la función useCallback real aquí
 		};
-	}, [isEditing, internalValue, isControlled, controlledValue, min, max, step, onChange]);
+	}, [isEditing, internalValue, isControlled, controlledValue, min, max, step, onChangeValue]);
 
 	// --- Funciones de Parseo y Formato ---
 	const formatValue = useCallback(
@@ -127,15 +129,15 @@ export function useNumberInput({
 			setInternalValue(parsedValue);
 
 			if (parsedValue === "" || parsedValue === "-") {
-				onChange?.(undefined);
+				onChangeValue?.(0);
 			} else {
 				const numericValue = Number(parsedValue);
 				if (!isNaN(numericValue)) {
-					onChange?.(numericValue);
+					onChangeValue?.(numericValue);
 				}
 			}
 		},
-		[onChange, parseValue]
+		[onChangeValue, parseValue]
 	);
 
 	const handleBlur = useCallback(() => {
@@ -152,18 +154,27 @@ export function useNumberInput({
 
 			if (isControlled) {
 				if (finalNumericValue !== controlledValue) {
-					onChange?.(finalNumericValue);
+					onChangeValue?.(finalNumericValue);
 				} else {
 					setInternalValue(formatValue(controlledValue));
 				}
 			} else {
-				onChange?.(finalNumericValue);
+				onChangeValue?.(finalNumericValue);
 			}
 		} else {
 			setInternalValue("");
-			onChange?.(undefined);
+			onChangeValue?.(0);
 		}
-	}, [internalValue, onChange, parseValue, formatValue, min, max, isControlled, controlledValue]);
+	}, [
+		internalValue,
+		onChangeValue,
+		parseValue,
+		formatValue,
+		min,
+		max,
+		isControlled,
+		controlledValue,
+	]);
 
 	const handleFocus = useCallback(() => {
 		setIsEditing(true);
@@ -189,7 +200,7 @@ export function useNumberInput({
 			step: latestStep,
 			numericValue: latestNumericValue,
 			parseValue: latestParseValue,
-			onChange: latestOnChange,
+			onChangeValue: latestOnChangeValue,
 			formatValue: latestFormatValue,
 		} = latestValuesRef.current;
 
@@ -205,7 +216,7 @@ export function useNumberInput({
 		const newValue = Math.max(Number(latestMin), currentNumericValue - Number(latestStep));
 
 		// Llamar a la última versión de onChange
-		latestOnChange?.(newValue);
+		latestOnChangeValue?.(newValue);
 
 		// Si NO es controlado, actualizamos internalValue localmente para feedback visual inmediato.
 		// Esto es seguro porque performDecrementStep se llama desde el intervalo,
@@ -226,7 +237,7 @@ export function useNumberInput({
 			step: latestStep,
 			numericValue: latestNumericValue,
 			parseValue: latestParseValue,
-			onChange: latestOnChange,
+			onChangeValue: latestOnChangeValue,
 			formatValue: latestFormatValue,
 		} = latestValuesRef.current;
 
@@ -239,7 +250,7 @@ export function useNumberInput({
 				: Number(latestParseValue(latestInternalValue)) || 0;
 
 		const newValue = Math.min(Number(latestMax), currentNumericValue + Number(latestStep));
-		latestOnChange?.(newValue);
+		latestOnChangeValue?.(newValue);
 
 		if (!latestIsControlled) {
 			setInternalValue(latestFormatValue(newValue));

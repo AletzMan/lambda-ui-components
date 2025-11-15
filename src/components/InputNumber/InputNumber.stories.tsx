@@ -49,7 +49,7 @@ const meta: Meta<typeof InputNumber> = {
 			control: "boolean",
 			description: "Disables the input and makes it inactive",
 		},
-		onChange: { action: "onChange" },
+		onChangeValue: { action: "onChangeValue" },
 	},
 };
 
@@ -135,7 +135,7 @@ export const Outline: Story = {
 		errorMessage: "This is a sample error message for demonstration",
 		placeholder: "0",
 		disabled: false,
-		onChange: action("onChange"),
+		onChangeValue: action("onChangeValue"),
 	},
 };
 
@@ -156,6 +156,6 @@ export const Soft: Story = {
 		errorMessage: "This is a sample error message for demonstration",
 		placeholder: "0",
 		disabled: false,
-		onChange: action("onChange"),
+		onChangeValue: action("onChangeValue"),
 	},
 };

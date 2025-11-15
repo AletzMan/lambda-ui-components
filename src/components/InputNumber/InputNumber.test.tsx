@@ -21,7 +21,7 @@ describe("InputNumber", () => {
 
 	test("calls onChange when typing", () => {
 		const handleChange = vi.fn();
-		renderWithProvider(<InputNumber onChange={handleChange} />);
+		renderWithProvider(<InputNumber onChangeValue={handleChange} />);
 		const input = screen.getByRole("number");
 		fireEvent.change(input, { target: { value: "123" } });
 		expect(handleChange).toHaveBeenCalled();

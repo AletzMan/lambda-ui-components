@@ -44,7 +44,8 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 			step = 1,
 			value: controlledValue,
 			typeNumber = "default",
-			onChange,
+			defaultValue,
+			onChangeValue,
 			joinposition,
 			...props
 		},
@@ -74,7 +75,8 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 			stopDecrementing,
 		} = useNumberInput({
 			controlledValue,
-			onChange,
+			onChangeValue,
+			defaultValue,
 			min: min ?? Number.MIN_SAFE_INTEGER,
 			max: max ?? Number.MAX_SAFE_INTEGER,
 			step: step ?? 1,
