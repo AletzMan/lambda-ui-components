@@ -6,87 +6,92 @@ export interface InputNumberProps
 		"disabled" | "size" | "type" | "onChange" | "value" | "min" | "max" | "step"
 	> {
 	/**
-	 * Controla el estilo visual del input numérico, como el color del borde o el fondo.
-	 */
+ * Controls the visual style of the numeric input, such as border color or background.
+ */
 	variant?: InputNumberVariants["variant"];
 
 	/**
-	 * Define el tamaño visual del input, ajustando el padding y el tamaño del texto.
+	 * Sets the visual size of the input, adjusting padding and text size.
 	 */
 	size?: InputNumberVariants["size"];
 
 	/**
-	 * Define el radio de los bordes del input.
+	 * Defines the border radius applied to the input.
 	 */
 	radius?: InputNumberVariants["radius"];
 
 	/**
-	 * Activa un estado visual de error o inválido para el input, típicamente cambiando el color del borde a rojo.
+	 * Enables an error or invalid visual state, typically changing the border color to red.
 	 */
 	invalid?: InputNumberVariants["invalid"];
 
 	/**
-	 * Desactiva completamente el input, haciendo que no se pueda interactuar con él y cambiando su apariencia para indicar que no está disponible.
+	 * Disables the input entirely, preventing interaction and applying a disabled appearance.
 	 */
 	disabled?: InputNumberVariants["disabled"];
 
 	/**
-	 * (Esta prop específica depende de la implementación interna). Define un subtipo o variación dentro de la funcionalidad de entrada numérica que ofrece este componente.
+	 * (Implementation-specific) Defines an internal subtype or variation of the numeric input component.
 	 */
 	typeNumber?: InputNumberVariants["typeNumber"];
 
 	/**
-	 * Establece el valor numérico más bajo que el usuario puede introducir o seleccionar.
+	 * Specifies the minimum numeric value the user is allowed to enter.
 	 */
 	min?: number;
 
 	/**
-	 * Establece el valor numérico más alto que el usuario puede introducir o seleccionar.
+	 * Specifies the maximum numeric value the user is allowed to enter.
 	 */
 	max?: number;
 
 	/**
-	 * Determina en qué incrementos cambia el valor al usar los controles de paso (como las flechas hacia arriba/abajo) o al validar múltiplos.
+	 * Determines the increment by which the value changes when using step controls
+	 * (such as arrow buttons) or validating step multiples.
 	 */
 	step?: number;
 
 	/**
-	 * Un texto que sirve como etiqueta descriptiva visible para el input, ayudando al usuario a identificar su propósito.
+	 * A visible text label that describes the purpose of the numeric input.
 	 */
 	label?: string;
 
 	/**
-	 * Un mensaje de texto que aparece debajo del input cuando está marcado como inválido (`invalid={true}`).
+	 * A message displayed below the input when it is marked as invalid (`invalid={true}`).
 	 */
 	errorMessage?: string;
 
 	/**
-	 * Texto adicional que se muestra debajo del input para proporcionar ayuda o contexto al usuario sobre cómo usarlo.
+	 * Additional text displayed below the input to provide guidance or context for the user.
 	 */
 	helperText?: string;
 
 	/**
-	 * Indica que este campo es obligatorio para completar un formulario. Visualmente, podría añadir un asterisco.
+	 * Indicates that this field is required in order to submit a form.  
+	 * Visually, it may display an asterisk.
 	 */
 	required?: boolean;
 
 	/**
-	 * Define el valor por defecto del input numérico.
+	 * Sets the default numeric value for the input when it is initially rendered.
 	 */
 	defaultValue?: number;
 
 	/**
-	 * Una función que se ejecuta cada vez que el número en el input es modificado por el usuario. Recibe el nuevo valor numérico.
+	 * Function called whenever the numeric value is changed by the user.
+	 * Receives the updated number.
 	 */
 	onChangeValue?: (value: number) => void;
 
 	/**
-	 * El valor numérico actual que el input debe mostrar. Al usar esta prop, controlas el valor desde el componente padre.
+	 * The current numeric value to be displayed in the input.
+	 * When provided, the component becomes controlled by the parent.
 	 */
 	value?: number;
 
 	/**
-	 * Indica la posición del input dentro de un grupo(join).
+	 * Indicates the input's position when used inside a joined input group.
 	 */
 	joinposition?: "first" | "last" | "middle";
+
 }
