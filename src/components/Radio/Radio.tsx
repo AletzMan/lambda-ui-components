@@ -41,7 +41,7 @@ export type RadioGroupContextType = {
 	radiusCard: RadioVariants["radius"];
 	variant: RadioGroupVariants["variant"];
 	orientation: RadioGroupVariants["orientation"];
-	showRadio: boolean;
+	hideRadio: boolean;
 	disabled: boolean;
 	type: RadioGroupVariants["type"];
 };
@@ -66,7 +66,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	color,
 	variant,
 	disabled = false,
-	showRadio = false,
+	hideRadio = false,
 	orientation,
 	gap = "8px",
 	children,
@@ -118,7 +118,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			color,
 			radiusSelector: radiusValueSelector,
 			radiusCard: radiusValueCard,
-			showRadio,
+			hideRadio,
 			variant,
 			orientation,
 			disabled,
@@ -135,7 +135,7 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			radiusSelector,
 			radiusBox,
 			radius,
-			showRadio,
+			hideRadio,
 			orientation,
 			disabled,
 			inferredType,
@@ -204,7 +204,7 @@ const RadioComponent = forwardRef<
 			orientation,
 			radiusSelector,
 			radiusCard,
-			showRadio,
+			hideRadio,
 			onChange,
 			disabled: groupDisabled,
 			name,
@@ -316,7 +316,7 @@ const RadioComponent = forwardRef<
 					>
 						<header className={styles["lambda-radio-card-header"]}>
 							<h1>{title}</h1>
-							{showRadio && (
+							{hideRadio && (
 								<div
 									className={view({
 										variant,
