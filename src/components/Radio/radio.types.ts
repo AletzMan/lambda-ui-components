@@ -3,69 +3,71 @@ import { RadioGroupVariants, RadioVariants } from "./radio.variants";
 
 export interface RadioGroupProps {
 	/**
-	 * Define la dirección en la que se colocan los botones de radio dentro del grupo (horizontal o vertical).
+	 * 	
 	 */
 	orientation?: RadioGroupVariants["orientation"];
 
 	/**
-	 * Controla el tamaño general del grupo y puede influir en el tamaño de los botones de radio individuales dentro de él.
+	 * Controls the overall size of the radio group and its influence on individual radio buttons.
 	 */
 	size?: RadioGroupVariants["size"];
 
 	/**
-	 * Controla el radio general del grupo y puede influir en el radio de los botones de radio individuales dentro de él.
+	 * Sets the border radius for the group, typically affecting the visual container or the radios themselves.
 	 */
 	radius?: RadioGroupVariants["radius"];
 
 	/**
-	 * Establece el esquema de color para todos los botones de radio dentro del grupo.
+	 * Establishes the color scheme for all contained radio buttons.
 	 */
 	color?: RadioGroupVariants["color"];
 
 	/**
-	 * Controla el estilo visual general del grupo de radios.
+	 * Controls the general visual style or aesthetic of the radio group (e.g., 'solid', 'outline').
 	 */
 	variant?: RadioGroupVariants["variant"];
 
 	/**
-	 * Controla si se muestra el radio o no.
+	 * Controls the visibility of the radio input circle/dot itself.
 	 * @default true
 	 */
 	showRadio?: boolean;
 
 	/**
-	 * Deshabilita todos los botones de radio individuales contenidos dentro de este grupo.
+	 * If set to true, disables all individual radio buttons within this group.
 	 * @default false
 	 */
 	disabled?: boolean;
 
 	/**
-	 * El atributo `name` que se aplicará a todos los botones de radio individuales dentro del grupo.
-	 * Es esencial para que el navegador los trate como un grupo donde solo uno puede ser seleccionado a la vez.
+	 * The HTML `name` attribute applied to all radio buttons. Essential for grouping and ensuring only one option can be selected at a time.
 	 */
 	name?: string;
 
 	/**
-	 * El `value` de la opción de radio que actualmente está seleccionada en el grupo (para usar como componente controlado).
+	 * The currently selected radio button's `value` (for use as a controlled component).
 	 */
 	selectedOption?: string;
 
 	/**
-	 * Una función que se ejecuta cuando el usuario selecciona un botón de radio diferente en el grupo. Recibe el `value` del radio seleccionado.
+	 * Callback function executed when the user selects a different radio button. Receives the `value` of the newly selected radio.
 	 */
 	onChange?: (value: string) => void;
 
 	/**
-	 * El `value` de la opción de radio que estará seleccionada por defecto cuando el componente se monte (para usar como componente no controlado).
+	 * The initial selected `value` when the component is first mounted (for use as an uncontrolled component).
 	 */
 	defaultValue?: string;
 
 	/**
-	 * Define el espacio entre los botones de radio individuales dentro del grupo, usando un valor CSS válido (ej. '8px', '1rem').
+	 * Defines the spacing (margin) between individual radio buttons inside the group, using a valid CSS value (e.g., '8px', '1rem').
 	 */
 	gap?: string;
 
-	// Además de estas, el RadioGroup aceptará los botones de radio individuales como `children`.
+	/**
+	 * The individual radio buttons (`<Radio />`) passed as children to the group.
+	 */
+	children: React.ReactNode;
 }
 
 export interface RadioProps
@@ -74,23 +76,23 @@ export interface RadioProps
 		"size" | "disabled" | "checked" | "color" | "type" | "value"
 	> {
 	/**
-	 * Controla dónde se coloca la etiqueta de texto (`label`) en relación con el control de radio (por ejemplo, a la izquierda o a la derecha).
+	 * Controls the placement of the text label (`label`) relative to the radio control (e.g., 'left' or 'right').
 	 */
 	positionLabel?: RadioVariants["positionLabel"];
 
 	/**
-	 * Desactiva este botón de radio individual, impidiendo que el usuario lo seleccione.
+	 * Disables this specific radio button, preventing user interaction.
 	 */
 	disabled?: RadioVariants["disabled"];
 
 	/**
-	 * El texto descriptivo que se muestra junto al control de radio, asociado semánticamente a él.
+	 * The descriptive text displayed next to the radio control, semantically associated with it.
 	 */
 	label?: string;
 
 	/**
-	 * El valor único asociado a este botón de radio específico. Este valor se utiliza para identificar qué opción fue seleccionada dentro de un grupo de radios.
-	 * **Nota:** La prop `checked` para controlar si el radio está seleccionado *no* está disponible directamente en `RadioProps`; se espera que sea gestionada externamente (típicamente por un componente `RadioGroup` padre) basado en que su valor coincida con el valor seleccionado del grupo.
+	 * The unique value associated with this specific radio option. This value is used by the parent RadioGroup to determine selection.
+	 * Note: The `checked` state is managed externally by the `RadioGroup` based on this value.
 	 */
 	value: string | number | ReadonlyArray<string>;
 }
