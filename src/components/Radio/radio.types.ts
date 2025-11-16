@@ -3,7 +3,7 @@ import { RadioGroupVariants, RadioVariants } from "./radio.variants";
 
 export interface RadioGroupProps {
 	/**
-	 * 	
+	 * 	Defines the layout direction of the radio buttons within the group (e.g., 'horizontal' or 'vertical').
 	 */
 	orientation?: RadioGroupVariants["orientation"];
 
@@ -29,9 +29,9 @@ export interface RadioGroupProps {
 
 	/**
 	 * Controls the visibility of the radio input circle/dot itself.
-	 * @default true
+	 * @default false
 	 */
-	showRadio?: boolean;
+	hideRadio?: boolean;
 
 	/**
 	 * If set to true, disables all individual radio buttons within this group.

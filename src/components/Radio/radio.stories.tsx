@@ -35,9 +35,9 @@ const meta: Meta<typeof RadioGroup> = {
 			options: ["tiny", "small", "medium", "large", "full", "none"],
 			description: "Input radius",
 		},
-		showRadio: {
+		hideRadio: {
 			control: "boolean",
-			description: "Show radio",
+			description: "Hide radio",
 		},
 		orientation: {
 			control: "radio",
@@ -332,7 +332,7 @@ export const DefaultSolid: Story = {
 		variant: "solid",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -345,7 +345,7 @@ export const DefaultSoft: Story = {
 		variant: "soft",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -358,7 +358,7 @@ export const DefaultOutline: Story = {
 		variant: "outline",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -371,7 +371,7 @@ export const ButtonSolid: Story = {
 		variant: "solid",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -384,7 +384,7 @@ export const ButtonSoft: Story = {
 		variant: "soft",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -397,7 +397,7 @@ export const ButtonOutline: Story = {
 		variant: "outline",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -410,7 +410,7 @@ export const CardSolid: Story = {
 		variant: "solid",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -423,7 +423,7 @@ export const CardSoft: Story = {
 		variant: "soft",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
 
@@ -436,6 +436,6 @@ export const CardOutline: Story = {
 		variant: "outline",
 		disabled: false,
 		orientation: "horizontal",
-		showRadio: false,
+		hideRadio: false,
 	},
 };
