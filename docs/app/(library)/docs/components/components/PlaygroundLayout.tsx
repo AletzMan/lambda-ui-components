@@ -1,13 +1,4 @@
-import React, {
-	useRef,
-	useReducer,
-	useCallback,
-	ReactElement,
-	ComponentType,
-	Ref,
-	RefObject,
-	Fragment,
-} from "react";
+import React, { useRef, useReducer, useCallback, Ref, Fragment } from "react";
 import {
 	Button,
 	Checkbox,
@@ -54,6 +45,14 @@ export function initPropsState(propConfigs: PropConfig[]): ComponentPropsState {
 	return initialState;
 }
 
+/**
+ * Interface para componentes funcionales o de clase
+ */
+interface ComponentType {
+	displayName?: string;
+	name?: string;
+}
+
 const colorOptions = [
 	{ value: "neutral", color: "bg-(--neutral-base-color)" },
 	{ value: "primary", color: "bg-(--primary-base-color)" },
@@ -88,11 +87,12 @@ export function propsReducer(state: ComponentPropsState, action: PropsAction): C
 interface PlaygroundLayoutProps<T extends HTMLElement | ComponentType | null> {
 	id: string;
 	children: React.ReactElement | ((props: Record<string, any>) => React.ReactNode); // El componente base a renderizar (DEBE ser un ReactElement)
+	childrenComponentsNames?: string[]; // Nombres de los componentes hijos
 	componentRef?: Ref<T>; // La ref externa para el componente renderizado
 	propConfigs: PropConfig[]; // Configuración de las props controlables (NO dynamicProps)
 	title?: string;
 	componentName?: string;
-	description?: string;
+	description?: React.ReactNode;
 }
 
 /**
@@ -105,6 +105,7 @@ interface PlaygroundLayoutProps<T extends HTMLElement | ComponentType | null> {
 export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLElement>({
 	id,
 	children,
+	childrenComponentsNames,
 	componentRef,
 	propConfigs, // Ahora recibimos propConfigs en lugar de dynamicProps
 	title,
@@ -134,6 +135,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 			: React.isValidElement(children)
 			? React.createElement(children.type, finalProps)
 			: null;
+
 	// Manejador para los cambios en los controles UI
 	const handlePropChange = useCallback((propName: string, value: any) => {
 		dispatch({ type: "SET_PROP_VALUE", propName, value });
@@ -406,7 +408,9 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 						{
 							code: `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
 								propsString ? "\n" : ""
-							}/>
+							}>${childrenComponentsNames
+								?.map((child, index) => `\n\t<${child}/>${index === 0 ? "" : "\n"}`)
+								.join("")}</${componentName}>
 							`,
 							language: "tsx",
 							label: "Code",
