@@ -6,7 +6,7 @@ import { Code2Icon, EyeIcon } from "lucide-react";
 interface PropertyLayoutProps {
 	children?: React.ReactNode;
 	title: string;
-	description?: string;
+	description?: React.ReactNode;
 	propertyName?: string;
 	id?: string;
 	code?: string;
