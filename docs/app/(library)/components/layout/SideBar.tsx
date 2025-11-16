@@ -132,7 +132,7 @@ export const navigationMenuData = [
 			},
 			{
 				id: "join",
-				label: "Join Inputs",
+				label: "Join",
 				icon: <CornerDownRight />,
 				path: "/docs/components/forms/join",
 			},
