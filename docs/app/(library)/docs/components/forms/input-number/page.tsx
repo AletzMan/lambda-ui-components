@@ -258,8 +258,8 @@ export default function InputNumberPage() {
 		<ComponentsLayout
 			title="Input Number"
 			description="Input Number component is a form element that allows users to select a number"
-			buttonLeft={{ href: "/docs/components/forms/date-picker", text: "Date Picker" }}
-			buttonRight={{ href: "/docs/components/forms/input", text: "Input" }}
+			buttonLeft={{ href: "/docs/components/forms/input", text: "Input" }}
+			buttonRight={{ href: "/docs/components/forms/join", text: "Join" }}
 			menuData={dataFeatures}
 		>
 			<InputNumberFeatures />

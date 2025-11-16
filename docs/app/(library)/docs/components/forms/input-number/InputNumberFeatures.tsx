@@ -3,7 +3,7 @@
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
 import { InputNumber } from "lambda-ui-components";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export const InputNumberFeatures = () => {
 	// ref para el dropzone / button wrapper
