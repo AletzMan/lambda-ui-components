@@ -406,12 +406,16 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					buttonCopy
 					tabs={[
 						{
-							code: `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
-								propsString ? "\n" : ""
-							}>${childrenComponentsNames
-								?.map((child, index) => `\n\t<${child}/>${index === 0 ? "" : "\n"}`)
-								.join("")}</${componentName}>
-							`,
+							code: childrenComponentsNames
+								? `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
+										propsString ? "\n" : ""
+								  }>${childrenComponentsNames
+										?.map((child, index) => `\n\t<${child}/>${index === 0 ? "" : "\n"}`)
+										.join("")}</${componentName}>
+							`
+								: `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
+										propsString ? "\n" : ""
+								  }/>`,
 							language: "tsx",
 							label: "Code",
 						},
