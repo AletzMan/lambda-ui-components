@@ -28,7 +28,7 @@ describe("RadioGroup/Radio", () => {
 	test("calls onChange when selecting option", () => {
 		const handleChange = vi.fn();
 		renderWithProvider(
-			<RadioGroup name="grupo" onChange={handleChange}>
+			<RadioGroup name="grupo" onChangeOption={handleChange}>
 				<Radio value="a" label="A" />
 				<Radio value="b" label="B" />
 			</RadioGroup>

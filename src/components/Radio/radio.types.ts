@@ -52,7 +52,7 @@ export interface RadioGroupProps {
 	/**
 	 * Callback function executed when the user selects a different radio button. Receives the `value` of the newly selected radio.
 	 */
-	onChange?: (value: string) => void;
+	onChangeOption?: (value: string) => void;
 
 	/**
 	 * The initial selected `value` when the component is first mounted (for use as an uncontrolled component).

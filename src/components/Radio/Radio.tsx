@@ -59,7 +59,7 @@ export const useRadioGroup = () => {
 export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	name = `radio-group-${Math.random().toString(36).slice(2, 9)}`,
 	selectedOption,
-	onChange,
+	onChangeOption,
 	defaultValue,
 	size,
 	radius,
@@ -81,12 +81,12 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 
 	const handleChange = useCallback(
 		(newValue: string) => {
-			if (onChange) {
-				onChange(newValue);
+			if (onChangeOption) {
+				onChangeOption(newValue);
 			}
 			setSelectedValue(newValue);
 		},
-		[onChange]
+		[onChangeOption]
 	);
 
 	const inferredType: RadioGroupVariants["type"] = useMemo(() => {
