@@ -59,3 +59,4 @@ export { useActiveSectionObserver } from "./_internal/hooks/useActiveSectionObse
 
 //-- TYPES
 export type { NavigationMenuData } from "./components/NavigationMenu/navigationMenu.types";
+export type { RadioGroupProps } from "./components/Radio/radio.types";
