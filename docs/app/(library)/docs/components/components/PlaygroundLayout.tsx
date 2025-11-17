@@ -16,7 +16,7 @@ import {
 
 export interface PropConfig {
 	name: string;
-	type: "boolean" | "string" | "number" | "select" | "slider" | "radio" | "checkbox" | "color";
+	type: "boolean" | "string" | "number" | "select" | "slider" | "radio" | "checkbox" | "color" | "";
 	values?: (string | number | boolean)[]; // Para 'select'
 	defaultValue?: any;
 	default?: any;
@@ -93,6 +93,7 @@ interface PlaygroundLayoutProps<T extends HTMLElement | ComponentType | null> {
 	title?: string;
 	componentName?: string;
 	description?: React.ReactNode;
+	optionalProps?: React.ReactNode;
 }
 
 /**
@@ -106,6 +107,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 	id,
 	children,
 	childrenComponentsNames,
+	optionalProps,
 	componentRef,
 	propConfigs, // Ahora recibimos propConfigs en lugar de dynamicProps
 	title,
@@ -185,7 +187,9 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					</h2>
 				)}
 				{description && <p className="text-(--foreground-secondary-color) mb-7">{description}</p>}
-
+				{optionalProps && (
+					<div className="text-(--foreground-secondary-color) mb-7">{optionalProps}</div>
+				)}
 				<div className="grid grid-cols-[0.85fr_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-6">
 					{/* Columna de Controles de Props */}
 					<div className="flex flex-col h-full">
@@ -302,6 +306,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 													<RadioGroup
 														size="tiny"
 														variant="solid"
+														orientation="horizontal"
 														onChange={(e) => handlePropChange(config.name, e)}
 														selectedOption={currentProps[config.name]}
 													>
@@ -336,23 +341,21 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 															min={0}
 															max={config.values.length - 1}
 															formatValue={(value) =>
-																(config.values?.[value].toString().charAt(0).toUpperCase() || "") +
-																(config.values?.[value].toString().slice(1) || "")
+																(config.values?.[value]?.toString().charAt(0).toUpperCase() || "") +
+																(config.values?.[value]?.toString().slice(1) || "")
 															}
-															value={Number(
-																config!.values!.indexOf(currentProps[config.name]) ?? 0
-															)}
+															value={Number(config.values?.indexOf(currentProps[config.name]) ?? 0)}
 															onChange={(e) =>
-																handlePropChange(config.name, config!.values![e as number])
+																handlePropChange(config.name, config.values?.[e as number])
 															}
 															onInput={(e) =>
 																handlePropChange(config.name, config!.values![e as number])
 															}
-															marks={config.values?.map((val: any, index: number) => ({
+															marks={config!.values!.map((val: any, index: number) => ({
 																value: index,
 																label:
-																	String(config.values?.[index]).charAt(0).toUpperCase() +
-																	String(config.values?.[index]).slice(1),
+																	String(config!.values![index]).charAt(0).toUpperCase() +
+																	String(config!.values![index]).slice(1),
 															}))}
 														/>
 													</div>
@@ -410,7 +413,10 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								? `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
 										propsString ? "\n" : ""
 								  }>${childrenComponentsNames
-										?.map((child, index) => `\n\t<${child}/>${index === 0 ? "" : "\n"}`)
+										?.map(
+											(child, index) =>
+												`\n\t<${child}/>${index === childrenComponentsNames.length - 1 ? "\n" : ""}`
+										)
 										.join("")}</${componentName}>
 							`
 								: `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
