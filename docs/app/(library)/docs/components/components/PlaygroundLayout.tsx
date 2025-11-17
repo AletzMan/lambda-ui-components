@@ -307,7 +307,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 														size="tiny"
 														variant="solid"
 														orientation="horizontal"
-														onChange={(e) => handlePropChange(config.name, e)}
+														onChangeOption={(e) => handlePropChange(config.name, e)}
 														selectedOption={currentProps[config.name]}
 													>
 														{config.values?.map((value: any) => (
