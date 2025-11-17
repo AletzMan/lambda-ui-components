@@ -316,7 +316,7 @@ const RadioComponent = forwardRef<
 					>
 						<header className={styles["lambda-radio-card-header"]}>
 							<h1>{title}</h1>
-							{hideRadio && (
+							{!hideRadio && (
 								<div
 									className={view({
 										variant,
@@ -340,7 +340,7 @@ const RadioComponent = forwardRef<
 							)}
 						</header>
 						<h2>{subtitle}</h2>
-						{body && <p className={styles["lambda-radio-card-body"]}>{body}</p>}
+						{body && <div className={styles["lambda-radio-card-body"]}>{body}</div>}
 					</div>
 				)}
 			</label>

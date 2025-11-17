@@ -42,7 +42,7 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 	},
 	compoundVariants: [],
 	defaultVariants: {
-		orientation: "horizontal",
+		orientation: "vertical",
 		radius: "tiny",
 		size: "small",
 		type: "radio",
@@ -196,7 +196,7 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 		},
 	},
 	defaultVariants: {
-		orientation: "horizontal",
+		orientation: "vertical",
 		positionLabel: "right",
 		color: "primary",
 		size: "small",
@@ -303,9 +303,10 @@ export const labelName = cva(styles["lambda-radio-label"], {
 		disabled: false,
 		type: "radio",
 		size: "small",
-		orientation: "horizontal",
+		orientation: "vertical",
 		radius: "tiny",
 		color: "neutral",
+		typeContent: "label",
 	},
 });
 

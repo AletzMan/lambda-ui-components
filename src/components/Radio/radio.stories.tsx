@@ -396,7 +396,7 @@ export const ButtonOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		orientation: "horizontal",
+		orientation: "vertical",
 		hideRadio: false,
 	},
 };
@@ -409,7 +409,7 @@ export const CardSolid: Story = {
 		color: "primary",
 		variant: "solid",
 		disabled: false,
-		orientation: "horizontal",
+		orientation: "vertical",
 		hideRadio: false,
 	},
 };
@@ -422,7 +422,7 @@ export const CardSoft: Story = {
 		color: "primary",
 		variant: "soft",
 		disabled: false,
-		orientation: "horizontal",
+		orientation: "vertical",
 		hideRadio: false,
 	},
 };
@@ -435,7 +435,7 @@ export const CardOutline: Story = {
 		color: "primary",
 		variant: "outline",
 		disabled: false,
-		orientation: "horizontal",
+		orientation: "vertical",
 		hideRadio: false,
 	},
 };
