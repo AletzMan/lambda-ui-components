@@ -3,7 +3,13 @@ import { LambdaConfigProvider, ThemeProvider } from "lambda-ui-components";
 export function ClientProviders({ children }: { children: React.ReactNode }) {
 	return (
 		<LambdaConfigProvider lang="en">
-			<ThemeProvider defaultMode="dark" lightTheme="retro" darkTheme="dark">
+			<ThemeProvider
+				defaultTheme="slate"
+				themes={["light", "dark", "retro", "slate"]}
+				attribute="data-theme"
+				value={{ light: "light", dark: "dark", retro: "retro", slate: "slate" }}
+				disableTransitionOnChange
+			>
 				{children}
 			</ThemeProvider>
 		</LambdaConfigProvider>
