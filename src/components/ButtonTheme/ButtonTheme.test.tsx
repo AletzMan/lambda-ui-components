@@ -6,7 +6,7 @@ import { ThemeProvider } from "../ThemeProvider/ThemeProvider";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
 	<LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
-		<ThemeProvider defaultTheme="dark">{children}</ThemeProvider>
+		<ThemeProvider defaultMode="dark">{children}</ThemeProvider>
 	</LambdaConfigProvider>
 );
 

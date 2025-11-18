@@ -1,3 +1,4 @@
+"use client";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Button } from "../Button/Button";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
@@ -50,6 +51,11 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 	const label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
 	const key = theme;
 	const Icon = theme === "dark" ? MoonIcon : SunIcon;
+	const [isMounted, setIsMounted] = React.useState(false);
+
+	React.useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
 	// Detectar dirección del cambio de tema para slide
 	const prevTheme = React.useRef(theme);
@@ -93,6 +99,7 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 			size={size}
 			onClick={toggleTheme}
 			aria-label={label}
+			suppressHydrationWarning
 			icon={
 				<AnimatePresence mode="wait" initial={false}>
 					<motion.span
@@ -103,7 +110,7 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 						exit={variants.exit}
 						transition={variants.transition}
 					>
-						<Icon />
+						{isMounted && <Icon suppressHydrationWarning />}
 					</motion.span>
 				</AnimatePresence>
 			}
