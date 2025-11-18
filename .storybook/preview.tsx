@@ -8,11 +8,17 @@ import "../src/index.css";
 import { LambdaConfigProvider } from "../src/_internal/hooks/translation/LambdaConfigProvider";
 import { create } from "storybook/theming";
 
+//const themesDark = ["dark", "slate"];
+//const themesLight = ["light", "retro"];
+
 const ThemeDecorator = (Story, context) => {
 	const theme = context.globals.theme || "dark";
+	console.log(theme);
 
 	useEffect(() => {
-		document.body.setAttribute("data-theme", theme || "dark");
+		/*const newTheme = themesDark.includes(theme) ? "dark" : "light";
+		localStorage.setItem("theme", newTheme);*/
+		document.body.setAttribute("data-theme", theme);
 		document.body.style.background =
 			theme === "dark"
 				? "linear-gradient(135deg, var(--background-color) 60%, var(--surface-a) 100%)"
@@ -29,7 +35,7 @@ const ThemeDecorator = (Story, context) => {
 
 	return (
 		<LambdaConfigProvider lang="en" radiusField="tiny" radiusBox="small" radiusSelector="small">
-			<ThemeProvider defaultTheme={theme}>
+			<ThemeProvider defaultMode="dark" lightTheme="retro">
 				<Story />
 			</ThemeProvider>
 		</LambdaConfigProvider>
@@ -58,9 +64,11 @@ const preview: Preview = {
 			themes: {
 				light: "light",
 				dark: "dark",
+				slate: "slate",
+				retro: "retro",
 			},
 		}),
-		ThemeDecorator, // Aquí pasas el componente directamente
+		ThemeDecorator,
 	],
 };
 
