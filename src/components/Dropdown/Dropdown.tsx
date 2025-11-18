@@ -29,6 +29,7 @@ const useDropdownContext = () => {
 	}
 	return context;
 };
+const isClient = typeof window !== "undefined";
 
 const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 	({ className, variant, size, radius, icon, text, joinposition, children, ...props }, ref) => {
@@ -82,28 +83,29 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 							<ChevronDown className={clsx(styles["lambda-dropdown-icon-arrow"])} />
 						) : undefined}
 					</button>
-					{createPortal(
-						<AnimatePresence mode="wait">
-							{isOpen && (
-								<motion.div
-									initial={{ opacity: 0, y: -16 }}
-									animate={{ opacity: 1, y: 0 }}
-									exit={{ opacity: 0, y: -16 }}
-									transition={{ type: "spring", stiffness: 300, damping: 24 }}
-									className={clsx(dropdownMenuVariants())}
-									style={{ top: menuPosition.top, left: menuPosition.left }}
-									ref={contentRef}
-									onKeyDown={(e) => {
-										handleKeyDown(e);
-									}}
-									tabIndex={0}
-								>
-									{children}
-								</motion.div>
-							)}
-						</AnimatePresence>,
-						document.body
-					)}
+					{isClient &&
+						createPortal(
+							<AnimatePresence mode="wait">
+								{isOpen && (
+									<motion.div
+										initial={{ opacity: 0, y: -16 }}
+										animate={{ opacity: 1, y: 0 }}
+										exit={{ opacity: 0, y: -16 }}
+										transition={{ type: "spring", stiffness: 300, damping: 24 }}
+										className={clsx(dropdownMenuVariants())}
+										style={{ top: menuPosition.top, left: menuPosition.left }}
+										ref={contentRef}
+										onKeyDown={(e) => {
+											handleKeyDown(e);
+										}}
+										tabIndex={0}
+									>
+										{children}
+									</motion.div>
+								)}
+							</AnimatePresence>,
+							document.body
+						)}
 				</div>
 			</DropdownContext.Provider>
 		);

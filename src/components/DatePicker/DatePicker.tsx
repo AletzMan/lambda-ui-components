@@ -35,6 +35,8 @@ import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 
+const isClient = typeof window !== "undefined";
+
 function getDaysInMonth(year: number, month: number) {
 	return new Date(year, month + 1, 0).getDate();
 }
@@ -669,42 +671,43 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 						}
 					/>
 				)}
-				{createPortal(
-					<AnimatePresence mode="wait">
-						{isOpen && type === "dropdown" && (
-							<motion.div
-								initial={
-									menuPosition.position === "above"
-										? { opacity: 0, y: 16, zIndex: -1 } // arriba → viene de abajo
-										: { opacity: 0, y: -16, zIndex: -1 } // abajo → viene de arriba
-								}
-								animate={{
-									opacity: 1,
-									y: 0,
-									zIndex: 9999,
-								}}
-								exit={
-									menuPosition.position === "above"
-										? { opacity: 0, y: 16, zIndex: -1 } // arriba → sigue subiendo
-										: { opacity: 0, y: -16, zIndex: -1 } // abajo → sigue bajando
-								}
-								transition={{ type: "spring", stiffness: 300, damping: 24 }}
-								ref={contentRef as Ref<HTMLDivElement>}
-								className={datepickerCalendarVariants({ type, direction: menuPosition.position })}
-								style={{
-									left: menuPosition.left,
-									top: menuPosition.top,
-									zIndex: 9999,
-								}}
-								tabIndex={0}
-								onKeyDown={handleKeyDown}
-							>
-								<Calendar />
-							</motion.div>
-						)}
-					</AnimatePresence>,
-					document.body
-				)}
+				{isClient &&
+					createPortal(
+						<AnimatePresence mode="wait">
+							{isOpen && type === "dropdown" && (
+								<motion.div
+									initial={
+										menuPosition.position === "above"
+											? { opacity: 0, y: 16, zIndex: -1 } // arriba → viene de abajo
+											: { opacity: 0, y: -16, zIndex: -1 } // abajo → viene de arriba
+									}
+									animate={{
+										opacity: 1,
+										y: 0,
+										zIndex: 9999,
+									}}
+									exit={
+										menuPosition.position === "above"
+											? { opacity: 0, y: 16, zIndex: -1 } // arriba → sigue subiendo
+											: { opacity: 0, y: -16, zIndex: -1 } // abajo → sigue bajando
+									}
+									transition={{ type: "spring", stiffness: 300, damping: 24 }}
+									ref={contentRef as Ref<HTMLDivElement>}
+									className={datepickerCalendarVariants({ type, direction: menuPosition.position })}
+									style={{
+										left: menuPosition.left,
+										top: menuPosition.top,
+										zIndex: 9999,
+									}}
+									tabIndex={0}
+									onKeyDown={handleKeyDown}
+								>
+									<Calendar />
+								</motion.div>
+							)}
+						</AnimatePresence>,
+						document.body
+					)}
 			</div>
 		);
 	}

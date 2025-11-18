@@ -53,6 +53,13 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		const [offset, setOffset] = useState({ x: 0, y: 0 });
 		const [startPos, setStartPos] = useState({ x: 0, y: 0 });
 		const { radiusBox } = useUIConfig();
+		const [mounted, setMounted] = useState(false);
+		const [container, setContainer] = useState<HTMLElement | null>(null);
+
+		useEffect(() => {
+			setMounted(true);
+			setContainer(getPortalContainer());
+		}, []);
 
 		// --- Lógica de arrastre ---
 		const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -223,6 +230,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 			},
 		};
 
+		if (!mounted || !container) return null;
 		// --- Renderizado ---
 		// Si el estado de animación es 'exited', no renderizamos nada en el Portal.
 		return ReactDOM.createPortal(

@@ -1,3 +1,4 @@
+"use client";
 import React, {
 	forwardRef,
 	useCallback,
@@ -17,32 +18,29 @@ import { drawerOverlayVariants, drawerPanelVariants } from "./drawer.variants";
 import { Button } from "../Button/Button";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
-let portalContainer: HTMLElement | null = null;
+// Portal manager SSR-safe
+function useDrawerPortal(placement: DrawerPlacement) {
+	const [container, setContainer] = useState<HTMLElement | null>(null);
 
-// Función helper para crear o obtener el contenedor del portal.
-const getPortalContainer = (placement: DrawerPlacement) => {
-	if (!portalContainer) {
-		// Si no existe, crearlo y añadirlo al cuerpo del documento
-		portalContainer = document.createElement("div");
-		portalContainer.classList.add(styles["lambda-drawer-portal-container"]);
-		portalContainer.setAttribute("data-placement", placement || "left");
-		document.body.appendChild(portalContainer);
-	} else {
-		// Si ya existe, actualizar el atributo data-placement si ha cambiado
-		if (portalContainer.getAttribute("data-placement") !== placement) {
-			portalContainer.setAttribute("data-placement", placement || "left");
-		}
-	}
-	return portalContainer;
-};
+	useEffect(() => {
+		if (!document) return;
+		// Ya estamos en cliente
+		const el = document.createElement("div");
+		el.classList.add(styles["lambda-drawer-portal-container"]);
+		el.setAttribute("data-placement", placement || "left");
 
-// (Lógica simple, considerar un manager más robusto si múltiples drawers comparten contenedor)
-const cleanupPortalContainer = () => {
-	if (portalContainer && document.body.contains(portalContainer)) {
-		document.body.removeChild(portalContainer);
-		portalContainer = null;
-	}
-};
+		document.body.appendChild(el);
+		setContainer(el);
+
+		return () => {
+			if (document.body.contains(el)) {
+				document.body.removeChild(el);
+			}
+		};
+	}, [placement]);
+
+	return container;
+}
 
 export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 	(
@@ -192,23 +190,14 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 		}, [animationState, handleKeyDown]);
 
 		// --- Efecto para gestionar la creación/limpieza del contenedor del Portal en el DOM ---
-		useEffect(() => {
-			const container = getPortalContainer(placement);
-			return () => {
-				if (document.body.contains(container)) {
-					document.body.removeChild(container);
-					portalContainer = null;
-					cleanupPortalContainer();
-				}
-			};
-		}, [placement]);
-
+		const portalEl = useDrawerPortal(placement);
 		// --- Renderizado ---
 		// Si el estado de animación es 'exited', no renderizamos nada en el Portal.
 		if (!shouldRender) {
 			return null;
 		}
-
+		if (!isOpen) return null;
+		if (!portalEl) return null;
 		// Usar createPortal para renderizar el drawer y su overlay fuera de la jerarquía DOM normal.
 		return ReactDOM.createPortal(
 			<div ref={ref} className={styles["lambda-drawer-portal-wrapper"]} {...rest}>
@@ -281,7 +270,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 					)}
 				</div>
 			</div>,
-			getPortalContainer(placement)
+			portalEl
 		);
 	}
 );

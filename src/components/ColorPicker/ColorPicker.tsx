@@ -1,3 +1,4 @@
+"use client";
 import {
 	forwardRef,
 	useEffect,
@@ -34,6 +35,7 @@ import { createPortal } from "react-dom";
 import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
 
+const isClient = typeof window !== "undefined";
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
 	const newSaturation = s / 100;
@@ -306,6 +308,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 		// Lógica de arrastre del picker, el resto es manejado por el componente Slider
 		useEffect(() => {
+			if (typeof window === "undefined") return;
 			const handlePointerMove = (event: PointerEvent) => {
 				let newColor: string | undefined;
 
@@ -597,6 +600,8 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		const pickerButtonRect = pickerButtonRef.current?.getBoundingClientRect();
 		const finalPickerX = pickerX - (pickerButtonRect?.width || 0) / 2;
 		const finalPickerY = pickerY - (pickerButtonRect?.height || 0) / 2;
+
+		if (!isClient) return null;
 
 		return (
 			<div
