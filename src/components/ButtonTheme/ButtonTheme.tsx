@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { ButtonThemeProps, ButtonThemeAnimation } from "./buttonTheme.types";
 import React from "react";
 import { buttonThemeIconVariants } from "./buttonTheme.variants";
-import { ClientOnly } from "../ClientOnly/ClientOnly";
 
 const lightThemes = ["light", "retro"];
 //const darkThemes = ["dark", "slate"];
@@ -106,30 +105,28 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 	};
 
 	return (
-		<ClientOnly>
-			<Button
-				variant="soft"
-				color={color}
-				size={size}
-				onClick={toggleTheme}
-				aria-label={label}
-				suppressHydrationWarning
-				icon={
-					<AnimatePresence mode="wait" initial={false}>
-						<motion.span
-							className={buttonThemeIconVariants({ size })}
-							key={key}
-							initial={variants.initial}
-							animate={variants.animate}
-							exit={variants.exit}
-							transition={variants.transition}
-						>
-							{isMounted && <Icon suppressHydrationWarning />}
-						</motion.span>
-					</AnimatePresence>
-				}
-				{...rest}
-			/>
-		</ClientOnly>
+		<Button
+			variant="soft"
+			color={color}
+			size={size}
+			onClick={toggleTheme}
+			aria-label={label}
+			suppressHydrationWarning
+			icon={
+				<AnimatePresence mode="wait" initial={false}>
+					<motion.span
+						className={buttonThemeIconVariants({ size })}
+						key={key}
+						initial={variants.initial}
+						animate={variants.animate}
+						exit={variants.exit}
+						transition={variants.transition}
+					>
+						{isMounted && <Icon suppressHydrationWarning />}
+					</motion.span>
+				</AnimatePresence>
+			}
+			{...rest}
+		/>
 	);
 };
