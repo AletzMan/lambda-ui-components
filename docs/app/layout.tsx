@@ -14,7 +14,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" data-theme="dark">
+		<html lang="en" data-theme="dark" suppressHydrationWarning>
 			<body
 				className={`antialiased max-w-[1920px] mx-auto flex flex-col items-center justify-center`}
 			>

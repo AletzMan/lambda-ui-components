@@ -63,7 +63,6 @@ export function ExamplesSection() {
 			children: (
 				<Slider
 					value={value}
-					ariaLabel="Slider"
 					radius={"full"}
 					onChange={(value) => setValue(value as number)}
 					onInput={(value) => setValue(value as number)}
