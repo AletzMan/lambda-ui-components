@@ -1,5 +1,4 @@
 import { ComponentsLayout } from "../../components/ComponentsLayout";
-import { NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
 import { DatePickerFeatures } from "./DatePickerFeatures";
 import { TableProps } from "../../components/TableProps";

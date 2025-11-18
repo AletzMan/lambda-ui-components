@@ -254,21 +254,10 @@ const getComponentByType = (
 	}
 };
 
-export const RadioFeatures = () => {
-	const searchParams = useSearchParams();
+export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "card" }) => {
 	const router = useRouter();
 	const refInput = useRef<HTMLInputElement>(null);
-	const [typeRadio, setTypeRadio] = useState<"radio" | "button" | "card">("radio");
-
-	useEffect(() => {
-		const type = searchParams.get("type");
-		if (type) {
-			setTypeRadio(type as "radio" | "button" | "card");
-		}
-	}, [searchParams]);
-
 	const onChangeTypeRadio = (value: "radio" | "button" | "card") => {
-		setTypeRadio(value);
 		router.push(`?type=${value}`);
 	};
 

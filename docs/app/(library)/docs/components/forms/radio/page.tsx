@@ -1,5 +1,5 @@
 import { ComponentsLayout } from "../../components/ComponentsLayout";
-import { NavigationMenuData } from "lambda-ui-components";
+import { ClientOnly, NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
 import { RadioFeatures } from "./RadioFeatures";
 import { TableProps } from "../../components/TableProps";
@@ -189,7 +189,14 @@ export const radioProps: TableProps[] = [
 	},
 ];
 
-export default function RadioPage() {
+export default async function RadioPage(params: {
+	params: { id: string };
+	searchParams: { type: string };
+}) {
+	const searchParams = await params.searchParams;
+	const typeRadio: "radio" | "button" | "card" =
+		(searchParams.type as "radio" | "button" | "card") || "radio";
+
 	return (
 		<ComponentsLayout
 			title="Radio"
@@ -198,7 +205,7 @@ export default function RadioPage() {
 			buttonRight={{ href: "/docs/components/forms/select", text: "Select" }}
 			menuData={dataFeatures}
 		>
-			<RadioFeatures />
+			<RadioFeatures typeRadio={typeRadio} />
 			<TableProps props={radioProps} />
 		</ComponentsLayout>
 	);
