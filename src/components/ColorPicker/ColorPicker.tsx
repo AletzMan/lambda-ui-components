@@ -836,10 +836,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													size="tiny"
 													className={styles["lambda-colorpicker-input-multiple"]}
 												/>
-												<Tooltip content={t("color-picker.format")}>
+												<Tooltip color="neutral" content={t("color-picker.format")}>
 													<Button
 														variant="soft"
-														color="secondary"
+														color="neutral"
 														size="tiny"
 														label={format.toUpperCase()}
 														onClick={handleChangeFormat}

@@ -8,6 +8,16 @@
 	--skeleton-color-end: var(--surface-d);
 }
 
+[data-theme="retro"] {
+	--skeleton-color-start: var(--surface-b);
+	--skeleton-color-end: var(--surface-d);
+}
+
+[data-theme="slate"] {
+	--skeleton-color-start: var(--surface-c);
+	--skeleton-color-end: var(--surface-b);
+}
+
 .lambda-skeleton {
 	display: inline-block;
 	position: relative;

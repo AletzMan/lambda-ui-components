@@ -136,6 +136,7 @@
 	height: var(--height-button-2xs);
 	width: var(--height-button-2xs);
 	border-radius: var(--border-radius-xs);
+	padding: var(--padding-none);
 	color: var(--foreground-secondary-color);
 	cursor: pointer;
 

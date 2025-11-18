@@ -84,7 +84,7 @@
 .breadcrumb-separator {
 	display: flex;
 	align-items: center;
-	color: var(--neutral-subtle-color);
+	color: var(--surface-d);
 
 	&:has(svg) {
 		svg {

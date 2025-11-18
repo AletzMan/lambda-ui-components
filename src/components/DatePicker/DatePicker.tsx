@@ -600,7 +600,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 								readOnly
 							/>
 							<Button
-								variant={variant === "solid" ? "subtle" : variant}
+								variant={variant === "solid" ? "outline" : variant}
 								color="neutral"
 								icon={<CalendarIcon />}
 								onClick={(e) => {
