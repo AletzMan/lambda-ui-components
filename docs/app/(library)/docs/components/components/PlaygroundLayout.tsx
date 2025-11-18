@@ -2,6 +2,7 @@ import React, { useRef, useReducer, useCallback, Ref, Fragment } from "react";
 import {
 	Button,
 	Checkbox,
+	ClientOnly,
 	CodeBlock,
 	Divider,
 	Input,
@@ -195,11 +196,11 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					<div className="flex flex-col h-full">
 						<label
 							className="text-lg font-semibold text-(--foreground-color) 
-					border border-(--border-color)/50 rounded-t-sm border-b-0 pl-2 bg-(--surface-a)"
+					border border-(--border-color) rounded-t-sm border-b-0 pl-2 bg-(--surface-a)"
 						>
 							Properties
 						</label>
-						<div className="bg-(--background-color) p-4 rounded-b-md border border-(--border-color)/50">
+						<div className="bg-(--background-color) p-4 rounded-b-md border border-(--border-color)">
 							<div className="space-y-2">
 								<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 mb-6">
 									{propConfigs.map((config) => (
@@ -394,39 +395,43 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					</div>
 					{/* Columna de Previsualización del Componente */}
 					<div className="flex flex-col h-full">
-						<label className="text-lg font-semibold text-(--foreground-color) pl-2 border border-(--border-color)/50 border-b-0 rounded-t-sm bg-(--surface-a)">
+						<label className="text-lg font-semibold text-(--foreground-color) pl-2 border border-(--border-color) border-b-0 rounded-t-sm bg-(--surface-a)">
 							Preview
 						</label>
 						<div
 							className="relative flex flex-col justify-center items-center 
-					 bg-(--background-color) p-5 rounded-b-md min-h-[200px] border border-(--border-color)/50 h-full"
+					 bg-(--background-color) p-5 rounded-b-md min-h-[200px] border border-(--border-color) h-full"
 						>
 							{renderedComponent}
 						</div>
 					</div>
 				</div>
-				<CodeBlock
-					buttonCopy
-					tabs={[
-						{
-							code: childrenComponentsNames
-								? `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
-										propsString ? "\n" : ""
-								  }>${childrenComponentsNames
-										?.map(
-											(child, index) =>
-												`\n\t<${child}/>${index === childrenComponentsNames.length - 1 ? "\n" : ""}`
-										)
-										.join("")}</${componentName}>
+				<ClientOnly>
+					<CodeBlock
+						buttonCopy
+						tabs={[
+							{
+								code: childrenComponentsNames
+									? `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
+											propsString ? "\n" : ""
+									  }>${childrenComponentsNames
+											?.map(
+												(child, index) =>
+													`\n\t<${child}/>${
+														index === childrenComponentsNames.length - 1 ? "\n" : ""
+													}`
+											)
+											.join("")}</${componentName}>
 							`
-								: `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
-										propsString ? "\n" : ""
-								  }/>`,
-							language: "tsx",
-							label: "Code",
-						},
-					]}
-				/>
+									: `<${componentName}${propsString ? "\n\t" : ""}${propsString}${
+											propsString ? "\n" : ""
+									  }/>`,
+								language: "tsx",
+								label: "Code",
+							},
+						]}
+					/>
+				</ClientOnly>
 			</div>
 			<Divider spacing={70} variant="dashed" />
 		</>
