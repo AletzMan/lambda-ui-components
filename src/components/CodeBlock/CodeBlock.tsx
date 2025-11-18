@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
 // El tema se importa dinámicamente según la prop theme.
