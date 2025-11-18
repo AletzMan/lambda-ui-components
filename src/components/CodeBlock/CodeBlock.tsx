@@ -85,6 +85,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 				</div>
 			)}
 			<pre
+				suppressHydrationWarning
 				className={clsx(
 					styles["lambda-pre"],
 					{ "line-numbers": showLineNumbers },
@@ -96,7 +97,11 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 				)}
 				data-line={highlightLines}
 			>
-				<code ref={codeRef} className={`language-${langToShow} ${styles["lambda-code"]}`}>
+				<code
+					suppressHydrationWarning
+					ref={codeRef}
+					className={`language-${langToShow} ${styles["lambda-code"]}`}
+				>
 					{codeToShow}
 				</code>
 			</pre>

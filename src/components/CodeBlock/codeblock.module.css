@@ -9,10 +9,10 @@
 	overflow: hidden;
 
 	&.lambda-codeblock-dark {
-		background-color: #0b1012;
+		background-color: var(--background-code-dark);
 	}
 	&.lambda-codeblock-light {
-		background-color: #f7f7f7;
+		background-color: var(--background-code-light);
 	}
 }
 
@@ -22,11 +22,11 @@
 	border-top-right-radius: var(--border-radius-sm);
 
 	&.lambda-codeblock-tabs-dark {
-		background-color: #141b1e;
+		background-color: var(--background-tab-dark);
 		border-bottom: 1px solid #333333;
 	}
 	&.lambda-codeblock-tabs-light {
-		background-color: #f0f0f1;
+		background-color: var(--background-tab-light);
 		border-bottom: 1px solid #d8d8d8;
 	}
 }
