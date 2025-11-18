@@ -1,4 +1,4 @@
-// Archivo renombrado, el contenido está en Menu.tsx (ahora NavigationMenu.tsx).
+"use client";
 import React, {
 	createContext,
 	useContext,
