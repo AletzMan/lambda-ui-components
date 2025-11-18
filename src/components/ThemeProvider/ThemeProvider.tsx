@@ -1,184 +1,268 @@
-/* eslint-disable react-refresh/only-export-components */
-import {
-	createContext,
-	useContext,
-	useState,
-	useLayoutEffect,
-	ReactNode,
-	useCallback,
-	useEffect,
-} from "react";
-import { accentColorsArray } from "../../_util/accentColors";
-import { ThemeScript } from "./ThemeScript";
+"use client";
 
-type TypeColor =
-	| "neutral"
-	| "success"
-	| "danger"
-	| "orange"
-	| "warning"
-	| "yellow"
-	| "lime"
-	| "emerald"
-	| "teal"
-	| "cyan"
-	| "info"
-	| "blue"
-	| "indigo"
-	| "violet"
-	| "purple"
-	| "fuchsia"
-	| "pink"
-	| "rose"
-	| "gray";
+import * as React from "react";
+import { script as themeScript } from "./themeScript.ts";
+import type { Attribute, ThemeProviderProps, UseThemeProps } from "./types.ts";
 
-type TypeTheme = "light" | "dark" | "slate" | "retro" | undefined;
-const themesDark: TypeTheme[] = ["dark", "slate"];
-const themesLight: TypeTheme[] = ["light", "retro"];
+const systemToTheme = {
+	dark: "dark",
+	light: "light",
+};
 
-interface ThemeContextProps {
-	theme: TypeTheme;
-	toggleTheme: () => void;
-}
+const MEDIA = "(prefers-color-scheme: dark)";
+const ThemeContext = React.createContext<UseThemeProps | undefined>(undefined);
+const defaultContext: UseThemeProps = { setTheme: () => {}, themes: [] };
 
-interface ThemeProviderProps {
-	children: ReactNode;
-	defaultMode?: "dark" | "light";
-	accentColor?: TypeColor;
-	lightTheme?: TypeTheme;
-	darkTheme?: TypeTheme;
-}
+const lightThemes = ["light", "retro"];
+const darkThemes = ["dark", "slate"];
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+const defaultThemes = ["light", "dark", "retro", "slate"];
 
-export const ThemeProvider = ({
+// --- Utils ---
+const saveToLS = (key: string, value: string) => {
+	try {
+		localStorage.setItem(key, value);
+	} catch {}
+};
+
+const getTheme = (key: string, fallback?: string) => {
+	if (typeof window === "undefined") return fallback;
+	try {
+		return localStorage.getItem(key) || fallback;
+	} catch {
+		return fallback;
+	}
+};
+
+const getSystemTheme = (e?: MediaQueryList | MediaQueryListEvent) => {
+	if (typeof window === "undefined") return "light"; // <-- FIX
+
+	const m = e ?? window.matchMedia(MEDIA);
+	return m.matches ? "dark" : "light";
+};
+
+const disableAnimation = (nonce?: string) => {
+	if (typeof document === "undefined") return () => {}; // <-- FIX
+
+	const css = document.createElement("style");
+	if (nonce) css.setAttribute("nonce", nonce);
+	css.appendChild(
+		document.createTextNode(
+			`*,*::before,*::after{
+        transition:none!important;
+        -webkit-transition:none!important;
+      }`
+		)
+	);
+	document.head.appendChild(css);
+
+	return () => {
+		void window.getComputedStyle(document.body);
+		setTimeout(() => document.head.removeChild(css), 1);
+	};
+};
+
+// --- Hook ---
+export const useTheme = () => React.useContext(ThemeContext) ?? defaultContext;
+
+// --- Provider (NO nested providers) ---
+export const ThemeProvider = (props: ThemeProviderProps) => {
+	const ctx = React.useContext(ThemeContext);
+	if (ctx) return <>{props.children}</>;
+	return <Theme {...props} />;
+};
+
+// --- Main Theme Component ---
+const Theme = ({
+	forcedTheme,
+	disableTransitionOnChange = false,
+	enableSystem = true,
+	enableColorScheme = true,
+	storageKey = "theme",
+	themes = defaultThemes,
+	defaultTheme = enableSystem ? "system" : "dark",
+	attribute = "data-theme",
+	value,
 	children,
-	defaultMode,
-	accentColor,
-	lightTheme = "light",
-	darkTheme = "dark",
+	nonce,
+	scriptProps,
 }: ThemeProviderProps) => {
-	const [theme, setTheme] = useState<TypeTheme>(() => {
-		// Lee el valor del DOM que el script de la cabecera ya aplicó
-		// Nota: En SSR, esto puede ser nulo, por lo que se asume un default seguro
-		if (typeof window !== "undefined") {
-			const initialTheme = document.documentElement.getAttribute("data-theme") as TypeTheme;
-			if (initialTheme) {
-				return initialTheme;
+	const [theme, setThemeState] = React.useState(() => getTheme(storageKey, defaultTheme));
+
+	const [resolvedTheme, setResolvedTheme] = React.useState(() =>
+		theme === "system" ? systemToTheme[getSystemTheme()] : theme
+	);
+
+	const attrs = value ? Object.values(value) : themes;
+
+	// --- Apply Theme ---
+	const applyTheme = React.useCallback(
+		(next: string) => {
+			if (typeof document === "undefined") return; // <-- FIX
+
+			if (!next) return;
+
+			let resolved = next;
+
+			if (next === "system" && enableSystem) {
+				resolved = getSystemTheme();
 			}
-		}
-		// Fallback si no está en el DOM (ej. durante SSR)
-		return defaultMode === "dark" ? darkTheme : lightTheme;
-	});
 
-	useEffect(() => {
-		const stored: TypeTheme = localStorage.getItem("theme") as TypeTheme;
-		if (stored) {
-			if (themesDark.includes(stored) || themesLight.includes(stored)) {
-				setTheme(stored);
-			} else {
-				setTheme(defaultMode);
-			}
-		} else {
-			setTheme(defaultMode);
-		}
+			const name = value ? value[resolved] : resolved;
 
-		if (accentColor) {
-			const root = document.documentElement;
-			const color = accentColorsArray.find((color) => color[accentColor]);
-			const variants = color?.[accentColor]?.variants;
-			if (!variants) return;
-			Object.entries(variants).forEach(([key, value]) => {
-				root.style.setProperty(`--lambda-color-primary-${key}`, value);
-			});
-		}
-	}, [defaultMode]);
+			const enable = disableTransitionOnChange ? disableAnimation(nonce) : null;
+			const html = document.documentElement; // seguro ahora
 
-	useLayoutEffect(() => {
-		if (!theme) return;
-
-		if (theme === "retro") {
-			const root = document.documentElement;
-			const color = accentColorsArray.find((color) => color["orange"]);
-			const variants = color?.["orange"]?.variants;
-			if (!variants) return;
-			Object.entries(variants).forEach(([key, value]) => {
-				root.style.setProperty(`--lambda-color-primary-${key}`, value);
-			});
-		}
-		if (theme === "slate") {
-			const root = document.documentElement;
-			const color = accentColorsArray.find((color) => color["blue"]);
-			const variants = color?.["blue"]?.variants;
-			if (!variants) return;
-			Object.entries(variants).forEach(([key, value]) => {
-				root.style.setProperty(`--lambda-color-primary-${key}`, value);
-			});
-		}
-		if (theme === "dark") {
-			const root = document.documentElement;
-			const color = accentColorsArray.find((color) => color["cyan"]);
-			const variants = color?.["cyan"]?.variants;
-			if (!variants) return;
-			Object.entries(variants).forEach(([key, value]) => {
-				root.style.setProperty(`--lambda-color-primary-${key}`, value);
-			});
-		}
-		if (theme === "light") {
-			const root = document.documentElement;
-			const color = accentColorsArray.find((color) => color["cyan"]);
-			const variants = color?.["cyan"]?.variants;
-			if (!variants) return;
-			Object.entries(variants).forEach(([key, value]) => {
-				root.style.setProperty(`--lambda-color-primary-${key}`, value);
-			});
-		}
-		console.log("theme useLayoutEffect", theme);
-		document.documentElement.setAttribute("data-theme", theme);
-		document.documentElement.classList.remove("dark", "light", "slate", "retro");
-		document.documentElement.classList.add(theme);
-		document.documentElement.style.background = "var(--background-color)";
-		/*localStorage.setItem("theme", theme);*/
-	}, [theme]);
-
-	// Función para alternar entre temas
-	const toggleTheme = useCallback(() => {
-		setTheme((prevTheme) => {
-			let newTheme: TypeTheme;
-			if (themesDark.includes(prevTheme)) {
-				if (lightTheme) {
-					newTheme = lightTheme;
-				} else {
-					newTheme = "light";
+			const setAttr = (attr: Attribute) => {
+				if (attr === "class") {
+					html.classList.remove(...attrs);
+					if (name) html.classList.add(name);
+				} else if (attr.startsWith("data-")) {
+					if (name) html.setAttribute(attr, name);
+					else html.removeAttribute(attr);
 				}
-			} else {
-				if (darkTheme) {
-					newTheme = darkTheme;
-				} else {
-					newTheme = "dark";
-				}
+			};
+
+			if (Array.isArray(attribute)) attribute.forEach(setAttr);
+			else setAttr(attribute);
+
+			if (enableColorScheme) {
+				if (darkThemes.includes(resolved)) html.style.colorScheme = "dark";
+				else if (lightThemes.includes(resolved)) html.style.colorScheme = "light";
 			}
-			console.log("theme toggleTheme", newTheme);
-			localStorage.setItem("theme", newTheme);
-			document.documentElement.style.background = "var(--background-color)";
-			return newTheme;
-		});
-	}, []);
-	// Evita el render hasta tener el tema real
-	if (!theme) return null;
+
+			enable?.();
+		},
+		[nonce, attribute, attrs, value, enableColorScheme]
+	);
+
+	// --- setTheme wrapper ---
+	const setTheme = React.useCallback(
+		(v: string | ((prev: string) => string)) => {
+			if (typeof v === "function") {
+				setThemeState((prev) => {
+					const next = v(prev ?? defaultTheme);
+					saveToLS(storageKey, next);
+					return next;
+				});
+			} else {
+				setThemeState(v);
+				saveToLS(storageKey, v);
+			}
+		},
+		[storageKey]
+	);
+
+	// --- System theme listener ---
+	const handleMediaQuery = React.useCallback(
+		(e: MediaQueryListEvent | MediaQueryList) => {
+			const sys = systemToTheme[getSystemTheme(e)];
+			setResolvedTheme(sys);
+
+			if (theme === "system" && enableSystem && !forcedTheme) {
+				applyTheme("system");
+			}
+		},
+		[theme, forcedTheme, applyTheme, enableSystem]
+	);
+
+	React.useEffect(() => {
+		if (typeof window === "undefined") return; // <-- FIX
+
+		const media = window.matchMedia(MEDIA);
+		media.addListener(handleMediaQuery);
+		handleMediaQuery(media);
+
+		return () => media.removeListener(handleMediaQuery);
+	}, [handleMediaQuery]);
+
+	// --- Sync localStorage changes across tabs ---
+	React.useEffect(() => {
+		if (typeof window === "undefined") return; // <-- FIX
+		const handler = (e: StorageEvent) => {
+			if (e.key !== storageKey) return;
+
+			if (!e.newValue) {
+				setTheme(defaultTheme);
+			} else {
+				setThemeState(e.newValue);
+			}
+		};
+
+		window.addEventListener("storage", handler);
+		return () => window.removeEventListener("storage", handler);
+	}, [setTheme, defaultTheme, storageKey]);
+
+	// --- Apply theme when theme changes ---
+	React.useEffect(() => {
+		applyTheme(forcedTheme ?? theme ?? defaultTheme);
+	}, [forcedTheme, theme, applyTheme]);
+
+	const ctxValue = React.useMemo(
+		() => ({
+			theme,
+			setTheme,
+			forcedTheme,
+			themes: enableSystem ? [...themes, "system"] : themes,
+			resolvedTheme: theme === "system" ? systemToTheme[getSystemTheme()] : theme,
+			systemTheme: enableSystem ? resolvedTheme : undefined,
+		}),
+		[theme, setTheme, forcedTheme, resolvedTheme, enableSystem, themes]
+	);
+
 	return (
-		<>
-			<ThemeScript />
-			<ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
-		</>
+		<ThemeContext.Provider value={ctxValue as UseThemeProps}>
+			<ThemeScript
+				{...{
+					forcedTheme,
+					storageKey,
+					attribute,
+					enableSystem,
+					enableColorScheme,
+					defaultTheme,
+					value,
+					themes,
+					nonce,
+					scriptProps,
+				}}
+			/>
+			{children}
+		</ThemeContext.Provider>
 	);
 };
 
-// Hook personalizado para acceder al contexto
-export const useTheme = (): ThemeContextProps => {
-	const context = useContext(ThemeContext);
-	if (!context) {
-		throw new Error("useTheme debe usarse dentro de un ThemeProvider");
+// --- Script to avoid flash (SSR safe) ---
+export const ThemeScript = React.memo(
+	({
+		forcedTheme,
+		storageKey,
+		attribute,
+		enableSystem,
+		enableColorScheme,
+		defaultTheme,
+		value,
+		themes,
+		nonce,
+		scriptProps,
+	}: Omit<ThemeProviderProps, "children"> & { defaultTheme: string }) => {
+		return (
+			<script
+				{...scriptProps}
+				suppressHydrationWarning
+				nonce={typeof window === "undefined" ? nonce : ""}
+				dangerouslySetInnerHTML={{
+					__html: themeScript({
+						attribute,
+						storageKey,
+						defaultTheme,
+						forcedTheme,
+						themes,
+						value,
+						enableSystem,
+						enableColorScheme,
+					}),
+				}}
+			/>
+		);
 	}
-	return context;
-};
+);

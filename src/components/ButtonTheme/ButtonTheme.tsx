@@ -6,6 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { ButtonThemeProps, ButtonThemeAnimation } from "./buttonTheme.types";
 import React from "react";
 import { buttonThemeIconVariants } from "./buttonTheme.variants";
+import { ClientOnly } from "../ClientOnly/ClientOnly";
+
+const lightThemes = ["light", "retro"];
+//const darkThemes = ["dark", "slate"];
 
 const iconVariants: Record<ButtonThemeAnimation, any> = {
 	fade: {
@@ -47,10 +51,11 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 	size = "medium",
 	...rest
 }) => {
-	const { toggleTheme, theme } = useTheme();
+	const { setTheme, theme } = useTheme();
 	const label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
 	const key = theme;
-	const Icon = theme === "dark" ? MoonIcon : SunIcon;
+	const isDark = theme === "dark" || theme === "slate";
+	const Icon = isDark ? MoonIcon : SunIcon;
 	const [isMounted, setIsMounted] = React.useState(false);
 
 	React.useEffect(() => {
@@ -92,29 +97,39 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 		}
 	}
 
+	const toggleTheme = () => {
+		if (lightThemes.includes(theme ?? "")) {
+			setTheme("dark"); // o "slate"
+		} else {
+			setTheme("light"); // o "retro"
+		}
+	};
+
 	return (
-		<Button
-			variant="soft"
-			color={color}
-			size={size}
-			onClick={toggleTheme}
-			aria-label={label}
-			suppressHydrationWarning
-			icon={
-				<AnimatePresence mode="wait" initial={false}>
-					<motion.span
-						className={buttonThemeIconVariants({ size })}
-						key={key}
-						initial={variants.initial}
-						animate={variants.animate}
-						exit={variants.exit}
-						transition={variants.transition}
-					>
-						{isMounted && <Icon suppressHydrationWarning />}
-					</motion.span>
-				</AnimatePresence>
-			}
-			{...rest}
-		/>
+		<ClientOnly>
+			<Button
+				variant="soft"
+				color={color}
+				size={size}
+				onClick={toggleTheme}
+				aria-label={label}
+				suppressHydrationWarning
+				icon={
+					<AnimatePresence mode="wait" initial={false}>
+						<motion.span
+							className={buttonThemeIconVariants({ size })}
+							key={key}
+							initial={variants.initial}
+							animate={variants.animate}
+							exit={variants.exit}
+							transition={variants.transition}
+						>
+							{isMounted && <Icon suppressHydrationWarning />}
+						</motion.span>
+					</AnimatePresence>
+				}
+				{...rest}
+			/>
+		</ClientOnly>
 	);
 };
