@@ -13,7 +13,6 @@ import { create } from "storybook/theming";
 
 const ThemeDecorator = (Story, context) => {
 	const theme = context.globals.theme || "dark";
-	console.log(theme);
 
 	useEffect(() => {
 		/*const newTheme = themesDark.includes(theme) ? "dark" : "light";
@@ -35,7 +34,7 @@ const ThemeDecorator = (Story, context) => {
 
 	return (
 		<LambdaConfigProvider lang="en" radiusField="tiny" radiusBox="small" radiusSelector="small">
-			<ThemeProvider defaultMode="dark" lightTheme="retro">
+			<ThemeProvider defaultTheme="dark" lightTheme="retro">
 				<Story />
 			</ThemeProvider>
 		</LambdaConfigProvider>

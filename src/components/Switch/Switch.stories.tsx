@@ -78,8 +78,8 @@ const Template = (args: SwitchProps) => {
 							textTransform: "capitalize",
 						}}
 						positionLabel="top"
-						onChange={(e) => console.log(e.currentTarget.checked)}
-						onCheckedChange={(e) => console.log(e)}
+						onChange={(e) => alert(e.currentTarget.checked)}
+						onCheckedChange={(e) => alert(e)}
 					/>
 				))}
 			</div>

@@ -137,8 +137,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 				: contextSize === "large"
 				? 14
 				: 6;
-		console.log(isLabelFloating);
-		console.log(prefixRef.current?.offsetWidth);
 		const labelVariants = {
 			default: {
 				y: `calc(100% - ${heightInputSize}px)`,

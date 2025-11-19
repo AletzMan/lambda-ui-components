@@ -112,7 +112,7 @@ const Template = (args: FileUploadProps) => {
 				{...args}
 				files={files}
 				onChangeFiles={(newFiles) => {
-					console.log("onChangeFiles", newFiles);
+					alert(`onChangeFiles: ${newFiles}`);
 					setFiles(newFiles);
 				}}
 			/>

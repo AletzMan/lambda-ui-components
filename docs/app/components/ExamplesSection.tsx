@@ -129,7 +129,7 @@ export function ExamplesSection() {
 						icon={<FolderOpen />}
 						text="Open"
 						shortcutKeys={["Ctrl", "O"]}
-						onClick={() => console.log("Open")}
+						onClick={() => alert("Open")}
 					/>
 					<Dropdown.Item icon={<FilePlus />} text="New" shortcutKeys={["Ctrl", "N"]} />
 					<Dropdown.Item icon={<X />} text="Close" shortcutKeys={["Ctrl", "C"]} />
@@ -178,7 +178,7 @@ export function ExamplesSection() {
 	icon={<FolderOpen />}
 	text="Open"
 	shortcutKeys={["Ctrl", "O"]}
-	onClick={() => console.log("Open")}
+	onClick={() => alert("Open")}
     />
     <Dropdown.Item icon={<FilePlus />} text="New" shortcutKeys={["Ctrl", "N"]} />
     <Dropdown.Item icon={<X />} text="Close" shortcutKeys={["Ctrl", "C"]} />

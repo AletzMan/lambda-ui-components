@@ -95,8 +95,8 @@ const Template = (args: CheckBoxProps) => {
 						color={color.toLowerCase() as CheckBoxProps["color"]}
 						label={color}
 						radius={currentStyles === "local" ? args.radius : undefined}
-						onCheckedChange={(checked) => console.log(checked)}
-						onChange={(e) => console.log(e.target.checked)}
+						onCheckedChange={(checked) => alert(checked)}
+						onChange={(e) => alert(e.target.checked)}
 					/>
 				))}
 			</div>

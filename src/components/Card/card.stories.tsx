@@ -126,17 +126,17 @@ export const Outline: Story = {
 			{
 				text: "See more",
 				icon: <CircleEllipsis />,
-				onClick: () => console.log("See more"),
+				onClick: () => alert("See more"),
 			},
 			{
 				text: "Save",
 				icon: <Bookmark />,
-				onClick: () => console.log("Save"),
+				onClick: () => alert("Save"),
 			},
 			{
 				text: "Follow",
 				icon: <RssIcon />,
-				onClick: () => console.log("Follow"),
+				onClick: () => alert("Follow"),
 			},
 		],
 		variant: "outline",
@@ -169,17 +169,17 @@ export const Borderless: Story = {
 			{
 				text: "See more",
 				icon: <CircleEllipsis />,
-				onClick: () => console.log("See more"),
+				onClick: () => alert("See more"),
 			},
 			{
 				text: "Save",
 				icon: <Bookmark />,
-				onClick: () => console.log("Save"),
+				onClick: () => alert("Save"),
 			},
 			{
 				text: "Follow",
 				icon: <RssIcon />,
-				onClick: () => console.log("Follow"),
+				onClick: () => alert("Follow"),
 			},
 		],
 		children: (
