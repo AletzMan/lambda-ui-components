@@ -1,5 +1,5 @@
 import { ComponentsLayout } from "../../components/ComponentsLayout";
-import { ClientOnly, NavigationMenuData } from "lambda-ui-components";
+import { NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
 import { RadioFeatures } from "./RadioFeatures";
 import { TableProps } from "../../components/TableProps";

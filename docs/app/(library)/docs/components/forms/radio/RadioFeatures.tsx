@@ -2,7 +2,7 @@
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout, { PropConfig } from "../../components/PlaygroundLayout";
 import { Radio, RadioGroup, RadioGroupProps, Select } from "lambda-ui-components";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -190,14 +190,14 @@ const getComponentByType = (
 			<>
 				{props.map((prop, index) => {
 					return (
-						<>
+						<Fragment key={index}>
 							<label>{valueProps[index]}</label>
-							<RadioGroup key={index} {...prop}>
+							<RadioGroup {...prop}>
 								<Radio value="Option1" label="Option 1" />
 								<Radio value="Option2" label="Option 2" />
 								<Radio value="Option3" label="Option 3" />
 							</RadioGroup>
-						</>
+						</Fragment>
 					);
 				})}
 			</>
@@ -207,14 +207,14 @@ const getComponentByType = (
 			<>
 				{props.map((prop, index) => {
 					return (
-						<>
+						<Fragment key={index}>
 							<label>{valueProps[index]}</label>
-							<RadioGroup key={index} {...prop} onChangeOption={(value) => console.log(value)}>
+							<RadioGroup key={index} {...prop}>
 								<Radio.Button value="Option1" label="Option 1" />
 								<Radio.Button value="Option2" label="Option 2" />
 								<Radio.Button value="Option3" label="Option 3" />
 							</RadioGroup>
-						</>
+						</Fragment>
 					);
 				})}
 			</>
@@ -224,9 +224,9 @@ const getComponentByType = (
 			<>
 				{props.map((prop, index) => {
 					return (
-						<>
+						<Fragment key={index}>
 							<label>{valueProps[index]}</label>
-							<RadioGroup key={index} {...prop}>
+							<RadioGroup {...prop}>
 								<Radio.Card
 									value="Option1"
 									title="Option 1"
@@ -246,7 +246,7 @@ const getComponentByType = (
 									body={<div>Body</div>}
 								/>
 							</RadioGroup>
-						</>
+						</Fragment>
 					);
 				})}
 			</>
