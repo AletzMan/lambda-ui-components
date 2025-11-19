@@ -50,7 +50,7 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 	size = "medium",
 	...rest
 }) => {
-	const { setTheme, theme } = useTheme();
+	const { setTheme, theme, lightTheme, darkTheme } = useTheme();
 	const label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
 	const key = theme;
 	const isDark = theme === "dark" || theme === "slate";
@@ -98,9 +98,9 @@ export const ButtonTheme: React.FC<ButtonThemeProps> = ({
 
 	const toggleTheme = () => {
 		if (lightThemes.includes(theme ?? "")) {
-			setTheme("dark"); // o "slate"
+			setTheme(darkTheme); // o "slate"
 		} else {
-			setTheme("light"); // o "retro"
+			setTheme(lightTheme); // o "retro"
 		}
 	};
 

@@ -5,10 +5,10 @@ export function ClientProviders({ children }: { children: React.ReactNode }) {
 		<LambdaConfigProvider lang="en">
 			<ThemeProvider
 				defaultTheme="slate"
-				themes={["light", "dark", "retro", "slate"]}
-				attribute="data-theme"
-				value={{ light: "light", dark: "dark", retro: "retro", slate: "slate" }}
+				lightTheme="light"
+				darkTheme="dark"
 				disableTransitionOnChange
+				enableColorScheme={false}
 			>
 				{children}
 			</ThemeProvider>

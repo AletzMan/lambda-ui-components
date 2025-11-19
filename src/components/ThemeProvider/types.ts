@@ -15,6 +15,8 @@ interface ScriptProps
 }
 
 export interface UseThemeProps {
+	lightTheme: LightTheme;
+	darkTheme: DarkTheme;
 	/** List of all available theme names */
 	themes: string[];
 	/** Forced theme name for the current page */
@@ -31,15 +33,40 @@ export interface UseThemeProps {
 
 export type Attribute = DataAttribute | "class";
 
+export type LightTheme = "light" | "retro";
+export type DarkTheme = "dark" | "slate";
+export type AllThemes = LightTheme | DarkTheme | "system";
+
+export type LambdaColor =
+	| "primary"
+	| "secondary"
+	| "neutral"
+	| "success"
+	| "danger"
+	| "orange"
+	| "warning"
+	| "yellow"
+	| "lime"
+	| "emerald"
+	| "teal"
+	| "cyan"
+	| "info"
+	| "blue"
+	| "indigo"
+	| "violet"
+	| "purple"
+	| "fuchsia"
+	| "pink";
+
 export interface ThemeProviderProps extends React.PropsWithChildren<unknown> {
 	/** Light theme name */
-	lightTheme?: "light" | "retro";
+	lightTheme?: LightTheme;
 	/** Dark theme name */
-	darkTheme?: "dark" | "slate";
+	darkTheme?: DarkTheme;
 	/** List of all available theme names */
-	themes?: string[] | undefined;
+	themes?: AllThemes[] | undefined;
 	/** Forced theme name for the current page */
-	forcedTheme?: string | undefined;
+	forcedTheme?: AllThemes | undefined;
 	/** Whether to switch between dark and light themes based on prefers-color-scheme */
 	enableSystem?: boolean | undefined;
 	/** Disable all CSS transitions when switching themes */
@@ -49,7 +76,7 @@ export interface ThemeProviderProps extends React.PropsWithChildren<unknown> {
 	/** Key used to store theme setting in localStorage */
 	storageKey?: string | undefined;
 	/** Default theme name (for v0.0.12 and lower the default was light). If `enableSystem` is false, the default theme is light */
-	defaultTheme?: string | undefined;
+	defaultTheme?: AllThemes | undefined;
 	/** HTML attribute modified based on the active theme. Accepts `class`, `data-*` (meaning any data attribute, `data-mode`, `data-color`, etc.), or an array which could include both */
 	attribute?: Attribute | Attribute[] | undefined;
 	/** Mapping of theme name to HTML attribute value. Object where key is the theme name and value is the attribute value */

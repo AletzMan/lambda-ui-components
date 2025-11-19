@@ -2,7 +2,14 @@
 
 import * as React from "react";
 import { script as themeScript } from "./themeScript.ts";
-import type { Attribute, ThemeProviderProps, UseThemeProps } from "./types.ts";
+import type {
+	AllThemes,
+	Attribute,
+	DarkTheme,
+	LightTheme,
+	ThemeProviderProps,
+	UseThemeProps,
+} from "./types.ts";
 
 const systemToTheme = {
 	dark: "dark",
@@ -11,12 +18,17 @@ const systemToTheme = {
 
 const MEDIA = "(prefers-color-scheme: dark)";
 const ThemeContext = React.createContext<UseThemeProps | undefined>(undefined);
-const defaultContext: UseThemeProps = { setTheme: () => {}, themes: [] };
+const defaultContext: UseThemeProps = {
+	setTheme: () => {},
+	themes: [],
+	lightTheme: "light",
+	darkTheme: "dark",
+};
 
-const lightThemes = ["light", "retro"];
-const darkThemes = ["dark", "slate"];
+const lightThemes: LightTheme[] = ["light", "retro"];
+const darkThemes: DarkTheme[] = ["dark", "slate"];
 
-const defaultThemes = ["light", "dark", "retro", "slate"];
+const defaultThemes: AllThemes[] = ["light", "dark", "retro", "slate"];
 
 // --- Utils ---
 const saveToLS = (key: string, value: string) => {
@@ -25,20 +37,30 @@ const saveToLS = (key: string, value: string) => {
 	} catch {}
 };
 
-const getTheme = (key: string, fallback?: string) => {
+const getTheme = (key: string, fallback: AllThemes): AllThemes => {
 	if (typeof window === "undefined") return fallback;
 	try {
-		return localStorage.getItem(key) || fallback;
+		return (localStorage.getItem(key) as AllThemes) || fallback;
 	} catch {
 		return fallback;
 	}
 };
 
-const getSystemTheme = (e?: MediaQueryList | MediaQueryListEvent) => {
+const getSystemTheme = (
+	e?: MediaQueryList | MediaQueryListEvent,
+	darkTheme?: DarkTheme,
+	lightTheme?: LightTheme
+): "dark" | "light" => {
 	if (typeof window === "undefined") return "light"; // <-- FIX
 
 	const m = e ?? window.matchMedia(MEDIA);
-	return m.matches ? "dark" : "light";
+	let theme: "dark" | "light" = "light";
+	if (m.matches) {
+		if (darkTheme) theme = "dark";
+	} else {
+		if (lightTheme) theme = "light";
+	}
+	return theme;
 };
 
 const disableAnimation = (nonce?: string) => {
@@ -77,7 +99,7 @@ const Theme = ({
 	forcedTheme,
 	disableTransitionOnChange = false,
 	enableSystem = true,
-	enableColorScheme = true,
+	enableColorScheme = false,
 	storageKey = "theme",
 	themes = defaultThemes,
 	defaultTheme = enableSystem ? "system" : "dark",
@@ -86,8 +108,12 @@ const Theme = ({
 	children,
 	nonce,
 	scriptProps,
+	lightTheme,
+	darkTheme,
 }: ThemeProviderProps) => {
-	const [theme, setThemeState] = React.useState(() => getTheme(storageKey, defaultTheme));
+	const [theme, setThemeState] = React.useState<AllThemes>(() =>
+		getTheme(storageKey, defaultTheme)
+	);
 
 	const [resolvedTheme, setResolvedTheme] = React.useState(() =>
 		theme === "system" ? systemToTheme[getSystemTheme()] : theme
@@ -97,7 +123,7 @@ const Theme = ({
 
 	// --- Apply Theme ---
 	const applyTheme = React.useCallback(
-		(next: string) => {
+		(next: AllThemes) => {
 			if (typeof document === "undefined") return; // <-- FIX
 
 			if (!next) return;
@@ -127,8 +153,8 @@ const Theme = ({
 			else setAttr(attribute);
 
 			if (enableColorScheme) {
-				if (darkThemes.includes(resolved)) html.style.colorScheme = "dark";
-				else if (lightThemes.includes(resolved)) html.style.colorScheme = "light";
+				if (darkThemes.includes(resolved as DarkTheme)) html.style.colorScheme = "dark";
+				else if (lightThemes.includes(resolved as LightTheme)) html.style.colorScheme = "light";
 			}
 
 			enable?.();
@@ -141,12 +167,12 @@ const Theme = ({
 		(v: string | ((prev: string) => string)) => {
 			if (typeof v === "function") {
 				setThemeState((prev) => {
-					const next = v(prev ?? defaultTheme);
+					const next: AllThemes = v(prev ?? defaultTheme) as AllThemes;
 					saveToLS(storageKey, next);
 					return next;
 				});
 			} else {
-				setThemeState(v);
+				setThemeState(v as AllThemes);
 				saveToLS(storageKey, v);
 			}
 		},
@@ -185,7 +211,7 @@ const Theme = ({
 			if (!e.newValue) {
 				setTheme(defaultTheme);
 			} else {
-				setThemeState(e.newValue);
+				setThemeState(e.newValue as AllThemes);
 			}
 		};
 
@@ -203,8 +229,13 @@ const Theme = ({
 			theme,
 			setTheme,
 			forcedTheme,
+			lightTheme,
+			darkTheme,
 			themes: enableSystem ? [...themes, "system"] : themes,
-			resolvedTheme: theme === "system" ? systemToTheme[getSystemTheme()] : theme,
+			resolvedTheme:
+				theme === "system"
+					? systemToTheme[getSystemTheme(undefined, darkTheme, lightTheme)]
+					: theme,
 			systemTheme: enableSystem ? resolvedTheme : undefined,
 		}),
 		[theme, setTheme, forcedTheme, resolvedTheme, enableSystem, themes]
