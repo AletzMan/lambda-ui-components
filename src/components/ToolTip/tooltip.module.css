@@ -62,8 +62,7 @@
 	&:is(
 			.lambda-tooltip-container-top-center,
 			.lambda-tooltip-container-top-left,
-			.lambda-tooltip-container-top-right,
-
+			.lambda-tooltip-container-top-right
 		) {
 		animation: fadeInTop 0.25s ease-in-out both;
 	}

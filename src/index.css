@@ -925,7 +925,7 @@
 
 	*/
 
-	--surface-a: oklch(16.5% 0 0);
+	--surface-a: oklch(17.8% 0 0);
 	--surface-b: oklch(20.5% 0 0);
 	--surface-c: oklch(26.9% 0 0);
 	--surface-d: oklch(37.1% 0 0);
@@ -938,7 +938,7 @@
 	--background-code-light: #fefefe;
 	--background-tab-dark: oklch(20.5% 0 0);
 	--background-tab-light: #f0f0f1;
-	--border-color: #292e36;
+	--border-color: #282a2d;
 	--border-inverse-color: #c0c0c0;
 	--shadow-color: #2b2a2a30;
 	--shadow-inset-color: #f1f1f155;
