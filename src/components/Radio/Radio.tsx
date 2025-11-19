@@ -58,7 +58,7 @@ export const useRadioGroup = () => {
 };
 
 export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
-	name = `radio-group-${Math.random().toString(36).slice(2, 9)}`,
+	name,
 	selectedOption,
 	onChangeOption,
 	defaultValue,
