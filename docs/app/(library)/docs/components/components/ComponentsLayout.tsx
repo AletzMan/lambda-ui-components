@@ -1,5 +1,5 @@
 "use client";
-import { NavigationMenu, NavigationMenuData, useActiveSectionObserver } from "lambda-ui-components";
+import { NavigationMenu, useActiveSectionObserver, NavigationMenuData } from "lambda-ui-components";
 import { BarNavButton } from "@/app/(library)/components/layout/BarNavButton";
 import { FooterDocs } from "@/components/layout/FooterDocs";
 
