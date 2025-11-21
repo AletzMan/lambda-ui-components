@@ -328,13 +328,6 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 						values: ["tiny", "small", "medium", "large"],
 					},
 					{
-						name: "required",
-						type: "boolean",
-						defaultValue: false,
-						default: false,
-						label: "Required",
-					},
-					{
 						name: "disabled",
 						type: "boolean",
 						defaultValue: false,
