@@ -1,6 +1,23 @@
 import { VariantProps, cva } from "class-variance-authority";
 import styles from "./select.module.css";
 
+export const selectWrapper = cva(styles["select-wrapper"], {
+	variants: {
+		variant: {
+			outline: styles["select-wrapper-outline"],
+			soft: styles["select-wrapper-soft"],
+			underline: styles["select-wrapper-underline"],
+		},
+		disabled: {
+			true: styles["select-wrapper-disabled"],
+			false: "",
+		},
+	},
+	defaultVariants: {
+		disabled: false,
+	},
+});
+
 export const selectContainerVariants = cva(styles["select-container"], {
 	variants: {
 		size: {

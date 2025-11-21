@@ -12,6 +12,7 @@ import {
 	selectContainerVariants,
 	selectIconVariants,
 	selectedViewVariants,
+	selectWrapper,
 } from "./select.variants";
 import { SelectProps } from "./select.types";
 import { SelectOptionItem } from "./SelectOptionItem";
@@ -50,8 +51,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			contentRef,
 			triggerRef,
 			menuPosition,
-			handleKeyDown,
 			selectedOptionIndex,
+			highlightedIndex,
+			handleKeyDown,
 		} = usePopover();
 		const { radiusField } = useUIConfig();
 		let sizeValue, radiusValue;
@@ -66,6 +68,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 		}
 
 		const selectedOption = options.find((opt) => opt.value === selectedValue);
+		console.log("highlightedIndex", highlightedIndex);
+		console.log("selectedOptionIndex", selectedOptionIndex);
+		console.log("selectedValue", selectedValue);
 
 		useEffect(() => {
 			if (value !== undefined && value !== selectedValue) {
@@ -78,7 +83,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 				const selected = options[selectedOptionIndex];
 				setSelectedValue(selected?.value);
 			}
-		}, [selectedOptionIndex]);
+		}, [selectedOptionIndex, highlightedIndex]);
 
 		const performOptionSelection = useCallback(
 			(val: string | undefined) => {
@@ -99,6 +104,32 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			[disabled]
 		);
 
+		/*const handleKeyDown = (e: React.KeyboardEvent) => {
+			if (!isOpen) {
+				if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+					setIsOpen(true);
+					setHighlightedIndex(selectedOptionIndex ?? 0);
+					e.preventDefault();
+				}
+				return;
+			}
+			if (e.key === "ArrowDown") {
+				setHighlightedIndex((prev) => Math.min(prev + 1, options.length - 1));
+				e.preventDefault();
+			} else if (e.key === "ArrowUp") {
+				setHighlightedIndex((prev) => Math.max(prev - 1, 0));
+				e.preventDefault();
+			} else if (e.key === "Enter" || e.key === " ") {
+				if (highlightedIndex >= 0) {
+					performOptionSelection(options[highlightedIndex].value);
+				}
+				e.preventDefault();
+			} else if (e.key === "Escape") {
+				setIsOpen(false);
+				e.preventDefault();
+			}
+		};*/
+
 		const handleOptionClick = useCallback(
 			(val: string) => {
 				performOptionSelection(val);
@@ -108,11 +139,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
 		return (
 			<div
-				className={clsx(
-					[styles["select-wrapper"]],
-					{ [styles["select-wrapper-disabled"]]: disabled },
-					className
-				)}
+				className={clsx(selectWrapper({ variant, disabled }), className)}
 				ref={ref || (triggerRef as RefObject<HTMLDivElement>)}
 				{...props}
 			>
@@ -151,6 +178,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							joinposition: props!.joinposition,
 						})}
 						onClick={handleButtonClick}
+						onKeyDown={handleKeyDown}
 						disabled={disabled}
 						ref={triggerRef as RefObject<HTMLButtonElement>}
 					>
@@ -201,17 +229,18 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 									[styles["select-dropdown-open"]]: isOpen,
 								}
 							)}
-							tabIndex={0}
 							ref={contentRef as RefObject<HTMLUListElement>}
 							onKeyDown={(e) => handleKeyDown(e as React.KeyboardEvent<HTMLUListElement>)}
 						>
-							{options?.map((option) => (
+							{options?.map((option, index) => (
 								<SelectOptionItem
 									key={option.value}
 									option={option}
 									selectedValue={selectedValue}
 									size={sizeValue}
+									isActive={highlightedIndex === index}
 									onClick={handleOptionClick}
+									highlightedIndex={highlightedIndex}
 								/>
 							))}
 						</ul>,
