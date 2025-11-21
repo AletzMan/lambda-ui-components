@@ -1,5 +1,6 @@
 .lambda-message-invalid {
-	position: relative;
+	position: absolute;
+	top: 100%;
 	display: grid;
 	grid-template-columns: 1.5em 1fr;
 	align-items: center;

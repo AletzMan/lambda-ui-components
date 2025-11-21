@@ -76,6 +76,12 @@ export interface SelectProps
 	errorMessage?: string;
 
 	/**
+	 * Mensaje de ayuda que se muestra debajo del control select.
+	 * Este texto suele aparecer debajo del control select.
+	 */
+	helperText?: string;
+
+	/**
 	 * Indica si la selección es obligatoria en este select.
 	 * @default false
 	 */

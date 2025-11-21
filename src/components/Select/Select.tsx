@@ -20,6 +20,7 @@ import { InvalidMessage } from "../../_internal/components/InvalidMessage/Invali
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
 import { usePopover } from "../../_internal/hooks/usePopover";
+import { HelperText } from "../../_internal/components/HelperText/HelperText";
 
 export const Select = forwardRef<HTMLDivElement, SelectProps>(
 	(
@@ -37,6 +38,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			defaultValue,
 			placeholder = "Select an option",
 			onChange,
+			helperText,
 			className,
 			...props
 		},
@@ -100,32 +102,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			},
 			[disabled]
 		);
-
-		/*const handleKeyDown = (e: React.KeyboardEvent) => {
-			if (!isOpen) {
-				if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
-					setIsOpen(true);
-					setHighlightedIndex(selectedOptionIndex ?? 0);
-					e.preventDefault();
-				}
-				return;
-			}
-			if (e.key === "ArrowDown") {
-				setHighlightedIndex((prev) => Math.min(prev + 1, options.length - 1));
-				e.preventDefault();
-			} else if (e.key === "ArrowUp") {
-				setHighlightedIndex((prev) => Math.max(prev - 1, 0));
-				e.preventDefault();
-			} else if (e.key === "Enter" || e.key === " ") {
-				if (highlightedIndex >= 0) {
-					performOptionSelection(options[highlightedIndex].value);
-				}
-				e.preventDefault();
-			} else if (e.key === "Escape") {
-				setIsOpen(false);
-				e.preventDefault();
-			}
-		};*/
 
 		const handleOptionClick = useCallback(
 			(val: string) => {
@@ -204,6 +180,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							)}
 						</div>
 					</button>
+					{helperText && <HelperText text={helperText} size={sizeValue} />}
 				</div>
 
 				{isOpen &&

@@ -122,7 +122,8 @@
 	width: 100%;
 	color: var(--foreground-color);
 	background-color: var(--surface-a);
-	outline: none;
+	outline: 2px solid transparent;
+	outline-offset: 2px;
 
 	&.select-btn-outline {
 		border: var(--border-width-xs) solid var(--border-color);
@@ -130,7 +131,7 @@
 
 		&:is(.select-btn-invalid) {
 			border: var(--border-width-xs) dashed var(--danger-base-color);
-			background-color: var(--danger-soft-color);
+			outline-color: var(--danger-shadow-color);
 		}
 	}
 
@@ -139,7 +140,7 @@
 		background-color: var(--surface-a);
 
 		&:is(.select-btn-invalid) {
-			background-color: var(--danger-soft-color);
+			outline-color: var(--danger-shadow-color);
 		}
 	}
 
@@ -150,7 +151,7 @@
 
 		&:is(.select-btn-invalid) {
 			border-bottom: 2px dashed var(--danger-base-color);
-			background-color: var(--danger-soft-color);
+			outline-color: var(--danger-shadow-color);
 		}
 	}
 

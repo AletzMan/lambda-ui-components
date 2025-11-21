@@ -41,6 +41,11 @@ const meta: Meta<typeof Select> = {
 			control: "boolean",
 			description: "",
 		},
+		helperText: {
+			control: "text",
+			type: "string",
+			description: "Text to display as the helper text for the component",
+		},
 	},
 };
 
@@ -119,6 +124,7 @@ export const Normal: Story = {
 		invalid: false,
 		errorMessage: "This is a sample error message for demonstration",
 		disabled: false,
+		helperText: "This is a sample helper text for demonstration",
 	},
 };
 
@@ -159,6 +165,7 @@ export const Description: Story = {
 		invalid: false,
 		errorMessage: "This is a sample error message for demonstration",
 		disabled: false,
+		helperText: "This is a sample helper text for demonstration",
 	},
 };
 
@@ -201,6 +208,7 @@ export const Icon: Story = {
 		invalid: false,
 		errorMessage: "This is a sample error message for demonstration",
 		disabled: false,
+		helperText: "This is a sample helper text for demonstration",
 	},
 };
 
@@ -249,5 +257,6 @@ export const IconAndDescrption: Story = {
 		invalid: false,
 		errorMessage: "This is a sample error message for demonstration",
 		disabled: false,
+		helperText: "This is a sample helper text for demonstration",
 	},
 };

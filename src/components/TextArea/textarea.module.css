@@ -104,6 +104,8 @@
 
 	&.lambda-textarea-outline {
 		border: var(--border-width-xs) solid var(--border-color);
+		outline: 2px solid transparent;
+		outline-offset: 2px;
 
 		&:focus-within {
 			outline: 3px solid var(--primary-opacity-color);
@@ -113,7 +115,7 @@
 
 		&.lambda-textarea-invalid {
 			border: var(--border-width-xs) dashed var(--danger-base-color);
-			background-color: var(--danger-opacity-color);
+			outline-color: var(--danger-shadow-color);
 
 			&:focus-within {
 				outline: 3px solid var(--danger-outline-color);
@@ -124,14 +126,15 @@
 
 	&.lambda-textarea-soft {
 		border: none;
+		outline: 2px solid transparent;
+		outline-offset: 2px;
 
 		&:focus-within {
 			outline: 3px solid var(--primary-opacity-color);
-			outline-offset: 2px;
 		}
 
 		&.lambda-textarea-invalid {
-			background-color: var(--danger-opacity-color);
+			outline-color: var(--danger-shadow-color);
 
 			&:focus-within {
 				outline: 3px solid var(--danger-outline-color);
