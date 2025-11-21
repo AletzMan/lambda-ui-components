@@ -900,7 +900,7 @@
 	--foreground-label-color: var(--lambda-color-neutral-400);
 	--foreground-helper-color: #53a4e6;
 	--foreground-disabled-color: #b7b5b5;
-	--placeholder-color: #555555;
+	--placeholder-color: #383838;
 	--visited-link-color: #8c29a4;
 	--transparent-color: #ffffff08;
 	--badge-background-color: #f01e12;
@@ -912,18 +912,7 @@
 
 	--rating-solid-color: #ffdd20;
 	--rating-fill-color: #ffdd2035;
-	--rating-stroke-color: #f7c00e;
-	/*
-	--surface-a: #0b1012;
-	--surface-b: #141b1e;
-	--surface-c: #242d31;
-	--surface-d: #344147;
-	--surface-e: #46575e;
-	--surface-f: #596e76;
-	--surface-g: #6e8791;
-	--surface-h: #84a2ad;
-
-	*/
+	--rating-stroke-color: #f7c00e; 
 
 	--surface-a: oklch(17% 0 0);
 	--surface-b: oklch(20.5% 0 0);
@@ -1101,24 +1090,7 @@ textarea {
 .button-docs:hover {
 	background-position: 100%;
 }
-
-/*
-.dark {
-	background-color: oklch(15.5% 0 0);
-}
-
-.light {
-	background-color: oklch(94.5% 0 0);
-}
-
-.slate {
-	background-color: #0e1316;
-}
-
-.retro {
-	background-color: #dbd2b9;
-}
-*/
+ 
 html[data-theme="light"] {
 	background-color: oklch(94.5% 0 0);
 	color-scheme: light;
