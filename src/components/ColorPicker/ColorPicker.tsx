@@ -538,7 +538,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		}, [open, onChange]);
 
 		const handlePickerKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
-			debugger;
 			const pickerRect = pickerRef.current?.getBoundingClientRect();
 			if (!pickerRect) return;
 
