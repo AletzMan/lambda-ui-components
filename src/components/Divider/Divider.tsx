@@ -21,6 +21,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 			<div
 				ref={ref}
 				role="separator"
+				tabIndex={-1}
 				aria-orientation={orientation || "horizontal"}
 				style={{
 					margin: spacing
