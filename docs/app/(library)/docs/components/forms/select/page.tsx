@@ -46,13 +46,7 @@ const dataFeatures: NavigationMenuData[] = [
 						label: "Radius",
 						path: "#radius",
 						target: "_top",
-					},
-					{
-						id: "type",
-						label: "Type",
-						path: "#type",
-						target: "_top",
-					},
+					}, 
 					{
 						id: "disabled",
 						label: "Disabled",
@@ -64,25 +58,7 @@ const dataFeatures: NavigationMenuData[] = [
 						label: "Whit Label",
 						path: "#whit-label",
 						target: "_top",
-					},
-					{
-						id: "floating-label",
-						label: "Floating Label",
-						path: "#floating-label",
-						target: "_top",
-					},
-					{
-						id: "prefix",
-						label: "Prefix",
-						path: "#prefix",
-						target: "_top",
-					},
-					{
-						id: "suffix",
-						label: "Suffix",
-						path: "#suffix",
-						target: "_top",
-					},
+					},  
 					{
 						id: "required",
 						label: "Required",
@@ -99,6 +75,12 @@ const dataFeatures: NavigationMenuData[] = [
 						id: "helper-text",
 						label: "Helper Text",
 						path: "#helper-text",
+						target: "_top",
+					},
+					{
+						id: "controlled",
+						label: "Controlled",
+						path: "#controlled",
 						target: "_top",
 					},
 				],
@@ -118,121 +100,91 @@ const dataFeatures: NavigationMenuData[] = [
 		],
 	},
 ];
-
 export const selectProps: TableProps[] = [
 	{
 		prop: "size",
 		type: `"tiny" | "small" | "medium" | "large"`,
 		default: `"medium"`,
 		typePrimitive: "string",
-		tooltip: "Adjusts the input’s height, spacing, and font size to match different UI scales.",
+		tooltip:
+			"Adjusts the select’s height, spacing, and font size to match different UI scales.",
 	},
 	{
 		prop: "radius",
 		type: `"none" | "tiny" | "small" | "medium" | "large" | "full"`,
 		default: `"medium"`,
 		typePrimitive: "string",
-		tooltip: "Controls how rounded the input’s corners are, from sharp edges to fully pill-shaped.",
+		tooltip: "Controls how rounded the select’s corners are.",
 	},
 	{
 		prop: "variant",
 		type: `"outlined" | "soft"`,
 		default: `"outlined"`,
 		typePrimitive: "string",
-		tooltip:
-			"Defines the input’s visual style, such as a bordered appearance or a subtle filled background.",
+		tooltip: "Determines whether the select has a bordered look or a subtle filled style.",
 	},
 	{
 		prop: "invalid",
 		type: `boolean`,
 		default: `false`,
 		typePrimitive: "boolean",
-		tooltip: "Marks the input as invalid and applies its error styling and messaging.",
+		tooltip: "Marks the select as invalid and applies error styles.",
 	},
 	{
 		prop: "disabled",
 		type: `boolean`,
 		default: `false`,
 		typePrimitive: "boolean",
-		tooltip: "Prevents interaction with the input, visually indicating it cannot be edited.",
-	},
-	{
-		prop: "type",
-		type: `"text" | "password" | "email" | string`,
-		default: `"text"`,
-		typePrimitive: "string",
-		tooltip: "Sets the underlying HTML input type (e.g., text, password, email, etc.).",
+		tooltip: "Disables interaction and dims the component visually.",
 	},
 	{
 		prop: "label",
 		type: `string`,
 		default: `undefined`,
 		typePrimitive: "string",
-		tooltip: "Adds a label describing the purpose of the input.",
-	},
-	{
-		prop: "errorMessage",
-		type: `string`,
-		default: `undefined`,
-		typePrimitive: "string",
-		tooltip: "Message shown below the input when it's invalid or fails validation.",
-	},
-	{
-		prop: "floatingLabel",
-		type: `boolean`,
-		default: `false`,
-		typePrimitive: "boolean",
-		tooltip: "Enables a floating label that animates above the input when focused or filled.",
+		tooltip: "Adds a text label describing the purpose of the select.",
 	},
 	{
 		prop: "helperText",
 		type: `string`,
 		default: `undefined`,
 		typePrimitive: "string",
-		tooltip: "Extra descriptive text displayed under the input to guide the user.",
+		tooltip: "Additional explanatory text displayed below the select.",
 	},
 	{
 		prop: "required",
 		type: `boolean`,
 		default: `false`,
 		typePrimitive: "boolean",
-		tooltip: "Indicates that the input must be filled out before submitting a form.",
-	},
-	{
-		prop: "prefix",
-		type: `ReactNode | string`,
-		default: `undefined`,
-		typePrimitive: "ReactNode | string",
-		tooltip:
-			"Element displayed before the input value, commonly used for icons, symbols, or short text.",
-	},
-	{
-		prop: "suffix",
-		type: `ReactNode | string`,
-		default: `undefined`,
-		typePrimitive: "ReactNode | string",
-		tooltip: "Element displayed after the input value, such as icons, units, or actions.",
+		tooltip: "Indicates that a value must be selected before submitting a form.",
 	},
 	{
 		prop: "onChange",
 		type: `(value: string) => void`,
 		default: `undefined`,
 		typePrimitive: "callback",
-		tooltip: "Callback fired whenever the input’s value is updated by the user.",
+		tooltip: "Callback fired whenever the selected option changes.",
 	},
 	{
 		prop: "value",
 		type: `string`,
 		default: `""`,
 		typePrimitive: "string",
-		tooltip: "Represents the current value of the input (for controlled usage).",
+		tooltip: "Represents the currently selected value (controlled mode).",
 	},
 	{
 		prop: "placeholder",
 		type: `string`,
 		default: `""`,
 		typePrimitive: "string",
-		tooltip: "Hint text shown when the input has no value.",
+		tooltip: "Text shown when no option has been selected.",
+	},
+	{
+		prop: "options",
+		type: `IListCollection[]`,
+		default: `undefined`,
+		typePrimitive: "array",
+		tooltip: "Array of option objects available for selection.",
 	},
 	{
 		prop: "joinposition",
@@ -240,9 +192,10 @@ export const selectProps: TableProps[] = [
 		default: `undefined`,
 		typePrimitive: "string",
 		tooltip:
-			"Indicates the input’s position when visually grouped with other inputs (e.g., input addons or grouped fields).",
+			"Defines the select’s position when visually grouped with other form controls.",
 	},
 ];
+
 
 export default function InputPage() {
 	return (
