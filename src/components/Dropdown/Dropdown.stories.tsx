@@ -90,7 +90,12 @@ const Template = (args: DropdownProps) => {
 						shortcutKeys={["Ctrl", "O"]}
 						onClick={() => alert("Open")}
 					/>
-					<Dropdown.Item icon={<FilePlus />} text="New" shortcutKeys={["Ctrl", "N"]} />
+					<Dropdown.Item
+						icon={<FilePlus />}
+						text="New"
+						shortcutKeys={["Ctrl", "N"]}
+						onSelectOption={() => alert("New")}
+					/>
 					<Dropdown.Item icon={<X />} text="Close" shortcutKeys={["Ctrl", "C"]} />
 					<Divider contentPosition="start">Document</Divider>
 					<Dropdown.Item icon={<Printer />} text="Print" shortcutKeys={["Ctrl", "P"]} />

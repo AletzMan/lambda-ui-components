@@ -1,4 +1,5 @@
 import {
+	Children,
 	cloneElement,
 	createContext,
 	forwardRef,
@@ -6,6 +7,7 @@ import {
 	isValidElement,
 	ReactNode,
 	useContext,
+	useRef,
 } from "react";
 import styles from "./dropdown.module.css";
 import clsx from "clsx";
@@ -17,9 +19,14 @@ import { ChevronDown } from "lucide-react";
 import { createPortal } from "react-dom";
 import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
+import { Divider } from "../Divider/Divider";
 
 const DropdownContext = createContext<
-	(DropdownProps & { setIsOpen?: (value: boolean) => void }) | undefined
+	| (DropdownProps & {
+			setIsOpen?: (value: boolean) => void;
+			highlightedIndex?: number;
+	  })
+	| undefined
 >(undefined);
 
 const useDropdownContext = () => {
@@ -33,11 +40,17 @@ const isClient = typeof window !== "undefined";
 
 const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 	({ className, variant, size, radius, icon, text, joinposition, children, ...props }, ref) => {
+		const itemCallbacks = useRef<Array<(() => void) | undefined>>([]);
 		const { radiusField } = useUIConfig();
-		const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef, handleKeyDown } = usePopover<
-			HTMLDivElement,
-			HTMLDivElement
-		>({ x: 0, y: 3 });
+		const {
+			isOpen,
+			setIsOpen,
+			menuPosition,
+			triggerRef,
+			contentRef,
+			handleKeyDown,
+			highlightedIndex,
+		} = usePopover<HTMLDivElement, HTMLDivElement>({ x: 0, y: 3 }, itemCallbacks.current);
 		const radiusValue = radius || radiusField;
 		let contextSize, contextRadius, contextDisabled;
 
@@ -51,10 +64,38 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 			contextRadius = radiusValue;
 			contextDisabled = props.disabled;
 		}
+		const renderChildren: React.ReactNode[] = [];
+		const navigableIndexes: number[] = []; // para saber cuáles se pueden navegar
+
+		Children.forEach(children, (child, i) => {
+			if (!isValidElement(child)) return;
+
+			if (child.type === Divider) {
+				renderChildren.push(child);
+				return;
+			}
+
+			// Item navegable
+			if (child.type === Dropdown.Item || child.type === Dropdown.ItemCustom) {
+				const idx = navigableIndexes.length;
+				const cloned = cloneElement(child as React.ReactElement<DropdownItemCustomProps>, {
+					index: idx,
+					"data-navigable": true,
+					key: i,
+				});
+				itemCallbacks.current[idx] = (child as React.ReactElement<DropdownItemCustomProps>).props.onSelectOption;
+				renderChildren.push(cloned);
+				navigableIndexes.push(i);
+				return;
+			}
+
+			// Otros elementos
+			renderChildren.push(child);
+		});
 
 		return (
 			<DropdownContext.Provider
-				value={{ variant, size, radius, icon, text, joinposition, setIsOpen }}
+				value={{ variant, size, radius, icon, text, joinposition, setIsOpen, highlightedIndex }}
 			>
 				<div className={clsx(styles[`lambda-dropdown-wrapper`])} ref={triggerRef}>
 					<button
@@ -100,7 +141,7 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 										}}
 										tabIndex={0}
 									>
-										{children}
+										{renderChildren}
 									</motion.div>
 								)}
 							</AnimatePresence>,
@@ -112,35 +153,70 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 	}
 );
 
-const DropdownItem = ({
-	icon,
-	text,
-	shortcutKeys,
-	url,
-	...props
-}: Omit<HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>, "children"> & {
+interface DropdownItemProps {
+	index?: number;
 	icon?: ReactNode;
 	text?: string;
 	shortcutKeys?: string[];
 	url?: string;
-}) => {
-	const { size, setIsOpen } = useDropdownContext();
+	onSelectOption?: () => void | undefined;
+}
 
-	const onClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+const DropdownItem = ({
+	index,
+	icon,
+	text,
+	shortcutKeys,
+	url,
+	onSelectOption,
+	...props
+}: DropdownItemProps &
+	Omit<HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>, "children"> & {
+		index?: number;
+		icon?: ReactNode;
+		text?: string;
+		shortcutKeys?: string[];
+		url?: string;
+		onSelectOption?: () => void;
+	}) => {
+	const { size, setIsOpen, highlightedIndex } = useDropdownContext();
+
+	const onClick = () => {
 		setIsOpen?.(false);
-		props.onClick?.(e);
+		onSelectOption?.();
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+		console.log("Enter");
+		if (e.key === "Enter") {
+			onSelectOption?.();
+			setIsOpen?.(false);
+		}
 	};
 
 	const RenderItem = ({ children }: { children: ReactNode }) => {
 		if (url) {
 			return (
-				<a href={url} className={clsx(dropdownItemVariants({ size }))} onClick={onClick}>
+				<a
+					href={url}
+					tabIndex={highlightedIndex}
+					data-navigable="true"
+					className={clsx(dropdownItemVariants({ size, active: highlightedIndex === index }))}
+					onClick={onClick}
+					onKeyDown={handleKeyDown}
+				>
 					{children}
 				</a>
 			);
 		} else {
 			return (
-				<button className={clsx(dropdownItemVariants({ size }))} onClick={onClick}>
+				<button
+					tabIndex={highlightedIndex}
+					data-navigable="true"
+					className={clsx(dropdownItemVariants({ size, active: highlightedIndex === index }))}
+					onClick={onClick}
+					onKeyDown={handleKeyDown}
+				>
 					{children}
 				</button>
 			);
@@ -167,14 +243,29 @@ const DropdownItem = ({
 	);
 };
 
-const DropdownItemCustom = ({ children }: { children: ReactNode }) => {
-	const { setIsOpen } = useDropdownContext();
+interface DropdownItemCustomProps {
+	children: ReactNode;
+	"data-navigable"?: boolean;
+	index?: number;
+	onSelectOption?: () => void;
+}
+
+const DropdownItemCustom = ({ children, index, onSelectOption }: DropdownItemCustomProps) => {
+	const { setIsOpen, highlightedIndex } = useDropdownContext();
 	const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
 		setIsOpen?.(false);
 		e.stopPropagation();
+		onSelectOption?.();
 	};
 	return (
-		<div className={clsx(styles["lambda-dropdown-item-custom"])} onClick={onClick} tabIndex={0}>
+		<div
+			tabIndex={highlightedIndex}
+			data-navigable={true}
+			className={clsx(styles["lambda-dropdown-item-custom"], {
+				[styles["lambda-dropdown-item-custom-active"]]: highlightedIndex === index,
+			})}
+			onClick={onClick}
+		>
 			{children}
 		</div>
 	);

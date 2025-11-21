@@ -78,9 +78,14 @@ export const dropdownItemVariants = cva(styles[`lambda-dropdown-item`], {
 			medium: styles[`lambda-dropdown-item-medium`],
 			large: styles[`lambda-dropdown-item-large`],
 		},
+		active: {
+			true: styles[`lambda-dropdown-item-active`],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		size: "medium",
+		active: false,
 	},
 });
 
