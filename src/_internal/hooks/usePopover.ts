@@ -1,12 +1,13 @@
 import { useEffect, useLayoutEffect, useState, useRef } from "react";
 
 // 2. El hook es genérico para recibir los tipos T y U
-export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?: {
-	x?: number;
-	y?: number;
-}) => {
+export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
+	offset?: { x?: number; y?: number },
+	itemCallbacks?: Array<(() => void) | undefined>
+) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
+	const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 	const [menuPosition, setMenuPosition] = useState<{
 		top: number;
 		left: number;
@@ -67,37 +68,50 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 
 	const getFocusableItems = () => {
 		if (!contentRef.current) return [];
-		const all = Array.from(contentRef.current.querySelectorAll<HTMLElement>(":scope > *"));
-		return all.filter((el) => el.tagName === "BUTTON" || el.tagName === "A" || el.tabIndex >= 0);
+		const all = Array.from(
+			contentRef.current.querySelectorAll<HTMLElement>("[data-navigable=true]")
+		);
+		return all;
 	};
 
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement | HTMLUListElement>) => {
+	const onSelectOption = () => {
+		if (highlightedIndex >= 0 && itemCallbacks && itemCallbacks[highlightedIndex]) {
+			itemCallbacks[highlightedIndex]!();
+		}
+	};
+
+	const handleKeyDown = (
+		e: React.KeyboardEvent<HTMLDivElement | HTMLUListElement | HTMLButtonElement>
+	) => {
 		const items = getFocusableItems();
 		if (!items) return;
 
-		const activeIndex = Array.from(items).findIndex((el) => el === document.activeElement);
+		if (!isOpen) {
+			if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+				setIsOpen(true);
+				setHighlightedIndex(0);
+				e.preventDefault();
+			}
+			return;
+		}
 
 		if (e.key === "ArrowDown") {
+			setHighlightedIndex((prev) => Math.min(prev + 1, items.length - 1));
 			e.preventDefault();
-			const next = items[(activeIndex + 1) % items.length];
-			next?.focus();
-		}
-
-		if (e.key === "ArrowUp") {
+		} else if (e.key === "ArrowUp") {
+			setHighlightedIndex((prev) => Math.max(prev - 1, 0));
 			e.preventDefault();
-			const prev = items[(activeIndex - 1 + items.length) % items.length];
-			prev?.focus();
-		}
-
-		if (e.key === "Escape") {
-			e.preventDefault();
+		} else if (e.key === "Escape") {
 			setIsOpen(false);
-		}
-
-		if (e.key === "Enter") {
 			e.preventDefault();
-			setIsOpen(false);
-			setSelectedOptionIndex(activeIndex);
+		} else if (e.key === "Enter") {
+			if (highlightedIndex >= 0) {
+				setIsOpen(false);
+				setSelectedOptionIndex(highlightedIndex);
+				onSelectOption();
+			}
+			e.preventDefault();
+			setHighlightedIndex(-1);
 		}
 	};
 
@@ -162,5 +176,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(offset?
 		contentRef,
 		handleKeyDown,
 		selectedOptionIndex,
+		highlightedIndex,
+		onSelectOption,
 	};
 };
