@@ -68,9 +68,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 		}
 
 		const selectedOption = options.find((opt) => opt.value === selectedValue);
-		console.log("highlightedIndex", highlightedIndex);
-		console.log("selectedOptionIndex", selectedOptionIndex);
-		console.log("selectedValue", selectedValue);
 
 		useEffect(() => {
 			if (value !== undefined && value !== selectedValue) {

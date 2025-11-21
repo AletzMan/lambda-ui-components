@@ -83,7 +83,9 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 					"data-navigable": true,
 					key: i,
 				});
-				itemCallbacks.current[idx] = (child as React.ReactElement<DropdownItemCustomProps>).props.onSelectOption;
+				itemCallbacks.current[idx] = (
+					child as React.ReactElement<DropdownItemCustomProps>
+				).props.onSelectOption;
 				renderChildren.push(cloned);
 				navigableIndexes.push(i);
 				return;
@@ -187,7 +189,6 @@ const DropdownItem = ({
 	};
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>) => {
-		console.log("Enter");
 		if (e.key === "Enter") {
 			onSelectOption?.();
 			setIsOpen?.(false);
