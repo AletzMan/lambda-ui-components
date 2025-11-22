@@ -377,30 +377,58 @@
 
 .lambda-slider-handle-primary{ 
 	border-color: var(--primary-base-color); 
+
+	&:hover:not(.lambda-slider-handle-disabled), &:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
+		box-shadow: 0 0 0 4px var(--primary-shadow-color); 
+	}
 }
 
 .lambda-slider-handle-neutral{ 
 	border-color: var(--neutral-base-color);
+
+	&:hover:not(.lambda-slider-handle-disabled), &:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
+		box-shadow: 0 0 0 4px var(--neutral-shadow-color); 
+	}
 }
 
 .lambda-slider-handle-secondary{ 
 	border-color: var(--secondary-base-color);
+
+	&:hover:not(.lambda-slider-handle-disabled), &:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
+		box-shadow: 0 0 0 4px var(--secondary-shadow-color); 
+	}
 }
 
 .lambda-slider-handle-info{ 
 	border-color: var(--info-base-color);
+
+	&:hover:not(.lambda-slider-handle-disabled), &:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
+		box-shadow: 0 0 0 4px var(--info-shadow-color); 
+	}
 }
 
 .lambda-slider-handle-warning{ 
 	border-color: var(--warning-base-color);
+
+	&:hover:not(.lambda-slider-handle-disabled), &:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
+		box-shadow: 0 0 0 4px var(--warning-shadow-color); 
+	}
 }
 
 .lambda-slider-handle-danger{ 
 	border-color: var(--danger-base-color);
+
+	&:hover:not(.lambda-slider-handle-disabled), &:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
+		box-shadow: 0 0 0 4px var(--danger-shadow-color); 
+	}
 }
 
 .lambda-slider-handle-success{ 
 	border-color: var(--success-base-color);
+
+	&:hover:not(.lambda-slider-handle-disabled), &:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
+		box-shadow: 0 0 0 4px var(--success-shadow-color); 
+	}
 }
 
 .lambda-slider-handle-horizontal {
@@ -455,19 +483,13 @@
 }
 
 /* Estado Hover del Handle */
-.lambda-slider-handle:hover:not(.lambda-slider-handle-disabled) {
-	box-shadow: 0 0 0 4px var(--primary-shadow-color);
-
+.lambda-slider-handle:hover:not(.lambda-slider-handle-disabled) { 
 	& .lambda-slider-handle-value {
 		display: block;
 	}
 }
 
-/* Estado Focus-Visible del Handle */
-.lambda-slider-handle:focus-visible:not(.lambda-slider-handle-disabled):not(:hover) {
-	box-shadow: 0 0 0 4px var(--primary-shadow-color);
-}
-
+ 
 /* Estado Arrastrando del Handle */
 .lambda-slider-handle-dragging {
 	cursor: grabbing;
