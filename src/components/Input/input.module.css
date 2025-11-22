@@ -21,11 +21,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	box-sizing: border-box;
 	outline: none;
 	outline-offset: 2px;
-	font-family: var(--font-family);
-
-	&.lambda-input-wrapper-password {
-		/*padding-right: 0;*/
-	}
+	font-family: var(--font-family); 
 }
 
 .lambda-input-suffix,
@@ -135,18 +131,49 @@ input[type="search"]::-webkit-search-cancel-button {
 		}
 	}
 
-	&.lambda-input-field-showPassword {
+	&.lambda-input-field-show-password {
 		font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif, Geneva, Tahoma,
 			sans-serif, Haettenschweiler, "Arial Narrow Bold", sans-serif, Tahoma, Geneva, Verdana,
 			sans-serif, Courier, monospace;
-		font-weight: 800;
-		color: var(--primary-base-color);
+		font-weight: 800; 
 	}
 
-	&:is(.lambda-input-field-showPassword) {
+	&:is(.lambda-input-field-show-password) {
 		letter-spacing: 3px;
 	}
 }
+
+ 
+
+.lambda-input-field-show-password {
+	&:is(.lambda-input-field-primary) {
+		color: var(--primary-base-color);
+	}
+
+	&:is(.lambda-input-field-neutral) {
+		color: var(--neutral-base-color);
+	}
+
+	&:is(.lambda-input-field-secondary) {
+		color: var(--secondary-base-color);
+	}
+
+	&:is(.lambda-input-field-info) {
+		color: var(--info-base-color);
+	}
+
+	&:is(.lambda-input-field-warning) {
+		color: var(--warning-base-color);
+	}
+
+	&:is(.lambda-input-field-danger) {
+		color: var(--danger-base-color);
+	}
+
+	&:is(.lambda-input-field-success) {
+		color: var(--success-base-color);
+	}
+} 
 
 .lambda-input-input-wrapper {
 	display: flex;
@@ -186,14 +213,9 @@ input[type="search"]::-webkit-search-cancel-button {
 	padding: 0;
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
-	color: var(--primary-subtle-color);
 	background-color: transparent;
 	justify-self: center;
 	align-self: center;
-
-	&:hover {
-		color: var(--primary-base-color);
-	}
 
 	&.lambda-input-toggle-password-outline {
 		background-color: transparent;
@@ -248,6 +270,55 @@ input[type="search"]::-webkit-search-cancel-button {
 	}
 }
 
+.lambda-input-toggle-password-primary {
+	color: var(--primary-subtle-color);
+	&:hover {
+		color: var(--primary-base-color);
+	}
+}
+
+.lambda-input-toggle-password-neutral {
+	color: var(--neutral-subtle-color);
+	&:hover {
+		color: var(--neutral-base-color);
+	}
+}
+
+.lambda-input-toggle-password-secondary {
+	color: var(--secondary-subtle-color);
+	&:hover {
+		color: var(--secondary-base-color);
+	}
+}
+
+.lambda-input-toggle-password-info {
+	color: var(--info-subtle-color);
+	&:hover {
+		color: var(--info-base-color);
+	}
+}
+
+.lambda-input-toggle-password-warning {
+	color: var(--warning-subtle-color);
+	&:hover {
+		color: var(--warning-base-color);
+	}
+}
+
+.lambda-input-toggle-password-danger {
+	color: var(--danger-subtle-color);
+	&:hover {
+		color: var(--danger-base-color);
+	}
+}
+
+.lambda-input-toggle-password-success {
+	color: var(--success-subtle-color);
+	&:hover {
+		color: var(--success-base-color);
+	}
+}
+
 .lambda-input-clear-search {
 	display: flex;
 	align-items: center;
@@ -268,11 +339,46 @@ input[type="search"]::-webkit-search-cancel-button {
 .lambda-input-wrapper-outline {
 	background-color: var(--background-color);
 	border: var(--border-width-xs) solid var(--border-color);
+	outline: 2px solid transparent;
 
 	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
-		outline: 2px solid var(--primary-shadow-color);
-		border-color: var(--primary-base-color);
 		z-index: 1;
+
+		&:is(.lambda-input-wrapper-primary) {
+			outline-color: var(--primary-shadow-color);
+			border-color: var(--primary-base-color);
+		}
+
+		&:is(.lambda-input-wrapper-neutral) {
+			outline-color: var(--neutral-shadow-color);
+			border-color: var(--neutral-base-color);
+		}
+
+		&:is(.lambda-input-wrapper-secondary) {
+			outline-color: var(--secondary-shadow-color);
+			border-color: var(--secondary-base-color);
+		}
+
+		&:is(.lambda-input-wrapper-success) {
+			outline-color: var(--success-shadow-color);
+			border-color: var(--success-base-color);
+		}
+
+		&:is(.lambda-input-wrapper-warning) {
+			outline-color: var(--warning-shadow-color);
+			border-color: var(--warning-base-color);
+		}
+
+		&:is(.lambda-input-wrapper-danger) {
+			outline-color: var(--danger-shadow-color);
+			border-color: var(--danger-base-color);
+		}
+
+		&:is(.lambda-input-wrapper-info) {
+			outline-color: var(--info-shadow-color);
+			border-color: var(--info-base-color);
+		}
+
 	}
 
 	&.lambda-input-wrapper-invalid {
@@ -284,9 +390,36 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-wrapper-soft {
 	background-color: var(--surface-b);
+	outline: 2px solid transparent;
 
 	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
-		outline: 2px solid var(--primary-shadow-color);
+			&:is(.lambda-input-wrapper-primary) {
+			outline-color: var(--primary-shadow-color); 
+		}
+
+		&:is(.lambda-input-wrapper-neutral) {
+			outline-color: var(--neutral-shadow-color); 
+		}
+
+		&:is(.lambda-input-wrapper-secondary) {
+			outline-color: var(--secondary-shadow-color); 
+		}
+
+		&:is(.lambda-input-wrapper-success) {
+			outline-color: var(--success-shadow-color); 
+		}
+
+		&:is(.lambda-input-wrapper-warning) {
+			outline-color: var(--warning-shadow-color); 
+		}
+
+		&:is(.lambda-input-wrapper-danger) {
+			outline-color: var(--danger-shadow-color); 
+		}
+
+		&:is(.lambda-input-wrapper-info) {
+			outline-color: var(--info-shadow-color); 
+		}
 	}
 
 	&.lambda-input-wrapper-invalid {
@@ -298,10 +431,38 @@ input[type="search"]::-webkit-search-cancel-button {
 .lambda-input-wrapper-underline {
 	background-color: var(--surface-a);
 	border: var(--border-width-xs) solid transparent;
-	border-bottom: var(--border-width-sm) solid var(--border-color);
+	border-bottom: var(--border-width-sm) solid transparent;
 
 	&:focus-within:not(.lambda-input-wrapper-invalid):not(.lambda-input-wrapper-read-only) {
-		border-bottom: var(--border-width-sm) solid var(--primary-base-color);
+		
+		
+		&:is(.lambda-input-wrapper-primary) {
+			border-bottom-color: var(--primary-base-color); 
+		}
+
+		&:is(.lambda-input-wrapper-neutral) {
+			border-bottom-color: var(--neutral-base-color); 
+		}
+
+		&:is(.lambda-input-wrapper-secondary) {
+			border-bottom-color: var(--secondary-base-color); 
+		}
+
+		&:is(.lambda-input-wrapper-success) {
+			border-bottom-color: var(--success-base-color); 
+		}
+
+		&:is(.lambda-input-wrapper-warning) {
+			border-bottom-color: var(--warning-base-color); 
+		}
+
+		&:is(.lambda-input-wrapper-danger) {
+			border-bottom-color: var(--danger-base-color); 
+		}
+
+		&:is(.lambda-input-wrapper-info) {
+			border-bottom-color: var(--info-base-color); 
+		}
 	}
 
 	&.lambda-input-wrapper-invalid {

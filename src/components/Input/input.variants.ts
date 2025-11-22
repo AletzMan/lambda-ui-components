@@ -50,6 +50,15 @@ export const lambdaInput = cva(styles["lambda-input"], {
 });
 export const input = cva(styles["lambda-input-wrapper"], {
 	variants: {
+		color: {
+			primary: styles["lambda-input-wrapper-primary"],
+			neutral: styles["lambda-input-wrapper-neutral"],
+			secondary: styles["lambda-input-wrapper-secondary"],
+			info: styles["lambda-input-wrapper-info"],
+			warning: styles["lambda-input-wrapper-warning"],
+			danger: styles["lambda-input-wrapper-danger"],
+			success: styles["lambda-input-wrapper-success"],
+		},
 		size: {
 			tiny: styles["lambda-input-wrapper-tiny"],
 			small: styles["lambda-input-wrapper-small"],
@@ -105,6 +114,7 @@ export const input = cva(styles["lambda-input-wrapper"], {
 		invalid: false,
 		disabled: false,
 		joinposition: "single",
+		color: "primary",
 	},
 });
 
@@ -140,6 +150,19 @@ export const labels = cva(styles["lambda-input-label"], {
 
 export const textInput = cva(styles["lambda-input-field"], {
 	variants: {
+		color: {
+			primary: styles["lambda-input-field-primary"],
+			neutral: styles["lambda-input-field-neutral"],
+			secondary: styles["lambda-input-field-secondary"],
+			info: styles["lambda-input-field-info"],
+			warning: styles["lambda-input-field-warning"],
+			danger: styles["lambda-input-field-danger"],
+			success: styles["lambda-input-field-success"],
+		},
+		showPassword: {
+			false: styles["lambda-input-field-hide-password"],
+			true: styles["lambda-input-field-show-password"],
+		},
 		size: {
 			tiny: styles["lambda-input-field-tiny"],
 			small: styles["lambda-input-field-small"],
@@ -152,6 +175,8 @@ export const textInput = cva(styles["lambda-input-field"], {
 		},
 	},
 	defaultVariants: {
+		color: "primary",
+		showPassword: false,
 		size: "medium",
 		disabled: false,
 	},
@@ -159,6 +184,15 @@ export const textInput = cva(styles["lambda-input-field"], {
 
 export const buttonPassword = cva(styles["lambda-input-toggle-password"], {
 	variants: {
+		color: {
+			primary: styles["lambda-input-toggle-password-primary"],
+			neutral: styles["lambda-input-toggle-password-neutral"],
+			secondary: styles["lambda-input-toggle-password-secondary"],
+			info: styles["lambda-input-toggle-password-info"],
+			warning: styles["lambda-input-toggle-password-warning"],
+			danger: styles["lambda-input-toggle-password-danger"],
+			success: styles["lambda-input-toggle-password-success"],
+		},
 		size: {
 			tiny: styles["lambda-input-toggle-password-tiny"],
 			small: styles["lambda-input-toggle-password-small"],
@@ -174,6 +208,7 @@ export const buttonPassword = cva(styles["lambda-input-toggle-password"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "outline",
+		color: "primary",
 	},
 });
 

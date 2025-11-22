@@ -3,7 +3,7 @@ import { InputVariants } from "./input.variants";
 export interface InputProps
 	extends Omit<
 		React.InputHTMLAttributes<HTMLInputElement>,
-		"disabled" | "size" | "type" | "value" | "placeholder" | "prefix" | "suffix"
+		"disabled" | "size" | "type" | "value" | "placeholder" | "prefix" | "suffix" | "color"
 	> {
 	/**
 	 * Define el tamaño visual del input, ajustando el padding y el tamaño del texto.
@@ -29,6 +29,11 @@ export interface InputProps
 	 * Desactiva completamente el input, haciendo que no se pueda interactuar con él.
 	 */
 	disabled?: InputVariants["disabled"];
+
+	/**
+	 * Define el color del input, ajustando el color del borde y el fondo.
+	 */
+	color?: InputVariants["color"];
 
 	/**
 	 * Establece el tipo de entrada nativa subyacente (ej. 'text', 'password', 'email').

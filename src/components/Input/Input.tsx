@@ -35,6 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			type = "text",
 			value: controlledValue,
 			onChangeValue,
+			color,
 			required,
 			floatingLabel,
 			placeholder,
@@ -245,6 +246,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							size: contextSize,
 							invalid,
 							type,
+							color,
 							hasElements: "none",
 							joinposition,
 						}),
@@ -275,10 +277,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							aria-invalid={invalid || undefined}
 							aria-describedby={describedByIds || undefined}
 							type={inputType as HTMLInputTypeAttribute}
-							className={clsx(textInput({ size: contextSize, disabled: contextDisabled }), {
-								[styles["lambda-input-field-showPassword"]]:
-									isPasswordType && !showPassword && value.length > 0,
-							})}
+							className={clsx(textInput({ size: contextSize, disabled: contextDisabled, color, showPassword: isPasswordType && !showPassword && value.length > 0 }))}
 							disabled={contextDisabled || undefined}
 							placeholder={inputPlaceholder}
 							{...(props as InputHTMLAttributes<HTMLInputElement>)}
@@ -286,7 +285,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						{isPasswordType && (
 							<button
 								onClick={togglePasswordVisibility}
-								className={buttonPassword({ size: contextSize, variant })}
+								className={buttonPassword({ size: contextSize, variant, color })}
 								type="button"
 								aria-label={showPassword ? "Hide password" : "Show password"}
 								aria-pressed={showPassword}
