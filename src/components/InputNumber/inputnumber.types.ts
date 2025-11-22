@@ -3,7 +3,7 @@ import { InputNumberVariants } from "./inputnumber.variants";
 export interface InputNumberProps
 	extends Omit<
 		React.InputHTMLAttributes<HTMLInputElement>,
-		"disabled" | "size" | "type" | "onChange" | "value" | "min" | "max" | "step"
+		"disabled" | "size" | "type" | "onChange" | "value" | "min" | "max" | "step" | "color"
 	> {
 	/**
  * Controls the visual style of the numeric input, such as border color or background.
@@ -29,6 +29,12 @@ export interface InputNumberProps
 	 * Disables the input entirely, preventing interaction and applying a disabled appearance.
 	 */
 	disabled?: InputNumberVariants["disabled"];
+
+
+	/**
+	 * Sets the color of the input, typically changing the border color to red.
+	 */
+	color?: InputNumberVariants["color"]; 
 
 	/**
 	 * (Implementation-specific) Defines an internal subtype or variation of the numeric input component.

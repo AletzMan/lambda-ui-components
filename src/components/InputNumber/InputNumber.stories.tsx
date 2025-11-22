@@ -20,6 +20,11 @@ const meta: Meta<typeof InputNumber> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
+		color: {
+			control: "inline-radio",
+			options: ["primary", "neutral", "secondary", "info", "warning", "danger", "success"],
+			description: "Input color",
+		},
 		radius: {
 			control: "inline-radio",
 			options: ["none", "tiny", "small", "medium", "large", "full"],
@@ -29,7 +34,7 @@ const meta: Meta<typeof InputNumber> = {
 			control: "text",
 			type: "string",
 			description: "Text to display as the label for the component",
-		},
+		}, 
 		helperText: {
 			control: "text",
 			type: "string",
@@ -135,6 +140,7 @@ export const Outline: Story = {
 		errorMessage: "This is a sample error message for demonstration",
 		placeholder: "0",
 		disabled: false,
+		color: "primary",
 		onChangeValue: action("onChangeValue"),
 	},
 };
@@ -156,6 +162,7 @@ export const Soft: Story = {
 		errorMessage: "This is a sample error message for demonstration",
 		placeholder: "0",
 		disabled: false,
+		color: "primary",
 		onChangeValue: action("onChangeValue"),
 	},
 };

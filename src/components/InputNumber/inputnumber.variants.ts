@@ -9,6 +9,15 @@ export const inputNumber = cva(styles["lambda-number"], {
 			medium: styles["lambda-number-medium"],
 			large: styles["lambda-number-large"],
 		},
+		color: {
+			primary: styles["lambda-number-primary"],
+			neutral: styles["lambda-number-neutral"],
+			secondary: styles["lambda-number-secondary"],
+			info: styles["lambda-number-info"],
+			warning: styles["lambda-number-warning"],
+			danger: styles["lambda-number-danger"],
+			success: styles["lambda-number-success"],
+		},
 		variant: {
 			outline: styles["lambda-number-outline"],
 			soft: styles["lambda-number-soft"],
@@ -120,10 +129,20 @@ export const number = cva(styles["lambda-number-field"], {
 			percentage: styles["lambda-number-field-porc"],
 			decimal: styles["lambda-number-field-dec"],
 		},
+		color: {
+			primary: styles["lambda-number-field-primary"],
+			neutral: styles["lambda-number-field-neutral"],
+			secondary: styles["lambda-number-field-secondary"],
+			info: styles["lambda-number-field-info"],
+			warning: styles["lambda-number-field-warning"],
+			danger: styles["lambda-number-field-danger"],
+			success: styles["lambda-number-field-success"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		typeNumber: "default",
+		color: "primary",
 	},
 });
 
@@ -147,6 +166,15 @@ export const handler = cva(styles["lambda-number-handler"], {
 			outline: styles["lambda-number-handler-outline"],
 			soft: styles["lambda-number-handler-soft"],
 		},
+		color: {
+			primary: styles["lambda-number-handler-primary"],
+			neutral: styles["lambda-number-handler-neutral"],
+			secondary: styles["lambda-number-handler-secondary"],
+			info: styles["lambda-number-handler-info"],
+			warning: styles["lambda-number-handler-warning"],
+			danger: styles["lambda-number-handler-danger"],
+			success: styles["lambda-number-handler-success"],
+		},
 		joinposition: {
 			first: styles["lambda-number-handler-first"],
 			last: styles["lambda-number-handler-last"],
@@ -159,6 +187,7 @@ export const handler = cva(styles["lambda-number-handler"], {
 		size: "medium",
 		radius: "tiny",
 		joinposition: "single",
+		color: "primary",
 	},
 });
 
@@ -190,17 +219,36 @@ export const typeCurrency = cva(styles["lambda-number-currency"], {
 			percentage: styles["lambda-number-currency-porc"],
 			decimal: styles["lambda-number-currency-dec"],
 		},
+		color: {
+			primary: styles["lambda-number-currency-primary"],
+			neutral: styles["lambda-number-currency-neutral"],
+			secondary: styles["lambda-number-currency-secondary"],
+			info: styles["lambda-number-currency-info"],
+			warning: styles["lambda-number-currency-warning"],
+			danger: styles["lambda-number-currency-danger"],
+			success: styles["lambda-number-currency-success"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		variant: "outline",
 		typeNumber: "default",
 		radius: "tiny",
+		color: "primary",
 	},
 });
 
 export const button = cva(styles["lambda-number-btn"], {
 	variants: {
+		color: {
+			primary: styles["lambda-number-btn-primary"],
+			neutral: styles["lambda-number-btn-neutral"],
+			secondary: styles["lambda-number-btn-secondary"],
+			info: styles["lambda-number-btn-info"],
+			warning: styles["lambda-number-btn-warning"],
+			danger: styles["lambda-number-btn-danger"],
+			success: styles["lambda-number-btn-success"],
+		},
 		size: {
 			tiny: styles["lambda-number-btn-tiny"],
 			small: styles["lambda-number-btn-small"],
@@ -210,6 +258,7 @@ export const button = cva(styles["lambda-number-btn"], {
 	},
 	defaultVariants: {
 		size: "medium",
+		color: "primary",
 	},
 });
 

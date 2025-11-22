@@ -302,6 +302,35 @@ input[type="number"] {
 		border-style: dashed;
 		outline-color: var(--danger-shadow-color);
 	}
+
+	&.lambda-number-primary:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		border-color: var(--primary-hover-color);
+		outline-color: var(--primary-shadow-color);
+	}
+	&.lambda-number-neutral:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		border-color: var(--neutral-hover-color);
+		outline-color: var(--neutral-shadow-color);
+	}
+	&.lambda-number-secondary:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		border-color: var(--secondary-hover-color);
+		outline-color: var(--secondary-shadow-color);
+	}
+	&.lambda-number-info:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		border-color: var(--info-hover-color);
+		outline-color: var(--info-shadow-color);
+	}
+	&.lambda-number-warning:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		border-color: var(--warning-hover-color);
+		outline-color: var(--warning-shadow-color);
+	}
+	&.lambda-number-danger:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		border-color: var(--danger-hover-color);
+		outline-color: var(--danger-shadow-color);
+	}
+	&.lambda-number-success:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		border-color: var(--success-hover-color);
+		outline-color: var(--success-shadow-color);
+	}
 }
 
 .lambda-number-soft {
@@ -316,6 +345,28 @@ input[type="number"] {
 
 	&.lambda-number-invalid {
 		outline-color: var(--danger-shadow-color);
+	}
+
+	&.lambda-number-primary:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		outline-color: var(--primary-shadow-color);
+	}
+	&.lambda-number-neutral:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		outline-color: var(--neutral-shadow-color);
+	}
+	&.lambda-number-secondary:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		outline-color: var(--secondary-shadow-color);
+	}
+	&.lambda-number-info:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		outline-color: var(--info-shadow-color);
+	}
+	&.lambda-number-warning:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		outline-color: var(--warning-shadow-color);
+	}
+	&.lambda-number-danger:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		outline-color: var(--danger-shadow-color);
+	}
+	&.lambda-number-success:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
+		outline-color: var(--success-shadow-color);
 	}
 }
 
@@ -394,15 +445,56 @@ input[type="number"] {
 	color: var(--surface-f);
 	background-color: var(--surface-b);
 	transition: background-color 0.15s ease-in-out;
-	/*box-shadow: 0 0 1px 1px #00000010 inset;*/
+	/*box-shadow: 0 0 1px 1px #00000010 inset;*/   
 
-	&:hover:not(:disabled) {
+	/* Color variants for buttons */
+	&:is(.lambda-number-btn-primary):hover:not(:disabled) {
 		background-color: var(--primary-subtle-color);
-		color: var(--white-color);
+	}
+	&:is(.lambda-number-btn-primary):active:not(:disabled) {
+		background-color: var(--primary-soft-color);
 	}
 
-	&:active:not(:disabled) {
-		background-color: var(--primary-soft-color);
+	&:is(.lambda-number-btn-neutral):hover:not(:disabled) {
+		background-color: var(--neutral-subtle-color);
+	}
+	&:is(.lambda-number-btn-neutral):active:not(:disabled) {
+		background-color: var(--neutral-soft-color);
+	}
+
+	&:is(.lambda-number-btn-secondary):hover:not(:disabled) {
+		background-color: var(--secondary-subtle-color);
+	}
+	&:is(.lambda-number-btn-secondary):active:not(:disabled) {
+		background-color: var(--secondary-soft-color);
+	}
+
+	&:is(.lambda-number-btn-info):hover:not(:disabled) {
+		background-color: var(--info-subtle-color);
+	}
+	&:is(.lambda-number-btn-info):active:not(:disabled) {
+		background-color: var(--info-soft-color);
+	}
+
+	&:is(.lambda-number-btn-warning):hover:not(:disabled) {
+		background-color: var(--warning-subtle-color);
+	}
+	&:is(.lambda-number-btn-warning):active:not(:disabled) {
+		background-color: var(--warning-soft-color);
+	}
+
+	&:is(.lambda-number-btn-danger):hover:not(:disabled) {
+		background-color: var(--danger-subtle-color);
+	}
+	&:is(.lambda-number-btn-danger):active:not(:disabled) {
+		background-color: var(--danger-soft-color);
+	}
+
+	&:is(.lambda-number-btn-success):hover:not(:disabled) {
+		background-color: var(--success-subtle-color);
+	}
+	&:is(.lambda-number-btn-success):active:not(:disabled) {
+		background-color: var(--success-soft-color);
 	}
 
 	&:disabled {

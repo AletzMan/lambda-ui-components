@@ -47,6 +47,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 			defaultValue,
 			onChangeValue,
 			joinposition,
+			color = "primary",
 			...props
 		},
 		ref
@@ -142,6 +143,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 						size: sizeValue,
 						invalid,
 						joinposition,
+						color,
 						className,
 					})}
 				>
@@ -152,6 +154,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 								size: sizeValue,
 								variant,
 								radius: radiusValue,
+								color,
 							})}
 						>
 							{getIcon()}
@@ -170,7 +173,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 							role="number"
 							inputMode="numeric"
 							disabled={disabledValue || undefined}
-							className={number({ size: sizeValue, typeNumber })}
+							className={number({ size: sizeValue, typeNumber, color })}
 							step={step}
 							min={min}
 							max={max}
@@ -178,11 +181,11 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 						/>
 						{invalid && <CircleX className={clsx(styles["lambda-number-invalid-icon"])} />}
 						<div
-							className={handler({ size: sizeValue, variant, radius: radiusValue, joinposition })}
+							className={handler({ size: sizeValue, variant, radius: radiusValue, joinposition, color })}
 						>
 							<button
 								type="button"
-								className={clsx(button({ size: sizeValue }), styles["lambda-number-btn-increment"])}
+								className={clsx(button({ size: sizeValue, color }), styles["lambda-number-btn-increment"])}
 								onMouseDown={startIncrementing}
 								onMouseUp={stopIncrementing}
 								aria-label="Increase value"
@@ -194,7 +197,7 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 							<hr className={styles["lambda-number-separator"]} />
 							<button
 								type="button"
-								className={clsx(button({ size: sizeValue }), styles["lambda-number-btn-decrement"])}
+								className={clsx(button({ size: sizeValue, color }), styles["lambda-number-btn-decrement"])}
 								aria-label="Decrease value"
 								onMouseDown={startDecrementing}
 								onMouseUp={stopDecrementing}
