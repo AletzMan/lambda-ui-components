@@ -77,9 +77,7 @@ const Template = (args: SwitchProps) => {
 						style={{
 							textTransform: "capitalize",
 						}}
-						positionLabel="top"
-						onChange={(e) => alert(e.currentTarget.checked)}
-						onCheckedChange={(e) => alert(e)}
+						positionLabel="top" 
 					/>
 				))}
 			</div>

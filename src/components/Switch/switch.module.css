@@ -148,15 +148,14 @@
 	background-color: var(--surface-a);
 
 	.lambda-switch-handle {
-		background-color: var(--lambda-color-neutral-200);
-		box-shadow: none;
+		background-color: var(--lambda-color-neutral-200); 
 	}
 
 	&.lambda-switch-background-neutral {
 		&.lambda-switch-background-checked {
 			border-color: var(--neutral-base-color);
 			background-color: var(--neutral-hover-color);
-
+			
 			.lambda-switch-handle {
 				background-color: var(--white-color);
 			}
@@ -459,7 +458,7 @@
 	transition: all 0.25s ease-in-out;
 	width: var(--height-checkbox-sm);
 	height: var(--height-checkbox-sm);
-	box-shadow: 0 0 1px 2px #00000020;
+	box-shadow: var(--box-shadow-xs);
 }
 
 .lambda-switch-handle-square {
