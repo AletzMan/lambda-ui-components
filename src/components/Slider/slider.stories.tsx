@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Slider } from "./Slider";
 import { useState } from "react";
-import { SliderProps, SliderValue } from "./slider.types";
+import { SliderProps } from "./slider.types";
 import { Input } from "../Input/Input";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
@@ -21,12 +21,7 @@ const meta: Meta<typeof Slider> = {
 			description: "Radius of the range slider",
 			defaultValue: "medium",
 		},
-		onChange: {
-			table: {
-				disabled: true,
-			},
-		},
-		onInput: {
+		onChangeValue: {
 			table: {
 				disabled: true,
 			},
@@ -80,7 +75,7 @@ const meta: Meta<typeof Slider> = {
 export default meta;
 
 const SliderSingle = (args: SliderProps) => {
-	const [valueSlider, setValueSlider] = useState<SliderValue>(50);
+	const [valueSlider, setValueSlider] = useState<number>(50);
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
@@ -111,8 +106,7 @@ const SliderSingle = (args: SliderProps) => {
 				<Slider
 					{...args}
 					value={valueSlider}
-					onInput={(e) => setValueSlider(e)}
-					onChange={(e) => setValueSlider(e)}
+					onChangeValue={(e) => setValueSlider(e as number)}
 					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 			</div>
@@ -121,7 +115,7 @@ const SliderSingle = (args: SliderProps) => {
 };
 
 const SliderDouble = (args: SliderProps & React.RefAttributes<HTMLDivElement>) => {
-	const [valueSlider, setValueSlider] = useState<SliderValue>([10, 80]);
+	const [valueSlider, setValueSlider] = useState<[number, number]>([10, 80]);
 	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
@@ -155,12 +149,11 @@ const SliderDouble = (args: SliderProps & React.RefAttributes<HTMLDivElement>) =
 					padding: "20px",
 				}}
 			>
-				<Slider
+				<Slider.Range
 					{...args}
 					value={valueSlider}
 					radius={currentStyle === "local" ? args.radius : undefined}
-					onInput={(e) => setValueSlider(e)}
-					onChange={(e) => setValueSlider(e)}
+					onChangeValue={(e) => setValueSlider(e)}
 				/>
 			</div>
 		</ContainerComponent>

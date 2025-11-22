@@ -10,18 +10,17 @@ import {
 	rangeMark,
 	rangeMarkContainer,
 } from "./slider.variants";
-import { SliderProps, SliderValue } from "./slider.types";
+import { SliderProps, SliderSingleProps, SliderRangeProps } from "./slider.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
-export const Slider = forwardRef<HTMLDivElement, SliderProps>(
+const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 	(
 		{
 			value,
 			min = 0,
 			max = 100,
 			step = 1,
-			onChange,
-			onInput,
+			onChangeValue,
 			disabled = false,
 			marks = [],
 			orientation = "horizontal",
@@ -197,7 +196,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 					return;
 				}
 
-				let nextValue: SliderValue;
+				let nextValue: number | [number, number];
 
 				if (isDoubleHandled) {
 					let [currentStart, currentEnd] = value as [number, number];
@@ -216,7 +215,13 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
 				// Llamar al handler onInput para retroalimentación en tiempo real (si existe)
 				// Pasamos el 'nextValue' calculado (que es SliderValue: number | [number, number])
-				onInput?.(nextValue);
+				if (isDoubleHandled) {
+					(onChangeValue as (value: [number, number]) => void)?.(
+						nextValue as [number, number]
+					);
+				} else {
+					(onChangeValue as (value: number) => void)?.(nextValue as number);
+				}
 
 				// NOTA IMPORTANTE: En un componente controlado (usando 'value' prop),
 				// NO LLAMAMOS setInternalSelectedFiles O setSingleValue/setSliderValues AQUI.
@@ -230,7 +235,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 				getValueFromPointerEvent,
 				value,
 				isDoubleHandled,
-				onInput,
+				onChangeValue,
 				min,
 				max,
 			]
@@ -249,7 +254,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 				// usamos el valor actual del prop 'value' como valor final.
 				const valueToFinalize = finalValue === null ? value : finalValue;
 
-				let nextValue: SliderValue;
+				let nextValue: number | [number, number];
 
 				if (isDoubleHandled) {
 					let [currentStart, currentEnd] = value as [number, number];
@@ -281,7 +286,13 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
 				// Llamar al handler onChange (si existe) con el valor final calculado
 				// ESTO ES LO QUE EL PADRE DEBE ESCUCHAR PARA ACTUALIZAR EL ESTADO Y CAUSAR UN RE-RENDER
-				onChange?.(nextValue);
+				if (isDoubleHandled) {
+					(onChangeValue as (value: [number, number]) => void)?.(
+						nextValue as [number, number]
+					);
+				} else {
+					(onChangeValue as (value: number) => void)?.(nextValue as number);
+				}
 
 				// Resetear estados de arrastre
 				setIsDragging(false);
@@ -306,7 +317,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 				getValueFromPointerEvent,
 				value,
 				isDoubleHandled,
-				onChange,
+				onChangeValue,
 				min,
 				max,
 			]
@@ -354,7 +365,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 				}
 
 				if (delta !== 0) {
-					let nextValue: SliderValue;
+					let nextValue: number | [number, number];
 
 					if (isDoubleHandled) {
 						const [currentStart, currentEnd] = value as [number, number];
@@ -375,10 +386,16 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 					}
 
 					// Llamar a onChange (o quizás onInput para feedback más rápido, pero onChange es más común para teclado)
-					onChange?.(nextValue);
+					if (isDoubleHandled) {
+						(onChangeValue as (value: [number, number]) => void)?.(
+							nextValue as [number, number]
+						);
+					} else {
+						(onChangeValue as (value: number) => void)?.(nextValue as number);
+					}
 				}
 			},
-			[disabled, step, min, max, value, isDoubleHandled, onChange]
+			[disabled, step, min, max, value, isDoubleHandled, onChangeValue]
 		);
 
 		return (
@@ -410,7 +427,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 						const newValue = getValueFromPointerEvent(event);
 						if (newValue === null) return;
 
-						let finalValue: SliderValue;
+						let finalValue: number | [number, number];
 						let closestHandleIdx = 0;
 
 						if (isDoubleHandled) {
@@ -442,7 +459,13 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
 						// Llamar a onChange con el valor final calculado para el "salto"
 						// El padre actualizará la prop 'value' basándose en esto.
-						onChange?.(finalValue);
+						if (isDoubleHandled) {
+							(onChangeValue as (value: [number, number]) => void)?.(
+								finalValue as [number, number]
+							);
+						} else {
+							(onChangeValue as (value: number) => void)?.(finalValue as number);
+						}
 
 						// Iniciar el drag sobre el handle más cercano
 						// NOTA: Esto solo funcionará bien si el padre actualiza el valor inmediatamente (componente controlado)
@@ -578,3 +601,13 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 		);
 	}
 );
+
+const SliderRoot = forwardRef<HTMLDivElement, SliderSingleProps>((props, ref) => {
+	return <SliderImpl {...props} ref={ref} />;
+});
+
+const SliderRange = forwardRef<HTMLDivElement, SliderRangeProps>((props, ref) => {
+	return <SliderImpl {...props} ref={ref} />;
+});
+
+export const Slider = Object.assign(SliderRoot, { Range: SliderRange });

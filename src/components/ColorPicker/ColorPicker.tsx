@@ -716,16 +716,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											radius="full"
 											viewValue={false}
 											viewBar={false}
-											onInput={(e) => {
-												const hsv = hslToHsv(hue, s, l);
-												const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
-												const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
-													newHsl.s
-												)}%, ${Math.round(newHsl.l)}%)`;
-												setInternalValue(newColor);
-												onChange?.(newColor);
-											}}
-											onChange={(e) => {
+											onChangeValue={(e) => {
 												const hsv = hslToHsv(hue, s, l);
 												const newHsl = hsvToHsl(e as number, hsv.s, hsv.v);
 												const newColor = `hsl(${Math.round(newHsl.h)}, ${Math.round(
@@ -766,11 +757,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											radius="full"
 											viewValue={false}
 											viewBar={false}
-											onInput={(e) => {
-												setAlpha(e as number);
-												onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
-											}}
-											onChange={(e) => {
+											onChangeValue={(e) => {
 												setAlpha(e as number);
 												onChange?.(`hsla(${hue}, ${s}%, ${l}%, ${(e as number) / 100})`);
 											}}

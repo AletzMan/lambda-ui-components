@@ -1,8 +1,7 @@
 import { HTMLAttributes } from "react";
 import { SliderTrackVariants } from "./slider.variants"; // Importar tipos de variantes
 
-// Tipos para el valor del Slider (número para handle único, tupla para dos handles)
-export type SliderValue = number | [number, number];
+ 
 
 // Tipos para variantes visuales
 export type SliderSize = SliderTrackVariants["size"];
@@ -13,24 +12,17 @@ export type SliderMarks = {
 };
 
 // Props para el componente Slider
-export interface SliderProps
+// Props base compartidas
+export interface BaseSliderProps
 	extends Omit<
-		// Omitir props de HTMLAttributes<HTMLDivElement> que vamos a redefinir
 		HTMLAttributes<HTMLDivElement>,
-		"value" | "onChange" | "onInput" | "defaultValue" // Añadir 'defaultValue' a Omit por si acaso
+		"value" | "onChange" | "onInput" | "defaultValue"
 	> {
 	/**
 	 * Permite customizar la visualización del valor (tooltip/handle).
 	 * Recibe el valor numérico y debe devolver un string o número a mostrar.
 	 */
 	formatValue?: (value: number) => string | number;
-
-	/**
-	 * El valor o el rango de valores seleccionado.
-	 * Usa un número para un solo handle, o una tupla [inicio, fin] para dos handles.
-	 * Componente controlado.
-	 */
-	value: SliderValue;
 
 	/**
 	 * El valor mínimo del rango.
@@ -52,19 +44,6 @@ export interface SliderProps
 	step?: number;
 
 	/**
-	 * Callback que se llama cuando el valor/rango cambia al soltar el handle.
-	 * Recibe el nuevo valor: number o [number, number].
-	 */
-	onChange?: (value: SliderValue) => void;
-
-	/**
-	 * Callback que se llama mientras el handle se está moviendo.
-	 * Puede usarse para retroalimentación en tiempo real.
-	 * Recibe el valor intermedio: number o [number, number].
-	 */
-	onInput?: (value: SliderValue) => void;
-
-	/**
 	 * Deshabilitar el slider.
 	 * @default false
 	 */
@@ -75,11 +54,6 @@ export interface SliderProps
 	 * @default "medium"
 	 */
 	size?: SliderSize;
-
-	/**
-	 * Variante visual del slider (afecta track y fill).
-	 * @default "primary"
-	 */
 
 	/**
 	 * Etiqueta de texto para el slider (opcional).
@@ -109,3 +83,32 @@ export interface SliderProps
 
 	radius?: SliderTrackVariants["radius"];
 }
+
+// Props para Slider (valor único)
+export interface SliderSingleProps extends BaseSliderProps {
+	/**
+	 * El valor seleccionado.
+	 */
+	value: number;
+
+	/**
+	 * Callback que se llama cuando el valor cambia.
+	 */
+	onChangeValue?: (value: number) => void;
+}
+
+// Props para Slider.Range (rango de valores)
+export interface SliderRangeProps extends BaseSliderProps {
+	/**
+	 * El rango de valores seleccionado [inicio, fin].
+	 */
+	value: [number, number];
+
+	/**
+	 * Callback que se llama cuando el rango cambia.
+	 */
+	onChangeValue?: (value: [number, number]) => void;
+}
+
+// Unión de tipos para uso interno si es necesario, aunque idealmente se usarán por separado
+export type SliderProps = SliderSingleProps | SliderRangeProps;
