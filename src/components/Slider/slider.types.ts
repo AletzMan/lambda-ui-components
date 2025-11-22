@@ -19,95 +19,113 @@ export interface BaseSliderProps
 		"value" | "onChange" | "onInput" | "defaultValue"
 	> {
 	/**
-	 * Permite customizar la visualización del valor (tooltip/handle).
-	 * Recibe el valor numérico y debe devolver un string o número a mostrar.
-	 */
-	formatValue?: (value: number) => string | number;
+ * Allows customizing how the slider value is displayed (tooltip/handle label).
+ * Receives the numeric value and must return a string or number to show.
+ */
+formatValue?: (value: number) => string | number;
 
-	/**
-	 * El valor mínimo del rango.
-	 * @default 0
-	 */
-	min?: number;
+/**
+ * The minimum allowed value of the slider range.
+ * @default 0
+ */
+min?: number;
 
-	/**
-	 * El valor máximo del rango.
-	 * @default 100
-	 */
-	max?: number;
+/**
+ * The maximum allowed value of the slider range.
+ * @default 100
+ */
+max?: number;
 
-	/**
-	 * El tamaño del incremento de valor al mover el handle.
-	 * Debe ser un número positivo. Si es 0, cualquier valor entre min y max es permitido.
-	 * @default 1
-	 */
-	step?: number;
+/**
+ * The amount the value increases or decreases with each movement.
+ * Must be positive. If set to 0, any value between min and max is allowed.
+ * @default 1
+ */
+step?: number;
 
-	/**
-	 * Deshabilitar el slider.
-	 * @default false
-	 */
-	disabled?: boolean;
+/**
+ * Disables user interaction with the slider.
+ * @default false
+ */
+disabled?: boolean;
 
-	/**
-	 * Tamaño del slider.
-	 * @default "medium"
-	 */
-	size?: SliderSize;
+/**
+ * Controls the size of the slider (track and thumb).
+ * @default "medium"
+ */
+size?: SliderSize;
 
-	/**
-	 * Etiqueta de texto para el slider (opcional).
-	 * Si se proporciona, se renderiza como una etiqueta <label>.
-	 */
-	label?: string;
+/**
+ * Optional label describing the slider.
+ * Rendered as a <label> when provided.
+ */
+label?: string;
 
-	/**
-	 *  Muestra el valor en el slider. Por defecto es true.
-	 */
-	viewValue?: boolean;
+/**
+ * Whether the current value should be visible on the slider (e.g., tooltip).
+ * @default true
+ */
+viewValue?: boolean;
 
-	/**
-	 * Muestra la barra de progreso en el slider. Por defecto es true.
-	 */
-	viewBar?: boolean;
+/**
+ * Whether the filled progress bar should be visible.
+ * @default true
+ */
+viewBar?: boolean;
 
-	/**
-	 * Marca en el slider.
-	 */
-	marks?: SliderMarks[];
+/**
+ * Marks displayed along the slider track.  
+ * Each mark can optionally show a label.
+ */
+marks?: SliderMarks[];
 
-	/**
-	 * Orientación del slider: horizontal o vertical. Por defecto es 'horizontal'.
-	 */
-	orientation?: SliderTrackVariants["orientation"];
+/**
+ * Orientation of the slider: horizontal or vertical.
+ * @default "horizontal"
+ */
+orientation?: SliderTrackVariants["orientation"];
 
-	radius?: SliderTrackVariants["radius"];
+/**
+ * Controls how rounded the track and thumb should be.
+ */
+radius?: SliderTrackVariants["radius"];
+
 }
 
 // Props para Slider (valor único)
 export interface SliderSingleProps extends BaseSliderProps {
 	/**
-	 * El valor seleccionado.
-	 */
-	value: number;
-
+ * The default value of the slider.
+ */
+	defaultValue?: number;
 	/**
-	 * Callback que se llama cuando el valor cambia.
-	 */
-	onChangeValue?: (value: number) => void;
+ * The current value of the slider.
+ */
+value?: number;
+
+/**
+ * Callback fired when the slider value changes.
+ */
+onChangeValue?: (value: number) => void;
+
 }
 
 // Props para Slider.Range (rango de valores)
 export interface SliderRangeProps extends BaseSliderProps {
 	/**
-	 * El rango de valores seleccionado [inicio, fin].
-	 */
-	value: [number, number];
-
+ * The default value of the slider.
+ */
+defaultValue?: [number, number];
 	/**
-	 * Callback que se llama cuando el rango cambia.
-	 */
-	onChangeValue?: (value: [number, number]) => void;
+ * The current value range represented as [start, end].
+ */
+value?: [number, number];
+
+/**
+ * Callback fired when the selected range changes.
+ */
+onChangeValue?: (value: [number, number]) => void;
+
 }
 
 // Unión de tipos para uso interno si es necesario, aunque idealmente se usarán por separado

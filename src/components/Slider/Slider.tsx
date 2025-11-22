@@ -25,8 +25,9 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 			marks = [],
 			orientation = "horizontal",
 			size = "small",
-			radius = "small",
+			radius = "full",
 			viewValue = true,
+			defaultValue,
 			viewBar = true,
 			className,
 			formatValue,
@@ -36,12 +37,29 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 	) => {
 		const { radiusField } = useUIConfig();
 		const radiusValue = radius || radiusField;
-		// Determinar si es un slider de dos handles basado en el tipo de 'value'
-		const isDoubleHandled = Array.isArray(value);
-		// Obtener los valores de inicio y fin para el cálculo (usando min como inicio por defecto si es handle único)
-		// Asegurarse de que value es number si no es array para endValue
-		const startValue = isDoubleHandled ? value[0] : min;
-		const endValue = isDoubleHandled ? value[1] : (value as number);
+
+		// Estado interno para manejar el valor (Controlled vs Uncontrolled)
+		const [internalValue, setInternalValue] = useState<number | [number, number]>(() => {
+			if (value !== undefined) return value;
+			if (defaultValue !== undefined) return defaultValue;
+			return min;
+		});
+
+		// Sincronizar estado interno si la prop value cambia (modo controlado)
+		// Solo si value está definido (controlado)
+		if (value !== undefined && value !== internalValue) {
+			setInternalValue(value);
+		}
+
+		// Usar el valor apropiado para renderizar
+		const currentValue = value !== undefined ? value : internalValue;
+
+		// Determinar si es un slider de dos handles basado en el tipo de 'currentValue'
+		const isDoubleHandled = Array.isArray(currentValue);
+		
+		// Obtener los valores de inicio y fin para el cálculo
+		const startValue = isDoubleHandled ? currentValue[0] : min;
+		const endValue = isDoubleHandled ? currentValue[1] : (currentValue as number);
 
 		// Refs para el track del slider para obtener dimensiones
 		const trackRef = useRef<HTMLDivElement>(null);
@@ -199,7 +217,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				let nextValue: number | [number, number];
 
 				if (isDoubleHandled) {
-					let [currentStart, currentEnd] = value as [number, number];
+					let [currentStart, currentEnd] = currentValue as [number, number];
 					let handleIdx = draggingHandleIndex;
 					if (handleIdx === 0) {
 						let newStart = Math.max(min, Math.min(potentialNewValue, max));
@@ -211,6 +229,11 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				} else {
 					// Para slider de handle único, el nuevo valor es simplemente el valor potencial, clampado entre min y max global
 					nextValue = Math.max(min, Math.min(max, potentialNewValue));
+				}
+
+				// Actualizar estado interno si no es controlado
+				if (value === undefined) {
+					setInternalValue(nextValue);
 				}
 
 				// Llamar al handler onInput para retroalimentación en tiempo real (si existe)
@@ -226,18 +249,19 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				// NOTA IMPORTANTE: En un componente controlado (usando 'value' prop),
 				// NO LLAMAMOS setInternalSelectedFiles O setSingleValue/setSliderValues AQUI.
 				// El componente padre debe manejar el 'onInput' o 'onChange' y actualizar la prop 'value',
-				// lo que hará que el componente Slider se re-renderice con la nueva posición del handle.
+				// lo que hará que el componente Slider se re-renderize con la nueva posición del handle.
 			},
 			[
 				isDragging,
 				draggingHandleIndex,
 				trackRef,
 				getValueFromPointerEvent,
-				value,
+				currentValue,
 				isDoubleHandled,
 				onChangeValue,
 				min,
 				max,
+				value, // Dependencia de prop value para saber si es controlado
 			]
 		);
 
@@ -251,13 +275,13 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				// Obtener el valor basado en la posición final del puntero
 				const finalValue = getValueFromPointerEvent(event);
 				// Si por alguna razón no pudimos obtener un valor válido del evento (ej. trackWidth === 0 o puntero fuera)
-				// usamos el valor actual del prop 'value' como valor final.
-				const valueToFinalize = finalValue === null ? value : finalValue;
+				// usamos el valor actual como valor final.
+				const valueToFinalize = finalValue === null ? currentValue : finalValue;
 
 				let nextValue: number | [number, number];
 
 				if (isDoubleHandled) {
-					let [currentStart, currentEnd] = value as [number, number];
+					let [currentStart, currentEnd] = currentValue as [number, number];
 					let handleIdx = draggingHandleIndex;
 					const valueToApply =
 						finalValue === null
@@ -280,12 +304,16 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				} else {
 					// Para slider de handle único, el valor final es simplemente el valor a aplicar, clampado
 					const valueToApply =
-						finalValue === null ? (value as number) : (valueToFinalize as number);
+						finalValue === null ? (currentValue as number) : (valueToFinalize as number);
 					nextValue = Math.max(min, Math.min(max, valueToApply));
 				}
 
+				// Actualizar estado interno si no es controlado
+				if (value === undefined) {
+					setInternalValue(nextValue);
+				}
+
 				// Llamar al handler onChange (si existe) con el valor final calculado
-				// ESTO ES LO QUE EL PADRE DEBE ESCUCHAR PARA ACTUALIZAR EL ESTADO Y CAUSAR UN RE-RENDER
 				if (isDoubleHandled) {
 					(onChangeValue as (value: [number, number]) => void)?.(
 						nextValue as [number, number]
@@ -315,11 +343,12 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				draggingHandleIndex,
 				trackRef,
 				getValueFromPointerEvent,
-				value,
+				currentValue,
 				isDoubleHandled,
 				onChangeValue,
 				min,
 				max,
+				value, // Dependencia para saber si es controlado
 			]
 		);
 
@@ -341,19 +370,19 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					event.preventDefault();
 				} else if (event.key === "Home") {
 					if (isDoubleHandled) {
-						if (handleIndex === 0) delta = min - (value as [number, number])[0];
-						else delta = (value as [number, number])[0] - (value as [number, number])[1];
+						if (handleIndex === 0) delta = min - (currentValue as [number, number])[0];
+						else delta = (currentValue as [number, number])[0] - (currentValue as [number, number])[1];
 					} else {
-						delta = min - (value as number);
+						delta = min - (currentValue as number);
 					}
 					event.preventDefault();
 				} else if (event.key === "End") {
 					if (isDoubleHandled) {
 						if (handleIndex === 0)
-							delta = (value as [number, number])[1] - (value as [number, number])[0];
-						else delta = max - (value as [number, number])[1];
+							delta = (currentValue as [number, number])[1] - (currentValue as [number, number])[0];
+						else delta = max - (currentValue as [number, number])[1];
 					} else {
-						delta = max - (value as number);
+						delta = max - (currentValue as number);
 					}
 					event.preventDefault();
 				} else if (event.key === "PageDown") {
@@ -368,7 +397,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					let nextValue: number | [number, number];
 
 					if (isDoubleHandled) {
-						const [currentStart, currentEnd] = value as [number, number];
+						const [currentStart, currentEnd] = currentValue as [number, number];
 						if (handleIndex === 0) {
 							const rawNext = currentStart + delta;
 							const clampedStart = Math.max(min, Math.min(currentEnd, rawNext));
@@ -379,10 +408,15 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 							nextValue = [currentStart, clampedEnd];
 						}
 					} else {
-						const currentVal = value as number;
+						const currentVal = currentValue as number;
 						const rawNext = currentVal + delta;
 						const clampedVal = Math.max(min, Math.min(max, rawNext));
 						nextValue = clampedVal;
+					}
+
+					// Actualizar estado interno si no es controlado
+					if (value === undefined) {
+						setInternalValue(nextValue);
 					}
 
 					// Llamar a onChange (o quizás onInput para feedback más rápido, pero onChange es más común para teclado)
@@ -395,7 +429,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					}
 				}
 			},
-			[disabled, step, min, max, value, isDoubleHandled, onChangeValue]
+			[disabled, step, min, max, currentValue, isDoubleHandled, onChangeValue, value]
 		);
 
 		return (
@@ -405,7 +439,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				ref={ref}
 				className={clsx(rangeContainer({ disabled, orientation }), className)}
 				onPointerMove={handlePointerMove}
-				onPointerUp={handlePointerUp}
+				onPointerUp={handlePointerUp} 
 				// onTouchMove y onTouchEnd ya no son necesarios si onPointerMove/Up con setPointerCapture funciona
 				{...rest} // Esparce otras props HTMLAttributes
 			>
@@ -431,7 +465,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 						let closestHandleIdx = 0;
 
 						if (isDoubleHandled) {
-							const [currentStart, currentEnd] = value as [number, number];
+							const [currentStart, currentEnd] = currentValue as [number, number];
 							// Determinar qué handle está más cerca de la posición del click/tap
 							const startPos = valueToPercentage(currentStart);
 							const endPos = valueToPercentage(currentEnd);
@@ -455,6 +489,11 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 							// Mover el handle único
 							finalValue = Math.max(min, Math.min(max, newValue));
 							closestHandleIdx = 0;
+						}
+
+						// Actualizar estado interno si no es controlado
+						if (value === undefined) {
+							setInternalValue(finalValue);
 						}
 
 						// Llamar a onChange con el valor final calculado para el "salto"
@@ -535,10 +574,10 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 						role="slider"
 						aria-label={
 							isDoubleHandled
-								? Array.isArray(value)
-									? value[0].toString()
-									: (value as string) || "Inicio del rango"
-								: value.toString()
+								? Array.isArray(currentValue)
+									? currentValue[0].toString()
+									: (currentValue as unknown as string) || "Inicio del rango"
+								: currentValue.toString()
 						}
 						aria-valuemin={min}
 						aria-valuemax={max}
@@ -581,7 +620,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 							role="slider"
 							// *** CORRECCIÓN ARIA LABEL: Usa la segunda etiqueta si es array, o un fallback ***
 							aria-label={
-								Array.isArray(value) ? value[1].toString() : `${value || "Fin del rango"}`
+								Array.isArray(currentValue) ? currentValue[1].toString() : `${currentValue || "Fin del rango"}`
 							}
 							aria-valuemin={min}
 							aria-valuemax={max}

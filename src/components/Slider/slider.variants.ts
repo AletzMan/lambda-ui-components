@@ -166,6 +166,8 @@ export const rangeMark = cva(styles["lambda-range-mark"], {
 		},
 	},
 	defaultVariants: {
+		hasLabel: false,
+		inSlider: false,
 		size: "medium",
 		orientation: "horizontal",
 	},
