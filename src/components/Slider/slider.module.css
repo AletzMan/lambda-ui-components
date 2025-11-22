@@ -199,9 +199,8 @@
 .lambda-slider-fill {
 	position: absolute;
 	bottom: 50%;
-	transform: translateY(50%);
-	background-color: var(--primary-hover-color);
-	border: var(--border-width-xs) solid var(--primary-base-color);
+	transform: translateY(50%); 
+	border: var(--border-width-xs) solid transparent; 
 	z-index: 2;
 
 	&:is(.lambda-slider-fill-radius-none) {
@@ -239,6 +238,41 @@
 	&:is(.lambda-slider-fill-radius-full) {
 		border-radius: var(--border-radius-full);
 	}
+}
+
+.lambda-slider-fill-primary{
+	background-color: var(--primary-hover-color); 
+	border-color: var(--primary-base-color); 
+}
+
+.lambda-slider-fill-neutral{
+	background-color: var(--neutral-hover-color); 
+	border-color: var(--neutral-base-color);
+}
+
+.lambda-slider-fill-secondary{
+	background-color: var(--secondary-hover-color); 
+	border-color: var(--secondary-base-color);
+}
+
+.lambda-slider-fill-info{
+	background-color: var(--info-hover-color); 
+	border-color: var(--info-base-color);
+}
+
+.lambda-slider-fill-warning{
+	background-color: var(--warning-hover-color); 
+	border-color: var(--warning-base-color);
+}
+
+.lambda-slider-fill-danger{
+	background-color: var(--danger-hover-color); 
+	border-color: var(--danger-base-color);
+}
+
+.lambda-slider-fill-success{
+	background-color: var(--success-hover-color); 
+	border-color: var(--success-base-color);
 }
 
 .lambda-slider-fill-horizontal {
@@ -287,7 +321,7 @@
 
 .lambda-slider-handle {
 	position: absolute;
-	border: var(--border-width-xs) solid var(--primary-base-color);
+	border: var(--border-width-xs) solid transparent;
 	background: var(--foreground-invert-color);
 	transition: transform 0.1s ease, box-shadow 0.2s ease;
 	outline: none;
@@ -339,6 +373,34 @@
 	&:is(.lambda-slider-handle-radius-full) {
 		border-radius: var(--border-radius-full);
 	}
+}
+
+.lambda-slider-handle-primary{ 
+	border-color: var(--primary-base-color); 
+}
+
+.lambda-slider-handle-neutral{ 
+	border-color: var(--neutral-base-color);
+}
+
+.lambda-slider-handle-secondary{ 
+	border-color: var(--secondary-base-color);
+}
+
+.lambda-slider-handle-info{ 
+	border-color: var(--info-base-color);
+}
+
+.lambda-slider-handle-warning{ 
+	border-color: var(--warning-base-color);
+}
+
+.lambda-slider-handle-danger{ 
+	border-color: var(--danger-base-color);
+}
+
+.lambda-slider-handle-success{ 
+	border-color: var(--success-base-color);
 }
 
 .lambda-slider-handle-horizontal {

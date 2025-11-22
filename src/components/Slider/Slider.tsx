@@ -32,6 +32,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 			viewBar = true,
 			className,
 			formatValue,
+			color = "primary",
 			...rest
 		},
 		ref
@@ -548,7 +549,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					)}
 					{/* Relleno de la selección */}
 					<div
-						className={clsx(sliderFill({ size, disabled, orientation, radius: radiusValue }))}
+						className={clsx(sliderFill({ size, disabled, orientation, radius: radiusValue, color }))}
 						style={{ ...fillStyle, opacity: viewBar ? 1 : 0 }}
 					></div>
 
@@ -562,6 +563,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 								isDragging: isDragging && draggingHandleIndex === 0,
 								orientation,
 								radius: radiusValue,
+								color,
 							})
 						)}
 						// Posiciona el handle único u izquierdo

@@ -39,6 +39,15 @@ export const sliderContainer = cva(styles["lambda-slider-container"], {
 
 export const sliderTrack = cva(styles["lambda-slider-track"], {
 	variants: {
+		color: {
+			primary: styles["lambda-slider-track-primary"],
+			neutral: styles["lambda-slider-track-neutral"],
+			secondary: styles["lambda-slider-track-secondary"],
+			info: styles["lambda-slider-track-info"],
+			warning: styles["lambda-slider-track-warning"],
+			danger: styles["lambda-slider-track-danger"],
+			success: styles["lambda-slider-track-success"],
+		},
 		size: {
 			tiny: styles["lambda-slider-track-tiny"],
 			small: styles["lambda-slider-track-small"],
@@ -66,11 +75,21 @@ export const sliderTrack = cva(styles["lambda-slider-track"], {
 		disabled: false,
 		orientation: "horizontal",
 		radius: "full",
+		color: "primary",
 	},
 });
 
 export const sliderFill = cva(styles["lambda-slider-fill"], {
 	variants: {
+		color: {
+			primary: styles["lambda-slider-fill-primary"],
+			neutral: styles["lambda-slider-fill-neutral"],
+			secondary: styles["lambda-slider-fill-secondary"],
+			info: styles["lambda-slider-fill-info"],
+			warning: styles["lambda-slider-fill-warning"],
+			danger: styles["lambda-slider-fill-danger"],
+			success: styles["lambda-slider-fill-success"],
+		},
 		size: {
 			tiny: styles["lambda-slider-fill-tiny"],
 			small: styles["lambda-slider-fill-small"],
@@ -96,11 +115,21 @@ export const sliderFill = cva(styles["lambda-slider-fill"], {
 		disabled: false,
 		orientation: "horizontal",
 		radius: "full",
+		color: "primary",
 	},
 });
 
 export const sliderHandle = cva(styles["lambda-slider-handle"], {
 	variants: {
+		color: {
+			primary: styles["lambda-slider-handle-primary"],
+			neutral: styles["lambda-slider-handle-neutral"],
+			secondary: styles["lambda-slider-handle-secondary"],
+			info: styles["lambda-slider-handle-info"],
+			warning: styles["lambda-slider-handle-warning"],
+			danger: styles["lambda-slider-handle-danger"],
+			success: styles["lambda-slider-handle-success"],
+		},
 		size: {
 			tiny: styles["lambda-slider-handle-tiny"],
 			small: styles["lambda-slider-handle-small"],
@@ -128,6 +157,7 @@ export const sliderHandle = cva(styles["lambda-slider-handle"], {
 		isDragging: false,
 		orientation: "horizontal",
 		radius: "full",
+		color: "primary",
 	},
 });
 

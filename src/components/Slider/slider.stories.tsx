@@ -59,6 +59,12 @@ const meta: Meta<typeof Slider> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Size of the card",
 		},
+		color: {
+			control: "inline-radio",
+			options: ["primary", "neutral", "secondary", "info", "warning", "danger", "success"],
+			description: "Color of the range slider",
+			defaultValue: "primary",
+		},
 		viewValue: {
 			control: "boolean",
 			description: "Show the value of the range",
@@ -174,6 +180,7 @@ export const Single: StoryObj<typeof Slider> = {
 		step: 25,
 		radius: "full",
 		disabled: false,
+		color: "primary",
 		orientation: "horizontal",
 		size: "medium",
 		label: "Slider",
@@ -197,6 +204,7 @@ export const Double: StoryObj<typeof Slider> = {
 		step: 5,
 		radius: "full",
 		disabled: false,
+		color: "primary",
 		orientation: "horizontal",
 		size: "medium",
 		label: "Slider",

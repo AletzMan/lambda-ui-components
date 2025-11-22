@@ -16,7 +16,7 @@ export type SliderMarks = {
 export interface BaseSliderProps
 	extends Omit<
 		HTMLAttributes<HTMLDivElement>,
-		"value" | "onChange" | "onInput" | "defaultValue"
+		"value" | "onChange" | "onInput" | "defaultValue" | "color"
 	> {
 	/**
  * Allows customizing how the slider value is displayed (tooltip/handle label).
@@ -60,6 +60,12 @@ size?: SliderSize;
  * Rendered as a <label> when provided.
  */
 label?: string;
+
+/**
+ * The color of the slider fill.
+ * @default "primary"
+ */
+color?: SliderTrackVariants["color"];
 
 /**
  * Whether the current value should be visible on the slider (e.g., tooltip).
