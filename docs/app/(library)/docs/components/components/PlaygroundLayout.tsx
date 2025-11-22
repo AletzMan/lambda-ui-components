@@ -1,4 +1,5 @@
 import React, { useRef, useReducer, useCallback, Ref, Fragment } from "react";
+import { Plus, X } from "lucide-react";
 import {
 	Button,
 	Checkbox,
@@ -17,12 +18,14 @@ import {
 
 export interface PropConfig {
 	name: string;
-	type: "boolean" | "boolean-inverted" | "string" | "number" | "select" | "slider" | "radio" | "checkbox" | "color" | "";
-	values?: (string | number | boolean)[]; // Para 'select'
+	type: "boolean" | "boolean-inverted" | "string" | "number" | "array-number" | "array-string" | "array-object" | "select" | "slider" | "radio" | "checkbox" | "color" | "";
+	values?: (string | number | boolean | any)[]; // Para 'select'
 	defaultValue?: any;
 	default?: any;
 	label?: string; // Etiqueta opcional para el control UI
 	description?: string; // Descripción opcional para el control UI
+	transform?: (value: any) => any;
+	schema?: Record<string, "string" | "number">; // Schema for array-object
 }
 
 export interface ComponentPropsState {
@@ -127,17 +130,24 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 	const internalRef = useRef<T>(null);
 	const refToInject: Ref<T> = componentRef || internalRef;
 
-	// Combinamos las props del children original con las props del estado actual del reducer
+	// Aplicamos transform si existe en la configuración
+	const transformedProps = Object.entries(currentProps).reduce((acc, [key, value]) => {
+		const config = propConfigs.find((c) => c.name === key);
+		acc[key] = config?.transform ? config.transform(value) : value;
+		return acc;
+	}, {} as any);
+
+	// Combinamos las props del children original con las props transformadas
 	const finalProps: Record<string, any> = React.isValidElement(children)
-		? { ...(children.props as Record<string, any>), ...currentProps }
-		: { ...currentProps };
+		? { ...(children.props as Record<string, any>), ...transformedProps }
+		: { ...transformedProps };
 
 	// Clona el elemento y le inyecta la ref y las props combinadas
 	const renderedComponent =
 		typeof children === "function"
 			? children(finalProps)
 			: React.isValidElement(children)
-			? React.createElement(children.type, finalProps)
+			? React.createElement(children.type, { ...finalProps, ref: refToInject })
 			: null;
 
 	// Manejador para los cambios en los controles UI
@@ -153,7 +163,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 	const arrayProps = Object.entries(currentProps).map(([key, value]) => ({
 		name: key,
 		value,
-		type: propConfigs.find((prop) => prop.name === key)?.type === "boolean-inverted" ? "boolean-inverted" : typeof value ,
+		type: propConfigs.find((prop) => prop.name === key)?.type === "boolean-inverted" ? "boolean-inverted" : propConfigs.find((prop) => prop.name === key)?.type === "array-number" ? "array-number" : propConfigs.find((prop) => prop.name === key)?.type === "array-string" ? "array-string" : propConfigs.find((prop) => prop.name === key)?.type === "array-object" ? "array-object" : typeof value ,
 		default: propConfigs.find((prop) => prop.name === key)?.default,   
 	})); 
 	
@@ -177,6 +187,18 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					: undefined;
 			} else if (prop.type === "number") {
 				return prop.value && prop.value !== prop.default ? `${prop.name}={${prop.value}}` : undefined;
+			} else if (prop.type === "array-number") {
+				return prop.value && JSON.stringify(prop.value) !== JSON.stringify(prop.default)
+					? `${prop.name}={${JSON.stringify(prop.value)}}`
+					: undefined;
+			} else if (prop.type === "array-string") {
+				return prop.value && JSON.stringify(prop.value) !== JSON.stringify(prop.default)
+					? `${prop.name}={${JSON.stringify(prop.value)}}`
+					: undefined;
+			} else if (prop.type === "array-object") {
+				return prop.value && JSON.stringify(prop.value) !== JSON.stringify(prop.default)
+					? `${prop.name}={${JSON.stringify(prop.value, null, 2)}}` 
+					: undefined;
 			} else if (prop.type === "object") {
 				return prop.value ? `${prop.name}={<${prop.value.type.displayName}/>}` : undefined;
 			} else {
@@ -201,12 +223,19 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 				<div className="grid grid-cols-[0.85fr_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-6">
 					{/* Columna de Controles de Props */}
 					<div className="flex flex-col h-full">
-						<label
-							className="text-lg font-semibold text-(--foreground-color) 
+						<div
+							className="flex flex-row items-center justify-between p-2 text-lg font-semibold text-(--foreground-color) 
 					border border-(--border-color) rounded-t-sm border-b-0 pl-2 bg-(--surface-a)"
 						>
 							Properties
-						</label>
+							<Button
+									onClick={handleResetProps}
+									label="Reset Props"
+									size="tiny"
+									color="neutral"
+									variant="solid"
+								/>
+						</div>
 						<div className="bg-(--background-color) p-4 rounded-b-md border border-(--border-color) scrollBar h-[calc(100svh-350px)] overflow-y-auto">
 							<div className="space-y-2"> 
 
@@ -227,6 +256,46 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								<div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-2">
 									{propConfigs
 										.filter((c) => ["number"].includes(c.type))
+										.map((config) => (
+											<ControlItem
+												key={config.name}
+												config={config}
+												currentValue={currentProps[config.name]}
+												onChange={handlePropChange}
+											/>
+										))}
+								</div>
+								{/* Array-Numbers */}
+								<div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
+									{propConfigs
+										.filter((c) => ["array-number"].includes(c.type))
+										.map((config) => (
+											<ControlItem
+												key={config.name}
+												config={config}
+												currentValue={currentProps[config.name]}
+												onChange={handlePropChange}
+											/>
+										))}
+								</div>
+								{/* Array-Strings */}
+								<div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
+									{propConfigs
+										.filter((c) => ["array-string"].includes(c.type))
+										.map((config) => (
+											<ControlItem
+												key={config.name}
+												config={config}
+												currentValue={currentProps[config.name]}
+												onChange={handlePropChange}
+											/>
+										))}
+								</div>
+
+								{/* Array-Objects */}
+								<div className="flex flex-col gap-2">
+									{propConfigs
+										.filter((c) => ["array-object"].includes(c.type))
 										.map((config) => (
 											<ControlItem
 												key={config.name}
@@ -316,22 +385,12 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 											))}
 									</div>
 								)}
-							</div>
-							<Divider spacing={15} />
-							<div className="flex justify-end pt-2 mt-2">
-								<Button
-									onClick={handleResetProps}
-									label="Reset Props"
-									size="tiny"
-									color="neutral"
-									variant="solid"
-								/>
-							</div>
+							</div> 
 						</div>
 					</div>
 					{/* Columna de Previsualización del Componente */}
 					<div className="flex flex-col h-full">
-						<label className="text-lg font-semibold text-(--foreground-color) pl-2 border border-(--border-color) border-b-0 rounded-t-sm bg-(--surface-a)">
+						<label className="text-lg font-semibold text-(--foreground-color) p-2 border border-(--border-color) border-b-0 rounded-t-sm bg-(--surface-a)">
 							Preview
 						</label>
 						<div
@@ -425,6 +484,133 @@ const ControlItem: React.FC<{
 						onChangeValue={(e) => onChange(config.name, e)}
 						aria-describedby={config.description ? descriptionId : undefined}
 					/>
+				);
+			case "array-number":
+				return (
+					<div className="flex flex-col gap-2">
+						<div className="flex justify-between items-center">
+							<span className="text-sm font-medium text-(--foreground-color)">{config.label || config.name}</span>
+							<Button
+								size="tiny"
+								variant="text"
+								onClick={() => {
+									const newValue = [...(Array.isArray(currentValue) ? currentValue : []), 0];
+									onChange(config.name, newValue);
+								}}
+							>
+								<Plus size={14} />
+							</Button>
+						</div>
+						{(Array.isArray(currentValue) ? currentValue : []).map((val: any, index: number) => (
+							<div key={index} className="flex items-center gap-2">
+								<InputNumber
+									id={`${controlId}-${index}`}
+									size="tiny"
+									color="neutral"
+									value={Number(val)}
+									onChangeValue={(e) => {
+										const newValue = [...(currentValue as number[])];
+										newValue[index] = Number(e);
+										onChange(config.name, newValue);
+									}}
+									aria-describedby={config.description ? descriptionId : undefined}
+								/>
+								<Button
+									size="tiny"
+									variant="text"
+									color="danger"
+									onClick={() => {
+										const newValue = [...(currentValue as number[])];
+										newValue.splice(index, 1);
+										onChange(config.name, newValue);
+									}}
+								>
+									<X size={14} />
+								</Button>
+							</div>
+						))}
+					</div>
+				);
+			case "array-string":
+				return (
+					<Input
+						id={controlId} 
+						type="text"
+						size="tiny"
+						color="neutral"
+						value={String(currentValue ?? "")}
+						onChangeValue={(e) => onChange(config.name, e)}
+						aria-describedby={config.description ? descriptionId : undefined}
+					/>
+				);
+			case "array-object":
+				return (
+					<div className="flex flex-col gap-2">
+						<div className="flex justify-between items-center">
+							<span className="text-sm font-medium text-(--foreground-color)">{config.label || config.name}</span>
+							<Button
+								size="tiny"
+								variant="text"
+								color="neutral"
+								icon={<Plus  />}
+								onClick={() => {
+									const newObj = Object.keys(config.schema || {}).reduce((acc, key) => {
+										acc[key] = config.schema?.[key] === "number" ? 0 : "";
+										return acc;
+									}, {} as any);
+									const newValue = [...(Array.isArray(currentValue) ? currentValue : []), newObj];
+									onChange(config.name, newValue);
+								}}
+							/>
+						</div>
+						{(Array.isArray(currentValue) ? currentValue : []).map((val: any, index: number) => (
+							<div key={index} className="flex flex-row items-end gap-2 bg-(--surface-b) p-2 rounded-md relative">
+								{Object.entries(config.schema || {}).map(([key, type]) => (
+									<div key={key} className="flex flex-col gap-1"> 
+										{type === "number" ? (
+											<InputNumber
+												size="tiny"
+												label={key}
+												color="neutral"
+												value={Number(val[key])}
+												onChangeValue={(e) => {
+													const newValue = [...(currentValue as any[])];
+													newValue[index] = { ...newValue[index], [key]: Number(e) };
+													onChange(config.name, newValue);
+												}}
+											/>
+										) : (
+											<Input
+												type="text"
+												size="tiny"
+												label={key}
+												color="neutral"
+												value={String(val[key] ?? "")}
+												onChangeValue={(e) => {
+													const newValue = [...(currentValue as any[])];
+													newValue[index] = { ...newValue[index], [key]: e };
+													onChange(config.name, newValue);
+												}}
+											/>
+										)}
+									</div>
+								))}
+								
+								<Button
+									size="tiny"
+									variant="text"
+									color="danger"
+									className="w-6 h-6 " 
+									icon={<X />}
+									onClick={() => {
+										const newValue = [...(currentValue as any[])];
+										newValue.splice(index, 1);
+										onChange(config.name, newValue);
+									}}
+								/> 
+							</div>
+						))}
+					</div>
 				);
 			case "checkbox":
 				return (
