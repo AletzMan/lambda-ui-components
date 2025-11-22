@@ -1,7 +1,7 @@
 "use client";
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
-import { Select, Slider,  } from "lambda-ui-components";
+import { Slider } from "lambda-ui-components";
 import { useRef, useState } from "react";
 
  
@@ -17,13 +17,20 @@ export const SliderFeatures = () => {
 				componentName="Slider"
 				description="Experiment with all the properties of the Slider component in real time."
 				propConfigs={[ 
-					{ name: "label", type: "string", defaultValue: "Label", default: "", label: "Label" },
+					{ name: "label", 
+						type: "string", 
+						defaultValue: "Label", 
+						default: "", 
+						label: "Label", 
+						description: "Optional text label for the slider." 
+					},
 					{
 						name: "min",
 						type: "number",
 						defaultValue: 0,
 						default: 0,
 						label: "Min",
+						description: "The minimum allowed value of the slider.",
 					},
 					{
 						name: "max",
@@ -31,6 +38,7 @@ export const SliderFeatures = () => {
 						defaultValue: 100,
 						default: 100,
 						label: "Max",
+						description: "The maximum allowed value of the slider.",
 					},
 					{
 						name: "step",
@@ -38,6 +46,7 @@ export const SliderFeatures = () => {
 						defaultValue: 1,
 						default: 1,
 						label: "Step",
+						description: "Defines the increment when adjusting the slider.",
 					},
 					{
 						name: "orientation",
@@ -45,7 +54,17 @@ export const SliderFeatures = () => {
 						defaultValue: "horizontal",
 						default: "horizontal",
 						label: "Orientation",
+						description: "Sets the slider direction.",
 						values: ["horizontal", "vertical"],
+					},
+					{
+						name: "color",
+						type: "color",
+						defaultValue: "primary",
+						default: "primary",
+						label: "Color",
+						description: "Controls the color of the slider.",
+						values: ["primary", "secondary", "success", "danger", "warning", "info", "neutral"],
 					},
 					{
 						name: "size",
@@ -53,6 +72,7 @@ export const SliderFeatures = () => {
 						defaultValue: "medium",
 						default: "medium",
 						label: "Size",
+						description: "Controls the overall track and thumb size.",
 						values: ["tiny", "small", "medium", "large"],
 					},
 					{
@@ -61,21 +81,24 @@ export const SliderFeatures = () => {
 						defaultValue: "full",
 						default: "full",
 						label: "Radius",
+						description: "Controls the roundness of the track and thumb.",
 						values: ["none", "tiny", "small", "medium", "large", "full"],
 					},   
 					{
 						name: "viewValue",
-						type: "boolean",
+						type: "boolean-inverted",
 						defaultValue: true,
 						default: true,
 						label: "View Value",
+						description: "Shows the current value (e.g., tooltip or display).",
 					},
 					{
 						name: "viewBar",
-						type: "boolean",
+						type: "boolean-inverted",
 						defaultValue: true,
 						default: true,
 						label: "View Bar",
+						description: "Shows the progress bar inside the slider track.",
 					},
 					{
 						name: "disabled",
@@ -83,6 +106,7 @@ export const SliderFeatures = () => {
 						defaultValue: false,
 						default: false,
 						label: "Disabled",
+						description: "Disables user interaction with the slider.",
 					},
 				]}
 				componentRef={refSelect}
@@ -92,17 +116,12 @@ export const SliderFeatures = () => {
 			<PropertyLayout
 				title="Usage"
 				id="usage"
-				code={`import { Select } from "lambda-ui-components";
+				code={`import { Slider } from "lambda-ui-components";
 
-const options = [
-	{ value: "react", label: "React" },
-	{ value: "next", label: "Next" },
-	{ value: "node", label: "Node" },
-];
 
 export default function App() {
 	return (
-		<Slider value={value} onChangeValue={(value) => setValue(value as number)} />
+		<Slider defaultValue={50}/>
 	);
 }`}
 			/> 
@@ -116,7 +135,7 @@ export default function App() {
 import { useState } from "react";	
 
 export default function SliderControlled() {
-	const [value, setValue] = useState("");
+	const [value, setValue] = useState(50);
 	return ( 
 			<Slider  
 				label="Text"   

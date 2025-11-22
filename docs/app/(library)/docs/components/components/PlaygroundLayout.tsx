@@ -17,11 +17,12 @@ import {
 
 export interface PropConfig {
 	name: string;
-	type: "boolean" | "string" | "number" | "select" | "slider" | "radio" | "checkbox" | "color" | "";
+	type: "boolean" | "boolean-inverted" | "string" | "number" | "select" | "slider" | "radio" | "checkbox" | "color" | "";
 	values?: (string | number | boolean)[]; // Para 'select'
 	defaultValue?: any;
 	default?: any;
 	label?: string; // Etiqueta opcional para el control UI
+	description?: string; // Descripción opcional para el control UI
 }
 
 export interface ComponentPropsState {
@@ -152,10 +153,10 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 	const arrayProps = Object.entries(currentProps).map(([key, value]) => ({
 		name: key,
 		value,
-		type: typeof value,
-		default: propConfigs.find((prop) => prop.name === key)?.default,
-	}));
-
+		type: propConfigs.find((prop) => prop.name === key)?.type === "boolean-inverted" ? "boolean-inverted" : typeof value ,
+		default: propConfigs.find((prop) => prop.name === key)?.default,   
+	})); 
+	
 	const propsString = arrayProps
 		.map((prop) => {
 			if (prop.type === "boolean") {
@@ -164,12 +165,18 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					: typeof prop.default == "boolean"
 					? `${prop.name}`
 					: undefined;
+			} else if (prop.type === "boolean-inverted") {
+				return prop.value === prop.default
+					? undefined
+					: typeof prop.default == "boolean"
+					? `${prop.name}={${prop.value}}`
+					: undefined;
 			} else if (prop.type === "string") {
 				return prop.value && prop.value !== prop.default
 					? `${prop.name}="${prop.value}"`
 					: undefined;
 			} else if (prop.type === "number") {
-				return prop.value ? `${prop.name}=${prop.value}` : undefined;
+				return prop.value && prop.value !== prop.default ? `${prop.name}={${prop.value}}` : undefined;
 			} else if (prop.type === "object") {
 				return prop.value ? `${prop.name}={<${prop.value.type.displayName}/>}` : undefined;
 			} else {
@@ -183,7 +190,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 		<>
 			<div className="flex flex-col gap-4 bg-(--background-color) p-6 rounded-lg shadow-lg mr-3.5">
 				{title && (
-					<h2 id={id} className="text-2xl font-bold mb-1">
+					<h2 id={id} className="text-2xl font-bold mb-1 scroll-mt-20">
 						{title}
 					</h2>
 				)}
@@ -200,186 +207,115 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 						>
 							Properties
 						</label>
-						<div className="bg-(--background-color) p-4 rounded-b-md border border-(--border-color)">
-							<div className="space-y-2">
-								<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 mb-6">
-									{propConfigs.map((config) => (
-										<Fragment key={config.name}>
-											{config.type === "select" && config.values && (
-												<Select
-													label={config.label}
-													size="tiny"
-													value={String(currentProps[config.name] ?? "")}
-													onChange={(e) => handlePropChange(config.name, e)}
-													options={config.values.map((val: any) => ({
-														value: String(val),
-														label: String(val),
-													}))}
-												/>
-											)}
-											{config.type === "string" && (
-												<Input
-													label={config.label}
-													type="text"
-													size="tiny"
-													value={String(currentProps[config.name] ?? "")} // Asegura string para input value
-													onChangeValue={(e) => {
-														handlePropChange(config.name, e);
-													}}
-												/>
-											)}
-											{config.type === "number" && (
-												<InputNumber
-													label={config.label}
-													size="tiny"
-													value={Number(currentProps[config.name] ?? "")} // Asegura string para input value
-													onChangeValue={(e) => {
-														handlePropChange(config.name, e);
-													}}
-												/>
-											)}
-										</Fragment>
-									))}
-								</div>
-								{propConfigs.some((config) => config.type === "checkbox") && (
-									<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
-										{propConfigs.map((config) => (
-											<Fragment key={config.name}>
-												{config.type === "checkbox" && (
-													<Checkbox
-														label={config.label}
-														positionLabel="right"
-														size="tiny"
-														checked={!!currentProps[config.name]}
-														onChange={(e) =>
-															handlePropChange(
-																config.name,
-																e.target.checked ? config.default : false
-															)
-														}
-													/>
-												)}
-											</Fragment>
+						<div className="bg-(--background-color) p-4 rounded-b-md border border-(--border-color) scrollBar h-[calc(100svh-350px)] overflow-y-auto">
+							<div className="space-y-2"> 
+
+								{/* Selects, Strings */}
+								<div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
+									{propConfigs
+										.filter((c) => ["select", "string"].includes(c.type))
+										.map((config) => (
+											<ControlItem
+												key={config.name}
+												config={config}
+												currentValue={currentProps[config.name]}
+												onChange={handlePropChange}
+											/>
 										))}
+								</div>
+								{/* Numbers */}
+								<div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-2">
+									{propConfigs
+										.filter((c) => ["number"].includes(c.type))
+										.map((config) => (
+											<ControlItem
+												key={config.name}
+												config={config}
+												currentValue={currentProps[config.name]}
+												onChange={handlePropChange}
+											/>
+										))}
+								</div>
+
+								{/* Checkboxes */}
+								{propConfigs.some((c) => c.type === "checkbox") && (
+									<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2">
+										{propConfigs
+											.filter((c) => c.type === "checkbox")
+											.map((config) => (
+												<ControlItem
+													key={config.name}
+													config={config}
+													currentValue={currentProps[config.name]}
+													onChange={handlePropChange}
+												/>
+											))}
 									</div>
 								)}
-								{propConfigs.some((config) => config.type === "color") && (
-									<div className="flex flex-col items-start gap-2 my-6">
-										<label className="text-xs font-medium text-(--foreground-label-color) ">
-											Color
-										</label>
-										{propConfigs.map((config) => (
-											<Fragment key={config.name}>
-												{config.type === "color" && (
-													<div className="flex flex-wrap gap-2 w-full">
-														{colorOptions.map((option) => (
-															<Tooltip
-																content={
-																	option.value.charAt(0).toUpperCase() + option.value.slice(1)
-																}
-																key={option.value}
-																color="neutral"
-															>
-																<button
-																	className={
-																		option.value === currentProps[config.name]
-																			? `${option.color} text-(--foreground-color) size-6 rounded-xs`
-																			: `${option.color} text-(--foreground-color) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
-																	}
-																	onClick={() => handlePropChange(config.name, option.value)}
-																></button>
-															</Tooltip>
-														))}
-													</div>
-												)}
-											</Fragment>
-										))}
+
+								{/* Colors */}
+								{propConfigs.some((c) => c.type === "color") && (
+									<div className="flex flex-col gap-2">
+										{propConfigs
+											.filter((c) => c.type === "color")
+											.map((config) => (
+												<ControlItem
+													key={config.name}
+													config={config}
+													currentValue={currentProps[config.name]}
+													onChange={handlePropChange}
+												/>
+											))}
 									</div>
 								)}
-								<div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-2 place-items-start my-6">
-									{propConfigs.map((config) => (
-										<Fragment key={config.name}>
-											{config.type === "radio" && (
-												<div className="flex flex-col items-start w-full gap-1">
-													<label className="text-xs font-medium text-(--foreground-label-color) ">
-														{config.label}
-													</label>
-													<RadioGroup
-														size="tiny"
-														variant="solid"
-														orientation="horizontal"
-														onChangeOption={(e) => handlePropChange(config.name, e)}
-														selectedOption={currentProps[config.name]}
-													>
-														{config.values?.map((value: any) => (
-															<Radio.Button
-																key={value}
-																value={value}
-																label={
-																	value.toString().charAt(0).toUpperCase() +
-																	value.toString().slice(1)
-																}
-															/>
-														))}
-													</RadioGroup>
-												</div>
-											)}
-										</Fragment>
-									))}
-								</div>
-								<div className="flex flex-col items-start gap-7 py-3.5 mb-5 px-1 my-6">
-									{propConfigs.map((config) => (
-										<Fragment key={config.name}>
-											{config.type === "slider" && config.values && (
-												<div className="flex flex-col items-start w-full">
-													<label className="text-xs font-medium text-(--foreground-label-color) ">
-														{config.label}
-													</label>
-													<div className="w-full px-4">
-														<Slider
-															size="small"
-															radius="full"
-															min={0}
-															max={config.values.length - 1}
-															formatValue={(value) =>
-																(config.values?.[value]?.toString().charAt(0).toUpperCase() || "") +
-																(config.values?.[value]?.toString().slice(1) || "")
-															}
-															value={Number(config.values?.indexOf(currentProps[config.name]) ?? 0)}
-															onChange={(e) =>
-																handlePropChange(config.name, config.values?.[e as number])
-															}
-															onInput={(e) =>
-																handlePropChange(config.name, config!.values![e as number])
-															}
-															marks={config!.values!.map((val: any, index: number) => ({
-																value: index,
-																label:
-																	String(config!.values![index]).charAt(0).toUpperCase() +
-																	String(config!.values![index]).slice(1),
-															}))}
-														/>
-													</div>
-												</div>
-											)}
-										</Fragment>
-									))}
-								</div>
-								<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2 place-items-start my-6">
-									{propConfigs.map((config) => (
-										<Fragment key={config.name}>
-											{config.type === "boolean" && (
-												<Switch
-													label={config.label}
-													positionLabel="right"
-													size="tiny"
-													checked={!!currentProps[config.name]}
-													onChange={(e) => handlePropChange(config.name, e.target.checked)}
+
+								{/* Radios */}
+								{propConfigs.some((c) => c.type === "radio") && (
+									<div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-2">
+										{propConfigs
+											.filter((c) => c.type === "radio")
+											.map((config) => (
+												<ControlItem
+													key={config.name}
+													config={config}
+													currentValue={currentProps[config.name]}
+													onChange={handlePropChange}
 												/>
-											)}
-										</Fragment>
-									))}
-								</div>
+											))}
+									</div>
+								)}
+
+								{/* Sliders */}
+								{propConfigs.some((c) => c.type === "slider") && (
+									<div className="flex flex-col gap-2">
+										{propConfigs
+											.filter((c) => c.type === "slider")
+											.map((config) => (
+												<ControlItem
+													key={config.name}
+													config={config}
+													currentValue={currentProps[config.name]}
+													onChange={handlePropChange}
+												/>
+											))}
+									</div>
+								)}
+
+								{/* Switches (Boolean & Boolean-Inverted) */}
+								{propConfigs.some((c) => ["boolean", "boolean-inverted"].includes(c.type)) && (
+									<div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2">
+										{propConfigs
+											.filter((c) => ["boolean", "boolean-inverted"].includes(c.type))
+											.map((config) => (
+												<ControlItem
+													key={config.name}
+													config={config}
+													currentValue={currentProps[config.name]}
+													onChange={handlePropChange}
+												/>
+											))}
+									</div>
+								)}
 							</div>
 							<Divider spacing={15} />
 							<div className="flex justify-end pt-2 mt-2">
@@ -437,6 +373,191 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 		</>
 	);
 }
+
+/**
+ * Helper component to render individual controls with accessibility and descriptions.
+ */
+const ControlItem: React.FC<{
+	config: PropConfig;
+	currentValue: any;
+	onChange: (name: string, value: any) => void;
+}> = ({ config, currentValue, onChange }) => {
+	const controlId = `control-${config.name}`;
+	const descriptionId = `desc-${config.name}`;
+
+	const renderControl = () => {
+		switch (config.type) {
+			case "select":
+				return (
+					<Select
+						id={controlId}
+						label={config.label}
+						size="tiny"
+						color="neutral"
+						value={String(currentValue ?? "")}
+						onChange={(e) => onChange(config.name, e)}
+						options={config.values?.map((val: any) => ({
+							value: String(val),
+							label: String(val),
+						})) || []}
+						aria-describedby={config.description ? descriptionId : undefined}
+					/>
+				);
+			case "string":
+				return (
+					<Input
+						id={controlId} 
+						type="text"
+						size="tiny"
+						color="neutral"
+						value={String(currentValue ?? "")}
+						onChangeValue={(e) => onChange(config.name, e)}
+						aria-describedby={config.description ? descriptionId : undefined}
+					/>
+				);
+			case "number":
+				return (
+					<InputNumber
+						id={controlId} 
+						size="tiny"
+						color="neutral"
+						value={Number(currentValue ?? "")}
+						onChangeValue={(e) => onChange(config.name, e)}
+						aria-describedby={config.description ? descriptionId : undefined}
+					/>
+				);
+			case "checkbox":
+				return (
+					<Checkbox
+						id={controlId} 
+						positionLabel="right"
+						color="neutral"
+						size="tiny"
+						checked={!!currentValue}
+						onChange={(e) =>
+							onChange(config.name, e.target.checked ? config.default : false)
+						}
+						aria-describedby={config.description ? descriptionId : undefined}
+					/>
+				);
+			case "color":
+				return (
+					<div className="flex flex-col items-start gap-2"> 
+						<div className="flex flex-wrap gap-2 w-full" id={controlId} role="radiogroup" aria-describedby={config.description ? descriptionId : undefined}>
+							{colorOptions.map((option) => (
+								<Tooltip
+									content={option.value.charAt(0).toUpperCase() + option.value.slice(1)}
+									key={option.value}
+									color="neutral"
+								>
+									<button
+										type="button"
+										role="radio"
+										aria-checked={option.value === currentValue}
+										className={
+											option.value === currentValue
+												? `${option.color} text-(--foreground-color) size-6 rounded-xs ring-2 ring-offset-1 ring-(--foreground-color)`
+												: `${option.color} text-(--foreground-color) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
+										}
+										onClick={() => onChange(config.name, option.value)}
+										aria-label={option.value}
+									></button>
+								</Tooltip>
+							))}
+						</div>
+					</div>
+				);
+			case "radio":
+				return (
+					<div className="flex flex-col items-start w-full gap-1"> 
+						<RadioGroup
+							size="tiny"
+							variant="solid"
+							color="neutral"
+							orientation="horizontal"
+							onChangeOption={(e) => onChange(config.name, e)}
+							selectedOption={currentValue}
+							aria-labelledby={`${controlId}-label`}
+							aria-describedby={config.description ? descriptionId : undefined}
+						>
+							{config.values?.map((value: any) => (
+								<Radio.Button
+									key={value}
+									value={value}
+									label={value.toString().charAt(0).toUpperCase() + value.toString().slice(1)}
+								/>
+							))}
+						</RadioGroup>
+					</div>
+				);
+			case "slider":
+				return (
+					<div className="flex flex-col items-start w-full">
+						<div className="w-full px-4 pt-2 pr-12">
+							<Slider
+								id={controlId}
+								size="small"
+								radius="full"
+								min={0}
+								max={(config.values?.length || 1) - 1}
+								color="neutral"
+								formatValue={(value) =>
+									(config.values?.[value]?.toString().charAt(0).toUpperCase() || "") +
+									(config.values?.[value]?.toString().slice(1) || "")
+								}
+								value={Number(config.values?.indexOf(currentValue) ?? 0)}
+								onChangeValue={(e) =>
+									onChange(config.name, config.values?.[e as number])
+								}
+								marks={config.values?.map((val: any, index: number) => ({
+									value: index,
+									label:
+										String(config.values![index]).charAt(0).toUpperCase() +
+										String(config.values![index]).slice(1),
+								}))}
+								aria-describedby={config.description ? descriptionId : undefined}
+							/>
+						</div>
+					</div>
+				);
+			case "boolean":
+			case "boolean-inverted":
+				return (
+					<Switch
+						id={controlId} 
+						positionLabel="right"
+						color="neutral"
+						size="tiny"
+						checked={!!currentValue}
+						onChange={(e) => onChange(config.name, e.target.checked)}
+						aria-describedby={config.description ? descriptionId : undefined}
+					/>
+				);
+			default:
+				return null;
+		}
+	};
+
+	return (
+		<div className="flex flex-col justify-between gap-3 bg-(--surface-a) rounded-md p-3 border border-(--border-color)/15 h-full">
+			<div className="flex flex-col gap-2">
+				<div className="flex items-center justify-between">
+					{config.name && (
+						<code className="text-[10px] font-bold text-(--primary-text-color) bg-(--primary-opacity-color)/60 px-1.5 py-0.5 rounded-xs font-mono border border-(--primary-opacity-color)/60">
+							{config.name}
+						</code>
+					)}
+				</div>
+				<div className="w-full pt-2">{renderControl()}</div>
+			</div>
+			{config.description && (
+				<p id={descriptionId} className="text-[11px] text-(--foreground-secondary-color) leading-tight border-t border-(--border-color)/50 pt-2 mt-1">
+					{config.description}
+				</p>
+			)}
+		</div>
+	);
+};
 
 // Exporta también como default si lo prefieres para la importación
 export default PlaygroundLayout;

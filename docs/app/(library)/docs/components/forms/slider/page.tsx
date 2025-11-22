@@ -28,55 +28,7 @@ const dataFeatures: NavigationMenuData[] = [
 						label: "Usage",
 						path: "#usage",
 						target: "_top",
-					},
-					{
-						id: "variants",
-						label: "Variants",
-						path: "#variants",
-						target: "_top",
-					},
-					{
-						id: "sizes",
-						label: "Sizes",
-						path: "#sizes",
-						target: "_top",
-					},
-					{
-						id: "radius",
-						label: "Radius",
-						path: "#radius",
-						target: "_top",
 					}, 
-					{
-						id: "disabled",
-						label: "Disabled",
-						path: "#disabled",
-						target: "_top",
-					},
-					{
-						id: "whit-label",
-						label: "Whit Label",
-						path: "#whit-label",
-						target: "_top",
-					},  
-					{
-						id: "required",
-						label: "Required",
-						path: "#required",
-						target: "_top",
-					},
-					{
-						id: "error-message",
-						label: "Error Message",
-						path: "#error-message",
-						target: "_top",
-					},
-					{
-						id: "helper-text",
-						label: "Helper Text",
-						path: "#helper-text",
-						target: "_top",
-					},
 					{
 						id: "controlled",
 						label: "Controlled",
@@ -90,9 +42,21 @@ const dataFeatures: NavigationMenuData[] = [
 				label: "API Reference",
 				children: [
 					{
-						id: "props",
-						label: "Props",
-						path: "#props",
+						id: "base-slider-props",
+						label: "Base Slider Props",
+						path: "#base-slider-props",
+						target: "_top",
+					},
+					{
+						id: "slider-single-props",
+						label: "Slider Single Props",
+						path: "#slider-single-props",
+						target: "_top",
+					},
+					{
+						id: "slider-range-props",
+						label: "Slider Range Props",
+						path: "#slider-range-props",
 						target: "_top",
 					},
 				],
@@ -248,9 +212,9 @@ export default function SliderPage() {
 			menuData={dataFeatures}
 		>
 			<SliderFeatures />
-			<TableProps props={baseSliderProps} title="API Reference" subtitle="Base Slider Props" />
-			<TableProps props={sliderSingleProps} subtitle="Slider Single Props" />
-			<TableProps props={sliderRangeProps} subtitle="Slider Range Props" />
+			<TableProps props={baseSliderProps} title="API Reference" subtitle="Base Slider Props" id="base-slider-props" />
+			<TableProps props={sliderSingleProps} subtitle="Slider Single Props" id="slider-single-props" />
+			<TableProps props={sliderRangeProps} subtitle="Slider Range Props" id="slider-range-props" />
 		</ComponentsLayout>
 	);
 }
