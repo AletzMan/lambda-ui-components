@@ -13,10 +13,15 @@ export const sliderWrapper = cva(styles["lambda-slider-wrapper"], {
 			medium: styles["lambda-slider-wrapper-medium"],
 			large: styles["lambda-slider-wrapper-large"],
 		},
+		hasMarks: {
+			true: styles["lambda-slider-wrapper-has-marks"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		orientation: "horizontal",
 		size: "medium",
+		hasMarks: false,
 	},
 });
 

@@ -646,7 +646,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 
 const SliderRoot = forwardRef<HTMLDivElement, SliderSingleProps>((props, ref) => {
 	return (
-		<div className={sliderWrapper({ size: props.size, orientation: props.orientation })}>
+		<div className={sliderWrapper({ size: props.size, orientation: props.orientation, hasMarks: (props?.marks?.length ?? 0) > 0 })}>
 			<label>{props.label}</label>
 			<SliderImpl {...props} ref={ref} />
 		</div>
@@ -655,7 +655,7 @@ const SliderRoot = forwardRef<HTMLDivElement, SliderSingleProps>((props, ref) =>
 
 const SliderRange = forwardRef<HTMLDivElement, SliderRangeProps>((props, ref) => {
 	return (
-		<div className={sliderWrapper({ size: props.size, orientation: props.orientation })}>
+		<div className={sliderWrapper({ size: props.size, orientation: props.orientation, hasMarks: (props?.marks?.length ?? 0) > 0 })}>
 			<label>{props.label}</label>
 			<SliderImpl {...props} ref={ref} />
 		</div>
