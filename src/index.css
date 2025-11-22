@@ -441,10 +441,13 @@
 
 	--border-color: #dddfdf;
 	--border-inverse-color: #c5c3c3;
-	--shadow-color: #91909030;
+	--shadow-color: #91909060;
 	--shadow-inset-color: #f1f1f155;
 
+	--box-shadow-xs: 0 0 2px 1px var(--shadow-color);
+	--box-shadow-sm: 0 0 2px 2px var(--shadow-color);
 	--box-shadow: 0 0 2px 1px var(--shadow-color);
+	--box-shadow-md: 0 0 6px 2px var(--shadow-color);
 
 	/* ACCENT COLORS */
 	--primary-text-color: var(--lambda-color-cyan-800);
@@ -600,10 +603,13 @@
 
 	--border-color: oklch(0.76 0.07 81.1);
 	--border-inverse-color: #c5c3c3;
-	--shadow-color: #91909030;
+	--shadow-color: #3d261360;
 	--shadow-inset-color: #f1f1f155;
 
+	--box-shadow-xs: 0 0 1px 1px var(--shadow-color);
+	--box-shadow-sm: 0 0 1px 2px var(--shadow-color);
 	--box-shadow: 0 0 2px 1px var(--shadow-color);
+	--box-shadow-md: 0 0 6px 2px var(--shadow-color); 
 
 	/* ACCENT COLORS */
 	--primary-text-color: var(--lambda-color-orange-800);
@@ -771,10 +777,13 @@
 
 	--border-color: #292e36;
 	--border-inverse-color: #c0c0c0;
-	--shadow-color: #2b2a2a30;
+	--shadow-color: #2b2a2a60;
 	--shadow-inset-color: #f1f1f155;
 
+	--box-shadow-xs: 0 0 2px 1px var(--shadow-color);
+	--box-shadow-sm: 0 0 2px 2px var(--shadow-color);
 	--box-shadow: 0 0 2px 1px var(--shadow-color);
+	--box-shadow-md: 0 0 6px 2px var(--shadow-color);
 
 	/* ACCENT COLORS */
 	--primary-text-color: var(--lambda-color-cyan-200);
@@ -929,10 +938,13 @@
 	--background-tab-light: #f0f0f1;
 	--border-color: #282a2d;
 	--border-inverse-color: #c0c0c0;
-	--shadow-color: #2b2a2a30;
+	--shadow-color: #2b2a2a60;
 	--shadow-inset-color: #f1f1f155;
 
 	--box-shadow: 0 0 2px 1px var(--shadow-color);
+	--box-shadow-xs: 0 0 2px 1px var(--shadow-color);
+	--box-shadow-sm: 0 0 3px 2px var(--shadow-color);
+	--box-shadow-md: 0 0 6px 2px var(--shadow-color);
 
 	/* ACCENT COLORS */
 	--primary-text-color: var(--lambda-color-teal-200);
