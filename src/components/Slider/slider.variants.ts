@@ -1,15 +1,34 @@
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./slider.module.css";
 
-export const rangeContainer = cva(styles["lambda-range-container"], {
+export const sliderWrapper = cva(styles["lambda-slider-wrapper"], {
+	variants: {
+		orientation: {
+			vertical: styles["lambda-slider-wrapper-vertical"],
+			horizontal: styles["lambda-slider-wrapper-horizontal"],
+		},
+		size: {
+			tiny: styles["lambda-slider-wrapper-tiny"],
+			small: styles["lambda-slider-wrapper-small"],
+			medium: styles["lambda-slider-wrapper-medium"],
+			large: styles["lambda-slider-wrapper-large"],
+		},
+	},
+	defaultVariants: {
+		orientation: "horizontal",
+		size: "medium",
+	},
+});
+
+export const sliderContainer = cva(styles["lambda-slider-container"], {
 	variants: {
 		disabled: {
-			true: styles["lambda-range-container-disabled"],
+			true: styles["lambda-slider-container-disabled"],
 			false: "",
 		},
 		orientation: {
-			vertical: styles["lambda-range-container-vertical"],
-			horizontal: styles["lambda-range-container-horizontal"],
+			vertical: styles["lambda-slider-container-vertical"],
+			horizontal: styles["lambda-slider-container-horizontal"],
 		},
 	},
 	defaultVariants: {
@@ -18,27 +37,27 @@ export const rangeContainer = cva(styles["lambda-range-container"], {
 	},
 });
 
-export const rangeTrack = cva(styles["lambda-range-track"], {
+export const sliderTrack = cva(styles["lambda-slider-track"], {
 	variants: {
 		size: {
-			tiny: styles["lambda-range-track-tiny"],
-			small: styles["lambda-range-track-small"],
-			medium: styles["lambda-range-track-medium"],
-			large: styles["lambda-range-track-large"],
+			tiny: styles["lambda-slider-track-tiny"],
+			small: styles["lambda-slider-track-small"],
+			medium: styles["lambda-slider-track-medium"],
+			large: styles["lambda-slider-track-large"],
 		},
 		radius: {
-			none: styles["lambda-range-track-radius-none"],
-			tiny: styles["lambda-range-track-radius-tiny"],
-			small: styles["lambda-range-track-radius-small"],
-			medium: styles["lambda-range-track-radius-medium"],
-			large: styles["lambda-range-track-radius-large"],
-			full: styles["lambda-range-track-radius-full"],
+			none: styles["lambda-slider-track-radius-none"],
+			tiny: styles["lambda-slider-track-radius-tiny"],
+			small: styles["lambda-slider-track-radius-small"],
+			medium: styles["lambda-slider-track-radius-medium"],
+			large: styles["lambda-slider-track-radius-large"],
+			full: styles["lambda-slider-track-radius-full"],
 		},
-		viewBar: { true: styles["lambda-range-track-view-bar"], false: "" },
-		disabled: { true: styles["lambda-range-track-disabled"], false: "" },
+		viewBar: { true: styles["lambda-slider-track-view-bar"], false: "" },
+		disabled: { true: styles["lambda-slider-track-disabled"], false: "" },
 		orientation: {
-			vertical: styles["lambda-range-track-vertical"],
-			horizontal: styles["lambda-range-track-horizontal"],
+			vertical: styles["lambda-slider-track-vertical"],
+			horizontal: styles["lambda-slider-track-horizontal"],
 		},
 	},
 	defaultVariants: {
@@ -50,26 +69,26 @@ export const rangeTrack = cva(styles["lambda-range-track"], {
 	},
 });
 
-export const rangeFill = cva(styles["lambda-range-fill"], {
+export const sliderFill = cva(styles["lambda-slider-fill"], {
 	variants: {
 		size: {
-			tiny: styles["lambda-range-fill-tiny"],
-			small: styles["lambda-range-fill-small"],
-			medium: styles["lambda-range-fill-medium"],
-			large: styles["lambda-range-fill-large"],
+			tiny: styles["lambda-slider-fill-tiny"],
+			small: styles["lambda-slider-fill-small"],
+			medium: styles["lambda-slider-fill-medium"],
+			large: styles["lambda-slider-fill-large"],
 		},
 		radius: {
-			none: styles["lambda-range-fill-radius-none"],
-			tiny: styles["lambda-range-fill-radius-tiny"],
-			small: styles["lambda-range-fill-radius-small"],
-			medium: styles["lambda-range-fill-radius-medium"],
-			large: styles["lambda-range-fill-radius-large"],
-			full: styles["lambda-range-fill-radius-full"],
+			none: styles["lambda-slider-fill-radius-none"],
+			tiny: styles["lambda-slider-fill-radius-tiny"],
+			small: styles["lambda-slider-fill-radius-small"],
+			medium: styles["lambda-slider-fill-radius-medium"],
+			large: styles["lambda-slider-fill-radius-large"],
+			full: styles["lambda-slider-fill-radius-full"],
 		},
-		disabled: { true: styles["lambda-range-fill-disabled"], false: "" },
+		disabled: { true: styles["lambda-slider-fill-disabled"], false: "" },
 		orientation: {
-			vertical: styles["lambda-range-fill-vertical"],
-			horizontal: styles["lambda-range-fill-horizontal"],
+			vertical: styles["lambda-slider-fill-vertical"],
+			horizontal: styles["lambda-slider-fill-horizontal"],
 		},
 	},
 	defaultVariants: {
@@ -80,27 +99,27 @@ export const rangeFill = cva(styles["lambda-range-fill"], {
 	},
 });
 
-export const rangeHandle = cva(styles["lambda-range-handle"], {
+export const sliderHandle = cva(styles["lambda-slider-handle"], {
 	variants: {
 		size: {
-			tiny: styles["lambda-range-handle-tiny"],
-			small: styles["lambda-range-handle-small"],
-			medium: styles["lambda-range-handle-medium"],
-			large: styles["lambda-range-handle-large"],
+			tiny: styles["lambda-slider-handle-tiny"],
+			small: styles["lambda-slider-handle-small"],
+			medium: styles["lambda-slider-handle-medium"],
+			large: styles["lambda-slider-handle-large"],
 		},
 		radius: {
-			none: styles["lambda-range-handle-radius-none"],
-			tiny: styles["lambda-range-handle-radius-tiny"],
-			small: styles["lambda-range-handle-radius-small"],
-			medium: styles["lambda-range-handle-radius-medium"],
-			large: styles["lambda-range-handle-radius-large"],
-			full: styles["lambda-range-handle-radius-full"],
+			none: styles["lambda-slider-handle-radius-none"],
+			tiny: styles["lambda-slider-handle-radius-tiny"],
+			small: styles["lambda-slider-handle-radius-small"],
+			medium: styles["lambda-slider-handle-radius-medium"],
+			large: styles["lambda-slider-handle-radius-large"],
+			full: styles["lambda-slider-handle-radius-full"],
 		},
-		disabled: { true: styles["lambda-range-handle-disabled"], false: "" },
-		isDragging: { true: styles["lambda-range-handle-dragging"], false: "" },
+		disabled: { true: styles["lambda-slider-handle-disabled"], false: "" },
+		isDragging: { true: styles["lambda-slider-handle-dragging"], false: "" },
 		orientation: {
-			vertical: styles["lambda-range-handle-vertical"],
-			horizontal: styles["lambda-range-handle-horizontal"],
+			vertical: styles["lambda-slider-handle-vertical"],
+			horizontal: styles["lambda-slider-handle-horizontal"],
 		},
 	},
 	defaultVariants: {
@@ -112,17 +131,17 @@ export const rangeHandle = cva(styles["lambda-range-handle"], {
 	},
 });
 
-export const rangeValue = cva(styles["lambda-range-handle-value"], {
+export const sliderValue = cva(styles["lambda-slider-handle-value"], {
 	variants: {
 		size: {
-			tiny: styles["lambda-range-handle-value-tiny"],
-			small: styles["lambda-range-handle-value-small"],
-			medium: styles["lambda-range-handle-value-medium"],
-			large: styles["lambda-range-handle-value-large"],
+			tiny: styles["lambda-slider-handle-value-tiny"],
+			small: styles["lambda-slider-handle-value-small"],
+			medium: styles["lambda-slider-handle-value-medium"],
+			large: styles["lambda-slider-handle-value-large"],
 		},
 		orientation: {
-			vertical: styles["lambda-range-handle-value-vertical"],
-			horizontal: styles["lambda-range-handle-value-horizontal"],
+			vertical: styles["lambda-slider-handle-value-vertical"],
+			horizontal: styles["lambda-slider-handle-value-horizontal"],
 		},
 	},
 	defaultVariants: {
@@ -131,17 +150,17 @@ export const rangeValue = cva(styles["lambda-range-handle-value"], {
 	},
 });
 
-export const rangeMarkContainer = cva(styles["lambda-range-mark-container"], {
+export const sliderMarkContainer = cva(styles["lambda-slider-mark-container"], {
 	variants: {
 		size: {
-			tiny: styles["lambda-range-mark-container-tiny"],
-			small: styles["lambda-range-mark-small"],
-			medium: styles["lambda-range-mark-medium"],
-			large: styles["lambda-range-mark-large"],
+			tiny: styles["lambda-slider-mark-container-tiny"],
+			small: styles["lambda-slider-mark-small"],
+			medium: styles["lambda-slider-mark-medium"],
+			large: styles["lambda-slider-mark-large"],
 		},
 		orientation: {
-			vertical: styles["lambda-range-mark-container-vertical"],
-			horizontal: styles["lambda-range-mark-container-horizontal"],
+			vertical: styles["lambda-slider-mark-container-vertical"],
+			horizontal: styles["lambda-slider-mark-container-horizontal"],
 		},
 	},
 	defaultVariants: {
@@ -150,19 +169,19 @@ export const rangeMarkContainer = cva(styles["lambda-range-mark-container"], {
 	},
 });
 
-export const rangeMark = cva(styles["lambda-range-mark"], {
+export const sliderMark = cva(styles["lambda-slider-mark"], {
 	variants: {
-		hasLabel: { true: styles["lambda-range-mark-has-label"], false: "" },
-		inSlider: { true: styles["lambda-range-mark-inrange"], false: "" },
+		hasLabel: { true: styles["lambda-slider-mark-has-label"], false: "" },
+		inSlider: { true: styles["lambda-slider-mark-inslider"], false: "" },
 		size: {
-			tiny: styles["lambda-range-mark-tiny"],
-			small: styles["lambda-range-mark-small"],
-			medium: styles["lambda-range-mark-medium"],
-			large: styles["lambda-range-mark-large"],
+			tiny: styles["lambda-slider-mark-tiny"],
+			small: styles["lambda-slider-mark-small"],
+			medium: styles["lambda-slider-mark-medium"],
+			large: styles["lambda-slider-mark-large"],
 		},
 		orientation: {
-			vertical: styles["lambda-range-mark-vertical"],
-			horizontal: styles["lambda-range-mark-horizontal"],
+			vertical: styles["lambda-slider-mark-vertical"],
+			horizontal: styles["lambda-slider-mark-horizontal"],
 		},
 	},
 	defaultVariants: {
@@ -173,7 +192,7 @@ export const rangeMark = cva(styles["lambda-range-mark"], {
 	},
 });
 
-export type SliderContainerVariants = VariantProps<typeof rangeContainer>;
-export type SliderTrackVariants = VariantProps<typeof rangeTrack>;
-export type SliderFillVariants = VariantProps<typeof rangeFill>;
-export type SliderHandleVariants = VariantProps<typeof rangeHandle>;
+export type SliderContainerVariants = VariantProps<typeof sliderContainer>;
+export type SliderTrackVariants = VariantProps<typeof sliderTrack>;
+export type SliderFillVariants = VariantProps<typeof sliderFill>;
+export type SliderHandleVariants = VariantProps<typeof sliderHandle>;

@@ -176,7 +176,7 @@ export const Single: StoryObj<typeof Slider> = {
 		disabled: false,
 		orientation: "horizontal",
 		size: "medium",
-		label: "",
+		label: "Slider",
 		viewValue: true,
 		viewBar: true,
 		marks: [
@@ -199,7 +199,7 @@ export const Double: StoryObj<typeof Slider> = {
 		disabled: false,
 		orientation: "horizontal",
 		size: "medium",
-		label: "",
+		label: "Slider",
 		viewValue: true,
 		viewBar: true,
 		marks: [

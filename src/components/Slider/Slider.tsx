@@ -2,13 +2,14 @@ import React, { forwardRef, useCallback, useRef, useState, useMemo } from "react
 import clsx from "clsx";
 
 import {
-	rangeContainer,
-	rangeTrack,
-	rangeFill,
-	rangeHandle,
-	rangeValue,
-	rangeMark,
-	rangeMarkContainer,
+	sliderContainer,
+	sliderTrack,
+	sliderFill,
+	sliderHandle,
+	sliderValue,
+	sliderMark,
+	sliderMarkContainer,
+	sliderWrapper,
 } from "./slider.variants";
 import { SliderProps, SliderSingleProps, SliderRangeProps } from "./slider.types";
 import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
@@ -437,17 +438,17 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 			// Añadimos onPointerMove y onPointerUp aquí para recibir eventos después de setPointerCapture en el handle
 			<div
 				ref={ref}
-				className={clsx(rangeContainer({ disabled, orientation }), className)}
+				className={clsx(sliderContainer({ disabled, orientation }), className)}
 				onPointerMove={handlePointerMove}
 				onPointerUp={handlePointerUp} 
 				// onTouchMove y onTouchEnd ya no son necesarios si onPointerMove/Up con setPointerCapture funciona
 				{...rest} // Esparce otras props HTMLAttributes
-			>
+			> 
 				{/* Pista del slider */}
 				<div
 					ref={trackRef}
 					className={clsx(
-						rangeTrack({ size, viewBar, disabled, orientation, radius: radiusValue })
+						sliderTrack({ size, viewBar, disabled, orientation, radius: radiusValue })
 					)}
 					// onPointerDown en el track para manejar clicks/taps fuera de los handles (comportamiento "salto")
 					onPointerDown={(event) => {
@@ -514,14 +515,14 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					}}
 				>
 					{viewBar && marks.length > 0 && (
-						<div className={clsx(rangeMarkContainer({ size, orientation }))}>
+						<div className={clsx(sliderMarkContainer({ size, orientation }))}>
 							{marks.map((mark, index) => {
 								const percent = valueToPercentage(mark.value);
 								return (
 									<div
 										key={index}
 										className={clsx(
-											rangeMark({
+											sliderMark({
 												size,
 												inSlider: mark.value < max,
 												hasLabel: !!mark.label,
@@ -547,7 +548,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					)}
 					{/* Relleno de la selección */}
 					<div
-						className={clsx(rangeFill({ size, disabled, orientation, radius: radiusValue }))}
+						className={clsx(sliderFill({ size, disabled, orientation, radius: radiusValue }))}
 						style={{ ...fillStyle, opacity: viewBar ? 1 : 0 }}
 					></div>
 
@@ -555,7 +556,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					{/* Handle izquierdo (o único) */}
 					<div
 						className={clsx(
-							rangeHandle({
+							sliderHandle({
 								size,
 								disabled,
 								isDragging: isDragging && draggingHandleIndex === 0,
@@ -588,7 +589,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 						tabIndex={disabled ? -1 : 0}
 					>
 						{viewValue && (
-							<div className={rangeValue({ size, orientation })}>
+							<div className={sliderValue({ size, orientation })}>
 								{formatValue
 									? formatValue(isDoubleHandled ? startValue : endValue)
 									: isDoubleHandled
@@ -602,7 +603,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					{isDoubleHandled && (
 						<div
 							className={clsx(
-								rangeHandle({
+								sliderHandle({
 									size,
 									disabled,
 									isDragging: isDragging && draggingHandleIndex === 1,
@@ -629,7 +630,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 							tabIndex={disabled ? -1 : 0}
 						>
 							{viewValue && (
-								<div className={rangeValue({ size, orientation })}>
+								<div className={sliderValue({ size, orientation })}>
 									{Number(endValue.toFixed(2))}
 								</div>
 							)}
@@ -642,11 +643,21 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 );
 
 const SliderRoot = forwardRef<HTMLDivElement, SliderSingleProps>((props, ref) => {
-	return <SliderImpl {...props} ref={ref} />;
+	return (
+		<div className={sliderWrapper({ size: props.size, orientation: props.orientation })}>
+			<label>{props.label}</label>
+			<SliderImpl {...props} ref={ref} />
+		</div>
+	);
 });
 
 const SliderRange = forwardRef<HTMLDivElement, SliderRangeProps>((props, ref) => {
-	return <SliderImpl {...props} ref={ref} />;
+	return (
+		<div className={sliderWrapper({ size: props.size, orientation: props.orientation })}>
+			<label>{props.label}</label>
+			<SliderImpl {...props} ref={ref} />
+		</div>
+	);
 });
 
 export const Slider = Object.assign(SliderRoot, { Range: SliderRange });
