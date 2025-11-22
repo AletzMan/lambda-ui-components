@@ -200,8 +200,8 @@ export const selectProps: TableProps[] = [
 export default function InputPage() {
 	return (
 		<ComponentsLayout
-			title="Input"
-			description="Input component is a form element that allows users to enter text"
+			title="Select"
+			description="Select is a form component that lets users choose a value from a list of options." 
 			buttonLeft={{ href: "/docs/components/forms/radio", text: "Radio" }}
 			buttonRight={{ href: "/docs/components/forms/slider", text: "Slider" }}
 			menuData={dataFeatures}

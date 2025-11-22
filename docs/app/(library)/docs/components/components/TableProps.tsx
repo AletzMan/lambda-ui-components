@@ -21,7 +21,7 @@ const typeColors: Record<string, string> = {
 	any: "text-(--foreground-title-color)",
 };
 
-export const TableProps = ({ props }: { props: TableProps[] }) => {
+export const TableProps = ({ props, title, subtitle }: { props: TableProps[]; title?: string; subtitle?: string }) => {
 	return (
 		<section className="flex flex-col pl-2 pr-3">
 			<header>
@@ -29,13 +29,13 @@ export const TableProps = ({ props }: { props: TableProps[] }) => {
 					id="api-reference"
 					className="text-2xl font-bold text-left tracking-tight text-(--foreground-color) mb-4 w-full scroll-mt-20"
 				>
-					API Reference
+					{title}
 				</h1>
 				<h2
 					id="props"
 					className="text-xl font-bold text-left tracking-tight text-(--foreground-color) mb-4 w-full scroll-mt-20"
 				>
-					Props
+					{subtitle}
 				</h2>
 			</header>
 			<Table variant="bordered" size="tiny" data={props} pagination={undefined}>
