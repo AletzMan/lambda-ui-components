@@ -901,7 +901,7 @@
 }
 
 [data-theme="dark"] {
-	--background-color: oklch(14.5% 0 0);
+	--background-color: oklch(17% 0 0);
 	--foreground-color: #d6d6d6;
 	--foreground-title-color: #a1a1aa;
 	--foreground-secondary-color: #888888;
@@ -923,7 +923,7 @@
 	--rating-fill-color: #ffdd2035;
 	--rating-stroke-color: #f7c00e; 
 
-	--surface-a: oklch(17% 0 0);
+	--surface-a: oklch(18.5% 0 0);
 	--surface-b: oklch(20.5% 0 0);
 	--surface-c: oklch(26.9% 0 0);
 	--surface-d: oklch(37.1% 0 0);
@@ -932,7 +932,7 @@
 	--surface-g: oklch(70.8% 0 0);
 	--surface-h: oklch(87% 0 0);
 
-	--background-code-dark: oklch(16.5% 0 0);
+	--background-code-dark: oklch(17% 0 0);
 	--background-code-light: #fefefe;
 	--background-tab-dark: oklch(20.5% 0 0);
 	--background-tab-light: #f0f0f1;
@@ -1109,7 +1109,7 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-	background-color: oklch(15.5% 0 0);
+	background-color: oklch(17% 0 0);
 	color-scheme: dark;
 }
 
