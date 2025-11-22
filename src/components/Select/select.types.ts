@@ -27,7 +27,7 @@ export interface IListCollection {
 export interface SelectProps
 	extends Omit<
 		HTMLAttributes<HTMLDivElement>,
-		"size" | "disabled" | "value" | "onChange" | "placeholder" | "required" | "multiple" | "name"
+		"size" | "disabled" | "value" | "onChange" | "placeholder" | "required" | "multiple" | "name" | "color"
 	> {
 
 	/**
@@ -44,6 +44,11 @@ export interface SelectProps
 	 * Visual styling variant of the select component.
 	 */
 	variant?: SelectVariants["variant"];
+
+	/**
+	 * Controls the color theme of the select component.
+	 */
+	color?: SelectVariants["color"];
 
 	/**
 	 * Disables the select component, preventing user interaction.

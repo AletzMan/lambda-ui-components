@@ -40,6 +40,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			onChange,
 			helperText,
 			className,
+			color = "primary",
 			...props
 		},
 		ref
@@ -112,7 +113,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
 		return (
 			<div
-				className={clsx(selectWrapper({ variant, disabled }), className)}
+				className={clsx(selectWrapper({ variant, disabled, color }), className)}
 				ref={ref || (triggerRef as RefObject<HTMLDivElement>)}
 				{...props}
 			>
@@ -139,6 +140,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 						radius: radiusValue,
 						disabled,
 						invalid,
+						color,
 					})}
 				>
 					<button
@@ -149,6 +151,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							invalid,
 							disabled,
 							joinposition: props!.joinposition,
+							color,
 						})}
 						onClick={handleButtonClick}
 						onKeyDown={handleKeyDown}
@@ -172,7 +175,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							<span className={styles["select-placeholder"]}>{placeholder}</span>
 						)}
 
-						<div className={selectIconVariants({ variant, size: sizeValue, disabled, invalid })}>
+						<div className={selectIconVariants({ variant, size: sizeValue, disabled, invalid, color })}>
 							{isOpen ? (
 								<ChevronUp className={styles["select-icon-svg"]} />
 							) : (
@@ -197,6 +200,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 									direction: menuPosition.position,
 									radius: radiusValue,
 									variant,
+									color,
 								}),
 								"scrollBar",
 								{
@@ -215,6 +219,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 									isActive={highlightedIndex === index}
 									onClick={handleOptionClick}
 									highlightedIndex={highlightedIndex}
+									color={color}
 								/>
 							))}
 						</ul>,

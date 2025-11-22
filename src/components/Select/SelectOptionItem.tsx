@@ -17,6 +17,7 @@ interface SelectOptionItemProps {
 	"aria-selected"?: boolean;
 	isActive?: boolean;
 	highlightedIndex?: number;
+	color?: SelectProps["color"];
 
 	onClick: (value: string) => void; // Handler click de la opción
 }
@@ -31,6 +32,7 @@ export const SelectOptionItem: React.FC<SelectOptionItemProps> = ({
 	isActive,
 	onClick,
 	highlightedIndex,
+	color,
 }) => {
 	const isSelected = selectedValue === option.value;
 
@@ -43,7 +45,7 @@ export const SelectOptionItem: React.FC<SelectOptionItemProps> = ({
 			id={id}
 			role={role}
 			aria-selected={ariaSelected}
-			className={clsx(selectOptionVariants({ size, selected: isSelected, active: isActive }))}
+			className={clsx(selectOptionVariants({ size, selected: isSelected, active: isActive, color }))}
 			onClick={handleClick}
 			tabIndex={highlightedIndex}
 			data-navigable="true"

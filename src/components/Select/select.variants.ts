@@ -8,6 +8,15 @@ export const selectWrapper = cva(styles["select-wrapper"], {
 			soft: styles["select-wrapper-soft"],
 			underline: styles["select-wrapper-underline"],
 		},
+		color: {
+			primary: styles["select-wrapper-primary"],
+			neutral: styles["select-wrapper-neutral"],
+			secondary: styles["select-wrapper-secondary"],
+			info: styles["select-wrapper-info"],
+			warning: styles["select-wrapper-warning"],
+			danger: styles["select-wrapper-danger"],
+			success: styles["select-wrapper-success"],
+		},
 		disabled: {
 			true: styles["select-wrapper-disabled"],
 			false: "",
@@ -15,6 +24,7 @@ export const selectWrapper = cva(styles["select-wrapper"], {
 	},
 	defaultVariants: {
 		disabled: false,
+		color: "primary",
 	},
 });
 
@@ -30,6 +40,15 @@ export const selectContainerVariants = cva(styles["select-container"], {
 			outline: styles["select-container-outline"],
 			soft: styles["select-container-soft"],
 			underline: styles["select-container-underline"],
+		},
+		color: {
+			primary: styles["select-container-primary"],
+			neutral: styles["select-container-neutral"],
+			secondary: styles["select-container-secondary"],
+			info: styles["select-container-info"],
+			warning: styles["select-container-warning"],
+			danger: styles["select-container-danger"],
+			success: styles["select-container-success"],
 		},
 		radius: {
 			none: styles["select-container-radius-none"],
@@ -54,6 +73,7 @@ export const selectContainerVariants = cva(styles["select-container"], {
 		radius: "small",
 		disabled: false,
 		invalid: false,
+		color: "primary",
 	},
 });
 export const selectBtnVariants = cva(styles["select-btn"], {
@@ -68,6 +88,15 @@ export const selectBtnVariants = cva(styles["select-btn"], {
 			outline: styles["select-btn-outline"],
 			soft: styles["select-btn-soft"],
 			underline: styles["select-btn-underline"],
+		},
+		color: {
+			primary: styles["select-btn-primary"],
+			neutral: styles["select-btn-neutral"],
+			secondary: styles["select-btn-secondary"],
+			info: styles["select-btn-info"],
+			warning: styles["select-btn-warning"],
+			danger: styles["select-btn-danger"],
+			success: styles["select-btn-success"],
 		},
 		radius: {
 			none: styles["select-btn-radius-none"],
@@ -97,6 +126,7 @@ export const selectBtnVariants = cva(styles["select-btn"], {
 		radius: "small",
 		disabled: false,
 		invalid: false,
+		color: "primary",
 	},
 });
 
@@ -106,6 +136,15 @@ export const selectIconVariants = cva(styles["select-icon"], {
 			outline: styles["select-icon-outline"],
 			soft: styles["select-icon-soft"],
 			underline: styles["select-icon-underline"],
+		},
+		color: {
+			primary: styles["select-icon-primary"],
+			neutral: styles["select-icon-neutral"],
+			secondary: styles["select-icon-secondary"],
+			info: styles["select-icon-info"],
+			warning: styles["select-icon-warning"],
+			danger: styles["select-icon-danger"],
+			success: styles["select-icon-success"],
 		},
 		size: {
 			tiny: styles["select-icon-tiny"],
@@ -127,6 +166,7 @@ export const selectIconVariants = cva(styles["select-icon"], {
 		size: "medium",
 		disabled: false,
 		invalid: false,
+		color: "primary",
 	},
 });
 
@@ -147,6 +187,15 @@ export const selectDropdownVariants = cva(styles["select-dropdown"], {
 			soft: styles["select-dropdown-soft"],
 			underline: styles["select-dropdown-underline"],
 		},
+		color: {
+			primary: styles["select-dropdown-primary"],
+			neutral: styles["select-dropdown-neutral"],
+			secondary: styles["select-dropdown-secondary"],
+			info: styles["select-dropdown-info"],
+			warning: styles["select-dropdown-warning"],
+			danger: styles["select-dropdown-danger"],
+			success: styles["select-dropdown-success"],
+		},
 		radius: {
 			none: styles["select-dropdown-radius-none"],
 			tiny: styles["select-dropdown-radius-tiny"],
@@ -166,6 +215,7 @@ export const selectDropdownVariants = cva(styles["select-dropdown"], {
 		radius: "small",
 		size: "medium",
 		variant: "outline",
+		color: "primary",
 	},
 });
 
@@ -259,11 +309,21 @@ export const selectOptionVariants = cva(styles["select-option"], {
 			true: styles["select-option-active"],
 			false: "",
 		},
+		color: {
+			primary: styles["select-option-primary"],
+			neutral: styles["select-option-neutral"],
+			secondary: styles["select-option-secondary"],
+			info: styles["select-option-info"],
+			warning: styles["select-option-warning"],
+			danger: styles["select-option-danger"],
+			success: styles["select-option-success"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		selected: false,
 		active: false,
+		color: "primary",
 	},
 });
 

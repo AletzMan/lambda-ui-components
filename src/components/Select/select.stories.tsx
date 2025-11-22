@@ -9,19 +9,26 @@ const meta: Meta<typeof Select> = {
 	component: Select,
 	argTypes: {
 		variant: {
-			table: {
-				disabled: true,
-			},
-		},
-		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
-			description: "Input radius",
+			options: ["outline", "soft", "underline"],
+			description: "Visual style of the select",
+			type: "string",
+		},
+		color: {
+			control: "inline-radio",
+			options: ["primary", "neutral", "secondary", "info", "warning", "danger", "success"],
+			description: "Color theme of the select",
+			type: "string",
 		},
 		size: {
 			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
+		},
+		radius: {
+			control: "inline-radio",
+			options: ["none", "tiny", "small", "medium", "large", "full"],
+			description: "Input radius",
 		},
 		label: {
 			control: "text",
@@ -59,6 +66,7 @@ const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" 
 		<ContainerComponent
 			title="Select"
 			subtitle={args.type}
+			color={args.color?.toString() || ""}
 			onChangeStyleSource={(value) => setCurrentStyle(value)}
 			styleSource={currentStyle}
 		>
@@ -98,6 +106,7 @@ export const Normal: Story = {
 	args: {
 		size: "medium",
 		radius: "medium",
+		color: "primary",
 		options: [
 			{
 				label: "JavaScript",
@@ -133,6 +142,7 @@ export const Description: Story = {
 	args: {
 		size: "medium",
 		radius: "medium",
+		color: "primary",
 		options: [
 			{
 				label: "JavaScript",
@@ -174,6 +184,7 @@ export const Icon: Story = {
 	args: {
 		size: "medium",
 		radius: "medium",
+		color: "primary",
 		options: [
 			{
 				label: "JavaScript",
@@ -217,6 +228,7 @@ export const IconAndDescrption: Story = {
 	args: {
 		size: "medium",
 		radius: "medium",
+		color: "primary",
 		options: [
 			{
 				label: "JavaScript",
