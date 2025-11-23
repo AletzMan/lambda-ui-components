@@ -611,6 +611,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 									isDragging: isDragging && draggingHandleIndex === 1,
 									orientation,
 									radius: radiusValue,
+									color,
 								})
 							)}
 							style={
