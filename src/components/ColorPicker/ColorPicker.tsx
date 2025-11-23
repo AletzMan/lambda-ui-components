@@ -711,8 +711,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											value={hue}
 											min={0}
 											max={360}
-											step={1}
-											label="Hue"
+											step={1} 
 											radius="full"
 											viewValue={false}
 											viewBar={false}
@@ -748,12 +747,11 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 												background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
 											}}
 										></div>
-										<Slider
+										<Slider 
 											size="small"
 											value={alpha}
 											min={0}
-											max={100}
-											label="Alpha"
+											max={100} 
 											radius="full"
 											viewValue={false}
 											viewBar={false}
