@@ -18,6 +18,23 @@ export const SliderFeatures = ({mode}: {mode: "single" | "range"}) => {
 	};
 	return (
 		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+			<div className="flex flex-col items-center gap-2 py-6 border border-dashed border-(--info-base-color)/28 bg-(--info-opacity-color) rounded-sm px-4 mr-3.5">
+						 <p className="text-md text-(--info-text-color)">
+							The slider comes in two modes: single and range.
+Use single when you need the user to pick one value, and range when you want them to select a minimum and maximum value within the same track.
+						 </p>
+						 <Select
+							label="Mode"
+							value={mode}
+							onChange={(value) => { 
+								onChangeValue(value as "single" | "range")
+							}}
+							options={[
+								{ value: "single", label: "Single" },
+								{ value: "range", label: "Range" },
+							]}
+						/>
+					</div>
 			<PlaygroundLayout<HTMLDivElement>
 				id="playground"
 				title="Playground"
@@ -26,7 +43,7 @@ export const SliderFeatures = ({mode}: {mode: "single" | "range"}) => {
 				propConfigs={[ 
 					{ name: "label", 
 						type: "string", 
-						defaultValue: "Label", 
+						defaultValue: "", 
 						default: "", 
 						label: "Label", 
 						description: "Optional text label for the slider." 
@@ -132,26 +149,7 @@ export const SliderFeatures = ({mode}: {mode: "single" | "range"}) => {
 						description: "Disables user interaction with the slider.",
 					},
 				]}
-				componentRef={refSelect}
-				optionalProps={
-					<div>
-						 <p>
-							The slider comes in two modes: single and range.
-Use single when you need the user to pick one value, and range when you want them to select a minimum and maximum value within the same track.
-						 </p>
-						 <Select
-							label="Mode"
-							value={mode}
-							onChange={(value) => { 
-								onChangeValue(value as "single" | "range")
-							}}
-							options={[
-								{ value: "single", label: "Single" },
-								{ value: "range", label: "Range" },
-							]}
-						/>
-					</div>
-				}
+				componentRef={refSelect} 
 			>
 				{mode === "single" ? (
 					<Slider ref={refSelect} value={value} onChangeValue={(value) => setValue(value as number)}   />

@@ -199,8 +199,14 @@ export default async function RadioPage(params: {
 
 	return (
 		<ComponentsLayout
-			title="Radio"
-			description="Radio component is a form element that allows users to select one option from a set of choices."
+			title={typeRadio === "radio" ? "Radio" : typeRadio === "button" ? "Radio.Button" : "Radio.Card"}
+			description={
+				typeRadio === "radio"
+					? "Radio component is a form element that allows users to select one option from a set of choices."
+					: typeRadio === "button"
+						? "Radio.Button component is a form element that allows users to select one option from a set of choices."
+						: "Radio.Card component is a form element that allows users to select one option from a set of choices."
+				}
 			buttonLeft={{ href: "/docs/components/forms/input-number", text: "Input Number" }}
 			buttonRight={{ href: "/docs/components/forms/select", text: "Select" }}
 			menuData={dataFeatures}

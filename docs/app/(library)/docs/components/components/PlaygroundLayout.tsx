@@ -736,7 +736,7 @@ const ControlItem: React.FC<{
 								{config.name}
 							</code>
 							{isModified && (
-								<div className="w-1.5 h-1.5 rounded-full bg-(--primary-base-color)" title="Modified" />
+								<div className="w-1.5 h-1.5 rounded-full bg-(--primary-base-color) animate-pulse" title="Modified" />
 							)}
 						</div>
 					)}

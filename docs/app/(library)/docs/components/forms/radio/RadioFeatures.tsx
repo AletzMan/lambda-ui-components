@@ -263,8 +263,8 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 
 	return (
 		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
-			<div className="flex flex-col items-center gap-2 py-6 border border-dashed border-(--border-color) rounded-md px-4 mr-3.5">
-				<p className="text-md text-(--foreground-secondary-color)">
+			<div className="flex flex-col items-center gap-2 py-6 border border-dashed border-(--info-base-color)/28 bg-(--info-opacity-color) rounded-sm px-4 mr-3.5">
+				<p className="text-md text-(--info-text-color)">
 					The component features three primary types: the standard Radio, the segmented
 					Radio.Button, and the boxed Radio.Card. Please select one of these variants to access its
 					dedicated playground and detailed property configuration.
@@ -272,6 +272,7 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 				<Select
 					id="type-radio"
 					label="Type"
+					color="info"
 					value={typeRadio}
 					onChange={(value) => onChangeTypeRadio(value as "radio" | "button" | "card")}
 					options={[
