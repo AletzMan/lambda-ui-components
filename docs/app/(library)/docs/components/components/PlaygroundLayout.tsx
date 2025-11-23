@@ -395,7 +395,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 						</label>
 						<div
 							className="relative flex flex-col justify-center items-center 
-					 bg-(--background-color) p-5 rounded-b-md min-h-[200px] border border-(--border-color) h-full"
+							background-pattern-dot p-5 rounded-b-md min-h-[200px] border border-(--border-color) h-full"
 						>
 							{renderedComponent}
 						</div>
@@ -724,14 +724,21 @@ const ControlItem: React.FC<{
 		}
 	};
 
+	const isModified = JSON.stringify(currentValue) !== JSON.stringify(config.default);
+
 	return (
-		<div className="flex flex-col justify-between gap-3 bg-(--surface-a) rounded-md p-3 border border-(--border-color)/15 h-full">
+		<div className="flex flex-col justify-between gap-3 bg-(--surface-a) rounded-md p-3 border border-(--border-color)/15 h-full relative">
 			<div className="flex flex-col gap-2">
 				<div className="flex items-center justify-between">
 					{config.name && (
-						<code className="text-[10px] font-bold text-(--primary-text-color) bg-(--primary-opacity-color)/60 px-1.5 py-0.5 rounded-xs font-mono border border-(--primary-opacity-color)/60">
-							{config.name}
-						</code>
+						<div className="flex items-center gap-2">
+							<code className="text-[10px] font-bold text-(--primary-text-color) bg-(--primary-opacity-color)/60 px-1.5 py-0.5 rounded-xs font-mono border border-(--primary-opacity-color)/60">
+								{config.name}
+							</code>
+							{isModified && (
+								<div className="w-1.5 h-1.5 rounded-full bg-(--primary-base-color)" title="Modified" />
+							)}
+						</div>
 					)}
 				</div>
 				<div className="w-full pt-2">{renderControl()}</div>

@@ -202,7 +202,12 @@ export const sliderRangeProps: TableProps[] = [
 
 
 
-export default function SliderPage() {
+export default async function SliderPage(params: {
+	params: { id: string };
+	searchParams: { mode: string };
+}) {
+	const searchParams = await params.searchParams;
+	console.log(searchParams.mode);
 	return (
 		<ComponentsLayout
 			title="Slider"
@@ -211,10 +216,9 @@ export default function SliderPage() {
 			buttonRight={{ href: "/docs/components/forms/switch", text: "Switch" }}
 			menuData={dataFeatures}
 		>
-			<SliderFeatures />
+			<SliderFeatures mode={searchParams.mode as "single" | "range" || "single"} />
 			<TableProps props={baseSliderProps} title="API Reference" subtitle="Base Slider Props" id="base-slider-props" />
-			<TableProps props={sliderSingleProps} subtitle="Slider Single Props" id="slider-single-props" />
-			<TableProps props={sliderRangeProps} subtitle="Slider Range Props" id="slider-range-props" />
+			{searchParams.mode === "single" ? <TableProps props={sliderSingleProps} subtitle="Slider Single Props" id="slider-single-props" /> : <TableProps props={sliderRangeProps} subtitle="Slider Range Props" id="slider-range-props" />}
 		</ComponentsLayout>
 	);
 }

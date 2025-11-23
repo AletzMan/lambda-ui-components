@@ -1,21 +1,28 @@
 "use client";
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
-import { Slider } from "lambda-ui-components";
-import { useRef, useState } from "react";
+import { Select, Slider } from "lambda-ui-components";
+import { useRef, useState } from "react"; 
+import { useRouter } from "next/navigation";
 
  
 
-export const SliderFeatures = () => {
-	const refSelect = useRef<HTMLDivElement>(null);
+export const SliderFeatures = ({mode}: {mode: "single" | "range"}) => {
+	const refSelect = useRef<HTMLDivElement>(null); 
 	const [value, setValue] = useState(50);
+	const [valueRange, setValueRange] = useState<[number, number]>([20, 80]);
+	const router = useRouter(); 
+	
+	const onChangeValue = (value: "single" | "range") => {
+		router.push(`?mode=${value}`);
+	};
 	return (
 		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
 			<PlaygroundLayout<HTMLDivElement>
 				id="playground"
 				title="Playground"
-				componentName="Slider"
-				description="Experiment with all the properties of the Slider component in real time."
+				componentName={mode === "single" ? "Slider" : "Slider.Range"}
+				description="Experiment with all the properties of the Slider component in real time." 
 				propConfigs={[ 
 					{ name: "label", 
 						type: "string", 
@@ -126,8 +133,31 @@ export const SliderFeatures = () => {
 					},
 				]}
 				componentRef={refSelect}
+				optionalProps={
+					<div>
+						 <p>
+							The slider comes in two modes: single and range.
+Use single when you need the user to pick one value, and range when you want them to select a minimum and maximum value within the same track.
+						 </p>
+						 <Select
+							label="Mode"
+							value={mode}
+							onChange={(value) => { 
+								onChangeValue(value as "single" | "range")
+							}}
+							options={[
+								{ value: "single", label: "Single" },
+								{ value: "range", label: "Range" },
+							]}
+						/>
+					</div>
+				}
 			>
-				<Slider ref={refSelect} value={value} onChangeValue={(value) => setValue(value as number)}   />
+				{mode === "single" ? (
+					<Slider ref={refSelect} value={value} onChangeValue={(value) => setValue(value as number)}   />
+				) : (
+					<Slider.Range ref={refSelect} value={valueRange} onChangeValue={(value) => setValueRange(value as [number, number])}   />
+				)}
 			</PlaygroundLayout>
 			<PropertyLayout
 				title="Usage"
@@ -137,7 +167,7 @@ export const SliderFeatures = () => {
 
 export default function App() {
 	return (
-		<Slider defaultValue={50}/>
+		${mode === "single" ? "<Slider defaultValue={50}/>" : ("<Slider.Range defaultValue={[20, 80]}/>")}
 	);
 }`}
 			/> 
@@ -151,22 +181,30 @@ export default function App() {
 import { useState } from "react";	
 
 export default function SliderControlled() {
-	const [value, setValue] = useState(50);
+	${mode === "single" ? "const [value, setValue] = useState(50);" : "const [valueRange, setValueRange] = useState([20, 80]);"}
 	return ( 
-			<Slider  
+			${mode === "single" ? `<Slider  
 				label="Text"   
 				value={value} 
 				onChangeValue={(newValue) => setValue(newValue)} 
-			/>
+			/>` : `<Slider.Range  
+				label="Text"   
+				value={valueRange} 
+				onChangeValue={(newValue) => setValueRange(newValue)} 
+			/>`}
 	);
 } `}
 			>
 				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Slider
+					{mode === "single" ? (<Slider
 						label="Text"
 						value={value}
 						onChangeValue={(newValue) => setValue(newValue )} 
-					/>
+					/>): (<Slider.Range
+						label="Text"
+						value={valueRange}
+						onChangeValue={(newValue) => setValueRange(newValue )} 
+					/>)}
 				</form>
 			</PropertyLayout>
 		</div>
