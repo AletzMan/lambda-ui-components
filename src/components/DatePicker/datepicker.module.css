@@ -7,6 +7,8 @@
 	max-width: max-content;
 	min-width: 285px;
 
+	
+
 	&:is(.lambda-datepicker-wrapper-has-label) {
 		margin-top: var(--gap-lg);
 	}
@@ -503,5 +505,14 @@
 		background-color: var(--primary-opacity-color);
 		color: var(--primary-text-color);
 		border-color: var(--primary-shadow-color);
+	}
+}
+
+
+.lambda-datepicker-wrapper-disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	& > * { 
+		cursor: not-allowed ;
 	}
 }

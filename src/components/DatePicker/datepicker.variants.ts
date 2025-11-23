@@ -18,11 +18,16 @@ export const datepickerWrapperVariants = cva(styles["lambda-datepicker-wrapper"]
 			true: styles["lambda-datepicker-wrapper-has-label"],
 			false: "",
 		},
+		disabled: {
+			true: styles["lambda-datepicker-wrapper-disabled"],
+			false: "",
+		},
 	},
 	defaultVariants: {
 		type: "dropdown",
 		size: "small",
 		hasLabel: false,
+		disabled: false,
 	},
 });
 

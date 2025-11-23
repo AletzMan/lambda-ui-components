@@ -546,7 +546,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 		};
 
 		return (
-			<div className={datepickerWrapperVariants({ size, type, hasLabel: label !== undefined })}>
+			<div className={datepickerWrapperVariants({ size, type, hasLabel: label !== undefined, disabled })}>
 				{type === "inline" && (
 					<div
 						className={datepickerInlineSectionVariants({ radius: radiusValue, invalid, variant })}
@@ -576,6 +576,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 									variant="text"
 									color="neutral"
 									size="small"
+									disabled={disabled}
 									onClick={handleReset}
 									aria-label={t("date-picker.close")}
 									icon={<RotateCcwIcon />}
@@ -591,20 +592,20 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 				)}
 				{(type === "dropdown" || type === "modal") && (
 					<div className={datepickerContainerVariants({ invalid })}>
-						<Join size={size} radius={radiusValue} ref={triggerRef as Ref<HTMLDivElement>}>
+						<Join size={size} radius={radiusValue} ref={triggerRef as Ref<HTMLDivElement>} disabled={disabled}>
 							<Input
 								value={value?.toLocaleDateString(t("date-picker.code"), {
 									dateStyle: displayFormat,
 								})}
 								variant={variant === "solid" ? "outline" : variant}
 								placeholder={t("date-picker.placeholder")}
-								label={label}
+								label={label} 
 								readOnly
 							/>
 							<Button
 								variant={variant === "solid" ? "subtle" : variant}
 								color="neutral"
-								icon={<CalendarIcon />}
+								icon={<CalendarIcon />} 
 								onClick={(e) => {
 									e.preventDefault();
 									setIsOpen(true);
@@ -639,6 +640,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 										variant="text"
 										color="neutral"
 										size="small"
+										disabled={disabled}
 										onClick={handleReset}
 										aria-label={t("date-picker.close")}
 										icon={<RotateCcwIcon />}
@@ -657,11 +659,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 										color="neutral"
 										size="small"
 										label={t("date-picker.cancel")}
+										disabled={disabled}
 										onClick={(e) => handleCloseCalendar(e, "cancel")}
 									/>
 									<Button
 										variant="soft"
 										color="neutral"
+										disabled={disabled}
 										size="small"
 										label={t("date-picker.confirm")}
 										onClick={(e) => handleCloseCalendar(e, "accept")}
