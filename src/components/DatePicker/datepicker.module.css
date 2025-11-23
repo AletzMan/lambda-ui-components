@@ -4,6 +4,8 @@
 	flex-direction: column;
 	gap: var(--gap-md);
 	width: 100%;
+	max-width: max-content;
+	min-width: 285px;
 
 	&:is(.lambda-datepicker-wrapper-has-label) {
 		margin-top: var(--gap-lg);
