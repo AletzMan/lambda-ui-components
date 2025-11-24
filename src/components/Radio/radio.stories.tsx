@@ -96,6 +96,7 @@ const RadioTemplate = (args: RadioGroupProps) => {
 								gap: "1rem",
 								padding: "1rem",
 								height: "200px",
+								width: "250px",
 								borderRadius: "var(--border-radius-sm)",
 								border: "1px solid var(--border-color)",
 							}}

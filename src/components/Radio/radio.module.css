@@ -2066,17 +2066,18 @@
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap; 
-		height: 100%; 
 		align-items: flex-start;
-
+		
 		&.lambda-radio-group-vertical {
 			flex-direction: column;
 			gap: var(--gap-radio-size);
+			height: 100%; 
 		}
 
 		&.lambda-radio-group-horizontal {
 			flex-direction: row;
 			gap: var(--gap-radio-size);
+			width: 100%; 
 		}
 	}
 
