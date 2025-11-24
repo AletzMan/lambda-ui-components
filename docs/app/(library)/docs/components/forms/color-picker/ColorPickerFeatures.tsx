@@ -22,6 +22,7 @@ export const ColorPickerFeatures = () => {
 						defaultValue: "medium",
 						default: "medium",
 						label: "Size",
+						description: "Adjusts the overall size of the color picker.",
 						values: ["tiny", "small", "medium", "large"],
 					},
 					{
@@ -30,6 +31,7 @@ export const ColorPickerFeatures = () => {
 						defaultValue: "solid",
 						default: "solid",
 						label: "Variant",
+						description: "Changes the visual style of the component.",
 						values: ["solid", "soft"],
 					},
 					{
@@ -38,6 +40,7 @@ export const ColorPickerFeatures = () => {
 						defaultValue: "hex",
 						default: "hex",
 						label: "Format",
+						description: "Defines the output format of the selected color.",
 						values: ["hex", "rgb", "rgba", "hsl", "hsla"],
 					},
 					{
@@ -46,6 +49,7 @@ export const ColorPickerFeatures = () => {
 						defaultValue: false,
 						default: false,
 						label: "Show Text",
+						description: "Shows or hides the text input field.",
 					},
 					{
 						name: "disabled",
@@ -53,6 +57,7 @@ export const ColorPickerFeatures = () => {
 						defaultValue: false,
 						default: false,
 						label: "Disabled",
+						description: "Disables all interactions.",
 					},
 				]}
 				componentRef={refInput}
@@ -64,72 +69,6 @@ export const ColorPickerFeatures = () => {
 				id="usage"
 				code={`import { ColorPicker } from "lambda-ui-components";\n\n<ColorPicker />`}
 			/>
-			<PropertyLayout
-				title="Variants"
-				description="Controls the visual style of the color picker, such as the border color or background color."
-				propertyName="variant"
-				id="variants"
-				code={`import { ColorPicker } from "lambda-ui-components";\n\n<ColorPicker />\n<ColorPicker variant="soft" />`}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
-					<ColorPicker />
-					<ColorPicker variant="soft" />
-				</div>
-			</PropertyLayout>
-			<PropertyLayout
-				title="Sizes"
-				description="Adjusts the visual size of the color picker by modifying its height, padding, and text size."
-				id="sizes"
-				propertyName="size"
-				code={`import { ColorPicker } from "lambda-ui-components";\n\n<ColorPicker size="tiny" />\n<ColorPicker size="small" />\n<ColorPicker />\n<ColorPicker size="large" />`}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
-					<ColorPicker size="tiny" />
-					<ColorPicker size="small" />
-					<ColorPicker />
-					<ColorPicker size="large" />
-				</div>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Format"
-				id="format"
-				description="Controls the format of the color picker, such as the border color or background color."
-				propertyName="format"
-				code={`import { ColorPicker } from "lambda-ui-components";\n\n<ColorPicker  />\n<ColorPicker format="rgb" />\n<ColorPicker format="rgba" />\n<ColorPicker format="hsl" />\n<ColorPicker format="hsla" />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<ColorPicker />
-					<ColorPicker format="rgb" />
-					<ColorPicker format="rgba" />
-					<ColorPicker format="hsl" />
-					<ColorPicker format="hsla" />
-				</form>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Show Text"
-				id="showText"
-				description="Controls the visibility of the text input field."
-				propertyName="showText"
-				code={`import { ColorPicker } from "lambda-ui-components";\n\n<ColorPicker showText />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<ColorPicker showText />
-				</form>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Disabled"
-				id="disabled"
-				description="Makes the color picker non-interactive and visually indicates a disabled state.."
-				propertyName="disabled"
-				code={`import { ColorPicker } from "lambda-ui-components";\n\n<ColorPicker disabled />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<ColorPicker disabled />
-				</form>
-			</PropertyLayout>
 
 			<PropertyLayout
 				title="Controlled"

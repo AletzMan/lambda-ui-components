@@ -28,37 +28,7 @@ const dataFeatures: NavigationMenuData[] = [
 						label: "Usage",
 						path: "#usage",
 						target: "_top",
-					},
-					{
-						id: "variants",
-						label: "Variants",
-						path: "#variants",
-						target: "_top",
-					},
-					{
-						id: "sizes",
-						label: "Sizes",
-						path: "#sizes",
-						target: "_top",
-					},
-					{
-						id: "format",
-						label: "Format",
-						path: "#format",
-						target: "_top",
-					},
-					{
-						id: "showText",
-						label: "Show Text",
-						path: "#showText",
-						target: "_top",
-					},
-					{
-						id: "disabled",
-						label: "Disabled",
-						path: "#disabled",
-						target: "_top",
-					},
+					}, 
 					{
 						id: "controlled",
 						label: "Controlled",
