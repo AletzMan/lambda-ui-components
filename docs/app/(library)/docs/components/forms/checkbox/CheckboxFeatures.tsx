@@ -1,6 +1,6 @@
 "use client";
 import PropertyLayout from "../../components/PropertyLayout";
-import PlaygroundLayout from "../../components/PlaygroundLayout";
+import { PlaygroundLayout } from "../../components/PlaygroundLayout";
 import { Checkbox } from "lambda-ui-components";
 import { useRef, useState } from "react";
 import { Star } from "lucide-react";
@@ -16,7 +16,14 @@ export const CheckboxFeatures = () => {
 				componentName="Checkbox"
 				description="Experiment with all the properties of the Checkbox component in real time."
 				propConfigs={[
-					{ name: "label", type: "string", defaultValue: "Label", default: "", label: "Label" },
+					{
+						name: "label",
+						type: "string",
+						defaultValue: undefined,
+						default: undefined,
+						label: "Label",
+						description: "Sets the text shown next to the control.",
+					},
 					{
 						name: "variant",
 						type: "radio",
@@ -24,6 +31,7 @@ export const CheckboxFeatures = () => {
 						default: "solid",
 						label: "Variant",
 						values: ["solid", "outline", "soft"],
+						description: "Changes the visual style.",
 					},
 					{
 						name: "color",
@@ -32,6 +40,7 @@ export const CheckboxFeatures = () => {
 						default: "primary",
 						label: "Color",
 						values: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
+						description: "Sets the color theme.",
 					},
 					{
 						name: "positionLabel",
@@ -40,6 +49,7 @@ export const CheckboxFeatures = () => {
 						default: "right",
 						label: "Position Label",
 						values: ["left", "right", "top", "bottom"],
+						description: "Adjusts the label position.",
 					},
 					{
 						name: "size",
@@ -48,6 +58,7 @@ export const CheckboxFeatures = () => {
 						default: "medium",
 						label: "Size",
 						values: ["tiny", "small", "medium", "large"],
+						description: "Adjusts the overall size.",
 					},
 					{
 						name: "radius",
@@ -56,6 +67,7 @@ export const CheckboxFeatures = () => {
 						default: "tiny",
 						label: "Radius",
 						values: ["none", "tiny", "small", "medium", "large", "full"],
+						description: "Controls corner rounding.",
 					},
 					{
 						name: "invalid",
@@ -63,6 +75,7 @@ export const CheckboxFeatures = () => {
 						defaultValue: false,
 						default: false,
 						label: "Invalid",
+						description: "Marks the field as invalid.",
 					},
 					{
 						name: "required",
@@ -70,6 +83,7 @@ export const CheckboxFeatures = () => {
 						defaultValue: false,
 						default: false,
 						label: "Required",
+						description: "Indicates that selection is required.",
 					},
 					{
 						name: "disabled",
@@ -77,7 +91,9 @@ export const CheckboxFeatures = () => {
 						defaultValue: false,
 						default: false,
 						label: "Disabled",
+						description: "Prevents user interaction.",
 					},
+
 				]}
 				componentRef={refInput}
 			>
@@ -88,124 +104,6 @@ export const CheckboxFeatures = () => {
 				id="usage"
 				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox />`}
 			/>
-
-			<PropertyLayout
-				title="Variants"
-				description="Controls the visual style of the checkbox, such as the border color or background color."
-				propertyName="variant"
-				id="variants"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Solid" defaultChecked/>\n<Checkbox variant="outline" label="Outline" defaultChecked />\n<Checkbox variant="soft" label="Soft" defaultChecked />`}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox label="Solid" defaultChecked />
-					<Checkbox variant="outline" label="Outline" defaultChecked />
-					<Checkbox variant="soft" label="Soft" defaultChecked />
-				</div>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Sizes"
-				description="Adjusts the visual size of the checkbox by modifying its height."
-				id="sizes"
-				propertyName="size"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox size="tiny" label="Tiny" />\n<Checkbox size="small" label="Small" />\n<Checkbox label="Medium" />\n<Checkbox size="large" label="Large" />`}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox size="tiny" label="Tiny" />
-					<Checkbox size="small" label="Small" />
-					<Checkbox label="Medium" />
-					<Checkbox size="large" label="Large" />
-				</div>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Radius"
-				id="radius"
-				propertyName="radius"
-				description="Controls the border curvature of the checkbox, defining how rounded the corners appear."
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox radius="none" label="None" />\n<Checkbox label="Tiny" />\n<Checkbox radius="small" label="Small" />\n<Checkbox radius="medium" label="Medium" />\n<Checkbox radius="large" label="Large" />\n<Checkbox radius="full" label="Full" />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox radius="none" label="None" />
-					<Checkbox label="Tiny" />
-					<Checkbox radius="small" label="Small" />
-					<Checkbox radius="medium" label="Medium" />
-					<Checkbox radius="large" label="Large" />
-					<Checkbox radius="full" label="Full" />
-				</form>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Colors"
-				id="colors"
-				description="Controls the color of the checkbox."
-				propertyName="color"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Neutral" color="neutral" defaultChecked />\n<Checkbox label="Primary" defaultChecked />\n<Checkbox label="Secondary" color="secondary" defaultChecked />\n<Checkbox label="Success" color="success" defaultChecked />\n<Checkbox label="Danger" color="danger" defaultChecked />\n<Checkbox label="Warning" color="warning" defaultChecked />\n<Checkbox label="Info" color="info" defaultChecked />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<div className="flex flex-col gap-2">
-						<Checkbox label="Neutral" color="neutral" defaultChecked />
-						<Checkbox label="Primary" defaultChecked />
-						<Checkbox label="Secondary" color="secondary" defaultChecked />
-						<Checkbox label="Success" color="success" defaultChecked />
-						<Checkbox label="Danger" color="danger" defaultChecked />
-						<Checkbox label="Warning" color="warning" defaultChecked />
-						<Checkbox label="Info" color="info" defaultChecked />
-					</div>
-				</form>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Position Label"
-				id="position-label"
-				description="Controls the position of the label relative to the checkbox."
-				propertyName="positionLabel"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Left" positionLabel="left" />\n<Checkbox label="Right" />\n<Checkbox label="Top" positionLabel="top" />\n<Checkbox label="Bottom" positionLabel="bottom" />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox label="Left" positionLabel="left" />
-					<Checkbox label="Right" />
-					<Checkbox label="Top" positionLabel="top" />
-					<Checkbox label="Bottom" positionLabel="bottom" />
-				</form>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Disabled"
-				id="disabled"
-				description="Makes the checkbox non-interactive and visually indicates a disabled state.."
-				propertyName="disabled"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox disabled label="Disabled unchecked" />\n<Checkbox disabled label="Disabled checked" defaultChecked />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox disabled label="Disabled unchecked" />
-					<Checkbox disabled label="Disabled checked" defaultChecked />
-				</form>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Required"
-				id="required"
-				description="Marks the checkbox as required for form validation."
-				propertyName="required"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Required" required />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox label="Required" required />
-				</form>
-			</PropertyLayout>
-
-			<PropertyLayout
-				title="Invalid"
-				id="invalid"
-				description="Marks the checkbox as invalid for form validation."
-				propertyName="invalid"
-				code={`import { Checkbox } from "lambda-ui-components";\n\n<Checkbox label="Invalid" invalid />`}
-			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
-					<Checkbox label="Invalid" invalid />
-				</form>
-			</PropertyLayout>
 
 			<PropertyLayout
 				title="Custom Icon"
