@@ -229,7 +229,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 
 	return (
 		<>
-			<div className="flex flex-col gap-3 p-3  mr-3.5 border border-(--border-color)/80 border-dashed rounded-md bg-(--background-color)">
+			<div className="flex flex-col gap-3 p-3 border border-(--border-color)/80 border-dashed rounded-md bg-(--background-color)	w-full">
 				{title && (
 					<h2 id={id} className="text-2xl font-bold mb-1 scroll-mt-20">
 						{title}
@@ -239,7 +239,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 				{optionalProps && (
 					<div className="text-(--foreground-secondary-color) mb-7">{optionalProps}</div>
 				)}
-				<div className="grid grid-cols-[0.85fr_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-3">
+				<div className="grid grid-cols-[0.85fr_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-3 w-full">
 					{/* Columna de Controles de Props */}
 					<div className="flex flex-col h-full">
 						<div
@@ -453,8 +453,8 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 						</div>
 					</div>
 					{/* Columna de Previsualización del Componente */}
-					<div className="flex flex-col h-full">
-						<label className="text-lg font-semibold text-(--foreground-color) p-2 border border-(--border-color) border-b-0 rounded-t-sm bg-(--surface-b)">
+					<div className="flex flex-col h-full ">
+						<label className="text-lg font-semibold text-(--foreground-color)  p-2 border border-(--border-color) border-b-0 rounded-t-sm bg-(--surface-b)">
 							Preview
 						</label>
 						<div
