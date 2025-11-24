@@ -21,7 +21,7 @@ const typeColors: Record<string, string> = {
 	any: "text-(--foreground-title-color)",
 };
 
-export const TableProps = ({ props, title, subtitle, id }: { props: TableProps[]; title?: string; subtitle?: string; id?: string }) => {
+export const TableProps = ({ props , title = "API Reference", subtitle = "Props", id = "props" }: { props: TableProps[]; title?: string; subtitle?: string; id?: string }) => {
 	return (
 		<section className="flex flex-col pl-2 pr-3">
 			<header>
