@@ -205,16 +205,28 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					? `${prop.name}={${JSON.stringify(prop.value)}}`
 					: undefined;
 			} else if (prop.type === "array-object") {
-				return prop.value && JSON.stringify(prop.value) !== JSON.stringify(prop.default)
-					? `${prop.name}={${JSON.stringify(prop.value, null, 3).replace(/"([a-zA-Z_][a-zA-Z0-9_]*)":/g, "$1:")}}`
+				const safeReplacer = (key: string, value: any) => {
+					if (value && typeof value === "object" && "$$typeof" in value) {
+						return `<ReactNode/>`;
+					}
+					return value;
+				};
+				return prop.value && JSON.stringify(prop.value, safeReplacer) !== JSON.stringify(prop.default, safeReplacer)
+					? `${prop.name}={${JSON.stringify(prop.value, safeReplacer, 3).replace(/"([a-zA-Z_][a-zA-Z0-9_]*)":/g, "$1:")}}`
 					: undefined;
 			} else if (prop.type === "array-reactnode") {
 				return prop.value && JSON.stringify(prop.value) !== JSON.stringify(prop.default)
 					? `${prop.name}={${JSON.stringify(prop.value)}}`
 					: undefined;
 			} else if (prop.type === "object") {
-				return prop.value && JSON.stringify(prop.value) !== JSON.stringify(prop.default)
-					? `${prop.name}=${JSON.stringify(prop.value, null, 6).replace(/"([a-zA-Z_][a-zA-Z0-9_]*)":/g, "$1:")}`
+				const safeReplacer = (key: string, value: any) => {
+					if (value && typeof value === "object" && "$$typeof" in value) {
+						return `<ReactNode/>`;
+					}
+					return value;
+				};
+				return prop.value && JSON.stringify(prop.value, safeReplacer) !== JSON.stringify(prop.default, safeReplacer)
+					? `${prop.name}=${JSON.stringify(prop.value, safeReplacer, 6).replace(/"([a-zA-Z_][a-zA-Z0-9_]*)":/g, "$1:")}`
 					: undefined;
 			} else if (prop.type === "date") {
 				return prop.value && prop.value instanceof Date
