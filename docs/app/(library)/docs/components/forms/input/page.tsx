@@ -30,75 +30,9 @@ const dataFeatures: NavigationMenuData[] = [
 						target: "_top",
 					},
 					{
-						id: "variants",
-						label: "Variants",
-						path: "#variants",
-						target: "_top",
-					},
-					{
-						id: "sizes",
-						label: "Sizes",
-						path: "#sizes",
-						target: "_top",
-					},
-					{
-						id: "radius",
-						label: "Radius",
-						path: "#radius",
-						target: "_top",
-					},
-					{
-						id: "type",
-						label: "Type",
-						path: "#type",
-						target: "_top",
-					},
-					{
-						id: "disabled",
-						label: "Disabled",
-						path: "#disabled",
-						target: "_top",
-					},
-					{
-						id: "whit-label",
-						label: "Whit Label",
-						path: "#whit-label",
-						target: "_top",
-					},
-					{
-						id: "floating-label",
-						label: "Floating Label",
-						path: "#floating-label",
-						target: "_top",
-					},
-					{
-						id: "prefix",
-						label: "Prefix",
-						path: "#prefix",
-						target: "_top",
-					},
-					{
-						id: "suffix",
-						label: "Suffix",
-						path: "#suffix",
-						target: "_top",
-					},
-					{
-						id: "required",
-						label: "Required",
-						path: "#required",
-						target: "_top",
-					},
-					{
-						id: "error-message",
-						label: "Error Message",
-						path: "#error-message",
-						target: "_top",
-					},
-					{
-						id: "helper-text",
-						label: "Helper Text",
-						path: "#helper-text",
+						id: "controlled",
+						label: "Controlled",
+						path: "#controlled",
 						target: "_top",
 					},
 				],
@@ -254,7 +188,7 @@ export default function InputPage() {
 			menuData={dataFeatures}
 		>
 			<InputFeatures />
-			<TableProps props={inputProps} />
+			<TableProps props={inputProps} id="props" title="API Reference" subtitle="Props"/>
 		</ComponentsLayout>
 	);
 }
