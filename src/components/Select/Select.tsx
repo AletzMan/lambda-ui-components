@@ -59,15 +59,17 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			handleKeyDown,
 		} = usePopover();
 		const { radiusField } = useUIConfig();
-		let sizeValue, radiusValue;
+		let sizeValue, radiusValue, disabledValue;
 
 		try {
-			const { radius: joinRadius, size: joinSize } = useJoin();
+			const { radius: joinRadius, size: joinSize, disabled: joinDisabled } = useJoin();
 			radiusValue = joinRadius || radius;
 			sizeValue = joinSize;
+			disabledValue = joinDisabled || disabled;
 		} catch (error) {
 			radiusValue = radius || radiusField;
 			sizeValue = size;
+			disabledValue = disabled;
 		}
 
 		const selectedOption = options.find((opt) => opt.value === selectedValue);
@@ -97,11 +99,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 		const handleButtonClick = useCallback(
 			(e: React.MouseEvent<HTMLButtonElement>) => {
 				e.preventDefault();
-				if (!disabled) {
+				if (!disabledValue) {
 					setIsOpen((prev) => !prev);
 				}
 			},
-			[disabled]
+			[disabledValue]
 		);
 
 		const handleOptionClick = useCallback(
@@ -113,7 +115,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
 		return (
 			<div
-				className={clsx(selectWrapper({ variant, disabled, color }), className)}
+				className={clsx(selectWrapper({ variant, disabled: disabledValue, color }), className)}
 				ref={ref || (triggerRef as RefObject<HTMLDivElement>)}
 				{...props}
 			>
@@ -138,7 +140,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 						size: sizeValue,
 						variant,
 						radius: radiusValue,
-						disabled,
+						disabled: disabledValue,
 						invalid,
 						color,
 					})}
@@ -149,18 +151,18 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							variant,
 							radius: radiusValue,
 							invalid,
-							disabled,
+							disabled: disabledValue,
 							joinposition: props!.joinposition,
 							color,
 						})}
 						onClick={handleButtonClick}
 						onKeyDown={handleKeyDown}
-						disabled={disabled}
+						disabled={disabledValue}
 						ref={triggerRef as RefObject<HTMLButtonElement>}
 					>
 						{selectedOption ? (
 							<div
-								className={selectedViewVariants({ size: sizeValue, disabled: disabled, variant })}
+								className={selectedViewVariants({ size: sizeValue, disabled: disabledValue, variant })}
 							>
 								{selectedOption.avatar && (
 									<img
@@ -175,7 +177,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 							<span className={styles["select-placeholder"]}>{placeholder}</span>
 						)}
 
-						<div className={selectIconVariants({ variant, size: sizeValue, disabled, invalid, color })}>
+						<div className={selectIconVariants({ variant, size: sizeValue, disabled: disabledValue, invalid, color })}>
 							{isOpen ? (
 								<ChevronUp className={styles["select-icon-svg"]} />
 							) : (
