@@ -459,7 +459,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 						</label>
 						<div
 							className="relative flex flex-col justify-center items-center 
-							background-pattern-dot p-5 rounded-b-md min-h-[200px] border border-(--border-color) h-full"
+							background-pattern-dot p-5 rounded-b-md min-h-[200px] border border-(--border-color) h-full overflow-hidden"
 						>
 							{renderedComponent}
 						</div>

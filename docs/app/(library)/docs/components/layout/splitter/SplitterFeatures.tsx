@@ -14,7 +14,21 @@ export const SplitterFeatures = () => {
 		border: "1px solid var(--border-color)",
 		backgroundSize: "10px 10px",
 		backgroundImage:
-			"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--surface-a) 0, var(--surface-a) 50%)",
+			"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--background-color) 0, var(--background-color) 50%)",
+		color: "var(--text-color-secondary)",
+		fontWeight: "bold",
+	};
+
+	const panelStyleString = {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+		height: "100%",
+		width: "100%",
+		border: "1px solid var(--border-color)",
+		backgroundSize: "10px 10px",
+		backgroundImage:
+			"repeating-linear-gradient(45deg, var(--surface-b) 0, var(--surface-b) 1px, var(--background-color) 0, var(--background-color) 50%)",
 		color: "var(--text-color-secondary)",
 		fontWeight: "bold",
 	};
@@ -26,6 +40,10 @@ export const SplitterFeatures = () => {
 				title="Playground"
 				componentName="Splitter"
 				description="Experiment with all the properties of the Splitter component in real time."
+				childrenComponentsNames={[
+					`div styles={panelStyle}> Panel 1 </div`,
+					`div styles={panelStyle}> Panel 2 </div`,
+				]}
 				propConfigs={[
 					{
 						name: "direction",
@@ -59,50 +77,6 @@ export const SplitterFeatures = () => {
 						default: "50%",
 						label: "Initial Size",
 						description: "Initial size of the first panel (px or %).",
-					},
-					{
-						name: "children",
-						type: "select",
-						defaultValue: "Two Panels",
-						default: "Two Panels",
-						label: "Content",
-						description: "The panels to split.",
-						values: ["Two Panels", "One Panel"],
-						transform: (value) => {
-							if (value === "Two Panels") {
-								return [
-									<div style={panelStyle}>Panel 1</div>,
-									<div style={panelStyle}>Panel 2</div>,
-								];
-							}
-							return <div style={panelStyle}>Panel 1</div>;
-						},
-						transformCode: (value) => {
-							if (value === "Two Panels") {
-								return `
-								<div style={{ 
-								       display: "flex", 
-								       alignItems: "center", 
-								       justifyContent: "center", 
-								       backgroundColor: "var(--bg-color-secondary)" 
-								}}>Panel 1</div>
-								<div style={{ 
-								       display: "flex", 
-								       alignItems: "center", 
-								       justifyContent: "center", 
-								       backgroundColor: "var(--bg-color-secondary)" 
-								}}>Panel 2</div>
-							 `;
-							}
-							return `
-							<div style={{ 
-							       display: "flex", 
-							       alignItems: "center", 
-							       justifyContent: "center", 
-							       backgroundColor: "var(--bg-color-secondary)" 
-							}}>Panel 1</div>
-						 `;
-						},
 					},
 				]}
 			>

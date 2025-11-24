@@ -14,6 +14,7 @@ export const DividerFeatures = () => {
 				title="Playground"
 				componentName="Divider"
 				description="Experiment with all the properties of the Divider component in real time."
+				childrenComponentsNames={[`div> Content </div`]}
 				propConfigs={[
 					{
 						name: "variant",
@@ -68,18 +69,12 @@ export const DividerFeatures = () => {
 						description: "Content position of the divider.",
 						values: ["start", "center", "end"],
 					},
-					{
-						name: "children",
-						type: "string",
-						defaultValue: "Divider",
-						default: undefined,
-						label: "Content",
-						description: "Content of the divider.",
-					},
 				]}
 				componentRef={refDivider}
 			>
-				<Divider ref={refDivider} />
+				<Divider ref={refDivider} >
+					<div>Content</div>
+				</Divider>
 			</PlaygroundLayout>
 			<PropertyLayout
 				title="Usage"

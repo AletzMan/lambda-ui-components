@@ -14,6 +14,8 @@ export const FlexFeatures = () => {
 		color: "var(--primary-text-color)",
 		display: "flex",
 		alignItems: "center",
+		minWidth: "50px",
+		minHeight: "50px",
 		justifyContent: "center",
 		borderRadius: "var(--radius-small)",
 		fontWeight: "bold",
@@ -26,6 +28,7 @@ export const FlexFeatures = () => {
 				title="Playground"
 				componentName="Flex"
 				description="Experiment with all the properties of the Flex component in real time."
+				childrenComponentsNames={[`div>Item 1</div`, `div>Item 2</div`, `div>Item 3</div`, `div>Item 4</div`, `div>Item 5</div`, `div>Item 6</div`, `div>Item 7</div`, `div>Item 8</div`, `div>Item 9</div`, `div>Item 10</div`,]}
 				propConfigs={[
 					{
 						name: "direction",
@@ -71,36 +74,15 @@ export const FlexFeatures = () => {
 						label: "Gap",
 						description: "Gap between flex items.",
 					},
-					{
-						name: "children",
-						type: "select",
-						defaultValue: "3 Items",
-						default: "3 Items",
-						label: "Items",
-						description: "Number of items to render.",
-						values: ["3 Items", "5 Items", "10 Items"],
-						transform: (value) => {
-							const count = value === "3 Items" ? 3 : value === "5 Items" ? 5 : 10;
-							return Array.from({ length: count }).map((_, i) => (
-								<div key={i} style={boxStyle}>
-									{i + 1}
-								</div>
-							));
-						},
-						transformCode: (value) => {
-							const count = value === "3 Items" ? 3 : value === "5 Items" ? 5 : 10;
-							return `(
-		<>
-${Array.from({ length: count }).map((_, i) => `			<div style={{ width: "50px", height: "50px", backgroundColor: "var(--primary-base-color)", borderRadius: "var(--radius-small)" }}>${i + 1}</div>`).join("\n")}
-		</>
-	)`;
-						},
-					},
 				]}
 				componentRef={refFlex}
 			>
 				<Flex ref={refFlex} style={{ width: "100%", maxWidth: "500px", height: "300px", border: "1px dashed var(--border-color)", padding: "10px" }}>
-					{null}
+					{Array.from({ length: 10 }).map((_, index) => (
+						<div key={index} style={{ ...boxStyle, textAlign: "center" }}>
+							Item {index + 1}
+						</div>
+					))}
 				</Flex>
 			</PlaygroundLayout>
 			<PropertyLayout
