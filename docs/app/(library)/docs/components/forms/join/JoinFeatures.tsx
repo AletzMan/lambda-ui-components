@@ -35,6 +35,7 @@ export const JoinFeatures = () => {
 						default: "medium",
 						label: "Size",
 						values: ["tiny", "small", "medium", "large"],
+						description: "Sets the visual size of the input, adjusting padding and text size.",
 					},
 					{
 						name: "radius",
@@ -43,6 +44,7 @@ export const JoinFeatures = () => {
 						default: "tiny",
 						label: "Radius",
 						values: ["none", "tiny", "small", "medium", "large", "full"],
+						description: "Sets the visual radius of the input, adjusting border radius.",
 					},
 					{
 						name: "disabled",
@@ -50,6 +52,7 @@ export const JoinFeatures = () => {
 						defaultValue: false,
 						default: false,
 						label: "Disabled",
+						description: "Disables the input, making it non-interactive.",
 					},
 				]}
 				componentRef={refInput}
@@ -109,182 +112,6 @@ export default function App() {
 						<InputNumber />
 					</Join>
 				</form>
-			</PropertyLayout>
-
-			{/* SIZE */}
-			<PropertyLayout
-				title="Sizes"
-				id="size"
-				description="Sets the visual size of the input, adjusting padding and text size."
-				propertyName="size"
-				code={`import { InputNumber } from "lambda-ui-components";
-
-export default function App() { 
-
-return (
-	<form className="flex flex-col gap-4">
-		<Join size="tiny">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>
-		<Join size="small">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>
-		<Join size="medium">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>		
-		<Join size="large">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>		
-	</form>
-);}`}
-			>
-				<div className="flex flex-col gap-10 px-6 py-6">
-					<Join size="tiny">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-					<Join size="small">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-					<Join size="medium">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-					<Join size="large">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-				</div>
-			</PropertyLayout>
-
-			{/* RADIUS */}
-			<PropertyLayout
-				title="Radius"
-				id="radius"
-				description="Enables an error or invalid visual state, typically changing the border color to red."
-				propertyName="radius"
-				code={`import { InputNumber } from "lambda-ui-components";
-
-export default function App() { 
-
-return (
-	<form className="flex flex-col gap-4">
-		<Join radius="tiny">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>
-		<Join radius="small">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>
-		<Join>
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>		
-		<Join radius="large">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>	 
-		<Join radius="full">
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>
-	</form>
-);}`}
-			>
-				<div className="flex flex-col gap-10 px-6 py-6">
-					<Join radius="tiny">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-					<Join radius="small">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-					<Join>
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-					<Join radius="large">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-					<Join radius="full">
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-				</div>
-			</PropertyLayout>
-
-			{/* DISABLED */}
-			<PropertyLayout
-				title="Disabled"
-				id="disabled"
-				description="Prevents user interaction."
-				propertyName="disabled"
-				code={`import { InputNumber } from "lambda-ui-components";
-
-export default function App() {
-return (
-	<form className="flex flex-col gap-4">
-		<Join disabled>
-			<Checkbox label="Checkbox" />
-			<InputNumber label="InputNumber" />
-			<Input label="Input" />
-			<Button label="Button" />
-		</Join>								
-	</form>
-);}`}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6">
-					<Join disabled>
-						<Checkbox label="Checkbox" />
-						<InputNumber label="InputNumber" />
-						<Input label="Input" />
-						<Button label="Button" />
-					</Join>
-				</div>
 			</PropertyLayout>
 		</div>
 	);
