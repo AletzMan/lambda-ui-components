@@ -45,6 +45,7 @@
 	"devDependencies": {
 		"@chromatic-com/storybook": "^4.1.2",
 		"@eslint/js": "^9.21.0",
+		"@storybook/addon-docs": "^10.0.2",
 		"@storybook/addon-onboarding": "^10.0.2",
 		"@storybook/addon-themes": "^10.0.2",
 		"@storybook/experimental-addon-test": "^8.6.7",
@@ -64,14 +65,14 @@
 		"globals": "^15.15.0",
 		"jsdom": "^27.1.0",
 		"playwright": "^1.51.1",
+		"prettier": "^3.6.2",
 		"storybook": "^10.0.2",
 		"storybook-dark-mode": "^4.0.2",
 		"typescript": "~5.7.2",
 		"typescript-eslint": "^8.24.1",
 		"vite": "^6.2.0",
 		"vite-plugin-dts": "^4.5.3",
-		"vitest": "^3.0.9",
-		"@storybook/addon-docs": "^10.0.2"
+		"vitest": "^3.0.9"
 	},
 	"eslintConfig": {
 		"extends": [
