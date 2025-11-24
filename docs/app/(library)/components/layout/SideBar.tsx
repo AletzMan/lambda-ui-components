@@ -173,7 +173,6 @@ export const navigationMenuData = [
 			{ id: "card", label: "Card", icon: <LayoutGrid />, path: "/docs/components/layout/card" },
 			{ id: "divider", label: "Divider", icon: <Minus />, path: "/docs/components/layout/divider" },
 			{ id: "flex", label: "Flex", icon: <Grip />, path: "/docs/components/layout/flex" },
-			{ id: "grid", label: "Grid", icon: <LayoutGrid />, path: "/docs/components/layout/grid" },
 			{
 				id: "splitter",
 				label: "Splitter",
