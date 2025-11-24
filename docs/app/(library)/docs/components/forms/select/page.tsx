@@ -30,54 +30,6 @@ const dataFeatures: NavigationMenuData[] = [
 						target: "_top",
 					},
 					{
-						id: "variants",
-						label: "Variants",
-						path: "#variants",
-						target: "_top",
-					},
-					{
-						id: "sizes",
-						label: "Sizes",
-						path: "#sizes",
-						target: "_top",
-					},
-					{
-						id: "radius",
-						label: "Radius",
-						path: "#radius",
-						target: "_top",
-					}, 
-					{
-						id: "disabled",
-						label: "Disabled",
-						path: "#disabled",
-						target: "_top",
-					},
-					{
-						id: "whit-label",
-						label: "Whit Label",
-						path: "#whit-label",
-						target: "_top",
-					},  
-					{
-						id: "required",
-						label: "Required",
-						path: "#required",
-						target: "_top",
-					},
-					{
-						id: "error-message",
-						label: "Error Message",
-						path: "#error-message",
-						target: "_top",
-					},
-					{
-						id: "helper-text",
-						label: "Helper Text",
-						path: "#helper-text",
-						target: "_top",
-					},
-					{
 						id: "controlled",
 						label: "Controlled",
 						path: "#controlled",
@@ -201,7 +153,7 @@ export default function InputPage() {
 	return (
 		<ComponentsLayout
 			title="Select"
-			description="Select is a form component that lets users choose a value from a list of options." 
+			description="Select is a form component that lets users choose a value from a list of options."
 			buttonLeft={{ href: "/docs/components/forms/radio", text: "Radio" }}
 			buttonRight={{ href: "/docs/components/forms/slider", text: "Slider" }}
 			menuData={dataFeatures}
