@@ -41,14 +41,14 @@ export const ComponentsLayout = ({
 			</header>
 			<div className="flex flex-col gap-10">
 				<div className="sticky top-20 bg-(--surface-a) backdrop-blur-[5px] p-1 ">
-					<div className="grid grid-cols-[1fr_250px] max-[1220px]:grid-cols-1">
+					<div className="grid grid-cols-[1fr_250px] max-[1410px]:grid-cols-1">
 						<div className="flex flex-col gap-10 max-w-[1150px] mx-auto w-full">
 							{children}
 
 							<BarNavButton buttonLeft={buttonLeft} buttonRight={buttonRight} />
 							<FooterDocs />
 						</div>
-						<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) max-[1220px]:hidden">
+						<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) max-[1410px]:hidden">
 							<NavigationMenu
 								data={menuData}
 								currentPath={"#" + activeId || ""}
