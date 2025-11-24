@@ -189,16 +189,16 @@ export const navigationMenuData = [
 		icon: <List />,
 		children: [
 			{
-				id: "button",
-				label: "Button",
-				icon: <Puzzle />,
-				path: "/docs/components/navigation/button",
-			},
-			{
 				id: "breadcrumb",
 				label: "Breadcrumb",
 				icon: <ChevronRight />,
 				path: "/docs/components/navigation/breadcrumb",
+			},
+			{
+				id: "button",
+				label: "Button",
+				icon: <Puzzle />,
+				path: "/docs/components/navigation/button",
 			},
 			{ id: "link", label: "Link", icon: <LinkIcon />, path: "/docs/components/navigation/link" },
 			{
