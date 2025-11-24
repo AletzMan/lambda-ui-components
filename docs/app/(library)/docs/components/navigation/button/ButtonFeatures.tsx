@@ -20,13 +20,13 @@ export const ButtonFeatures = () => {
 						name: "label",
 						type: "string",
 						defaultValue: "Button",
-						default: "Button",
+						default: "",
 						label: "Label",
 						description: "The text content of the button."
 					},
 					{
 						name: "variant",
-						type: "select",
+						type: "radio",
 						defaultValue: "solid",
 						default: "solid",
 						label: "Variant",
@@ -84,6 +84,14 @@ export const ButtonFeatures = () => {
 						description: "Shows a loading spinner.",
 					},
 					{
+						name: "loadingText",
+						type: "string",
+						defaultValue: "Loading...",
+						default: "",
+						label: "Loading Text",
+						description: "Text to display while the button is in a loading state.",
+					},
+					{
 						name: "isCircle",
 						type: "boolean",
 						defaultValue: false,
@@ -105,7 +113,7 @@ export const ButtonFeatures = () => {
 					},
 					{
 						name: "iconPosition",
-						type: "select",
+						type: "radio",
 						defaultValue: "left",
 						default: "left",
 						label: "Icon Position",

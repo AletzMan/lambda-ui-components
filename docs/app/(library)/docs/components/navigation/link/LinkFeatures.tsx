@@ -60,7 +60,7 @@ export const LinkFeatures = () => {
 					},
 					{
 						name: "size",
-						type: "radio",
+						type: "slider",
 						defaultValue: "medium",
 						default: "medium",
 						label: "Size",
@@ -69,7 +69,7 @@ export const LinkFeatures = () => {
 					},
 					{
 						name: "radius",
-						type: "radio",
+						type: "slider",
 						defaultValue: "small",
 						default: "small",
 						label: "Radius (Button Type)",
