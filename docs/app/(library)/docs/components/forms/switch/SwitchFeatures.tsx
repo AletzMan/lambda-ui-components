@@ -12,7 +12,7 @@ export const SwitchFeatures = () => {
 	const [value, setValue] = useState(false);
 
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<PlaygroundLayout<HTMLInputElement>
 				id="playground"
 				title="Playground"
@@ -125,6 +125,6 @@ export default function SwitchControlled() {
 					/>
 				</form>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };

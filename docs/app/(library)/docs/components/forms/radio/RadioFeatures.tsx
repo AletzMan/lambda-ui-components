@@ -254,7 +254,7 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 	};
 
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<div className="flex flex-col items-center gap-2 py-6 border border-dashed border-(--info-base-color)/28 bg-(--info-opacity-color) rounded-sm px-4 mr-3.5">
 				<p className="text-md text-(--info-text-color)">
 					The component features three primary types: the standard Radio, the segmented
@@ -365,6 +365,6 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 					{getComponentByType(typeRadio, [{ children: <Radio value="" /> }], [""])}
 				</div>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };

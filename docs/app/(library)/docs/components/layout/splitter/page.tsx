@@ -97,7 +97,7 @@ export default async function SplitterPage(params: {
 			title="Splitter"
 			description="Splitter component allows you to resize two panels."
 			buttonLeft={{ href: "/docs/components/layout/flex", text: "Flex" }}
-			buttonRight={{ href: "/docs/components/layout/grid", text: "Grid" }}
+			buttonRight={{ href: "/docs/components/navigation/button", text: "Button" }}
 			menuData={dataFeatures}
 		>
 			<SplitterFeatures />

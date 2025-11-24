@@ -38,7 +38,7 @@ export const FileUploadFeatures = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5">
+		<>
 			{/* PLAYGROUND */}
 			<PlaygroundLayout<HTMLDivElement>
 				id="playground"
@@ -203,6 +203,6 @@ return (
 					<FileUpload label="Controlled" files={files} onChangeFiles={setFiles} />
 				</div>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };

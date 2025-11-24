@@ -9,7 +9,7 @@ export const InputFeatures = () => {
 	const refInput = useRef<HTMLInputElement>(null);
 	const [value, setValue] = useState("");
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<PlaygroundLayout<HTMLInputElement>
 				id="playground"
 				title="Playground"
@@ -150,7 +150,7 @@ export const InputFeatures = () => {
 				id="usage"
 				code={`import { Input } from "lambda-ui-components";\n\n<Input />`}
 			/>
-		 
+
 			<PropertyLayout
 				title="Controlled"
 				id="controlled"
@@ -183,6 +183,6 @@ export default function InputControlled() {
 					/>
 				</form>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };

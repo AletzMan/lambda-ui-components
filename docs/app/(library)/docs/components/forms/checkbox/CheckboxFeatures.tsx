@@ -9,7 +9,7 @@ export const CheckboxFeatures = () => {
 	const refInput = useRef<HTMLInputElement>(null);
 	const [checked, setChecked] = useState(false);
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<PlaygroundLayout<HTMLInputElement>
 				id="playground"
 				title="Playground"
@@ -128,6 +128,6 @@ export const CheckboxFeatures = () => {
 					<Checkbox label="Controlled" checked={checked} onCheckedChange={setChecked} />
 				</form>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };

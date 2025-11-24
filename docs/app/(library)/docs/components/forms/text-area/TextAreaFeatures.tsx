@@ -9,7 +9,7 @@ export const TextAreaFeatures = () => {
 	const [value, setValue] = useState("");
 
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<PlaygroundLayout<HTMLTextAreaElement>
 				id="playground"
 				title="Playground"
@@ -144,6 +144,6 @@ export default function TextAreaControlled() {
 					/>
 				</form>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };

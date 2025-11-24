@@ -2,51 +2,52 @@
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
 import { Select, Slider } from "lambda-ui-components";
-import { useRef, useState } from "react"; 
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
- 
 
-export const SliderFeatures = ({mode}: {mode: "single" | "range"}) => {
-	const refSelect = useRef<HTMLDivElement>(null); 
+
+export const SliderFeatures = ({ mode }: { mode: "single" | "range" }) => {
+	const refSelect = useRef<HTMLDivElement>(null);
 	const [value, setValue] = useState(50);
 	const [valueRange, setValueRange] = useState<[number, number]>([20, 80]);
-	const router = useRouter(); 
-	
+	const router = useRouter();
+
 	const onChangeValue = (value: "single" | "range") => {
 		router.push(`?mode=${value}`);
 	};
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<div className="flex flex-col items-center gap-2 py-6 border border-dashed border-(--info-base-color)/28 bg-(--info-opacity-color) rounded-sm px-4 mr-3.5">
-						 <p className="text-md text-(--info-text-color)">
-							The slider comes in two modes: single and range.
-Use single when you need the user to pick one value, and range when you want them to select a minimum and maximum value within the same track.
-						 </p>
-						 <Select
-							label="Mode"
-							value={mode}
-							onChange={(value) => { 
-								onChangeValue(value as "single" | "range")
-							}}
-							options={[
-								{ value: "single", label: "Single" },
-								{ value: "range", label: "Range" },
-							]}
-						/>
-					</div>
+				<p className="text-md text-(--info-text-color)">
+					The slider comes in two modes: single and range.
+					Use single when you need the user to pick one value, and range when you want them to select a minimum and maximum value within the same track.
+				</p>
+				<Select
+					label="Mode"
+					value={mode}
+					onChange={(value) => {
+						onChangeValue(value as "single" | "range")
+					}}
+					options={[
+						{ value: "single", label: "Single" },
+						{ value: "range", label: "Range" },
+					]}
+				/>
+			</div>
 			<PlaygroundLayout<HTMLDivElement>
 				id="playground"
 				title="Playground"
 				componentName={mode === "single" ? "Slider" : "Slider.Range"}
-				description="Experiment with all the properties of the Slider component in real time." 
-				propConfigs={[ 
-					{ name: "label", 
-						type: "string", 
-						defaultValue: "", 
-						default: "", 
-						label: "Label", 
-						description: "Optional text label for the slider." 
+				description="Experiment with all the properties of the Slider component in real time."
+				propConfigs={[
+					{
+						name: "label",
+						type: "string",
+						defaultValue: "",
+						default: "",
+						label: "Label",
+						description: "Optional text label for the slider."
 					},
 					{
 						name: "min",
@@ -123,7 +124,7 @@ Use single when you need the user to pick one value, and range when you want the
 						label: "Radius",
 						description: "Controls the roundness of the track and thumb.",
 						values: ["none", "tiny", "small", "medium", "large", "full"],
-					},   
+					},
 					{
 						name: "viewValue",
 						type: "boolean-inverted",
@@ -149,12 +150,12 @@ Use single when you need the user to pick one value, and range when you want the
 						description: "Disables user interaction with the slider.",
 					},
 				]}
-				componentRef={refSelect} 
+				componentRef={refSelect}
 			>
 				{mode === "single" ? (
-					<Slider ref={refSelect} value={value} onChangeValue={(value) => setValue(value as number)}   />
+					<Slider ref={refSelect} value={value} onChangeValue={(value) => setValue(value as number)} />
 				) : (
-					<Slider.Range ref={refSelect} value={valueRange} onChangeValue={(value) => setValueRange(value as [number, number])}   />
+					<Slider.Range ref={refSelect} value={valueRange} onChangeValue={(value) => setValueRange(value as [number, number])} />
 				)}
 			</PlaygroundLayout>
 			<PropertyLayout
@@ -168,7 +169,7 @@ export default function App() {
 		${mode === "single" ? "<Slider defaultValue={50}/>" : ("<Slider.Range defaultValue={[20, 80]}/>")}
 	);
 }`}
-			/> 
+			/>
 
 			<PropertyLayout
 				title="Controlled"
@@ -197,14 +198,14 @@ export default function SliderControlled() {
 					{mode === "single" ? (<Slider
 						label="Text"
 						value={value}
-						onChangeValue={(newValue) => setValue(newValue )} 
-					/>): (<Slider.Range
+						onChangeValue={(newValue) => setValue(newValue)}
+					/>) : (<Slider.Range
 						label="Text"
 						value={valueRange}
-						onChangeValue={(newValue) => setValueRange(newValue )} 
+						onChangeValue={(newValue) => setValueRange(newValue)}
 					/>)}
 				</form>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };

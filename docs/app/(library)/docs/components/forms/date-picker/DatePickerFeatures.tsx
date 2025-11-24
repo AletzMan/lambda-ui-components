@@ -18,7 +18,7 @@ export const DatePickerFeatures = () => {
 	const [value, setValue] = useState<Date | undefined>(initialDate);
 
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<PlaygroundLayout<HTMLDivElement>
 				id="playground"
 				title="Playground"
@@ -195,6 +195,6 @@ export default function App() {
 					/>
 				</form>
 			</PropertyLayout>
-		</div>
+		</ >
 	);
 };

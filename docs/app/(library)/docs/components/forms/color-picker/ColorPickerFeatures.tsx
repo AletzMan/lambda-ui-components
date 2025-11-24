@@ -9,7 +9,7 @@ export const ColorPickerFeatures = () => {
 	const refInput = useRef<HTMLInputElement>(null);
 	const [value, setValue] = useState("#000000");
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5 ">
+		<>
 			<PlaygroundLayout<HTMLInputElement>
 				id="playground"
 				title="Playground"
@@ -81,6 +81,6 @@ export const ColorPickerFeatures = () => {
 					<ColorPicker value={value} onChange={setValue} />
 				</form>
 			</PropertyLayout>
-		</div>
+		</ >
 	);
 };

@@ -14,7 +14,7 @@ export const JoinFeatures = () => {
 	const [value, setValue] = useState<number>(0);
 
 	return (
-		<div className="flex flex-col gap-3 pl-2.5 pt-2.5">
+		<>
 			{/* PLAYGROUND */}
 			<PlaygroundLayout<HTMLDivElement>
 				id="playground"
@@ -113,6 +113,6 @@ export default function App() {
 					</Join>
 				</form>
 			</PropertyLayout>
-		</div>
+		</>
 	);
 };
