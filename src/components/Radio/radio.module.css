@@ -2065,6 +2065,8 @@
 	&.lambda-radio-group-radio {
 		display: flex;
 		flex-direction: column;
+		flex-wrap: wrap; 
+		height: 100%; 
 		align-items: flex-start;
 
 		&.lambda-radio-group-vertical {

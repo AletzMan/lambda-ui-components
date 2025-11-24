@@ -78,7 +78,7 @@ const RadioTemplate = (args: RadioGroupProps) => {
 				}}
 			>
 				{colors.map((color) => (
-					<div key={color}>
+					<div key={color} style={{ display: "flex", flexDirection: "column" }}>
 						<label
 							style={{
 								textTransform: "capitalize",
@@ -95,6 +95,7 @@ const RadioTemplate = (args: RadioGroupProps) => {
 								flexDirection: "column",
 								gap: "1rem",
 								padding: "1rem",
+								height: "200px",
 								borderRadius: "var(--border-radius-sm)",
 								border: "1px solid var(--border-color)",
 							}}
@@ -109,6 +110,13 @@ const RadioTemplate = (args: RadioGroupProps) => {
 								<Radio value="option1" label="Option 1" />
 								<Radio value="option2" label="Option 2" />
 								<Radio value="option3" label="Option 3" />
+								<Radio value="option4" label="Option 4" />
+								<Radio value="option5" label="Option 5" />
+								<Radio value="option6" label="Option 6" />
+								<Radio value="option7" label="Option 7" />
+								<Radio value="option8" label="Option 8" />
+								<Radio value="option9" label="Option 9" />
+								<Radio value="option10" label="Option 10" />
 							</RadioGroup>
 						</div>
 					</div>
