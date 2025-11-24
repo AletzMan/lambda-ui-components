@@ -6,7 +6,7 @@ import { TableProps } from "../../components/TableProps";
 export const dataFeatures = [
 	{
 		id: "on-this-page",
-		label: "En esta página",
+		label: "On this page",
 		path: "#on-this-page",
 		icon: <List />,
 		children: [
@@ -29,63 +29,9 @@ export const dataFeatures = [
 						target: "_top",
 					},
 					{
-						id: "variants",
-						label: "Variants",
-						path: "#variants",
-						target: "_top",
-					},
-					{
-						id: "sizes",
-						label: "Sizes",
-						path: "#sizes",
-						target: "_top",
-					},
-					{
-						id: "displayFormat",
-						label: "Display Format",
-						path: "#displayFormat",
-						target: "_top",
-					},
-					{
-						id: "minDate",
-						label: "Min Date",
-						path: "#minDate",
-						target: "_top",
-					},
-					{
-						id: "maxDate",
-						label: "Max Date",
-						path: "#maxDate",
-						target: "_top",
-					},
-					{
 						id: "isDateDisabled",
 						label: "Is Date Disabled",
 						path: "#isDateDisabled",
-						target: "_top",
-					},
-					{
-						id: "helperText",
-						label: "Helper Text",
-						path: "#helperText",
-						target: "_top",
-					},
-					{
-						id: "invalid",
-						label: "Invalid State",
-						path: "#invalid",
-						target: "_top",
-					},
-					{
-						id: "errorMessage",
-						label: "Error Message",
-						path: "#errorMessage",
-						target: "_top",
-					},
-					{
-						id: "disabled",
-						label: "Disabled",
-						path: "#disabled",
 						target: "_top",
 					},
 					{
