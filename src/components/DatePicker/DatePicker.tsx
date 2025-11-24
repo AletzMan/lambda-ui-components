@@ -1,4 +1,4 @@
-import { useRef, useState, Ref, forwardRef } from "react";
+import { useRef, useState, Ref, forwardRef, useEffect } from "react";
 import styles from "./datepicker.module.css";
 import {
 	datepickerCalendarVariants,
@@ -34,8 +34,6 @@ import { InvalidMessage } from "../../_internal/components/InvalidMessage/Invali
 import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
-
-const isClient = typeof window !== "undefined";
 
 function getDaysInMonth(year: number, month: number) {
 	return new Date(year, month + 1, 0).getDate();
@@ -85,6 +83,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 		);
 		const year = currentDate.getFullYear();
 		const [prevYear, setPrevYear] = useState(year);
+		const [isMounted, setIsMounted] = useState(false);
 
 		const refTempDate = useRef<Date | undefined>(value);
 		const refTempYear = useRef<string>("");
@@ -122,6 +121,10 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 		for (let i = 0; i < lastDayOfWeek; i++) {
 			days.push({ date: new Date(year, month + 1, i + 1), type: "next" });
 		}
+
+		useEffect(() => {
+			setIsMounted(true);
+		}, []);
 
 		// Navegación
 		const handlePrevMonth = (e: React.MouseEvent) => {
@@ -314,33 +317,33 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 							variants={
 								calendarTransitionType === "slide"
 									? {
-											enter: (dir: number) => ({
-												x: dir > 0 ? 100 : -100,
-												opacity: 0,
-												position: "absolute",
-											}),
-											center: {
-												x: 0,
-												opacity: 1,
-												position: "relative",
-											},
-											exit: (dir: number) => ({
-												x: dir > 0 ? -100 : 100,
-												opacity: 0,
-												position: "absolute",
-											}),
-									  }
+										enter: (dir: number) => ({
+											x: dir > 0 ? 100 : -100,
+											opacity: 0,
+											position: "absolute",
+										}),
+										center: {
+											x: 0,
+											opacity: 1,
+											position: "relative",
+										},
+										exit: (dir: number) => ({
+											x: dir > 0 ? -100 : 100,
+											opacity: 0,
+											position: "absolute",
+										}),
+									}
 									: calendarTransitionType === "fade"
-									? {
+										? {
 											enter: { opacity: 0 },
 											center: { opacity: 1 },
 											exit: { opacity: 0 },
-									  }
-									: {
+										}
+										: {
 											enter: { opacity: 1 },
 											center: { opacity: 1 },
 											exit: { opacity: 1 },
-									  }
+										}
 							}
 							initial="enter"
 							animate="center"
@@ -545,6 +548,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 			setIsOpen(false);
 		};
 
+		if (!isMounted) return null;
 		return (
 			<div className={datepickerWrapperVariants({ size, type, hasLabel: label !== undefined, disabled })}>
 				{type === "inline" && (
@@ -599,13 +603,13 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 								})}
 								variant={variant === "solid" ? "outline" : variant}
 								placeholder={t("date-picker.placeholder")}
-								label={label} 
+								label={label}
 								readOnly
 							/>
 							<Button
 								variant={variant === "solid" ? "subtle" : variant}
 								color="neutral"
-								icon={<CalendarIcon />} 
+								icon={<CalendarIcon />}
 								onClick={(e) => {
 									e.preventDefault();
 									setIsOpen(true);
@@ -675,7 +679,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 						}
 					/>
 				)}
-				{isClient &&
+				{isMounted &&
 					createPortal(
 						<AnimatePresence mode="wait">
 							{isOpen && type === "dropdown" && (
