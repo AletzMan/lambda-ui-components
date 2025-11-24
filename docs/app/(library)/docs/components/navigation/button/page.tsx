@@ -146,8 +146,8 @@ export default async function ButtonPage(params: {
 		<ComponentsLayout
 			title="Button"
 			description="Button component triggers an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation."
-			buttonLeft={{ href: "/docs/components/layout/splitter", text: "Splitter" }}
-			buttonRight={{ href: "/docs/components/forms/text-area", text: "Text Area" }}
+			buttonLeft={{ href: "/docs/components/navigation/breadcrumb", text: "Breadcrumb" }}
+			buttonRight={{ href: "/docs/components/navigation/link", text: "Link" }}
 			menuData={dataFeatures}
 		>
 			<ButtonFeatures />
