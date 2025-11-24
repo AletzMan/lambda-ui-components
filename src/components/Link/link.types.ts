@@ -15,7 +15,7 @@ export type LinkRef = HTMLAnchorElement;
 // --- Props para el componente Link (siempre renderiza <a>) ---
 // Extiende directamente de las props de un enlace <a> nativo para incluir todos los atributos estándar.
 export interface LinkProps
-	extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "disabled" | "label" | "color"> {
+	extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "disabled" | "label" | "color">   {
 	/**
 	 * La URL a la que apunta el enlace. Requerida para la navegación del <a>.
 	 */

@@ -416,7 +416,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 
 								{/* Radios */}
 								{propConfigs.some((c) => c.type === "radio") && (
-									<div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-2">
+									<div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-2 w-full">
 										{propConfigs
 											.filter((c) => c.type === "radio")
 											.map((config) => (
@@ -822,12 +822,12 @@ const ControlItem: React.FC<{
 				);
 			case "radio":
 				return (
-					<div className="flex flex-col items-start w-full gap-1">
+					<div className="flex flex-col items-start w-full gap-1 h-full">
 						<RadioGroup
 							size="tiny"
 							variant="solid"
 							color="neutral"
-							orientation="horizontal"
+							orientation="vertical"
 							onChangeOption={(e) => onChange(config.name, e)}
 							selectedOption={currentValue}
 							aria-labelledby={`${controlId}-label`}
