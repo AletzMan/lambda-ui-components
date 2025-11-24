@@ -30,75 +30,9 @@ const dataFeatures: NavigationMenuData[] = [
 						target: "_top",
 					},
 					{
-						id: "variants",
-						label: "Variants",
-						path: "#variants",
-						target: "_top",
-					},
-					{
-						id: "sizes",
-						label: "Sizes",
-						path: "#sizes",
-						target: "_top",
-					},
-					{
-						id: "radius",
-						label: "Radius",
-						path: "#radius",
-						target: "_top",
-					},
-					{
-						id: "type",
-						label: "Type",
-						path: "#type",
-						target: "_top",
-					},
-					{
-						id: "disabled",
-						label: "Disabled",
-						path: "#disabled",
-						target: "_top",
-					},
-					{
-						id: "whit-label",
-						label: "Whit Label",
-						path: "#whit-label",
-						target: "_top",
-					},
-					{
-						id: "floating-label",
-						label: "Floating Label",
-						path: "#floating-label",
-						target: "_top",
-					},
-					{
-						id: "prefix",
-						label: "Prefix",
-						path: "#prefix",
-						target: "_top",
-					},
-					{
-						id: "suffix",
-						label: "Suffix",
-						path: "#suffix",
-						target: "_top",
-					},
-					{
-						id: "required",
-						label: "Required",
-						path: "#required",
-						target: "_top",
-					},
-					{
-						id: "error-message",
-						label: "Error Message",
-						path: "#error-message",
-						target: "_top",
-					},
-					{
-						id: "helper-text",
-						label: "Helper Text",
-						path: "#helper-text",
+						id: "controlled",
+						label: "Controlled",
+						path: "#controlled",
 						target: "_top",
 					},
 				],
@@ -206,7 +140,7 @@ export default async function RadioPage(params: {
 					: typeRadio === "button"
 						? "Radio.Button component is a form element that allows users to select one option from a set of choices."
 						: "Radio.Card component is a form element that allows users to select one option from a set of choices."
-				}
+			}
 			buttonLeft={{ href: "/docs/components/forms/input-number", text: "Input Number" }}
 			buttonRight={{ href: "/docs/components/forms/select", text: "Select" }}
 			menuData={dataFeatures}

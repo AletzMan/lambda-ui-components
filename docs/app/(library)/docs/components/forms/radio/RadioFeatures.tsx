@@ -56,25 +56,26 @@ const componentRadio = {
 const propHideRadio = (typeRadio: "radio" | "button" | "card"): PropConfig =>
 	typeRadio === "card"
 		? {
-				name: "hideRadio",
-				type: "boolean",
-				defaultValue: false,
-				default: false,
-				label: "Hide Radio",
-		  }
-		: { name: "hideRadio", type: "", defaultValue: false, default: false, label: "" };
+			name: "hideRadio",
+			type: "boolean",
+			defaultValue: false,
+			default: false,
+			label: "Hide Radio",
+		}
+		: { name: "hideRadio", type: "", defaultValue: false, default: false, label: "", description: "Hides the circular input" };
 
 const propRadius = (typeRadio: "radio" | "button" | "card"): PropConfig =>
 	typeRadio === "card" || typeRadio === "button"
 		? {
-				name: "radius",
-				type: "slider",
-				defaultValue: "tiny",
-				default: "tiny",
-				label: "Radius",
-				values: ["none", "tiny", "small", "medium", "large", "full"],
-		  }
-		: { name: "radius", type: "", defaultValue: "", default: "", label: "" };
+			name: "radius",
+			type: "slider",
+			defaultValue: "tiny",
+			default: "tiny",
+			label: "Radius",
+			description: "Adjusts the border radius of the circular input",
+			values: ["none", "tiny", "small", "medium", "large", "full"],
+		}
+		: { name: "radius", type: "", defaultValue: "", default: "", label: "", description: "Adjusts the border radius of the circular input" };
 
 const getCodeByType = (
 	typeRadio: "radio" | "button" | "card",
@@ -89,26 +90,23 @@ ${controlled ? "const [value, setValue] = useState('');" : ""}
 	return (
 	<div className="flex flex-col gap-4">
 	${Array.from({ length: props.length }, (_, i) => i + 1)
-		.map((index) => {
-			return `
-		<label>${
-			props[index - 1]["value"]
-				? props[index - 1]["value"].charAt(0).toUpperCase() + props[index - 1]["value"].slice(1)
-				: props[index - 1]["key"]
-				? props[index - 1]["key"].charAt(0).toUpperCase() + props[index - 1]["key"].slice(1)
-				: ""
-		}</label>
-		<RadioGroup ${props[index - 1]["key"]}${props[index - 1]["key"] !== "" ? '="' : ""}${
-				props[index - 1]["key"] !== "" ? props[index - 1]["value"] : ""
-			}${props[index - 1]["key"] !== "" ? '"' : ""} ${
-				controlled ? "onChangeOption={(value) => setValue(value)} selectedOption={value}" : ""
-			}> 
+				.map((index) => {
+					return `
+		<label>${props[index - 1]["value"]
+							? props[index - 1]["value"].charAt(0).toUpperCase() + props[index - 1]["value"].slice(1)
+							: props[index - 1]["key"]
+								? props[index - 1]["key"].charAt(0).toUpperCase() + props[index - 1]["key"].slice(1)
+								: ""
+						}</label>
+		<RadioGroup ${props[index - 1]["key"]}${props[index - 1]["key"] !== "" ? '="' : ""}${props[index - 1]["key"] !== "" ? props[index - 1]["value"] : ""
+						}${props[index - 1]["key"] !== "" ? '"' : ""} ${controlled ? "onChangeOption={(value) => setValue(value)} selectedOption={value}" : ""
+						}> 
 			<Radio value="Option${index}" label="Option ${index}" />
 			<Radio value="Option${index + 1}" label="Option ${index + 1}" />
 			<Radio value="Option${index + 2}" label="Option ${index + 2}" /> 
 		</RadioGroup>`;
-		})
-		.join("\n")} 
+				})
+				.join("\n")} 
 
 	</div>
 	)
@@ -121,26 +119,23 @@ ${controlled ? "const [value, setValue] = useState('');" : ""}
 	return (
 	<div className="flex flex-col gap-4">
 	${Array.from({ length: props.length }, (_, i) => i + 1)
-		.map((index) => {
-			return `
-		<label>${
-			props[index - 1]["value"]
-				? props[index - 1]["value"].charAt(0).toUpperCase() + props[index - 1]["value"].slice(1)
-				: props[index - 1]["key"]
-				? props[index - 1]["key"].charAt(0).toUpperCase() + props[index - 1]["key"].slice(1)
-				: ""
-		}</label>
-		<RadioGroup ${props[index - 1]["key"]}${
-				props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '="' : ""
-			}${props[index - 1]["key"] !== "" ? props[index - 1]["value"] : ""}${
-				props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '"' : ""
-			}${controlled ? "onChangeOption={(value) => setValue(value)} selectedOption={value}" : ""}> 
+				.map((index) => {
+					return `
+		<label>${props[index - 1]["value"]
+							? props[index - 1]["value"].charAt(0).toUpperCase() + props[index - 1]["value"].slice(1)
+							: props[index - 1]["key"]
+								? props[index - 1]["key"].charAt(0).toUpperCase() + props[index - 1]["key"].slice(1)
+								: ""
+						}</label>
+		<RadioGroup ${props[index - 1]["key"]}${props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '="' : ""
+						}${props[index - 1]["key"] !== "" ? props[index - 1]["value"] : ""}${props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '"' : ""
+						}${controlled ? "onChangeOption={(value) => setValue(value)} selectedOption={value}" : ""}> 
 			<Radio.Button value="Option1" label="Option 1" />
 			<Radio.Button value="Option2" label="Option 2" />
 			<Radio.Button value="Option3" label="Option 3" />
 		</RadioGroup>`;
-		})
-		.join("\n")} 
+				})
+				.join("\n")} 
 
 	</div>
 	)
@@ -153,26 +148,23 @@ ${controlled ? "const [value, setValue] = useState('');" : ""}
 	return (
 	<div className="flex flex-col gap-4">
 	${Array.from({ length: props.length }, (_, i) => i + 1)
-		.map((index) => {
-			return `
-		<label>${
-			props[index - 1]["value"]
-				? props[index - 1]["value"].charAt(0).toUpperCase() + props[index - 1]["value"].slice(1)
-				: props[index - 1]["key"]
-				? props[index - 1]["key"].charAt(0).toUpperCase() + props[index - 1]["key"].slice(1)
-				: ""
-		}</label>
-		<RadioGroup ${props[index - 1]["key"]}${
-				props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '="' : ""
-			}${props[index - 1]["key"] !== "" ? props[index - 1]["value"] : ""}${
-				props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '"' : ""
-			} ${controlled ? "onChangeOption={(value) => setValue(value)} selectedOption={value}" : ""}> 
+				.map((index) => {
+					return `
+		<label>${props[index - 1]["value"]
+							? props[index - 1]["value"].charAt(0).toUpperCase() + props[index - 1]["value"].slice(1)
+							: props[index - 1]["key"]
+								? props[index - 1]["key"].charAt(0).toUpperCase() + props[index - 1]["key"].slice(1)
+								: ""
+						}</label>
+		<RadioGroup ${props[index - 1]["key"]}${props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '="' : ""
+						}${props[index - 1]["key"] !== "" ? props[index - 1]["value"] : ""}${props[index - 1]["key"] !== "" && props[index - 1]["value"] !== "" ? '"' : ""
+						} ${controlled ? "onChangeOption={(value) => setValue(value)} selectedOption={value}" : ""}> 
 			<Radio.Card value="Option1" title="Option 1" subtitle="Subtitle" body={<div>Body</div>} />
 			<Radio.Card value="Option2" title="Option 2" subtitle="Subtitle" body={<div>Body</div>} />
 			<Radio.Card value="Option3" title="Option 3" subtitle="Subtitle" body={<div>Body</div>} />
 		</RadioGroup>`;
-		})
-		.join("\n")} 
+				})
+				.join("\n")} 
 		
 	</div>
 	)
@@ -296,6 +288,7 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 						default: "solid",
 						label: "Variant",
 						values: ["solid", "outline", "soft"],
+						description: "Changes the visual style.",
 					},
 					{
 						name: "gap",
@@ -303,6 +296,7 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 						defaultValue: "8px",
 						default: "8px",
 						label: "Gap",
+						description: "Sets the spacing between options.",
 					},
 					{
 						name: "color",
@@ -311,6 +305,7 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 						default: "primary",
 						label: "Color",
 						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
+						description: "Sets the color theme.",
 					},
 					{
 						name: "orientation",
@@ -319,6 +314,7 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 						default: "vertical",
 						label: "Orientation",
 						values: ["vertical", "horizontal"],
+						description: "Arranges the options vertically or horizontally.",
 					},
 					{
 						name: "size",
@@ -327,6 +323,7 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 						default: "medium",
 						label: "Size",
 						values: ["tiny", "small", "medium", "large"],
+						description: "Adjusts the overall size.",
 					},
 					{
 						name: "disabled",
@@ -334,7 +331,9 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 						defaultValue: false,
 						default: false,
 						label: "Disabled",
+						description: "Prevents user interaction.",
 					},
+
 					{ ...propHideRadio(typeRadio) },
 					{ ...propRadius(typeRadio) },
 				]}
@@ -346,112 +345,14 @@ export const RadioFeatures = ({ typeRadio }: { typeRadio: "radio" | "button" | "
 			<PropertyLayout
 				title="Usage"
 				id="usage"
-				code={`import { Radio, RadioGroup } from "lambda-ui-components";\n\n<RadioGroup>\n${
-					typeRadio === "radio"
-						? "\t<Radio value='Option1' label='Option 1' />\n\t<Radio value='Option2' label='Option 2' />\n\t<Radio value='Option3' label='Option 3' />\n\t<Radio value='Option4' label='Option 4' />"
-						: typeRadio === "button"
+				code={`import { Radio, RadioGroup } from "lambda-ui-components";\n\n<RadioGroup>\n${typeRadio === "radio"
+					? "\t<Radio value='Option1' label='Option 1' />\n\t<Radio value='Option2' label='Option 2' />\n\t<Radio value='Option3' label='Option 3' />\n\t<Radio value='Option4' label='Option 4' />"
+					: typeRadio === "button"
 						? "\t<Radio.Button value='Option1' label='Option 1' />\n\t<Radio.Button value='Option2' label='Option 2' />\n\t<Radio.Button value='Option3' label='Option 3' />\n\t<Radio.Button value='Option4' label='Option 4' />"
 						: "\t<Radio.Card value='Option1' label='Option 1' />\n\t<Radio.Card value='Option2' label='Option 2' />\n\t<Radio.Card value='Option3' label='Option 3' />\n\t<Radio.Card value='Option4' label='Option 4' />"
-				}\n</RadioGroup>`}
+					}\n</RadioGroup>`}
 			/>
-			{/* Variants */}
-			<PropertyLayout
-				title="Variants"
-				description="Defines the visual style of the input, such as a outlined border or a slightly highlighted soft background."
-				propertyName="variant"
-				id="variants"
-				code={getCodeByType(typeRadio, [
-					{ key: "", value: "solid" },
-					{ key: "variant", value: "outline" },
-					{ key: "variant", value: "soft" },
-				])}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
-					{getComponentByType(
-						typeRadio,
-						[
-							{ variant: "solid", children: <Radio value="" /> },
-							{ variant: "outline", children: <Radio value="" /> },
-							{ variant: "soft", children: <Radio value="" /> },
-						],
-						["Solid", "Outline", "Soft"]
-					)}
-				</div>
-			</PropertyLayout>
-			{/* Sizes */}
-			<PropertyLayout
-				title="Sizes"
-				description="Adjust the scale of the input by modifying its height, internal spacing, and font size."
-				id="sizes"
-				propertyName="size"
-				code={getCodeByType(typeRadio, [
-					{ key: "size", value: "tiny" },
-					{ key: "", value: "small" },
-					{ key: "size", value: "medium" },
-					{ key: "size", value: "large" },
-				])}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
-					{getComponentByType(
-						typeRadio,
-						[
-							{ size: "tiny", children: <Radio value="" /> },
-							{ size: "small", children: <Radio value="" /> },
-							{ size: "medium", children: <Radio value="" /> },
-							{ size: "large", children: <Radio value="" /> },
-						],
-						["Tiny", "Small", "Medium", "Large"]
-					)}
-				</div>
-			</PropertyLayout>
-			{/* Radius */}
-			{typeRadio !== "radio" && (
-				<PropertyLayout
-					title="Radius"
-					id="radius"
-					propertyName="radius"
-					description="Controls the level of rounding on the corners of the input, from straight edges to a fully pill style."
-					code={getCodeByType(typeRadio, [
-						{ key: "radius", value: "none" },
-						{ key: "", value: "tiny" },
-						{ key: "radius", value: "small" },
-						{ key: "radius", value: "medium" },
-						{ key: "radius", value: "large" },
-						{ key: "radius", value: "full" },
-					])}
-				>
-					<div className="flex flex-col gap-4 px-6 py-6 ">
-						{getComponentByType(
-							typeRadio,
-							[
-								{ radius: "none", children: <Radio value="" /> },
-								{ radius: "tiny", children: <Radio value="" /> },
-								{ radius: "small", children: <Radio value="" /> },
-								{ radius: "medium", children: <Radio value="" /> },
-								{ radius: "large", children: <Radio value="" /> },
-								{ radius: "full", children: <Radio value="" /> },
-							],
-							["None", "Tiny", "Small", "Medium", "Large", "Full"]
-						)}
-					</div>
-				</PropertyLayout>
-			)}
-			{/* Disabled */}
-			<PropertyLayout
-				title="Disabled"
-				id="disabled"
-				description="Disables the input and applies a visual style that indicates it cannot be interacted with."
-				propertyName="disabled"
-				code={getCodeByType(typeRadio, [{ key: "disabled", value: "" }])}
-			>
-				<div className="flex flex-col gap-4 px-6 py-6 ">
-					{getComponentByType(
-						typeRadio,
-						[{ disabled: true, children: <Radio value="" /> }],
-						["Disabled", "Enabled"]
-					)}
-				</div>
-			</PropertyLayout>
+
 
 			<PropertyLayout
 				title="Controlled"
