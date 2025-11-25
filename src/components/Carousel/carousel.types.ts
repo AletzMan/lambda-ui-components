@@ -94,13 +94,7 @@ export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
      * Si es `true`, muestra los indicadores de paginación (puntos).
      * @default true
      */
-    showPagination?: boolean;
-
-    /**
-     * Opcional: Rol ARIA para el contenedor principal del carrusel.
-     * @default "region"
-     */
-    role?: string;
+    showPagination?: boolean; 
 
     /**
      * Opcional: Etiqueta ARIA para el contenedor principal del carrusel, necesaria si role="region".

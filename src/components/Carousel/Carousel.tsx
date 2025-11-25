@@ -30,7 +30,6 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 			breakpoints = DEFAULT_BREAKPOINTS,
 			showNavigationButtons = true,
 			showPagination = true,
-			role = "region",
 			"aria-label": ariaLabel,
 			autoPlay,
 			className,
@@ -176,10 +175,17 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 								// Para slidesToScroll=1, un dot está activo si corresponde a la diapositiva actual
 								isActive = visualIndex === dotIndex;
 							} else {
-								// Para slidesToScroll=auto, un dot está activo si la diapositiva actual está en su grupo
-								const groupStart = dotIndex * visibleItems;
-								const groupEnd = Math.min(groupStart + visibleItems - 1, totalItems - 1);
-								isActive = visualIndex >= groupStart && visualIndex <= groupEnd;
+								// Para slidesToScroll=auto, calculamos el dot activo considerando los límites
+								const maxStartIndex = totalItems - visibleItems;
+
+								// Si estamos en el último índice posible, activar el último dot
+								if (activeIndex >= maxStartIndex) {
+									isActive = dotIndex === dotsCount - 1;
+								} else {
+									// Calcular normalmente qué dot corresponde al activeIndex actual
+									const currentDotIndex = Math.floor(activeIndex / visibleItems);
+									isActive = dotIndex === currentDotIndex;
+								}
 							}
 
 							return (
@@ -208,7 +214,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 				style={style}
-				role={role}
+				role="region"
 				aria-label={ariaLabel}
 				ref={containerRef ?? ref}
 				tabIndex={0}
