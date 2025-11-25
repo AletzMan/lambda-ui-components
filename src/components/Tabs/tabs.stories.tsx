@@ -69,7 +69,7 @@ const Template = (args: TabProps) => {
 				<Tabs {...args} radius={currentStyle === "local" ? args.radius : undefined}>
 					<Tabs.List>
 						{tabs.map((tab, i) => (
-							<Tabs.Tab key={i} title={tab.title} disabled={tab.disabled} icon={<Code />} />
+							<Tabs.Tab key={i} title={tab.title} disabled={i === 2} icon={<Code />} />
 						))}
 					</Tabs.List>
 					<Tabs.Panels>
@@ -121,6 +121,6 @@ export const Border: Story = {
 		color: "secondary",
 		radius: "small",
 		disabled: false,
-		onChange: () => {},
+		onChange: () => { },
 	},
 };

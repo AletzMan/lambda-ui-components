@@ -112,7 +112,7 @@
 			background-color: transparent;
 			color: var(--surface-d);
 
-			&:hover {
+			&:hover:not(.tab-label-disabled) {
 				color: var(--surface-h);
 			}
 		}
@@ -126,7 +126,7 @@
 			background-color: transparent;
 			color: var(--surface-d);
 
-			&:hover {
+			&:hover:not(.tab-label-disabled) {
 				background-color: var(--surface-b);
 				color: var(--surface-f);
 			}
@@ -138,7 +138,7 @@
 			background-color: transparent;
 			color: var(--foreground-secondary-color);
 
-			&:hover {
+			&:hover:not(.tab-label-disabled) {
 				background-color: var(--surface-b);
 			}
 		}
@@ -159,7 +159,7 @@
 			z-index: 1;
 			opacity: 0.4;
 
-			&:hover {
+			&:hover:not(.tab-label-disabled) {
 				opacity: 0.95;
 			}
 		}
