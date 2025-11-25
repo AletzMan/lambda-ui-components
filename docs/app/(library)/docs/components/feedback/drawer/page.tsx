@@ -152,7 +152,7 @@ export default async function DrawerPage(params: {
 			title="Drawer"
 			description="Drawer component is a slide-out panel that overlays content, commonly used for navigation menus or additional content."
 			buttonLeft={{ href: "/docs/components/feedback/dialog", text: "Dialog" }}
-			buttonRight={{ href: "/docs/components/feedback/modal", text: "Modal" }}
+			buttonRight={{ href: "/docs/components/feedback/dropdown", text: "Dropdown" }}
 			menuData={dataFeatures}
 		>
 			<DrawerFeatures />
