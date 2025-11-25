@@ -58,8 +58,8 @@
 }
 
 .lambda-avatar-overflow {
-	background: var(--neutral-base-color);
-	color: var(--white-color);
+	background: var(--neutral-subtle-color);
+	color: var(--primary-text-color);
 	font-weight: 700;
 	display: flex;
 	align-items: center;
