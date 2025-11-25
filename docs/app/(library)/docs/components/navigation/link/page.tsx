@@ -139,7 +139,7 @@ export default async function LinkPage(params: {
 			title="Link"
 			description="Link component allows users to navigate to another page or resource."
 			buttonLeft={{ href: "/docs/components/navigation/button", text: "Button" }}
-			buttonRight={{ href: "/docs/components/navigation/menu", text: "Menu" }}
+			buttonRight={{ href: "/docs/components/navigation/navigation-menu", text: "Navigation Menu" }}
 			menuData={dataFeatures}
 		>
 			<LinkFeatures />
