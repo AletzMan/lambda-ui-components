@@ -263,10 +263,10 @@
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 	box-shadow: var(--box-shadow);
-}
+}	
 
-.lambda-carousel-dot:hover:not(:disabled),
-.lambda-carousel-dot:focus-visible:not(:disabled) {
+.lambda-carousel-dot:hover:not(:disabled):not(.lambda-carousel-dot-active),
+.lambda-carousel-dot:focus-visible:not(:disabled):not(.lambda-carousel-dot-active) {
 	background-color: var(--primary-hover-color);
 	outline: none;
 }
@@ -342,7 +342,8 @@
 .lambda-carousel-dot-active {
 	background-color: var(--primary-hover-color);
 	border-color: var(--primary-base-color);
-	outline: 3px solid var(--primary-outline-color);
+	outline: 3px solid var(--primary-shadow-color);
+	cursor: default;
 }
 
 .lambda-carousel-button svg {
