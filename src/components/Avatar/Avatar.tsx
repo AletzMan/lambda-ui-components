@@ -7,13 +7,17 @@ import { motion } from "framer-motion";
 
 // Paleta de colores para iniciales
 const COLORS = [
-	"var(--lambda-color-primary-500)",
-	"var(--lambda-color-secondary-500)",
+	"var(--lambda-color-purple-500)",
 	"var(--lambda-color-success-500)",
 	"var(--lambda-color-warning-500)",
 	"var(--lambda-color-danger-500)",
 	"var(--lambda-color-info-500)",
-	"var(--lambda-color-neutral-700)",
+	"var(--lambda-color-teal-500)",
+	"var(--lambda-color-orange-500)",
+	"var(--lambda-color-pink-500)",
+	"var(--lambda-color-blue-500)",
+	"var(--lambda-color-green-500)",
+	"var(--lambda-color-yellow-500)",
 ];
 
 const stringToColor = (str: string) => {
