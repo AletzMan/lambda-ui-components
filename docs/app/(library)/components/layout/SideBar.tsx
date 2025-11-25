@@ -285,7 +285,7 @@ export const navigationMenuData = [
 				id: "accordion",
 				label: "Accordion",
 				icon: <Rows />,
-				path: "/docs/components/layout/accordion",
+				path: "/docs/components/data-display/accordion",
 			},
 			{
 				id: "avatar",
@@ -304,7 +304,7 @@ export const navigationMenuData = [
 				id: "carousel",
 				label: "Carousel",
 				icon: <Layers />,
-				path: "/docs/components/layout/carousel",
+				path: "/docs/components/data-display/carousel",
 			},
 			{
 				id: "code-block",
