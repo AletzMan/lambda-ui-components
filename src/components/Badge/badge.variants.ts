@@ -40,6 +40,7 @@ export const badgeStyles = cva(styles["lambda-badge"], {
 		radius: "small",
 		hasCount: false,
 		hasText: false,
+		color: "default",
 	},
 });
 
