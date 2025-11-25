@@ -156,9 +156,26 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 		const hasChildren = !!node.children;
 		const isChildrenSelected = node.children?.some((child) => child.path === currentPath);
 
+		// Ref para el elemento del menú
+		const itemRef = React.useRef<HTMLDivElement>(null);
+
+		// Auto-scroll al elemento cuando se selecciona
+		React.useEffect(() => {
+			if (isSelected && itemRef.current) {
+				// Pequeño delay para asegurar que el DOM esté listo
+				setTimeout(() => {
+					itemRef.current?.scrollIntoView({
+						behavior: 'smooth',
+						block: 'center',
+						inline: 'nearest'
+					});
+				}, 100);
+			}
+		}, [isSelected]);
+
 		return (
 			<div
-				ref={ref}
+				ref={ref || itemRef}
 				className={clsx(
 					navigationMenuItemVariants({
 						selected: isSelected || false,
