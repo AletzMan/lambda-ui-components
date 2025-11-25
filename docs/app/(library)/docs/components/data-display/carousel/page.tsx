@@ -179,7 +179,7 @@ export default async function CarouselPage(params: {
 			title="Carousel"
 			description="Carousel component for displaying multiple items with navigation, pagination, and responsive breakpoints."
 			buttonLeft={{ href: "/docs/components/data-display/calendar", text: "Calendar" }}
-			buttonRight={{ href: "/docs/components/data-display/card", text: "Card" }}
+			buttonRight={{ href: "/docs/components/data-display/code-block", text: "Code Block" }}
 			menuData={dataFeatures}
 		>
 			<CarouselFeatures />
