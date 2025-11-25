@@ -57,7 +57,7 @@ export const NotificationContainer = ({
 
 				return (
 					<div key={placement} className={notificationGroupVariants({ placement })}>
-						<AnimatePresence initial={false}>
+						<AnimatePresence initial={true}>
 							{notifs.slice(0, maxNotifications).map((notification) => {
 								const animation = getAnimationByPlacement(placement);
 								return (
