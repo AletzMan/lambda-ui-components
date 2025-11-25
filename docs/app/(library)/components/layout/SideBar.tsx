@@ -202,10 +202,10 @@ export const navigationMenuData = [
 			},
 			{ id: "link", label: "Link", icon: <LinkIcon />, path: "/docs/components/navigation/link" },
 			{
-				id: "menu",
+				id: "navigation-menu",
 				label: "Navigation Menu",
 				icon: <Menu />,
-				path: "/docs/components/navigation/menu",
+				path: "/docs/components/navigation/navigation-menu",
 			},
 			{
 				id: "pagination",

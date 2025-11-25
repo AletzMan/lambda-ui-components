@@ -29,6 +29,7 @@ export interface PropConfig {
 	transformCode?: (value: any) => string;
 	schema?: Record<string, "string" | "number">; // Schema for array-object
 	isRequired?: boolean[]; // Array de booleanos para marcar campos como obligatorios en array-object
+	disabled?: boolean;
 }
 
 export interface ComponentPropsState {
@@ -273,7 +274,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{/* Selects, Strings */}
 								{propConfigs.some((c) => ["select", "string"].includes(c.type)) && <div className="flex flex-wrap gap-2">
 									{propConfigs
-										.filter((c) => ["select", "string"].includes(c.type))
+										.filter((c) => ["select", "string"].includes(c.type) && !c.disabled)
 										.map((config) => (
 											<div key={config.name} className="shrink-0 min-w-[130px] flex-1">
 												<ControlItem
@@ -287,7 +288,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{/* Numbers */}
 								{propConfigs.some((c) => c.type === "number") && <div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-2">
 									{propConfigs
-										.filter((c) => ["number"].includes(c.type))
+										.filter((c) => ["number"].includes(c.type) && !c.disabled)
 										.map((config) => (
 											<ControlItem
 												key={config.name}
@@ -300,7 +301,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{/* Array-Numbers */}
 								{propConfigs.some((c) => c.type === "array-number") && <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
 									{propConfigs
-										.filter((c) => ["array-number"].includes(c.type))
+										.filter((c) => ["array-number"].includes(c.type) && !c.disabled)
 										.map((config) => (
 											<ControlItem
 												key={config.name}
@@ -313,7 +314,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{/* Array-Strings */}
 								{propConfigs.some((c) => c.type === "array-string") && <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
 									{propConfigs
-										.filter((c) => ["array-string"].includes(c.type))
+										.filter((c) => ["array-string"].includes(c.type) && !c.disabled)
 										.map((config) => (
 											<ControlItem
 												key={config.name}
@@ -327,7 +328,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{/* Array-ReactNode */}
 								{propConfigs.some((c) => c.type === "array-reactnode") && <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
 									{propConfigs
-										.filter((c) => ["array-reactnode"].includes(c.type))
+										.filter((c) => ["array-reactnode"].includes(c.type) && !c.disabled)
 										.map((config) => (
 											<ControlItem
 												key={config.name}
@@ -341,7 +342,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{/* Array-Objects */}
 								{propConfigs.some((c) => c.type === "array-object") && <div className="flex flex-col gap-2">
 									{propConfigs
-										.filter((c) => ["array-object"].includes(c.type))
+										.filter((c) => ["array-object"].includes(c.type) && !c.disabled)
 										.map((config) => (
 											<ControlItem
 												key={config.name}
@@ -355,7 +356,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{/* Objects */}
 								{propConfigs.some((c) => c.type === "object") && <div className="flex flex-col gap-2">
 									{propConfigs
-										.filter((c) => ["object"].includes(c.type))
+										.filter((c) => ["object"].includes(c.type) && !c.disabled)
 										.map((config) => (
 											<ControlItem
 												key={config.name}
@@ -370,7 +371,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{propConfigs.some((c) => c.type === "checkbox") && (
 									<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2">
 										{propConfigs
-											.filter((c) => c.type === "checkbox")
+											.filter((c) => c.type === "checkbox" && !c.disabled)
 											.map((config) => (
 												<ControlItem
 													key={config.name}
@@ -386,7 +387,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{propConfigs.some((c) => c.type === "color") && (
 									<div className="flex flex-col gap-2">
 										{propConfigs
-											.filter((c) => c.type === "color")
+											.filter((c) => c.type === "color" && !c.disabled)
 											.map((config) => (
 												<ControlItem
 													key={config.name}
@@ -402,7 +403,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{propConfigs.some((c) => c.type === "date") && (
 									<div className="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-2">
 										{propConfigs
-											.filter((c) => c.type === "date")
+											.filter((c) => c.type === "date" && !c.disabled)
 											.map((config) => (
 												<ControlItem
 													key={config.name}
@@ -418,7 +419,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{propConfigs.some((c) => c.type === "radio") && (
 									<div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-2 w-full">
 										{propConfigs
-											.filter((c) => c.type === "radio")
+											.filter((c) => c.type === "radio" && !c.disabled)
 											.map((config) => (
 												<ControlItem
 													key={config.name}
@@ -434,7 +435,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{propConfigs.some((c) => c.type === "slider") && (
 									<div className="flex flex-col gap-2">
 										{propConfigs
-											.filter((c) => c.type === "slider")
+											.filter((c) => c.type === "slider" && !c.disabled)
 											.map((config) => (
 												<ControlItem
 													key={config.name}
@@ -450,7 +451,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								{propConfigs.some((c) => ["boolean", "boolean-inverted"].includes(c.type)) && (
 									<div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-2">
 										{propConfigs
-											.filter((c) => ["boolean", "boolean-inverted"].includes(c.type))
+											.filter((c) => ["boolean", "boolean-inverted"].includes(c.type) && !c.disabled)
 											.map((config) => (
 												<ControlItem
 													key={config.name}
@@ -518,6 +519,7 @@ const ControlItem: React.FC<{
 	const descriptionId = `desc-${config.name}`;
 
 	const renderControl = () => {
+		if (config.disabled) return null;
 		switch (config.type) {
 			case "select":
 				return (
