@@ -109,6 +109,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 			{buttonCopy && (
 				<button
 					className={codeBlockCopyButtonVariants({ theme })}
+					aria-label={copied ? "Copied successfully" : "Copy code to clipboard"}
 					type="button"
 					onClick={() => {
 						navigator.clipboard.writeText(codeToShow);

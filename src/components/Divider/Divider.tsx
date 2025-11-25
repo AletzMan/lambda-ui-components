@@ -21,7 +21,6 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 			<div
 				ref={ref}
 				role="separator"
-				tabIndex={-1}
 				aria-orientation={orientation || "horizontal"}
 				style={{
 					margin: spacing
@@ -29,8 +28,8 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
 							? `${spacing}px 0`
 							: `0 ${spacing}px`
 						: orientation === "horizontal"
-						? "5px 0"
-						: "0 5px",
+							? "5px 0"
+							: "0 5px",
 				}}
 				className={clsx(
 					dividerVariants({
