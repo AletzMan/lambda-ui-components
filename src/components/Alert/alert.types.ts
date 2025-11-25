@@ -10,7 +10,7 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "color"
 	 * Define la variante visual del alert, afectando típicamente el color de fondo y texto.
 	 * Corresponde a los tipos semánticos de alerta.
 	 */
-	color: AlertVariants["color"];
+	color?: AlertVariants["color"];
 	/**
 	 * Define la variante visual del alert, afectando típicamente el color de fondo y texto.
 	 * Corresponde a los tipos semánticos de alerta.
@@ -63,6 +63,5 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "color"
 	 * El rol ARIA para el alert. "status" es para información no crítica, "alert" es para errores o advertencias urgentes.
 	 * Considera "alert" si la alerta aparece de forma dinámica y es crítica.
 	 * @default "status"
-	 */
-	role?: "alert" | "status";
+	 */ 
 }

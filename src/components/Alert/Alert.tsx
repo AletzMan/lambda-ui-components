@@ -45,7 +45,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 			onClose,
 			showIcon = true,
 			customIcon,
-			role = "status",
 			size = "small",
 			radius = "small",
 			className,
@@ -99,18 +98,14 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 			className
 		);
 
-		// --- ARIA Live Region ---
-		// Si el role es "status" o "alert", añadir aria-live="polite" o "assertive"
-		const ariaLive = role === "alert" ? "assertive" : "polite";
-
 		return (
 			// Contenedor principal del Alert (elemento div)
 			<div
 				ref={ref}
 				className={alertClasses}
 				style={style}
-				role={role}
-				aria-live={ariaLive}
+				role="alert"
+				aria-live="assertive"
 				// Añadir otras props estándar de div si se pasaron
 				{...restProps}
 			>
