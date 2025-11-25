@@ -182,13 +182,48 @@
 	flex: 1;
 	display: flex;
 	align-items: center;
-	gap: var(--padding-md);
-	font-size: var(--font-size-sm);
+	gap: var(--padding-md); 
 	font-weight: var(--font-weight-medium);
 	padding: var(--padding-xs) var(--padding-sm);
+}
+
+.lambda-navigation-menu-label-tiny {
+	font-size: var(--font-size-xs);
+}
+
+.lambda-navigation-menu-label-small {
+	font-size: var(--font-size-sm);
+}
+
+.lambda-navigation-menu-label-medium {
+	font-size: var(--font-size-md);
+}
+
+.lambda-navigation-menu-label-large {
+	font-size: var(--font-size-lg);
 }
 
 .lambda-navigation-menu-label-icon {
 	width: var(--icon-size-sm);
 	height: var(--icon-size-sm);
+}
+
+.lambda-navigation-menu-label-icon-tiny {
+	width: var(--icon-size-xs);
+	height: var(--icon-size-xs);
+}
+
+.lambda-navigation-menu-label-icon-small {
+	width: var(--icon-size-sm);
+	height: var(--icon-size-sm);
+}
+
+.lambda-navigation-menu-label-icon-medium {
+	width: var(--icon-size-md);
+	height: var(--icon-size-md);
+}
+
+.lambda-navigation-menu-label-icon-large {
+	width: var(--icon-size-lg);
+	height: var(--icon-size-lg);
 }

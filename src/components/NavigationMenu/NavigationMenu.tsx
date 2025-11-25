@@ -125,6 +125,7 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 			<NavigationMenuContext.Provider value={contextValue}>
 				<nav
 					ref={ref}
+					role="menubar"
 					className={clsx(navigationMenuVariants({ size, showLines, styleLines }), className)}
 					style={style}
 				>
@@ -172,7 +173,6 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 				)}
 				role="menuitem"
 				aria-expanded={!!node.children ? isExpanded : undefined}
-				aria-selected={isSelected || false}
 				aria-disabled={isDisabled}
 				tabIndex={isDisabled ? -1 : 0}
 			>
@@ -223,7 +223,7 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 					<AnimatePresence initial={false}>
 						{isExpanded && (
 							<motion.div
-								role="group"
+								role="menu" // <--- CAMBIO CLAVE AQUÍ: Usamos role="menu"
 								initial={{ height: 0, opacity: 0 }}
 								animate={{ height: "auto", opacity: 1 }}
 								exit={{ height: 0, opacity: 0 }}
@@ -258,13 +258,13 @@ const NavigationMenuLabel = forwardRef<HTMLDivElement, NavigationMenuLabelProps>
 
 		const Icon = isValidElement(getIconFileTreeItem(node))
 			? React.cloneElement(getIconFileTreeItem(node), {
-					className: clsx(navigationMenuItemLabelIconVariants({ size }), {}),
-			  })
+				className: clsx(navigationMenuItemLabelIconVariants({ size }), {}),
+			})
 			: null;
 		const customIcon = isValidElement<SVGAElement>(node.icon)
 			? React.cloneElement(node.icon, {
-					className: clsx(navigationMenuItemLabelIconVariants({ size }), {}),
-			  })
+				className: clsx(navigationMenuItemLabelIconVariants({ size }), {}),
+			})
 			: null;
 		return (
 			<div

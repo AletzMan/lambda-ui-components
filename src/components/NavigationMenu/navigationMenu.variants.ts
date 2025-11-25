@@ -126,6 +126,7 @@ export const navigationMenuItemExpandedIconVariants = cva(
 export const navigationMenuItemLabelVariants = cva(styles["lambda-navigation-menu-label"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-navigation-menu-label-tiny"],
 			small: styles["lambda-navigation-menu-label-small"],
 			medium: styles["lambda-navigation-menu-label-medium"],
 			large: styles["lambda-navigation-menu-label-large"],
@@ -151,6 +152,7 @@ export const navigationMenuItemLabelIconVariants = cva(
 	{
 		variants: {
 			size: {
+				tiny: styles["lambda-navigation-menu-label-icon-tiny"],
 				small: styles["lambda-navigation-menu-label-icon-small"],
 				medium: styles["lambda-navigation-menu-label-icon-medium"],
 				large: styles["lambda-navigation-menu-label-icon-large"],

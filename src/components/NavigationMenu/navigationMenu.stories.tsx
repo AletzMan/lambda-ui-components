@@ -33,7 +33,7 @@ const meta: Meta<typeof NavigationMenu> = {
 		onNodeSelect: { table: { disable: true } },
 		alwaysOpen: { control: "boolean" },
 		renderLabel: { table: { disable: true } },
-		size: { control: "inline-radio", options: ["small", "medium", "large"] },
+		size: { control: "inline-radio", options: ["tiny", "small", "medium", "large"] },
 		showLines: { control: "boolean" },
 		styleLines: { control: "inline-radio", options: ["solid", "dashed", "dotted"] },
 		selectedStyle: { control: "inline-radio", options: ["highlight", "border"] },
