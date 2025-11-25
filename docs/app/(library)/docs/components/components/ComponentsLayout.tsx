@@ -52,6 +52,7 @@ export const ComponentsLayout = ({
 							<NavigationMenu
 								data={menuData}
 								currentPath={"#" + activeId || ""}
+								size="small"
 								alwaysOpen
 								showLines
 								styleLines="dotted"

@@ -264,7 +264,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 								if (isPureFadeMode) {
 									// 🅰️ MODO FADE PURO (Single item, sin desplazamiento visual)
 									animationProps = {
-										opacity: isVisible ? 1 : 0,
+										//opacity: isVisible ? 1 : 0,
 										scale: isVisible ? 1 : 0.98,
 										zIndex: isVisible ? 2 : 1,
 									};
@@ -275,7 +275,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 									animationProps = {
 										// Opacidad a 1 si es visible. Si no es visible, un valor intermedio
 										// para un efecto suave, pero el CSS de overflow lo ocultará.
-										opacity: isVisible ? 1 : 0.4,
+										//opacity: isVisible ? 1 : 0.4,
 										scale: isVisible ? 1 : 0.95,
 										zIndex: isVisible ? 2 : 1,
 									};
