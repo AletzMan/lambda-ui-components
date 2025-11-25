@@ -417,7 +417,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 
 								{/* Radios */}
 								{propConfigs.some((c) => c.type === "radio") && (
-									<div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-2 w-full">
+									<div className="grid grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-2 w-full">
 										{propConfigs
 											.filter((c) => c.type === "radio" && !c.disabled)
 											.map((config) => (

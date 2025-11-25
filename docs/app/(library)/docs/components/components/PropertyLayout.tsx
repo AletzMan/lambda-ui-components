@@ -38,9 +38,9 @@ export default function PropertyLayout({
 					)}
 				</h2>
 				{description && (
-					<p className="text-sm leading-relaxed text-(--foreground-secondary-color) mt-1 max-w-prose">
+					<div className="text-sm leading-relaxed text-(--foreground-secondary-color) mt-1 max-w-prose">
 						{description}
-					</p>
+					</div>
 				)}
 			</div>
 
