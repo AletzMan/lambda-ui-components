@@ -44,10 +44,17 @@ export const NotificationContainer = ({
 		"bottom-right",
 	];
 
+	// Only render portal on client side
+	if (typeof window === "undefined") {
+		return null;
+	}
+
 	return (
 		<>
 			{allPlacements.map((placement) => {
 				const notifs = groupedNotifications[placement] || [];
+				if (notifs.length === 0) return null;
+
 				return (
 					<div key={placement} className={notificationGroupVariants({ placement })}>
 						<AnimatePresence initial={false}>

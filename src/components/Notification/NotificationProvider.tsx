@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { NotificationContainer } from "./NotificationContainer";
 import { v4 as uuidv4 } from "uuid";
 import { NotificationProps } from "./notifications.types";
@@ -12,6 +13,11 @@ const NotificationContext = createContext<NotificationContextType | undefined>(u
 
 export const NotificationProvider = ({ children, maxNotifications = 4, placement: defaultPlacement, duration: defaultDuration }: { children?: ReactNode, maxNotifications?: number, placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right", duration?: number }) => {
     const [notifications, setNotifications] = useState<NotificationProps[]>([]);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const removeNotification = (id: string) => {
         setNotifications((prev) => prev.filter((n) => n.id !== id));
@@ -47,7 +53,10 @@ export const NotificationProvider = ({ children, maxNotifications = 4, placement
     return (
         <NotificationContext.Provider value={{ showNotification }}>
             {children}
-            <NotificationContainer notifications={notifications} maxNotifications={maxNotifications} />
+            {mounted && createPortal(
+                <NotificationContainer notifications={notifications} maxNotifications={maxNotifications} />,
+                document.body
+            )}
         </NotificationContext.Provider>
     );
 };
