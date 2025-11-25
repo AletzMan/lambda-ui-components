@@ -32,10 +32,16 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 }) => {
 	const [activeTab, setActiveTab] = useState(0);
 	const [copied, setCopied] = useState(false);
+	const [isMounted, setIsMounted] = useState(false);
 	const codeToShow = tabs ? tabs[activeTab].code : code;
 	const langToShow = tabs ? tabs[activeTab].language : language;
 
 	const codeRef = useRef<HTMLElement>(null);
+
+	// Mount effect
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
 	// Cambia el tema dinámicamente
 	useEffect(() => {
@@ -63,10 +69,10 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 	}, [theme]);
 
 	useEffect(() => {
-		if (codeRef.current) {
+		if (codeRef.current && isMounted) {
 			Prism.highlightElement(codeRef.current);
 		}
-	}, [codeToShow, langToShow, highlightLines, showLineNumbers, theme, code, language, tabs]);
+	}, [codeToShow, langToShow, highlightLines, showLineNumbers, theme, code, language, tabs, isMounted]);
 
 	return (
 		<div className={clsx(codeBlockVariants({ showLineNumbers, theme }), className)}>
@@ -89,14 +95,14 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 				suppressHydrationWarning
 				className={clsx(
 					styles["lambda-pre"],
-					{ "line-numbers": showLineNumbers },
-					{ [styles["lambda-pre-line-highlight"]]: highlightLines },
-					{ [styles["lambda-pre-line-numbers"]]: showLineNumbers },
+					{ "line-numbers": showLineNumbers && isMounted },
+					{ [styles["lambda-pre-line-highlight"]]: highlightLines && isMounted },
+					{ [styles["lambda-pre-line-numbers"]]: showLineNumbers && isMounted },
 					{ [styles["lambda-pre-dark"]]: theme === "dark" },
 					{ [styles["lambda-pre-light"]]: theme === "light" },
 					"scrollBar"
 				)}
-				data-line={highlightLines}
+				data-line={isMounted ? highlightLines : undefined}
 			>
 				<code
 					suppressHydrationWarning
