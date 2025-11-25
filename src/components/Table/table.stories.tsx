@@ -18,6 +18,9 @@ const meta: Meta<typeof Table> = {
 			control: "select",
 			options: ["soft", "underlined", "striped", "bordered"],
 		},
+		highlightOnHover: {
+			control: "boolean",
+		},
 	},
 	decorators: [
 		(Story) => (
@@ -149,6 +152,7 @@ export const Bordered: Story = {
 	args: {
 		variant: "bordered",
 		size: "medium",
+		highlightOnHover: false,
 	},
 };
 
@@ -157,6 +161,7 @@ export const Soft: Story = {
 	args: {
 		variant: "soft",
 		size: "medium",
+		highlightOnHover: false,
 	},
 };
 
@@ -165,6 +170,7 @@ export const Underlined: Story = {
 	args: {
 		variant: "underlined",
 		size: "medium",
+		highlightOnHover: false,
 	},
 };
 
@@ -173,6 +179,7 @@ export const Striped: Story = {
 	args: {
 		variant: "striped",
 		size: "medium",
+		highlightOnHover: false,
 	},
 };
 

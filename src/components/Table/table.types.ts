@@ -12,6 +12,7 @@ export interface TableProperties {
 	variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
 	sortConfig: SortConfig;
 	handleSort: (key: string, type: string) => void;
+	highlightOnHover?: boolean;
 	pagination?: {
 		page?: number;
 		totalPages?: number;
@@ -28,7 +29,20 @@ export interface TableProps extends Omit<React.HTMLAttributes<HTMLTableElement>,
 	 */
 	variant?: TableVariants["variant"];
 
+	/**
+	 * Función de callback que se ejecuta cuando se hace clic en una columna ordenable.
+	 * @param column - Nombre de la columna
+	 * @param direction - Dirección del ordenamiento ('asc' o 'desc')
+	 * @param type - Tipo de dato de la columna
+	 */
 	onSortColumn?: (column: string, direction: "asc" | "desc", type: SortConfig["type"]) => void;
+
+	/**
+	 * Si es true, las filas cambian de color al pasar el cursor sobre ellas.
+	 * @default true
+	 */
+	highlightOnHover?: boolean;
+
 	/**
 	 * Configura la paginación de la tabla.
 	 */

@@ -19,6 +19,7 @@ export const containerVariants = cva(styles["lambda-table-container"], {
 	},
 	defaultVariants: {
 		variant: "soft",
+		radius: "small",
 	},
 });
 
@@ -134,10 +135,15 @@ export const rowVariants = cva(styles["lambda-table-row"], {
 			striped: styles["lambda-table-row-striped"],
 			bordered: styles["lambda-table-row-bordered"],
 		},
+		highlightOnHover: {
+			true: styles["lambda-table-row-highlight-on-hover"],
+			false: styles["lambda-table-row-no-highlight-on-hover"],
+		},
 	},
 	defaultVariants: {
 		size: "medium",
 		variant: "soft",
+		highlightOnHover: false,
 	},
 });
 
@@ -164,6 +170,7 @@ export const cellVariants = cva(styles["lambda-table-cell"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "soft",
+		align: "left",
 	},
 });
 

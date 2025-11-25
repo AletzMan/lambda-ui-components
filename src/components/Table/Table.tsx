@@ -33,6 +33,7 @@ const useTableContext = () => {
 const TableRoot = <T,>({
 	size = "medium",
 	variant = "soft",
+	highlightOnHover = false,
 	children,
 	data,
 	pagination,
@@ -42,6 +43,7 @@ const TableRoot = <T,>({
 	children: ReactNode;
 	data: T[];
 	onSortColumn?: (column: string, direction: "asc" | "desc", type: SortConfig["type"]) => void;
+	highlightOnHover?: boolean;
 	pagination?: {
 		page?: number;
 		totalPages?: number;
@@ -50,9 +52,9 @@ const TableRoot = <T,>({
 		onPageChange?: (page: number) => void;
 	};
 } & HTMLAttributes<HTMLTableElement> & {
-		size?: "tiny" | "small" | "medium" | "large";
-		variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
-	}) => {
+	size?: "tiny" | "small" | "medium" | "large";
+	variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
+}) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
 	const { radiusBox } = useUIConfig();
 	const { t } = useTranslation();
@@ -75,7 +77,7 @@ const TableRoot = <T,>({
 	};
 
 	return (
-		<TableContext.Provider value={{ size, variant, sortConfig, handleSort }}>
+		<TableContext.Provider value={{ size, variant, sortConfig, handleSort, highlightOnHover }}>
 			<div className={containerVariants({ variant, radius: radiusBox })}>
 				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
 					<table className={tableVariants({ size, variant })} {...props}>
@@ -104,12 +106,12 @@ const TableRoot = <T,>({
 								variant === "soft"
 									? "soft"
 									: variant === "underlined"
-									? "solid"
-									: variant === "bordered"
-									? "bordered"
-									: variant === "striped"
-									? "bordered"
-									: "soft"
+										? "solid"
+										: variant === "bordered"
+											? "bordered"
+											: variant === "striped"
+												? "bordered"
+												: "soft"
 							}
 						/>
 					</div>
@@ -143,9 +145,13 @@ const TableRow = ({
 	children,
 	...props
 }: HTMLAttributes<HTMLTableRowElement> & { children: ReactNode }) => {
-	const { size, variant } = useTableContext();
+	const { size, variant, highlightOnHover } = useTableContext();
 	return (
-		<tr className={rowVariants({ size, variant })} {...props}>
+		<tr
+			className={rowVariants({ size, variant, highlightOnHover })}
+			data-highlight-hover={highlightOnHover}
+			{...props}
+		>
 			{children}
 		</tr>
 	);
