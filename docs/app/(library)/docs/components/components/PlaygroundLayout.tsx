@@ -488,7 +488,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 									}>${childrenComponentsNames
 										?.map(
 											(child, index) =>
-												`\n\t<${child}/>${index === childrenComponentsNames.length - 1 ? "\n" : ""
+												`\n\t<${child}>${index === childrenComponentsNames.length - 1 ? "\n" : ""
 												}`
 										)
 										.join("")}</${componentName}>
