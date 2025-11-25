@@ -104,8 +104,8 @@ export const SliderFeatures = ({ mode }: { mode: "single" | "range" }) => {
 						defaultValue: "primary",
 						default: "primary",
 						label: "Color",
-						description: "Controls the color of the slider.",
-						values: ["primary", "secondary", "success", "danger", "warning", "info", "neutral"],
+						description: "Controls the color of the switch when active.",
+						values: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
 					},
 					{
 						name: "size",

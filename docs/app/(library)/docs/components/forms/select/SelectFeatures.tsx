@@ -26,6 +26,15 @@ export const SelectFeatures = () => {
 						description: "Text shown when no option is selected.",
 					},
 					{
+						name: "color",
+						type: "color",
+						defaultValue: "primary",
+						default: "primary",
+						label: "Color",
+						description: "Controls the color of the switch when active.",
+						values: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
+					},
+					{
 						name: "label",
 						type: "string",
 						defaultValue: undefined,

@@ -36,6 +36,7 @@ export const TooltipFeatures = () => {
 						default: "secondary",
 						label: "Color",
 						description: "Color scheme of the tooltip.",
+						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
 					},
 					{
 						name: "offset",

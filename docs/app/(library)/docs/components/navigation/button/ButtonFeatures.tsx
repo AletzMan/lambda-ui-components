@@ -40,6 +40,7 @@ export const ButtonFeatures = () => {
 						default: "primary",
 						label: "Color",
 						description: "Controls the color scheme of the button.",
+						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
 					},
 					{
 						name: "size",

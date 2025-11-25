@@ -57,6 +57,7 @@ export const LinkFeatures = () => {
 						default: "primary",
 						label: "Color",
 						description: "Color scheme of the link.",
+						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
 					},
 					{
 						name: "size",

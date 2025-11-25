@@ -38,6 +38,15 @@ export const InputNumberFeatures = () => {
 						description: "Adjusts the input’s overall size.",
 					},
 					{
+						name: "color",
+						type: "color",
+						defaultValue: "primary",
+						default: "primary",
+						label: "Color",
+						description: "Controls the color of the switch when active.",
+						values: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
+					},
+					{
 						name: "radius",
 						type: "slider",
 						defaultValue: "tiny",

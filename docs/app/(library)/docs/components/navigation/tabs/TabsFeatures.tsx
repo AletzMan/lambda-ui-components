@@ -63,6 +63,7 @@ export const TabsFeatures = () => {
 						default: "neutral",
 						label: "Color",
 						description: "Controls the color scheme of the tabs.",
+						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
 					},
 					{
 						name: "radius",

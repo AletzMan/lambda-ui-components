@@ -44,6 +44,7 @@ export const ProgressFeatures = () => {
 						default: "primary",
 						label: "Color",
 						description: "Color scheme of the progress.",
+						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
 					},
 					{
 						name: "size",

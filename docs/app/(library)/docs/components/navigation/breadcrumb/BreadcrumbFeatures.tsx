@@ -68,6 +68,7 @@ export const BreadcrumbFeatures = () => {
 						default: "primary",
 						label: "Color",
 						description: "Controls the color scheme of the breadcrumb items.",
+						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
 					},
 					{
 						name: "size",

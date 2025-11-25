@@ -52,7 +52,7 @@ export const SwitchFeatures = () => {
 						default: "primary",
 						label: "Color",
 						description: "Controls the color of the switch when active.",
-						values: ["primary", "secondary", "success", "danger", "warning", "info", "neutral"],
+						values: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
 					},
 					{
 						name: "variant",

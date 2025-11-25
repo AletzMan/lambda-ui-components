@@ -40,6 +40,7 @@ export const AlertFeatures = () => {
 						default: "primary",
 						label: "Color",
 						description: "Controls the color scheme of the alert.",
+						values: ["neutral", "primary", "secondary", "success", "warning", "danger", "info"],
 					},
 					{
 						name: "variant",

@@ -33,6 +33,15 @@ export const InputFeatures = () => {
 						description: "Defines the input label.",
 					},
 					{
+						name: "color",
+						type: "color",
+						defaultValue: "primary",
+						default: "primary",
+						label: "Color",
+						description: "Controls the color of the switch when active.",
+						values: ["neutral", "primary", "secondary", "success", "danger", "warning", "info"],
+					},
+					{
 						name: "variant",
 						type: "radio",
 						defaultValue: "outline",
