@@ -139,7 +139,7 @@ export default async function PaginationPage(params: {
 			title="Pagination"
 			description="Pagination component allows users to navigate through a set of pages."
 			buttonLeft={{ href: "/docs/components/navigation/navigation-menu", text: "Navigation Menu" }}
-			buttonRight={{ href: "/docs/components/feedback/alert", text: "Alert" }}
+			buttonRight={{ href: "/docs/components/feedback/stepper", text: "Stepper" }}
 			menuData={dataFeatures}
 		>
 			<PaginationFeatures />
