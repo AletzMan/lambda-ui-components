@@ -62,15 +62,6 @@ interface ComponentType {
 	name?: string;
 }
 
-const colorOptions = [
-	{ value: "neutral", color: "bg-(--neutral-base-color)" },
-	{ value: "primary", color: "bg-(--primary-base-color)" },
-	{ value: "secondary", color: "bg-(--secondary-base-color)" },
-	{ value: "success", color: "bg-(--success-base-color)" },
-	{ value: "danger", color: "bg-(--danger-base-color)" },
-	{ value: "warning", color: "bg-(--warning-base-color)" },
-	{ value: "info", color: "bg-(--info-base-color)" },
-];
 
 /**
  * Reducer para gestionar el estado de las props de un componente.
@@ -799,23 +790,27 @@ const ControlItem: React.FC<{
 				return (
 					<div className="flex flex-col items-start gap-2">
 						<div className="flex flex-wrap gap-2 w-full" id={controlId} role="radiogroup" aria-describedby={config.description ? descriptionId : undefined}>
-							{colorOptions.map((option) => (
+							{config.values?.map((option) => (
 								<Tooltip
-									content={option.value.charAt(0).toUpperCase() + option.value.slice(1)}
-									key={option.value}
+									content={option.charAt(0).toUpperCase() + option.slice(1)}
+									key={option}
 									color="neutral"
 								>
 									<button
 										type="button"
 										role="radio"
-										aria-checked={option.value === currentValue}
+										aria-checked={option === currentValue}
 										className={
-											option.value === currentValue
-												? `${option.color} text-(--foreground-color) size-6 rounded-xs ring-2 ring-offset-1 ring-(--foreground-color)`
-												: `${option.color} text-(--foreground-color) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
+											option === currentValue
+												? option === "default"
+													? `bg-(--surface-d) size-6 rounded-xs ring-2 ring-offset-1 ring-(--foreground-color)`
+													: `bg-(--${option}-base-color) size-6 rounded-xs ring-2 ring-offset-1 ring-(--foreground-color)`
+												: option === "default"
+													? `bg-(--surface-d) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
+													: `bg-(--${option}-base-color) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
 										}
-										onClick={() => onChange(config.name, option.value)}
-										aria-label={option.value}
+										onClick={() => onChange(config.name, option)}
+										aria-label={option}
 									></button>
 								</Tooltip>
 							))}
