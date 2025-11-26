@@ -33,8 +33,8 @@ export interface UseThemeProps {
 
 export type Attribute = DataAttribute | "class";
 
-export type LightTheme = "light" | "retro" | "lavender" | "mint";
-export type DarkTheme = "dark" | "slate" | "deep-cosmic-night" | "soft-obsidian" | "graphite";
+export type LightTheme = "light" | "retro" | "lavender" | "mint" | "sunset" | "ocean";
+export type DarkTheme = "dark" | "slate" | "deep-cosmic-night" | "soft-obsidian" | "graphite" | "midnight";
 export type AllThemes = LightTheme | DarkTheme | "system";
 
 export type LambdaColor =
