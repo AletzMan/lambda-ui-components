@@ -17,16 +17,17 @@ import {
     Ghost,
 } from "lucide-react";
 import { Button } from "../Button/Button";
+import { Divider } from "../Divider/Divider";
 
 export interface SwitchThemeProps {
     variant?: "solid" | "soft" | "subtle" | "text";
-    size?: "small" | "medium" | "large";
+    size?: "tiny" | "small" | "medium" | "large";
     showLabel?: boolean;
 }
 
 export const SwitchTheme: React.FC<SwitchThemeProps> = ({
     variant = "soft",
-    size = "medium",
+    size = "small",
     showLabel = false,
 }) => {
     const { setTheme, theme } = useTheme();
@@ -80,14 +81,12 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
     return (
         <Dropdown
             variant={variant}
-            size={size}
+            size="tiny"
             icon={currentTheme.icon}
             text={showLabel ? currentTheme.label : undefined}
             aria-label="Switch theme"
         >
-            <div style={{ padding: "4px 8px", fontSize: "12px", opacity: 0.7, fontWeight: 600 }}>
-                Light Themes
-            </div>
+            <Divider contentPosition="start" ><span style={{ width: "100%" }}>Light </span></Divider>
             {themes
                 .filter((t) => t.group === "Light Themes")
                 .map((t) => (
@@ -102,17 +101,7 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
                         }}
                     />
                 ))}
-            <div
-                style={{
-                    padding: "4px 8px",
-                    fontSize: "12px",
-                    opacity: 0.7,
-                    fontWeight: 600,
-                    marginTop: "8px",
-                }}
-            >
-                Dark Themes
-            </div>
+            <Divider contentPosition="start" ><span style={{ width: "100%" }}>Dark</span></Divider>
             {themes
                 .filter((t) => t.group === "Dark Themes")
                 .map((t) => (
