@@ -80,7 +80,10 @@ export const ratingItem = cva(styles["lambda-rating-item"], {
 	defaultVariants: {
 		size: "medium",
 		type: "icon",
-		variant: "solid",
+		variant: "solid", 
+		color: "default",
+		current: false, 
+		active: false, 
 	},
 });
 

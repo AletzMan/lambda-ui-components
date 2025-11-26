@@ -78,6 +78,7 @@
 	border: none;
 	display: flex;
 	align-items: center;
+	padding: var(--padding-none);
 	justify-content: center;
 	color: var(--surface-e);
 
@@ -93,16 +94,14 @@
 		font-weight: var(--font-weight-extrabold);
 	}
 
-	&:is(.lambda-rating-item-medium) {
-		width: var(--icon-size-3xl);
+	&:is(.lambda-rating-item-medium) { 
 		height: var(--icon-size-3xl);
 		font-size: var(--font-size-xl);
 		line-height: var(--font-size-xl);
 		font-weight: var(--font-weight-extrabold);
 	}
 
-	&:is(.lambda-rating-item-large) {
-		width: var(--height-button-lg);
+	&:is(.lambda-rating-item-large) { 
 		height: var(--height-button-lg);
 		font-size: var(--font-size-4xl);
 		line-height: var(--font-size-4xl);
