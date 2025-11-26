@@ -358,12 +358,6 @@ export const navigationMenuData = [
 				icon: <Zap />,
 				path: "/docs/components/utilities/hooks",
 			},
-			{
-				id: "motion",
-				label: "Motion & Transitions",
-				icon: <Layers />,
-				path: "/docs/components/utilities/motion",
-			},
 		],
 	},
 
