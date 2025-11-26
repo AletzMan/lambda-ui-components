@@ -18,7 +18,7 @@ export const containerVariants = cva(styles["lambda-table-container"], {
 		},
 	},
 	defaultVariants: {
-		variant: "soft",
+		variant: "bordered",
 		radius: "small",
 	},
 });
@@ -33,7 +33,7 @@ export const containerTableVariants = cva(styles["lambda-table-container-table"]
 		},
 	},
 	defaultVariants: {
-		variant: "soft",
+		variant: "bordered",
 	},
 });
 
@@ -54,7 +54,7 @@ export const tableVariants = cva(styles["lambda-table"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "soft",
+		variant: "bordered",
 	},
 });
 
@@ -75,7 +75,7 @@ export const headerVariants = cva(styles["lambda-table-header"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "soft",
+		variant: "bordered",
 	},
 });
 
@@ -96,7 +96,7 @@ export const headerCellVariants = cva(styles["lambda-table-header-cell"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "soft",
+		variant: "bordered",
 	},
 });
 
@@ -117,7 +117,7 @@ export const bodyVariants = cva(styles["lambda-table-body"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "soft",
+		variant: "bordered",
 	},
 });
 
@@ -142,7 +142,7 @@ export const rowVariants = cva(styles["lambda-table-row"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "soft",
+		variant: "bordered",
 		highlightOnHover: false,
 	},
 });
@@ -169,7 +169,7 @@ export const cellVariants = cva(styles["lambda-table-cell"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "soft",
+		variant: "bordered",
 		align: "left",
 	},
 });

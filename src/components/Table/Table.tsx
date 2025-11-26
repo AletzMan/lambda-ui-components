@@ -32,7 +32,7 @@ const useTableContext = () => {
 // Componente Raíz
 const TableRoot = <T,>({
 	size = "medium",
-	variant = "soft",
+	variant = "bordered",
 	highlightOnHover = false,
 	children,
 	data,
