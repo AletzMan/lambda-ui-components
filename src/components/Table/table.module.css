@@ -288,7 +288,7 @@
 
 	&:is(:last-child) {
 		& .lambda-table-cell {
-			border-bottom: 1px solid var(--surface-a);
+			/*border-bottom: 1px solid var(--surface-a);*/
 		}
 	}
 
