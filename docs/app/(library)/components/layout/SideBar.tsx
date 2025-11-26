@@ -380,6 +380,7 @@ export function SideBar() {
 		>
 			<NavigationMenu
 				data={navigationMenuData}
+				size="small"
 				showLines
 				defaultExpanded={[
 					"overview",
