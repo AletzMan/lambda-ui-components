@@ -9,6 +9,7 @@ export { Badge } from "./components/Badge/Badge";
 export { Breadcrumb } from "./components/Breadcrumb/Breadcrumb";
 export { Button } from "./components/Button/Button";
 export { ButtonTheme } from "./components/ButtonTheme/ButtonTheme";
+export { SwitchTheme } from "./components/SwitchTheme/SwitchTheme";
 export { Calendar } from "./components/Calendar/Calendar";
 export { Card } from "./components/Card/Card";
 export { Carousel } from "./components/Carousel/Carousel";
