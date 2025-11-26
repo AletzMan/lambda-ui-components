@@ -657,15 +657,50 @@ const ControlItem: React.FC<{
 				);
 			case "array-string":
 				return (
-					<Input
-						id={controlId}
-						type="text"
-						size="tiny"
-						color="neutral"
-						value={String(currentValue ?? "")}
-						onChangeValue={(e) => onChange(config.name, e)}
-						aria-describedby={config.description ? descriptionId : undefined}
-					/>
+					<div className="flex flex-col gap-2">
+						<div className="flex justify-between items-center">
+							<span className="text-sm font-medium text-(--foreground-color)">{config.label || config.name}</span>
+							<Button
+								size="tiny"
+								variant="text"
+								onClick={() => {
+									const newValue = [...(Array.isArray(currentValue) ? currentValue : []), "Item"];
+									onChange(config.name, newValue);
+								}}
+							>
+								<Plus size={14} />
+							</Button>
+						</div>
+						{(Array.isArray(currentValue) ? currentValue : []).map((val: any, index: number) => (
+							<div key={index} className="flex items-center gap-2">
+								<Input
+									id={`${controlId}-${index}`}
+									type="text"
+									size="tiny"
+									color="neutral"
+									value={String(val)}
+									onChangeValue={(e) => {
+										const newValue = [...(currentValue as string[])];
+										newValue[index] = String(e);
+										onChange(config.name, newValue);
+									}}
+									aria-describedby={config.description ? descriptionId : undefined}
+								/>
+								<Button
+									size="tiny"
+									variant="text"
+									color="danger"
+									onClick={() => {
+										const newValue = [...(currentValue as string[])];
+										newValue.splice(index, 1);
+										onChange(config.name, newValue);
+									}}
+								>
+									<X size={14} />
+								</Button>
+							</div>
+						))}
+					</div>
 				);
 			case "array-object":
 				return (
@@ -811,9 +846,9 @@ const ControlItem: React.FC<{
 										<button
 											type="button"
 											role="radio"
-											aria-checked={value.includes(currentValue)}
+											aria-checked={key.includes(currentValue)}
 											className={
-												value.includes(currentValue)
+												key.includes(currentValue)
 													? `${value} size-6 rounded-xs outline-2 outline-(--foreground-color) outline-offset-2`
 													: `${value} opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
 											}
