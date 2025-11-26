@@ -5,8 +5,8 @@ let origPushState: History["pushState"];
 let origReplaceState: History["replaceState"];
 
 export function usePathObserver() {
-	const [path, setPath] = useState("");
 	const getPath = () => (typeof window !== "undefined" ? window.location.pathname : "");
+	const [path, setPath] = useState(getPath);
 
 	useEffect(() => {
 		if (!isPatched && typeof window !== "undefined") {
@@ -25,6 +25,9 @@ export function usePathObserver() {
 			});
 			isPatched = true;
 		}
+
+		// Set initial path on mount
+		setPath(getPath());
 
 		const onChange = () => setPath(getPath());
 		window.addEventListener("popstate", onChange);
