@@ -2,7 +2,7 @@
 import PropertyLayout from "../../components/PropertyLayout";
 import PlaygroundLayout from "../../components/PlaygroundLayout";
 import { Badge, Button } from "lambda-ui-components";
-import { Bell, Mail, ShoppingCart } from "lucide-react";
+import { Bell, Mail } from "lucide-react";
 
 export const BadgeFeatures = () => {
 	return (

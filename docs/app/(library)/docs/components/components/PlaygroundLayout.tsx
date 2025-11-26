@@ -17,6 +17,17 @@ import {
 	DatePicker,
 } from "lambda-ui-components";
 
+const colors = {
+	default: "bg-(--surface-d)",
+	neutral: "bg-(--neutral-base-color)",
+	primary: "bg-(--primary-base-color)",
+	secondary: "bg-(--secondary-base-color)",
+	success: "bg-(--success-base-color)",
+	warning: "bg-(--warning-base-color)",
+	danger: "bg-(--danger-base-color)",
+	info: "bg-(--info-base-color)",
+}
+
 export interface PropConfig {
 	name: string;
 	type: "boolean" | "boolean-inverted" | "string" | "number" | "array-number" | "array-string" | "array-object" | "array-reactnode" | "select" | "slider" | "radio" | "checkbox" | "color" | "date" | "object" | "";
@@ -790,29 +801,27 @@ const ControlItem: React.FC<{
 				return (
 					<div className="flex flex-col items-start gap-2">
 						<div className="flex flex-wrap gap-2 w-full" id={controlId} role="radiogroup" aria-describedby={config.description ? descriptionId : undefined}>
-							{config.values?.map((option) => (
-								<Tooltip
-									content={option.charAt(0).toUpperCase() + option.slice(1)}
-									key={option}
-									color="neutral"
-								>
-									<button
-										type="button"
-										role="radio"
-										aria-checked={option === currentValue}
-										className={
-											option === currentValue
-												? option === "default"
-													? `bg-(--surface-d) size-6 rounded-xs ring-2 ring-offset-1 ring-(--foreground-color)`
-													: `bg-(--${option}-base-color) size-6 rounded-xs ring-2 ring-offset-1 ring-(--foreground-color)`
-												: option === "default"
-													? `bg-(--surface-d) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
-													: `bg-(--${option}-base-color) opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
-										}
-										onClick={() => onChange(config.name, option)}
-										aria-label={option}
-									></button>
-								</Tooltip>
+							{Object.entries(colors).map(([key, value], indexColor) => ( // <-- Cambio clave: Usamos ( en lugar de {
+								config.values?.includes(key) ? (
+									<Tooltip
+										content={key.charAt(0).toUpperCase() + key.slice(1)}
+										key={key} // La key debe estar en el elemento raíz del return
+										color="neutral"
+									>
+										<button
+											type="button"
+											role="radio"
+											aria-checked={value.includes(currentValue)}
+											className={
+												value.includes(currentValue)
+													? `${value} size-6 rounded-xs outline-2 outline-(--foreground-color) outline-offset-2`
+													: `${value} opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
+											}
+											onClick={() => onChange(config.name, key)}
+											aria-label={key}
+										></button>
+									</Tooltip>
+								) : null
 							))}
 						</div>
 					</div>
