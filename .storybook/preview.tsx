@@ -11,7 +11,7 @@ import { create } from "storybook/theming";
 //const themesDark = ["dark", "slate"];
 //const themesLight = ["light", "retro"];
 
-const ThemeDecorator = (Story, context) => {
+const ThemeDecorator = (Story: any, context: any) => {
 	const theme = context.globals.theme || "dark";
 
 	useEffect(() => {
@@ -65,6 +65,11 @@ const preview: Preview = {
 				dark: "dark",
 				slate: "slate",
 				retro: "retro",
+				"deep-cosmic-night": "deep-cosmic-night",
+				"soft-obsidian": "soft-obsidian",
+				graphite: "graphite",
+				lavender: "lavender",
+				mint: "mint",
 			},
 		}),
 		ThemeDecorator,
