@@ -101,7 +101,24 @@ export default function App() {
 	return (
 		<form className="flex flex-col gap-4">
 			<Join>
-				<InputNumber value={value} onChangeValue={setValue} />
+				<Dropdown icon={<SettingsIcon />} type="button">
+					<Dropdown.Item text="Settings" icon={<SettingsIcon />} />
+					<Dropdown.Item text="Notifications" icon={<BellIcon />} />
+					<Dropdown.Item text="Profile" icon={<UserIcon />} />
+				</Dropdown>
+				<Checkbox label="Checkbox" />
+				<InputNumber label="InputNumber" />
+				<Select
+					placeholder="Select example"
+					label="Select"
+					options={[
+						{ value: "Option 1", label: "Option 1" },
+						{ value: "Option 2", label: "Option 2" },
+						{ value: "Option 3", label: "Option 3" },
+					]}
+				/>
+				<Input label="Input" />
+				<Button label="Button" />
 			</Join>
 		</form>
 	);
@@ -109,7 +126,24 @@ export default function App() {
 			>
 				<form className="flex flex-col gap-4 px-6 py-6">
 					<Join>
-						<InputNumber />
+						<Dropdown icon={<SettingsIcon />} type="button">
+							<Dropdown.Item text="Settings" icon={<SettingsIcon />} />
+							<Dropdown.Item text="Notifications" icon={<BellIcon />} />
+							<Dropdown.Item text="Profile" icon={<UserIcon />} />
+						</Dropdown>
+						<Checkbox label="Checkbox" />
+						<InputNumber label="InputNumber" />
+						<Select
+							placeholder="Select example"
+							label="Select"
+							options={[
+								{ value: "Option 1", label: "Option 1" },
+								{ value: "Option 2", label: "Option 2" },
+								{ value: "Option 3", label: "Option 3" },
+							]}
+						/>
+						<Input label="Input" />
+						<Button label="Button" />
 					</Join>
 				</form>
 			</PropertyLayout>

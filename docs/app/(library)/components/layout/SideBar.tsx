@@ -312,7 +312,12 @@ export const navigationMenuData = [
 				icon: <Code />,
 				path: "/docs/components/data-display/code-block",
 			},
-
+			{
+				id: "rating",
+				label: "Rating",
+				icon: <Star />,
+				path: "/docs/components/data-display/rating",
+			},
 			{
 				id: "table",
 				label: "Table",
@@ -325,12 +330,6 @@ export const navigationMenuData = [
 				label: "Tree View",
 				icon: <ListTree />,
 				path: "/docs/components/data-display/tree-view",
-			},
-			{
-				id: "rating",
-				label: "Rating",
-				icon: <Star />,
-				path: "/docs/components/data-display/rating",
 			},
 		],
 	},

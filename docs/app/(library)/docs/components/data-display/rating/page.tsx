@@ -139,8 +139,8 @@ export default async function TagPage(params: {
 		<ComponentsLayout
 			title="Tag"
 			description="Tag component for categorizing and labeling content with various styles and interactive features."
-			buttonLeft={{ href: "/docs/components/data-display/table", text: "Table" }}
-			buttonRight={{ href: "/docs/components/data-display/tree-view", text: "Tree View" }}
+			buttonLeft={{ href: "/docs/components/data-display/code-block", text: "CodeBlock" }}
+			buttonRight={{ href: "/docs/components/data-display/table", text: "Table" }}
 			menuData={dataFeatures}
 		>
 			<RatingFeatures />

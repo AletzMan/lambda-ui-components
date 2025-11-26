@@ -160,7 +160,7 @@ export default async function TreeViewPage(params: {
 			title="TreeView"
 			description="TreeView component for displaying hierarchical data, such as file systems or organizational charts."
 			buttonLeft={{ href: "/docs/components/data-display/tag", text: "Tag" }}
-			buttonRight={{ href: "/docs/components/data-display/rating", text: "Rating" }}
+			buttonRight={{ href: "/docs/components/utilities/button-theme", text: "Button Theme" }}
 			menuData={dataFeatures}
 		>
 			<TreeViewFeatures />

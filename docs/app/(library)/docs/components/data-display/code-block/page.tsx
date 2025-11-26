@@ -166,7 +166,7 @@ export default async function CodeBlockPage(params: {
 			title="CodeBlock"
 			description="CodeBlock component for displaying syntax-highlighted code with line numbers, copy functionality, and tabs."
 			buttonLeft={{ href: "/docs/components/data-display/carousel", text: "Carousel" }}
-			buttonRight={{ href: "/docs/components/data-display/table", text: "Table" }}
+			buttonRight={{ href: "/docs/components/data-display/rating", text: "Rating" }}
 			menuData={dataFeatures}
 		>
 			<CodeBlockFeatures />
