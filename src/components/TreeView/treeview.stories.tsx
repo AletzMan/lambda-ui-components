@@ -23,7 +23,7 @@ const meta: Meta<typeof TreeView> = {
 		selectedId: { table: { disable: true } },
 		onNodeSelect: { table: { disable: true } },
 		renderLabel: { table: { disable: true } },
-		size: { control: "inline-radio", options: ["small", "medium", "large"] },
+		size: { control: "inline-radio", options: ["tiny", "small", "medium", "large"] },
 		isDirectory: { control: "boolean" },
 		showLines: { control: "boolean" },
 		styleLines: { control: "inline-radio", options: ["solid", "dashed", "dotted"] },

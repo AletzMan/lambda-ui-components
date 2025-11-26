@@ -19,7 +19,7 @@ export const treeViewVariants = cva(styles["lambda-treeview"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		showLines: false,
 		styleLines: "solid",
 	},
@@ -109,7 +109,7 @@ export const treeViewExpandedIconVariants = cva(styles["lambda-treeview-expanded
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		expanded: false,
 	},
 });
@@ -117,6 +117,7 @@ export const treeViewExpandedIconVariants = cva(styles["lambda-treeview-expanded
 export const treeViewLabelVariants = cva(styles["lambda-treeview-label"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-treeview-label-tiny"],
 			small: styles["lambda-treeview-label-small"],
 			medium: styles["lambda-treeview-label-medium"],
 			large: styles["lambda-treeview-label-large"],
@@ -131,7 +132,7 @@ export const treeViewLabelVariants = cva(styles["lambda-treeview-label"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		selected: false,
 		hasChildren: false,
 	},
@@ -140,13 +141,14 @@ export const treeViewLabelVariants = cva(styles["lambda-treeview-label"], {
 export const treeViewLabelIconVariants = cva(styles["lambda-treeview-label-icon"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-treeview-label-icon-tiny"],
 			small: styles["lambda-treeview-label-icon-small"],
 			medium: styles["lambda-treeview-label-icon-medium"],
 			large: styles["lambda-treeview-label-icon-large"],
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 	},
 });
 
