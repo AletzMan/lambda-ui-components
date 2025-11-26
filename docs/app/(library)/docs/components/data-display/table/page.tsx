@@ -211,7 +211,7 @@ export default async function TablePage(params: {
 			title="Table"
 			description="Table component for displaying tabular data with sorting, pagination, and multiple variants."
 			buttonLeft={{ href: "/docs/components/data-display/code-block", text: "Code Block" }}
-			buttonRight={{ href: "/docs/components/feedback/alert", text: "Alert" }}
+			buttonRight={{ href: "/docs/components/data-display/tag", text: "Tag" }}
 			menuData={dataFeatures}
 		>
 			<TableFeatures />
