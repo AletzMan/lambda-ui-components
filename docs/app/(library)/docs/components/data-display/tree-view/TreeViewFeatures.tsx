@@ -207,7 +207,7 @@ export default function App() {
 	return <TreeView data={data} />;
 }`}
 			>
-				<div className="w-full max-w-sm border border-border rounded-md p-4">
+				<div className="w-full max-w-sm p-4">
 					<TreeView data={treeData} />
 				</div>
 			</PropertyLayout>
@@ -237,7 +237,7 @@ export default function App() {
 	return <TreeView data={data} isDirectory />;
 }`}
 			>
-				<div className="w-full max-w-sm border border-border rounded-md p-4">
+				<div className="w-full max-w-sm p-4">
 					<TreeView data={treeDataDirectory} isDirectory />
 				</div>
 			</PropertyLayout>
@@ -262,7 +262,7 @@ export default function App() {
 	);
 }`}
 			>
-				<div className="w-full max-w-sm border border-border rounded-md p-4">
+				<div className="w-full max-w-sm p-4">
 					<TreeView data={treeData} showLines styleLines="dashed" />
 				</div>
 			</PropertyLayout>
@@ -293,7 +293,7 @@ export default function App() {
 	return <TreeView data={data} />;
 }`}
 			>
-				<div className="w-full max-w-sm border border-border rounded-md p-4">
+				<div className="w-full max-w-sm p-4">
 					<TreeView data={treeDataOrganization} />
 				</div>
 			</PropertyLayout>
@@ -321,7 +321,7 @@ export default function App() {
 	);
 }`}
 			>
-				<div className="w-full max-w-sm border border-border rounded-md p-4">
+				<div className="w-full max-w-sm p-4">
 					{(() => {
 						const [selected, setSelected] = useState<string | undefined>("child-1");
 						return (
@@ -363,7 +363,7 @@ export default function App() {
 	return <TreeView data={data} defaultExpanded={["root", "child-1"]} />;
 }`}
 			>
-				<div className="w-full max-w-sm border border-border rounded-md p-4">
+				<div className="w-full max-w-sm p-4">
 					<TreeView data={treeData} defaultExpanded={["root", "child-1"]} />
 				</div>
 			</PropertyLayout>
@@ -391,7 +391,7 @@ export default function App() {
 	);
 }`}
 			>
-				<div className="w-full max-w-sm border border-border rounded-md p-4">
+				<div className="w-full max-w-sm p-4">
 					<TreeView
 						data={treeData}
 						renderLabel={(node) => (
