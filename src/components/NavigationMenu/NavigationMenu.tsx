@@ -35,6 +35,7 @@ interface NavigationMenuContextValue {
 	toggleNode: (id: string) => void;
 	size?: NavigationMenuVariants["size"];
 	renderLabel?: (node: NavigationMenuData) => React.ReactNode;
+	scrollBehavior?: ScrollLogicalPosition;
 	isDirectory?: boolean;
 	showLines?: NavigationMenuVariants["showLines"];
 	styleLines?: NavigationMenuVariants["styleLines"];
@@ -59,6 +60,7 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 			renderLabel,
 			className,
 			style,
+			scrollBehavior,
 			size,
 			showLines,
 			styleLines,
@@ -106,6 +108,7 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 				size,
 				alwaysOpen,
 				selectedStyle,
+				scrollBehavior,
 				currentPath,
 			}),
 			[
@@ -117,6 +120,7 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 				styleLines,
 				alwaysOpen,
 				selectedStyle,
+				scrollBehavior,
 				currentPath,
 			]
 		);
@@ -148,7 +152,7 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 
 const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 	({ node, level = 0, isLast = false, onNavigate }, ref) => {
-		const { expanded, toggleNode, size, alwaysOpen, selectedStyle, currentPath } =
+		const { expanded, toggleNode, size, alwaysOpen, selectedStyle, currentPath, scrollBehavior } =
 			useNavigationMenuContext();
 		const isExpanded = !!node.children && expanded.has(node.id);
 		let isSelected = node.path && currentPath === node.path;
@@ -166,7 +170,7 @@ const NavigationMenuItem = forwardRef<HTMLDivElement, NavigationMenuItemProps>(
 				setTimeout(() => {
 					itemRef.current?.scrollIntoView({
 						behavior: 'smooth',
-						block: 'center',
+						block: scrollBehavior,
 						inline: 'nearest'
 					});
 				}, 100);

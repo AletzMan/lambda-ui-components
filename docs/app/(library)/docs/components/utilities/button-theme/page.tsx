@@ -107,7 +107,7 @@ export default async function ButtonThemePage(params: {
 			title="ButtonTheme"
 			description="A theme toggle button component with animated icon transitions between light and dark modes."
 			buttonLeft={{ href: "/docs/components/data-display/tree-view", text: "Tree View" }}
-			buttonRight={{ href: "/docs/components/utilities/client-only", text: "Client Only" }}
+			buttonRight={{ href: "/docs/components/utilities/switch-theme", text: "Switch Theme" }}
 			menuData={dataFeatures}
 		>
 			<ButtonThemeFeatures />

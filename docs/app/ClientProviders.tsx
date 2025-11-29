@@ -8,7 +8,7 @@ export function ClientProviders({ children }: { children: React.ReactNode }) {
 				lightTheme="light"
 				darkTheme="dark"
 				disableTransitionOnChange
-				enableColorScheme={false}
+				enableColorScheme={true}
 			>
 				{children}
 			</ThemeProvider>

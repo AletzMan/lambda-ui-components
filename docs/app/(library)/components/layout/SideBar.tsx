@@ -344,7 +344,13 @@ export const navigationMenuData = [
 				id: "button-theme",
 				label: "Button Theme",
 				icon: <Palette />,
-				path: "/docs/components/theming/button-theme",
+				path: "/docs/components/utilities/button-theme",
+			},
+			{
+				id: "switch-theme",
+				label: "Switch Theme",
+				icon: <Palette />,
+				path: "/docs/components/utilities/switch-theme",
 			},
 			{
 				id: "client-only",
@@ -382,6 +388,7 @@ export function SideBar() {
 				data={navigationMenuData}
 				size="small"
 				showLines
+				scrollBehavior="center"
 				defaultExpanded={[
 					"overview",
 					"theming",

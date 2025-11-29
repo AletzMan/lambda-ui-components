@@ -49,7 +49,7 @@ export { TreeView } from "./components/TreeView/TreeView";
 
 //-- PROVIDERS
 export { LambdaConfigProvider } from "./_internal/hooks/translation/LambdaConfigProvider";
-export { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
+export { ThemeProvider, ThemeScript } from "./components/ThemeProvider/ThemeProvider";
 export { NotificationProvider } from "./components/Notification/NotificationProvider";
 
 //-- HOOKS

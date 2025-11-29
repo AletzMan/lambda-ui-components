@@ -4,6 +4,7 @@ import styles from "./navigationMenu.module.css";
 export const navigationMenuVariants = cva(styles["lambda-navigation-menu"], {
 	variants: {
 		size: {
+			tiny: styles["lambda-navigation-menu-tiny"],
 			small: styles["lambda-navigation-menu-small"],
 			medium: styles["lambda-navigation-menu-medium"],
 			large: styles["lambda-navigation-menu-large"],
@@ -23,7 +24,7 @@ export const navigationMenuVariants = cva(styles["lambda-navigation-menu"], {
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		showLines: false,
 		styleLines: "solid",
 		selectedStyle: "highlight",
@@ -102,6 +103,7 @@ export const navigationMenuItemExpandedIconVariants = cva(
 	{
 		variants: {
 			size: {
+				tiny: styles["lambda-navigation-menu-expanded-icon-tiny"],
 				small: styles["lambda-navigation-menu-expanded-icon-small"],
 				medium: styles["lambda-navigation-menu-expanded-icon-medium"],
 				large: styles["lambda-navigation-menu-expanded-icon-large"],
@@ -116,7 +118,7 @@ export const navigationMenuItemExpandedIconVariants = cva(
 			},
 		},
 		defaultVariants: {
-			size: "medium",
+			size: "small",
 			expanded: false,
 			alwaysOpen: false,
 		},
@@ -141,7 +143,7 @@ export const navigationMenuItemLabelVariants = cva(styles["lambda-navigation-men
 		},
 	},
 	defaultVariants: {
-		size: "medium",
+		size: "small",
 		selected: false,
 		hasChildren: false,
 	},
@@ -159,7 +161,7 @@ export const navigationMenuItemLabelIconVariants = cva(
 			},
 		},
 		defaultVariants: {
-			size: "medium",
+			size: "small",
 		},
 	}
 );

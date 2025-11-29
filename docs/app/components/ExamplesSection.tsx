@@ -64,8 +64,7 @@ export function ExamplesSection() {
 				<Slider
 					value={value}
 					radius={"full"}
-					onChange={(value) => setValue(value as number)}
-					onInput={(value) => setValue(value as number)}
+					onChangeValue={(value) => setValue(value as number)}
 				/>
 			),
 			code: `

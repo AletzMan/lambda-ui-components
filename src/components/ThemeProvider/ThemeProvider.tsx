@@ -19,22 +19,29 @@ const systemToTheme = {
 const MEDIA = "(prefers-color-scheme: dark)";
 const ThemeContext = React.createContext<UseThemeProps | undefined>(undefined);
 const defaultContext: UseThemeProps = {
-	setTheme: () => {},
+	setTheme: () => { },
 	themes: [],
 	lightTheme: "light",
 	darkTheme: "dark",
 };
 
-const lightThemes: LightTheme[] = ["light", "retro"];
-const darkThemes: DarkTheme[] = ["dark", "slate"];
+const lightThemes: LightTheme[] = ["light", "retro", "lavender", "mint", "sunset", "ocean"];
+const darkThemes: DarkTheme[] = [
+	"dark",
+	"slate",
+	"deep-cosmic-night",
+	"soft-obsidian",
+	"graphite",
+	"midnight",
+];
 
-const defaultThemes: AllThemes[] = ["light", "dark", "retro", "slate"];
+const defaultThemes: AllThemes[] = [...lightThemes, ...darkThemes];
 
 // --- Utils ---
 const saveToLS = (key: string, value: string) => {
 	try {
 		localStorage.setItem(key, value);
-	} catch {}
+	} catch { }
 };
 
 const getTheme = (key: string, fallback: AllThemes): AllThemes => {
@@ -64,7 +71,7 @@ const getSystemTheme = (
 };
 
 const disableAnimation = (nonce?: string) => {
-	if (typeof document === "undefined") return () => {}; // <-- FIX
+	if (typeof document === "undefined") return () => { }; // <-- FIX
 
 	const css = document.createElement("style");
 	if (nonce) css.setAttribute("nonce", nonce);
@@ -255,6 +262,8 @@ const Theme = ({
 					themes,
 					nonce,
 					scriptProps,
+					lightThemes,
+					darkThemes,
 				}}
 			/>
 			{children}
@@ -275,7 +284,13 @@ export const ThemeScript = React.memo(
 		themes,
 		nonce,
 		scriptProps,
-	}: Omit<ThemeProviderProps, "children"> & { defaultTheme: string }) => {
+		lightThemes,
+		darkThemes,
+	}: Omit<ThemeProviderProps, "children"> & {
+		defaultTheme: string;
+		lightThemes?: string[];
+		darkThemes?: string[];
+	}) => {
 		return (
 			<script
 				{...scriptProps}
@@ -291,6 +306,8 @@ export const ThemeScript = React.memo(
 						value,
 						enableSystem,
 						enableColorScheme,
+						lightThemes,
+						darkThemes,
 					}),
 				}}
 			/>

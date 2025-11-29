@@ -56,6 +56,16 @@ export interface NavigationMenuProps {
 	 */
 	renderLabel?: (node: NavigationMenuData) => ReactNode;
 	/**
+	 * Controls how selected menu items scroll into view within their container.
+	 * - `"center"`: Centers the item (may affect parent scroll containers like body)
+	 * - `"nearest"`: Minimal scroll, only if item is out of view (recommended for nested menus)
+	 * - `"start"`: Aligns item to the top of the container
+	 * - `"end"`: Aligns item to the bottom of the container 
+	 *  
+	 * @default "center"
+	 */
+	scrollBehavior?: ScrollLogicalPosition;
+	/**
 	 * Additional CSS class names.
 	 */
 	className?: string;

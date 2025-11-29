@@ -1,31 +1,129 @@
 "use client";
-import { SectionLayout } from "../../../components/layout/SectionLayout";
 import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
-import { CodeBlock, Divider, Link, } from "lambda-ui-components";
+import { CodeBlock, Divider, Link, NavigationMenuData, } from "lambda-ui-components";
 import { TableProps } from "../../components/components/TableProps";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-bash";
+import { ComponentsLayout } from "../../components/components/ComponentsLayout";
+import { List } from "lucide-react";
+
+const menuData: NavigationMenuData[] = [
+	{
+		id: "on-this-page",
+		label: "On this page",
+		path: "#on-this-page",
+		icon: <List />,
+		children: [
+			{
+				id: "content",
+				label: "Content",
+				path: "#content",
+				target: "_top",
+				children: [
+					{
+						id: "overview",
+						label: "Overview",
+						path: "#overview",
+						target: "_top",
+					},
+					{
+						id: "available-themes",
+						label: "Available Themes",
+						path: "#available-themes",
+						target: "_top",
+					},
+					{
+						id: "setup",
+						label: "Setup",
+						path: "#setup",
+						target: "_top",
+					},
+					{
+						id: "button-theme",
+						label: "Button Theme",
+						path: "#button-theme",
+						target: "_top",
+					},
+					{
+						id: "css-variables",
+						label: "CSS Variables",
+						path: "#css-variables",
+						target: "_top",
+					},
+					{
+						id: "theme-persistence",
+						label: "Theme Persistence",
+						path: "#theme-persistence",
+						target: "_top",
+					},
+					{
+						id: "system-theme",
+						label: "System Theme",
+						path: "#system-theme",
+						target: "_top",
+					},
+					{
+						id: "next-integration",
+						label: "Next.js Integration",
+						path: "#next-integration",
+						target: "_top",
+					},
+					{
+						id: "theme-specific-styling",
+						label: "Theme Specific Styling",
+						path: "#theme-specific-styling",
+						target: "_top",
+					},
+				],
+			},
+			{
+				id: "api-reference",
+				label: "Theme Provider API",
+				children: [
+					{
+						id: "theme-provider-props",
+						label: "Props",
+						path: "#theme-provider-props",
+						target: "_top",
+					},
+				],
+			},
+			{
+				id: "api-reference-button-theme",
+				label: "Button Theme API",
+				children: [
+					{
+						id: "button-theme-props",
+						label: "Props",
+						path: "#button-theme-props",
+						target: "_top",
+					},
+				],
+			},
+		],
+	},
+];
 
 export const themeProviderProps: TableProps[] = [
 	{
 		prop: "defaultTheme",
-		type: '"light" | "dark" | "retro" | "slate" | "system"',
+		type: '"light" | "dark" | "retro" | "slate" | "lavender" | "mint" | "sunset" | "ocean" | "graphite" | "deep-cosmic-night" | "soft-obsidian" | "midnight" | "system"',
 		default: '"system" (if enableSystem is true) or "dark"',
 		typePrimitive: "string",
 		tooltip: "The default theme to use on first load. If set to 'system', it will automatically match the user's system preference.",
 	},
 	{
 		prop: "lightTheme",
-		type: '"light" | "retro"',
+		type: '"light" | "retro" | "lavender" | "mint" | "sunset" | "ocean"',
 		default: '"light"',
 		typePrimitive: "string",
 		tooltip: "The light theme to use when toggling between light and dark modes with ButtonTheme.",
 	},
 	{
 		prop: "darkTheme",
-		type: '"dark" | "slate"',
+		type: '"dark" | "slate" | "graphite" | "deep-cosmic-night" | "soft-obsidian" | "midnight"',
 		default: '"dark"',
 		typePrimitive: "string",
 		tooltip: "The dark theme to use when toggling between light and dark modes with ButtonTheme.",
@@ -112,41 +210,54 @@ export const buttonThemeProps: TableProps[] = [
 	},
 ];
 
+
 export default function ThemePage() {
 	return (
-		<SectionLayout
+		<ComponentsLayout
 			title="Theme"
-			buttonsRight={{ href: "/docs/theming/customization", text: "Customization" }}
-			buttonsLeft={{ href: "/docs/overview/about", text: "About" }}
+			description=""
+			buttonRight={{ href: "/docs/theming/customization", text: "Customization" }}
+			buttonLeft={{ href: "/docs/overview/about", text: "About" }}
+			menuData={menuData}
 		>
 			<article>
-				<SubSectionLayout title="Overview">
+				<SubSectionLayout title="Overview" id="overview">
 					<p>
 						Lambda UI Components features a powerful theming system built on CSS variables,
 						providing flexible and customizable styling for all components. The library includes
-						four built-in themes with automatic dark/light mode support.
+						eight built-in themes (six light themes and two dark themes) with automatic dark/light mode support.
 					</p>
 				</SubSectionLayout>
 
-				<SubSectionLayout title="Available Themes">
-					<p>The library includes four pre-configured themes:</p>
-					<ul className="list-disc list-inside space-y-2 mt-4">
-						<li>
-							<strong>light</strong> - Clean, modern light theme with cyan accents
-						</li>
-						<li>
-							<strong>dark</strong> - Sleek dark theme with teal accents
-						</li>
-						<li>
-							<strong>retro</strong> - Warm, vintage-inspired light theme with orange accents
-						</li>
-						<li>
-							<strong>slate</strong> - Cool, sophisticated dark theme with cyan accents
-						</li>
-					</ul>
+				<SubSectionLayout title="Available Themes" id="available-themes">
+					<p>The library includes eight pre-configured themes:</p>
+					<div className="mt-4 space-y-4">
+						<div>
+							<h4 className="font-semibold text-(--foreground-title-color) mb-2">Light Themes</h4>
+							<ul className="list-disc list-inside space-y-2">
+								<li><strong>light</strong> - Clean, modern light theme with cyan accents</li>
+								<li><strong>retro</strong> - Warm, vintage-inspired theme with orange accents</li>
+								<li><strong>lavender</strong> - Soft & elegant theme with violet and pink accents</li>
+								<li><strong>mint</strong> - Fresh & natural theme with emerald and blue accents</li>
+								<li><strong>sunset</strong> - Energetic & vibrant theme with rose and yellow accents</li>
+								<li><strong>ocean</strong> - Corporate & trustworthy theme with blue and emerald accents</li>
+							</ul>
+						</div>
+						<div>
+							<h4 className="font-semibold text-(--foreground-title-color) mb-2">Dark Themes</h4>
+							<ul className="list-disc list-inside space-y-2">
+								<li><strong>dark</strong> - Sleek dark theme with teal accents</li>
+								<li><strong>slate</strong> - Cool, sophisticated dark theme with cyan accents</li>
+								<li><strong>graphite</strong> - Neutral charcoal dark theme with minimal color saturation</li>
+								<li><strong>deep-cosmic-night</strong> - Deep purple-tinted dark theme with cosmic violet accents</li>
+								<li><strong>soft-obsidian</strong> - Soft blue-black dark theme with muted blue undertones</li>
+								<li><strong>midnight</strong> - Ultra-dark purple theme with deep violet accents</li>
+							</ul>
+						</div>
+					</div>
 				</SubSectionLayout>
 
-				<SubSectionLayout title="Setup">
+				<SubSectionLayout title="Setup" id="setup">
 					<p >
 						To enable theming in your application, wrap your app with the{" "}
 						<code>ThemeProvider</code> component at the root level:
@@ -173,7 +284,7 @@ export default function App({ children }) {
 				</SubSectionLayout>
 
 
-				<SubSectionLayout title="ButtonTheme Component">
+				<SubSectionLayout title="ButtonTheme Component" id="button-theme">
 					<p>
 						The <code>ButtonTheme</code> component provides a pre-built toggle button for
 						switching between light and dark themes:
@@ -197,7 +308,7 @@ function Header() {
 					/>
 				</SubSectionLayout>
 
-				<SubSectionLayout title="CSS Variables">
+				<SubSectionLayout title="CSS Variables" id="css-variables">
 					<p>
 						All themes are built using CSS variables, making them highly customizable. Each
 						theme defines variables for:
@@ -248,7 +359,7 @@ function Header() {
 					/>
 				</SubSectionLayout>
 
-				<SubSectionLayout title="Theme Persistence">
+				<SubSectionLayout title="Theme Persistence" id="theme-persistence">
 					<p>
 						The theme preference is automatically saved to <code>localStorage</code> and
 						persists across sessions. The theme is also synchronized across browser tabs.
@@ -259,7 +370,7 @@ function Header() {
 					</p>
 				</SubSectionLayout>
 
-				<SubSectionLayout title="System Theme Detection">
+				<SubSectionLayout title="System Theme Detection" id="system-theme">
 					<p>
 						When <code>enableSystem</code> is true and the theme is set to{" "}
 						<code>"system"</code>, the library automatically detects and applies the user's
@@ -272,7 +383,7 @@ function Header() {
 					</p>
 				</SubSectionLayout>
 
-				<SubSectionLayout title="Next.js Integration">
+				<SubSectionLayout title="Next.js Integration" id="next-integration">
 					<p>
 						For Next.js applications, wrap your app with <code>ThemeProvider</code> in a
 						client component:
@@ -316,7 +427,7 @@ export default function RootLayout({ children }) {
 					</p>
 				</SubSectionLayout>
 
-				<SubSectionLayout title="Theme-Specific Styling">
+				<SubSectionLayout title="Theme-Specific Styling" id="theme-specific-styling">
 					<p>
 						You can apply styles conditionally based on the active theme using the{" "}
 						<code>data-theme</code> attribute selector:
@@ -351,18 +462,18 @@ export default function RootLayout({ children }) {
 					props={themeProviderProps}
 					title="ThemeProvider API"
 					subtitle="Props"
-					id="theme-provider-api"
+					id="theme-provider-props"
 				/>
 				<Divider spacing={50} variant="dashed" />
 				<TableProps
 					props={buttonThemeProps}
 					title="ButtonTheme API"
 					subtitle="Props"
-					id="button-theme-api"
+					id="button-theme-props"
 				/>
 
 				<Divider spacing={50} variant="dashed" />
 			</article>
-		</SectionLayout>
+		</ComponentsLayout>
 	);
 }

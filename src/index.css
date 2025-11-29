@@ -2446,7 +2446,7 @@ textarea {
 .button-docs:hover {
 	background-position: 100%;
 }
- 
+ /*
 html[data-theme="light"] {
 	background-color: oklch(94.5% 0 0);
 	color-scheme: light;
@@ -2506,3 +2506,4 @@ html[data-theme="midnight"] {
 	background-color: oklch(10% 0.02 270);
 	color-scheme: dark;
 }
+*/

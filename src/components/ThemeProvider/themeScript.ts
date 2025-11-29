@@ -9,7 +9,9 @@ export const script = ({
 	value = {},
 	enableSystem,
 	enableColorScheme,
-}: ThemeProviderProps) => {
+	lightThemes = [],
+	darkThemes = [],
+}: ThemeProviderProps & { lightThemes?: string[]; darkThemes?: string[] }) => {
 	const attributes = Array.isArray(attribute) ? attribute : [attribute];
 
 	return `
@@ -21,7 +23,8 @@ export const script = ({
     var themes = ${JSON.stringify(themes)};
     var value = ${JSON.stringify(value)};
     var enableColorScheme = ${enableColorScheme ? "true" : "false"};
-    var systemThemes = ["light", "dark"];
+    var lightThemes = ${JSON.stringify(lightThemes)};
+    var darkThemes = ${JSON.stringify(darkThemes)};
 
     attributes.forEach(function(attr) {
       var isClass = attr === "class";
@@ -34,8 +37,12 @@ export const script = ({
       }
     });
 
-    if (enableColorScheme && systemThemes.includes(theme)) {
-      el.style.colorScheme = theme;
+    if (enableColorScheme) {
+      if (lightThemes.includes(theme)) {
+        el.style.colorScheme = "light";
+      } else if (darkThemes.includes(theme)) {
+        el.style.colorScheme = "dark";
+      }
     }
   }
 

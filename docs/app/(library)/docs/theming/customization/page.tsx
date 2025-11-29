@@ -1,70 +1,175 @@
 "use client";
-import { SectionLayout } from "../../../components/layout/SectionLayout";
 import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
-import { CodeBlock, Divider } from "lambda-ui-components";
+import { CodeBlock, Divider, NavigationMenuData } from "lambda-ui-components";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-css";
+import { ComponentsLayout } from "../../components/components/ComponentsLayout";
+import { List } from "lucide-react";
+
+const menuData: NavigationMenuData[] = [
+    {
+        id: "on-this-page",
+        label: "On this page",
+        path: "#on-this-page",
+        icon: <List />,
+        children: [
+            {
+                id: "content",
+                label: "Content",
+                path: "#content",
+                target: "_top",
+                children: [
+                    {
+                        id: "overview",
+                        label: "Overview",
+                        path: "#overview",
+                        target: "_top",
+                    },
+                    {
+                        id: "css-variables",
+                        label: "CSS Variables",
+                        path: "#css-variables",
+                        target: "_top",
+                    },
+                    {
+                        id: "basic-customization",
+                        label: "Basic Customization",
+                        path: "#basic-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "theme-specific-customization",
+                        label: "Theme-Specific Customization",
+                        path: "#theme-specific-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "color-customization",
+                        label: "Color Customization",
+                        path: "#color-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "typography-customization",
+                        label: "Typography Customization",
+                        path: "#typography-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "spacing-customization",
+                        label: "Spacing Customization",
+                        path: "#spacing-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "border-customization",
+                        label: "Border Customization",
+                        path: "#border-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "component-size-customization",
+                        label: "Component Size Customization",
+                        path: "#component-size-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "creating-custom-themes",
+                        label: "Creating Custom Themes",
+                        path: "#creating-custom-themes",
+                        target: "_top",
+                    },
+                    {
+                        id: "component-specific-customization",
+                        label: "Component Specific Customization",
+                        path: "#component-specific-customization",
+                        target: "_top",
+                    },
+                    {
+                        id: "using-css-in-js",
+                        label: "Using CSS-in-JS",
+                        path: "#using-css-in-js",
+                        target: "_top",
+                    },
+                    {
+                        id: "best-practices",
+                        label: "Best Practices",
+                        path: "#best-practices",
+                        target: "_top",
+                    },
+                    {
+                        id: "complete-example",
+                        label: "Complete Example",
+                        path: "#complete-example",
+                        target: "_top",
+                    },
+                ],
+            },
+        ],
+    },
+];
 
 export default function CustomizationPage() {
-	return (
-		<SectionLayout
-			title="Customization"
-			buttonsLeft={{ href: "/docs/theming/theme", text: "Theme" }}
-			buttonsRight={{ href: "/docs/theming/dark-mode", text: "Dark Mode" }}
-		>
-			<article>
-				<SubSectionLayout title="Overview">
-					<p>
-						Lambda UI Components is built on a comprehensive CSS variable system that allows you
-						to customize every aspect of your application's appearance. You can override default
-						values, create custom themes, or fine-tune individual components to match your brand.
-					</p>
-				</SubSectionLayout>
+    return (
+        <ComponentsLayout
+            title="Customization"
+            buttonLeft={{ href: "/docs/theming/theme", text: "Theme" }}
+            buttonRight={{ href: "/docs/theming/dark-mode", text: "Dark Mode" }}
+            menuData={menuData}
+        >
+            <article>
+                <SubSectionLayout title="Overview" id="overview">
+                    <p>
+                        Lambda UI Components is built on a comprehensive CSS variable system that allows you
+                        to customize every aspect of your application's appearance. You can override default
+                        values, create custom themes, or fine-tune individual components to match your brand.
+                    </p>
+                </SubSectionLayout>
 
-				<SubSectionLayout title="CSS Variables Structure">
-					<p>
-						All styling in Lambda UI Components is controlled through CSS variables defined in
-						the <code>:root</code> selector and theme-specific selectors like{" "}
-						<code>[data-theme="light"]</code>. This makes customization straightforward and
-						predictable.
-					</p>
-					<p className="mt-4">The CSS variables are organized into several categories:</p>
-					<ul className="list-disc list-inside space-y-2 mt-4">
-						<li>
-							<strong>Base Colors</strong> - Lambda color palette with shades from 050 to 950
-						</li>
-						<li>
-							<strong>Theme Colors</strong> - Background, foreground, surfaces, borders, shadows
-						</li>
-						<li>
-							<strong>Accent Colors</strong> - Primary, secondary, neutral, success, danger,
-							warning, info
-						</li>
-						<li>
-							<strong>Typography</strong> - Font families, sizes, weights
-						</li>
-						<li>
-							<strong>Spacing</strong> - Padding, gaps, margins
-						</li>
-						<li>
-							<strong>Borders</strong> - Radius, widths
-						</li>
-						<li>
-							<strong>Component Sizes</strong> - Buttons, inputs, icons, badges, cards, etc.
-						</li>
-					</ul>
-				</SubSectionLayout>
+                <SubSectionLayout title="CSS Variables Structure" id="css-variables">
+                    <p>
+                        All styling in Lambda UI Components is controlled through CSS variables defined in
+                        the <code>:root</code> selector and theme-specific selectors like{" "}
+                        <code>[data-theme="light"]</code>. This makes customization straightforward and
+                        predictable.
+                    </p>
+                    <p className="mt-4">The CSS variables are organized into several categories:</p>
+                    <ul className="list-disc list-inside space-y-2 mt-4">
+                        <li>
+                            <strong>Base Colors</strong> - Lambda color palette with shades from 050 to 950
+                        </li>
+                        <li>
+                            <strong>Theme Colors</strong> - Background, foreground, surfaces, borders, shadows
+                        </li>
+                        <li>
+                            <strong>Accent Colors</strong> - Primary, secondary, neutral, success, danger,
+                            warning, info
+                        </li>
+                        <li>
+                            <strong>Typography</strong> - Font families, sizes, weights
+                        </li>
+                        <li>
+                            <strong>Spacing</strong> - Padding, gaps, margins
+                        </li>
+                        <li>
+                            <strong>Borders</strong> - Radius, widths
+                        </li>
+                        <li>
+                            <strong>Component Sizes</strong> - Buttons, inputs, icons, badges, cards, etc.
+                        </li>
+                    </ul>
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Basic Customization">
-					<p>
-						The simplest way to customize Lambda UI Components is to override CSS variables in
-						your global stylesheet:
-					</p>
-					<CodeBlock
-						language="css"
-						code={`/* Override global variables */
+                <SubSectionLayout title="Basic Customization" id="basic-customization">
+                    <p>
+                        The simplest way to customize Lambda UI Components is to override CSS variables in
+                        your global stylesheet:
+                    </p>
+                    <CodeBlock
+                        language="css"
+                        code={`/* Override global variables */
 :root {
   /* Change the primary color */
   --primary-base-color: #3b82f6;
@@ -82,17 +187,17 @@ export default function CustomizationPage() {
   --font-family: "Inter", sans-serif;
   --font-size-md: 1.125rem;
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Theme-Specific Customization">
-					<p>
-						You can customize variables for specific themes by targeting the theme attribute
-						selector:
-					</p>
-					<CodeBlock
-						language="css"
-						code={`/* Customize only the light theme */
+                <SubSectionLayout title="Theme-Specific Customization" id="theme-specific-customization">
+                    <p>
+                        You can customize variables for specific themes by targeting the theme attribute
+                        selector:
+                    </p>
+                    <CodeBlock
+                        language="css"
+                        code={`/* Customize only the light theme */
 [data-theme="light"] {
   --background-color: #f8f9fa;
   --foreground-color: #212529;
@@ -117,16 +222,16 @@ export default function CustomizationPage() {
   --primary-base-color: #06b6d4;
   --background-color: #0f172a;
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Color Customization">
-					<p>
-						Each color in Lambda UI Components has multiple variants for different use cases:
-					</p>
-					<CodeBlock
-						language="css"
-						code={`/* Primary color variants */
+                <SubSectionLayout title="Color Customization" id="color-customization">
+                    <p>
+                        Each color in Lambda UI Components has multiple variants for different use cases:
+                    </p>
+                    <CodeBlock
+                        language="css"
+                        code={`/* Primary color variants */
 :root {
   --primary-text-color: /* Text color for primary elements */
   --primary-content-color: /* Content/icon color */
@@ -146,24 +251,24 @@ export default function CustomizationPage() {
 
 /* The same structure applies to: */
 /* --secondary-*, --neutral-*, --success-*, --danger-*, --warning-*, --info-* */`}
-					/>
-					<p className="mt-4">Example of customizing the success color:</p>
-					<CodeBlock
-						language="css"
-						code={`[data-theme="light"] {
+                    />
+                    <p className="mt-4">Example of customizing the success color:</p>
+                    <CodeBlock
+                        language="css"
+                        code={`[data-theme="light"] {
   --success-base-color: #10b981;
   --success-hover-color: #059669;
   --success-text-color: #065f46;
   --success-background-color: #d1fae5;
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Typography Customization">
-					<p>Customize fonts, sizes, and weights across your application:</p>
-					<CodeBlock
-						language="css"
-						code={`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+                <SubSectionLayout title="Typography Customization" id="typography-customization">
+                    <p>Customize fonts, sizes, and weights across your application:</p>
+                    <CodeBlock
+                        language="css"
+                        code={`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   /* Font family */
@@ -193,14 +298,14 @@ export default function CustomizationPage() {
   --font-size-title-lg: 28px;
   --font-size-title-xl: 32px;
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Spacing Customization">
-					<p>Adjust padding and gap values to control spacing throughout your UI:</p>
-					<CodeBlock
-						language="css"
-						code={`:root {
+                <SubSectionLayout title="Spacing Customization" id="spacing-customization">
+                    <p>Adjust padding and gap values to control spacing throughout your UI:</p>
+                    <CodeBlock
+                        language="css"
+                        code={`:root {
   /* Padding scale */
   --padding-none: 0px;
   --padding-3xs: 1px;
@@ -221,14 +326,14 @@ export default function CustomizationPage() {
   --gap-lg: 16px;
   --gap-xl: 24px;
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Border Customization">
-					<p>Control border radius and width across all components:</p>
-					<CodeBlock
-						language="css"
-						code={`:root {
+                <SubSectionLayout title="Border Customization" id="border-customization">
+                    <p>Control border radius and width across all components:</p>
+                    <CodeBlock
+                        language="css"
+                        code={`:root {
   /* Border radius */
   --border-radius-none: 0px;
   --border-radius-xs: 2px;
@@ -247,16 +352,16 @@ export default function CustomizationPage() {
   --border-width-xl: 5px;
   --border-width-2xl: 6px;
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Component Size Customization">
-					<p>
-						Lambda UI Components provides size variables for consistent component dimensions:
-					</p>
-					<CodeBlock
-						language="css"
-						code={`:root {
+                <SubSectionLayout title="Component Size Customization" id="component-size-customization">
+                    <p>
+                        Lambda UI Components provides size variables for consistent component dimensions:
+                    </p>
+                    <CodeBlock
+                        language="css"
+                        code={`:root {
   /* Button heights */
   --height-button-2xs: 1.125rem; /* 18px */
   --height-button-xs: 1.5rem;    /* 24px */
@@ -282,17 +387,17 @@ export default function CustomizationPage() {
   --badge-size-md: 1rem;     /* 16px */
   --badge-size-lg: 1.25rem;  /* 20px */
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Creating a Custom Theme">
-					<p>
-						You can create entirely custom themes by defining a new data-theme attribute with
-						all necessary variables:
-					</p>
-					<CodeBlock
-						language="css"
-						code={`/* Custom "ocean" theme */
+                <SubSectionLayout title="Creating a Custom Theme" id="creating-custom-themes">
+                    <p>
+                        You can create entirely custom themes by defining a new data-theme attribute with
+                        all necessary variables:
+                    </p>
+                    <CodeBlock
+                        language="css"
+                        code={`/* Custom "ocean" theme */
 [data-theme="ocean"] {
   /* Base colors */
   --background-color: #0a192f;
@@ -325,11 +430,11 @@ export default function CustomizationPage() {
   
   /* ... add all other required variables */
 }`}
-					/>
-					<p className="mt-4">Then register your custom theme in the ThemeProvider:</p>
-					<CodeBlock
-						language="tsx"
-						code={`import { ThemeProvider } from "lambda-ui-components";
+                    />
+                    <p className="mt-4">Then register your custom theme in the ThemeProvider:</p>
+                    <CodeBlock
+                        language="tsx"
+                        code={`import { ThemeProvider } from "lambda-ui-components";
 
 export default function App({ children }) {
   return (
@@ -341,17 +446,17 @@ export default function App({ children }) {
     </ThemeProvider>
   );
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Component-Specific Customization">
-					<p>
-						You can target specific components by using their class names or creating custom
-						variants:
-					</p>
-					<CodeBlock
-						language="css"
-						code={`/* Customize all buttons */
+                <SubSectionLayout title="Component-Specific Customization" id="component-specific-customization">
+                    <p>
+                        You can target specific components by using their class names or creating custom
+                        variants:
+                    </p>
+                    <CodeBlock
+                        language="css"
+                        code={`/* Customize all buttons */
 .button {
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
@@ -373,16 +478,16 @@ export default function App({ children }) {
   border-color: var(--primary-base-color);
   box-shadow: 0 0 0 3px var(--primary-opacity-color);
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Using CSS-in-JS">
-					<p>
-						If you prefer CSS-in-JS, you can access CSS variables in your styled components:
-					</p>
-					<CodeBlock
-						language="tsx"
-						code={`import styled from 'styled-components';
+                <SubSectionLayout title="Using CSS-in-JS" id="using-css-in-js">
+                    <p>
+                        If you prefer CSS-in-JS, you can access CSS variables in your styled components:
+                    </p>
+                    <CodeBlock
+                        language="tsx"
+                        code={`import styled from 'styled-components';
 
 const CustomButton = styled.button\`
   background-color: var(--primary-base-color);
@@ -405,43 +510,43 @@ const CustomButton = styled.button\`
     transform: translateY(0);
   }
 \`;`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Best Practices">
-					<ul className="list-disc list-inside space-y-2">
-						<li>
-							<strong>Use semantic variables</strong> - Prefer theme-aware variables like{" "}
-							<code>--background-color</code> over hardcoded colors
-						</li>
-						<li>
-							<strong>Maintain consistency</strong> - Use the spacing and sizing scales
-							consistently across your custom components
-						</li>
-						<li>
-							<strong>Test all themes</strong> - Ensure your customizations work well with all
-							available themes
-						</li>
-						<li>
-							<strong>Respect accessibility</strong> - Maintain sufficient color contrast ratios
-							when customizing colors
-						</li>
-						<li>
-							<strong>Document your changes</strong> - Keep track of which variables you've
-							overridden for easier maintenance
-						</li>
-						<li>
-							<strong>Use fallbacks</strong> - Provide fallback values for critical variables in
-							case they're not defined
-						</li>
-					</ul>
-				</SubSectionLayout>
+                <SubSectionLayout title="Best Practices" id="best-practices">
+                    <ul className="list-disc list-inside space-y-2">
+                        <li>
+                            <strong>Use semantic variables</strong> - Prefer theme-aware variables like{" "}
+                            <code>--background-color</code> over hardcoded colors
+                        </li>
+                        <li>
+                            <strong>Maintain consistency</strong> - Use the spacing and sizing scales
+                            consistently across your custom components
+                        </li>
+                        <li>
+                            <strong>Test all themes</strong> - Ensure your customizations work well with all
+                            available themes
+                        </li>
+                        <li>
+                            <strong>Respect accessibility</strong> - Maintain sufficient color contrast ratios
+                            when customizing colors
+                        </li>
+                        <li>
+                            <strong>Document your changes</strong> - Keep track of which variables you've
+                            overridden for easier maintenance
+                        </li>
+                        <li>
+                            <strong>Use fallbacks</strong> - Provide fallback values for critical variables in
+                            case they're not defined
+                        </li>
+                    </ul>
+                </SubSectionLayout>
 
-				<SubSectionLayout title="Complete Example">
-					<p>Here's a complete example of a custom theme with brand colors:</p>
-					<CodeBlock
-						language="css"
-						code={`/* styles/custom-theme.css */
+                <SubSectionLayout title="Complete Example" id="complete-example">
+                    <p>Here's a complete example of a custom theme with brand colors:</p>
+                    <CodeBlock
+                        language="css"
+                        code={`/* styles/custom-theme.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
@@ -486,11 +591,11 @@ const CustomButton = styled.button\`
   --surface-a: #27272a;
   --surface-b: #3f3f46;
 }`}
-					/>
-				</SubSectionLayout>
+                    />
+                </SubSectionLayout>
 
-				<Divider spacing={50} variant="dashed" />
-			</article>
-		</SectionLayout>
-	);
+                <Divider spacing={50} variant="dashed" />
+            </article>
+        </ComponentsLayout>
+    );
 }

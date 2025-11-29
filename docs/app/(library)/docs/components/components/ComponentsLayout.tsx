@@ -27,6 +27,9 @@ export const ComponentsLayout = ({
 	menuData,
 }: ComponentsLayoutProps) => {
 	const activeId = useActiveSectionObserver({ selectors: "h2", rootMargin: "72px 0px -80% 0px" });
+	const firstItemId = menuData![0].children![0].children![0].id;
+	console.log(activeId);
+	console.log(firstItemId);
 	return (
 		<section className="relative flex flex-col gap-10 px-6 py-4 w-full ">
 			<header className="mb-10 text-center ">
@@ -48,14 +51,15 @@ export const ComponentsLayout = ({
 							<BarNavButton buttonLeft={buttonLeft} buttonRight={buttonRight} />
 							<FooterDocs />
 						</div>
-						<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) max-[1410px]:hidden rounded-sm">
+						<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) max-[1410px]:hidden rounded-sm overflow-y-auto">
 							<NavigationMenu
 								data={menuData}
-								currentPath={"#" + activeId || ""}
-								size="small"
+								currentPath={activeId ? "#" + activeId : "#" + firstItemId}
+								size="tiny"
 								alwaysOpen
 								showLines
 								styleLines="dotted"
+								scrollBehavior="nearest"
 								defaultExpanded={["features", "api-reference"]}
 							/>
 						</aside>

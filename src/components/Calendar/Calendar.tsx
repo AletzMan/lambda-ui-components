@@ -268,7 +268,10 @@ export const Calendar = ({
 									{events
 										?.find((event) => isSameDay(event.date, date!.date))
 										?.label.map((s, i) => (
-											<li className={styles["lambda-calendar-cell-event"]}>
+											<li
+												key={i}
+												className={styles["lambda-calendar-cell-event"]}
+											>
 												<Circle
 													fill={
 														events?.find((event) => isSameDay(event.date, date!.date))?.status[
@@ -276,10 +279,10 @@ export const Calendar = ({
 														] === "success"
 															? "var(--success-base-color)"
 															: events?.find((event) => isSameDay(event.date, date!.date))?.status[
-																	i
-															  ] === "warning"
-															? "var(--warning-base-color)"
-															: "var(--danger-base-color)"
+																i
+															] === "warning"
+																? "var(--warning-base-color)"
+																: "var(--danger-base-color)"
 													}
 													stroke="transparent"
 													size={10}

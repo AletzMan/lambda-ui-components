@@ -1,28 +1,135 @@
 "use client";
-import { SectionLayout } from "../../../components/layout/SectionLayout";
 import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
-import { CodeBlock, Divider, Link } from "lambda-ui-components";
+import { CodeBlock, Divider, Link, NavigationMenuData } from "lambda-ui-components";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-css";
+import { ComponentsLayout } from "../../components/components/ComponentsLayout";
+import { List } from "lucide-react";
+
+const menuData: NavigationMenuData[] = [
+	{
+		id: "on-this-page",
+		label: "On this page",
+		path: "#on-this-page",
+		icon: <List />,
+		children: [
+			{
+				id: "content",
+				label: "Content",
+				path: "#content",
+				target: "_top",
+				children: [
+					{
+						id: "overview",
+						label: "Overview",
+						path: "#overview",
+						target: "_top",
+					},
+					{
+						id: "css-variables",
+						label: "CSS Variables",
+						path: "#css-variables",
+						target: "_top",
+					},
+					{
+						id: "basic-customization",
+						label: "Basic Customization",
+						path: "#basic-customization",
+						target: "_top",
+					},
+					{
+						id: "theme-specific-customization",
+						label: "Theme-Specific Customization",
+						path: "#theme-specific-customization",
+						target: "_top",
+					},
+					{
+						id: "color-customization",
+						label: "Color Customization",
+						path: "#color-customization",
+						target: "_top",
+					},
+					{
+						id: "typography-customization",
+						label: "Typography Customization",
+						path: "#typography-customization",
+						target: "_top",
+					},
+					{
+						id: "spacing-customization",
+						label: "Spacing Customization",
+						path: "#spacing-customization",
+						target: "_top",
+					},
+					{
+						id: "border-customization",
+						label: "Border Customization",
+						path: "#border-customization",
+						target: "_top",
+					},
+					{
+						id: "component-size-customization",
+						label: "Component Size Customization",
+						path: "#component-size-customization",
+						target: "_top",
+					},
+					{
+						id: "creating-custom-themes",
+						label: "Creating Custom Themes",
+						path: "#creating-custom-themes",
+						target: "_top",
+					},
+					{
+						id: "component-specific-customization",
+						label: "Component Specific Customization",
+						path: "#component-specific-customization",
+						target: "_top",
+					},
+					{
+						id: "using-css-in-js",
+						label: "Using CSS-in-JS",
+						path: "#using-css-in-js",
+						target: "_top",
+					},
+					{
+						id: "best-practices",
+						label: "Best Practices",
+						path: "#best-practices",
+						target: "_top",
+					},
+					{
+						id: "complete-example",
+						label: "Complete Example",
+						path: "#complete-example",
+						target: "_top",
+					},
+				],
+			},
+		],
+	},
+];
 
 export default function DarkModePage() {
 	return (
-		<SectionLayout
+		<ComponentsLayout
 			title="Dark Mode"
-			buttonsLeft={{ href: "/docs/theming/customization", text: "Customization" }}
-			buttonsRight={{ href: "/docs/components/forms/checkbox", text: "Checkbox" }}
+			buttonLeft={{ href: "/docs/theming/customization", text: "Customization" }}
+			buttonRight={{ href: "/docs/components/forms/checkbox", text: "Checkbox" }}
+			menuData={menuData}
 		>
 			<article>
 				<SubSectionLayout title="Overview">
-					<p>
+					<p className="mt-4 max-w-[90ch]">
 						Lambda UI Components provides built-in dark mode support with two dark themes:{" "}
-						<strong>dark</strong> and <strong>slate</strong>. Dark mode can be enabled
-						automatically based on system preferences, manually toggled by users, or forced for
-						specific pages.
+						<strong>dark</strong>, <strong>slate</strong>, <strong>graphite</strong>,{" "}
+						<strong>deep-cosmic-night</strong>, <strong>soft-obsidian</strong>,{" "}
+						<strong>midnight</strong>. The library also includes six light themes (light, retro,
+						lavender, mint, sunset, ocean). Dark mode can be enabled automatically based on
+						system preferences, manually toggled by users, or forced for specific pages.
 					</p>
-					<p className="mt-4">
+					<p className="mt-4 max-w-[90ch]">
 						The dark mode implementation is powered by the <code>ThemeProvider</code> component
 						and uses CSS variables to ensure smooth transitions and consistent styling across all
 						components.
@@ -416,6 +523,6 @@ export default function App({ children }) {
 
 				<Divider spacing={50} variant="dashed" />
 			</article>
-		</SectionLayout>
+		</ComponentsLayout>
 	);
 }
