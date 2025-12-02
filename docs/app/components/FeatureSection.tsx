@@ -52,6 +52,12 @@ export function FeatureSection() {
 			color: "text-blue-500",
 			icon: Code2,
 		},
+		{
+			title: "Multiple Themes",
+			description: "Choose from a variety of pre-built themes or create your own.",
+			color: "text-pink-500",
+			icon: Sliders,
+		},
 	];
 	return (
 		<Flex className="flex w-full max-[839px]:w-full max-[839px]:justify-center justify-center px-14 py-16">
