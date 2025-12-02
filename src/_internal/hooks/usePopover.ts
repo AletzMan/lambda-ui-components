@@ -28,9 +28,11 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
 		if (isOpen && triggerRef.current && contentRef.current) {
 			const rect = triggerRef.current.getBoundingClientRect();
 			const pickerHeight = contentRef.current.clientHeight;
+			const pickerWidth = contentRef.current.clientWidth; // Obtener ancho del popover
 			const spaceBelow = window.innerHeight - rect.bottom;
 			const spaceAbove = rect.top;
 
+			// --- Vertical Positioning ---
 			let top = rect.bottom + (offset?.y || 0);
 			let position: "below" | "above" = "below";
 			if (spaceBelow < pickerHeight && spaceAbove > pickerHeight) {
@@ -38,8 +40,23 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
 				position = "above";
 			}
 
+			// --- Horizontal Positioning ---
+			let left = rect.left + (offset?.x || 0);
+			const spaceRight = window.innerWidth - left;
+
+			// Si no cabe a la derecha (overflow), intentamos alinear a la derecha del trigger
+			if (spaceRight < pickerWidth) {
+				// Calcular posición alineada a la derecha: (borde derecho del trigger) - (ancho del popover)
+				const leftAlignedToRight = rect.right - pickerWidth + (offset?.x || 0);
+
+				// Solo cambiamos si la nueva posición no se sale por la izquierda
+				if (leftAlignedToRight >= 0) {
+					left = leftAlignedToRight;
+				}
+			}
+
 			setMenuPosition({
-				left: rect.left + (offset?.x || 0),
+				left: left,
 				top: top,
 				position: position,
 				width: rect.width,
