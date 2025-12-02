@@ -22,12 +22,16 @@ import { Divider } from "../Divider/Divider";
 export interface SwitchThemeProps {
     variant?: "solid" | "soft" | "subtle" | "text";
     size?: "tiny" | "small" | "medium" | "large";
+    radius?: "tiny" | "small" | "medium" | "large";
+    color?: "neutral" | "primary" | "secondary" | "success" | "warning" | "danger" | "info";
     showLabel?: boolean;
 }
 
 export const SwitchTheme: React.FC<SwitchThemeProps> = ({
     variant = "soft",
     size = "small",
+    radius = "small",
+    color = "neutral",
     showLabel = false,
 }) => {
     const { setTheme, theme } = useTheme();
@@ -69,6 +73,8 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
             <Button
                 variant={variant}
                 size={size}
+                radius={radius}
+                color={color}
                 icon={<Sun size={16} />}
                 aria-label="Switch theme"
                 disabled
