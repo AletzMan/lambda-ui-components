@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, ReactNode, useEffect, useId } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { NotificationContainer } from "./NotificationContainer";
 import { NotificationProps } from "./notifications.types";
@@ -23,7 +23,7 @@ export const NotificationProvider = ({ children, maxNotifications = 4, placement
     };
 
     const showNotification = (props: Omit<NotificationProps, "id">) => {
-        const id = useId();
+        const id = crypto.randomUUID();
         const newNotification: NotificationProps = {
             ...props,
             placement: props.placement ?? defaultPlacement, // Prioriza props.placement

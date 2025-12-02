@@ -54,19 +54,7 @@ export default function MyComponent() {
 
 	return <Button onClick={handleClick} label="Show Notification" />;
 }`}
-			>
-				<div className="flex justify-center items-center py-6">
-					<Button
-						onClick={() => showNotification({
-							title: "Success!",
-							message: "Your changes have been saved successfully.",
-							notificationType: "success",
-							closable: true,
-						})}
-						label="Show Notification"
-					/>
-				</div>
-			</PropertyLayout>
+			/>
 
 			<PropertyLayout
 				title="Different Types"
