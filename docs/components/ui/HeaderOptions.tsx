@@ -19,14 +19,13 @@ export default function HeaderOptions() {
 				<LambdaLink
 					size="tiny"
 					variant="text"
-					color="primary"
 					radius="small"
 					href="https://github.com/AletzMan/lambda-ui-components"
 					target="_blank"
 					icon={<GitHubIcon />}
 					type="button"
 				/>
-				<SwitchTheme size="tiny" variant="text" />
+				<SwitchTheme size="tiny" variant="text" radius="small" />
 				{isNotHome && (
 					<div className="min-[780px]:hidden">
 						<Button

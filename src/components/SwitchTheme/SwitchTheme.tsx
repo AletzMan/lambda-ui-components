@@ -23,7 +23,6 @@ export interface SwitchThemeProps {
     variant?: "solid" | "soft" | "subtle" | "text";
     size?: "tiny" | "small" | "medium" | "large";
     radius?: "tiny" | "small" | "medium" | "large";
-    color?: "neutral" | "primary" | "secondary" | "success" | "warning" | "danger" | "info";
     showLabel?: boolean;
 }
 
@@ -31,7 +30,6 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
     variant = "soft",
     size = "small",
     radius = "small",
-    color = "neutral",
     showLabel = false,
 }) => {
     const { setTheme, theme } = useTheme();
@@ -42,28 +40,28 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
     }, []);
 
     const themes = [
-        { name: "light", label: "Light", icon: <Sun size={16} />, group: "Light Themes" },
-        { name: "retro", label: "Retro", icon: <Palette size={16} />, group: "Light Themes" },
-        { name: "lavender", label: "Lavender", icon: <Flower2 size={16} />, group: "Light Themes" },
-        { name: "mint", label: "Mint", icon: <Leaf size={16} />, group: "Light Themes" },
-        { name: "sunset", label: "Sunset", icon: <Sunset size={16} />, group: "Light Themes" },
-        { name: "ocean", label: "Ocean", icon: <Waves size={16} />, group: "Light Themes" },
-        { name: "dark", label: "Dark", icon: <Moon size={16} />, group: "Dark Themes" },
-        { name: "slate", label: "Slate", icon: <Briefcase size={16} />, group: "Dark Themes" },
+        { name: "light", label: "Light", icon: <Sun />, group: "Light Themes" },
+        { name: "retro", label: "Retro", icon: <Palette />, group: "Light Themes" },
+        { name: "lavender", label: "Lavender", icon: <Flower2 />, group: "Light Themes" },
+        { name: "mint", label: "Mint", icon: <Leaf />, group: "Light Themes" },
+        { name: "sunset", label: "Sunset", icon: <Sunset />, group: "Light Themes" },
+        { name: "ocean", label: "Ocean", icon: <Waves />, group: "Light Themes" },
+        { name: "dark", label: "Dark", icon: <Moon />, group: "Dark Themes" },
+        { name: "slate", label: "Slate", icon: <Briefcase />, group: "Dark Themes" },
         {
             name: "deep-cosmic-night",
             label: "Deep Cosmic",
-            icon: <Zap size={16} />,
+            icon: <Zap />,
             group: "Dark Themes",
         },
         {
             name: "soft-obsidian",
             label: "Obsidian",
-            icon: <Ghost size={16} />,
+            icon: <Ghost />,
             group: "Dark Themes",
         },
-        { name: "graphite", label: "Graphite", icon: <Monitor size={16} />, group: "Dark Themes" },
-        { name: "midnight", label: "Midnight", icon: <Gem size={16} />, group: "Dark Themes" },
+        { name: "graphite", label: "Graphite", icon: <Monitor />, group: "Dark Themes" },
+        { name: "midnight", label: "Midnight", icon: <Gem />, group: "Dark Themes" },
     ];
 
     const currentTheme = themes.find((t) => t.name === theme) || themes[0];
@@ -74,8 +72,8 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
                 variant={variant}
                 size={size}
                 radius={radius}
-                color={color}
-                icon={<Sun size={16} />}
+                color="neutral"
+                icon={<Sun />}
                 aria-label="Switch theme"
                 disabled
             >
@@ -87,7 +85,8 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
     return (
         <Dropdown
             variant={variant}
-            size="tiny"
+            size={size}
+            radius={radius}
             icon={currentTheme.icon}
             text={showLabel ? currentTheme.label : undefined}
             aria-label="Switch theme"
