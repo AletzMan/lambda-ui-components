@@ -51,14 +51,6 @@ export const InputFeatures = () => {
 						description: "Selects the visual style.",
 					},
 					{
-						name: "color",
-						type: "color",
-						defaultValue: "primary",
-						default: "primary",
-						label: "Color",
-						description: "Sets the input’s color theme.",
-					},
-					{
 						name: "type",
 						type: "radio",
 						defaultValue: "text",
