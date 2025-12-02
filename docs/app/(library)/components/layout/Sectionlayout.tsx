@@ -1,5 +1,4 @@
 import { FooterDocs } from "@/components/layout/FooterDocs";
-import { NavButton } from "../ui/NavButton";
 import { BarNavButton } from "./BarNavButton";
 
 interface SectionLayoutProps {

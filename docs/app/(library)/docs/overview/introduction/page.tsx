@@ -1,10 +1,9 @@
 "use client";
 import { Rocket } from "lucide-react";
 import Link from "next/link";
-import CodeHighlighter from "../../../components/ui/CodeHighlighter";
+import { CodeBlock } from "lambda-ui-components"
 import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
 import { SectionLayout } from "../../../components/layout/SectionLayout";
-import { CodeBlock } from "../../../../../../dist/main";
 
 const SECTIONS = {
 	intro: {

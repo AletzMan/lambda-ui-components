@@ -1,5 +1,6 @@
-import { SectionLayout } from "../../../components/layout/SectionLayout";
-import { SubSectionLayout } from "../../../components/layout/SubSectionLayout";
+
+import { SectionLayout } from "@/app/(library)/components/layout/SectionLayout";
+import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLayout";
 
 const CHANGELOG = [
 	{
