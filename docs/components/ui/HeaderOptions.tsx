@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, ButtonTheme, Drawer, Flex, Link as LambdaLink } from "lambda-ui-components";
+import { Button, Drawer, Flex, Link as LambdaLink, SwitchTheme } from "lambda-ui-components";
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
@@ -21,12 +21,12 @@ export default function HeaderOptions() {
 					variant="text"
 					color="primary"
 					radius="small"
-					href="https://github.com/lambda-ui/lambda-ui-components"
+					href="https://github.com/AletzMan/lambda-ui-components"
 					target="_blank"
 					icon={<GitHubIcon />}
 					type="button"
 				/>
-				<ButtonTheme size="tiny" variant="text" radius="small" color="primary" />
+				<SwitchTheme size="tiny" variant="text" />
 				{isNotHome && (
 					<div className="min-[780px]:hidden">
 						<Button
