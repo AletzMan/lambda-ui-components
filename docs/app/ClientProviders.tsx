@@ -5,8 +5,8 @@ export function ClientProviders({ children }: { children: React.ReactNode }) {
 		<LambdaConfigProvider lang="en">
 			<ThemeProvider
 				defaultTheme="slate"
-				lightTheme="light"
-				darkTheme="dark"
+				lightTheme="mint"
+				darkTheme="slate"
 				disableTransitionOnChange
 				enableColorScheme={true}
 			>
