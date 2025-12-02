@@ -64,7 +64,7 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
         { name: "midnight", label: "Midnight", icon: <Gem />, group: "Dark Themes" },
     ];
 
-    const currentTheme = themes.find((t) => t.name === theme) || themes[0];
+    const currentTheme = themes.find((t) => t.name.toLowerCase() === theme!.toLowerCase()) || themes[0];
 
     if (!mounted) {
         return (

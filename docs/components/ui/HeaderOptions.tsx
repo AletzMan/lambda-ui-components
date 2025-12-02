@@ -25,7 +25,7 @@ export default function HeaderOptions() {
 					icon={<GitHubIcon />}
 					type="button"
 				/>
-				<SwitchTheme size="tiny" variant="text" radius="small" />
+				<SwitchTheme size="tiny" variant="text" radius="small" showLabel />
 				{isNotHome && (
 					<div className="min-[780px]:hidden">
 						<Button
