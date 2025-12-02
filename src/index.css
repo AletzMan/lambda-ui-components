@@ -293,15 +293,24 @@
 	--font-weight-bold: 700;
 	--font-weight-extrabold: 800;
 
-	--font-size-2xs: 0.625rem; /* 10px */
-	--font-size-xs: 0.75rem; /* 12px */
-	--font-size-sm: 0.875rem; /* 14px */
-	--font-size-md: 1rem; /* 16px   */
-	--font-size-lg: 1.125rem; /* 18px */
-	--font-size-xl: 1.25rem; /* 20px */
-	--font-size-2xl: 1.5rem; /* 24px */
-	--font-size-3xl: 1.875rem; /* 30px */
-	--font-size-4xl: 2.25rem; /* 36px */
+	--font-size-2xs: 0.625rem;
+	/* 10px */
+	--font-size-xs: 0.75rem;
+	/* 12px */
+	--font-size-sm: 0.875rem;
+	/* 14px */
+	--font-size-md: 1rem;
+	/* 16px   */
+	--font-size-lg: 1.125rem;
+	/* 18px */
+	--font-size-xl: 1.25rem;
+	/* 20px */
+	--font-size-2xl: 1.5rem;
+	/* 24px */
+	--font-size-3xl: 1.875rem;
+	/* 30px */
+	--font-size-4xl: 2.25rem;
+	/* 36px */
 
 	--font-size-title-xs: 16px;
 	--font-size-title-sm: 20px;
@@ -328,74 +337,131 @@
 	--border-width-xl: 5px;
 	--border-width-2xl: 6px;
 
-	--icon-size-4xs: 0.5rem; /* 8px */
-	--icon-size-3xs: 0.625rem; /* 10px */
-	--icon-size-2xs: 0.75rem; /* 12px */
-	--icon-size-xs: 0.875rem; /* 14px */
-	--icon-size-sm: 1rem; /* 16px (Base) */
-	--icon-size-md: 1.125rem; /* 18px */
-	--icon-size-lg: 1.25rem; /* 20px */
-	--icon-size-xl: 1.375rem; /* 22px */
-	--icon-size-2xl: 1.5rem; /* 24px */
-	--icon-size-3xl: 1.75rem; /* 28px */
-	--icon-size-4xl: 2rem; /* 32px */
+	--icon-size-4xs: 0.5rem;
+	/* 8px */
+	--icon-size-3xs: 0.625rem;
+	/* 10px */
+	--icon-size-2xs: 0.75rem;
+	/* 12px */
+	--icon-size-xs: 0.875rem;
+	/* 14px */
+	--icon-size-sm: 1rem;
+	/* 16px (Base) */
+	--icon-size-md: 1.125rem;
+	/* 18px */
+	--icon-size-lg: 1.25rem;
+	/* 20px */
+	--icon-size-xl: 1.375rem;
+	/* 22px */
+	--icon-size-2xl: 1.5rem;
+	/* 24px */
+	--icon-size-3xl: 1.75rem;
+	/* 28px */
+	--icon-size-4xl: 2rem;
+	/* 32px */
 
-	--badge-size-3xs: 0.375rem; /* 6px */
-	--badge-size-2xs: 0.5rem; /* 8px */
-	--badge-size-xs: 0.625rem; /* 10px */
-	--badge-size-sm: 0.75rem; /* 12px */
-	--badge-size-md: 1rem; /* 16px (Base) */
-	--badge-size-lg: 1.25rem; /* 20px */
-	--badge-size-xl: 1.5rem; /* 24px */
-	--badge-size-2xl: 1.75rem; /* 28px */
-	--badge-size-3xl: 2rem; /* 32px */
+	--badge-size-3xs: 0.375rem;
+	/* 6px */
+	--badge-size-2xs: 0.5rem;
+	/* 8px */
+	--badge-size-xs: 0.625rem;
+	/* 10px */
+	--badge-size-sm: 0.75rem;
+	/* 12px */
+	--badge-size-md: 1rem;
+	/* 16px (Base) */
+	--badge-size-lg: 1.25rem;
+	/* 20px */
+	--badge-size-xl: 1.5rem;
+	/* 24px */
+	--badge-size-2xl: 1.75rem;
+	/* 28px */
+	--badge-size-3xl: 2rem;
+	/* 32px */
 
-	--handle-3xs: 0.375rem; /* 6px */
-	--handle-2xs: 0.625rem; /* 10px */
-	--handle-xs: 0.875rem; /* 14px */
-	--handle-sm: 1.125rem; /* 18px */
-	--handle-md: 1.375rem; /* 22px */
-	--handle-lg: 1.625rem; /* 26px */
+	--handle-3xs: 0.375rem;
+	/* 6px */
+	--handle-2xs: 0.625rem;
+	/* 10px */
+	--handle-xs: 0.875rem;
+	/* 14px */
+	--handle-sm: 1.125rem;
+	/* 18px */
+	--handle-md: 1.375rem;
+	/* 22px */
+	--handle-lg: 1.625rem;
+	/* 26px */
 
-	--track-size-xs: 0.25rem; /* 4px */
-	--track-size-sm: 0.375rem; /* 6px */
-	--track-size-md: 0.5rem; /* 8px */
-	--track-size-lg: 0.75rem; /* 12px */
+	--track-size-xs: 0.25rem;
+	/* 4px */
+	--track-size-sm: 0.375rem;
+	/* 6px */
+	--track-size-md: 0.5rem;
+	/* 8px */
+	--track-size-lg: 0.75rem;
+	/* 12px */
 
-	--card-size-xs: 2rem; /* 32px */
-	--card-size-sm: 3rem; /* 48px */
-	--card-size-md: 4rem; /* 64px */
-	--card-size-lg: 5rem; /* 80px */
-	--card-size-xl: 6rem; /* 96px */
+	--card-size-xs: 2rem;
+	/* 32px */
+	--card-size-sm: 3rem;
+	/* 48px */
+	--card-size-md: 4rem;
+	/* 64px */
+	--card-size-lg: 5rem;
+	/* 80px */
+	--card-size-xl: 6rem;
+	/* 96px */
 
 	--card-title-max-width: 12ch;
 
-	--height-checkbox-xs: 1rem; /* 16px */
-	--height-checkbox-sm: 1.25rem; /* 20px */
-	--height-checkbox-md: 1.5rem; /* 24px */
-	--height-checkbox-lg: 1.875rem; /* 30px */
-	--height-checkbox-xl: 2.25rem; /* 36px */
+	--height-checkbox-xs: 1rem;
+	/* 16px */
+	--height-checkbox-sm: 1.25rem;
+	/* 20px */
+	--height-checkbox-md: 1.5rem;
+	/* 24px */
+	--height-checkbox-lg: 1.875rem;
+	/* 30px */
+	--height-checkbox-xl: 2.25rem;
+	/* 36px */
 
-	--height-button-2xs: 1.125rem; /* 18px */
-	--height-button-xs: 1.5rem; /* 24px */
-	--height-button-sm: 1.875rem; /* 30px */
-	--height-button-md: 2.25rem; /* 36px (Base estándar de interacción) */
-	--height-button-lg: 2.75rem; /* 44px */
+	--height-button-2xs: 1.125rem;
+	/* 18px */
+	--height-button-xs: 1.5rem;
+	/* 24px */
+	--height-button-sm: 1.875rem;
+	/* 30px */
+	--height-button-md: 2.25rem;
+	/* 36px (Base estándar de interacción) */
+	--height-button-lg: 2.75rem;
+	/* 44px */
 
-	--height-input-xs: 1.5rem; /* 24px */
-	--height-input-sm: 1.875rem; /* 30px */
-	--height-input-md: 2.25rem; /* 36px (Base estándar de interacción) */
-	--height-input-lg: 2.75rem; /* 44px */
+	--height-input-xs: 1.5rem;
+	/* 24px */
+	--height-input-sm: 1.875rem;
+	/* 30px */
+	--height-input-md: 2.25rem;
+	/* 36px (Base estándar de interacción) */
+	--height-input-lg: 2.75rem;
+	/* 44px */
 
-	--height-option-xs: 1.25rem; /* 20px */
-	--height-option-sm: 1.5rem; /* 24px */
-	--height-option-md: 1.875rem; /* 26px (Base estándar de interacción) */
-	--height-option-lg: 2.25rem; /* 32px */
+	--height-option-xs: 1.25rem;
+	/* 20px */
+	--height-option-sm: 1.5rem;
+	/* 24px */
+	--height-option-md: 1.875rem;
+	/* 26px (Base estándar de interacción) */
+	--height-option-lg: 2.25rem;
+	/* 32px */
 
-	--breadcrumb-size-xs: 1.5rem; /* 24px */
-	--breadcrumb-size-sm: 1.875rem; /* 30px */
-	--breadcrumb-size-md: 2.25rem; /* 36px (Base estándar de interacción) */
-	--breadcrumb-size-lg: 2.75rem; /* 44px */
+	--breadcrumb-size-xs: 1.5rem;
+	/* 24px */
+	--breadcrumb-size-sm: 1.875rem;
+	/* 30px */
+	--breadcrumb-size-md: 2.25rem;
+	/* 36px (Base estándar de interacción) */
+	--breadcrumb-size-lg: 2.75rem;
+	/* 44px */
 
 	--accordion-transition-duration: 300ms;
 	--accordion-transition-timing-function: ease-in-out;
@@ -479,16 +545,12 @@
 	--secondary-light-color: var(--lambda-color-teal-100);
 	--secondary-dark-color: var(--lambda-color-teal-950);
 	--secondary-background-color: var(--lambda-color-teal-050);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-teal-600) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-teal-600) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-teal-600) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-teal-600) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-800);
 	--neutral-content-color: var(--lambda-color-neutral-400);
@@ -612,7 +674,7 @@
 	--box-shadow-xs: 0 0 1px 1px var(--shadow-color);
 	--box-shadow-sm: 0 0 1px 2px var(--shadow-color);
 	--box-shadow: 0 0 2px 1px var(--shadow-color);
-	--box-shadow-md: 0 0 6px 2px var(--shadow-color); 
+	--box-shadow-md: 0 0 6px 2px var(--shadow-color);
 
 	/* ACCENT COLORS */
 	--primary-text-color: var(--lambda-color-orange-800);
@@ -642,16 +704,12 @@
 	--secondary-light-color: var(--lambda-color-teal-100);
 	--secondary-dark-color: var(--lambda-color-teal-950);
 	--secondary-background-color: var(--lambda-color-teal-050);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-teal-600) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-teal-600) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-teal-600) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-teal-600) 50%,
+			transparent 90%);
 
 	--lambda-color-neutral-050: #f8f5ef;
 	--lambda-color-neutral-100: #ebe0ce;
@@ -818,16 +876,12 @@
 	--secondary-light-color: var(--lambda-color-pink-100);
 	--secondary-dark-color: var(--lambda-color-pink-950);
 	--secondary-background-color: var(--lambda-color-pink-050);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-pink-600) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-pink-600) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-pink-600) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-pink-600) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-800);
 	--neutral-content-color: var(--lambda-color-neutral-400);
@@ -982,16 +1036,12 @@
 	--secondary-light-color: var(--lambda-color-blue-100);
 	--secondary-dark-color: var(--lambda-color-blue-950);
 	--secondary-background-color: var(--lambda-color-blue-050);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-blue-600) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-blue-600) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-blue-600) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-blue-600) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-800);
 	--neutral-content-color: var(--lambda-color-neutral-400);
@@ -1067,7 +1117,7 @@
 	--info-background-color: var(--lambda-color-info-050);
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-info-600) 15%, transparent 90%);
 	--info-shadow-color: color-mix(in srgb, var(--lambda-color-info-600) 50%, transparent 90%);
-} 
+}
 
 [data-theme="sunset"] {
 	/* Sunset Palette - Energetic & Vibrant */
@@ -1146,16 +1196,12 @@
 	--secondary-light-color: var(--lambda-color-yellow-100);
 	--secondary-dark-color: var(--lambda-color-yellow-950);
 	--secondary-background-color: var(--lambda-color-yellow-050);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-yellow-600) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-yellow-600) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-yellow-600) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-yellow-600) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-800);
 	--neutral-content-color: var(--lambda-color-neutral-400);
@@ -1311,16 +1357,12 @@
 	--secondary-light-color: var(--lambda-color-emerald-100);
 	--secondary-dark-color: var(--lambda-color-emerald-950);
 	--secondary-background-color: var(--lambda-color-emerald-050);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-emerald-600) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-emerald-600) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-emerald-600) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-emerald-600) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-800);
 	--neutral-content-color: var(--lambda-color-neutral-400);
@@ -1474,16 +1516,12 @@
 	--secondary-light-color: var(--lambda-color-secondary-050);
 	--secondary-dark-color: var(--lambda-color-secondary-900);
 	--secondary-background-color: var(--lambda-color-secondary-950);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-secondary-500) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-secondary-500) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-secondary-500) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-secondary-500) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-200);
 	--neutral-content-color: var(--lambda-color-neutral-900);
@@ -1571,23 +1609,23 @@
 	--foreground-label-color: oklch(60% 0 0);
 	--foreground-helper-color: oklch(50% 0 0);
 	--foreground-disabled-color: oklch(40% 0 0);
-	
+
 	--placeholder-color: oklch(45% 0 0);
 	--visited-link-color: #8c29a4;
 	--transparent-color: #ffffff08;
-	
+
 	--badge-background-color: oklch(25% 0 0);
 	--badge-text-color: oklch(98% 0 0);
-	
+
 	--scrollbar-color: oklch(30% 0 0);
-	
+
 	--label-weight: var(--font-weight-semibold);
 	--placeholder-weight: var(--font-weight-medium);
 	--input-font-weight: var(--font-weight-regular);
 
 	--rating-solid-color: #ffdd20;
 	--rating-fill-color: #ffdd2035;
-	--rating-stroke-color: #f7c00e; 
+	--rating-stroke-color: #f7c00e;
 
 	/* Surfaces - Neutral Steps */
 	--surface-a: oklch(17% 0 0);
@@ -1603,10 +1641,10 @@
 	--background-code-light: #fefefe;
 	--background-tab-dark: oklch(17% 0 0);
 	--background-tab-light: #f0f0f1;
-	
+
 	--border-color: oklch(22% 0 0);
 	--border-inverse-color: oklch(85% 0 0);
-	
+
 	--shadow-color: oklch(0% 0 0 / 0.5);
 	--shadow-inset-color: oklch(100% 0 0 / 0.05);
 
@@ -1619,7 +1657,7 @@
 	--primary-text-color: var(--lambda-color-blue-200);
 	--primary-content-color: var(--lambda-color-blue-400);
 	--primary-soft-color: var(--lambda-color-blue-800);
-	--primary-subtle-color: var(--lambda-color-blue-700); 
+	--primary-subtle-color: var(--lambda-color-blue-700);
 	--primary-outline-color: var(--lambda-color-blue-300);
 	--primary-base-color: var(--lambda-color-blue-500);
 	--primary-hover-color: var(--lambda-color-blue-600);
@@ -1643,16 +1681,12 @@
 	--secondary-light-color: var(--lambda-color-teal-050);
 	--secondary-dark-color: var(--lambda-color-teal-900);
 	--secondary-background-color: var(--lambda-color-teal-950);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-teal-500) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-teal-500) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-teal-500) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-teal-500) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-200);
 	--neutral-content-color: var(--lambda-color-neutral-900);
@@ -1740,23 +1774,23 @@
 	--foreground-label-color: oklch(60% 0.04 265);
 	--foreground-helper-color: oklch(50% 0.05 265);
 	--foreground-disabled-color: oklch(40% 0.02 265);
-	
+
 	--placeholder-color: oklch(45% 0.03 265);
 	--visited-link-color: oklch(75% 0.15 300);
 	--transparent-color: #ffffff08;
-	
+
 	--badge-background-color: oklch(25% 0.1 20);
 	--badge-text-color: oklch(98% 0 0);
-	
+
 	--scrollbar-color: oklch(30% 0.04 265);
-	
+
 	--label-weight: var(--font-weight-semibold);
 	--placeholder-weight: var(--font-weight-medium);
 	--input-font-weight: var(--font-weight-regular);
 
 	--rating-solid-color: #ffdd20;
 	--rating-fill-color: #ffdd2035;
-	--rating-stroke-color: #f7c00e; 
+	--rating-stroke-color: #f7c00e;
 
 	/* Surfaces - Coherent steps of lightness */
 	--surface-a: oklch(16% 0.025 266);
@@ -1772,10 +1806,10 @@
 	--background-code-light: #fefefe;
 	--background-tab-dark: oklch(16% 0.025 266);
 	--background-tab-light: #f0f0f1;
-	
+
 	--border-color: oklch(22% 0.03 266);
 	--border-inverse-color: oklch(80% 0.02 266);
-	
+
 	--shadow-color: oklch(5% 0.05 266 / 0.6);
 	--shadow-inset-color: oklch(90% 0.01 266 / 0.05);
 
@@ -1788,7 +1822,7 @@
 	--primary-text-color: var(--lambda-color-lime-200);
 	--primary-content-color: var(--lambda-color-lime-400);
 	--primary-soft-color: var(--lambda-color-lime-800);
-	--primary-subtle-color: var(--lambda-color-lime-700); 
+	--primary-subtle-color: var(--lambda-color-lime-700);
 	--primary-outline-color: var(--lambda-color-lime-300);
 	--primary-base-color: var(--lambda-color-lime-500);
 	--primary-hover-color: var(--lambda-color-lime-600);
@@ -1812,16 +1846,12 @@
 	--secondary-light-color: var(--lambda-color-indigo-050);
 	--secondary-dark-color: var(--lambda-color-indigo-900);
 	--secondary-background-color: var(--lambda-color-indigo-950);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-indigo-500) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-indigo-500) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-indigo-500) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-indigo-500) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-200);
 	--neutral-content-color: var(--lambda-color-neutral-900);
@@ -1909,23 +1939,23 @@
 	--foreground-label-color: oklch(65% 0 0);
 	--foreground-helper-color: oklch(55% 0.02 260);
 	--foreground-disabled-color: oklch(45% 0 0);
-	
+
 	--placeholder-color: oklch(45% 0 0);
 	--visited-link-color: #8c29a4;
 	--transparent-color: #ffffff08;
-	
+
 	--badge-background-color: oklch(25% 0.1 20);
 	--badge-text-color: oklch(98% 0 0);
-	
+
 	--scrollbar-color: oklch(30% 0 0);
-	
+
 	--label-weight: var(--font-weight-semibold);
 	--placeholder-weight: var(--font-weight-medium);
 	--input-font-weight: var(--font-weight-regular);
 
 	--rating-solid-color: #ffdd20;
 	--rating-fill-color: #ffdd2035;
-	--rating-stroke-color: #f7c00e; 
+	--rating-stroke-color: #f7c00e;
 
 	/* Surfaces - Obsidian Steps */
 	--surface-a: oklch(15% 0.01 260);
@@ -1941,10 +1971,10 @@
 	--background-code-light: #fefefe;
 	--background-tab-dark: oklch(15% 0.01 260);
 	--background-tab-light: #f0f0f1;
-	
+
 	--border-color: oklch(20% 0.015 260);
 	--border-inverse-color: oklch(85% 0 0);
-	
+
 	--shadow-color: oklch(0% 0 0 / 0.5);
 	--shadow-inset-color: oklch(100% 0 0 / 0.05);
 
@@ -1957,7 +1987,7 @@
 	--primary-text-color: var(--lambda-color-cyan-200);
 	--primary-content-color: var(--lambda-color-cyan-400);
 	--primary-soft-color: var(--lambda-color-cyan-800);
-	--primary-subtle-color: var(--lambda-color-cyan-700); 
+	--primary-subtle-color: var(--lambda-color-cyan-700);
 	--primary-outline-color: var(--lambda-color-cyan-300);
 	--primary-base-color: var(--lambda-color-cyan-500);
 	--primary-hover-color: var(--lambda-color-cyan-600);
@@ -1981,16 +2011,12 @@
 	--secondary-light-color: var(--lambda-color-fuchsia-050);
 	--secondary-dark-color: var(--lambda-color-fuchsia-900);
 	--secondary-background-color: var(--lambda-color-fuchsia-950);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-fuchsia-500) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-fuchsia-500) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-fuchsia-500) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-fuchsia-500) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-200);
 	--neutral-content-color: var(--lambda-color-neutral-900);
@@ -2079,23 +2105,23 @@
 	--foreground-label-color: oklch(58% 0 0);
 	--foreground-helper-color: oklch(48% 0 0);
 	--foreground-disabled-color: oklch(38% 0 0);
-	
+
 	--placeholder-color: oklch(42% 0 0);
 	--visited-link-color: #a855f7;
 	--transparent-color: #ffffff08;
-	
+
 	--badge-background-color: oklch(28% 0 0);
 	--badge-text-color: oklch(98% 0 0);
-	
+
 	--scrollbar-color: oklch(32% 0 0);
-	
+
 	--label-weight: var(--font-weight-semibold);
 	--placeholder-weight: var(--font-weight-medium);
 	--input-font-weight: var(--font-weight-regular);
 
 	--rating-solid-color: #ffdd20;
 	--rating-fill-color: #ffdd2035;
-	--rating-stroke-color: #f7c00e; 
+	--rating-stroke-color: #f7c00e;
 
 	/* Surfaces - Graphite Steps */
 	--surface-a: oklch(21% 0 0);
@@ -2111,10 +2137,10 @@
 	--background-code-light: #fefefe;
 	--background-tab-dark: oklch(21% 0 0);
 	--background-tab-light: #f0f0f1;
-	
+
 	--border-color: oklch(26% 0 0);
 	--border-inverse-color: oklch(82% 0 0);
-	
+
 	--shadow-color: oklch(0% 0 0 / 0.45);
 	--shadow-inset-color: oklch(100% 0 0 / 0.04);
 
@@ -2127,7 +2153,7 @@
 	--primary-text-color: var(--lambda-color-orange-200);
 	--primary-content-color: var(--lambda-color-orange-400);
 	--primary-soft-color: var(--lambda-color-orange-800);
-	--primary-subtle-color: var(--lambda-color-orange-700); 
+	--primary-subtle-color: var(--lambda-color-orange-700);
 	--primary-outline-color: var(--lambda-color-orange-300);
 	--primary-base-color: var(--lambda-color-orange-500);
 	--primary-hover-color: var(--lambda-color-orange-600);
@@ -2151,16 +2177,12 @@
 	--secondary-light-color: var(--lambda-color-indigo-050);
 	--secondary-dark-color: var(--lambda-color-indigo-900);
 	--secondary-background-color: var(--lambda-color-indigo-950);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-indigo-500) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-indigo-500) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-indigo-500) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-indigo-500) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-200);
 	--neutral-content-color: var(--lambda-color-neutral-900);
@@ -2316,16 +2338,12 @@
 	--secondary-light-color: var(--lambda-color-yellow-050);
 	--secondary-dark-color: var(--lambda-color-yellow-900);
 	--secondary-background-color: var(--lambda-color-yellow-950);
-	--secondary-opacity-color: color-mix(
-		in srgb,
-		var(--lambda-color-yellow-500) 15%,
-		transparent 90%
-	);
-	--secondary-shadow-color: color-mix(
-		in srgb,
-		var(--lambda-color-yellow-500) 50%,
-		transparent 90%
-	);
+	--secondary-opacity-color: color-mix(in srgb,
+			var(--lambda-color-yellow-500) 15%,
+			transparent 90%);
+	--secondary-shadow-color: color-mix(in srgb,
+			var(--lambda-color-yellow-500) 50%,
+			transparent 90%);
 
 	--neutral-text-color: var(--lambda-color-neutral-200);
 	--neutral-content-color: var(--lambda-color-neutral-900);
@@ -2426,11 +2444,9 @@ textarea {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(
-		90deg,
-		var(--lambda-color-primary-600),
-		var(--lambda-color-primary-400)
-	);
+	background: linear-gradient(90deg,
+			var(--lambda-color-primary-600),
+			var(--lambda-color-primary-400));
 	background-size: 200% 100%;
 
 	border-radius: var(--border-radius-sm);
@@ -2446,7 +2462,7 @@ textarea {
 .button-docs:hover {
 	background-position: 100%;
 }
- /*
+
 html[data-theme="light"] {
 	background-color: oklch(94.5% 0 0);
 	color-scheme: light;
@@ -2506,4 +2522,3 @@ html[data-theme="midnight"] {
 	background-color: oklch(10% 0.02 270);
 	color-scheme: dark;
 }
-*/
