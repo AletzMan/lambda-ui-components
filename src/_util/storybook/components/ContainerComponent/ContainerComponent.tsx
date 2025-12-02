@@ -1,4 +1,4 @@
-import { Divider, Switch } from "../../../../main";
+import { Divider, Switch } from "lambda-ui-components";
 import styles from "./container.module.css";
 
 interface ContainerComponentProps {
