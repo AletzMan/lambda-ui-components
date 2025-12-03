@@ -16,17 +16,17 @@
 }
 
 &.lambda-helper-tiny {
-	top: calc(var(--height-input-xs) + 2px);
+	top: calc(var(--size-xs) + 2px);
 }
 
 &.lambda-helper-small {
-	top: calc(var(--height-input-sm) + 2px);
+	top: calc(var(--size-sm) + 2px);
 }
 
 &.lambda-helper-medium {
-	top: calc(var(--height-input-md) +50px);
+	top: calc(var(--size-md) +50px);
 }
 
 &.lambda-helper-large {
-	top: calc(var(--height-input-lg) + 2px);
+	top: calc(var(--size-lg) + 2px);
 }

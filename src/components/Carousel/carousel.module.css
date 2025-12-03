@@ -273,33 +273,33 @@
 }
 
 .lambda-carousel-dot-circle {
-	width: var(--icon-size-4xs);
-	height: var(--icon-size-4xs);
+	width: var(--size-3xs);
+	height: var(--size-3xs);
 	border-radius: var(--radius-full);
 }
 
 .lambda-carousel-dot-line {
 	border-radius: var(--radius-xs);
-	width: var(--icon-size-xs);
+	width: var(--size-xs);
 	height: 4px;
 
 	&.lambda-carousel-dot-vertical {
 		width: 4px;
-		height: var(--icon-size-xs);
+		height: var(--size-xs);
 		margin-right: 4px;
 	}
 }
 
 .lambda-carousel-dot-square {
-	width: var(--icon-size-4xs);
-	height: var(--icon-size-4xs);
+	width: var(--size-3xs);
+	height: var(--size-3xs);
 	border-radius: var(--radius-xs);
 }
 
 .lambda-carousel-dot-number {
 	position: relative;
-	width: var(--icon-size-lg);
-	height: var(--icon-size-lg);
+	width: var(--size-lg);
+	height: var(--size-lg);
 	font-size: var(--font-size-xs);
 	border: var(--border-width-xs) solid var(--border-color);
 	background-color: var(--surface-c);
@@ -310,8 +310,8 @@
 		position: absolute;
 		left: -1px;
 		top: -1px;
-		width: var(--icon-size-lg);
-		height: var(--icon-size-lg);
+		width: var(--size-lg);
+		height: var(--size-lg);
 		display: flex;
 		align-items: center;
 		justify-content: center;

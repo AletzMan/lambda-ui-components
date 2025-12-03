@@ -183,19 +183,19 @@
 	z-index: 1;
 
 	&:is(.lambda-slider-track-tiny) {
-		height: var(--track-size-xs, 4px);
+		height: var(--size-xs, 4px);
 	}
 
 	&:is(.lambda-slider-track-small) {
-		height: var(--track-size-sm, 6px);
+		height: var(--size-sm, 6px);
 	}
 
 	&:is(.lambda-slider-track-medium) {
-		height: var(--track-size-md, 8px);
+		height: var(--size-md, 8px);
 	}
 
 	&:is(.lambda-slider-track-large) {
-		height: var(--track-size-lg, 12x);
+		height: var(--size-lg, 12x);
 	}
 }
 
@@ -209,19 +209,19 @@
 	z-index: 1;
 
 	&:is(.lambda-slider-track-tiny) {
-		width: var(--track-size-xs, 4px);
+		width: var(--size-xs, 4px);
 	}
 
 	&:is(.lambda-slider-track-small) {
-		width: var(--track-size-sm, 6px);
+		width: var(--size-sm, 6px);
 	}
 
 	&:is(.lambda-slider-track-medium) {
-		width: var(--track-size-md, 8px);
+		width: var(--size-md, 8px);
 	}
 
 	&:is(.lambda-slider-track-large) {
-		width: var(--track-size-lg, 12x);
+		width: var(--size-lg, 12x);
 	}
 }
 
@@ -313,19 +313,19 @@
 	transform: translateY(50%);
 
 	&:is(.lambda-slider-fill-tiny) {
-		height: var(--track-size-xs, 4px);
+		height: var(--size-xs, 4px);
 	}
 
 	&:is(.lambda-slider-fill-small) {
-		height: var(--track-size-sm, 6px);
+		height: var(--size-sm, 6px);
 	}
 
 	&:is(.lambda-slider-fill-medium) {
-		height: var(--track-size-md, 8px);
+		height: var(--size-md, 8px);
 	}
 
 	&:is(.lambda-slider-fill-large) {
-		height: var(--track-size-lg, 12x);
+		height: var(--size-lg, 12x);
 	}
 }
 
@@ -336,19 +336,19 @@
 	transform: translateX(-50%);
 
 	&:is(.lambda-slider-fill-tiny) {
-		width: var(--track-size-xs, 4px);
+		width: var(--size-xs, 4px);
 	}
 
 	&:is(.lambda-slider-fill-small) {
-		width: var(--track-size-sm, 6px);
+		width: var(--size-sm, 6px);
 	}
 
 	&:is(.lambda-slider-fill-medium) {
-		width: var(--track-size-md, 8px);
+		width: var(--size-md, 8px);
 	}
 
 	&:is(.lambda-slider-fill-large) {
-		width: var(--track-size-lg, 12x);
+		width: var(--size-lg, 12x);
 	}
 }
 
@@ -653,34 +653,34 @@
 	width: var(--border-width-xs);
 
 	&:is(.lambda-slider-mark-tiny) {
-		height: calc(var(--track-size-xs) * 2.25);
+		height: calc(var(--size-xs) * 2.25);
 
 		&:not(.lambda-slider-mark-has-label) {
-			height: calc(var(--track-size-xs) * 0.85);
+			height: calc(var(--size-xs) * 0.85);
 		}
 	}
 
 	&:is(.lambda-slider-mark-small) {
-		height: calc(var(--track-size-sm) * 2.25);
+		height: calc(var(--size-sm) * 2.25);
 
 		&:not(.lambda-slider-mark-has-label) {
-			height: calc(var(--track-size-sm) * 0.85);
+			height: calc(var(--size-sm) * 0.85);
 		}
 	}
 
 	&:is(.lambda-slider-mark-medium) {
-		height: calc(var(--track-size-md) * 2);
+		height: calc(var(--size-md) * 2);
 
 		&:not(.lambda-slider-mark-has-label) {
-			height: calc(var(--track-size-md) * 0.9);
+			height: calc(var(--size-md) * 0.9);
 		}
 	}
 
 	&:is(.lambda-slider-mark-large) {
-		height: calc(var(--track-size-lg) * 1.75);
+		height: calc(var(--size-lg) * 1.75);
 
 		&:not(.lambda-slider-mark-has-label) {
-			height: calc(var(--track-size-lg) * 0.9);
+			height: calc(var(--size-lg) * 0.9);
 		}
 	}
 
@@ -706,34 +706,34 @@
 	height: var(--border-width-xs);
 
 	&:is(.lambda-slider-mark-tiny) {
-		width: calc(var(--track-size-xs) * 2.25);
+		width: calc(var(--size-xs) * 2.25);
 
 		&:not(.lambda-slider-mark-has-label) {
-			width: calc(var(--track-size-xs) * 0.85);
+			width: calc(var(--size-xs) * 0.85);
 		}
 	}
 
 	&:is(.lambda-slider-mark-small) {
-		width: calc(var(--track-size-sm) * 2.25);
+		width: calc(var(--size-sm) * 2.25);
 
 		&:not(.lambda-slider-mark-has-label) {
-			width: calc(var(--track-size-sm) * 0.85);
+			width: calc(var(--size-sm) * 0.85);
 		}
 	}
 
 	&:is(.lambda-slider-mark-medium) {
-		width: calc(var(--track-size-md) * 2);
+		width: calc(var(--size-md) * 2);
 
 		&:not(.lambda-slider-mark-has-label) {
-			width: calc(var(--track-size-md) * 0.9);
+			width: calc(var(--size-md) * 0.9);
 		}
 	}
 
 	&:is(.lambda-slider-mark-large) {
-		width: calc(var(--track-size-lg) * 1.75);
+		width: calc(var(--size-lg) * 1.75);
 
 		&:not(.lambda-slider-mark-has-label) {
-			width: calc(var(--track-size-lg) * 0.9);
+			width: calc(var(--size-lg) * 0.9);
 		}
 	}
 

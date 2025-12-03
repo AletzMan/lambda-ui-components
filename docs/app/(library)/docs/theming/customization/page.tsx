@@ -363,29 +363,29 @@ export default function CustomizationPage() {
                         language="css"
                         code={`:root {
   /* Button heights */
-  --height-button-2xs: 1.125rem; /* 18px */
-  --height-button-xs: 1.5rem;    /* 24px */
-  --height-button-sm: 1.875rem;  /* 30px */
-  --height-button-md: 2.25rem;   /* 36px */
-  --height-button-lg: 2.75rem;   /* 44px */
+  --size-2xs: 1.125rem; /* 18px */
+  --size-xs: 1.5rem;    /* 24px */
+  --size-sm: 1.875rem;  /* 30px */
+  --size-md: 2.25rem;   /* 36px */
+  --size-lg: 2.75rem;   /* 44px */
   
   /* Input heights */
-  --height-input-xs: 1.5rem;     /* 24px */
-  --height-input-sm: 1.875rem;   /* 30px */
-  --height-input-md: 2.25rem;    /* 36px */
-  --height-input-lg: 2.75rem;    /* 44px */
+  --size-xs: 1.5rem;     /* 24px */
+  --size-sm: 1.875rem;   /* 30px */
+  --size-md: 2.25rem;    /* 36px */
+  --size-lg: 2.75rem;    /* 44px */
   
   /* Icon sizes */
-  --icon-size-xs: 0.875rem;  /* 14px */
-  --icon-size-sm: 1rem;      /* 16px */
-  --icon-size-md: 1.125rem;  /* 18px */
-  --icon-size-lg: 1.25rem;   /* 20px */
-  --icon-size-xl: 1.375rem;  /* 22px */
+  --size-xs: 0.875rem;  /* 14px */
+  --size-sm: 1rem;      /* 16px */
+  --size-md: 1.125rem;  /* 18px */
+  --size-lg: 1.25rem;   /* 20px */
+  --size-xl: 1.375rem;  /* 22px */
   
   /* Badge sizes */
-  --badge-size-sm: 0.75rem;  /* 12px */
-  --badge-size-md: 1rem;     /* 16px */
-  --badge-size-lg: 1.25rem;  /* 20px */
+  --size-sm: 0.75rem;  /* 12px */
+  --size-md: 1rem;     /* 16px */
+  --size-lg: 1.25rem;  /* 20px */
 }`}
                     />
                 </SubSectionLayout>

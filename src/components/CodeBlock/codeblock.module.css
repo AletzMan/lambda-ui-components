@@ -66,8 +66,8 @@
 	}
 
 	& svg {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 }
 
@@ -139,8 +139,8 @@ pre[class*="language-"] {
 	transition: background 0.2s, color 0.2s;
 
 	& svg {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 
 	&.lambda-copy-button-dark {

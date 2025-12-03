@@ -237,48 +237,48 @@
 .tab-label-tiny {
 	font-size: var(--font-size-xs);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--height-button-xs);
+	height: var(--size-xs);
 	gap: var(--spacing-sm);
 
 	&>svg {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 }
 
 .tab-label-small {
 	font-size: var(--font-size-sm);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--height-button-sm);
+	height: var(--size-sm);
 	gap: var(--spacing-sm);
 
 	&>svg {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 }
 
 .tab-label-medium {
 	font-size: var(--font-size-md);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--height-button-md);
+	height: var(--size-md);
 	gap: var(--spacing-sm);
 
 	&>svg {
-		width: var(--icon-size-md);
-		height: var(--icon-size-md);
+		width: var(--size-md);
+		height: var(--size-md);
 	}
 }
 
 .tab-label-large {
 	font-size: var(--font-size-lg);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--height-button-lg);
+	height: var(--size-lg);
 	gap: var(--spacing-sm);
 
 	&>svg {
-		width: var(--icon-size-lg);
-		height: var(--icon-size-lg);
+		width: var(--size-lg);
+		height: var(--size-lg);
 	}
 }
 

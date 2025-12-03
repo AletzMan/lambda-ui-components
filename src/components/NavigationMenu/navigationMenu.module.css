@@ -169,8 +169,8 @@
 
 .lambda-navigation-menu-expanded-icon {
 	transition: transform 0.2s ease-in-out;
-	width: var(--icon-size-sm);
-	height: var(--icon-size-sm);
+	width: var(--size-sm);
+	height: var(--size-sm);
 
 	&:is(.lambda-navigation-menu-expanded-icon-expanded) {
 		transform: rotate(90deg);
@@ -208,26 +208,26 @@
 }
 
 .lambda-navigation-menu-label-icon {
-	width: var(--icon-size-sm);
-	height: var(--icon-size-sm);
+	width: var(--size-sm);
+	height: var(--size-sm);
 }
 
 .lambda-navigation-menu-label-icon-tiny {
-	width: var(--icon-size-xs);
-	height: var(--icon-size-xs);
+	width: var(--size-xs);
+	height: var(--size-xs);
 }
 
 .lambda-navigation-menu-label-icon-small {
-	width: var(--icon-size-sm);
-	height: var(--icon-size-sm);
+	width: var(--size-sm);
+	height: var(--size-sm);
 }
 
 .lambda-navigation-menu-label-icon-medium {
-	width: var(--icon-size-md);
-	height: var(--icon-size-md);
+	width: var(--size-md);
+	height: var(--size-md);
 }
 
 .lambda-navigation-menu-label-icon-large {
-	width: var(--icon-size-lg);
-	height: var(--icon-size-lg);
+	width: var(--size-lg);
+	height: var(--size-lg);
 }

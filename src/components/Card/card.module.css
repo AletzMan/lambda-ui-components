@@ -162,8 +162,8 @@
 	justify-content: center;
 
 	&>svg {
-		width: var(--icon-size-lg);
-		height: var(--icon-size-lg);
+		width: var(--size-lg);
+		height: var(--size-lg);
 	}
 }
 
@@ -185,8 +185,8 @@
 	}
 
 	.lambda-card-header-icon {
-		width: var(--icon-size-xl);
-		height: var(--icon-size-xl);
+		width: var(--size-xl);
+		height: var(--size-xl);
 	}
 
 	.lambda-card-header-content {
@@ -205,8 +205,8 @@
 
 	.lambda-card-action-icon {
 		&>svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 }
@@ -229,8 +229,8 @@
 	}
 
 	.lambda-card-header-icon {
-		width: var(--icon-size-2xl);
-		height: var(--icon-size-2xl);
+		width: var(--size-2xl);
+		height: var(--size-2xl);
 	}
 
 	.lambda-card-header-content {
@@ -249,8 +249,8 @@
 
 	.lambda-card-action-icon {
 		&>svg {
-			width: var(--icon-size-lg);
-			height: var(--icon-size-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 	}
 }
@@ -273,8 +273,8 @@
 	}
 
 	.lambda-card-header-icon {
-		width: var(--icon-size-3xl);
-		height: var(--icon-size-3xl);
+		width: var(--size-3xl);
+		height: var(--size-3xl);
 	}
 
 	.lambda-card-header-content {
@@ -288,8 +288,8 @@
 
 	.lambda-card-action-icon {
 		&>svg {
-			width: var(--icon-size-2xl);
-			height: var(--icon-size-2xl);
+			width: var(--size-2xl);
+			height: var(--size-2xl);
 		}
 	}
 

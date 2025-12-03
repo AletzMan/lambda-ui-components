@@ -185,8 +185,8 @@
 	justify-content: center;
 
 	& svg {
-		width: var(--icon-size-lg);
-		height: var(--icon-size-lg);
+		width: var(--size-lg);
+		height: var(--size-lg);
 	}
 }
 
@@ -194,8 +194,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--icon-size-xl);
-	height: var(--icon-size-xl);
+	width: var(--size-xl);
+	height: var(--size-xl);
 	stroke-width: var(--border-width-md);
 	stroke-dasharray: 250;
 	/* Longitud del trazado */

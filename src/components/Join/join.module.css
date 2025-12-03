@@ -1,21 +1,21 @@
 .lambda-join-tiny {
 	font-size: var(--font-size-xs);
-	height: var(--height-input-xs);
+	height: var(--size-xs);
 }
 
 .lambda-join-small {
 	font-size: var(--font-size-xs);
-	height: var(--height-input-sm);
+	height: var(--size-sm);
 }
 
 .lambda-join-medium {
 	font-size: var(--font-size-sm);
-	height: var(--height-input-md);
+	height: var(--size-md);
 }
 
 .lambda-join-large {
 	font-size: var(--font-size-md);
-	height: var(--height-input-lg);
+	height: var(--size-lg);
 }
 
 .lambda-join-radius-none {

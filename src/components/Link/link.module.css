@@ -127,8 +127,8 @@
 	font-weight: var(--font-weight-medium);
 
 	.lambda-link-icon {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 
 	&:is(.lambda-link-only-icon) {
@@ -143,8 +143,8 @@
 	font-size: var(--font-size-sm);
 
 	.lambda-link-icon {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 
 	&:is(.lambda-link-only-icon) {
@@ -159,8 +159,8 @@
 	font-size: var(--font-size-md);
 
 	.lambda-link-icon {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 
 	&:is(.lambda-link-only-icon) {
@@ -175,8 +175,8 @@
 	font-size: var(--font-size-lg);
 
 	.lambda-link-icon {
-		width: var(--icon-size-md);
-		height: var(--icon-size-md);
+		width: var(--size-md);
+		height: var(--size-md);
 	}
 
 	&:is(.lambda-link-only-icon) {

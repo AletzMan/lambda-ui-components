@@ -580,49 +580,49 @@
 
 	&.lambda-radio-wrapper-tiny {
 		&.lambda-radio-wrapper-radio {
-			width: var(--height-checkbox-xs);
-			height: var(--height-checkbox-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 
 		&.lambda-radio-wrapper-button {
-			min-width: var(--height-button-xs);
-			min-height: var(--height-button-xs);
+			min-width: var(--size-xs);
+			min-height: var(--size-xs);
 		}
 	}
 
 	&.lambda-radio-wrapper-small {
 		&.lambda-radio-wrapper-radio {
-			width: var(--height-checkbox-sm);
-			height: var(--height-checkbox-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 
 		&.lambda-radio-wrapper-button {
-			min-width: var(--height-button-sm);
-			min-height: var(--height-button-sm);
+			min-width: var(--size-sm);
+			min-height: var(--size-sm);
 		}
 	}
 
 	&.lambda-radio-wrapper-medium {
 		&.lambda-radio-wrapper-radio {
-			width: var(--height-checkbox-md);
-			height: var(--height-checkbox-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 
 		&.lambda-radio-wrapper-button {
-			min-width: var(--height-button-md);
-			min-height: var(--height-button-md);
+			min-width: var(--size-md);
+			min-height: var(--size-md);
 		}
 	}
 
 	&.lambda-radio-wrapper-large {
 		&.lambda-radio-wrapper-radio {
-			width: var(--height-checkbox-lg);
-			height: var(--height-checkbox-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 
 		&.lambda-radio-wrapper-button {
-			min-width: var(--height-button-lg);
-			min-height: var(--height-button-lg);
+			min-width: var(--size-lg);
+			min-height: var(--size-lg);
 		}
 	}
 
@@ -1603,13 +1603,13 @@
 
 		&.lambda-radio-view-radio,
 		&.lambda-radio-view-card {
-			width: var(--height-checkbox-xs);
-			height: var(--height-checkbox-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 
 		&.lambda-radio-view-button {
-			min-width: var(--height-button-xs);
-			min-height: var(--height-button-xs);
+			min-width: var(--size-xs);
+			min-height: var(--size-xs);
 		}
 	}
 
@@ -1617,13 +1617,13 @@
 
 		&.lambda-radio-view-radio,
 		&.lambda-radio-view-card {
-			width: var(--height-checkbox-sm);
-			height: var(--height-checkbox-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 
 		&.lambda-radio-view-button {
-			min-width: var(--height-button-sm);
-			min-height: var(--height-button-sm);
+			min-width: var(--size-sm);
+			min-height: var(--size-sm);
 		}
 	}
 
@@ -1631,13 +1631,13 @@
 
 		&.lambda-radio-view-radio,
 		&.lambda-radio-view-card {
-			width: var(--height-checkbox-md);
-			height: var(--height-checkbox-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 
 		&.lambda-radio-view-button {
-			min-width: var(--height-button-md);
-			min-height: var(--height-button-md);
+			min-width: var(--size-md);
+			min-height: var(--size-md);
 		}
 	}
 
@@ -1645,13 +1645,13 @@
 
 		&.lambda-radio-view-radio,
 		&.lambda-radio-view-card {
-			width: var(--height-checkbox-lg);
-			height: var(--height-checkbox-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 
 		&.lambda-radio-view-button {
-			min-width: var(--height-button-lg);
-			min-height: var(--height-button-lg);
+			min-width: var(--size-lg);
+			min-height: var(--size-lg);
 		}
 	}
 }
@@ -1938,8 +1938,8 @@
 
 		&>svg {
 			stroke-width: 2px;
-			width: var(--icon-size-2xs);
-			height: var(--icon-size-2xs);
+			width: var(--size-2xs);
+			height: var(--size-2xs);
 		}
 	}
 
@@ -1970,8 +1970,8 @@
 
 		&>svg {
 			stroke-width: 2px;
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 	}
 
@@ -2002,8 +2002,8 @@
 		}
 
 		&>svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
@@ -2033,8 +2033,8 @@
 		}
 
 		&>svg {
-			width: var(--icon-size-md);
-			height: var(--icon-size-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 	}
 }
@@ -2050,21 +2050,21 @@
 	z-index: 1;
 
 	&:is(.lambda-radio-label-tiny) {
-		min-width: var(--height-button-xs);
-		height: var(--height-button-xs);
+		min-width: var(--size-xs);
+		height: var(--size-xs);
 	}
 
 	&:is(.lambda-radio-label-small) {
-		min-width: var(--height-button-sm);
-		height: var(--height-button-sm);
+		min-width: var(--size-sm);
+		height: var(--size-sm);
 	}
 
 	&:is(.lambda-radio-label-medium) {
-		height: var(--height-button-md);
+		height: var(--size-md);
 	}
 
 	&:is(.lambda-radio-label-large) {
-		height: var(--height-button-lg);
+		height: var(--size-lg);
 	}
 }
 
@@ -2072,7 +2072,7 @@
 	border-color: transparent;
 	border-radius: 0;
 	position: absolute;
-	min-width: calc(var(--height-checkbox-md) * 3);
+	min-width: calc(var(--size-md) * 3);
 }
 
 .lambda-radio-icon {
@@ -2132,23 +2132,23 @@
 	}
 
 	&.lambda-radio-icon-tiny {
-		width: calc(var(--height-checkbox-xs) - 10px);
-		height: calc(var(--height-checkbox-xs) - 10px);
+		width: calc(var(--size-xs) - 10px);
+		height: calc(var(--size-xs) - 10px);
 	}
 
 	&.lambda-radio-icon-small {
-		width: calc(var(--height-checkbox-sm) - 12px);
-		height: calc(var(--height-checkbox-sm) - 12px);
+		width: calc(var(--size-sm) - 12px);
+		height: calc(var(--size-sm) - 12px);
 	}
 
 	&.lambda-radio-icon-medium {
-		width: calc(var(--height-checkbox-md) - 14px);
-		height: calc(var(--height-checkbox-md) - 14px);
+		width: calc(var(--size-md) - 14px);
+		height: calc(var(--size-md) - 14px);
 	}
 
 	&.lambda-radio-icon-large {
-		width: calc(var(--height-checkbox-lg) - 16px);
-		height: calc(var(--height-checkbox-lg) - 16px);
+		width: calc(var(--size-lg) - 16px);
+		height: calc(var(--size-lg) - 16px);
 	}
 }
 

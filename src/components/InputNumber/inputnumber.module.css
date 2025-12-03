@@ -41,25 +41,25 @@ input[type="number"] {
 
 	&.lambda-number-tiny {
 		.lambda-number-helper {
-			top: calc(var(--height-input-xs) + 1px);
+			top: calc(var(--size-xs) + 1px);
 		}
 	}
 
 	&.lambda-number-small {
 		.lambda-number-helper {
-			top: calc(var(--height-input-sm) + 1px);
+			top: calc(var(--size-sm) + 1px);
 		}
 	}
 
 	&.lambda-number-medium {
 		.lambda-number-helper {
-			top: calc(var(--height-input-md) + 1px);
+			top: calc(var(--size-md) + 1px);
 		}
 	}
 
 	&.lambda-number-large {
 		.lambda-number-helper {
-			top: calc(var(--height-input-lg) + 1px);
+			top: calc(var(--size-lg) + 1px);
 		}
 	}
 
@@ -233,19 +233,19 @@ input[type="number"] {
 	}
 
 	&.lambda-number-handler-tiny {
-		width: var(--height-input-xs);
+		width: var(--size-xs);
 	}
 
 	&.lambda-number-handler-small {
-		width: var(--height-input-sm);
+		width: var(--size-sm);
 	}
 
 	&.lambda-number-handler-medium {
-		width: var(--height-input-md);
+		width: var(--size-md);
 	}
 
 	&.lambda-number-handler-large {
-		width: var(--height-input-md);
+		width: var(--size-md);
 	}
 
 	&.lambda-number-handler-radius-none {
@@ -379,23 +379,23 @@ input[type="number"] {
 }
 
 .lambda-number-tiny {
-	min-height: var(--height-input-xs);
-	height: var(--height-input-xs);
+	min-height: var(--size-xs);
+	height: var(--size-xs);
 }
 
 .lambda-number-small {
-	min-height: var(--height-input-sm);
-	height: var(--height-input-sm);
+	min-height: var(--size-sm);
+	height: var(--size-sm);
 }
 
 .lambda-number-medium {
-	min-height: var(--height-input-md);
-	height: var(--height-input-md);
+	min-height: var(--size-md);
+	height: var(--size-md);
 }
 
 .lambda-number-large {
-	min-height: var(--height-input-lg);
-	height: var(--height-input-lg);
+	min-height: var(--size-lg);
+	height: var(--size-lg);
 }
 
 .lambda-number-radius-none {
@@ -524,29 +524,29 @@ input[type="number"] {
 
 	&.lambda-number-btn-tiny {
 		.lambda-number-icon {
-			width: var(--icon-size-3xs);
-			height: var(--icon-size-3xs);
+			width: var(--size-3xs);
+			height: var(--size-3xs);
 		}
 	}
 
 	&.lambda-number-btn-small {
 		.lambda-number-icon {
-			width: var(--icon-size-2xs);
-			height: var(--icon-size-2xs);
+			width: var(--size-2xs);
+			height: var(--size-2xs);
 		}
 	}
 
 	&.lambda-number-btn-medium {
 		.lambda-number-icon {
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 	}
 
 	&.lambda-number-btn-large {
 		.lambda-number-icon {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 }
@@ -586,8 +586,8 @@ input[type="number"] {
 		padding: 0 var(--spacing-xs);
 
 		& .lambda-number-currency-icon {
-			height: var(--icon-size-2xs);
-			width: var(--icon-size-2xs);
+			height: var(--size-2xs);
+			width: var(--size-2xs);
 		}
 	}
 
@@ -595,8 +595,8 @@ input[type="number"] {
 		padding: 0 var(--spacing-sm);
 
 		& .lambda-number-currency-icon {
-			height: var(--icon-size-sm);
-			width: var(--icon-size-sm);
+			height: var(--size-sm);
+			width: var(--size-sm);
 		}
 	}
 
@@ -604,8 +604,8 @@ input[type="number"] {
 		padding: 0 var(--spacing-md);
 
 		& .lambda-number-currency-icon {
-			height: var(--icon-size-md);
-			width: var(--icon-size-md);
+			height: var(--size-md);
+			width: var(--size-md);
 		}
 	}
 
@@ -613,8 +613,8 @@ input[type="number"] {
 		padding: 0 var(--spacing-lg);
 
 		& .lambda-number-currency-icon {
-			height: var(--icon-size-xl);
-			width: var(--icon-size-xl);
+			height: var(--size-xl);
+			width: var(--size-xl);
 		}
 	}
 

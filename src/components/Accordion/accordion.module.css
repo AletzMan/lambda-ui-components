@@ -210,8 +210,8 @@
 	font-size: var(--font-size-sm);
 
 	.lambda-accordion-header-icon {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 }
 
@@ -220,8 +220,8 @@
 	font-size: var(--font-size-md);
 
 	.lambda-accordion-header-icon {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 }
 
@@ -230,8 +230,8 @@
 	font-size: var(--font-size-lg);
 
 	.lambda-accordion-header-icon {
-		width: var(--icon-size-md);
-		height: var(--icon-size-md);
+		width: var(--size-md);
+		height: var(--size-md);
 	}
 }
 
@@ -241,8 +241,8 @@
 	font-size: var(--font-size-xl);
 
 	.lambda-accordion-header-icon {
-		width: var(--icon-size-lg);
-		height: var(--icon-size-lg);
+		width: var(--size-lg);
+		height: var(--size-lg);
 	}
 }
 

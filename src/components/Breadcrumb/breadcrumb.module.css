@@ -17,8 +17,8 @@
 		font-size: var(--font-size-xs);
 
 		svg {
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 	}
 
@@ -26,8 +26,8 @@
 		font-size: var(--font-size-sm);
 
 		svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
@@ -35,8 +35,8 @@
 		font-size: var(--font-size-md);
 
 		svg {
-			width: var(--icon-size-md);
-			height: var(--icon-size-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 	}
 
@@ -44,8 +44,8 @@
 		font-size: var(--font-size-lg);
 
 		svg {
-			width: var(--icon-size-lg);
-			height: var(--icon-size-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 	}
 }
@@ -213,8 +213,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--height-button-xs);
-	height: var(--height-button-xs);
+	width: var(--size-xs);
+	height: var(--size-xs);
 	border-radius: var(--radius-sm);
 	font-weight: var(--font-weight-semibold);
 	background-color: var(--surface-b);
@@ -289,22 +289,22 @@
 
 		&.breadcrumb-item-tiny {
 			padding: var(--spacing-none) var(--spacing-md);
-			height: var(--breadcrumb-size-xs);
+			height: var(--size-xs);
 		}
 
 		&.breadcrumb-item-small {
 			padding: var(--spacing-none) var(--spacing-md);
-			height: var(--breadcrumb-size-sm);
+			height: var(--size-sm);
 		}
 
 		&.breadcrumb-item-medium {
 			padding: var(--spacing-none) var(--spacing-md);
-			height: var(--breadcrumb-size-md);
+			height: var(--size-md);
 		}
 
 		&.breadcrumb-item-large {
 			padding: var(--spacing-none) var(--spacing-lg);
-			height: var(--breadcrumb-size-lg);
+			height: var(--size-lg);
 		}
 	}
 

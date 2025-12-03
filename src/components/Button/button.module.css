@@ -873,8 +873,8 @@
 .lambda-btn-tiny {
 	font-size: var(--font-size-xs);
 	padding: var(--spacing-none) var(--spacing-md);
-	height: var(--height-button-xs);
-	line-height: var(--height-button-xs);
+	height: var(--size-2xl);
+	line-height: var(--size-2xl);
 
 	.lambda-btn-icon {
 		display: flex;
@@ -896,8 +896,8 @@
 
 	&:is(.lambda-btn-only-icon) {
 		padding: var(--spacing-none);
-		width: var(--height-button-xs);
-		height: var(--height-button-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 
 	.lambda-btn-label {
@@ -908,8 +908,8 @@
 
 .lambda-btn-small {
 	font-size: var(--font-size-sm);
-	padding: var(--spacing-none) calc(var(--spacing-md) + var(--spacing-xs));
-	height: var(--height-button-sm);
+	padding: var(--spacing-none) var(--spacing-md);
+	height: var(--size-3xl);
 
 	.lambda-btn-icon {
 		display: flex;
@@ -931,8 +931,8 @@
 
 	&:is(.lambda-btn-only-icon) {
 		padding: var(--spacing-none);
-		width: var(--height-button-sm);
-		height: var(--height-button-sm);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 
 	.lambda-btn-label {
@@ -943,7 +943,7 @@
 .lambda-btn-medium {
 	font-size: var(--font-size-sm);
 	padding: var(--spacing-none) var(--spacing-lg);
-	height: var(--height-button-md);
+	height: var(--size-4xl);
 
 	.lambda-btn-icon {
 		display: flex;
@@ -965,8 +965,8 @@
 
 	&:is(.lambda-btn-only-icon) {
 		padding: var(--spacing-none);
-		width: var(--height-button-md);
-		height: var(--height-button-md);
+		width: var(--size-md);
+		height: var(--size-md);
 	}
 
 	.lambda-btn-label {
@@ -977,7 +977,7 @@
 .lambda-btn-large {
 	font-size: var(--font-size-md);
 	padding: var(--spacing-none) calc(var(--spacing-lg) + var(--spacing-xs));
-	height: var(--height-button-lg);
+	height: var(--size-5xl);
 
 	.lambda-btn-icon {
 		display: flex;
@@ -999,8 +999,8 @@
 
 	&:is(.lambda-btn-only-icon) {
 		padding: var(--spacing-none);
-		width: var(--height-button-lg);
-		height: var(--height-button-lg);
+		width: var(--size-lg);
+		height: var(--size-lg);
 	}
 
 	.lambda-btn-label {

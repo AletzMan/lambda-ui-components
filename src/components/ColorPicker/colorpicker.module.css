@@ -17,8 +17,8 @@
 
 	&:is(.lambda-colorpicker-tiny) {
 		padding: var(--spacing-3xs);
-		min-width: var(--height-checkbox-sm);
-		min-height: var(--height-checkbox-sm);
+		min-width: var(--size-sm);
+		min-height: var(--size-sm);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -29,29 +29,29 @@
 		.lambda-colorpicker-button {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--height-button-xs) - 4px);
-			height: calc(var(--height-button-xs) - 4px);
+			width: calc(var(--size-xs) - 4px);
+			height: calc(var(--size-xs) - 4px);
 		}
 
 		.lambda-colorpicker-border {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--height-button-xs) - 4px);
-			height: calc(var(--height-button-xs) - 4px);
+			width: calc(var(--size-xs) - 4px);
+			height: calc(var(--size-xs) - 4px);
 		}
 
 		.lambda-colorpicker-pattern {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--height-button-xs) - 4px);
-			height: calc(var(--height-button-xs) - 4px);
+			width: calc(var(--size-xs) - 4px);
+			height: calc(var(--size-xs) - 4px);
 		}
 	}
 
 	&:is(.lambda-colorpicker-small) {
 		padding: var(--spacing-3xs);
-		min-width: var(--height-checkbox-md);
-		min-height: var(--height-checkbox-md);
+		min-width: var(--size-md);
+		min-height: var(--size-md);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -62,29 +62,29 @@
 		.lambda-colorpicker-button {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--height-button-sm) - 4px);
-			height: calc(var(--height-button-sm) - 4px);
+			width: calc(var(--size-sm) - 4px);
+			height: calc(var(--size-sm) - 4px);
 		}
 
 		.lambda-colorpicker-border {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--height-button-sm) - 4px);
-			width: calc(var(--height-button-sm) - 4px);
+			height: calc(var(--size-sm) - 4px);
+			width: calc(var(--size-sm) - 4px);
 		}
 
 		.lambda-colorpicker-pattern {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--height-button-sm) - 4px);
-			width: calc(var(--height-button-sm) - 4px);
+			height: calc(var(--size-sm) - 4px);
+			width: calc(var(--size-sm) - 4px);
 		}
 	}
 
 	&:is(.lambda-colorpicker-medium) {
 		padding: var(--spacing-2xs);
-		min-width: var(--height-checkbox-lg);
-		min-height: var(--height-checkbox-lg);
+		min-width: var(--size-lg);
+		min-height: var(--size-lg);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -95,29 +95,29 @@
 		.lambda-colorpicker-button {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--height-button-md) - 4px);
-			height: calc(var(--height-button-md) - 4px);
+			width: calc(var(--size-md) - 4px);
+			height: calc(var(--size-md) - 4px);
 		}
 
 		.lambda-colorpicker-border {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--height-button-md) - 4px);
-			width: calc(var(--height-button-md) - 4px);
+			height: calc(var(--size-md) - 4px);
+			width: calc(var(--size-md) - 4px);
 		}
 
 		.lambda-colorpicker-pattern {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--height-button-md) - 4px);
-			width: calc(var(--height-button-md) - 4px);
+			height: calc(var(--size-md) - 4px);
+			width: calc(var(--size-md) - 4px);
 		}
 	}
 
 	&:is(.lambda-colorpicker-large) {
 		padding: var(--spacing-2xs);
-		min-width: var(--height-checkbox-xl);
-		min-height: var(--height-checkbox-xl);
+		min-width: var(--size-xl);
+		min-height: var(--size-xl);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -128,22 +128,22 @@
 		.lambda-colorpicker-button {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--height-button-lg) - 4px);
-			height: calc(var(--height-button-lg) - 4px);
+			width: calc(var(--size-lg) - 4px);
+			height: calc(var(--size-lg) - 4px);
 		}
 
 		.lambda-colorpicker-border {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--height-button-lg) - 4px);
-			width: calc(var(--height-button-lg) - 4px);
+			height: calc(var(--size-lg) - 4px);
+			width: calc(var(--size-lg) - 4px);
 		}
 
 		.lambda-colorpicker-pattern {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--height-button-lg) - 4px);
-			width: calc(var(--height-button-lg) - 4px);
+			height: calc(var(--size-lg) - 4px);
+			width: calc(var(--size-lg) - 4px);
 		}
 	}
 
@@ -196,23 +196,23 @@
 	box-sizing: border-box;
 
 	&:is(.lambda-colorpicker-group-tiny) {
-		min-width: var(--height-button-xs);
-		min-height: var(--height-button-xs);
+		min-width: var(--size-xs);
+		min-height: var(--size-xs);
 	}
 
 	&:is(.lambda-colorpicker-group-small) {
-		min-width: var(--height-button-sm);
-		min-height: var(--height-button-sm);
+		min-width: var(--size-sm);
+		min-height: var(--size-sm);
 	}
 
 	&:is(.lambda-colorpicker-group-medium) {
-		min-width: var(--height-button-md);
-		min-height: var(--height-button-md);
+		min-width: var(--size-md);
+		min-height: var(--size-md);
 	}
 
 	&:is(.lambda-colorpicker-group-large) {
-		min-width: var(--height-button-lg);
-		min-height: var(--height-button-lg);
+		min-width: var(--size-lg);
+		min-height: var(--size-lg);
 	}
 
 	&:is(.lambda-colorpicker-group-radius-none) {

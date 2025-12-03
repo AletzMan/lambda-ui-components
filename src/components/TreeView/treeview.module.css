@@ -134,8 +134,8 @@
 	justify-content: center;
 	border: none;
 	background: none;
-	height: var(--height-button-2xs);
-	width: var(--height-button-2xs);
+	height: var(--size-2xs);
+	width: var(--size-2xs);
 	border-radius: var(--radius-xs);
 	padding: var(--spacing-none);
 	color: var(--foreground-secondary-color);
@@ -148,8 +148,8 @@
 
 .lambda-treeview-expanded-icon {
 	transition: transform 0.2s ease-in-out;
-	width: var(--icon-size-xs);
-	height: var(--icon-size-xs);
+	width: var(--size-xs);
+	height: var(--size-xs);
 
 	&:is(.lambda-treeview-expanded-icon-expanded) {
 		transform: rotate(90deg);
@@ -189,26 +189,26 @@
 }
 
 .lambda-treeview-label-icon {
-	width: var(--icon-size-xs);
-	height: var(--icon-size-xs);
+	width: var(--size-xs);
+	height: var(--size-xs);
 }
 
 .lambda-treeview-label-icon-tiny {
-	width: var(--icon-size-xs);
-	height: var(--icon-size-xs);
+	width: var(--size-xs);
+	height: var(--size-xs);
 }
 
 .lambda-treeview-label-icon-small {
-	width: var(--icon-size-sm);
-	height: var(--icon-size-sm);
+	width: var(--size-sm);
+	height: var(--size-sm);
 }
 
 .lambda-treeview-label-icon-medium {
-	width: var(--icon-size-md);
-	height: var(--icon-size-md);
+	width: var(--size-md);
+	height: var(--size-md);
 }
 
 .lambda-treeview-label-icon-large {
-	width: var(--icon-size-lg);
-	height: var(--icon-size-lg);
+	width: var(--size-lg);
+	height: var(--size-lg);
 }

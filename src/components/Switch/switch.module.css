@@ -429,23 +429,23 @@
 }
 
 .lambda-switch-background-tiny {
-	width: calc(var(--height-checkbox-xs) * 2);
-	height: var(--height-checkbox-xs);
+	width: calc(var(--size-xs) * 2);
+	height: var(--size-xs);
 }
 
 .lambda-switch-background-small {
-	width: calc(var(--height-checkbox-sm) * 2);
-	height: var(--height-checkbox-sm);
+	width: calc(var(--size-sm) * 2);
+	height: var(--size-sm);
 }
 
 .lambda-switch-background-medium {
-	width: calc(var(--height-checkbox-md) * 2);
-	height: var(--height-checkbox-md);
+	width: calc(var(--size-md) * 2);
+	height: var(--size-md);
 }
 
 .lambda-switch-background-large {
-	width: calc(var(--height-checkbox-lg) * 2);
-	height: var(--height-checkbox-lg);
+	width: calc(var(--size-lg) * 2);
+	height: var(--size-lg);
 }
 
 .lambda-switch-handle {
@@ -453,8 +453,8 @@
 	pointer-events: none;
 	box-sizing: border-box;
 	transition: all 0.25s ease-in-out;
-	width: var(--height-checkbox-sm);
-	height: var(--height-checkbox-sm);
+	width: var(--size-sm);
+	height: var(--size-sm);
 	box-shadow: var(--box-shadow-xs);
 }
 
@@ -472,42 +472,42 @@
 
 .lambda-switch-handle-tiny {
 	left: 4px;
-	width: calc(var(--height-checkbox-xs) - 6px);
-	height: calc(var(--height-checkbox-xs) - 6px);
+	width: calc(var(--size-xs) - 6px);
+	height: calc(var(--size-xs) - 6px);
 }
 
 .lambda-switch-handle-small {
 	left: 4px;
-	width: calc(var(--height-checkbox-sm) - 8px);
-	height: calc(var(--height-checkbox-sm) - 8px);
+	width: calc(var(--size-sm) - 8px);
+	height: calc(var(--size-sm) - 8px);
 }
 
 .lambda-switch-handle-medium {
 	left: 4px;
-	width: calc(var(--height-checkbox-md) - 8px);
-	height: calc(var(--height-checkbox-md) - 8px);
+	width: calc(var(--size-md) - 8px);
+	height: calc(var(--size-md) - 8px);
 }
 
 .lambda-switch-handle-large {
 	left: 5px;
-	width: calc(var(--height-checkbox-lg) - 10px);
-	height: calc(var(--height-checkbox-lg) - 10px);
+	width: calc(var(--size-lg) - 10px);
+	height: calc(var(--size-lg) - 10px);
 }
 
 .lambda-switch-handle-checked.lambda-switch-handle-tiny {
-	left: calc(100% - var(--height-checkbox-xs) + 4px);
+	left: calc(100% - var(--size-xs) + 4px);
 }
 
 .lambda-switch-handle-checked.lambda-switch-handle-small {
-	left: calc(100% - var(--height-checkbox-sm) + 4px);
+	left: calc(100% - var(--size-sm) + 4px);
 }
 
 .lambda-switch-handle-checked.lambda-switch-handle-medium {
-	left: calc(100% - var(--height-checkbox-md) + 4px);
+	left: calc(100% - var(--size-md) + 4px);
 }
 
 .lambda-switch-handle-checked.lambda-switch-handle-large {
-	left: calc(100% - var(--height-checkbox-lg) + 5px);
+	left: calc(100% - var(--size-lg) + 5px);
 }
 
 @keyframes animateIcon {

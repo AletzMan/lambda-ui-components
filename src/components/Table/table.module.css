@@ -181,8 +181,8 @@
 		color: currentColor;
 
 		&>svg {
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 			stroke-width: var(--border-width-sm);
 			color: currentColor;
 		}

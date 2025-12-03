@@ -510,48 +510,48 @@
 .lambda-tag-tiny {
 	font-size: var(--font-size-xs);
 	padding: var(--spacing-xs);
-	min-width: var(--height-button-2xs);
-	min-height: var(--height-button-2xs);
+	min-width: var(--size-2xs);
+	min-height: var(--size-2xs);
 
 	&>svg:first-child {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 }
 
 .lambda-tag-small {
 	font-size: var(--font-size-sm);
 	padding: var(--spacing-sm);
-	min-width: var(--height-button-xs);
-	min-height: var(--height-button-xs);
+	min-width: var(--size-xs);
+	min-height: var(--size-xs);
 
 	&>svg {
-		width: var(--icon-size-xs);
-		height: var(--icon-size-xs);
+		width: var(--size-xs);
+		height: var(--size-xs);
 	}
 }
 
 .lambda-tag-medium {
 	font-size: var(--font-size-md);
 	padding: var(--spacing-md);
-	min-width: var(--height-button-sm);
-	min-height: var(--height-button-sm);
+	min-width: var(--size-sm);
+	min-height: var(--size-sm);
 
 	&>svg {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 }
 
 .lambda-tag-large {
 	font-size: var(--font-size-lg);
 	padding: var(--spacing-md);
-	min-width: var(--height-button-md);
-	min-height: var(--height-button-md);
+	min-width: var(--size-md);
+	min-height: var(--size-md);
 
 	&>svg {
-		width: var(--icon-size-md);
-		height: var(--icon-size-md);
+		width: var(--size-md);
+		height: var(--size-md);
 	}
 }
 
@@ -591,29 +591,29 @@
 
 	&:is(.lambda-tag-close-button-tiny) {
 		&>svg {
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 	}
 
 	&:is(.lambda-tag-close-button-small) {
 		&>svg {
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 	}
 
 	&:is(.lambda-tag-close-button-medium) {
 		&>svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
 	&:is(.lambda-tag-close-button-large) {
 		&>svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 

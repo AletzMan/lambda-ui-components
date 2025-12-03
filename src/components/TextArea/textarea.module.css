@@ -146,13 +146,13 @@
 .lambda-textarea-invalid-icon {
 	position: absolute;
 	color: var(--danger-base-color);
-	width: var(--icon-size-sm);
-	height: var(--icon-size-sm);
+	width: var(--size-sm);
+	height: var(--size-sm);
 	right: var(--spacing-xs);
 	top: var(--spacing-xs);
 
 	&.lambda-textarea-invalid-icon-whitlabel {
-		top: calc(var(--spacing-xs) + var(--icon-size-lg));
+		top: calc(var(--spacing-xs) + var(--size-lg));
 	}
 }
 

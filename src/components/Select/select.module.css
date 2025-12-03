@@ -144,8 +144,8 @@
 }
 
 .select-icon-svg {
-	width: var(--height-input-xs);
-	height: var(--height-input-xs);
+	width: var(--size-xs);
+	height: var(--size-xs);
 	pointer-events: none;
 	transition: transform 0.2s ease;
 	color: var(--surface-g);
@@ -269,50 +269,50 @@
 	}
 
 	&.select-btn-tiny {
-		grid-template-columns: 1fr var(--height-input-xs);
+		grid-template-columns: 1fr var(--size-xs);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--height-input-xs);
+		height: var(--size-xs);
 		font-size: var(--font-size-sm);
 
 		.select-icon-svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
 	&.select-btn-small {
-		grid-template-columns: 1fr var(--height-input-sm);
+		grid-template-columns: 1fr var(--size-sm);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--height-input-sm);
+		height: var(--size-sm);
 		font-size: var(--font-size-sm);
 
 		.select-icon-svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
 	&.select-btn-medium {
-		grid-template-columns: 1fr var(--height-input-md);
+		grid-template-columns: 1fr var(--size-md);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--height-input-md);
+		height: var(--size-md);
 		font-size: var(--font-size-md);
 
 		.select-icon-svg {
-			width: var(--icon-size-md);
-			height: var(--icon-size-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 	}
 
 	&.select-btn-large {
-		grid-template-columns: 1fr var(--height-input-lg);
+		grid-template-columns: 1fr var(--size-lg);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--height-input-lg);
+		height: var(--size-lg);
 		font-size: var(--font-size-lg);
 
 		.select-icon-svg {
-			width: var(--icon-size-lg);
-			height: var(--icon-size-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 	}
 
@@ -573,8 +573,8 @@
 		font-size: var(--font-size-sm);
 
 		.select-icon-check {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
@@ -583,8 +583,8 @@
 		font-size: var(--font-size-sm);
 
 		.select-icon-check {
-			width: var(--icon-size-md);
-			height: var(--icon-size-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 	}
 
@@ -593,8 +593,8 @@
 		font-size: var(--font-size-md);
 
 		.select-icon-check {
-			width: var(--icon-size-lg);
-			height: var(--icon-size-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 	}
 
@@ -603,8 +603,8 @@
 		font-size: var(--font-size-lg);
 
 		.select-icon-check {
-			width: var(--icon-size-lg);
-			height: var(--icon-size-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 	}
 }
@@ -686,7 +686,7 @@
 	&.select-view-tiny {
 		font-size: var(--font-size-xs);
 		padding: var(--spacing-none) var(--spacing-none);
-		min-height: var(--height-input-xs);
+		min-height: var(--size-xs);
 
 		&.select-view-outline {
 			.select-selected {
@@ -696,8 +696,8 @@
 		}
 
 		&>.select-view-avatar {
-			width: var(--icon-size-xs);
-			height: var(--icon-size-xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 
 		.select-view-description {
@@ -708,7 +708,7 @@
 	&.select-view-small {
 		font-size: var(--font-size-sm);
 		padding: var(--spacing-none) var(--spacing-xs);
-		min-height: var(--height-input-sm);
+		min-height: var(--size-sm);
 
 		&.select-view-outline {
 			.select-selected {
@@ -725,8 +725,8 @@
 		}
 
 		&>.select-view-avatar {
-			width: var(--icon-size-md);
-			height: var(--icon-size-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 
 		.select-view-description {
@@ -737,7 +737,7 @@
 	&.select-view-medium {
 		font-size: var(--font-size-md);
 		padding: var(--spacing-none) var(--spacing-sm);
-		min-height: var(--height-input-md);
+		min-height: var(--size-md);
 
 		&.select-view-outline {
 			.select-selected {
@@ -747,8 +747,8 @@
 		}
 
 		&>.select-view-avatar {
-			width: var(--icon-size-xl);
-			height: var(--icon-size-xl);
+			width: var(--size-xl);
+			height: var(--size-xl);
 		}
 
 		.select-view-description {
@@ -759,7 +759,7 @@
 	&.select-view-large {
 		font-size: var(--font-size-lg);
 		padding: var(--spacing-none) var(--spacing-sm);
-		min-height: var(--height-input-lg);
+		min-height: var(--size-lg);
 
 		&.select-view-outline {
 			.select-selected {
@@ -777,8 +777,8 @@
 		}
 
 		&>.select-view-avatar {
-			width: var(--icon-size-2xl);
-			height: var(--icon-size-2xl);
+			width: var(--size-2xl);
+			height: var(--size-2xl);
 		}
 
 		.select-view-description {

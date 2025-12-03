@@ -80,8 +80,8 @@
 	}
 
 	.lambda-alert-icon {
-		width: var(--icon-size-sm);
-		height: var(--icon-size-sm);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 }
 
@@ -96,8 +96,8 @@
 	}
 
 	.lambda-alert-icon {
-		width: var(--icon-size-md);
-		height: var(--icon-size-md);
+		width: var(--size-md);
+		height: var(--size-md);
 	}
 }
 
@@ -112,8 +112,8 @@
 	}
 
 	.lambda-alert-icon {
-		width: var(--icon-size-lg);
-		height: var(--icon-size-lg);
+		width: var(--size-lg);
+		height: var(--size-lg);
 	}
 }
 
@@ -128,8 +128,8 @@
 	}
 
 	.lambda-alert-icon {
-		width: var(--icon-size-xl);
-		height: var(--icon-size-xl);
+		width: var(--size-xl);
+		height: var(--size-xl);
 	}
 }
 

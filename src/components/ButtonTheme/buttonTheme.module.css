@@ -5,29 +5,29 @@
 
 	&:is(.lambda-btn-theme-icon-tiny) {
 		& svg {
-			width: var(--icon-size-sm);
-			height: var(--icon-size-sm);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
 	&:is(.lambda-btn-theme-icon-small) {
 		& svg {
-			width: var(--icon-size-md);
-			height: var(--icon-size-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 	}
 
 	&:is(.lambda-btn-theme-icon-medium) {
 		& svg {
-			width: var(--icon-size-md);
-			height: var(--icon-size-md);
+			width: var(--size-md);
+			height: var(--size-md);
 		}
 	}
 
 	&:is(.lambda-btn-theme-icon-large) {
 		& svg {
-			width: var(--icon-size-lg);
-			height: var(--icon-size-lg);
+			width: var(--size-lg);
+			height: var(--size-lg);
 		}
 	}
 }
