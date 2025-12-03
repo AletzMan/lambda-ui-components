@@ -483,7 +483,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-wrapper-tiny {
 	padding: var(--spacing-none) var(--spacing-sm);
-	height: var(--size-xs);
+	height: var(--size-2xl);
 	gap: var(--spacing-sm);
 
 	.lambda-input-suffix,
@@ -499,7 +499,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-wrapper-small {
 	padding: var(--spacing-none) var(--spacing-sm);
-	height: var(--size-sm);
+	height: var(--size-3xl);
 	gap: var(--spacing-sm);
 
 	.lambda-input-suffix,
@@ -515,7 +515,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-wrapper-medium {
 	padding: var(--spacing-none) var(--spacing-md);
-	height: var(--size-md);
+	height: var(--size-4xl);
 	gap: var(--spacing-md);
 
 	.lambda-input-suffix,
@@ -531,7 +531,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .lambda-input-wrapper-large {
 	padding: var(--spacing-none) var(--spacing-lg);
-	height: var(--size-lg);
+	height: var(--size-5xl);
 	gap: var(--spacing-lg);
 
 	.lambda-input-suffix,
