@@ -101,8 +101,8 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
                         text={t.label}
                         onSelectOption={() => setTheme(t.name)}
                         style={{
-                            backgroundColor: theme === t.name ? "var(--lambda-color-primary-100)" : undefined,
-                            color: theme === t.name ? "var(--lambda-color-primary-800)" : undefined,
+                            backgroundColor: theme === t.name ? "var(--lambda-color-cyan-100)" : undefined,
+                            color: theme === t.name ? "var(--lambda-color-cyan-800)" : undefined,
                         }}
                     />
                 ))}
@@ -116,8 +116,8 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
                         text={t.label}
                         onSelectOption={() => setTheme(t.name)}
                         style={{
-                            backgroundColor: theme === t.name ? "var(--lambda-color-primary-100)" : undefined,
-                            color: theme === t.name ? "var(--lambda-color-primary-800)" : undefined,
+                            backgroundColor: theme === t.name ? "var(--lambda-color-cyan-100)" : undefined,
+                            color: theme === t.name ? "var(--lambda-color-cyan-800)" : undefined,
                         }}
                     />
                 ))}

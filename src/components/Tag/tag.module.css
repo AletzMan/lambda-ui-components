@@ -9,13 +9,13 @@
 	box-sizing: border-box;
 	width: max-content;
 
-	& > svg {
+	&>svg {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	& > .lambda-tag-text {
+	&>.lambda-tag-text {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -25,11 +25,12 @@
 
 .lambda-tag-solid {
 	border: var(--border-width-xs) solid transparent;
+
 	&.lambda-tag-neutral {
 		color: var(--foreground-invert-color);
 		background-color: var(--neutral-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--lambda-color-neutral-300);
 
 			&:hover {
@@ -42,11 +43,11 @@
 		color: var(--white-color);
 		background-color: var(--primary-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
-			color: var(--lambda-color-primary-400);
+		& .lambda-tag-close-button>svg:last-child {
+			color: var(--lambda-color-cyan-400);
 
 			&:hover {
-				color: var(--lambda-color-primary-100);
+				color: var(--lambda-color-cyan-100);
 			}
 		}
 	}
@@ -55,11 +56,11 @@
 		color: var(--white-color);
 		background-color: var(--secondary-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
-			color: var(--lambda-color-secondary-300);
+		& .lambda-tag-close-button>svg:last-child {
+			color: var(--lambda-color-cyan-300);
 
 			&:hover {
-				color: var(--lambda-color-secondary-100);
+				color: var(--lambda-color-cyan-100);
 			}
 		}
 	}
@@ -68,11 +69,11 @@
 		color: var(--white-color);
 		background-color: var(--danger-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
-			color: var(--lambda-color-danger-300);
+		& .lambda-tag-close-button>svg:last-child {
+			color: var(--lambda-color-red-300);
 
 			&:hover {
-				color: var(--lambda-color-danger-100);
+				color: var(--lambda-color-red-100);
 			}
 		}
 	}
@@ -81,11 +82,11 @@
 		color: var(--white-color);
 		background-color: var(--success-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
-			color: var(--lambda-color-success-300);
+		& .lambda-tag-close-button>svg:last-child {
+			color: var(--lambda-color-green-300);
 
 			&:hover {
-				color: var(--lambda-color-success-100);
+				color: var(--lambda-color-green-100);
 			}
 		}
 	}
@@ -94,11 +95,11 @@
 		color: var(--white-color);
 		background-color: var(--warning-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
-			color: var(--lambda-color-warning-300);
+		& .lambda-tag-close-button>svg:last-child {
+			color: var(--lambda-color-yellow-300);
 
 			&:hover {
-				color: var(--lambda-color-warning-100);
+				color: var(--lambda-color-yellow-100);
 			}
 		}
 	}
@@ -107,11 +108,11 @@
 		color: var(--white-color);
 		background-color: var(--info-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
-			color: var(--lambda-color-info-300);
+		& .lambda-tag-close-button>svg:last-child {
+			color: var(--lambda-color-sky-300);
 
 			&:hover {
-				color: var(--lambda-color-info-100);
+				color: var(--lambda-color-sky-100);
 			}
 		}
 	}
@@ -124,7 +125,7 @@
 		color: var(--neutral-base-color);
 		border-color: var(--neutral-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--neutral-hover-color);
 
 			&:hover {
@@ -137,7 +138,7 @@
 		color: var(--primary-base-color);
 		border-color: var(--primary-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--primary-hover-color);
 
 			&:hover {
@@ -150,7 +151,7 @@
 		color: var(--secondary-base-color);
 		border-color: var(--secondary-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--secondary-hover-color);
 
 			&:hover {
@@ -163,7 +164,7 @@
 		color: var(--success-base-color);
 		border-color: var(--success-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--success-hover-color);
 
 			&:hover {
@@ -176,7 +177,7 @@
 		color: var(--danger-base-color);
 		border-color: var(--danger-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--danger-hover-color);
 
 			&:hover {
@@ -189,7 +190,7 @@
 		color: var(--warning-base-color);
 		border-color: var(--warning-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--warning-hover-color);
 
 			&:hover {
@@ -202,7 +203,7 @@
 		color: var(--info-base-color);
 		border-color: var(--info-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--info-hover-color);
 
 			&:hover {
@@ -220,7 +221,7 @@
 		color: var(--neutral-text-color);
 		background-color: var(--neutral-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--neutral-hover-color);
 
 			&:hover {
@@ -233,7 +234,7 @@
 		color: var(--primary-text-color);
 		background-color: var(--primary-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--primary-hover-color);
 
 			&:hover {
@@ -246,7 +247,7 @@
 		color: var(--secondary-text-color);
 		background-color: var(--secondary-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--secondary-hover-color);
 
 			&:hover {
@@ -259,7 +260,7 @@
 		color: var(--danger-text-color);
 		background-color: var(--danger-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--danger-hover-color);
 
 			&:hover {
@@ -272,7 +273,7 @@
 		color: var(--success-text-color);
 		background-color: var(--success-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--success-hover-color);
 
 			&:hover {
@@ -285,7 +286,7 @@
 		color: var(--warning-text-color);
 		background-color: var(--warning-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--warning-hover-color);
 
 			&:hover {
@@ -298,7 +299,7 @@
 		color: var(--info-text-color);
 		background-color: var(--info-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--info-hover-color);
 
 			&:hover {
@@ -316,7 +317,7 @@
 		color: var(--neutral-text-color);
 		border: var(--border-width-xs) dashed var(--neutral-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--neutral-hover-color);
 
 			&:hover {
@@ -329,7 +330,7 @@
 		color: var(--primary-text-color);
 		border: var(--border-width-xs) dashed var(--primary-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--primary-hover-color);
 
 			&:hover {
@@ -342,7 +343,7 @@
 		color: var(--secondary-text-color);
 		border: var(--border-width-xs) dashed var(--secondary-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--secondary-hover-color);
 
 			&:hover {
@@ -355,7 +356,7 @@
 		color: var(--danger-text-color);
 		border: var(--border-width-xs) dashed var(--danger-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--danger-hover-color);
 
 			&:hover {
@@ -368,7 +369,7 @@
 		color: var(--success-text-color);
 		border: var(--border-width-xs) dashed var(--success-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--success-hover-color);
 
 			&:hover {
@@ -381,7 +382,7 @@
 		color: var(--warning-text-color);
 		border: var(--border-width-xs) dashed var(--warning-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--warning-hover-color);
 
 			&:hover {
@@ -394,7 +395,7 @@
 		color: var(--info-text-color);
 		border: var(--border-width-xs) dashed var(--info-base-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--info-hover-color);
 
 			&:hover {
@@ -412,7 +413,7 @@
 		border-color: var(--neutral-subtle-color);
 		background-color: var(--neutral-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--neutral-hover-color);
 
 			&:hover {
@@ -426,7 +427,7 @@
 		border-color: var(--primary-subtle-color);
 		background-color: var(--primary-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--primary-hover-color);
 
 			&:hover {
@@ -440,7 +441,7 @@
 		border-color: var(--secondary-subtle-color);
 		background-color: var(--secondary-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--secondary-hover-color);
 
 			&:hover {
@@ -454,7 +455,7 @@
 		border-color: var(--danger-subtle-color);
 		background-color: var(--danger-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--danger-hover-color);
 
 			&:hover {
@@ -468,7 +469,7 @@
 		border-color: var(--success-subtle-color);
 		background-color: var(--success-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--success-hover-color);
 
 			&:hover {
@@ -482,7 +483,7 @@
 		border-color: var(--warning-subtle-color);
 		background-color: var(--warning-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--warning-hover-color);
 
 			&:hover {
@@ -496,7 +497,7 @@
 		border-color: var(--info-subtle-color);
 		background-color: var(--info-opacity-color);
 
-		& .lambda-tag-close-button > svg:last-child {
+		& .lambda-tag-close-button>svg:last-child {
 			color: var(--info-hover-color);
 
 			&:hover {
@@ -512,7 +513,7 @@
 	min-width: var(--height-button-2xs);
 	min-height: var(--height-button-2xs);
 
-	& > svg:first-child {
+	&>svg:first-child {
 		width: var(--icon-size-xs);
 		height: var(--icon-size-xs);
 	}
@@ -524,7 +525,7 @@
 	min-width: var(--height-button-xs);
 	min-height: var(--height-button-xs);
 
-	& > svg {
+	&>svg {
 		width: var(--icon-size-xs);
 		height: var(--icon-size-xs);
 	}
@@ -536,7 +537,7 @@
 	min-width: var(--height-button-sm);
 	min-height: var(--height-button-sm);
 
-	& > svg {
+	&>svg {
 		width: var(--icon-size-sm);
 		height: var(--icon-size-sm);
 	}
@@ -548,7 +549,7 @@
 	min-width: var(--height-button-md);
 	min-height: var(--height-button-md);
 
-	& > svg {
+	&>svg {
 		width: var(--icon-size-md);
 		height: var(--icon-size-md);
 	}
@@ -589,28 +590,28 @@
 	cursor: pointer;
 
 	&:is(.lambda-tag-close-button-tiny) {
-		& > svg {
+		&>svg {
 			width: var(--icon-size-xs);
 			height: var(--icon-size-xs);
 		}
 	}
 
 	&:is(.lambda-tag-close-button-small) {
-		& > svg {
+		&>svg {
 			width: var(--icon-size-xs);
 			height: var(--icon-size-xs);
 		}
 	}
 
 	&:is(.lambda-tag-close-button-medium) {
-		& > svg {
+		&>svg {
 			width: var(--icon-size-sm);
 			height: var(--icon-size-sm);
 		}
 	}
 
 	&:is(.lambda-tag-close-button-large) {
-		& > svg {
+		&>svg {
 			width: var(--icon-size-sm);
 			height: var(--icon-size-sm);
 		}

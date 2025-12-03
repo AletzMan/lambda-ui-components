@@ -135,7 +135,7 @@
 
 .lambda-alert-soft {
 	border: none;
-	text-shadow: 0 0 0px var(--lambda-color-secondary-700);
+	text-shadow: 0 0 0px var(--lambda-color-cyan-700);
 
 	.lambda-alert-title {
 		font-weight: var(--font-weight-semibold);
@@ -262,7 +262,7 @@
 }
 
 .lambda-alert-outline {
-	text-shadow: 0 0 0px var(--lambda-color-secondary-700);
+	text-shadow: 0 0 0px var(--lambda-color-cyan-700);
 
 	&.lambda-alert-neutral {
 		background-color: var(--neutral-soft-color);
@@ -394,7 +394,7 @@
 .lambda-alert-solid {
 	color: var(--white-color);
 	border: none;
-	text-shadow: 0 0 0px var(--lambda-color-secondary-900);
+	text-shadow: 0 0 0px var(--lambda-color-cyan-900);
 
 	&.lambda-alert-neutral {
 		color: var(--foreground-invert-color);

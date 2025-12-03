@@ -24,6 +24,7 @@
 .lambda-divider-vertical:is(.lambda-divider-has-content),
 .lambda-divider-horizontal:is(.lambda-divider-has-content) {
 	&:is(.lambda-divider-neutral) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -32,6 +33,7 @@
 	}
 
 	&:is(.lambda-divider-primary) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -40,6 +42,7 @@
 	}
 
 	&:is(.lambda-divider-secondary) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -48,6 +51,7 @@
 	}
 
 	&:is(.lambda-divider-success) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -56,6 +60,7 @@
 	}
 
 	&:is(.lambda-divider-danger) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -64,6 +69,7 @@
 	}
 
 	&:is(.lambda-divider-warning) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -72,6 +78,7 @@
 	}
 
 	&:is(.lambda-divider-info) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -80,6 +87,7 @@
 	}
 
 	&:is(.lambda-divider-neutral) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -88,6 +96,7 @@
 	}
 
 	&:is(.lambda-divider-inverse) {
+
 		&::after,
 		&::before {
 			border-width: 0;
@@ -96,6 +105,7 @@
 	}
 
 	&:is(.lambda-divider-solid) {
+
 		&::after,
 		&::before {
 			border-style: solid;
@@ -103,6 +113,7 @@
 	}
 
 	&:is(.lambda-divider-dashed) {
+
 		&::after,
 		&::before {
 			border-style: dashed;
@@ -110,6 +121,7 @@
 	}
 
 	&:is(.lambda-divider-dotted) {
+
 		&::after,
 		&::before {
 			border-style: dotted;
@@ -162,6 +174,7 @@
 	&:is(.lambda-divider-center),
 	&:is(.lambda-divider-start) {
 		justify-content: center;
+
 		&::after {
 			content: "";
 			width: 100%;
@@ -173,6 +186,7 @@
 	&:is(.lambda-divider-end),
 	&:is(.lambda-divider-center) {
 		justify-content: center;
+
 		&::before {
 			content: "";
 			width: 100%;
@@ -182,6 +196,7 @@
 	}
 
 	&.lambda-divider-tiny {
+
 		&::after,
 		&::before {
 			border-top-width: var(--border-width-xs);
@@ -189,6 +204,7 @@
 	}
 
 	&.lambda-divider-small {
+
 		&::after,
 		&::before {
 			border-top-width: var(--border-width-sm);
@@ -196,6 +212,7 @@
 	}
 
 	&.lambda-divider-medium {
+
 		&::after,
 		&::before {
 			border-top-width: var(--border-width-md);
@@ -203,6 +220,7 @@
 	}
 
 	&.lambda-divider-large {
+
 		&::after,
 		&::before {
 			border-top-width: var(--border-width-lg);
@@ -257,6 +275,7 @@
 	&:is(.lambda-divider-center),
 	&:is(.lambda-divider-start) {
 		justify-content: center;
+
 		&::after {
 			content: "";
 			width: 1px;
@@ -268,6 +287,7 @@
 	&:is(.lambda-divider-end),
 	&:is(.lambda-divider-center) {
 		justify-content: center;
+
 		&::before {
 			content: "";
 			width: 1px;
@@ -277,6 +297,7 @@
 	}
 
 	&.lambda-divider-tiny {
+
 		&::after,
 		&::before {
 			border-left-width: var(--border-width-xs);
@@ -284,6 +305,7 @@
 	}
 
 	&.lambda-divider-small {
+
 		&::after,
 		&::before {
 			border-left-width: var(--border-width-sm);
@@ -291,6 +313,7 @@
 	}
 
 	&.lambda-divider-medium {
+
 		&::after,
 		&::before {
 			border-left-width: var(--border-width-md);
@@ -298,6 +321,7 @@
 	}
 
 	&.lambda-divider-large {
+
 		&::after,
 		&::before {
 			border-left-width: var(--border-width-lg);
@@ -334,9 +358,9 @@
 }
 
 .lambda-divider-white {
-	border-color: var(--lambda-color-secondary-200);
+	border-color: var(--lambda-color-cyan-200);
 }
 
 .lambda-divider-black {
-	border-color: var(--lambda-color-secondary-900);
+	border-color: var(--lambda-color-cyan-900);
 }

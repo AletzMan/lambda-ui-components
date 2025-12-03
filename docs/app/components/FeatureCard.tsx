@@ -45,7 +45,7 @@ export function FeatureCard({
 					}}
 					className={`
               p-2 rounded-full 
-              bg-(--lambda-color-primary-600) 
+              bg-(--lambda-color-cyan-600) 
               text-white shadow-md shadow-black/20  
             `}
 				>
