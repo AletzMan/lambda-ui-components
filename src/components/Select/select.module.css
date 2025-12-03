@@ -144,8 +144,6 @@
 }
 
 .select-icon-svg {
-	width: var(--size-xs);
-	height: var(--size-xs);
 	pointer-events: none;
 	transition: transform 0.2s ease;
 	color: var(--surface-g);
@@ -269,9 +267,9 @@
 	}
 
 	&.select-btn-tiny {
-		grid-template-columns: 1fr var(--size-xs);
+		grid-template-columns: 1fr var(--size-3xl);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--size-xs);
+		height: var(--size-2xl);
 		font-size: var(--font-size-sm);
 
 		.select-icon-svg {
@@ -281,9 +279,9 @@
 	}
 
 	&.select-btn-small {
-		grid-template-columns: 1fr var(--size-sm);
+		grid-template-columns: 1fr var(--size-4xl);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--size-sm);
+		height: var(--size-3xl);
 		font-size: var(--font-size-sm);
 
 		.select-icon-svg {
@@ -293,9 +291,9 @@
 	}
 
 	&.select-btn-medium {
-		grid-template-columns: 1fr var(--size-md);
+		grid-template-columns: 1fr var(--size-5xl);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--size-md);
+		height: var(--size-4xl);
 		font-size: var(--font-size-md);
 
 		.select-icon-svg {
@@ -305,9 +303,9 @@
 	}
 
 	&.select-btn-large {
-		grid-template-columns: 1fr var(--size-lg);
+		grid-template-columns: 1fr var(--size-6xl);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--size-lg);
+		height: var(--size-5xl);
 		font-size: var(--font-size-lg);
 
 		.select-icon-svg {
@@ -353,24 +351,6 @@
 		border-top-left-radius: var(--radius-none);
 		border-bottom-left-radius: var(--radius-none);
 	}
-
-	/*&:focus:not(.select-btn-disabled) {
-		&.select-btn-outline {
-			border: var(--border-width-xs) solid var(--primary-hover-color);
-			outline: 2px solid var(--primary-shadow-color);
-			outline-offset: 2px;
-			color: var(--primary-text-color);
-		}
-
-		&.select-btn-underline {
-			border-bottom-color: var(--primary-base-color);
-		}
-
-		&.select-btn-soft {
-			outline: 2px solid var(--primary-shadow-color);
-			outline-offset: 2px;
-		}
-	}*/
 
 	&:hover:not(.select-btn-disabled):not(.select-btn-invalid) {
 		& .select-icon {
@@ -569,7 +549,7 @@
 	}
 
 	&:is(.select-option-tiny) {
-		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) var(--spacing-md);
+		padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) var(--spacing-md);
 		font-size: var(--font-size-sm);
 
 		.select-icon-check {
@@ -579,7 +559,7 @@
 	}
 
 	&:is(.select-option-small) {
-		padding: var(--spacing-none) var(--spacing-xs) var(--spacing-none) var(--spacing-md);
+		padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) var(--spacing-md);
 		font-size: var(--font-size-sm);
 
 		.select-icon-check {
@@ -589,7 +569,7 @@
 	}
 
 	&:is(.select-option-medium) {
-		padding: var(--spacing-none) var(--spacing-sm) var(--spacing-none) var(--spacing-md);
+		padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) var(--spacing-md);
 		font-size: var(--font-size-md);
 
 		.select-icon-check {
@@ -599,7 +579,7 @@
 	}
 
 	&:is(.select-option-large) {
-		padding: var(--spacing-none) var(--spacing-md) var(--spacing-none) var(--spacing-md);
+		padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) var(--spacing-md);
 		font-size: var(--font-size-lg);
 
 		.select-icon-check {

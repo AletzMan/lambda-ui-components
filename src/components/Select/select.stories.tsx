@@ -75,7 +75,7 @@ const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" 
 					display: "flex",
 					flexDirection: "column",
 					gap: "2rem",
-					width: "300px",
+					width: "350px",
 				}}
 			>
 				<Select
