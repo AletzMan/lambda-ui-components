@@ -323,7 +323,9 @@
 	--border-width-md: 3px;
 	--border-width-lg: 4px;
 
-
+	--outline-width-none: 0px;
+	--outline-width-default: 2px;
+	--outline-width-strong: 3px;
 
 	--icon-size-4xs: 0.5rem;
 	/* 8px */
