@@ -233,19 +233,19 @@ input[type="number"] {
 	}
 
 	&.lambda-number-handler-tiny {
-		width: var(--size-xs);
+		width: var(--size-md);
 	}
 
 	&.lambda-number-handler-small {
-		width: var(--size-sm);
+		width: var(--size-lg);
 	}
 
 	&.lambda-number-handler-medium {
-		width: var(--size-md);
+		width: var(--size-xl);
 	}
 
 	&.lambda-number-handler-large {
-		width: var(--size-md);
+		width: var(--size-2xl);
 	}
 
 	&.lambda-number-handler-radius-none {
@@ -379,23 +379,23 @@ input[type="number"] {
 }
 
 .lambda-number-tiny {
-	min-height: var(--size-xs);
-	height: var(--size-xs);
+	min-height: var(--size-2xl);
+	height: var(--size-2xl);
 }
 
 .lambda-number-small {
-	min-height: var(--size-sm);
-	height: var(--size-sm);
+	min-height: var(--size-3xl);
+	height: var(--size-3xl);
 }
 
 .lambda-number-medium {
-	min-height: var(--size-md);
-	height: var(--size-md);
+	min-height: var(--size-4xl);
+	height: var(--size-4xl);
 }
 
 .lambda-number-large {
-	min-height: var(--size-lg);
-	height: var(--size-lg);
+	min-height: var(--size-5xl);
+	height: var(--size-5xl);
 }
 
 .lambda-number-radius-none {
@@ -524,22 +524,22 @@ input[type="number"] {
 
 	&.lambda-number-btn-tiny {
 		.lambda-number-icon {
-			width: var(--size-3xs);
-			height: var(--size-3xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 	}
 
 	&.lambda-number-btn-small {
 		.lambda-number-icon {
-			width: var(--size-2xs);
-			height: var(--size-2xs);
+			width: var(--size-xs);
+			height: var(--size-xs);
 		}
 	}
 
 	&.lambda-number-btn-medium {
 		.lambda-number-icon {
-			width: var(--size-xs);
-			height: var(--size-xs);
+			width: var(--size-sm);
+			height: var(--size-sm);
 		}
 	}
 
@@ -586,8 +586,8 @@ input[type="number"] {
 		padding: 0 var(--spacing-xs);
 
 		& .lambda-number-currency-icon {
-			height: var(--size-2xs);
-			width: var(--size-2xs);
+			height: var(--size-sm);
+			width: var(--size-sm);
 		}
 	}
 
@@ -601,7 +601,7 @@ input[type="number"] {
 	}
 
 	&:is(.lambda-number-currency-medium) {
-		padding: 0 var(--spacing-md);
+		padding: 0 var(--spacing-sm);
 
 		& .lambda-number-currency-icon {
 			height: var(--size-md);
@@ -610,11 +610,11 @@ input[type="number"] {
 	}
 
 	&:is(.lambda-number-currency-large) {
-		padding: 0 var(--spacing-lg);
+		padding: 0 var(--spacing-sm);
 
 		& .lambda-number-currency-icon {
-			height: var(--size-xl);
-			width: var(--size-xl);
+			height: var(--size-lg);
+			width: var(--size-lg);
 		}
 	}
 
