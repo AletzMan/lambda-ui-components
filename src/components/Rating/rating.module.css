@@ -96,21 +96,21 @@
 	}
 
 	&:is(.lambda-rating-item-medium) {
-		height: var(--size-3xl);
+		height: var(--size-xl);
 		font-size: var(--font-size-xl);
 		line-height: var(--font-size-xl);
 		font-weight: var(--font-weight-extrabold);
 	}
 
 	&:is(.lambda-rating-item-large) {
-		height: var(--size-lg);
-		font-size: var(--font-size-4xl);
-		line-height: var(--font-size-4xl);
+		height: var(--size-2xl);
+		font-size: var(--font-size-2xl);
+		line-height: var(--font-size-2xl);
 		font-weight: var(--font-weight-extrabold);
 
 		&>svg {
-			width: var(--size-4xl);
-			height: var(--size-4xl);
+			width: var(--size-2xl);
+			height: var(--size-2xl);
 		}
 	}
 
