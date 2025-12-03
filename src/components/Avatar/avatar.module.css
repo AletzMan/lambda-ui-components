@@ -16,23 +16,26 @@
 }
 
 .lambda-avatar-tiny {
-	width: 1.5rem;
-	height: 1.5rem;
+	width: var(--size-lg);
+	height: var(--size-lg);
 	font-size: var(--font-size-2xs);
 }
+
 .lambda-avatar-small {
-	width: 2rem;
-	height: 2rem;
+	width: var(--size-3xl);
+	height: var(--size-3xl);
 	font-size: var(--font-size-sm);
 }
+
 .lambda-avatar-medium {
-	width: 2.75rem;
-	height: 2.75rem;
+	width: var(--size-5xl);
+	height: var(--size-5xl);
 	font-size: var(--font-size-lg);
 }
+
 .lambda-avatar-large {
-	width: 4rem;
-	height: 4rem;
+	width: var(--size-7xl);
+	height: var(--size-7xl);
 	font-size: var(--font-size-3xl);
 }
 
@@ -53,7 +56,8 @@
 	box-shadow: 0 0 0 2px var(--surface-a);
 	z-index: 1;
 }
-.lambda-avatar-group > .lambda-avatar:first-child {
+
+.lambda-avatar-group>.lambda-avatar:first-child {
 	margin-left: 0;
 }
 
