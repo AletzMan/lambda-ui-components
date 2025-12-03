@@ -327,6 +327,8 @@
 	--outline-width-default: 2px;
 	--outline-width-strong: 3px;
 
+	--size-4xs: 0.125rem;
+	/* 2px */
 	--size-3xs: 0.25rem;
 	/* 4px */
 	--size-2xs: 0.5rem;
