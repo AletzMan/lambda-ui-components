@@ -56,26 +56,26 @@
 }
 
 .lambda-pagination-button-tiny {
-	min-width: var(--size-xs);
-	height: var(--size-xs);
+	min-width: var(--size-xl);
+	height: var(--size-xl);
 	font-size: var(--font-size-xs);
 }
 
 .lambda-pagination-button-small {
-	min-width: var(--size-sm);
-	height: var(--size-sm);
+	min-width: var(--size-2xl);
+	height: var(--size-2xl);
 	font-size: var(--font-size-sm);
 }
 
 .lambda-pagination-button-medium {
-	min-width: var(--size-md);
-	height: var(--size-md);
+	min-width: var(--size-3xl);
+	height: var(--size-3xl);
 	font-size: var(--font-size-md);
 }
 
 .lambda-pagination-button-large {
-	min-width: var(--size-lg);
-	height: var(--size-lg);
+	min-width: var(--size-5xl);
+	height: var(--size-5xl);
 	font-size: var(--font-size-lg);
 }
 
