@@ -2002,7 +2002,6 @@
 	--info-shadow-color: color-mix(in srgb, var(--lambda-color-sky-500) 50%, transparent 90%);
 }
 
-
 [data-theme="graphite"] {
 	/* Graphite Palette - Professional Dark Gray */
 	--background-color: oklch(18% 0 0);
@@ -2168,7 +2167,6 @@
 	--info-shadow-color: color-mix(in srgb, var(--lambda-color-sky-500) 50%, transparent 90%);
 }
 
-
 [data-theme="midnight"] {
 	/* Midnight Palette - Creative & Premium */
 	--background-color: oklch(10% 0.02 270);
@@ -2329,8 +2327,6 @@
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-sky-500) 15%, transparent 90%);
 	--info-shadow-color: color-mix(in srgb, var(--lambda-color-sky-500) 50%, transparent 90%);
 }
-
-
 
 button,
 input,

@@ -142,13 +142,12 @@
 	width: fit-content;
 	align-items: center;
 	justify-content: flex-start;
-	gap: 4px;
-	margin: 0;
-	padding: 0;
+	margin: var(--spacing-none);
+	padding: var(--spacing-none);
 
 	&>ul {
-		margin: 0;
-		padding: 0;
+		margin: var(--spacing-none);
+		padding: var(--spacing-none);
 	}
 
 	:not(:nth-last-child(1)) {
@@ -255,18 +254,10 @@
 
 .breadcrumb-stepped {
 	& .breadcrumb-item {
-		&.breadcrumb-item-tiny {
-			padding: var(--spacing-xs) var(--spacing-sm);
-		}
 
-		&.breadcrumb-item-small {
-			padding: var(--spacing-xs) var(--spacing-sm);
-		}
-
-		&.breadcrumb-item-medium {
-			padding: var(--spacing-xs) var(--spacing-sm);
-		}
-
+		&.breadcrumb-item-tiny,
+		&.breadcrumb-item-small,
+		&.breadcrumb-item-medium,
 		&.breadcrumb-item-large {
 			padding: var(--spacing-xs) var(--spacing-sm);
 		}
@@ -285,26 +276,6 @@
 			width: 0;
 			height: 0;
 			bottom: 0;
-		}
-
-		&.breadcrumb-item-tiny {
-			padding: var(--spacing-none) var(--spacing-md);
-			height: var(--size-xs);
-		}
-
-		&.breadcrumb-item-small {
-			padding: var(--spacing-none) var(--spacing-md);
-			height: var(--size-sm);
-		}
-
-		&.breadcrumb-item-medium {
-			padding: var(--spacing-none) var(--spacing-md);
-			height: var(--size-md);
-		}
-
-		&.breadcrumb-item-large {
-			padding: var(--spacing-none) var(--spacing-lg);
-			height: var(--size-lg);
 		}
 	}
 
@@ -347,8 +318,8 @@
 			&.breadcrumb-item-small {
 				&::after {
 					right: -11px;
-					border-bottom: 15px solid transparent;
-					border-top: 15px solid transparent;
+					border-bottom: calc(var(--size-xl) / 2) solid transparent;
+					border-top: calc(var(--size-xl) / 2) solid transparent;
 					border-left: 11px solid var(--surface-b);
 				}
 			}
@@ -356,8 +327,8 @@
 			&.breadcrumb-item-medium {
 				&::after {
 					right: -11px;
-					border-bottom: 18px solid transparent;
-					border-top: 18px solid transparent;
+					border-bottom: calc(var(--size-2xl) / 2) solid transparent;
+					border-top: calc(var(--size-2xl) / 2) solid transparent;
 					border-left: 11px solid var(--surface-b);
 				}
 			}
@@ -365,8 +336,8 @@
 			&.breadcrumb-item-large {
 				&::after {
 					right: -12px;
-					border-bottom: 22px solid transparent;
-					border-top: 22px solid transparent;
+					border-bottom: calc(var(--size-3xl) / 2) solid transparent;
+					border-top: calc(var(--size-3xl) / 2) solid transparent;
 					border-left: 12px solid var(--surface-b);
 				}
 			}
@@ -394,15 +365,15 @@
 			&.breadcrumb-item-small {
 				&::before {
 					left: -11px;
-					border-bottom: 15px solid var(--surface-b);
-					border-top: 15px solid var(--surface-b);
+					border-bottom: calc(var(--size-xl) / 2) solid var(--surface-b);
+					border-top: calc(var(--size-xl) / 2) solid var(--surface-b);
 					border-left: 11px solid transparent;
 				}
 
 				&::after {
 					right: -11px;
-					border-bottom: 15px solid transparent;
-					border-top: 15px solid transparent;
+					border-bottom: calc(var(--size-xl) / 2) solid transparent;
+					border-top: calc(var(--size-xl) / 2) solid transparent;
 					border-left: 11px solid var(--surface-b);
 				}
 			}
@@ -410,15 +381,15 @@
 			&.breadcrumb-item-medium {
 				&::before {
 					left: -11px;
-					border-bottom: 18px solid var(--surface-b);
-					border-top: 18px solid var(--surface-b);
+					border-bottom: calc(var(--size-2xl) / 2) solid var(--surface-b);
+					border-top: calc(var(--size-2xl) / 2) solid var(--surface-b);
 					border-left: 11px solid transparent;
 				}
 
 				&::after {
 					right: -11px;
-					border-bottom: 18px solid transparent;
-					border-top: 18px solid transparent;
+					border-bottom: calc(var(--size-2xl) / 2) solid transparent;
+					border-top: calc(var(--size-2xl) / 2) solid transparent;
 					border-left: 11px solid var(--surface-b);
 				}
 			}
@@ -426,15 +397,15 @@
 			&.breadcrumb-item-large {
 				&::before {
 					left: -12px;
-					border-bottom: 22px solid var(--surface-b);
-					border-top: 22px solid var(--surface-b);
+					border-bottom: calc(var(--size-3xl) / 2) solid var(--surface-b);
+					border-top: calc(var(--size-3xl) / 2) solid var(--surface-b);
 					border-left: 12px solid transparent;
 				}
 
 				&::after {
 					right: -12px;
-					border-bottom: 22px solid transparent;
-					border-top: 22px solid transparent;
+					border-bottom: calc(var(--size-3xl) / 2) solid transparent;
+					border-top: calc(var(--size-3xl) / 2) solid transparent;
 					border-left: 12px solid var(--surface-b);
 				}
 			}
@@ -445,7 +416,7 @@
 		& .breadcrumb-item {
 			cursor: auto;
 			padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-xs) var(--spacing-md);
-			font-weight: var(--font-weight-bold);
+			font-weight: var(--font-weight-semibold);
 
 			&.breadcrumb-item-radius-none {
 				border-radius: var(--radius-none);
@@ -481,8 +452,8 @@
 			&.breadcrumb-item-small {
 				&::before {
 					left: -11px;
-					border-bottom: 15px solid var(--surface-c);
-					border-top: 15px solid var(--surface-c);
+					border-bottom: calc(var(--size-xl) / 2) solid var(--surface-c);
+					border-top: calc(var(--size-xl) / 2) solid var(--surface-c);
 					border-left: 11px solid transparent;
 				}
 			}
@@ -490,8 +461,8 @@
 			&.breadcrumb-item-medium {
 				&::before {
 					left: -11px;
-					border-bottom: 18px solid var(--surface-c);
-					border-top: 18px solid var(--surface-c);
+					border-bottom: calc(var(--size-2xl) / 2) solid var(--surface-c);
+					border-top: calc(var(--size-2xl) / 2) solid var(--surface-c);
 					border-left: 11px solid transparent;
 				}
 			}
@@ -499,8 +470,8 @@
 			&.breadcrumb-item-large {
 				&::before {
 					left: -12px;
-					border-bottom: 22px solid var(--surface-c);
-					border-top: 22px solid var(--surface-c);
+					border-bottom: calc(var(--size-3xl) / 2) solid var(--surface-c);
+					border-top: calc(var(--size-3xl) / 2) solid var(--surface-c);
 					border-left: 12px solid transparent;
 				}
 			}
@@ -576,4 +547,29 @@
 			}
 		}
 	}
+}
+
+
+
+.breadcrumb-item-tiny {
+	padding: var(--spacing-none) var(--spacing-md);
+	height: var(--size-lg);
+	margin: -2px;
+}
+
+.breadcrumb-item-small {
+	padding: var(--spacing-none) var(--spacing-md);
+	height: var(--size-xl);
+	margin: -1px;
+}
+
+.breadcrumb-item-medium {
+	padding: var(--spacing-none) var(--spacing-md);
+	height: var(--size-2xl);
+	margin: -1px;
+}
+
+.breadcrumb-item-large {
+	padding: var(--spacing-none) var(--spacing-lg);
+	height: var(--size-3xl);
 }
