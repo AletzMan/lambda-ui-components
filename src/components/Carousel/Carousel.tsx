@@ -309,6 +309,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 						className={clsx(
 							carouselButtonVariants({ position: "prev", orientation, paginationType })
 						)}
+						radius="small"
 						size="tiny"
 						onClick={prevSlide}
 						disabled={isTransitioning || isReturning || isPrevDisabled}
@@ -324,6 +325,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 						className={clsx(
 							carouselButtonVariants({ position: "next", orientation, paginationType })
 						)}
+						radius="small"
 						size="tiny"
 						onClick={nextSlide}
 						disabled={isTransitioning || isReturning || isNextDisabled}

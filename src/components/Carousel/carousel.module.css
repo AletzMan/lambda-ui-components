@@ -18,19 +18,19 @@
 		max-height: 400px;
 
 		&.lambda-carousel-thumbnail {
-			padding: var(--spacing-md) var(--spacing-xl) var(--spacing-2xl) var(--spacing-xl);
+			padding: var(--spacing-md) calc(var(--spacing-2xl) + var(--spacing-2xs)) calc(var(--spacing-4xl) + var(--spacing-sm)) calc(var(--spacing-2xl) + var(--spacing-2xs));
 
 			&.lambda-carousel-navigation-false {
-				padding: var(--spacing-md) var(--spacing-xs) var(--spacing-2xl) var(--spacing-xs);
+				padding: var(--spacing-md) var(--spacing-xs) calc(var(--spacing-4xl) + var(--spacing-sm)) var(--spacing-xs);
 			}
 
 			&.lambda-carousel-pagination-false {
-				padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs) var(--spacing-xl);
+				padding: var(--spacing-xs) calc(var(--spacing-2xl) + var(--spacing-2xs)) var(--spacing-xs) calc(var(--spacing-2xl) + var(--spacing-2xs));
 			}
 		}
 
 		&.lambda-carousel-dots {
-			padding: var(--spacing-md) var(--spacing-xl) var(--spacing-none) var(--spacing-xl);
+			padding: var(--spacing-md) calc(var(--spacing-2xl) + var(--spacing-2xs)) var(--spacing-none) calc(var(--spacing-2xl) + var(--spacing-2xs));
 
 			&.lambda-carousel-navigation-false {
 				padding: var(--spacing-md) var(--spacing-xs) var(--spacing-xl) var(--spacing-xs);
@@ -50,19 +50,19 @@
 		flex-direction: row;
 
 		&.lambda-carousel-thumbnail {
-			padding: var(--spacing-xl) var(--spacing-2xl) var(--spacing-xl) var(--spacing-md);
+			padding: calc(var(--spacing-2xl) + var(--spacing-2xs)) calc(var(--spacing-4xl) + var(--spacing-sm)) calc(var(--spacing-2xl) + var(--spacing-2xs)) var(--spacing-xs);
 
 			&.lambda-carousel-navigation-false {
-				padding: var(--spacing-xs) var(--spacing-2xl) var(--spacing-xs) var(--spacing-md);
+				padding: var(--spacing-xs) calc(var(--spacing-4xl) + var(--spacing-sm)) var(--spacing-xs) var(--spacing-xs);
 			}
 
 			&.lambda-carousel-pagination-false {
-				padding: var(--spacing-xl) var(--spacing-xs) var(--spacing-xl) var(--spacing-xs);
+				padding: calc(var(--spacing-2xl) + var(--spacing-2xs)) var(--spacing-xs) calc(var(--spacing-2xl) + var(--spacing-2xs)) var(--spacing-xs);
 			}
 		}
 
 		&.lambda-carousel-dots {
-			padding: var(--spacing-xl) calc(var(--spacing-none) + var(--spacing-xs)) var(--spacing-xl) var(--spacing-xs);
+			padding: calc(var(--spacing-2xl) + var(--spacing-2xs)) calc(var(--spacing-none) + var(--spacing-xs)) calc(var(--spacing-2xl) + var(--spacing-2xs)) var(--spacing-xs);
 
 			&.lambda-carousel-navigation-false {
 				padding: var(--spacing-xs) calc(var(--spacing-xl) + var(--spacing-xs)) var(--spacing-xs) var(--spacing-xs);
@@ -164,7 +164,7 @@
 
 .lambda-carousel-button-prev {
 	&.lambda-carousel-button-horizontal {
-		left: calc(var(--spacing-md) - var(--spacing-2xs));
+		left: var(--spacing-sm);
 
 		&:is(.lambda-carousel-button-dots) {
 			top: calc(50% - 1.75em);
@@ -180,7 +180,7 @@
 		min-height: 1.75em !important;
 		height: 1.75em !important;
 		left: calc((50% - 20px) - 1.75em);
-		top: calc(var(--spacing-sm) + 1px);
+		top: calc(var(--spacing-xs) + 2px);
 
 		& svg {
 			transform: rotate(90deg);
@@ -189,7 +189,7 @@
 }
 
 .lambda-carousel-button-next {
-	right: calc(var(--spacing-md) - var(--spacing-2xs));
+	right: var(--spacing-sm);
 
 	&.lambda-carousel-button-horizontal {
 		&:is(.lambda-carousel-button-dots) {
@@ -202,7 +202,7 @@
 	}
 
 	&.lambda-carousel-button-vertical {
-		bottom: calc(var(--spacing-sm) + 1px);
+		bottom: calc(var(--spacing-xs) + 2px);
 		left: calc((50% - 20px) - 1.75em);
 		width: 3.5em !important;
 		height: 1.75em !important;
@@ -273,8 +273,8 @@
 }
 
 .lambda-carousel-dot-circle {
-	width: var(--size-3xs);
-	height: var(--size-3xs);
+	width: var(--size-2xs);
+	height: var(--size-2xs);
 	border-radius: var(--radius-full);
 }
 
@@ -291,9 +291,9 @@
 }
 
 .lambda-carousel-dot-square {
-	width: var(--size-3xs);
-	height: var(--size-3xs);
-	border-radius: var(--radius-xs);
+	width: var(--size-2xs);
+	height: var(--size-2xs);
+	border-radius: var(--radius-2xs);
 }
 
 .lambda-carousel-dot-number {
@@ -303,7 +303,7 @@
 	font-size: var(--font-size-xs);
 	border: var(--border-width-xs) solid var(--border-color);
 	background-color: var(--surface-c);
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-2xs);
 	box-sizing: border-box;
 
 	&::after {
