@@ -183,19 +183,19 @@
 	z-index: 1;
 
 	&:is(.lambda-slider-track-tiny) {
-		height: var(--size-xs, 4px);
+		height: var(--size-3xs);
 	}
 
 	&:is(.lambda-slider-track-small) {
-		height: var(--size-sm, 6px);
+		height: var(--size-2xs);
 	}
 
 	&:is(.lambda-slider-track-medium) {
-		height: var(--size-md, 8px);
+		height: var(--size-xs);
 	}
 
 	&:is(.lambda-slider-track-large) {
-		height: var(--size-lg, 12x);
+		height: var(--size-sm);
 	}
 }
 
@@ -209,19 +209,19 @@
 	z-index: 1;
 
 	&:is(.lambda-slider-track-tiny) {
-		width: var(--size-xs, 4px);
+		width: var(--size-3xs);
 	}
 
 	&:is(.lambda-slider-track-small) {
-		width: var(--size-sm, 6px);
+		width: var(--size-2xs);
 	}
 
 	&:is(.lambda-slider-track-medium) {
-		width: var(--size-md, 8px);
+		width: var(--size-xs);
 	}
 
 	&:is(.lambda-slider-track-large) {
-		width: var(--size-lg, 12x);
+		width: var(--size-sm);
 	}
 }
 
@@ -313,19 +313,19 @@
 	transform: translateY(50%);
 
 	&:is(.lambda-slider-fill-tiny) {
-		height: var(--size-xs, 4px);
+		height: var(--size-3xs);
 	}
 
 	&:is(.lambda-slider-fill-small) {
-		height: var(--size-sm, 6px);
+		height: var(--size-2xs);
 	}
 
 	&:is(.lambda-slider-fill-medium) {
-		height: var(--size-md, 8px);
+		height: var(--size-xs);
 	}
 
 	&:is(.lambda-slider-fill-large) {
-		height: var(--size-lg, 12x);
+		height: var(--size-sm);
 	}
 }
 
@@ -336,19 +336,19 @@
 	transform: translateX(-50%);
 
 	&:is(.lambda-slider-fill-tiny) {
-		width: var(--size-xs, 4px);
+		width: var(--size-3xs);
 	}
 
 	&:is(.lambda-slider-fill-small) {
-		width: var(--size-sm, 6px);
+		width: var(--size-2xs);
 	}
 
 	&:is(.lambda-slider-fill-medium) {
-		width: var(--size-md, 8px);
+		width: var(--size-xs);
 	}
 
 	&:is(.lambda-slider-fill-large) {
-		width: var(--size-lg, 12x);
+		width: var(--size-sm);
 	}
 }
 
@@ -486,7 +486,6 @@
 .lambda-slider-handle-vertical {
 	left: 50%;
 	transform: translate(-50%, -50%);
-	/* top será seteado inline por el componente */
 }
 
 .lambda-slider-handle-horizontal.lambda-slider-handle-dragging {
@@ -505,26 +504,26 @@
 
 /* Variantes de Tamaño del Handle */
 .lambda-slider-handle-tiny {
-	width: var(--handle-2xs);
-	height: var(--handle-2xs);
+	width: var(--size-xs);
+	height: var(--size-xs);
 	border-width: var(--border-width-sm);
 }
 
 .lambda-slider-handle-small {
-	width: var(--handle-xs);
-	height: var(--handle-xs);
+	width: var(--size-sm);
+	height: var(--size-sm);
 	border-width: var(--border-width-sm);
 }
 
 .lambda-slider-handle-medium {
-	width: var(--handle-sm);
-	height: var(--handle-sm);
+	width: var(--size-md);
+	height: var(--size-md);
 	border-width: var(--border-width-sm);
 }
 
 .lambda-slider-handle-large {
-	width: var(--handle-md);
-	height: var(--handle-md);
+	width: var(--size-lg);
+	height: var(--size-lg);
 	border-width: var(--border-width-md);
 }
 
