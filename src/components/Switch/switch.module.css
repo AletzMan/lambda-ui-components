@@ -429,23 +429,23 @@
 }
 
 .lambda-switch-background-tiny {
-	width: calc(var(--size-xs) * 2);
-	height: var(--size-xs);
-}
-
-.lambda-switch-background-small {
 	width: calc(var(--size-sm) * 2);
 	height: var(--size-sm);
 }
 
-.lambda-switch-background-medium {
+.lambda-switch-background-small {
 	width: calc(var(--size-md) * 2);
 	height: var(--size-md);
 }
 
-.lambda-switch-background-large {
+.lambda-switch-background-medium {
 	width: calc(var(--size-lg) * 2);
 	height: var(--size-lg);
+}
+
+.lambda-switch-background-large {
+	width: calc(var(--size-xl) * 2);
+	height: var(--size-xl);
 }
 
 .lambda-switch-handle {
@@ -472,42 +472,42 @@
 
 .lambda-switch-handle-tiny {
 	left: 4px;
-	width: calc(var(--size-xs) - 6px);
-	height: calc(var(--size-xs) - 6px);
+	width: calc(var(--size-sm) - 6px);
+	height: calc(var(--size-sm) - 6px);
 }
 
 .lambda-switch-handle-small {
-	left: 4px;
-	width: calc(var(--size-sm) - 8px);
-	height: calc(var(--size-sm) - 8px);
-}
-
-.lambda-switch-handle-medium {
 	left: 4px;
 	width: calc(var(--size-md) - 8px);
 	height: calc(var(--size-md) - 8px);
 }
 
+.lambda-switch-handle-medium {
+	left: 4px;
+	width: calc(var(--size-lg) - 8px);
+	height: calc(var(--size-lg) - 8px);
+}
+
 .lambda-switch-handle-large {
 	left: 5px;
-	width: calc(var(--size-lg) - 10px);
-	height: calc(var(--size-lg) - 10px);
+	width: calc(var(--size-xl) - 10px);
+	height: calc(var(--size-xl) - 10px);
 }
 
 .lambda-switch-handle-checked.lambda-switch-handle-tiny {
-	left: calc(100% - var(--size-xs) + 4px);
-}
-
-.lambda-switch-handle-checked.lambda-switch-handle-small {
 	left: calc(100% - var(--size-sm) + 4px);
 }
 
-.lambda-switch-handle-checked.lambda-switch-handle-medium {
+.lambda-switch-handle-checked.lambda-switch-handle-small {
 	left: calc(100% - var(--size-md) + 4px);
 }
 
+.lambda-switch-handle-checked.lambda-switch-handle-medium {
+	left: calc(100% - var(--size-lg) + 4px);
+}
+
 .lambda-switch-handle-checked.lambda-switch-handle-large {
-	left: calc(100% - var(--size-lg) + 5px);
+	left: calc(100% - var(--size-xl) + 5px);
 }
 
 @keyframes animateIcon {
