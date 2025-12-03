@@ -61,7 +61,7 @@ const Template = (args: JoinProps) => {
 					padding: "var(--spacing-lg)",
 				}}
 			>
-				<div style={{ display: "flex", flexDirection: "column", gap: "35px", width: "100%" }}>
+				<div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}>
 					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
 						<Input
 							type="text"

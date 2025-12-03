@@ -1,21 +1,21 @@
 .lambda-join-tiny {
 	font-size: var(--font-size-xs);
-	height: var(--size-xs);
+	height: var(--size-2xl);
 }
 
 .lambda-join-small {
 	font-size: var(--font-size-xs);
-	height: var(--size-sm);
+	height: var(--size-3xl);
 }
 
 .lambda-join-medium {
 	font-size: var(--font-size-sm);
-	height: var(--size-md);
+	height: var(--size-4xl);
 }
 
 .lambda-join-large {
 	font-size: var(--font-size-md);
-	height: var(--size-lg);
+	height: var(--size-5xl);
 }
 
 .lambda-join-radius-none {
@@ -54,12 +54,15 @@
 	outline: none;
 	width: 100%;
 	font-family: var(--font-family);
+	margin-bottom: 1.4em;
 
 	.lambda-join-input {
 		flex-grow: 1;
 	}
 
 	&:has(label[aria-label="ComponentLabel"]) {
+		margin-top: 1.4em;
+
 		& label[aria-label="ComponentLabel"] {
 			position: absolute;
 			top: -1.4em;
