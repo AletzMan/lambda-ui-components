@@ -345,7 +345,7 @@ function Header() {
   color: var(--foreground-color);
   border: 1px solid var(--border-color);
   padding: var(--spacing-md);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--radius-md);
 }
 
 .my-accent-button {

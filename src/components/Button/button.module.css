@@ -1009,47 +1009,47 @@
 }
 
 .lambda-btn-radius-none {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-btn-radius-tiny {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-btn-radius-small {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 }
 
 .lambda-btn-radius-medium {
-	border-radius: var(--border-radius-md);
+	border-radius: var(--radius-md);
 }
 
 .lambda-btn-radius-large {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 }
 
 .lambda-btn-radius-full {
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--radius-full);
 }
 
 .lambda-btn-circle {
 	padding: var(--spacing-none);
-	border-radius: var(--border-radius-full);
+	border-radius: var(--radius-full);
 	aspect-ratio: 1 / 1;
 }
 
 .lambda-btn-first {
-	border-top-right-radius: var(--border-radius-none);
-	border-bottom-right-radius: var(--border-radius-none);
+	border-top-right-radius: var(--radius-none);
+	border-bottom-right-radius: var(--radius-none);
 }
 
 .lambda-btn-middle {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-btn-last {
-	border-top-left-radius: var(--border-radius-none);
-	border-bottom-left-radius: var(--border-radius-none);
+	border-top-left-radius: var(--radius-none);
+	border-bottom-left-radius: var(--radius-none);
 }
 
 .lambda-btn-icon .lambda-btn-icon-loading {

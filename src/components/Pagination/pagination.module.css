@@ -124,27 +124,27 @@
 }
 
 .lambda-pagination-button-radius-none {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-pagination-button-radius-tiny {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-pagination-button-radius-small {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 }
 
 .lambda-pagination-button-radius-medium {
-	border-radius: var(--border-radius-md);
+	border-radius: var(--radius-md);
 }
 
 .lambda-pagination-button-radius-large {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 }
 
 .lambda-pagination-button-radius-full {
-	border-radius: var(--border-radius-full);
+	border-radius: var(--radius-full);
 }
 
 .lambda-pagination-button:hover:not(.lambda-pagination-button-disabled):not(.lambda-pagination-button-active):not(.lambda-pagination-button-ellipsis) {

@@ -36,24 +36,24 @@
 	}
 
 	&.lambda-tooltip-container-radius-none {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&.lambda-tooltip-container-radius-tiny {
-		border-radius: var(--border-radius-tiny);
+		border-radius: var(--radius-tiny);
 	}
 
 	&.lambda-tooltip-container-radius-small {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&.lambda-tooltip-container-radius-medium {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&.lambda-tooltip-container-radius-large,
 	&.lambda-tooltip-container-radius-full {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 }
 

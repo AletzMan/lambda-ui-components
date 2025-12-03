@@ -86,7 +86,7 @@ const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 								textAlign: "center",
 								fontSize: "0.8em",
 								fontWeight: "bold",
-								borderRadius: "var(--border-radius-sm)",
+								borderRadius: "var(--radius-sm)",
 							}}
 						>
 							Hover over me

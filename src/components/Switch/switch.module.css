@@ -5,7 +5,7 @@
 	justify-content: center;
 	gap: 8px;
 	padding: 0;
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--radius-full);
 	color: var(--foreground-color);
 	font-family: var(--font-family);
 
@@ -129,15 +129,15 @@
 }
 
 .lambda-switch-background-square {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-switch-background-subtle {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 }
 
 .lambda-switch-background-rounded {
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--radius-full);
 }
 
 .lambda-switch-background-solid {
@@ -459,15 +459,15 @@
 }
 
 .lambda-switch-handle-square {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-switch-handle-subtle {
-	border-radius: calc(var(--border-radius-xs) + 1px);
+	border-radius: calc(var(--radius-xs) + 1px);
 }
 
 .lambda-switch-handle-rounded {
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--radius-full);
 }
 
 .lambda-switch-handle-tiny {

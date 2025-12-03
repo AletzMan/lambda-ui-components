@@ -86,7 +86,7 @@ const Template = (args: DividerProps) => {
 								padding: "10px",
 								width: "100%",
 								height: "100%",
-								borderRadius: "var(--border-radius-sm)",
+								borderRadius: "var(--radius-sm)",
 							}}
 						>
 							Content
@@ -101,7 +101,7 @@ const Template = (args: DividerProps) => {
 								padding: "10px",
 								width: "100%",
 								height: "100%",
-								borderRadius: "var(--border-radius-sm)",
+								borderRadius: "var(--radius-sm)",
 							}}
 						>
 							Content

@@ -305,21 +305,25 @@
 	--font-size-8xl: 4rem;
 	--font-size-9xl: 4.5rem;
 
-	--border-radius-none: 0px;
-	--border-radius-xs: 2px;
-	--border-radius-sm: 4px;
-	--border-radius-md: 8px;
-	--border-radius-lg: 12px;
-	--border-radius-pill: 20rem;
-	--border-radius-full: 9999px;
+	--radius-none: 0px;
+	--radius-2xs: 1px;
+	--radius-xs: 0.125rem;
+	--radius-sm: 0.25rem;
+	--radius-md: 0.375rem;
+	--radius-lg: 0.5rem;
+	--radius-xl: 0.75rem;
+	--radius-2xl: 1rem;
+	--radius-3xl: 1.5rem;
+	--radius-4xl: 2rem;
+	--radius-full: 9999px;
 
 	--border-width-none: 0px;
 	--border-width-xs: 1px;
 	--border-width-sm: 2px;
 	--border-width-md: 3px;
 	--border-width-lg: 4px;
-	--border-width-xl: 5px;
-	--border-width-2xl: 6px;
+
+
 
 	--icon-size-4xs: 0.5rem;
 	/* 8px */
@@ -2278,7 +2282,7 @@
 	--surface-g: oklch(58% 0.045 282);
 	--surface-h: oklch(78% 0.035 284);
 
-	--border-radius-xs: 10px;
+	--radius-xs: 10px;
 	--background-code-dark: oklch(8% 0.02 270);
 	--background-code-light: #fefefe;
 	--background-tab-dark: oklch(13% 0.025 270);
@@ -2433,7 +2437,7 @@ textarea {
 			var(--lambda-color-cyan-400));
 	background-size: 200% 100%;
 
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	border: none;
 	padding: 0.5rem 1rem;
 	font-weight: 600;

@@ -179,7 +179,7 @@
 			content: "";
 			width: 100%;
 			height: 1px;
-			margin-left: var(--border-radius-md);
+			margin-left: var(--radius-md);
 		}
 	}
 
@@ -191,7 +191,7 @@
 			content: "";
 			width: 100%;
 			height: 1px;
-			margin-right: var(--border-radius-md);
+			margin-right: var(--radius-md);
 		}
 	}
 
@@ -280,7 +280,7 @@
 			content: "";
 			width: 1px;
 			height: 100%;
-			margin-top: var(--border-radius-md);
+			margin-top: var(--radius-md);
 		}
 	}
 
@@ -292,7 +292,7 @@
 			content: "";
 			width: 1px;
 			height: 100%;
-			margin-bottom: var(--border-radius-md);
+			margin-bottom: var(--radius-md);
 		}
 	}
 

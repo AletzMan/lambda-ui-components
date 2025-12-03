@@ -50,7 +50,7 @@
 	background: var(--surface-b);
 	border: 1px solid var(--border-color);
 	overflow: hidden;
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--radius-full);
 	box-sizing: border-box;
 
 	/* Indeterminate Bar */
@@ -62,7 +62,7 @@
 		width: 40%;
 		background-color: var(--progress-color);
 		animation: indeterminate-bar 1.2s linear infinite;
-		border-radius: var(--border-radius-pill);
+		border-radius: var(--radius-full);
 	}
 }
 

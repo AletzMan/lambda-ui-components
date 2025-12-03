@@ -1,6 +1,6 @@
 .lambda-table-container {
 	display: block;
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 	overflow: hidden;
 	width: 100%;
 	box-sizing: border-box;
@@ -24,23 +24,23 @@
 	}
 */
 	&:is(.lambda-table-container-radius-none) {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&:is(.lambda-table-container-radius-tiny) {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 	}
 
 	&:is(.lambda-table-container-radius-small) {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&:is(.lambda-table-container-radius-medium) {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&:is(.lambda-table-container-radius-large) {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 }
 
@@ -167,7 +167,7 @@
 	flex-grow: 1;
 	gap: var(--spacing-lg);
 	padding: var(--spacing-xs) var(--spacing-sm);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	background-color: transparent;
 	width: 100%;
 

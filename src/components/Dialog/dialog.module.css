@@ -49,7 +49,7 @@
 /* Panel del Diálogo (la caja blanca o de color con el contenido) */
 .lambda-dialog-panel {
 	position: absolute;
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	max-width: 90%;
 	max-height: 90vh;
 	display: flex;
@@ -73,23 +73,23 @@
 	}
 
 	&:is(.lambda-dialog-panel-radius-none) {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&:is(.lambda-dialog-panel-radius-tiny) {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 	}
 
 	&:is(.lambda-dialog-panel-radius-small) {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&:is(.lambda-dialog-panel-radius-medium) {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&:is(.lambda-dialog-panel-radius-large) {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 }
 

@@ -168,7 +168,7 @@
 			& .breadcrumb-item {
 				opacity: 1;
 				padding: var(--spacing-xs) var(--spacing-sm);
-				border-radius: var(--border-radius-sm);
+				border-radius: var(--radius-sm);
 			}
 
 			& .breadcrumb-item.breadcrumb-item-neutral {
@@ -215,7 +215,7 @@
 	justify-content: center;
 	width: var(--height-button-xs);
 	height: var(--height-button-xs);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	font-weight: var(--font-weight-semibold);
 	background-color: var(--surface-b);
 	color: var(--surface-f);
@@ -229,27 +229,27 @@
 	}
 
 	&.breadcrumb-ellipsis-radius-none {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&.breadcrumb-ellipsis-radius-tiny {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 	}
 
 	&.breadcrumb-ellipsis-radius-small {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&.breadcrumb-ellipsis-radius-medium {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&.breadcrumb-ellipsis-radius-large {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 
 	&.breadcrumb-ellipsis-radius-full {
-		border-radius: var(--border-radius-full);
+		border-radius: var(--radius-full);
 	}
 }
 
@@ -314,27 +314,27 @@
 			padding: var(--spacing-none) var(--spacing-md) var(--spacing-none) var(--spacing-lg);
 
 			&.breadcrumb-item-radius-none {
-				border-radius: var(--border-radius-none);
+				border-radius: var(--radius-none);
 			}
 
 			&.breadcrumb-item-radius-tiny {
-				border-radius: var(--border-radius-tiny) var(--border-radius-none) var(--border-radius-none) var(--border-radius-tiny);
+				border-radius: var(--radius-tiny) var(--radius-none) var(--radius-none) var(--radius-tiny);
 			}
 
 			&.breadcrumb-item-radius-small {
-				border-radius: var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none) var(--border-radius-sm);
+				border-radius: var(--radius-sm) var(--radius-none) var(--radius-none) var(--radius-sm);
 			}
 
 			&.breadcrumb-item-radius-medium {
-				border-radius: var(--border-radius-md) var(--border-radius-none) var(--border-radius-none) var(--border-radius-md);
+				border-radius: var(--radius-md) var(--radius-none) var(--radius-none) var(--radius-md);
 			}
 
 			&.breadcrumb-item-radius-large {
-				border-radius: var(--border-radius-lg) var(--border-radius-none) var(--border-radius-none) var(--border-radius-lg);
+				border-radius: var(--radius-lg) var(--radius-none) var(--radius-none) var(--radius-lg);
 			}
 
 			&.breadcrumb-item-radius-full {
-				border-radius: var(--border-radius-full) var(--border-radius-none) var(--border-radius-none) var(--border-radius-full);
+				border-radius: var(--radius-full) var(--radius-none) var(--radius-none) var(--radius-full);
 			}
 
 			&:after {
@@ -448,27 +448,27 @@
 			font-weight: var(--font-weight-bold);
 
 			&.breadcrumb-item-radius-none {
-				border-radius: var(--border-radius-none);
+				border-radius: var(--radius-none);
 			}
 
 			&.breadcrumb-item-radius-tiny {
-				border-radius: var(--border-radius-none) var(--border-radius-tiny) var(--border-radius-tiny) var(--border-radius-none);
+				border-radius: var(--radius-none) var(--radius-tiny) var(--radius-tiny) var(--radius-none);
 			}
 
 			&.breadcrumb-item-radius-small {
-				border-radius: var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none);
+				border-radius: var(--radius-none) var(--radius-sm) var(--radius-sm) var(--radius-none);
 			}
 
 			&.breadcrumb-item-radius-medium {
-				border-radius: var(--border-radius-none) var(--border-radius-md) var(--border-radius-md) var(--border-radius-none);
+				border-radius: var(--radius-none) var(--radius-md) var(--radius-md) var(--radius-none);
 			}
 
 			&.breadcrumb-item-radius-large {
-				border-radius: var(--border-radius-none) var(--border-radius-lg) var(--border-radius-lg) var(--border-radius-none);
+				border-radius: var(--radius-none) var(--radius-lg) var(--radius-lg) var(--radius-none);
 			}
 
 			&.breadcrumb-item-radius-full {
-				border-radius: var(--border-radius-none) var(--border-radius-full) var(--border-radius-full) var(--border-radius-none);
+				border-radius: var(--radius-none) var(--radius-full) var(--radius-full) var(--radius-none);
 			}
 
 			&::before {

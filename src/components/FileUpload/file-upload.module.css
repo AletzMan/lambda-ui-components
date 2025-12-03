@@ -302,7 +302,7 @@
 }
 
 .lambda-fileup-drop-zone-radius-pill {
-	border-radius: var(--radius-pill, 9999px);
+	border-radius: var(--radius-full, 9999px);
 }
 
 .lambda-fileup-button-container {
@@ -330,7 +330,7 @@
 	font-size: var(--font-size-md);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-semibold);
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 	border: none;
 	outline: none;
 	cursor: pointer;
@@ -353,7 +353,7 @@
 	}
 
 	&.lambda-fileup-button-upload-hasFiles {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 }
 
@@ -367,23 +367,23 @@
 	overflow: hidden;
 
 	&.lambda-fileup-button-layout-container-none {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&.lambda-fileup-button-layout-container-tiny {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 	}
 
 	&.lambda-fileup-button-layout-container-small {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&.lambda-fileup-button-layout-container-medium {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&.lambda-fileup-button-layout-container-large {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 }
 
@@ -557,7 +557,7 @@
 
 		&:is(.lambda-fileup-file-item-list) {
 			border: var(--border-width-xs) dashed var(--border-color);
-			border-radius: var(--border-radius-xs);
+			border-radius: var(--radius-xs);
 			background-color: var(--surface-a);
 			width: 100%;
 			max-height: 40px;
@@ -567,7 +567,7 @@
 			padding: var(--spacing-none);
 			background-color: var(--surface-a);
 			border: var(--border-width-xs) dashed var(--border-color);
-			border-radius: var(--border-radius-xs);
+			border-radius: var(--radius-xs);
 
 			&:hover {
 				background-color: var(--surface-b);
@@ -611,7 +611,7 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-fileup-file-item-info {
@@ -751,7 +751,7 @@
 	width: 160px;
 	height: 160px;
 	object-fit: fill;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-fileup-file-item-picture {
@@ -763,7 +763,7 @@
 	width: 100%;
 	height: 100px;
 	object-fit: fill;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-fileup-file-item-container-header {

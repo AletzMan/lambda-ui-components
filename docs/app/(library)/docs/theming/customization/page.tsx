@@ -180,8 +180,8 @@ export default function CustomizationPage() {
   --spacing-md: 12px;
   
   /* Adjust border radius */
-  --border-radius-md: 12px;
-  --border-radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
   
   /* Customize typography */
   --font-family: "Inter", sans-serif;
@@ -335,13 +335,13 @@ export default function CustomizationPage() {
                         language="css"
                         code={`:root {
   /* Border radius */
-  --border-radius-none: 0px;
-  --border-radius-xs: 2px;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --border-radius-pill: 20rem;
-  --border-radius-full: 9999px;
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 20rem;
+  --radius-full: 9999px;
   
   /* Border width */
   --border-width-none: 0px;
@@ -349,8 +349,8 @@ export default function CustomizationPage() {
   --border-width-sm: 2px;
   --border-width-md: 3px;
   --border-width-lg: 4px;
-  --border-width-xl: 5px;
-  --border-width-2xl: 6px;
+  : 5px;
+  : 6px;
 }`}
                     />
                 </SubSectionLayout>
@@ -493,7 +493,7 @@ const CustomButton = styled.button\`
   background-color: var(--primary-base-color);
   color: var(--foreground-invert-color);
   padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--radius-md);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
   border: none;
@@ -559,9 +559,9 @@ const CustomButton = styled.button\`
   --spacing-md: 10px;
   
   /* Rounder corners */
-  --border-radius-sm: 6px;
-  --border-radius-md: 10px;
-  --border-radius-lg: 16px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
 }
 
 [data-theme="light"] {

@@ -317,41 +317,41 @@
 	}
 
 	&.select-btn-radius-none {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&.select-btn-radius-tiny {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 	}
 
 	&.select-btn-radius-small {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&.select-btn-radius-medium {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&.select-btn-radius-large {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 
 	&.select-btn-radius-full {
-		border-radius: var(--border-radius-pill);
+		border-radius: var(--radius-full);
 	}
 
 	&.select-btn-first {
-		border-top-right-radius: var(--border-radius-none);
-		border-bottom-right-radius: var(--border-radius-none);
+		border-top-right-radius: var(--radius-none);
+		border-bottom-right-radius: var(--radius-none);
 	}
 
 	&.select-btn-middle {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&.select-btn-last {
-		border-top-left-radius: var(--border-radius-none);
-		border-bottom-left-radius: var(--border-radius-none);
+		border-top-left-radius: var(--radius-none);
+		border-bottom-left-radius: var(--radius-none);
 	}
 
 	/*&:focus:not(.select-btn-disabled) {
@@ -456,7 +456,7 @@
 	overflow: hidden;
 	overflow-y: auto;
 	font-family: var(--font-family);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	background-color: var(--background-color);
 	border: var(--border-width-xs) solid var(--border-color);
 	z-index: 9999;
@@ -554,7 +554,7 @@
 	place-items: center center;
 	gap: 0.5em;
 	color: var(--foreground-secondary-color);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	list-style: none;
 	cursor: pointer;
 
@@ -808,7 +808,7 @@
 }
 
 .select-view-avatar {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .select-view-description {
@@ -823,7 +823,7 @@
 .select-option-text-content {
 	display: flex;
 	flex-direction: column;
-	padding: var(--border-radius-xs) var(--spacing-none);
+	padding: var(--radius-xs) var(--spacing-none);
 	pointer-events: none;
 
 	&>div {

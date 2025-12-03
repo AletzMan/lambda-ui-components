@@ -38,8 +38,8 @@
 		background-color: transparent;
 		gap: var(--spacing-md);
 		border-bottom: 1px solid var(--border-color);
-		border-bottom-left-radius: var(--border-radius-none) !important;
-		border-bottom-right-radius: var(--border-radius-none) !important;
+		border-bottom-left-radius: var(--radius-none) !important;
+		border-bottom-right-radius: var(--radius-none) !important;
 	}
 
 	&:is(.tab-container-soft) {
@@ -61,8 +61,8 @@
 		border: var(--border-width-xs) solid transparent;
 		gap: var(--spacing-xs);
 		border-bottom: 1px solid var(--border-color);
-		border-bottom-left-radius: var(--border-radius-none) !important;
-		border-bottom-right-radius: var(--border-radius-none) !important;
+		border-bottom-left-radius: var(--radius-none) !important;
+		border-bottom-right-radius: var(--radius-none) !important;
 	}
 }
 
@@ -71,23 +71,23 @@
 }
 
 .tab-container-radius-tiny {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .tab-container-radius-small {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 }
 
 .tab-container-radius-medium {
-	border-radius: var(--border-radius-md);
+	border-radius: var(--radius-md);
 }
 
 .tab-container-radius-large {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 }
 
 .tab-container-radius-full {
-	border-radius: var(--border-radius-full);
+	border-radius: var(--radius-full);
 }
 
 .tab-input {
@@ -155,8 +155,8 @@
 			color: var(--foreground-secondary-color);
 			border: var(--border-width-xs) solid var(--border-color);
 			border-bottom: none;
-			border-bottom-left-radius: var(--border-radius-none) !important;
-			border-bottom-right-radius: var(--border-radius-none) !important;
+			border-bottom-left-radius: var(--radius-none) !important;
+			border-bottom-right-radius: var(--radius-none) !important;
 			z-index: 1;
 			opacity: 0.4;
 
@@ -287,51 +287,51 @@
 }
 
 .tab-label-radius-tiny {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 
 	&:is(.tab-label-soft) {
-		border-bottom-left-radius: var(--border-radius-none);
-		border-bottom-right-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--radius-none);
+		border-bottom-right-radius: var(--radius-none);
 	}
 }
 
 .tab-label-radius-small {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 
 	&:is(.tab-label-soft) {
-		border-bottom-left-radius: var(--border-radius-none);
-		border-bottom-right-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--radius-none);
+		border-bottom-right-radius: var(--radius-none);
 	}
 }
 
 .tab-label-radius-medium {
-	border-radius: var(--border-radius-md);
+	border-radius: var(--radius-md);
 
 	&:is(.tab-label-soft) {
-		border-bottom-left-radius: var(--border-radius-none);
-		border-bottom-right-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--radius-none);
+		border-bottom-right-radius: var(--radius-none);
 	}
 }
 
 .tab-label-radius-large {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 
 	&:is(.tab-label-soft) {
-		border-bottom-left-radius: var(--border-radius-none);
-		border-bottom-right-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--radius-none);
+		border-bottom-right-radius: var(--radius-none);
 	}
 }
 
 .tab-label-radius-full {
-	border-radius: var(--border-radius-full);
+	border-radius: var(--radius-full);
 
 	&:is(.tab-label-soft) {
-		border-bottom-left-radius: var(--border-radius-none);
-		border-bottom-right-radius: var(--border-radius-none);
+		border-bottom-left-radius: var(--radius-none);
+		border-bottom-right-radius: var(--radius-none);
 	}
 
 	&:is(.tab-label-border) {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 }
 
@@ -344,8 +344,8 @@
 		background-color: transparent;
 		border-bottom: 2px solid;
 		height: calc(100%);
-		border-bottom-left-radius: var(--border-radius-none) !important;
-		border-bottom-right-radius: var(--border-radius-none) !important;
+		border-bottom-left-radius: var(--radius-none) !important;
+		border-bottom-right-radius: var(--radius-none) !important;
 
 		&:is(.tab-current-neutral) {
 			border-bottom-color: var(--neutral-base-color);
@@ -444,8 +444,8 @@
 		background-color: var(--background-color);
 		border: var(--border-width-xs) solid var(--border-color);
 		border-bottom: 0;
-		border-bottom-left-radius: var(--border-radius-none) !important;
-		border-bottom-right-radius: var(--border-radius-none) !important;
+		border-bottom-left-radius: var(--radius-none) !important;
+		border-bottom-right-radius: var(--radius-none) !important;
 		height: calc(100%);
 
 		&:after {
@@ -464,51 +464,51 @@
 	}
 
 	&:is(.tab-current-radius-tiny) {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 
 		&:is(.tab-current-soft) {
-			border-bottom-left-radius: var(--border-radius-none);
-			border-bottom-right-radius: var(--border-radius-none);
+			border-bottom-left-radius: var(--radius-none);
+			border-bottom-right-radius: var(--radius-none);
 		}
 	}
 
 	&:is(.tab-current-radius-small) {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 
 		&:is(.tab-current-soft) {
-			border-bottom-left-radius: var(--border-radius-none);
-			border-bottom-right-radius: var(--border-radius-none);
+			border-bottom-left-radius: var(--radius-none);
+			border-bottom-right-radius: var(--radius-none);
 		}
 	}
 
 	&:is(.tab-current-radius-medium) {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 
 		&:is(.tab-current-soft) {
-			border-bottom-left-radius: var(--border-radius-none);
-			border-bottom-right-radius: var(--border-radius-none);
+			border-bottom-left-radius: var(--radius-none);
+			border-bottom-right-radius: var(--radius-none);
 		}
 	}
 
 	&:is(.tab-current-radius-large) {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 
 		&:is(.tab-current-soft) {
-			border-bottom-left-radius: var(--border-radius-none);
-			border-bottom-right-radius: var(--border-radius-none);
+			border-bottom-left-radius: var(--radius-none);
+			border-bottom-right-radius: var(--radius-none);
 		}
 	}
 
 	&:is(.tab-current-radius-full) {
-		border-radius: var(--border-radius-full);
+		border-radius: var(--radius-full);
 
 		&:is(.tab-current-soft) {
-			border-bottom-left-radius: var(--border-radius-none);
-			border-bottom-right-radius: var(--border-radius-none);
+			border-bottom-left-radius: var(--radius-none);
+			border-bottom-right-radius: var(--radius-none);
 		}
 
 		&:is(.tab-current-border) {
-			border-radius: var(--border-radius-lg);
+			border-radius: var(--radius-lg);
 		}
 	}
 }
@@ -531,7 +531,7 @@
 		background-color: var(--background-color);
 		border: var(--border-width-xs) solid var(--border-color);
 		border-top: 1px solid transparent;
-		border-top-left-radius: var(--border-radius-none) !important;
-		border-top-right-radius: var(--border-radius-none) !important;
+		border-top-left-radius: var(--radius-none) !important;
+		border-top-right-radius: var(--radius-none) !important;
 	}
 }

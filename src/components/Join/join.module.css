@@ -19,28 +19,29 @@
 }
 
 .lambda-join-radius-none {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-join-radius-tiny {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-join-radius-small {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 }
 
 .lambda-join-radius-medium {
-	border-radius: var(--border-radius-md);
+	border-radius: var(--radius-md);
 }
 
 .lambda-join-radius-large {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 }
 
 .lambda-join-radius-full {
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--radius-full);
 }
+
 .lambda-join-invalid {
 	background-color: var(--danger-soft-color);
 }
@@ -75,7 +76,7 @@
 	border: none;
 	box-sizing: border-box;
 
-	& > * {
+	&>* {
 		margin-inline-start: -1px;
 	}
 }

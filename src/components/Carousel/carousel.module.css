@@ -3,7 +3,7 @@
 	position: relative;
 	overflow: hidden;
 	border: var(--border-width-xs) solid var(--border-color);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	font-family: var(--font-family);
 	height: 100%;
 	width: 100%;
@@ -275,11 +275,11 @@
 .lambda-carousel-dot-circle {
 	width: var(--icon-size-4xs);
 	height: var(--icon-size-4xs);
-	border-radius: var(--border-radius-full);
+	border-radius: var(--radius-full);
 }
 
 .lambda-carousel-dot-line {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	width: var(--icon-size-xs);
 	height: 4px;
 
@@ -293,7 +293,7 @@
 .lambda-carousel-dot-square {
 	width: var(--icon-size-4xs);
 	height: var(--icon-size-4xs);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-carousel-dot-number {
@@ -303,7 +303,7 @@
 	font-size: var(--font-size-xs);
 	border: var(--border-width-xs) solid var(--border-color);
 	background-color: var(--surface-c);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	box-sizing: border-box;
 
 	&::after {
@@ -359,7 +359,7 @@
 	display: flex;
 	gap: var(--spacing-md);
 	scrollbar-width: none;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	-ms-overflow-style: none;
 
 	&.lambda-carousel-thumbnails-horizontal {

@@ -118,7 +118,7 @@ export const Row: Story = {
 							style={{
 								padding: "1rem",
 								backgroundColor: "var(--surface-b)",
-								borderRadius: "var(--border-radius-xs)",
+								borderRadius: "var(--radius-xs)",
 								border: "1px solid var(--border-color)",
 								opacity: 0.8,
 								backgroundSize: "10px 10px",

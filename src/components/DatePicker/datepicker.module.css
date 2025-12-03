@@ -15,7 +15,7 @@
 .lambda-datepicker-container {
 	outline: 2px solid transparent;
 	outline-offset: 2px;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 
 	&:is(.lambda-datepicker-container-invalid) {
 		outline-color: var(--danger-shadow-color);
@@ -95,7 +95,7 @@
 	justify-content: center;
 	text-align: center;
 	padding: var(--spacing-xs);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	font-size: var(--font-size-sm);
 	background: transparent;
 	transition: background 0.2s, color 0.2s;
@@ -154,51 +154,51 @@
 }
 
 .lambda-datepicker-radius-none {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-datepicker-radius-tiny {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 
 	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--border-radius-none);
-		border-top-right-radius: var(--border-radius-none);
+		border-top-left-radius: var(--radius-none);
+		border-top-right-radius: var(--radius-none);
 	}
 }
 
 .lambda-datepicker-radius-small {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 
 	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--border-radius-none);
-		border-top-right-radius: var(--border-radius-none);
+		border-top-left-radius: var(--radius-none);
+		border-top-right-radius: var(--radius-none);
 	}
 }
 
 .lambda-datepicker-radius-medium {
-	border-radius: var(--border-radius-md);
+	border-radius: var(--radius-md);
 
 	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--border-radius-none);
-		border-top-right-radius: var(--border-radius-none);
+		border-top-left-radius: var(--radius-none);
+		border-top-right-radius: var(--radius-none);
 	}
 }
 
 .lambda-datepicker-radius-large {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 
 	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--border-radius-none);
-		border-top-right-radius: var(--border-radius-none);
+		border-top-left-radius: var(--radius-none);
+		border-top-right-radius: var(--radius-none);
 	}
 }
 
 .lambda-datepicker-radius-full {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 
 	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--border-radius-none);
-		border-top-right-radius: var(--border-radius-none);
+		border-top-left-radius: var(--radius-none);
+		border-top-right-radius: var(--radius-none);
 	}
 }
 
@@ -260,43 +260,43 @@
 
 	&:is(.lambda-datepicker-inline-section-radius-none) {
 		&>header {
-			border-top-left-radius: var(--border-radius-none);
-			border-top-right-radius: var(--border-radius-none);
+			border-top-left-radius: var(--radius-none);
+			border-top-right-radius: var(--radius-none);
 		}
 	}
 
 	&:is(.lambda-datepicker-inline-section-radius-tiny) {
 		&>header {
-			border-top-left-radius: var(--border-radius-xs);
-			border-top-right-radius: var(--border-radius-xs);
+			border-top-left-radius: var(--radius-xs);
+			border-top-right-radius: var(--radius-xs);
 		}
 	}
 
 	&:is(.lambda-datepicker-inline-section-radius-small) {
 		&>header {
-			border-top-left-radius: var(--border-radius-sm);
-			border-top-right-radius: var(--border-radius-sm);
+			border-top-left-radius: var(--radius-sm);
+			border-top-right-radius: var(--radius-sm);
 		}
 	}
 
 	&:is(.lambda-datepicker-inline-section-radius-medium) {
 		&>header {
-			border-top-left-radius: var(--border-radius-md);
-			border-top-right-radius: var(--border-radius-md);
+			border-top-left-radius: var(--radius-md);
+			border-top-right-radius: var(--radius-md);
 		}
 	}
 
 	&:is(.lambda-datepicker-inline-section-radius-large) {
 		&>header {
-			border-top-left-radius: var(--border-radius-lg);
-			border-top-right-radius: var(--border-radius-lg);
+			border-top-left-radius: var(--radius-lg);
+			border-top-right-radius: var(--radius-lg);
 		}
 	}
 
 	&:is(.lambda-datepicker-inline-section-radius-full) {
 		&>header {
-			border-top-left-radius: var(--border-radius-lg);
-			border-top-right-radius: var(--border-radius-lg);
+			border-top-left-radius: var(--radius-lg);
+			border-top-right-radius: var(--radius-lg);
 		}
 	}
 
@@ -439,7 +439,7 @@
 	color: var(--foreground-title-color);
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	background-color: transparent;
 	border: none;
 
@@ -453,7 +453,7 @@
 	height: 100%;
 	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-md);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	background-color: transparent;
 	color: var(--foreground-secondary-color);
 	border: var(--border-width-xs) solid var(--border-color);
@@ -498,7 +498,7 @@
 	height: 100%;
 	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-md);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	background-color: var(--background-color);
 	color: var(--foreground-secondary-color);
 	border: var(--border-width-xs) solid var(--border-color);

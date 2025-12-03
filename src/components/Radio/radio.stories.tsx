@@ -97,7 +97,7 @@ const RadioTemplate = (args: RadioGroupProps) => {
 								padding: "1rem",
 								height: "200px",
 								width: "250px",
-								borderRadius: "var(--border-radius-sm)",
+								borderRadius: "var(--radius-sm)",
 								border: "1px solid var(--border-color)",
 							}}
 						>
@@ -151,7 +151,7 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							: "repeat(auto-fit, minmax(30px, 35px))",
 					width: "100%",
 					gap: args.orientation === "horizontal" ? "0.5rem" : "2rem",
-					borderRadius: "var(--border-radius-sm)",
+					borderRadius: "var(--radius-sm)",
 					border: "1px solid var(--border-color)",
 					padding: "0.25rem",
 					backgroundColor: "var(--surface-a)",
@@ -201,7 +201,7 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							? "repeat(auto-fit, minmax(250px, 1fr))"
 							: "repeat(auto-fit, minmax(100px, 1fr))",
 					width: "100%",
-					borderRadius: "var(--border-radius-sm)",
+					borderRadius: "var(--radius-sm)",
 					border: "1px solid var(--border-color)",
 					padding: "0.25rem",
 					gap: "0.5rem",
@@ -252,7 +252,7 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							? "repeat(auto-fit, minmax(355px, 1fr))"
 							: "repeat(auto-fit, minmax(100px, 1fr))",
 					width: "100%",
-					borderRadius: "var(--border-radius-sm)",
+					borderRadius: "var(--radius-sm)",
 					border: "1px solid var(--border-color)",
 					padding: "0.25rem",
 					gap: "0.5rem",

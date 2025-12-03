@@ -24,23 +24,23 @@
 	/* No transition ni animation: Framer Motion controla todo */
 
 	&.notification-radius-none {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&.notification-radius-tiny {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 	}
 
 	&.notification-radius-small {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&.notification-radius-medium {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&.notification-radius-large {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 	}
 }
 
@@ -71,7 +71,7 @@
 	padding: var(--spacing-xs) var(--spacing-sm);
 	font-size: var(--font-size-xs);
 	border: none;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
 	font-weight: var(--font-weight-semibold);
@@ -539,7 +539,7 @@
 		justify-content: center;
 		width: 1.5em;
 		height: 1.5em;
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 }
 
@@ -596,7 +596,7 @@
 .notification-close-button {
 	width: 1.5em;
 	height: 1.5em;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	transition: all 0.3s ease-in-out;
 	cursor: pointer;
 

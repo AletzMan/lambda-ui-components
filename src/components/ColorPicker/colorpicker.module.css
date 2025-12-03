@@ -148,23 +148,23 @@
 	}
 
 	&:is(.lambda-colorpicker-radius-none) {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&:is(.lambda-colorpicker-radius-tiny) {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 	}
 
 	&:is(.lambda-colorpicker-radius-small) {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 	}
 
 	&:is(.lambda-colorpicker-radius-medium) {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 	}
 
 	&:is(.lambda-colorpicker-radius-full) {
-		border-radius: var(--border-radius-full);
+		border-radius: var(--radius-full);
 	}
 
 	&:is(.lambda-colorpicker-disabled) {
@@ -220,7 +220,7 @@
 		.lambda-colorpicker-button,
 		.lambda-colorpicker-border,
 		.lambda-colorpicker-pattern {
-			border-radius: var(--border-radius-none);
+			border-radius: var(--radius-none);
 		}
 	}
 
@@ -229,7 +229,7 @@
 		.lambda-colorpicker-button,
 		.lambda-colorpicker-border,
 		.lambda-colorpicker-pattern {
-			border-radius: var(--border-radius-xs);
+			border-radius: var(--radius-xs);
 		}
 	}
 
@@ -238,7 +238,7 @@
 		.lambda-colorpicker-button,
 		.lambda-colorpicker-border,
 		.lambda-colorpicker-pattern {
-			border-radius: calc(var(--border-radius-sm) - var(--border-radius-xs));
+			border-radius: calc(var(--radius-sm) - var(--radius-xs));
 		}
 	}
 
@@ -247,7 +247,7 @@
 		.lambda-colorpicker-button,
 		.lambda-colorpicker-border,
 		.lambda-colorpicker-pattern {
-			border-radius: calc(var(--border-radius-md) - var(--border-radius-xs));
+			border-radius: calc(var(--radius-md) - var(--radius-xs));
 		}
 	}
 
@@ -256,7 +256,7 @@
 		.lambda-colorpicker-button,
 		.lambda-colorpicker-border,
 		.lambda-colorpicker-pattern {
-			border-radius: var(--border-radius-full);
+			border-radius: var(--radius-full);
 		}
 	}
 }
@@ -265,7 +265,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	border: var(--border-width-xs) solid transparent;
 	background-color: var(--surface-a);
 	box-sizing: border-box;
@@ -294,7 +294,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	border: var(--border-width-xs) solid transparent;
 	z-index: 1;
 	box-sizing: border-box;
@@ -325,42 +325,42 @@
 	z-index: 9999;
 
 	&:is(.lambda-colorpicker-box-radius-none) {
-		border-radius: var(--border-radius-none);
+		border-radius: var(--radius-none);
 	}
 
 	&:is(.lambda-colorpicker-box-radius-tiny) {
-		border-radius: var(--border-radius-xs);
+		border-radius: var(--radius-xs);
 
 		& .lambda-colorpicker-preview-color,
 		& .lambda-colorpicker-preview-background {
-			border-radius: var(--border-radius-xs) var(--border-radius-xs) var(--border-radius-xs) var(--border-radius-xs);
+			border-radius: var(--radius-xs) var(--radius-xs) var(--radius-xs) var(--radius-xs);
 		}
 	}
 
 	&:is(.lambda-colorpicker-box-radius-small) {
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-sm);
 
 		& .lambda-colorpicker-preview-color,
 		& .lambda-colorpicker-preview-background {
-			border-radius: calc(var(--border-radius-sm) - var(--border-radius-xs)) var(--border-radius-xs) var(--border-radius-xs) var(--border-radius-xs);
+			border-radius: calc(var(--radius-sm) - var(--radius-xs)) var(--radius-xs) var(--radius-xs) var(--radius-xs);
 		}
 	}
 
 	&:is(.lambda-colorpicker-box-radius-medium) {
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-md);
 
 		& .lambda-colorpicker-preview-color,
 		& .lambda-colorpicker-preview-background {
-			border-radius: calc(var(--border-radius-md) - var(--border-radius-xs)) var(--border-radius-xs) var(--border-radius-xs) var(--border-radius-xs);
+			border-radius: calc(var(--radius-md) - var(--radius-xs)) var(--radius-xs) var(--radius-xs) var(--radius-xs);
 		}
 	}
 
 	&:is(.lambda-colorpicker-box-radius-large) {
-		border-radius: var(--border-radius-lg);
+		border-radius: var(--radius-lg);
 
 		& .lambda-colorpicker-preview-color,
 		& .lambda-colorpicker-preview-background {
-			border-radius: calc(var(--border-radius-lg) - var(--border-radius-xs)) var(--border-radius-xs) var(--border-radius-xs) var(--border-radius-xs);
+			border-radius: calc(var(--radius-lg) - var(--radius-xs)) var(--radius-xs) var(--radius-xs) var(--radius-xs);
 		}
 	}
 }
@@ -378,7 +378,7 @@
 	width: 100%;
 	height: 10%;
 	padding: var(--spacing-xs);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 
 	.lambda-colorpicker-preview-background {
 		position: absolute;

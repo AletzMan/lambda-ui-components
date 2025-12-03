@@ -32,12 +32,12 @@
 	}
 
 	&.lambda-stepper-horizontal {
-		border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;
+		border-radius: var(--radius-xs) var(--radius-xs) 0 0;
 		flex-direction: row;
 	}
 
 	&.lambda-stepper-vertical {
-		border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
+		border-radius: var(--radius-xs) 0 0 var(--radius-xs);
 		flex-direction: column;
 		max-width: 11.5em;
 
@@ -336,7 +336,7 @@
 	overflow: hidden;
 
 	&.lambda-stepper-content-horizontal {
-		border-radius: 0 0 var(--border-radius-xs) var(--border-radius-xs);
+		border-radius: 0 0 var(--radius-xs) var(--radius-xs);
 
 		&:is(.lambda-stepper-content-bordered) {
 			border: 1px solid var(--border-color);
@@ -349,7 +349,7 @@
 	}
 
 	&.lambda-stepper-content-vertical {
-		border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
+		border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
 
 		&:is(.lambda-stepper-content-bordered) {
 			border: 1px solid var(--border-color);
@@ -391,7 +391,7 @@
 	padding: var(--spacing-xs) var(--spacing-lg);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-regular);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	color: var(--white-color);
 	background-color: var(--danger-base-color);
 }

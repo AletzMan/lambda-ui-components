@@ -251,47 +251,47 @@
 }
 
 .lambda-dropdown-radius-none {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-dropdown-radius-tiny {
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-dropdown-radius-small {
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 }
 
 .lambda-dropdown-radius-medium {
-	border-radius: var(--border-radius-md);
+	border-radius: var(--radius-md);
 }
 
 .lambda-dropdown-radius-large {
-	border-radius: var(--border-radius-lg);
+	border-radius: var(--radius-lg);
 }
 
 .lambda-dropdown-radius-full {
-	border-radius: var(--border-radius-pill);
+	border-radius: var(--radius-full);
 }
 
 .lambda-dropdown-circle {
 	padding: var(--spacing-none);
-	border-radius: var(--border-radius-full);
+	border-radius: var(--radius-full);
 	aspect-ratio: 1 / 1;
 }
 
 .lambda-dropdown-first {
-	border-top-right-radius: var(--border-radius-none);
-	border-bottom-right-radius: var(--border-radius-none);
+	border-top-right-radius: var(--radius-none);
+	border-bottom-right-radius: var(--radius-none);
 }
 
 .lambda-dropdown-middle {
-	border-radius: var(--border-radius-none);
+	border-radius: var(--radius-none);
 }
 
 .lambda-dropdown-last {
-	border-top-left-radius: var(--border-radius-none);
-	border-bottom-left-radius: var(--border-radius-none);
+	border-top-left-radius: var(--radius-none);
+	border-bottom-left-radius: var(--radius-none);
 }
 
 .lambda-dropdown-menu {
@@ -305,7 +305,7 @@
 	background: radial-gradient(var(--surface-a), var(--background-color));
 	border: var(--border-width-xs) solid var(--border-color);
 	z-index: 100;
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 
 	&:focus-within {
 		outline: var(--border-width-sm) solid transparent;
@@ -320,7 +320,7 @@
 	gap: var(--spacing-sm);
 	font-family: var(--font-family);
 	padding: var(--spacing-xs) var(--spacing-md);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	background-color: transparent;
 	border: none;
 	text-decoration: none;
@@ -426,7 +426,7 @@
 	height: 100%;
 	max-height: 1.8em;
 	padding: var(--spacing-none) var(--spacing-xs);
-	border-radius: var(--border-radius-sm);
+	border-radius: var(--radius-sm);
 	background-color: var(--surface-b);
 	border: var(--border-width-xs) solid var(--border-color);
 	box-shadow: 1px 1px 2px var(--shadow-color);
@@ -434,7 +434,7 @@
 
 .lambda-dropdown-item-custom {
 	padding: var(--spacing-xs);
-	border-radius: var(--border-radius-xs);
+	border-radius: var(--radius-xs);
 	background-color: transparent;
 	border: none;
 	text-decoration: none;
