@@ -136,7 +136,7 @@ const SliderDouble = (args: SliderProps & React.RefAttributes<HTMLDivElement>) =
 			onChangeStyleSource={(e) => setCurrentStyle(e)}
 			styleSource={currentStyle}
 		>
-			<div style={{ display: "flex", gap: "var(--gap-lg)", width: "150px", padding: "20px" }}>
+			<div style={{ display: "flex", gap: "var(--spacing-lg)", width: "150px", padding: "20px" }}>
 				<Input
 					value={valueSlider.toString().split(",")[0]}
 					disabled

@@ -19,7 +19,7 @@
 	width: 100%;
 	max-width: max-content;
 	height: max-content;
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 
 	& p {
 		margin: 0;
@@ -49,7 +49,7 @@
 .lambda-fileup-wrapper-button {
 	flex-direction: column;
 	align-items: flex-start;
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 }
 
 .lambda-fileup-label {
@@ -108,8 +108,8 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: var(--gap-sm);
-		padding: var(--padding-sm);
+		gap: var(--spacing-sm);
+		padding: var(--spacing-sm);
 		width: 100%;
 		flex-grow: 1;
 		min-height: inherit;
@@ -122,7 +122,7 @@
 
 	.lambda-fileup-drop-zone-placeholder {
 		max-width: 20ch;
-		margin: 0 0 var(--gap-sm) 0;
+		margin: 0 0 var(--spacing-sm) 0;
 		font-weight: var(--font-weight-regular);
 		color: var(--foreground-secondary-color);
 	}
@@ -166,7 +166,7 @@
 		right: 0;
 		background-color: rgba(0, 0, 0, 0.5);
 		color: white;
-		padding: var(--padding-1, 4px);
+		padding: var(--spacing-1, 4px);
 		font-size: var(--font-size-sm);
 		text-align: center;
 		white-space: nowrap;
@@ -175,9 +175,7 @@
 	}
 }
 
-.lambda-fileup-drop-zone:hover:not(.lambda-fileup-drop-zone-disabled):not(
-		.lambda-fileup-drop-zone-invalid
-	) {
+.lambda-fileup-drop-zone:hover:not(.lambda-fileup-drop-zone-disabled):not(.lambda-fileup-drop-zone-invalid) {
 	border-color: var(--primary-base-color);
 
 	.lambda-fileup-drop-zone-icon {
@@ -221,7 +219,7 @@
 
 .lambda-fileup-drop-zone-small {
 	.lambda-fileup-drop-zone-content {
-		padding: var(--padding-sm);
+		padding: var(--spacing-sm);
 	}
 
 	min-height: var(--height-input-sm);
@@ -239,7 +237,7 @@
 
 .lambda-fileup-drop-zone-medium {
 	.lambda-fileup-drop-zone-content {
-		padding: var(--padding-md);
+		padding: var(--spacing-md);
 	}
 
 	min-height: var(--height-input-md);
@@ -257,7 +255,7 @@
 
 .lambda-fileup-drop-zone-large {
 	.lambda-fileup-drop-zone-content {
-		padding: var(--padding-lg);
+		padding: var(--spacing-lg);
 	}
 
 	min-height: var(--height-input-lg);
@@ -310,14 +308,12 @@
 .lambda-fileup-button-container {
 	display: flex;
 	align-items: center;
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 	border: none;
 	background: none;
 	padding: 0;
 
-	&:focus-within:not(.lambda-fileup-button-upload-disabled):not(
-			.lambda-fileup-button-upload-invalid
-		) {
+	&:focus-within:not(.lambda-fileup-button-upload-disabled):not(.lambda-fileup-button-upload-invalid) {
 		outline: 3px solid var(--primary-shadow-color);
 		outline-offset: 1px;
 		border-color: var(--primary-base-color);
@@ -330,7 +326,7 @@
 	justify-content: center;
 	flex-wrap: nowrap;
 	min-width: max-content;
-	padding: var(--padding-sm) var(--padding-md);
+	padding: var(--spacing-sm) var(--spacing-md);
 	font-size: var(--font-size-md);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-semibold);
@@ -347,9 +343,7 @@
 			inset -5em 0 0 0 var(--neutral-hover-color);
 	}
 
-	&:focus-within:not(.lambda-fileup-button-upload-disabled):not(
-			.lambda-fileup-button-upload-invalid
-		) {
+	&:focus-within:not(.lambda-fileup-button-upload-disabled):not(.lambda-fileup-button-upload-invalid) {
 		outline: 3px solid var(--neutral-subtle-color);
 		outline-offset: 2px;
 	}
@@ -375,6 +369,7 @@
 	&.lambda-fileup-button-layout-container-none {
 		border-radius: var(--border-radius-none);
 	}
+
 	&.lambda-fileup-button-layout-container-tiny {
 		border-radius: var(--border-radius-xs);
 	}
@@ -393,25 +388,25 @@
 }
 
 .lambda-fileup-button-upload-small {
-	padding: var(--padding-xs) var(--padding-sm);
+	padding: var(--spacing-xs) var(--spacing-sm);
 	font-size: var(--font-size-xs);
 }
 
 .lambda-fileup-button-upload-medium {
-	padding: var(--padding-sm) var(--padding-md);
+	padding: var(--spacing-sm) var(--spacing-md);
 	font-size: var(--font-size-sm);
 }
 
 .lambda-fileup-button-upload-large {
-	padding: var(--padding-md) var(--padding-lg);
+	padding: var(--spacing-md) var(--spacing-lg);
 	font-size: var(--font-size-md);
 }
 
 .lambda-fileup-file-display-container {
 	display: flex;
 	align-items: center;
-	gap: var(--gap-sm);
-	padding: var(--padding-none) var(--padding-sm);
+	gap: var(--spacing-sm);
+	padding: var(--spacing-none) var(--spacing-sm);
 	min-width: 0;
 	height: 100%;
 	overflow: hidden;
@@ -531,13 +526,14 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		height: 100%;
-		gap: var(--gap-md);
-		padding: var(--padding-lg) var(--padding-md);
+		gap: var(--spacing-md);
+		padding: var(--spacing-lg) var(--spacing-md);
 		background-color: var(--background-color);
 	}
+
 	&:is(.lambda-fileup-file-list-list) {
-		padding: var(--padding-xs);
-		gap: var(--gap-xs);
+		padding: var(--spacing-xs);
+		gap: var(--spacing-xs);
 		max-height: 200px;
 	}
 }
@@ -549,7 +545,7 @@
 .lambda-fileup-file-item {
 	display: flex;
 	align-items: center;
-	padding: var(--padding-xs);
+	padding: var(--spacing-xs);
 	border-top: 1px solid var(--border-color);
 	height: 100%;
 	border-radius: var(--radius-sm);
@@ -558,6 +554,7 @@
 	&:is(.lambda-fileup-file-item-dropzone) {
 		border: none;
 		width: max-content;
+
 		&:is(.lambda-fileup-file-item-list) {
 			border: var(--border-width-xs) dashed var(--border-color);
 			border-radius: var(--border-radius-xs);
@@ -567,10 +564,11 @@
 		}
 
 		&:is(.lambda-fileup-file-item-thumbnail) {
-			padding: var(--padding-none);
+			padding: var(--spacing-none);
 			background-color: var(--surface-a);
 			border: var(--border-width-xs) dashed var(--border-color);
 			border-radius: var(--border-radius-xs);
+
 			&:hover {
 				background-color: var(--surface-b);
 			}
@@ -585,7 +583,7 @@
 	justify-content: center;
 	color: var(--placeholder-color);
 
-	& > svg {
+	&>svg {
 		width: 50px;
 		height: 50px;
 	}
@@ -597,7 +595,7 @@
 	justify-content: center;
 	color: var(--placeholder-color);
 
-	& > svg {
+	&>svg {
 		width: 100%;
 		height: 100%;
 	}
@@ -637,10 +635,10 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	gap: var(--gap-lg);
+	gap: var(--spacing-lg);
 	font-style: italic;
 	font-weight: var(--font-weight-medium);
-	padding: var(--padding-none) var(--padding-sm);
+	padding: var(--spacing-none) var(--spacing-sm);
 	font-size: var(--font-size-xs);
 	color: var(--placeholder-color);
 	width: 100%;
@@ -679,8 +677,8 @@
 }
 
 .lambda-fileup-file-item-small {
-	padding: var(--padding-xs);
-	gap: var(--gap-md);
+	padding: var(--spacing-xs);
+	gap: var(--spacing-md);
 
 	.lambda-fileup-file-item-icon-container,
 	.lambda-fileup-file-item-remove-button {
@@ -694,8 +692,8 @@
 }
 
 .lambda-fileup-file-item-medium {
-	padding: var(--padding-sm);
-	gap: var(--gap-md);
+	padding: var(--spacing-sm);
+	gap: var(--spacing-md);
 
 	.lambda-fileup-file-item-icon-container,
 	.lambda-fileup-file-item-remove-button {
@@ -709,8 +707,8 @@
 }
 
 .lambda-fileup-file-item-large {
-	padding: var(--padding-md);
-	gap: var(--gap-md);
+	padding: var(--spacing-md);
+	gap: var(--spacing-md);
 
 	.lambda-fileup-file-item-icon-container,
 	.lambda-fileup-file-item-remove-button {
@@ -761,7 +759,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: var(--padding-xs);
+	padding: var(--spacing-xs);
 	width: 100%;
 	height: 100px;
 	object-fit: fill;
@@ -773,7 +771,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding: var(--padding-none) var(--padding-xs);
+	padding: var(--spacing-none) var(--spacing-xs);
 	width: 100%;
 	height: 100%;
 	background-color: var(--surface-c);

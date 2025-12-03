@@ -4,8 +4,8 @@
 	display: grid;
 	grid-template-columns: 1.5em 1fr;
 	align-items: center;
-	gap: var(--gap-md);
-	padding: var(--padding-sm);
+	gap: var(--spacing-md);
+	padding: var(--spacing-sm);
 	width: max-content;
 	max-width: 100%;
 	letter-spacing: 0.5px;

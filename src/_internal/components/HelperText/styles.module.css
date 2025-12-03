@@ -1,6 +1,6 @@
 .lambda-helper {
 	position: absolute;
-	left: var(--padding-sm);
+	left: var(--spacing-sm);
 	bottom: -4px;
 	opacity: 1;
 	font-family: var(--font-family);

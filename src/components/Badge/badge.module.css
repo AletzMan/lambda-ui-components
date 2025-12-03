@@ -9,11 +9,11 @@
 	background-color: var(--badge-background-color);
 	color: var(--badge-text-color);
 	font-family: var(--font-family);
-	padding: var(--padding-3xs) var(--padding-sm);
+	padding: var(--spacing-3xs) var(--spacing-sm);
 	outline: 1px solid var(--foreground-invert-color);
 
 	&.lambda-badge-tiny {
-		padding: var(--padding-2xs) var(--padding-xs);
+		padding: var(--spacing-2xs) var(--spacing-xs);
 		min-width: var(--badge-size-xl);
 		min-height: var(--badge-size-xs);
 		font-size: var(--font-size-xs);
@@ -22,13 +22,13 @@
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
 			min-width: var(--badge-size-3xs);
 			min-height: var(--badge-size-3xs);
-			padding: var(--padding-none);
+			padding: var(--spacing-none);
 		}
 
-		& > span {
+		&>span {
 			line-height: var(--font-size-xs);
 
-			& > span > svg {
+			&>span>svg {
 				width: var(--icon-size-4xs);
 				height: var(--icon-size-4xs);
 				stroke-width: var(--border-width-md);
@@ -37,7 +37,7 @@
 	}
 
 	&.lambda-badge-small {
-		padding: var(--padding-3xs) calc(var(--padding-sm) + var(--padding-2xs));
+		padding: var(--spacing-3xs) calc(var(--spacing-sm) + var(--spacing-2xs));
 		min-height: var(--badge-size-md);
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-semibold);
@@ -45,11 +45,11 @@
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
 			min-width: var(--badge-size-2xs);
 			min-height: var(--badge-size-2xs);
-			padding: var(--padding-none);
+			padding: var(--spacing-none);
 		}
 
-		& > span {
-			& > span > svg {
+		&>span {
+			&>span>svg {
 				width: var(--icon-size-4xs);
 				height: var(--icon-size-4xs);
 				stroke-width: var(--border-width-md);
@@ -58,20 +58,20 @@
 	}
 
 	&.lambda-badge-medium {
-		padding: var(--padding-2xs) var(--padding-md);
+		padding: var(--spacing-2xs) var(--spacing-md);
 		font-weight: var(--font-weight-semibold);
 		font-size: var(--font-size-md);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
 			min-width: var(--badge-size-xs);
 			min-height: var(--badge-size-xs);
-			padding: var(--padding-none);
+			padding: var(--spacing-none);
 		}
 
-		& > span {
+		&>span {
 			line-height: var(--font-size-lg);
 
-			& > span > svg {
+			&>span>svg {
 				width: var(--icon-size-3xs);
 				height: var(--icon-size-3xs);
 				stroke-width: var(--border-width-md);
@@ -80,23 +80,23 @@
 	}
 
 	&.lambda-badge-large {
-		padding: var(--padding-xs) var(--padding-md);
+		padding: var(--spacing-xs) var(--spacing-md);
 		font-size: var(--font-size-lg);
 		font-weight: var(--font-weight-semibold);
 
 		&:not(.lambda-badge-has-text):not(.lambda-badge-has-count) {
 			min-width: var(--badge-size-sm);
 			min-height: var(--badge-size-sm);
-			padding: var(--padding-none);
+			padding: var(--spacing-none);
 		}
 
-		& > span {
+		&>span {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			line-height: var(--font-size-lg);
 
-			& > span > svg {
+			&>span>svg {
 				width: var(--icon-size-2xs);
 				height: var(--icon-size-2xs);
 				stroke-width: var(--border-width-md);
@@ -104,11 +104,11 @@
 		}
 	}
 
-	& > span > span {
+	&>span>span {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: var(--padding-4xs);
+		gap: var(--spacing-4xs);
 	}
 }
 

@@ -3,7 +3,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: var(--padding-md);
+	gap: var(--spacing-md);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-semibold);
 	box-sizing: border-box;
@@ -509,7 +509,7 @@
 
 .lambda-tag-tiny {
 	font-size: var(--font-size-xs);
-	padding: var(--padding-xs);
+	padding: var(--spacing-xs);
 	min-width: var(--height-button-2xs);
 	min-height: var(--height-button-2xs);
 
@@ -521,7 +521,7 @@
 
 .lambda-tag-small {
 	font-size: var(--font-size-sm);
-	padding: var(--padding-sm);
+	padding: var(--spacing-sm);
 	min-width: var(--height-button-xs);
 	min-height: var(--height-button-xs);
 
@@ -533,7 +533,7 @@
 
 .lambda-tag-medium {
 	font-size: var(--font-size-md);
-	padding: var(--padding-md);
+	padding: var(--spacing-md);
 	min-width: var(--height-button-sm);
 	min-height: var(--height-button-sm);
 
@@ -545,7 +545,7 @@
 
 .lambda-tag-large {
 	font-size: var(--font-size-lg);
-	padding: var(--padding-md);
+	padding: var(--spacing-md);
 	min-width: var(--height-button-md);
 	min-height: var(--height-button-md);
 

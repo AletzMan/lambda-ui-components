@@ -176,8 +176,8 @@ export default function CustomizationPage() {
   --primary-hover-color: #2563eb;
   
   /* Customize spacing */
-  --padding-md: 12px;
-  --gap-md: 12px;
+  --spacing-md: 12px;
+  --spacing-md: 12px;
   
   /* Adjust border radius */
   --border-radius-md: 12px;
@@ -292,11 +292,11 @@ export default function CustomizationPage() {
   --font-weight-extrabold: 800;
   
   /* Title sizes */
-  --font-size-title-xs: 16px;
-  --font-size-title-sm: 20px;
-  --font-size-title-md: 24px;
-  --font-size-title-lg: 28px;
-  --font-size-title-xl: 32px;
+  --font-size-xs: 16px;
+  --font-size-sm: 20px;
+  --font-size-md: 24px;
+  --font-size-lg: 28px;
+  --font-size-xl: 32px;
 }`}
                     />
                 </SubSectionLayout>
@@ -307,24 +307,24 @@ export default function CustomizationPage() {
                         language="css"
                         code={`:root {
   /* Padding scale */
-  --padding-none: 0px;
-  --padding-3xs: 1px;
-  --padding-2xs: 2px;
-  --padding-xs: 4px;
-  --padding-sm: 6px;
-  --padding-md: 8px;
-  --padding-lg: 16px;
-  --padding-xl: 32px;
-  --padding-2xl: 64px;
+  --spacing-none: 0px;
+  --spacing-3xs: 1px;
+  --spacing-2xs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 6px;
+  --spacing-md: 8px;
+  --spacing-lg: 16px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 64px;
   
   /* Gap scale */
-  --gap-none: 0px;
-  --gap-2xs: 1px;
-  --gap-xs: 2px;
-  --gap-sm: 4px;
-  --gap-md: 8px;
-  --gap-lg: 16px;
-  --gap-xl: 24px;
+  --spacing-none: 0px;
+  --spacing-2xs: 1px;
+  --spacing-xs: 2px;
+  --spacing-sm: 4px;
+  --spacing-md: 8px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
 }`}
                     />
                 </SubSectionLayout>
@@ -492,7 +492,7 @@ export default function App({ children }) {
 const CustomButton = styled.button\`
   background-color: var(--primary-base-color);
   color: var(--foreground-invert-color);
-  padding: var(--padding-md) var(--padding-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
   border-radius: var(--border-radius-md);
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
@@ -554,9 +554,9 @@ const CustomButton = styled.button\`
   --font-family: "Poppins", sans-serif;
   
   /* Increased spacing */
-  --padding-md: 10px;
-  --padding-lg: 20px;
-  --gap-md: 10px;
+  --spacing-md: 10px;
+  --spacing-lg: 20px;
+  --spacing-md: 10px;
   
   /* Rounder corners */
   --border-radius-sm: 6px;

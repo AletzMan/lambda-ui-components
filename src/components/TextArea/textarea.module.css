@@ -9,7 +9,7 @@
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-label-color);
-	margin: 0 0 var(--gap-xs) 0;
+	margin: 0 0 var(--spacing-xs) 0;
 
 	&.lambda-textarea-label-required {
 		&::after {
@@ -36,20 +36,20 @@
 
 	&.lambda-textarea-label-radius-none,
 	&.lambda-textarea-label-radius-tiny {
-		padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-xs);
+		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) var(--spacing-xs);
 	}
 
 	&.lambda-textarea-label-radius-small {
-		padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-xs);
+		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) var(--spacing-xs);
 	}
 
 	&.lambda-textarea-label-radius-medium {
-		padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-sm);
+		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) var(--spacing-sm);
 	}
 
 	&.lambda-textarea-label-radius-large,
 	&.lambda-textarea-label-radius-full {
-		padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-md);
+		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) var(--spacing-md);
 	}
 }
 
@@ -63,22 +63,22 @@
 
 	&.lambda-textarea-tiny {
 		font-size: var(--font-size-xs);
-		padding: var(--padding-xs);
+		padding: var(--spacing-xs);
 	}
 
 	&.lambda-textarea-small {
 		font-size: var(--font-size-sm);
-		padding: var(--padding-sm);
+		padding: var(--spacing-sm);
 	}
 
 	&.lambda-textarea-medium {
 		font-size: var(--font-size-md);
-		padding: var(--padding-sm);
+		padding: var(--spacing-sm);
 	}
 
 	&.lambda-textarea-large {
 		font-size: var(--font-size-lg);
-		padding: var(--padding-md);
+		padding: var(--spacing-md);
 	}
 
 	&.lambda-textarea-radius-none {
@@ -148,11 +148,11 @@
 	color: var(--danger-base-color);
 	width: var(--icon-size-sm);
 	height: var(--icon-size-sm);
-	right: var(--padding-xs);
-	top: var(--padding-xs);
+	right: var(--spacing-xs);
+	top: var(--spacing-xs);
 
 	&.lambda-textarea-invalid-icon-whitlabel {
-		top: calc(var(--padding-xs) + var(--icon-size-lg));
+		top: calc(var(--spacing-xs) + var(--icon-size-lg));
 	}
 }
 

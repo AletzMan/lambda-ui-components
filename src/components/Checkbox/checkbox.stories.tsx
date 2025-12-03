@@ -84,8 +84,8 @@ const Template = (args: CheckBoxProps) => {
 				style={{
 					display: "grid",
 					gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-					gap: "var(--gap-lg)",
-					padding: "var(--padding-lg)",
+					gap: "var(--spacing-lg)",
+					padding: "var(--spacing-lg)",
 				}}
 			>
 				{colors.map((color) => (

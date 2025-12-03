@@ -9,8 +9,9 @@
 	align-items: center;
 	justify-content: center;
 }
+
 .lambda-rating-text {
-	padding: 0 0 0 var(--padding-xs);
+	padding: 0 0 0 var(--spacing-xs);
 }
 
 .lambda-rating-text-right {
@@ -19,7 +20,7 @@
 	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: center;
-	gap: var(--padding-xs);
+	gap: var(--spacing-xs);
 }
 
 .lambda-rating-text-top {
@@ -78,7 +79,7 @@
 	border: none;
 	display: flex;
 	align-items: center;
-	padding: var(--padding-none);
+	padding: var(--spacing-none);
 	justify-content: center;
 	color: var(--surface-e);
 
@@ -94,76 +95,85 @@
 		font-weight: var(--font-weight-extrabold);
 	}
 
-	&:is(.lambda-rating-item-medium) { 
+	&:is(.lambda-rating-item-medium) {
 		height: var(--icon-size-3xl);
 		font-size: var(--font-size-xl);
 		line-height: var(--font-size-xl);
 		font-weight: var(--font-weight-extrabold);
 	}
 
-	&:is(.lambda-rating-item-large) { 
+	&:is(.lambda-rating-item-large) {
 		height: var(--height-button-lg);
 		font-size: var(--font-size-4xl);
 		line-height: var(--font-size-4xl);
 		font-weight: var(--font-weight-extrabold);
 
-		& > svg {
+		&>svg {
 			width: var(--icon-size-4xl);
 			height: var(--icon-size-4xl);
 		}
 	}
+
 	&:hover {
 		cursor: pointer;
 	}
 }
+
 .lambda-rating-item-custom {
-	& > img {
+	&>img {
 		opacity: 0.2;
 		background-color: var(--surface-c);
 	}
 
 	&:is(.lambda-rating-item-active) {
-		& > img {
+		&>img {
 			opacity: 1;
 		}
+
 		&:is(.lambda-rating-item-default) {
-			& > svg {
+			&>svg {
 				fill: var(--rating-fill-color);
 				stroke: var(--rating-stroke-color);
 			}
 		}
+
 		&:is(.lambda-rating-item-primary) {
-			& > svg {
+			&>svg {
 				fill: var(--primary-subtle-color);
 				stroke: var(--primary-text-color);
 			}
 		}
+
 		&:is(.lambda-rating-item-secondary) {
-			& > svg {
+			&>svg {
 				fill: var(--secondary-subtle-color);
 				stroke: var(--secondary-text-color);
 			}
 		}
+
 		&:is(.lambda-rating-item-danger) {
-			& > svg {
+			&>svg {
 				fill: var(--danger-subtle-color);
 				stroke: var(--danger-text-color);
 			}
 		}
+
 		&:is(.lambda-rating-item-success) {
-			& > svg {
+			&>svg {
 				fill: var(--success-subtle-color);
 				stroke: var(--success-text-color);
 			}
 		}
+
 		&:is(.lambda-rating-item-warning) {
-			& > svg {
+			&>svg {
 				fill: var(--warning-subtle-color);
 				stroke: var(--warning-text-color);
 			}
 		}
+
 		&:is(.lambda-rating-item-info) {
-			& > svg {
+			&>svg {
 				fill: var(--info-subtle-color);
 				stroke: var(--info-text-color);
 			}
@@ -171,21 +181,21 @@
 	}
 
 	&:is(.lambda-rating-item-small) {
-		& > img {
+		&>img {
 			width: var(--icon-size-md);
 			height: var(--icon-size-md);
 		}
 	}
 
 	&:is(.lambda-rating-item-medium) {
-		& > img {
+		&>img {
 			width: var(--icon-size-xl);
 			height: var(--icon-size-xl);
 		}
 	}
 
 	&:is(.lambda-rating-item-large) {
-		& > img {
+		&>img {
 			width: var(--icon-size-3xl);
 			height: var(--icon-size-3xl);
 		}
@@ -198,7 +208,7 @@
 }
 
 .lambda-rating-item-outline {
-	& > svg {
+	&>svg {
 		stroke: var(--surface-e);
 		fill: transparent;
 		stroke-width: 1.5;
@@ -206,49 +216,49 @@
 
 	&:is(.lambda-rating-item-active) {
 		&:is(.lambda-rating-item-default) {
-			& > svg {
+			&>svg {
 				stroke: var(--rating-solid-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-primary) {
-			& > svg {
+			&>svg {
 				stroke: var(--primary-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-secondary) {
-			& > svg {
+			&>svg {
 				stroke: var(--secondary-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-danger) {
-			& > svg {
+			&>svg {
 				stroke: var(--danger-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-success) {
-			& > svg {
+			&>svg {
 				stroke: var(--success-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-warning) {
-			& > svg {
+			&>svg {
 				stroke: var(--warning-base-color);
 				fill: transparent;
 			}
 		}
 
 		&:is(.lambda-rating-item-info) {
-			& > svg {
+			&>svg {
 				stroke: var(--info-base-color);
 				fill: transparent;
 			}
@@ -257,7 +267,7 @@
 }
 
 .lambda-rating-item-solid {
-	& > svg {
+	&>svg {
 		stroke: var(--surface-c);
 		fill: var(--surface-c);
 		stroke-width: 1.5;
@@ -265,49 +275,49 @@
 
 	&:is(.lambda-rating-item-active) {
 		&:is(.lambda-rating-item-default) {
-			& > svg {
+			&>svg {
 				stroke: var(--rating-solid-color);
 				fill: var(--rating-solid-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-primary) {
-			& > svg {
+			&>svg {
 				stroke: var(--primary-base-color);
 				fill: var(--primary-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-secondary) {
-			& > svg {
+			&>svg {
 				stroke: var(--secondary-base-color);
 				fill: var(--secondary-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-danger) {
-			& > svg {
+			&>svg {
 				stroke: var(--danger-base-color);
 				fill: var(--danger-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-success) {
-			& > svg {
+			&>svg {
 				stroke: var(--success-base-color);
 				fill: var(--success-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-warning) {
-			& > svg {
+			&>svg {
 				stroke: var(--warning-base-color);
 				fill: var(--warning-base-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-info) {
-			& > svg {
+			&>svg {
 				stroke: var(--info-base-color);
 				fill: var(--info-base-color);
 			}
@@ -316,7 +326,7 @@
 }
 
 .lambda-rating-item-bordered {
-	& > svg {
+	&>svg {
 		stroke: var(--surface-e);
 		fill: var(--surface-c);
 		stroke-width: 1.5;
@@ -324,49 +334,49 @@
 
 	&:is(.lambda-rating-item-active) {
 		&:is(.lambda-rating-item-default) {
-			& > svg {
+			&>svg {
 				stroke: var(--rating-stroke-color);
 				fill: var(--rating-fill-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-primary) {
-			& > svg {
+			&>svg {
 				stroke: var(--primary-base-color);
 				fill: var(--primary-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-secondary) {
-			& > svg {
+			&>svg {
 				stroke: var(--secondary-base-color);
 				fill: var(--secondary-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-danger) {
-			& > svg {
+			&>svg {
 				stroke: var(--danger-hover-color);
 				fill: var(--danger-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-success) {
-			& > svg {
+			&>svg {
 				stroke: var(--success-hover-color);
 				fill: var(--success-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-warning) {
-			& > svg {
+			&>svg {
 				stroke: var(--warning-hover-color);
 				fill: var(--warning-opacity-color);
 			}
 		}
 
 		&:is(.lambda-rating-item-info) {
-			& > svg {
+			&>svg {
 				stroke: var(--info-hover-color);
 				fill: var(--info-opacity-color);
 			}
@@ -380,24 +390,31 @@
 
 	&:is(.lambda-rating-item-active) {
 		filter: grayscale(0);
+
 		&:is(.lambda-rating-item-default) {
 			color: var(--rating-solid-color);
 		}
+
 		&:is(.lambda-rating-item-primary) {
 			color: var(--primary-base-color);
 		}
+
 		&:is(.lambda-rating-item-secondary) {
 			color: var(--secondary-base-color);
 		}
+
 		&:is(.lambda-rating-item-danger) {
 			color: var(--danger-base-color);
 		}
+
 		&:is(.lambda-rating-item-success) {
 			color: var(--success-base-color);
 		}
+
 		&:is(.lambda-rating-item-warning) {
 			color: var(--warning-base-color);
 		}
+
 		&:is(.lambda-rating-item-info) {
 			color: var(--info-base-color);
 		}

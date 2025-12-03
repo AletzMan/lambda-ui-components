@@ -2,13 +2,13 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: var(--gap-md);
-	width: 100%; 
+	gap: var(--spacing-md);
+	width: 100%;
 
-	
+
 
 	&:is(.lambda-datepicker-wrapper-has-label) {
-		margin-top: var(--gap-lg);
+		margin-top: var(--spacing-lg);
 	}
 }
 
@@ -28,7 +28,7 @@
 	flex-direction: column;
 	background: var(--surface-a);
 	font-family: var(--font-family);
-	padding: var(--padding-md);
+	padding: var(--spacing-md);
 	width: 285px;
 	overflow: hidden;
 
@@ -57,7 +57,7 @@
 
 .lambda-datepicker-nav {
 	display: flex;
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 }
 
 .lambda-datepicker-nav-button:not(:hover) {
@@ -67,8 +67,8 @@
 .lambda-datepicker-days {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: var(--gap-xs);
-	padding: var(--padding-none) var(--padding-none) var(--padding-sm) var(--padding-none);
+	gap: var(--spacing-xs);
+	padding: var(--spacing-none) var(--spacing-none) var(--spacing-sm) var(--spacing-none);
 }
 
 .lambda-datepicker-day-label {
@@ -86,7 +86,7 @@
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	place-items: center center;
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 }
 
 .lambda-datepicker-cell {
@@ -94,7 +94,7 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	padding: var(--padding-xs);
+	padding: var(--spacing-xs);
 	border-radius: var(--border-radius-xs);
 	font-size: var(--font-size-sm);
 	background: transparent;
@@ -131,9 +131,11 @@
 	0% {
 		box-shadow: none;
 	}
+
 	50% {
 		box-shadow: 0 0 0 4px var(--primary-shadow-color);
 	}
+
 	100% {
 		box-shadow: none;
 	}
@@ -154,6 +156,7 @@
 .lambda-datepicker-radius-none {
 	border-radius: var(--border-radius-none);
 }
+
 .lambda-datepicker-radius-tiny {
 	border-radius: var(--border-radius-xs);
 
@@ -162,6 +165,7 @@
 		border-top-right-radius: var(--border-radius-none);
 	}
 }
+
 .lambda-datepicker-radius-small {
 	border-radius: var(--border-radius-sm);
 
@@ -170,6 +174,7 @@
 		border-top-right-radius: var(--border-radius-none);
 	}
 }
+
 .lambda-datepicker-radius-medium {
 	border-radius: var(--border-radius-md);
 
@@ -178,6 +183,7 @@
 		border-top-right-radius: var(--border-radius-none);
 	}
 }
+
 .lambda-datepicker-radius-large {
 	border-radius: var(--border-radius-lg);
 
@@ -186,6 +192,7 @@
 		border-top-right-radius: var(--border-radius-none);
 	}
 }
+
 .lambda-datepicker-radius-full {
 	border-radius: var(--border-radius-lg);
 
@@ -199,18 +206,23 @@
 .lambda-datepicker-color-primary {
 	border-color: var(--primary-base-color);
 }
+
 .lambda-datepicker-color-secondary {
 	border-color: var(--secondary-base-color);
 }
+
 .lambda-datepicker-color-success {
 	border-color: var(--success-base-color);
 }
+
 .lambda-datepicker-color-danger {
 	border-color: var(--danger-base-color);
 }
+
 .lambda-datepicker-color-warning {
 	border-color: var(--warning-base-color);
 }
+
 .lambda-datepicker-color-info {
 	border-color: var(--info-base-color);
 }
@@ -224,6 +236,7 @@
 		border-top: var(--border-width-xs) solid var(--border-color);
 	}
 }
+
 .lambda-datepicker-variant-soft {
 	background: var(--surface-a);
 	border: var(--border-width-xs) solid transparent;
@@ -242,75 +255,81 @@
 .lambda-datepicker-inline-section {
 	display: flex;
 	flex-direction: column;
-	gap: var(--gap-none);
+	gap: var(--spacing-none);
 	width: 285px;
 
 	&:is(.lambda-datepicker-inline-section-radius-none) {
-		& > header {
+		&>header {
 			border-top-left-radius: var(--border-radius-none);
 			border-top-right-radius: var(--border-radius-none);
 		}
 	}
+
 	&:is(.lambda-datepicker-inline-section-radius-tiny) {
-		& > header {
+		&>header {
 			border-top-left-radius: var(--border-radius-xs);
 			border-top-right-radius: var(--border-radius-xs);
 		}
 	}
+
 	&:is(.lambda-datepicker-inline-section-radius-small) {
-		& > header {
+		&>header {
 			border-top-left-radius: var(--border-radius-sm);
 			border-top-right-radius: var(--border-radius-sm);
 		}
 	}
+
 	&:is(.lambda-datepicker-inline-section-radius-medium) {
-		& > header {
+		&>header {
 			border-top-left-radius: var(--border-radius-md);
 			border-top-right-radius: var(--border-radius-md);
 		}
 	}
+
 	&:is(.lambda-datepicker-inline-section-radius-large) {
-		& > header {
+		&>header {
 			border-top-left-radius: var(--border-radius-lg);
 			border-top-right-radius: var(--border-radius-lg);
 		}
 	}
+
 	&:is(.lambda-datepicker-inline-section-radius-full) {
-		& > header {
+		&>header {
 			border-top-left-radius: var(--border-radius-lg);
 			border-top-right-radius: var(--border-radius-lg);
 		}
 	}
 
 	&:is(.lambda-datepicker-inline-section-solid) {
-		& > header {
+		&>header {
 			border: var(--border-width-xs) solid var(--border-color);
 			border-bottom: none;
 		}
 	}
+
 	&:is(.lambda-datepicker-inline-section-soft) {
-		& > header {
+		&>header {
 			border: var(--border-width-xs) solid transparent;
 			border-bottom: none;
 		}
 	}
 
-	& > header {
+	&>header {
 		display: grid;
 		grid-template-columns: 2.1em 1em auto 2em;
 		place-items: center center;
-		padding: var(--padding-xs) var(--padding-sm);
+		padding: var(--spacing-xs) var(--spacing-sm);
 		min-height: 45px;
 		width: 100%;
 		background-color: var(--surface-b);
 
-		& > svg {
+		&>svg {
 			width: 1em;
 			height: 1em;
 			color: var(--neutral-text-color);
 		}
 
-		& > div {
+		&>div {
 			display: flex;
 			align-items: flex-start;
 			flex-direction: column;
@@ -318,7 +337,7 @@
 			width: 100%;
 			font-weight: var(--font-weight-medium);
 
-			& > span:is(:first-child) {
+			&>span:is(:first-child) {
 				display: flex;
 				align-items: center;
 				justify-content: flex-start;
@@ -327,7 +346,8 @@
 				color: var(--foreground-title-color);
 				text-transform: capitalize;
 			}
-			& > span:is(:last-child) {
+
+			&>span:is(:last-child) {
 				font-size: var(--font-size-md);
 				font-weight: var(--font-weight-medium);
 				color: var(--primary-text-color);
@@ -336,7 +356,7 @@
 	}
 
 	&:is(.lambda-datepicker-inline-section-invalid) {
-		& > header {
+		&>header {
 			border: var(--border-width-xs) dashed var(--danger-base-color);
 			border-bottom: none;
 		}
@@ -356,13 +376,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: var(--padding-none) var(--padding-md);
+	padding: var(--spacing-none) var(--spacing-md);
 	width: 100%;
 	height: 45px;
 	background-color: var(--surface-b);
 	border-bottom: var(--border-width-xs) solid var(--border-color);
 
-	& > span {
+	&>span {
 		color: var(--neutral-text-color);
 	}
 }
@@ -370,8 +390,8 @@
 .lambda-datepicker-picker-section-months {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	padding: var(--padding-xs);
-	gap: var(--gap-sm);
+	padding: var(--spacing-xs);
+	gap: var(--spacing-sm);
 	place-items: center center;
 	height: calc(100% - 45px);
 }
@@ -380,7 +400,7 @@
 	/* ... estilos existentes ... */
 
 	/* Contenedor de los dígitos del año */
-	& > .lambda-datepicker-year-digits {
+	&>.lambda-datepicker-year-digits {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -389,7 +409,7 @@
 	}
 
 	/* Cada dígito */
-	& > .lambda-datepicker-year-digits > .lambda-datepicker-year-digit {
+	&>.lambda-datepicker-year-digits>.lambda-datepicker-year-digit {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -404,10 +424,7 @@
 	}
 
 	/* El span interno (animado o estático) */
-	&
-		> .lambda-datepicker-year-digits
-		> .lambda-datepicker-year-digit
-		> .lambda-datepicker-year-digit-inner {
+	&>.lambda-datepicker-year-digits>.lambda-datepicker-year-digit>.lambda-datepicker-year-digit-inner {
 		position: absolute;
 		width: 100%;
 	}
@@ -416,7 +433,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: var(--padding-xs) var(--padding-sm);
+	padding: var(--spacing-xs) var(--spacing-sm);
 	font-weight: var(--font-weight-semibold);
 	font-size: var(--font-size-lg);
 	color: var(--foreground-title-color);
@@ -468,8 +485,8 @@
 	left: 0;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	padding: var(--padding-xs);
-	gap: var(--gap-sm);
+	padding: var(--spacing-xs);
+	gap: var(--spacing-sm);
 	place-items: center center;
 	width: 100%;
 	height: calc(100% - 45px);
@@ -510,7 +527,8 @@
 .lambda-datepicker-wrapper-disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
-	& > * { 
-		cursor: not-allowed ;
+
+	&>* {
+		cursor: not-allowed;
 	}
 }

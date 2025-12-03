@@ -3,7 +3,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: var(--gap-sm);
+	gap: var(--spacing-sm);
 	line-height: inherit;
 	border: none;
 	text-align: inherit;
@@ -20,6 +20,7 @@
 		color: var(--neutral-text-color);
 	}
 }
+
 .lambda-link-primary {
 	color: var(--primary-base-color);
 
@@ -71,8 +72,8 @@
 .lambda-link-button {
 	display: flex;
 	flex-direction: row;
-	padding-left: var(--padding-lg);
-	padding-right: var(--padding-lg);
+	padding-left: var(--spacing-lg);
+	padding-right: var(--spacing-lg);
 }
 
 .lambda-link-button-start {
@@ -82,7 +83,7 @@
 .lambda-link-button-center {
 	justify-content: center;
 
-	& > * {
+	&>* {
 		width: 100%;
 		text-align: center;
 		justify-content: center;
@@ -92,7 +93,7 @@
 .lambda-link-button-end {
 	justify-content: flex-end;
 
-	& > * {
+	&>* {
 		width: 100%;
 		text-align: end;
 		justify-content: end;

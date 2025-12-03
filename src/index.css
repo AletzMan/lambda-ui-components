@@ -4,7 +4,7 @@
 	--black-color: #171717;
 	--white-color: #ffffff;
 
-	--gap-radio-size: 8px;
+	--spacing-radio-size: 8px;
 
 	/* --- Lambda Colors --- */
 
@@ -126,19 +126,19 @@
 	--lambda-color-teal-950: oklch(0.277 0.046 192.524);
 
 	/* Cyan */
-	--lambda-color-cyan-050: oklch(96.2% 0.018 272.314);
-	--lambda-color-cyan-100: oklch(93% 0.034 272.788);
-	--lambda-color-cyan-200: oklch(87% 0.065 274.039);
-	--lambda-color-cyan-300: oklch(78.5% 0.115 274.713);
-	--lambda-color-cyan-400: oklch(67.3% 0.182 276.935);
-	--lambda-color-cyan-500: oklch(58.5% 0.233 277.117);
-	--lambda-color-cyan-600: oklch(51.1% 0.262 276.966);
-	--lambda-color-cyan-700: oklch(45.7% 0.24 277.023);
-	--lambda-color-cyan-800: oklch(39.8% 0.195 277.366);
-	--lambda-color-cyan-900: oklch(35.9% 0.144 278.697);
-	--lambda-color-cyan-950: oklch(25.7% 0.09 281.288);
+	--lambda-color-cyan-050: oklch(98.4% 0.019 200.873);
+	--lambda-color-cyan-100: oklch(95.6% 0.045 203.388);
+	--lambda-color-cyan-200: oklch(91.7% 0.08 205.041);
+	--lambda-color-cyan-300: oklch(86.5% 0.127 207.078);
+	--lambda-color-cyan-400: oklch(78.9% 0.154 211.53);
+	--lambda-color-cyan-500: oklch(71.5% 0.143 215.221);
+	--lambda-color-cyan-600: oklch(60.9% 0.126 221.723);
+	--lambda-color-cyan-700: oklch(52% 0.105 223.128);
+	--lambda-color-cyan-800: oklch(45% 0.085 224.283);
+	--lambda-color-cyan-900: oklch(39.8% 0.07 227.392);
+	--lambda-color-cyan-950: oklch(30.2% 0.056 229.695);
 
-	/* Info */
+	/* Sky */
 	--lambda-color-sky-050: oklch(97.7% 0.013 236.62);
 	--lambda-color-sky-100: oklch(95.1% 0.026 236.824);
 	--lambda-color-sky-200: oklch(90.1% 0.058 230.902);
@@ -268,23 +268,20 @@
 	--lambda-color-gray-900: oklch(21% 0.034 264.665);
 	--lambda-color-gray-950: oklch(13% 0.028 261.692);
 
-	--padding-none: 0px;
-	--padding-3xs: 1px;
-	--padding-2xs: 2px;
-	--padding-xs: 4px;
-	--padding-sm: 6px;
-	--padding-md: 8px;
-	--padding-lg: 16px;
-	--padding-xl: 32px;
-	--padding-2xl: 64px;
+	--spacing-none: 0px;
+	--spacing-3xs: 1px;
+	--spacing-2xs: 01.125rem;
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 0.75rem;
+	--spacing-lg: 1rem;
+	--spacing-xl: 1.5rem;
+	--spacing-2xl: 2rem;
+	--spacing-3xl: 3rem;
+	--spacing-4xl: 4rem;
+	--spacing-5xl: 5rem;
+	--spacing-6xl: 6rem;
 
-	--gap-none: 0px;
-	--gap-2xs: 1px;
-	--gap-xs: 2px;
-	--gap-sm: 4px;
-	--gap-md: 8px;
-	--gap-lg: 16px;
-	--gap-xl: 24px;
 
 	--font-weight-light: 300;
 	--font-weight-regular: 400;
@@ -294,32 +291,19 @@
 	--font-weight-extrabold: 800;
 
 	--font-size-2xs: 0.625rem;
-	/* 10px */
 	--font-size-xs: 0.75rem;
-	/* 12px */
 	--font-size-sm: 0.875rem;
-	/* 14px */
 	--font-size-md: 1rem;
-	/* 16px   */
 	--font-size-lg: 1.125rem;
-	/* 18px */
 	--font-size-xl: 1.25rem;
-	/* 20px */
 	--font-size-2xl: 1.5rem;
-	/* 24px */
 	--font-size-3xl: 1.875rem;
-	/* 30px */
 	--font-size-4xl: 2.25rem;
-	/* 36px */
-
-	--font-size-title-xs: 16px;
-	--font-size-title-sm: 20px;
-	--font-size-title-md: 24px;
-	--font-size-title-lg: 28px;
-	--font-size-title-xl: 32px;
-	--font-size-title-2xl: 36px;
-	--font-size-title-3xl: 40px;
-	--font-size-title-4xl: 44px;
+	--font-size-5xl: 2.5rem;
+	--font-size-6xl: 3rem;
+	--font-size-7xl: 3.5rem;
+	--font-size-8xl: 4rem;
+	--font-size-9xl: 4.5rem;
 
 	--border-radius-none: 0px;
 	--border-radius-xs: 2px;

@@ -92,8 +92,8 @@ const Template = (args: InputProps) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					gap: "var(--gap-none)",
-					padding: "var(--padding-lg)",
+					gap: "var(--spacing-none)",
+					padding: "var(--spacing-lg)",
 				}}
 			>
 				<div
@@ -101,7 +101,7 @@ const Template = (args: InputProps) => {
 						display: "flex",
 						flexDirection: "column",
 						width: "300px",
-						gap: "var(--gap-md)",
+						gap: "var(--spacing-md)",
 					}}
 				>
 					<Input {...args} placeholder="Text input example" label="Text" prefix={<CaseUpper />} />

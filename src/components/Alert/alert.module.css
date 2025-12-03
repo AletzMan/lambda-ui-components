@@ -1,7 +1,7 @@
 .lambda-alert {
 	display: flex;
 	align-items: center;
-	gap: var(--gap-md);
+	gap: var(--spacing-md);
 	font-family: var(--font-family);
 	border: var(--border-width-xs) solid transparent;
 	border-left: 3px solid transparent;
@@ -41,14 +41,14 @@
 .lambda-alert-icon-container {
 	flex-shrink: 0;
 	height: 100%;
-	margin-right: var(--gap-md);
+	margin-right: var(--spacing-md);
 	display: flex;
 	align-items: center;
 }
 
 .lambda-alert-close-button {
 	flex-shrink: 0;
-	margin-left: var(--gap-lg);
+	margin-left: var(--spacing-lg);
 	border: none;
 	background: none;
 	cursor: pointer;
@@ -71,7 +71,7 @@
 
 .lambda-alert-tiny {
 	font-size: var(--font-size-xs);
-	padding: var(--padding-xs) var(--padding-lg);
+	padding: var(--spacing-xs) var(--spacing-lg);
 	font-weight: var(--font-weight-regular);
 
 	.lambda-alert-title {
@@ -87,7 +87,7 @@
 
 .lambda-alert-small {
 	font-size: var(--font-size-sm);
-	padding: var(--padding-sm) var(--padding-lg);
+	padding: var(--spacing-sm) var(--spacing-lg);
 	font-weight: var(--font-weight-regular);
 
 	.lambda-alert-title {
@@ -103,7 +103,7 @@
 
 .lambda-alert-medium {
 	font-size: var(--font-size-sm);
-	padding: var(--padding-md) var(--padding-lg);
+	padding: var(--spacing-md) var(--spacing-lg);
 	font-weight: var(--font-weight-regular);
 
 	.lambda-alert-title {
@@ -119,7 +119,7 @@
 
 .lambda-alert-large {
 	font-size: var(--font-size-md);
-	padding: var(--padding-lg) var(--padding-lg);
+	padding: var(--spacing-lg) var(--spacing-lg);
 	font-weight: var(--font-weight-regular);
 
 	.lambda-alert-title {

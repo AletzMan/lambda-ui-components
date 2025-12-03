@@ -97,15 +97,19 @@
 	0% {
 		transform: translateX(0);
 	}
+
 	25% {
 		transform: translateX(-5px);
 	}
+
 	50% {
 		transform: translateX(5px);
 	}
+
 	75% {
 		transform: translateX(-5px);
 	}
+
 	100% {
 		transform: translateX(0);
 	}
@@ -115,7 +119,7 @@
 .lambda-dialog-header {
 	display: grid;
 	grid-template-columns: 1fr 1.6em;
-	padding: calc(var(--padding-md) + var(--padding-xs)) var(--padding-lg);
+	padding: calc(var(--spacing-md) + var(--spacing-xs)) var(--spacing-lg);
 	border-bottom: 1px solid var(--border-color);
 	background-color: var(--surface-b);
 	flex-shrink: 0;
@@ -147,8 +151,8 @@
 .lambda-dialog-footer {
 	display: flex;
 	justify-content: flex-end;
-	gap: var(--gap-md);
-	padding: var(--padding-md) var(--padding-lg);
+	gap: var(--spacing-md);
+	padding: var(--spacing-md) var(--spacing-lg);
 	border-top: 1px solid var(--border-color);
 	background-color: var(--surface-a);
 	flex-shrink: 0;

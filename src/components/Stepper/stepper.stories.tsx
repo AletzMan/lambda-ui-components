@@ -14,7 +14,7 @@ const TemplateContent = (title: string, description: string, step: number) => {
 				flexDirection: "column",
 				alignItems: "center",
 				justifyContent: "flex-start",
-				padding: "var(--padding-md)",
+				padding: "var(--spacing-md)",
 				height: "100%",
 			}}
 		>
@@ -40,7 +40,7 @@ const TemplateContentWithFields = (title: string, description: string, step: num
 				flexDirection: "column",
 				alignItems: "center",
 				justifyContent: "flex-start",
-				padding: "var(--padding-md)",
+				padding: "var(--spacing-md)",
 				height: "100%",
 			}}
 		>
@@ -268,7 +268,7 @@ const TemplateValidation = (args: StepperProps) => {
 							flexDirection: "column",
 							alignItems: "center",
 							justifyContent: "flex-start",
-							padding: "var(--padding-md)",
+							padding: "var(--spacing-md)",
 							height: "100%",
 						}}
 					>
@@ -308,7 +308,7 @@ const TemplateValidation = (args: StepperProps) => {
 							flexDirection: "column",
 							alignItems: "center",
 							justifyContent: "flex-start",
-							padding: "var(--padding-md)",
+							padding: "var(--spacing-md)",
 							height: "100%",
 						}}
 					>
@@ -348,7 +348,7 @@ const TemplateValidation = (args: StepperProps) => {
 							flexDirection: "column",
 							alignItems: "center",
 							justifyContent: "flex-start",
-							padding: "var(--padding-md)",
+							padding: "var(--spacing-md)",
 							height: "100%",
 						}}
 					>

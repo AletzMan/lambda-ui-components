@@ -37,8 +37,7 @@
 	}
 
 	.lambda-accordion-item:first-child {
-		border-radius: var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none)
-			var(--border-radius-none);
+		border-radius: var(--border-radius-sm) var(--border-radius-sm) var(--border-radius-none) var(--border-radius-none);
 
 		.lambda-accordion-header {
 			border-top: 1px solid transparent;
@@ -46,8 +45,7 @@
 	}
 
 	.lambda-accordion-item:last-child {
-		border-radius: var(--border-radius-none) var(--border-radius-none) var(--border-radius-sm)
-			var(--border-radius-sm);
+		border-radius: var(--border-radius-none) var(--border-radius-none) var(--border-radius-sm) var(--border-radius-sm);
 
 		.lambda-accordion-header {
 			border-bottom: 1px solid transparent;
@@ -78,7 +76,7 @@
 	flex-direction: column;
 	gap: 0.5em;
 	border-radius: var(--border-radius-none);
-	padding: var(--padding-xs);
+	padding: var(--spacing-xs);
 	box-sizing: border-box;
 
 	.lambda-accordion-item {
@@ -102,8 +100,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: calc(var(--border-radius-xs) - 1px) calc(var(--border-radius-xs) - 1px)
-					var(--border-radius-none) var(--border-radius-none);
+				border-radius: calc(var(--border-radius-xs) - 1px) calc(var(--border-radius-xs) - 1px) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 
@@ -112,8 +109,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: calc(var(--border-radius-sm) - 1px) calc(var(--border-radius-sm) - 1px)
-					var(--border-radius-none) var(--border-radius-none);
+				border-radius: calc(var(--border-radius-sm) - 1px) calc(var(--border-radius-sm) - 1px) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 
@@ -122,8 +118,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: calc(var(--border-radius-md) - 1px) calc(var(--border-radius-md) - 1px)
-					var(--border-radius-none) var(--border-radius-none);
+				border-radius: calc(var(--border-radius-md) - 1px) calc(var(--border-radius-md) - 1px) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 
@@ -132,8 +127,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: var(--border-radius-lg) var(--border-radius-lg) var(--border-radius-none)
-					var(--border-radius-none);
+				border-radius: var(--border-radius-lg) var(--border-radius-lg) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 	}
@@ -144,7 +138,7 @@
 	flex-direction: column;
 	gap: 0.5em;
 	border-radius: var(--border-radius-none);
-	padding: var(--padding-xs);
+	padding: var(--spacing-xs);
 	box-sizing: border-box;
 
 	.lambda-accordion-item {
@@ -164,8 +158,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: calc(var(--border-radius-xs) - 1px) calc(var(--border-radius-xs) - 1px)
-					var(--border-radius-none) var(--border-radius-none);
+				border-radius: calc(var(--border-radius-xs) - 1px) calc(var(--border-radius-xs) - 1px) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 
@@ -174,8 +167,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: calc(var(--border-radius-sm) - 1px) calc(var(--border-radius-sm) - 1px)
-					var(--border-radius-none) var(--border-radius-none);
+				border-radius: calc(var(--border-radius-sm) - 1px) calc(var(--border-radius-sm) - 1px) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 
@@ -184,8 +176,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: calc(var(--border-radius-md) - 1px) calc(var(--border-radius-md) - 1px)
-					var(--border-radius-none) var(--border-radius-none);
+				border-radius: calc(var(--border-radius-md) - 1px) calc(var(--border-radius-md) - 1px) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 
@@ -194,8 +185,7 @@
 			overflow: hidden;
 
 			.lambda-accordion-header {
-				border-radius: var(--border-radius-lg) var(--border-radius-lg) var(--border-radius-none)
-					var(--border-radius-none);
+				border-radius: var(--border-radius-lg) var(--border-radius-lg) var(--border-radius-none) var(--border-radius-none);
 			}
 		}
 	}
@@ -216,7 +206,7 @@
 }
 
 .lambda-accordion-header-tiny {
-	padding: var(--padding-xs) var(--padding-lg);
+	padding: var(--spacing-xs) var(--spacing-lg);
 	font-size: var(--font-size-sm);
 
 	.lambda-accordion-header-icon {
@@ -226,7 +216,7 @@
 }
 
 .lambda-accordion-header-small {
-	padding: var(--padding-md) var(--padding-lg);
+	padding: var(--spacing-md) var(--spacing-lg);
 	font-size: var(--font-size-md);
 
 	.lambda-accordion-header-icon {
@@ -236,7 +226,7 @@
 }
 
 .lambda-accordion-header-medium {
-	padding: var(--padding-lg);
+	padding: var(--spacing-lg);
 	font-size: var(--font-size-lg);
 
 	.lambda-accordion-header-icon {
@@ -247,7 +237,7 @@
 
 .lambda-accordion-header-large {
 	min-height: 4em;
-	padding: var(--padding-xl) var(--padding-lg);
+	padding: var(--spacing-xl) var(--spacing-lg);
 	font-size: var(--font-size-xl);
 
 	.lambda-accordion-header-icon {
@@ -257,9 +247,7 @@
 }
 
 /* Estilos de hover/focus para el header */
-.lambda-accordion-header:hover:not(.lambda-accordion-header-disabled):not(
-		.lambda-accordion-header-open
-	),
+.lambda-accordion-header:hover:not(.lambda-accordion-header-disabled):not(.lambda-accordion-header-open),
 .lambda-accordion-header:focus-visible:not(.lambda-accordion-header-disabled) {
 	color: var(--foreground-color);
 	background-color: var(--surface-b);
@@ -285,7 +273,7 @@
 .lambda-accordion-header-icon-container {
 	display: flex;
 	align-items: center;
-	margin-left: var(--gap-md);
+	margin-left: var(--spacing-md);
 	transition: transform var(--accordion-transition-duration) ease-;
 }
 
@@ -302,7 +290,7 @@
 	overflow: hidden;
 	height: 0;
 	color: var(--foreground-color);
-	padding: var(--padding-none) var(--padding-lg);
+	padding: var(--spacing-none) var(--spacing-lg);
 	transition-property: height;
 	transition-duration: var(--accordion-transition-duration);
 	transition-timing-function: var(--accordion-transition-timing-function);
@@ -330,7 +318,7 @@
 /* Estilo para el contenido real dentro del panel (si necesitas estilos específicos) */
 .lambda-accordion-content-inner {
 	/* Puedes aplicar padding aquí si quieres que la transición afecte solo al max-height */
-	padding: var(--padding-md);
+	padding: var(--spacing-md);
 }
 
 .lambda-accordion-content-tiny {
@@ -352,7 +340,8 @@
 .lambda-accordion-item-disabled {
 	opacity: 0.4;
 	cursor: not-allowed;
-	& > .lambda-accordion-header {
+
+	&>.lambda-accordion-header {
 		pointer-events: none;
 		cursor: not-allowed;
 	}

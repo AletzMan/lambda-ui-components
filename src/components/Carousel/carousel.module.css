@@ -18,31 +18,31 @@
 		max-height: 400px;
 
 		&.lambda-carousel-thumbnail {
-			padding: var(--padding-md) var(--padding-xl) var(--padding-2xl) var(--padding-xl);
+			padding: var(--spacing-md) var(--spacing-xl) var(--spacing-2xl) var(--spacing-xl);
 
 			&.lambda-carousel-navigation-false {
-				padding: var(--padding-md) var(--padding-xs) var(--padding-2xl) var(--padding-xs);
+				padding: var(--spacing-md) var(--spacing-xs) var(--spacing-2xl) var(--spacing-xs);
 			}
 
 			&.lambda-carousel-pagination-false {
-				padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-xl);
+				padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs) var(--spacing-xl);
 			}
 		}
 
 		&.lambda-carousel-dots {
-			padding: var(--padding-md) var(--padding-xl) var(--padding-none) var(--padding-xl);
+			padding: var(--spacing-md) var(--spacing-xl) var(--spacing-none) var(--spacing-xl);
 
 			&.lambda-carousel-navigation-false {
-				padding: var(--padding-md) var(--padding-xs) var(--padding-xl) var(--padding-xs);
+				padding: var(--spacing-md) var(--spacing-xs) var(--spacing-xl) var(--spacing-xs);
 			}
 
 			&.lambda-carousel-pagination-false {
-				padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-xl);
+				padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs) var(--spacing-xl);
 			}
 		}
 
 		&.lambda-carousel-navigation-false.lambda-carousel-pagination-false {
-			padding: var(--padding-xs);
+			padding: var(--spacing-xs);
 		}
 	}
 
@@ -50,33 +50,31 @@
 		flex-direction: row;
 
 		&.lambda-carousel-thumbnail {
-			padding: var(--padding-xl) var(--padding-2xl) var(--padding-xl) var(--padding-md);
+			padding: var(--spacing-xl) var(--spacing-2xl) var(--spacing-xl) var(--spacing-md);
 
 			&.lambda-carousel-navigation-false {
-				padding: var(--padding-xs) var(--padding-2xl) var(--padding-xs) var(--padding-md);
+				padding: var(--spacing-xs) var(--spacing-2xl) var(--spacing-xs) var(--spacing-md);
 			}
 
 			&.lambda-carousel-pagination-false {
-				padding: var(--padding-xl) var(--padding-xs) var(--padding-xl) var(--padding-xs);
+				padding: var(--spacing-xl) var(--spacing-xs) var(--spacing-xl) var(--spacing-xs);
 			}
 		}
 
 		&.lambda-carousel-dots {
-			padding: var(--padding-xl) calc(var(--padding-none) + var(--padding-xs)) var(--padding-xl)
-				var(--padding-xs);
+			padding: var(--spacing-xl) calc(var(--spacing-none) + var(--spacing-xs)) var(--spacing-xl) var(--spacing-xs);
 
 			&.lambda-carousel-navigation-false {
-				padding: var(--padding-xs) calc(var(--padding-xl) + var(--padding-xs)) var(--padding-xs)
-					var(--padding-xs);
+				padding: var(--spacing-xs) calc(var(--spacing-xl) + var(--spacing-xs)) var(--spacing-xs) var(--spacing-xs);
 			}
 
 			&.lambda-carousel-pagination-false {
-				padding: var(--padding-xl) var(--padding-xs);
+				padding: var(--spacing-xl) var(--spacing-xs);
 			}
 		}
 
 		&.lambda-carousel-navigation-false.lambda-carousel-pagination-false {
-			padding: var(--padding-xs) var(--padding-xs);
+			padding: var(--spacing-xs) var(--spacing-xs);
 		}
 	}
 }
@@ -149,7 +147,7 @@
 	user-select: none;
 	height: 100%;
 
-	& > img {
+	&>img {
 		pointer-events: none;
 		width: 100%;
 		aspect-ratio: 16/8;
@@ -160,13 +158,14 @@
 	position: absolute;
 	height: 3.5em !important;
 	width: 1.5em !important;
-	padding: var(--padding-xs) var(--padding-xs);
+	padding: var(--spacing-xs) var(--spacing-xs);
 	z-index: 10;
 }
 
 .lambda-carousel-button-prev {
 	&.lambda-carousel-button-horizontal {
-		left: calc(var(--gap-md) - var(--gap-2xs));
+		left: calc(var(--spacing-md) - var(--spacing-2xs));
+
 		&:is(.lambda-carousel-button-dots) {
 			top: calc(50% - 1.75em);
 		}
@@ -181,7 +180,8 @@
 		min-height: 1.75em !important;
 		height: 1.75em !important;
 		left: calc((50% - 20px) - 1.75em);
-		top: calc(var(--gap-sm) + 1px);
+		top: calc(var(--spacing-sm) + 1px);
+
 		& svg {
 			transform: rotate(90deg);
 		}
@@ -189,7 +189,7 @@
 }
 
 .lambda-carousel-button-next {
-	right: calc(var(--gap-md) - var(--gap-2xs));
+	right: calc(var(--spacing-md) - var(--spacing-2xs));
 
 	&.lambda-carousel-button-horizontal {
 		&:is(.lambda-carousel-button-dots) {
@@ -202,11 +202,12 @@
 	}
 
 	&.lambda-carousel-button-vertical {
-		bottom: calc(var(--gap-sm) + 1px);
+		bottom: calc(var(--spacing-sm) + 1px);
 		left: calc((50% - 20px) - 1.75em);
 		width: 3.5em !important;
 		height: 1.75em !important;
 		min-height: 1.75em !important;
+
 		& svg {
 			transform: rotate(90deg);
 		}
@@ -224,10 +225,10 @@
 }
 
 .lambda-carousel-pagination-horizontal {
-	/*bottom: var(--padding-md);
+	/*bottom: var(--spacing-md);
     transform: translateX(-50%);*/
 	justify-content: center;
-	padding: var(--padding-lg);
+	padding: var(--spacing-lg);
 	flex-flow: row wrap;
 }
 
@@ -239,7 +240,7 @@
     transform: translateY(-50%);*/
 	flex-flow: column wrap;
 	justify-content: center;
-	padding: var(--padding-xs) var(--padding-lg);
+	padding: var(--spacing-xs) var(--spacing-lg);
 	max-height: 350px;
 	min-width: max-content;
 
@@ -263,7 +264,7 @@
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 	box-shadow: var(--box-shadow);
-}	
+}
 
 .lambda-carousel-dot:hover:not(:disabled):not(.lambda-carousel-dot-active),
 .lambda-carousel-dot:focus-visible:not(:disabled):not(.lambda-carousel-dot-active) {
@@ -354,9 +355,9 @@
 
 .lambda-carousel-thumbnails {
 	position: absolute;
-	bottom: var(--padding-md);
+	bottom: var(--spacing-md);
 	display: flex;
-	gap: var(--gap-md);
+	gap: var(--spacing-md);
 	scrollbar-width: none;
 	border-radius: var(--border-radius-xs);
 	-ms-overflow-style: none;
@@ -366,7 +367,7 @@
 		right: 0;
 		margin: 0 auto;
 		overflow-x: auto;
-		padding: var(--padding-xs) var(--padding-md);
+		padding: var(--spacing-xs) var(--spacing-md);
 
 		&.lambda-carousel-thumbnails-navigation-true {
 			width: calc(100% - 80px);
@@ -379,21 +380,21 @@
 
 	&.lambda-carousel-thumbnails-vertical {
 		top: 0;
-		right: var(--padding-none);
+		right: var(--spacing-none);
 		flex-direction: column;
 		align-items: center;
 		width: 70px;
 		overflow-y: auto;
 		overflow-x: hidden;
-		padding: var(--padding-md) var(--padding-none);
+		padding: var(--spacing-md) var(--spacing-none);
 
 		&.lambda-carousel-thumbnails-navigation-true {
-			margin-top: var(--padding-xl);
+			margin-top: var(--spacing-xl);
 			height: calc(100% - 64px);
 		}
 
 		&.lambda-carousel-thumbnails-navigation-false {
-			margin-top: var(--padding-xs);
+			margin-top: var(--spacing-xs);
 			height: calc(100% - 8px);
 		}
 	}

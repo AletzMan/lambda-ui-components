@@ -5,7 +5,7 @@
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-medium);
 	box-sizing: border-box;
-	padding: var(--padding-xs) var(--padding-none);
+	padding: var(--spacing-xs) var(--spacing-none);
 }
 
 .lambda-pagination-wrapper-disabled {
@@ -20,23 +20,23 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	gap: var(--gap-sm);
+	gap: var(--spacing-sm);
 }
 
 .lambda-pagination-list-container-tiny {
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 }
 
 .lambda-pagination-list-container-small {
-	gap: var(--gap-sm);
+	gap: var(--spacing-sm);
 }
 
 .lambda-pagination-list-container-medium {
-	gap: var(--gap-sm);
+	gap: var(--spacing-sm);
 }
 
 .lambda-pagination-list-container-large {
-	gap: var(--gap-sm);
+	gap: var(--spacing-sm);
 }
 
 .lambda-pagination-button {
@@ -45,7 +45,7 @@
 	justify-content: center;
 	min-width: var(--height-button-xs);
 	height: var(--height-button-xs);
-	padding: 0 var(--padding-xs);
+	padding: 0 var(--spacing-xs);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-semibold);
 	outline: none;
@@ -147,9 +147,7 @@
 	border-radius: var(--border-radius-full);
 }
 
-.lambda-pagination-button:hover:not(.lambda-pagination-button-disabled):not(
-		.lambda-pagination-button-active
-	):not(.lambda-pagination-button-ellipsis) {
+.lambda-pagination-button:hover:not(.lambda-pagination-button-disabled):not(.lambda-pagination-button-active):not(.lambda-pagination-button-ellipsis) {
 	&.lambda-pagination-button-solid {
 		border-color: var(--primary-base-color);
 		background-color: var(--primary-base-color);
@@ -174,9 +172,7 @@
 	}
 }
 
-.lambda-pagination-button:focus-visible:not(.lambda-pagination-button-disabled):not(
-		.lambda-pagination-button-ellipsis
-	) {
+.lambda-pagination-button:focus-visible:not(.lambda-pagination-button-disabled):not(.lambda-pagination-button-ellipsis) {
 	outline: 2px solid var(--primary-subtle-color);
 	outline-offset: 1px;
 }

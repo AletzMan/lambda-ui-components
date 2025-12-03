@@ -65,7 +65,7 @@ const Template = (args: SwitchProps) => {
 					justifyContent: "center",
 					width: "100%",
 					gap: "2em",
-					padding: "var(--padding-lg)",
+					padding: "var(--spacing-lg)",
 				}}
 			>
 				{colors.map((color) => (
@@ -77,7 +77,7 @@ const Template = (args: SwitchProps) => {
 						style={{
 							textTransform: "capitalize",
 						}}
-						positionLabel="top" 
+						positionLabel="top"
 					/>
 				))}
 			</div>

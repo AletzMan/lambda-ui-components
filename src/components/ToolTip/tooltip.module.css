@@ -11,7 +11,7 @@
 	pointer-events: none;
 	font-family: var(--font-family);
 	font-weight: var(--font-weight-semibold);
-	padding: var(--padding-xs) var(--padding-md);
+	padding: var(--spacing-xs) var(--spacing-md);
 	font-size: var(--font-size-xs);
 	line-height: 1.5;
 	max-width: 200px;
@@ -59,19 +59,16 @@
 
 /* Estado Visible */
 .lambda-tooltip-container.visible {
-	&:is(
-			.lambda-tooltip-container-top-center,
-			.lambda-tooltip-container-top-left,
-			.lambda-tooltip-container-top-right
-		) {
+
+	&:is(.lambda-tooltip-container-top-center,
+		.lambda-tooltip-container-top-left,
+		.lambda-tooltip-container-top-right) {
 		animation: fadeInTop 0.25s ease-in-out both;
 	}
 
-	&:is(
-			.lambda-tooltip-container-bottom-center,
-			.lambda-tooltip-container-bottom-left,
-			.lambda-tooltip-container-bottom-right
-		) {
+	&:is(.lambda-tooltip-container-bottom-center,
+		.lambda-tooltip-container-bottom-left,
+		.lambda-tooltip-container-bottom-right) {
 		animation: fadeInBottom 0.25s ease-in-out both;
 	}
 
@@ -89,6 +86,7 @@
 		opacity: 0;
 		transform: translateY(25%);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -100,6 +98,7 @@
 		opacity: 0;
 		transform: translateY(-25%);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -111,6 +110,7 @@
 		opacity: 0;
 		transform: translateX(-25%);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateX(0);
@@ -122,6 +122,7 @@
 		opacity: 0;
 		transform: translateX(25%);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateX(0);
@@ -319,7 +320,7 @@
 /* Flecha abajo, apuntando hacia arriba (para tooltips posicionados ABOVE el target) */
 .lambda-tooltip-arrow-bottom-left::before {
 	bottom: calc(-0.7 * var(--icon-size-xs));
-	left: var(--padding-sm);
+	left: var(--spacing-sm);
 	border-right-color: transparent;
 	border-left-color: transparent;
 	border-bottom-color: transparent;
@@ -337,7 +338,7 @@
 
 .lambda-tooltip-arrow-bottom-right::before {
 	bottom: calc(-0.7 * var(--icon-size-xs));
-	right: var(--padding-3, 12px);
+	right: var(--spacing-3, 12px);
 	border-right-color: transparent;
 	border-left-color: transparent;
 	border-bottom-color: transparent;
@@ -346,7 +347,7 @@
 /* Flecha arriba, apuntando hacia abajo (para tooltips posicionados BELOW el target) */
 .lambda-tooltip-arrow-top-left::before {
 	top: calc(-0.7 * var(--icon-size-xs));
-	left: var(--padding-3, 12px);
+	left: var(--spacing-3, 12px);
 	border-right-color: transparent;
 	border-left-color: transparent;
 	border-top-color: transparent;
@@ -363,7 +364,7 @@
 
 .lambda-tooltip-arrow-top-right::before {
 	top: calc(-0.7 * var(--icon-size-xs));
-	right: var(--padding-3, 12px);
+	right: var(--spacing-3, 12px);
 	border-right-color: transparent;
 	border-left-color: transparent;
 	border-top-color: transparent;
@@ -390,6 +391,6 @@
 }
 
 /* Ajustar offset de la flecha según el tamaño si es necesario */
-/* .lambda-tooltip-arrow-small.lambda-tooltip-arrow-bottom-left::before { left: var(--padding-2, 8px); } */
-/* .lambda-tooltip-arrow-large.lambda-tooltip-arrow-bottom-left::before { left: var(--padding-4, 16px); } */
+/* .lambda-tooltip-arrow-small.lambda-tooltip-arrow-bottom-left::before { left: var(--spacing-2, 8px); } */
+/* .lambda-tooltip-arrow-large.lambda-tooltip-arrow-bottom-left::before { left: var(--spacing-4, 16px); } */
 /* ... y así para todas las combinaciones size/position ... */

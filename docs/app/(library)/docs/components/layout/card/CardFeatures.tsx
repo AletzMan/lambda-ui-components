@@ -201,7 +201,7 @@ export const CardFeatures = () => {
 						transform: (value) => {
 							if (value === "Rich Content") {
 								return (
-									<div style={{ padding: "var(--padding-lg)" }}>
+									<div style={{ padding: "var(--spacing-lg)" }}>
 										React Hooks revolutionized the way we write components. useState and useEffect are
 										fundamental, but there are more hooks like useContext, useReducer, and useCallback that can
 										significantly improve your code.
@@ -222,7 +222,7 @@ export const CardFeatures = () => {
 							}
 							if (value === "Rich Content") {
 								return `(
-		<div style={{ padding: "var(--padding-lg)" }}>
+		<div style={{ padding: "var(--spacing-lg)" }}>
 			React Hooks revolutionized the way we write components. useState and useEffect are
 			fundamental, but there are more hooks like useContext, useReducer, and useCallback that can
 			significantly improve your code.

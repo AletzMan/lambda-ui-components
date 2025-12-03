@@ -28,7 +28,7 @@ input[type="number"] {
 
 	&.lambda-number-default,
 	&.lambda-number-decimal {
-		padding: 0 0 0 var(--padding-lg);
+		padding: 0 0 0 var(--spacing-lg);
 
 		.lambda-number-currency {
 			display: none;
@@ -83,6 +83,7 @@ input[type="number"] {
 
 	&:focus-within {
 		z-index: 1;
+
 		.lambda-number-helper {
 			opacity: 1;
 		}
@@ -91,20 +92,20 @@ input[type="number"] {
 	&.lambda-number-radius-none,
 	&.lambda-number-radius-small {
 		.lambda-number-helper {
-			padding: var(--padding-none);
+			padding: var(--spacing-none);
 		}
 	}
 
 	&.lambda-number-radius-medium {
 		.lambda-number-helper {
-			padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-sm);
+			padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) var(--spacing-sm);
 		}
 	}
 
 	&.lambda-number-radius-large,
 	&.lambda-number-radius-pill {
 		.lambda-number-helper {
-			padding: var(--padding-none) var(--padding-none) var(--padding-none) var(--padding-md);
+			padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) var(--spacing-md);
 		}
 	}
 }
@@ -122,7 +123,7 @@ input[type="number"] {
 	}
 
 	&.lambda-number-has-helper {
-		margin-bottom: var(--padding-md);
+		margin-bottom: var(--spacing-md);
 	}
 }
 
@@ -203,7 +204,7 @@ input[type="number"] {
 	}
 
 	&:not(.lambda-number-field-default) {
-		padding: 0 0 0 var(--padding-md);
+		padding: 0 0 0 var(--spacing-md);
 	}
 }
 
@@ -252,28 +253,23 @@ input[type="number"] {
 	}
 
 	&.lambda-number-handler-radius-tiny {
-		border-radius: var(--border-radius-none) calc(var(--border-radius-xs) + 1px)
-			calc(var(--border-radius-xs) + 1px) var(--border-radius-none);
+		border-radius: var(--border-radius-none) calc(var(--border-radius-xs) + 1px) calc(var(--border-radius-xs) + 1px) var(--border-radius-none);
 	}
 
 	&.lambda-number-handler-radius-small {
-		border-radius: var(--border-radius-none) calc(var(--border-radius-xs) + 1px)
-			calc(var(--border-radius-xs) + 1px) var(--border-radius-none);
+		border-radius: var(--border-radius-none) calc(var(--border-radius-xs) + 1px) calc(var(--border-radius-xs) + 1px) var(--border-radius-none);
 	}
 
 	&.lambda-number-handler-radius-medium {
-		border-radius: var(--border-radius-none) calc(var(--border-radius-sm) + 3px)
-			calc(var(--border-radius-sm) + 3px) var(--border-radius-none);
+		border-radius: var(--border-radius-none) calc(var(--border-radius-sm) + 3px) calc(var(--border-radius-sm) + 3px) var(--border-radius-none);
 	}
 
 	&.lambda-number-handler-radius-large {
-		border-radius: var(--border-radius-none) calc(var(--border-radius-md) + 3px)
-			calc(var(--border-radius-md) + 3px) var(--border-radius-none);
+		border-radius: var(--border-radius-none) calc(var(--border-radius-md) + 3px) calc(var(--border-radius-md) + 3px) var(--border-radius-none);
 	}
 
 	&.lambda-number-handler-radius-full {
-		border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill)
-			var(--border-radius-none);
+		border-radius: var(--border-radius-none) var(--border-radius-pill) var(--border-radius-pill) var(--border-radius-none);
 	}
 
 	&:is(.lambda-number-handler-first) {
@@ -307,26 +303,32 @@ input[type="number"] {
 		border-color: var(--primary-hover-color);
 		outline-color: var(--primary-shadow-color);
 	}
+
 	&.lambda-number-neutral:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border-color: var(--neutral-hover-color);
 		outline-color: var(--neutral-shadow-color);
 	}
+
 	&.lambda-number-secondary:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border-color: var(--secondary-hover-color);
 		outline-color: var(--secondary-shadow-color);
 	}
+
 	&.lambda-number-info:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border-color: var(--info-hover-color);
 		outline-color: var(--info-shadow-color);
 	}
+
 	&.lambda-number-warning:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border-color: var(--warning-hover-color);
 		outline-color: var(--warning-shadow-color);
 	}
+
 	&.lambda-number-danger:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border-color: var(--danger-hover-color);
 		outline-color: var(--danger-shadow-color);
 	}
+
 	&.lambda-number-success:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border-color: var(--success-hover-color);
 		outline-color: var(--success-shadow-color);
@@ -350,21 +352,27 @@ input[type="number"] {
 	&.lambda-number-primary:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		outline-color: var(--primary-shadow-color);
 	}
+
 	&.lambda-number-neutral:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		outline-color: var(--neutral-shadow-color);
 	}
+
 	&.lambda-number-secondary:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		outline-color: var(--secondary-shadow-color);
 	}
+
 	&.lambda-number-info:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		outline-color: var(--info-shadow-color);
 	}
+
 	&.lambda-number-warning:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		outline-color: var(--warning-shadow-color);
 	}
+
 	&.lambda-number-danger:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		outline-color: var(--danger-shadow-color);
 	}
+
 	&.lambda-number-success:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		outline-color: var(--success-shadow-color);
 	}
@@ -445,12 +453,13 @@ input[type="number"] {
 	color: var(--surface-f);
 	background-color: var(--surface-b);
 	transition: background-color 0.15s ease-in-out;
-	/*box-shadow: 0 0 1px 1px #00000010 inset;*/   
+	/*box-shadow: 0 0 1px 1px #00000010 inset;*/
 
 	/* Color variants for buttons */
 	&:is(.lambda-number-btn-primary):hover:not(:disabled) {
 		background-color: var(--primary-subtle-color);
 	}
+
 	&:is(.lambda-number-btn-primary):active:not(:disabled) {
 		background-color: var(--primary-soft-color);
 	}
@@ -458,6 +467,7 @@ input[type="number"] {
 	&:is(.lambda-number-btn-neutral):hover:not(:disabled) {
 		background-color: var(--neutral-subtle-color);
 	}
+
 	&:is(.lambda-number-btn-neutral):active:not(:disabled) {
 		background-color: var(--neutral-soft-color);
 	}
@@ -465,6 +475,7 @@ input[type="number"] {
 	&:is(.lambda-number-btn-secondary):hover:not(:disabled) {
 		background-color: var(--secondary-subtle-color);
 	}
+
 	&:is(.lambda-number-btn-secondary):active:not(:disabled) {
 		background-color: var(--secondary-soft-color);
 	}
@@ -472,6 +483,7 @@ input[type="number"] {
 	&:is(.lambda-number-btn-info):hover:not(:disabled) {
 		background-color: var(--info-subtle-color);
 	}
+
 	&:is(.lambda-number-btn-info):active:not(:disabled) {
 		background-color: var(--info-soft-color);
 	}
@@ -479,6 +491,7 @@ input[type="number"] {
 	&:is(.lambda-number-btn-warning):hover:not(:disabled) {
 		background-color: var(--warning-subtle-color);
 	}
+
 	&:is(.lambda-number-btn-warning):active:not(:disabled) {
 		background-color: var(--warning-soft-color);
 	}
@@ -486,6 +499,7 @@ input[type="number"] {
 	&:is(.lambda-number-btn-danger):hover:not(:disabled) {
 		background-color: var(--danger-subtle-color);
 	}
+
 	&:is(.lambda-number-btn-danger):active:not(:disabled) {
 		background-color: var(--danger-soft-color);
 	}
@@ -493,6 +507,7 @@ input[type="number"] {
 	&:is(.lambda-number-btn-success):hover:not(:disabled) {
 		background-color: var(--success-subtle-color);
 	}
+
 	&:is(.lambda-number-btn-success):active:not(:disabled) {
 		background-color: var(--success-soft-color);
 	}
@@ -568,7 +583,7 @@ input[type="number"] {
 	}
 
 	&:is(.lambda-number-currency-tiny) {
-		padding: 0 var(--padding-xs);
+		padding: 0 var(--spacing-xs);
 
 		& .lambda-number-currency-icon {
 			height: var(--icon-size-2xs);
@@ -577,7 +592,7 @@ input[type="number"] {
 	}
 
 	&:is(.lambda-number-currency-small) {
-		padding: 0 var(--padding-sm);
+		padding: 0 var(--spacing-sm);
 
 		& .lambda-number-currency-icon {
 			height: var(--icon-size-sm);
@@ -586,7 +601,7 @@ input[type="number"] {
 	}
 
 	&:is(.lambda-number-currency-medium) {
-		padding: 0 var(--padding-md);
+		padding: 0 var(--spacing-md);
 
 		& .lambda-number-currency-icon {
 			height: var(--icon-size-md);
@@ -595,7 +610,7 @@ input[type="number"] {
 	}
 
 	&:is(.lambda-number-currency-large) {
-		padding: 0 var(--padding-lg);
+		padding: 0 var(--spacing-lg);
 
 		& .lambda-number-currency-icon {
 			height: var(--icon-size-xl);
@@ -612,42 +627,34 @@ input[type="number"] {
 	}
 
 	&.lambda-number-currency-radius-small {
-		border-radius: calc(var(--border-radius-xs) + 1px) var(--border-radius-none)
-			var(--border-radius-none) calc(var(--border-radius-xs) + 1px);
+		border-radius: calc(var(--border-radius-xs) + 1px) var(--border-radius-none) var(--border-radius-none) calc(var(--border-radius-xs) + 1px);
 	}
 
 	&.lambda-number-currency-radius-medium {
-		border-radius: calc(var(--border-radius-sm) + 3px) var(--border-radius-none)
-			var(--border-radius-none) calc(var(--border-radius-sm) + 3px);
+		border-radius: calc(var(--border-radius-sm) + 3px) var(--border-radius-none) var(--border-radius-none) calc(var(--border-radius-sm) + 3px);
 	}
 
 	&.lambda-number-currency-radius-large {
-		border-radius: calc(var(--border-radius-md) + 3px) var(--border-radius-none)
-			var(--border-radius-none) calc(var(--border-radius-md) + 3px);
+		border-radius: calc(var(--border-radius-md) + 3px) var(--border-radius-none) var(--border-radius-none) calc(var(--border-radius-md) + 3px);
 	}
 
 	&.lambda-number-currency-radius-full {
-		border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none)
-			var(--border-radius-pill);
+		border-radius: var(--border-radius-pill) var(--border-radius-none) var(--border-radius-none) var(--border-radius-pill);
 
 		&.lambda-number-currency-tiny {
-			padding: var(--padding-none) var(--padding-xs) var(--padding-none)
-				calc(var(--padding-xs) + 2px);
+			padding: var(--spacing-none) var(--spacing-xs) var(--spacing-none) calc(var(--spacing-xs) + 2px);
 		}
 
 		&.lambda-number-currency-small {
-			padding: var(--padding-none) var(--padding-sm) var(--padding-none)
-				calc(var(--padding-sm) + 2px);
+			padding: var(--spacing-none) var(--spacing-sm) var(--spacing-none) calc(var(--spacing-sm) + 2px);
 		}
 
 		&.lambda-number-currency-medium {
-			padding: var(--padding-none) var(--padding-md) var(--padding-none)
-				calc(var(--padding-md) + 2px);
+			padding: var(--spacing-none) var(--spacing-md) var(--spacing-none) calc(var(--spacing-md) + 2px);
 		}
 
 		&.lambda-number-currency-large {
-			padding: var(--padding-none) var(--padding-lg) var(--padding-none)
-				calc(var(--padding-lg) + 2px);
+			padding: var(--spacing-none) var(--spacing-lg) var(--spacing-none) calc(var(--spacing-lg) + 2px);
 		}
 	}
 }

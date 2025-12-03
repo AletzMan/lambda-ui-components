@@ -16,8 +16,8 @@
 	position: relative;
 	display: flex;
 	justify-content: space-between;
-	gap: var(--gap-lg);
-	padding: var(--padding-sm) var(--padding-sm) var(--padding-none) var(--padding-sm);
+	gap: var(--spacing-lg);
+	padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-none) var(--spacing-sm);
 	width: 100%;
 	align-items: flex-start;
 	font-family: var(--font-family);
@@ -41,7 +41,7 @@
 		flex-direction: column;
 		max-width: 11.5em;
 
-		@media (width <= 600px) {
+		@media (width <=600px) {
 			max-width: 3.5em;
 		}
 	}
@@ -60,20 +60,20 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	padding: var(--padding-sm);
+	padding: var(--spacing-sm);
 	min-width: 0;
 	width: 100%;
 	height: 100%;
 
 	&.lambda-step-horizontal {
 		flex-direction: column;
-		gap: var(--gap-md);
+		gap: var(--spacing-md);
 	}
 
 	&.lambda-step-vertical {
 		flex-direction: row;
 		align-items: center;
-		gap: var(--gap-lg);
+		gap: var(--spacing-lg);
 	}
 }
 
@@ -154,22 +154,28 @@
 @keyframes animateOutline {
 	from {
 		outline: 2px solid var(--success-base-color);
-		outline-offset: 3px; /* Oculta el trazo al inicio */
+		outline-offset: 3px;
+		/* Oculta el trazo al inicio */
 	}
+
 	to {
 		outline: 2px solid transparent;
-		outline-offset: 10px; /* Mostrar el trazo completo */
+		outline-offset: 10px;
+		/* Mostrar el trazo completo */
 	}
 }
 
 @keyframes animateOutlineError {
 	from {
 		outline: 2px solid var(--danger-base-color);
-		outline-offset: 3px; /* Oculta el trazo al inicio */
+		outline-offset: 3px;
+		/* Oculta el trazo al inicio */
 	}
+
 	to {
 		outline: 2px solid transparent;
-		outline-offset: 10px; /* Mostrar el trazo completo */
+		outline-offset: 10px;
+		/* Mostrar el trazo completo */
 	}
 }
 
@@ -191,17 +197,22 @@
 	width: var(--icon-size-xl);
 	height: var(--icon-size-xl);
 	stroke-width: var(--border-width-md);
-	stroke-dasharray: 250; /* Longitud del trazado */
-	stroke-dashoffset: 250; /* Oculta el trazo al inicio */
+	stroke-dasharray: 250;
+	/* Longitud del trazado */
+	stroke-dashoffset: 250;
+	/* Oculta el trazo al inicio */
 	animation: animateIcon 4s ease both;
 }
 
 @keyframes animateIcon {
 	from {
-		stroke-dashoffset: 250; /* Oculta el trazo al inicio */
+		stroke-dashoffset: 250;
+		/* Oculta el trazo al inicio */
 	}
+
 	to {
-		stroke-dashoffset: 0; /* Mostrar el trazo completo */
+		stroke-dashoffset: 0;
+		/* Mostrar el trazo completo */
 	}
 }
 
@@ -210,7 +221,7 @@
 	justify-content: space-evenly;
 	flex-direction: column;
 	align-items: center;
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 	min-width: 0;
 	height: 100%;
 
@@ -238,7 +249,7 @@
 			flex: 0;
 		}
 
-		@media (width <= 600px) {
+		@media (width <=600px) {
 			display: none;
 		}
 	}
@@ -301,12 +312,15 @@
 .lambda-step:last-child .lambda-step-connector {
 	display: none;
 }
+
 .lambda-step-active h1 {
 	color: var(--foreground-color);
 }
+
 .lambda-step-completed h1 {
 	color: var(--success-hover-color);
 }
+
 .lambda-step-error h1 {
 	color: var(--danger-hover-color);
 }
@@ -323,6 +337,7 @@
 
 	&.lambda-stepper-content-horizontal {
 		border-radius: 0 0 var(--border-radius-xs) var(--border-radius-xs);
+
 		&:is(.lambda-stepper-content-bordered) {
 			border: 1px solid var(--border-color);
 			border-top: 0;
@@ -335,6 +350,7 @@
 
 	&.lambda-stepper-content-vertical {
 		border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
+
 		&:is(.lambda-stepper-content-bordered) {
 			border: 1px solid var(--border-color);
 			border-left: 0;
@@ -346,7 +362,7 @@
 
 		& header {
 			display: none;
-			padding: var(--padding-sm);
+			padding: var(--spacing-sm);
 			background-color: var(--surface-b);
 
 			h1 {
@@ -361,7 +377,7 @@
 				color: var(--foreground-secondary-color);
 			}
 
-			@media (width <= 600px) {
+			@media (width <=600px) {
 				display: block;
 			}
 		}
@@ -372,7 +388,7 @@
 	position: absolute;
 	margin-top: 8px;
 	text-align: center;
-	padding: var(--padding-xs) var(--padding-lg);
+	padding: var(--spacing-xs) var(--spacing-lg);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-regular);
 	border-radius: var(--border-radius-xs);
@@ -384,9 +400,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: var(--padding-sm);
+	padding: var(--spacing-sm);
 	width: 100%;
 	height: 2.5em;
+
 	& button {
 		min-width: 9.5em;
 	}

@@ -57,8 +57,8 @@ const Template = (args: JoinProps) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
-					gap: "var(--gap-lg)",
-					padding: "var(--padding-lg)",
+					gap: "var(--spacing-lg)",
+					padding: "var(--spacing-lg)",
 				}}
 			>
 				<div style={{ display: "flex", flexDirection: "column", gap: "35px", width: "100%" }}>

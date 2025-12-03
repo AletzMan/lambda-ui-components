@@ -1,6 +1,6 @@
 :root {
 	--border-style: 1px solid var(--border-color);
-	--margin-left: calc(var(--padding-md) + var(--padding-xs));
+	--margin-left: calc(var(--spacing-md) + var(--spacing-xs));
 }
 
 .lambda-navigation-menu {
@@ -8,14 +8,14 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	font-family: var(--font-family);
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 	color: var(--foreground-color);
 	width: 100%;
 	padding: 0.5em;
 	border-radius: var(--border-radius-sm);
 
 	&:is(.lambda-navigation-menu-show-lines) {
-		--margin-left: calc(var(--padding-lg) + var(--padding-xs));
+		--margin-left: calc(var(--spacing-lg) + var(--spacing-xs));
 	}
 
 	&:is(.lambda-navigation-menu-line-solid) {
@@ -31,7 +31,7 @@
 	}
 
 	&:is(.lambda-navigation-menu-hide-lines) {
-		--margin-left: calc(var(--padding-none));
+		--margin-left: calc(var(--spacing-none));
 		--border-style: none;
 	}
 }
@@ -46,13 +46,13 @@
 	align-items: flex-start;
 	width: 100%;
 
-	& > .lambda-navigation-menu-group {
+	&>.lambda-navigation-menu-group {
 		border-left: var(--border-style);
 	}
 
 	&.lambda-navigation-menu-item-level0 {
-		& > .lambda-navigation-menu-item-content {
-			& > .lambda-navigation-menu-label {
+		&>.lambda-navigation-menu-item-content {
+			&>.lambda-navigation-menu-label {
 				color: var(--foreground-color);
 				font-weight: var(--font-weight-semibold);
 			}
@@ -60,7 +60,7 @@
 	}
 
 	&.lambda-navigation-menu-item-children-selected {
-		& > .lambda-navigation-menu-item-content {
+		&>.lambda-navigation-menu-item-content {
 			/*background-color: var(--neutral-opacity-color);*/
 
 			.lambda-navigation-menu-label {
@@ -73,7 +73,7 @@
 	&.lambda-navigation-menu-item-selected {
 		&:not(.lambda-navigation-menu-item-has-children) {
 			&:is(.lambda-navigation-menu-item-selected-style-highlight) {
-				& > .lambda-navigation-menu-item-content {
+				&>.lambda-navigation-menu-item-content {
 					background-color: var(--neutral-opacity-color);
 
 					.lambda-navigation-menu-label {
@@ -82,9 +82,10 @@
 					}
 				}
 			}
+
 			&:is(.lambda-navigation-menu-item-selected-style-border) {
 				&:not(.lambda-navigation-menu-item-level0) {
-					& > .lambda-navigation-menu-item-content {
+					&>.lambda-navigation-menu-item-content {
 						position: relative;
 
 						&:before {
@@ -103,8 +104,9 @@
 						}
 					}
 				}
+
 				&:is(.lambda-navigation-menu-item-level0) {
-					& > .lambda-navigation-menu-item-content {
+					&>.lambda-navigation-menu-item-content {
 						.lambda-navigation-menu-label {
 							font-weight: var(--font-weight-semibold);
 							color: var(--primary-base-color);
@@ -118,7 +120,8 @@
 	&.lambda-navigation-menu-item-always-open {
 		&:is(.lambda-navigation-menu-item-has-children) {
 			cursor: default;
-			& > .lambda-navigation-menu-item-content {
+
+			&>.lambda-navigation-menu-item-content {
 				cursor: pointer;
 				pointer-events: none;
 			}
@@ -128,6 +131,7 @@
 
 .lambda-navigation-menu-item-disabled {
 	cursor: not-allowed;
+
 	.lambda-navigation-menu-item-content {
 		opacity: 0.5;
 		pointer-events: none;
@@ -137,19 +141,19 @@
 .lambda-navigation-menu-group {
 	display: flex;
 	flex-direction: column;
-	gap: var(--gap-xs);
-	margin-top: var(--padding-xs);
-	margin-left: calc(var(--padding-lg) + var(--padding-none));
-	padding-left: var(--padding-md);
-	width: calc(100% - var(--padding-lg));
+	gap: var(--spacing-xs);
+	margin-top: var(--spacing-xs);
+	margin-left: calc(var(--spacing-lg) + var(--spacing-none));
+	padding-left: var(--spacing-md);
+	width: calc(100% - var(--spacing-lg));
 }
 
 .lambda-navigation-menu-item-content {
 	display: flex;
 	align-items: center;
 	flex-direction: row;
-	padding: var(--padding-none) var(--padding-xs);
-	gap: var(--padding-xs);
+	padding: var(--spacing-none) var(--spacing-xs);
+	gap: var(--spacing-xs);
 	width: 100%;
 	border-radius: var(--border-radius-sm);
 	border: none;
@@ -182,9 +186,9 @@
 	flex: 1;
 	display: flex;
 	align-items: center;
-	gap: var(--padding-md); 
+	gap: var(--spacing-md);
 	font-weight: var(--font-weight-medium);
-	padding: var(--padding-xs) var(--padding-sm);
+	padding: var(--spacing-xs) var(--spacing-sm);
 }
 
 .lambda-navigation-menu-label-tiny {

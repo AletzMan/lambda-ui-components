@@ -12,6 +12,7 @@
 	&:hover:not(.lambda-switch-wrapper-disabled),
 	&:focus:not(.lambda-switch-wrapper-disabled) {
 		outline: none;
+
 		.lambda-switch-background-solid,
 		.lambda-switch-background-outline,
 		.lambda-switch-background-soft {
@@ -48,26 +49,22 @@
 
 .lambda-switch-wrapper-disabled {
 	opacity: 0.5;
+
 	* {
 		cursor: not-allowed;
 	}
 }
 
-.lambda-switch-wrapper:active
-	.lambda-switch-handle:not(.lambda-switch-handle-checked):not(.lambda-switch-handle-disabled) {
+.lambda-switch-wrapper:active .lambda-switch-handle:not(.lambda-switch-handle-checked):not(.lambda-switch-handle-disabled) {
 	width: 50%;
 }
 
-.lambda-switch-wrapper:active
-	.lambda-switch-handle.lambda-switch-handle-checked:not(.lambda-switch-handle-disabled) {
+.lambda-switch-wrapper:active .lambda-switch-handle.lambda-switch-handle-checked:not(.lambda-switch-handle-disabled) {
 	width: 50%;
 	transform: translateX(-7px);
 }
 
-.lambda-switch-wrapper:active
-	.lambda-switch-handle.lambda-switch-handle-checked.lambda-switch-handle-large:not(
-		.lambda-switch-handle-disabled
-	) {
+.lambda-switch-wrapper:active .lambda-switch-handle.lambda-switch-handle-checked.lambda-switch-handle-large:not(.lambda-switch-handle-disabled) {
 	width: 50%;
 	transform: translateX(-9px);
 }
@@ -99,11 +96,11 @@
 
 .lambda-switch-wrapper-position-top {
 	flex-direction: column-reverse;
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 }
 
 .lambda-switch-wrapper-position-bottom {
-	gap: var(--gap-xs);
+	gap: var(--spacing-xs);
 	flex-direction: column;
 }
 
@@ -148,14 +145,14 @@
 	background-color: var(--surface-a);
 
 	.lambda-switch-handle {
-		background-color: var(--lambda-color-neutral-200); 
+		background-color: var(--lambda-color-neutral-200);
 	}
 
 	&.lambda-switch-background-neutral {
 		&.lambda-switch-background-checked {
 			border-color: var(--neutral-base-color);
 			background-color: var(--neutral-hover-color);
-			
+
 			.lambda-switch-handle {
 				background-color: var(--white-color);
 			}

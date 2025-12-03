@@ -344,7 +344,7 @@ function Header() {
   background-color: var(--background-color);
   color: var(--foreground-color);
   border: 1px solid var(--border-color);
-  padding: var(--padding-md);
+  padding: var(--spacing-md);
   border-radius: var(--border-radius-md);
 }
 

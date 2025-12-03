@@ -654,7 +654,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 								<div
 									style={{
 										display: "flex",
-										gap: "var(--gap-md)",
+										gap: "var(--spacing-md)",
 										justifySelf: "flex-end",
 									}}
 								>

@@ -71,12 +71,12 @@ const Template = (args: CardProps) => {
 					flexDirection: "column",
 					alignItems: "center",
 					justifyContent: "flex-start",
-					gap: "var(--gap-lg)",
+					gap: "var(--spacing-lg)",
 					height: "100%",
-					padding: "var(--padding-lg)",
+					padding: "var(--spacing-lg)",
 				}}
 			>
-				<div style={{ display: "flex", gap: "var(--gap-lg)", padding: "var(--padding-lg)" }}>
+				<div style={{ display: "flex", gap: "var(--spacing-lg)", padding: "var(--spacing-lg)" }}>
 					<Checkbox label="Image" checked={image} onChange={(e) => setImage(e.target.checked)} />
 					<Checkbox label="Header" checked={header} onChange={(e) => setHeader(e.target.checked)} />
 					<Checkbox
@@ -141,7 +141,7 @@ export const Outline: Story = {
 		],
 		variant: "outline",
 		children: (
-			<div style={{ padding: "var(--padding-lg)" }}>
+			<div style={{ padding: "var(--spacing-lg)" }}>
 				React Hooks revolutionized the way we write components. useState and useEffect are
 				fundamental, but there are more hooks like useContext, useReducer, and useCallback that can
 				significantly improve your code.
@@ -183,7 +183,7 @@ export const Borderless: Story = {
 			},
 		],
 		children: (
-			<div style={{ padding: "var(--padding-lg)" }}>
+			<div style={{ padding: "var(--spacing-lg)" }}>
 				React Hooks revolutionized the way we write components. useState and useEffect are
 				fundamental, but there are more hooks like useContext, useReducer, and useCallback that can
 				significantly improve your code.

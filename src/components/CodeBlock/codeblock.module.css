@@ -11,6 +11,7 @@
 	&.lambda-codeblock-dark {
 		background-color: var(--background-code-dark);
 	}
+
 	&.lambda-codeblock-light {
 		background-color: var(--background-code-light);
 	}
@@ -25,6 +26,7 @@
 		background-color: var(--background-tab-dark);
 		border-bottom: 1px solid #333333;
 	}
+
 	&.lambda-codeblock-tabs-light {
 		background-color: var(--background-tab-light);
 		border-bottom: 1px solid #d8d8d8;
@@ -35,8 +37,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	gap: var(--padding-xs);
-	padding: var(--padding-sm) var(--padding-lg);
+	gap: var(--spacing-xs);
+	padding: var(--spacing-sm) var(--spacing-lg);
 	font-size: var(--font-size-xs);
 	font-family: var(--font-family);
 	background: none;
@@ -81,6 +83,7 @@
 	&.lambda-pre-dark {
 		background-color: #0b1012;
 	}
+
 	&.lambda-pre-light {
 		background-color: #f7f7f7;
 	}
@@ -90,15 +93,16 @@ pre[class*="language-"] {
 	background: transparent !important;
 	margin: 0 0 0 0 !important;
 	margin-bottom: 0 !important;
+
 	/*padding: 0.75em 1em 0.75em 1em !important;*/
-	& > code {
+	&>code {
 		background: transparent !important;
 		border-left: none !important;
 		box-shadow: none !important;
 	}
 
 	&[data-line]:not(.lambda-pre-line-highlight):not(.lambda-pre-line-numbers) {
-		& > code {
+		&>code {
 			padding-left: 0 !important;
 		}
 	}
@@ -121,13 +125,13 @@ pre[class*="language-"] {
 
 .lambda-copy-button {
 	position: absolute;
-	right: var(--padding-sm);
-	top: var(--padding-sm);
+	right: var(--spacing-sm);
+	top: var(--spacing-sm);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: transparent;
-	padding: var(--padding-xs);
+	padding: var(--spacing-xs);
 	color: var(--white-color);
 	border: none;
 	border-radius: var(--border-radius-sm);

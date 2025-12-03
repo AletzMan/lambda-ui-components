@@ -75,7 +75,7 @@ const DefaultRating = (args: RatingProps) => {
 					flexDirection: "row",
 					justifyContent: "space-between",
 					alignItems: "flex-start",
-					gap: "var(--padding-xl)",
+					gap: "var(--spacing-xl)",
 				}}
 			>
 				<Checkbox
@@ -101,10 +101,10 @@ const DefaultRating = (args: RatingProps) => {
 				style={{
 					display: "grid",
 					gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-					gap: "var(--gap-xl)",
+					gap: "var(--spacing-xl)",
 					width: "100%",
-					marginBottom: "var(--padding-xl)",
-					padding: "var(--padding-lg) var(--padding-xl)",
+					marginBottom: "var(--spacing-xl)",
+					padding: "var(--spacing-lg) var(--spacing-xl)",
 				}}
 			>
 				{colors.map((color, index) => (
@@ -114,12 +114,12 @@ const DefaultRating = (args: RatingProps) => {
 							display: "flex",
 							alignItems: "flex-start",
 							flexDirection: "column",
-							gap: "var(--padding-xs)",
+							gap: "var(--spacing-xs)",
 						}}
 					>
 						<label
 							style={{
-								marginBottom: "var(--padding-xs)",
+								marginBottom: "var(--spacing-xs)",
 								color:
 									color === "default" ? "var(--rating-solid-color)" : `var(--${color}-base-color)`,
 								fontWeight: "var(--font-weight-semibold)",
