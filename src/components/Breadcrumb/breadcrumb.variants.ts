@@ -1,28 +1,28 @@
 import { cva, VariantProps } from "class-variance-authority";
 import styles from "./breadcrumb.module.css";
 
-export const breadcrumb = cva(styles["breadcrumb"], {
+export const variantBreadcrumb = cva(styles["lambda-breadcrumb"], {
 	variants: {
 		size: {
-			tiny: styles["breadcrumb-tiny"],
-			small: styles["breadcrumb-small"],
-			medium: styles["breadcrumb-medium"],
-			large: styles["breadcrumb-large"],
+			tiny: styles["lambda-breadcrumb-tiny"],
+			small: styles["lambda-breadcrumb-small"],
+			medium: styles["lambda-breadcrumb-medium"],
+			large: styles["lambda-breadcrumb-large"],
 		},
 		variant: {
-			chevron: styles["breadcrumb-chevron"],
-			slash: styles["breadcrumb-slash"],
-			dot: styles["breadcrumb-dot"],
-			arrow: styles["breadcrumb-arrow"],
-			stepped: styles["breadcrumb-stepped"],
+			chevron: styles["lambda-breadcrumb-chevron"],
+			slash: styles["lambda-breadcrumb-slash"],
+			dot: styles["lambda-breadcrumb-dot"],
+			arrow: styles["lambda-breadcrumb-arrow"],
+			stepped: styles["lambda-breadcrumb-stepped"],
 		},
 		radius: {
-			none: styles["breadcrumb-radius-none"],
-			tiny: styles["breadcrumb-radius-tiny"],
-			small: styles["breadcrumb-radius-small"],
-			medium: styles["breadcrumb-radius-medium"],
-			large: styles["breadcrumb-radius-large"],
-			full: styles["breadcrumb-radius-full"],
+			none: styles["lambda-breadcrumb-radius-none"],
+			tiny: styles["lambda-breadcrumb-radius-tiny"],
+			small: styles["lambda-breadcrumb-radius-small"],
+			medium: styles["lambda-breadcrumb-radius-medium"],
+			large: styles["lambda-breadcrumb-radius-large"],
+			full: styles["lambda-breadcrumb-radius-full"],
 		},
 	},
 	defaultVariants: {
@@ -32,37 +32,37 @@ export const breadcrumb = cva(styles["breadcrumb"], {
 	},
 });
 
-export const breadcrumbItem = cva(styles["breadcrumb-item"], {
+export const variantBreadcrumbItem = cva(styles["lambda-breadcrumb-item"], {
 	variants: {
 		size: {
-			tiny: styles["breadcrumb-item-tiny"],
-			small: styles["breadcrumb-item-small"],
-			medium: styles["breadcrumb-item-medium"],
-			large: styles["breadcrumb-item-large"],
+			tiny: styles["lambda-breadcrumb-item-tiny"],
+			small: styles["lambda-breadcrumb-item-small"],
+			medium: styles["lambda-breadcrumb-item-medium"],
+			large: styles["lambda-breadcrumb-item-large"],
 		},
 		radius: {
-			none: styles["breadcrumb-item-radius-none"],
-			tiny: styles["breadcrumb-item-radius-tiny"],
-			small: styles["breadcrumb-item-radius-small"],
-			medium: styles["breadcrumb-item-radius-medium"],
-			large: styles["breadcrumb-item-radius-large"],
-			full: styles["breadcrumb-item-radius-full"],
+			none: styles["lambda-breadcrumb-item-radius-none"],
+			tiny: styles["lambda-breadcrumb-item-radius-tiny"],
+			small: styles["lambda-breadcrumb-item-radius-small"],
+			medium: styles["lambda-breadcrumb-item-radius-medium"],
+			large: styles["lambda-breadcrumb-item-radius-large"],
+			full: styles["lambda-breadcrumb-item-radius-full"],
 		},
 		variant: {
-			chevron: styles["breadcrumb-item-chevron"],
-			slash: styles["breadcrumb-item-slash"],
-			dot: styles["breadcrumb-item-dot"],
-			arrow: styles["breadcrumb-item-arrow"],
-			stepped: styles["breadcrumb-item-stepped"],
+			chevron: styles["lambda-breadcrumb-item-chevron"],
+			slash: styles["lambda-breadcrumb-item-slash"],
+			dot: styles["lambda-breadcrumb-item-dot"],
+			arrow: styles["lambda-breadcrumb-item-arrow"],
+			stepped: styles["lambda-breadcrumb-item-stepped"],
 		},
 		color: {
-			neutral: styles["breadcrumb-item-neutral"],
-			primary: styles["breadcrumb-item-primary"],
-			secondary: styles["breadcrumb-item-secondary"],
-			success: styles["breadcrumb-item-success"],
-			danger: styles["breadcrumb-item-danger"],
-			warning: styles["breadcrumb-item-warning"],
-			info: styles["breadcrumb-item-info"],
+			neutral: styles["lambda-breadcrumb-item-neutral"],
+			primary: styles["lambda-breadcrumb-item-primary"],
+			secondary: styles["lambda-breadcrumb-item-secondary"],
+			success: styles["lambda-breadcrumb-item-success"],
+			danger: styles["lambda-breadcrumb-item-danger"],
+			warning: styles["lambda-breadcrumb-item-warning"],
+			info: styles["lambda-breadcrumb-item-info"],
 		},
 	},
 	defaultVariants: {
@@ -72,20 +72,20 @@ export const breadcrumbItem = cva(styles["breadcrumb-item"], {
 	},
 });
 
-export const breadcrumbSeparator = cva(styles["breadcrumb-separator"], {
+export const variantBreadcrumbSeparator = cva(styles["lambda-breadcrumb-separator"], {
 	variants: {
 		size: {
-			tiny: styles["breadcrumb-separator-tiny"],
-			small: styles["breadcrumb-separator-small"],
-			medium: styles["breadcrumb-separator-medium"],
-			large: styles["breadcrumb-separator-large"],
+			tiny: styles["lambda-breadcrumb-separator-tiny"],
+			small: styles["lambda-breadcrumb-separator-small"],
+			medium: styles["lambda-breadcrumb-separator-medium"],
+			large: styles["lambda-breadcrumb-separator-large"],
 		},
 		variant: {
-			chevron: styles["breadcrumb-separator-chevron"],
-			slash: styles["breadcrumb-separator-slash"],
-			dot: styles["breadcrumb-separator-dot"],
-			arrow: styles["breadcrumb-separator-arrow"],
-			stepped: styles["breadcrumb-separator-stepped"],
+			chevron: styles["lambda-breadcrumb-separator-chevron"],
+			slash: styles["lambda-breadcrumb-separator-slash"],
+			dot: styles["lambda-breadcrumb-separator-dot"],
+			arrow: styles["lambda-breadcrumb-separator-arrow"],
+			stepped: styles["lambda-breadcrumb-separator-stepped"],
 		},
 	},
 	defaultVariants: {
@@ -94,20 +94,20 @@ export const breadcrumbSeparator = cva(styles["breadcrumb-separator"], {
 	},
 });
 
-export const breadcrumbContainer = cva(styles["breadcrumb-container"], {
+export const variantBreadcrumbContainer = cva(styles["lambda-breadcrumb-container"], {
 	variants: {
 		size: {
-			tiny: styles["breadcrumb-container-tiny"],
-			small: styles["breadcrumb-container-small"],
-			medium: styles["breadcrumb-container-medium"],
-			large: styles["breadcrumb-container-large"],
+			tiny: styles["lambda-breadcrumb-container-tiny"],
+			small: styles["lambda-breadcrumb-container-small"],
+			medium: styles["lambda-breadcrumb-container-medium"],
+			large: styles["lambda-breadcrumb-container-large"],
 		},
 		variant: {
-			chevron: styles["breadcrumb-container-chevron"],
-			slash: styles["breadcrumb-container-slash"],
-			dot: styles["breadcrumb-container-dot"],
-			arrow: styles["breadcrumb-container-arrow"],
-			stepped: styles["breadcrumb-container-stepped"],
+			chevron: styles["lambda-breadcrumb-container-chevron"],
+			slash: styles["lambda-breadcrumb-container-slash"],
+			dot: styles["lambda-breadcrumb-container-dot"],
+			arrow: styles["lambda-breadcrumb-container-arrow"],
+			stepped: styles["lambda-breadcrumb-container-stepped"],
 		},
 	},
 	defaultVariants: {
@@ -116,21 +116,21 @@ export const breadcrumbContainer = cva(styles["breadcrumb-container"], {
 	},
 });
 
-export const breadcrumbEllipsis = cva(styles["breadcrumb-ellipsis"], {
+export const variantBreadcrumbEllipsis = cva(styles["lambda-breadcrumb-ellipsis"], {
 	variants: {
 		radius: {
-			none: styles["breadcrumb-ellipsis-radius-none"],
-			tiny: styles["breadcrumb-ellipsis-radius-tiny"],
-			small: styles["breadcrumb-ellipsis-radius-small"],
-			medium: styles["breadcrumb-ellipsis-radius-medium"],
-			large: styles["breadcrumb-ellipsis-radius-large"],
-			full: styles["breadcrumb-ellipsis-radius-full"],
+			none: styles["lambda-breadcrumb-ellipsis-radius-none"],
+			tiny: styles["lambda-breadcrumb-ellipsis-radius-tiny"],
+			small: styles["lambda-breadcrumb-ellipsis-radius-small"],
+			medium: styles["lambda-breadcrumb-ellipsis-radius-medium"],
+			large: styles["lambda-breadcrumb-ellipsis-radius-large"],
+			full: styles["lambda-breadcrumb-ellipsis-radius-full"],
 		},
 		size: {
-			tiny: styles["breadcrumb-ellipsis-tiny"],
-			small: styles["breadcrumb-ellipsis-small"],
-			medium: styles["breadcrumb-ellipsis-medium"],
-			large: styles["breadcrumb-ellipsis-large"],
+			tiny: styles["lambda-breadcrumb-ellipsis-tiny"],
+			small: styles["lambda-breadcrumb-ellipsis-small"],
+			medium: styles["lambda-breadcrumb-ellipsis-medium"],
+			large: styles["lambda-breadcrumb-ellipsis-large"],
 		},
 	},
 	defaultVariants: {
@@ -138,4 +138,4 @@ export const breadcrumbEllipsis = cva(styles["breadcrumb-ellipsis"], {
 	},
 });
 
-export type BreadcrumbVariants = VariantProps<typeof breadcrumbItem>;
+export type BreadcrumbVariants = VariantProps<typeof variantBreadcrumbItem>;

@@ -4,7 +4,6 @@ import { BadgeProps } from "./badge.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Button } from "../Button/Button";
 import { Bell } from "lucide-react";
-import { useState } from "react";
 
 const meta: Meta<typeof Badge> = {
 	title: "Components/Badge",
@@ -22,7 +21,7 @@ const meta: Meta<typeof Badge> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Input radius",
 		},
 		count: {

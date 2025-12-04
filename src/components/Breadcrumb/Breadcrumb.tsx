@@ -1,11 +1,11 @@
 import { forwardRef, useState, Fragment, useEffect } from "react";
 import { BreadcrumbProps, BreadcrumbItem as ItemBreadcrumb } from "./breadcrumb.types";
 import {
-	breadcrumb,
-	breadcrumbContainer,
-	breadcrumbEllipsis,
-	breadcrumbItem,
-	breadcrumbSeparator,
+	variantBreadcrumb,
+	variantBreadcrumbContainer,
+	variantBreadcrumbEllipsis,
+	variantBreadcrumbItem,
+	variantBreadcrumbSeparator,
 	BreadcrumbVariants,
 } from "./breadcrumb.variants";
 import { ChevronRight, Dot, ArrowRight } from "lucide-react";
@@ -31,12 +31,12 @@ const BreadcrumbItem = ({
 	radius: BreadcrumbVariants["radius"];
 }) => {
 	return item.href ? (
-		<a href={item.href} className={breadcrumbItem({ size, variant, color, radius })}>
+		<a href={item.href} className={variantBreadcrumbItem({ size, variant, color, radius })}>
 			{item.icon}
 			{item.label}
 		</a>
 	) : (
-		<span className={breadcrumbItem({ size, variant, color, radius })}>
+		<span className={variantBreadcrumbItem({ size, variant, color, radius })}>
 			{item.icon}
 			{item.label}
 		</span>
@@ -65,15 +65,15 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 		};
 
 		return (
-			<nav ref={ref} {...props} className={breadcrumb({ size, variant, radius })}>
-				<ol className={breadcrumbContainer({ size, variant })}>
+			<nav ref={ref} {...props} className={variantBreadcrumb({ size, variant, radius })}>
+				<ol className={variantBreadcrumbContainer({ size, variant })}>
 					{visibleItems.map((item, index, array) => (
 						<Fragment key={index}>
 							{shouldCollapse && collapsed && index === maxItems && (
 								<>
 									<ul>
 										<button
-											className={breadcrumbEllipsis({ size, radius })}
+											className={variantBreadcrumbEllipsis({ size, radius })}
 											onClick={handleEllipsisClick}
 											title={language === "es" ? "Mostrar más" : "Show more"}
 										>
@@ -81,7 +81,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 										</button>
 									</ul>
 									<ul>
-										<span className={breadcrumbSeparator({ size, variant })}>{IconSeparator}</span>
+										<span className={variantBreadcrumbSeparator({ size, variant })}>{IconSeparator}</span>
 									</ul>
 								</>
 							)}
@@ -96,7 +96,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 							</ul>
 							{index < array!.length - 1 && (
 								<ul>
-									<span className={breadcrumbSeparator({ size, variant })}>{IconSeparator}</span>
+									<span className={variantBreadcrumbSeparator({ size, variant })}>{IconSeparator}</span>
 								</ul>
 							)}
 						</Fragment>

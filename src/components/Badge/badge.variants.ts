@@ -10,6 +10,7 @@ export const badgeStyles = cva(styles["lambda-badge"], {
 			large: styles["lambda-badge-large"],
 		},
 		radius: {
+			default: styles["lambda-badge-radius-default"],
 			none: styles["lambda-badge-radius-none"],
 			tiny: styles["lambda-badge-radius-tiny"],
 			small: styles["lambda-badge-radius-small"],
@@ -37,7 +38,7 @@ export const badgeStyles = cva(styles["lambda-badge"], {
 	},
 	defaultVariants: {
 		size: "small",
-		radius: "small",
+		radius: "default",
 		hasCount: false,
 		hasText: false,
 		color: "default",

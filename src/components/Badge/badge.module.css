@@ -112,6 +112,10 @@
 	}
 }
 
+.lambda-badge-radius-default {
+	border-radius: var(--radius-selector);
+}
+
 .lambda-badge-radius-none {
 	border-radius: var(--radius-none);
 }
