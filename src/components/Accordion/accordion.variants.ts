@@ -4,6 +4,7 @@ import styles from "./Accordion.module.css";
 export const accordionVariants = cva(styles["lambda-accordion"], {
 	variants: {
 		radius: {
+			default: styles["lambda-accordion-radius-default"],
 			none: styles["lambda-accordion-radius-none"],
 			tiny: styles["lambda-accordion-radius-tiny"],
 			small: styles["lambda-accordion-radius-small"],
@@ -33,6 +34,7 @@ export const accordionVariants = cva(styles["lambda-accordion"], {
 export const accordionItemVariants = cva(styles["lambda-accordion-item"], {
 	variants: {
 		radius: {
+			default: styles["lambda-accordion-item-radius-default"],
 			none: styles["lambda-accordion-item-radius-none"],
 			tiny: styles["lambda-accordion-item-radius-tiny"],
 			small: styles["lambda-accordion-item-radius-small"],
@@ -60,6 +62,7 @@ export const accordionItemVariants = cva(styles["lambda-accordion-item"], {
 		},
 	],
 	defaultVariants: {
+		radius: "small",
 		state: "closed",
 		disabled: false,
 		variant: "default",
