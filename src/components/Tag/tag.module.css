@@ -508,10 +508,10 @@
 }
 
 .lambda-tag-tiny {
-	font-size: var(--font-size-xs);
+	font-size: var(--font-size-2xs);
 	padding: var(--spacing-xs);
-	min-width: var(--size-2xs);
-	min-height: var(--size-2xs);
+	min-width: var(--size-3xs);
+	min-height: var(--size-3xs);
 
 	&>svg:first-child {
 		width: var(--size-xs);
@@ -520,10 +520,10 @@
 }
 
 .lambda-tag-small {
-	font-size: var(--font-size-sm);
-	padding: var(--spacing-sm);
-	min-width: var(--size-xs);
-	min-height: var(--size-xs);
+	font-size: var(--font-size-xs);
+	padding: var(--spacing-xs);
+	min-width: var(--size-2xs);
+	min-height: var(--size-2xs);
 
 	&>svg {
 		width: var(--size-xs);
@@ -532,8 +532,8 @@
 }
 
 .lambda-tag-medium {
-	font-size: var(--font-size-md);
-	padding: var(--spacing-md);
+	font-size: var(--font-size-sm);
+	padding: var(--spacing-xs);
 	min-width: var(--size-sm);
 	min-height: var(--size-sm);
 
@@ -544,8 +544,8 @@
 }
 
 .lambda-tag-large {
-	font-size: var(--font-size-lg);
-	padding: var(--spacing-md);
+	font-size: var(--font-size-md);
+	padding: var(--spacing-xs) var(--spacing-sm);
 	min-width: var(--size-md);
 	min-height: var(--size-md);
 
