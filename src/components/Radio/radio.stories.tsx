@@ -31,7 +31,7 @@ const meta: Meta<typeof RadioGroup> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["tiny", "small", "medium", "large", "full", "none"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Input radius",
 		},
 		hideRadio: {

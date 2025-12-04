@@ -21,6 +21,7 @@ const meta: Meta<typeof ColorPicker> = {
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
+
 		disabled: {
 			control: "boolean",
 			description: "Disables the input and makes it inactive",

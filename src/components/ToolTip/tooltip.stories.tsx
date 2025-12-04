@@ -14,7 +14,7 @@ const meta: Meta<typeof Tooltip> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Radius of the tooltip",
 		},
 		position: {

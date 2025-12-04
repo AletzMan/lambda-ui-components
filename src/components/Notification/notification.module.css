@@ -23,6 +23,10 @@
 	color: var(--foreground-color);
 	/* No transition ni animation: Framer Motion controla todo */
 
+	&.notification-radius-default {
+		border-radius: var(--radius-box);
+	}
+
 	&.notification-radius-none {
 		border-radius: var(--radius-none);
 	}
@@ -71,7 +75,7 @@
 	padding: var(--spacing-xs) var(--spacing-sm);
 	font-size: var(--font-size-xs);
 	border: none;
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-field);
 	cursor: pointer;
 	transition: all 0.3s ease-in-out;
 	font-weight: var(--font-weight-semibold);
@@ -596,7 +600,7 @@
 .notification-close-button {
 	width: 1.5em;
 	height: 1.5em;
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-field);
 	transition: all 0.3s ease-in-out;
 	cursor: pointer;
 

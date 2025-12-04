@@ -37,6 +37,10 @@ input[type="search"]::-webkit-search-cancel-button {
 	font-family: var(--font-family);
 	width: 100%;
 
+	&.lambda-input-radius-default {
+		border-radius: var(--radius-field);
+	}
+
 	&.lambda-input-radius-none {
 		border-radius: var(--radius-none);
 	}
@@ -542,6 +546,14 @@ input[type="search"]::-webkit-search-cancel-button {
 			width: var(--size-lg);
 			height: var(--size-lg);
 		}
+	}
+}
+
+.lambda-input-wrapper-radius-default {
+	border-radius: var(--radius-field);
+
+	&.lambda-input-wrapper-underline {
+		border-radius: var(--radius-field) var(--radius-field) 0 0;
 	}
 }
 

@@ -26,7 +26,7 @@ const meta: Meta<typeof Select> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Input radius",
 		},
 		label: {

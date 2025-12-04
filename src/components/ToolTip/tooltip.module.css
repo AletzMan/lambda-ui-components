@@ -35,6 +35,10 @@
 		border-width: 5px;
 	}
 
+	&.lambda-tooltip-container-radius-default {
+		border-radius: var(--radius-selector);
+	}
+
 	&.lambda-tooltip-container-radius-none {
 		border-radius: var(--radius-none);
 	}

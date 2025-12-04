@@ -628,6 +628,11 @@
 
 	&:is(.lambda-radio-wrapper-horizontal) {
 		&:first-child {
+
+			.lambda-radio-label-radius-default {
+				border-radius: var(--radius-field) var(--radius-none) var(--radius-none) var(--radius-field);
+			}
+
 			.lambda-radio-label-radius-none {
 				border-radius: var(--radius-none);
 			}
@@ -654,6 +659,11 @@
 		}
 
 		&:last-child {
+
+			.lambda-radio-label-radius-default {
+				border-radius: var(--radius-none) var(--radius-field) var(--radius-field) var(--radius-none);
+			}
+
 			.lambda-radio-label-radius-none {
 				border-radius: var(--radius-none);
 			}
@@ -682,6 +692,11 @@
 
 	&:is(.lambda-radio-wrapper-vertical) {
 		&:first-child {
+
+			.lambda-radio-label-radius-default {
+				border-radius: var(--radius-field) var(--radius-field) var(--radius-none) var(--radius-none);
+			}
+
 			.lambda-radio-label-radius-none {
 				border-radius: none;
 			}
@@ -708,6 +723,11 @@
 		}
 
 		&:last-child {
+
+			.lambda-radio-label-radius-default {
+				border-radius: var(--radius-none) var(--radius-none) var(--radius-field) var(--radius-field);
+			}
+
 			.lambda-radio-label-radius-none {
 				border-radius: none;
 			}
@@ -994,6 +1014,10 @@
 		min-width: var(--card-size-lg);
 		min-height: var(--card-size-md);
 		padding: var(--spacing-sm) var(--spacing-lg);
+	}
+
+	&:is(.lambda-radio-wrapper-radius-default) {
+		border-radius: var(--radius-box);
 	}
 
 	&.lambda-radio-wrapper-radius-none {
@@ -2228,6 +2252,10 @@
 			flex-wrap: wrap;
 		}
 	}
+}
+
+.lambda-radio-group-radius-default {
+	border-radius: var(--radius-box);
 }
 
 .lambda-radio-group-radius-none {

@@ -9,6 +9,10 @@
 	color: var(--foreground-color);
 	overflow: hidden;
 
+	&.lambda-card-radius-default {
+		border-radius: var(--radius-box);
+	}
+
 	&.lambda-card-radius-none {
 		border-radius: var(--radius-none);
 	}

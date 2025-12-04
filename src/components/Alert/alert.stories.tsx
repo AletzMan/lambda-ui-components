@@ -3,7 +3,6 @@ import { Alert } from "./Alert";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { AlertProps } from "./alert.types";
 import { AlertVariants } from "./alert.variants";
-import { useState } from "react";
 
 const meta: Meta<typeof Alert> = {
 	title: "Components/Alert",
@@ -26,7 +25,7 @@ const meta: Meta<typeof Alert> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large"],
+			options: ["default", "none", "tiny", "small", "medium", "large"],
 			description: "Alert radius",
 		},
 		title: {
@@ -82,8 +81,8 @@ const Template = (args: AlertProps) => {
 								marginBottom: "0.5rem",
 								textTransform: "capitalize",
 								color: `${color === "neutral"
-										? "var(--lambda-color-neutral-500)"
-										: `var(--lambda-color-${color}-500)`
+									? "var(--lambda-color-neutral-500)"
+									: `var(--lambda-color-${color}-500)`
 									}`,
 							}}
 						>

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 import { Input } from "../Input/Input";
 import Join, { JoinProps } from "./Join";
-import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
 import {
@@ -30,7 +29,7 @@ const meta: Meta<typeof Join> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "small", "medium", "large", "full"],
+			options: ["default", "none", "small", "medium", "large", "full"],
 			description: "Corner shape",
 		},
 		disabled: {

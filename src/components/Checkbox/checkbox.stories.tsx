@@ -31,7 +31,7 @@ const meta: Meta<typeof Checkbox> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Corner shape",
 			type: "string",
 		},

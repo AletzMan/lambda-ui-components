@@ -2,7 +2,6 @@ import { Meta, StoryObj } from "@storybook/react-vite";
 import { Tabs } from "./Tabs";
 import { TabProps } from "./tabs.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { useState } from "react";
 import { Code } from "lucide-react";
 
 const meta: Meta<typeof Tabs> = {
@@ -27,7 +26,7 @@ const meta: Meta<typeof Tabs> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Input radius",
 		},
 		disabled: {

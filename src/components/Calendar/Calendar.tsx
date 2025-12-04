@@ -45,7 +45,6 @@ export const Calendar = ({
 	maxDate,
 	disabled,
 	events,
-	radius = "small",
 	variant = "solid",
 	isDateDisabled,
 }: CalendarProps) => {
@@ -157,7 +156,7 @@ export const Calendar = ({
 
 	return (
 		<div className={calendarWrapperVariants({ variant })}>
-			<div className={calendarVariants({ radius, variant })}>
+			<div className={calendarVariants({ variant })}>
 				<header className={styles["lambda-calendar-header"]}>
 					<Tooltip content={t("date-picker.prev-year")} color="neutral">
 						<Button

@@ -1,47 +1,10 @@
 .lambda-table-container {
 	display: block;
-	border-radius: var(--radius-lg);
+	border-radius: var(--radius-box);
 	overflow: hidden;
 	width: 100%;
 	box-sizing: border-box;
 	font-family: var(--font-family);
-
-	/*
-	&:is(.lambda-table-container-soft) {
-		border: var(--border-width-xs) solid transparent;
-	}
-
-	&:is(.lambda-table-container-underlined) {
-		border: var(--border-width-xs) solid transparent;
-	}
-
-	&:is(.lambda-table-container-bordered) {
-		border: var(--border-width-xs) solid var(--border-color);
-	}
-
-	&:is(.lambda-table-container-striped) {
-		border: var(--border-width-xs) solid var(--border-color);
-	}
-*/
-	&:is(.lambda-table-container-radius-none) {
-		border-radius: var(--radius-none);
-	}
-
-	&:is(.lambda-table-container-radius-tiny) {
-		border-radius: var(--radius-xs);
-	}
-
-	&:is(.lambda-table-container-radius-small) {
-		border-radius: var(--radius-sm);
-	}
-
-	&:is(.lambda-table-container-radius-medium) {
-		border-radius: var(--radius-md);
-	}
-
-	&:is(.lambda-table-container-radius-large) {
-		border-radius: var(--radius-lg);
-	}
 }
 
 .lambda-table-container-table {
@@ -167,7 +130,7 @@
 	flex-grow: 1;
 	gap: var(--spacing-lg);
 	padding: var(--spacing-xs) var(--spacing-sm);
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-box);
 	background-color: transparent;
 	width: 100%;
 

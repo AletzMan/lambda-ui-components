@@ -799,6 +799,10 @@
 	}
 }
 
+.lambda-checkbox-wrapper-radius-default {
+	border-radius: var(--radius-selector);
+}
+
 .lambda-checkbox-wrapper-radius-none {
 	border-radius: var(--radius-none);
 }

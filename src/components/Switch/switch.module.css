@@ -5,7 +5,6 @@
 	justify-content: center;
 	gap: 8px;
 	padding: 0;
-	border-radius: var(--radius-full);
 	color: var(--foreground-color);
 	font-family: var(--font-family);
 
@@ -126,6 +125,10 @@
 	transition: all 0.2s ease-out;
 	outline: 2px solid transparent;
 	outline-offset: 2px;
+}
+
+.lambda-switch-background-default {
+	border-radius: var(--radius-selector);
 }
 
 .lambda-switch-background-square {
@@ -458,8 +461,10 @@
 	box-shadow: var(--box-shadow-xs);
 }
 
-.lambda-switch-handle-square {
-	border-radius: var(--radius-none);
+
+
+.lambda-switch-handle-default {
+	border-radius: calc(var(--radius-selector) + 1px);
 }
 
 .lambda-switch-handle-subtle {

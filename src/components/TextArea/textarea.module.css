@@ -9,7 +9,7 @@
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-semibold);
 	color: var(--foreground-label-color);
-	margin: 0 0 var(--spacing-xs) 0;
+	margin: 0 0 var(--spacing-2xs) 0;
 
 	&.lambda-textarea-label-required {
 		&::after {
@@ -32,6 +32,10 @@
 
 	&.lambda-textarea-label-large {
 		font-size: var(--font-size-md);
+	}
+
+	&.lambda-textarea-label-radius-default {
+		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) calc(var(--radius-field) * 1.5);
 	}
 
 	&.lambda-textarea-label-radius-none,
@@ -79,6 +83,10 @@
 	&.lambda-textarea-large {
 		font-size: var(--font-size-lg);
 		padding: var(--spacing-md);
+	}
+
+	&.lambda-textarea-radius-default {
+		border-radius: var(--radius-field);
 	}
 
 	&.lambda-textarea-radius-none {

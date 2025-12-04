@@ -31,7 +31,7 @@ const meta: Meta<typeof Notification> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large"],
+			options: ["default", "none", "tiny", "small", "medium", "large"],
 			description: "Radius of the notification",
 			type: "string",
 		},

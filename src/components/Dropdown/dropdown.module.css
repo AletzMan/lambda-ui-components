@@ -250,6 +250,10 @@
 	}
 }
 
+.lambda-dropdown-radius-default {
+	border-radius: var(--radius-field);
+}
+
 .lambda-dropdown-radius-none {
 	border-radius: var(--radius-none);
 }
@@ -305,7 +309,7 @@
 	background: radial-gradient(var(--surface-a), var(--background-color));
 	border: var(--border-width-xs) solid var(--border-color);
 	z-index: 100;
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-box);
 
 	&:focus-within {
 		outline: var(--border-width-sm) solid transparent;
@@ -320,7 +324,7 @@
 	gap: var(--spacing-sm);
 	font-family: var(--font-family);
 	padding: var(--spacing-xs) var(--spacing-md);
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-field);
 	background-color: transparent;
 	border: none;
 	text-decoration: none;
@@ -443,7 +447,7 @@
 	height: 100%;
 	max-height: 1.8em;
 	padding: var(--spacing-none) var(--spacing-xs);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-selector);
 	background-color: var(--surface-b);
 	border: var(--border-width-xs) solid var(--border-color);
 	box-shadow: 1px 1px 2px var(--shadow-color);
@@ -451,7 +455,7 @@
 
 .lambda-dropdown-item-custom {
 	padding: var(--spacing-xs);
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-field);
 	background-color: transparent;
 	border: none;
 	text-decoration: none;

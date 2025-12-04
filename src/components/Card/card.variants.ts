@@ -13,6 +13,7 @@ export const card = cva(styles[`lambda-card`], {
 			large: styles[`lambda-card-large`],
 		},
 		radius: {
+			default: styles[`lambda-card-radius-default`],
 			none: styles[`lambda-card-radius-none`],
 			tiny: styles[`lambda-card-radius-tiny`],
 			small: styles[`lambda-card-radius-small`],
@@ -23,7 +24,7 @@ export const card = cva(styles[`lambda-card`], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "small",
+		radius: "default",
 	},
 });
 

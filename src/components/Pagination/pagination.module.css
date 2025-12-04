@@ -123,6 +123,10 @@
 	}
 }
 
+.lambda-pagination-button-radius-default {
+	border-radius: var(--radius-field);
+}
+
 .lambda-pagination-button-radius-none {
 	border-radius: var(--radius-none);
 }

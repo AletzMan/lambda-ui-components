@@ -3,7 +3,7 @@
 	position: relative;
 	overflow: hidden;
 	border: var(--border-width-xs) solid var(--border-color);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-box);
 	font-family: var(--font-family);
 	height: 100%;
 	width: 100%;
@@ -303,7 +303,7 @@
 	font-size: var(--font-size-xs);
 	border: var(--border-width-xs) solid var(--border-color);
 	background-color: var(--surface-c);
-	border-radius: var(--radius-2xs);
+	border-radius: var(--radius-field);
 	box-sizing: border-box;
 
 	&::after {
@@ -359,7 +359,7 @@
 	display: flex;
 	gap: var(--spacing-md);
 	scrollbar-width: none;
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-field);
 	-ms-overflow-style: none;
 
 	&.lambda-carousel-thumbnails-horizontal {
@@ -411,7 +411,7 @@
 .lambda-carousel-thumbnails-item {
 	width: 60px;
 	height: 40px;
-	border-radius: 4px;
+	border-radius: var(--radius-field);
 	overflow: hidden;
 	cursor: pointer;
 	border: 2px solid transparent;

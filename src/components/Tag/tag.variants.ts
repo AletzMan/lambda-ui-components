@@ -26,6 +26,7 @@ export const tagVariants = cva(styles["lambda-tag"], {
 			subtle: styles["lambda-tag-subtle"],
 		},
 		radius: {
+			default: styles["lambda-tag-radius-default"],
 			none: styles["lambda-tag-radius-none"],
 			tiny: styles["lambda-tag-radius-tiny"],
 			small: styles["lambda-tag-radius-small"],
@@ -38,7 +39,7 @@ export const tagVariants = cva(styles["lambda-tag"], {
 		color: "primary",
 		size: "small",
 		variant: "subtle",
-		radius: "small",
+		radius: "default",
 	},
 });
 

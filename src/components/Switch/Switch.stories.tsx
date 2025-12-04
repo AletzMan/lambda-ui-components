@@ -26,7 +26,7 @@ const meta: Meta<typeof Switch> = {
 		},
 		shape: {
 			control: "inline-radio",
-			options: ["square", "subtle", "rounded"],
+			options: ["default", "square", "subtle", "rounded"],
 			description: "Input shape",
 		},
 		label: {

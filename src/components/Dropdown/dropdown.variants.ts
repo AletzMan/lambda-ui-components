@@ -16,6 +16,7 @@ export const dropdownVariants = cva(styles[`lambda-dropdown`], {
 			large: styles[`lambda-dropdown-large`],
 		},
 		radius: {
+			default: styles[`lambda-dropdown-radius-default`],
 			none: styles[`lambda-dropdown-radius-none`],
 			tiny: styles[`lambda-dropdown-radius-tiny`],
 			small: styles[`lambda-dropdown-radius-small`],

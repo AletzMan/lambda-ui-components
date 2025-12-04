@@ -5,7 +5,7 @@ import { LambdaConfigProvider } from "../../_internal/hooks/translation/LambdaCo
 import React from "react";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-	<LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
+	<LambdaConfigProvider lang="es"  >
 		{children}
 	</LambdaConfigProvider>
 );
@@ -17,7 +17,7 @@ function renderWithProvider(ui: React.ReactElement) {
 describe("Dialog", () => {
 	test("renders dialog when open and not when closed", () => {
 		const { rerender } = renderWithProvider(
-			<Dialog isOpen={true} onClose={() => {}} title="Título">
+			<Dialog isOpen={true} onClose={() => { }} title="Título">
 				Contenido del modal
 			</Dialog>
 		);
@@ -25,7 +25,7 @@ describe("Dialog", () => {
 		expect(screen.getByText(/Contenido del modal/i)).toBeInTheDocument();
 		rerender(
 			<Wrapper>
-				<Dialog isOpen={false} onClose={() => {}} title="Título">
+				<Dialog isOpen={false} onClose={() => { }} title="Título">
 					Contenido del modal
 				</Dialog>
 			</Wrapper>
@@ -82,7 +82,7 @@ describe("Dialog", () => {
 
 	test("dialog has correct accessibility attributes", () => {
 		renderWithProvider(
-			<Dialog isOpen={true} onClose={() => {}} title="Título">
+			<Dialog isOpen={true} onClose={() => { }} title="Título">
 				Contenido
 			</Dialog>
 		);
@@ -96,7 +96,7 @@ describe("Dialog", () => {
 
 	test("renders footer when provided", () => {
 		renderWithProvider(
-			<Dialog isOpen={true} onClose={() => {}} title="Título" footer={<div>Pie</div>}>
+			<Dialog isOpen={true} onClose={() => { }} title="Título" footer={<div>Pie</div>}>
 				Contenido
 			</Dialog>
 		);
@@ -106,7 +106,7 @@ describe("Dialog", () => {
 	// Opcional: test draggable logic (solo que no crashee)
 	test("renders draggable dialog without crashing", () => {
 		renderWithProvider(
-			<Dialog isOpen={true} onClose={() => {}} title="Título" isDraggable>
+			<Dialog isOpen={true} onClose={() => { }} title="Título" isDraggable>
 				Contenido
 			</Dialog>
 		);
@@ -115,7 +115,7 @@ describe("Dialog", () => {
 
 	test("allows dragging the dialog panel", () => {
 		renderWithProvider(
-			<Dialog isOpen={true} onClose={() => {}} title="Título" isDraggable>
+			<Dialog isOpen={true} onClose={() => { }} title="Título" isDraggable>
 				Contenido
 			</Dialog>
 		);

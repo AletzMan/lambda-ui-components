@@ -13,14 +13,6 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 			solid: styles["lambda-colorpicker-solid"],
 			soft: styles["lambda-colorpicker-soft"],
 		},
-		radius: {
-			none: styles["lambda-colorpicker-radius-none"],
-			tiny: styles["lambda-colorpicker-radius-tiny"],
-			small: styles["lambda-colorpicker-radius-small"],
-			medium: styles["lambda-colorpicker-radius-medium"],
-			large: styles["lambda-colorpicker-radius-large"],
-			full: styles["lambda-colorpicker-radius-full"],
-		},
 		disabled: {
 			true: styles["lambda-colorpicker-disabled"],
 			false: "",
@@ -33,7 +25,6 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "solid",
-		radius: "small",
 		disabled: false,
 		showText: false,
 	},
@@ -55,14 +46,6 @@ export const colorpickerTextVariants = cva(styles["lambda-colorpicker-text"], {
 
 export const colorpickerGroupVariants = cva(styles["lambda-colorpicker-group"], {
 	variants: {
-		radius: {
-			none: styles["lambda-colorpicker-group-radius-none"],
-			tiny: styles["lambda-colorpicker-group-radius-tiny"],
-			small: styles["lambda-colorpicker-group-radius-small"],
-			medium: styles["lambda-colorpicker-group-radius-medium"],
-			large: styles["lambda-colorpicker-group-radius-large"],
-			full: styles["lambda-colorpicker-group-radius-full"],
-		},
 		size: {
 			tiny: styles["lambda-colorpicker-group-tiny"],
 			small: styles["lambda-colorpicker-group-small"],
@@ -72,26 +55,17 @@ export const colorpickerGroupVariants = cva(styles["lambda-colorpicker-group"], 
 	},
 	defaultVariants: {
 		size: "medium",
-		radius: "small",
 	},
 });
 
 export const colorpickerBoxVariants = cva(styles["lambda-colorpicker-box"], {
 	variants: {
-		radius: {
-			none: styles["lambda-colorpicker-box-radius-none"],
-			tiny: styles["lambda-colorpicker-box-radius-tiny"],
-			small: styles["lambda-colorpicker-box-radius-small"],
-			medium: styles["lambda-colorpicker-box-radius-medium"],
-			large: styles["lambda-colorpicker-box-radius-large"],
-		},
 		position: {
 			below: styles["lambda-colorpicker-box-position-below"],
 			above: styles["lambda-colorpicker-box-position-above"],
 		},
 	},
 	defaultVariants: {
-		radius: "small",
 		position: "below",
 	},
 });

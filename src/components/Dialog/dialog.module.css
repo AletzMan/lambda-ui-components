@@ -49,16 +49,14 @@
 /* Panel del Diálogo (la caja blanca o de color con el contenido) */
 .lambda-dialog-panel {
 	position: absolute;
-	border-radius: var(--radius-sm);
 	max-width: 90%;
 	max-height: 90vh;
 	display: flex;
 	flex-direction: column;
 	border: var(--border-width-xs) solid var(--border-color);
 	background-color: var(--surface-a);
-	/*opacity: 0;*/
 	transform: translateY(-20px);
-	/*transition: opacity 0.3s ease, transform 0.3s ease;*/
+	border-radius: var(--radius-box);
 	pointer-events: auto;
 	overflow: hidden;
 
@@ -72,25 +70,6 @@
 		}
 	}
 
-	&:is(.lambda-dialog-panel-radius-none) {
-		border-radius: var(--radius-none);
-	}
-
-	&:is(.lambda-dialog-panel-radius-tiny) {
-		border-radius: var(--radius-xs);
-	}
-
-	&:is(.lambda-dialog-panel-radius-small) {
-		border-radius: var(--radius-sm);
-	}
-
-	&:is(.lambda-dialog-panel-radius-medium) {
-		border-radius: var(--radius-md);
-	}
-
-	&:is(.lambda-dialog-panel-radius-large) {
-		border-radius: var(--radius-lg);
-	}
 }
 
 @keyframes modal-shake {

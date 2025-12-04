@@ -66,6 +66,10 @@
 	}
 }
 
+.tab-container-radius-default {
+	border-radius: var(--radius-box);
+}
+
 .tab-container-radius-none {
 	border-radius: 0;
 }
@@ -282,6 +286,15 @@
 	}
 }
 
+.tab-label-radius-default {
+	border-radius: var(--radius-box);
+
+	&:is(.tab-label-soft) {
+		border-bottom-left-radius: var(--radius-none);
+		border-bottom-right-radius: var(--radius-none);
+	}
+}
+
 .tab-label-radius-none {
 	border-radius: 0;
 }
@@ -456,6 +469,15 @@
 			width: 100%;
 			left: 0;
 			bottom: -1px;
+		}
+	}
+
+	&:is(.tab-current-radius-default) {
+		border-radius: var(--radius-box);
+
+		&:is(.tab-current-soft) {
+			border-bottom-left-radius: var(--radius-none);
+			border-bottom-right-radius: var(--radius-none);
 		}
 	}
 

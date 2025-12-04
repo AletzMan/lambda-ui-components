@@ -22,14 +22,14 @@ import { Divider } from "../Divider/Divider";
 export interface SwitchThemeProps {
     variant?: "solid" | "soft" | "subtle" | "text";
     size?: "tiny" | "small" | "medium" | "large";
-    radius?: "tiny" | "small" | "medium" | "large";
+    radius?: "default" | "tiny" | "small" | "medium" | "large";
     showLabel?: boolean;
 }
 
 export const SwitchTheme: React.FC<SwitchThemeProps> = ({
     variant = "soft",
     size = "small",
-    radius = "small",
+    radius = "default",
     showLabel = false,
 }) => {
     const { setTheme, theme } = useTheme();

@@ -51,6 +51,7 @@ export const selectContainerVariants = cva(styles["select-container"], {
 			success: styles["select-container-success"],
 		},
 		radius: {
+			default: styles["select-container-radius-default"],
 			none: styles["select-container-radius-none"],
 			tiny: styles["select-container-radius-tiny"],
 			small: styles["select-container-radius-small"],
@@ -70,7 +71,7 @@ export const selectContainerVariants = cva(styles["select-container"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "small",
+		radius: "default",
 		disabled: false,
 		invalid: false,
 		color: "primary",
@@ -99,6 +100,7 @@ export const selectBtnVariants = cva(styles["select-btn"], {
 			success: styles["select-btn-success"],
 		},
 		radius: {
+			default: styles["select-btn-radius-default"],
 			none: styles["select-btn-radius-none"],
 			tiny: styles["select-btn-radius-tiny"],
 			small: styles["select-btn-radius-small"],
@@ -123,7 +125,7 @@ export const selectBtnVariants = cva(styles["select-btn"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "small",
+		radius: "default",
 		disabled: false,
 		invalid: false,
 		color: "primary",
@@ -197,6 +199,7 @@ export const selectDropdownVariants = cva(styles["select-dropdown"], {
 			success: styles["select-dropdown-success"],
 		},
 		radius: {
+			default: styles["select-dropdown-radius-default"],
 			none: styles["select-dropdown-radius-none"],
 			tiny: styles["select-dropdown-radius-tiny"],
 			small: styles["select-dropdown-radius-small"],
@@ -212,7 +215,7 @@ export const selectDropdownVariants = cva(styles["select-dropdown"], {
 	defaultVariants: {
 		direction: "below",
 		isOpen: false,
-		radius: "small",
+		radius: "default",
 		size: "medium",
 		variant: "outline",
 		color: "primary",
@@ -232,6 +235,7 @@ export const labelSelectVariants = cva(styles["select-label"], {
 			below: styles["select-label-below"],
 		},
 		radius: {
+			default: styles["select-label-radius-default"],
 			none: styles["select-label-radius-none"],
 			tiny: styles["select-label-radius-tiny"],
 			small: styles["select-label-radius-small"],
@@ -245,7 +249,7 @@ export const labelSelectVariants = cva(styles["select-label"], {
 	},
 	defaultVariants: {
 		direction: "below",
-		radius: "small",
+		radius: "default",
 		size: "medium",
 		required: false,
 	},

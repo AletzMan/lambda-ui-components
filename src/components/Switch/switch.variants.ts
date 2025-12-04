@@ -24,6 +24,7 @@ export const switchprop = cva(styles["lambda-switch"], {
 			outline: styles["lambda-switch-outline"],
 		},
 		shape: {
+			default: styles["lambda-switch-default"],
 			square: styles["lambda-switch-square"],
 			subtle: styles["lambda-switch-subtle"],
 			rounded: styles["lambda-switch-rounded"],
@@ -41,7 +42,7 @@ export const switchprop = cva(styles["lambda-switch"], {
 		color: "primary",
 		size: "medium",
 		variant: "solid",
-		shape: "rounded",
+		shape: "default",
 		disabled: false,
 		checked: false,
 	},
@@ -70,6 +71,7 @@ export const background = cva(styles["lambda-switch-background"], {
 			outline: styles["lambda-switch-background-outline"],
 		},
 		shape: {
+			default: styles["lambda-switch-background-default"],
 			square: styles["lambda-switch-background-square"],
 			subtle: styles["lambda-switch-background-subtle"],
 			rounded: styles["lambda-switch-background-rounded"],
@@ -87,7 +89,7 @@ export const background = cva(styles["lambda-switch-background"], {
 		color: "primary",
 		size: "medium",
 		variant: "solid",
-		shape: "rounded",
+		shape: "default",
 		disabled: false,
 		checked: false,
 	},
@@ -126,6 +128,7 @@ export const handle = cva(styles["lambda-switch-handle"], {
 			large: styles["lambda-switch-handle-large"],
 		},
 		shape: {
+			default: styles["lambda-switch-handle-default"],
 			square: styles["lambda-switch-handle-square"],
 			subtle: styles["lambda-switch-handle-subtle"],
 			rounded: styles["lambda-switch-handle-rounded"],
@@ -141,7 +144,7 @@ export const handle = cva(styles["lambda-switch-handle"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		shape: "rounded",
+		shape: "default",
 		disabled: false,
 		checked: false,
 	},

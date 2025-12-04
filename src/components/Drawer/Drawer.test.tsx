@@ -5,7 +5,7 @@ import { LambdaConfigProvider } from "../../_internal/hooks/translation/LambdaCo
 import React from "react";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-	<LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
+	<LambdaConfigProvider lang="es" >
 		{children}
 	</LambdaConfigProvider>
 );
@@ -17,7 +17,7 @@ function renderWithProvider(ui: React.ReactElement) {
 describe("Drawer", () => {
 	test("renders drawer when open and not when closed", async () => {
 		const { rerender } = renderWithProvider(
-			<Drawer isOpen={true} onClose={() => {}} title="Título">
+			<Drawer isOpen={true} onClose={() => { }} title="Título">
 				Contenido del drawer
 			</Drawer>
 		);
@@ -26,7 +26,7 @@ describe("Drawer", () => {
 
 		rerender(
 			<Wrapper>
-				<Drawer isOpen={false} onClose={() => {}} title="Título">
+				<Drawer isOpen={false} onClose={() => { }} title="Título">
 					Contenido del drawer
 				</Drawer>
 			</Wrapper>
@@ -81,7 +81,7 @@ describe("Drawer", () => {
 
 	test("drawer has correct accessibility attributes", () => {
 		renderWithProvider(
-			<Drawer isOpen={true} onClose={() => {}} title="Título">
+			<Drawer isOpen={true} onClose={() => { }} title="Título">
 				Contenido
 			</Drawer>
 		);
@@ -94,7 +94,7 @@ describe("Drawer", () => {
 
 	test("renders footer when provided", () => {
 		renderWithProvider(
-			<Drawer isOpen={true} onClose={() => {}} title="Título" footer={<div>Pie</div>}>
+			<Drawer isOpen={true} onClose={() => { }} title="Título" footer={<div>Pie</div>}>
 				Contenido
 			</Drawer>
 		);
@@ -103,7 +103,7 @@ describe("Drawer", () => {
 
 	test("renders with different placements and sizes", () => {
 		renderWithProvider(
-			<Drawer isOpen={true} onClose={() => {}} title="T" placement="left" size="300px">
+			<Drawer isOpen={true} onClose={() => { }} title="T" placement="left" size="300px">
 				L
 			</Drawer>
 		);

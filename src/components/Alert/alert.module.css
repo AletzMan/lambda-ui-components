@@ -13,6 +13,10 @@
 	}
 }
 
+.lambda-alert-radius-default {
+	border-radius: var(--radius-box);
+}
+
 .lambda-alert-radius-none {
 	border-radius: var(--radius-none);
 }

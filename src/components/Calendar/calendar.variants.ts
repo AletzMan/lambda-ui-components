@@ -15,20 +15,12 @@ export const calendarWrapperVariants = cva(styles["lambda-calendar-wrapper"], {
 
 export const calendarVariants = cva(styles["lambda-calendar"], {
 	variants: {
-		radius: {
-			none: styles["lambda-calendar-radius-none"],
-			tiny: styles["lambda-calendar-radius-tiny"],
-			small: styles["lambda-calendar-radius-small"],
-			medium: styles["lambda-calendar-radius-medium"],
-			large: styles["lambda-calendar-radius-large"],
-		},
 		variant: {
 			solid: styles["lambda-calendar-variant-solid"],
 			soft: styles["lambda-calendar-variant-soft"],
 		},
 	},
 	defaultVariants: {
-		radius: "small",
 		variant: "solid",
 	},
 });

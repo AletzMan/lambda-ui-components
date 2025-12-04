@@ -16,7 +16,7 @@ const meta: Meta<typeof Breadcrumb> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Radius of the breadcrumb",
 			type: "string",
 		},
@@ -76,8 +76,8 @@ const Template = (args: BreadcrumbProps) => {
 								marginBottom: "0.5rem",
 								textTransform: "capitalize",
 								color: `${color === "neutral"
-										? "var(--lambda-color-neutral-500)"
-										: `var(--lambda-color-${color}-500)`
+									? "var(--lambda-color-neutral-500)"
+									: `var(--lambda-color-${color}-500)`
 									}`,
 							}}
 						>

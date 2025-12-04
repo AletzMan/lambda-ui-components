@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Input } from "./Input";
 import { InputProps } from "./input.types";
-import { useState } from "react";
 import { CaseUpper, Mail, RectangleEllipsis, Search } from "lucide-react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
@@ -17,7 +16,7 @@ const meta: Meta<typeof Input> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Input radius",
 			type: "string",
 		},

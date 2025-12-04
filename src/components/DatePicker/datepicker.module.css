@@ -15,7 +15,6 @@
 .lambda-datepicker-container {
 	outline: 2px solid transparent;
 	outline-offset: 2px;
-	border-radius: var(--radius-xs);
 
 	&:is(.lambda-datepicker-container-invalid) {
 		outline-color: var(--danger-shadow-color);
@@ -31,6 +30,7 @@
 	padding: var(--spacing-md);
 	width: 285px;
 	overflow: hidden;
+	border-radius: var(--radius-box);
 
 	&:is(.lambda-datepicker-modal) {
 		border: none;
@@ -95,7 +95,7 @@
 	justify-content: center;
 	text-align: center;
 	padding: var(--spacing-xs);
-	border-radius: var(--radius-xs);
+	border-radius: var(--radius-field);
 	font-size: var(--font-size-sm);
 	background: transparent;
 	transition: background 0.2s, color 0.2s;
@@ -153,54 +153,6 @@
 	cursor: not-allowed;
 }
 
-.lambda-datepicker-radius-none {
-	border-radius: var(--radius-none);
-}
-
-.lambda-datepicker-radius-tiny {
-	border-radius: var(--radius-xs);
-
-	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--radius-none);
-		border-top-right-radius: var(--radius-none);
-	}
-}
-
-.lambda-datepicker-radius-small {
-	border-radius: var(--radius-sm);
-
-	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--radius-none);
-		border-top-right-radius: var(--radius-none);
-	}
-}
-
-.lambda-datepicker-radius-medium {
-	border-radius: var(--radius-md);
-
-	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--radius-none);
-		border-top-right-radius: var(--radius-none);
-	}
-}
-
-.lambda-datepicker-radius-large {
-	border-radius: var(--radius-lg);
-
-	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--radius-none);
-		border-top-right-radius: var(--radius-none);
-	}
-}
-
-.lambda-datepicker-radius-full {
-	border-radius: var(--radius-lg);
-
-	&:is(.lambda-datepicker-inline) {
-		border-top-left-radius: var(--radius-none);
-		border-top-right-radius: var(--radius-none);
-	}
-}
 
 /* Colores y variantes pueden extenderse según tus tokens */
 .lambda-datepicker-color-primary {
@@ -439,7 +391,7 @@
 	color: var(--foreground-title-color);
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-field);
 	background-color: transparent;
 	border: none;
 
@@ -453,7 +405,7 @@
 	height: 100%;
 	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-md);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-field);
 	background-color: transparent;
 	color: var(--foreground-secondary-color);
 	border: var(--border-width-xs) solid var(--border-color);
@@ -498,7 +450,7 @@
 	height: 100%;
 	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-md);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-field);
 	background-color: var(--background-color);
 	color: var(--foreground-secondary-color);
 	border: var(--border-width-xs) solid var(--border-color);

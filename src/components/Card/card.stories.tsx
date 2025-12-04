@@ -23,7 +23,7 @@ const meta: Meta<typeof Card> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large"],
+			options: ["default", "none", "tiny", "small", "medium", "large"],
 			description: "Radius of the card",
 			type: "string",
 		},

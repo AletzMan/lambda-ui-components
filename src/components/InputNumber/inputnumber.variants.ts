@@ -31,6 +31,7 @@ export const inputNumber = cva(styles["lambda-number"], {
 			decimal: styles["lambda-number-decimal"],
 		},
 		radius: {
+			default: styles["lambda-number-radius-default"],
 			none: styles["lambda-number-radius-none"],
 			tiny: styles["lambda-number-radius-tiny"],
 			small: styles["lambda-number-radius-small"],
@@ -56,7 +57,7 @@ export const inputNumber = cva(styles["lambda-number"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "tiny",
+		radius: "default",
 		typeNumber: "default",
 		invalid: false,
 		disabled: false,
@@ -96,6 +97,7 @@ export const labels = cva(styles["lambda-number-label"], {
 			large: styles["lambda-number-label-large"],
 		},
 		radius: {
+			default: styles["lambda-number-label-radius-default"],
 			none: styles["lambda-number-label-radius-none"],
 			tiny: styles["lambda-number-label-radius-tiny"],
 			small: styles["lambda-number-label-radius-small"],
@@ -108,8 +110,9 @@ export const labels = cva(styles["lambda-number-label"], {
 		},
 	},
 	defaultVariants: {
-		radius: "tiny",
+		radius: "default",
 		size: "medium",
+		required: false,
 	},
 });
 
@@ -155,6 +158,7 @@ export const handler = cva(styles["lambda-number-handler"], {
 			large: styles["lambda-number-handler-large"],
 		},
 		radius: {
+			default: styles["lambda-number-handler-radius-default"],
 			none: styles["lambda-number-handler-radius-none"],
 			tiny: styles["lambda-number-handler-radius-tiny"],
 			small: styles["lambda-number-handler-radius-small"],
@@ -185,7 +189,7 @@ export const handler = cva(styles["lambda-number-handler"], {
 	defaultVariants: {
 		variant: "outline",
 		size: "medium",
-		radius: "tiny",
+		radius: "default",
 		joinposition: "single",
 		color: "primary",
 	},
@@ -200,6 +204,7 @@ export const typeCurrency = cva(styles["lambda-number-currency"], {
 			large: styles["lambda-number-currency-large"],
 		},
 		radius: {
+			default: styles["lambda-number-currency-radius-default"],
 			none: styles["lambda-number-currency-radius-none"],
 			tiny: styles["lambda-number-currency-radius-tiny"],
 			small: styles["lambda-number-currency-radius-small"],
@@ -233,7 +238,7 @@ export const typeCurrency = cva(styles["lambda-number-currency"], {
 		size: "medium",
 		variant: "outline",
 		typeNumber: "default",
-		radius: "tiny",
+		radius: "default",
 		color: "primary",
 	},
 });

@@ -248,6 +248,10 @@ input[type="number"] {
 		width: var(--size-2xl);
 	}
 
+	&.lambda-number-handler-radius-default {
+		border-radius: var(--radius-none) calc(var(--radius-field) + 1px) calc(var(--radius-field) + 1px) var(--radius-none);
+	}
+
 	&.lambda-number-handler-radius-none {
 		border-radius: var(--radius-none);
 	}
@@ -396,6 +400,10 @@ input[type="number"] {
 .lambda-number-large {
 	min-height: var(--size-6xl);
 	height: var(--size-6xl);
+}
+
+.lambda-number-radius-default {
+	border-radius: var(--radius-field);
 }
 
 .lambda-number-radius-none {
@@ -616,6 +624,10 @@ input[type="number"] {
 			height: var(--size-lg);
 			width: var(--size-lg);
 		}
+	}
+
+	&.lambda-number-currency-radius-default {
+		border-radius: calc(var(--radius-field) + 1px) var(--radius-none) var(--radius-none) calc(var(--radius-field) + 1px);
 	}
 
 	&.lambda-number-currency-radius-none {

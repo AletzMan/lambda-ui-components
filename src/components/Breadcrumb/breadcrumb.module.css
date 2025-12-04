@@ -284,6 +284,10 @@
 			font-weight: var(--font-weight-medium);
 			padding: var(--spacing-none) var(--spacing-md) var(--spacing-none) var(--spacing-lg);
 
+			&.lambda-breadcrumb-item-radius-default {
+				border-radius: var(--radius-selector) var(--radius-none) var(--radius-none) var(--radius-selector);
+			}
+
 			&.lambda-breadcrumb-item-radius-none {
 				border-radius: var(--radius-none);
 			}
@@ -417,6 +421,10 @@
 			cursor: auto;
 			padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-xs) var(--spacing-md);
 			font-weight: var(--font-weight-semibold);
+
+			&.lambda-breadcrumb-item-radius-default {
+				border-radius: var(--radius-none) var(--radius-selector) var(--radius-selector) var(--radius-none);
+			}
 
 			&.lambda-breadcrumb-item-radius-none {
 				border-radius: var(--radius-none);

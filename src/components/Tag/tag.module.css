@@ -555,6 +555,10 @@
 	}
 }
 
+.lambda-tag-radius-default {
+	border-radius: var(--radius-selector);
+}
+
 .lambda-tag-radius-none {
 	border-radius: var(--radius-none);
 }

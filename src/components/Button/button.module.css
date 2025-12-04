@@ -1008,6 +1008,10 @@
 	}
 }
 
+.lambda-btn-radius-default {
+	border-radius: var(--radius-field);
+}
+
 .lambda-btn-radius-none {
 	border-radius: var(--radius-none);
 }

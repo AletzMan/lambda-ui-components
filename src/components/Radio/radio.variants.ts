@@ -32,6 +32,7 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 			outline: styles["lambda-radio-group-outline"],
 		},
 		radius: {
+			default: styles["lambda-radio-group-radius-default"],
 			none: styles["lambda-radio-group-radius-none"],
 			tiny: styles["lambda-radio-group-radius-tiny"],
 			small: styles["lambda-radio-group-radius-small"],
@@ -43,7 +44,7 @@ export const RadioGroups = cva(styles["lambda-radio-group"], {
 	compoundVariants: [],
 	defaultVariants: {
 		orientation: "vertical",
-		radius: "tiny",
+		radius: "default",
 		size: "small",
 		type: "radio",
 		variant: "solid",
@@ -179,6 +180,7 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 			card: styles["lambda-radio-wrapper-card"],
 		},
 		radius: {
+			default: styles["lambda-radio-wrapper-radius-default"],
 			none: styles["lambda-radio-wrapper-radius-none"],
 			tiny: styles["lambda-radio-wrapper-radius-tiny"],
 			small: styles["lambda-radio-wrapper-radius-small"],
@@ -202,7 +204,7 @@ export const wrapper = cva(styles["lambda-radio-wrapper"], {
 		size: "small",
 		type: "radio",
 		variant: "solid",
-		radius: "tiny",
+		radius: "default",
 		disabled: false,
 		checked: false,
 	},
@@ -262,6 +264,7 @@ export const labelName = cva(styles["lambda-radio-label"], {
 			card: styles["lambda-radio-label-card"],
 		},
 		radius: {
+			default: styles["lambda-radio-label-radius-default"],
 			none: styles["lambda-radio-label-radius-none"],
 			tiny: styles["lambda-radio-label-radius-tiny"],
 			small: styles["lambda-radio-label-radius-small"],
@@ -304,7 +307,7 @@ export const labelName = cva(styles["lambda-radio-label"], {
 		type: "radio",
 		size: "small",
 		orientation: "vertical",
-		radius: "tiny",
+		radius: "default",
 		color: "neutral",
 		typeContent: "label",
 	},

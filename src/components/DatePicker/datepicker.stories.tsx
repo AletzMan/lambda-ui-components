@@ -24,7 +24,7 @@ const meta: Meta<typeof DatePicker> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 		},
 		displayFormat: {
 			control: "inline-radio",

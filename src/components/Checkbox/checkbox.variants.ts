@@ -24,6 +24,7 @@ export const checkboxWrapperVariants = cva(styles["lambda-checkbox-wrapper"], {
 			outline: styles["lambda-checkbox-wrapper-outline"],
 		},
 		radius: {
+			default: styles["lambda-checkbox-wrapper-radius-default"],
 			none: styles["lambda-checkbox-wrapper-radius-none"],
 			tiny: styles["lambda-checkbox-wrapper-radius-tiny"],
 			small: styles["lambda-checkbox-wrapper-radius-small"],
@@ -57,11 +58,13 @@ export const checkboxWrapperVariants = cva(styles["lambda-checkbox-wrapper"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "solid",
-		radius: "tiny",
+		radius: "small",
 		color: "primary",
 		disabled: false,
 		checked: false,
 		invalid: false,
+		join: false,
+		joinposition: "single",
 	},
 });
 

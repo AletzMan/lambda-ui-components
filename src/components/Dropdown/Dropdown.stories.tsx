@@ -27,7 +27,7 @@ const meta: Meta<typeof Dropdown> = {
 		},
 		radius: {
 			control: "inline-radio",
-			options: ["none", "tiny", "small", "medium", "large", "full"],
+			options: ["default", "none", "tiny", "small", "medium", "large", "full"],
 			description: "Button radius",
 		},
 		disabled: {

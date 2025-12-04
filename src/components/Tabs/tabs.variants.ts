@@ -25,6 +25,7 @@ export const tabWrapper = cva(styles["tab-wrapper"], {
 			info: styles["tab-wrapper-info"],
 		},
 		radius: {
+			default: styles["tab-wrapper-radius-default"],
 			none: styles["tab-wrapper-radius-none"],
 			tiny: styles["tab-wrapper-radius-tiny"],
 			small: styles["tab-wrapper-radius-small"],
@@ -37,7 +38,7 @@ export const tabWrapper = cva(styles["tab-wrapper"], {
 		size: "medium",
 		variant: "underline",
 		color: "neutral",
-		radius: "tiny",
+		radius: "default",
 	},
 });
 
@@ -65,6 +66,7 @@ export const tabContainer = cva(styles["tab-container"], {
 			info: styles["tab-container-info"],
 		},
 		radius: {
+			default: styles["tab-container-radius-default"],
 			none: styles["tab-container-radius-none"],
 			tiny: styles["tab-container-radius-tiny"],
 			small: styles["tab-container-radius-small"],
@@ -76,7 +78,7 @@ export const tabContainer = cva(styles["tab-container"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "underline",
-		radius: "small",
+		radius: "default",
 		color: "neutral",
 	},
 });
@@ -105,6 +107,7 @@ export const tabItem = cva(styles["tab-item"], {
 			info: styles["tab-item-info"],
 		},
 		radius: {
+			default: styles["tab-item-radius-default"],
 			none: styles["tab-item-radius-none"],
 			tiny: styles["tab-item-radius-tiny"],
 			small: styles["tab-item-radius-small"],
@@ -121,7 +124,7 @@ export const tabItem = cva(styles["tab-item"], {
 		size: "medium",
 		variant: "underline",
 		disabled: false,
-		radius: "small",
+		radius: "default",
 		color: "neutral",
 	},
 });
@@ -171,6 +174,7 @@ export const tabLabel = cva(styles["tab-label"], {
 			false: styles["tab-label-not-disabled"],
 		},
 		radius: {
+			default: styles["tab-label-radius-default"],
 			none: styles["tab-label-radius-none"],
 			tiny: styles["tab-label-radius-tiny"],
 			small: styles["tab-label-radius-small"],
@@ -195,7 +199,7 @@ export const tabLabel = cva(styles["tab-label"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "underline",
-		radius: "small",
+		radius: "default",
 		disabled: false,
 		color: "neutral",
 		selected: false,
@@ -211,6 +215,7 @@ export const tabCurrent = cva(styles["tab-current"], {
 			border: styles["tab-current-border"],
 		},
 		radius: {
+			default: styles["tab-current-radius-default"],
 			none: styles["tab-current-radius-none"],
 			tiny: styles["tab-current-radius-tiny"],
 			small: styles["tab-current-radius-small"],
@@ -230,7 +235,7 @@ export const tabCurrent = cva(styles["tab-current"], {
 	},
 	defaultVariants: {
 		variant: "underline",
-		radius: "small",
+		radius: "default",
 		color: "neutral",
 	},
 });
@@ -263,6 +268,7 @@ export const tabContent = cva(styles["tab-content"], {
 			info: styles["tab-content-info"],
 		},
 		radius: {
+			default: styles["tab-content-radius-default"],
 			none: styles["tab-content-radius-none"],
 			tiny: styles["tab-content-radius-tiny"],
 			small: styles["tab-content-radius-small"],
@@ -280,7 +286,7 @@ export const tabContent = cva(styles["tab-content"], {
 		variant: "underline",
 		disabled: false,
 		color: "neutral",
-		radius: "small",
+		radius: "default",
 		selected: false,
 	},
 });

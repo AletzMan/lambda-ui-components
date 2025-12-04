@@ -18,6 +18,7 @@ export const alertVariants = cva(styles["lambda-alert"], {
 			info: styles["lambda-alert-info"],
 		},
 		radius: {
+			default: styles["lambda-alert-radius-default"],
 			none: styles["lambda-alert-radius-none"],
 			tiny: styles["lambda-alert-radius-tiny"],
 			small: styles["lambda-alert-radius-small"],
@@ -35,7 +36,7 @@ export const alertVariants = cva(styles["lambda-alert"], {
 		size: "medium",
 		color: "neutral",
 		variant: "soft",
-		radius: "small",
+		radius: "default",
 	},
 });
 

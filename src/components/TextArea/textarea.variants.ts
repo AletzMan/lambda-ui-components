@@ -10,6 +10,7 @@ export const textareaVariants = cva(styles[`lambda-textarea`], {
 			large: styles["lambda-textarea-large"],
 		},
 		radius: {
+			default: styles["lambda-textarea-radius-default"],
 			none: styles["lambda-textarea-radius-none"],
 			tiny: styles["lambda-textarea-radius-tiny"],
 			small: styles["lambda-textarea-radius-small"],
@@ -32,7 +33,7 @@ export const textareaVariants = cva(styles[`lambda-textarea`], {
 	},
 	defaultVariants: {
 		variant: "outline",
-		radius: "small",
+		radius: "default",
 		disabled: false,
 		size: "medium",
 		invalid: false,
@@ -42,6 +43,7 @@ export const textareaVariants = cva(styles[`lambda-textarea`], {
 export const labelStringVariants = cva(styles[`lambda-textarea-label`], {
 	variants: {
 		radius: {
+			default: styles["lambda-textarea-label-radius-default"],
 			none: styles["lambda-textarea-label-radius-none"],
 			tiny: styles["lambda-textarea-label-radius-tiny"],
 			small: styles["lambda-textarea-label-radius-small"],
@@ -62,7 +64,7 @@ export const labelStringVariants = cva(styles[`lambda-textarea-label`], {
 	},
 	defaultVariants: {
 		disabled: false,
-		radius: "small",
+		radius: "default",
 		size: "medium",
 	},
 });

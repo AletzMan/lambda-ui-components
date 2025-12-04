@@ -4,6 +4,7 @@ import styles from "./tooltip.module.css";
 export const tooltipContainer = cva(styles["lambda-tooltip-container"], {
 	variants: {
 		radius: {
+			default: styles["lambda-tooltip-container-radius-default"],
 			none: styles["lambda-tooltip-container-radius-none"],
 			tiny: styles["lambda-tooltip-container-radius-tiny"],
 			small: styles["lambda-tooltip-container-radius-small"],
@@ -32,7 +33,7 @@ export const tooltipContainer = cva(styles["lambda-tooltip-container"], {
 		},
 	},
 	defaultVariants: {
-		radius: "tiny",
+		radius: "default",
 		color: "neutral",
 		position: "top-center",
 	},

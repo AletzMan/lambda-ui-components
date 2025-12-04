@@ -184,6 +184,10 @@
 		font-size: var(--font-size-md);
 	}
 
+	&.select-label-radius-default {
+		padding: 0 0 0 calc(var(--radius-field) * 2);
+	}
+
 	&.select-label-radius-none {
 		padding: 0 0 0 var(--spacing-none);
 	}
@@ -314,6 +318,10 @@
 		}
 	}
 
+	&.select-btn-radius-default {
+		border-radius: var(--radius-field);
+	}
+
 	&.select-btn-radius-none {
 		border-radius: var(--radius-none);
 	}
@@ -436,7 +444,7 @@
 	overflow: hidden;
 	overflow-y: auto;
 	font-family: var(--font-family);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-box);
 	background-color: var(--background-color);
 	border: var(--border-width-xs) solid var(--border-color);
 	z-index: 9999;
@@ -534,7 +542,7 @@
 	place-items: center center;
 	gap: 0.5em;
 	color: var(--foreground-secondary-color);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-field);
 	list-style: none;
 	cursor: pointer;
 

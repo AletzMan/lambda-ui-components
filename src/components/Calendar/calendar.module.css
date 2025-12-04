@@ -14,6 +14,7 @@
 	font-family: var(--font-family);
 	padding: var(--spacing-md);
 	width: 100%;
+	border-radius: var(--radius-box);
 }
 
 .lambda-calendar-header {
@@ -83,7 +84,7 @@
 	max-height: 110px;
 	background-color: var(--surface-b);
 	color: var(--foreground-color);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-field);
 	border: var(--border-width-xs) solid var(--border-color);
 	transition: background 0.2s, color 0.2s;
 
@@ -119,7 +120,7 @@
 		background-color: var(--surface-b);
 		/*border-left: var(--border-width-xs) solid var(--border-color);
 		border-bottom: var(--border-width-xs) solid var(--border-color);*/
-		border-radius: var(--radius-none) var(--radius-xs) var(--radius-none) var(--radius-xs);
+		border-radius: var(--radius-none) var(--radius-field) var(--radius-none) var(--radius-xs);
 		text-align: center;
 	}
 
@@ -215,25 +216,6 @@
 	cursor: not-allowed;
 }
 
-.lambda-calendar-radius-none {
-	border-radius: var(--radius-none);
-}
-
-.lambda-calendar-radius-tiny {
-	border-radius: var(--radius-xs);
-}
-
-.lambda-calendar-radius-small {
-	border-radius: var(--radius-sm);
-}
-
-.lambda-calendar-radius-medium {
-	border-radius: var(--radius-md);
-}
-
-.lambda-calendar-radius-large {
-	border-radius: var(--radius-lg);
-}
 
 /* Colores y variantes pueden extenderse según tus tokens */
 .lambda-calendar-color-primary {

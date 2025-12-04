@@ -29,6 +29,7 @@ export const button = cva(styles[`lambda-btn`], {
 			large: styles[`lambda-btn-large`],
 		},
 		radius: {
+			default: styles[`lambda-btn-radius-default`],
 			none: styles[`lambda-btn-radius-none`],
 			tiny: styles[`lambda-btn-radius-tiny`],
 			small: styles[`lambda-btn-radius-small`],
@@ -71,13 +72,14 @@ export const button = cva(styles[`lambda-btn`], {
 		color: "primary",
 		variant: "solid",
 		size: "medium",
-		radius: "small",
+		radius: "default",
 		block: false,
 		isCircle: false,
 		disabled: false,
 		iconPosition: "left",
 		loading: false,
 		joinposition: "single",
+		onlyIcon: false,
 	},
 });
 

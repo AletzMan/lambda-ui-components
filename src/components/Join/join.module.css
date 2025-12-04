@@ -18,6 +18,10 @@
 	height: var(--size-5xl);
 }
 
+.lambda-join-radius-default {
+	border-radius: var(--radius-field);
+}
+
 .lambda-join-radius-none {
 	border-radius: var(--radius-none);
 }

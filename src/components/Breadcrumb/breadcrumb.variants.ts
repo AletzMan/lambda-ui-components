@@ -17,6 +17,7 @@ export const variantBreadcrumb = cva(styles["lambda-breadcrumb"], {
 			stepped: styles["lambda-breadcrumb-stepped"],
 		},
 		radius: {
+			default: styles["lambda-breadcrumb-radius-default"],
 			none: styles["lambda-breadcrumb-radius-none"],
 			tiny: styles["lambda-breadcrumb-radius-tiny"],
 			small: styles["lambda-breadcrumb-radius-small"],
@@ -28,7 +29,7 @@ export const variantBreadcrumb = cva(styles["lambda-breadcrumb"], {
 	defaultVariants: {
 		size: "small",
 		variant: "chevron",
-		radius: "small",
+		radius: "default",
 	},
 });
 
@@ -41,6 +42,7 @@ export const variantBreadcrumbItem = cva(styles["lambda-breadcrumb-item"], {
 			large: styles["lambda-breadcrumb-item-large"],
 		},
 		radius: {
+			default: styles["lambda-breadcrumb-item-radius-default"],
 			none: styles["lambda-breadcrumb-item-radius-none"],
 			tiny: styles["lambda-breadcrumb-item-radius-tiny"],
 			small: styles["lambda-breadcrumb-item-radius-small"],
@@ -68,6 +70,7 @@ export const variantBreadcrumbItem = cva(styles["lambda-breadcrumb-item"], {
 	defaultVariants: {
 		size: "small",
 		variant: "chevron",
+		radius: "default",
 		color: "primary",
 	},
 });
@@ -119,6 +122,7 @@ export const variantBreadcrumbContainer = cva(styles["lambda-breadcrumb-containe
 export const variantBreadcrumbEllipsis = cva(styles["lambda-breadcrumb-ellipsis"], {
 	variants: {
 		radius: {
+			default: styles["lambda-breadcrumb-ellipsis-radius-default"],
 			none: styles["lambda-breadcrumb-ellipsis-radius-none"],
 			tiny: styles["lambda-breadcrumb-ellipsis-radius-tiny"],
 			small: styles["lambda-breadcrumb-ellipsis-radius-small"],
@@ -135,6 +139,7 @@ export const variantBreadcrumbEllipsis = cva(styles["lambda-breadcrumb-ellipsis"
 	},
 	defaultVariants: {
 		size: "small",
+		radius: "default",
 	},
 });
 

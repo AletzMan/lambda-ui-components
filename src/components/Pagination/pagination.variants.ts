@@ -42,6 +42,7 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
 			bordered: styles["lambda-pagination-button-bordered"],
 		},
 		radius: {
+			default: styles["lambda-pagination-button-radius-default"],
 			none: styles["lambda-pagination-button-radius-none"],
 			tiny: styles["lambda-pagination-button-radius-tiny"],
 			small: styles["lambda-pagination-button-radius-small"],
@@ -88,7 +89,7 @@ export const paginationButton = cva(styles["lambda-pagination-button"], {
 	defaultVariants: {
 		size: "medium",
 		variant: "outline",
-		radius: "small",
+		radius: "default",
 		isActive: false,
 		disabled: false,
 		isNavigation: false,

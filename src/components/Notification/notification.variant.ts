@@ -11,6 +11,7 @@ export const notificationVariants = cva(styles["notification"], {
 			danger: styles["notification-danger"],
 		},
 		radius: {
+			default: styles["notification-radius-default"],
 			none: styles["notification-radius-none"],
 			tiny: styles["notification-radius-tiny"],
 			small: styles["notification-radius-small"],
@@ -37,6 +38,7 @@ export const notificationVariants = cva(styles["notification"], {
 		notificationType: "neutral",
 		placement: "top-center",
 		variant: "themed",
+		radius: "default",
 	},
 });
 

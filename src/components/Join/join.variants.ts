@@ -10,6 +10,7 @@ export const join = cva(styles["lambda-join"], {
 			large: styles["lambda-join-large"],
 		},
 		radius: {
+			default: styles["lambda-join-radius-default"],
 			none: styles["lambda-join-radius-none"],
 			tiny: styles["lambda-join-radius-tiny"],
 			small: styles["lambda-join-radius-small"],
@@ -34,7 +35,7 @@ export const join = cva(styles["lambda-join"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		radius: "tiny",
+		radius: "default",
 		invalid: false,
 		disabled: false,
 		hasElements: "none",
