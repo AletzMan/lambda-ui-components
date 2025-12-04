@@ -5,7 +5,6 @@ import styles from "./dialog.module.css";
 import { DialogProps, TransitionOptions } from "./dialog.types";
 import { dialogOverlayVariants, dialogPanelVariants } from "./dialog.variants";
 import { XIcon } from "lucide-react";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { Button } from "../Button/Button";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -52,7 +51,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 		const [isDragging, setIsDragging] = useState(false);
 		const [offset, setOffset] = useState({ x: 0, y: 0 });
 		const [startPos, setStartPos] = useState({ x: 0, y: 0 });
-		const { radiusBox } = useUIConfig();
 		const [mounted, setMounted] = useState(false);
 		const [container, setContainer] = useState<HTMLElement | null>(null);
 
@@ -260,7 +258,6 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 								dialogPanelVariants({
 									isModal: modalAnimation,
 									isDraggable,
-									radius: radiusBox,
 								}),
 								panelClassName
 							)}

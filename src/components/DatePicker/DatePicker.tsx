@@ -21,10 +21,7 @@ import {
 } from "lucide-react";
 import { Button } from "../Button/Button";
 import { Divider } from "../Divider/Divider";
-import {
-	useTranslation,
-	useUIConfig,
-} from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { Tooltip } from "../ToolTip/ToolTip";
 import { Join } from "../Join/Join";
 import { Input } from "../Input/Input";
@@ -91,8 +88,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 		const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef, handleKeyDown } = usePopover({
 			y: 3,
 		});
-		const { radiusField } = useUIConfig();
-		const radiusValue = radius || radiusField;
 
 		const { t } = useTranslation();
 
@@ -230,7 +225,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 				<div
 					ref={ref}
 					{...props}
-					className={datepickerVariants({ size, radius: radiusValue, variant, type, invalid })}
+					className={datepickerVariants({ size, radius, variant, type, invalid })}
 				>
 					<header className={styles["lambda-datepicker-header"]}>
 						<Tooltip content={t("date-picker.prev-year")} color="neutral">
@@ -553,7 +548,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 			<div className={datepickerWrapperVariants({ size, type, hasLabel: label !== undefined, disabled })}>
 				{type === "inline" && (
 					<div
-						className={datepickerInlineSectionVariants({ radius: radiusValue, invalid, variant })}
+						className={datepickerInlineSectionVariants({ radius, invalid, variant })}
 					>
 						<header>
 							<CalendarIcon />
@@ -596,7 +591,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 				)}
 				{(type === "dropdown" || type === "modal") && (
 					<div className={datepickerContainerVariants({ invalid })}>
-						<Join size={size} radius={radiusValue} ref={triggerRef as Ref<HTMLDivElement>} disabled={disabled}>
+						<Join size={size} radius={radius} ref={triggerRef as Ref<HTMLDivElement>} disabled={disabled}>
 							<Input
 								value={value?.toLocaleDateString(t("date-picker.code"), {
 									dateStyle: displayFormat,

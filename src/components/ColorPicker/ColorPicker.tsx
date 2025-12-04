@@ -27,10 +27,7 @@ import useEyeDropper from "use-eye-dropper";
 // Importa el componente Slider
 import { Slider } from "../Slider/Slider";
 import { Tooltip } from "../ToolTip/ToolTip";
-import {
-	useTranslation,
-	useUIConfig,
-} from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { createPortal } from "react-dom";
 import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
@@ -223,7 +220,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			handleKeyDown,
 		} = usePopover({ x: -3, y: -39 });
 		const { t } = useTranslation();
-		const { radiusField, radiusBox } = useUIConfig();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
 		const [format, setFormat] = useState<"hex" | "hsl" | "rgb" | "rgba" | "hsla">(
@@ -610,7 +606,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		return (
 			<div
 				className={clsx(
-					colorpickerVariants({ size, variant, radius: radiusField, disabled, showText }),
+					colorpickerVariants({ size, variant, disabled, showText }),
 					className
 				)}
 				ref={ref}
@@ -618,7 +614,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 				role="colorpicker"
 			>
 				<div
-					className={clsx(colorpickerGroupVariants({ size, radius: radiusField }))}
+					className={clsx(colorpickerGroupVariants({ size }))}
 					ref={triggerRef as RefObject<HTMLDivElement>}
 				>
 					<div className={styles["lambda-colorpicker-border"]}></div>
@@ -648,7 +644,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 								}
 								transition={{ type: "spring", stiffness: 300, damping: 24 }}
 								className={clsx(
-									colorpickerBoxVariants({ radius: radiusBox, position: menuPosition.position }),
+									colorpickerBoxVariants({ position: menuPosition.position }),
 									{
 										[styles["lambda-colorpicker-box-view"]]: viewPicker,
 									}

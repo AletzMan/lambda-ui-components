@@ -14,7 +14,6 @@ import clsx from "clsx";
 import { useJoin } from "../Join/Join";
 import { dropdownItemVariants, dropdownMenuVariants, dropdownVariants } from "./dropdown.variants";
 import { DropdownProps } from "./dropdown.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { ChevronDown } from "lucide-react";
 import { createPortal } from "react-dom";
 import { usePopover } from "../../_internal/hooks/usePopover";
@@ -23,9 +22,9 @@ import { Divider } from "../Divider/Divider";
 
 const DropdownContext = createContext<
 	| (DropdownProps & {
-			setIsOpen?: (value: boolean) => void;
-			highlightedIndex?: number;
-	  })
+		setIsOpen?: (value: boolean) => void;
+		highlightedIndex?: number;
+	})
 	| undefined
 >(undefined);
 
@@ -41,7 +40,6 @@ const isClient = typeof window !== "undefined";
 const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 	({ className, variant, size, radius, icon, text, joinposition, children, ...props }, ref) => {
 		const itemCallbacks = useRef<Array<(() => void) | undefined>>([]);
-		const { radiusField } = useUIConfig();
 		const {
 			isOpen,
 			setIsOpen,
@@ -51,7 +49,6 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 			handleKeyDown,
 			highlightedIndex,
 		} = usePopover<HTMLDivElement, HTMLDivElement>({ x: 0, y: 3 }, itemCallbacks.current);
-		const radiusValue = radius || radiusField;
 		let contextSize, contextRadius, contextDisabled;
 
 		try {
@@ -61,7 +58,7 @@ const DropdownRoot = forwardRef<HTMLButtonElement, DropdownProps>(
 			contextDisabled = context.disabled;
 		} catch (_e) {
 			contextSize = size;
-			contextRadius = radiusValue;
+			contextRadius = radius;
 			contextDisabled = props.disabled;
 		}
 		const renderChildren: React.ReactNode[] = [];
@@ -227,8 +224,8 @@ const DropdownItem = ({
 		<RenderItem {...props}>
 			{isValidElement<SVGAElement>(icon)
 				? cloneElement(icon, {
-						className: clsx(styles["lambda-dropdown-item-icon"]),
-				  })
+					className: clsx(styles["lambda-dropdown-item-icon"]),
+				})
 				: undefined}
 			{text && <span className={clsx(styles["lambda-dropdown-item-label"])}>{text}</span>}
 			{shortcutKeys && (

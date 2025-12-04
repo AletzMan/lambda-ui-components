@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Select } from "./Select";
 import { SelectProps } from "./select.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { useState } from "react";
 
 const meta: Meta<typeof Select> = {
 	title: "Components/Select",
@@ -61,14 +60,11 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" }) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Select"
 			subtitle={args.type}
 			color={args.color?.toString() || ""}
-			onChangeStyleSource={(value) => setCurrentStyle(value)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -82,19 +78,16 @@ const Template = (args: SelectProps & { type: "Normal" | "Description" | "Icon" 
 					{...args}
 					variant="outline"
 					label="Outline"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 				<Select
 					{...args}
 					variant="soft"
 					label="Soft"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 				<Select
 					{...args}
 					variant="underline"
 					label="Underline"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 			</div>
 		</ContainerComponent>

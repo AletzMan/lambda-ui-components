@@ -6,21 +6,6 @@ import fr from "./fr-FR.json";
 const translations = { en, es, fr };
 
 type Dictionary = typeof translations;
-
-type LambdaRadiusBox = "tiny" | "small" | "medium" | "large" | "none" | null | undefined;
-
-type LambdaRadiusField = "tiny" | "small" | "medium" | "large" | "full" | "none" | null | undefined;
-
-type LambdaRadiusSelector =
-	| "tiny"
-	| "small"
-	| "medium"
-	| "large"
-	| "full"
-	| "none"
-	| null
-	| undefined;
-
 //
 // Contexto para traducciones
 //
@@ -38,50 +23,15 @@ export const useTranslation = () => {
 };
 
 //
-// Contexto para UI config
-//
-interface UIConfigContextProps {
-	/**
-	 * Define the radius(tiny, small, medium, large, none) of components that have a radius.
-	 * Apply to components (Card, Modal, Drawer, Alert, Notification,  etc).
-	 * @default "small"
-	 */
-	radiusBox?: LambdaRadiusBox;
-	/**
-	 * Define the radius(tiny, small, medium, large, full, none) of components that have a radius.
-	 * Apply to components (Button, Input, InputNumber, Select, Tab, Pagination, etc).
-	 * @default "tiny"
-	 */
-	radiusField?: LambdaRadiusField;
-	/**
-	 * Define the radius(tiny, small, medium, large, full, none) of components that have a radius.
-	 * Apply to components (  Switch, Checkbox, Slider, Tag, Badge, Breadcrumb  etc).
-	 * @default "small"
-	 */
-	radiusSelector?: LambdaRadiusSelector;
-}
-
-const UIConfigContext = createContext<UIConfigContextProps | undefined>(undefined);
-
-export const useUIConfig = () => {
-	const ctx = useContext(UIConfigContext);
-	if (!ctx) throw new Error("useUIConfig must be used within UIConfigProvider");
-	return ctx;
-};
-
-//
 // Providers combinados
 //
-interface ConfigProviderProps extends UIConfigContextProps {
+interface ConfigProviderProps {
 	lang: keyof Dictionary;
 }
 
 export const LambdaConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = ({
 	children,
 	lang,
-	radiusBox = "small",
-	radiusField = "tiny",
-	radiusSelector = "small",
 }) => {
 	const dict = translations[lang];
 
@@ -102,14 +52,8 @@ export const LambdaConfigProvider: FC<PropsWithChildren<ConfigProviderProps>> = 
 
 	// Valores memoizados para no re-renderizar innecesariamente
 	const translationValue = useMemo(() => ({ lang, t }), [lang, t]);
-	const uiConfigValue = useMemo(
-		() => ({ radiusField, radiusBox, radiusSelector }),
-		[radiusField, radiusBox, radiusSelector]
-	);
 
 	return (
-		<TranslationContext.Provider value={translationValue}>
-			<UIConfigContext.Provider value={uiConfigValue}>{children}</UIConfigContext.Provider>
-		</TranslationContext.Provider>
+		<TranslationContext.Provider value={translationValue}>{children}</TranslationContext.Provider>
 	);
 };

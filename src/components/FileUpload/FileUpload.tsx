@@ -27,10 +27,7 @@ import { FileUploadProps, SelectedFileData } from "./file-upload-types";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { formatBytes } from "../../_util/helpers";
-import {
-	useTranslation,
-	useUIConfig,
-} from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 	(
@@ -67,7 +64,6 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 		// Estado para efecto visual de arrastrar (solo para type="dropzone")
 		const [isDragging, setIsDragging] = useState(false);
 		const { t } = useTranslation();
-		const { radiusBox } = useUIConfig();
 
 		// Refs para elementos DOM
 		const fileInputRef = useRef<HTMLInputElement>(null);
@@ -324,7 +320,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 			interactiveContentJSX = (
 				<button
 					ref={buttonRef}
-					className={clsx(buttonFileUpload({ size, radius: radiusBox, disabled, invalid }), {
+					className={clsx(buttonFileUpload({ size, disabled, invalid }), {
 						[styles["lambda-fileup-button-upload-hasFiles"]]: hasFiles,
 					})}
 					onClick={handleInteractiveAreaClick}
@@ -381,7 +377,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				{type === "dropzone" ? (
 					<div
 						ref={dropZoneRef}
-						className={dropZone({ size, radius: radiusBox, disabled, invalid, isDragging })}
+						className={dropZone({ size, disabled, invalid, isDragging })}
 						onClick={handleInteractiveAreaClick}
 						onDragOver={handleDragOver}
 						onDragLeave={handleDragLeave}
@@ -422,7 +418,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
 				) : (
 					/* --- Tipo Button --- */
 					// Contenedor principal para el botón y el contenido al lado/abajo
-					<div className={clsx(fileUploadLayout({ radius: radiusBox, disabled, invalid }))}>
+					<div className={clsx(fileUploadLayout({ disabled, invalid }))}>
 						{/* Contenedor para el botón y el contenido al lado (nombre/preview de archivo único o contador) */}
 						{/* Este contenedor es flex-row para alinear horizontalmente el botón y el display */}
 						<div className={clsx(styles["lambda-fileup-button-container"])}>

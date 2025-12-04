@@ -23,7 +23,6 @@ import {
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { useNumberInput } from "./hooks/useNumberInput";
 import { InputNumberProps } from "./inputnumber.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
 
 export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
@@ -52,17 +51,16 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		},
 		ref
 	) => {
-		const { radiusField } = useUIConfig();
 		let radiusValue, sizeValue, disabledValue;
 		try {
 			const { radius: radiusJoin, size: sizeJoin, disabled: disabledJoin } = useJoin();
-			radiusValue = radiusJoin || radiusField || radiusValue;
-			sizeValue = sizeJoin || sizeValue;
+			radiusValue = radiusJoin || radius;
+			sizeValue = sizeJoin || size;
 			disabledValue = disabledJoin || disabled;
 		} catch (error) {
-			radiusValue = radius || radiusField;
-			sizeValue = size || sizeValue;
-			disabledValue = disabled || disabledValue;
+			radiusValue = radius;
+			sizeValue = size;
+			disabledValue = disabled;
 		}
 		const {
 			displayedValue,

@@ -16,7 +16,6 @@ import { InvalidMessage } from "../../_internal/components/InvalidMessage/Invali
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { buttonPassword, input, labels, lambdaInput, textInput } from "./input.variants";
 import { InputProps } from "./input.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { motion } from "framer-motion";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -61,8 +60,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		const [isLabelFloating, setIsLabelFloating] = useState(false);
 		const [isFocused, setIsFocused] = useState(false);
 		const inputId = useId();
-		const { radiusField } = useUIConfig();
-		const radiusValue = contextRadius ?? radiusField;
 		const prefixRef = useRef<HTMLDivElement>(null);
 
 		const errorId = errorMessage ? `${inputId}-error` : undefined;
@@ -122,22 +119,22 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			contextSize === "tiny"
 				? 10
 				: contextSize === "small"
-				? 10
-				: contextSize === "medium"
-				? 20
-				: contextSize === "large"
-				? 28
-				: 28;
+					? 10
+					: contextSize === "medium"
+						? 20
+						: contextSize === "large"
+							? 28
+							: 28;
 		const heightInputSize =
 			contextSize === "tiny"
 				? 14
 				: contextSize === "small"
-				? 16
-				: contextSize === "medium"
-				? 14
-				: contextSize === "large"
-				? 14
-				: 6;
+					? 16
+					: contextSize === "medium"
+						? 14
+						: contextSize === "large"
+							? 14
+							: 6;
 		const labelVariants = {
 			default: {
 				y: `calc(100% - ${heightInputSize}px)`,
@@ -163,7 +160,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			<div
 				className={clsx(
 					lambdaInput({
-						radius: radiusValue,
+						radius: contextRadius,
 						disabled: contextDisabled,
 						size: contextSize,
 						invalid,
@@ -185,15 +182,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						transition={{ type: "spring", stiffness: 400, damping: 28 }}
 						className={clsx(
 							labels({
-								radius: radiusValue,
+								radius: contextRadius,
 								size: contextSize,
 								hasElements: prefix
 									? "first"
 									: suffix
-									? "last"
-									: prefix && suffix
-									? "both"
-									: "none",
+										? "last"
+										: prefix && suffix
+											? "both"
+											: "none",
 							}),
 							{
 								[styles["lambda-input-label-floating"]]: floatingLabel && isLabelFloating,
@@ -212,15 +209,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						aria-label="ComponentLabel"
 						className={clsx(
 							labels({
-								radius: radiusValue,
+								radius: contextRadius,
 								size: contextSize,
 								hasElements: prefix
 									? "first"
 									: suffix
-									? "last"
-									: prefix && suffix
-									? "both"
-									: "none",
+										? "last"
+										: prefix && suffix
+											? "both"
+											: "none",
 							}),
 							{ [styles["lambda-input-label-required"]]: required }
 						)}
@@ -242,7 +239,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 						input({
 							variant,
 							disabled: contextDisabled,
-							radius: radiusValue,
+							radius: contextRadius,
 							size: contextSize,
 							invalid,
 							type,

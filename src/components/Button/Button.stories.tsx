@@ -80,14 +80,11 @@ type Story = StoryObj<typeof Button>;
 const buttonColors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const Template = (args: ButtonProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	const [viewIcon, setViewIcon] = useState<boolean>(false);
 	return (
 		<ContainerComponent
 			title="Button"
 			subtitle={args.variant?.toString() || ""}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
-			styleSource={currentStyle}
 		>
 			<Switch checked={viewIcon} onChange={() => setViewIcon(!viewIcon)} label="View Icon" />
 			<div
@@ -116,7 +113,6 @@ const Template = (args: ButtonProps) => {
 						style={{
 							textTransform: "capitalize",
 						}}
-						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				))}
 			</div>

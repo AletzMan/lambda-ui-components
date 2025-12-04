@@ -3,7 +3,6 @@ import { Tag } from "./Tag";
 import { BadgeCheck } from "lucide-react";
 import { TagProps } from "./tag.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { useState } from "react";
 
 const meta: Meta<typeof Tag> = {
 	title: "Components/Tag",
@@ -54,13 +53,10 @@ type Story = StoryObj<typeof Tag>;
 const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: TagProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Tag"
 			subtitle={args.variant?.toString() || ""}
-			onChangeStyleSource={(value) => setCurrentStyle(value as "global" | "local")}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -76,7 +72,6 @@ const Template = (args: TagProps) => {
 						key={color}
 						{...args}
 						color={color as TagProps["color"]}
-						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				))}
 			</div>

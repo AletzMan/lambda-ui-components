@@ -4,7 +4,7 @@ import { RadioGroup, Radio } from "./Radio";
 import { LambdaConfigProvider } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-	<LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
+	<LambdaConfigProvider lang="es"  >
 		{children}
 	</LambdaConfigProvider>
 );

@@ -12,7 +12,6 @@ import styles from "./join.module.css";
 import clsx from "clsx";
 import { VariantProps } from "class-variance-authority";
 import { join, JoinVariants, joinWrapper } from "./join.variants";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import React from "react";
 
 type JoinContextType = {
@@ -32,16 +31,14 @@ export interface JoinProps extends VariantProps<typeof join>, RefAttributes<HTML
 
 export const Join = forwardRef<HTMLDivElement, PropsWithChildren<JoinProps>>(
 	({ children, size, radius, disabled }, ref) => {
-		const { radiusField } = useUIConfig();
-		const radiusValue = radius ?? radiusField;
 
 		const contextValue = useMemo(
 			() => ({
 				size: size ?? "medium",
-				radius: radiusValue,
+				radius,
 				disabled: disabled ?? false,
 			}),
-			[size, radiusValue, disabled]
+			[size, radius, disabled]
 		);
 
 		const childrenConAtributo = React.Children.map(children, (child, index) => {
@@ -68,7 +65,7 @@ export const Join = forwardRef<HTMLDivElement, PropsWithChildren<JoinProps>>(
 							join({
 								size,
 								disabled,
-								radius: radiusValue,
+								radius,
 							})
 						)}
 					>

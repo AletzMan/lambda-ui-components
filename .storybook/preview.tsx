@@ -33,7 +33,7 @@ const ThemeDecorator = (Story: any, context: any) => {
 	}, [theme, Story, context]);
 
 	return (
-		<LambdaConfigProvider lang="en" radiusField="tiny" radiusBox="small" radiusSelector="small">
+		<LambdaConfigProvider lang="en">
 			<ThemeProvider defaultTheme="dark" lightTheme="retro">
 				<Story />
 			</ThemeProvider>

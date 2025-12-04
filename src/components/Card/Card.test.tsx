@@ -5,7 +5,7 @@ import { LambdaConfigProvider } from "../../_internal/hooks/translation/LambdaCo
 import React from "react";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-	<LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
+	<LambdaConfigProvider lang="es" >
 		{children}
 	</LambdaConfigProvider>
 );

@@ -48,13 +48,10 @@ const tabs = [
 ];
 
 const Template = (args: TabProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Tab"
 			subtitle={args.variant || ""}
-			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -66,7 +63,7 @@ const Template = (args: TabProps) => {
 					width: "100%",
 				}}
 			>
-				<Tabs {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+				<Tabs {...args}  >
 					<Tabs.List>
 						{tabs.map((tab, i) => (
 							<Tabs.Tab key={i} title={tab.title} disabled={i === 2} icon={<Code />} />

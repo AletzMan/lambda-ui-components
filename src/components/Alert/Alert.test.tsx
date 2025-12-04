@@ -4,7 +4,7 @@ import { Alert } from "./Alert";
 import { LambdaConfigProvider } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-	<LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
+	<LambdaConfigProvider lang="es"  >
 		{children}
 	</LambdaConfigProvider>
 );
@@ -61,7 +61,7 @@ describe("Alert", () => {
 		expect(alertDiv).toHaveClass("my-alert");
 		expect(
 			alertDiv.style.backgroundColor === "red" ||
-				alertDiv.style.backgroundColor === "rgb(255, 0, 0)"
+			alertDiv.style.backgroundColor === "rgb(255, 0, 0)"
 		).toBe(true);
 	});
 });

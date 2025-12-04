@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { useJoin } from "../Join/Join";
 import { button } from "./button.variants";
 import { ButtonProps } from "./button.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	(
@@ -27,8 +26,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		},
 		ref
 	) => {
-		const { radiusField } = useUIConfig();
-		const radiusValue = radius || radiusField;
 		let contextSize, contextRadius, contextDisabled;
 		try {
 			const context = useJoin();
@@ -37,7 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			contextDisabled = context.disabled;
 		} catch (_e) {
 			contextSize = size;
-			contextRadius = radiusValue;
+			contextRadius = radius;
 			contextDisabled = props.disabled;
 		}
 

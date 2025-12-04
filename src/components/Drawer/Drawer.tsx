@@ -16,7 +16,6 @@ import styles from "./Drawer.module.css";
 import { DrawerPlacement, DrawerProps, DrawerState } from "./drawer.types";
 import { drawerOverlayVariants, drawerPanelVariants } from "./drawer.variants";
 import { Button } from "../Button/Button";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // Portal manager SSR-safe
 function useDrawerPortal(placement: DrawerPlacement) {
@@ -72,7 +71,6 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 		const shouldRender = animationState !== "exited";
 		const drawerPanelRef = useRef<HTMLDivElement>(null);
 		const titleId = "drawer-title-" + useId();
-		const { radiusBox } = useUIConfig();
 
 		// --- Efecto principal para gestionar la transición de estados de animación ---
 		useEffect(() => {
@@ -217,7 +215,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 					ref={drawerPanelRef}
 					className={clsx(
 						styles["lambda-drawer-panel"],
-						drawerPanelVariants({ state: animationState, placement, width, radius: radiusBox }),
+						drawerPanelVariants({ state: animationState, placement, width }),
 						panelClassName
 					)}
 					role="dialog"

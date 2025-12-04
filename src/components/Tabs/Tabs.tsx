@@ -23,7 +23,6 @@ import {
 	tabTabsContainer,
 	tabWrapper,
 } from "./tabs.variants";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 interface TabsContextType {
 	activeTab: number;
@@ -46,14 +45,13 @@ const TabsRoot = forwardRef<HTMLDivElement, TabProps>(
 	({ size, variant, color, radius, children, onChange, value }, ref) => {
 		const [activeTab, setActiveTab] = useState(value ?? 0);
 		const groupId = useId();
-		const { radiusField } = useUIConfig();
 		const contextValue: TabsContextType = {
 			activeTab,
 			setActiveTab,
 			size,
 			variant,
 			color,
-			radius: radius ?? radiusField,
+			radius: radius,
 			groupId,
 		};
 
@@ -75,7 +73,7 @@ const TabsRoot = forwardRef<HTMLDivElement, TabProps>(
 		return (
 			<TabsContext.Provider value={contextValue}>
 				<div
-					className={tabWrapper({ size, variant, color, radius: radius ?? radiusField })}
+					className={tabWrapper({ size, variant, color, radius: radius })}
 					ref={ref}
 				>
 					{childrenList}

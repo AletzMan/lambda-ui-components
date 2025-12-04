@@ -12,7 +12,6 @@ import {
 	sliderWrapper,
 } from "./slider.variants";
 import { SliderProps, SliderSingleProps, SliderRangeProps } from "./slider.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 	(
@@ -37,8 +36,6 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 		},
 		ref
 	) => {
-		const { radiusField } = useUIConfig();
-		const radiusValue = radius || radiusField;
 
 		// Estado interno para manejar el valor (Controlled vs Uncontrolled)
 		const [internalValue, setInternalValue] = useState<number | [number, number]>(() => {
@@ -58,7 +55,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 
 		// Determinar si es un slider de dos handles basado en el tipo de 'currentValue'
 		const isDoubleHandled = Array.isArray(currentValue);
-		
+
 		// Obtener los valores de inicio y fin para el cálculo
 		const startValue = isDoubleHandled ? currentValue[0] : min;
 		const endValue = isDoubleHandled ? currentValue[1] : (currentValue as number);
@@ -441,15 +438,15 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 				ref={ref}
 				className={clsx(sliderContainer({ disabled, orientation }), className)}
 				onPointerMove={handlePointerMove}
-				onPointerUp={handlePointerUp} 
+				onPointerUp={handlePointerUp}
 				// onTouchMove y onTouchEnd ya no son necesarios si onPointerMove/Up con setPointerCapture funciona
 				{...rest} // Esparce otras props HTMLAttributes
-			> 
+			>
 				{/* Pista del slider */}
 				<div
 					ref={trackRef}
 					className={clsx(
-						sliderTrack({ size, viewBar, disabled, orientation, radius: radiusValue })
+						sliderTrack({ size, viewBar, disabled, orientation, radius })
 					)}
 					// onPointerDown en el track para manejar clicks/taps fuera de los handles (comportamiento "salto")
 					onPointerDown={(event) => {
@@ -534,13 +531,13 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 										style={
 											isVertical
 												? {
-														top: `${100 - percent}%`,
-														display: mark.value <= max ? "block" : "none",
-												  }
+													top: `${100 - percent}%`,
+													display: mark.value <= max ? "block" : "none",
+												}
 												: {
-														left: `${percent}%`,
-														display: mark.value <= max ? "block" : "none",
-												  }
+													left: `${percent}%`,
+													display: mark.value <= max ? "block" : "none",
+												}
 										}
 									></div>
 								);
@@ -549,7 +546,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 					)}
 					{/* Relleno de la selección */}
 					<div
-						className={clsx(sliderFill({ size, disabled, orientation, radius: radiusValue, color }))}
+						className={clsx(sliderFill({ size, disabled, orientation, radius, color }))}
 						style={{ ...fillStyle, opacity: viewBar ? 1 : 0 }}
 					></div>
 
@@ -562,7 +559,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 								disabled,
 								isDragging: isDragging && draggingHandleIndex === 0,
 								orientation,
-								radius: radiusValue,
+								radius,
 								color,
 							})
 						)}
@@ -595,8 +592,8 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 								{formatValue
 									? formatValue(isDoubleHandled ? startValue : endValue)
 									: isDoubleHandled
-									? Number(startValue.toFixed(2))
-									: Number(endValue.toFixed(2))}
+										? Number(startValue.toFixed(2))
+										: Number(endValue.toFixed(2))}
 							</div>
 						)}
 					</div>
@@ -610,7 +607,7 @@ const SliderImpl = forwardRef<HTMLDivElement, SliderProps>(
 									disabled,
 									isDragging: isDragging && draggingHandleIndex === 1,
 									orientation,
-									radius: radiusValue,
+									radius,
 									color,
 								})
 							)}

@@ -1720,6 +1720,10 @@
 	--border-color: oklch(22% 0.03 266);
 	--border-inverse-color: oklch(80% 0.02 266);
 
+	--radius-box: var(--radius-md);
+	--radius-field: var(--radius-md);
+	--radius-select: var(--radius-md);
+
 	--shadow-color: oklch(5% 0.05 266 / 0.6);
 	--shadow-inset-color: oklch(90% 0.01 266 / 0.05);
 

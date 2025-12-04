@@ -8,7 +8,6 @@ import {
 	notificationTimeVariants,
 } from "./notification.variant";
 import { NotificationProps } from "./notifications.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const NOTIFICATION_ICONS = {
 	success: <CircleCheck />,
@@ -39,11 +38,6 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 		},
 		ref
 	) => {
-		// Elimina el control local de visibilidad y cierre, AnimatePresence lo gestiona
-
-		const { radiusBox } = useUIConfig();
-		const radiusValue = radius ?? radiusBox;
-
 		// El cierre lo gestiona AnimatePresence/remoción del estado
 		const handleOnCancel = () => {
 			if (onCancel) onCancel();
@@ -57,7 +51,7 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
 		return (
 			<div
 				className={clsx(
-					notificationVariants({ notificationType, placement, variant, radius: radiusValue })
+					notificationVariants({ notificationType, placement, variant, radius })
 				)}
 				{...props}
 				ref={ref}

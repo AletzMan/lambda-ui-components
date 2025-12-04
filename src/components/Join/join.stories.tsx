@@ -45,12 +45,9 @@ export default meta;
 type Story = StoryObj<typeof Join>;
 
 const Template = (args: JoinProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
 			title="Join"
-			onChangeStyleSource={(value) => setCurrentStyle(value)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -62,7 +59,7 @@ const Template = (args: JoinProps) => {
 				}}
 			>
 				<div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%" }}>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<Input
 							type="text"
 							placeholder="Text input example"
@@ -79,7 +76,7 @@ const Template = (args: JoinProps) => {
 							]}
 						/>
 					</Join>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<Select
 							placeholder="Select example"
 							label="Select"
@@ -97,7 +94,7 @@ const Template = (args: JoinProps) => {
 						/>
 						<Button type="button" variant="solid" color="neutral" label="Button" />
 					</Join>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<Checkbox label="Is Required" color="danger" variant="solid" />
 						<InputNumber label="InputNumber" />
 						<Input
@@ -109,7 +106,7 @@ const Template = (args: JoinProps) => {
 						/>
 						<Button type="button" variant="subtle" color="warning" label="Search" />
 					</Join>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<InputNumber typeNumber="currency-USD" label="Currency-USD" />
 						<Input
 							type="text"
@@ -120,7 +117,7 @@ const Template = (args: JoinProps) => {
 						/>
 						<Button type="button" variant="subtle" color="success" label="Search" />
 					</Join>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<Dropdown icon={<SettingsIcon />}>
 							<Dropdown.Item text="Settings" icon={<SettingsIcon />} />
 							<Dropdown.Item text="Notifications" icon={<BellIcon />} />
@@ -129,19 +126,19 @@ const Template = (args: JoinProps) => {
 						<Input type="text" placeholder="Text input example" prefix={<SearchIcon />} />
 						<Button type="button" variant="solid" color="info" label="Search" />
 					</Join>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<Checkbox label="Checkbox 1" color="info" variant="solid" />
 						<Checkbox label="Checkbox 2" color="info" variant="solid" />
 						<Checkbox label="Checkbox 3" color="info" variant="solid" />
 						<Checkbox label="Checkbox 4" color="info" variant="solid" />
 					</Join>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<Checkbox color="info" variant="solid" icon={<AlignLeft />} />
 						<Checkbox color="info" variant="solid" icon={<AlignCenter />} />
 						<Checkbox color="info" variant="solid" icon={<AlignRight />} />
 						<Checkbox color="info" variant="solid" icon={<AlignJustify />} />
 					</Join>
-					<Join {...args} radius={currentStyle === "local" ? args.radius : undefined}>
+					<Join {...args}>
 						<Button type="button" variant="classic" color="danger" label="Button 1" />
 						<Button type="button" variant="classic" color="danger" label="Button 2" />
 						<Button type="button" variant="classic" color="danger" label="Button 3" />

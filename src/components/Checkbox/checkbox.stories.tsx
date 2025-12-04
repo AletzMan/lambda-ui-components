@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Checkbox } from "./Checkbox";
 import { CheckBoxProps } from "./checkbox.types";
-import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof Checkbox> = {
@@ -72,13 +71,10 @@ type Story = StoryObj<typeof Checkbox>;
 const colors = ["Neutral", "Primary", "Secondary", "Danger", "Success", "Warning", "Info"];
 
 const Template = (args: CheckBoxProps) => {
-	const [currentStyles, setCurrentStyles] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Checkbox"
 			subtitle={args.variant?.toString() || ""}
-			onChangeStyleSource={(value) => setCurrentStyles(value)}
-			styleSource={currentStyles}
 		>
 			<div
 				style={{
@@ -94,7 +90,6 @@ const Template = (args: CheckBoxProps) => {
 						{...args}
 						color={color.toLowerCase() as CheckBoxProps["color"]}
 						label={color}
-						radius={currentStyles === "local" ? args.radius : undefined}
 						onCheckedChange={(checked) => alert(checked)}
 						onChange={(e) => alert(e.target.checked)}
 					/>

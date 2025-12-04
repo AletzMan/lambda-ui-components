@@ -48,13 +48,10 @@ export default meta;
 const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Tooltip"
 			color={args.position?.toString() || ""}
-			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -70,7 +67,6 @@ const Template = (args: TooltipProps & React.RefAttributes<HTMLDivElement>) => {
 					<Tooltip
 						{...args}
 						color={color as TooltipProps["color"]}
-						radius={currentStyle === "local" ? args.radius : undefined}
 					>
 						<div
 							key={color}

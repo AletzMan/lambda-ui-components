@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TextArea } from "./TextArea";
 import { TextAreaProps } from "./textarea.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { useState } from "react";
 
 const meta: Meta<typeof TextArea> = {
 	title: "Components/TextArea",
@@ -61,17 +60,14 @@ export default meta;
 type Story = StoryObj<typeof TextArea>;
 
 const Template = (args: TextAreaProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="TextArea"
 			subtitle={args.variant || ""}
 			color={args.color?.toString() || ""}
-			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
-			styleSource={currentStyle}
 		>
 			<div style={{ width: "300px" }}>
-				<TextArea {...args} radius={currentStyle === "local" ? args.radius : undefined} />
+				<TextArea {...args} />
 			</div>
 		</ContainerComponent>
 	);

@@ -5,7 +5,7 @@ import { LambdaConfigProvider } from "../../_internal/hooks/translation/LambdaCo
 import React from "react";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-  <LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
+  <LambdaConfigProvider lang="es" >
     {children}
   </LambdaConfigProvider>
 );
@@ -17,7 +17,7 @@ function renderWithProvider(ui: React.ReactElement) {
 describe("Pagination", () => {
   test("renders correct number of page buttons", () => {
     renderWithProvider(
-      <Pagination currentPage={1} totalPages={5} onPageChange={() => {}} />
+      <Pagination currentPage={1} totalPages={5} onPageChange={() => { }} />
     );
     expect(screen.getByRole("button", { name: /Página 1/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Página 5/i })).toBeInTheDocument();
@@ -59,7 +59,7 @@ describe("Pagination", () => {
       <Pagination
         currentPage={1}
         totalPages={5}
-        onPageChange={() => {}}
+        onPageChange={() => { }}
         showFirstLastButtons
         showPrevNextButtons
       />
@@ -73,7 +73,7 @@ describe("Pagination", () => {
       <Pagination
         currentPage={5}
         totalPages={5}
-        onPageChange={() => {}}
+        onPageChange={() => { }}
         showFirstLastButtons
         showPrevNextButtons
       />
@@ -93,14 +93,14 @@ describe("Pagination", () => {
 
   test("renders ellipsis when there are many pages", () => {
     renderWithProvider(
-      <Pagination currentPage={5} totalPages={10} onPageChange={() => {}} maxVisiblePages={5} />
+      <Pagination currentPage={5} totalPages={10} onPageChange={() => { }} maxVisiblePages={5} />
     );
     expect(screen.getAllByText("...").length).toBeGreaterThan(0);
   });
 
   test("active page button has aria-current=page", () => {
     renderWithProvider(
-      <Pagination currentPage={3} totalPages={5} onPageChange={() => {}} />
+      <Pagination currentPage={3} totalPages={5} onPageChange={() => { }} />
     );
     const activeBtn = screen.getByRole("button", { name: /Página 3/i });
     expect(activeBtn).toHaveAttribute("aria-current", "page");

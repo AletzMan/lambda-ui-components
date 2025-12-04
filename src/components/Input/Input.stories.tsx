@@ -79,13 +79,10 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 const Template = (args: InputProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Input"
 			subtitle={args.variant?.toString() || ""}
-			onChangeStyleSource={(value) => setCurrentStyle(value)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -112,7 +109,6 @@ const Template = (args: InputProps) => {
 						label="Password"
 						prefix={<RectangleEllipsis />}
 						suffix={<RectangleEllipsis />}
-						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 					<Input
 						{...args}
@@ -120,7 +116,6 @@ const Template = (args: InputProps) => {
 						placeholder="Email input example"
 						label="Email"
 						prefix={<Mail />}
-						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 					<Input
 						{...args}
@@ -128,7 +123,6 @@ const Template = (args: InputProps) => {
 						placeholder="Search input example"
 						label="Search"
 						prefix={<Search />}
-						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				</div>
 			</div>

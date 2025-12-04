@@ -65,15 +65,12 @@ type Story = StoryObj<typeof Alert>;
 const colors = ["neutral", "primary", "secondary", "danger", "success", "warning", "info"];
 
 const Template = (args: AlertProps) => {
-	const [currentStyles, setCurrentStyles] = useState<"global" | "local">("global");
 
 	return (
 		<ContainerComponent
 			title="Alert"
 			subtitle={args.variant?.toString() || ""}
 			color={args.size?.toString() || ""}
-			onChangeStyleSource={(value) => setCurrentStyles(value)}
-			styleSource={currentStyles}
 		>
 			<div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", gap: "1rem" }}>
 				{colors.map((color) => (
@@ -84,11 +81,10 @@ const Template = (args: AlertProps) => {
 								fontWeight: "bold",
 								marginBottom: "0.5rem",
 								textTransform: "capitalize",
-								color: `${
-									color === "neutral"
+								color: `${color === "neutral"
 										? "var(--lambda-color-neutral-500)"
 										: `var(--lambda-color-${color}-500)`
-								}`,
+									}`,
 							}}
 						>
 							{color}
@@ -98,7 +94,6 @@ const Template = (args: AlertProps) => {
 							key={color}
 							color={color as AlertVariants["color"]}
 							message="Este es un mensaje de alerta interactivo."
-							radius={currentStyles === "local" ? args.radius : undefined}
 						/>
 					</div>
 				))}

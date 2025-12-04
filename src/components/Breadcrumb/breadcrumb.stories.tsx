@@ -3,7 +3,6 @@ import { Breadcrumb } from "./Breadcrumb";
 import { CheckCircle, ClipboardList, Folder, HomeIcon, LayoutGrid } from "lucide-react";
 import { BreadcrumbProps } from "./breadcrumb.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
-import { useState } from "react";
 
 const meta: Meta<typeof Breadcrumb> = {
 	title: "Components/Breadcrumb",
@@ -52,14 +51,11 @@ type Story = StoryObj<typeof Breadcrumb>;
 const colors = ["neutral", "primary", "secondary", "success", "danger", "warning", "info"];
 
 const Template = (args: BreadcrumbProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Breadcrumb"
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -79,11 +75,10 @@ const Template = (args: BreadcrumbProps) => {
 								fontWeight: "bold",
 								marginBottom: "0.5rem",
 								textTransform: "capitalize",
-								color: `${
-									color === "neutral"
+								color: `${color === "neutral"
 										? "var(--lambda-color-neutral-500)"
 										: `var(--lambda-color-${color}-500)`
-								}`,
+									}`,
 							}}
 						>
 							{color}
@@ -92,7 +87,6 @@ const Template = (args: BreadcrumbProps) => {
 							key={color}
 							{...args}
 							color={color as BreadcrumbProps["color"]}
-							radius={currentStyle === "local" ? args.radius : undefined}
 						/>
 					</div>
 				))}

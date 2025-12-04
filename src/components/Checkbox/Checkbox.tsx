@@ -7,7 +7,6 @@ import {
 	checkboxWrapperVariants,
 } from "./checkbox.variants";
 import { CheckBoxProps } from "./checkbox.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
@@ -43,7 +42,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			if (typeof ref === "function") ref(el);
 			else if (ref) (ref as React.MutableRefObject<HTMLInputElement | null>).current = el;
 		}
-		const { radiusSelector } = useUIConfig();
 		let sizeValue, radiusValue, disabledValue;
 
 		try {
@@ -52,7 +50,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			radiusValue = joinContext.radius;
 			disabledValue = joinContext.disabled;
 		} catch (error) {
-			radiusValue = radius || radiusSelector;
+			radiusValue = radius;
 			sizeValue = size;
 			disabledValue = disabled;
 		}

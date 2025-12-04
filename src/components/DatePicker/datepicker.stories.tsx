@@ -52,20 +52,16 @@ type Story = StoryObj<typeof DatePicker>;
 
 const Template = (args: DatePickerProps) => {
 	const [date, setDate] = useState<Date | undefined>(undefined);
-	const [currentStyles, setCurrentStyles] = useState<"global" | "local">("local");
 	return (
 		<ContainerComponent
 			title="Date Picker"
 			subtitle={args.variant?.toString()}
-			onChangeStyleSource={(value) => setCurrentStyles(value)}
-			styleSource={currentStyles}
 		>
 			<div style={{ paddingTop: 200, width: "350px" }}>
 				<DatePicker
 					{...args}
 					value={date}
 					onChange={setDate}
-					radius={currentStyles === "local" ? args.radius : undefined}
 				/>
 			</div>
 		</ContainerComponent>

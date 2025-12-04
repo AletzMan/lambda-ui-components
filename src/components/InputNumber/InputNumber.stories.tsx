@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { action } from "storybook/actions";
 import { InputNumber } from "./InputNumber";
 import { InputNumberProps } from "./inputnumber.types";
-import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof InputNumber> = {
@@ -34,7 +33,7 @@ const meta: Meta<typeof InputNumber> = {
 			control: "text",
 			type: "string",
 			description: "Text to display as the label for the component",
-		}, 
+		},
 		helperText: {
 			control: "text",
 			type: "string",
@@ -63,14 +62,11 @@ export default meta;
 type Story = StoryObj<typeof InputNumber>;
 
 const Template = (args: InputNumberProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="InputNumber"
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
-			onChangeStyleSource={(value) => setCurrentStyle(value)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -86,37 +82,31 @@ const Template = (args: InputNumberProps) => {
 					{...args}
 					typeNumber="default"
 					label="Default"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 				<InputNumber
 					{...args}
 					typeNumber="currency-USD"
 					label="Currency USD"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 				<InputNumber
 					{...args}
 					typeNumber="currency-EUR"
 					label="Currency EUR"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 				<InputNumber
 					{...args}
 					typeNumber="currency-GBP"
 					label="Currency GBP"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 				<InputNumber
 					{...args}
 					typeNumber="percentage"
 					label="Percentage"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 				<InputNumber
 					{...args}
 					typeNumber="decimal"
 					label="Decimal"
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 			</div>
 		</ContainerComponent>

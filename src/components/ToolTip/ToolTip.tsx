@@ -16,7 +16,6 @@ import { tooltipContainer, tooltipArrow } from "./tooltip.variants";
 
 import styles from "./tooltip.module.css";
 import { TooltipPosition, TooltipProps } from "./tooltip.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // Helper para mapear la posición principal del tooltip a la clase de posición de la flecha
 const mapTooltipPositionToArrowPosition = (tooltipPos: TooltipPosition): TooltipPosition => {
@@ -83,10 +82,6 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 		// Timers para los retrasos de mostrar/ocultar
 		const showTimerRef = useRef<number | null>(null);
 		const hideTimerRef = useRef<number | null>(null);
-
-		// Obtenemos el radio para selectores desde el contexto de la configuración
-		const { radiusSelector } = useUIConfig();
-		const radiusValue = radius || radiusSelector;
 
 		// Generar ID único para el tooltip si no se proporciona (para accesibilidad)
 		const generatedId = useId();
@@ -454,31 +449,31 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
 		const tooltipPortal = renderPortal
 			? createPortal(
-					<div
-						ref={tooltipRef}
-						id={tooltipId}
-						role="tooltip"
-						// Aplicar estilos de posición calculados
-						style={{
-							...tooltipPositionStyle,
-						}}
-						// Aplicar variantes CVA para el contenedor ( variant, position para estilos específicos)
-						className={clsx(
-							tooltipContainer({ color, position: effectivePosition, radius: radiusValue }),
-							{ [styles.visible]: isVisible },
-							tooltipArrow({
-								arrowPosition: mapTooltipPositionToArrowPosition(effectivePosition),
-								color,
-							})
-						)}
-						// Si el contenido es solo un ícono, usar ariaLabel en el contenedor
-						aria-label={ariaLabel} // Si se proporciona una etiqueta ARIA adicional
-					>
-						{content}
-						{/* La flecha se renderiza como pseudo-elemento ::before en .lambda-tooltip-container */}
-					</div>,
-					document.body
-			  )
+				<div
+					ref={tooltipRef}
+					id={tooltipId}
+					role="tooltip"
+					// Aplicar estilos de posición calculados
+					style={{
+						...tooltipPositionStyle,
+					}}
+					// Aplicar variantes CVA para el contenedor ( variant, position para estilos específicos)
+					className={clsx(
+						tooltipContainer({ color, position: effectivePosition, radius }),
+						{ [styles.visible]: isVisible },
+						tooltipArrow({
+							arrowPosition: mapTooltipPositionToArrowPosition(effectivePosition),
+							color,
+						})
+					)}
+					// Si el contenido es solo un ícono, usar ariaLabel en el contenedor
+					aria-label={ariaLabel} // Si se proporciona una etiqueta ARIA adicional
+				>
+					{content}
+					{/* La flecha se renderiza como pseudo-elemento ::before en .lambda-tooltip-container */}
+				</div>,
+				document.body
+			)
 			: null;
 
 		// --- Renderizar el Wrapper del Target y el Portal ---

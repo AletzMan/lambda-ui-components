@@ -13,10 +13,7 @@ import { ArrowDownWideNarrow, ArrowUpWideNarrow } from "lucide-react";
 import styles from "./table.module.css";
 import { Pagination } from "../Pagination/Pagination";
 import clsx from "clsx";
-import {
-	useUIConfig,
-	useTranslation,
-} from "../../_internal/hooks/translation/LambdaConfigProvider";
+import { useTranslation } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { SortConfig, TableProperties } from "./table.types";
 
 const TableContext = createContext<TableProperties | undefined>(undefined);
@@ -56,7 +53,6 @@ const TableRoot = <T,>({
 	variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
 }) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
-	const { radiusBox } = useUIConfig();
 	const { t } = useTranslation();
 
 	const handleSort = useCallback(
@@ -78,7 +74,7 @@ const TableRoot = <T,>({
 
 	return (
 		<TableContext.Provider value={{ size, variant, sortConfig, handleSort, highlightOnHover }}>
-			<div className={containerVariants({ variant, radius: radiusBox })}>
+			<div className={containerVariants({ variant })}>
 				<div className={clsx(containerTableVariants({ variant }), "scrollBar")}>
 					<table className={tableVariants({ size, variant })} {...props}>
 						{children}

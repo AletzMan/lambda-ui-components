@@ -30,7 +30,6 @@ import {
 import clsx from "clsx";
 import { RadioGroupProps, RadioProps } from "./radio.types";
 import styles from "./radio.module.css";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export type RadioGroupContextType = {
 	name: string;
@@ -76,9 +75,6 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 	const refGroup = useRef<HTMLDivElement | null>(null);
 	const defaultNameId = useId();
 	const effectiveName = name ?? `radio-group-${defaultNameId}`;
-	const { radiusSelector, radiusBox } = useUIConfig();
-	const radiusValueSelector = radius || radiusSelector;
-	const radiusValueCard = radius || radiusBox;
 
 	const handleChange = useCallback(
 		(newValue: string) => {
@@ -117,8 +113,8 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			onChange: handleChange,
 			size,
 			color,
-			radiusSelector: radiusValueSelector,
-			radiusCard: radiusValueCard,
+			radiusSelector: radius,
+			radiusCard: radius,
 			hideRadio,
 			variant,
 			orientation,
@@ -133,8 +129,6 @@ export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
 			size,
 			color,
 			variant,
-			radiusSelector,
-			radiusBox,
 			radius,
 			hideRadio,
 			orientation,

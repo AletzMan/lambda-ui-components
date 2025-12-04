@@ -6,7 +6,6 @@ import { CircleX } from "lucide-react";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 import { labelStringVariants, textareaVariants } from "./textarea.variants";
 import { TextAreaProps } from "./textarea.types";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	(
@@ -27,8 +26,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 		},
 		ref
 	) => {
-		const { radiusField } = useUIConfig();
-		const radiusValue = radius || radiusField;
 
 		const textareaId = useId();
 		const errorId = errorMessage && invalid ? `${textareaId}-error` : undefined;
@@ -56,7 +53,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 			>
 				{label && (
 					<label
-						className={clsx(labelStringVariants({ disabled, radius: radiusValue, size }), {
+						className={clsx(labelStringVariants({ disabled, radius, size }), {
 							[styles["lambda-textarea-label-required"]]: required,
 						})}
 						htmlFor={textareaId}
@@ -69,7 +66,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 						"scrollBar",
 						textareaVariants({
 							variant,
-							radius: radiusValue,
+							radius,
 							className,
 							size,
 							invalid,

@@ -13,7 +13,6 @@ import {
 import styles from "./Alert.module.css";
 import { AlertProps } from "./alert.types";
 import { AlertVariants, alertVariants } from "./alert.variants";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 // --- Función helper para obtener el icono por defecto según la colore ---
 const getDefaultIcon = (color: AlertVariants["color"]) => {
@@ -53,8 +52,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 		},
 		ref
 	) => {
-		const { radiusBox } = useUIConfig();
-		const radiusValue = radius || radiusBox;
 		// Determinar si se debe mostrar algún icono
 		const shouldShowIcon = showIcon || Boolean(customIcon);
 
@@ -93,7 +90,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 		// Combinar clase base, colore de color, y clase custom
 		const alertClasses = clsx(
 			styles["lambda-alert"],
-			alertVariants({ color, size, variant, radius: radiusValue }),
+			alertVariants({ color, size, variant, radius }),
 
 			className
 		);

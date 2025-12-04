@@ -50,14 +50,11 @@ const PreviewAccordion = (
 	args: Partial<AccordionProps & React.RefAttributes<HTMLDivElement>> | undefined
 ) => {
 	const [openItem, setOpenItem] = useState<AccordionValue>("");
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 
 	return (
 		<ContainerComponent
 			title="Accordion"
 			subtitle={args?.variant?.toString() || ""}
-			onChangeStyleSource={(e: "global" | "local") => setCurrentStyle(e)}
-			styleSource={currentStyle}
 		>
 			<div style={{ padding: "10px" }}>
 				<Accordion
@@ -65,7 +62,6 @@ const PreviewAccordion = (
 					onValueChange={(value) => setOpenItem(value)}
 					{...args}
 					style={{ marginBottom: "30px" }}
-					radius={currentStyle === "local" ? args?.radius : undefined}
 				>
 					<Accordion.Item value="item-1">
 						<Accordion.Header>Section 1: Introduction</Accordion.Header>

@@ -82,7 +82,6 @@ export default meta;
 
 const SliderSingle = (args: SliderProps) => {
 	const [valueSlider, setValueSlider] = useState<number>(50);
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { defaultValue, ...restArgs } = args;
 
@@ -90,8 +89,6 @@ const SliderSingle = (args: SliderProps) => {
 		<ContainerComponent
 			title="Slider"
 			subtitle="Single"
-			onChangeStyleSource={(e) => setCurrentStyle(e)}
-			styleSource={currentStyle}
 		>
 			<div style={{ width: "130px", padding: "20px" }}>
 				<Input
@@ -116,7 +113,6 @@ const SliderSingle = (args: SliderProps) => {
 					{...restArgs}
 					value={valueSlider}
 					onChangeValue={(e) => setValueSlider(e)}
-					radius={currentStyle === "local" ? args.radius : undefined}
 				/>
 			</div>
 		</ContainerComponent>
@@ -125,7 +121,6 @@ const SliderSingle = (args: SliderProps) => {
 
 const SliderDouble = (args: SliderProps & React.RefAttributes<HTMLDivElement>) => {
 	const [valueSlider, setValueSlider] = useState<[number, number]>([10, 80]);
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { defaultValue, ...restArgs } = args;
 
@@ -133,8 +128,6 @@ const SliderDouble = (args: SliderProps & React.RefAttributes<HTMLDivElement>) =
 		<ContainerComponent
 			title="Slider"
 			subtitle="Double"
-			onChangeStyleSource={(e) => setCurrentStyle(e)}
-			styleSource={currentStyle}
 		>
 			<div style={{ display: "flex", gap: "var(--spacing-lg)", width: "150px", padding: "20px" }}>
 				<Input
@@ -164,7 +157,6 @@ const SliderDouble = (args: SliderProps & React.RefAttributes<HTMLDivElement>) =
 				<Slider.Range
 					{...restArgs}
 					value={valueSlider}
-					radius={currentStyle === "local" ? args.radius : undefined}
 					onChangeValue={(e) => setValueSlider(e)}
 				/>
 			</div>

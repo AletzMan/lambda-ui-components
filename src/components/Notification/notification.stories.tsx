@@ -107,13 +107,11 @@ const NotificationWithButton = (
 	args: Partial<NotificationProps & React.RefAttributes<HTMLDivElement>> | undefined
 ) => {
 	const { showNotification } = useNotification();
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	const [viewButtons, setViewButtons] = useState(false);
 
 	const handleClick = () => {
 		showNotification({
 			...args,
-			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "neutral",
 			onCancel: viewButtons ? () => alert("Cancel") : undefined,
 			onConfirm: viewButtons ? () => alert("Confirm") : undefined,
@@ -125,7 +123,6 @@ const NotificationWithButton = (
 	const handleClickSuccess = () => {
 		showNotification({
 			...args,
-			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "success",
 			onCancel: viewButtons ? () => alert("Cancel") : undefined,
 			onConfirm: viewButtons ? () => alert("Confirm") : undefined,
@@ -137,7 +134,6 @@ const NotificationWithButton = (
 	const handleClickError = () => {
 		showNotification({
 			...args,
-			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "danger",
 			onCancel: viewButtons ? () => alert("Cancel") : undefined,
 			onConfirm: viewButtons ? () => alert("Confirm") : undefined,
@@ -149,7 +145,6 @@ const NotificationWithButton = (
 	const handleClickInfo = () => {
 		showNotification({
 			...args,
-			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "info",
 			onCancel: viewButtons ? () => alert("Cancel") : undefined,
 			onConfirm: viewButtons ? () => alert("Confirm") : undefined,
@@ -161,7 +156,6 @@ const NotificationWithButton = (
 	const handleClickWarning = () => {
 		showNotification({
 			...args,
-			radius: currentStyle === "local" ? args?.radius : undefined,
 			notificationType: "warning",
 			onCancel: viewButtons ? () => alert("Cancel") : undefined,
 			onConfirm: viewButtons ? () => alert("Confirm") : undefined,
@@ -175,8 +169,6 @@ const NotificationWithButton = (
 			title="Notification"
 			subtitle={args?.variant?.toString() || ""}
 			color={args?.placement?.toString() || ""}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
-			styleSource={currentStyle}
 		>
 			<div style={{ height: "100%" }}>
 				<Switch

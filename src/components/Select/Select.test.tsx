@@ -4,7 +4,7 @@ import { Select } from "./Select";
 import { LambdaConfigProvider } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-	<LambdaConfigProvider lang="es" radiusBox="small" radiusField="tiny" radiusSelector="small">
+	<LambdaConfigProvider lang="es"  >
 		{children}
 	</LambdaConfigProvider>
 );
@@ -21,9 +21,9 @@ const options = [
 
 beforeAll(() => {
 	window.ResizeObserver = class {
-		observe() {}
-		unobserve() {}
-		disconnect() {}
+		observe() { }
+		unobserve() { }
+		disconnect() { }
 	};
 });
 

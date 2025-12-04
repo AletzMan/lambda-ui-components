@@ -67,20 +67,16 @@ type Story = StoryObj<typeof Pagination>;
 
 const Template = (args: PaginationProps) => {
 	const [activePage, setActivePage] = useState(1);
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Pagination"
 			subtitle={args.variant?.toString() || ""}
 			color={args.color?.toString() || ""}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
-			styleSource={currentStyle}
 		>
 			<Pagination
 				{...args}
 				onPageChange={(page) => setActivePage(page)}
 				currentPage={activePage}
-				radius={currentStyle === "local" ? args.radius : undefined}
 			/>
 		</ContainerComponent>
 	);
@@ -96,7 +92,7 @@ export const Solid: Story = {
 		totalPages: 10,
 		currentPage: 1,
 		maxVisiblePages: 3,
-		onPageChange: () => {},
+		onPageChange: () => { },
 		showFirstLastButtons: true,
 		showPrevNextButtons: true,
 	},
@@ -112,7 +108,7 @@ export const Ouline: Story = {
 		totalPages: 10,
 		currentPage: 1,
 		maxVisiblePages: 3,
-		onPageChange: () => {},
+		onPageChange: () => { },
 		showFirstLastButtons: true,
 		showPrevNextButtons: true,
 	},
@@ -128,7 +124,7 @@ export const Soft: Story = {
 		totalPages: 10,
 		currentPage: 1,
 		maxVisiblePages: 3,
-		onPageChange: () => {},
+		onPageChange: () => { },
 		showFirstLastButtons: true,
 		showPrevNextButtons: true,
 	},
@@ -144,7 +140,7 @@ export const Bordered: Story = {
 		totalPages: 10,
 		currentPage: 1,
 		maxVisiblePages: 3,
-		onPageChange: () => {},
+		onPageChange: () => { },
 		showFirstLastButtons: true,
 		showPrevNextButtons: true,
 	},

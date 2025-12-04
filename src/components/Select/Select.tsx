@@ -17,7 +17,6 @@ import {
 import { SelectProps } from "./select.types";
 import { SelectOptionItem } from "./SelectOptionItem";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import { useJoin } from "../Join/Join";
 import { usePopover } from "../../_internal/hooks/usePopover";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
@@ -58,7 +57,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			highlightedIndex,
 			handleKeyDown,
 		} = usePopover();
-		const { radiusField } = useUIConfig();
 		let sizeValue, radiusValue, disabledValue;
 
 		try {
@@ -67,7 +65,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			sizeValue = joinSize;
 			disabledValue = joinDisabled || disabled;
 		} catch (error) {
-			radiusValue = radius || radiusField;
+			radiusValue = radius;
 			sizeValue = size;
 			disabledValue = disabled;
 		}

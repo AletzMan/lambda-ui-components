@@ -1,4 +1,4 @@
-import { Divider, Switch } from "lambda-ui-components";
+import { Divider } from "lambda-ui-components";
 import styles from "./container.module.css";
 
 interface ContainerComponentProps {
@@ -7,8 +7,6 @@ interface ContainerComponentProps {
 	color?: string;
 	optional?: string;
 	children: React.ReactNode;
-	onChangeStyleSource?: (value: "global" | "local") => void;
-	styleSource?: "global" | "local";
 }
 
 const colors = {
@@ -26,15 +24,11 @@ export default function ContainerComponent({
 	color,
 	optional,
 	children,
-	onChangeStyleSource,
-	styleSource,
 }: ContainerComponentProps) {
 	const colorValue = colors[color as keyof typeof colors] || colors.nuetral;
 	const optionalValue = colors[optional as keyof typeof colors] || colors.nuetral;
 
-	const handleStyleChange = (value: string) => {
-		onChangeStyleSource?.(value as "global" | "local");
-	};
+
 
 	return (
 		<div className={styles.container}>
@@ -54,21 +48,6 @@ export default function ContainerComponent({
 							</span>
 						)}
 					</div>
-				</div>
-				<div>
-					{onChangeStyleSource && (
-						<>
-							<label className={styles.label}>Style Source </label>
-
-							<Switch
-								checked={styleSource === "global"}
-								onChange={(e) => handleStyleChange(e.target.checked ? "global" : "local")}
-								value="global"
-								positionLabel="bottom"
-								label={styleSource === "global" ? "Global" : "Local"}
-							/>
-						</>
-					)}
 				</div>
 			</header>
 			<Divider color="neutral" />

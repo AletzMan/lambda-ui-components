@@ -57,13 +57,10 @@ const Template = (args: CardProps) => {
 	const [header, setHeader] = useState(true);
 	const [actions, setActions] = useState(true);
 	const [content, setContent] = useState(true);
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Card"
 			subtitle={args.variant?.toString() || ""}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
-			styleSource={currentStyle}
 		>
 			<div
 				style={{
@@ -97,7 +94,6 @@ const Template = (args: CardProps) => {
 						header={header ? args.header : undefined}
 						actions={actions ? args.actions : undefined}
 						children={content ? args.children : undefined}
-						radius={currentStyle === "local" ? args.radius : undefined}
 					/>
 				</div>
 			</div>

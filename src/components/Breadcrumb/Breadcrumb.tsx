@@ -9,7 +9,6 @@ import {
 	BreadcrumbVariants,
 } from "./breadcrumb.variants";
 import { ChevronRight, Dot, ArrowRight } from "lucide-react";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 
 const NOTIFICATION_ICONS = {
 	chevron: <ChevronRight />,
@@ -50,8 +49,6 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 		const IconSeparator = NOTIFICATION_ICONS[variant as keyof typeof NOTIFICATION_ICONS];
 		const shouldCollapse = items!.length > maxItems + 1;
 		const language = document.documentElement.lang;
-		const { radiusSelector } = useUIConfig();
-		const radiusValue = radius || radiusSelector;
 		useEffect(() => {
 			if (maxItems === 0) {
 				setCollapsed(false);
@@ -68,7 +65,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 		};
 
 		return (
-			<nav ref={ref} {...props} className={breadcrumb({ size, variant, radius: radiusValue })}>
+			<nav ref={ref} {...props} className={breadcrumb({ size, variant, radius })}>
 				<ol className={breadcrumbContainer({ size, variant })}>
 					{visibleItems.map((item, index, array) => (
 						<Fragment key={index}>
@@ -76,7 +73,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 								<>
 									<ul>
 										<button
-											className={breadcrumbEllipsis({ size, radius: radiusValue })}
+											className={breadcrumbEllipsis({ size, radius })}
 											onClick={handleEllipsisClick}
 											title={language === "es" ? "Mostrar más" : "Show more"}
 										>
@@ -94,7 +91,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 									size={size}
 									variant={variant}
 									color={color}
-									radius={radiusValue}
+									radius={radius}
 								/>
 							</ul>
 							{index < array!.length - 1 && (

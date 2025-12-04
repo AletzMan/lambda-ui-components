@@ -7,7 +7,6 @@ import {
 	ArrowRightFromLine,
 	ArrowUpFromLine,
 } from "lucide-react";
-import { useState } from "react";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
 
 const meta: Meta<typeof RadioGroup> = {
@@ -128,14 +127,11 @@ const RadioTemplate = (args: RadioGroupProps) => {
 };
 
 const RadioButtonTemplate = (args: RadioGroupProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Radio"
 			subtitle={"Button"}
 			color={args.variant || "solid"}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
-			styleSource={currentStyle}
 		>
 			<label
 				style={{ fontWeight: "var(--font-weight-semibold)", color: "var(--foreground-color)" }}
@@ -174,7 +170,6 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							defaultValue="option1"
 							{...args}
 							color={color as RadioGroupProps["color"]}
-							radius={currentStyle === "local" ? args.radius : undefined}
 						>
 							<Radio.Button value="option1" icon={<ArrowLeftFromLine />} />
 							<Radio.Button value="option2" icon={<ArrowUpFromLine />} />
@@ -224,7 +219,6 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							name="example"
 							defaultValue="option1"
 							{...args}
-							radius={currentStyle === "local" ? args.radius : undefined}
 							color={color as RadioGroupProps["color"]}
 						>
 							<Radio.Button value="option1" label="Left" />
@@ -275,7 +269,6 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 							name="example"
 							defaultValue="option1"
 							{...args}
-							radius={currentStyle === "local" ? args.radius : undefined}
 							color={color as RadioGroupProps["color"]}
 						>
 							<Radio.Button value="option1" label="Left" icon={<ArrowLeftFromLine />} />
@@ -291,20 +284,16 @@ const RadioButtonTemplate = (args: RadioGroupProps) => {
 };
 
 const RadioCardTemplate = (args: RadioGroupProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("global");
 	return (
 		<ContainerComponent
 			title="Radio"
 			subtitle={"Card"}
 			color={`${args.variant || "solid"} `}
-			optional={args.color || ""}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
 		>
 			<RadioGroup
 				name="example"
 				defaultValue="option1"
 				{...args}
-				radius={currentStyle === "local" ? args.radius : undefined}
 			>
 				<Radio.Card
 					value="option1"

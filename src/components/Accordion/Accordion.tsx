@@ -17,7 +17,6 @@ import {
 	accordionHeaderVariants,
 	accordionContentVariants,
 } from "./accordion.variants";
-import { useUIConfig } from "../../_internal/hooks/translation/LambdaConfigProvider";
 import type {
 	AccordionProps,
 	AccordionValue,
@@ -60,8 +59,6 @@ const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>(
 		},
 		ref
 	) => {
-		const { radiusBox } = useUIConfig();
-		const radiusValue = radius || radiusBox;
 		const isControlled = onValueChange !== undefined;
 		const [uncontrolledActiveValue, setUncontrolledActiveValue] =
 			useState<AccordionValue>(defaultValue);
@@ -78,10 +75,10 @@ const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>(
 			[activeValue, isControlled, onValueChange]
 		);
 		const contextValue = useMemo(
-			() => ({ activeValue, onValueChange: handleValueChange, size, variant, radius: radiusValue }),
-			[activeValue, handleValueChange, size, variant, radiusValue]
+			() => ({ activeValue, onValueChange: handleValueChange, size, variant, radius }),
+			[activeValue, handleValueChange, size, variant, radius]
 		);
-		const accordionClasses = clsx(accordionVariants({ variant, radius: radiusValue }), className);
+		const accordionClasses = clsx(accordionVariants({ variant, radius }), className);
 		return (
 			<AccordionContext.Provider value={contextValue}>
 				<div ref={ref} className={accordionClasses} style={style} {...restProps}>

@@ -54,15 +54,12 @@ export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
 const Template = (args: DropdownProps) => {
-	const [currentStyle, setCurrentStyle] = useState<"global" | "local">("local");
 	const [hasIcon, setHasIcon] = useState<boolean>(true);
 	const [hasText, setHasText] = useState<boolean>(true);
 	return (
 		<ContainerComponent
 			title="Button"
 			subtitle={args.variant?.toString() || ""}
-			onChangeStyleSource={(style) => setCurrentStyle(style)}
-			styleSource={currentStyle}
 		>
 			<Checkbox label="Has Icon" checked={hasIcon} onChange={() => setHasIcon(!hasIcon)} />
 			<Checkbox label="Has Text" checked={hasText} onChange={() => setHasText(!hasText)} />
@@ -82,7 +79,6 @@ const Template = (args: DropdownProps) => {
 					{...args}
 					icon={hasIcon ? args.icon : undefined}
 					text={hasText ? args.text : undefined}
-					radius={currentStyle === "local" ? args.radius : undefined}
 				>
 					<Dropdown.Item
 						icon={<FolderOpen />}
