@@ -237,19 +237,19 @@
 .tab-label-tiny {
 	font-size: var(--font-size-xs);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--size-xs);
+	height: var(--size-xl);
 	gap: var(--spacing-sm);
 
 	&>svg {
-		width: var(--size-xs);
-		height: var(--size-xs);
+		width: var(--size-sm);
+		height: var(--size-sm);
 	}
 }
 
 .tab-label-small {
 	font-size: var(--font-size-sm);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--size-sm);
+	height: var(--size-2xl);
 	gap: var(--spacing-sm);
 
 	&>svg {
@@ -261,7 +261,7 @@
 .tab-label-medium {
 	font-size: var(--font-size-md);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--size-md);
+	height: var(--size-3xl);
 	gap: var(--spacing-sm);
 
 	&>svg {
@@ -273,7 +273,7 @@
 .tab-label-large {
 	font-size: var(--font-size-lg);
 	padding: var(--spacing-none) var(--spacing-xl);
-	height: var(--size-lg);
+	height: var(--size-4xl);
 	gap: var(--spacing-sm);
 
 	&>svg {
@@ -409,7 +409,7 @@
 	}
 
 	&:is(.tab-current-box) {
-		height: calc(100% - var(--spacing-md));
+		height: calc(100% - var(--spacing-sm));
 
 		&:is(.tab-current-neutral) {
 			background-color: var(--neutral-base-color);

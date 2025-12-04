@@ -21,12 +21,12 @@ const meta: Meta<typeof Tabs> = {
 			description: "Background color",
 		},
 		size: {
-			control: "select",
+			control: "inline-radio",
 			options: ["tiny", "small", "medium", "large"],
 			description: "Input size",
 		},
 		radius: {
-			control: "select",
+			control: "inline-radio",
 			options: ["none", "tiny", "small", "medium", "large", "full"],
 			description: "Input radius",
 		},
