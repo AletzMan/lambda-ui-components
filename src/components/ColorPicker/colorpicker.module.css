@@ -372,7 +372,7 @@
 
 .lambda-colorpicker-preview {
 	display: grid;
-	grid-template-columns: 1fr 2em;
+	grid-template-columns: 1fr 1.55em;
 	position: relative;
 	place-content: center start;
 	width: 100%;
@@ -384,8 +384,8 @@
 		position: absolute;
 		top: var(--spacing-xs);
 		left: var(--spacing-xs);
-		width: 15em;
-		height: calc(100% - var(--spacing-md));
+		width: 15.5em;
+		height: calc(100% - var(--spacing-sm));
 		background-color: #e5e5f7;
 		border: var(--border-width-xs) solid transparent;
 		opacity: 0.1;
@@ -405,8 +405,8 @@
 		position: absolute;
 		top: var(--spacing-xs);
 		left: var(--spacing-xs);
-		width: 15em;
-		height: calc(100% - var(--spacing-md));
+		width: 15.5em;
+		height: calc(100% - var(--spacing-sm));
 		border: var(--border-width-xs) solid transparent;
 		z-index: 2;
 	}
@@ -485,7 +485,7 @@
 		position: absolute;
 		left: var(--spacing-xs);
 		width: 14.25em;
-		height: var(--handle-3xs);
+		height: var(--size-2xs);
 		border-radius: 2em;
 		border: var(--border-width-xs) solid var(--surface-d);
 		background-image: linear-gradient(to right, red, yellow, lime, cyan, blue, fuchsia, red);
@@ -495,7 +495,7 @@
 		position: absolute;
 		left: var(--spacing-xs);
 		width: 14.25em;
-		height: var(--handle-3xs);
+		height: var(--size-2xs);
 		border-radius: 2em;
 		background: radial-gradient(circle, var(--white-color) 50%, var(--black-color));
 		background: #ffffff00;
@@ -517,7 +517,7 @@
 		position: absolute;
 		left: var(--spacing-xs);
 		width: 11.35em;
-		height: var(--handle-3xs);
+		height: var(--size-2xs);
 		border-radius: 2em;
 		border: var(--border-width-xs) solid var(--surface-d);
 	}
@@ -526,7 +526,7 @@
 		position: absolute;
 		left: var(--spacing-xs);
 		width: 11.35em;
-		height: var(--handle-3xs);
+		height: var(--size-2xs);
 		border-radius: 2em;
 		background-color: #e5e5f7;
 		opacity: 0.1;

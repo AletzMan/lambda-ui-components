@@ -34,7 +34,7 @@ import {
 import { createPortal } from "react-dom";
 import { usePopover } from "../../_internal/hooks/usePopover";
 import { AnimatePresence, motion } from "framer-motion";
- 
+
 // Helper para convertir HSL a HSV
 const hslToHsv = (h: number, s: number, l: number) => {
 	const newSaturation = s / 100;
@@ -242,7 +242,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		const buttonAlphaRef = useRef<HTMLButtonElement>(null);
 
 		const [isDraggingPicker, setIsDraggingPicker] = useState(false);
-		const lastPointerPosition = useRef({ x: 0, y: 0 }); 
+		const lastPointerPosition = useRef({ x: 0, y: 0 });
 		const [isMounted, setIsMounted] = useState(false);
 
 		useEffect(() => {
@@ -716,7 +716,8 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											value={hue}
 											min={0}
 											max={360}
-											step={1} 
+											step={1}
+											color="neutral"
 											radius="full"
 											viewValue={false}
 											viewBar={false}
@@ -752,11 +753,12 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 												background: `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${internalValue} 100%)`,
 											}}
 										></div>
-										<Slider 
+										<Slider
 											size="small"
 											value={alpha}
 											min={0}
-											max={100} 
+											max={100}
+											color="neutral"
 											radius="full"
 											viewValue={false}
 											viewBar={false}
