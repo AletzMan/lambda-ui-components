@@ -267,7 +267,19 @@
 	}
 
 	&.select-btn-tiny {
-		grid-template-columns: 1fr var(--size-3xl);
+		grid-template-columns: 1fr var(--size-xl);
+		padding: 0 0 0 var(--spacing-md);
+		height: var(--size-lg);
+		font-size: var(--font-size-sm);
+
+		.select-icon-svg {
+			width: var(--size-sm);
+			height: var(--size-sm);
+		}
+	}
+
+	&.select-btn-small {
+		grid-template-columns: 1fr var(--size-2xl);
 		padding: 0 0 0 var(--spacing-md);
 		height: var(--size-2xl);
 		font-size: var(--font-size-sm);
@@ -278,20 +290,8 @@
 		}
 	}
 
-	&.select-btn-small {
-		grid-template-columns: 1fr var(--size-4xl);
-		padding: 0 0 0 var(--spacing-md);
-		height: var(--size-3xl);
-		font-size: var(--font-size-sm);
-
-		.select-icon-svg {
-			width: var(--size-sm);
-			height: var(--size-sm);
-		}
-	}
-
 	&.select-btn-medium {
-		grid-template-columns: 1fr var(--size-5xl);
+		grid-template-columns: 1fr var(--size-3xl);
 		padding: 0 0 0 var(--spacing-md);
 		height: var(--size-4xl);
 		font-size: var(--font-size-md);
@@ -305,7 +305,7 @@
 	&.select-btn-large {
 		grid-template-columns: 1fr var(--size-6xl);
 		padding: 0 0 0 var(--spacing-md);
-		height: var(--size-5xl);
+		height: var(--size-6xl);
 		font-size: var(--font-size-lg);
 
 		.select-icon-svg {

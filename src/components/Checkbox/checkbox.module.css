@@ -635,8 +635,8 @@
 	min-width: var(--size-sm);
 
 	&:is(.lambda-checkbox-wrapper-join) {
-		min-width: var(--size-2xl);
-		min-height: var(--size-2xl);
+		min-width: var(--size-lg);
+		min-height: var(--size-lg);
 		gap: var(--spacing-sm);
 		width: min-content;
 		padding: var(--spacing-none) var(--spacing-sm);
@@ -655,8 +655,8 @@
 	min-width: var(--size-md);
 
 	&:is(.lambda-checkbox-wrapper-join) {
-		min-width: var(--size-3xl);
-		min-height: var(--size-3xl);
+		min-width: var(--size-2xl);
+		min-height: var(--size-2xl);
 		gap: var(--spacing-md);
 		width: min-content;
 		padding: var(--spacing-none) var(--spacing-md);
@@ -695,8 +695,8 @@
 	min-width: var(--size-xl);
 
 	&:is(.lambda-checkbox-wrapper-join) {
-		min-width: var(--size-5xl);
-		min-height: var(--size-5xl);
+		min-width: var(--size-6xl);
+		min-height: var(--size-6xl);
 		gap: var(--spacing-xl);
 		width: min-content;
 		padding: var(--spacing-none) var(--spacing-xl);

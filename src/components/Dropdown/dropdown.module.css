@@ -99,11 +99,11 @@
 .lambda-dropdown-tiny {
 	font-size: var(--font-size-xs);
 	padding: var(--spacing-none) var(--spacing-sm) var(--spacing-none) var(--spacing-md);
-	height: var(--size-2xl);
+	height: var(--size-lg);
 
 	&:is(.lambda-dropdown-icon-only) {
-		width: var(--size-2xl);
-		height: var(--size-2xl);
+		width: var(--size-lg);
+		height: var(--size-lg);
 		padding: var(--spacing-none);
 	}
 
@@ -144,11 +144,11 @@
 .lambda-dropdown-small {
 	font-size: var(--font-size-sm);
 	padding: var(--spacing-none) var(--spacing-md) var(--spacing-none) var(--spacing-md);
-	height: var(--size-3xl);
+	height: var(--size-2xl);
 
 	&:is(.lambda-dropdown-icon-only) {
-		width: var(--size-3xl);
-		height: var(--size-3xl);
+		width: var(--size-2xl);
+		height: var(--size-2xl);
 		padding: var(--spacing-none);
 	}
 
@@ -219,11 +219,11 @@
 .lambda-dropdown-large {
 	font-size: var(--font-size-md);
 	padding: var(--spacing-none) calc(var(--spacing-md) + var(--spacing-xs)) var(--spacing-none) calc(var(--spacing-md) + var(--spacing-sm));
-	height: var(--size-5xl);
+	height: var(--size-6xl);
 
 	&:is(.lambda-dropdown-icon-only) {
-		width: var(--size-5xl);
-		height: var(--size-5xl);
+		width: var(--size-6xl);
+		height: var(--size-6xl);
 		padding: var(--spacing-none);
 	}
 
