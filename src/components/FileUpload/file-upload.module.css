@@ -87,7 +87,7 @@
 	justify-content: center;
 	text-align: center;
 	cursor: pointer;
-	border: var(--border-width-xs) dashed var(--border-color);
+	border: var(--border-width) dashed var(--border-color);
 	background-color: var(--surface-b);
 	transition: all 0.2s ease-in-out;
 	position: relative;
@@ -345,7 +345,7 @@
 	width: 100%;
 	max-width: max-content;
 	background-color: var(--surface-a);
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	overflow: hidden;
 	border-radius: var(--radius-field);
 }
@@ -509,7 +509,7 @@
 	display: flex;
 	align-items: center;
 	padding: var(--spacing-xs);
-	border-top: 1px solid var(--border-color);
+	border-top: var(--border-width) solid var(--border-color);
 	height: 100%;
 	border-radius: var(--radius-box);
 	background-color: var(--surface-a);
@@ -519,7 +519,7 @@
 		width: max-content;
 
 		&:is(.lambda-fileup-file-item-list) {
-			border: var(--border-width-xs) dashed var(--border-color);
+			border: var(--border-width) dashed var(--border-color);
 			border-radius: var(--radius-xs);
 			background-color: var(--surface-a);
 			width: 100%;
@@ -529,7 +529,7 @@
 		&:is(.lambda-fileup-file-item-thumbnail) {
 			padding: var(--spacing-none);
 			background-color: var(--surface-a);
-			border: var(--border-width-xs) dashed var(--border-color);
+			border: var(--border-width) dashed var(--border-color);
 			border-radius: var(--radius-xs);
 
 			&:hover {

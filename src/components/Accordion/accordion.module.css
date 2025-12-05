@@ -34,17 +34,17 @@
 
 /* Variantes del contenedor principal */
 .lambda-accordion-default {
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 
 	.lambda-accordion-header {
-		border-top: 1px solid var(--border-color);
+		border-top: var(--border-width) solid var(--border-color);
 	}
 
 	.lambda-accordion-item:first-child {
 		border-radius: var(--radius-sm) var(--radius-sm) var(--radius-none) var(--radius-none);
 
 		.lambda-accordion-header {
-			border-top: 1px solid transparent;
+			border-top: var(--border-width) solid transparent;
 		}
 	}
 
@@ -52,7 +52,7 @@
 		border-radius: var(--radius-none) var(--radius-none) var(--radius-sm) var(--radius-sm);
 
 		.lambda-accordion-header {
-			border-bottom: 1px solid transparent;
+			border-bottom: var(--border-width) solid transparent;
 		}
 	}
 }
@@ -64,13 +64,13 @@
 		border: none;
 
 		.lambda-accordion-header {
-			border-bottom: 1px solid var(--border-color);
+			border-bottom: var(--border-width) solid var(--border-color);
 		}
 	}
 
 	.lambda-accordion-item-open:last-child {
 		.lambda-accordion-header {
-			border-bottom: 1px solid var(--border-color);
+			border-bottom: var(--border-width) solid var(--border-color);
 		}
 	}
 }
@@ -84,11 +84,11 @@
 	box-sizing: border-box;
 
 	.lambda-accordion-item {
-		border: var(--border-width-xs) solid var(--border-color);
+		border: var(--border-width) solid var(--border-color);
 		box-sizing: border-box;
 
 		.lambda-accordion-header-open {
-			border-bottom: 1px solid var(--border-color);
+			border-bottom: var(--border-width) solid var(--border-color);
 		}
 
 		&:is(.lambda-accordion-item-radius-default) {
@@ -155,7 +155,7 @@
 	box-sizing: border-box;
 
 	.lambda-accordion-item {
-		border: var(--border-width-xs) solid var(--neutral-opacity-color);
+		border: var(--border-width) solid var(--neutral-opacity-color);
 		box-sizing: border-box;
 
 		&:is(.lambda-accordion-item-radius-default) {
@@ -326,7 +326,7 @@
 	background-color: var(--surface-a);
 
 	&:is(.lambda-accordion-content-flush) {
-		border-bottom: var(--border-width-xs) solid var(--border-color);
+		border-bottom: var(--border-width) solid var(--border-color);
 		background-color: transparent;
 	}
 }

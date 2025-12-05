@@ -74,7 +74,7 @@ const Template = (args: InputNumberProps) => {
 					flexDirection: "column",
 					alignItems: "center",
 					justifyContent: "center",
-					width: "250px",
+					width: "350px",
 					gap: "1rem",
 				}}
 			>

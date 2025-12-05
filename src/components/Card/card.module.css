@@ -34,7 +34,7 @@
 	}
 
 	&.lambda-card-outline {
-		border: var(--border-width-xs) solid var(--border-color);
+		border: var(--border-width) solid var(--border-color);
 	}
 
 	&.lambda-card-borderless {
@@ -47,7 +47,7 @@
 	display: flex;
 	flex-direction: column;
 	background-color: var(--surface-a);
-	border-bottom: 1px solid var(--border-color);
+	border-bottom: var(--border-width) solid var(--border-color);
 }
 
 .lambda-card-header-content {
@@ -86,7 +86,7 @@
 .lambda-card-header-image-container {
 	width: 100%;
 	overflow: hidden;
-	border-bottom: 1px solid var(--border-color);
+	border-bottom: var(--border-width) solid var(--border-color);
 	z-index: 0;
 }
 
@@ -119,7 +119,7 @@
 .lambda-card-footer {
 	display: flex;
 	flex-direction: row;
-	border-top: 1px solid var(--border-color);
+	border-top: var(--border-width) solid var(--border-color);
 	width: 100%;
 
 	&.lambda-card-footer-onlyactions {
@@ -152,7 +152,7 @@
 	}
 
 	&:not(:last-child) {
-		border-right: 1px solid var(--border-color);
+		border-right: var(--border-width) solid var(--border-color);
 	}
 }
 

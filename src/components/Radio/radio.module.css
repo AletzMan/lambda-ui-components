@@ -45,11 +45,11 @@
 
 	&:not(:last-child) {
 		&:is(.lambda-radio-wrapper-horizontal) {
-			margin-inline-end: -1px;
+			margin-inline-end: calc(var(--border-width) * -1);
 		}
 
 		&:is(.lambda-radio-wrapper-vertical) {
-			margin-block-end: -1px;
+			margin-block-end: calc(var(--border-width) * -1);
 		}
 	}
 
@@ -57,7 +57,7 @@
 		z-index: 1;
 
 		&~.lambda-radio-label {
-			border: 1px solid var(--border-color);
+			border: var(--border-width) solid var(--border-color);
 		}
 	}
 
@@ -67,11 +67,11 @@
 				background-color: var(--surface-a);
 
 				&:is(.lambda-radio-label-horizontal) {
-					border: 1px solid var(--border-color);
+					border: var(--border-width) solid var(--border-color);
 				}
 
 				&:is(.lambda-radio-label-vertical) {
-					border: 1px solid var(--border-color);
+					border: var(--border-width) solid var(--border-color);
 				}
 			}
 		}
@@ -88,11 +88,11 @@
 					color: var(--neutral-text-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border: 1px solid var(--neutral-base-color);
+						border: var(--border-width) solid var(--neutral-base-color);
 					}
 
 					&:is(.lambda-radio-label-vertical) {
-						border: 1px solid var(--neutral-base-color);
+						border: var(--border-width) solid var(--neutral-base-color);
 					}
 				}
 			}
@@ -102,11 +102,11 @@
 					color: var(--primary-text-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border: 1px solid var(--primary-base-color);
+						border: var(--border-width) solid var(--primary-base-color);
 					}
 
 					&:is(.lambda-radio-label-vertical) {
-						border: 1px solid var(--primary-base-color);
+						border: var(--border-width) solid var(--primary-base-color);
 					}
 				}
 			}
@@ -116,11 +116,11 @@
 					color: var(--secondary-text-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border: 1px solid var(--secondary-base-color);
+						border: var(--border-width) solid var(--secondary-base-color);
 					}
 
 					&:is(.lambda-radio-label-vertical) {
-						border: 1px solid var(--secondary-base-color);
+						border: var(--border-width) solid var(--secondary-base-color);
 					}
 				}
 			}
@@ -130,11 +130,11 @@
 					color: var(--success-text-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border: 1px solid var(--success-base-color);
+						border: var(--border-width) solid var(--success-base-color);
 					}
 
 					&:is(.lambda-radio-label-vertical) {
-						border: 1px solid var(--success-base-color);
+						border: var(--border-width) solid var(--success-base-color);
 					}
 				}
 			}
@@ -144,11 +144,11 @@
 					color: var(--danger-text-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border: 1px solid var(--danger-base-color);
+						border: var(--border-width) solid var(--danger-base-color);
 					}
 
 					&:is(.lambda-radio-label-vertical) {
-						border: 1px solid var(--danger-base-color);
+						border: var(--border-width) solid var(--danger-base-color);
 					}
 				}
 			}
@@ -158,11 +158,11 @@
 					color: var(--warning-text-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border: 1px solid var(--warning-base-color);
+						border: var(--border-width) solid var(--warning-base-color);
 					}
 
 					&:is(.lambda-radio-label-vertical) {
-						border: 1px solid var(--warning-base-color);
+						border: var(--border-width) solid var(--warning-base-color);
 					}
 				}
 			}
@@ -172,11 +172,11 @@
 					color: var(--info-text-color);
 
 					&:is(.lambda-radio-label-horizontal) {
-						border: 1px solid var(--info-base-color);
+						border: var(--border-width) solid var(--info-base-color);
 					}
 
 					&:is(.lambda-radio-label-vertical) {
-						border: 1px solid var(--info-base-color);
+						border: var(--border-width) solid var(--info-base-color);
 					}
 				}
 			}
@@ -186,7 +186,7 @@
 	&>.lambda-radio-view-soft {
 		&.lambda-radio-view {
 			&~.lambda-radio-label {
-				border: 1px solid transparent;
+				border: var(--border-width) solid transparent;
 			}
 
 			&:is(.lambda-radio-view-neutral) {
@@ -194,11 +194,11 @@
 					background-color: var(--neutral-opacity-color);
 
 					&:is(.lambda-radio-label-horizontal):not(:last-child) {
-						border-right: 1px solid var(--neutral-subtle-color);
+						border-right: var(--border-width) solid var(--neutral-subtle-color);
 					}
 
 					&:is(.lambda-radio-label-vertical):not(:last-child) {
-						border-bottom: 1px solid var(--neutral-subtle-color);
+						border-bottom: var(--border-width) solid var(--neutral-subtle-color);
 					}
 				}
 			}
@@ -208,11 +208,11 @@
 					background-color: var(--primary-opacity-color);
 
 					&:is(.lambda-radio-label-horizontal):not(:last-child) {
-						border-right: 1px solid var(--primary-subtle-color);
+						border-right: var(--border-width) solid var(--primary-subtle-color);
 					}
 
 					&:is(.lambda-radio-label-vertical):not(:last-child) {
-						border-bottom: 1px solid var(--primary-subtle-color);
+						border-bottom: var(--border-width) solid var(--primary-subtle-color);
 					}
 				}
 			}
@@ -222,11 +222,11 @@
 					background-color: var(--secondary-opacity-color);
 
 					&:is(.lambda-radio-label-horizontal):not(:last-child) {
-						border-right: 1px solid var(--secondary-subtle-color);
+						border-right: var(--border-width) solid var(--secondary-subtle-color);
 					}
 
 					&:is(.lambda-radio-label-vertical):not(:last-child) {
-						border-bottom: 1px solid var(--secondary-subtle-color);
+						border-bottom: var(--border-width) solid var(--secondary-subtle-color);
 					}
 				}
 			}
@@ -236,11 +236,11 @@
 					background-color: var(--success-opacity-color);
 
 					&:is(.lambda-radio-label-horizontal):not(:last-child) {
-						border-right: 1px solid var(--success-subtle-color);
+						border-right: var(--border-width) solid var(--success-subtle-color);
 					}
 
 					&:is(.lambda-radio-label-vertical):not(:last-child) {
-						border-bottom: 1px solid var(--success-subtle-color);
+						border-bottom: var(--border-width) solid var(--success-subtle-color);
 					}
 				}
 			}
@@ -250,11 +250,11 @@
 					background-color: var(--danger-opacity-color);
 
 					&:is(.lambda-radio-label-horizontal):not(:last-child) {
-						border-right: 1px solid var(--danger-subtle-color);
+						border-right: var(--border-width) solid var(--danger-subtle-color);
 					}
 
 					&:is(.lambda-radio-label-vertical):not(:last-child) {
-						border-bottom: 1px solid var(--danger-subtle-color);
+						border-bottom: var(--border-width) solid var(--danger-subtle-color);
 					}
 				}
 			}
@@ -264,11 +264,11 @@
 					background-color: var(--warning-opacity-color);
 
 					&:is(.lambda-radio-label-horizontal):not(:last-child) {
-						border-right: 1px solid var(--warning-subtle-color);
+						border-right: var(--border-width) solid var(--warning-subtle-color);
 					}
 
 					&:is(.lambda-radio-label-vertical):not(:last-child) {
-						border-bottom: 1px solid var(--warning-subtle-color);
+						border-bottom: var(--border-width) solid var(--warning-subtle-color);
 					}
 				}
 			}
@@ -278,11 +278,11 @@
 					background-color: var(--info-opacity-color);
 
 					&:is(.lambda-radio-label-horizontal):not(:last-child) {
-						border-right: 1px solid var(--info-subtle-color);
+						border-right: var(--border-width) solid var(--info-subtle-color);
 					}
 
 					&:is(.lambda-radio-label-vertical):not(:last-child) {
-						border-bottom: 1px solid var(--info-subtle-color);
+						border-bottom: var(--border-width) solid var(--info-subtle-color);
 					}
 				}
 			}
@@ -403,7 +403,7 @@
 		&.lambda-radio-view-checked {
 			&~.lambda-radio-label {
 				color: var(--white-color);
-				border: 1px solid transparent;
+				border: var(--border-width) solid transparent;
 			}
 
 			&:is(.lambda-radio-view-outline) {
@@ -762,7 +762,7 @@
 
 	&:is(.lambda-radio-wrapper-outline) {
 		background-color: transparent;
-		border: 1px solid var(--surface-d);
+		border: var(--border-width) solid var(--surface-d);
 
 		&:is(.lambda-radio-wrapper-neutral) {
 			&:is(.lambda-radio-wrapper-checked) {
@@ -843,7 +843,7 @@
 	}
 
 	&:is(.lambda-radio-wrapper-soft) {
-		border: 1px solid transparent;
+		border: var(--border-width) solid transparent;
 		background-color: var(--neutral-opacity-color);
 
 		&:is(.lambda-radio-wrapper-neutral) {
@@ -918,7 +918,7 @@
 	}
 
 	&:is(.lambda-radio-wrapper-solid) {
-		border: 1px solid transparent;
+		border: var(--border-width) solid transparent;
 		background-color: var(--surface-a);
 
 		&:is(.lambda-radio-wrapper-neutral) {
@@ -1681,7 +1681,7 @@
 }
 
 .lambda-radio-view-radio {
-	border: 1px solid var(--surface-d);
+	border: var(--border-width) solid var(--surface-d);
 
 	&.lambda-radio-view-solid {
 		border-color: var(--border-color);
@@ -1789,7 +1789,7 @@
 }
 
 .lambda-radio-view-card {
-	border: 1px solid var(--surface-d);
+	border: var(--border-width) solid var(--surface-d);
 
 	&.lambda-radio-view-solid {
 		background-color: var(--surface-a);

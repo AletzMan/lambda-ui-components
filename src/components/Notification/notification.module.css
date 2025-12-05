@@ -95,7 +95,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--neutral-text-color);
+			border: var(--border-width) solid var(--neutral-text-color);
 			color: var(--neutral-disbled-color);
 
 			&:hover {
@@ -118,7 +118,7 @@
 		.notification-footer-button-cancel {
 			background-color: transparent;
 			color: var(--success-base-color);
-			border: var(--border-width-xs) solid var(--success-base-color);
+			border: var(--border-width) solid var(--success-base-color);
 
 			&:hover {
 				background-color: var(--success-subtle-color);
@@ -140,7 +140,7 @@
 		.notification-footer-button-cancel {
 			background-color: transparent;
 			color: var(--danger-base-color);
-			border: var(--border-width-xs) solid var(--danger-base-color);
+			border: var(--border-width) solid var(--danger-base-color);
 
 			&:hover {
 				background-color: var(--danger-subtle-color);
@@ -162,7 +162,7 @@
 		.notification-footer-button-cancel {
 			background-color: transparent;
 			color: var(--warning-base-color);
-			border: var(--border-width-xs) solid var(--warning-base-color);
+			border: var(--border-width) solid var(--warning-base-color);
 
 			&:hover {
 				background-color: var(--warning-subtle-color);
@@ -184,7 +184,7 @@
 		.notification-footer-button-cancel {
 			background-color: transparent;
 			color: var(--info-base-color);
-			border: var(--border-width-xs) solid var(--info-base-color);
+			border: var(--border-width) solid var(--info-base-color);
 
 			&:hover {
 				background-color: var(--info-subtle-color);
@@ -207,7 +207,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--neutral-subtle-color);
+			border: var(--border-width) solid var(--neutral-subtle-color);
 			color: var(--foreground-invert-color);
 
 			&:hover {
@@ -229,7 +229,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-light-color);
+			border: var(--border-width) solid var(--success-light-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -251,7 +251,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-light-color);
+			border: var(--border-width) solid var(--danger-light-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -273,7 +273,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-light-color);
+			border: var(--border-width) solid var(--warning-light-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -295,7 +295,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-light-color);
+			border: var(--border-width) solid var(--info-light-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -319,7 +319,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--secondary-light-color);
+			border: var(--border-width) solid var(--secondary-light-color);
 			color: var(--white-color);
 
 			&:hover {
@@ -341,7 +341,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-base-color);
+			border: var(--border-width) solid var(--success-base-color);
 			color: var(--success-base-color);
 
 			&:hover {
@@ -363,7 +363,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-base-color);
+			border: var(--border-width) solid var(--danger-base-color);
 			color: var(--danger-base-color);
 
 			&:hover {
@@ -385,7 +385,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-base-color);
+			border: var(--border-width) solid var(--warning-base-color);
 			color: var(--warning-base-color);
 
 			&:hover {
@@ -407,7 +407,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-base-color);
+			border: var(--border-width) solid var(--info-base-color);
 			color: var(--info-base-color);
 
 			&:hover {
@@ -431,7 +431,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--black-color);
+			border: var(--border-width) solid var(--black-color);
 			color: var(--black-color);
 
 			&:hover {
@@ -452,7 +452,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--success-base-color);
+			border: var(--border-width) solid var(--success-base-color);
 			color: var(--success-base-color);
 
 			&:hover {
@@ -473,7 +473,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--danger-base-color);
+			border: var(--border-width) solid var(--danger-base-color);
 			color: var(--danger-base-color);
 
 			&:hover {
@@ -494,7 +494,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--warning-base-color);
+			border: var(--border-width) solid var(--warning-base-color);
 			color: var(--warning-base-color);
 
 			&:hover {
@@ -515,7 +515,7 @@
 
 		.notification-footer-button-cancel {
 			background-color: transparent;
-			border: var(--border-width-xs) solid var(--info-base-color);
+			border: var(--border-width) solid var(--info-base-color);
 			color: var(--info-base-color);
 
 			&:hover {
@@ -612,7 +612,7 @@
 
 .notification-themed {
 	background-color: var(--surface-a);
-	border: 1px solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 
 	.notification-title {
 		color: var(--foreground-color);

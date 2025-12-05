@@ -3,7 +3,7 @@
 	flex-direction: column;
 	position: relative;
 	border-radius: var(--radius-box);
-	border: 1px solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	font-size: var(--font-size-sm);
 	font-family: "Fira Mono", "Consolas", "Monaco", monospace;
 	overflow: hidden;

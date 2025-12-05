@@ -84,7 +84,7 @@
 	box-sizing: border-box;
 
 	&>* {
-		margin-inline-start: -1px;
+		margin-inline-start: calc(var(--border-width) * -1);
 	}
 }
 

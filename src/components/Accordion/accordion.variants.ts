@@ -26,7 +26,7 @@ export const accordionVariants = cva(styles["lambda-accordion"], {
 	},
 	defaultVariants: {
 		variant: "default",
-		radius: "small",
+		radius: "default",
 		size: "medium",
 	},
 });
@@ -62,7 +62,7 @@ export const accordionItemVariants = cva(styles["lambda-accordion-item"], {
 		},
 	],
 	defaultVariants: {
-		radius: "small",
+		radius: "default",
 		state: "closed",
 		disabled: false,
 		variant: "default",

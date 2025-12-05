@@ -113,7 +113,7 @@
 	justify-content: center;
 	transition: all 0.2s ease-out;
 	box-sizing: border-box;
-	border: var(--border-width-xs) solid transparent;
+	border: var(--border-width) solid transparent;
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 }

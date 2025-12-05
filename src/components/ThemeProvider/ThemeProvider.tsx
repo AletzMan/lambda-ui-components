@@ -25,7 +25,7 @@ const defaultContext: UseThemeProps = {
 	darkTheme: "dark",
 };
 
-const lightThemes: LightTheme[] = ["light", "retro", "lavender", "mint", "sunset", "ocean"];
+const lightThemes: LightTheme[] = ["light", "retro", "lavender", "mint", "sunset", "ocean", "sandstone", "pop-art"];
 const darkThemes: DarkTheme[] = [
 	"dark",
 	"slate",
@@ -33,6 +33,8 @@ const darkThemes: DarkTheme[] = [
 	"soft-obsidian",
 	"graphite",
 	"midnight",
+	"aurora-night",
+	"electro-violet",
 ];
 
 const defaultThemes: AllThemes[] = [...lightThemes, ...darkThemes];

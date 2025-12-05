@@ -46,6 +46,8 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
         { name: "mint", label: "Mint", icon: <Leaf />, group: "Light Themes" },
         { name: "sunset", label: "Sunset", icon: <Sunset />, group: "Light Themes" },
         { name: "ocean", label: "Ocean", icon: <Waves />, group: "Light Themes" },
+        { name: "sandstone", label: "Sandstone", icon: <Waves />, group: "Light Themes" },
+        { name: "pop-art", label: "Pop Art", icon: <Waves />, group: "Light Themes" },
         { name: "dark", label: "Dark", icon: <Moon />, group: "Dark Themes" },
         { name: "slate", label: "Slate", icon: <Briefcase />, group: "Dark Themes" },
         {
@@ -62,6 +64,8 @@ export const SwitchTheme: React.FC<SwitchThemeProps> = ({
         },
         { name: "graphite", label: "Graphite", icon: <Monitor />, group: "Dark Themes" },
         { name: "midnight", label: "Midnight", icon: <Gem />, group: "Dark Themes" },
+        { name: "aurora-night", label: "Aurora Night", icon: <Gem />, group: "Dark Themes" },
+        { name: "electro-violet", label: "Electro Violet", icon: <Gem />, group: "Dark Themes" },
     ];
 
     const currentTheme = themes.find((t) => t.name.toLowerCase() === theme!.toLowerCase()) || themes[0];

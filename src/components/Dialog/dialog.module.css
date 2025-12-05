@@ -53,7 +53,7 @@
 	max-height: 90vh;
 	display: flex;
 	flex-direction: column;
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	background-color: var(--surface-a);
 	transform: translateY(-20px);
 	border-radius: var(--radius-box);
@@ -99,7 +99,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1.6em;
 	padding: calc(var(--spacing-md) + var(--spacing-xs)) var(--spacing-lg);
-	border-bottom: 1px solid var(--border-color);
+	border-bottom: var(--border-width) solid var(--border-color);
 	background-color: var(--surface-b);
 	flex-shrink: 0;
 }
@@ -132,7 +132,7 @@
 	justify-content: flex-end;
 	gap: var(--spacing-md);
 	padding: var(--spacing-md) var(--spacing-lg);
-	border-top: 1px solid var(--border-color);
+	border-top: var(--border-width) solid var(--border-color);
 	background-color: var(--surface-a);
 	flex-shrink: 0;
 }

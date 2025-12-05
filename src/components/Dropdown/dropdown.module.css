@@ -62,7 +62,7 @@
 
 .lambda-dropdown-solid {
 	background-color: var(--surface-a);
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 
 	&.lambda-dropdown-active {
 		background-color: var(--surface-b);
@@ -80,7 +80,7 @@
 
 .lambda-dropdown-subtle {
 	background-color: var(--surface-a);
-	border: var(--border-width-xs) solid var(--surface-b);
+	border: var(--border-width) solid var(--surface-b);
 
 	&.lambda-dropdown-active {
 		background-color: var(--surface-b);
@@ -307,7 +307,7 @@
 	padding: var(--spacing-xs);
 	min-width: 145px;
 	background: radial-gradient(var(--surface-a), var(--background-color));
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	z-index: 100;
 	border-radius: var(--radius-box);
 
@@ -449,7 +449,7 @@
 	padding: var(--spacing-none) var(--spacing-xs);
 	border-radius: var(--radius-selector);
 	background-color: var(--surface-b);
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	box-shadow: 1px 1px 2px var(--shadow-color);
 }
 

@@ -24,7 +24,7 @@
 	background-color: var(--surface-b);
 
 	&:is(.lambda-stepper-bordered) {
-		border: 1px solid var(--border-color);
+		border: var(--border-width) solid var(--border-color);
 	}
 
 	&:is(.lambda-stepper-soft) {
@@ -339,7 +339,7 @@
 		border-radius: 0 0 var(--radius-xs) var(--radius-xs);
 
 		&:is(.lambda-stepper-content-bordered) {
-			border: 1px solid var(--border-color);
+			border: var(--border-width) solid var(--border-color);
 			border-top: 0;
 		}
 
@@ -352,7 +352,7 @@
 		border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
 
 		&:is(.lambda-stepper-content-bordered) {
-			border: 1px solid var(--border-color);
+			border: var(--border-width) solid var(--border-color);
 			border-left: 0;
 		}
 

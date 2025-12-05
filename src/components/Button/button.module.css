@@ -319,7 +319,7 @@
 }
 
 .lambda-btn-outline {
-	border: var(--border-width-xs) solid;
+	border: var(--border-width) solid;
 	background-color: transparent;
 	outline: 2px solid transparent;
 	outline-offset: 2px;
@@ -438,7 +438,7 @@
 
 .lambda-btn-dashed {
 	background-color: transparent;
-	border: var(--border-width-xs) dashed;
+	border: var(--border-width) dashed;
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 
@@ -655,7 +655,7 @@
 
 .lambda-btn-subtle {
 	background-color: transparent;
-	border: var(--border-width-xs) solid transparent;
+	border: var(--border-width) solid transparent;
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 

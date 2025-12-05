@@ -144,11 +144,11 @@
 }
 
 .lambda-switch-background-solid {
-	border: var(--border-width-xs) solid var(--border-color);
-	background-color: var(--surface-a);
+	border: var(--border-width) solid var(--border-color);
+	background-color: var(--surface-b);
 
 	.lambda-switch-handle {
-		background-color: var(--lambda-color-neutral-200);
+		background-color: var(--surface-d);
 	}
 
 	&.lambda-switch-background-neutral {
@@ -239,11 +239,11 @@
 }
 
 .lambda-switch-background-soft {
-	border: var(--border-width-xs) solid transparent;
+	border: var(--border-width) solid transparent;
 	background-color: var(--surface-b);
 
 	.lambda-switch-handle {
-		background-color: var(--lambda-color-neutral-200);
+		background-color: var(--surface-d);
 		box-shadow: none;
 	}
 
@@ -333,11 +333,11 @@
 }
 
 .lambda-switch-background-outline {
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	background-color: transparent;
 
 	.lambda-switch-handle {
-		background-color: var(--lambda-color-neutral-200);
+		background-color: var(--surface-d);
 		box-shadow: none;
 	}
 
@@ -464,7 +464,7 @@
 
 
 .lambda-switch-handle-default {
-	border-radius: calc(var(--radius-selector) + 1px);
+	border-radius: calc(var(--radius-selector) - 1px);
 }
 
 .lambda-switch-handle-subtle {

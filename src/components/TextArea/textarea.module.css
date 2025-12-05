@@ -111,7 +111,7 @@
 	}
 
 	&.lambda-textarea-outline {
-		border: var(--border-width-xs) solid var(--border-color);
+		border: var(--border-width) solid var(--border-color);
 		outline: 2px solid transparent;
 		outline-offset: 2px;
 
@@ -122,7 +122,7 @@
 		}
 
 		&.lambda-textarea-invalid {
-			border: var(--border-width-xs) dashed var(--danger-base-color);
+			border: var(--border-width) dashed var(--danger-base-color);
 			outline-color: var(--danger-shadow-color);
 
 			&:focus-within {

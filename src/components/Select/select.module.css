@@ -10,7 +10,7 @@
 		z-index: 1;
 
 		& .select-btn-outline {
-			border: var(--border-width-xs) solid var(--primary-hover-color);
+			border: var(--border-width) solid var(--primary-hover-color);
 			outline: 2px solid var(--primary-shadow-color);
 			outline-offset: 2px;
 			color: var(--primary-text-color);
@@ -241,11 +241,11 @@
 	outline-offset: 2px;
 
 	&.select-btn-outline {
-		border: var(--border-width-xs) solid var(--border-color);
+		border: var(--border-width) solid var(--border-color);
 		background-color: var(--background-color);
 
 		&:is(.select-btn-invalid) {
-			border: var(--border-width-xs) dashed var(--danger-base-color);
+			border: var(--border-width) dashed var(--danger-base-color);
 			outline-color: var(--danger-shadow-color);
 		}
 	}
@@ -420,7 +420,6 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	/*border-left: 1px solid var(--surface-d);*/
 	border-right: 1px solid transparent;
 	transition: all 0.3s ease-in-out;
 	/*background-color: var(--surface-c);*/
@@ -446,7 +445,7 @@
 	font-family: var(--font-family);
 	border-radius: var(--radius-box);
 	background-color: var(--background-color);
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	z-index: 9999;
 
 	&:focus-within {

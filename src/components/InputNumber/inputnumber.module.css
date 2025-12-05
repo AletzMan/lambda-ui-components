@@ -14,7 +14,7 @@ input[type="number"] {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	border: var(--border-width-xs) solid transparent;
+	border: var(--border-width) solid transparent;
 	color: var(--foreground-color);
 	font-weight: var(--font-weight-medium);
 	pointer-events: all;
@@ -225,11 +225,11 @@ input[type="number"] {
 	overflow: hidden;
 
 	&.lambda-number-handler-soft {
-		border-left: 1px solid transparent;
+		border-left: var(--border-width) solid transparent;
 	}
 
 	&.lambda-number-handler-outline {
-		border-left: 1px solid var(--surface-d);
+		border-left: var(--border-width) solid var(--surface-d);
 	}
 
 	&.lambda-number-handler-tiny {
@@ -288,12 +288,12 @@ input[type="number"] {
 
 .lambda-number-outline {
 	background-color: var(--background-color);
-	border: var(--border-width-xs) solid var(--border-color);
+	border: var(--border-width) solid var(--border-color);
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		border: var(--border-width-xs) solid var(--primary-hover-color);
+		border: var(--border-width) solid var(--primary-hover-color);
 		outline: 2px solid var(--primary-shadow-color);
 	}
 
@@ -451,7 +451,7 @@ input[type="number"] {
 	align-items: center;
 	justify-content: center;
 	border: none;
-	border-left: 1px solid;
+	border-left: var(--border-width) solid;
 	padding: 0;
 	border: none;
 	height: 100%;
@@ -461,7 +461,6 @@ input[type="number"] {
 	color: var(--surface-f);
 	background-color: var(--surface-b);
 	transition: background-color 0.15s ease-in-out;
-	/*box-shadow: 0 0 1px 1px #00000010 inset;*/
 
 	/* Color variants for buttons */
 	&:is(.lambda-number-btn-primary):hover:not(:disabled) {
@@ -577,7 +576,7 @@ input[type="number"] {
 	color: var(--neutral-border-color);
 
 	&:not(.lambda-number-currency-default) {
-		border-right: 1px solid var(--surface-d);
+		border-right: var(--border-width) solid var(--surface-d);
 		width: var(--height-md);
 
 		&:is(.lambda-number-currency-soft) {
@@ -672,7 +671,7 @@ input[type="number"] {
 }
 
 .lambda-number-separator {
-	height: 1px;
+	height: var(--border-width);
 	width: 100%;
 	padding: 0;
 	margin: 0;

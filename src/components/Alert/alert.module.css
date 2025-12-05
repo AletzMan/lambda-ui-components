@@ -3,8 +3,8 @@
 	align-items: center;
 	gap: var(--spacing-md);
 	font-family: var(--font-family);
-	border: var(--border-width-xs) solid transparent;
-	border-left: 3px solid transparent;
+	border: var(--border-width) solid transparent;
+	border-left: calc(var(--border-width) * 2.5) solid transparent;
 	word-break: break-word;
 	user-select: text;
 
