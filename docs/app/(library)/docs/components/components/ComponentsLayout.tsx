@@ -44,7 +44,7 @@ export const ComponentsLayout = ({
 			</header>
 			<div className="flex flex-col gap-10">
 				<div className="sticky top-20 bg-(--surface-a) backdrop-blur-[5px] p-2 rounded-sm">
-					<div className="grid grid-cols-[1fr_250px] max-[1410px]:grid-cols-1 gap-2">
+					<div className="grid grid-cols-[1fr_300px] max-[1410px]:grid-cols-1 gap-2">
 						<div className="flex flex-col gap-10 max-w-[--max-w-screen-2xl] mx-auto w-full">
 							{children}
 
@@ -55,7 +55,7 @@ export const ComponentsLayout = ({
 							<NavigationMenu
 								data={menuData}
 								currentPath={activeId ? "#" + activeId : "#" + firstItemId}
-								size="tiny"
+								size="small"
 								alwaysOpen
 								showLines
 								styleLines="dotted"
