@@ -31,7 +31,7 @@ export const ComponentsLayout = ({
 	console.log(activeId);
 	console.log(firstItemId);
 	return (
-		<section className="relative flex flex-col gap-10 px-6 py-4 w-full ">
+		<section className="relative flex flex-col gap-10 px-6 py-4 w-full max-w-[1800px]">
 			<header className="mb-10 text-center ">
 				<h1 className="flex items-center gap-2 text-4xl font-bold text-left tracking-tight text-(--primary-base-color) mb-1 w-full ">
 					{title}
@@ -45,7 +45,7 @@ export const ComponentsLayout = ({
 			<div className="flex flex-col gap-10">
 				<div className="sticky top-20 bg-(--surface-a) backdrop-blur-[5px] p-2 rounded-sm">
 					<div className="grid grid-cols-[1fr_300px] max-[1410px]:grid-cols-1 gap-2">
-						<div className="flex flex-col gap-10 max-w-[--max-w-screen-2xl] mx-auto w-full">
+						<div className="flex flex-col gap-10 max-w-[1800px] mx-auto w-full">
 							{children}
 
 							<BarNavButton buttonLeft={buttonLeft} buttonRight={buttonRight} />

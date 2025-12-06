@@ -254,7 +254,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 				{optionalProps && (
 					<div className="text-(--foreground-secondary-color) mb-7">{optionalProps}</div>
 				)}
-				<div className="grid grid-cols-[0.85fr_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-3 w-full">
+				<div className="grid grid-cols-[450px_1fr] max-[1000px]:flex max-[1000px]:flex-col-reverse gap-3 w-full">
 					{/* Columna de Controles de Props */}
 					<div className="flex flex-col h-full">
 						<div
