@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./Dialog.module.css";
+import styles from "./dialog.module.css";
 
 export const dialogOverlayVariants = cva(styles["lambda-dialog-overlay"], {
 	variants: {

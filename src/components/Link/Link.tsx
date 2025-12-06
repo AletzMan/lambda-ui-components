@@ -2,7 +2,7 @@
 
 import React, { forwardRef, useMemo } from "react";
 import clsx from "clsx";
-import styles from "./Link.module.css";
+import styles from "./link.module.css";
 import buttonStyles from "../Button/button.module.css";
 import { LinkProps, LinkRef } from "./link.types";
 import { button } from "../Button/button.variants";

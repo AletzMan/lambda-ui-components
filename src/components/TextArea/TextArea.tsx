@@ -1,5 +1,5 @@
 import { forwardRef, FocusEvent, useId } from "react";
-import styles from "./textArea.module.css";
+import styles from "./textarea.module.css";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
 import clsx from "clsx";
 import { CircleX } from "lucide-react";

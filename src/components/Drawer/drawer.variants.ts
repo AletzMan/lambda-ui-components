@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./Drawer.module.css";
+import styles from "./drawer.module.css";
 
 export const drawerOverlayVariants = cva(styles["lambda-drawer-overlay"], {
 	variants: {

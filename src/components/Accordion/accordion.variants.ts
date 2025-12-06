@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./Accordion.module.css";
+import styles from "./accordion.module.css";
 
 export const accordionVariants = cva(styles["lambda-accordion"], {
 	variants: {

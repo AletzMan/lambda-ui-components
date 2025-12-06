@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./Alert.module.css";
+import styles from "./alert.module.css";
 
 export const alertVariants = cva(styles["lambda-alert"], {
 	variants: {

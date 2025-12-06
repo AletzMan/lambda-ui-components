@@ -12,7 +12,7 @@ import ReactDOM from "react-dom";
 import clsx from "clsx";
 import { X as CloseIcon } from "lucide-react";
 
-import styles from "./Drawer.module.css";
+import styles from "./drawer.module.css";
 import { DrawerPlacement, DrawerProps, DrawerState } from "./drawer.types";
 import { drawerOverlayVariants, drawerPanelVariants } from "./drawer.variants";
 import { Button } from "../Button/Button";

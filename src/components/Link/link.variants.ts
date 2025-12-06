@@ -4,7 +4,7 @@
 // Si no, este archivo puede estar vacío o contener solo comentarios.
 
 import { cva, VariantProps } from "class-variance-authority";
-import styles from "./Link.module.css";
+import styles from "./link.module.css";
 
 export const linkProps = cva(styles["lambda-link"], {
 	variants: {
