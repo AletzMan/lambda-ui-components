@@ -1,4 +1,5 @@
-import { Divider } from "lambda-ui-components";
+
+import { Divider } from "../../../../main";
 import styles from "./container.module.css";
 
 interface ContainerComponentProps {
