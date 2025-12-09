@@ -98,6 +98,41 @@ const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuProps>(
 			return idSet;
 		};
 
+		// Helper to find ancestor IDs for the current path
+		const findAncestorIds = useCallback(
+			(nodes: NavigationMenuData[], targetPath: string, parents: string[] = []): string[] | null => {
+				for (const node of nodes) {
+					if (node.path === targetPath) {
+						return parents;
+					}
+					if (node.children) {
+						const found = findAncestorIds(node.children, targetPath, [...parents, node.id]);
+						if (found) return found;
+					}
+				}
+				return null;
+			},
+			[]
+		);
+
+		React.useEffect(() => {
+			if (!currentPath || alwaysOpen) return;
+
+			const ancestors = findAncestorIds(data, currentPath);
+
+			if (ancestors && ancestors.length > 0) {
+				setExpanded((prev) => {
+					// Check if we need to update to avoid unnecessary re-renders
+					const needsUpdate = ancestors.some((id) => !prev.has(id));
+					if (!needsUpdate) return prev;
+
+					const newSet = new Set(prev);
+					ancestors.forEach((id) => newSet.add(id));
+					return newSet;
+				});
+			}
+		}, [currentPath, data, alwaysOpen, findAncestorIds]);
+
 		const contextValue = useMemo(
 			() => ({
 				expanded: alwaysOpen ? collectAllIds(data) : expanded,
