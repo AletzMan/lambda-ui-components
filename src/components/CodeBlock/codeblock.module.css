@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 	border: var(--border-width) solid var(--border-color);
 	font-size: var(--font-size-sm);
 	font-family: "Fira Mono", "Consolas", "Monaco", monospace;

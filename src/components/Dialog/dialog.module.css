@@ -56,7 +56,7 @@
 	border: var(--border-width) solid var(--border-color);
 	background-color: var(--surface-a);
 	transform: translateY(-20px);
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 	pointer-events: auto;
 	overflow: hidden;
 

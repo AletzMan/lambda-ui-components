@@ -218,7 +218,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 			isOpen: viewPicker,
 			setIsOpen: setViewPicker,
 			handleKeyDown,
-		} = usePopover({ x: -3, y: -39 });
+		} = usePopover({ x: 0, y: 0 });
 		const { t } = useTranslation();
 		const [internalValue, setInternalValue] = useState<string>(value || "hsl(0, 100%, 50%)");
 		const [alpha, setAlpha] = useState(100);
@@ -609,13 +609,13 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					colorpickerVariants({ size, variant, disabled, showText }),
 					className
 				)}
-				ref={ref}
+				ref={triggerRef as RefObject<HTMLDivElement>}
 				{...props}
 				role="colorpicker"
 			>
 				<div
 					className={clsx(colorpickerGroupVariants({ size }))}
-					ref={triggerRef as RefObject<HTMLDivElement>}
+					ref={ref}
 				>
 					<div className={styles["lambda-colorpicker-border"]}></div>
 					<div className={styles["lambda-colorpicker-pattern"]}></div>
@@ -678,6 +678,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											size="tiny"
 											onClick={handleCopyClick}
 											icon={copied ? <CheckIcon /> : <CopyIcon />}
+											radius="small"
 										/>
 									</Tooltip>
 								</div>
@@ -736,6 +737,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													icon={<Pipette />}
 													onClick={pickColor}
 													ref={buttonSliderRef}
+													radius="small"
 													className={styles["lambda-colorpicker-dropper"]}
 												/>
 											</Tooltip>
@@ -770,7 +772,8 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											onChangeValue={(value) => {
 												setAlpha(Math.min(100, Math.max(0, value || 0)));
 											}}
-											size="tiny"
+											size="small"
+											radius="small"
 										/>
 									</div>
 									<div className={styles["lambda-colorpicker-controls-inputs"]}>
@@ -781,7 +784,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													value={inputValue}
 													id="lambda-colorpicker-input-hex"
 													name="lambda-colorpicker-input-hex"
-													size="tiny"
+													size="small"
 													onChangeValue={handleInputChange}
 													className={styles["lambda-colorpicker-input-single"]}
 												/>
@@ -789,10 +792,12 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													<Button
 														variant="soft"
 														color="neutral"
-														size="tiny"
+														size="small"
 														label={format.toUpperCase()}
 														onClick={handleChangeFormat}
 														className={styles["lambda-colorpicker-input-format"]}
+														radius="small"
+
 													/>
 												</Tooltip>
 											</div>
@@ -800,13 +805,13 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 											<div className={styles["lambda-colorpicker-input-group"]}>
 												<InputNumber
 													value={format === "hsl" ? hue : rgbValues.r}
-													size="tiny"
+													size="small"
 													min={0}
 													max={format === "hsl" ? 360 : 255}
+													radius="small"
 													onChangeValue={(value) =>
 														handleSingleInputChange(value, format === "hsl" ? "h" : "r")
 													}
-													className={styles["lambda-colorpicker-input-multiple"]}
 												/>
 												<InputNumber
 													value={format === "hsl" ? s : rgbValues.g}
@@ -815,8 +820,8 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													}
 													min={0}
 													max={format === "hsl" ? 100 : 255}
-													size="tiny"
-													className={styles["lambda-colorpicker-input-multiple"]}
+													radius="small"
+													size="small"
 												/>
 												<InputNumber
 													value={format === "hsl" ? l : rgbValues.b}
@@ -825,17 +830,18 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 													}
 													min={0}
 													max={format === "hsl" ? 100 : 255}
-													size="tiny"
-													className={styles["lambda-colorpicker-input-multiple"]}
+													radius="small"
+													size="small"
 												/>
 												<Tooltip color="neutral" content={t("color-picker.format")}>
 													<Button
 														variant="soft"
 														color="neutral"
-														size="tiny"
+														size="small"
 														label={format.toUpperCase()}
 														onClick={handleChangeFormat}
 														ref={buttonAlphaRef}
+														radius="small"
 														className={styles["lambda-colorpicker-input-format"]}
 													/>
 												</Tooltip>

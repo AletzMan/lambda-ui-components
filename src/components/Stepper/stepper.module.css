@@ -32,12 +32,12 @@
 	}
 
 	&.lambda-stepper-horizontal {
-		border-radius: var(--radius-box) var(--radius-box) 0 0;
+		border-radius: min(var(--radius-xl), var(--radius-box)) min(var(--radius-xl), var(--radius-box)) 0 0;
 		flex-direction: row;
 	}
 
 	&.lambda-stepper-vertical {
-		border-radius: var(--radius-box) 0 0 var(--radius-box);
+		border-radius: min(var(--radius-xl), var(--radius-box)) 0 0 min(var(--radius-xl), var(--radius-box));
 		flex-direction: column;
 		max-width: 11.5em;
 

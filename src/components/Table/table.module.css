@@ -1,6 +1,6 @@
 .lambda-table-container {
 	display: block;
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box)) min(var(--radius-xl), var(--radius-box)) 0 0;
 	overflow: hidden;
 	width: 100%;
 	box-sizing: border-box;
@@ -11,6 +11,7 @@
 	display: block;
 	width: 100%;
 	box-sizing: border-box;
+	border-radius: min(var(--radius-xl), var(--radius-box)) min(var(--radius-xl), var(--radius-box)) 0 0;
 	overflow-x: auto;
 	overflow-y: hidden;
 
@@ -130,7 +131,7 @@
 	flex-grow: 1;
 	gap: var(--spacing-lg);
 	padding: var(--spacing-xs) var(--spacing-sm);
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 	background-color: transparent;
 	width: 100%;
 
@@ -251,11 +252,6 @@
 		}
 	}
 
-	&:is(:last-child) {
-		& .lambda-table-cell {
-			/*border-bottom: var(--border-width) solid var(--surface-a);*/
-		}
-	}
 
 	& .lambda-table-cell {
 		&:first-child {
@@ -300,7 +296,6 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	border-top: var(--border-width) solid var(--border-color);
 	padding: var(--spacing-lg) var(--spacing-md);
 	z-index: 10;
 

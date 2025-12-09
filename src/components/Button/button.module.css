@@ -15,11 +15,7 @@
 	min-height: 24px;
 	min-width: max-content;
 	text-shadow: 0 0 1px #00000045;
-	transition: background-color 0.15s ease-in-out, color 0.3s ease-in-out, shadow 0.3s ease-in-out,
-		outline 0.3s ease-in-out;
-	outline-offset: 2px;
-	outline-width: 2px;
-	outline-style: solid;
+	transition: background-color 0.15s ease-in-out, color 0.3s ease-in-out, outline 0.3s ease-in-out;
 
 	&.lambda-btn-icon-left {
 		flex-direction: row;
@@ -68,7 +64,7 @@
 				var(--neutral-hover-color) 30%,
 				var(--neutral-hover-color) 70%,
 				var(--neutral-base-color));
-		border: var(--border-width-sm) solid var(--neutral-base-color);
+		border: var(--border-width) solid var(--neutral-base-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background: linear-gradient(to bottom,
@@ -85,7 +81,7 @@
 				var(--primary-base-color) 30%,
 				var(--primary-base-color) 70%,
 				var(--primary-hover-color));
-		border: var(--border-width-sm) solid var(--primary-base-color);
+		border: var(--border-width) solid var(--primary-base-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background: linear-gradient(to bottom,
@@ -102,7 +98,7 @@
 				var(--secondary-base-color) 30%,
 				var(--secondary-base-color) 70%,
 				var(--secondary-hover-color));
-		border: var(--border-width-sm) solid var(--secondary-base-color);
+		border: var(--border-width) solid var(--secondary-base-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background: linear-gradient(to bottom,
@@ -119,7 +115,7 @@
 				var(--success-base-color) 30%,
 				var(--success-base-color) 70%,
 				var(--success-hover-color));
-		border: var(--border-width-sm) solid var(--success-base-color);
+		border: var(--border-width) solid var(--success-base-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background: linear-gradient(to bottom,
@@ -136,7 +132,7 @@
 				var(--danger-base-color) 30%,
 				var(--danger-base-color) 70%,
 				var(--danger-hover-color));
-		border: var(--border-width-sm) solid var(--danger-base-color);
+		border: var(--border-width) solid var(--danger-base-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background: linear-gradient(to bottom,
@@ -153,7 +149,7 @@
 				var(--warning-base-color) 30%,
 				var(--warning-base-color) 70%,
 				var(--warning-hover-color));
-		border: var(--border-width-sm) solid var(--warning-base-color);
+		border: var(--border-width) solid var(--warning-base-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background: linear-gradient(to bottom,
@@ -170,7 +166,7 @@
 				var(--info-base-color) 30%,
 				var(--info-base-color) 70%,
 				var(--info-hover-color));
-		border: var(--border-width-sm) solid var(--info-base-color);
+		border: var(--border-width) solid var(--info-base-color);
 
 		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
 			background: linear-gradient(to bottom,
@@ -202,8 +198,8 @@
 .lambda-btn-solid {
 	position: relative;
 	border: none;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 3px;
 
 	&.lambda-btn-neutral {
 		background-color: var(--neutral-base-color);
@@ -321,13 +317,13 @@
 .lambda-btn-outline {
 	border: var(--border-width) solid;
 	background-color: transparent;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 3px;
 
 	&:focus:not(.lambda-btn-loading):not(.lambda-btn-disabled),
 	&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-		outline: 2px solid transparent;
-		outline-offset: 2px;
+		outline: var(--outline-width) solid transparent;
+		outline-offset: 3px;
 	}
 
 	&.lambda-btn-neutral {
@@ -439,8 +435,8 @@
 .lambda-btn-dashed {
 	background-color: transparent;
 	border: var(--border-width) dashed;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 3px;
 
 	&.lambda-btn-neutral {
 		border-color: var(--neutral-base-color);
@@ -551,8 +547,8 @@
 .lambda-btn-soft {
 	background-color: transparent;
 	border: none;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 3px;
 
 	&.lambda-btn-neutral {
 		background-color: var(--neutral-opacity-color);
@@ -656,8 +652,8 @@
 .lambda-btn-subtle {
 	background-color: transparent;
 	border: var(--border-width) solid transparent;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 3px;
 
 	&.lambda-btn-neutral {
 		background-color: var(--neutral-opacity-color);
@@ -768,8 +764,8 @@
 .lambda-btn-text {
 	background-color: transparent;
 	border: var(--border-width-xs) solid transparent;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 3px;
 
 	&.lambda-btn-neutral {
 		color: var(--neutral-base-color);

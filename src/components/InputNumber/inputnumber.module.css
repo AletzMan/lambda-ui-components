@@ -21,7 +21,7 @@ input[type="number"] {
 	z-index: 0;
 	box-sizing: border-box;
 	outline: none;
-	outline-offset: 2px;
+	outline-offset: 2.5px;
 	width: 100%;
 	font-family: var(--font-family);
 	transition: border 0.2s ease-in-out, color 0.3s ease-in-out;
@@ -257,19 +257,19 @@ input[type="number"] {
 	}
 
 	&.lambda-number-handler-radius-tiny {
-		border-radius: var(--radius-none) calc(var(--radius-xs) + 1px) calc(var(--radius-xs) + 1px) var(--radius-none);
+		border-radius: var(--radius-none) calc(var(--radius-xs) + 0px) calc(var(--radius-xs) + 0px) var(--radius-none);
 	}
 
 	&.lambda-number-handler-radius-small {
-		border-radius: var(--radius-none) calc(var(--radius-xs) + 1px) calc(var(--radius-xs) + 1px) var(--radius-none);
+		border-radius: var(--radius-none) calc(var(--radius-xs) + 0px) calc(var(--radius-xs) + 0px) var(--radius-none);
 	}
 
 	&.lambda-number-handler-radius-medium {
-		border-radius: var(--radius-none) calc(var(--radius-sm) + 3px) calc(var(--radius-sm) + 3px) var(--radius-none);
+		border-radius: var(--radius-none) calc(var(--radius-sm) + 0px) calc(var(--radius-sm) + 0px) var(--radius-none);
 	}
 
 	&.lambda-number-handler-radius-large {
-		border-radius: var(--radius-none) calc(var(--radius-md) + 3px) calc(var(--radius-md) + 3px) var(--radius-none);
+		border-radius: var(--radius-none) calc(var(--radius-md) + 0px) calc(var(--radius-md) + 0px) var(--radius-none);
 	}
 
 	&.lambda-number-handler-radius-full {
@@ -289,12 +289,12 @@ input[type="number"] {
 .lambda-number-outline {
 	background-color: var(--background-color);
 	border: var(--border-width) solid var(--border-color);
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 2.5px;
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
 		border: var(--border-width) solid var(--primary-hover-color);
-		outline: 2px solid var(--primary-shadow-color);
+		outline-color: var(--primary-shadow-color);
 	}
 
 	&.lambda-number-invalid {
@@ -342,11 +342,11 @@ input[type="number"] {
 .lambda-number-soft {
 	background-color: var(--surface-a);
 	border: none;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 2.5px;
 
 	&:focus-within:not(.lambda-number-invalid):not(.lambda-number-disabled) {
-		outline: 2px solid var(--primary-shadow-color);
+		outline: var(--outline-width) solid var(--primary-shadow-color);
 	}
 
 	&.lambda-number-invalid {
@@ -450,11 +450,9 @@ input[type="number"] {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: none;
-	border-left: var(--border-width) solid;
 	padding: 0;
 	border: none;
-	height: 100%;
+	height: 50%;
 	width: 100%;
 	box-sizing: border-box;
 	transition: all 0.15s ease-in-out;
@@ -671,7 +669,7 @@ input[type="number"] {
 }
 
 .lambda-number-separator {
-	height: var(--border-width);
+	height: 1px;
 	width: 100%;
 	padding: 0;
 	margin: 0;

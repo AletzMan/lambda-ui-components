@@ -3,7 +3,7 @@
 	position: relative;
 	overflow: hidden;
 	border: var(--border-width) solid var(--border-color);
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 	font-family: var(--font-family);
 	height: 100%;
 	width: 100%;

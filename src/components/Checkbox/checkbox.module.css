@@ -14,7 +14,7 @@
 	&:focus:not(.lambda-checkbox-container-disabled) {
 		>.lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-neutral) {
 			z-index: 1;
-			outline: 2px solid var(--neutral-shadow-color);
+			outline: var(--outline-width) solid var(--neutral-shadow-color);
 
 			&:not(.lambda-checkbox-wrapper-soft) {
 				border-color: var(--neutral-base-color);
@@ -23,7 +23,7 @@
 
 		>.lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-primary) {
 			z-index: 1;
-			outline: 2px solid var(--primary-shadow-color);
+			outline: var(--outline-width) solid var(--primary-shadow-color);
 
 			&:not(.lambda-checkbox-wrapper-soft) {
 				border-color: var(--primary-base-color);
@@ -32,7 +32,7 @@
 
 		>.lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-secondary) {
 			z-index: 1;
-			outline: 2px solid var(--secondary-shadow-color);
+			outline: var(--outline-width) solid var(--secondary-shadow-color);
 
 			&:not(.lambda-checkbox-wrapper-soft) {
 				border-color: var(--secondary-base-color);
@@ -41,7 +41,7 @@
 
 		>.lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-success) {
 			z-index: 1;
-			outline: 2px solid var(--success-shadow-color);
+			outline: var(--outline-width) solid var(--success-shadow-color);
 
 			&:not(.lambda-checkbox-wrapper-soft) {
 				border-color: var(--success-base-color);
@@ -50,7 +50,7 @@
 
 		>.lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-danger) {
 			z-index: 1;
-			outline: 2px solid var(--danger-shadow-color);
+			outline: var(--outline-width) solid var(--danger-shadow-color);
 
 			&:not(.lambda-checkbox-wrapper-soft) {
 				border-color: var(--danger-base-color);
@@ -59,7 +59,7 @@
 
 		>.lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-warning) {
 			z-index: 1;
-			outline: 2px solid var(--warning-shadow-color);
+			outline: var(--outline-width) solid var(--warning-shadow-color);
 
 			&:not(.lambda-checkbox-wrapper-soft) {
 				border-color: var(--warning-base-color);
@@ -68,7 +68,7 @@
 
 		>.lambda-checkbox-wrapper:is(.lambda-checkbox-wrapper-info) {
 			z-index: 1;
-			outline: 2px solid var(--info-shadow-color);
+			outline: var(--outline-width) solid var(--info-shadow-color);
 
 			&:not(.lambda-checkbox-wrapper-soft) {
 				border-color: var(--info-base-color);
@@ -114,8 +114,8 @@
 	transition: all 0.2s ease-out;
 	box-sizing: border-box;
 	border: var(--border-width) solid transparent;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 2.5px;
 }
 
 .lambda-checkbox-wrapper-solid {
@@ -629,10 +629,10 @@
 }
 
 .lambda-checkbox-wrapper-tiny {
-	height: var(--size-sm);
-	width: var(--size-sm);
-	min-height: var(--size-sm);
-	min-width: var(--size-sm);
+	height: var(--size-md);
+	width: var(--size-md);
+	min-height: var(--size-md);
+	min-width: var(--size-md);
 
 	&:is(.lambda-checkbox-wrapper-join) {
 		min-width: var(--size-lg);
@@ -649,10 +649,10 @@
 }
 
 .lambda-checkbox-wrapper-small {
-	height: var(--size-md);
-	width: var(--size-md);
-	min-height: var(--size-md);
-	min-width: var(--size-md);
+	height: var(--size-lg);
+	width: var(--size-lg);
+	min-height: var(--size-lg);
+	min-width: var(--size-lg);
 
 	&:is(.lambda-checkbox-wrapper-join) {
 		min-width: var(--size-2xl);
@@ -669,10 +669,10 @@
 }
 
 .lambda-checkbox-wrapper-medium {
-	height: var(--size-lg);
-	width: var(--size-lg);
-	min-height: var(--size-lg);
-	min-width: var(--size-lg);
+	height: var(--size-xl);
+	width: var(--size-xl);
+	min-height: var(--size-xl);
+	min-width: var(--size-xl);
 
 	&:is(.lambda-checkbox-wrapper-join) {
 		min-width: var(--size-4xl);
@@ -682,17 +682,17 @@
 		padding: var(--spacing-none) var(--spacing-lg);
 
 		&>svg {
-			width: var(--size-lg);
-			height: var(--size-lg);
+			width: var(--size-xl);
+			height: var(--size-xl);
 		}
 	}
 }
 
 .lambda-checkbox-wrapper-large {
-	height: var(--size-xl);
-	width: var(--size-xl);
-	min-height: var(--size-xl);
-	min-width: var(--size-xl);
+	height: var(--size-2xl);
+	width: var(--size-2xl);
+	min-height: var(--size-2xl);
+	min-width: var(--size-2xl);
 
 	&:is(.lambda-checkbox-wrapper-join) {
 		min-width: var(--size-6xl);
@@ -768,23 +768,23 @@
 }
 
 .lambda-checkbox-icon-tiny {
-	width: var(--font-size-2xs);
-	height: var(--font-size-2xs);
+	width: var(--size-sm);
+	height: var(--size-sm);
 }
 
 .lambda-checkbox-icon-small {
-	width: var(--font-size-sm);
-	height: var(--font-size-sm);
+	width: var(--size-sm);
+	height: var(--size-sm);
 }
 
 .lambda-checkbox-icon-medium {
-	width: var(--font-size-md);
-	height: var(--font-size-md);
+	width: var(--size-md);
+	height: var(--size-md);
 }
 
 .lambda-checkbox-icon-large {
-	width: var(--font-size-lg);
-	height: var(--font-size-lg);
+	width: var(--size-lg);
+	height: var(--size-lg);
 }
 
 @keyframes animateIcon {
@@ -800,7 +800,7 @@
 }
 
 .lambda-checkbox-wrapper-radius-default {
-	border-radius: var(--radius-selector);
+	border-radius: min(var(--radius-lg), var(--radius-selector));
 }
 
 .lambda-checkbox-wrapper-radius-none {

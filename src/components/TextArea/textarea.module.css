@@ -86,7 +86,7 @@
 	}
 
 	&.lambda-textarea-radius-default {
-		border-radius: var(--radius-field);
+		border-radius: min(var(--radius-xl), var(--radius-field))
 	}
 
 	&.lambda-textarea-radius-none {
@@ -112,12 +112,12 @@
 
 	&.lambda-textarea-outline {
 		border: var(--border-width) solid var(--border-color);
-		outline: 2px solid transparent;
-		outline-offset: 2px;
+		outline: var(--outline-width) solid transparent;
+		outline-offset: 2.5px;
 
 		&:focus-within {
 			outline: 3px solid var(--primary-opacity-color);
-			outline-offset: 2px;
+			outline-offset: 2.5px;
 			border-color: var(--primary-base-color);
 		}
 
@@ -134,8 +134,8 @@
 
 	&.lambda-textarea-soft {
 		border: none;
-		outline: 2px solid transparent;
-		outline-offset: 2px;
+		outline: var(--outline-width) solid transparent;
+		outline-offset: 2.5px;
 
 		&:focus-within {
 			outline: 3px solid var(--primary-opacity-color);

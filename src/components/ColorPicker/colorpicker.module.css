@@ -10,16 +10,9 @@
 		border-color: var(--primary-base-color);
 	}
 
-	&:is(.lambda-colorpicker-show-text) {
-		display: flex;
-		flex-direction: row;
-		gap: var(--spacing-xs);
-	}
-
 	&:is(.lambda-colorpicker-tiny) {
-		padding: var(--spacing-3xs);
-		min-width: var(--size-sm);
-		min-height: var(--size-sm);
+		width: var(--size-xl);
+		height: var(--size-xl);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -30,29 +23,28 @@
 		.lambda-colorpicker-button {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--size-xs) - 4px);
-			height: calc(var(--size-xs) - 4px);
+			width: calc(var(--size-md) - 1px);
+			height: calc(var(--size-md) - 1px);
 		}
 
 		.lambda-colorpicker-border {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--size-xs) - 4px);
-			height: calc(var(--size-xs) - 4px);
+			width: calc(var(--size-md) - 1px);
+			height: calc(var(--size-md) - 1px);
 		}
 
 		.lambda-colorpicker-pattern {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--size-xs) - 4px);
-			height: calc(var(--size-xs) - 4px);
+			width: calc(var(--size-md) - 1px);
+			height: calc(var(--size-md) - 1px);
 		}
 	}
 
 	&:is(.lambda-colorpicker-small) {
-		padding: var(--spacing-3xs);
-		min-width: var(--size-md);
-		min-height: var(--size-md);
+		width: var(--size-2xl);
+		height: var(--size-2xl);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -63,29 +55,29 @@
 		.lambda-colorpicker-button {
 			left: 2px;
 			top: 2px;
-			width: calc(var(--size-sm) - 4px);
-			height: calc(var(--size-sm) - 4px);
+			width: calc(var(--size-lg) - 1px);
+			height: calc(var(--size-lg) - 0px);
+			border: none;
 		}
 
 		.lambda-colorpicker-border {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--size-sm) - 4px);
-			width: calc(var(--size-sm) - 4px);
+			height: calc(var(--size-lg) - 1px);
+			width: calc(var(--size-lg) - 0px);
 		}
 
 		.lambda-colorpicker-pattern {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--size-sm) - 4px);
-			width: calc(var(--size-sm) - 4px);
+			height: calc(var(--size-lg) - 1px);
+			width: calc(var(--size-lg) - 0px);
 		}
 	}
 
 	&:is(.lambda-colorpicker-medium) {
-		padding: var(--spacing-2xs);
-		min-width: var(--size-lg);
-		min-height: var(--size-lg);
+		width: var(--size-3xl);
+		height: var(--size-3xl);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -94,31 +86,31 @@
 		}
 
 		.lambda-colorpicker-button {
-			left: 2px;
 			top: 2px;
-			width: calc(var(--size-md) - 4px);
-			height: calc(var(--size-md) - 4px);
+			left: 2px;
+			width: calc(var(--size-xl) - 0px);
+			height: calc(var(--size-xl) - 0px);
+			border: none;
 		}
 
 		.lambda-colorpicker-border {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--size-md) - 4px);
-			width: calc(var(--size-md) - 4px);
+			height: calc(var(--size-xl) - 0px);
+			width: calc(var(--size-xl) - 0px);
 		}
 
 		.lambda-colorpicker-pattern {
 			left: 2px;
 			top: 2px;
-			height: calc(var(--size-md) - 4px);
-			width: calc(var(--size-md) - 4px);
+			height: calc(var(--size-xl) - 0px);
+			width: calc(var(--size-xl) - 0px);
 		}
 	}
 
 	&:is(.lambda-colorpicker-large) {
-		padding: var(--spacing-2xs);
-		min-width: var(--size-xl);
-		min-height: var(--size-xl);
+		width: var(--size-5xl);
+		height: var(--size-5xl);
 
 		&:is(.lambda-colorpicker-show-text) {
 			.lambda-colorpicker-text {
@@ -127,25 +119,34 @@
 		}
 
 		.lambda-colorpicker-button {
-			left: 2px;
+			left: 3px;
 			top: 2px;
-			width: calc(var(--size-lg) - 4px);
-			height: calc(var(--size-lg) - 4px);
+			width: calc(var(--size-3xl) - 2px);
+			height: calc(var(--size-3xl) - 1px);
+			border: none;
 		}
 
 		.lambda-colorpicker-border {
-			left: 2px;
+			left: 3px;
 			top: 2px;
-			height: calc(var(--size-lg) - 4px);
-			width: calc(var(--size-lg) - 4px);
+			height: calc(var(--size-3xl) - 1px);
+			width: calc(var(--size-3xl) - 0px);
 		}
 
 		.lambda-colorpicker-pattern {
-			left: 2px;
+			left: 3px;
 			top: 2px;
-			height: calc(var(--size-lg) - 4px);
-			width: calc(var(--size-lg) - 4px);
+			height: calc(var(--size-3xl) - 1px);
+			width: calc(var(--size-3xl) - 0px);
 		}
+	}
+
+
+	&:is(.lambda-colorpicker-show-text) {
+		display: flex;
+		flex-direction: row;
+		gap: var(--spacing-xs);
+		width: max-content;
 	}
 
 
@@ -176,31 +177,33 @@
 	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
+	border: none;
 
 	.lambda-colorpicker-button,
 	.lambda-colorpicker-border,
 	.lambda-colorpicker-pattern {
-		border-radius: calc(var(--radius-field) - var(--border-width-sm));
+		border-radius: calc(var(--radius-field) - var(--border-width-md));
+		border: none;
 	}
 
 	&:is(.lambda-colorpicker-group-tiny) {
-		min-width: var(--size-xs);
-		min-height: var(--size-xs);
+		width: var(--size-lg);
+		height: var(--size-lg);
 	}
 
 	&:is(.lambda-colorpicker-group-small) {
-		min-width: var(--size-sm);
-		min-height: var(--size-sm);
+		width: var(--size-xl);
+		height: var(--size-xl);
 	}
 
 	&:is(.lambda-colorpicker-group-medium) {
-		min-width: var(--size-md);
-		min-height: var(--size-md);
+		width: var(--size-2xl);
+		height: var(--size-2xl);
 	}
 
 	&:is(.lambda-colorpicker-group-large) {
-		min-width: var(--size-lg);
-		min-height: var(--size-lg);
+		width: var(--size-4xl);
+		height: var(--size-4xl);
 	}
 
 }
@@ -267,12 +270,12 @@
 	box-sizing: border-box;
 	pointer-events: none;
 	z-index: 9999;
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 
 
 	& .lambda-colorpicker-preview-color,
 	& .lambda-colorpicker-preview-background {
-		border-radius: calc(var(--radius-box) - var(--border-width));
+		border-radius: min(var(--radius-xl), var(--radius-box));
 	}
 }
 
@@ -289,7 +292,7 @@
 	width: 100%;
 	height: 10%;
 	padding: var(--spacing-xs);
-	border-radius: var(--radius-full);
+	border-radius: min(var(--radius-xl), var(--radius-full));
 
 	.lambda-colorpicker-preview-background {
 		position: absolute;
@@ -377,7 +380,7 @@
 	grid-template-rows: repeat(3, 1fr);
 	gap: var(--spacing-xs);
 	padding: var(--spacing-sm) var(--spacing-xs);
-	border-top: 1px solid var(--border-color);
+	border-top: var(--border-width) solid var(--border-color);
 	width: 100%;
 	height: 40%;
 	background-color: var(--background-color);
@@ -470,7 +473,7 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: var(--spacing-xs) var(--spacing-none);
-	gap: var(--spacing-md);
+	gap: var(--spacing-sm);
 	width: 100%;
 }
 

@@ -24,7 +24,7 @@
 	/* No transition ni animation: Framer Motion controla todo */
 
 	&.notification-radius-default {
-		border-radius: var(--radius-box);
+		border-radius: min(var(--radius-xl), var(--radius-box));
 	}
 
 	&.notification-radius-none {

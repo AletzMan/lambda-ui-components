@@ -309,7 +309,7 @@
 	background: radial-gradient(var(--surface-a), var(--background-color));
 	border: var(--border-width) solid var(--border-color);
 	z-index: 100;
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 
 	&:focus-within {
 		outline: var(--border-width-sm) solid transparent;

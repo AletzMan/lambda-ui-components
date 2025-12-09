@@ -14,7 +14,7 @@
 }
 
 .lambda-alert-radius-default {
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 }
 
 .lambda-alert-radius-none {

@@ -11,8 +11,8 @@
 
 		& .select-btn-outline {
 			border: var(--border-width) solid var(--primary-hover-color);
-			outline: 2px solid var(--primary-shadow-color);
-			outline-offset: 2px;
+			outline: var(--outline-width) solid var(--primary-shadow-color);
+			outline-offset: 2.5px;
 			color: var(--primary-text-color);
 		}
 
@@ -21,8 +21,8 @@
 		}
 
 		& .select-btn-soft {
-			outline: 2px solid var(--primary-shadow-color);
-			outline-offset: 2px;
+			outline: var(--outline-width) solid var(--primary-shadow-color);
+			outline-offset: 2.5px;
 		}
 	}
 
@@ -237,8 +237,8 @@
 	width: 100%;
 	color: var(--foreground-color);
 	background-color: var(--surface-a);
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 2.5px;
 
 	&.select-btn-outline {
 		border: var(--border-width) solid var(--border-color);
@@ -261,11 +261,11 @@
 
 	&.select-btn-underline {
 		border: none;
-		border-bottom: 2px solid var(--border-color);
+		border-bottom: 3px solid var(--border-color);
 		background-color: var(--surface-a);
 
 		&:is(.select-btn-invalid) {
-			border-bottom: 2px dashed var(--danger-base-color);
+			border-bottom: 3px dashed var(--danger-base-color);
 			outline-color: var(--danger-shadow-color);
 		}
 	}
@@ -450,7 +450,7 @@
 
 	&:focus-within {
 		outline: var(--border-width-sm) solid var(--neutral-opacity-color);
-		outline-offset: var(--border-width-sm);
+		outline-offset: 2.5px;
 	}
 
 	&.select-dropdown-primary:focus-within {

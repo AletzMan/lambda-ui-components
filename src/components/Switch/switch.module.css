@@ -123,8 +123,8 @@
 	box-sizing: border-box;
 	background-color: var(--surface-b);
 	transition: all 0.2s ease-out;
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 2.5px;
 }
 
 .lambda-switch-background-default {

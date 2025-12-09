@@ -30,7 +30,7 @@
 	padding: var(--spacing-md);
 	width: 285px;
 	overflow: hidden;
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 
 	&:is(.lambda-datepicker-modal) {
 		border: none;

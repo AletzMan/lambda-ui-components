@@ -114,7 +114,7 @@ export const checkboxTextLabelVariants = cva(styles["lambda-checkbox-label"], {
 export const checkBoxIconVariants = cva(styles["lambda-checkbox-icon"], {
 	variants: {
 		size: {
-			tiny: styles["lambda-checkbox-icon-tyny"],
+			tiny: styles["lambda-checkbox-icon-tiny"],
 			small: styles["lambda-checkbox-icon-small"],
 			medium: styles["lambda-checkbox-icon-medium"],
 			large: styles["lambda-checkbox-icon-large"],

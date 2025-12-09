@@ -67,7 +67,7 @@
 }
 
 .tab-container-radius-default {
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-3xl), var(--radius-box));
 }
 
 .tab-container-radius-none {
@@ -287,7 +287,7 @@
 }
 
 .tab-label-radius-default {
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 
 	&:is(.tab-label-soft) {
 		border-bottom-left-radius: var(--radius-none);
@@ -525,6 +525,14 @@
 		border-radius: var(--radius-box);
 
 		&:is(.tab-current-soft) {
+			border-radius: min(var(--radius-xl), var(--radius-box));
+			border-bottom-left-radius: var(--radius-none);
+			border-bottom-right-radius: var(--radius-none);
+		}
+
+
+		&:is(.tab-current-border) {
+			border-radius: min(var(--radius-xl), var(--radius-box));
 			border-bottom-left-radius: var(--radius-none);
 			border-bottom-right-radius: var(--radius-none);
 		}

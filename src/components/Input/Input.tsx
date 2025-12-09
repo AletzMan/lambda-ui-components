@@ -7,6 +7,7 @@ import {
 	useId,
 	InputHTMLAttributes,
 	useRef,
+	useMemo,
 } from "react";
 import styles from "./input.module.css";
 import { CircleX, Eye, EyeOff, X } from "lucide-react";
@@ -117,44 +118,50 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		const inputPlaceholder = floatingLabel ? "" : placeholder;
 		const paddingInputSize =
 			contextSize === "tiny"
-				? 10
+				? 20
 				: contextSize === "small"
-					? 10
+					? 20
 					: contextSize === "medium"
-						? 20
+						? 32
 						: contextSize === "large"
 							? 28
 							: 28;
 		const heightInputSize =
 			contextSize === "tiny"
-				? 14
+				? 13
 				: contextSize === "small"
-					? 16
+					? 14
 					: contextSize === "medium"
-						? 14
+						? 10
 						: contextSize === "large"
-							? 14
+							? 8
 							: 6;
-		const labelVariants = {
-			default: {
-				y: `calc(100% - ${heightInputSize}px)`,
-				x: prefixRef.current?.offsetWidth
-					? `calc(${prefixRef.current?.offsetWidth}px + ${paddingInputSize}px)`
-					: `calc(${paddingInputSize}px)`,
-				//scale: 1,
-				color: "var(--placeholder-color)",
-				/*fontSize: "1rem",*/
-				left: 0, // o el padding que uses
-			},
-			floating: {
-				y: "-105%",
-				x: 0,
-				//scale: 0.85,
-				color: "var(--foreground-label-color)",
-				//fontSize: "0.85rem",
-				left: 0, // ajusta si quieres que se mueva a la izquierda
-			},
-		};
+
+		console.log(paddingInputSize);
+		console.log(heightInputSize);
+
+		const labelVariants = useMemo(() => {
+			return {
+				default: {
+					y: `calc(100% - ${heightInputSize}px)`,
+					x: prefixRef.current?.offsetWidth
+						? `calc(${prefixRef.current?.offsetWidth}px + ${paddingInputSize}px)`
+						: `calc(${paddingInputSize}px)`,
+					//scale: 1,
+					color: "var(--placeholder-color)",
+					/*fontSize: "1rem",*/
+					left: 0, // o el padding que uses
+				},
+				floating: {
+					y: "-105%",
+					x: 0,
+					//scale: 0.85,
+					color: "var(--foreground-label-color)",
+					//fontSize: "0.85rem",
+					left: 0, // ajusta si quieres que se mueva a la izquierda
+				},
+			};
+		}, [paddingInputSize, heightInputSize, prefixRef.current]);
 
 		return (
 			<div
