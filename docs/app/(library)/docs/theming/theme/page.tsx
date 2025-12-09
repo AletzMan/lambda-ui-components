@@ -216,8 +216,8 @@ export default function ThemePage() {
 		<ComponentsLayout
 			title="Theme"
 			description=""
-			buttonRight={{ href: "/docs/theming/customization", text: "Customization" }}
-			buttonLeft={{ href: "/docs/overview/about", text: "About" }}
+			buttonRight={{ href: "/docs/theming/dark-mode", text: "Dark Mode" }}
+			buttonLeft={{ href: "/docs/design-tokens/typography", text: "Typography" }}
 			menuData={menuData}
 		>
 			<article>

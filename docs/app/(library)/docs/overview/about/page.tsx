@@ -8,7 +8,7 @@ export default function AboutPage() {
 		<SectionLayout
 			title="About Lambda UI Components"
 			buttonsLeft={{ href: "/docs/overview/changelog", text: "Changelog" }}
-			buttonsRight={{ href: "/docs/theming/theme", text: "Theme" }}
+			buttonsRight={{ href: "/docs/design-tokens/colors", text: "Colors" }}
 		>
 			<article>
 				<SubSectionLayout title="What is Lambda UI Components?">

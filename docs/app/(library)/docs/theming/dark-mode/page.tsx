@@ -115,8 +115,8 @@ export default function DarkModePage() {
 	return (
 		<ComponentsLayout
 			title="Dark Mode"
-			buttonLeft={{ href: "/docs/theming/customization", text: "Customization" }}
-			buttonRight={{ href: "/docs/components/forms/checkbox", text: "Checkbox" }}
+			buttonLeft={{ href: "/docs/theming/theme", text: "Theme" }}
+			buttonRight={{ href: "/docs/components/forms/create-theme", text: "Create Theme" }}
 			menuData={menuData}
 		>
 			<article>
