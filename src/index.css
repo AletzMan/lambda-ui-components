@@ -2812,8 +2812,7 @@
 	--placeholder-color: oklch(45% 0 0);
 	--visited-link-color: #8c29a4;
 	--transparent-color: #ffffff08;
-	--badge-background-color: oklch(25% 0.1 20);
-	--badge-text-color: oklch(98% 0 0);
+	--badge-background-color: oklch(40% 0.5 70.5);
 	--scrollbar-color: color-mix(in srgb, var(--primary-text-color) 60%, transparent 40%);
 
 	--label-weight: var(--font-weight-semibold);
@@ -2981,7 +2980,7 @@
 	/* Otro contraste */
 	--transparent-color: #ffffff12;
 	/* Más opacidad para transparencia */
-	--badge-background-color: oklch(20% 0.15 300);
+	--badge-background-color: oklch(40% 0.15 300);
 	--badge-text-color: oklch(100% 0 0);
 	--scrollbar-color: color-mix(in srgb, var(--primary-text-color) 70%, transparent 30%);
 
