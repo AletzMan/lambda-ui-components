@@ -317,7 +317,7 @@
 	}
 
 	&.lambda-step-connector-vertical {
-		left: 20px;
+		left: var(--spacing-xl);
 		top: calc(50% + 14px);
 		width: 2px;
 		height: calc(100% - 24px);
