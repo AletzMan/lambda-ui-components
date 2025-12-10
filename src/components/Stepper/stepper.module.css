@@ -79,21 +79,19 @@
 
 .lambda-step-indicator {
 	position: relative;
-	width: 30px;
-	height: 30px;
-	min-width: 30px;
-	min-height: 30px;
+	width: var(--size-3xl);
+	height: var(--size-3xl);
 	aspect-ratio: 1;
 	border-radius: 50%;
-	border: 2px solid var(--border-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
+	border: var(--border-width-md) solid var(--border-color);
 	font-size: var(--font-size-md);
 	transition: border-color 0.3s, background 0.3s, color 0.3s;
 
-	&::before {
+	/*&::before {
 		content: "";
 		position: absolute;
 		top: -7px;
@@ -106,47 +104,82 @@
 		border-radius: 50%;
 		border: 2px solid red;
 		background: transparent;
-	}
+	}*/
 }
 
-.lambda-step-pending .lambda-step-indicator {
-	border-color: var(--surface-c);
+.lambda-step-indicator-content {
+	position: relative;
+	width: var(--size-xl);
+	height: var(--size-xl);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background: var(--surface-c);
-	color: var(--neutral-shadow-color);
+}
 
-	&::before {
-		border-color: var(--border-color);
+.lambda-step-pending {
+	.lambda-step-indicator-content {
+		border-color: var(--surface-c);
+		background: var(--surface-c);
+		color: var(--neutral-shadow-color);
+
+		&::before {
+			border-color: var(--border-color);
+		}
+	}
+
+	.lambda-step-indicator {
+		border-color: var(--surface-c);
 	}
 }
 
-.lambda-step-active .lambda-step-indicator {
-	border-color: var(--neutral-base-color);
-	background: var(--neutral-base-color);
-	color: var(--foreground-invert-color);
+.lambda-step-active {
+	.lambda-step-indicator-content {
+		border-color: var(--neutral-base-color);
+		background: var(--neutral-base-color);
+		color: var(--foreground-invert-color);
 
-	&::before {
+		&::before {
+			border-color: var(--neutral-base-color);
+		}
+	}
+
+	.lambda-step-indicator {
 		border-color: var(--neutral-base-color);
 	}
 }
 
-.lambda-step-completed .lambda-step-indicator {
-	border-color: var(--success-base-color);
-	background: var(--success-base-color);
-	color: var(--white-color);
-	animation: animateOutline 0.5s ease-in-out both;
+.lambda-step-completed {
+	.lambda-step-indicator-content {
+		border-color: var(--success-base-color);
+		background: var(--success-base-color);
+		color: var(--white-color);
+		animation: animateOutline 0.5s ease-in-out both;
 
-	&::before {
+		&::before {
+			border-color: var(--success-base-color);
+		}
+	}
+
+	.lambda-step-indicator {
 		border-color: var(--success-base-color);
 	}
 }
 
-.lambda-step-error .lambda-step-indicator {
-	border-color: var(--danger-base-color);
-	background: var(--danger-base-color);
-	color: var(--white-color);
-	animation: animateOutlineError 0.8s ease-in-out infinite;
+.lambda-step-error {
+	.lambda-step-indicator-content {
+		border-color: var(--danger-base-color);
+		background: var(--danger-base-color);
+		color: var(--white-color);
+		animation: animateOutlineError 0.8s ease-in-out infinite;
 
-	&::before {
+		&::before {
+			border-color: var(--danger-base-color);
+		}
+	}
+
+	.lambda-step-indicator {
 		border-color: var(--danger-base-color);
 	}
 }
@@ -185,8 +218,8 @@
 	justify-content: center;
 
 	& svg {
-		width: var(--size-lg);
-		height: var(--size-lg);
+		width: var(--size-md);
+		height: var(--size-md);
 	}
 }
 
@@ -194,8 +227,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--size-xl);
-	height: var(--size-xl);
+	width: var(--size-md);
+	height: var(--size-md);
 	stroke-width: var(--border-width-md);
 	stroke-dasharray: 250;
 	/* Longitud del trazado */
@@ -259,10 +292,10 @@
 	position: absolute;
 
 	&.lambda-step-connector-horizontal {
-		top: 22px;
+		top: var(--spacing-xl);
 		left: calc(50% + 20px);
 		width: calc(100% - 24px);
-		height: 2px;
+		height: 3px;
 		background: var(--border-color);
 		transform: translateY(-50%);
 		z-index: 0;
@@ -402,7 +435,7 @@
 	justify-content: space-between;
 	padding: var(--spacing-sm);
 	width: 100%;
-	height: 2.5em;
+	height: 3em;
 
 	& button {
 		min-width: 9.5em;

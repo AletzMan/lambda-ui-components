@@ -193,19 +193,22 @@ const Step: React.FC<StepProps> = ({ title, description, icon, index }) => {
 			aria-current={status === "active" ? "step" : undefined}
 		>
 			<div className={styles["lambda-step-indicator"]}>
-				{icon ? (
-					<span className={styles["lambda-step-icon"]}>{icon}</span>
-				) : (
-					<span className={styles["lambda-step-index"]}>
-						{status === "completed" ? (
-							<CheckIcon className={styles["lambda-step-icon-check"]} />
-						) : status === "error" ? (
-							<X className={styles["lambda-step-icon-check"]} />
-						) : (
-							index + 1
-						)}
-					</span>
-				)}
+				<div className={styles["lambda-step-indicator-content"]}>
+
+					{icon ? (
+						<span className={styles["lambda-step-icon"]}>{icon}</span>
+					) : (
+						<span className={styles["lambda-step-index"]}>
+							{status === "completed" ? (
+								<CheckIcon className={styles["lambda-step-icon-check"]} />
+							) : status === "error" ? (
+								<X className={styles["lambda-step-icon-check"]} />
+							) : (
+								index + 1
+							)}
+						</span>
+					)}
+				</div>
 			</div>
 			<div className={stepSummaryVariants({ orientation })}>
 				<h1>{title}</h1>
