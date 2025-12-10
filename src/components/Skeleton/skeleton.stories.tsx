@@ -23,7 +23,7 @@ type Story = StoryObj<typeof Skeleton>;
 export const Basic: Story = {
 	render: (args: SkeletonProps) => (
 		<ContainerComponent title="Skeleton">
-			<Card style={{ height: 120 }}>
+			<Card style={{ height: 130 }}>
 				<Flex gap={16} direction="column">
 					<Flex gap={16} direction="row">
 						<Skeleton {...args} width={40} height={40} />
