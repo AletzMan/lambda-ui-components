@@ -391,7 +391,7 @@
 	color: var(--foreground-title-color);
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
-	border-radius: var(--radius-field);
+	border-radius: min(var(--radius-xl), var(--radius-field));
 	background-color: transparent;
 	border: none;
 
@@ -405,7 +405,7 @@
 	height: 100%;
 	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-md);
-	border-radius: var(--radius-field);
+	border-radius: min(var(--radius-xl), var(--radius-field));
 	background-color: transparent;
 	color: var(--foreground-secondary-color);
 	border: var(--border-width) solid var(--border-color);
@@ -450,7 +450,7 @@
 	height: 100%;
 	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-md);
-	border-radius: var(--radius-field);
+	border-radius: min(var(--radius-xl), var(--radius-field));
 	background-color: var(--background-color);
 	color: var(--foreground-secondary-color);
 	border: var(--border-width) solid var(--border-color);

@@ -1050,6 +1050,11 @@
 .lambda-btn-last {
 	border-top-left-radius: var(--radius-none);
 	border-bottom-left-radius: var(--radius-none);
+
+	&:is(.lambda-btn-only-icon) {
+		width: calc(var(--size-4xl) + var(--spacing-md));
+
+	}
 }
 
 .lambda-btn-icon .lambda-btn-icon-loading {
