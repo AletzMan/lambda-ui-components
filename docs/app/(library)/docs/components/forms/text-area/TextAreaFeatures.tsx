@@ -44,11 +44,11 @@ export const TextAreaFeatures = () => {
 					{
 						name: "radius",
 						type: "slider",
-						defaultValue: "tiny",
-						default: "tiny",
+						defaultValue: "default",
+						default: "default",
 						label: "Radius",
 						description: "Controls the roundness of the corners.",
-						values: ["none", "tiny", "small", "medium", "large", "full"],
+						values: ["default", "none", "tiny", "small", "medium", "large", "full"],
 					},
 					{
 						name: "variant",

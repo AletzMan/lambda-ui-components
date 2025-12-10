@@ -8,6 +8,9 @@ import { useRef, useState } from "react";
 export const InputFeatures = () => {
 	const refInput = useRef<HTMLInputElement>(null);
 	const [value, setValue] = useState("");
+
+	console.log("Device Pixel Ratio: ", window.devicePixelRatio);
+
 	return (
 		<>
 			<PlaygroundLayout<HTMLInputElement>
@@ -71,10 +74,10 @@ export const InputFeatures = () => {
 					{
 						name: "radius",
 						type: "slider",
-						defaultValue: "tiny",
-						default: "tiny",
+						defaultValue: "default",
+						default: "default",
 						label: "Radius",
-						values: ["none", "tiny", "small", "medium", "large", "full"],
+						values: ["default", "none", "tiny", "small", "medium", "large", "full"],
 						description: "Controls corner roundness.",
 					},
 					{

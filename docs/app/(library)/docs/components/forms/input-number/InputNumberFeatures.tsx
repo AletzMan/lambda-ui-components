@@ -49,9 +49,9 @@ export const InputNumberFeatures = () => {
 					{
 						name: "radius",
 						type: "slider",
-						defaultValue: "tiny",
+						defaultValue: "default",
 						label: "Radius",
-						values: ["none", "tiny", "small", "medium", "large", "full"],
+						values: ["default", "none", "tiny", "small", "medium", "large", "full"],
 						description: "Adjusts the corner roundness.",
 					},
 					{

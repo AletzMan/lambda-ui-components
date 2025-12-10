@@ -13,7 +13,7 @@ const links = [
 export function HeaderApp() {
 	return (
 		<header
-			className="sticky top-0 z-50 flex items-center justify-between w-full px-2 py-4 
+			className="sticky top-0 z-50 flex items-center justify-between w-[calc(100svw-20px)] px-2 py-4 
 		bg-(--surface-a) "
 		>
 			<Flex gap={6} align="center">

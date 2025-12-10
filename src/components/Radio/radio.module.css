@@ -630,7 +630,7 @@
 		&:first-child {
 
 			.lambda-radio-label-radius-default {
-				border-radius: var(--radius-field) var(--radius-none) var(--radius-none) var(--radius-field);
+				border-radius: min(var(--radius-xl), var(--radius-box)) var(--radius-none) var(--radius-none) min(var(--radius-xl), var(--radius-box));
 			}
 
 			.lambda-radio-label-radius-none {
@@ -661,7 +661,7 @@
 		&:last-child {
 
 			.lambda-radio-label-radius-default {
-				border-radius: var(--radius-none) var(--radius-field) var(--radius-field) var(--radius-none);
+				border-radius: var(--radius-none) min(var(--radius-xl), var(--radius-box)) min(var(--radius-xl), var(--radius-box)) var(--radius-none);
 			}
 
 			.lambda-radio-label-radius-none {
@@ -694,7 +694,7 @@
 		&:first-child {
 
 			.lambda-radio-label-radius-default {
-				border-radius: var(--radius-field) var(--radius-field) var(--radius-none) var(--radius-none);
+				border-radius: min(var(--radius-xl), var(--radius-box)) min(var(--radius-xl), var(--radius-box)) var(--radius-none) var(--radius-none);
 			}
 
 			.lambda-radio-label-radius-none {
@@ -725,7 +725,7 @@
 		&:last-child {
 
 			.lambda-radio-label-radius-default {
-				border-radius: var(--radius-none) var(--radius-none) var(--radius-field) var(--radius-field);
+				border-radius: var(--radius-none) var(--radius-none) min(var(--radius-xl), var(--radius-field)) min(var(--radius-xl), var(--radius-field));
 			}
 
 			.lambda-radio-label-radius-none {
@@ -1620,8 +1620,8 @@
 	box-sizing: border-box;
 	transition: all 0.3s ease-out;
 	border-radius: var(--radius-full);
-	outline: 2px solid transparent;
-	outline-offset: 2px;
+	outline: var(--outline-width) solid transparent;
+	outline-offset: 3px;
 
 	&.lambda-radio-view-tiny {
 
@@ -2255,7 +2255,7 @@
 }
 
 .lambda-radio-group-radius-default {
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 }
 
 .lambda-radio-group-radius-none {

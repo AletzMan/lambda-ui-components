@@ -24,8 +24,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		{
 			className,
 			variant,
-			size: propSize,
-			radius: propRadius,
+			size,
+			radius,
 			label,
 			invalid,
 			errorMessage,
@@ -52,8 +52,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 			contextSize = context.size;
 			contextDisabled = disabled || context.disabled;
 		} catch (_e) {
-			contextRadius = propRadius || "tiny";
-			contextSize = propSize || "medium";
+			contextRadius = radius;
+			contextSize = size;
 			contextDisabled = disabled;
 		}
 		const [showPassword, setShowPassword] = useState(false);

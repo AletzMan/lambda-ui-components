@@ -244,7 +244,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 
 	return (
 		<>
-			<div className="flex flex-col gap-3 p-3 border border-(--border-color)/80 border-dashed rounded-md bg-(--background-color)	w-full">
+			<div className="flex flex-col gap-3 p-3 border border-(--border-color)/80 border-dashed rounded-(--radius-box) bg-(--background-color)	w-full">
 				{title && (
 					<h2 id={id} className="text-2xl font-bold mb-1 scroll-mt-20">
 						{title}
@@ -259,7 +259,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					<div className="flex flex-col h-full">
 						<div
 							className="flex flex-row items-center justify-between p-2 text-lg font-semibold text-(--foreground-color) 
-					border border-(--border-color) rounded-t-sm border-b-0 pl-2 bg-(--surface-b)"
+					border border-(--border-color) rounded-t-(--radius-box) border-b-0 pl-2 bg-(--surface-b)"
 						>
 							Properties
 							<Button
@@ -270,7 +270,7 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 								variant="solid"
 							/>
 						</div>
-						<div className="bg-(--background-color) p-2 rounded-b-md border border-(--border-color) scrollBar h-[calc(100svh-350px)] overflow-y-auto">
+						<div className="bg-(--background-color) p-2 rounded-b-(--radius-box) border border-(--border-color) scrollBar h-[calc(100svh-350px)] overflow-y-auto">
 							<div className="space-y-2">
 
 								{/* Selects, Strings */}
@@ -469,12 +469,12 @@ export function PlaygroundLayout<T extends HTMLElement | ComponentType = HTMLEle
 					</div>
 					{/* Columna de Previsualización del Componente */}
 					<div className="flex flex-col h-full ">
-						<label className="text-lg font-semibold text-(--foreground-color)  p-2 border border-(--border-color) border-b-0 rounded-t-sm bg-(--surface-b)">
+						<label className="text-lg font-semibold text-(--foreground-color)  p-2 border border-(--border-color) border-b-0 rounded-t-(--radius-box) bg-(--surface-b)">
 							Preview
 						</label>
 						<div
 							className="relative flex flex-col justify-center items-center 
-							background-pattern-dot p-5 rounded-b-md min-h-[200px] border border-(--border-color) h-full overflow-hidden"
+							background-pattern-dot p-5 rounded-b-(--radius-box) min-h-[200px] border border-(--border-color) h-full overflow-hidden"
 						>
 							{renderedComponent}
 						</div>
@@ -723,7 +723,7 @@ const ControlItem: React.FC<{
 							/>
 						</div>
 						{(Array.isArray(currentValue) ? currentValue : []).map((val: any, index: number) => (
-							<div key={index} className="flex flex-col gap-2 border border-dotted border-(--border-color) bg-(--background-color) p-2 rounded-md relative">
+							<div key={index} className="flex flex-col gap-2 border border-dotted border-(--border-color) bg-(--background-color) p-2 rounded-(--radius-box) relative">
 								<div className="flex justify-between items-center">
 									<span className="text-sm font-medium text-(--primary-text-color)">Item {index + 1}</span>
 									<Button
@@ -780,7 +780,7 @@ const ControlItem: React.FC<{
 				);
 			case "object":
 				return (
-					<div className="flex flex-col gap-2 border border-dotted border-(--border-color) bg-(--background-color) p-2 rounded-md relative">
+					<div className="flex flex-col gap-2 border border-dotted border-(--border-color) bg-(--background-color) p-2 rounded-(--radius-box) relative">
 						<div className="flex justify-between items-center">
 							<span className="text-sm font-medium text-(--foreground-color)">{config.label || config.name}</span>
 						</div>
@@ -849,8 +849,8 @@ const ControlItem: React.FC<{
 											aria-checked={key.includes(currentValue)}
 											className={
 												key.includes(currentValue)
-													? `${value} size-6 rounded-xs outline-2 outline-(--foreground-color) outline-offset-2`
-													: `${value} opacity-20 size-6 rounded-xs cursor-pointer hover:opacity-90 transition-opacity`
+													? `${value} size-6 rounded-(--radius-field) outline-2 outline-(--foreground-color) outline-offset-3`
+													: `${value} opacity-20 size-6 rounded-(--radius-field) cursor-pointer hover:opacity-90 transition-opacity`
 											}
 											onClick={() => onChange(config.name, key)}
 											aria-label={key}
@@ -954,14 +954,14 @@ const ControlItem: React.FC<{
 	}
 
 	return (
-		<div className="flex flex-col justify-between gap-3 bg-(--surface-a) rounded-md p-3 border border-dashed border-(--border-color) h-full relative shadow-sm shadow-(--shadow-color)/95">
+		<div className="flex flex-col justify-between gap-3 bg-(--surface-a) rounded-(--radius-box) p-3 border border-dashed border-(--border-color) h-full relative shadow-sm shadow-(--shadow-color)/95">
 			<div className="flex flex-col gap-2">
 				<div className="flex items-center justify-between">
 					{config.name && (
 						<div className="flex items-center gap-2">
-							<code className="text-[10px] font-regular text-(--primary-text-color) bg-(--primary-opacity-color)/60 px-1.5 py-0.5 rounded-xs font-mono border border-(--primary-opacity-color)/60">
+							<div className="flex items-center justify-center text-[10px] font-regular text-(--primary-text-color) bg-(--primary-opacity-color)/60 px-1.5 pt-1 rounded-(--radius-selector) font-mono border border-(--primary-opacity-color)/60 h-full">
 								{config.name}
-							</code>
+							</div>
 							{isModified && (
 								<div className="w-1.5 h-1.5 rounded-full bg-(--primary-base-color) animate-pulse" title="Modified" />
 							)}

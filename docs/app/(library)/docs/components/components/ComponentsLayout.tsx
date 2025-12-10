@@ -31,7 +31,7 @@ export const ComponentsLayout = ({
 	console.log(activeId);
 	console.log(firstItemId);
 	return (
-		<section className="relative flex flex-col gap-10 px-6 py-4 w-full max-w-[1800px]">
+		<section className="relative flex flex-col gap-10 px-3 py-4 w-full">
 			<header className="mb-10 text-center ">
 				<h1 className="flex items-center gap-2 text-4xl font-bold text-left tracking-tight text-(--primary-base-color) mb-1 w-full ">
 					{title}
@@ -43,15 +43,15 @@ export const ComponentsLayout = ({
 				)}
 			</header>
 			<div className="flex flex-col gap-10">
-				<div className="sticky top-20 bg-(--surface-a) backdrop-blur-[5px] p-2 rounded-sm">
-					<div className="grid grid-cols-[1fr_300px] max-[1410px]:grid-cols-1 gap-2">
-						<div className="flex flex-col gap-10 max-w-[1800px] mx-auto w-full">
+				<div className="sticky top-20 bg-(--surface-a) backdrop-blur-[5px] p-2 rounded-(--radius-box) ">
+					<div className="grid grid-cols-[1fr_300px] max-[1465px]:grid-cols-1 gap-2 w-full">
+						<div className="flex flex-col gap-10 mx-auto w-full">
 							{children}
 
 							<BarNavButton buttonLeft={buttonLeft} buttonRight={buttonRight} />
 							<FooterDocs />
 						</div>
-						<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) max-[1410px]:hidden rounded-sm overflow-y-auto">
+						<aside className="sticky top-18 h-[calc(100vh-90px)] bg-(--background-color) max-[1465px]:hidden rounded-(--radius-box) overflow-y-auto">
 							<NavigationMenu
 								data={menuData}
 								currentPath={activeId ? "#" + activeId : "#" + firstItemId}

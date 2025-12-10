@@ -310,7 +310,7 @@
 	--lambda-color-zinc-950: oklch(14.1% 0.005 285.823);
 
 	--spacing-none: 0px;
-	--spacing-3xs: 1px;
+	--spacing-3xs: 0.0625rem;
 	--spacing-2xs: 0.125rem;
 	--spacing-xs: 0.25rem;
 	--spacing-sm: 0.5rem;
@@ -347,7 +347,7 @@
 	--font-size-9xl: 4.5rem;
 
 	--radius-none: 0px;
-	--radius-2xs: 1px;
+	--radius-2xs: 0.0625rem;
 	--radius-xs: 0.125rem;
 	--radius-sm: 0.25rem;
 	--radius-md: 0.375rem;
@@ -359,14 +359,14 @@
 	--radius-full: 9999px;
 
 	--border-width-none: 0px;
-	--border-width-xs: 1.5px;
-	--border-width-sm: 2.5px;
-	--border-width-md: 3.5px;
-	--border-width-lg: 4.5px;
+	--border-width-xs: 0.0625rem;
+	--border-width-sm: 0.125rem;
+	--border-width-md: 0.1875rem;
+	--border-width-lg: 0.25rem;
 
 	--outline-width-none: 0px;
-	--outline-width-default: 2.5px;
-	--outline-width-strong: 3.5px;
+	--outline-width-default: 0.125rem;
+	--outline-width-strong: 0.25rem;
 
 	--size-4xs: 0.125rem;
 	/* 2px */
@@ -1630,7 +1630,7 @@
 	--placeholder-weight: var(--font-weight-regular);
 	--input-font-weight: var(--font-weight-bold);
 
-	--border-width: var(--border-width-md);
+	--border-width: var(--border-width-sm);
 	--outline-width: var(--outline-width-default);
 
 	--radius-box: var(--radius-xs);
@@ -2989,10 +2989,10 @@
 	--placeholder-weight: var(--font-weight-medium);
 	--input-font-weight: var(--font-weight-regular);
 
-	--border-width: var(--border-width-xs);
+	--border-width: var(--border-width-sm);
 	--outline-width: var(--outline-width-default);
 
-	--radius-box: var(--radius-full);
+	--radius-box: var(--radius-xl);
 	--radius-field: var(--radius-full);
 	--radius-selector: var(--radius-full);
 
@@ -3191,6 +3191,21 @@ html[data-theme="retro"] {
 	color-scheme: light;
 }
 
+html[data-theme="ocean"] {
+	background-color: oklch(97.5% 0.008 230);
+	color-scheme: light;
+}
+
+html[data-theme="pop-art"] {
+	background-color: oklch(99% 0.05 100);
+	color-scheme: dark;
+}
+
+html[data-theme="sandstone"] {
+	background-color: oklch(98% 0.02 80);
+	color-scheme: dark;
+}
+
 html[data-theme="slate"] {
 	background-color: #0e1316;
 	color-scheme: dark;
@@ -3226,12 +3241,19 @@ html[data-theme="soft-obsidian"] {
 	color-scheme: dark;
 }
 
-html[data-theme="ocean"] {
-	background-color: oklch(97.5% 0.008 230);
-	color-scheme: light;
-}
 
 html[data-theme="midnight"] {
 	background-color: oklch(10% 0.02 270);
+	color-scheme: dark;
+}
+
+
+html[data-theme="aurora-night"] {
+	background-color: oklch(11% 0.02 185);
+	color-scheme: dark;
+}
+
+html[data-theme="electro-violet"] {
+	background-color: oklch(8% 0.05 300);
 	color-scheme: dark;
 }

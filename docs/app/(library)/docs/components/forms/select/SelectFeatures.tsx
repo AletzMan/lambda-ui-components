@@ -117,10 +117,10 @@ export const SelectFeatures = () => {
 					{
 						name: "radius",
 						type: "slider",
-						defaultValue: "tiny",
-						default: "tiny",
+						defaultValue: "default",
+						default: "default",
 						label: "Radius",
-						values: ["none", "tiny", "small", "medium", "large", "full"],
+						values: ["default", "none", "tiny", "small", "medium", "large", "full"],
 						description: "Controls corner rounding.",
 					},
 					{
@@ -216,7 +216,7 @@ export default function SelectControlled() {
 	);
 } `}
 			>
-				<form className="flex flex-col gap-4 px-6 py-6 ">
+				<form className="flex flex-col gap-4 px-6 py-6 max-w-[calc(100vw-450px)] mx-auto">
 					<Select
 						label="Select"
 						value={value}

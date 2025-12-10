@@ -35,7 +35,7 @@
 	}
 
 	&.lambda-textarea-label-radius-default {
-		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) calc(var(--radius-field) * 1.5);
+		padding: var(--spacing-none) var(--spacing-none) var(--spacing-none) calc(min(var(--radius-xl), var(--radius-field)) * 1.5);
 	}
 
 	&.lambda-textarea-label-radius-none,

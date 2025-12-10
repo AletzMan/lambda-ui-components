@@ -159,7 +159,7 @@
 	font-family: var(--font-family);
 	color: var(--foreground-label-color);
 	min-width: max-content;
-	width: max-content;
+	width: 100%;
 
 	&.select-label-required {
 		&::after {
@@ -185,7 +185,7 @@
 	}
 
 	&.select-label-radius-default {
-		padding: 0 0 0 calc(var(--radius-field) * 2);
+		padding: 0 0 0 calc(min(var(--radius-xl), var(--radius-field)) * 2);
 	}
 
 	&.select-label-radius-none {
@@ -443,7 +443,7 @@
 	overflow: hidden;
 	overflow-y: auto;
 	font-family: var(--font-family);
-	border-radius: var(--radius-box);
+	border-radius: min(var(--radius-xl), var(--radius-box));
 	background-color: var(--background-color);
 	border: var(--border-width) solid var(--border-color);
 	z-index: 9999;
