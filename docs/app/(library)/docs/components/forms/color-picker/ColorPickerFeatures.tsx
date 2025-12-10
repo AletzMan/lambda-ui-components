@@ -26,15 +26,6 @@ export const ColorPickerFeatures = () => {
 						values: ["tiny", "small", "medium", "large"],
 					},
 					{
-						name: "variant",
-						type: "radio",
-						defaultValue: "solid",
-						default: "solid",
-						label: "Variant",
-						description: "Changes the visual style of the component.",
-						values: ["solid", "soft"],
-					},
-					{
 						name: "format",
 						type: "radio",
 						defaultValue: "hex",
