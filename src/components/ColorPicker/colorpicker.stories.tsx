@@ -7,15 +7,6 @@ const meta: Meta<typeof ColorPicker> = {
 	title: "Components/ColorPicker",
 	component: ColorPicker,
 	argTypes: {
-		variant: {
-			control: "select",
-			options: ["solid", "soft"],
-			description: "Visual style of the input",
-			type: "string",
-			table: {
-				disable: true,
-			},
-		},
 		size: {
 			control: "select",
 			options: ["tiny", "small", "medium", "large"],
@@ -39,7 +30,7 @@ export type Story = StoryObj<typeof ColorPicker>;
 
 const Template = (args: ColorPickerProps) => {
 	return (
-		<ContainerComponent title="ColorPicker" subtitle={args.variant || "solid"}>
+		<ContainerComponent title="ColorPicker">
 			<div
 				style={{
 					display: "flex",
@@ -56,20 +47,9 @@ const Template = (args: ColorPickerProps) => {
 	);
 };
 
-export const Solid: Story = {
+export const Default: Story = {
 	render: Template,
 	args: {
-		variant: "solid",
-		size: "medium",
-		disabled: false,
-		showText: false,
-	},
-};
-
-export const Soft: Story = {
-	render: Template,
-	args: {
-		variant: "soft",
 		size: "medium",
 		disabled: false,
 		showText: false,

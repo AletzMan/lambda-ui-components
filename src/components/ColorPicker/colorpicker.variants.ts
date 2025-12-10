@@ -9,10 +9,6 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 			medium: styles["lambda-colorpicker-medium"],
 			large: styles["lambda-colorpicker-large"],
 		},
-		variant: {
-			solid: styles["lambda-colorpicker-solid"],
-			soft: styles["lambda-colorpicker-soft"],
-		},
 		disabled: {
 			true: styles["lambda-colorpicker-disabled"],
 			false: "",
@@ -24,7 +20,6 @@ export const colorpickerVariants = cva(styles["lambda-colorpicker"], {
 	},
 	defaultVariants: {
 		size: "medium",
-		variant: "solid",
 		disabled: false,
 		showText: false,
 	},

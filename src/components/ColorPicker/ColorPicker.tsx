@@ -207,7 +207,7 @@ function positionToColor(x: number, y: number, rect: DOMRect) {
 
 export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 	(
-		{ className, size, variant, disabled, value, onChange, format: formatProp, showText, ...props },
+		{ className, size, disabled, value, onChange, format: formatProp, showText, ...props },
 		ref
 	) => {
 		const { open, isSupported } = useEyeDropper();
@@ -606,7 +606,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 		return (
 			<div
 				className={clsx(
-					colorpickerVariants({ size, variant, disabled, showText }),
+					colorpickerVariants({ size, disabled, showText }),
 					className
 				)}
 				ref={triggerRef as RefObject<HTMLDivElement>}
@@ -617,7 +617,6 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 					className={clsx(colorpickerGroupVariants({ size }))}
 					ref={ref}
 				>
-					<div className={styles["lambda-colorpicker-border"]}></div>
 					<div className={styles["lambda-colorpicker-pattern"]}></div>
 					<button
 						type="button"
@@ -625,6 +624,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 						onClick={() => setViewPicker((prev) => !prev)}
 						style={{ backgroundColor: internalValue, opacity: alpha / 100 }}
 					></button>
+					<div className={styles["lambda-colorpicker-border"]}></div>
 				</div>
 
 				{createPortal(

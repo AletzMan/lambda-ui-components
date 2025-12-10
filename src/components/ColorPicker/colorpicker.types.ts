@@ -26,10 +26,6 @@ export interface ColorPickerProps
 	 */
 	size?: ColorPickerVariants["size"];
 	/**
-	 * Define el estilo del color picker.
-	 */
-	variant?: ColorPickerVariants["variant"];
-	/**
 	 * Define si se muestra el texto del color picker.
 	 */
 	showText?: boolean;
