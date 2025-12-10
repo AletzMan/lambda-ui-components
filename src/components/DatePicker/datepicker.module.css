@@ -35,6 +35,11 @@
 	&:is(.lambda-datepicker-modal) {
 		border: none;
 	}
+
+	&:is(.lambda-datepicker-inline) {
+		border-top-left-radius: var(--radius-none);
+		border-top-right-radius: var(--radius-none);
+	}
 }
 
 .lambda-datepicker-calendar {
@@ -94,7 +99,6 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	padding: var(--spacing-xs);
 	border-radius: var(--radius-field);
 	font-size: var(--font-size-sm);
 	background: transparent;
@@ -102,6 +106,7 @@
 	color: var(--foreground-color);
 	min-width: 28px;
 	border: none;
+	aspect-ratio: 1 / 1;
 
 	&:not(.lambda-datepicker-cell-selected):not(.lambda-datepicker-cell-disabled) {
 		cursor: pointer;
