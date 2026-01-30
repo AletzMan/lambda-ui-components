@@ -293,7 +293,7 @@
 .lambda-carousel-dot-square {
 	width: var(--size-2xs);
 	height: var(--size-2xs);
-	border-radius: var(--radius-2xs);
+	border-radius: var(--radius-xs);
 }
 
 .lambda-carousel-dot-number {

@@ -25,7 +25,6 @@ const baseSizes = [
 
 const radiuses = [
     { name: "--radius-none", value: "0px" },
-    { name: "--radius-2xs", value: "1px" },
     { name: "--radius-xs", value: "0.125rem" },
     { name: "--radius-sm", value: "0.25rem" },
     { name: "--radius-md", value: "0.375rem" },
