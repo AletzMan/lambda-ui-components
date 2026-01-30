@@ -7,148 +7,135 @@
 [![React 18+](https://img.shields.io/badge/react-18%2B-blue.svg)](https://react.dev/)
 [![Build Status](https://github.com/AletzMan/lambda-ui-components/actions/workflows/main.yml/badge.svg)](https://github.com/AletzMan/lambda-ui-components/actions)
 
-Component library for React built with TypeScript, Framer Motion, and Vite. Includes a modern, themeable, and accessible set of UI primitives for rapid product development.
+**Lambda UI Components** is a modern, accessible, and flexible React component library designed to help you build beautiful, consistent, and scalable user interfaces with ease. Every component is crafted with precision and attention to detail.
 
-## ✨ Características
+## ✨ Features
 
-- Componentes accesibles, tipados y listos para producción
-- Soporte para dark mode y personalización por CSS variables
-- Animaciones fluidas con Framer Motion
-- Fácil integración con React 18+
-- Incluye Skeleton, Button, Card, Input, Table, Modal, y más
+- **Accessible by default:** Components follow WAI-ARIA guidelines and are keyboard-friendly.
+- **Modern design:** Built-in dark mode, theming, and responsive layouts.
+- **Developer experience:** TypeScript-first, clear props, and Storybook demos.
+- **Flexible & composable:** Extend, override, or compose components as you need.
 
-## 🚀 Instalación
+## 🚀 Installation
 
-```sh
+Lambda UI Components is published as an npm package. You can install it using your favorite package manager:
+
+```bash
 pnpm add lambda-ui-components
-# o
+# or
 npm install lambda-ui-components
+# or
+yarn add lambda-ui-components
 ```
 
-> **Nota:** Debes tener React 18+ y ReactDOM como peerDependencies en tu proyecto.
-
-## 🎨 Estilos globales recomendados
-
-Para que los componentes de `lambda-ui-components` funcionen correctamente y evitar flashes de color al usar dark mode, agrega este snippet a tu CSS global (por ejemplo, en `globals.css` o el archivo global de tu proyecto):
-
-```css
-body {
-	background-color: var(--background-color);
-}
-```
-
-Si quieres máxima compatibilidad con dark/light mode y variables:
-
-```css
-html,
-body {
-	background: #09090b;
-	color-scheme: dark;
-}
-html.light,
-body.light {
-	background: #fff !important;
-	color-scheme: light;
-}
-```
-
-> **Nota:**  
-> No forzamos estos estilos desde la librería para no interferir con el diseño de tu app.  
-> Si usas un ThemeProvider, asegúrate de que sincroniza la clase `dark`/`light` en `<html>`.
-
-## 📦 Uso Básico
-
-1. **Importa los estilos globales una vez en tu entrypoint:**
-   ```js
-   import "lambda-ui-components/dist/index.css";
-   ```
-2. **Importa componentes individuales:**
-   ```jsx
-   import { Skeleton, Button, Card } from "lambda-ui-components";
-   ```
-
-### Ejemplo de uso
-
-```jsx
-import "lambda-ui-components/dist/index.css";
-import { Skeleton, Button, Card } from "lambda-ui-components";
-
-function Demo() {
-	return (
-		<Card style={{ width: 320 }}>
-			<Skeleton width={80} height={16} animationType="wave" />
-			<Button variant="primary">Acción</Button>
-		</Card>
-	);
-}
-```
-
-## 🧩 Componentes incluidos
-
-- Accordion
-- Alert
-- Avatar
-- Badge
-- Breadcrumb
-- Button
-- Calendar
-- Card
-- Carousel
-- Checkbox
-- CodeBlock
-- ColorPicker
-- DatePicker
-- Dialog
-- Divider
-- Drawer
-- Dropdown
-- FileUpload
-- Flex
-- Input
-- InputNumber
-- Join
-- Link
-- NavigationMenu
-- Notification
-- Pagination
-- Progress
-- Radio/RadioGroup
-- Rating
-- Select
-- Skeleton
-- Slider
-- Splitter
-- Stepper
-- Switch
-- Tab
-- Table
-- Tag
-- TextArea
-- Tooltip
-- TreeView
-
-## 🎨 Temas y Personalización
-
-- Usa CSS variables para sobrescribir colores y estilos globales.
-- Soporte nativo para dark mode (`[data-theme="dark"]` y `[data-theme="light"]`).
+> **Tip:** For best results, use `pnpm` or `yarn` in monorepo setups.
 
 ## ⚡ Peer Dependencies
 
-- `react` >= 18
-- `react-dom` >= 18
-- (Opcional) `prismjs` para CodeBlock
+Lambda UI Components requires **React 18+** and **ReactDOM** as peer dependencies. Make sure they are installed in your project.
 
-## 🤝 Contribuir
+```bash
+pnpm add react react-dom
+```
 
-- Haz un fork y un PR con tu mejora o bugfix.
-- Sigue la convención de componentes y estilos.
+For syntax highlighting in `CodeBlock`, install `prismjs`:
+
+```bash
+pnpm add prismjs
+```
+
+## 🎨 Importing CSS
+
+Import the Lambda UI CSS in your main entry file (usually `src/index.tsx` or `_app.tsx` in Next.js):
+
+```tsx
+import "lambda-ui-components/dist/main.css";
+```
+
+This ensures all components are styled correctly out of the box.
+
+## 🛠️ Theme & Configuration Providers
+
+For advanced theming, localization, and consistent UI configuration, wrap your app with `LambdaConfigProvider` and `ThemeProvider` at the root of your component tree:
+
+```tsx
+import { LambdaConfigProvider, ThemeProvider } from "lambda-ui-components";
+
+export default function App({ children }) {
+  return (
+    <LambdaConfigProvider lang="en">
+      <ThemeProvider defaultTheme="dark">
+        {children}
+      </ThemeProvider>
+    </LambdaConfigProvider>
+  );
+}
+```
+
+## 📦 Basic Usage
+
+Import and use components in your React app:
+
+```tsx
+import { Button, Card } from "lambda-ui-components";
+
+export default function Example() {
+  return (
+    <Card>
+      <Button color="primary">Hello Lambda UI</Button>
+    </Card>
+  );
+}
+```
+
+All components are fully typed and support both controlled and uncontrolled usage patterns.
+
+### Next.js & RSC
+
+If you use **Next.js App Router**, add `"use client"` at the top of your page or component file whenever you use interactive components:
+
+```tsx
+"use client";
+import { Button } from "lambda-ui-components";
+// ...
+```
+
+This is only necessary in Next.js App Router. In Vite, Astro, Remix, or CRA, you do **not** need this directive.
+
+## 🧩 Components Included
+
+Lambda UI offers a comprehensive set of UI primitives and advanced components, including:
+
+- Button
+- Input & TextArea
+- Select & Dropdown
+- Checkbox & Radio
+- Switch
+- Dialog & Drawer
+- Notification
+- Table & Pagination
+- Card
+- Tabs
+- Slider
+- Avatar
+- Progress
+- Skeleton
+- And many more…
+
+## 🎨 Theming & Customization
+
+- **CSS Variables:** Lambda UI Components uses CSS variables for theming. You can globally override the theme by changing variables in your CSS or using `data-theme` for dark mode and custom themes.
+- **Unstyled Prop:** To customize the style of specific components, many support the `unstyled` prop, which removes default styles so you can apply your own.
+
+## 🤝 Contribution
+
+- Fork the repo and create a PR with your improvement or bugfix.
+- Follow the component and style conventions.
 
 ---
 
-¡Disfruta construyendo con Lambda UI Components!
+## 📝 License
 
-## 📝 Licencia
+This project is licensed under the MIT License. You can freely use it in personal and commercial projects. See the LICENSE file for more details.
 
-Este proyecto está licenciado bajo la licencia MIT. Puedes usarlo libremente en proyectos personales y comerciales. Consulta el archivo LICENSE para más detalles.
-
-Desarrollado por [BitCoder\_\_](https://alejandro-garcia.dev)
+Developed by [BitCoder__](https://alejandro-garcia.dev)
