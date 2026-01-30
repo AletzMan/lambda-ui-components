@@ -137,9 +137,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 							? 8
 							: 6;
 
-		console.log(paddingInputSize);
-		console.log(heightInputSize);
-
+							
 		const labelVariants = useMemo(() => {
 			return {
 				default: {

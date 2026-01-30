@@ -98,7 +98,7 @@ export default async function FlexPage(params: {
 	searchParams: { mode: string };
 }) {
 	const searchParams = await params.searchParams;
-	console.log(searchParams.mode);
+	
 	return (
 		<ComponentsLayout
 			title="Flex"

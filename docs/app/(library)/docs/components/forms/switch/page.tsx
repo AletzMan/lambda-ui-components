@@ -125,7 +125,7 @@ export default async function SliderPage(params: {
 	searchParams: { mode: string };
 }) {
 	const searchParams = await params.searchParams;
-	console.log(searchParams.mode);
+	
 	return (
 		<ComponentsLayout
 			title="Switch"

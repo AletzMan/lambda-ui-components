@@ -133,7 +133,7 @@ export default async function PaginationPage(params: {
 	searchParams: { mode: string };
 }) {
 	const searchParams = await params.searchParams;
-	console.log(searchParams.mode);
+	
 	return (
 		<ComponentsLayout
 			title="Pagination"

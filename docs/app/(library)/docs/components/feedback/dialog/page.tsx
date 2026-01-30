@@ -151,7 +151,7 @@ export default async function DialogPage(params: {
 	searchParams: { mode: string };
 }) {
 	const searchParams = await params.searchParams;
-	console.log(searchParams.mode);
+	
 	return (
 		<ComponentsLayout
 			title="Dialog"

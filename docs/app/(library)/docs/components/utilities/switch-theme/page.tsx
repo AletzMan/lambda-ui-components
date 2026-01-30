@@ -88,7 +88,7 @@ export default async function SwitchThemePage(params: {
 	searchParams: { mode: string };
 }) {
 	const searchParams = await params.searchParams;
-	console.log(searchParams.mode);
+	
 	return (
 		<ComponentsLayout
 			title="SwitchTheme"
