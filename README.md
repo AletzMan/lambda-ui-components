@@ -127,6 +127,13 @@ Lambda UI offers a comprehensive set of UI primitives and advanced components, i
 - **CSS Variables:** Lambda UI Components uses CSS variables for theming. You can globally override the theme by changing variables in your CSS or using `data-theme` for dark mode and custom themes.
 - **Unstyled Prop:** To customize the style of specific components, many support the `unstyled` prop, which removes default styles so you can apply your own.
 
+## 📅 Latest Updates (v1.0.2)
+
+- **Button:** New `darkened` variant.
+- **Avatar:** Dynamic border colors.
+- **Theme:** Dark mode color improvements.
+- **Fixes:** DatePicker modal stability.
+
 ## 🤝 Contribution
 
 - Fork the repo and create a PR with your improvement or bugfix.

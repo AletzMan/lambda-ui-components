@@ -4,6 +4,40 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.0.2",
+		date: "2026-02-06",
+		sections: [
+			{
+				title: "🚀 Features & Polish",
+				items: [
+					"Button: Added 'darkened' variant and refactored internal styles.",
+					"Avatar: Implemented dynamic border colors based on name hash.",
+					"Theme: Updated 'dark' color variables to use 950 shade for better contrast.",
+					"Table: Refined component structure and styling.",
+				],
+			},
+			{
+				title: "🐛 Bug Fixes",
+				items: [
+					"DatePicker: Fixed premature closing issues in 'modal' mode.",
+					"General: Minor style fixes for Alert and Dropdown interactions.",
+				],
+			},
+		],
+	},
+	{
+		version: "1.0.1",
+		date: "2025-11-05",
+		sections: [
+			{
+				title: "📚 Documentation",
+				items: [
+					"Updated README with detailed usage instructions and implementation guidelines.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.0.0",
 		date: "2025-11-05",
 		sections: [
