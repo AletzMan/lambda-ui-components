@@ -6,6 +6,7 @@ import { FilePlus, FileUp, FolderOpen, LogOut, MenuIcon, Printer, Settings, X } 
 import { useState } from "react";
 import { Divider } from "../Divider/Divider";
 import { Checkbox } from "../Checkbox/Checkbox";
+import { DatePicker } from "../DatePicker/DatePicker";
 
 const meta: Meta<typeof Dropdown> = {
 	title: "Components/Dropdown",
@@ -56,6 +57,7 @@ type Story = StoryObj<typeof Dropdown>;
 const Template = (args: DropdownProps) => {
 	const [hasIcon, setHasIcon] = useState<boolean>(true);
 	const [hasText, setHasText] = useState<boolean>(true);
+	const [date, setDate] = useState<Date | undefined>(undefined);
 	return (
 		<ContainerComponent
 			title="Button"
@@ -80,6 +82,9 @@ const Template = (args: DropdownProps) => {
 					icon={hasIcon ? args.icon : undefined}
 					text={hasText ? args.text : undefined}
 				>
+
+					<DatePicker type="modal" value={date} onChange={(value) => setDate(value)} />
+
 					<Dropdown.Item
 						icon={<FolderOpen />}
 						text="Open"

@@ -13,6 +13,7 @@ export const button = cva(styles[`lambda-btn`], {
 			info: styles[`lambda-btn-info`],
 		},
 		variant: {
+			themed: styles[`lambda-btn-themed`],
 			classic: styles[`lambda-btn-classic`],
 			solid: styles[`lambda-btn-solid`],
 			outline: styles[`lambda-btn-outline`],

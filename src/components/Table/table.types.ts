@@ -9,7 +9,7 @@ export interface SortConfig {
 
 export interface TableProperties {
 	size?: "tiny" | "small" | "medium" | "large";
-	variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
+	variant?: "soft" | "underlined" | "bordered" | "striped" | "bordered-transparent" | null | undefined;
 	sortConfig: SortConfig;
 	handleSort: (key: string, type: string) => void;
 	highlightOnHover?: boolean;

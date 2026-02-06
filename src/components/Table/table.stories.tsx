@@ -16,7 +16,7 @@ const meta: Meta<typeof Table> = {
 		},
 		variant: {
 			control: "select",
-			options: ["soft", "underlined", "striped", "bordered"],
+			options: ["soft", "underlined", "striped", "bordered", "bordered-transparent"],
 		},
 		highlightOnHover: {
 			control: "boolean",
@@ -178,6 +178,15 @@ export const Striped: Story = {
 	render: (args) => <TableComponent {...args} />,
 	args: {
 		variant: "striped",
+		size: "medium",
+		highlightOnHover: false,
+	},
+};
+
+export const BorderedTransparent: Story = {
+	render: (args) => <TableComponent {...args} />,
+	args: {
+		variant: "bordered-transparent",
 		size: "medium",
 		highlightOnHover: false,
 	},

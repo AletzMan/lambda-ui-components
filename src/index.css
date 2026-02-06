@@ -364,7 +364,7 @@
 	--border-width-lg: 0.25rem;
 
 	--outline-width-none: 0px;
-	--outline-width-default: 0.1875rem;
+	--outline-width-default: 0.125rem;
 	--outline-width-strong: 0.25rem;
 
 	--size-4xs: 0.125rem;
@@ -1856,7 +1856,7 @@
 	--secondary-disabled-color: var(--lambda-color-purple-300);
 	--secondary-border-color: var(--lambda-color-purple-100);
 	--secondary-light-color: var(--lambda-color-purple-050);
-	--secondary-dark-color: var(--lambda-color-purple-900);
+	--secondary-dark-color: var(--lambda-color-purple-950);
 	--secondary-background-color: var(--lambda-color-purple-950);
 	--secondary-opacity-color: color-mix(in srgb,
 			var(--lambda-color-purple-500) 15%,
@@ -1876,7 +1876,7 @@
 	--neutral-border-color: var(--lambda-color-neutral-600);
 	--neutral-light-color: var(--lambda-color-neutral-050);
 	--neutral-dark-color: var(--lambda-color-neutral-950);
-	--neutral-background-color: var(--lambda-color-neutral-950);
+	--neutral-background-color: var(--lambda-color-neutral-900);
 	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-500) 15%, transparent 90%);
 	--neutral-shadow-color: color-mix(in srgb, var(--lambda-color-neutral-500) 50%, transparent 90%);
 
@@ -1891,7 +1891,7 @@
 	--success-border-color: var(--lambda-color-green-100);
 	--success-light-color: var(--lambda-color-green-050);
 	--success-dark-color: var(--lambda-color-green-950);
-	--success-background-color: var(--lambda-color-green-950);
+	--success-background-color: var(--lambda-color-green-900);
 	--success-opacity-color: color-mix(in srgb, var(--lambda-color-green-500) 15%, transparent 90%);
 	--success-shadow-color: color-mix(in srgb, var(--lambda-color-green-500) 50%, transparent 90%);
 
@@ -1906,7 +1906,7 @@
 	--danger-border-color: var(--lambda-color-red-100);
 	--danger-light-color: var(--lambda-color-red-050);
 	--danger-dark-color: var(--lambda-color-red-950);
-	--danger-background-color: var(--lambda-color-red-950);
+	--danger-background-color: var(--lambda-color-red-900);
 	--danger-opacity-color: color-mix(in srgb, var(--lambda-color-red-500) 15%, transparent 90%);
 	--danger-shadow-color: color-mix(in srgb, var(--lambda-color-red-500) 50%, transparent 90%);
 
@@ -1921,7 +1921,7 @@
 	--warning-border-color: var(--lambda-color-yellow-100);
 	--warning-light-color: var(--lambda-color-yellow-050);
 	--warning-dark-color: var(--lambda-color-yellow-950);
-	--warning-background-color: var(--lambda-color-yellow-950);
+	--warning-background-color: var(--lambda-color-yellow-900);
 	--warning-opacity-color: color-mix(in srgb, var(--lambda-color-yellow-500) 15%, transparent 90%);
 	--warning-shadow-color: color-mix(in srgb, var(--lambda-color-yellow-500) 50%, transparent 90%);
 
@@ -1936,7 +1936,7 @@
 	--info-border-color: var(--lambda-color-sky-300);
 	--info-light-color: var(--lambda-color-sky-050);
 	--info-dark-color: var(--lambda-color-sky-950);
-	--info-background-color: var(--lambda-color-sky-950);
+	--info-background-color: var(--lambda-color-sky-900);
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-sky-500) 15%, transparent 90%);
 	--info-shadow-color: color-mix(in srgb, var(--lambda-color-sky-500) 50%, transparent 90%);
 }
@@ -2028,7 +2028,7 @@
 	--secondary-disabled-color: var(--lambda-color-teal-300);
 	--secondary-border-color: var(--lambda-color-teal-100);
 	--secondary-light-color: var(--lambda-color-teal-050);
-	--secondary-dark-color: var(--lambda-color-teal-900);
+	--secondary-dark-color: var(--lambda-color-teal-950);
 	--secondary-background-color: var(--lambda-color-teal-950);
 	--secondary-opacity-color: color-mix(in srgb,
 			var(--lambda-color-teal-500) 15%,
@@ -2048,7 +2048,7 @@
 	--neutral-border-color: var(--lambda-color-neutral-600);
 	--neutral-light-color: var(--lambda-color-neutral-050);
 	--neutral-dark-color: var(--lambda-color-neutral-950);
-	--neutral-background-color: var(--lambda-color-neutral-950);
+	--neutral-background-color: var(--lambda-color-neutral-900);
 	--neutral-opacity-color: color-mix(in srgb, var(--lambda-color-neutral-500) 15%, transparent 90%);
 	--neutral-shadow-color: color-mix(in srgb, var(--lambda-color-neutral-500) 50%, transparent 90%);
 
@@ -2063,7 +2063,7 @@
 	--success-border-color: var(--lambda-color-green-100);
 	--success-light-color: var(--lambda-color-green-050);
 	--success-dark-color: var(--lambda-color-green-950);
-	--success-background-color: var(--lambda-color-green-950);
+	--success-background-color: var(--lambda-color-green-900);
 	--success-opacity-color: color-mix(in srgb, var(--lambda-color-green-500) 15%, transparent 90%);
 	--success-shadow-color: color-mix(in srgb, var(--lambda-color-green-500) 50%, transparent 90%);
 
@@ -2078,7 +2078,7 @@
 	--danger-border-color: var(--lambda-color-red-100);
 	--danger-light-color: var(--lambda-color-red-050);
 	--danger-dark-color: var(--lambda-color-red-950);
-	--danger-background-color: var(--lambda-color-red-950);
+	--danger-background-color: var(--lambda-color-red-900);
 	--danger-opacity-color: color-mix(in srgb, var(--lambda-color-red-500) 15%, transparent 90%);
 	--danger-shadow-color: color-mix(in srgb, var(--lambda-color-red-500) 50%, transparent 90%);
 
@@ -2093,7 +2093,7 @@
 	--warning-border-color: var(--lambda-color-yellow-100);
 	--warning-light-color: var(--lambda-color-yellow-050);
 	--warning-dark-color: var(--lambda-color-yellow-950);
-	--warning-background-color: var(--lambda-color-yellow-950);
+	--warning-background-color: var(--lambda-color-yellow-900);
 	--warning-opacity-color: color-mix(in srgb, var(--lambda-color-yellow-500) 15%, transparent 90%);
 	--warning-shadow-color: color-mix(in srgb, var(--lambda-color-yellow-500) 50%, transparent 90%);
 
@@ -2108,7 +2108,7 @@
 	--info-border-color: var(--lambda-color-sky-300);
 	--info-light-color: var(--lambda-color-sky-050);
 	--info-dark-color: var(--lambda-color-sky-950);
-	--info-background-color: var(--lambda-color-sky-950);
+	--info-background-color: var(--lambda-color-sky-900);
 	--info-opacity-color: color-mix(in srgb, var(--lambda-color-sky-500) 15%, transparent 90%);
 	--info-shadow-color: color-mix(in srgb, var(--lambda-color-sky-500) 50%, transparent 90%);
 }
@@ -2200,7 +2200,7 @@
 	--secondary-disabled-color: var(--lambda-color-indigo-300);
 	--secondary-border-color: var(--lambda-color-indigo-100);
 	--secondary-light-color: var(--lambda-color-indigo-050);
-	--secondary-dark-color: var(--lambda-color-indigo-900);
+	--secondary-dark-color: var(--lambda-color-indigo-950);
 	--secondary-background-color: var(--lambda-color-indigo-950);
 	--secondary-opacity-color: color-mix(in srgb,
 			var(--lambda-color-indigo-500) 15%,
@@ -2372,7 +2372,7 @@
 	--secondary-disabled-color: var(--lambda-color-fuchsia-300);
 	--secondary-border-color: var(--lambda-color-fuchsia-100);
 	--secondary-light-color: var(--lambda-color-fuchsia-050);
-	--secondary-dark-color: var(--lambda-color-fuchsia-900);
+	--secondary-dark-color: var(--lambda-color-fuchsia-950);
 	--secondary-background-color: var(--lambda-color-fuchsia-950);
 	--secondary-opacity-color: color-mix(in srgb,
 			var(--lambda-color-fuchsia-500) 15%,
@@ -2544,7 +2544,7 @@
 	--secondary-disabled-color: var(--lambda-color-indigo-300);
 	--secondary-border-color: var(--lambda-color-indigo-100);
 	--secondary-light-color: var(--lambda-color-indigo-050);
-	--secondary-dark-color: var(--lambda-color-indigo-900);
+	--secondary-dark-color: var(--lambda-color-indigo-950);
 	--secondary-background-color: var(--lambda-color-indigo-950);
 	--secondary-opacity-color: color-mix(in srgb,
 			var(--lambda-color-indigo-500) 15%,
@@ -2712,7 +2712,7 @@
 	--secondary-disabled-color: var(--lambda-color-amber-300);
 	--secondary-border-color: var(--lambda-color-amber-100);
 	--secondary-light-color: var(--lambda-color-amber-050);
-	--secondary-dark-color: var(--lambda-color-amber-900);
+	--secondary-dark-color: var(--lambda-color-amber-950);
 	--secondary-background-color: var(--lambda-color-amber-950);
 	--secondary-opacity-color: color-mix(in srgb,
 			var(--lambda-color-amber-500) 15%,
@@ -2880,7 +2880,7 @@
 	--secondary-disabled-color: var(--lambda-color-pink-300);
 	--secondary-border-color: var(--lambda-color-pink-100);
 	--secondary-light-color: var(--lambda-color-pink-050);
-	--secondary-dark-color: var(--lambda-color-pink-900);
+	--secondary-dark-color: var(--lambda-color-pink-950);
 	--secondary-background-color: var(--lambda-color-pink-950);
 	--secondary-opacity-color: color-mix(in srgb, var(--lambda-color-pink-500) 15%, transparent 90%);
 	--secondary-shadow-color: color-mix(in srgb, var(--lambda-color-pink-500) 50%, transparent 90%);
@@ -3051,7 +3051,7 @@
 	--secondary-disabled-color: var(--lambda-color-lime-300);
 	--secondary-border-color: var(--lambda-color-lime-100);
 	--secondary-light-color: var(--lambda-color-lime-050);
-	--secondary-dark-color: var(--lambda-color-lime-900);
+	--secondary-dark-color: var(--lambda-color-lime-950);
 	--secondary-background-color: var(--lambda-color-lime-950);
 	--secondary-opacity-color: color-mix(in srgb, var(--lambda-color-lime-500) 20%, transparent 90%);
 	--secondary-shadow-color: color-mix(in srgb, var(--lambda-color-lime-500) 60%, transparent 90%);

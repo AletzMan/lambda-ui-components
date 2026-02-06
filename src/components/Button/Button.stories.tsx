@@ -12,7 +12,7 @@ const meta: Meta<typeof Button> = {
 	argTypes: {
 		variant: {
 			control: "select",
-			options: ["classic", "solid", "outline", "dashed", "soft", "subtle", "text", "unstyled"],
+			options: ["themed", "classic", "solid", "outline", "dashed", "soft", "subtle", "text", "unstyled"],
 			description: "Visual style of the button",
 			type: "string",
 			table: {
@@ -118,6 +118,24 @@ const Template = (args: ButtonProps) => {
 			</div>
 		</ContainerComponent>
 	);
+};
+
+export const Themed: Story = {
+	render: Template,
+	args: {
+		color: "secondary",
+		variant: "themed",
+		size: "medium",
+		radius: "small",
+		loading: false,
+		loadingText: "Loading",
+		disabled: false,
+		iconPosition: "left",
+		label: "Button",
+		block: false,
+		isCircle: false,
+		icon: <CircleCheck />,
+	},
 };
 
 export const Solid: Story = {

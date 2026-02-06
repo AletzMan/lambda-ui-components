@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useState, useRef } from "react";
 
 // 2. El hook es genérico para recibir los tipos T y U
 export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
-	offset?: { x?: number; y?: number },
+	config?: { x?: number; y?: number; disableListeners?: boolean },
 	itemCallbacks?: Array<(() => void) | undefined>
 ) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -33,21 +33,21 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
 			const spaceAbove = rect.top;
 
 			// --- Vertical Positioning ---
-			let top = rect.bottom + (offset?.y || 0);
+			let top = rect.bottom + (config?.y || 0);
 			let position: "below" | "above" = "below";
 			if (spaceBelow < pickerHeight && spaceAbove > pickerHeight) {
-				top = rect.top - pickerHeight - (offset?.y || 0);
+				top = rect.top - pickerHeight - (config?.y || 0);
 				position = "above";
 			}
 
 			// --- Horizontal Positioning ---
-			let left = rect.left + (offset?.x || 0);
+			let left = rect.left + (config?.x || 0);
 			const spaceRight = window.innerWidth - left;
 
 			// Si no cabe a la derecha (overflow), intentamos alinear a la derecha del trigger
 			if (spaceRight < pickerWidth) {
 				// Calcular posición alineada a la derecha: (borde derecho del trigger) - (ancho del popover)
-				const leftAlignedToRight = rect.right - pickerWidth + (offset?.x || 0);
+				const leftAlignedToRight = rect.right - pickerWidth + (config?.x || 0);
 
 				// Solo cambiamos si la nueva posición no se sale por la izquierda
 				if (leftAlignedToRight >= 0) {
@@ -68,7 +68,7 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
 		recalculatePosition();
 		if (isOpen && contentRef.current) {
 			setTimeout(() => {
-				contentRef.current?.focus();
+				contentRef.current?.focus({ preventScroll: true });
 			}, 100);
 		}
 	}, [isOpen]);
@@ -141,9 +141,15 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
 		}
 
 		// Se usa window para manejar scroll y resize de manera global
-		function handleGlobalEvent() {
+		function handleBlurEvent() {
 			if (isOpen) {
 				setIsOpen(false);
+			}
+		}
+
+		function handleResizeEvent() {
+			if (isOpen) {
+				recalculatePosition();
 			}
 		}
 
@@ -164,15 +170,15 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
 			setIsOpen(false);
 		}
 
-		if (isOpen) {
+		if (isOpen && !config?.disableListeners) {
 			// Eventos de clic/tap para cerrar fuera
 			document.addEventListener("mousedown", handleClickOutside);
 			document.addEventListener("touchstart", handleClickOutside);
 
 			// Eventos globales para cerrar en movimiento o pérdida de foco (usando el modo captura 'true')
 			window.addEventListener("scroll", handleScrollEvent, true);
-			window.addEventListener("resize", handleGlobalEvent);
-			window.addEventListener("blur", handleGlobalEvent);
+			window.addEventListener("resize", handleResizeEvent);
+			window.addEventListener("blur", handleBlurEvent);
 		}
 
 		// Función de limpieza
@@ -180,8 +186,8 @@ export const usePopover = <T extends HTMLElement, U extends HTMLElement>(
 			document.removeEventListener("mousedown", handleClickOutside);
 			document.removeEventListener("touchstart", handleClickOutside);
 			window.removeEventListener("scroll", handleScrollEvent, true);
-			window.removeEventListener("resize", handleGlobalEvent);
-			window.removeEventListener("blur", handleGlobalEvent);
+			window.removeEventListener("resize", handleResizeEvent);
+			window.removeEventListener("blur", handleBlurEvent);
 		};
 	}, [isOpen]);
 

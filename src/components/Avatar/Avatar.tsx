@@ -20,12 +20,34 @@ const COLORS = [
 	"var(--lambda-color-amber-500)",
 ];
 
+const BORDER_COLORS = [
+	"var(--lambda-color-purple-200)",
+	"var(--lambda-color-green-200)",
+	"var(--lambda-color-yellow-200)",
+	"var(--lambda-color-red-200)",
+	"var(--lambda-color-sky-200)",
+	"var(--lambda-color-teal-200)",
+	"var(--lambda-color-orange-200)",
+	"var(--lambda-color-pink-200)",
+	"var(--lambda-color-blue-200)",
+	"var(--lambda-color-green-200)",
+	"var(--lambda-color-amber-200)",
+];
+
 const stringToColor = (str: string) => {
 	let hash = 0;
 	for (let i = 0; i < str.length; i++) {
 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
 	}
 	return COLORS[Math.abs(hash) % COLORS.length];
+};
+
+const stringToBorderColor = (str: string) => {
+	let hash = 0;
+	for (let i = 0; i < str.length; i++) {
+		hash = str.charCodeAt(i) + ((hash << 5) - hash);
+	}
+	return BORDER_COLORS[Math.abs(hash) % BORDER_COLORS.length];
 };
 
 const getInitials = (name: string) => {
@@ -45,6 +67,7 @@ const AvatarItem: React.FC<AvatarProps> = ({
 }) => {
 	const initials = getInitials(name);
 	const bgColor = stringToColor(name);
+	const borderColor = stringToBorderColor(name);
 
 	return (
 		<motion.span
@@ -55,7 +78,7 @@ const AvatarItem: React.FC<AvatarProps> = ({
 			className={clsx(avatarVariants({ size }), className)}
 			style={{
 				background: src ? undefined : bgColor,
-				border: src ? undefined : `2px solid ${bgColor}`,
+				borderColor: src ? undefined : borderColor,
 				...style,
 			}}
 			title={name}

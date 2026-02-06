@@ -87,6 +87,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
 
 		const { isOpen, setIsOpen, menuPosition, triggerRef, contentRef, handleKeyDown } = usePopover({
 			y: 3,
+			disableListeners: type === "modal",
 		});
 
 		const { t } = useTranslation();

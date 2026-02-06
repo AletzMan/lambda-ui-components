@@ -52,147 +52,143 @@
 }
 
 .lambda-btn-classic {
-	transition: all 0.35s ease-in-out;
 	color: var(--white-color);
 	outline: 2px solid transparent;
 	outline-offset: 2px;
+	border-style: solid;
+	border-width: var(--border-width);
 
 	&.lambda-btn-neutral {
 		color: var(--foreground-invert-color);
-		background: linear-gradient(to bottom,
-				var(--neutral-base-color),
-				var(--neutral-hover-color) 30%,
-				var(--neutral-hover-color) 70%,
-				var(--neutral-base-color));
-		border: var(--border-width) solid var(--neutral-base-color);
+		background-color: var(--neutral-base-color);
+		border-color: var(--border-color);
 
-		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background: linear-gradient(to bottom,
-					var(--neutral-base-color),
-					var(--neutral-hover-color) 10%,
-					var(--neutral-hover-color) 90%,
-					var(--neutral-base-color));
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--neutral-hover-color);
 		}
 	}
 
 	&.lambda-btn-primary {
-		background: linear-gradient(to bottom,
-				var(--primary-hover-color),
-				var(--primary-base-color) 30%,
-				var(--primary-base-color) 70%,
-				var(--primary-hover-color));
-		border: var(--border-width) solid var(--primary-base-color);
+		background-color: var(--primary-hover-color);
+		border: var(--border-width) solid var(--primary-hover-color);
 
-		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background: linear-gradient(to bottom,
-					var(--primary-hover-color),
-					var(--primary-base-color) 10%,
-					var(--primary-base-color) 90%,
-					var(--primary-hover-color));
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--primary-base-color);
 		}
 	}
 
 	&.lambda-btn-secondary {
-		background: linear-gradient(to bottom,
-				var(--secondary-hover-color),
-				var(--secondary-base-color) 30%,
-				var(--secondary-base-color) 70%,
-				var(--secondary-hover-color));
-		border: var(--border-width) solid var(--secondary-base-color);
+		background-color: var(--secondary-hover-color);
+		border: var(--border-width) solid var(--secondary-hover-color);
 
-		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background: linear-gradient(to bottom,
-					var(--secondary-hover-color),
-					var(--secondary-base-color) 10%,
-					var(--secondary-base-color) 90%,
-					var(--secondary-hover-color));
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--secondary-base-color);
 		}
 	}
 
 	&.lambda-btn-success {
-		background: linear-gradient(to bottom,
-				var(--success-hover-color),
-				var(--success-base-color) 30%,
-				var(--success-base-color) 70%,
-				var(--success-hover-color));
-		border: var(--border-width) solid var(--success-base-color);
+		background-color: var(--success-hover-color);
+		border: var(--border-width) solid var(--success-hover-color);
 
-		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background: linear-gradient(to bottom,
-					var(--success-hover-color),
-					var(--success-base-color) 10%,
-					var(--success-base-color) 90%,
-					var(--success-hover-color));
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--success-base-color);
 		}
 	}
 
 	&.lambda-btn-danger {
-		background: linear-gradient(to bottom,
-				var(--danger-hover-color),
-				var(--danger-base-color) 30%,
-				var(--danger-base-color) 70%,
-				var(--danger-hover-color));
-		border: var(--border-width) solid var(--danger-base-color);
+		background-color: var(--danger-hover-color);
+		border: var(--border-width) solid var(--danger-hover-color);
 
-		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background: linear-gradient(to bottom,
-					var(--danger-hover-color),
-					var(--danger-base-color) 10%,
-					var(--danger-base-color) 90%,
-					var(--danger-hover-color));
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--danger-base-color);
 		}
 	}
 
 	&.lambda-btn-warning {
-		background: linear-gradient(to bottom,
-				var(--warning-hover-color),
-				var(--warning-base-color) 30%,
-				var(--warning-base-color) 70%,
-				var(--warning-hover-color));
-		border: var(--border-width) solid var(--warning-base-color);
+		background-color: var(--warning-hover-color);
+		border: var(--border-width) solid var(--warning-hover-color);
 
-		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background: linear-gradient(to bottom,
-					var(--warning-hover-color),
-					var(--warning-base-color) 10%,
-					var(--warning-base-color) 90%,
-					var(--warning-hover-color));
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--warning-base-color);
 		}
 	}
 
 	&.lambda-btn-info {
-		background: linear-gradient(to bottom,
-				var(--info-hover-color),
-				var(--info-base-color) 30%,
-				var(--info-base-color) 70%,
-				var(--info-hover-color));
-		border: var(--border-width) solid var(--info-base-color);
+		background-color: var(--info-hover-color);
+		border: var(--border-width) solid var(--info-hover-color);
 
-		&:hover:not(:active):not(.lambda-btn-loading):not(.lambda-btn-disabled) {
-			background: linear-gradient(to bottom,
-					var(--info-hover-color),
-					var(--info-base-color) 10%,
-					var(--info-base-color) 90%,
-					var(--info-hover-color));
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--info-base-color);
+		}
+	}
+}
+
+
+.lambda-btn-themed {
+	outline: 2px solid transparent;
+	outline-offset: 2px;
+	border-style: solid;
+	border-width: var(--border-width);
+	background-color: var(--surface-a);
+	border-color: var(--border-color);
+
+	&.lambda-btn-neutral {
+		color: var(--foreground-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--surface-b);
 		}
 	}
 
-	&.lambda-btn-loading,
-	&.lambda-btn-disabled {
-		&:not(.lambda-btn-warning):not(.lambda-btn-secondary) .lambda-btn-label {
-			color: linear-gradient(180deg,
-					var(--foreground-disabled-color) 1%,
-					var(--foreground-invert-color),
-					var(--foreground-disabled-color) 100%);
-		}
+	&.lambda-btn-primary {
+		color: var(--primary-text-color);
 
-		&:not(.lambda-btn-warning):not(.lambda-btn-secondary) .lambda-btn-icon {
-			color: linear-gradient(180deg,
-					var(--foreground-disabled-color) 1%,
-					var(--foreground-invert-color),
-					var(--foreground-disabled-color) 100%);
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--primary-background-color);
 		}
 	}
+
+	&.lambda-btn-secondary {
+		color: var(--secondary-text-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--secondary-background-color);
+		}
+	}
+
+	&.lambda-btn-success {
+		color: var(--success-text-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--success-background-color);
+		}
+	}
+
+	&.lambda-btn-danger {
+		color: var(--danger-text-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--danger-background-color);
+		}
+	}
+
+	&.lambda-btn-warning {
+		color: var(--warning-text-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--warning-background-color);
+		}
+	}
+
+	&.lambda-btn-info {
+		color: var(--info-text-color);
+
+		&:hover:not(.lambda-btn-loading):not(.lambda-btn-disabled) {
+			background-color: var(--info-background-color);
+		}
+	}
+
+
 }
 
 .lambda-btn-solid {

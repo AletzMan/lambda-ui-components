@@ -15,7 +15,8 @@
 	overflow-x: auto;
 	overflow-y: hidden;
 
-	&:is(.lambda-table-container-table-bordered) {
+	&:is(.lambda-table-container-table-bordered),
+	&:is(.lambda-table-container-table-bordered-transparent) {
 		border: var(--border-width) solid var(--border-color);
 		border-bottom: none;
 	}
@@ -44,14 +45,16 @@
 	background-color: transparent;
 }
 
-.lambda-table-bordered {
+.lambda-table-bordered,
+.lambda-table-bordered-transparent {
 	border-collapse: collapse;
 }
 
 .lambda-table-header {
 	background-color: var(--surface-a);
 
-	& .lambda-table-row:is(.lambda-table-row-bordered) {
+	& .lambda-table-row:is(.lambda-table-row-bordered),
+	& .lambda-table-row:is(.lambda-table-row-bordered-transparent) {
 		& .lambda-table-header-cell {
 			border-top: none;
 		}
@@ -66,7 +69,8 @@
 	background-color: var(--surface-b);
 	width: 100%;
 
-	&:is(.lambda-table-header-cell-bordered) {
+	&:is(.lambda-table-header-cell-bordered),
+	&:is(.lambda-table-header-cell-bordered-transparent) {
 		border: var(--border-width) solid var(--border-color);
 		border-top: var(--border-width) solid var(--surface-c);
 
@@ -172,7 +176,8 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 
-	&:is(.lambda-table-cell-bordered) {
+	&:is(.lambda-table-cell-bordered),
+	&:is(.lambda-table-cell-bordered-transparent) {
 		border: var(--border-width) solid var(--border-color);
 
 		&:first-child {
@@ -250,6 +255,10 @@
 		&:is(:nth-child(odd)) {
 			background-color: var(--surface-a);
 		}
+	}
+
+	&:is(.lambda-table-row-bordered-transparent) {
+		background-color: transparent;
 	}
 
 

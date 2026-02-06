@@ -13,30 +13,37 @@
 	vertical-align: middle;
 	object-fit: cover;
 	transition: box-shadow 0.2s;
+	border-style: solid;
+	border-color: var(--foreground-secondary-color);
+	flex-shrink: 0;
 }
 
 .lambda-avatar-tiny {
 	width: var(--size-lg);
 	height: var(--size-lg);
 	font-size: var(--font-size-2xs);
+	border-width: var(--border-width-xs);
 }
 
 .lambda-avatar-small {
 	width: var(--size-3xl);
 	height: var(--size-3xl);
 	font-size: var(--font-size-sm);
+	border-width: var(--border-width-sm);
 }
 
 .lambda-avatar-medium {
 	width: var(--size-5xl);
 	height: var(--size-5xl);
 	font-size: var(--font-size-lg);
+	border-width: var(--border-width-sm);
 }
 
 .lambda-avatar-large {
 	width: var(--size-7xl);
 	height: var(--size-7xl);
 	font-size: var(--font-size-3xl);
+	border-width: var(--border-width-sm);
 }
 
 .lambda-avatar-img {

@@ -50,7 +50,7 @@ const TableRoot = <T,>({
 	};
 } & HTMLAttributes<HTMLTableElement> & {
 	size?: "tiny" | "small" | "medium" | "large";
-	variant?: "soft" | "underlined" | "bordered" | "striped" | null | undefined;
+	variant?: "soft" | "underlined" | "bordered" | "striped" | "bordered-transparent" | null | undefined;
 }) => {
 	const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
 	const { t } = useTranslation();
@@ -103,7 +103,7 @@ const TableRoot = <T,>({
 									? "soft"
 									: variant === "underlined"
 										? "solid"
-										: variant === "bordered"
+										: variant === "bordered" || variant === "bordered-transparent"
 											? "bordered"
 											: variant === "striped"
 												? "bordered"

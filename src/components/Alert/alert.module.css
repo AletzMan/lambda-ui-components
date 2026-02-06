@@ -80,7 +80,7 @@
 
 	.lambda-alert-title {
 		font-size: var(--font-size-xs);
-		font-weight: var(--font-weight-semibold);
+		font-weight: var(--font-weight-bold);
 	}
 
 	.lambda-alert-icon {
@@ -96,7 +96,7 @@
 
 	.lambda-alert-title {
 		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-semibold);
+		font-weight: var(--font-weight-bold);
 	}
 
 	.lambda-alert-icon {
@@ -139,7 +139,6 @@
 
 .lambda-alert-soft {
 	border: none;
-	text-shadow: 0 0 0px var(--lambda-color-cyan-700);
 
 	.lambda-alert-title {
 		font-weight: var(--font-weight-semibold);
@@ -266,7 +265,6 @@
 }
 
 .lambda-alert-outline {
-	text-shadow: 0 0 0px var(--lambda-color-cyan-700);
 
 	&.lambda-alert-neutral {
 		background-color: var(--neutral-soft-color);
@@ -398,7 +396,6 @@
 .lambda-alert-solid {
 	color: var(--white-color);
 	border: none;
-	text-shadow: 0 0 0px var(--lambda-color-cyan-900);
 
 	&.lambda-alert-neutral {
 		color: var(--foreground-invert-color);

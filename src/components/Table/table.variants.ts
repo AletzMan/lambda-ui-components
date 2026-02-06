@@ -8,6 +8,7 @@ export const containerVariants = cva(styles["lambda-table-container"], {
 			underlined: styles["lambda-table-container-underlined"],
 			striped: styles["lambda-table-container-striped"],
 			bordered: styles["lambda-table-container-bordered"],
+			"bordered-transparent": styles["lambda-table-container-bordered-transparent"],
 		},
 	},
 	defaultVariants: {
@@ -22,6 +23,7 @@ export const containerTableVariants = cva(styles["lambda-table-container-table"]
 			underlined: styles["lambda-table-container-table-underlined"],
 			striped: styles["lambda-table-container-table-striped"],
 			bordered: styles["lambda-table-container-table-bordered"],
+			"bordered-transparent": styles["lambda-table-container-table-bordered-transparent"],
 		},
 	},
 	defaultVariants: {
@@ -42,6 +44,7 @@ export const tableVariants = cva(styles["lambda-table"], {
 			underlined: styles["lambda-table-underlined"],
 			striped: styles["lambda-table-striped"],
 			bordered: styles["lambda-table-bordered"],
+			"bordered-transparent": styles["lambda-table-bordered-transparent"],
 		},
 	},
 	defaultVariants: {
@@ -63,6 +66,7 @@ export const headerVariants = cva(styles["lambda-table-header"], {
 			underlined: styles["lambda-table-header-underlined"],
 			striped: styles["lambda-table-header-striped"],
 			bordered: styles["lambda-table-header-bordered"],
+			"bordered-transparent": styles["lambda-table-header-bordered-transparent"],
 		},
 	},
 	defaultVariants: {
@@ -84,6 +88,7 @@ export const headerCellVariants = cva(styles["lambda-table-header-cell"], {
 			underlined: styles["lambda-table-header-cell-underlined"],
 			striped: styles["lambda-table-header-cell-striped"],
 			bordered: styles["lambda-table-header-cell-bordered"],
+			"bordered-transparent": styles["lambda-table-header-cell-bordered-transparent"],
 		},
 	},
 	defaultVariants: {
@@ -105,6 +110,7 @@ export const bodyVariants = cva(styles["lambda-table-body"], {
 			underlined: styles["lambda-table-body-underlined"],
 			striped: styles["lambda-table-body-striped"],
 			bordered: styles["lambda-table-body-bordered"],
+			"bordered-transparent": styles["lambda-table-body-bordered-transparent"],
 		},
 	},
 	defaultVariants: {
@@ -126,6 +132,7 @@ export const rowVariants = cva(styles["lambda-table-row"], {
 			underlined: styles["lambda-table-row-underlined"],
 			striped: styles["lambda-table-row-striped"],
 			bordered: styles["lambda-table-row-bordered"],
+			"bordered-transparent": styles["lambda-table-row-bordered-transparent"],
 		},
 		highlightOnHover: {
 			true: styles["lambda-table-row-highlight-on-hover"],
@@ -152,6 +159,7 @@ export const cellVariants = cva(styles["lambda-table-cell"], {
 			underlined: styles["lambda-table-cell-underlined"],
 			striped: styles["lambda-table-cell-striped"],
 			bordered: styles["lambda-table-cell-bordered"],
+			"bordered-transparent": styles["lambda-table-cell-bordered-transparent"],
 		},
 		align: {
 			left: styles["lambda-table-cell-align-left"],
