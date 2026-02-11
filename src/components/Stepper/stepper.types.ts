@@ -1,6 +1,13 @@
 import { ReactNode, CSSProperties } from "react";
 import { StepperVariants } from "./stepper.variants";
 
+export interface StepValidationResult {
+	/** Whether the step is valid */
+	isValid: boolean;
+	/** Optional error message if validation fails */
+	errorMessage?: string;
+}
+
 export interface StepperStep {
 	/** Unique identifier for the step */
 	id?: string | number;
@@ -17,14 +24,14 @@ export interface StepperStep {
 }
 
 export interface StepperProps {
-	/** Array of step objects defining the stepper structure */
-	steps: StepperStep[];
 	/** The index of the step that is active by default (0-indexed) */
 	defaultActiveStep?: number;
 	/** The orientation of the stepper */
 	orientation?: StepperVariants["orientation"];
 	/** Callback function triggered when a step is completed */
 	onStepCompleted?: (stepIndex: number) => void;
+	/** Callback function triggered before advancing to the next step for validation */
+	onStepValidate?: (stepIndex: number) => StepValidationResult | Promise<StepValidationResult>;
 	/** Additional CSS class names for the container */
 	className?: string;
 	/** Inline CSS styles for the container */

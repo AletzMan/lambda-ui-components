@@ -109,8 +109,8 @@
 
 .lambda-step-indicator-content {
 	position: relative;
-	width: var(--size-xl);
-	height: var(--size-xl);
+	width: calc(var(--size-lg) + 2px);
+	height: calc(var(--size-lg) + 2px);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -262,6 +262,7 @@
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-semibold);
 		color: var(--foreground-secondary-color);
+		margin: var(--spacing-none);
 		text-align: center;
 		flex: 1;
 	}
@@ -270,6 +271,7 @@
 		font-size: var(--font-size-xs);
 		font-weight: var(--font-weight-regular);
 		color: var(--foreground-secondary-color);
+		margin: var(--spacing-none);
 		text-align: center;
 		flex: 1;
 	}

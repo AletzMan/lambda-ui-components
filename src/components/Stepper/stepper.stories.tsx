@@ -32,157 +32,6 @@ const TemplateContent = (title: string, description: string, step: number) => {
 	);
 };
 
-const TemplateContentWithFields = (title: string, description: string, step: number) => {
-	return (
-		<div
-			style={{
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center",
-				justifyContent: "flex-start",
-				padding: "var(--spacing-md)",
-				height: "100%",
-			}}
-		>
-			<p
-				style={{
-					color: "var(--foreground-secondary-color)",
-					fontSize: "var(--font-size-lg)",
-					fontWeight: "var(--font-weight-semibold)",
-					marginBottom: "5em",
-				}}
-			>{`Step ${step}`}</p>
-			<h1 style={{ color: "var(--foreground-title-color)" }}>{title}</h1>
-			<p style={{ color: "var(--foreground-secondary-color)" }}>{description}</p>
-			<div style={{ marginBottom: 16 }}>
-				<label htmlFor="nombre">Nombre requerido para avanzar: </label>
-				<Input id="nombre" type="text" />
-			</div>
-		</div>
-	);
-};
-
-const steps: StepperProps["steps"] = [
-	{
-		title: "Datos personales",
-		description: "Información básica",
-		content: TemplateContent(
-			"Datos personales",
-			"Completa tu información básica para continuar con el proceso.",
-			1
-		),
-	},
-	{
-		title: "Dirección",
-		description: "Confirma domicilio",
-		content: TemplateContent(
-			"Dirección",
-			"Confirma y verifica tu domicilio para el envío de tus productos.",
-			2
-		),
-	},
-	{
-		title: "Pago",
-		description: "Método de pago",
-		content: TemplateContent(
-			"Pago",
-			"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
-			3
-		),
-	},
-	{
-		title: "Finaliza",
-		description: "Confirmación final",
-		content: TemplateContent(
-			"Finaliza",
-			"Revisa todos los datos y confirma para finalizar el proceso.",
-			4
-		),
-	},
-];
-
-const stepsCustomIcons: StepperProps["steps"] = [
-	{
-		title: "Datos personales",
-		description: "Información básica",
-		content: TemplateContent(
-			"Datos personales",
-			"Completa tu información básica para continuar con el proceso.",
-			1
-		),
-		icon: <Contact />,
-	},
-	{
-		title: "Dirección",
-		description: "Confirma domicilio",
-		content: TemplateContent(
-			"Dirección",
-			"Confirma y verifica tu domicilio para el envío de tus productos.",
-			2
-		),
-		icon: <MapPin />,
-	},
-	{
-		title: "Pago",
-		description: "Método de pago",
-		content: TemplateContent(
-			"Pago",
-			"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
-			3
-		),
-		icon: <CreditCard />,
-	},
-	{
-		title: "Finaliza",
-		description: "Confirmación final",
-		content: TemplateContent(
-			"Finaliza",
-			"Revisa todos los datos y confirma para finalizar el proceso.",
-			4
-		),
-		icon: <CheckCircle />,
-	},
-];
-
-const stepsValidation: StepperProps["steps"] = [
-	{
-		title: "Datos personales",
-		description: "Información básica",
-		content: TemplateContentWithFields(
-			"Datos personales",
-			"Completa tu información básica para continuar con el proceso.",
-			1
-		),
-	},
-	{
-		title: "Dirección",
-		description: "Confirma domicilio",
-		content: TemplateContent(
-			"Dirección",
-			"Confirma y verifica tu domicilio para el envío de tus productos.",
-			2
-		),
-	},
-	{
-		title: "Pago",
-		description: "Método de pago",
-		content: TemplateContent(
-			"Pago",
-			"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
-			3
-		),
-	},
-	{
-		title: "Finaliza",
-		description: "Confirmación final",
-		content: TemplateContent(
-			"Finaliza",
-			"Revisa todos los datos y confirma para finalizar el proceso.",
-			4
-		),
-	},
-];
-
 const stepCompletedContent = TemplateContent("¡Gracias!", "Has completado todos los pasos 🎉", 5);
 
 const meta: Meta<typeof Stepper> = {
@@ -191,7 +40,7 @@ const meta: Meta<typeof Stepper> = {
 	argTypes: {
 		orientation: { control: "inline-radio", options: ["horizontal", "vertical"] },
 		variant: { control: "inline-radio", options: ["soft", "bordered"] },
-		defaultActiveStep: { control: { type: "number", min: 0, max: steps.length - 1 } },
+		defaultActiveStep: { control: { type: "number", min: 0, max: 3 } },
 	},
 };
 export default meta;
@@ -201,18 +50,84 @@ const Template = (args: StepperProps) => {
 	return (
 		<ContainerComponent title="Stepper">
 			<Stepper {...args}>
-				{steps.map((step, idx) => (
-					<Stepper.Step
-						key={idx}
-						title={step.title}
-						description={step.description}
-						content={step.content}
-						index={idx}
-					/>
-				))}
-				{steps.map((step, idx) => (
-					<Stepper.Content key={idx}>{step.content} </Stepper.Content>
-				))}
+				<Stepper.Step title="Datos personales" description="Información básica" index={0} />
+				<Stepper.Step title="Dirección" description="Confirma domicilio" index={1} />
+				<Stepper.Step title="Pago" description="Método de pago" index={2} />
+				<Stepper.Step title="Finaliza" description="Confirmación final" index={3} />
+
+				<Stepper.Content>
+					{TemplateContent(
+						"Datos personales",
+						"Completa tu información básica para continuar con el proceso.",
+						1
+					)}
+				</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Dirección",
+						"Confirma y verifica tu domicilio para el envío de tus productos.",
+						2
+					)}
+				</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Pago",
+						"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
+						3
+					)}
+				</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Finaliza",
+						"Revisa todos los datos y confirma para finalizar el proceso.",
+						4
+					)}
+				</Stepper.Content>
+
+				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>
+			</Stepper>
+		</ContainerComponent>
+	);
+};
+
+const TemplateCustomIcons = (args: StepperProps) => {
+	return (
+		<ContainerComponent title="Stepper">
+			<Stepper {...args}>
+				<Stepper.Step title="Datos personales" description="Información básica" icon={<Contact />} index={0} />
+				<Stepper.Step title="Dirección" description="Confirma domicilio" icon={<MapPin />} index={1} />
+				<Stepper.Step title="Pago" description="Método de pago" icon={<CreditCard />} index={2} />
+				<Stepper.Step title="Finaliza" description="Confirmación final" icon={<CheckCircle />} index={3} />
+
+				<Stepper.Content>
+					{TemplateContent(
+						"Datos personales",
+						"Completa tu información básica para continuar con el proceso.",
+						1
+					)}
+				</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Dirección",
+						"Confirma y verifica tu domicilio para el envío de tus productos.",
+						2
+					)}
+				</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Pago",
+						"Selecciona tu método de pago preferido y revisa que la información sea correcta.",
+						3
+					)}
+				</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Finaliza",
+						"Revisa todos los datos y confirma para finalizar el proceso.",
+						4
+					)}
+				</Stepper.Content>
+
 				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>
 			</Stepper>
 		</ContainerComponent>
@@ -248,15 +163,11 @@ const TemplateValidation = (args: StepperProps) => {
 	return (
 		<ContainerComponent title="Stepper">
 			<Stepper {...args} defaultActiveStep={0}>
-				{stepsValidation.map((step, idx) => (
-					<Stepper.Step
-						key={idx}
-						title={step.title}
-						description={step.description}
-						content={step.content}
-						index={idx}
-					/>
-				))}
+				<Stepper.Step title="Datos personales" description="Información básica" index={0} />
+				<Stepper.Step title="Dirección" description="Confirma domicilio" index={1} />
+				<Stepper.Step title="Pago" description="Método de pago" index={2} />
+				<Stepper.Step title="Finaliza" description="Confirmación final" index={3} />
+
 				<Stepper.Content
 					validate
 					isValid={nombreUsuario !== ""}
@@ -279,10 +190,12 @@ const TemplateValidation = (args: StepperProps) => {
 								fontWeight: "var(--font-weight-semibold)",
 								marginBottom: "5em",
 							}}
-						>{`Step ${stepsValidation[0].id}`}</p>
-						<h1 style={{ color: "var(--foreground-title-color)" }}>{stepsValidation[0].title}</h1>
+						>
+							Step 1
+						</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>Datos personales</h1>
 						<p style={{ color: "var(--foreground-secondary-color)" }}>
-							{stepsValidation[0].description}
+							Completa tu información básica para continuar con el proceso.
 						</p>
 						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
 							<Input
@@ -319,10 +232,12 @@ const TemplateValidation = (args: StepperProps) => {
 								fontWeight: "var(--font-weight-semibold)",
 								marginBottom: "5em",
 							}}
-						>{`Step ${stepsValidation[1].id}`}</p>
-						<h1 style={{ color: "var(--foreground-title-color)" }}>{stepsValidation[1].title}</h1>
+						>
+							Step 2
+						</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>Dirección</h1>
 						<p style={{ color: "var(--foreground-secondary-color)" }}>
-							{stepsValidation[1].description}
+							Confirma y verifica tu domicilio para el envío de tus productos.
 						</p>
 						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
 							<Input
@@ -359,10 +274,12 @@ const TemplateValidation = (args: StepperProps) => {
 								fontWeight: "var(--font-weight-semibold)",
 								marginBottom: "5em",
 							}}
-						>{`Step ${stepsValidation[2].id}`}</p>
-						<h1 style={{ color: "var(--foreground-title-color)" }}>{stepsValidation[2].title}</h1>
+						>
+							Step 3
+						</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>Pago</h1>
 						<p style={{ color: "var(--foreground-secondary-color)" }}>
-							{stepsValidation[2].description}
+							Selecciona tu método de pago preferido y revisa que la información sea correcta.
 						</p>
 						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
 							<Input
@@ -377,7 +294,13 @@ const TemplateValidation = (args: StepperProps) => {
 						</div>
 					</div>
 				</Stepper.Content>
-				<Stepper.Content>{stepsValidation[3].content}</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Finaliza",
+						"Revisa todos los datos y confirma para finalizar el proceso.",
+						4
+					)}
+				</Stepper.Content>
 
 				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>
 			</Stepper>
@@ -385,23 +308,183 @@ const TemplateValidation = (args: StepperProps) => {
 	);
 };
 
-const TemplateCustomIcons = (args: StepperProps) => {
+const TemplateWithValidation = (args: StepperProps) => {
+	const [formData, setFormData] = useState({
+		name: "",
+		address: "",
+		payment: "",
+	});
+
+	const handleValidation = async (stepIndex: number) => {
+		// Simular validación asíncrona (por ejemplo, llamada a API)
+		await new Promise((resolve) => setTimeout(resolve, 500));
+
+		switch (stepIndex) {
+			case 0:
+				if (formData.name.trim() === "") {
+					return {
+						isValid: false,
+						errorMessage: "El nombre es requerido para continuar",
+					};
+				}
+				if (formData.name.length < 3) {
+					return {
+						isValid: false,
+						errorMessage: "El nombre debe tener al menos 3 caracteres",
+					};
+				}
+				return { isValid: true };
+
+			case 1:
+				if (formData.address.trim() === "") {
+					return {
+						isValid: false,
+						errorMessage: "La dirección es requerida para continuar",
+					};
+				}
+				return { isValid: true };
+
+			case 2:
+				if (formData.payment.trim() === "") {
+					return {
+						isValid: false,
+						errorMessage: "El método de pago es requerido",
+					};
+				}
+				return { isValid: true };
+
+			default:
+				return { isValid: true };
+		}
+	};
+
 	return (
-		<ContainerComponent title="Stepper">
-			<Stepper {...args}>
-				{stepsCustomIcons.map((step, idx) => (
-					<Stepper.Step
-						key={idx}
-						title={step.title}
-						description={step.description}
-						content={step.content}
-						icon={step.icon}
-						index={idx}
-					/>
-				))}
-				{stepsCustomIcons.map((step, idx) => (
-					<Stepper.Content key={idx}>{step.content} </Stepper.Content>
-				))}
+		<ContainerComponent title="Stepper con Validación Personalizada">
+			<Stepper {...args} onStepValidate={handleValidation}>
+				<Stepper.Step title="Datos personales" description="Información básica" index={0} />
+				<Stepper.Step title="Dirección" description="Confirma domicilio" index={1} />
+				<Stepper.Step title="Pago" description="Método de pago" index={2} />
+				<Stepper.Step title="Finaliza" description="Confirmación final" index={3} />
+
+				<Stepper.Content>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "flex-start",
+							padding: "var(--spacing-md)",
+							height: "100%",
+						}}
+					>
+						<p
+							style={{
+								color: "var(--foreground-secondary-color)",
+								fontSize: "var(--font-size-lg)",
+								fontWeight: "var(--font-weight-semibold)",
+								marginBottom: "5em",
+							}}
+						>
+							Step 1
+						</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>Datos personales</h1>
+						<p style={{ color: "var(--foreground-secondary-color)" }}>
+							Completa tu información básica para continuar con el proceso.
+						</p>
+						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
+							<Input
+								id="nombre"
+								type="text"
+								label="Nombre"
+								placeholder="Ingresa tu nombre completo"
+								onChangeValue={(value) => setFormData({ ...formData, name: value })}
+								value={formData.name}
+							/>
+						</div>
+					</div>
+				</Stepper.Content>
+				<Stepper.Content>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "flex-start",
+							padding: "var(--spacing-md)",
+							height: "100%",
+						}}
+					>
+						<p
+							style={{
+								color: "var(--foreground-secondary-color)",
+								fontSize: "var(--font-size-lg)",
+								fontWeight: "var(--font-weight-semibold)",
+								marginBottom: "5em",
+							}}
+						>
+							Step 2
+						</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>Dirección</h1>
+						<p style={{ color: "var(--foreground-secondary-color)" }}>
+							Confirma y verifica tu domicilio para el envío de tus productos.
+						</p>
+						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
+							<Input
+								id="direccion"
+								type="text"
+								label="Dirección"
+								placeholder="Ingresa tu dirección completa"
+								onChangeValue={(value) => setFormData({ ...formData, address: value })}
+								value={formData.address}
+							/>
+						</div>
+					</div>
+				</Stepper.Content>
+				<Stepper.Content>
+					<div
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "flex-start",
+							padding: "var(--spacing-md)",
+							height: "100%",
+						}}
+					>
+						<p
+							style={{
+								color: "var(--foreground-secondary-color)",
+								fontSize: "var(--font-size-lg)",
+								fontWeight: "var(--font-weight-semibold)",
+								marginBottom: "5em",
+							}}
+						>
+							Step 3
+						</p>
+						<h1 style={{ color: "var(--foreground-title-color)" }}>Pago</h1>
+						<p style={{ color: "var(--foreground-secondary-color)" }}>
+							Selecciona tu método de pago preferido y revisa que la información sea correcta.
+						</p>
+						<div style={{ width: "100%", maxWidth: "25em", marginBottom: 16 }}>
+							<Input
+								id="pago"
+								type="text"
+								label="Método de pago"
+								placeholder="Ingresa tu método de pago"
+								onChangeValue={(value) => setFormData({ ...formData, payment: value })}
+								value={formData.payment}
+							/>
+						</div>
+					</div>
+				</Stepper.Content>
+				<Stepper.Content>
+					{TemplateContent(
+						"Finaliza",
+						"Revisa todos los datos y confirma para finalizar el proceso.",
+						4
+					)}
+				</Stepper.Content>
+
 				<Stepper.CompletedContent>{stepCompletedContent}</Stepper.CompletedContent>
 			</Stepper>
 		</ContainerComponent>
@@ -411,7 +494,6 @@ const TemplateCustomIcons = (args: StepperProps) => {
 export const Horizontal: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		steps,
 		defaultActiveStep: 0,
 		orientation: "horizontal",
 		variant: "bordered",
@@ -421,7 +503,6 @@ export const Horizontal: Story = {
 export const Vertical: Story = {
 	render: (args) => <Template {...args} />,
 	args: {
-		steps,
 		defaultActiveStep: 0,
 		orientation: "vertical",
 		variant: "bordered",
@@ -434,7 +515,6 @@ export const Validation: Story = {
 		defaultActiveStep: 0,
 		orientation: "horizontal",
 		variant: "bordered",
-		steps: stepsValidation,
 	},
 };
 
@@ -444,6 +524,14 @@ export const WithCustomIcons: Story = {
 		defaultActiveStep: 0,
 		orientation: "horizontal",
 		variant: "bordered",
-		steps: stepsCustomIcons,
+	},
+};
+
+export const WithCustomValidation: Story = {
+	render: (args) => <TemplateWithValidation {...args} />,
+	args: {
+		defaultActiveStep: 0,
+		orientation: "horizontal",
+		variant: "bordered",
 	},
 };

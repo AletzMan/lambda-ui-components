@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import clsx from "clsx";
 import styles from "./stepper.module.css";
-import type { StepContentProps, StepperProps, StepperStep, StepProps } from "./stepper.types";
+import type { StepContentProps, StepperProps, StepProps } from "./stepper.types";
 import {
 	stepConnectorVariants,
 	stepContentVariants,
@@ -38,10 +38,10 @@ const useStepperContext = () => {
 };
 
 const StepperRoot: React.FC<StepperProps> = ({
-	steps,
 	defaultActiveStep = 0,
 	orientation = "horizontal",
 	onStepCompleted,
+	onStepValidate,
 	className,
 	style,
 	variant = "bordered",
@@ -57,20 +57,54 @@ const StepperRoot: React.FC<StepperProps> = ({
 		onStepCompleted?.(stepIndex);
 	};
 
-	const handleNext = () => {
+	const handleNext = async () => {
+		// Si hay un callback de validación, ejecutarlo primero
+		if (onStepValidate) {
+			try {
+				const validationResult = await onStepValidate(currentStep);
+
+				if (!validationResult.isValid) {
+					// Si la validación falla, mostrar el error y NO avanzar
+					setStepError({ [currentStep]: validationResult.errorMessage || t("stepper.validationError") });
+					setValidateStep(true);
+					setTimeout(() => {
+						setValidateStep(false);
+					}, 2750);
+					// IMPORTANTE: return aquí previene que se ejecute handleStepClick
+					return;
+				} else {
+					// Si la validación es exitosa, limpiar errores de este step
+					const newStepError = { ...stepError };
+					delete newStepError[currentStep];
+					setStepError(newStepError);
+				}
+			} catch (error) {
+				// Si hay un error en la validación, mostrar mensaje de error y NO avanzar
+				setStepError({ [currentStep]: t("stepper.validationError") });
+				setValidateStep(true);
+				setTimeout(() => {
+					setValidateStep(false);
+				}, 2750);
+				// IMPORTANTE: return aquí previene que se ejecute handleStepClick
+				return;
+			}
+		}
+
+		// Verificar si hay errores previos (solo si no hay onStepValidate)
 		if (stepError[currentStep]) {
 			setValidateStep(true);
 			setTimeout(() => {
 				setValidateStep(false);
 			}, 2750);
+			// IMPORTANTE: return aquí previene que se ejecute handleStepClick
 			return;
 		}
+
+		// Si todo está bien, avanzar al siguiente step
 		handleStepClick(currentStep + 1);
 		setValidateStep(false);
-		setStepError({});
 	};
 
-	const isLastStep = (children as StepperStep[] | StepContentProps[]).length - 1 === currentStep;
 	const index = currentStep;
 
 	let itemChildren: React.ReactElement[] = [];
@@ -93,10 +127,12 @@ const StepperRoot: React.FC<StepperProps> = ({
 		}
 	});
 
+	const totalSteps = itemChildren.length;
+	const isLastStep = currentStep === totalSteps - 1;
+
 	return (
 		<StepperContext.Provider
 			value={{
-				steps,
 				activeStep: currentStep,
 				orientation,
 				onStepCompleted,
@@ -118,17 +154,17 @@ const StepperRoot: React.FC<StepperProps> = ({
 				</header>
 
 				<section className={stepContentVariants({ orientation, variant })}>
-					{orientation === "vertical" && (
+					{orientation === "vertical" && currentStep < totalSteps && (
 						<header>
-							<h1>{currentStep <= steps.length - 1 ? steps[currentStep].title : ""}</h1>
-							<p>{currentStep <= steps.length - 1 ? steps[currentStep].description : ""}</p>
+							<h1>{(itemChildren[currentStep]?.props as StepProps)?.title}</h1>
+							<p>{(itemChildren[currentStep]?.props as StepProps)?.description}</p>
 						</header>
 					)}
-					{currentStep <= steps.length - 1
+					{currentStep < totalSteps
 						? contentChildren[currentStep]
 						: stepCompletedContentChildren[0]}
 					<footer className={styles["lambda-stepper-footer"]}>
-						{currentStep < steps.length && (
+						{currentStep < totalSteps && (
 							<Button
 								variant="solid"
 								size="small"
@@ -139,16 +175,16 @@ const StepperRoot: React.FC<StepperProps> = ({
 								label={t("stepper.previous")}
 							/>
 						)}
-						{currentStep < steps.length && (
+						{currentStep < totalSteps && (
 							<Button
 								variant="solid"
 								size="small"
 								color="neutral"
 								icon={<ArrowRightIcon />}
 								iconPosition="right"
-								onClick={currentStep < steps.length ? handleNext : undefined}
-								disabled={currentStep === steps.length || validateStep}
-								label={currentStep === steps.length - 1 ? t("stepper.finish") : t("stepper.next")}
+								onClick={currentStep < totalSteps ? handleNext : undefined}
+								disabled={currentStep === totalSteps || validateStep}
+								label={currentStep === totalSteps - 1 ? t("stepper.finish") : t("stepper.next")}
 							/>
 						)}
 					</footer>
