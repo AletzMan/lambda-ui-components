@@ -4,6 +4,40 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.1.0",
+		date: "2026-02-11",
+		sections: [
+			{
+				title: "🎉 New Features",
+				items: [
+					"Stepper: Added 'onStepValidate' callback for custom step validation before advancing.",
+					"Stepper: Support for both synchronous and asynchronous validation.",
+					"Stepper: Block step advancement when validation fails with visual feedback (red X icon).",
+					"Stepper: Display custom error messages for failed validations.",
+					"Stepper: Automatic error clearing when validation succeeds.",
+					"Stepper: Comprehensive documentation with usage examples and migration guide.",
+				],
+			},
+			{
+				title: "⚠️ Breaking Changes",
+				items: [
+					"Stepper: Removed 'steps' prop in favor of children composition pattern.",
+					"Stepper: Migration required - use <Stepper.Step> and <Stepper.Content> as children instead of passing steps array.",
+					"Stepper: See CHANGELOG.md for detailed migration guide.",
+				],
+			},
+			{
+				title: "🐛 Bug Fixes & Improvements",
+				items: [
+					"Stepper: Adjusted step indicator size for better visual consistency.",
+					"Stepper: Added margin reset for step titles and descriptions.",
+					"Stepper: Improved TypeScript type safety with proper type assertions.",
+					"Stepper: Refactored to calculate totalSteps dynamically from children.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.0.2",
 		date: "2026-02-06",
 		sections: [

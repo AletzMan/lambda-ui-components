@@ -120,6 +120,7 @@ Lambda UI offers a comprehensive set of UI primitives and advanced components, i
 - Avatar
 - Progress
 - Skeleton
+- **Stepper** (with custom validation)
 - And many more…
 
 ## 🎨 Theming & Customization
@@ -127,12 +128,26 @@ Lambda UI offers a comprehensive set of UI primitives and advanced components, i
 - **CSS Variables:** Lambda UI Components uses CSS variables for theming. You can globally override the theme by changing variables in your CSS or using `data-theme` for dark mode and custom themes.
 - **Unstyled Prop:** To customize the style of specific components, many support the `unstyled` prop, which removes default styles so you can apply your own.
 
-## 📅 Latest Updates (v1.0.2)
+## 📅 Latest Updates (v1.1.0)
 
-- **Button:** New `darkened` variant.
-- **Avatar:** Dynamic border colors.
-- **Theme:** Dark mode color improvements.
-- **Fixes:** DatePicker modal stability.
+### 🎉 New Features
+- **Stepper:** Added `onStepValidate` callback for custom step validation
+  - Support for both sync and async validation
+  - Block step advancement when validation fails
+  - Display custom error messages with visual feedback
+  - See [CHANGELOG.md](CHANGELOG.md) for full details
+
+### ⚠️ Breaking Changes
+- **Stepper:** Refactored to use children composition pattern (removed `steps` prop)
+  - Migration guide available in [CHANGELOG.md](CHANGELOG.md)
+
+### 🐛 Fixes & Improvements
+- **Stepper:** Improved styling and layout consistency
+- **Stepper:** Better TypeScript type safety
+
+## 📋 Changelog
+
+For a complete list of changes, improvements, and breaking changes across all versions, see [CHANGELOG.md](CHANGELOG.md).
 
 ## 🤝 Contribution
 
