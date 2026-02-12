@@ -32,8 +32,10 @@ import styles from "./radio.module.css";
 
 export type RadioGroupContextType = {
 	name: string;
-	selectedValue: string | undefined;
-	onChange: (value: string) => void;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	selectedValue: any;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	onChange: (value: any) => void;
 	size: RadioGroupVariants["size"];
 	color: RadioGroupVariants["color"];
 	radiusSelector: RadioVariants["radius"];
@@ -99,7 +101,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 	) => {
 		const isControlled = value !== undefined || selectedOption !== undefined;
 		const controlledValue = value ?? selectedOption;
-		const [internalValue, setInternalValue] = useState<string | undefined>(defaultValue);
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const [internalValue, setInternalValue] = useState<any>(defaultValue);
 
 		// Si es controlado, usamos la prop. Si no, el estado interno.
 		// Si cambiamos de no controlado a controlado, o viceversa, esto maneja la transición suavemente.
@@ -111,7 +114,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 		const effectiveName = name ?? `radio-group-${defaultNameId}`;
 
 		const handleChange = useCallback(
-			(newValue: string) => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			(newValue: any) => {
 				if (!isControlled) {
 					setInternalValue(newValue);
 				}
@@ -119,7 +123,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 					onChange(newValue);
 				}
 				if (onChangeOption) {
-					onChangeOption(newValue);
+					// Legacy string callback
+					onChangeOption(String(newValue));
 				}
 			},
 			[isControlled, onChange, onChangeOption]

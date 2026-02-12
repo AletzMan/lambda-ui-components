@@ -47,15 +47,17 @@ export interface RadioGroupProps
 
 	/**
 	 * The current value of the selected radio button (controlled mode).
-	 * Takes precedence over selectedOption.
+	 * Accepts string, number, or any primitive value compatible with form libraries.
 	 */
-	value?: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	value?: any;
 
 	/**
 	 * Callback fired when a radio button is selected.
 	 * Takes precedence over onChangeOption.
 	 */
-	onChange?: (value: string) => void;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	onChange?: (value: any) => void;
 
 	/**
 	 * The currently selected radio button's `value` (for use as a controlled component).

@@ -1,6 +1,6 @@
 {
 	"name": "lambda-ui-components",
-	"version": "1.3.1",
+	"version": "1.3.2",
 	"description": "Modern, accessible, and themeable React UI components library built with TypeScript and Framer Motion.",
 	"license": "MIT",
 	"sideEffects": false,

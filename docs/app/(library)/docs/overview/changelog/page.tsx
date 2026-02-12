@@ -4,6 +4,18 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.3.2",
+		date: "2026-02-12",
+		sections: [
+			{
+				title: "🔧 Fixes",
+				items: [
+					"Radio: Relaxed type constraints for 'value' and 'onChange' to support 'unknown' types from form libraries.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.3.1",
 		date: "2026-02-12",
 		sections: [
