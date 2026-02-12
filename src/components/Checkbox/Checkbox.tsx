@@ -9,6 +9,19 @@ import {
 import { CheckBoxProps } from "./checkbox.types";
 import { useJoin } from "../Join/Join";
 
+// Utility to merge refs (copied from Radio for consistency)
+const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
+	return (node: T) => {
+		refs.forEach((ref) => {
+			if (typeof ref === "function") {
+				ref(node);
+			} else if (ref != null) {
+				(ref as React.MutableRefObject<T | null>).current = node;
+			}
+		});
+	};
+};
+
 export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 	(
 		{
@@ -32,16 +45,19 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		},
 		ref
 	) => {
-		const isControlled = typeof checked === "boolean";
-		const [internalChecked, setInternalChecked] = useState(!!checked || !!defaultChecked);
-		const actualChecked = isControlled ? checked! : internalChecked;
 		const inputRef = useRef<HTMLInputElement>(null);
+		const mergedRef = useMergeRefs(inputRef, ref);
 
-		function setRefs(el: HTMLInputElement | null) {
-			inputRef.current = el;
-			if (typeof ref === "function") ref(el);
-			else if (ref) (ref as React.MutableRefObject<HTMLInputElement | null>).current = el;
-		}
+		// Determine control mode
+		const isControlled = checked !== undefined;
+
+		// Internal state only for visual feedback when UNCONTROLLED and NOT using external state manager
+		// We initialize this to handle strict visual updates if needed, but rely on DOM for values
+		const [internalChecked, setInternalChecked] = useState(!!defaultChecked);
+
+		// Derived state for visuals
+		const isChecked = isControlled ? checked : internalChecked;
+
 		let sizeValue, radiusValue, disabledValue;
 
 		try {
@@ -56,8 +72,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		}
 
 		const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+			if (disabled || disabledValue) return;
+
 			const newChecked = e.target.checked;
-			if (!isControlled) setInternalChecked(newChecked);
+
+			// Only update internal state if uncontrolled
+			if (!isControlled) {
+				setInternalChecked(newChecked);
+			}
+
 			if (onCheckedChange) onCheckedChange(newChecked);
 			if (onChange) onChange(e);
 		};
@@ -73,6 +96,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 			<label
 				className={checkboxContainerVariants({ positionLabel, disabled: disabledValue })}
 				onKeyDown={handleKeyDown}
+				// tabIndex 0 allows focus on label for a11y, but input is hidden
 				tabIndex={disabledValue ? -1 : 0}
 			>
 				<div
@@ -81,7 +105,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 						size: sizeValue,
 						radius: radiusValue,
 						color,
-						checked: actualChecked,
+						checked: isChecked, // Visual state
 						disabled: disabledValue,
 						joinposition,
 						join: joinposition !== undefined,
@@ -90,13 +114,22 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 					})}
 				>
 					<input
-						ref={setRefs}
-						type={"checkbox"}
+						ref={mergedRef}
+						type="checkbox"
 						disabled={disabled || undefined}
-						checked={actualChecked}
+						// If controlled, use 'checked'. If uncontrolled, use 'defaultChecked' initially,
+						// but allow DOM to handle subsequent updates. 
+						// However, to keep visual sync with 'internalChecked', we can't fully detach.
+						// The safest hybrid for RHF is: pass checked if controlled.
+						// If not controlled, we normally use defaultChecked.
+						// BUT, since we built a custom UI that needs 'isChecked' for styling,
+						// we MUST track state even in uncontrolled mode.
+						checked={isControlled ? checked : undefined}
+						defaultChecked={!isControlled ? defaultChecked : undefined}
 						onChange={handleChange}
 						className={styles["lambda-checkbox"]}
 						tabIndex={-1}
+						required={required}
 						{...props}
 					/>
 					{joinposition === undefined && icon === undefined && (
@@ -104,7 +137,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 							className={checkBoxIconVariants({
 								size: sizeValue,
 								disabled: disabledValue,
-								checked: actualChecked,
+								checked: isChecked,
 							})}
 							width="24"
 							height="24"
@@ -118,7 +151,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 							<path d="M4 12l5 5 11-11"></path>
 						</svg>
 					)}
-					{icon && actualChecked && (
+					{icon && isChecked && (
 						<span
 							className={checkBoxIconVariants({
 								size: sizeValue,
