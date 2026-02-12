@@ -4,6 +4,24 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.3.1",
+		date: "2026-02-12",
+		sections: [
+			{
+				title: "🎉 Enhancements",
+				items: [
+					"Radio: Added standard 'value' and 'onChange' props for seamless form integration.",
+				],
+			},
+			{
+				title: "🐛 Bug Fixes",
+				items: [
+					"Radio: Fixed visual state synchronization when controlled externally.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.3.0",
 		date: "2026-02-11",
 		sections: [
@@ -13,7 +31,6 @@ const CHANGELOG = [
 					"Form Integration: Full compatibility with react-hook-form for Select, Radio, Checkbox, and Switch.",
 					"Controlled/Uncontrolled: Seamless support for both modes across form components.",
 					"Ref Handling: Improved robustness and type safety for forwarded refs.",
-					"Radio: Added standard 'value' and 'onChange' props for seamless form integration.",
 				],
 			},
 			{

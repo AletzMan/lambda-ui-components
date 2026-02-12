@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-02-12
+
+### Added
+- **Radio**: Added standard `value` and `onChange` props to `RadioGroup` for seamless form integration.
+
+### Fixed
+- **Radio**: Fixed visual state synchronization when controlled externally (e.g., by react-hook-form).
+- **Radio**: Ensure `onChange` handles both event and value correctly.
+
+---
+
 ## [1.3.0] - 2026-02-11
 
 ### Added
@@ -12,7 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Seamless support for both controlled and uncontrolled modes (using `register` or `Controller`).
   - Correct ref forwarding to underlying form elements.
   - Standardized event handling (`onChange`, `onBlur`, `name`) for all form components.
-- **Radio**: Added standard `value` and `onChange` props to `RadioGroup`, improving compatibility with form libraries.
 
 ### Fixed
 - **Select**: Resolved `react-hooks/rules-of-hooks` violation, fixed `type="button"` attribute, and improved TypeScript strictness.
