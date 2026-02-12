@@ -79,6 +79,8 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 			name,
 			selectedOption,
 			onChangeOption,
+			value,
+			onChange,
 			defaultValue,
 			size,
 			radius,
@@ -95,7 +97,14 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 		},
 		ref
 	) => {
-		const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
+		const isControlled = value !== undefined || selectedOption !== undefined;
+		const controlledValue = value ?? selectedOption;
+		const [internalValue, setInternalValue] = useState<string | undefined>(defaultValue);
+
+		// Si es controlado, usamos la prop. Si no, el estado interno.
+		// Si cambiamos de no controlado a controlado, o viceversa, esto maneja la transición suavemente.
+		const finalSelectedValue = isControlled ? controlledValue : internalValue;
+
 		const internalRef = useRef<HTMLDivElement | null>(null);
 		const mergedRef = useMergeRefs(internalRef, ref);
 		const defaultNameId = useId();
@@ -103,12 +112,17 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 
 		const handleChange = useCallback(
 			(newValue: string) => {
+				if (!isControlled) {
+					setInternalValue(newValue);
+				}
+				if (onChange) {
+					onChange(newValue);
+				}
 				if (onChangeOption) {
 					onChangeOption(newValue);
 				}
-				setSelectedValue(newValue);
 			},
-			[onChangeOption]
+			[isControlled, onChange, onChangeOption]
 		);
 
 		const inferredType: RadioGroupVariants["type"] = useMemo(() => {
@@ -135,7 +149,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 		const contextValue = useMemo(
 			() => ({
 				name: effectiveName,
-				selectedValue: selectedOption ?? selectedValue,
+				selectedValue: finalSelectedValue,
 				onChange: handleChange,
 				size,
 				color,
@@ -149,8 +163,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGrou
 			}),
 			[
 				effectiveName,
-				selectedOption,
-				selectedValue,
+				finalSelectedValue,
 				handleChange,
 				size,
 				color,

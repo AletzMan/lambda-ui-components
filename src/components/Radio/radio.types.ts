@@ -46,12 +46,26 @@ export interface RadioGroupProps
 	name?: string;
 
 	/**
+	 * The current value of the selected radio button (controlled mode).
+	 * Takes precedence over selectedOption.
+	 */
+	value?: string;
+
+	/**
+	 * Callback fired when a radio button is selected.
+	 * Takes precedence over onChangeOption.
+	 */
+	onChange?: (value: string) => void;
+
+	/**
 	 * The currently selected radio button's `value` (for use as a controlled component).
+	 * Legacy prop: Prefer `value` for standard form integration.
 	 */
 	selectedOption?: string;
 
 	/**
 	 * Callback function executed when the user selects a different radio button. Receives the `value` of the newly selected radio.
+	 * Legacy prop: Prefer `onChange` for standard form integration.
 	 */
 	onChangeOption?: (value: string) => void;
 
