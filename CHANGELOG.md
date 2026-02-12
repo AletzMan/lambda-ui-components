@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-02-11
+
+### Added
+- **Form Integration**: Full compatibility with `react-hook-form` and other form libraries for `Select`, `Radio`, `Checkbox`, and `Switch`.
+  - Seamless support for both controlled and uncontrolled modes (using `register` or `Controller`).
+  - Correct ref forwarding to underlying form elements.
+  - Standardized event handling (`onChange`, `onBlur`, `name`) for all form components.
+
+### Fixed
+- **Select**: Resolved `react-hooks/rules-of-hooks` violation, fixed `type="button"` attribute, and improved TypeScript strictness.
+- **Ref Handling**: Replaced deprecated `React.MutableRefObject` usage with safe generic ref assignments across form components.
+- **Switch**: Fixed state synchronization logic for uncontrolled usage.
+- **Radio**: `RadioGroup` now properly forwards standard HTML div attributes.
+
+### Changed
+- Refactored `Select`, `Checkbox`, `Radio`, `Switch` to ensure consistent API behavior for form integration.
+
+---
+
 ## [1.2.0] - 2026-02-11
 
 ### Changed - BREAKING CHANGE

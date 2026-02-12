@@ -4,6 +4,30 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.3.0",
+		date: "2026-02-11",
+		sections: [
+			{
+				title: "🎉 Enhancements",
+				items: [
+					"Form Integration: Full compatibility with react-hook-form for Select, Radio, Checkbox, and Switch.",
+					"Controlled/Uncontrolled: Seamless support for both modes across form components.",
+					"Ref Handling: Improved robustness and type safety for forwarded refs.",
+				],
+			},
+			{
+				title: "🐛 Bug Fixes",
+				items: [
+					"Select: Fixed hooks rules violation and ensure type safety.",
+					"Select: Prevent accidental form submission with type='button'.",
+					"General: Replaced deprecated MutableRefObject with modern ref assignment.",
+					"Switch: Fixed state synchronization for uncontrolled usage.",
+					"Radio: Allowed standard HTML attributes on RadioGroup.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.2.0",
 		date: "2026-02-11",
 		sections: [
