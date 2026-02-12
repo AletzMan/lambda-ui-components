@@ -13,6 +13,7 @@ const CHANGELOG = [
 					"Form Integration: Full compatibility with react-hook-form for Select, Radio, Checkbox, and Switch.",
 					"Controlled/Uncontrolled: Seamless support for both modes across form components.",
 					"Ref Handling: Improved robustness and type safety for forwarded refs.",
+					"Radio: Added standard 'value' and 'onChange' props for seamless form integration.",
 				],
 			},
 			{

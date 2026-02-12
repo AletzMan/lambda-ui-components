@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Seamless support for both controlled and uncontrolled modes (using `register` or `Controller`).
   - Correct ref forwarding to underlying form elements.
   - Standardized event handling (`onChange`, `onBlur`, `name`) for all form components.
+- **Radio**: Added standard `value` and `onChange` props to `RadioGroup`, improving compatibility with form libraries.
 
 ### Fixed
 - **Select**: Resolved `react-hooks/rules-of-hooks` violation, fixed `type="button"` attribute, and improved TypeScript strictness.
