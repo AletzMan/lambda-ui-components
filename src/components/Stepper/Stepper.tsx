@@ -58,54 +58,48 @@ const StepperRoot: React.FC<StepperProps> = ({
 	};
 
 	const handleNext = async () => {
-		// Si hay un callback de validación, ejecutarlo primero
+		// ESTRATEGIA: Validación Imperativa (onStepValidate)
+		// Si existe este callback, él tiene la autoridad total.
 		if (onStepValidate) {
 			try {
 				const validationResult = await onStepValidate(currentStep);
 
 				if (!validationResult.isValid) {
-					// Si la validación falla, mostrar el error y NO avanzar
-					setStepError({ [currentStep]: validationResult.errorMessage || t("stepper.validationError") });
+					// Falló: mostramos error y detenemos
+					setStepError({
+						[currentStep]: validationResult.errorMessage || t("stepper.validationError"),
+					});
 					setValidateStep(true);
 					setTimeout(() => {
 						setValidateStep(false);
 					}, 2750);
-					// IMPORTANTE: return aquí previene que se ejecute handleStepClick
 					return;
 				} else {
-					// Si la validación es exitosa, limpiar errores de este step
+					// Éxito: Limpiamos error y AVANZAMOS DIRECTAMENTE
 					const newStepError = { ...stepError };
 					delete newStepError[currentStep];
 					setStepError(newStepError);
+
+					handleStepClick(currentStep + 1);
+					setValidateStep(false);
+					return;
 				}
 			} catch (error) {
-				// Si hay un error en la validación, mostrar mensaje de error y NO avanzar
+				// Error inesperado en la validación
 				setStepError({ [currentStep]: t("stepper.validationError") });
 				setValidateStep(true);
 				setTimeout(() => {
 					setValidateStep(false);
 				}, 2750);
-				// IMPORTANTE: return aquí previene que se ejecute handleStepClick
 				return;
 			}
 		}
 
-		// Verificar si hay errores previos (solo si no hay onStepValidate)
-		if (stepError[currentStep]) {
-			setValidateStep(true);
-			setTimeout(() => {
-				setValidateStep(false);
-			}, 2750);
-			// IMPORTANTE: return aquí previene que se ejecute handleStepClick
-			return;
-		}
-
-		// Si todo está bien, avanzar al siguiente step
+		// Si no hay onStepValidate, simplemente avanzamos
+		// (Ya no soportamos validación antigua vía props)
 		handleStepClick(currentStep + 1);
 		setValidateStep(false);
 	};
-
-	const index = currentStep;
 
 	let itemChildren: React.ReactElement[] = [];
 	let contentChildren: React.ReactElement[] = [];
@@ -129,6 +123,7 @@ const StepperRoot: React.FC<StepperProps> = ({
 
 	const totalSteps = itemChildren.length;
 	const isLastStep = currentStep === totalSteps - 1;
+	const index = currentStep;
 
 	return (
 		<StepperContext.Provider
@@ -230,7 +225,6 @@ const Step: React.FC<StepProps> = ({ title, description, icon, index }) => {
 		>
 			<div className={styles["lambda-step-indicator"]}>
 				<div className={styles["lambda-step-indicator-content"]}>
-
 					{icon ? (
 						<span className={styles["lambda-step-icon"]}>{icon}</span>
 					) : (
@@ -255,22 +249,7 @@ const Step: React.FC<StepProps> = ({ title, description, icon, index }) => {
 	);
 };
 
-const StepContent: React.FC<StepContentProps> = ({
-	children,
-	validate,
-	errorMessage,
-	isValid,
-	index,
-}) => {
-	const { stepError, validateStep } = useStepperContext();
-
-	useEffect(() => {
-		if (validate !== undefined && !isValid) {
-			stepError![index!] = errorMessage!;
-		} else {
-			stepError![index!] = "";
-		}
-	}, [validate, isValid, validateStep]);
+const StepContent: React.FC<StepContentProps> = ({ children }) => {
 	return <>{children}</>;
 };
 

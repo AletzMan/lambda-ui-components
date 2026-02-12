@@ -161,18 +161,29 @@ const TemplateValidation = (args: StepperProps) => {
 	};
 
 	return (
-		<ContainerComponent title="Stepper">
-			<Stepper {...args} defaultActiveStep={0}>
+		<ContainerComponent title="Stepper (Validación Síncrona)">
+			<Stepper
+				{...args}
+				defaultActiveStep={0}
+				onStepValidate={(index) => {
+					if (index === 0 && nombreUsuario === "") {
+						return { isValid: false, errorMessage: "Favor de ingresar un nombre" };
+					}
+					if (index === 1 && direction === "") {
+						return { isValid: false, errorMessage: "Favor de ingresar una dirección" };
+					}
+					if (index === 2 && payment === "") {
+						return { isValid: false, errorMessage: "Favor de ingresar un método de pago" };
+					}
+					return { isValid: true };
+				}}
+			>
 				<Stepper.Step title="Datos personales" description="Información básica" index={0} />
 				<Stepper.Step title="Dirección" description="Confirma domicilio" index={1} />
 				<Stepper.Step title="Pago" description="Método de pago" index={2} />
 				<Stepper.Step title="Finaliza" description="Confirmación final" index={3} />
 
-				<Stepper.Content
-					validate
-					isValid={nombreUsuario !== ""}
-					errorMessage="Favor de ingresar un nombre"
-				>
+				<Stepper.Content>
 					<div
 						style={{
 							display: "flex",
@@ -210,11 +221,7 @@ const TemplateValidation = (args: StepperProps) => {
 						</div>
 					</div>
 				</Stepper.Content>
-				<Stepper.Content
-					validate
-					isValid={direction !== ""}
-					errorMessage="Favor de ingresar una dirección"
-				>
+				<Stepper.Content>
 					<div
 						style={{
 							display: "flex",
@@ -252,11 +259,7 @@ const TemplateValidation = (args: StepperProps) => {
 						</div>
 					</div>
 				</Stepper.Content>
-				<Stepper.Content
-					validate
-					isValid={payment !== ""}
-					errorMessage="Favor de ingresar un método de pago"
-				>
+				<Stepper.Content>
 					<div
 						style={{
 							display: "flex",

@@ -4,6 +4,26 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.2.0",
+		date: "2026-02-11",
+		sections: [
+			{
+				title: "⚠️ Breaking Changes",
+				items: [
+					"Stepper: Removed legacy validation props (validate, isValid, errorMessage) from <Stepper.Content>.",
+					"Stepper: Migration required - use onStepValidate callback for all validation logic.",
+					"Stepper: Removed legacy 'Strategy 2' validation logic for cleaner implementation.",
+				],
+			},
+			{
+				title: "🛠️ Updates",
+				items: [
+					"Stories: Updated TemplateValidation to use modern onStepValidate pattern.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.1.0",
 		date: "2026-02-11",
 		sections: [

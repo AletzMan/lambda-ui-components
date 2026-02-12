@@ -52,10 +52,4 @@ export interface StepContentProps {
 	index?: number;
 	/** The content to be rendered */
 	children: ReactNode;
-	/** Whether validation should be performed for this step */
-	validate?: boolean;
-	/** Whether the step content is currently valid */
-	isValid?: boolean;
-	/** Error message to display if validation fails */
-	errorMessage?: string;
 }

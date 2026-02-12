@@ -270,6 +270,6 @@ Consulta el archivo `stepper.stories.tsx` para ver ejemplos completos de:
 
 - Stepper horizontal básico
 - Stepper vertical
-- Stepper con validación (método antiguo)
-- **Stepper con validación personalizada** (`WithCustomValidation`) - Nuevo ejemplo usando `onStepValidate`
+- Stepper con validación síncrona simple
+- **Stepper con validación personalizada asíncrona**
 - Stepper con iconos personalizados
