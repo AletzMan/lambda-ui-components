@@ -2,7 +2,6 @@
 import React, {
 	Children,
 	createContext,
-	FC,
 	forwardRef,
 	HTMLAttributes,
 	isValidElement,
@@ -56,100 +55,135 @@ export const useRadioGroup = () => {
 	return context;
 };
 
-export const RadioGroup: FC<PropsWithChildren<RadioGroupProps>> = ({
-	name,
-	selectedOption,
-	onChangeOption,
-	defaultValue,
-	size,
-	radius,
-	color,
-	variant,
-	disabled = false,
-	hideRadio = false,
-	orientation,
-	gap = "8px",
-	children,
-}) => {
-	const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
-	const refGroup = useRef<HTMLDivElement | null>(null);
-	const defaultNameId = useId();
-	const effectiveName = name ?? `radio-group-${defaultNameId}`;
-
-	const handleChange = useCallback(
-		(newValue: string) => {
-			if (onChangeOption) {
-				onChangeOption(newValue);
-			}
-			setSelectedValue(newValue);
-		},
-		[onChangeOption]
-	);
-
-	const inferredType: RadioGroupVariants["type"] = useMemo(() => {
-		let type: RadioGroupVariants["type"] = "radio";
-		Children.forEach(children, (child) => {
-			if (isValidElement(child)) {
-				if (child.type === Radio.Button) {
-					type = "button";
-				} else if (child.type === Radio.Card) {
-					type = "card";
-				}
-			}
-		});
-		return type;
-	}, [children]);
-
-	useEffect(() => {
-		const conainer = refGroup.current;
-		if (conainer && inferredType === "radio") {
-			conainer.style.setProperty("--spacing-radio-size", gap);
+// Utility to merge refs
+const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
+	return useMemo(() => {
+		if (refs.every((ref) => ref == null)) {
+			return null;
 		}
-	}, [gap, inferredType]);
-	const contextValue = useMemo(
-		() => ({
-			name: effectiveName,
-			selectedValue: selectedOption ?? selectedValue,
-			onChange: handleChange,
-			size,
-			color,
-			radiusSelector: radius,
-			radiusCard: radius,
-			hideRadio,
-			variant,
-			orientation,
-			disabled,
-			type: inferredType,
-		}),
-		[
-			effectiveName,
-			selectedOption,
-			selectedValue,
-			handleChange,
-			size,
-			color,
-			variant,
-			radius,
-			hideRadio,
-			orientation,
-			disabled,
-			inferredType,
-		]
-	);
-
-	return (
-		<RadioGroupContext.Provider value={contextValue}>
-			<RadioGroupComponent refGroup={refGroup}>{children}</RadioGroupComponent>
-		</RadioGroupContext.Provider>
-	);
+		return (node: T) => {
+			refs.forEach((ref) => {
+				if (typeof ref === "function") {
+					ref(node);
+				} else if (ref != null) {
+					(ref as React.MutableRefObject<T | null>).current = node;
+				}
+			});
+		};
+	}, [refs]);
 };
+
+export const RadioGroup = forwardRef<HTMLDivElement, PropsWithChildren<RadioGroupProps>>(
+	(
+		{
+			name,
+			selectedOption,
+			onChangeOption,
+			defaultValue,
+			size,
+			radius,
+			color,
+			variant,
+			disabled = false,
+			hideRadio = false,
+			orientation,
+			gap = "8px",
+			children,
+			className,
+			style,
+			...props
+		},
+		ref
+	) => {
+		const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
+		const internalRef = useRef<HTMLDivElement | null>(null);
+		const mergedRef = useMergeRefs(internalRef, ref);
+		const defaultNameId = useId();
+		const effectiveName = name ?? `radio-group-${defaultNameId}`;
+
+		const handleChange = useCallback(
+			(newValue: string) => {
+				if (onChangeOption) {
+					onChangeOption(newValue);
+				}
+				setSelectedValue(newValue);
+			},
+			[onChangeOption]
+		);
+
+		const inferredType: RadioGroupVariants["type"] = useMemo(() => {
+			let type: RadioGroupVariants["type"] = "radio";
+			Children.forEach(children, (child) => {
+				if (isValidElement(child)) {
+					if (child.type === Radio.Button) {
+						type = "button";
+					} else if (child.type === Radio.Card) {
+						type = "card";
+					}
+				}
+			});
+			return type;
+		}, [children]);
+
+		useEffect(() => {
+			const conainer = internalRef.current;
+			if (conainer && inferredType === "radio") {
+				conainer.style.setProperty("--spacing-radio-size", gap);
+			}
+		}, [gap, inferredType]);
+
+		const contextValue = useMemo(
+			() => ({
+				name: effectiveName,
+				selectedValue: selectedOption ?? selectedValue,
+				onChange: handleChange,
+				size,
+				color,
+				radiusSelector: radius,
+				radiusCard: radius,
+				hideRadio,
+				variant,
+				orientation,
+				disabled,
+				type: inferredType,
+			}),
+			[
+				effectiveName,
+				selectedOption,
+				selectedValue,
+				handleChange,
+				size,
+				color,
+				variant,
+				radius,
+				hideRadio,
+				orientation,
+				disabled,
+				inferredType,
+			]
+		);
+
+		return (
+			<RadioGroupContext.Provider value={contextValue}>
+				<RadioGroupComponent refGroup={mergedRef} className={className} style={style} {...props}>
+					{children}
+				</RadioGroupComponent>
+			</RadioGroupContext.Provider>
+		);
+	}
+);
+
+RadioGroup.displayName = "RadioGroup";
 
 const RadioGroupComponent = ({
 	children,
 	refGroup,
+	className,
+	style,
+	...props
 }: HTMLAttributes<HTMLDivElement> & {
 	children: ReactNode;
-	refGroup: React.RefObject<HTMLDivElement | null>;
+	refGroup: React.RefCallback<HTMLDivElement> | React.MutableRefObject<HTMLDivElement | null> | null;
 }) => {
 	const { size, variant, orientation, radiusSelector, color, type } = useRadioGroup();
 
@@ -157,7 +191,12 @@ const RadioGroupComponent = ({
 		<div
 			role="radiogroup"
 			ref={refGroup}
-			className={RadioGroups({ orientation, size, radius: radiusSelector, variant, color, type })}
+			className={clsx(
+				RadioGroups({ orientation, size, radius: radiusSelector, variant, color, type }),
+				className
+			)}
+			style={style}
+			{...props}
 		>
 			{children}
 		</div>
@@ -187,6 +226,7 @@ const RadioComponent = forwardRef<
 			body,
 			icon,
 			color,
+			onChange, // Extraemos onChange de las props
 			...props
 		},
 		ref
@@ -200,7 +240,7 @@ const RadioComponent = forwardRef<
 			radiusSelector,
 			radiusCard,
 			hideRadio,
-			onChange,
+			onChange: contextOnChange,
 			disabled: groupDisabled,
 			name,
 		} = useRadioGroup();
@@ -209,7 +249,13 @@ const RadioComponent = forwardRef<
 		const isDisabled = disabled || groupDisabled;
 
 		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			onChange(e.target.value);
+			// Llama al onChange del contexto para actualizar el estado visual e interno
+			contextOnChange(e.target.value);
+
+			// Llama al onChange pasado por props (fundamental para react-hook-form)
+			if (onChange) {
+				onChange(e);
+			}
 		};
 
 		return (
@@ -229,7 +275,7 @@ const RadioComponent = forwardRef<
 				<input
 					ref={ref}
 					type="radio"
-					name={name}
+					name={name} // react-hook-form sobrescribirá esto via ...props si es necesario
 					checked={isChecked}
 					onChange={handleChange}
 					disabled={isDisabled}

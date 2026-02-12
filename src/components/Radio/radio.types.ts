@@ -1,7 +1,8 @@
-import { InputHTMLAttributes } from "react";
+import { HTMLAttributes, InputHTMLAttributes } from "react";
 import { RadioGroupVariants, RadioVariants } from "./radio.variants";
 
-export interface RadioGroupProps {
+export interface RadioGroupProps
+	extends Omit<HTMLAttributes<HTMLDivElement>, "onChange" | "defaultValue" | "color"> {
 	/**
 	 * 	Defines the layout direction of the radio buttons within the group (e.g., 'horizontal' or 'vertical').
 	 */
