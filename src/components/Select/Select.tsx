@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, forwardRef, useEffect, useCallback, RefObject } from "react";
+import React, { useState, forwardRef, useEffect, useCallback, RefObject, useContext } from "react";
 import ReactDOM from "react-dom";
 import styles from "./select.module.css";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -17,11 +16,24 @@ import {
 import { SelectProps } from "./select.types";
 import { SelectOptionItem } from "./SelectOptionItem";
 import { InvalidMessage } from "../../_internal/components/InvalidMessage/InvalidMessage";
-import { useJoin } from "../Join/Join";
+import { JoinContext } from "../Join/Join";
 import { usePopover } from "../../_internal/hooks/usePopover";
 import { HelperText } from "../../_internal/components/HelperText/HelperText";
 
-export const Select = forwardRef<HTMLDivElement, SelectProps>(
+// Utility to merge refs
+const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
+	return (node: T) => {
+		refs.forEach((ref) => {
+			if (typeof ref === "function") {
+				ref(node);
+			} else if (ref != null) {
+				(ref as React.MutableRefObject<T | null>).current = node;
+			}
+		});
+	};
+};
+
+export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 	(
 		{
 			label,
@@ -37,6 +49,8 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			defaultValue,
 			placeholder = "Select an option",
 			onChange,
+			onBlur,
+			name,
 			helperText,
 			className,
 			color = "primary",
@@ -53,45 +67,43 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 			contentRef,
 			triggerRef,
 			menuPosition,
-			selectedOptionIndex,
 			highlightedIndex,
 			handleKeyDown,
 		} = usePopover();
-		let sizeValue, radiusValue, disabledValue;
 
-		try {
-			const { radius: joinRadius, size: joinSize, disabled: joinDisabled } = useJoin();
-			radiusValue = joinRadius || radius;
-			sizeValue = joinSize;
-			disabledValue = joinDisabled || disabled;
-		} catch (error) {
-			radiusValue = radius;
-			sizeValue = size;
-			disabledValue = disabled;
+		// Merge external ref with triggerRef so RHF can focus the button and Popover can position itself
+		const mergedRef = useMergeRefs(triggerRef, ref);
+
+		const joinContext = useContext(JoinContext);
+		let sizeValue = size;
+		let radiusValue = radius;
+		let disabledValue = disabled;
+
+		if (joinContext) {
+			sizeValue = joinContext.size || size;
+			radiusValue = joinContext.radius || radius;
+			disabledValue = joinContext.disabled || disabled;
 		}
 
 		const selectedOption = options.find((opt) => opt.value === selectedValue);
 
 		useEffect(() => {
-			if (value !== undefined && value !== selectedValue) {
+			// If controlled value changes, update internal state
+			if (value !== undefined) {
 				setSelectedValue(value);
 			}
-		}, [value, selectedValue]);
-
-		useEffect(() => {
-			if (selectedOptionIndex !== null) {
-				const selected = options[selectedOptionIndex];
-				setSelectedValue(selected?.value);
-			}
-		}, [selectedOptionIndex, highlightedIndex]);
+		}, [value]);
 
 		const performOptionSelection = useCallback(
 			(val: string | undefined) => {
-				setSelectedValue(val);
+				const isControlled = value !== undefined;
+				if (!isControlled) {
+					setSelectedValue(val);
+				}
 				setIsOpen(false);
 				onChange?.(val);
 			},
-			[onChange]
+			[onChange, value, setIsOpen]
 		);
 
 		const handleButtonClick = useCallback(
@@ -101,7 +113,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 					setIsOpen((prev) => !prev);
 				}
 			},
-			[disabledValue]
+			[disabledValue, setIsOpen]
 		);
 
 		const handleOptionClick = useCallback(
@@ -114,7 +126,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 		return (
 			<div
 				className={clsx(selectWrapper({ variant, disabled: disabledValue, color }), className)}
-				ref={ref || (triggerRef as RefObject<HTMLDivElement>)}
 				{...props}
 			>
 				{label && (
@@ -144,6 +155,9 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 					})}
 				>
 					<button
+						name={name}
+						onBlur={onBlur}
+						ref={mergedRef}
 						className={selectBtnVariants({
 							size: sizeValue,
 							variant,
@@ -156,7 +170,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 						onClick={handleButtonClick}
 						onKeyDown={handleKeyDown}
 						disabled={disabledValue}
-						ref={triggerRef as RefObject<HTMLButtonElement>}
+						type="button" // Prevent form submission
 					>
 						{selectedOption ? (
 							<div

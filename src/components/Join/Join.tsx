@@ -23,7 +23,7 @@ type JoinContextType = {
 	disabled?: boolean | null;
 };
 
-const JoinContext = createContext<JoinContextType | null>(null);
+export const JoinContext = createContext<JoinContextType | null>(null);
 
 export interface JoinProps extends VariantProps<typeof join>, RefAttributes<HTMLDivElement> {
 	errorMessage?: string;
