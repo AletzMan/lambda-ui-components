@@ -6,7 +6,7 @@ export interface RadioGroupProps
 	/**
 	 * 	Defines the layout direction of the radio buttons within the group (e.g., 'horizontal' or 'vertical').
 	 */
-	orientation?: RadioGroupVariants["orientation"];
+	orientation?: RadioGroupVariants["orientation"] | (string & {});
 
 	/**
 	 * Controls the overall size of the radio group and its influence on individual radio buttons.

@@ -41,7 +41,7 @@ export type RadioGroupContextType = {
 	radiusSelector: RadioVariants["radius"];
 	radiusCard: RadioVariants["radius"];
 	variant: RadioGroupVariants["variant"];
-	orientation: RadioGroupVariants["orientation"];
+	orientation: RadioGroupVariants["orientation"] | (string & {});
 	hideRadio: boolean;
 	disabled: boolean;
 	type: RadioGroupVariants["type"];
@@ -210,7 +210,14 @@ const RadioGroupComponent = ({
 			role="radiogroup"
 			ref={refGroup}
 			className={clsx(
-				RadioGroups({ orientation, size, radius: radiusSelector, variant, color, type }),
+				RadioGroups({
+					orientation: orientation as RadioGroupVariants["orientation"],
+					size,
+					radius: radiusSelector,
+					variant,
+					color,
+					type,
+				}),
 				className
 			)}
 			style={style}
@@ -284,7 +291,7 @@ const RadioComponent = forwardRef<
 					disabled: isDisabled,
 					size,
 					type,
-					orientation,
+					orientation: orientation as RadioGroupVariants["orientation"],
 					radius: type === "card" ? radiusCard : radiusSelector,
 					variant,
 					checked: isChecked,
@@ -338,7 +345,7 @@ const RadioComponent = forwardRef<
 						className={labelName({
 							size,
 							disabled: isDisabled,
-							orientation,
+							orientation: orientation as RadioGroupVariants["orientation"],
 							radius: radiusSelector,
 							type,
 							color: color || groupColor,
@@ -352,7 +359,7 @@ const RadioComponent = forwardRef<
 						className={labelName({
 							size,
 							disabled: isDisabled,
-							orientation,
+							orientation: orientation as RadioGroupVariants["orientation"],
 							radius: radiusSelector,
 							type,
 							color: color || groupColor,
