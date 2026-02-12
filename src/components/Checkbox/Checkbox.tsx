@@ -1,4 +1,4 @@
-import { forwardRef, useState, ChangeEvent, useRef } from "react";
+import { forwardRef, useState, ChangeEvent, useRef, useContext } from "react";
 import styles from "./checkbox.module.css";
 import {
 	checkboxContainerVariants,
@@ -7,16 +7,16 @@ import {
 	checkboxWrapperVariants,
 } from "./checkbox.variants";
 import { CheckBoxProps } from "./checkbox.types";
-import { useJoin } from "../Join/Join";
+import { JoinContext } from "../Join/Join";
 
 // Utility to merge refs (copied from Radio for consistency)
 const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
-	return (node: T) => {
+	return (node: T | null) => {
 		refs.forEach((ref) => {
 			if (typeof ref === "function") {
 				ref(node);
 			} else if (ref != null) {
-				(ref as React.MutableRefObject<T | null>).current = node;
+				(ref as { current: T | null }).current = node;
 			}
 		});
 	};
@@ -25,6 +25,7 @@ const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
 export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 	(
 		{
+			// ... (keep props same)
 			className,
 			size,
 			variant,
@@ -58,17 +59,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckBoxProps>(
 		// Derived state for visuals
 		const isChecked = isControlled ? checked : internalChecked;
 
-		let sizeValue, radiusValue, disabledValue;
+		const joinContext = useContext(JoinContext);
+		let sizeValue = size;
+		let radiusValue = radius;
+		let disabledValue = disabled;
 
-		try {
-			const joinContext = useJoin();
-			sizeValue = joinContext.size;
-			radiusValue = joinContext.radius;
-			disabledValue = joinContext.disabled;
-		} catch (error) {
-			radiusValue = radius;
-			sizeValue = size;
-			disabledValue = disabled;
+		if (joinContext) {
+			sizeValue = joinContext.size || size;
+			radiusValue = joinContext.radius || radius;
+			disabledValue = joinContext.disabled || disabled;
 		}
 
 		const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

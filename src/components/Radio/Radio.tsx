@@ -61,12 +61,12 @@ const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
 		if (refs.every((ref) => ref == null)) {
 			return null;
 		}
-		return (node: T) => {
+		return (node: T | null) => {
 			refs.forEach((ref) => {
 				if (typeof ref === "function") {
 					ref(node);
 				} else if (ref != null) {
-					(ref as React.MutableRefObject<T | null>).current = node;
+					(ref as { current: T | null }).current = node;
 				}
 			});
 		};
