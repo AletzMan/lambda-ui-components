@@ -3,6 +3,19 @@ import { background, handle, pos_label, switchprop, text } from "./switch.varian
 import clsx from "clsx";
 import { SwitchProps } from "./switch.types";
 
+// Utility to merge refs (copied for consistency)
+const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
+	return (node: T | null) => {
+		refs.forEach((ref) => {
+			if (typeof ref === "function") {
+				ref(node);
+			} else if (ref != null) {
+				(ref as { current: T | null }).current = node;
+			}
+		});
+	};
+};
+
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 	(
 		{
@@ -15,42 +28,43 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 			color,
 			shape,
 			checked,
+			defaultChecked,
 			onChange,
 			onCheckedChange,
+			style,
 			...props
 		},
 		ref
 	) => {
-		const isControlled = typeof checked === "boolean";
-		const [internalChecked, setInternalChecked] = useState(!!checked);
-		const actualChecked = isControlled ? checked! : internalChecked;
-
 		const inputRef = useRef<HTMLInputElement>(null);
+		const mergedRef = useMergeRefs(inputRef, ref);
 
-		function setRefs(el: HTMLInputElement | null) {
-			inputRef.current = el;
-			if (typeof ref === "function") ref(el);
-			else if (ref) (ref as React.MutableRefObject<HTMLInputElement | null>).current = el;
-		}
+		const isControlled = checked !== undefined;
+		const [internalChecked, setInternalChecked] = useState(!!defaultChecked);
+
+		// Visual state: use checked if controlled, otherwise internal state
+		const isChecked = isControlled ? checked : internalChecked;
 
 		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 			const newChecked = e.target.checked;
-			if (!isControlled) setInternalChecked(newChecked);
-			if (onCheckedChange) onCheckedChange(newChecked);
-			if (onChange) onChange(e);
+			if (!isControlled) {
+				setInternalChecked(newChecked);
+			}
+			onCheckedChange?.(newChecked);
+			onChange?.(e);
 		};
 
 		const handleKeyDown = (e: React.KeyboardEvent<HTMLLabelElement>) => {
 			if (e.key === " " || e.key === "Enter") {
 				e.preventDefault();
-				if (inputRef.current) inputRef.current.click();
+				inputRef.current?.click();
 			}
 		};
 
 		return (
 			<label
-				className={pos_label({ position_label: positionLabel, checked: actualChecked, disabled })}
-				style={props.style}
+				className={pos_label({ position_label: positionLabel, checked: isChecked, disabled })}
+				style={style}
 				tabIndex={disabled ? -1 : 0}
 				onKeyDown={handleKeyDown}
 			>
@@ -59,16 +73,17 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 						variant,
 						size,
 						color,
-						checked: actualChecked,
+						checked: isChecked,
 						disabled,
 						shape,
 					})}
 				>
 					<input
-						ref={setRefs}
-						type={"checkbox"}
-						disabled={disabled || undefined}
-						checked={actualChecked}
+						ref={mergedRef}
+						type="checkbox"
+						disabled={disabled}
+						checked={isControlled ? checked : undefined}
+						defaultChecked={!isControlled ? defaultChecked : undefined}
 						onChange={handleChange}
 						tabIndex={-1}
 						className={clsx(
@@ -76,13 +91,13 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 								size,
 								variant,
 								disabled,
-								checked: actualChecked,
+								checked: isChecked,
 							}),
 							className
 						)}
 						{...props}
 					/>
-					{<span className={handle({ checked: actualChecked, disabled, size, shape })} />}
+					<span className={handle({ checked: isChecked, disabled, size, shape })} />
 				</div>
 				{label && <span className={text({ size, disabled })}>{label}</span>}
 			</label>
