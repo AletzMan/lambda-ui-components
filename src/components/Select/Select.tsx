@@ -22,7 +22,7 @@ import { HelperText } from "../../_internal/components/HelperText/HelperText";
 
 // Utility to merge refs
 const useMergeRefs = <T,>(...refs: (React.Ref<T> | undefined)[]) => {
-	return (node: T) => {
+	return (node: T | null) => {
 		refs.forEach((ref) => {
 			if (typeof ref === "function") {
 				ref(node);
@@ -69,7 +69,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 			menuPosition,
 			highlightedIndex,
 			handleKeyDown,
-		} = usePopover();
+		} = usePopover<HTMLButtonElement, HTMLUListElement>();
 
 		// Merge external ref with triggerRef so RHF can focus the button and Popover can position itself
 		const mergedRef = useMergeRefs(triggerRef, ref);
@@ -156,7 +156,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
 				>
 					<button
 						name={name}
-						onBlur={onBlur}
+						onBlur={onBlur as unknown as React.FocusEventHandler<HTMLButtonElement>}
 						ref={mergedRef}
 						className={selectBtnVariants({
 							size: sizeValue,

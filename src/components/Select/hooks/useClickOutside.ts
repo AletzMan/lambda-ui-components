@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useEffect, RefObject } from "react";
 
 /**
