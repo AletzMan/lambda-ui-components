@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - 2026-02-15
+
+### Fixed
+- **InputNumber**: Fixed critical issue with `react-hook-form` Controller integration where manual typing was not working correctly
+  - Resolved value concatenation bug when typing in controlled mode
+  - Fixed increment/decrement buttons not working after manual input
+  - Improved synchronization between internal state and controlled value using `isUserTypingRef`
+  - Component now properly handles both manual typing and button interactions with react-hook-form
+- **InputNumber**: Added keyboard input validation to prevent typing non-numeric characters
+  - Only allows digits, decimal point (for decimal/currency types), and minus sign (when min allows negatives)
+  - Prevents multiple decimal points
+  - Allows control keys (Backspace, Delete, Tab, Arrow keys, etc.)
+  - Allows Ctrl/Cmd shortcuts for copy/paste/select all
+
+### Changed
+- **TextArea**: Updated background color from `var(--surface-a)` to `var(--background-color)` for better theme consistency
+- **TextArea**: Added `background-color: var(--surface-b)` to soft variant for improved visual hierarchy
+- **Stepper**: Enhanced mobile responsiveness (screens ≤600px)
+  - Added step title and description header in content area for horizontal orientation
+  - Hidden step titles and descriptions in step indicators on mobile
+  - Removed bottom border on bordered variant for mobile
+  - Adjusted max-width of step indicators from 3.5em to 4.35em
+  - Improved header styling with proper spacing and typography
+- **Stepper**: Reduced minimum button width from 9.5em to 7.5em for better mobile layout
+
+---
+
 ## [1.3.2] - 2026-02-12
 
 ### Fixed

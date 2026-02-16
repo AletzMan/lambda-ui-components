@@ -4,6 +4,31 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.3.3",
+		date: "2026-02-15",
+		sections: [
+			{
+				title: "🔧 Critical Fixes",
+				items: [
+					"InputNumber: Fixed critical react-hook-form Controller integration bug where manual typing was not working correctly.",
+					"InputNumber: Resolved value concatenation issue when typing in controlled mode.",
+					"InputNumber: Fixed increment/decrement buttons not working after manual input.",
+					"InputNumber: Improved state synchronization using isUserTypingRef for seamless form integration.",
+				],
+			},
+			{
+				title: "🎨 Style Improvements",
+				items: [
+					"TextArea: Updated background color to var(--background-color) for better theme consistency.",
+					"TextArea: Added background-color to soft variant for improved visual hierarchy.",
+					"Stepper: Enhanced mobile responsiveness for screens ≤600px with better header display.",
+					"Stepper: Hidden step titles/descriptions in indicators on mobile, showing them in content header instead.",
+					"Stepper: Adjusted step indicator max-width and button sizing for better mobile layout.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.3.2",
 		date: "2026-02-12",
 		sections: [
