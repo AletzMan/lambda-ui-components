@@ -3,6 +3,7 @@ import { action } from "storybook/actions";
 import { InputNumber } from "./InputNumber";
 import { InputNumberProps } from "./inputnumber.types";
 import ContainerComponent from "../../_util/storybook/components/ContainerComponent/ContainerComponent";
+import { useForm, Controller } from "react-hook-form";
 
 const meta: Meta<typeof InputNumber> = {
 	title: "Components/InputNumber",
@@ -113,6 +114,107 @@ const Template = (args: InputNumberProps) => {
 	);
 };
 
+const ReactHookFormTemplate = () => {
+	const { control, watch } = useForm({
+		defaultValues: {
+			quantity: 10,
+			price: 99.99,
+			discount: 15,
+		},
+	});
+
+	const formValues = watch();
+
+	return (
+		<ContainerComponent
+			title="InputNumber with React Hook Form"
+			subtitle="Testing Controller integration"
+			color="primary"
+		>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					justifyContent: "center",
+					width: "350px",
+					gap: "1rem",
+				}}
+			>
+				<Controller
+					name="quantity"
+					control={control}
+					render={({ field }) => (
+						<InputNumber
+							{...field}
+							value={field.value}
+							onChangeValue={field.onChange}
+							label="Quantity"
+							typeNumber="default"
+							min={0}
+							max={100}
+							step={1}
+							variant="outline"
+							size="medium"
+							radius="tiny"
+							color="primary"
+						/>
+					)}
+				/>
+
+				<Controller
+					name="price"
+					control={control}
+					render={({ field }) => (
+						<InputNumber
+							{...field}
+							value={field.value}
+							onChangeValue={field.onChange}
+							label="Price (USD)"
+							typeNumber="currency-USD"
+							min={0}
+							max={1000}
+							step={0.01}
+							variant="outline"
+							size="medium"
+							radius="tiny"
+							color="primary"
+						/>
+					)}
+				/>
+
+				<Controller
+					name="discount"
+					control={control}
+					render={({ field }) => (
+						<InputNumber
+							{...field}
+							value={field.value}
+							onChangeValue={field.onChange}
+							label="Discount"
+							typeNumber="percentage"
+							min={0}
+							max={100}
+							step={5}
+							variant="outline"
+							size="medium"
+							radius="tiny"
+							color="primary"
+						/>
+					)}
+				/>
+
+				<div style={{ marginTop: "2rem", padding: "1rem", background: "#f5f5f5", borderRadius: "8px", width: "100%" }}>
+					<h4 style={{ margin: "0 0 0.5rem 0" }}>Form Values:</h4>
+					<pre style={{ margin: 0, fontSize: "12px" }}>
+						{JSON.stringify(formValues, null, 2)}
+					</pre>
+				</div>
+			</div>
+		</ContainerComponent>
+	);
+};
+
 export const Outline: Story = {
 	render: Template,
 	args: {
@@ -155,4 +257,8 @@ export const Soft: Story = {
 		color: "primary",
 		onChangeValue: action("onChangeValue"),
 	},
+};
+
+export const WithReactHookForm: Story = {
+	render: ReactHookFormTemplate,
 };
