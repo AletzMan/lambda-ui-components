@@ -25,6 +25,10 @@
 
 	&:is(.lambda-stepper-bordered) {
 		border: var(--border-width) solid var(--border-color);
+
+		@media (width <=600px) {
+			border-bottom: none;
+		}
 	}
 
 	&:is(.lambda-stepper-soft) {
@@ -42,7 +46,7 @@
 		max-width: 11.5em;
 
 		@media (width <=600px) {
-			max-width: 3.5em;
+			max-width: 4.35em;
 		}
 	}
 }
@@ -258,6 +262,7 @@
 	min-width: 0;
 	height: 100%;
 
+
 	h1 {
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-semibold);
@@ -265,6 +270,10 @@
 		margin: var(--spacing-none);
 		text-align: center;
 		flex: 1;
+
+		@media (width <=600px) {
+			display: none;
+		}
 	}
 
 	p {
@@ -274,6 +283,10 @@
 		margin: var(--spacing-none);
 		text-align: center;
 		flex: 1;
+
+		@media (width <=600px) {
+			display: none;
+		}
 	}
 
 	&.lambda-step-summary-vertical {
@@ -381,6 +394,35 @@
 		&:is(.lambda-stepper-content-soft) {
 			border: 0;
 		}
+
+		& header {
+			display: none;
+			gap: var(--spacing-xs);
+			padding: var(--spacing-none) var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
+			border-bottom: var(--border-width) solid var(--border-color);
+			background-color: var(--surface-b);
+
+			h1 {
+				text-align: center;
+				font-size: var(--font-size-lg);
+				font-weight: var(--font-weight-bold);
+				color: var(--foreground-title-color);
+				margin: 0;
+			}
+
+			p {
+				text-align: center;
+				font-size: var(--font-size-xs);
+				font-weight: var(--font-weight-regular);
+				color: var(--foreground-secondary-color);
+				margin: 0;
+			}
+
+			@media (width <=600px) {
+				display: flex;
+				flex-direction: column;
+			}
+		}
 	}
 
 	&.lambda-stepper-content-vertical {
@@ -397,23 +439,28 @@
 
 		& header {
 			display: none;
-			padding: var(--spacing-sm);
+			gap: var(--spacing-xs);
+			padding: var(--spacing-sm) var(--spacing-md);
+			border-bottom: var(--border-width) solid var(--border-color);
 			background-color: var(--surface-b);
 
 			h1 {
-				font-size: var(--font-size-sm);
-				font-weight: var(--font-weight-semibold);
-				color: var(--success-hover-color);
+				font-size: var(--font-size-lg);
+				font-weight: var(--font-weight-bold);
+				color: var(--foreground-title-color);
+				margin: 0;
 			}
 
 			p {
 				font-size: var(--font-size-xs);
 				font-weight: var(--font-weight-regular);
 				color: var(--foreground-secondary-color);
+				margin: 0;
 			}
 
 			@media (width <=600px) {
-				display: block;
+				display: flex;
+				flex-direction: column;
 			}
 		}
 	}
@@ -440,6 +487,6 @@
 	height: 3em;
 
 	& button {
-		min-width: 9.5em;
+		min-width: 7.5em;
 	}
 }

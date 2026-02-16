@@ -155,6 +155,12 @@ const StepperRoot: React.FC<StepperProps> = ({
 							<p>{(itemChildren[currentStep]?.props as StepProps)?.description}</p>
 						</header>
 					)}
+					{orientation === "horizontal" && currentStep < totalSteps && (
+						<header >
+							<h1>{(itemChildren[currentStep]?.props as StepProps)?.title}</h1>
+							<p>{(itemChildren[currentStep]?.props as StepProps)?.description}</p>
+						</header>
+					)}
 					{currentStep < totalSteps
 						? contentChildren[currentStep]
 						: stepCompletedContentChildren[0]}
