@@ -33,6 +33,7 @@ export function useNumberInput({
 
 	const intervalRef = useRef<number | NodeJS.Timeout | null>(null);
 	const initialDelayRef = useRef<number | NodeJS.Timeout | null>(null);
+	const isUserTypingRef = useRef(false);
 
 	// --- Ref para almacenar los valores más recientes ---
 	const latestValuesRef = useRef({
@@ -102,10 +103,15 @@ export function useNumberInput({
 	);
 
 	useEffect(() => {
-		if (isControlled && !isEditing) {
+		// Cuando el componente está controlado, sincronizar internalValue con controlledValue
+		// EXCEPTO cuando el usuario está activamente escribiendo
+		if (isControlled && !isUserTypingRef.current) {
 			const valueToFormat =
 				controlledValue !== undefined && controlledValue !== null ? controlledValue : undefined;
-			setInternalValue(formatValue(valueToFormat));
+			const formattedValue = isEditing ? 
+				(valueToFormat !== undefined ? valueToFormat.toString() : "") : 
+				formatValue(valueToFormat);
+			setInternalValue(formattedValue);
 		}
 	}, [controlledValue, isControlled, isEditing, formatValue]);
 
@@ -124,6 +130,8 @@ export function useNumberInput({
 
 	const handleChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
+			isUserTypingRef.current = true;
+			
 			const inputValue = e.target.value;
 			const parsedValue = parseValue(inputValue);
 			setInternalValue(parsedValue);
@@ -136,6 +144,11 @@ export function useNumberInput({
 					onChangeValue?.(numericValue);
 				}
 			}
+			
+			// Reset the flag after a short delay to allow the change to propagate
+			setTimeout(() => {
+				isUserTypingRef.current = false;
+			}, 0);
 		},
 		[onChangeValue, parseValue]
 	);
@@ -195,7 +208,6 @@ export function useNumberInput({
 		const {
 			isEditing: latestIsEditing,
 			internalValue: latestInternalValue,
-			isControlled: latestIsControlled,
 			min: latestMin,
 			step: latestStep,
 			numericValue: latestNumericValue,
@@ -218,13 +230,9 @@ export function useNumberInput({
 		// Llamar a la última versión de onChange
 		latestOnChangeValue?.(newValue);
 
-		// Si NO es controlado, actualizamos internalValue localmente para feedback visual inmediato.
-		// Esto es seguro porque performDecrementStep se llama desde el intervalo,
-		// y la actualización de estado aquí (setInternalValue) eventualmente
-		// disparará el useEffect para actualizar latestValuesRef para la próxima llamada del intervalo.
-		if (!latestIsControlled) {
-			setInternalValue(latestFormatValue(newValue));
-		}
+		// Actualizar internalValue para feedback visual inmediato
+		// Esto funciona tanto para controlado como no controlado
+		setInternalValue(latestFormatValue(newValue));
 	}, []);
 
 	const performIncrementStep = useCallback(() => {
@@ -232,7 +240,6 @@ export function useNumberInput({
 		const {
 			isEditing: latestIsEditing,
 			internalValue: latestInternalValue,
-			isControlled: latestIsControlled,
 			max: latestMax,
 			step: latestStep,
 			numericValue: latestNumericValue,
@@ -252,9 +259,9 @@ export function useNumberInput({
 		const newValue = Math.min(Number(latestMax), currentNumericValue + Number(latestStep));
 		latestOnChangeValue?.(newValue);
 
-		if (!latestIsControlled) {
-			setInternalValue(latestFormatValue(newValue));
-		}
+		// Actualizar internalValue para feedback visual inmediato
+		// Esto funciona tanto para controlado como no controlado
+		setInternalValue(latestFormatValue(newValue));
 	}, []);
 
 	// --- Lógica para mantener presionado (start/stop actions) ---
