@@ -58,7 +58,7 @@
 }
 
 .lambda-textarea {
-	background-color: var(--surface-a);
+	background-color: var(--background-color);
 	color: var(--foreground-color);
 
 	&::placeholder {
@@ -135,6 +135,7 @@
 	&.lambda-textarea-soft {
 		border: none;
 		outline: var(--outline-width) solid transparent;
+		background-color: var(--surface-b);
 		outline-offset: 2.5px;
 
 		&:focus-within {
