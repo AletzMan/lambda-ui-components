@@ -98,15 +98,57 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
 		};
 
 		const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-			if (event.key === "ArrowUp") {
+			const key = event.key;
+			const currentValue = (event.target as HTMLInputElement).value;
+			if (key === "ArrowUp") {
 				startIncrementing();
 				stopIncrementing();
 			}
-			if (event.key === "ArrowDown") {
+			if (key === "ArrowDown") {
 				startDecrementing();
 				stopDecrementing();
 			}
+			// Allow control keys
+			if (
+				key === "Backspace" ||
+				key === "Delete" ||
+				key === "Tab" ||
+				key === "Enter" ||
+				key === "ArrowLeft" ||
+				key === "ArrowRight"
+			) {
+				return;
+			}
+
+			// Allow Ctrl/Cmd + A, C, V, X, Z
+			if (event.ctrlKey || event.metaKey) {
+				return;
+			}
+
+			// Allow minus sign only at the beginning and if min allows negative numbers
+			if (key === "-") {
+				if (currentValue.includes("-") || (event.target as HTMLInputElement).selectionStart !== 0 || min >= 0) {
+					event.preventDefault();
+				}
+				return;
+			}
+
+			// Allow decimal point only once and if typeNumber supports decimals
+			if (key === ".") {
+				const supportsDecimals = typeNumber === "decimal" || typeNumber?.startsWith("currency");
+				if (!supportsDecimals || currentValue.includes(".")) {
+					event.preventDefault();
+				}
+				return;
+			}
+
+			// Only allow digits
+			if (!/^\d$/.test(key)) {
+				event.preventDefault();
+			}
 		};
+
+
 
 		const inputId = useId();
 		const errorId = errorMessage && invalid ? `${inputId}-error` : undefined;
