@@ -21,7 +21,7 @@ export function HeaderApp() {
 					<AppLogo width={40} height={40} />
 					<div className="text-lg font-bold text-(--foreground-color)">Lambda UI</div>
 				</Link>
-				<Tag size="tiny" variant="soft" radius="medium" text="v1.0.0" />
+				<Tag size="tiny" variant="soft" radius="medium" text="v1.3.4" />
 				<span className="flex items-center gap-1">
 					<span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
 					<span className="text-xs text-green-500 font-medium">Stable</span>
