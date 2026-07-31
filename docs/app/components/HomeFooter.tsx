@@ -1,7 +1,7 @@
 "use client";
 import { GitHubIcon } from "@/components/icons/GitHub";
 import { AppLogo } from "@/components/icons/AppLogo";
-import { Twitter, Globe, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import Link from "next/link";
 
 export function HomeFooter() {
@@ -27,13 +27,13 @@ export function HomeFooter() {
 						<span className="font-semibold text-(--foreground-title-color)">Docs</span>
 						<Link
 							className="opacity-60 hover:opacity-100 transition-opacity no-underline"
-							href="/components"
+							href="/docs/components"
 						>
 							Components
 						</Link>
 						<Link
 							className="opacity-60 hover:opacity-100 transition-opacity no-underline"
-							href="/examples"
+							href="/docs/components/examples"
 						>
 							Examples
 						</Link>

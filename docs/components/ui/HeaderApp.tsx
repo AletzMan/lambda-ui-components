@@ -2,15 +2,17 @@ import { AppLogo } from "../icons/AppLogo";
 import { Divider, Flex, Link as LambdaLink, Tag } from "lambda-ui-components";
 import Link from "next/link";
 import HeaderOptions from "./HeaderOptions";
+import { basePath } from "@/app/utils/basePath";
 
 const links = [
-	{ name: "Docs", href: "/docs" },
-	{ name: "Components", href: "/components" },
-	{ name: "Blog", href: "/blog" },
-	{ name: "Changelog", href: "/changelog" },
+	{ name: "Docs", href: "/docs/overview/introduction" },
+	{ name: "Components", href: "/docs/components/forms/checkbox" },
+	{ name: "About", href: "/docs/overview/about" },
+	{ name: "Changelog", href: "/docs/overview/changelog" },
 ];
 
 export function HeaderApp() {
+
 	return (
 		<header
 			className="sticky top-0 z-50 flex items-center justify-between w-[calc(100svw-20px)] px-2 py-4 
@@ -33,7 +35,7 @@ export function HeaderApp() {
 						<div key={link.name} className="flex items-center gap-x-2 ml-[3px]">
 							<LambdaLink
 								key={link.name}
-								href={link.href}
+								href={`${basePath}${link.href}`}
 								size="tiny"
 								variant="text"
 								color="primary"

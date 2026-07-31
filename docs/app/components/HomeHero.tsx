@@ -1,13 +1,13 @@
 "use client";
-import { Button, CodeBlock, Link } from "lambda-ui-components";
+import { CodeBlock, Link } from "lambda-ui-components";
 import { motion } from "framer-motion";
 import { RocketIcon } from "@/components/icons/RocketIcon";
 import { Flex } from "lambda-ui-components";
-import { FeatureSection } from "./FeatureSection";
 import "prismjs/components/prism-jsx";
 
 export default function HomeHero() {
 	const code = `pnpm add lambda-ui-components`;
+	const basePath = process.env.NODE_ENV === 'production' ? '/lambda-ui-components' : '';
 	return (
 		<Flex direction="column">
 			<section className="relative flex flex-row justify-between max-[839px]:flex-col-reverse items-center  min-h-[90vh] w-full py-16 text-center overflow-hidden px-14 gap-10">
@@ -50,7 +50,7 @@ export default function HomeHero() {
 							color="primary"
 							radius="small"
 							label="Get started"
-							href="/docs/overview/introduction"
+							href={`${basePath}/docs/overview/introduction`}
 							type="button"
 							iconPosition="right"
 							icon={<RocketIcon />}

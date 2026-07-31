@@ -2,8 +2,11 @@
 import { GitHubIcon } from "@/components/icons/GitHub";
 import { Link } from "lambda-ui-components";
 import { Rocket } from "lucide-react";
+import { basePath } from "../utils/basePath";
 
 export function CallToActionSection() {
+
+
 	return (
 		<section className="w-full flex flex-col items-center justify-center py-25 my-25">
 			<h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
@@ -19,7 +22,7 @@ export function CallToActionSection() {
 					color="primary"
 					variant="solid"
 					radius="small"
-					href="/docs/overview/introduction"
+					href={`${basePath}/docs/overview/introduction`}
 					target="_blank"
 					iconPosition="left"
 					icon={<Rocket />}
