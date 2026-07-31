@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.4] - 2026-07-30
+
+### Fixed
+- **SSR Safety**: Added server-side rendering (SSR) safety checks across all components that access `document` and `window` objects
+  - **Breadcrumb**: Added `typeof document !== "undefined"` check for `document.documentElement.lang` access
+  - **ColorPicker**: Added SSR-safe checks in useEffect for drag event listeners
+  - **Calendar**: Added SSR-safe checks in useEffect for auto-close event listeners
+  - **CodeBlock**: Added SSR-safe check in useEffect for dynamic theme loading
+  - **Dialog**: Added SSR-safe check in `getPortalContainer()` function and portal management useEffect
+  - **useClickOutside**: Added SSR-safe checks for document and window access in event listeners
+  - **NotificationProvider**: Added SSR-safe check before `createPortal` to prevent hydration errors
+  - **ThemeProvider**: Already had comprehensive SSR-safe checks (no changes needed)
+  - **Drawer**: Already had SSR-safe checks in `useDrawerPortal` (no changes needed)
+  - **DatePicker**: Already had `isMounted` check before `createPortal` (no changes needed)
+  - **Dropdown**: Already had `isClient` check before `createPortal` (no changes needed)
+- **Documentation Pages**: Converted Radio and Slider pages to client components with `useSearchParams` hook and Suspense wrapper for proper Next.js SSR compatibility
+  - **Radio Page**: Changed from async server component to client component with `useSearchParams` and Suspense
+  - **Slider Page**: Changed from async server component to client component with `useSearchParams` and Suspense
+- **Documentation Pages**: Removed unused `const searchParams = await params.searchParams;` declarations from 25 pages where the variable was not used
+
+### Changed
+- **Radio Page**: Now uses `useSearchParams()` hook with Suspense wrapper for SSR-safe search params access
+- **Slider Page**: Now uses `useSearchParams()` hook with Suspense wrapper for SSR-safe search params access
+
+---
+
 ## [1.3.3] - 2026-02-15
 
 ### Fixed

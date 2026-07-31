@@ -4,6 +4,33 @@ import { SubSectionLayout } from "@/app/(library)/components/layout/SubSectionLa
 
 const CHANGELOG = [
 	{
+		version: "1.3.4",
+		date: "2026-07-30",
+		sections: [
+			{
+				title: "🔧 SSR Safety Fixes",
+				items: [
+					"Added server-side rendering (SSR) safety checks across all components that access document and window objects.",
+					"Breadcrumb: Added typeof document !== 'undefined' check for document.documentElement.lang access.",
+					"ColorPicker: Added SSR-safe checks in useEffect for drag event listeners.",
+					"Calendar: Added SSR-safe checks in useEffect for auto-close event listeners.",
+					"CodeBlock: Added SSR-safe check in useEffect for dynamic theme loading.",
+					"Dialog: Added SSR-safe check in getPortalContainer() function and portal management useEffect.",
+					"useClickOutside: Added SSR-safe checks for document and window access in event listeners.",
+					"NotificationProvider: Added SSR-safe check before createPortal to prevent hydration errors.",
+				],
+			},
+			{
+				title: "📄 Documentation Improvements",
+				items: [
+					"Converted Radio and Slider pages to client components with useSearchParams hook and Suspense wrapper.",
+					"Removed unused searchParams declarations from 25 documentation pages.",
+					"Improved Next.js SSR compatibility for documentation pages.",
+				],
+			},
+		],
+	},
+	{
 		version: "1.3.3",
 		date: "2026-02-15",
 		sections: [
