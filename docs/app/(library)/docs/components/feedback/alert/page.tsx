@@ -137,8 +137,7 @@ export default async function AlertPage(params: {
 	params: { id: string };
 	searchParams: { mode: string };
 }) {
-	const searchParams = await params.searchParams;
-	
+
 	return (
 		<ComponentsLayout
 			title="Alert"

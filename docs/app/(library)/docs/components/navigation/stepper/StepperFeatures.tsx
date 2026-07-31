@@ -69,7 +69,7 @@ export const StepperFeatures = () => {
 					},
 				]}
 			>
-				<Stepper steps={steps}>
+				<Stepper >
 					<Stepper.Step index={0} title="Personal Info" description="Enter your personal details" icon={<User />} />
 					<Stepper.Step index={1} title="Address" description="Enter your shipping address" icon={<MapPin />} />
 					<Stepper.Step index={2} title="Confirmation" description="Review your order" icon={<Check />} />

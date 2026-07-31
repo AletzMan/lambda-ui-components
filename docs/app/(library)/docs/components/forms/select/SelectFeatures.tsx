@@ -7,11 +7,11 @@ import { useRef, useState } from "react";
 
 
 export const SelectFeatures = () => {
-	const refSelect = useRef<HTMLDivElement>(null);
+	const refSelect = useRef<HTMLButtonElement>(null);
 	const [value, setValue] = useState("");
 	return (
 		<>
-			<PlaygroundLayout<HTMLDivElement>
+			<PlaygroundLayout<HTMLButtonElement>
 				id="playground"
 				title="Playground"
 				componentName="Select"
