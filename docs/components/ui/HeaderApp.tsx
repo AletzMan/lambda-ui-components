@@ -2,7 +2,6 @@ import { AppLogo } from "../icons/AppLogo";
 import { Divider, Flex, Link as LambdaLink, Tag } from "lambda-ui-components";
 import Link from "next/link";
 import HeaderOptions from "./HeaderOptions";
-import { basePath } from "@/app/utils/basePath";
 
 const links = [
 	{ name: "Docs", href: "/docs/overview/introduction" },
@@ -35,7 +34,7 @@ export function HeaderApp() {
 						<div key={link.name} className="flex items-center gap-x-2 ml-[3px]">
 							<LambdaLink
 								key={link.name}
-								href={`${basePath}${link.href}`}
+								href={link.href}
 								size="tiny"
 								variant="text"
 								color="primary"

@@ -2,7 +2,6 @@ import { AppLogo } from "@/components/icons/AppLogo";
 import { Ban } from "lucide-react";
 import Link from "next/link";
 import { Link as LambdaLink } from "lambda-ui-components";
-import { basePath } from "./utils/basePath";
 
 export default function NotFound() {
 	return (
@@ -21,7 +20,7 @@ export default function NotFound() {
 				</h2>
 				<p className="text-center text-(--foreground-secondary-color) max-w-md mb-4">
 					We couldn't find the page you were looking for. You can go back to the
-					<Link href={`${basePath}/docs/overview/introduction`} className="text-blue-500 underline ml-1">
+					<Link href={`/docs/overview/introduction`} className="text-blue-500 underline ml-1">
 						Started guide
 					</Link>
 					.
@@ -29,7 +28,7 @@ export default function NotFound() {
 
 				{/* Botón grande */}
 				<LambdaLink
-					href={`${basePath}`}
+					href={`/`}
 					variant="solid"
 					color="primary"
 					type="button"

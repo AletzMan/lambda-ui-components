@@ -18,7 +18,6 @@ import {
 	PencilRuler,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { basePath } from "@/app/utils/basePath";
 
 export const navigationMenuData = [
 	// ──────────────── INTRODUCTION ────────────────
@@ -32,16 +31,16 @@ export const navigationMenuData = [
 				id: "introduction",
 				label: "Introduction",
 				icon: <Home />,
-				path: `${basePath}/docs/overview/introduction`,
+				path: "/docs/overview/introduction",
 			},
 			{
 				id: "getting-started",
 				label: "Getting Started",
 				icon: <Zap />,
-				path: `${basePath}/docs/overview/getting-started`,
+				path: "/docs/overview/getting-started",
 			},
-			{ id: "changelog", label: "Changelog", icon: <FileText />, path: `${basePath}/docs/overview/changelog` },
-			{ id: "about", label: "About Lambda UI", icon: <Settings />, path: `${basePath}/docs/overview/about` },
+			{ id: "changelog", label: "Changelog", icon: <FileText />, path: "/docs/overview/changelog" },
+			{ id: "about", label: "About Lambda UI", icon: <Settings />, path: "/docs/overview/about" },
 
 			// ──────────────── DESIGN TOKENS ────────────────
 			{
@@ -52,22 +51,22 @@ export const navigationMenuData = [
 					{
 						id: "colors",
 						label: "Colors",
-						path: `${basePath}/docs/design-tokens/colors`,
+						path: "/docs/design-tokens/colors",
 					},
 					{
 						id: "sizes",
 						label: "Sizes",
-						path: `${basePath}/docs/design-tokens/sizes`,
+						path: "/docs/design-tokens/sizes",
 					},
 					{
 						id: "spacing",
 						label: "Spacing",
-						path: `${basePath}/docs/design-tokens/spacing`,
+						path: "/docs/design-tokens/spacing",
 					},
 					{
 						id: "typography",
 						label: "Typography",
-						path: `${basePath}/docs/design-tokens/typography`,
+						path: "/docs/design-tokens/typography",
 					},
 				],
 			},
@@ -78,16 +77,16 @@ export const navigationMenuData = [
 				label: "Theming",
 				icon: <Palette />,
 				children: [
-					{ id: "theme", label: "Theme", path: "${basePath}/docs/theming/theme" },
+					{ id: "theme", label: "Theme", path: "/docs/theming/theme" },
 					{
 						id: "dark-mode",
 						label: "Dark Mode",
-						path: `${basePath}/docs/theming/dark-mode`,
+						path: "/docs/theming/dark-mode",
 					},
 					{
 						id: "create-theme",
 						label: "Create Theme",
-						path: `${basePath}/docs/theming/create-theme`,
+						path: "/docs/theming/create-theme",
 					},
 				],
 			},
@@ -111,54 +110,54 @@ export const navigationMenuData = [
 					{
 						id: "checkbox",
 						label: "Checkbox",
-						path: `${basePath}/docs/components/forms/checkbox`,
+						path: "/docs/components/forms/checkbox",
 					},
 					{
 						id: "color-picker",
 						label: "Color Picker",
-						path: `${basePath}/docs/components/forms/color-picker`,
+						path: "/docs/components/forms/color-picker",
 					},
 					{
 						id: "date-picker",
 						label: "Date Picker",
-						path: `${basePath}/docs/components/forms/date-picker`,
+						path: "/docs/components/forms/date-picker",
 					},
 					{
 						id: "file-upload",
 						label: "File Upload",
-						path: `${basePath}/docs/components/forms/file-upload`,
+						path: "/docs/components/forms/file-upload",
 					},
-					{ id: "input", label: "Input", path: `${basePath}/docs/components/forms/input` },
+					{ id: "input", label: "Input", path: "/docs/components/forms/input" },
 					{
 						id: "input-number",
 						label: "Input Number",
-						path: `${basePath}/docs/components/forms/input-number`,
+						path: "/docs/components/forms/input-number",
 					},
 					{
 						id: "join",
 						label: "Join",
-						path: `${basePath}/docs/components/forms/join`,
+						path: "/docs/components/forms/join",
 					},
-					{ id: "radio", label: "Radio", path: `${basePath}/docs/components/forms/radio` },
+					{ id: "radio", label: "Radio", path: "/docs/components/forms/radio" },
 					{
 						id: "select",
 						label: "Select",
-						path: `${basePath}/docs/components/forms/select`,
+						path: "/docs/components/forms/select",
 					},
 					{
 						id: "slider",
 						label: "Slider",
-						path: `${basePath}/docs/components/forms/slider`,
+						path: "/docs/components/forms/slider",
 					},
 					{
 						id: "switch",
 						label: "Switch",
-						path: `${basePath}/docs/components/forms/switch`,
+						path: "/docs/components/forms/switch",
 					},
 					{
 						id: "text-area",
 						label: "Text Area",
-						path: `${basePath}/docs/components/forms/text-area`,
+						path: "/docs/components/forms/text-area",
 					},
 				],
 			},
@@ -169,13 +168,13 @@ export const navigationMenuData = [
 				label: "Layout",
 				icon: <LayoutGrid />,
 				children: [
-					{ id: "card", label: "Card", path: `${basePath}/docs/components/layout/card` },
-					{ id: "divider", label: "Divider", path: `${basePath}/docs/components/layout/divider` },
-					{ id: "flex", label: "Flex", path: `${basePath}/docs/components/layout/flex` },
+					{ id: "card", label: "Card", path: "/docs/components/layout/card" },
+					{ id: "divider", label: "Divider", path: "/docs/components/layout/divider" },
+					{ id: "flex", label: "Flex", path: "/docs/components/layout/flex" },
 					{
 						id: "splitter",
 						label: "Splitter",
-						path: `${basePath}/docs/components/layout/splitter`,
+						path: "/docs/components/layout/splitter",
 					},
 				],
 			},
@@ -189,30 +188,30 @@ export const navigationMenuData = [
 					{
 						id: "breadcrumb",
 						label: "Breadcrumb",
-						path: `${basePath}/docs/components/navigation/breadcrumb`,
+						path: "/docs/components/navigation/breadcrumb",
 					},
 					{
 						id: "button",
 						label: "Button",
-						path: `${basePath}/docs/components/navigation/button`,
+						path: "/docs/components/navigation/button",
 					},
-					{ id: "link", label: "Link", path: `${basePath}/docs/components/navigation/link` },
+					{ id: "link", label: "Link", path: "/docs/components/navigation/link" },
 					{
 						id: "navigation-menu",
 						label: "Navigation Menu",
-						path: `${basePath}/docs/components/navigation/navigation-menu`,
+						path: "/docs/components/navigation/navigation-menu",
 					},
 					{
 						id: "pagination",
 						label: "Pagination",
-						path: `${basePath}/docs/components/navigation/pagination`,
+						path: "/docs/components/navigation/pagination",
 					},
 					{
 						id: "stepper",
 						label: "Stepper",
-						path: `${basePath}/docs/components/navigation/stepper`,
+						path: "/docs/components/navigation/stepper",
 					},
-					{ id: "tabs", label: "Tabs", path: `${basePath}/docs/components/navigation/tabs` },
+					{ id: "tabs", label: "Tabs", path: "/docs/components/navigation/tabs" },
 				],
 			},
 
@@ -225,39 +224,39 @@ export const navigationMenuData = [
 					{
 						id: "alert",
 						label: "Alert",
-						path: `${basePath}/docs/components/feedback/alert`,
+						path: "/docs/components/feedback/alert",
 					},
 					{
 						id: "dialog",
 						label: "Dialog",
-						path: `${basePath}/docs/components/feedback/dialog`,
+						path: "/docs/components/feedback/dialog",
 					},
-					{ id: "drawer", label: "Drawer", path: `${basePath}/docs/components/feedback/drawer` },
+					{ id: "drawer", label: "Drawer", path: "/docs/components/feedback/drawer" },
 					{
 						id: "dropdown",
 						label: "Dropdown",
 						icon: <List />,
-						path: `${basePath}/docs/components/feedback/dropdown`,
+						path: "/docs/components/feedback/dropdown",
 					},
 					{
 						id: "notification",
 						label: "Notification",
-						path: `${basePath}/docs/components/feedback/notification`,
+						path: "/docs/components/feedback/notification",
 					},
 					{
 						id: "progress",
 						label: "Progress",
-						path: `${basePath}/docs/components/feedback/progress`,
+						path: "/docs/components/feedback/progress",
 					},
 					{
 						id: "skeleton",
 						label: "Skeleton",
-						path: `${basePath}/docs/components/feedback/skeleton`,
+						path: "/docs/components/feedback/skeleton",
 					},
 					{
 						id: "tooltip",
 						label: "Tooltip",
-						path: `${basePath}/docs/components/feedback/tooltip`,
+						path: "/docs/components/feedback/tooltip",
 					},
 				],
 			},
@@ -271,44 +270,44 @@ export const navigationMenuData = [
 					{
 						id: "accordion",
 						label: "Accordion",
-						path: `${basePath}/docs/components/data-display/accordion`,
+						path: "/docs/components/data-display/accordion",
 					},
 					{
 						id: "avatar",
 						label: "Avatar",
-						path: `${basePath}/docs/components/data-display/avatar`,
+						path: "/docs/components/data-display/avatar",
 					},
-					{ id: "badge", label: "Badge", path: `${basePath}/docs/components/data-display/badge` },
+					{ id: "badge", label: "Badge", path: "/docs/components/data-display/badge" },
 					{
 						id: "calendar",
 						label: "Calendar",
-						path: `${basePath}/docs/components/data-display/calendar`,
+						path: "/docs/components/data-display/calendar",
 					},
 					{
 						id: "carousel",
 						label: "Carousel",
-						path: `${basePath}/docs/components/data-display/carousel`,
+						path: "/docs/components/data-display/carousel",
 					},
 					{
 						id: "code-block",
 						label: "Code Block",
-						path: `${basePath}/docs/components/data-display/code-block`,
+						path: "/docs/components/data-display/code-block",
 					},
 					{
 						id: "rating",
 						label: "Rating",
-						path: `${basePath}/docs/components/data-display/rating`,
+						path: "/docs/components/data-display/rating",
 					},
 					{
 						id: "table",
 						label: "Table",
-						path: `${basePath}/docs/components/data-display/table`,
+						path: "/docs/components/data-display/table",
 					},
-					{ id: "tag", label: "Tag", path: `${basePath}/docs/components/data-display/tag` },
+					{ id: "tag", label: "Tag", path: "/docs/components/data-display/tag" },
 					{
 						id: "tree-view",
 						label: "Tree View",
-						path: `${basePath}/docs/components/data-display/tree-view`,
+						path: "/docs/components/data-display/tree-view",
 					},
 				],
 			},
@@ -322,22 +321,22 @@ export const navigationMenuData = [
 					{
 						id: "button-theme",
 						label: "Button Theme",
-						path: `${basePath}/docs/components/utilities/button-theme`,
+						path: "/docs/components/utilities/button-theme",
 					},
 					{
 						id: "switch-theme",
 						label: "Switch Theme",
-						path: `${basePath}/docs/components/utilities/switch-theme`,
+						path: "/docs/components/utilities/switch-theme",
 					},
 					{
 						id: "client-only",
 						label: "Client Only",
-						path: `${basePath}/docs/components/utilities/client-only`,
+						path: "/docs/components/utilities/client-only",
 					},
 					{
 						id: "helpers",
 						label: "Utility Hooks",
-						path: `${basePath}/docs/components/utilities/hooks`,
+						path: "/docs/components/utilities/hooks",
 					},
 				],
 			},
@@ -347,7 +346,7 @@ export const navigationMenuData = [
 				id: "examples",
 				label: "Examples",
 				icon: <PackageOpen />,
-				path: `${basePath}/docs/components/examples`,
+				path: "/docs/components/examples",
 			},
 
 		],
@@ -356,7 +355,6 @@ export const navigationMenuData = [
 
 export function SideBar() {
 	const pathname = usePathname();
-	console.log(pathname);
 	return (
 		<aside
 			className="flex flex-col items-center sticky top-18 h-[calc(100svh-72px)] 
@@ -379,7 +377,7 @@ export function SideBar() {
 					"utilities",
 					"examples",
 				]}
-				currentPath={basePath + pathname}
+				currentPath={pathname}
 			/>
 
 			<FooterDocs />

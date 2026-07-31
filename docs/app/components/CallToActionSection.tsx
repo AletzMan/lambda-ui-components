@@ -2,8 +2,6 @@
 import { GitHubIcon } from "@/components/icons/GitHub";
 import { Link } from "lambda-ui-components";
 import { Rocket } from "lucide-react";
-import { basePath } from "../utils/basePath";
-
 export function CallToActionSection() {
 
 
@@ -22,7 +20,7 @@ export function CallToActionSection() {
 					color="primary"
 					variant="solid"
 					radius="small"
-					href={`${basePath}/docs/overview/introduction`}
+					href="/docs/overview/introduction"
 					target="_blank"
 					iconPosition="left"
 					icon={<Rocket />}
