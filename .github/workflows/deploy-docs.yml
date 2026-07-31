@@ -23,8 +23,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      # Especificamos la versión para que pnpm/action-setup@v4 no proteste
       - name: Install pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -38,7 +41,7 @@ jobs:
       - name: Build Library
         run: pnpm --filter lambda-ui-components build
 
-      # Corregido con la ruta ./docs para que pnpm lo encuentre sin fallar
+      # Usamos el filtro con la ruta exacta ./docs
       - name: Build Next.js Docs
         run: pnpm --filter ./docs build
 
