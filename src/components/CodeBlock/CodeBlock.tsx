@@ -45,6 +45,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 
 	// Cambia el tema dinámicamente
 	useEffect(() => {
+		if (typeof document === "undefined") return;
 		const themeId = "prism-theme-style";
 		let link = document.getElementById(themeId) as HTMLLinkElement | null;
 		const themeHref =

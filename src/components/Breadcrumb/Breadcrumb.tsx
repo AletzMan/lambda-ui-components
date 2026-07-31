@@ -48,7 +48,7 @@ export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
 		const [collapsed, setCollapsed] = useState(maxItems !== 0);
 		const IconSeparator = NOTIFICATION_ICONS[variant as keyof typeof NOTIFICATION_ICONS];
 		const shouldCollapse = items!.length > maxItems + 1;
-		const language = document.documentElement.lang;
+		const language = typeof document !== "undefined" ? document.documentElement.lang : "es";
 		useEffect(() => {
 			if (maxItems === 0) {
 				setCollapsed(false);

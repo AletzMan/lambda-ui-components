@@ -12,6 +12,7 @@ let portalContainer: HTMLElement | null = null;
 
 // Función helper para crear o obtener el contenedor del portal.
 const getPortalContainer = () => {
+	if (typeof document === "undefined") return null;
 	if (!portalContainer) {
 		portalContainer = document.createElement("div");
 		portalContainer.classList.add(styles["lambda-dialog-portal-container"]);
@@ -164,10 +165,11 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 
 		// --- Efecto para gestionar la creación/limpieza del contenedor del Portal en el DOM ---
 		useEffect(() => {
+			if (typeof document === "undefined") return;
 			const container = getPortalContainer();
 
 			return () => {
-				if (document.body.contains(container)) {
+				if (container && document.body.contains(container)) {
 					document.body.removeChild(container);
 					portalContainer = null;
 				}
@@ -311,7 +313,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
 					</div>
 				)}
 			</AnimatePresence>,
-			getPortalContainer()
+			getPortalContainer() || document.body
 		);
 	}
 );

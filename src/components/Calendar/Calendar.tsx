@@ -120,6 +120,7 @@ export const Calendar = ({
 
 	// --- cierre automático y listeners ---
 	useEffect(() => {
+		if (typeof window === "undefined" || typeof document === "undefined") return;
 		if (!isOpen) return;
 
 		const handleClickOutside = (event: MouseEvent) => {

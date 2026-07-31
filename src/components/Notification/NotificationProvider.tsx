@@ -52,7 +52,7 @@ export const NotificationProvider = ({ children, maxNotifications = 4, placement
     return (
         <NotificationContext.Provider value={{ showNotification }}>
             {children}
-            {mounted && createPortal(
+            {mounted && typeof document !== "undefined" && createPortal(
                 <NotificationContainer notifications={notifications} maxNotifications={maxNotifications} />,
                 document.body
             )}

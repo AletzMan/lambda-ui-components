@@ -11,6 +11,8 @@ export function useClickOutside(
 	callback: (event: MouseEvent | TouchEvent | Event) => void
 ) {
 	useEffect(() => {
+		if (typeof document === "undefined" || typeof window === "undefined") return;
+		
 		const handleClickOutside = (event: MouseEvent | TouchEvent) => {
 			const isInside = refs.some(
 				(ref) => ref.current && ref.current.contains(event.target as Node)

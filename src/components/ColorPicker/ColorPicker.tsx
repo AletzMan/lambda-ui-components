@@ -309,7 +309,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(
 
 		// Lógica de arrastre del picker, el resto es manejado por el componente Slider
 		useEffect(() => {
-			if (typeof window === "undefined") return;
+			if (typeof window === "undefined" || typeof document === "undefined") return;
 			const handlePointerMove = (event: PointerEvent) => {
 				let newColor: string | undefined;
 
