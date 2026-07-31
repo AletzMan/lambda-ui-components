@@ -28,7 +28,6 @@ export const ComponentsLayout = ({
 }: ComponentsLayoutProps) => {
 	const activeId = useActiveSectionObserver({ selectors: "h2", rootMargin: "72px 0px -80% 0px" });
 	const firstItemId = menuData![0].children![0].children![0].id;
-	
 	return (
 		<section className="relative flex flex-col gap-10 px-3 py-4 w-full">
 			<header className="mb-10 text-center ">
