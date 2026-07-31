@@ -179,7 +179,7 @@ export default function CreateThemePage() {
             title="Create Theme"
             description=""
             buttonLeft={{ href: "/docs/theming/dark-mode", text: "Dark Mode" }}
-            buttonRight={{ href: "/docs/components/forms/input", text: "Input" }}
+            buttonRight={{ href: "/docs/components/forms/checkbox", text: "Checkbox" }}
             menuData={menuData}
         >
             <article>
