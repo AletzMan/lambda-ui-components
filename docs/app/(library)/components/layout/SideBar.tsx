@@ -379,7 +379,7 @@ export function SideBar() {
 					"utilities",
 					"examples",
 				]}
-				currentPath={pathname}
+				currentPath={basePath + pathname}
 			/>
 
 			<FooterDocs />
