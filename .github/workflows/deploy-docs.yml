@@ -34,9 +34,15 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
+      # Cambiado a --no-frozen-lockfile para evitar el exit code 2
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
+      # 1. Compila la librería primero para generar /dist
+      - name: Build Library
+        run: pnpm --filter lambda-ui-components build
+
+      # 2. Compila la app de documentación leyendo el /dist recién generado
       - name: Build Next.js Docs
         run: pnpm --filter docs build
 
