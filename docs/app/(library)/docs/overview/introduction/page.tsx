@@ -180,7 +180,7 @@ export default function Introduction() {
 					{/* CTA */}
 					<div className="my-12 flex justify-center">
 						<Link
-							href="/overview/getting-started"
+							href="/docs/overview/getting-started"
 							className="flex items-center gap-4 px-6 py-3 rounded-sm bg-(--primary-base-color) text-white font-semibold outline-2 outline-offset-2 outline-transparent hover:outline-cyan-500/50 hover:bg-cyan-400 transition-all duration-200"
 						>
 							Get Started <Rocket className="w-5 h-5" />

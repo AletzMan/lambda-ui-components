@@ -356,6 +356,7 @@ export const navigationMenuData = [
 
 export function SideBar() {
 	const pathname = usePathname();
+	console.log(pathname);
 	return (
 		<aside
 			className="flex flex-col items-center sticky top-18 h-[calc(100svh-72px)] 
