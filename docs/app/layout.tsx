@@ -15,6 +15,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			<link rel="icon" href="/favicon.svg" sizes="any" />
 			<body
 				className={`antialiased max-w-[1920px] mx-auto flex flex-col items-center justify-center`}
 			>
