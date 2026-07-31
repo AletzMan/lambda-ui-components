@@ -1,3 +1,4 @@
+
 import { ComponentsLayout } from "../../components/ComponentsLayout";
 import { NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
@@ -130,8 +131,7 @@ export default async function AccordionPage(params: {
 	params: { id: string };
 	searchParams: { mode: string };
 }) {
-	const searchParams = await params.searchParams;
-	
+
 	return (
 		<ComponentsLayout
 			title="Accordion"

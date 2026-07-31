@@ -142,8 +142,7 @@ export default async function AvatarPage(params: {
 	params: { id: string };
 	searchParams: { mode: string };
 }) {
-	const searchParams = await params.searchParams;
-	
+
 	return (
 		<ComponentsLayout
 			title="Avatar"
