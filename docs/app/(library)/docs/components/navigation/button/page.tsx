@@ -140,8 +140,6 @@ export default async function ButtonPage(params: {
 	params: { id: string };
 	searchParams: { mode: string };
 }) {
-	const searchParams = await params.searchParams;
-	
 	return (
 		<ComponentsLayout
 			title="Button"

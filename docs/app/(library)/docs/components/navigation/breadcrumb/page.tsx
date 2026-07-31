@@ -1,3 +1,4 @@
+'use client';
 import { ComponentsLayout } from "../../components/ComponentsLayout";
 import { NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
@@ -93,12 +94,7 @@ export const baseBreadcrumbProps: TableProps[] = [
 ];
 
 
-export default async function BreadcrumbPage(params: {
-	params: { id: string };
-	searchParams: { mode: string };
-}) {
-	const searchParams = await params.searchParams;
-	
+export default function BreadcrumbPage() {
 	return (
 		<ComponentsLayout
 			title="Breadcrumb"

@@ -104,8 +104,6 @@ export default async function StepperPage(params: {
 	params: { id: string };
 	searchParams: { mode: string };
 }) {
-	const searchParams = await params.searchParams;
-	
 	return (
 		<ComponentsLayout
 			title="Stepper"
