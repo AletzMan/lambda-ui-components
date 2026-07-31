@@ -146,8 +146,6 @@ export default async function DropdownPage(params: {
 	params: { id: string };
 	searchParams: { mode: string };
 }) {
-	const searchParams = await params.searchParams;
-	
 	return (
 		<ComponentsLayout
 			title="Dropdown"
