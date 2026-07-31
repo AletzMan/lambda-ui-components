@@ -23,7 +23,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # Especificamos la versión para que pnpm/action-setup@v4 no proteste
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -39,9 +38,8 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build Library
-        run: pnpm --filter lambda-ui-components build
+        run: pnpm --filter . build
 
-      # Usamos el filtro con la ruta exacta ./docs
       - name: Build Next.js Docs
         run: pnpm --filter ./docs build
 

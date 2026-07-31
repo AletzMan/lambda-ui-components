@@ -12,7 +12,8 @@ import {
 	Code2,
 	Accessibility,
 } from "lucide-react";
-import { Flex } from "../../../dist/main";
+import { Flex } from "lambda-ui-components";
+
 
 export function FeatureSection() {
 	const features = [
