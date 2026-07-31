@@ -5,7 +5,7 @@
 	"description": "Documentación y demo para lambda-ui-components.",
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build --no-lint",
+		"build": "next build",
 		"start": "next start",
 		"lint": "eslint"
 	},
