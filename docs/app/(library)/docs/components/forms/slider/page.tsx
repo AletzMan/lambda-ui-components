@@ -1,3 +1,7 @@
+"use client";
+
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { ComponentsLayout } from "../../components/ComponentsLayout";
 import { NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
@@ -202,11 +206,9 @@ export const sliderRangeProps: TableProps[] = [
 
 
 
-export default async function SliderPage(params: {
-	params: { id: string };
-	searchParams: { mode: string };
-}) {
-	const searchParams = await params.searchParams;
+function SliderPageContent() {
+	const searchParams = useSearchParams();
+	const mode = (searchParams.get("mode") as "single" | "range") || "single";
 	
 	return (
 		<ComponentsLayout
@@ -216,9 +218,17 @@ export default async function SliderPage(params: {
 			buttonRight={{ href: "/docs/components/forms/switch", text: "Switch" }}
 			menuData={dataFeatures}
 		>
-			<SliderFeatures mode={searchParams.mode as "single" | "range" || "single"} />
+			<SliderFeatures mode={mode} />
 			<TableProps props={baseSliderProps} title="API Reference" subtitle="Base Slider Props" id="base-slider-props" />
-			{searchParams.mode === "single" ? <TableProps props={sliderSingleProps} subtitle="Slider Single Props" id="slider-single-props" /> : <TableProps props={sliderRangeProps} subtitle="Slider Range Props" id="slider-range-props" />}
+			{mode === "single" ? <TableProps props={sliderSingleProps} subtitle="Slider Single Props" id="slider-single-props" /> : <TableProps props={sliderRangeProps} subtitle="Slider Range Props" id="slider-range-props" />}
 		</ComponentsLayout>
+	);
+}
+
+export default function SliderPage() {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<SliderPageContent />
+		</Suspense>
 	);
 }

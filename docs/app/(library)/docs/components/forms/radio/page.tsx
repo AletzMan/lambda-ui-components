@@ -1,3 +1,7 @@
+"use client";
+
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { ComponentsLayout } from "../../components/ComponentsLayout";
 import { NavigationMenuData } from "lambda-ui-components";
 import { List } from "lucide-react";
@@ -123,13 +127,10 @@ export const radioProps: TableProps[] = [
 	},
 ];
 
-export default async function RadioPage(params: {
-	params: { id: string };
-	searchParams: { type: string };
-}) {
-	const searchParams = await params.searchParams;
+function RadioPageContent() {
+	const searchParams = useSearchParams();
 	const typeRadio: "radio" | "button" | "card" =
-		(searchParams.type as "radio" | "button" | "card") || "radio";
+		(searchParams.get("type") as "radio" | "button" | "card") || "radio";
 
 	return (
 		<ComponentsLayout
@@ -148,5 +149,13 @@ export default async function RadioPage(params: {
 			<RadioFeatures typeRadio={typeRadio} />
 			<TableProps props={radioProps} />
 		</ComponentsLayout>
+	);
+}
+
+export default function RadioPage() {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<RadioPageContent />
+		</Suspense>
 	);
 }
