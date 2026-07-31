@@ -1,16 +1,20 @@
 import type { NextConfig } from "next";
 
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+
 const nextConfig: NextConfig = {
-  // Genera un sitio estático (HTML/CSS/JS) en lugar de requerir un servidor Node.js
   output: 'export',
 
-  // Como GitHub Pages se sirve en 'usuario.github.io/lambda-ui-components', 
-  // Next necesita saber la ruta base para cargar correctamente los JS/CSS/Imágenes
-  basePath: process.env.NODE_ENV === 'production' ? '/lambda-ui-components' : '',
+  // Genera /ruta/index.html en lugar de /ruta.html (Crucial para que GitHub Pages no dé 404 en refrescos)
+  trailingSlash: true,
+
+  // Solo aplica el basePath cuando la build corre dentro del CI de GitHub Actions
+  basePath: isGithubActions ? '/lambda-ui-components' : '',
+  assetPrefix: isGithubActions ? '/lambda-ui-components/' : '',
+
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Desactiva la optimización de imágenes de servidor si usas next/image
   images: {
     unoptimized: true,
   },
