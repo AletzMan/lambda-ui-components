@@ -24,27 +24,23 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
           cache: 'pnpm'
 
-      # Cambiado a --no-frozen-lockfile para evitar el exit code 2
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # 1. Compila la librería primero para generar /dist
       - name: Build Library
         run: pnpm --filter lambda-ui-components build
 
-      # 2. Compila la app de documentación leyendo el /dist recién generado
+      # Corregido con la ruta ./docs para que pnpm lo encuentre sin fallar
       - name: Build Next.js Docs
-        run: pnpm --filter docs build
+        run: pnpm --filter ./docs build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -52,7 +48,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '${{ github.workspace }}/docs/out'
+          path: 'docs/out'
 
       - name: Deploy to GitHub Pages
         id: deployment
